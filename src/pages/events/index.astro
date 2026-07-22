@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import EventCard from '../../components/EventCard.astro';
+import config from '../../../site.config';
+import { createRhythm, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
+import { ogPathFor } from '../../lib/og';
+
+const { upcoming, past } = await getEventsForIndex();
+const programmes = await getProgrammes();
+const byId = new Map(programmes.map((p) => [p.id, p]));
+
+const rhythm = createRhythm('cream');
+const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() : null };
+---
+
+<Base
+  pageTitle="Events"
+  description={`Every ${config.brand.name} event in Oxford — upcoming cohorts open for registration, and past cohorts with what came out of them.`}
+  path={paths.events()}
+  ogImage={ogPathFor(paths.events())}
+  breadcrumbs={[{ name: 'Events', path: paths.events() }]}
+>
+  <Hero
+    eyebrow={`${config.brand.name} — Events`}
+    title="Every cohort, past and upcoming"
+    subline="Small, in-person, hands-on days in Oxford. Upcoming events are open for registration; past ones stay here with what came out of them."
+  />
+
+  <section class:list={['band', `band--${bands.upcoming}`]} aria-labelledby="upcoming">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="upcoming">Upcoming</h2>
+      </div>
+
+      {
+        upcoming.length > 0 ? (
+          <div class="grid grid--3">
+            {upcoming.map((event, i) => (
+              <div data-reveal data-reveal-delay={i * 80}>
+                <EventCard event={event} programme={byId.get(event.data.programme.id)!} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="empty">
+            Nothing is open for registration right now. The next cohort is being scheduled — the{' '}
+            <a href={paths.programme(programmes[0].data.slug)}>{programmes[0].data.name}</a> page has the format and how
+            to hear first.
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    bands.past && (
+      <section class:list={['band', `band--${bands.past}`]} aria-labelledby="past">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="past">Already run</h2>
+            <p>Past cohorts stay online. Each one keeps its agenda and what came out of the day.</p>
+          </div>
+
+          <div class="grid grid--3">
+            {past.map((event, i) => (
+              <div data-reveal data-reveal-delay={i * 80}>
+                <EventCard event={event} programme={byId.get(event.data.programme.id)!} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .empty {
+    max-width: var(--measure);
+    font-size: var(--step-lg);
+    line-height: 1.5;
+  }
+</style>

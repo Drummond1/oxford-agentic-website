@@ -1,0 +1,223 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import config from '../../../site.config';
+import { paths } from '../../lib/site';
+import { personSchema } from '../../lib/schema';
+
+/**
+ * Speakers — a flagged section (PRD §11).
+ *
+ * Index and profile share one rest route so that `getStaticPaths` can return an
+ * empty array when the flag is off. A plain `index.astro` would always build,
+ * which would leave /speakers/ reachable on a site whose nav no longer offers it.
+ */
+export async function getStaticPaths() {
+  if (!config.features.speakers) return [];
+
+  const speakers = (await getCollection('speakers')).sort((a, b) => a.data.order - b.data.order);
+
+  return [
+    // `slug: undefined` generates the index at /speakers/.
+    { params: { slug: undefined }, props: { speakers } },
+    ...speakers.map((speaker) => ({ params: { slug: speaker.data.slug }, props: { speaker, speakers } })),
+  ];
+}
+
+const { speaker, speakers } = Astro.props;
+const Bio = speaker ? (await render(speaker)).Content : null;
+
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .map((part) => part[0])
+    .join('');
+---
+
+{
+  speaker ? (
+    <Base
+      pageTitle={speaker.data.name}
+      description={`${speaker.data.name} — ${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}. ${speaker.data.bio.slice(0, 100)}`}
+      path={paths.speaker(speaker.data.slug)}
+      schemaNodes={[
+        personSchema({
+          name: speaker.data.name,
+          slug: speaker.data.slug,
+          role: speaker.data.role,
+          company: speaker.data.company,
+          bio: speaker.data.bio,
+          links: speaker.data.links,
+        }),
+      ]}
+      breadcrumbs={[
+        { name: 'Speakers', path: paths.speakers() },
+        { name: speaker.data.name, path: paths.speaker(speaker.data.slug) },
+      ]}
+    >
+      <Hero
+        eyebrow={speaker.data.company ?? config.brand.name}
+        title={speaker.data.name}
+        subline={speaker.data.role}
+      />
+
+      <section class="band band--cream">
+        <div class="wrap wrap--narrow">
+          <div class="profile">
+            {speaker.data.photo && speaker.data.photoAlt ? (
+              <Image class="profile__photo" src={speaker.data.photo} alt={speaker.data.photoAlt} width={320} height={320} loading="eager" />
+            ) : (
+              <span class="profile__initials" aria-hidden="true">
+                {initials(speaker.data.name)}
+              </span>
+            )}
+            <div class="prose profile__bio">{Bio && <Bio />}</div>
+          </div>
+
+          {speaker.data.links.linkedin && (
+            <p class="profile__links">
+              <a href={speaker.data.links.linkedin} rel="noopener">
+                LinkedIn →
+              </a>
+            </p>
+          )}
+
+          <p class="profile__back">
+            <a href={paths.speakers()}>← All speakers</a>
+          </p>
+        </div>
+      </section>
+    </Base>
+  ) : (
+    <Base
+      pageTitle="Speakers"
+      description={`The practitioners who teach and host ${config.brand.name} events in Oxford.`}
+      path={paths.speakers()}
+      breadcrumbs={[{ name: 'Speakers', path: paths.speakers() }]}
+    >
+      <Hero
+        eyebrow={config.brand.name}
+        title="Who is in the room"
+        subline="Practitioners who build with these tools daily, rather than commentators on them."
+      />
+
+      <section class="band band--cream" aria-labelledby="all">
+        <div class="wrap">
+          <h2 id="all" class="visually-hidden">
+            All speakers
+          </h2>
+
+          {speakers.length > 0 ? (
+            <div class="grid grid--3">
+              {speakers.map((person, i) => (
+                <a href={paths.speaker(person.data.slug)} class="card person" data-reveal data-reveal-delay={i * 80}>
+                  {person.data.photo && person.data.photoAlt ? (
+                    <Image class="person__photo" src={person.data.photo} alt={person.data.photoAlt} width={320} height={320} loading="lazy" />
+                  ) : (
+                    <span class="person__initials" aria-hidden="true">
+                      {initials(person.data.name)}
+                    </span>
+                  )}
+                  <h3 class="person__name">{person.data.name}</h3>
+                  <p class="person__role">
+                    {person.data.role}
+                    {person.data.company && `, ${person.data.company}`}
+                  </p>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p class="empty">Speakers for the next cohort are being confirmed.</p>
+          )}
+        </div>
+      </section>
+    </Base>
+  )
+}
+
+<style>
+  .person__photo,
+  .profile__photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .person__photo {
+    margin-block-end: 1.15rem;
+  }
+
+  /* Photo slots degrade to a type-and-colour treatment when no photo exists,
+     so removing photography never breaks a layout (PRD §10). */
+  .person__initials,
+  .profile__initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    background: var(--ink-dark);
+    color: var(--gold);
+    font-family: var(--font-title);
+    font-size: var(--step-2xl);
+  }
+
+  .person__initials {
+    margin-block-end: 1.15rem;
+  }
+
+  .person__name {
+    font-size: var(--step-lg);
+  }
+
+  .person__role {
+    margin-block-start: 0.4rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    color: var(--teal);
+  }
+
+  .profile {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  @media (max-width: 40rem) {
+    .profile {
+      grid-template-columns: 1fr;
+    }
+
+    .profile__photo,
+    .profile__initials {
+      max-width: 11rem;
+    }
+  }
+
+  .profile__bio :global(p + p) {
+    margin-block-start: 1.1rem;
+  }
+
+  .profile__links,
+  .profile__back {
+    margin-block-start: 1.75rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .empty {
+    max-width: var(--measure);
+    font-size: var(--step-lg);
+  }
+</style>

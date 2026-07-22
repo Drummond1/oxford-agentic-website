@@ -1,0 +1,343 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EventCard from '../components/EventCard.astro';
+import Faq from '../components/Faq.astro';
+import GoldDivider from '../components/GoldDivider.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+import config from '../../site.config';
+import {
+  createRhythm,
+  getEventsForIndex,
+  getProgrammes,
+  getTestimonials,
+  paths,
+  showSection,
+} from '../lib/site';
+import { faqSchema } from '../lib/schema';
+import { ogPathFor } from '../lib/og';
+
+const { upcoming } = await getEventsForIndex();
+const programmes = await getProgrammes();
+const testimonials = await getTestimonials();
+const byId = new Map(programmes.map((p) => [p.id, p]));
+
+const nextThree = upcoming.slice(0, 3);
+const flagship = programmes[0];
+
+const faqs = [
+  {
+    q: `What is ${config.brand.name}?`,
+    a: config.brand.description,
+  },
+  {
+    q: 'Who are the bootcamps for?',
+    a: 'Senior people who already use AI and want to build with it — founders, directors, C-suite, consultants, and senior public-sector and university staff. The rooms skew towards people who have done an executive AI course and want the hands-on follow-through.',
+  },
+  {
+    q: 'Do I need to be technical?',
+    a: 'No. Nothing on the day requires code. The format is facilitated in the room, and the small cohort exists so that nobody spends the day stuck on setup.',
+  },
+  {
+    q: 'Where in Oxford are the events held?',
+    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Each event page confirms its own venue.",
+  },
+  {
+    q: 'What will I actually leave with?',
+    a: 'A working agentic AI workflow, built against a real task from your own work and running by the end of the day, plus the underlying pattern so you can build the next one yourself.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Pricing is shown on the booking page for each event, along with any early-bird rate. Follow the register link on the event you are interested in.',
+  },
+];
+
+// Backgrounds are assigned by position among the sections that actually render,
+// so switching any of them off can never leave two same-coloured bands touching.
+const rhythm = createRhythm('cream');
+const showProof = showSection('testimonials', { hasContent: testimonials.length > 0 });
+const showProgrammes = programmes.length > 0;
+const showNewsletter = showSection('newsletter');
+
+const bands = {
+  nextEvents: rhythm.next(),
+  why: rhythm.next(),
+  proof: showProof ? rhythm.next() : null,
+  programmes: showProgrammes ? rhythm.next() : null,
+  faq: rhythm.next(),
+};
+---
+
+<Base
+  pageTitle={config.brand.tagline}
+  titleOverride={`${config.brand.name} — ${config.brand.tagline}`}
+  description={config.brand.description}
+  path="/"
+  ogImage={ogPathFor('/')}
+  schemaNodes={[faqSchema(faqs)]}
+>
+  <Hero
+    eyebrow={config.brand.name}
+    title="Build agents. In a day. In Oxford."
+    subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
+    motif
+    size="full"
+  >
+    <div class="btn-row">
+      {
+        nextThree[0] ? (
+          <a href={paths.event(nextThree[0].data.slug)} class="btn btn--primary" data-analytics-event="next_event_cta_click" data-analytics-slug={nextThree[0].data.slug}>
+            See the next Bootcamp
+          </a>
+        ) : (
+          <a href={paths.events()} class="btn btn--primary">
+            See the Bootcamp
+          </a>
+        )
+      }
+      <a href={paths.events()} class="btn btn--ghost">All events</a>
+    </div>
+  </Hero>
+
+  {/* ---- Next events ---- */}
+  <section class:list={['band', `band--${bands.nextEvents}`]} aria-labelledby="next-events">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="next-events">{nextThree.length > 0 ? 'Next in Oxford' : 'The next cohort'}</h2>
+        <p>
+          {
+            nextThree.length > 0
+              ? 'Small cohorts, booked ahead. Each one is capped so the day stays facilitated rather than lectured.'
+              : 'Dates for the next cohort are being confirmed. Leave your email and you will hear first.'
+          }
+        </p>
+      </div>
+
+      {
+        nextThree.length > 0 ? (
+          <div class="grid grid--3">
+            {nextThree.map((event, i) => (
+              <div data-reveal data-reveal-delay={i * 80}>
+                <EventCard event={event} programme={byId.get(event.data.programme.id)!} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          showNewsletter && (
+            <div data-reveal>
+              <NewsletterForm label="Tell me when the next cohort opens" />
+            </div>
+          )
+        )
+      }
+    </div>
+  </section>
+
+  <GoldDivider numeral="01" label="The difference" title="You leave having built the thing." />
+
+  {/* ---- Why it's different ---- */}
+  <section class:list={['band', `band--${bands.why}`]} aria-labelledby="why">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="why">Three reasons this is not another AI talk</h2>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card" data-reveal>
+          <span class="eyebrow">Hands on</span>
+          <h3>You build, we facilitate</h3>
+          <ul class="squares">
+            <li>Three build cycles, not three lectures</li>
+            <li>Your own real task, from your actual work</li>
+            <li>Someone walks the room to unstick you</li>
+          </ul>
+        </div>
+
+        <div class="card" data-reveal data-reveal-delay="90">
+          <span class="eyebrow">The room</span>
+          <h3>Senior peers, in Oxford</h3>
+          <ul class="squares">
+            <li>Capped at roughly twenty-five people</li>
+            <li>Founders, directors, C-suite and consultants</li>
+            <li>Held in an Oxford college, cabaret layout</li>
+          </ul>
+        </div>
+
+        <div class="card" data-reveal data-reveal-delay="180">
+          <span class="eyebrow">The format</span>
+          <h3>Orchestrating, not prompting</h3>
+          <ul class="squares">
+            <li>Scout, drafter, reviewer — narrow steps handing off</li>
+            <li>No block over twenty-five minutes of talk</li>
+            <li>A recipe you can rebuild on Monday</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ---- Social proof (flagged) ---- */}
+  {
+    showProof && (
+      <section class:list={['band', `band--${bands.proof}`]} aria-labelledby="proof">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="proof">What people said</h2>
+          </div>
+          <div class="grid grid--2">
+            {testimonials.slice(0, 3).map((t, i) => (
+              <blockquote class="card quote" data-reveal data-reveal-delay={i * 90}>
+                <p>“{t.data.quote}”</p>
+                <footer>
+                  <cite>
+                    {t.data.name} — {t.data.role}
+                    {t.data.company && `, ${t.data.company}`}
+                  </cite>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Programmes ---- */}
+  {
+    showProgrammes && (
+      <section class:list={['band', `band--${bands.programmes}`]} aria-labelledby="programmes">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="programmes">The programmes</h2>
+          </div>
+
+          <div class="programme-rows">
+            {programmes.map((programme, i) => (
+              <a href={paths.programme(programme.data.slug)} class="card programme-row" data-reveal data-reveal-delay={i * 80}>
+                <div>
+                  <span class="eyebrow">{`0${i + 1}`}</span>
+                  <h3>{programme.data.name}</h3>
+                  <p>{programme.data.shortPitch}</p>
+                </div>
+                <span class="programme-row__arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- FAQ ---- */}
+  <section class:list={['band', `band--${bands.faq}`]} aria-labelledby="faq">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="faq">Questions</h2>
+      </div>
+      <div data-reveal>
+        <Faq faqs={faqs} />
+      </div>
+    </div>
+  </section>
+
+  {/* ---- Email capture ---- */}
+  {
+    showNewsletter && (
+      <section class="band band--gold capture" aria-labelledby="capture">
+        <div class="wrap capture__inner">
+          <div>
+            <h2 id="capture" class="capture__title">
+              Not ready to book?
+            </h2>
+            <p class="capture__copy">Hear about the next cohort before it is announced publicly.</p>
+          </div>
+          <NewsletterForm label="Be first to hear about the next cohort" />
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .quote p {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.4;
+  }
+
+  .quote footer {
+    margin-block-start: 1.2rem;
+  }
+
+  .quote cite {
+    font-family: var(--font-label);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .programme-rows {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .programme-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .programme-row h3 {
+    margin-block: 0.2rem 0.65rem;
+    font-size: var(--step-xl);
+  }
+
+  .programme-row p {
+    max-width: 52ch;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .programme-row p {
+    color: var(--muted-on-cream);
+  }
+
+  .programme-row__arrow {
+    font-size: 1.6rem;
+    color: var(--gold);
+    flex: none;
+    transition: transform 220ms var(--ease);
+  }
+
+  .programme-row:hover .programme-row__arrow {
+    transform: translateX(5px);
+  }
+
+  .capture__inner {
+    display: grid;
+    gap: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    align-items: center;
+  }
+
+  .capture__title {
+    font-size: var(--step-2xl);
+    color: var(--ink-dark);
+  }
+
+  .capture__copy {
+    margin-block-start: 0.9rem;
+    max-width: 34ch;
+    color: rgba(5, 24, 23, 0.78);
+  }
+</style>

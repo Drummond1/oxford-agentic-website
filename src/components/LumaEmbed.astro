@@ -1,0 +1,134 @@
+---
+import NewsletterForm from './NewsletterForm.astro';
+import { lumaEmbedSrc, lumaUrlWithUtm, showSection, type EventEntry } from '../lib/site';
+
+/**
+ * Registration — PRD §9.
+ *
+ * We cannot restyle Luma's internals, so we brand the frame, not the iframe:
+ * a dark section, a Courier eyebrow, and a gold-tinted border replacing Luma's
+ * default #bfcbda88.
+ *
+ * Three things are deliberate here:
+ *  - The fallback link is ALWAYS visible, not a JS-detected error state. If
+ *    third-party content is blocked the visitor still has a way through.
+ *  - The iframe is lazy-loaded and given fixed dimensions, so it neither
+ *    blocks LCP nor shifts layout when it paints.
+ *  - Every fact inside the embed also exists in the page's own HTML (the key
+ *    facts card) because crawlers cannot read iframes.
+ */
+interface Props {
+  event: EventEntry;
+}
+
+const { event } = Astro.props;
+const { lumaEventId, lumaUrl, slug } = { ...event.data, slug: event.data.slug };
+
+const fallbackHref = lumaUrl ? lumaUrlWithUtm(lumaUrl, slug) : null;
+const showNotifyInstead = !lumaEventId;
+const canNotify = showSection('newsletter');
+---
+
+<div class="register" data-register-section data-event-slug={slug}>
+  <span class="eyebrow">Register</span>
+
+  {
+    showNotifyInstead ? (
+      <div class="register__pending">
+        <h2 class="register__pending-title">Registration opens shortly</h2>
+        <p class="register__pending-copy">
+          The booking page for this cohort is being prepared. Leave your email and you will hear the moment it opens —
+          before it is announced publicly.
+        </p>
+        {canNotify && <NewsletterForm label="Tell me when registration opens" cta="Notify me" />}
+      </div>
+    ) : (
+      <div class="register__frame">
+        <iframe
+          src={lumaEmbedSrc(lumaEventId!)}
+          width="600"
+          height="450"
+          title={`Register for ${event.data.title}`}
+          loading="lazy"
+          frameborder="0"
+          allow="fullscreen; payment"
+          aria-hidden="false"
+          tabindex="0"
+        />
+      </div>
+    )
+  }
+
+  {
+    fallbackHref && (
+      <p class="register__fallback">
+        Having trouble?{' '}
+        <a
+          href={fallbackHref}
+          rel="noopener"
+          data-analytics-event="luma_outbound_click"
+          data-analytics-slug={slug}
+        >
+          Register on Luma →
+        </a>
+      </p>
+    )
+  }
+</div>
+
+<style>
+  .register {
+    max-width: 600px;
+  }
+
+  .register__frame {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .register__frame iframe {
+    width: 100%;
+    /* Fixed height reserves the space before paint — no CLS (PRD §12). */
+    height: 450px;
+    display: block;
+    border: 1px solid #f1af3955;
+    border-radius: var(--radius);
+    background: rgba(255, 249, 236, 0.03);
+    color-scheme: light;
+  }
+
+  /* Luma's simple embed scrolls internally, so mobile gets more room. */
+  @media (max-width: 40rem) {
+    .register__frame iframe {
+      height: 520px;
+    }
+  }
+
+  .register__pending {
+    border: 1px solid var(--gold-hairline);
+    border-radius: var(--radius);
+    padding: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  }
+
+  .register__pending-title {
+    font-size: var(--step-xl);
+  }
+
+  .register__pending-copy {
+    margin-block: 0.9rem 1.6rem;
+    font-size: var(--step-sm);
+    line-height: 1.6;
+    color: var(--muted-on-dark);
+    max-width: var(--measure);
+  }
+
+  .register__fallback {
+    margin-block-start: 1.1rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .register__fallback a {
+    color: var(--gold);
+  }
+</style>

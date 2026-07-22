@@ -1,0 +1,247 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import config from '../../site.config';
+import { createRhythm, getPhotos, paths } from '../lib/site';
+import { personSchema } from '../lib/schema';
+import { ogPathFor } from '../lib/og';
+
+/**
+ * The entity page — PRD §7.4, §13. This is the canonical document describing
+ * who the brand is, and the only place Organization and the host's Person
+ * schema live canonically. AI engines triangulate entities across sources;
+ * this page is the anchor.
+ */
+const speakers = await getCollection('speakers');
+const host = speakers.find((s) => s.data.isHost);
+const HostBio = host ? (await render(host)).Content : null;
+
+const venuePhotos = await getPhotos('venue');
+const rhythm = createRhythm('cream');
+const bands = { story: rhythm.next(), host: rhythm.next(), venue: venuePhotos.length > 0 ? rhythm.next() : null };
+---
+
+<Base
+  pageTitle="About"
+  description={`Who runs ${config.brand.name}, why it exists, and where in Oxford the bootcamps happen.`}
+  path={paths.about()}
+  ogImage={ogPathFor(paths.about())}
+  schemaNodes={[
+    host
+      ? personSchema({
+          name: host.data.name,
+          slug: host.data.slug,
+          role: host.data.role,
+          company: host.data.company,
+          bio: host.data.bio,
+          links: host.data.links,
+        })
+      : null,
+  ]}
+  breadcrumbs={[{ name: 'About', path: paths.about() }]}
+>
+  <Hero eyebrow={`About ${config.brand.name}`} title="Owned land, not rented." subline={config.brand.longDescription} />
+
+  <section class:list={['band', `band--${bands.story}`]} aria-labelledby="story">
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="story">Why this exists</h2>
+      </div>
+
+      <div class="prose story" data-reveal>
+        <p>
+          Oxford has no shortage of people who understand AI. Executive courses, diplomas, reading groups, conference
+          panels — the city is thick with them, and they are good. What was missing was the next step: a day where you
+          actually build the thing.
+        </p>
+        <p>
+          That gap is oddly consistent. Senior people arrive having read widely, having sat through the strategy
+          modules, having formed genuine views about where this goes. And they have still never chained three AI steps
+          together on a task they actually own. Not because it is hard. Because nobody ever sat them down for a day and
+          got them through the first one.
+        </p>
+        <p>
+          So the format is deliberately narrow. One day. One real task each. A room of about twenty-five people, capped
+          so that it stays facilitated rather than lectured. Everyone leaves with something running, and with the
+          pattern underneath it — which is the part that transfers to the next task, and the one after that.
+        </p>
+        <p>
+          {config.brand.name} is the parent brand for that family of events in Oxford. The{' '}
+          <a href={paths.programmes()}>bootcamps</a> are where it happens; the <a href={paths.events()}>events page</a>{' '}
+          has every cohort, past and upcoming.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {
+    host && (
+      <section class:list={['band', `band--${bands.host}`]} aria-labelledby="host">
+        <div class="wrap wrap--narrow">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="host">Who runs it</h2>
+          </div>
+
+          <div class="host" data-reveal>
+            {host.data.photo && host.data.photoAlt && (
+              <Image class="host__photo" src={host.data.photo} alt={host.data.photoAlt} width={220} height={220} loading="lazy" />
+            )}
+            <div>
+              <h3 class="host__name">{host.data.name}</h3>
+              <p class="host__role">
+                {host.data.role}
+                {host.data.company && `, ${host.data.company}`}
+              </p>
+              <div class="prose host__bio">{HostBio && <HostBio />}</div>
+              {host.data.links.linkedin && (
+                <p class="host__links">
+                  <a href={host.data.links.linkedin} rel="noopener">
+                    LinkedIn →
+                  </a>
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    bands.venue && (
+      <section class:list={['band', `band--${bands.venue}`]} aria-labelledby="venue">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="venue">The setting</h2>
+            <p>
+              The events run in Oxford colleges. The setting is part of the product — it is a working day, but it is a
+              working day somewhere worth travelling to.
+            </p>
+          </div>
+
+          <div class="grid grid--2">
+            {venuePhotos.map((photo, i) => (
+              <figure class="photo" data-reveal data-reveal-delay={i * 80}>
+                <Image src={photo.data.file} alt={photo.data.alt} widths={[480, 800, 1200]} sizes="(max-width: 48rem) 100vw, 34rem" loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="band band--gold contact">
+    <div class="wrap contact__inner">
+      <div>
+        <h2 class="contact__title">Questions before you book?</h2>
+        <p class="contact__copy">Ask directly. Someone who has run the day will answer.</p>
+      </div>
+      <a href={`mailto:${config.brand.email}`} class="btn btn--onGold">{config.brand.email}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .story p + p {
+    margin-block-start: 1.2rem;
+  }
+
+  :global(.band--cream) .story {
+    color: var(--muted-on-cream);
+  }
+
+  :global(.band--dark) .story {
+    color: var(--muted-on-dark);
+  }
+
+  .host {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (max-width: 40rem) {
+    .host {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .host__photo {
+    border-radius: var(--radius);
+    border: 1px solid var(--gold-hairline);
+    width: 11rem;
+    height: auto;
+  }
+
+  .host__name {
+    font-size: var(--step-xl);
+  }
+
+  .host__role {
+    margin-block-start: 0.4rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .host__role {
+    color: var(--teal);
+  }
+
+  .host__bio {
+    margin-block-start: 1.2rem;
+  }
+
+  .host__bio :global(p + p) {
+    margin-block-start: 1.1rem;
+  }
+
+  .host__links {
+    margin-block-start: 1.2rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .photo {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--gold-hairline);
+  }
+
+  .photo :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .contact__title {
+    font-size: var(--step-2xl);
+    color: var(--ink-dark);
+  }
+
+  .contact__copy {
+    margin-block-start: 0.7rem;
+    color: rgba(5, 24, 23, 0.78);
+  }
+</style>

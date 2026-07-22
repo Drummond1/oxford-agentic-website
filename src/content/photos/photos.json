@@ -1,0 +1,83 @@
+[
+  {
+    "id": "cohort-1-seminar-room-working",
+    "file": "./cohort-1-seminar-room-working.jpeg",
+    "alt": "Attendees working at long cabaret-style tables with laptops in a bright, vaulted seminar room at St Anne's College, Oxford, during the first Oxford Agentic Bootcamp.",
+    "tags": ["hero", "event", "venue"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 1,
+    "consentCleared": true
+  },
+  {
+    "id": "cohort-1-st-annes-registration-desk",
+    "file": "./cohort-1-st-annes-registration-desk.jpeg",
+    "alt": "A registration desk draped in a St Anne's College, University of Oxford tablecloth, with sign-in sheets laid out ready for arrivals.",
+    "tags": ["venue", "event"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 2,
+    "consentCleared": true
+  },
+  {
+    "id": "cohort-1-place-card-and-build-screen",
+    "file": "./cohort-1-place-card-and-build-screen.jpeg",
+    "alt": "A hand holds a gold-edged calligraphy place card in front of a laptop screen showing a new project being created for the bootcamp build exercise.",
+    "tags": ["build", "event"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 3,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-talk-start-with-the-job",
+    "file": "./cohort-1-talk-start-with-the-job.jpeg",
+    "alt": "A speaker presenting to the room beside a screen reading \"Start with the job, not the tool\".",
+    "tags": ["event", "people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 4,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-talk-three-eras",
+    "file": "./cohort-1-talk-three-eras.jpeg",
+    "alt": "A speaker standing at a laptop beside a screen reading \"Three years, three eras\", tracing the shift from prompting to agents.",
+    "tags": ["event", "people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 5,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-attendees-portrait",
+    "file": "./cohort-1-attendees-portrait.jpeg",
+    "alt": "Two attendees smiling together at their working table during the bootcamp.",
+    "tags": ["people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 6,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-group-portrait-a",
+    "file": "./cohort-1-group-portrait-a.jpeg",
+    "alt": "Four attendees standing together at the end of the day.",
+    "tags": ["people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 7,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-group-portrait-b",
+    "file": "./cohort-1-group-portrait-b.jpeg",
+    "alt": "Four attendees standing together in the seminar room doorway at the close of the bootcamp.",
+    "tags": ["people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 8,
+    "consentCleared": false
+  },
+  {
+    "id": "cohort-1-group-portrait-c",
+    "file": "./cohort-1-group-portrait-c.jpeg",
+    "alt": "Four attendees photographed together after the final showcase session.",
+    "tags": ["people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 9,
+    "consentCleared": false
+  }
+]

@@ -1,0 +1,61 @@
+---
+/**
+ * The wordmark, set live in the brand faces rather than shipped as a raster
+ * logo — so a brand rename in site.config redraws it (PRD §4, §10).
+ * `size="lockup"` is the two-line header lockup; `size="mark"` is the compact form.
+ */
+import config from '../../site.config';
+
+interface Props {
+  variant?: 'lockup' | 'mark';
+  class?: string;
+}
+
+const { variant = 'lockup', class: className = '' } = Astro.props;
+const [first, ...rest] = config.brand.name.split(' ');
+const second = rest.join(' ');
+---
+
+<span class:list={['wordmark', `wordmark--${variant}`, className]} aria-label={config.brand.name}>
+  <span class="wordmark__dash" aria-hidden="true"></span>
+  <span class="wordmark__text">
+    <span class="wordmark__first">{first}</span>{second && <span class="wordmark__second">{second}</span>}
+  </span>
+</span>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .wordmark__dash {
+    width: 1.6rem;
+    height: 2px;
+    background: var(--gold);
+    flex: none;
+  }
+
+  .wordmark__text {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .wordmark__second {
+    margin-inline-start: 0.32em;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: 0.78em;
+  }
+
+  .wordmark--mark .wordmark__text {
+    font-size: 1.05rem;
+  }
+</style>

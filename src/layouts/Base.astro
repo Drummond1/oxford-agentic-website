@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import config from '../../site.config';
+import { breadcrumbSchema } from '../lib/schema';
+
+interface Props {
+  /** Page name only — the brand suffix is applied here, never in the page. */
+  pageTitle: string;
+  /** Set when a page needs a bespoke <title> (events use a dated pattern). */
+  titleOverride?: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  schemaNodes?: Array<Record<string, unknown> | null>;
+  breadcrumbs?: Array<{ name: string; path: string }>;
+  noindex?: boolean;
+  bodyClass?: string;
+}
+
+const {
+  pageTitle,
+  titleOverride,
+  description,
+  path,
+  ogImage,
+  schemaNodes = [],
+  breadcrumbs = [],
+  noindex = false,
+  bodyClass = '',
+} = Astro.props;
+
+// PRD §12 title pattern. The brand string comes from config, so a rename
+// rewrites every <title> on the site in one build.
+const title = titleOverride ?? `${pageTitle} — ${config.brand.name}`;
+
+const trail = [{ name: 'Home', path: '/' }, ...breadcrumbs];
+const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null];
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <BaseHead title={title} description={description} path={path} ogImage={ogImage} schemaNodes={nodes} noindex={noindex} />
+  </head>
+  <body class={bodyClass}>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Motion: fade/slide-up once on scroll. The class is added by JS, so with
+      // JS off (or IntersectionObserver missing) content is simply visible.
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('[data-reveal]');
+
+      if (!reduced && 'IntersectionObserver' in window && targets.length > 0) {
+        document.documentElement.classList.add('js-motion');
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target as HTMLElement;
+              const delay = Number(el.dataset.revealDelay ?? 0);
+              window.setTimeout(() => el.classList.add('is-revealed'), delay);
+              observer.unobserve(el);
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      }
+
+      // Analytics is provider-agnostic: components declare intent with
+      // data-analytics-event and this dispatches to whichever provider is on.
+      type Props = Record<string, string>;
+
+      function track(name: string, props: Props = {}) {
+        const w = window as unknown as {
+          plausible?: (n: string, o?: { props: Props }) => void;
+          gtag?: (...args: unknown[]) => void;
+        };
+        w.plausible?.(name, { props });
+        w.gtag?.('event', name, props);
+      }
+
+      document.addEventListener('click', (event) => {
+        const el = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-analytics-event]');
+        if (!el) return;
+        track(el.dataset.analyticsEvent!, el.dataset.analyticsSlug ? { event_slug: el.dataset.analyticsSlug } : {});
+      });
+
+      // We cannot see inside the Luma iframe, so registration intent is measured
+      // three ways (PRD §9.6): section-in-view, iframe interaction, outbound click.
+      const registerSection = document.querySelector<HTMLElement>('[data-register-section]');
+      if (registerSection && 'IntersectionObserver' in window) {
+        const slug = registerSection.dataset.eventSlug ?? '';
+        const seen = new IntersectionObserver(
+          (entries) => {
+            if (!entries.some((e) => e.isIntersecting)) return;
+            track('register_section_viewed', { event_slug: slug });
+            seen.disconnect();
+          },
+          { threshold: 0.4 },
+        );
+        seen.observe(registerSection);
+
+        // A focus shift into the iframe is the only reliable signal that
+        // someone started interacting with the embed.
+        let counted = false;
+        window.addEventListener('blur', () => {
+          if (counted) return;
+          if (document.activeElement?.tagName !== 'IFRAME') return;
+          counted = true;
+          track('luma_embed_interacted', { event_slug: slug });
+        });
+      }
+    </script>
+  </body>
+</html>

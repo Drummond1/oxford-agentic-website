@@ -1,0 +1,217 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import config from '../../../site.config';
+import { formatDate, getProgrammes, paths } from '../../lib/site';
+import { articleSchema } from '../../lib/schema';
+import { absoluteUrl } from '../../lib/site';
+import { ogPathFor } from '../../lib/og';
+
+/** Guides — a flagged section (PRD §11). */
+export async function getStaticPaths() {
+  if (!config.features.guides) return [];
+
+  const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  );
+
+  return [
+    { params: { slug: undefined }, props: { guides } },
+    ...guides.map((guide) => ({ params: { slug: guide.data.slug }, props: { guide, guides } })),
+  ];
+}
+
+const { guide, guides } = Astro.props;
+
+const Body = guide ? (await render(guide)).Content : null;
+const author = guide ? await getEntry(guide.data.author) : null;
+const programmes = await getProgrammes();
+const related = guide
+  ? programmes.filter((p) => guide.data.relatedProgrammes.some((ref) => ref.id === p.id))
+  : [];
+---
+
+{
+  guide ? (
+    <Base
+      pageTitle={guide.data.title}
+      description={guide.data.description}
+      path={paths.guide(guide.data.slug)}
+      ogImage={ogPathFor(paths.guides())}
+      schemaNodes={[
+        articleSchema({
+          title: guide.data.title,
+          slug: guide.data.slug,
+          description: guide.data.description,
+          publishDate: guide.data.publishDate,
+          updatedDate: guide.data.updatedDate,
+          authorName: author?.data.name ?? config.brand.name,
+          authorSlug: author?.data.slug ?? 'team',
+          ogImage: absoluteUrl(ogPathFor(paths.guides())),
+        }),
+      ]}
+      breadcrumbs={[
+        { name: 'Guides', path: paths.guides() },
+        { name: guide.data.title, path: paths.guide(guide.data.slug) },
+      ]}
+    >
+      <Hero eyebrow="Guide" title={guide.data.title} />
+
+      <section class="band band--cream">
+        <div class="wrap wrap--narrow">
+          {/* Answer capsule — front-loaded and quotable (PRD §13). */}
+          <p class="capsule" data-reveal>
+            {guide.data.capsule}
+          </p>
+
+          <p class="byline">
+            {author && <>By {author.data.name} · </>}
+            Updated {formatDate(guide.data.updatedDate, { weekday: undefined })}
+          </p>
+
+          <article class="prose article">
+            <Body />
+          </article>
+
+          {/* Every guide links to at least one programme — PRD §12. */}
+          {related.length > 0 && (
+            <aside class="card related">
+              <span class="eyebrow">Where this gets practical</span>
+              <ul class="squares">
+                {related.map((programme) => (
+                  <li>
+                    <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a> — {programme.data.shortPitch}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
+        </div>
+      </section>
+    </Base>
+  ) : (
+    <Base
+      pageTitle="Guides"
+      description={`Practical writing on agentic AI for business leaders, from ${config.brand.name} in Oxford.`}
+      path={paths.guides()}
+      ogImage={ogPathFor(paths.guides())}
+      breadcrumbs={[{ name: 'Guides', path: paths.guides() }]}
+    >
+      <Hero
+        eyebrow={config.brand.name}
+        title="Writing on agentic AI"
+        subline="Short, practical pieces for people who intend to build something rather than form a view."
+      />
+
+      <section class="band band--cream" aria-labelledby="all">
+        <div class="wrap">
+          <h2 id="all" class="visually-hidden">
+            All guides
+          </h2>
+
+          {guides.length > 0 ? (
+            <div class="grid grid--3">
+              {guides.map((entry, i) => (
+                <a href={paths.guide(entry.data.slug)} class="card guide-card" data-reveal data-reveal-delay={i * 80}>
+                  <span class="eyebrow">{formatDate(entry.data.updatedDate, { weekday: undefined, day: undefined })}</span>
+                  <h3>{entry.data.title}</h3>
+                  <p>{entry.data.description}</p>
+                  <span class="guide-card__cta">
+                    Read <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p class="empty">The first guides are being written.</p>
+          )}
+        </div>
+      </section>
+    </Base>
+  )
+}
+
+<style>
+  .capsule {
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    line-height: 1.32;
+    max-width: 50ch;
+  }
+
+  .byline {
+    margin-block-start: 1.5rem;
+    padding-block-end: 1.75rem;
+    border-block-end: 1px solid rgba(5, 24, 23, 0.14);
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    color: var(--teal);
+  }
+
+  .article {
+    margin-block-start: 2rem;
+    color: var(--muted-on-cream);
+  }
+
+  .article :global(p + p),
+  .article :global(ul),
+  .article :global(h2),
+  .article :global(h3) {
+    margin-block-start: 1.3rem;
+  }
+
+  .article :global(h2) {
+    color: var(--ink-dark);
+    margin-block-start: 2.25rem;
+  }
+
+  .article :global(li) {
+    margin-block-start: 0.5rem;
+  }
+
+  .related {
+    margin-block-start: 2.75rem;
+  }
+
+  .related .eyebrow {
+    margin-block-end: 0.8rem;
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .guide-card h3 {
+    font-size: var(--step-lg);
+    margin-block-end: 0.75rem;
+  }
+
+  .guide-card p {
+    flex: 1;
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+  }
+
+  .guide-card__cta {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-block-start: 1.5rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--burnt);
+  }
+
+  .empty {
+    max-width: var(--measure);
+    font-size: var(--step-lg);
+  }
+</style>

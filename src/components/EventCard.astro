@@ -1,0 +1,126 @@
+---
+import { effectiveStatus, formatDate, paths, venueLine, type EventEntry, type ProgrammeEntry } from '../lib/site';
+
+interface Props {
+  event: EventEntry;
+  programme: ProgrammeEntry;
+}
+
+const { event, programme } = Astro.props;
+const status = effectiveStatus(event);
+
+const statusLabel: Record<string, string> = {
+  upcoming: 'Register',
+  soldout: 'Join the waitlist',
+  past: 'See what happened',
+  cancelled: 'Cancelled',
+};
+---
+
+<a href={paths.event(event.data.slug)} class="card event-card">
+  <span class="eyebrow event-card__programme">{programme.data.name}</span>
+  <h3 class="event-card__title">{event.data.cohort ?? event.data.edition ?? event.data.title}</h3>
+
+  <p class="event-card__meta">
+    {formatDate(event.data.startDate)}
+    <span class="sep" aria-hidden="true"></span>
+    {venueLine(event.data.venue)}
+    {!event.data.venue.confirmed && <span class="event-card__tbc">venue confirming</span>}
+  </p>
+
+  <p class="event-card__summary">{event.data.summary}</p>
+
+  <span class="event-card__cta">
+    {statusLabel[status]}
+    <span aria-hidden="true">→</span>
+  </span>
+</a>
+
+<style>
+  .event-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .event-card__programme {
+    margin-block-end: 0.7rem;
+  }
+
+  .event-card__title {
+    font-size: var(--step-xl);
+  }
+
+  .event-card__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-start: 0.85rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--step-xs);
+    line-height: 1.5;
+  }
+
+  /* The small coloured-square separator from the deck. */
+  .sep {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--gold);
+    flex: none;
+  }
+
+  :global(.band--cream) .sep {
+    background: var(--teal);
+  }
+
+  .event-card__tbc {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.42rem;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    opacity: 0.75;
+  }
+
+  .event-card__summary {
+    margin-block-start: 1.1rem;
+    font-size: var(--step-sm);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  :global(.band--dark) .event-card__summary {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .event-card__summary {
+    color: var(--muted-on-cream);
+  }
+
+  .event-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-block-start: 1.6rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .event-card__cta {
+    color: var(--burnt);
+  }
+
+  .event-card:hover .event-card__cta span {
+    transform: translateX(3px);
+    display: inline-block;
+    transition: transform 200ms var(--ease);
+  }
+</style>

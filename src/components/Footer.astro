@@ -1,0 +1,197 @@
+---
+import config from '../../site.config';
+import Wordmark from './Wordmark.astro';
+import NewsletterForm from './NewsletterForm.astro';
+import { getNav, getEventsForIndex, paths, formatShortDate, showSection } from '../lib/site';
+
+const nav = await getNav();
+const { upcoming } = await getEventsForIndex();
+const year = new Date().getFullYear();
+const showNewsletter = showSection('newsletter');
+
+const socials = Object.entries(config.brand.social).filter(([, url]) => Boolean(url)) as Array<[string, string]>;
+const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn', x: 'X' };
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    {
+      /* Entity block — full brand name plus Oxford location, on every page.
+         A consistent entity footprint is what AI engines triangulate on (PRD §13). */
+    }
+    <div class="site-footer__entity">
+      <Wordmark />
+      <p class="site-footer__desc">{config.brand.longDescription}</p>
+      <p class="site-footer__place">
+        {config.brand.locality}, {config.brand.region}, United Kingdom
+      </p>
+    </div>
+
+    <nav class="site-footer__col" aria-label="Footer">
+      <h2 class="site-footer__label">Site</h2>
+      <ul>
+        {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+
+    {
+      upcoming.length > 0 && (
+        <div class="site-footer__col">
+          <h2 class="site-footer__label">Upcoming</h2>
+          <ul>
+            {upcoming.map((event) => (
+              <li>
+                <a href={paths.event(event.data.slug)}>
+                  {event.data.title}
+                  <span class="site-footer__date">{formatShortDate(event.data.startDate)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <div class="site-footer__col">
+      <h2 class="site-footer__label">Elsewhere</h2>
+      <ul>
+        {socials.map(([key, url]) => <li><a href={url} rel="me noopener">{socialLabels[key] ?? key}</a></li>)}
+        <li><a href={`mailto:${config.brand.email}`}>{config.brand.email}</a></li>
+      </ul>
+    </div>
+
+    {
+      showNewsletter && (
+        <div class="site-footer__signup">
+          <NewsletterForm compact label="Be first to hear about the next cohort" />
+        </div>
+      )
+    }
+  </div>
+
+  <div class="wrap site-footer__base">
+    <p>© {year} {config.brand.name}</p>
+    <p>{config.brand.tagline}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-dark);
+    color: var(--cream);
+    border-block-start: 1px solid rgba(241, 175, 57, 0.2);
+    padding-block: clamp(3rem, 2rem + 4vw, 4.5rem) 2rem;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: clamp(2rem, 1rem + 3vw, 3rem);
+    /* min() on every track so the columns can collapse below their preferred
+       width rather than forcing horizontal overflow at 320px. */
+    grid-template-columns:
+      minmax(min(100%, 15rem), 1.6fr)
+      repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    align-items: start;
+  }
+
+  @media (max-width: 30rem) {
+    .site-footer__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .site-footer__desc {
+    margin-block-start: 1.1rem;
+    max-width: 34ch;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+    line-height: 1.55;
+  }
+
+  .site-footer__place {
+    margin-block-start: 0.9rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--step-xs);
+    color: var(--gold);
+  }
+
+  .site-footer__label {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: var(--step-xs);
+    color: var(--gold);
+    margin-block-end: 1rem;
+  }
+
+  .site-footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-footer__col li + li {
+    margin-block-start: 0.55rem;
+  }
+
+  .site-footer__col a {
+    color: var(--muted-on-dark);
+    text-decoration: none;
+    font-size: var(--step-sm);
+    transition: color 200ms var(--ease);
+  }
+
+  .site-footer__col a:hover {
+    color: var(--gold);
+  }
+
+  .site-footer__date {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-on-dark-dim);
+    margin-block-start: 0.15rem;
+  }
+
+  .site-footer__signup {
+    grid-column: 1 / -1;
+    padding-block-start: 2rem;
+    border-block-start: 1px solid rgba(241, 175, 57, 0.16);
+  }
+
+  .site-footer__signup :global(.signup__input) {
+    background: rgba(255, 249, 236, 0.08);
+    border-color: rgba(241, 175, 57, 0.35);
+    color: var(--cream);
+  }
+
+  .site-footer__signup :global(.signup__input::placeholder) {
+    color: var(--muted-on-dark-dim);
+  }
+
+  .site-footer__signup :global(.signup__button) {
+    background: var(--gold);
+    color: var(--ink-dark);
+  }
+
+  .site-footer__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-block-start: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    padding-block-start: 1.5rem;
+    border-block-start: 1px solid rgba(241, 175, 57, 0.16);
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--muted-on-dark-dim);
+  }
+</style>

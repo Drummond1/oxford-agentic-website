@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Build, validate and audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Content schema validation happens inside `astro build` — a bad date, an
+      # unresolvable reference or a missing alt text fails here.
+      # `npm run build` then runs the link checker and the JSON-LD validator.
+      - name: Build and validate
+        run: npm run build
+
+      # PRD §11 acceptance test: the site must be coherent with every section
+      # switched on and with every section switched off.
+      - name: Section-visibility acceptance test
+        run: npm run check:flags
+
+      - name: Lighthouse budgets
+        run: npx --yes @lhci/cli@0.14.x autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}

@@ -1,0 +1,26 @@
+{
+  "name": "oxford-agentic-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Marketing site for Oxford Agentic — the parent brand for a family of in-person AI events in Oxford.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && npm run check:links && npm run check:schema",
+    "build:only": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check:links": "node scripts/check-links.mjs",
+    "check:schema": "node scripts/check-schema.mjs",
+    "check": "astro check",
+    "check:flags": "node scripts/check-flags.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^7.1.3",
+    "satori": "^0.28.2",
+    "sharp": "^0.35.3"
+  }
+}

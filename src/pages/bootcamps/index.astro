@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import config from '../../../site.config';
+import { getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
+
+const programmes = await getProgrammes();
+
+const rows = await Promise.all(
+  programmes.map(async (programme) => ({
+    programme,
+    ...(await getEventsForProgramme(programme.id)),
+  })),
+);
+---
+
+<Base
+  pageTitle="Bootcamps"
+  description={`The programmes ${config.brand.name} runs in Oxford — repeating, in-person, hands-on formats for building with agentic AI.`}
+  path={paths.programmes()}
+  breadcrumbs={[{ name: 'Bootcamps', path: paths.programmes() }]}
+>
+  <Hero
+    eyebrow={config.brand.name}
+    title="The programmes"
+    subline="Each programme is a repeating format. Cohorts run several times a year, always in person, always in Oxford."
+  />
+
+  <section class="band band--cream" aria-labelledby="all">
+    <div class="wrap">
+      <h2 id="all" class="visually-hidden">All programmes</h2>
+      <div class="rows">
+        {
+          rows.map(({ programme, upcoming, past }, i) => (
+            <a href={paths.programme(programme.data.slug)} class="card row" data-reveal data-reveal-delay={i * 80}>
+              <div>
+                <span class="eyebrow">{`0${i + 1}`}</span>
+                <h3>{programme.data.name}</h3>
+                <p>{programme.data.shortPitch}</p>
+                <p class="row__counts">
+                  {upcoming.length > 0 ? `${upcoming.length} upcoming` : 'Next dates being confirmed'}
+                  {past.length > 0 && ` · ${past.length} already run`}
+                </p>
+              </div>
+              <span class="row__arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .rows {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .row h3 {
+    margin-block: 0.2rem 0.65rem;
+    font-size: var(--step-xl);
+  }
+
+  .row p {
+    max-width: 54ch;
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+  }
+
+  .row__counts {
+    margin-block-start: 0.8rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-size: var(--step-xs);
+    color: var(--teal);
+  }
+
+  .row__arrow {
+    font-size: 1.6rem;
+    color: var(--burnt);
+    flex: none;
+    transition: transform 220ms var(--ease);
+  }
+
+  .row:hover .row__arrow {
+    transform: translateX(5px);
+  }
+</style>

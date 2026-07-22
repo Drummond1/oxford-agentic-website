@@ -1,0 +1,145 @@
+---
+import config from '../../site.config';
+
+/**
+ * Provider-agnostic email capture — PRD §15. The POST endpoint lives in
+ * site.config; swapping Luma for Buttondown or Mailchimp is a config change.
+ * With no endpoint set the form still renders, but as an honest mailto
+ * fallback rather than a control that silently does nothing.
+ */
+interface Props {
+  label?: string;
+  cta?: string;
+  compact?: boolean;
+}
+
+const { label = 'Be first to hear about the next cohort', cta = 'Notify me', compact = false } = Astro.props;
+const { endpoint, method, fieldName } = config.newsletter;
+const configured = endpoint.length > 0;
+---
+
+{
+  configured ? (
+    <form
+      class:list={['signup', compact && 'signup--compact']}
+      action={endpoint}
+      method={method}
+      data-analytics-event="newsletter_signup"
+    >
+      <label class="signup__label" for="signup-email">
+        {label}
+      </label>
+      <div class="signup__row">
+        <input
+          class="signup__input"
+          id="signup-email"
+          type="email"
+          name={fieldName}
+          required
+          autocomplete="email"
+          placeholder="you@company.com"
+        />
+        <button class="btn btn--onGold signup__button" type="submit">
+          {cta}
+        </button>
+      </div>
+      <p class="signup__status" role="status" aria-live="polite" hidden />
+    </form>
+  ) : (
+    <div class:list={['signup', compact && 'signup--compact']}>
+      <p class="signup__label">{label}</p>
+      <p class="signup__fallback">
+        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}>{config.brand.email}</a> and you will be
+        told the moment registration opens.
+      </p>
+    </div>
+  )
+}
+
+<style>
+  .signup {
+    max-width: 34rem;
+  }
+
+  .signup__label {
+    display: block;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--step-xs);
+    margin-block-end: 0.9rem;
+  }
+
+  .signup__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .signup__input {
+    flex: 1 1 14rem;
+    min-width: 0;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid rgba(5, 24, 23, 0.35);
+    background: rgba(255, 249, 236, 0.9);
+    color: var(--ink-dark);
+  }
+
+  .signup__input::placeholder {
+    color: rgba(5, 24, 23, 0.45);
+  }
+
+  .signup__button {
+    flex: none;
+  }
+
+  .signup__status {
+    margin-block-start: 0.8rem;
+    font-size: var(--step-sm);
+  }
+
+  .signup__fallback {
+    font-size: var(--step-sm);
+    max-width: var(--measure);
+  }
+
+  .signup--compact .signup__label {
+    margin-block-end: 0.6rem;
+  }
+</style>
+
+<script>
+  // Inline success state — the visitor never leaves the page (PRD §15).
+  document.querySelectorAll<HTMLFormElement>('form.signup').forEach((form) => {
+    const status = form.querySelector<HTMLParagraphElement>('.signup__status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button');
+      if (button) button.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method || 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+
+        form.querySelector('.signup__row')?.setAttribute('hidden', '');
+        if (status) {
+          status.hidden = false;
+          status.textContent = 'You are on the list. We will be in touch when the next cohort opens.';
+        }
+      } catch {
+        if (button) button.disabled = false;
+        if (status) {
+          status.hidden = false;
+          status.textContent = 'That did not go through. Please try again, or email us directly.';
+        }
+      }
+    });
+  });
+</script>

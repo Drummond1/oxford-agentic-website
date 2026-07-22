@@ -1,0 +1,713 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Faq from '../../components/Faq.astro';
+import LumaEmbed from '../../components/LumaEmbed.astro';
+import config from '../../../site.config';
+import {
+  createRhythm,
+  effectiveStatus,
+  formatDate,
+  formatMonthYear,
+  formatTimeRange,
+  getEvents,
+  getPhotos,
+  getProgrammes,
+  getSuccessorEvent,
+  getTestimonials,
+  paths,
+  showSection,
+  venueLine,
+} from '../../lib/site';
+import { eventSchema, faqSchema } from '../../lib/schema';
+import { ogPathFor } from '../../lib/og';
+import { absoluteUrl } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const events = await getEvents();
+  return events.map((event) => ({ params: { slug: event.data.slug }, props: { event } }));
+}
+
+const { event } = Astro.props;
+const data = event.data;
+const status = effectiveStatus(event);
+const isPast = status === 'past' || status === 'cancelled';
+
+const programmes = await getProgrammes();
+const programme = programmes.find((p) => p.id === data.programme.id)!;
+const successor = isPast ? await getSuccessorEvent(event) : undefined;
+const testimonials = await getTestimonials(programme.id);
+const photos = await getPhotos('event', event.id);
+
+const path = paths.event(data.slug);
+const ogImage = ogPathFor(path);
+
+// PRD §12 title pattern for events: {Event title} | {Month Year} | {Brand}
+const title = `${data.title} | ${formatMonthYear(data.startDate)} | ${config.brand.name}`;
+
+const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' — ');
+
+const showAgenda = showSection('agenda', { hidden: data.hideSections, hasContent: data.agenda.length > 0 });
+const showBuild = showSection('whatYoullBuild', { hidden: data.hideSections, hasContent: data.whatYoullBuild.length > 0 });
+const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
+const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
+const showPhotos = showSection('photos', { hidden: data.hideSections, hasContent: isPast && photos.length > 0 });
+
+const rhythm = createRhythm('cream');
+const bands = {
+  facts: rhythm.next(),
+  register: rhythm.next(),
+  agenda: showAgenda ? rhythm.next() : null,
+  photos: showPhotos ? rhythm.next() : null,
+  quotes: showQuotes ? rhythm.next() : null,
+  faq: showFaq ? rhythm.next() : null,
+};
+
+// The CTA has to tell the truth about what is actually below it. An announced
+// event whose Luma page does not exist yet offers a notify state, not a booking.
+const registrationOpen = Boolean(data.lumaEventId);
+const registerLabel = !registrationOpen
+  ? 'Get notified ↓'
+  : status === 'soldout'
+    ? 'Join the waitlist ↓'
+    : 'Register below ↓';
+
+// "Add to calendar" without a third-party script: a data: URI .ics file.
+const icsLines = [
+  'BEGIN:VCALENDAR',
+  'VERSION:2.0',
+  `PRODID:-//${config.brand.name}//EN`,
+  'BEGIN:VEVENT',
+  `UID:${data.slug}@${new URL(config.brand.domain).hostname}`,
+  `DTSTART:${data.startDate.toISOString().replace(/[-:]|\.\d{3}/g, '')}`,
+  `DTEND:${data.endDate.toISOString().replace(/[-:]|\.\d{3}/g, '')}`,
+  `SUMMARY:${data.title}`,
+  `LOCATION:${[data.venue.name, data.venue.street, data.venue.city, data.venue.postcode].filter(Boolean).join('\\, ')}`,
+  `URL:${absoluteUrl(path)}`,
+  'END:VEVENT',
+  'END:VCALENDAR',
+];
+const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.join('\r\n'))}`;
+---
+
+<Base
+  pageTitle={data.title}
+  titleOverride={title}
+  description={data.summary}
+  path={path}
+  ogImage={ogImage}
+  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage)), showFaq ? faqSchema(data.faqs) : null]}
+  breadcrumbs={[
+    { name: 'Events', path: paths.events() },
+    { name: data.title, path },
+  ]}
+  bodyClass={!isPast ? 'has-sticky-bar' : ''}
+>
+  {/* ---- Hero ---- */}
+  <section class="band band--dark event-hero">
+    <div class="wrap">
+      <span class="eyebrow">{eyebrow}</span>
+      <hr class="dash" />
+      <h1>{data.title}</h1>
+
+      <p class="event-hero__meta">
+        <span>{formatDate(data.startDate)}</span>
+        <span class="sq" aria-hidden="true"></span>
+        <span>{formatTimeRange(data.startDate, data.endDate)}</span>
+        <span class="sq" aria-hidden="true"></span>
+        <span>{venueLine(data.venue)}</span>
+      </p>
+
+      {
+        isPast ? (
+          <p class="event-hero__past">This event has already run.</p>
+        ) : (
+          <div class="btn-row">
+            <a href="#register" class="btn btn--primary">
+              {registerLabel}
+            </a>
+            <a href={icsHref} download={`${data.slug}.ics`} class="btn btn--ghost">
+              Add to calendar
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {/* ---- Key facts / answer capsule ----
+       Plain HTML, no iframe and no JS. Crawlers cannot read the Luma embed, so
+       every fact inside it also lives here (PRD §9.5, §13). */}
+  <section class:list={['band', `band--${bands.facts}`]} aria-labelledby="facts">
+    <div class="wrap">
+      <div class="facts-card card" data-reveal>
+        <h2 id="facts" class="visually-hidden">Key facts</h2>
+        <p class="capsule">{data.capsule}</p>
+
+        <dl class="facts">
+          <div>
+            <dt>Date</dt>
+            <dd>{formatDate(data.startDate)}</dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd>{formatTimeRange(data.startDate, data.endDate)}</dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>
+              {[data.venue.name, data.venue.street, data.venue.city, data.venue.postcode].filter(Boolean).join(', ')}
+              {!data.venue.confirmed && <span class="facts__note">Room booking being finalised.</span>}
+            </dd>
+          </div>
+          {
+            data.capacity && (
+              <div>
+                <dt>Capacity</dt>
+                <dd>Capped at {data.capacity}</dd>
+              </div>
+            )
+          }
+          {
+            data.whoFor.length > 0 && (
+              <div class="facts--wide">
+                <dt>Who it is for</dt>
+                <dd>
+                  <ul class="squares">
+                    {data.whoFor.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+          {
+            showBuild && (
+              <div class="facts--wide">
+                <dt>What you will build</dt>
+                <dd>
+                  <ul class="squares">
+                    {data.whatYoullBuild.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+
+        <p class="facts__programme">
+          Part of <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a>.
+        </p>
+      </div>
+
+      {
+        data.outcomes.length > 0 && (
+          <div class="stats" data-reveal>
+            {data.outcomes.map((outcome) => (
+              <div class="stat">
+                <span class="stat__value">{outcome.stat}</span>
+                <span class="stat__label">{outcome.label}</span>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {/* ---- Registration ---- */}
+  <section class:list={['band', `band--${bands.register}`]} id="register" aria-labelledby="register-heading">
+    <div class="wrap">
+      {
+        isPast ? (
+          <div class="ran" data-reveal>
+            <hr class="dash" />
+            <h2 id="register-heading">This event has run</h2>
+            <p class="ran__copy">
+              {data.title} took place on {formatDate(data.startDate)} at {venueLine(data.venue)}.
+              {successor
+                ? ' The next cohort runs the same format — details below.'
+                : ' Dates for the next cohort are being confirmed.'}
+            </p>
+            {successor ? (
+              <div class="btn-row">
+                <a
+                  href={paths.event(successor.data.slug)}
+                  class="btn btn--primary"
+                  data-analytics-event="next_event_cta_click"
+                  data-analytics-slug={successor.data.slug}
+                >
+                  {successor.data.cohort ?? 'The next cohort'} — {formatDate(successor.data.startDate, { weekday: undefined, month: 'long' })}
+                </a>
+                <a href={paths.events()} class="btn btn--ghost">
+                  All events
+                </a>
+              </div>
+            ) : (
+              <div class="btn-row">
+                <a href={paths.events()} class="btn btn--primary">
+                  All events
+                </a>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div data-reveal>
+            <h2 id="register-heading" class="visually-hidden">
+              Register
+            </h2>
+            <LumaEmbed event={event} />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {/* ---- Agenda ---- */}
+  {
+    showAgenda && (
+      <section class:list={['band', `band--${bands.agenda}`]} aria-labelledby="agenda">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="agenda">{isPast ? 'How the day ran' : 'What happens on the day'}</h2>
+          </div>
+
+          <ol class="agenda">
+            {data.agenda.map((item, i) => (
+              <li class="agenda__row" data-reveal data-reveal-delay={Math.min(i, 6) * 40}>
+                <span class="agenda__time">{item.time}</span>
+                <div>
+                  <h3 class="agenda__title">{item.title}</h3>
+                  {item.detail && <p class="agenda__detail">{item.detail}</p>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Photos ---- */}
+  {
+    showPhotos && (
+      <section class:list={['band', `band--${bands.photos}`]} aria-labelledby="photos">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="photos">On the day</h2>
+          </div>
+          <div class="grid grid--2">
+            {photos.map((photo, i) => (
+              <figure class="photo" data-reveal data-reveal-delay={i * 80}>
+                <Image src={photo.data.file} alt={photo.data.alt} widths={[480, 800, 1200]} sizes="(max-width: 48rem) 100vw, 46rem" loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Testimonials ---- */}
+  {
+    showQuotes && (
+      <section class:list={['band', `band--${bands.quotes}`]} aria-labelledby="quotes">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="quotes">From the room</h2>
+          </div>
+          <div class="grid grid--2">
+            {testimonials.slice(0, 4).map((t, i) => (
+              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
+                <p>“{t.data.quote}”</p>
+                <footer>
+                  <cite>
+                    {t.data.name} — {t.data.role}
+                    {t.data.company && `, ${t.data.company}`}
+                  </cite>
+                  <span class="quote__when">
+                    {t.data.cohort}, {formatDate(t.data.date, { weekday: undefined })}
+                  </span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- FAQ ---- */}
+  {
+    showFaq && (
+      <section class:list={['band', `band--${bands.faq}`]} aria-labelledby="event-faq">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="event-faq">Questions</h2>
+          </div>
+          <div data-reveal>
+            <Faq faqs={data.faqs} />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Final CTA ---- */}
+  {
+    !isPast && (
+      <section class="band band--gold final-cta">
+        <div class="wrap final-cta__inner">
+          <div>
+            <h2 class="final-cta__title">{registrationOpen ? 'Seats are limited.' : 'Seats will be limited.'}</h2>
+            <p class="final-cta__copy">
+              Capped at {data.capacity ?? 25} so the day stays facilitated rather than lectured.
+            </p>
+          </div>
+          <a href="#register" class="btn btn--onGold">
+            {registerLabel}
+          </a>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Sticky mobile bar ---- */}
+  {
+    !isPast && (
+      <div class="sticky-bar" aria-hidden="false">
+        <span class="sticky-bar__date">{formatDate(data.startDate, { weekday: 'short', year: undefined })}</span>
+        <a href="#register" class="btn btn--primary sticky-bar__cta">
+          {!registrationOpen ? 'Notify me' : status === 'soldout' ? 'Waitlist' : 'Register'}
+        </a>
+      </div>
+    )
+  }
+</Base>
+
+<style>
+  .event-hero {
+    padding-block: clamp(3rem, 2rem + 6vw, 5.5rem);
+  }
+
+  .event-hero h1 {
+    max-width: 20ch;
+    font-size: var(--step-2xl);
+  }
+
+  .event-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-block-start: 1.6rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    color: var(--muted-on-dark);
+  }
+
+  .sq {
+    width: 0.42rem;
+    height: 0.42rem;
+    background: var(--gold);
+    flex: none;
+  }
+
+  .event-hero__past {
+    margin-block-start: 1.75rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--step-xs);
+    color: var(--gold);
+  }
+
+  /* ---- Key facts ---- */
+  .facts-card {
+    max-width: 62rem;
+  }
+
+  .capsule {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.4;
+    max-width: 58ch;
+  }
+
+  .facts {
+    display: grid;
+    gap: 1.4rem 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    margin-block-start: 2rem;
+    padding-block-start: 1.75rem;
+    border-block-start: 1px solid var(--gold-hairline);
+  }
+
+  .facts--wide {
+    grid-column: 1 / -1;
+  }
+
+  .facts dt {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--step-xs);
+    color: var(--teal);
+    margin-block-end: 0.4rem;
+  }
+
+  :global(.band--dark) .facts dt {
+    color: var(--gold);
+  }
+
+  .facts dd {
+    margin: 0;
+    font-size: var(--step-sm);
+    line-height: 1.55;
+  }
+
+  .facts__note {
+    display: block;
+    margin-block-start: 0.3rem;
+    font-size: var(--step-xs);
+    opacity: 0.75;
+  }
+
+  .facts__programme {
+    margin-block-start: 1.75rem;
+    font-size: var(--step-sm);
+  }
+
+  /* ---- Stats ---- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+    gap: 1rem;
+    margin-block-start: 1.5rem;
+    max-width: 62rem;
+  }
+
+  .stat {
+    border: 1px solid var(--gold-hairline);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+  }
+
+  :global(.band--cream) .stat {
+    border-color: rgba(241, 175, 57, 0.75);
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .stat__value {
+    display: block;
+    font-family: var(--font-title);
+    font-size: var(--step-2xl);
+    line-height: 1;
+  }
+
+  .stat__label {
+    display: block;
+    margin-block-start: 0.55rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--step-xs);
+    line-height: 1.45;
+  }
+
+  :global(.band--cream) .stat__label {
+    color: var(--muted-on-cream);
+  }
+
+  /* ---- Past-event panel ---- */
+  .ran {
+    max-width: 46rem;
+  }
+
+  .ran__copy {
+    margin-block-start: 1.2rem;
+    font-size: var(--step-lg);
+    line-height: 1.5;
+  }
+
+  :global(.band--dark) .ran__copy {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .ran__copy {
+    color: var(--muted-on-cream);
+  }
+
+  /* ---- Agenda ---- */
+  .agenda {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 52rem;
+  }
+
+  .agenda__row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 1.5rem;
+    padding-block: 1.15rem;
+    border-block-start: 1px solid var(--gold-hairline);
+  }
+
+  :global(.band--cream) .agenda__row {
+    border-block-start-color: rgba(5, 24, 23, 0.14);
+  }
+
+  .agenda__time {
+    font-family: var(--font-label);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: var(--step-xs);
+    padding-block-start: 0.3rem;
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .agenda__time {
+    color: var(--teal);
+  }
+
+  .agenda__title {
+    font-size: var(--step-lg);
+  }
+
+  .agenda__detail {
+    margin-block-start: 0.45rem;
+    font-size: var(--step-sm);
+    max-width: var(--measure);
+  }
+
+  :global(.band--dark) .agenda__detail {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .agenda__detail {
+    color: var(--muted-on-cream);
+  }
+
+  @media (max-width: 34rem) {
+    .agenda__row {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+  }
+
+  /* ---- Photos ---- */
+  .photo {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--gold-hairline);
+  }
+
+  .photo :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---- Quotes ---- */
+  .quote p {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.4;
+  }
+
+  .quote footer {
+    margin-block-start: 1.2rem;
+  }
+
+  .quote cite {
+    display: block;
+    font-family: var(--font-label);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .quote__when {
+    display: block;
+    margin-block-start: 0.3rem;
+    font-size: var(--step-xs);
+    opacity: 0.7;
+  }
+
+  /* ---- Final CTA ---- */
+  .final-cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .final-cta__title {
+    font-size: var(--step-2xl);
+    color: var(--ink-dark);
+  }
+
+  .final-cta__copy {
+    margin-block-start: 0.7rem;
+    max-width: 36ch;
+    color: rgba(5, 24, 23, 0.78);
+  }
+
+  /* ---- Sticky mobile bar ---- */
+  .sticky-bar {
+    display: none;
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 60;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem var(--gutter);
+    padding-block-end: max(0.7rem, env(safe-area-inset-bottom));
+    background: rgba(5, 24, 23, 0.96);
+    backdrop-filter: blur(10px);
+    border-block-start: 1px solid rgba(241, 175, 57, 0.28);
+  }
+
+  .sticky-bar__date {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-size: var(--step-xs);
+    color: var(--cream);
+  }
+
+  .sticky-bar__cta {
+    padding: 0.65rem 1.2rem;
+  }
+
+  @media (max-width: 48rem) {
+    .sticky-bar {
+      display: flex;
+    }
+
+    /* Keep the footer clear of the bar. */
+    :global(body.has-sticky-bar) {
+      padding-block-end: 4.25rem;
+    }
+  }
+</style>

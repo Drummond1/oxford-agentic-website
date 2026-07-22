@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EventCard from '../components/EventCard.astro';
+import config from '../../site.config';
+import { getEventsForIndex, getProgrammes, paths } from '../lib/site';
+
+const { upcoming } = await getEventsForIndex();
+const programmes = await getProgrammes();
+const byId = new Map(programmes.map((p) => [p.id, p]));
+const next = upcoming.slice(0, 2);
+---
+
+<Base
+  pageTitle="Page not found"
+  description={`That page does not exist. Here is where to find ${config.brand.name} events instead.`}
+  path="/404/"
+  noindex
+>
+  <Hero
+    eyebrow="404"
+    title="That page has moved on."
+    subline="The link is broken or the page has been retired. Everything that matters is one click away."
+  >
+    <div class="btn-row">
+      <a href={paths.events()} class="btn btn--primary">All events</a>
+      <a href={paths.home()} class="btn btn--ghost">Home</a>
+    </div>
+  </Hero>
+
+  {
+    next.length > 0 && (
+      <section class="band band--cream" aria-labelledby="next">
+        <div class="wrap">
+          <div class="section-head">
+            <hr class="dash" />
+            <h2 id="next">You were probably after this</h2>
+          </div>
+          <div class="grid grid--3">
+            {next.map((event) => (
+              <EventCard event={event} programme={byId.get(event.data.programme.id)!} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>

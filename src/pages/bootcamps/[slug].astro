@@ -1,0 +1,320 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import EventCard from '../../components/EventCard.astro';
+import Faq from '../../components/Faq.astro';
+import config from '../../../site.config';
+import {
+  createRhythm,
+  formatDate,
+  getEventsForProgramme,
+  getProgrammes,
+  getTestimonials,
+  paths,
+  showSection,
+} from '../../lib/site';
+import { faqSchema } from '../../lib/schema';
+import { ogPathFor } from '../../lib/og';
+
+/**
+ * The evergreen page. This one targets the standing keyword ("AI bootcamp
+ * Oxford"); the dated event pages target dated intent.
+ */
+export async function getStaticPaths() {
+  const programmes = await getProgrammes();
+  return programmes.map((programme) => ({ params: { slug: programme.data.slug }, props: { programme } }));
+}
+
+const { programme } = Astro.props;
+const data = programme.data;
+const { Content } = await render(programme);
+
+const { upcoming, past } = await getEventsForProgramme(programme.id);
+const testimonials = await getTestimonials(programme.id);
+
+const path = paths.programme(data.slug);
+const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
+const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
+
+const rhythm = createRhythm('cream');
+const bands = {
+  capsule: rhythm.next(),
+  detail: rhythm.next(),
+  runs: rhythm.next(),
+  quotes: showQuotes ? rhythm.next() : null,
+  faq: showFaq ? rhythm.next() : null,
+};
+---
+
+<Base
+  pageTitle={data.name}
+  description={data.shortPitch}
+  path={path}
+  ogImage={ogPathFor(path)}
+  schemaNodes={[
+    {
+      '@type': 'Course',
+      name: data.name,
+      description: data.capsule,
+      url: `${config.brand.domain}${path}`,
+      provider: { '@id': `${config.brand.domain}/#organization` },
+      inLanguage: 'en-GB',
+      teaches: data.outcomes,
+      courseMode: 'onsite',
+      hasCourseInstance: upcoming.map((event) => ({
+        '@type': 'CourseInstance',
+        courseMode: 'onsite',
+        startDate: event.data.startDate.toISOString(),
+        endDate: event.data.endDate.toISOString(),
+        location: {
+          '@type': 'Place',
+          name: event.data.venue.name,
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: event.data.venue.city,
+            addressCountry: config.brand.country,
+          },
+        },
+      })),
+    },
+    showFaq ? faqSchema(data.faqs) : null,
+  ]}
+  breadcrumbs={[
+    { name: 'Bootcamps', path: paths.programmes() },
+    { name: data.name, path },
+  ]}
+>
+  <Hero eyebrow={config.brand.name} title={data.name} subline={data.shortPitch} />
+
+  {/* Answer capsule — front-loaded, self-contained, quotable (PRD §13). */}
+  <section class:list={['band', `band--${bands.capsule}`]} aria-labelledby="what">
+    <div class="wrap">
+      <div class="card capsule-card" data-reveal>
+        <h2 id="what" class="visually-hidden">What it is</h2>
+        <p class="capsule">{data.capsule}</p>
+        <p class="updated">
+          Last updated {formatDate(data.updatedDate, { weekday: undefined })}
+        </p>
+      </div>
+
+      {
+        data.outcomes.length > 0 && (
+          <div class="outcomes" data-reveal>
+            <h3 class="outcomes__title">What you leave with</h3>
+            <ul class="squares">
+              {data.outcomes.map((outcome) => (
+                <li>{outcome}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.detail}`]} aria-labelledby="format">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="format">The format</h2>
+      </div>
+
+      <div class="detail" data-reveal>
+        <div class="prose body-copy">
+          <Content />
+        </div>
+
+        {
+          data.whoFor.length > 0 && (
+            <aside class="card who">
+              <span class="eyebrow">Who it is for</span>
+              <ul class="squares">
+                {data.whoFor.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </aside>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.runs}`]} aria-labelledby="runs">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="runs">{upcoming.length > 0 ? 'Upcoming runs' : 'Runs'}</h2>
+      </div>
+
+      {
+        upcoming.length > 0 ? (
+          <div class="grid grid--3">
+            {upcoming.map((event, i) => (
+              <div data-reveal data-reveal-delay={i * 80}>
+                <EventCard event={event} programme={programme} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="empty">Dates for the next cohort are being confirmed.</p>
+        )
+      }
+
+      {
+        past.length > 0 && (
+          <div class="past">
+            <h3 class="past__title">Previous cohorts</h3>
+            <div class="grid grid--3">
+              {past.map((event, i) => (
+                <div data-reveal data-reveal-delay={i * 80}>
+                  <EventCard event={event} programme={programme} />
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    showQuotes && (
+      <section class:list={['band', `band--${bands.quotes}`]} aria-labelledby="quotes">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="quotes">From the room</h2>
+          </div>
+          <div class="grid grid--2">
+            {testimonials.slice(0, 4).map((t, i) => (
+              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
+                <p>“{t.data.quote}”</p>
+                <footer>
+                  <cite>
+                    {t.data.name} — {t.data.role}
+                    {t.data.company && `, ${t.data.company}`}
+                  </cite>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    showFaq && (
+      <section class:list={['band', `band--${bands.faq}`]} aria-labelledby="programme-faq">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="programme-faq">Questions</h2>
+          </div>
+          <div data-reveal>
+            <Faq faqs={data.faqs} />
+          </div>
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .capsule-card {
+    max-width: 62rem;
+  }
+
+  .capsule {
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    line-height: 1.32;
+    max-width: 52ch;
+  }
+
+  .updated {
+    margin-block-start: 1.5rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    color: var(--teal);
+  }
+
+  :global(.band--dark) .updated {
+    color: var(--gold);
+  }
+
+  .outcomes {
+    margin-block-start: 2.5rem;
+    max-width: 62rem;
+  }
+
+  .outcomes__title {
+    font-size: var(--step-lg);
+    margin-block-end: 0.4rem;
+  }
+
+  .detail {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 3vw, 3rem);
+    grid-template-columns: minmax(0, 1.6fr) minmax(min(100%, 17rem), 1fr);
+    align-items: start;
+  }
+
+  @media (max-width: 52rem) {
+    .detail {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .body-copy :global(p + p) {
+    margin-block-start: 1.15rem;
+  }
+
+  :global(.band--dark) .body-copy {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .body-copy {
+    color: var(--muted-on-cream);
+  }
+
+  .who .eyebrow {
+    margin-block-end: 0.75rem;
+  }
+
+  .past {
+    margin-block-start: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+
+  .past__title {
+    font-size: var(--step-lg);
+    margin-block-end: 1.25rem;
+  }
+
+  .empty {
+    max-width: var(--measure);
+    font-size: var(--step-lg);
+  }
+
+  .quote p {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.4;
+  }
+
+  .quote cite {
+    display: block;
+    margin-block-start: 1.2rem;
+    font-family: var(--font-label);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+</style>
