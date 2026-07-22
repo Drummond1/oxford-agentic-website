@@ -1,12 +1,12 @@
 ---
 title: What is an agentic AI bootcamp?
 slug: what-is-an-agentic-bootcamp
-description: What actually happens at an agentic AI bootcamp, who they are for, and how they differ from an AI course.
+description: What actually happens at an agentic AI bootcamp, who it is for, and how it differs from an AI course.
 capsule: >-
-  An agentic AI bootcamp is a short, hands-on course where attendees build and run a
-  working agentic AI workflow rather than learn about one. Attendees bring a real task
-  from their own work, chain several narrow AI steps together to handle it, and leave
-  with the workflow running. Most require no coding.
+  An agentic AI bootcamp is a short, hands-on course where you build and run a working
+  agentic workflow rather than learn about one. You bring a real task from your own work,
+  chain several narrow AI steps together to handle it, and leave with the workflow
+  running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
 updatedDate: "2026-07-22T09:00:00+01:00"

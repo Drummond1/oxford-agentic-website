@@ -25,7 +25,7 @@ const statusLabel: Record<string, string> = {
     {formatDate(event.data.startDate)}
     <span class="sep" aria-hidden="true"></span>
     {venueLine(event.data.venue)}
-    {!event.data.venue.confirmed && <span class="event-card__tbc">venue confirming</span>}
+    {!event.data.venue.confirmed && <span class="event-card__tbc">venue to confirm</span>}
   </p>
 
   <p class="event-card__summary">{event.data.summary}</p>
@@ -74,7 +74,7 @@ const statusLabel: Record<string, string> = {
   }
 
   :global(.band--cream) .sep {
-    background: var(--teal);
+    background: var(--rust);
   }
 
   .event-card__tbc {
@@ -82,7 +82,7 @@ const statusLabel: Record<string, string> = {
     letter-spacing: 0.08em;
     padding: 0.15rem 0.42rem;
     border: 1px solid currentColor;
-    border-radius: 3px;
+    border-radius: 0;
     opacity: 0.75;
   }
 

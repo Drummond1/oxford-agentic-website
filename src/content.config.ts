@@ -138,7 +138,7 @@ const programmes = defineCollection({
       name: z.string(),
       slug: z.string().regex(/^[a-z0-9-]+$/),
       /** Optional accent override — must be a token name from the palette, not a hex. */
-      accent: z.enum(['gold', 'teal', 'burnt']).default('gold'),
+      accent: z.enum(['gold', 'rust']).default('gold'),
       shortPitch: z.string().max(160),
       /** Answer capsule for the programme — PRD §13. */
       capsule: z

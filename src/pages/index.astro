@@ -32,11 +32,11 @@ const faqs = [
   },
   {
     q: 'Who are the bootcamps for?',
-    a: 'Senior people who already use AI and want to build with it — founders, directors, C-suite, consultants, and senior public-sector and university staff. The rooms skew towards people who have done an executive AI course and want the hands-on follow-through.',
+    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector and university staff. Most have done an executive AI course and want the hands-on follow-through.',
   },
   {
     q: 'Do I need to be technical?',
-    a: 'No. Nothing on the day requires code. The format is facilitated in the room, and the small cohort exists so that nobody spends the day stuck on setup.',
+    a: 'No. Nothing on the day requires code. Everything is facilitated in the room, and the cohort is kept small so nobody spends the day stuck on setup.',
   },
   {
     q: 'Where in Oxford are the events held?',
@@ -77,7 +77,7 @@ const bands = {
   schemaNodes={[faqSchema(faqs)]}
 >
   <Hero
-    eyebrow={config.brand.name}
+    eyebrow="In-person · Hands-on · Oxford"
     title="Build agents. In a day. In Oxford."
     subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
     motif
@@ -108,7 +108,7 @@ const bands = {
         <p>
           {
             nextThree.length > 0
-              ? 'Small cohorts, booked ahead. Each one is capped so the day stays facilitated rather than lectured.'
+              ? 'Small cohorts that book up ahead of time. Each one is capped so the day stays hands-on, not a lecture.'
               : 'Dates for the next cohort are being confirmed. Leave your email and you will hear first.'
           }
         </p>
@@ -170,7 +170,7 @@ const bands = {
           <h3>Orchestrating, not prompting</h3>
           <ul class="squares">
             <li>Scout, drafter, reviewer — narrow steps handing off</li>
-            <li>No block over twenty-five minutes of talk</li>
+            <li>No stretch of talk runs past twenty-five minutes</li>
             <li>A recipe you can rebuild on Monday</li>
           </ul>
         </div>
@@ -256,7 +256,7 @@ const bands = {
             <h2 id="capture" class="capture__title">
               Not ready to book?
             </h2>
-            <p class="capture__copy">Hear about the next cohort before it is announced publicly.</p>
+            <p class="capture__copy">Hear about the next cohort before it goes public.</p>
           </div>
           <NewsletterForm label="Be first to hear about the next cohort" />
         </div>

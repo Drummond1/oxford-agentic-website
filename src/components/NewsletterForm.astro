@@ -13,7 +13,7 @@ interface Props {
   compact?: boolean;
 }
 
-const { label = 'Be first to hear about the next cohort', cta = 'Notify me', compact = false } = Astro.props;
+const { label = 'Hear about the next cohort first', cta = 'Notify me', compact = false } = Astro.props;
 const { endpoint, method, fieldName } = config.newsletter;
 const configured = endpoint.length > 0;
 ---
@@ -49,8 +49,8 @@ const configured = endpoint.length > 0;
     <div class:list={['signup', compact && 'signup--compact']}>
       <p class="signup__label">{label}</p>
       <p class="signup__fallback">
-        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}>{config.brand.email}</a> and you will be
-        told the moment registration opens.
+        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}>{config.brand.email}</a> and we will tell
+        you the moment registration opens.
       </p>
     </div>
   )

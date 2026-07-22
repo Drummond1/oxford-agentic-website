@@ -46,8 +46,7 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
         ) : (
           <p class="empty">
             Nothing is open for registration right now. The next cohort is being scheduled — the{' '}
-            <a href={paths.programme(programmes[0].data.slug)}>{programmes[0].data.name}</a> page has the format and how
-            to hear first.
+            <a href={paths.programme(programmes[0].data.slug)}>{programmes[0].data.name}</a> page has the format, and how to hear about the next one.
           </p>
         )
       }

@@ -12,15 +12,17 @@ interface Props {
 }
 
 const { variant = 'lockup', class: className = '' } = Astro.props;
-const [first, ...rest] = config.brand.name.split(' ');
-const second = rest.join(' ');
 ---
 
 <span class:list={['wordmark', `wordmark--${variant}`, className]} aria-label={config.brand.name}>
-  <span class="wordmark__dash" aria-hidden="true"></span>
-  <span class="wordmark__text">
-    <span class="wordmark__first">{first}</span>{second && <span class="wordmark__second">{second}</span>}
-  </span>
+  {/* "The Quad" mark from the design guidelines. Outer square follows the text
+      colour (cream on dark, ink on cream — both permitted); centre is always
+      amber. Never recoloured, rotated or skewed, per the guidelines. */}
+  <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+    <rect x="8" y="8" width="84" height="84" fill="none" stroke="currentColor" stroke-width="16" />
+    <rect x="36.5" y="36.5" width="27" height="27" fill="var(--gold)" />
+  </svg>
+  <span class="wordmark__text">{config.brand.name}</span>
 </span>
 
 <style>
@@ -32,11 +34,12 @@ const second = rest.join(' ');
     line-height: 1;
   }
 
-  .wordmark__dash {
-    width: 1.6rem;
-    height: 2px;
-    background: var(--gold);
+  .wordmark__mark {
+    width: 1.55rem;
+    height: 1.55rem;
     flex: none;
+    /* The centre square is the mark's clearspace anchor — keep it crisp. */
+    shape-rendering: crispEdges;
   }
 
   .wordmark__text {
@@ -46,16 +49,12 @@ const second = rest.join(' ');
     white-space: nowrap;
   }
 
-  .wordmark__second {
-    margin-inline-start: 0.32em;
-    font-family: var(--font-label);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    font-size: 0.78em;
-  }
-
   .wordmark--mark .wordmark__text {
     font-size: 1.05rem;
+  }
+
+  .wordmark--mark .wordmark__mark {
+    width: 1.35rem;
+    height: 1.35rem;
   }
 </style>

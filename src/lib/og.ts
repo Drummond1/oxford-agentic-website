@@ -7,20 +7,15 @@ import config from '../../site.config';
 /**
  * Build-time Open Graph image generation — PRD §10, §12.
  *
- * 1200×630, dark green, gold dash, Georgia-class title, Courier-caps eyebrow.
- * Everything comes from site.config + page data, so a brand rename regenerates
- * every card in the same build (PRD §20 acceptance criterion).
- *
- * Georgia and Courier New are the on-site faces but neither is redistributable,
- * so the cards use their closest open cousins: PT Serif for Georgia (same large
- * x-height and sturdy, low-contrast strokes) and Courier Prime for Courier New.
- * Both are OFL and committed to the repo, so builds need no network and no
- * system fonts — the cards render identically on macOS and on Linux CI.
+ * 1200×630, ink ground, the Quad lockup, amber rule, Newsreader title,
+ * IBM Plex Mono eyebrow — the same brand faces as the site. Everything comes
+ * from site.config + page data, so a brand rename regenerates every card in the
+ * same build (PRD §20). Fonts are the committed TTFs, so CI needs no network.
  */
 
 const fontDir = path.join(process.cwd(), 'src/assets/fonts');
-const serif = fs.readFileSync(path.join(fontDir, 'PTSerif-Regular.ttf'));
-const mono = fs.readFileSync(path.join(fontDir, 'CourierPrime-Bold.ttf'));
+const serif = fs.readFileSync(path.join(fontDir, 'Newsreader-Regular.ttf'));
+const mono = fs.readFileSync(path.join(fontDir, 'IBMPlexMono-SemiBold.ttf'));
 
 const INK = '#051817';
 const CREAM = '#FFF9EC';
@@ -55,15 +50,28 @@ function template({ eyebrow, title, meta }: OgOptions): Node {
       justifyContent: 'space-between',
       backgroundColor: INK,
       padding: '72px 80px',
-      fontFamily: 'PT Serif',
+      fontFamily: 'Newsreader',
     },
     children: [
+      // Top lockup: the Quad mark (cream square, amber centre — the dark
+      // variant) beside the eyebrow.
       el('div', {
-        style: { display: 'flex', flexDirection: 'column' },
+        style: { display: 'flex', alignItems: 'center', gap: '20px' },
         children: [
           el('div', {
             style: {
-              fontFamily: 'Courier Prime',
+              display: 'flex',
+              width: '42px',
+              height: '42px',
+              border: `8px solid ${CREAM}`,
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+            children: [el('div', { style: { width: '14px', height: '14px', backgroundColor: GOLD } })],
+          }),
+          el('div', {
+            style: {
+              fontFamily: 'IBM Plex Mono',
               fontSize: '24px',
               letterSpacing: '3.6px',
               color: GOLD,
@@ -76,8 +84,8 @@ function template({ eyebrow, title, meta }: OgOptions): Node {
       el('div', {
         style: { display: 'flex', flexDirection: 'column' },
         children: [
-          // The gold dash.
-          el('div', { style: { width: '84px', height: '4px', backgroundColor: GOLD, marginBottom: '28px' } }),
+          // The amber rule (96×7 per the guidelines).
+          el('div', { style: { width: '96px', height: '7px', backgroundColor: GOLD, marginBottom: '28px' } }),
           el('div', {
             style: { fontSize: `${titleSize}px`, color: CREAM, lineHeight: 1.1, letterSpacing: '-1px' },
             children: title,
@@ -86,7 +94,7 @@ function template({ eyebrow, title, meta }: OgOptions): Node {
             ? [
                 el('div', {
                   style: {
-                    fontFamily: 'Courier Prime',
+                    fontFamily: 'IBM Plex Mono',
                     fontSize: '25px',
                     letterSpacing: '2px',
                     color: MUTED,
@@ -108,8 +116,8 @@ export async function renderOgImage(options: OgOptions): Promise<Buffer> {
     width: 1200,
     height: 630,
     fonts: [
-      { name: 'PT Serif', data: serif, weight: 400, style: 'normal' },
-      { name: 'Courier Prime', data: mono, weight: 700, style: 'normal' },
+      { name: 'Newsreader', data: serif, weight: 400, style: 'normal' },
+      { name: 'IBM Plex Mono', data: mono, weight: 700, style: 'normal' },
     ],
   });
 

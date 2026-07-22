@@ -24,7 +24,7 @@ whoFor:
   - Founders, directors and C-suite who already believe in AI and want to build with it
   - Graduates of Oxford AI executive education looking for the hands-on follow-through
   - Consultants and senior public-sector, NHS and university staff
-  - Anyone comfortable with AI as a tool who has never orchestrated several of them together
+  - Anyone comfortable with AI who has never orchestrated several steps into a single workflow
 faqs:
   - q: What is the Oxford Agentic Bootcamp?
     a: >-
