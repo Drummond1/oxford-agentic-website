@@ -78,13 +78,21 @@ Status: `todo` · `blocked` (why) · `doing`
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
     of a real person unreviewed.
-11. `todo` — Per-page sitemap `lastmod` driven by content `updatedDate`, for a truthful
-    freshness signal (avoid stamping every page with the build date).
+11. `todo` — Accessibility audit beyond Lighthouse's automated checks (keyboard path
+    through the nav dropdown, FAQ accordion and Luma embed fallback; focus order on the
+    sticky mobile bar).
+12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
+    a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-23 — Cycle 6: truthful sitemap lastmod.** Each content-backed URL now
+  carries a real `lastmod` from its own `updatedDate` (falling back to file mtime);
+  pages with no content file behind them deliberately carry none, rather than stamping
+  the whole site with the build date on every deploy.
 
 - **2026-07-23 — Cycle 5: RSS feed + list schema on index pages.** Added /rss.xml for
   the guides (a second machine-readable surface alongside llms.txt, and a distribution
