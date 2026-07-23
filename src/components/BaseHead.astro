@@ -45,6 +45,11 @@ const jsonLd = graph([organizationSchema(), websiteSchema(), ...schemaNodes]);
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+{
+  config.features.guides && (
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title={`${config.brand.name} — Guides`} />
+  )
+}
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content={config.brand.name} />

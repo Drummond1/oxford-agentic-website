@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import EventCard from '../../components/EventCard.astro';
 import config from '../../../site.config';
-import { createRhythm, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
+import { absoluteUrl, createRhythm, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 
 const { upcoming, past } = await getEventsForIndex();
@@ -19,6 +19,23 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
   description={`Every ${config.brand.name} event in Oxford — upcoming cohorts open for registration, and past cohorts with what came out of them.`}
   path={paths.events()}
   ogImage={ogPathFor(paths.events())}
+  schemaNodes={[
+    {
+      '@type': 'CollectionPage',
+      name: 'Events',
+      url: absoluteUrl(paths.events()),
+      isPartOf: { '@id': `${config.brand.domain}/#website` },
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: [...upcoming, ...past].map((event, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: event.data.title,
+          url: absoluteUrl(paths.event(event.data.slug)),
+        })),
+      },
+    },
+  ]}
   breadcrumbs={[{ name: 'Events', path: paths.events() }]}
 >
   <Hero

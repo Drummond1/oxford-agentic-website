@@ -96,6 +96,23 @@ const related = guide
       description={`Practical writing on agentic AI for business leaders, from ${config.brand.name} in Oxford.`}
       path={paths.guides()}
       ogImage={ogPathFor(paths.guides())}
+      schemaNodes={[
+        {
+          '@type': 'CollectionPage',
+          name: 'Guides',
+          url: absoluteUrl(paths.guides()),
+          isPartOf: { '@id': `${config.brand.domain}/#website` },
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: guides.map((entry, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              name: entry.data.title,
+              url: absoluteUrl(paths.guide(entry.data.slug)),
+            })),
+          },
+        },
+      ]}
       breadcrumbs={[{ name: 'Guides', path: paths.guides() }]}
     >
       <Hero

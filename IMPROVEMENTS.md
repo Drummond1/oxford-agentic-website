@@ -74,11 +74,23 @@ Status: `todo` · `blocked` (why) · `doing`
    schema — high GEO value.
 9. `todo` — Write a 5th guide once a query gap is known (hold until Search Console data
    exists, so it targets a real query rather than a guess).
+10. `blocked` (needs Drummond to approve his own bio) — turn `speakers` on. His profile
+    page would add a Person entity and strengthen the Article author signal, but the bio
+    was drafted from vault facts and he has not reviewed it. Do not publish a biography
+    of a real person unreviewed.
+11. `todo` — Per-page sitemap `lastmod` driven by content `updatedDate`, for a truthful
+    freshness signal (avoid stamping every page with the build date).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-23 — Cycle 5: RSS feed + list schema on index pages.** Added /rss.xml for
+  the guides (a second machine-readable surface alongside llms.txt, and a distribution
+  channel that does not depend on search), discoverable via <link rel="alternate">.
+  Added CollectionPage + ItemList schema to the guides and events indexes so crawlers
+  and AI engines read them as ordered listings rather than loose pages. Links 389 → 402.
 
 - **2026-07-23 — Cycle 4: QA pass + widened CI coverage.** Added a guide page to the
   Lighthouse budget (a page type CI had never measured) — scores 100/100/100/100, LCP
@@ -115,6 +127,7 @@ _(latest numbers — filled once data sources are connected)_
 - Last Lighthouse (local, 2026-07-23): home, event and guide pages all
   100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0.
 - Site size: 13 pages live (12 in sitemap + 404); 4 guides.
-- **Loop status: the unblocked backlog is now empty.** Every remaining item needs
-  Drummond (accounts, consent, policy answers, venue/Luma). Do NOT manufacture work —
-  log "waiting on" and stop until something is unblocked.
+- **Loop status:** high-value unblocked work is largely done. Before declaring the
+  backlog empty, GENERATE new candidates (technical SEO surfaces, schema depth,
+  accessibility, performance, content gaps) — only stop when genuinely nothing
+  truthful and useful remains. Never manufacture churn; never invent facts.
