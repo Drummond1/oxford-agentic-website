@@ -70,14 +70,16 @@ Status: `todo` · `blocked` (why) · `doing`
    "Can my team come together?". Add to homepage + programme + event FAQ where truthful.
 9. `todo` — Add a guide targeting "AI training for finance teams" (feeds a future
    Finance Edition), linking to the programme.
-10. `todo` — Strengthen internal linking: every guide → programme (done by schema rule);
-    add contextual links from About and programme prose to the guides once published.
-11. `todo` — Per-guide OG images (currently guides share the guides-index card).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-23 — Cycle 2: per-guide OG cards + two-way internal linking.** Each guide
+  now generates its own 1200×630 card (was sharing the generic index card), and the
+  programme page gained a "Further reading" section linking to its guides — closing the
+  loop that previously only ran guide → programme. Internal links 355 → 358.
 
 - **2026-07-23 — Published the guides section (3 articles, flag on).** Wrote
   "Agentic AI for business leaders: where to start" and "Why in-person beats online

@@ -38,7 +38,7 @@ const related = guide
       pageTitle={guide.data.title}
       description={guide.data.description}
       path={paths.guide(guide.data.slug)}
-      ogImage={ogPathFor(paths.guides())}
+      ogImage={ogPathFor(paths.guide(guide.data.slug))}
       schemaNodes={[
         articleSchema({
           title: guide.data.title,
@@ -48,7 +48,7 @@ const related = guide
           updatedDate: guide.data.updatedDate,
           authorName: author?.data.name ?? config.brand.name,
           authorSlug: author?.data.slug ?? 'team',
-          ogImage: absoluteUrl(ogPathFor(paths.guides())),
+          ogImage: absoluteUrl(ogPathFor(paths.guide(guide.data.slug))),
         }),
       ]}
       breadcrumbs={[

@@ -1,4 +1,5 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
 import config from '../../../site.config';
 import { renderOgImage, type OgOptions } from '../../lib/og';
 import {
@@ -63,6 +64,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
       path: paths.guides(),
       options: { eyebrow: `${config.brand.name} — Guides`, title: 'Writing on agentic AI', meta: 'Oxford' },
     });
+
+    // A card per guide, so a shared article gets its own headline rather than
+    // the generic index card.
+    const guides = await getCollection('guides', ({ data }) => !data.draft);
+    for (const guide of guides) {
+      entries.push({
+        path: paths.guide(guide.data.slug),
+        options: { eyebrow: `${config.brand.name} — Guide`, title: guide.data.title, meta: config.brand.locality },
+      });
+    }
   }
 
   return entries.map(({ path, options }) => ({ params: { key: keyFor(path) }, props: { options } }));

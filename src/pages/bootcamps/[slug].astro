@@ -1,5 +1,5 @@
 ---
-import { render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import EventCard from '../../components/EventCard.astro';
@@ -34,6 +34,15 @@ const { upcoming, past } = await getEventsForProgramme(programme.id);
 const testimonials = await getTestimonials(programme.id);
 
 const path = paths.programme(data.slug);
+
+// Guides link to their programme; this is the reverse edge, so the two are
+// connected in both directions for crawlers and readers alike.
+const relatedGuides = showSection('guides')
+  ? (await getCollection('guides', ({ data: g }) => !g.draft))
+      .filter((g) => g.data.relatedProgrammes.some((ref) => ref.id === programme.id))
+      .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  : [];
+const showReading = relatedGuides.length > 0;
 const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
 const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
 
@@ -42,6 +51,7 @@ const bands = {
   capsule: rhythm.next(),
   detail: rhythm.next(),
   runs: rhythm.next(),
+  reading: showReading ? rhythm.next() : null,
   quotes: showQuotes ? rhythm.next() : null,
   faq: showFaq ? rhythm.next() : null,
 };
@@ -180,6 +190,33 @@ const bands = {
   </section>
 
   {
+    showReading && (
+      <section class:list={['band', `band--${bands.reading}`]} aria-labelledby="reading">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="reading">Further reading</h2>
+            <p>Short, practical pieces on the ideas behind the day.</p>
+          </div>
+
+          <div class="grid grid--3">
+            {relatedGuides.map((entry, i) => (
+              <a href={paths.guide(entry.data.slug)} class="card reading-card" data-reveal data-reveal-delay={i * 80}>
+                <span class="eyebrow">Guide</span>
+                <h3>{entry.data.title}</h3>
+                <p>{entry.data.description}</p>
+                <span class="reading-card__cta">
+                  Read <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
     showQuotes && (
       <section class:list={['band', `band--${bands.quotes}`]} aria-labelledby="quotes">
         <div class="wrap">
@@ -223,6 +260,46 @@ const bands = {
 </Base>
 
 <style>
+  .reading-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .reading-card h3 {
+    font-size: var(--step-lg);
+    margin-block: 0.2rem 0.7rem;
+  }
+
+  .reading-card p {
+    flex: 1;
+    font-size: var(--step-sm);
+  }
+
+  :global(.band--cream) .reading-card p {
+    color: var(--muted-on-cream);
+  }
+
+  :global(.band--dark) .reading-card p {
+    color: var(--muted-on-dark);
+  }
+
+  .reading-card__cta {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-block-start: 1.4rem;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--rust);
+  }
+
+  :global(.band--dark) .reading-card__cta {
+    color: var(--gold);
+  }
+
   .capsule-card {
     max-width: 62rem;
   }
