@@ -80,6 +80,12 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-23 — Cycle 4: QA pass + widened CI coverage.** Added a guide page to the
+  Lighthouse budget (a page type CI had never measured) — scores 100/100/100/100, LCP
+  0.4s. Flags acceptance test re-run with guides live: all-on = 16 pages / 569 links,
+  all-off = 8 pages / 213 links, both coherent with zero broken links. Verified live:
+  12 sitemap URLs, 5 guide URLs, all 4 guides in llms.txt.
+
 - **2026-07-23 — Cycle 3: added "Agentic AI for finance teams" guide.** Targets the
   long-tail "AI training for finance teams" query and seeds demand for a possible future
   Finance Edition (without claiming one is scheduled). 4 guides now live; 13 pages;
@@ -106,4 +112,9 @@ _(latest numbers — filled once data sources are connected)_
 - Search Console: not connected yet.
 - Analytics: not connected yet.
 - Luma registrations: track weekly per event.
-- Last Lighthouse (local, 2026-07-23): 100 / 100 / 100 / 100, LCP 0.3s, CLS 0.
+- Last Lighthouse (local, 2026-07-23): home, event and guide pages all
+  100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0.
+- Site size: 13 pages live (12 in sitemap + 404); 4 guides.
+- **Loop status: the unblocked backlog is now empty.** Every remaining item needs
+  Drummond (accounts, consent, policy answers, venue/Luma). Do NOT manufacture work —
+  log "waiting on" and stop until something is unblocked.

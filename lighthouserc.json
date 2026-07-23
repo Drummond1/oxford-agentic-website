@@ -4,7 +4,8 @@
       "staticDistDir": "./dist",
       "url": [
         "http://localhost/index.html",
-        "http://localhost/events/oxford-agentic-bootcamp-cohort-2/index.html"
+        "http://localhost/events/oxford-agentic-bootcamp-cohort-2/index.html",
+        "http://localhost/guides/what-is-an-agentic-bootcamp/index.html"
       ],
       "numberOfRuns": 3,
       "settings": {
