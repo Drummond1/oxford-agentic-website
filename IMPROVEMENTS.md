@@ -55,8 +55,11 @@ tier; propose-and-approve anything touching copy, claims or design._
 
 Status: `todo` · `blocked` (why) · `doing`
 
-2. `blocked` (needs GSC account + verification token) — Add Google Search Console
-   verification meta tag; submit sitemap; request indexing.
+2. `todo` (Drummond, 2 min in the GSC UI) — Search Console property is VERIFIED via
+   DNS TXT (confirmed 2026-07-23). Still to do: submit `sitemap-index.xml` under
+   Sitemaps, and URL-Inspect → Request indexing for the homepage, the Cohort 2 event
+   page and /guides/. Then export Performance CSVs into `seo-data/` so the loop has
+   real query signal.
 3. `blocked` (needs Bing account) — Bing Webmaster verification + sitemap.
 4. `blocked` (needs Plausible account + site id) — wire analytics in site.config.
 5. `blocked` (needs a LinkedIn Company Page URL) — add it to `brand.social` so it flows
@@ -129,7 +132,8 @@ _(so the loop never re-pitches — record the reason)_
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
-- Search Console: not connected yet.
+- Search Console: property VERIFIED 2026-07-23 (DNS TXT). No query data yet — a new
+  property takes roughly 3–7 days to report. Loop reads exports from `seo-data/`.
 - Analytics: not connected yet.
 - Luma registrations: track weekly per event.
 - Last Lighthouse (local, 2026-07-23): home, event and guide pages all

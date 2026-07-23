@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # lighthouse CI
 .lighthouseci/
+
+# Search Console exports — local signal for the improvement loop, never published
+seo-data/*.csv
