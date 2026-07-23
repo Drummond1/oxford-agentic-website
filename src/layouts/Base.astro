@@ -76,6 +76,19 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
         );
 
         targets.forEach((el) => observer.observe(el));
+
+        // Keyboard safety net: tabbing into a not-yet-revealed block reveals it
+        // permanently, so focus never rests on invisible content.
+        document.addEventListener(
+          'focusin',
+          (event) => {
+            const block = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-reveal]');
+            if (!block || block.classList.contains('is-revealed')) return;
+            block.classList.add('is-revealed');
+            observer.unobserve(block);
+          },
+          true,
+        );
       }
 
       // Analytics is provider-agnostic: components declare intent with

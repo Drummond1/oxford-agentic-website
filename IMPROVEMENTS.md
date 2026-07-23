@@ -81,9 +81,9 @@ Status: `todo` · `blocked` (why) · `doing`
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
     of a real person unreviewed.
-11. `todo` — Accessibility audit beyond Lighthouse's automated checks (keyboard path
-    through the nav dropdown, FAQ accordion and Luma embed fallback; focus order on the
-    sticky mobile bar).
+11. `todo` — Continue the manual accessibility audit: keyboard path through the nav
+    dropdown and mobile menu, FAQ accordion, Luma embed fallback link, and focus order
+    around the sticky mobile bar. (Scroll-reveal focus trap fixed in cycle 7.)
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
@@ -91,6 +91,14 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-23 — Cycle 7: fixed a real keyboard-accessibility bug.** Manual audit found
+  2 focusable links sitting inside scroll-reveal blocks still at `opacity: 0` — including
+  the Cohort 2 event card, i.e. the primary conversion path. A keyboard user tabbing down
+  before the observer fired would have landed focus on invisible content. Lighthouse's
+  automated checks cannot detect this. Fixed with `:focus-within` plus a `focusin`
+  handler that reveals the block permanently. Verified: focus now reveals, and it stays
+  revealed after focus moves on.
 
 - **2026-07-23 — Cycle 6: truthful sitemap lastmod.** Each content-backed URL now
   carries a real `lastmod` from its own `updatedDate` (falling back to file mtime);

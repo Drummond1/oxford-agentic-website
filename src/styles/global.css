@@ -531,6 +531,17 @@ a.card:hover,
   transform: translateY(14px);
 }
 
+/*
+ * A keyboard user can tab into a block before the scroll observer has revealed
+ * it — which would put focus on something invisible. Focus forces the reveal.
+ * The JS also marks it revealed on focusin so it does not fade back out as
+ * focus moves through it.
+ */
+.js-motion [data-reveal]:not(.is-revealed):focus-within {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
