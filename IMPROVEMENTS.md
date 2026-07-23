@@ -65,16 +65,25 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-8. `todo` — Deepen FAQ coverage with real user questions (GEO): "How much does it cost?"
-   handling, "Is it suitable for non-technical founders?", "What AI tools will we use?",
-   "Can my team come together?". Add to homepage + programme + event FAQ where truthful.
-9. `todo` — Add a guide targeting "AI training for finance teams" (feeds a future
-   Finance Edition), linking to the programme.
+8. `blocked` (needs Drummond's answers — these are policy facts the loop must not
+   invent) — Deepen FAQ coverage for GEO. Open questions to answer: What AI tools do
+   attendees use on the day, and does anyone need to buy a licence? Can colleagues book
+   as a team, and is there a group rate? What happens if someone cannot make the date
+   (refund/transfer)? Are sessions recorded? Is lunch included? Each answered question
+   becomes an FAQ entry on the homepage, programme and event pages, and feeds FAQPage
+   schema — high GEO value.
+9. `todo` — Write a 5th guide once a query gap is known (hold until Search Console data
+   exists, so it targets a real query rather than a guess).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-23 — Cycle 3: added "Agentic AI for finance teams" guide.** Targets the
+  long-tail "AI training for finance teams" query and seeds demand for a possible future
+  Finance Edition (without claiming one is scheduled). 4 guides now live; 13 pages;
+  internal links 358 → 389.
 
 - **2026-07-23 — Cycle 2: per-guide OG cards + two-way internal linking.** Each guide
   now generates its own 1200×630 card (was sharing the generic index card), and the
