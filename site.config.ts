@@ -126,8 +126,8 @@ const config: SiteConfig = {
     speakers: false,
     // V1.1 — Cohort 1 NPS survey went out 22 Jul 2026; nothing consent-cleared.
     testimonials: false,
-    // V1.1 — three seed guides pending topic approval (PRD §21).
-    guides: false,
+    // Live: three seed guides published (long-tail SEO/GEO capture).
+    guides: true,
     // Live: drives the Cohort 2 "notify me" state while its Luma page is pending.
     newsletter: true,
     pastEvents: true,
