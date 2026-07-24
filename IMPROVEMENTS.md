@@ -68,13 +68,6 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-8. `blocked` (needs Drummond's answers — these are policy facts the loop must not
-   invent) — Deepen FAQ coverage for GEO. Open questions to answer: What AI tools do
-   attendees use on the day, and does anyone need to buy a licence? Can colleagues book
-   as a team, and is there a group rate? What happens if someone cannot make the date
-   (refund/transfer)? Are sessions recorded? Is lunch included? Each answered question
-   becomes an FAQ entry on the homepage, programme and event pages, and feeds FAQPage
-   schema — high GEO value.
 9. `todo` — Write a 5th guide once a query gap is known (hold until Search Console data
    exists, so it targets a real query rather than a guess).
 10. `blocked` (needs Drummond to approve his own bio) — turn `speakers` on. His profile
@@ -91,6 +84,13 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-24 — Cycle 8: FAQ depth from Drummond's answers (+ FAQPage schema).**
+  Added five real Q&As (paid subscription, team bookings, transfer if you can't make the
+  date, recordings, lunch) sourced from Drummond directly — no invented policy. Programme
+  FAQ 6 → 11, Cohort 2 event FAQ 5 → 9, homepage FAQ 6 → 8. Each renders in-page and
+  feeds FAQPage schema, the format AI assistants quote directly. Highest-value GEO move
+  available; was blocked on knowledge, now unblocked.
 
 - **2026-07-23 — Cycle 7: fixed a real keyboard-accessibility bug.** Manual audit found
   2 focusable links sitting inside scroll-reveal blocks still at `opacity: 0` — including

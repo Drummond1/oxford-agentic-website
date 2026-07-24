@@ -86,4 +86,21 @@ faqs:
     a: >-
       Capped at roughly twenty-five people. Cohort 1 ran with sixteen. The day is
       facilitated rather than lectured, which stops working much above that.
+  - q: Do I need a paid AI subscription?
+    a: >-
+      Bring a laptop. You will get the most from the day with a paid plan such as
+      ChatGPT Plus or Claude Pro, but it is not essential — we make sure everyone can
+      take part either way.
+  - q: Can I bring my team?
+    a: >-
+      Yes. Teams are welcome, and colleagues often get more from it by building
+      alongside each other. Email hello@oxfordagentic.com and we will arrange it.
+  - q: What if I cannot make the date?
+    a: >-
+      Your place transfers to a future cohort at no charge. Just let us know and we
+      will move you.
+  - q: Is the day recorded, and is lunch included?
+    a: >-
+      The day is not recorded — the value is in building in the room, and you leave with
+      the workflow rather than a video. Lunch and refreshments are provided.
 ---

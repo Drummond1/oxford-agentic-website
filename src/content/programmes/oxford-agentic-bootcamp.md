@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-07-22T09:00:00+01:00"
+updatedDate: "2026-07-24T09:00:00+01:00"
 shortPitch: One day in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person course in Oxford for business
@@ -57,6 +57,28 @@ faqs:
     a: >-
       Roughly twenty-five, capped. The size is deliberate: the day is facilitated, not
       lectured, which stops working above about that number.
+  - q: Do I need a paid AI subscription?
+    a: >-
+      Bring a laptop. You will get the most from the day with a paid plan such as
+      ChatGPT Plus or Claude Pro, but it is not essential — we make sure everyone can
+      take part either way.
+  - q: Can I bring my team, or book for several people?
+    a: >-
+      Yes. Teams are welcome, and colleagues often get more from it by building
+      alongside each other and taking the same pattern back to work. Email
+      hello@oxfordagentic.com and we will arrange it.
+  - q: What if I book but cannot make the date?
+    a: >-
+      Your place transfers to a future cohort at no charge. A date that no longer works
+      should not mean a lost seat — just let us know and we will move you.
+  - q: Is the day recorded?
+    a: >-
+      No. The value is in being in the room and building, not in a video to watch later.
+      You leave with the workflow you built rather than a recording you might get back to.
+  - q: Is lunch included?
+    a: >-
+      Yes. Lunch and refreshments are provided, so you can spend the day building rather
+      than sorting out food.
 ---
 
 The day runs on one idea: most people are still using AI the way they used Google in 2004 — one question, one tab. That is fine, and it is not the interesting part.
