@@ -48,7 +48,6 @@ confirming against the real Luma capacity.
 ---|---|---|---|
 | 1 | Create the Cohort 2 Luma page, then add its `lumaEventId` + `lumaUrl` to `src/content/events/oxford-agentic-bootcamp-cohort-2.md` | Needs the Luma account | 10 min + 1 line |
 | 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp) | 5 min |
-| 3 | Confirm the St Anne's booking for 9 Sept, then set `venue.confirmed: true` | Needs the venue | 1 line once confirmed |
 | 4 | Set `analytics.provider` + `siteId` | Needs a Plausible account. **Nothing is measured today** — the tracking layer is built and dispatches to Plausible/GA4, but no provider script loads while provider is `'none'` | 5 min + 1 line |
 | 5 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; a new property reports after ~3–7 days) | 2 min, weekly |
 | 6 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
