@@ -262,6 +262,25 @@ leaders — I want to actually build something, not just listen to talks." Findi
 - **Re-probe monthly** with the same question and log deltas here. First success
   criterion: oxfordagentic.com appears in the citation list at all.
 
+## Signal snapshot — first external validation (Search Console, 25 Jul)
+
+Google's own reports, data as at 24 Jul (so this PREDATES cycle 15's subEvent work
+and the four guides shipped on 25 Jul — expect all counts to rise):
+
+- **Sitemap: Success.** Submitted 23 Jul, last read 24 Jul, 12 pages discovered.
+  12 was the true count on 24 Jul; the live sitemap now lists 16. No action needed —
+  Google re-reads on its own schedule and `lastmod` already reflects the change.
+- **Enhancements → Events: 2 valid, 0 invalid.** Both event pages validated. This is
+  the gate for Google event rich results, and it passed before indexing even finished.
+- **Enhancements → Breadcrumbs: 3 valid, 0 invalid.** Only 3 because few pages had been
+  crawled by 24 Jul; 15 deep pages carry breadcrumbs, so this should climb.
+- **Page indexing: still "processing data".** Normal for a property verified 23 Jul.
+  Re-check ~27 Jul for the Indexed count and any not-indexed reasons. Watch for
+  `noindex` or `Redirect error` — those would be real faults. `Discovered/Crawled —
+  currently not indexed` is expected at this age and needs nothing.
+- **Performance: no query data yet.** Nothing to export into `seo-data/` until roughly
+  the first week of August.
+
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
