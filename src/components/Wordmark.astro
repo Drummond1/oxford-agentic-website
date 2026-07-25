@@ -20,7 +20,7 @@ const { variant = 'lockup', class: className = '' } = Astro.props;
       amber. Never recoloured, rotated or skewed, per the guidelines. */}
   <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
     <rect x="8" y="8" width="84" height="84" fill="none" stroke="currentColor" stroke-width="16" />
-    <rect x="36.5" y="36.5" width="27" height="27" fill="var(--gold)" />
+    <rect class="wordmark__centre" x="36.5" y="36.5" width="27" height="27" fill="var(--gold)" />
   </svg>
   <span class="wordmark__text">{config.brand.name}</span>
 </span>
@@ -40,6 +40,26 @@ const { variant = 'lockup', class: className = '' } = Astro.props;
     flex: none;
     /* The centre square is the mark's clearspace anchor — keep it crisp. */
     shape-rendering: crispEdges;
+  }
+
+  /* A quiet nod when the logo is hovered: the amber centre — the heart of the
+     Quad — grows very slightly. Geometry and colour are untouched, so the mark
+     never breaks the guidelines' rules. */
+  .wordmark__centre {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 260ms var(--ease);
+  }
+
+  :is(a, button):hover > .wordmark .wordmark__centre,
+  :is(a, button):focus-visible > .wordmark .wordmark__centre {
+    transform: scale(1.28);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wordmark__centre {
+      transition: none;
+    }
   }
 
   .wordmark__text {

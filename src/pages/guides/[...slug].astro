@@ -81,7 +81,7 @@ const showCapture = showSection('newsletter');
             Updated {formatDate(guide.data.updatedDate, { weekday: undefined })}
           </p>
 
-          <article class="prose article">
+          <article class="prose article" data-anchor-headings>
             <Body />
           </article>
 
@@ -181,6 +181,38 @@ const showCapture = showSection('newsletter');
     </Base>
   )
 }
+
+<script>
+  // Heading anchors. The build already gives every article heading an id, so
+  // deep links work without this — the script only adds a visible, clickable
+  // handle on hover, and copies the URL when used.
+  const article = document.querySelector('[data-anchor-headings]');
+
+  article?.querySelectorAll<HTMLHeadingElement>('h2[id], h3[id]').forEach((heading) => {
+    const link = document.createElement('a');
+    link.className = 'heading-anchor';
+    link.href = `#${heading.id}`;
+    link.textContent = '#';
+    link.setAttribute('aria-label', `Link to section: ${heading.textContent?.trim() ?? ''}`);
+
+    link.addEventListener('click', (event) => {
+      const url = `${location.origin}${location.pathname}#${heading.id}`;
+      navigator.clipboard?.writeText(url).then(
+        () => {
+          event.preventDefault();
+          history.replaceState(null, '', `#${heading.id}`);
+          link.dataset.copied = 'true';
+          window.setTimeout(() => delete link.dataset.copied, 1400);
+        },
+        () => {
+          /* Clipboard unavailable — the link still navigates normally. */
+        },
+      );
+    });
+
+    heading.append(link);
+  });
+</script>
 
 <style>
   .capsule {

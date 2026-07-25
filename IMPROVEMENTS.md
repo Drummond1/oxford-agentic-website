@@ -98,6 +98,22 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-25 — Cycle 14: micro-interactions phase 3 (incl. a missed PRD item).**
+  (a) **Animated stat counters** — PRD §10 specified these and they had never been
+  built. Cohort 1's outcome tiles now count up once as they scroll into view, easing
+  out so they settle rather than stop dead. The final number stays in the HTML, so it
+  is correct before, during, and entirely without JS. (b) **Reading progress** — a
+  2px amber hairline on long-form pages, driven off the existing `article` prop;
+  rAF-throttled with `scrollHeight` cached on resize, so it never forces a reflow.
+  (c) **Heading anchors** on guide articles — hover reveals a rust `#`, clicking copies
+  the deep link and confirms briefly. Progressive enhancement only: the ids are already
+  in the static HTML, so deep links and citations work with JS off. (d) **The Quad
+  responds** — the amber centre of the logo grows slightly on hover/focus. All four
+  reduced-motion-safe. Lighthouse still 100/100/100/100, CLS 0.
+  _Rejected during this cycle:_ adding rehype-slug/autolink-headings, which would have
+  swapped Astro's default markdown processor for unified across 8 shipped guides — the
+  build revealed heading ids already exist, so the risk bought nothing.
+
 - **2026-07-25 — Cycle 13: visible breadcrumbs, article metadata, course workload.**
   No Search Console export in `seo-data/` yet, and cycle 12 had already shipped the
   day's guide allowance, so this cycle worked the technical tier. (a) Breadcrumbs are

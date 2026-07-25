@@ -58,6 +58,8 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
     />
   </head>
   <body class={bodyClass}>
+    {/* Reading progress on long-form pages only; decorative, so hidden from AT. */}
+    {article && <div class="progress" data-progress aria-hidden="true"></div>}
     <a href="#main" class="skip-link">Skip to content</a>
     <Header />
     <main id="main">
@@ -102,6 +104,78 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
           },
           true,
         );
+      }
+
+      // Stat tiles count up once as they scroll into view (PRD §10). The final
+      // value is already in the HTML, so it is correct before, during and
+      // without JS — the animation only ever replaces it temporarily.
+      if (!reduced && 'IntersectionObserver' in window) {
+        const stats = document.querySelectorAll<HTMLElement>('.stat__value');
+
+        const countObserver = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target as HTMLElement;
+              countObserver.unobserve(el);
+
+              const final = (el.textContent ?? '').trim();
+              const target = Number(final.replace(/[^0-9.]/g, ''));
+              // Only animate plain numbers; anything else stays as authored.
+              if (!Number.isFinite(target) || target <= 0 || !/^[0-9]+$/.test(final)) continue;
+
+              const duration = 900;
+              const start = performance.now();
+              const tick = (now: number) => {
+                const p = Math.min((now - start) / duration, 1);
+                // Ease-out so it settles rather than stopping dead.
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = String(Math.round(target * eased));
+                if (p < 1) requestAnimationFrame(tick);
+                else el.textContent = final;
+              };
+              requestAnimationFrame(tick);
+            }
+          },
+          { threshold: 0.6 },
+        );
+
+        stats.forEach((el) => countObserver.observe(el));
+      }
+
+      // Reading progress: a hairline of amber tracking how far down a long
+      // article the reader is. Passive listener, transform-only, so it never
+      // costs a layout.
+      const progress = document.querySelector<HTMLElement>('[data-progress]');
+      if (progress && !reduced) {
+        // `scrollHeight` forces a reflow, so it is measured on resize only and
+        // cached; the scroll handler then does arithmetic and nothing else.
+        let max = 0;
+        let ticking = false;
+
+        const measure = () => {
+          max = document.documentElement.scrollHeight - window.innerHeight;
+        };
+
+        const paint = () => {
+          const ratio = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+          progress.style.transform = `scaleX(${ratio})`;
+          ticking = false;
+        };
+
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(paint);
+        };
+
+        measure();
+        paint();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', () => {
+          measure();
+          paint();
+        }, { passive: true });
       }
 
       // Analytics is provider-agnostic: components declare intent with

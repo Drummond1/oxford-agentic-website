@@ -547,6 +547,66 @@ a.card:hover [aria-hidden='true'],
   color: var(--muted-on-cream);
 }
 
+/* ---- Heading anchors on long-form articles ----
+   Invisible until the heading is hovered or the anchor is focused, so the
+   reading surface stays clean but every section is shareable. */
+.heading-anchor {
+  margin-inline-start: 0.4em;
+  color: var(--rust);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 180ms var(--ease);
+}
+
+:is(h2, h3):hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+/* Brief confirmation that the section link is on the clipboard. */
+.heading-anchor[data-copied] {
+  opacity: 1;
+  color: var(--gold);
+}
+
+.heading-anchor[data-copied]::after {
+  content: ' copied';
+  font-family: var(--font-label);
+  font-size: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+}
+
+/* ---- Reading progress ----
+   A hairline of amber across the top of long-form pages. Purely informational,
+   decorative to assistive tech, and it simply never appears without JS. */
+.progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 60;
+  height: 2px;
+  width: 100%;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* ---- Animated stat counters (PRD §10) ----
+   Values count up once as the tiles scroll into view. The final number is in
+   the HTML, so it is correct before, during and without JS. */
+.stat__value {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress {
+    display: none;
+  }
+}
+
 /*
  * ---- Motion (PRD §10) ----
  * Fade/slide-up on scroll, once, ~300ms. Elements start visible and are only
