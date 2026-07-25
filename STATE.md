@@ -79,7 +79,9 @@ confirming against the real Luma capacity.
 
 ## Facts worth not re-deriving
 
-- **Cohort 1:** Tue 21 Jul 2026, St Anne's College, 16 attendees, three build cycles.
+- **Cohort 1:** Tue 21 Jul 2026, St Anne's College, **16 attendees** (confirmed by
+  Drummond 25 Jul 2026; the vault's per-person attendance record is incomplete, but the
+  headline figure is right), three build cycles.
   Its Luma event id is `evt-ilXzPEtAvZEowaf` (`luma.com/k7c2rm5s`).
 - **Cohort 2:** Wed 16 Sept 2026, 09:00–17:00, Worcester College, Walton Street, Oxford
   OX1 2HB. Luma `evt-kcWdRFwqcgBbNcn` / luma.com/oxfordagentic2. Bookings live.
