@@ -70,7 +70,7 @@ faqs:
     a: >-
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
       sixteen attendees working through three facilitated build cycles. Cohort 2 runs on
-      Wednesday 9 September 2026.
+      Wednesday 16 September 2026.
   - q: Can I still join this cohort?
     a: >-
       No — this date has passed. The next cohort is the one to book; it runs the same

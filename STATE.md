@@ -16,20 +16,19 @@ Written 25 July 2026.
 
 ---
 
-## ⚠️ The one thing that matters most right now
+## ✅ Bookings are live (resolved 25 Jul)
 
-**Cohort 2 is 46 days away (Wed 9 Sept 2026) and the site cannot take a booking.**
+Cohort 2's Luma page went live and the embed is now on the event page. A visitor can
+book without leaving the site. **Note the event moved** — Luma is the authoritative
+source and it says:
 
-The chain is broken end to end:
+- **Wed 16 September 2026** (not 9 Sept), **09:00–17:00** (not 16:30)
+- **Worcester College, Walton Street, Oxford OX1 2HB** (not St Anne's)
+- Luma: `evt-kcWdRFwqcgBbNcn` · https://luma.com/oxfordagentic2
 
-1. Cohort 2 has no `lumaEventId`, because its Luma page does not exist yet
-   (it was planned for ~28 Jul). So the event page shows a "Registration opens
-   shortly" panel instead of the booking embed — correct behaviour, but not a booking.
-2. That panel offers "notify me", which posts to `newsletter.endpoint` in
-   `site.config.ts` — currently an empty string, so it degrades to a `mailto:` link.
-3. Net effect: a senior visitor who decides to attend can only send an email.
-
-Everything else on this list is worth less than fixing that chain.
+Two things worth Drummond's eye: the published agenda still ends at 16:20 while the day
+now runs to 17:00, and the site says "capped at roughly twenty-five" throughout — worth
+confirming against the real Luma capacity.
 
 ---
 
@@ -38,7 +37,7 @@ Everything else on this list is worth less than fixing that chain.
 | # | Task | Why it is blocked | Effort |
 |---|---|---|---|
 | 1 | Create the Cohort 2 Luma page, then add its `lumaEventId` + `lumaUrl` to `src/content/events/oxford-agentic-bootcamp-cohort-2.md` | Needs the Luma account | 10 min + 1 line |
-| 2 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp) | 5 min |
+| 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp) | 5 min |
 | 3 | Confirm the St Anne's booking for 9 Sept, then set `venue.confirmed: true` | Needs the venue | 1 line once confirmed |
 | 4 | Set `analytics.provider` + `siteId` | Needs a Plausible account. **Nothing is measured today** — the tracking layer is built and dispatches to Plausible/GA4, but no provider script loads while provider is `'none'` | 5 min + 1 line |
 | 5 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; a new property reports after ~3–7 days) | 2 min, weekly |

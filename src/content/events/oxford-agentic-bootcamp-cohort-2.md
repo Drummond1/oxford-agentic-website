@@ -4,19 +4,20 @@ slug: oxford-agentic-bootcamp-cohort-2
 programme: oxford-agentic-bootcamp
 cohort: Cohort 2
 status: upcoming
-startDate: "2026-09-09T09:00:00+01:00"
-endDate: "2026-09-09T16:30:00+01:00"
+startDate: "2026-09-16T09:00:00+01:00"
+endDate: "2026-09-16T17:00:00+01:00"
 venue:
-  name: St Anne's College
-  street: 56 Woodstock Road
+  name: Worcester College
+  street: Walton Street
   city: Oxford
-  postcode: OX2 6HS
-  confirmed: false
-# lumaEventId: pending — the Cohort 2 Luma page is scheduled to go live 28 Jul 2026.
-# Until it exists this page shows the "notify me" state instead of the embed.
+  postcode: OX1 2HB
+  confirmed: true
+lumaEventId: evt-kcWdRFwqcgBbNcn
+lumaUrl: https://luma.com/oxfordagentic2
 summary: A one-day, hands-on agentic AI bootcamp in Oxford for business leaders. Build a working agent on your own real task.
 capsule: >-
-  Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 9 September 2026 in Oxford.
+  Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 16 September 2026 at Worcester
+  College, Oxford.
   It is a one-day, in-person course for business leaders: you bring one real task from
   your own work and leave having built and run a working agentic AI workflow against it.
   Capped at roughly twenty-five people. No coding required.
@@ -64,16 +65,14 @@ agenda:
   - time: 16:20
     title: Wrap and networking
 faqs:
-  - q: Is the September date confirmed?
+  - q: When and where is it?
     a: >-
-      The date is set for Wednesday 9 September 2026. The room booking at St Anne's is
-      being finalised, so the venue line on this page will be updated the moment it is
-      signed off. If anything moves, everyone registered hears first.
+      Wednesday 16 September 2026, 09:00 to 17:00, at Worcester College on Walton Street
+      in central Oxford. Registration is open — you can book on this page.
   - q: How do I register for Cohort 2?
     a: >-
-      Registration opens shortly — the booking page is being prepared. Leave your email
-      on this page and you will be told the moment it opens, before it is announced
-      publicly.
+      Book directly on this page — the form below takes your registration. If it does not
+      load for you, the same booking page is at luma.com/oxfordagentic2.
   - q: Do I need to be technical?
     a: >-
       No. The bootcamp is built for operators, not engineers. No coding is required and
