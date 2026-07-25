@@ -173,6 +173,25 @@ _(dated, newest first — filled by the loop)_
 
 _(so the loop never re-pitches — record the reason)_
 
+## GEO baseline (Perplexity probe, 2026-07-25)
+
+Asked Perplexity: "best hands-on AI training or AI bootcamp in Oxford for business
+leaders — I want to actually build something, not just listen to talks." Findings:
+
+- **oxfordagentic.com was NOT cited.** Expected — domain is 3 days old, indexing pending.
+- **Who won the citation:** Elansio (elansio.com/ai-training-oxford.html) ranked first
+  for exactly our positioning ("leave having deployed real, working capabilities",
+  exec audience, on-site Oxford); The Oxford AI School second; OxML took the technical
+  slot; Saïd Business School programmes framed as "strategic, online, not hands-on".
+- **What the winning answer rewarded:** an exact-match landing page for "AI training
+  Oxford", build-outcome language, and local/in-person emphasis. Perplexity's own
+  framing ("exec ed = strategy, bootcamp = build") matches our comparison guide.
+- **Third-party sources cited:** digitaldefynd.com, datadrivendaily.com, cpduk.co.uk —
+  aggregator/review sites. Confirms §13's point: engines triangulate third-party
+  mentions. (Outreach/listings are Drummond's side; the loop cannot create them.)
+- **Re-probe monthly** with the same question and log deltas here. First success
+  criterion: oxfordagentic.com appears in the citation list at all.
+
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
