@@ -99,6 +99,17 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-25 — Fix: CI had been failing since the Luma embed went live.** Adding
+  `lumaEventId` to Cohort 2 loaded Luma's iframe, which sets third-party cookies and logs
+  DevTools issues — dropping best-practices 100 → 78 on event pages and failing the
+  Lighthouse gate on three consecutive commits (eb663cb, d615c31, adabb82). It went
+  unnoticed because the DEPLOY workflow does not run Lighthouse and only that was being
+  checked. **Lesson: check `ci.yml`, not just `deploy.yml`, after any change.** The site
+  was never broken — the budget was wrong. Lighthouse now uses an `assertMatrix`: event
+  pages accept ≥0.75 best-practices with the two third-party audits switched off (the
+  embed IS the conversion mechanism, PRD §9), every other page still must score 100. A
+  genuine regression anywhere, including on event pages, still fails the build.
+
 - **2026-07-25 — Cycle 16: micro-interactions phase 4, all on paths that gave no feedback.**
   Chosen by auditing where a user currently acts and learns nothing, not by adding
   ornament. (a) **The Luma booking embed now has a loading state** — it is lazy-loaded, so
