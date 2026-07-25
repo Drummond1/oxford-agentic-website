@@ -91,6 +91,34 @@ const configured = endpoint.length > 0;
     color: rgba(5, 24, 23, 0.45);
   }
 
+  /* Focus and validity are the only feedback this field can give, so make them
+     legible: amber while typing, rust once a wrong value has actually been
+     entered. `:user-invalid` (not `:invalid`) means an untouched empty field is
+     never scolded. */
+  .signup__input {
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .signup__input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: inset 0 -2px 0 0 var(--gold);
+  }
+
+  .signup__input:user-invalid {
+    border-color: var(--rust);
+  }
+
+  .signup__input:user-invalid:focus {
+    box-shadow: inset 0 -2px 0 0 var(--rust);
+  }
+
+  /* Submitting: the button says what is happening rather than going dead. */
+  .signup__button[disabled] {
+    opacity: 0.75;
+    cursor: progress;
+  }
+
   .signup__button {
     flex: none;
   }
@@ -118,7 +146,11 @@ const configured = endpoint.length > 0;
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const button = form.querySelector('button');
-      if (button) button.disabled = true;
+      const original = button?.textContent ?? '';
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending…';
+      }
 
       try {
         const response = await fetch(form.action, {
@@ -134,7 +166,10 @@ const configured = endpoint.length > 0;
           status.textContent = 'You are on the list. We will be in touch when the next cohort opens.';
         }
       } catch {
-        if (button) button.disabled = false;
+        if (button) {
+          button.disabled = false;
+          button.textContent = original;
+        }
         if (status) {
           status.hidden = false;
           status.textContent = 'That did not go through. Please try again, or email us directly.';

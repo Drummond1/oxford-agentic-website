@@ -96,7 +96,16 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     z-index: 50;
     background: rgba(5, 24, 23, 0.92);
     backdrop-filter: blur(10px);
-    border-block-end: 1px solid rgba(241, 175, 57, 0.18);
+    /* Transparent at rest, amber hairline once the page has moved — it tells you
+       the header is floating over content. A border, not a shadow: the
+       guidelines are a flat, printerly system. */
+    border-block-end: 1px solid transparent;
+    transition: border-color 240ms var(--ease), background-color 240ms var(--ease);
+  }
+
+  .site-header.is-stuck {
+    border-block-end-color: rgba(241, 175, 57, 0.34);
+    background: rgba(5, 24, 23, 0.97);
   }
 
   .site-header__inner {
@@ -282,6 +291,20 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 </style>
 
 <script>
+  // A sentinel at the very top of the page: cheaper and smoother than a scroll
+  // listener, and it never forces a layout read.
+  const header = document.querySelector('.site-header');
+  if (header && 'IntersectionObserver' in window) {
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:0;height:1px;width:1px;pointer-events:none';
+    document.body.prepend(sentinel);
+
+    new IntersectionObserver(([entry]) => header.classList.toggle('is-stuck', !entry.isIntersecting), {
+      threshold: 0,
+    }).observe(sentinel);
+  }
+
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const panel = document.getElementById('mobile-nav');
 

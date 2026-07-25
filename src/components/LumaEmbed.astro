@@ -43,8 +43,13 @@ const canNotify = showSection('newsletter');
         {canNotify && <NewsletterForm label="Tell me when registration opens" cta="Notify me" />}
       </div>
     ) : (
-      <div class="register__frame">
+      <div class="register__frame" data-embed-frame>
+        {/* Sits behind the iframe so the booking area is never an empty box while
+            Luma loads. Removed on the iframe's load event; if that never fires,
+            the fallback link below is always present. */}
+        <p class="register__loading" data-embed-loading>Loading the booking form…</p>
         <iframe
+          data-embed-iframe
           src={lumaEmbedSrc(lumaEventId!)}
           width="600"
           height="450"
@@ -74,6 +79,30 @@ const canNotify = showSection('newsletter');
   }
 </div>
 
+<script>
+  // The embed is lazy-loaded, so this can be a real wait on the conversion path.
+  // The placeholder goes as soon as Luma paints; if the load event never fires
+  // (blocked third-party content), it is cleared anyway after a few seconds so
+  // the visitor is pushed to the always-visible fallback link rather than a
+  // stuck "loading" message.
+  document.querySelectorAll<HTMLElement>('[data-embed-frame]').forEach((frame) => {
+    const iframe = frame.querySelector<HTMLIFrameElement>('[data-embed-iframe]');
+    const loading = frame.querySelector<HTMLElement>('[data-embed-loading]');
+    if (!iframe || !loading) return;
+
+    let settled = false;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      frame.classList.add('is-loaded');
+      window.setTimeout(() => (loading.hidden = true), 400);
+    };
+
+    iframe.addEventListener('load', done, { once: true });
+    window.setTimeout(done, 6000);
+  });
+</script>
+
 <style>
   .register {
     max-width: 600px;
@@ -82,6 +111,34 @@ const canNotify = showSection('newsletter');
   .register__frame {
     width: 100%;
     max-width: 600px;
+    position: relative;
+  }
+
+  /* Placeholder occupies the same box as the iframe, so nothing shifts when the
+     embed paints (CLS stays at zero). */
+  .register__loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gold-hairline);
+    font-family: var(--font-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: var(--step-xs);
+    color: var(--muted-on-dark-dim);
+    transition: opacity 320ms var(--ease);
+  }
+
+  .register__loading[hidden] {
+    display: none;
+  }
+
+  .register__frame.is-loaded .register__loading {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .register__frame iframe {

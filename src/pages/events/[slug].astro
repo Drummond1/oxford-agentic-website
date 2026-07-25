@@ -133,7 +133,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
             <a href="#register" class="btn btn--primary">
               {registerLabel}
             </a>
-            <a href={icsHref} download={`${data.slug}.ics`} class="btn btn--ghost">
+            <a href={icsHref} download={`${data.slug}.ics`} class="btn btn--ghost" data-calendar-btn>
               Add to calendar
             </a>
           </div>
@@ -398,6 +398,23 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
     )
   }
 </Base>
+
+<script>
+  // A download gives no visible feedback, so people click it twice and wonder.
+  // Confirm briefly, then restore.
+  document.querySelectorAll<HTMLAnchorElement>('[data-calendar-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.busy) return;
+      btn.dataset.busy = 'true';
+      const original = btn.textContent ?? '';
+      btn.textContent = 'Calendar file saved';
+      window.setTimeout(() => {
+        btn.textContent = original;
+        delete btn.dataset.busy;
+      }, 2400);
+    });
+  });
+</script>
 
 <style>
   .event-hero {

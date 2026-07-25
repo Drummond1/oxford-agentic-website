@@ -99,6 +99,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-25 — Cycle 16: micro-interactions phase 4, all on paths that gave no feedback.**
+  Chosen by auditing where a user currently acts and learns nothing, not by adding
+  ornament. (a) **The Luma booking embed now has a loading state** — it is lazy-loaded, so
+  the highest-intent moment on the site was an empty 450px box. A placeholder sits behind
+  it in the same box (so CLS stays 0) and clears on the iframe's load event, with a 6s
+  timeout fallback and an idempotent guard so a blocked third-party embed can never leave
+  a stuck "Loading…". (b) **Signup field feedback** — amber underline on focus, rust on
+  `:user-invalid` (not `:invalid`, so an untouched field is never scolded), and the button
+  says "Sending…" rather than going dead. NOTE: dormant until `newsletter.endpoint` is
+  set, because the form only renders when configured. (c) **"Add to calendar" confirms** —
+  it downloads an .ics silently, so people clicked twice; it now says "Calendar file
+  saved" for 2.4s. (d) **The header gains an amber hairline once scrolled**, via an
+  IntersectionObserver on a 1px sentinel rather than a scroll listener — a border, not a
+  shadow, because the guidelines are a flat printerly system.
+  _Verification note:_ the browser pane returns STALE computed styles for pre-existing
+  elements (an `!important` inline style on an existing element does not move it, while a
+  freshly created element behaves correctly). Do not trust `getComputedStyle` there for
+  class-toggle checks — verify visually or in the built CSS instead. The header state was
+  confirmed by screenshot.
+
 - **2026-07-25 — Cycle 15: the agenda becomes machine-readable (schema depth).**
   Event nodes now carry `subEvent` — all 12 agenda rows as real sub-events with precise
   BST timestamps composed from the event's own date, so an assistant asked "what does
