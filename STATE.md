@@ -36,6 +36,16 @@ confirming against the real Luma capacity.
 
 | # | Task | Why it is blocked | Effort |
 |---|---|---|---|
+| 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp). Until then the guide lead-capture cards degrade to a mailto | 5 min |
+| 2 | Set `analytics.provider` + `siteId` | Needs a Plausible account. **Nothing is measured today** — the tracking layer is built and dispatches to Plausible/GA4, but no provider script loads while provider is `'none'` | 5 min + 1 line |
+| 3 | Confirm the agenda for the longer day, and the real capacity | The published agenda ends 16:20 but the day now runs to 17:00; the site says "capped at roughly twenty-five" throughout | 5 min |
+| 4 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; reports after ~3–7 days) | 2 min, weekly |
+| 5 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
+| 6 | Create a LinkedIn Company Page, add the URL to `brand.social` | Needs the page. Flows into `Organization.sameAs` for entity triangulation | 1 min once created |
+| 7 | Clear Cohort 1 testimonials + people photos for publication | Needs consent from named individuals | — |
+| 8 | Review the drafted bio in `src/content/speakers/drummond-gilbert.md`, then flip `features.speakers` | Drafted from vault facts, never reviewed. **Never publish an unreviewed biography of a real person** | 5 min |
+
+---|---|---|---|
 | 1 | Create the Cohort 2 Luma page, then add its `lumaEventId` + `lumaUrl` to `src/content/events/oxford-agentic-bootcamp-cohort-2.md` | Needs the Luma account | 10 min + 1 line |
 | 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp) | 5 min |
 | 3 | Confirm the St Anne's booking for 9 Sept, then set `venue.confirmed: true` | Needs the venue | 1 line once confirmed |
@@ -72,7 +82,9 @@ confirming against the real Luma capacity.
 
 - **Cohort 1:** Tue 21 Jul 2026, St Anne's College, 16 attendees, three build cycles.
   Its Luma event id is `evt-ilXzPEtAvZEowaf` (`luma.com/k7c2rm5s`).
-- **Cohort 2:** Wed 9 Sept 2026, 09:00–16:30, St Anne's (booking being finalised), cap ~25.
+- **Cohort 2:** Wed 16 Sept 2026, 09:00–17:00, Worcester College, Walton Street, Oxford
+  OX1 2HB. Luma `evt-kcWdRFwqcgBbNcn` / luma.com/oxfordagentic2. Bookings live.
+  (It was originally planned for 9 Sept at St Anne's — that changed; Luma is authoritative.)
 - **GEO baseline (Perplexity, 25 Jul):** oxfordagentic.com not yet cited. Elansio wins
   the "hands-on AI training Oxford" citation with an exact-match landing page and
   build-outcome language; Saïd's programmes are framed by the engine as "strategic,
