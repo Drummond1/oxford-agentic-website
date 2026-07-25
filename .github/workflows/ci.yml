@@ -31,6 +31,12 @@ jobs:
       - name: Section-visibility acceptance test
         run: npm run check:flags
 
+      # check:flags finishes on the all-flags-OFF build, so dist/ is left without
+      # the flagged sections. Rebuild before auditing, or Lighthouse measures a
+      # site that is missing pages (and 404s on the guide URL in its budget).
+      - name: Rebuild the real site before auditing
+        run: npm run build:only
+
       - name: Lighthouse budgets
         run: npx --yes @lhci/cli@0.14.x autorun
         env:

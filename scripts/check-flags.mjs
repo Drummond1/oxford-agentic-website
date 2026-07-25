@@ -52,6 +52,17 @@ try {
 } finally {
   await writeFile(CONFIG, original);
   console.log(`\n${CONFIG} restored.`);
+
+  // The last build in this script is the all-flags-OFF one, which leaves dist/
+  // missing every flagged section. Anything that inspects dist/ afterwards
+  // (Lighthouse, a link check, a manual look) would be auditing a site that is
+  // not the real one — so rebuild before handing back.
+  try {
+    execFileSync('npm', ['run', 'build:only'], { stdio: 'inherit' });
+    console.log('dist/ rebuilt from the restored config.');
+  } catch {
+    console.error('WARNING: could not rebuild dist/ — it is left in the all-flags-off state.');
+  }
 }
 
 if (failed) process.exit(1);

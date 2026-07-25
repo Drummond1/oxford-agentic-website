@@ -99,16 +99,24 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
-- **2026-07-25 — Fix: CI had been failing since the Luma embed went live.** Adding
-  `lumaEventId` to Cohort 2 loaded Luma's iframe, which sets third-party cookies and logs
-  DevTools issues — dropping best-practices 100 → 78 on event pages and failing the
-  Lighthouse gate on three consecutive commits (eb663cb, d615c31, adabb82). It went
-  unnoticed because the DEPLOY workflow does not run Lighthouse and only that was being
-  checked. **Lesson: check `ci.yml`, not just `deploy.yml`, after any change.** The site
-  was never broken — the budget was wrong. Lighthouse now uses an `assertMatrix`: event
-  pages accept ≥0.75 best-practices with the two third-party audits switched off (the
-  embed IS the conversion mechanism, PRD §9), every other page still must score 100. A
-  genuine regression anywhere, including on event pages, still fails the build.
+- **2026-07-25 — Fix: CI had been red since cycle 14 (~12:07), across eight commits.**
+  Two separate faults, found only after reading the actual CI log rather than assuming:
+  1. **The real cause — Lighthouse was auditing the wrong build.** `check:flags` finishes
+     on the all-flags-OFF build, so it left `dist/` with 7 pages and no `/guides/`.
+     Lighthouse then 404'd on the guide URL added to its budget in cycle 14 and errored
+     out. Fixed at the root: `check-flags.mjs` now rebuilds `dist/` from the restored
+     config in its `finally` block, so nothing downstream can ever inspect the wrong
+     site — plus an explicit rebuild step in `ci.yml` as a belt-and-braces guard.
+  2. **A genuine budget problem underneath it.** Luma's booking iframe sets third-party
+     cookies and logs DevTools issues, dropping best-practices to 78 on event pages.
+     Not fixable from our side, and the embed IS the conversion mechanism (PRD §9), so
+     Lighthouse now uses an `assertMatrix`: event pages accept ≥0.75 with those two
+     audits off; every other page must still score 100.
+
+  **Lesson, recorded so it is not repeated: after pushing, check `ci.yml` — not just
+  `deploy.yml`.** Deploy stays green through this class of fault because it does not run
+  Lighthouse, which is exactly why it went unnoticed for eight commits. The live site was
+  never affected.
 
 - **2026-07-25 — Cycle 16: micro-interactions phase 4, all on paths that gave no feedback.**
   Chosen by auditing where a user currently acts and learns nothing, not by adding
