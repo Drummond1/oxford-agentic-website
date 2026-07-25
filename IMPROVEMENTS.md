@@ -4,6 +4,8 @@ This file is the memory of the website improvement loop. A scheduled agent reads
 it first and writes to it last, every cycle, so improvement compounds instead of
 re-deriving from scratch. Same pattern as the delight ledger in the vault.
 
+**Start with [STATE.md](STATE.md)** for current state, blockers and settled decisions.
+
 **Live site:** https://oxfordagentic.com · **Repo:** github.com/Drummond1/oxford-agentic-website
 **Deploy:** push to `main` → GitHub Actions builds + validates → GitHub Pages. Auto-deploys.
 

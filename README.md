@@ -4,6 +4,10 @@ The marketing site for **Oxford Agentic**, the parent brand for a family of in-p
 
 Astro, statically generated, ~zero client JavaScript. Content lives in this repo as markdown — there is no CMS.
 
+**New here, or picking this up after a gap? Read [STATE.md](STATE.md) first** — current
+state, what is blocked on whom, and the decisions already made. [IMPROVEMENTS.md](IMPROVEMENTS.md)
+is the improvement loop's running ledger.
+
 ```bash
 npm install
 npm run dev      # http://localhost:4321
