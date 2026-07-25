@@ -1,0 +1,88 @@
+---
+/**
+ * Visible breadcrumb trail — the on-page twin of the BreadcrumbList JSON-LD.
+ *
+ * Both are rendered from the same array in Base.astro, so the markup and the
+ * schema can never drift apart. It sits on ink above the dark hero, reading as
+ * the top of that band rather than as a strip of its own.
+ */
+interface Props {
+  trail: Array<{ name: string; path: string }>;
+}
+
+const { trail } = Astro.props;
+---
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol class="crumbs__list">
+      {
+        trail.map((item, i) =>
+          i === trail.length - 1 ? (
+            <li class="crumbs__item crumbs__item--current">
+              <span aria-current="page">{item.name}</span>
+            </li>
+          ) : (
+            <li class="crumbs__item">
+              <a href={item.path}>{item.name}</a>
+            </li>
+          ),
+        )
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .crumbs {
+    background: var(--ink-dark);
+    color: var(--muted-on-dark);
+    padding-block-start: clamp(1.4rem, 1rem + 1.5vw, 2.1rem);
+  }
+
+  .crumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.6rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .crumbs__item + .crumbs__item::before {
+    content: '/';
+    margin-inline-end: 0.6rem;
+    color: var(--muted-on-dark-dim);
+  }
+
+  .crumbs__item a {
+    color: var(--muted-on-dark);
+    text-decoration: none;
+    background: linear-gradient(var(--gold), var(--gold)) no-repeat left bottom / 0 1px;
+    transition: color 200ms var(--ease), background-size 220ms var(--ease);
+  }
+
+  .crumbs__item a:hover,
+  .crumbs__item a:focus-visible {
+    color: var(--cream);
+    background-size: 100% 1px;
+  }
+
+  /* The current page is named in full by the <h1> directly below, so the crumb
+     stays on one line rather than wrapping a long guide title over three. */
+  .crumbs__item--current span {
+    display: inline-block;
+    max-width: min(100%, 34ch);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    color: var(--gold);
+  }
+</style>

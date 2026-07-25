@@ -11,6 +11,7 @@ import {
   getEventsForProgramme,
   getProgrammes,
   getTestimonials,
+  isoDuration,
   paths,
   showSection,
 } from '../../lib/site';
@@ -66,6 +67,7 @@ const bands = {
   schemaNodes={[
     {
       '@type': 'Course',
+      '@id': `${config.brand.domain}${path}#course`,
       name: data.name,
       description: data.capsule,
       url: `${config.brand.domain}${path}`,
@@ -73,9 +75,14 @@ const bands = {
       inLanguage: 'en-GB',
       teaches: data.outcomes,
       courseMode: 'onsite',
+      // Google's course rich result reads the workload off each instance; it is
+      // computed from the published start and end times, never asserted.
       hasCourseInstance: upcoming.map((event) => ({
         '@type': 'CourseInstance',
+        name: event.data.title,
+        url: `${config.brand.domain}${paths.event(event.data.slug)}`,
         courseMode: 'onsite',
+        courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
         startDate: event.data.startDate.toISOString(),
         endDate: event.data.endDate.toISOString(),
         location: {

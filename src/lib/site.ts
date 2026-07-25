@@ -216,6 +216,18 @@ export function venueLine(venue: EventEntry['data']['venue']): string {
   return [venue.name, venue.city].filter(Boolean).join(', ');
 }
 
+/**
+ * ISO 8601 duration between two dates, for schema.org duration fields
+ * (`courseWorkload` and friends). Derived from the real published times, so it
+ * can never disagree with the agenda on the page.
+ */
+export function isoDuration(start: Date, end: Date): string {
+  const minutes = Math.max(0, Math.round((end.getTime() - start.getTime()) / 60000));
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  return `PT${hours > 0 ? `${hours}H` : ''}${rest > 0 || hours === 0 ? `${rest}M` : ''}`;
+}
+
 /* ------------------------------------------------------------------ *
  * Luma — PRD §9
  * ------------------------------------------------------------------ */

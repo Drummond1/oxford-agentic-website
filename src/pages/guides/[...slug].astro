@@ -61,6 +61,11 @@ const showCapture = showSection('newsletter');
         { name: 'Guides', path: paths.guides() },
         { name: guide.data.title, path: paths.guide(guide.data.slug) },
       ]}
+      article={{
+        publishedTime: guide.data.publishDate,
+        modifiedTime: guide.data.updatedDate,
+        author: author?.data.name ?? config.brand.name,
+      }}
     >
       <Hero eyebrow="Guide" title={guide.data.title} />
 
