@@ -53,7 +53,7 @@ export interface Brand {
 }
 
 export interface Features {
-  speakers: boolean;
+  team: boolean;
   testimonials: boolean;
   guides: boolean;
   newsletter: boolean;
@@ -122,8 +122,8 @@ const config: SiteConfig = {
    * `npm run build` runs the link checker over the result.
    */
   features: {
-    // V1.1 — no cleared speaker profiles yet.
-    speakers: false,
+    // Live: the four people who run the bootcamp.
+    team: true,
     // V1.1 — Cohort 1 NPS survey went out 22 Jul 2026; nothing consent-cleared.
     testimonials: false,
     // Live: three seed guides published (long-tail SEO/GEO capture).

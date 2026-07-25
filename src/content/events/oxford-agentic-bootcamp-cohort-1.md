@@ -1,5 +1,5 @@
 ---
-title: The Oxford Agentic Bootcamp — Cohort 1
+title: The Oxford Agentic Bootcamp - Cohort 1
 slug: oxford-agentic-bootcamp-cohort-1
 programme: oxford-agentic-bootcamp
 cohort: Cohort 1
@@ -41,23 +41,23 @@ agenda:
     title: Registration and coffee
   - time: 09:15
     title: Welcome and framing
-    detail: The shift from prompting to orchestrating, and the one ask — bring a real task.
+    detail: The shift from prompting to orchestrating, and the one ask - bring a real task.
   - time: 09:35
     title: Anatomy of an agent pipeline
     detail: A scout, drafter and reviewer pipeline built live in front of the room.
   - time: 10:15
-    title: Build one — your own task, first pass
+    title: Build one - your own task, first pass
   - time: 11:30
     title: 'Guest session: Codex and technical debt'
     detail: John Maxwell Hobbs, Vanguard Visions, on using agentic coding tools daily.
   - time: 12:15
-    title: Build two — add a review step
+    title: Build two - add a review step
   - time: 13:00
     title: Lunch
   - time: 13:45
     title: 'Guest session: AI coding in practice'
   - time: 14:15
-    title: Build three — the real task, properly
+    title: Build three - the real task, properly
   - time: 15:30
     title: Showcase and debrief
     detail: Every attendee ran what they had built and named what they would use it for.
@@ -73,12 +73,12 @@ faqs:
       Wednesday 16 September 2026.
   - q: Can I still join this cohort?
     a: >-
-      No — this date has passed. The next cohort is the one to book; it runs the same
+      No - this date has passed. The next cohort is the one to book; it runs the same
       format with the same cap of roughly twenty-five people.
   - q: What did people actually build?
     a: >-
       Each attendee built against a real task from their own work rather than a set
-      exercise, so the pipelines varied — research and drafting workflows, review and
+      exercise, so the pipelines varied - research and drafting workflows, review and
       quality-check steps, and internal reporting tasks. The common shape was a scout
       step, a drafting step and a reviewer step handing off to each other.
 ---

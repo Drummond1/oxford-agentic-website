@@ -10,7 +10,7 @@ links:
 bio: >-
   Drummond Gilbert runs the Oxford Agentic Bootcamp. He teaches on AI at the University
   of Oxford's Saïd Business School, organises Oxford's Practical AI meetup, and has
-  spent his career as a marketing leader — most recently as a fractional CMO — building
+  spent his career as a marketing leader - most recently as a fractional CMO - building
   and shipping with these tools rather than writing about them.
 ---
 

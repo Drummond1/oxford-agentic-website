@@ -71,7 +71,7 @@ const showCapture = showSection('newsletter');
 
       <section class="band band--cream">
         <div class="wrap wrap--narrow">
-          {/* Answer capsule — front-loaded and quotable (PRD §13). */}
+          {/* Answer capsule - front-loaded and quotable (PRD §13). */}
           <p class="capsule" data-reveal>
             {guide.data.capsule}
           </p>
@@ -85,14 +85,14 @@ const showCapture = showSection('newsletter');
             <Body />
           </article>
 
-          {/* Every guide links to at least one programme — PRD §12. */}
+          {/* Every guide links to at least one programme - PRD §12. */}
           {related.length > 0 && (
             <aside class="card related">
               <span class="eyebrow">Where this gets practical</span>
               <ul class="squares">
                 {related.map((programme) => (
                   <li>
-                    <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a> — {programme.data.shortPitch}
+                    <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a> - {programme.data.shortPitch}
                   </li>
                 ))}
               </ul>
@@ -113,7 +113,7 @@ const showCapture = showSection('newsletter');
             </nav>
           )}
 
-          {/* Lead capture — guides earn search/AI traffic; this quietly converts a
+          {/* Lead capture - guides earn search/AI traffic; this quietly converts a
               reader into a subscriber at the moment they are most interested. */}
           {showCapture && (
             <aside class="card capture" data-reveal>

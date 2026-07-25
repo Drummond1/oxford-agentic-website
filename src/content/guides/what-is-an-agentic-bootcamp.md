@@ -22,13 +22,13 @@ Most AI training teaches you to use a model well: how to prompt it, where it fai
 
 Agentic work is what happens when you stop doing that one step at a time. Instead of one prompt doing everything, you break a job into narrow steps and hand them off: something gathers the source material, something drafts against it, something else reviews the draft before you see it. Each step is small enough to be reliable. The chain does the work that used to eat your morning.
 
-That shift — from prompting to orchestrating — is the thing an agentic bootcamp exists to get you through. It is not conceptually hard. It is just hard to do for the first time on your own, at your desk, between meetings.
+That shift - from prompting to orchestrating - is the thing an agentic bootcamp exists to get you through. It is not conceptually hard. It is just hard to do for the first time on your own, at your desk, between meetings.
 
 ## What actually happens on the day
 
 The format varies, but the ones worth attending share a shape:
 
-- **You bring a real task.** Not a case study, not a sample dataset — something from your own work that currently costs you real time. This matters more than any other detail, because it is what stops the day being theoretical.
+- **You bring a real task.** Not a case study, not a sample dataset - something from your own work that currently costs you real time. This matters more than any other detail, because it is what stops the day being theoretical.
 - **You build in cycles, not lectures.** A rough working version early, then something that reviews its own output, then a proper pass at the real thing. Each cycle ends with the room comparing notes.
 - **Someone walks the room.** The failure mode of hands-on AI training is people getting stuck on setup rather than on the idea. A facilitated room fixes that in a minute rather than an afternoon.
 - **You leave with it running.** The test of the day is whether the thing works on Monday, not whether the slides were good.
@@ -37,7 +37,7 @@ The format varies, but the ones worth attending share a shape:
 
 Overwhelmingly, operators rather than engineers: founders, directors, consultants, senior public-sector and university staff. People who already use AI daily, have formed real views about it, and have still never chained three steps together on something they own.
 
-Technical depth is rarely the constraint. Most agentic bootcamps require no coding at all — the tools have moved far enough that the interesting problem is decomposition, not syntax. Knowing which part of your job to hand to a machine, and which judgement to keep, is the actual skill.
+Technical depth is rarely the constraint. Most agentic bootcamps require no coding at all - the tools have moved far enough that the interesting problem is decomposition, not syntax. Knowing which part of your job to hand to a machine, and which judgement to keep, is the actual skill.
 
 ## How to tell a good one from a bad one
 

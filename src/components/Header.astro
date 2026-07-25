@@ -80,7 +80,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
         nextEvent && (
           <li class="mobile-nav__cta">
             <a href={paths.event(nextEvent.data.slug)} class="btn btn--primary">
-              Next Bootcamp — {formatShortDate(nextEvent.data.startDate)}
+              Next Bootcamp - {formatShortDate(nextEvent.data.startDate)}
             </a>
           </li>
         )
@@ -143,7 +143,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
   }
 
   /* Top-level items carry a hairline underline that draws in from the left on
-     hover, and stays put on the current page — orientation plus a small
+     hover, and stays put on the current page - orientation plus a small
      acknowledgement, no layout shift. */
   .site-nav__list > li > a {
     background: linear-gradient(var(--gold), var(--gold)) no-repeat left bottom / 0 1px;

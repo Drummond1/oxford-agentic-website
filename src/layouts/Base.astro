@@ -38,7 +38,7 @@ const {
 
 // PRD §12 title pattern. The brand string comes from config, so a rename
 // rewrites every <title> on the site in one build.
-const title = titleOverride ?? `${pageTitle} — ${config.brand.name}`;
+const title = titleOverride ?? `${pageTitle} - ${config.brand.name}`;
 
 const trail = [{ name: 'Home', path: '/' }, ...breadcrumbs];
 const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null];

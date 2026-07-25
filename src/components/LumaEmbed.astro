@@ -10,11 +10,11 @@ import { lumaEmbedSrc, lumaUrlWithUtm, showSection, type EventEntry } from '../l
  * default #bfcbda88.
  *
  * Three things are deliberate here:
- *  - The fallback link is ALWAYS visible, not a JS-detected error state. If
+ * - The fallback link is ALWAYS visible, not a JS-detected error state. If
  *    third-party content is blocked the visitor still has a way through.
- *  - The iframe is lazy-loaded and given fixed dimensions, so it neither
+ * - The iframe is lazy-loaded and given fixed dimensions, so it neither
  *    blocks LCP nor shifts layout when it paints.
- *  - Every fact inside the embed also exists in the page's own HTML (the key
+ * - Every fact inside the embed also exists in the page's own HTML (the key
  *    facts card) because crawlers cannot read iframes.
  */
 interface Props {

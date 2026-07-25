@@ -12,12 +12,12 @@ capsule: >-
   25 people, the format is hands-on rather than lecture-led, and no coding is required.
 description: >-
   A full day, in a room of about twenty-five senior people, spent building rather than
-  listening. You arrive with one real task from your own work — the thing that
-  currently eats a morning every week — and you spend the day turning it into a
+  listening. You arrive with one real task from your own work - the thing that
+  currently eats a morning every week - and you spend the day turning it into a
   working agentic pipeline you can actually run.
 outcomes:
   - A working agentic pipeline built against your own real task, running by the end of the day
-  - The pattern behind it — scout, drafter, reviewer — and how to apply it to the next task
+  - The pattern behind it - scout, drafter, reviewer - and how to apply it to the next task
   - A clear sense of where the human judgement stays, and where the grunt work goes
   - A room of senior peers working on the same problem, and their contact details
 whoFor:
@@ -33,13 +33,13 @@ faqs:
       capped at roughly twenty-five people and no coding is required.
   - q: Do I need to be technical?
     a: >-
-      No. The day is built for operators, not engineers — founders, directors and
+      No. The day is built for operators, not engineers - founders, directors and
       consultants. If you can use a spreadsheet and have used a chatbot, you have
       enough. Everything is facilitated in the room, and the point of the small cohort
       is that nobody gets left stuck on tooling.
   - q: What does "agentic" actually mean here?
     a: >-
-      Most people use AI one question at a time — one prompt, one tab. Agentic means
+      Most people use AI one question at a time - one prompt, one tab. Agentic means
       several narrow AI steps handed off to each other in a pipeline: a scout that
       gathers, a drafter that produces, a reviewer that checks. The shift is from
       prompting to orchestrating.
@@ -50,7 +50,7 @@ faqs:
       matters more than any preparation.
   - q: Where in Oxford is it held?
     a: >-
-      At an Oxford college — Cohort 1 ran at St Anne's College in Seminar Room 10, set
+      At an Oxford college - Cohort 1 ran at St Anne's College in Seminar Room 10, set
       up cabaret-style so people can work in small groups. The exact venue is confirmed
       on each event's own page.
   - q: How many people are in the room?
@@ -60,7 +60,7 @@ faqs:
   - q: Do I need a paid AI subscription?
     a: >-
       Bring a laptop. You will get the most from the day with a paid plan such as
-      ChatGPT Plus or Claude Pro, but it is not essential — we make sure everyone can
+      ChatGPT Plus or Claude Pro, but it is not essential - we make sure everyone can
       take part either way.
   - q: Can I bring my team, or book for several people?
     a: >-
@@ -70,7 +70,7 @@ faqs:
   - q: What if I book but cannot make the date?
     a: >-
       Your place transfers to a future cohort at no charge. A date that no longer works
-      should not mean a lost seat — just let us know and we will move you.
+      should not mean a lost seat - just let us know and we will move you.
   - q: Is the day recorded?
     a: >-
       No. The value is in being in the room and building, not in a video to watch later.
@@ -81,9 +81,9 @@ faqs:
       than sorting out food.
 ---
 
-The day runs on one idea: most people are still using AI the way they used Google in 2004 — one question, one tab. That is fine, and it is not the interesting part.
+The day runs on one idea: most people are still using AI the way they used Google in 2004 - one question, one tab. That is fine, and it is not the interesting part.
 
-The interesting part is orchestration. Not one AI answering a question, but a small team of narrow steps handing off to each other — a scout that gathers, a drafter that produces, a reviewer that checks. Each one has a job. None of them is magic. Put together, the part of your work that used to take a morning takes a fraction of it, and the judgement call still lands with you.
+The interesting part is orchestration. Not one AI answering a question, but a small team of narrow steps handing off to each other - a scout that gathers, a drafter that produces, a reviewer that checks. Each one has a job. None of them is magic. Put together, the part of your work that used to take a morning takes a fraction of it, and the judgement call still lands with you.
 
 So the day is built around three build cycles rather than three talks. You get to a rough working pass before the first break, add a review step before lunch, and spend the afternoon applying it properly to the task you actually came with. Guest speakers sit between the builds and feed straight back into them. No block is more than twenty-five minutes of anyone talking at you.
 

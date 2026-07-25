@@ -16,7 +16,7 @@ const { variant = 'lockup', class: className = '' } = Astro.props;
 
 <span class:list={['wordmark', `wordmark--${variant}`, className]} aria-label={config.brand.name}>
   {/* "The Quad" mark from the design guidelines. Outer square follows the text
-      colour (cream on dark, ink on cream — both permitted); centre is always
+      colour (cream on dark, ink on cream - both permitted); centre is always
       amber. Never recoloured, rotated or skewed, per the guidelines. */}
   <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
     <rect x="8" y="8" width="84" height="84" fill="none" stroke="currentColor" stroke-width="16" />
@@ -43,7 +43,7 @@ const { variant = 'lockup', class: className = '' } = Astro.props;
   }
 
   /* A quiet nod when the logo is hovered: the amber centre — the heart of the
-     Quad — grows very slightly. Geometry and colour are untouched, so the mark
+     Quad - grows very slightly. Geometry and colour are untouched, so the mark
      never breaks the guidelines' rules. */
   .wordmark__centre {
     transform-origin: center;

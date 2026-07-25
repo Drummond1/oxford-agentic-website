@@ -74,13 +74,13 @@ export async function publicPages(): Promise<PageRef[]> {
     }
   }
 
-  if (showSection('speakers')) {
-    const speakers = await getCollection('speakers');
-    pages.push({ title: 'Speakers', path: paths.speakers(), description: 'Who teaches and hosts.' });
+  if (showSection('team')) {
+    const speakers = await getCollection('team');
+    pages.push({ title: 'Team', path: paths.team(), description: 'The people who run the bootcamp.' });
     for (const speaker of speakers) {
       pages.push({
         title: speaker.data.name,
-        path: paths.speaker(speaker.data.slug),
+        path: paths.teamMember(speaker.data.slug),
         description: `${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}.`,
       });
     }

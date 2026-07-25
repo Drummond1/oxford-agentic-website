@@ -1,8 +1,8 @@
 ---
-import config from '../../site.config';
 import Wordmark from './Wordmark.astro';
 import NewsletterForm from './NewsletterForm.astro';
 import { getNav, getEventsForIndex, paths, formatShortDate, showSection } from '../lib/site';
+import config from '../../site.config';
 
 const nav = await getNav();
 const { upcoming } = await getEventsForIndex();
@@ -31,6 +31,13 @@ const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn
       <h2 class="site-footer__label">Site</h2>
       <ul>
         {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        {/* Team lives in the footer only: it supports credibility without
+            competing with the booking path in the main nav. */}
+        {config.features.team && (
+          <li>
+            <a href={paths.team()}>Team</a>
+          </li>
+        )}
       </ul>
     </nav>
 

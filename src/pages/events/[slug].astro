@@ -52,7 +52,7 @@ const ogImage = ogPathFor(path);
 // PRD §12 title pattern for events: {Event title} | {Month Year} | {Brand}
 const title = `${data.title} | ${formatMonthYear(data.startDate)} | ${config.brand.name}`;
 
-const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' — ');
+const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' - ');
 
 const showAgenda = showSection('agenda', { hidden: data.hideSections, hasContent: data.agenda.length > 0 });
 const showBuild = showSection('whatYoullBuild', { hidden: data.hideSections, hasContent: data.whatYoullBuild.length > 0 });
@@ -236,7 +236,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
             <p class="ran__copy">
               {data.title} took place on {formatDate(data.startDate)} at {venueLine(data.venue)}.
               {successor
-                ? ' The next cohort runs the same format — details below.'
+                ? ' The next cohort runs the same format - details below.'
                 : ' Dates for the next cohort are being confirmed.'}
             </p>
             {successor ? (
@@ -247,7 +247,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
                   data-analytics-event="next_event_cta_click"
                   data-analytics-slug={successor.data.slug}
                 >
-                  {successor.data.cohort ?? 'The next cohort'} — {formatDate(successor.data.startDate, { weekday: undefined, month: 'long' })}
+                  {successor.data.cohort ?? 'The next cohort'} - {formatDate(successor.data.startDate, { weekday: undefined, month: 'long' })}
                 </a>
                 <a href={paths.events()} class="btn btn--ghost">
                   All events
@@ -335,7 +335,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
                 <p>“{t.data.quote}”</p>
                 <footer>
                   <cite>
-                    {t.data.name} — {t.data.role}
+                    {t.data.name} - {t.data.role}
                     {t.data.company && `, ${t.data.company}`}
                   </cite>
                   <span class="quote__when">

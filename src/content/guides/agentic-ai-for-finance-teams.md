@@ -24,17 +24,17 @@ The pattern that works is repeated, evidence-heavy, and ends in something a huma
 - **Commentary and variance narrative.** The numbers come from the ledger; the explanation gets rewritten every month in much the same shape. A pipeline that gathers the movements, drafts the narrative and checks it against last month's wording removes most of the typing without touching the figures.
 - **Reconciliation triage.** Not doing the reconciliation, but sorting the breaks: grouping them, proposing the likely cause, and putting the handful that need a person at the top.
 - **Board and investor pack assembly.** Pulling the same inputs into the same structure, every time, with a step that checks nothing is missing before it reaches you.
-- **First-pass document review.** Contracts, supplier terms, policy documents — a step that flags what departs from your standard, so a person reads the exceptions rather than everything.
+- **First-pass document review.** Contracts, supplier terms, policy documents - a step that flags what departs from your standard, so a person reads the exceptions rather than everything.
 
 ## The work that does not
 
-Anything where the output is the number itself, or where being subtly wrong is expensive and hard to spot. Do not hand over the calculation, the judgement, or the control. If you cannot easily check whether an output is right, it is a poor candidate — not because the tool cannot attempt it, but because you have no cheap way to catch it when it drifts.
+Anything where the output is the number itself, or where being subtly wrong is expensive and hard to spot. Do not hand over the calculation, the judgement, or the control. If you cannot easily check whether an output is right, it is a poor candidate - not because the tool cannot attempt it, but because you have no cheap way to catch it when it drifts.
 
 ## Build the check into the workflow
 
 The single most useful habit in a finance context is making the reviewer a step in the pipeline rather than an afterthought. A workflow that drafts and then explicitly checks its own draft against a stated standard catches far more than one that drafts and stops. It also leaves you something to show: a record of what was checked and against what.
 
-Keep the audit trail in mind from the start. Where the inputs came from, what the workflow did, and who approved the output are not bureaucratic extras in finance — they are the thing that makes the output usable.
+Keep the audit trail in mind from the start. Where the inputs came from, what the workflow did, and who approved the output are not bureaucratic extras in finance - they are the thing that makes the output usable.
 
 ## Where this gets practical
 

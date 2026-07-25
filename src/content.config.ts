@@ -119,7 +119,7 @@ const events = defineCollection({
       agenda: z
         .array(z.object({ time: z.string(), title: z.string(), detail: z.string().optional() }))
         .default([]),
-      speakers: z.array(reference('speakers')).default([]),
+      speakers: z.array(reference('team')).default([]),
       faqs: z.array(faq).default([]),
       capacity: z.number().int().positive().optional(),
       /** Dated, specific outcome stats for past events — PRD §13. */
@@ -157,8 +157,8 @@ const programmes = defineCollection({
     }),
 });
 
-const speakers = defineCollection({
-  loader: glob({ base: './src/content/speakers', pattern: '**/*.md' }),
+const team = defineCollection({
+  loader: glob({ base: './src/content/team', pattern: '**/*.md' }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -172,7 +172,7 @@ const speakers = defineCollection({
       links: z
         .object({ linkedin: z.string().url().optional(), x: z.string().url().optional(), website: z.string().url().optional() })
         .default({}),
-      /** Set true for the canonical host — drives Person schema on /about/. */
+      /** Set true for the canonical host, which drives Person schema on /about/. */
       isHost: z.boolean().default(false),
       order: z.number().int().default(0),
     }),
@@ -207,7 +207,7 @@ const guides = defineCollection({
       slug: z.string().regex(/^[a-z0-9-]+$/),
       description: z.string().max(160),
       capsule: z.string(),
-      author: reference('speakers'),
+      author: reference('team'),
       publishDate: isoDateTime,
       updatedDate: isoDateTime,
       /** Every guide links to ≥1 programme page — PRD §12 internal linking. */
@@ -243,4 +243,4 @@ const photos = defineCollection({
     }),
 });
 
-export const collections = { events, programmes, speakers, testimonials, guides, photos };
+export const collections = { events, programmes, team, testimonials, guides, photos };

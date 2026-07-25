@@ -8,25 +8,28 @@ import { paths } from '../../lib/site';
 import { personSchema } from '../../lib/schema';
 
 /**
- * Speakers — a flagged section (PRD §11).
+ * Team, a flagged section (PRD §11).
  *
  * Index and profile share one rest route so that `getStaticPaths` can return an
  * empty array when the flag is off. A plain `index.astro` would always build,
- * which would leave /speakers/ reachable on a site whose nav no longer offers it.
+ * which would leave /team/ reachable on a site that no longer links to it.
+ *
+ * Deliberately NOT in the main nav: it is linked from the footer only, so it
+ * supports credibility without competing with the booking path.
  */
 export async function getStaticPaths() {
-  if (!config.features.speakers) return [];
+  if (!config.features.team) return [];
 
-  const speakers = (await getCollection('speakers')).sort((a, b) => a.data.order - b.data.order);
+  const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
 
   return [
     // `slug: undefined` generates the index at /speakers/.
-    { params: { slug: undefined }, props: { speakers } },
-    ...speakers.map((speaker) => ({ params: { slug: speaker.data.slug }, props: { speaker, speakers } })),
+    { params: { slug: undefined }, props: { members } },
+    ...members.map((member) => ({ params: { slug: member.data.slug }, props: { speaker: member, members } })),
   ];
 }
 
-const { speaker, speakers } = Astro.props;
+const { speaker, members } = Astro.props;
 const Bio = speaker ? (await render(speaker)).Content : null;
 
 const initials = (name: string) =>
@@ -40,8 +43,8 @@ const initials = (name: string) =>
   speaker ? (
     <Base
       pageTitle={speaker.data.name}
-      description={`${speaker.data.name} — ${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}. ${speaker.data.bio.slice(0, 100)}`}
-      path={paths.speaker(speaker.data.slug)}
+      description={`${speaker.data.name} - ${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}. ${speaker.data.bio.slice(0, 100)}`}
+      path={paths.teamMember(speaker.data.slug)}
       schemaNodes={[
         personSchema({
           name: speaker.data.name,
@@ -53,8 +56,8 @@ const initials = (name: string) =>
         }),
       ]}
       breadcrumbs={[
-        { name: 'Speakers', path: paths.speakers() },
-        { name: speaker.data.name, path: paths.speaker(speaker.data.slug) },
+        { name: 'Team', path: paths.team() },
+        { name: speaker.data.name, path: paths.teamMember(speaker.data.slug) },
       ]}
     >
       <Hero
@@ -85,34 +88,34 @@ const initials = (name: string) =>
           )}
 
           <p class="profile__back">
-            <a href={paths.speakers()}>← All speakers</a>
+            <a href={paths.team()}>Back to the team</a>
           </p>
         </div>
       </section>
     </Base>
   ) : (
     <Base
-      pageTitle="Speakers"
-      description={`The practitioners who teach and host ${config.brand.name} events in Oxford.`}
-      path={paths.speakers()}
-      breadcrumbs={[{ name: 'Speakers', path: paths.speakers() }]}
+      pageTitle="Team"
+      description={`The people who run ${config.brand.name}: practitioners who build with these tools daily.`}
+      path={paths.team()}
+      breadcrumbs={[{ name: 'Team', path: paths.team() }]}
     >
       <Hero
         eyebrow={config.brand.name}
-        title="Who is in the room"
-        subline="Practitioners who build with these tools daily, rather than commentators on them."
+        title="The people who run it"
+        subline="Four practitioners who build with these tools daily, rather than commentators on them. Each runs part of the day."
       />
 
       <section class="band band--cream" aria-labelledby="all">
         <div class="wrap">
           <h2 id="all" class="visually-hidden">
-            All speakers
+            The team
           </h2>
 
-          {speakers.length > 0 ? (
+          {members.length > 0 ? (
             <div class="grid grid--3">
-              {speakers.map((person, i) => (
-                <a href={paths.speaker(person.data.slug)} class="card person" data-reveal data-reveal-delay={i * 80}>
+              {members.map((person, i) => (
+                <a href={paths.teamMember(person.data.slug)} class="card person" data-reveal data-reveal-delay={i * 80}>
                   {person.data.photo && person.data.photoAlt ? (
                     <Image class="person__photo" src={person.data.photo} alt={person.data.photoAlt} width={320} height={320} loading="lazy" />
                   ) : (
@@ -129,7 +132,7 @@ const initials = (name: string) =>
               ))}
             </div>
           ) : (
-            <p class="empty">Speakers for the next cohort are being confirmed.</p>
+            <p class="empty">The team for the next cohort is being confirmed.</p>
           )}
         </div>
       </section>

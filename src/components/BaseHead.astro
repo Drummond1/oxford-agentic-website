@@ -36,8 +36,8 @@ const jsonLd = graph([organizationSchema(), websiteSchema(), ...schemaNodes]);
 <meta name="generator" content={Astro.generator} />
 <meta name="theme-color" content="#051817" />
 
-{/* Preload the three faces that paint above the fold — the hero heading
-    (Newsreader), body copy (IBM Plex Sans) and eyebrows (IBM Plex Mono) —
+{/* Preload the three faces that paint above the fold - the hero heading
+    (Newsreader), body copy (IBM Plex Sans) and eyebrows (IBM Plex Mono) -
     so first paint is in-brand rather than a swapped fallback. */}
 <link rel="preload" href="/fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 <link rel="preload" href="/fonts/plex-sans-400.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
@@ -49,7 +49,7 @@ const jsonLd = graph([organizationSchema(), websiteSchema(), ...schemaNodes]);
 <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
 {
   config.features.guides && (
-    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title={`${config.brand.name} — Guides`} />
+    <link rel="alternate" type="application/rss+xml" href="/rss.xml" title={`${config.brand.name} - Guides`} />
   )
 }
 

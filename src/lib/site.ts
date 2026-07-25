@@ -19,8 +19,8 @@ export const paths = {
   event: (slug: string) => `/events/${slug}/`,
   programmes: () => '/bootcamps/',
   programme: (slug: string) => `/bootcamps/${slug}/`,
-  speakers: () => '/speakers/',
-  speaker: (slug: string) => `/speakers/${slug}/`,
+  team: () => '/team/',
+  teamMember: (slug: string) => `/team/${slug}/`,
   testimonials: () => '/testimonials/',
   guides: () => '/guides/',
   guide: (slug: string) => `/guides/${slug}/`,
@@ -173,7 +173,6 @@ export async function getNav(): Promise<NavItem[]> {
     });
   }
 
-  if (config.features.speakers) items.push({ label: 'Speakers', href: paths.speakers() });
   if (config.features.testimonials) items.push({ label: 'Outcomes', href: paths.testimonials() });
   if (config.features.guides) items.push({ label: 'Guides', href: paths.guides() });
   items.push({ label: 'About', href: paths.about() });

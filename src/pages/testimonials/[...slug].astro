@@ -23,7 +23,7 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
 
 <Base
   pageTitle="Outcomes"
-  description={`What people who attended ${config.brand.name} events in Oxford said afterwards — named, dated and attributed.`}
+  description={`What people who attended ${config.brand.name} events in Oxford said afterwards - named, dated and attributed.`}
   path={paths.testimonials()}
   breadcrumbs={[{ name: 'Outcomes', path: paths.testimonials() }]}
 >
@@ -63,7 +63,7 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
                   <p>“{t.data.quote}”</p>
                   <footer>
                     <cite>
-                      {t.data.name} — {t.data.role}
+                      {t.data.name} - {t.data.role}
                       {t.data.company && `, ${t.data.company}`}
                     </cite>
                     <span class="quote__when">

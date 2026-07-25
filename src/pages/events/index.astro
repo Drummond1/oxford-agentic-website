@@ -16,7 +16,7 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
 
 <Base
   pageTitle="Events"
-  description={`AI bootcamps and events in Oxford from ${config.brand.name} — upcoming cohorts open for registration, and past cohorts with their outcomes.`}
+  description={`AI bootcamps and events in Oxford from ${config.brand.name} - upcoming cohorts open for registration, and past cohorts with their outcomes.`}
   path={paths.events()}
   ogImage={ogPathFor(paths.events())}
   schemaNodes={[
@@ -39,7 +39,7 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
   breadcrumbs={[{ name: 'Events', path: paths.events() }]}
 >
   <Hero
-    eyebrow={`${config.brand.name} — Events`}
+    eyebrow={`${config.brand.name} - Events`}
     title="Every cohort, past and upcoming"
     subline="Small, in-person, hands-on days in Oxford. Upcoming events are open for registration; past ones stay here with what came out of them."
   />
@@ -62,7 +62,7 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
           </div>
         ) : (
           <p class="empty">
-            Nothing is open for registration right now. The next cohort is being scheduled — the{' '}
+            Nothing is open for registration right now. The next cohort is being scheduled - the{' '}
             <a href={paths.programme(programmes[0].data.slug)}>{programmes[0].data.name}</a> page has the format, and how to hear about the next one.
           </p>
         )

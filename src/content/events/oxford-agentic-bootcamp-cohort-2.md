@@ -1,5 +1,5 @@
 ---
-title: The Oxford Agentic Bootcamp — Cohort 2
+title: The Oxford Agentic Bootcamp - Cohort 2
 slug: oxford-agentic-bootcamp-cohort-2
 programme: oxford-agentic-bootcamp
 cohort: Cohort 2
@@ -39,15 +39,15 @@ agenda:
     detail: Why prompting and orchestrating are different skills, and what today is actually for.
   - time: 09:35
     title: Anatomy of an agent pipeline
-    detail: A pipeline built live in front of the room — scout, drafter, reviewer — on a real example.
+    detail: A pipeline built live in front of the room - scout, drafter, reviewer - on a real example.
   - time: 10:15
-    title: Build one — your own task, first pass
+    title: Build one - your own task, first pass
     detail: Facilitated. Everyone gets to a rough working pass, however untidy.
   - time: 11:30
     title: Guest session
     detail: A working practitioner on how they use this daily, feeding straight into the next build.
   - time: 12:15
-    title: Build two — add a review step
+    title: Build two - add a review step
     detail: Push the pipeline past single-shot by giving it something that checks its own work.
   - time: 13:00
     title: Lunch
@@ -55,7 +55,7 @@ agenda:
     title: Guest session
     detail: AI coding and agentic tooling in practice.
   - time: 14:15
-    title: Build three — the real thing
+    title: Build three - the real thing
     detail: Apply it properly to the task you came with. This is the one you take home.
   - time: 15:30
     title: Showcase and debrief
@@ -68,10 +68,10 @@ faqs:
   - q: When and where is it?
     a: >-
       Wednesday 16 September 2026, 09:00 to 17:00, at Worcester College on Walton Street
-      in central Oxford. Registration is open — you can book on this page.
+      in central Oxford. Registration is open - you can book on this page.
   - q: How do I register for Cohort 2?
     a: >-
-      Book directly on this page — the form below takes your registration. If it does not
+      Book directly on this page - the form below takes your registration. If it does not
       load for you, the same booking page is at luma.com/oxfordagentic2.
   - q: Do I need to be technical?
     a: >-
@@ -88,7 +88,7 @@ faqs:
   - q: Do I need a paid AI subscription?
     a: >-
       Bring a laptop. You will get the most from the day with a paid plan such as
-      ChatGPT Plus or Claude Pro, but it is not essential — we make sure everyone can
+      ChatGPT Plus or Claude Pro, but it is not essential - we make sure everyone can
       take part either way.
   - q: Can I bring my team?
     a: >-
@@ -100,6 +100,6 @@ faqs:
       will move you.
   - q: Is the day recorded, and is lunch included?
     a: >-
-      The day is not recorded — the value is in building in the room, and you leave with
+      The day is not recorded - the value is in building in the room, and you leave with
       the workflow rather than a video. Lunch and refreshments are provided.
 ---

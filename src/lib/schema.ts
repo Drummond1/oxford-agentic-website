@@ -208,11 +208,11 @@ export function personSchema(speaker: {
   const sameAs = Object.values(speaker.links).filter(Boolean);
   return {
     '@type': 'Person',
-    '@id': `${absoluteUrl(paths.speaker(speaker.slug))}#person`,
+    '@id': `${absoluteUrl(paths.teamMember(speaker.slug))}#person`,
     name: speaker.name,
     jobTitle: speaker.role,
     description: speaker.bio,
-    url: absoluteUrl(paths.speaker(speaker.slug)),
+    url: absoluteUrl(paths.teamMember(speaker.slug)),
     ...(speaker.company ? { worksFor: { '@type': 'Organization', name: speaker.company } } : {}),
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
@@ -235,7 +235,7 @@ export function articleSchema(guide: {
     datePublished: guide.publishDate.toISOString(),
     dateModified: guide.updatedDate.toISOString(),
     image: [guide.ogImage],
-    author: { '@id': `${absoluteUrl(paths.speaker(guide.authorSlug))}#person`, '@type': 'Person', name: guide.authorName },
+    author: { '@id': `${absoluteUrl(paths.teamMember(guide.authorSlug))}#person`, '@type': 'Person', name: guide.authorName },
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: absoluteUrl(paths.guide(guide.slug)),
     inLanguage: 'en-GB',

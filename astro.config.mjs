@@ -48,7 +48,7 @@ const lastmodByPath = contentLastmod();
  * routes are never generated, so they must also be kept out of the sitemap.
  */
 const flaggedOffPrefixes = [
-  !siteConfig.features.speakers && '/speakers',
+  !siteConfig.features.team && '/team',
   !siteConfig.features.testimonials && '/testimonials',
   !siteConfig.features.guides && '/guides',
 ].filter(Boolean);
