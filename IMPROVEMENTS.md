@@ -68,8 +68,14 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Write a 5th guide once a query gap is known (hold until Search Console data
-   exists, so it targets a real query rather than a guess).
+9. `todo` — Content cluster, continued: audience-shaped guides at ~one per cycle, never
+   more than one per day (steady cadence beats a flood, and Perplexity rewards fresh).
+   Next candidates, in order: "Agentic AI for consultants", "Agentic AI for public-sector
+   and NHS leaders", "How to run an AI pilot that survives contact with your team".
+   Each must answer a real question, stand alone, and link to the programme once.
+   HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
+   "AI training Cambridge") or thin near-duplicates; Google penalises them and they
+   cheapen the brand. Query-shaped and genuinely useful, or not at all.
 10. `blocked` (needs Drummond to approve his own bio) — turn `speakers` on. His profile
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
@@ -84,6 +90,15 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-25 — Cycle 11: content cluster opened (glossary + comparison guide).**
+  Two new query-shaped pages: "A plain-English glossary of agentic AI" (definition
+  shape — the format AI assistants quote most readily; 12 terms, each a self-contained
+  answer) and "AI bootcamp, AI course or executive education: which do you need?"
+  (comparison shape — how buyers actually decide; honest about what each route is for).
+  6 guides now live; 15 pages; internal links 414 → 496. Linked only through the quiet
+  surfaces (guides index, More-guides cross-links, Further reading, RSS, sitemap,
+  llms.txt) — the content layer stays subtle, never a primary feature of the site.
 
 - **2026-07-25 — Cycle 10: keyword alignment on the primary ranking page.** The
   programme page — the page targeting "AI bootcamp Oxford" — never said "AI bootcamp"
