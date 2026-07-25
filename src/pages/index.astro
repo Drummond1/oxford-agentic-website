@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: 'Who are the bootcamps for?',
-    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector and university staff. Most have done an executive AI course and want the hands-on follow-through.',
+    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector, NHS and university staff. It suits anyone who has done an executive AI course and wants the hands-on follow-through.',
   },
   {
     q: 'Do I need to be technical?',
@@ -40,15 +40,15 @@ const faqs = [
   },
   {
     q: 'Where in Oxford are the events held?',
-    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Each event page confirms its own venue.",
+    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Cohort 2 is at Worcester College on Walton Street, in central Oxford. Each event page confirms its own venue and date.",
   },
   {
     q: 'What will I actually leave with?',
-    a: 'A working agentic AI workflow, built against a real task from your own work and running by the end of the day, plus the underlying pattern so you can build the next one yourself.',
+    a: 'A working agentic AI workflow, built against a real task from your own work and running by the end of the day. You also leave with the pattern behind it - a scout step, a drafter step and a reviewer step handing off to each other - so you can build the next one yourself.',
   },
   {
     q: 'Can I bring my team?',
-    a: 'Yes. Teams are welcome, and colleagues often get more from it by building alongside each other and taking the same pattern back to work. Email hello@oxfordagentic.com and we will arrange it.',
+    a: 'Yes. Teams are welcome, and bringing a colleague means the same pattern goes back to work with two of you rather than one. Email hello@oxfordagentic.com and we will arrange it.',
   },
   {
     q: 'What if I book but cannot make the date?',
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: 'How much does it cost?',
-    a: 'Pricing is shown on the booking page for each event, along with any early-bird rate. Follow the register link on the event you are interested in.',
+    a: 'Pricing is shown on the booking page for each event, along with any early-bird rate. Open the event you are interested in and the booking form sits on that page.',
   },
 ];
 
@@ -85,7 +85,7 @@ const bands = {
   schemaNodes={[faqSchema(faqs)]}
 >
   <Hero
-    eyebrow="In-person · Hands-on · Oxford"
+    eyebrow="One day · Hands-on · An Oxford college"
     title="Build agents. In a day. In Oxford."
     subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
     motif
@@ -95,15 +95,15 @@ const bands = {
       {
         nextThree[0] ? (
           <a href={paths.event(nextThree[0].data.slug)} class="btn btn--primary" data-analytics-event="next_event_cta_click" data-analytics-slug={nextThree[0].data.slug}>
-            See the next Bootcamp
+            Book the next cohort
           </a>
         ) : (
           <a href={paths.events()} class="btn btn--primary">
-            See the Bootcamp
+            See past cohorts
           </a>
         )
       }
-      <a href={paths.events()} class="btn btn--ghost">All events</a>
+      <a href={paths.events()} class="btn btn--ghost">All dates</a>
     </div>
   </Hero>
 
@@ -116,8 +116,8 @@ const bands = {
         <p>
           {
             nextThree.length > 0
-              ? 'Small cohorts that book up ahead of time. Each one is capped so the day stays hands-on, not a lecture.'
-              : 'Dates for the next cohort are being confirmed. Leave your email and you will hear first.'
+              ? 'Each cohort is capped at roughly twenty-five, so the day stays facilitated rather than lectured. Cohort 1 ran with sixteen.'
+              : 'Dates for the next cohort are not fixed yet. Leave your email and you will hear the date and venue as soon as they are.'
           }
         </p>
       </div>
@@ -158,8 +158,8 @@ const bands = {
           <h3>You build, we facilitate</h3>
           <ul class="squares">
             <li>Three build cycles, not three lectures</li>
-            <li>Your own real task, from your actual work</li>
-            <li>Someone walks the room to unstick you</li>
+            <li>One real task, brought from your own week</li>
+            <li>Someone walks over when you get stuck</li>
           </ul>
         </div>
 
@@ -168,8 +168,8 @@ const bands = {
           <h3>Senior peers, in Oxford</h3>
           <ul class="squares">
             <li>Capped at roughly twenty-five people</li>
-            <li>Founders, directors, C-suite and consultants</li>
-            <li>Held in an Oxford college, cabaret layout</li>
+            <li>Founders, directors, consultants, public sector</li>
+            <li>An Oxford college, laid out for small-group work</li>
           </ul>
         </div>
 
@@ -220,7 +220,7 @@ const bands = {
         <div class="wrap">
           <div class="section-head" data-reveal>
             <hr class="dash" />
-            <h2 id="programmes">The programmes</h2>
+            <h2 id="programmes">What we run</h2>
           </div>
 
           <div class="programme-rows">
@@ -264,9 +264,9 @@ const bands = {
             <h2 id="capture" class="capture__title">
               Not ready to book?
             </h2>
-            <p class="capture__copy">Hear about the next cohort before it goes public.</p>
+            <p class="capture__copy">You will get the date, venue and booking link as soon as the next cohort is set.</p>
           </div>
-          <NewsletterForm label="Be first to hear about the next cohort" />
+          <NewsletterForm label="Hear about the next cohort first" />
         </div>
       </section>
     )
