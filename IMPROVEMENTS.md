@@ -83,11 +83,38 @@ Status: `todo` · `blocked` (why) · `doing`
     of a real person unreviewed.
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
-12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
+13. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
+14. `todo` — Schema depth, next candidates (generated cycle 13, in rough value order):
+    a `WebPage` node per page (`isPartOf` the WebSite, `primaryImageOfPage`, `datePublished`
+    /`dateModified`) so every URL is a first-class node rather than only its Article/Event;
+    `subEvent` on the event nodes so the published agenda is machine-readable as a
+    schedule; `ImageObject` + captions on the Cohort 1 photos (they are already
+    consent-cleared and on the page); `about`/`articleSection` on Article nodes.
+15. `todo` — Audit the 404 page as a real landing surface (it takes organic traffic from
+    dead links and is the one page with no breadcrumb trail): check it routes to the
+    programme, guides and events rather than only home.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-25 — Cycle 13: visible breadcrumbs, article metadata, course workload.**
+  No Search Console export in `seo-data/` yet, and cycle 12 had already shipped the
+  day's guide allowance, so this cycle worked the technical tier. (a) Breadcrumbs are
+  now visible on all 15 deep pages, rendered from the same trail array that feeds the
+  BreadcrumbList JSON-LD — one source of truth, so markup and schema cannot drift.
+  They sit on ink above the dark hero and read as the top of that band; the current
+  crumb is ellipsis-truncated to one line because the h1 names the page in full
+  directly below. Internal links 586 → 612; every deep page now has a route back to
+  its section and to home. (b) Guides send `og:type=article` plus
+  `article:published_time` / `modified_time` / `author` / `publisher`, so crawlers and
+  social cards that never parse JSON-LD still read freshness and authorship.
+  (c) `CourseInstance` gained `courseWorkload` (PT7H30M, computed by `isoDuration()`
+  from the published start and end times — never asserted), plus a per-instance
+  `name`/`url` and a stable `@id` on the Course node. Workload is the duration field
+  Google's course rich result wants; `offers` is still deliberately absent because
+  price lives on Luma. Build green: 17 pages, 612 links resolve, schema valid.
+  Verified in the browser at desktop and mobile, no console errors.
 
 - **2026-07-25 — Cycle 12: probe-driven guides, lead capture on guides, micro phase 2.**
   Shipped the top two recommendations from the GEO probe: "You've finished an AI
@@ -182,6 +209,11 @@ _(dated, newest first — filled by the loop)_
 
 _(so the loop never re-pitches — record the reason)_
 
+- **`offers` on the Course node (2026-07-25, cycle 13).** Google's course rich result
+  reads `offers`, but a valid `Offer` means publishing a price, and price lives on Luma
+  by policy (PRD §18). The `EducationEvent` node already carries a priceless `Offer`
+  with availability only. Not revisited unless the pricing policy itself changes.
+
 ## GEO baseline (Perplexity probe, 2026-07-25)
 
 Asked Perplexity: "best hands-on AI training or AI bootcamp in Oxford for business
@@ -204,15 +236,18 @@ leaders — I want to actually build something, not just listen to talks." Findi
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
-- Search Console: property VERIFIED 2026-07-23 (DNS TXT). As of 2026-07-25 there is
-  still no export in `seo-data/` — either data hasn't accrued yet (new property,
-  3–7 days) or the CSVs haven't been dropped in. The loop stays backlog-driven
-  until `Queries.csv` appears.
+- Search Console (checked 2026-07-25, cycle 13): `seo-data/` still holds only its
+  README — **no Search Console export available**, so this cycle could not be
+  signal-driven. The property was verified 2026-07-23 (DNS TXT), so data should
+  start accruing; **Drummond: export Performance → Queries.csv and Pages.csv into
+  `seo-data/`** (git-ignored) and the loop switches to gap-driven work immediately.
+  Until then it stays backlog-driven and technical.
 - Analytics: not connected yet.
 - Luma registrations: track weekly per event.
 - Last Lighthouse (local, 2026-07-23): home, event and guide pages all
   100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0.
-- Site size: 13 pages live (12 in sitemap + 404); 4 guides; 414 internal links.
+- Site size (2026-07-25, after cycle 13): 17 pages built (16 in sitemap + 404);
+  8 guides; 612 internal links.
 - **Loop status:** high-value unblocked work is largely done. Before declaring the
   backlog empty, GENERATE new candidates (technical SEO surfaces, schema depth,
   accessibility, performance, content gaps) — only stop when genuinely nothing
