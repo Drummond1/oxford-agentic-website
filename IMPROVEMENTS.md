@@ -74,9 +74,9 @@ Status: `todo` · `blocked` (why) · `doing`
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
     of a real person unreviewed.
-11. `todo` — Continue the manual accessibility audit: keyboard path through the nav
-    dropdown and mobile menu, FAQ accordion, Luma embed fallback link, and focus order
-    around the sticky mobile bar. (Scroll-reveal focus trap fixed in cycle 7.)
+11. `todo` — Micro-interaction pass, phase 2 (Drummond asked for these live, 2026-07-25):
+    consider a subtle entrance for the sticky mobile bar and a draw-in on the amber dash.
+    Keep to the established language — quiet, fast, reduced-motion-safe, no bounce.
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
@@ -84,6 +84,19 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-25 — Cycle 9: guide cross-links, keyboard fixes, micro-interactions.**
+  Every guide page now ends with a "More guides" nav linking its three siblings —
+  no guide dead-ends, internal links 402 → 414. Accessibility audit continued and
+  closed out: Escape now closes the mobile menu and returns focus to the toggle;
+  removed the Luma iframe's redundant `tabindex="0"` (was a double tab stop) and the
+  no-op `aria-hidden="false"` attributes; dropdown (`:focus-within`), FAQ accordion
+  (native `details`) and always-visible Luma fallback link all verified sound.
+  Micro-interaction pass (requested live by Drummond mid-cycle): CTA arrows nudge
+  forward on hover, buttons settle on press, FAQ answers fade in on open, top-nav
+  links draw a gold underline (held on the current page). All inherit the global
+  reduced-motion override. Verified in the browser: More-guides links resolve,
+  Escape/focus behaviour confirmed, underline + arrow transitions live.
 
 - **2026-07-24 — Cycle 8: FAQ depth from Drummond's answers (+ FAQPage schema).**
   Added five real Q&As (paid subscription, team bookings, transfer if you can't make the
@@ -140,13 +153,15 @@ _(so the loop never re-pitches — record the reason)_
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
-- Search Console: property VERIFIED 2026-07-23 (DNS TXT). No query data yet — a new
-  property takes roughly 3–7 days to report. Loop reads exports from `seo-data/`.
+- Search Console: property VERIFIED 2026-07-23 (DNS TXT). As of 2026-07-25 there is
+  still no export in `seo-data/` — either data hasn't accrued yet (new property,
+  3–7 days) or the CSVs haven't been dropped in. The loop stays backlog-driven
+  until `Queries.csv` appears.
 - Analytics: not connected yet.
 - Luma registrations: track weekly per event.
 - Last Lighthouse (local, 2026-07-23): home, event and guide pages all
   100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0.
-- Site size: 13 pages live (12 in sitemap + 404); 4 guides.
+- Site size: 13 pages live (12 in sitemap + 404); 4 guides; 414 internal links.
 - **Loop status:** high-value unblocked work is largely done. Before declaring the
   backlog empty, GENERATE new candidates (technical SEO surfaces, schema depth,
   accessibility, performance, content gaps) — only stop when genuinely nothing
