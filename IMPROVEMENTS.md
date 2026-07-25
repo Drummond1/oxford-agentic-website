@@ -84,12 +84,11 @@ Status: `todo` · `blocked` (why) · `doing`
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 13. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
-14. `todo` — Schema depth, next candidates (generated cycle 13, in rough value order):
-    a `WebPage` node per page (`isPartOf` the WebSite, `primaryImageOfPage`, `datePublished`
-    /`dateModified`) so every URL is a first-class node rather than only its Article/Event;
-    `subEvent` on the event nodes so the published agenda is machine-readable as a
-    schedule; `ImageObject` + captions on the Cohort 1 photos (they are already
-    consent-cleared and on the page); `about`/`articleSection` on Article nodes.
+14. `todo` — Schema depth, remaining (subEvent + event images shipped in cycle 15):
+    a `WebPage` node per page (`isPartOf` the WebSite, `primaryImageOfPage`,
+    `datePublished`/`dateModified`) so every URL is a first-class node rather than only
+    its Article/Event; `about`/`articleSection` on Article nodes; captions on the photo
+    `ImageObject`s.
 15. `todo` — Audit the 404 page as a real landing surface (it takes organic traffic from
     dead links and is the one page with no breadcrumb trail): check it routes to the
     programme, guides and events rather than only home.
@@ -97,6 +96,18 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-25 — Cycle 15: the agenda becomes machine-readable (schema depth).**
+  Event nodes now carry `subEvent` — all 12 agenda rows as real sub-events with precise
+  BST timestamps composed from the event's own date, so an assistant asked "what does
+  the day look like?" reads the actual schedule instead of inferring it from prose. Rows
+  without a parseable HH:MM carry no timestamp rather than an invented one. Cohort 1's
+  consent-cleared photos are now also `image` entries on its Event node (3 images):
+  Google's event rich results prefer real photography over a generated card. Verified
+  the emitted JSON-LD by hand — offsets correct, each row handing off to the next.
+  Flags test: all-on 20 pages/823 links, all-off 8 pages/222 links, both clean.
+  Guides deliberately NOT extended this cycle: the one-guide-per-day rule was already
+  spent by cycles 11–12 today.
 
 - **2026-07-25 — Cycle 14: micro-interactions phase 3 (incl. a missed PRD item).**
   (a) **Animated stat counters** — PRD §10 specified these and they had never been
