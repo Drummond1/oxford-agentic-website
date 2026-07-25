@@ -133,6 +133,20 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     white-space: nowrap;
   }
 
+  /* Top-level items carry a hairline underline that draws in from the left on
+     hover, and stays put on the current page — orientation plus a small
+     acknowledgement, no layout shift. */
+  .site-nav__list > li > a {
+    background: linear-gradient(var(--gold), var(--gold)) no-repeat left bottom / 0 1px;
+    padding-block-end: 0.3rem;
+    transition: color 200ms var(--ease), background-size 220ms var(--ease);
+  }
+
+  .site-nav__list > li > a:hover,
+  .site-nav__list > li > a[aria-current='page'] {
+    background-size: 100% 1px;
+  }
+
   .site-nav a:hover,
   .site-nav a[aria-current='page'] {
     color: var(--gold);
@@ -275,5 +289,15 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     const open = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!open));
     if (panel) panel.hidden = open;
+  });
+
+  // Escape closes the open menu and hands focus back to the toggle, so a
+  // keyboard user is not stranded inside a panel they can no longer see.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (toggle?.getAttribute('aria-expanded') !== 'true') return;
+    toggle.setAttribute('aria-expanded', 'false');
+    if (panel) panel.hidden = true;
+    toggle.focus();
   });
 </script>

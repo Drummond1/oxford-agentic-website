@@ -30,6 +30,10 @@ const programmes = await getProgrammes();
 const related = guide
   ? programmes.filter((p) => guide.data.relatedProgrammes.some((ref) => ref.id === p.id))
   : [];
+
+// Sibling guides — every guide links to the others, so no guide is reachable
+// only via the index and link equity circulates within the section.
+const otherGuides = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
 ---
 
 {
@@ -86,6 +90,20 @@ const related = guide
                 ))}
               </ul>
             </aside>
+          )}
+
+          {/* Sibling guides, so readers (and crawlers) never dead-end here. */}
+          {otherGuides.length > 0 && (
+            <nav class="more" aria-labelledby="more-guides">
+              <h2 id="more-guides" class="more__title">More guides</h2>
+              <ul class="more__list">
+                {otherGuides.map((g) => (
+                  <li>
+                    <a href={paths.guide(g.data.slug)}>{g.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           )}
         </div>
       </section>
@@ -196,6 +214,37 @@ const related = guide
 
   .related .eyebrow {
     margin-block-end: 0.8rem;
+  }
+
+  .more {
+    margin-block-start: 2.5rem;
+    padding-block-start: 1.75rem;
+    border-block-start: 1px solid rgba(5, 24, 23, 0.14);
+  }
+
+  .more__title {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+    color: var(--rust);
+  }
+
+  .more__list {
+    list-style: none;
+    margin: 0.9rem 0 0;
+    padding: 0;
+  }
+
+  .more__list li + li {
+    margin-block-start: 0.55rem;
+  }
+
+  .more__list a {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    color: var(--ink-dark);
   }
 
   .guide-card {

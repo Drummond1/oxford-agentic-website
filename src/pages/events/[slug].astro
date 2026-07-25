@@ -382,7 +382,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
   {/* ---- Sticky mobile bar ---- */}
   {
     !isPast && (
-      <div class="sticky-bar" aria-hidden="false">
+      <div class="sticky-bar">
         <span class="sticky-bar__date">{formatDate(data.startDate, { weekday: 'short', year: undefined })}</span>
         <a href="#register" class="btn btn--primary sticky-bar__cta">
           {!registrationOpen ? 'Notify me' : status === 'soldout' ? 'Waitlist' : 'Register'}

@@ -111,6 +111,19 @@ const { faqs } = Astro.props;
     max-width: var(--measure);
   }
 
+  /* The answer settles in rather than snapping open. Reduced-motion users get
+     an instant open via the global override. */
+  .faq__item[open] .faq__a {
+    animation: faq-in 260ms var(--ease);
+  }
+
+  @keyframes faq-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+  }
+
   .faq__a p {
     font-size: var(--step-sm);
     line-height: 1.65;

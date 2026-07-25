@@ -371,6 +371,23 @@ a.card:hover,
   border-color: var(--gold);
 }
 
+/*
+ * Micro-interaction: arrows inside buttons and card CTAs nudge forward on
+ * hover — a small acknowledgement of intent, no layout shift (the arrow is
+ * absolutely positioned within its own inline box via transform). Scoped to
+ * decorative arrow spans only; reduced-motion neutralises it globally.
+ */
+a.card [aria-hidden='true'],
+.btn [aria-hidden='true'] {
+  display: inline-block;
+  transition: transform 200ms var(--ease);
+}
+
+a.card:hover [aria-hidden='true'],
+.btn:hover [aria-hidden='true'] {
+  transform: translateX(4px);
+}
+
 /* ---- Signature: small coloured-square bullets, never discs ---- */
 .squares {
   list-style: none;
@@ -417,6 +434,12 @@ a.card:hover,
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+/* Press feedback: the lift settles back under the pointer — quick, tactile. */
+.btn:active {
+  transform: translateY(0);
+  transition-duration: 70ms;
 }
 
 /* Amber fill, ink text, squared, no shadow. Hover DARKENS the fill ~8%
