@@ -85,6 +85,14 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-25 — Cycle 10: keyword alignment on the primary ranking page.** The
+  programme page — the page targeting "AI bootcamp Oxford" — never said "AI bootcamp"
+  in its title or meta, and its title wasted length repeating the brand ("The Oxford
+  Agentic Bootcamp — Oxford Agentic"). Now: title "The Oxford Agentic Bootcamp |
+  One-day AI bootcamp in Oxford", shortPitch/meta and answer capsule aligned (both
+  truthful, capsule at 56 words), events-index description de-duplicated. This is the
+  single highest-leverage on-page SEO fix available pre-data.
+
 - **2026-07-25 — Cycle 9: guide cross-links, keyboard fixes, micro-interactions.**
   Every guide page now ends with a "More guides" nav linking its three siblings —
   no guide dead-ends, internal links 402 → 414. Accessibility audit continued and

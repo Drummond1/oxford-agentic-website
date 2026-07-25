@@ -3,13 +3,13 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-07-24T09:00:00+01:00"
-shortPitch: One day in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
+updatedDate: "2026-07-25T09:00:00+01:00"
+shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
-  The Oxford Agentic Bootcamp is a one-day, in-person course in Oxford for business
-  leaders. Attendees bring a real task from their own work and leave having built and
-  run a working agentic AI workflow against it. Cohorts are capped at roughly 25
-  people, the format is hands-on rather than lecture-led, and no coding is required.
+  The Oxford Agentic Bootcamp is a one-day, in-person AI bootcamp in Oxford for
+  business leaders. Attendees bring a real task from their own work and leave having
+  built and run a working agentic AI workflow against it. Cohorts are capped at roughly
+  25 people, the format is hands-on rather than lecture-led, and no coding is required.
 description: >-
   A full day, in a room of about twenty-five senior people, spent building rather than
   listening. You arrive with one real task from your own work — the thing that
