@@ -703,6 +703,16 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
   @media (max-width: 48rem) {
     .sticky-bar {
       display: flex;
+      animation: bar-rise 360ms var(--ease) 250ms backwards;
+    }
+
+    @keyframes bar-rise {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
     }
 
     /* Keep the footer clear of the bar. */

@@ -68,10 +68,11 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster, continued: audience-shaped guides at ~one per cycle, never
-   more than one per day (steady cadence beats a flood, and Perplexity rewards fresh).
-   Next candidates, in order: "Agentic AI for consultants", "Agentic AI for public-sector
-   and NHS leaders", "How to run an AI pilot that survives contact with your team".
+9. `todo` — Content cluster, continued (probe-driven order): next is "Questions to ask
+   before booking AI training" (buyer's checklist — engines build comparison tables and
+   this hands them the criteria), then "Agentic AI for consultants", "Agentic AI for
+   public-sector and NHS leaders", "How to run an AI pilot that survives contact with
+   your team". ~One per cycle, never more than one per day.
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -80,9 +81,6 @@ Status: `todo` · `blocked` (why) · `doing`
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
     of a real person unreviewed.
-11. `todo` — Micro-interaction pass, phase 2 (Drummond asked for these live, 2026-07-25):
-    consider a subtle entrance for the sticky mobile bar and a draw-in on the amber dash.
-    Keep to the established language — quiet, fast, reduced-motion-safe, no bounce.
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 12. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
@@ -90,6 +88,17 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-25 — Cycle 12: probe-driven guides, lead capture on guides, micro phase 2.**
+  Shipped the top two recommendations from the GEO probe: "You've finished an AI
+  executive programme. Now what?" (speaks to the PRD's primary audience at the exact
+  moment the engines frame exec ed as strategic-not-hands-on) and "What does 'hands-on'
+  actually mean in AI training?" (owns the axis term the whole query space pivots on).
+  8 guides; 17 pages; links 496 → 586. Lead-gen: every guide now ends with a quiet
+  email-capture card — organic readers convert to subscribers on the page they landed
+  on; homepage untouched (0 guide links in its main flow, verified). Micro-interactions
+  phase 2 (backlog 11): the amber dash draws in from the left as its section reveals;
+  the event page's sticky mobile bar rises in once on load. Both reduced-motion-safe.
 
 - **2026-07-25 — Cycle 11: content cluster opened (glossary + comparison guide).**
   Two new query-shaped pages: "A plain-English glossary of agentic AI" (definition

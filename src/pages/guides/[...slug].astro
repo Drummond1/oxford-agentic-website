@@ -3,7 +3,8 @@ import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
-import { formatDate, getProgrammes, paths } from '../../lib/site';
+import NewsletterForm from '../../components/NewsletterForm.astro';
+import { formatDate, getProgrammes, paths, showSection } from '../../lib/site';
 import { articleSchema } from '../../lib/schema';
 import { absoluteUrl } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
@@ -34,6 +35,7 @@ const related = guide
 // Sibling guides — every guide links to the others, so no guide is reachable
 // only via the index and link equity circulates within the section.
 const otherGuides = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
+const showCapture = showSection('newsletter');
 ---
 
 {
@@ -104,6 +106,14 @@ const otherGuides = guide ? guides.filter((g) => g.data.slug !== guide.data.slug
                 ))}
               </ul>
             </nav>
+          )}
+
+          {/* Lead capture — guides earn search/AI traffic; this quietly converts a
+              reader into a subscriber at the moment they are most interested. */}
+          {showCapture && (
+            <aside class="card capture" data-reveal>
+              <NewsletterForm compact label="Hear about the next cohort first" />
+            </aside>
           )}
         </div>
       </section>
@@ -214,6 +224,10 @@ const otherGuides = guide ? guides.filter((g) => g.data.slug !== guide.data.slug
 
   .related .eyebrow {
     margin-block-end: 0.8rem;
+  }
+
+  .capture {
+    margin-block-start: 2.5rem;
   }
 
   .more {

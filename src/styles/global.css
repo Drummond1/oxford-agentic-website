@@ -313,6 +313,14 @@ a {
   border: 0;
   background: var(--gold);
   margin-block-end: 1.5rem;
+  transform-origin: left;
+  transition: transform 520ms var(--ease) 100ms;
+}
+
+/* The rule draws in from the left as its section reveals — the brand's
+   signature mark arriving deliberately rather than just appearing. */
+.js-motion [data-reveal]:not(.is-revealed) .dash {
+  transform: scaleX(0);
 }
 
 .band--gold .dash {
