@@ -1,0 +1,30 @@
+---
+/**
+ * The homepage as it stood before photography — kept as a live reference so the
+ * two designs can be compared side by side rather than from memory.
+ *
+ * It is deliberately invisible to search: noindex, out of the sitemap (see the
+ * filter in astro.config.mjs) and unlinked from the navigation. A second
+ * homepage that crawlers could reach would split the ranking signals for the
+ * one page on this site that matters most, and would give AI search engines two
+ * competing answers to "what is Oxford Agentic".
+ *
+ * It renders the same <HomeSections> component as `/`, with photography off, so
+ * it can never drift out of date on copy, events or FAQ.
+ */
+import Base from '../layouts/Base.astro';
+import HomeSections from '../components/HomeSections.astro';
+import config from '../../site.config';
+import { ogPathFor } from '../lib/og';
+---
+
+<Base
+  pageTitle="Homepage - original design"
+  titleOverride={`${config.brand.name} - homepage, original design`}
+  description="A reference copy of the Oxford Agentic homepage as it was designed before photography was added. Not indexed, and not part of the public site."
+  path="/home-original/"
+  ogImage={ogPathFor('/')}
+  noindex
+>
+  <HomeSections withPhotos={false} />
+</Base>

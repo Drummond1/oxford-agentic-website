@@ -1,0 +1,421 @@
+---
+/**
+ * Every section of the homepage below <head>, shared by both homepage variants.
+ *
+ * `/` renders it with photography; `/home-original/` renders it without, as a
+ * reference copy of the pre-photography design. One component rather than two
+ * page files, because the alternative is two homepages that quietly disagree
+ * about the FAQ, the CTA wording and the event copy within a fortnight.
+ */
+import { Image } from 'astro:assets';
+import Hero from './Hero.astro';
+import EventCard from './EventCard.astro';
+import Faq from './Faq.astro';
+import GoldDivider from './GoldDivider.astro';
+import NewsletterForm from './NewsletterForm.astro';
+import { createRhythm, getEventsForIndex, getPhotos, getProgrammes, getTestimonials, paths, showSection } from '../lib/site';
+import { homeFaqs } from '../lib/home';
+
+interface Props {
+  /** Off for the reference variant, which keeps the original typographic hero. */
+  withPhotos?: boolean;
+}
+
+const { withPhotos = true } = Astro.props;
+
+const { upcoming } = await getEventsForIndex();
+const programmes = await getProgrammes();
+const testimonials = await getTestimonials();
+
+// Photography comes from the consent-gated manifest, never from a filename in
+// the markup — so a photo can be pulled by flipping one flag in photos.json.
+const photos = withPhotos ? await getPhotos() : [];
+const photoById = new Map(photos.map((p) => [p.id, p]));
+const heroPhoto = photoById.get('cohort-1-seminar-room-working');
+const roomPhotos = ['cohort-1-room-and-cohort', 'cohort-1-flipchart-group', 'cohort-1-st-annes-registration-desk']
+  .map((id) => photoById.get(id))
+  .filter((p) => p !== undefined);
+const byId = new Map(programmes.map((p) => [p.id, p]));
+
+const nextThree = upcoming.slice(0, 3);
+
+// Backgrounds are assigned by position among the sections that actually render,
+// so switching any of them off can never leave two same-coloured bands touching.
+const rhythm = createRhythm('cream');
+const showProof = showSection('testimonials', { hasContent: testimonials.length > 0 });
+const showProgrammes = programmes.length > 0;
+const showNewsletter = showSection('newsletter');
+const showRoom = showSection('photos', { hasContent: roomPhotos.length >= 2 });
+
+const bands = {
+  nextEvents: rhythm.next(),
+  why: rhythm.next(),
+  room: showRoom ? rhythm.next() : null,
+  proof: showProof ? rhythm.next() : null,
+  programmes: showProgrammes ? rhythm.next() : null,
+  faq: rhythm.next(),
+};
+---
+
+<Hero
+  eyebrow="One day · Hands-on · An Oxford college"
+  title="Build agents. In a day. In Oxford."
+  subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
+  motif
+  size="full"
+  photo={heroPhoto && { src: heroPhoto.data.file, alt: heroPhoto.data.alt }}
+>
+  <div class="btn-row">
+    {
+      nextThree[0] ? (
+        <a href={paths.event(nextThree[0].data.slug)} class="btn btn--primary" data-analytics-event="next_event_cta_click" data-analytics-slug={nextThree[0].data.slug}>
+          Book the next cohort
+        </a>
+      ) : (
+        <a href={paths.events()} class="btn btn--primary">
+          See past cohorts
+        </a>
+      )
+    }
+    <a href={paths.events()} class="btn btn--ghost">All dates</a>
+  </div>
+</Hero>
+
+{/* ---- Next events ---- */}
+<section class:list={['band', `band--${bands.nextEvents}`]} aria-labelledby="next-events">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <hr class="dash" />
+      <h2 id="next-events">{nextThree.length > 0 ? 'Next in Oxford' : 'The next cohort'}</h2>
+      <p>
+        {
+          nextThree.length > 0
+            ? 'Small enough that someone can walk over when you get stuck, and that you leave knowing everyone in the room.'
+            : 'Dates for the next cohort are not fixed yet. Leave your email and you will hear the date and venue as soon as they are.'
+        }
+      </p>
+    </div>
+
+    {
+      nextThree.length > 0 ? (
+        <div class="grid grid--3">
+          {nextThree.map((event, i) => (
+            <div data-reveal data-reveal-delay={i * 80}>
+              <EventCard event={event} programme={byId.get(event.data.programme.id)!} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        showNewsletter && (
+          <div data-reveal>
+            <NewsletterForm label="Tell me when the next cohort opens" />
+          </div>
+        )
+      )
+    }
+  </div>
+</section>
+
+<GoldDivider numeral="01" label="The difference" title="You leave having built the thing." />
+
+{/* ---- Why it's different ---- */}
+<section class:list={['band', `band--${bands.why}`]} aria-labelledby="why">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <hr class="dash" />
+      <h2 id="why">Three reasons this is not another AI talk</h2>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="card" data-reveal>
+        <span class="eyebrow">Hands on</span>
+        <h3>You build, we facilitate</h3>
+        <ul class="squares">
+          <li>Three build cycles, not three lectures</li>
+          <li>One real task, brought from your own week</li>
+          <li>Someone walks over when you get stuck</li>
+        </ul>
+      </div>
+
+      <div class="card" data-reveal data-reveal-delay="90">
+        <span class="eyebrow">The room</span>
+        <h3>Senior peers, in Oxford</h3>
+        <ul class="squares">
+          <li>Capped at roughly twenty-five people</li>
+          <li>Founders, directors, consultants, public sector</li>
+          <li>An Oxford college, laid out for small-group work</li>
+        </ul>
+      </div>
+
+      <div class="card" data-reveal data-reveal-delay="180">
+        <span class="eyebrow">The format</span>
+        <h3>Orchestrating, not prompting</h3>
+        <ul class="squares">
+          <li>Scout, drafter, reviewer - narrow steps handing off</li>
+          <li>No stretch of talk runs past twenty-five minutes</li>
+          <li>A recipe you can rebuild on Monday</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ---- The room, in photographs ---- */}
+{
+  showRoom && (
+    <section class:list={['band', `band--${bands.room}`, 'room']} aria-labelledby="room">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <hr class="dash" />
+          <h2 id="room">This is what the day looks like</h2>
+          <p>Cohort 1, at St Anne's College. Laptops open, one task each, and somebody on their feet the whole day.</p>
+        </div>
+
+        <div class="room__grid">
+          {roomPhotos.map((photo, i) => (
+            <figure class:list={['room__figure', i === 0 && 'room__figure--lead']} data-reveal data-reveal-delay={i * 90}>
+              <Image
+                src={photo.data.file}
+                alt={photo.data.alt}
+                widths={[480, 800, 1400]}
+                sizes={i === 0 ? '(max-width: 52rem) 100vw, 60vw' : '(max-width: 52rem) 100vw, 30vw'}
+                loading="lazy"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{/* ---- Social proof (flagged) ---- */}
+{
+  showProof && (
+    <section class:list={['band', `band--${bands.proof}`]} aria-labelledby="proof">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <hr class="dash" />
+          <h2 id="proof">What people said</h2>
+        </div>
+        <div class="grid grid--2">
+          {testimonials.slice(0, 3).map((t, i) => (
+            <blockquote class="card quote" data-reveal data-reveal-delay={i * 90}>
+              <p>“{t.data.quote}”</p>
+              <footer>
+                <cite>
+                  {t.data.name} - {t.data.role}
+                  {t.data.company && `, ${t.data.company}`}
+                </cite>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{/* ---- Programmes ---- */}
+{
+  showProgrammes && (
+    <section class:list={['band', `band--${bands.programmes}`]} aria-labelledby="programmes">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <hr class="dash" />
+          <h2 id="programmes">What we run</h2>
+        </div>
+
+        <div class="programme-rows">
+          {programmes.map((programme, i) => (
+            <a href={paths.programme(programme.data.slug)} class="card programme-row" data-reveal data-reveal-delay={i * 80}>
+              <div>
+                <span class="eyebrow">{`0${i + 1}`}</span>
+                <h3>{programme.data.name}</h3>
+                <p>{programme.data.shortPitch}</p>
+              </div>
+              <span class="programme-row__arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+{/* ---- FAQ ---- */}
+<section class:list={['band', `band--${bands.faq}`]} aria-labelledby="faq">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <hr class="dash" />
+      <h2 id="faq">Questions</h2>
+    </div>
+    <div data-reveal>
+      <Faq faqs={homeFaqs} />
+    </div>
+  </div>
+</section>
+
+{/* ---- Email capture ---- */}
+{
+  showNewsletter && (
+    <section class="band band--gold capture" aria-labelledby="capture">
+      <div class="wrap capture__inner">
+        <div>
+          <h2 id="capture" class="capture__title">
+            Not ready to book?
+          </h2>
+          <p class="capture__copy">You will get the date, venue and booking link as soon as the next cohort is set.</p>
+        </div>
+        <NewsletterForm label="Hear about the next cohort first" />
+      </div>
+    </section>
+  )
+}
+
+<style>
+  /*
+   * Every source frame is landscape, so the layout is built from landscape
+   * crops: one wide plate of the room across the top, two supporting frames
+   * beneath. Fixed aspect ratios rather than row-spanning — a grid row that
+   * sizes itself would force a 16:9 photograph into a portrait box and cut the
+   * heads off. Below 52rem it stacks rather than shrinking to thumbnails.
+   */
+  .room__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 52rem) {
+    .room__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .room__figure--lead {
+      grid-column: 1 / -1;
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  .room__figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    /* A hairline in the band's own ink, so the photo is framed like a plate in
+       a printed programme rather than floating. */
+    border: 1px solid var(--hairline-cream);
+    background: var(--deep-card);
+  }
+
+  :global(.band--dark) .room__figure {
+    border-color: rgba(255, 249, 236, 0.16);
+  }
+
+  .room__figure :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Weighted just below centre: in a tall room the interest is at desk
+       height, not in the ceiling beams. Any lower and the St Anne's tablecloth
+       loses its own name off the bottom edge. */
+    object-position: 50% 56%;
+    transition: transform 620ms var(--ease);
+  }
+
+  /* A slow push-in on hover. Purely a reward for lingering, so it is dropped
+     entirely under reduced motion. */
+  @media (hover: hover) {
+    .room__figure:hover :global(img) {
+      transform: scale(1.035);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .room__figure :global(img) {
+      transition: none;
+    }
+
+    .room__figure:hover :global(img) {
+      transform: none;
+    }
+  }
+
+  .quote p {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.4;
+  }
+
+  .quote footer {
+    margin-block-start: 1.2rem;
+  }
+
+  .quote cite {
+    font-family: var(--font-label);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .programme-rows {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .programme-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .programme-row h3 {
+    margin-block: 0.2rem 0.65rem;
+    font-size: var(--step-xl);
+  }
+
+  .programme-row p {
+    max-width: 52ch;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .programme-row p {
+    color: var(--muted-on-cream);
+  }
+
+  .programme-row__arrow {
+    font-size: 1.6rem;
+    color: var(--gold);
+    flex: none;
+    transition: transform 220ms var(--ease);
+  }
+
+  .programme-row:hover .programme-row__arrow {
+    transform: translateX(5px);
+  }
+
+  .capture__inner {
+    display: grid;
+    gap: clamp(1.75rem, 1rem + 3vw, 3.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    align-items: center;
+  }
+
+  .capture__title {
+    font-size: var(--step-2xl);
+    color: var(--ink-dark);
+  }
+
+  .capture__copy {
+    margin-block-start: 0.9rem;
+    max-width: 34ch;
+    color: rgba(5, 24, 23, 0.78);
+  }
+</style>

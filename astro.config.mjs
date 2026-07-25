@@ -51,6 +51,10 @@ const flaggedOffPrefixes = [
   !siteConfig.features.team && '/team',
   !siteConfig.features.testimonials && '/testimonials',
   !siteConfig.features.guides && '/guides',
+  // Reference-only design variants. They carry noindex as well, but keeping
+  // them out of the sitemap means never inviting a crawler to a second
+  // homepage in the first place.
+  '/home-original',
 ].filter(Boolean);
 
 /**
