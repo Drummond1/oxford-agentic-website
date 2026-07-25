@@ -9,12 +9,30 @@
     "consentCleared": true
   },
   {
+    "id": "cohort-1-room-and-cohort",
+    "file": "./cohort-1-room-and-cohort.jpeg",
+    "alt": "A wide view of the seminar room during the first Oxford Agentic Bootcamp: attendees working at laptops along the tables, with five people standing together at the end of the day.",
+    "tags": ["hero", "event", "people"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 2,
+    "consentCleared": true
+  },
+  {
     "id": "cohort-1-st-annes-registration-desk",
     "file": "./cohort-1-st-annes-registration-desk.jpeg",
     "alt": "A registration desk draped in a St Anne's College, University of Oxford tablecloth, with sign-in sheets laid out ready for arrivals.",
     "tags": ["venue", "event"],
     "event": "oxford-agentic-bootcamp-cohort-1",
-    "order": 2,
+    "order": 3,
+    "consentCleared": true
+  },
+  {
+    "id": "cohort-1-flipchart-group",
+    "file": "./cohort-1-flipchart-group.jpeg",
+    "alt": "Five people standing together in front of a flipchart at the close of the first Oxford Agentic Bootcamp.",
+    "tags": ["people", "event"],
+    "event": "oxford-agentic-bootcamp-cohort-1",
+    "order": 4,
     "consentCleared": true
   },
   {

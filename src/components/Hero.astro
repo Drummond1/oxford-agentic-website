@@ -5,6 +5,8 @@
  * decorative, so it is hidden from assistive tech and stops under
  * prefers-reduced-motion.
  */
+import { Image } from 'astro:assets';
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -12,12 +14,25 @@ interface Props {
   /** Renders the drifting grid. Off for interior pages that want stillness. */
   motif?: boolean;
   size?: 'full' | 'compact';
+  /**
+   * Optional photograph behind the hero. It sits under a heavy ink scrim so the
+   * band still reads as flat dark green from a distance and the cream text keeps
+   * its contrast ratio; the room only surfaces as you look at it.
+   */
+  photo?: { src: ImageMetadata; alt: string };
 }
 
-const { eyebrow, title, subline, motif = false, size = 'compact' } = Astro.props;
+const { eyebrow, title, subline, motif = false, size = 'compact', photo } = Astro.props;
 ---
 
-<section class:list={['band band--dark hero', `hero--${size}`]}>
+<section class:list={['band band--dark hero', `hero--${size}`, photo && 'hero--photo']}>
+  {
+    photo && (
+      <div class="hero__photo">
+        <Image src={photo.src} alt={photo.alt} widths={[800, 1400, 2000]} sizes="100vw" loading="eager" fetchpriority="high" />
+      </div>
+    )
+  }
   {motif && <div class="hero__motif" aria-hidden="true" />}
   <div class="wrap hero__inner">
     <span class="eyebrow">{eyebrow}</span>
@@ -42,6 +57,62 @@ const { eyebrow, title, subline, motif = false, size = 'compact' } = Astro.props
   .hero__inner {
     position: relative;
     z-index: 1;
+  }
+
+  /* The photograph is evidence, not decoration — but the words have to win, so
+     it is dimmed hard and pushed to the right where the copy is not. */
+  .hero__photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 68% 52%;
+    /* The file is already graded warm; the ink scrim above cools it back down,
+       so a little saturation is put back here to keep the wood and the skin
+       from going grey. */
+    filter: saturate(1.15) contrast(1.05) brightness(0.95);
+  }
+
+  /* Two scrims: a left-weighted gradient so the headline always sits on
+     near-solid ink, and a softer vertical one to seat the band's top and
+     bottom edges. The right third stays open — that is where the room shows. */
+  .hero__photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        100deg,
+        var(--ink-dark) 18%,
+        rgba(5, 24, 23, 0.94) 38%,
+        rgba(5, 24, 23, 0.6) 62%,
+        rgba(5, 24, 23, 0.34) 100%
+      ),
+      linear-gradient(to bottom, rgba(5, 24, 23, 0.4), rgba(5, 24, 23, 0.12) 42%, rgba(5, 24, 23, 0.66));
+  }
+
+  /* On narrow screens there is no "beside the copy", so the photo drops to a
+     quiet texture under the whole block. */
+  @media (max-width: 48rem) {
+    .hero__photo :global(img) {
+      object-position: 58% 48%;
+    }
+
+    .hero__photo::after {
+      background: linear-gradient(to bottom, rgba(5, 24, 23, 0.86), rgba(5, 24, 23, 0.7) 45%, rgba(5, 24, 23, 0.92));
+    }
+  }
+
+  /* With a photograph present the drifting grid would be one texture too many;
+     it is kept only where it still reads, at the top edge. */
+  .hero--photo .hero__motif {
+    opacity: 0.55;
+    mask-image: radial-gradient(ellipse 60% 50% at 78% 22%, #000 0%, transparent 70%);
   }
 
   .hero__title {

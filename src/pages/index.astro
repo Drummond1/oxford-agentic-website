@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import EventCard from '../components/EventCard.astro';
@@ -9,6 +10,7 @@ import config from '../../site.config';
 import {
   createRhythm,
   getEventsForIndex,
+  getPhotos,
   getProgrammes,
   getTestimonials,
   paths,
@@ -20,6 +22,15 @@ import { ogPathFor } from '../lib/og';
 const { upcoming } = await getEventsForIndex();
 const programmes = await getProgrammes();
 const testimonials = await getTestimonials();
+
+// Photography comes from the consent-gated manifest, never from a filename in
+// the markup — so a photo can be pulled by flipping one flag in photos.json.
+const photos = await getPhotos();
+const photoById = new Map(photos.map((p) => [p.id, p]));
+const heroPhoto = photoById.get('cohort-1-seminar-room-working');
+const roomPhotos = ['cohort-1-room-and-cohort', 'cohort-1-flipchart-group', 'cohort-1-st-annes-registration-desk']
+  .map((id) => photoById.get(id))
+  .filter((p) => p !== undefined);
 const byId = new Map(programmes.map((p) => [p.id, p]));
 
 const nextThree = upcoming.slice(0, 3);
@@ -66,10 +77,12 @@ const rhythm = createRhythm('cream');
 const showProof = showSection('testimonials', { hasContent: testimonials.length > 0 });
 const showProgrammes = programmes.length > 0;
 const showNewsletter = showSection('newsletter');
+const showRoom = showSection('photos', { hasContent: roomPhotos.length >= 2 });
 
 const bands = {
   nextEvents: rhythm.next(),
   why: rhythm.next(),
+  room: showRoom ? rhythm.next() : null,
   proof: showProof ? rhythm.next() : null,
   programmes: showProgrammes ? rhythm.next() : null,
   faq: rhythm.next(),
@@ -90,6 +103,7 @@ const bands = {
     subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
     motif
     size="full"
+    photo={heroPhoto && { src: heroPhoto.data.file, alt: heroPhoto.data.alt }}
   >
     <div class="btn-row">
       {
@@ -186,6 +200,35 @@ const bands = {
     </div>
   </section>
 
+  {/* ---- The room, in photographs ---- */}
+  {
+    showRoom && (
+      <section class:list={['band', `band--${bands.room}`, 'room']} aria-labelledby="room">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="room">This is what the day looks like</h2>
+            <p>Cohort 1, at St Anne's College. Laptops open, one task each, and somebody on their feet the whole day.</p>
+          </div>
+
+          <div class="room__grid">
+            {roomPhotos.map((photo, i) => (
+              <figure class:list={['room__figure', i === 0 && 'room__figure--lead']} data-reveal data-reveal-delay={i * 90}>
+                <Image
+                  src={photo.data.file}
+                  alt={photo.data.alt}
+                  widths={[480, 800, 1400]}
+                  sizes={i === 0 ? '(max-width: 52rem) 100vw, 60vw' : '(max-width: 52rem) 100vw, 30vw'}
+                  loading="lazy"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   {/* ---- Social proof (flagged) ---- */}
   {
     showProof && (
@@ -274,6 +317,74 @@ const bands = {
 </Base>
 
 <style>
+  /*
+   * Every source frame is landscape, so the layout is built from landscape
+   * crops: one wide plate of the room across the top, two supporting frames
+   * beneath. Fixed aspect ratios rather than row-spanning — a grid row that
+   * sizes itself would force a 16:9 photograph into a portrait box and cut the
+   * heads off. Below 52rem it stacks rather than shrinking to thumbnails.
+   */
+  .room__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 52rem) {
+    .room__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .room__figure--lead {
+      grid-column: 1 / -1;
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  .room__figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    /* A hairline in the band's own ink, so the photo is framed like a plate in
+       a printed programme rather than floating. */
+    border: 1px solid var(--hairline-cream);
+    background: var(--deep-card);
+  }
+
+  :global(.band--dark) .room__figure {
+    border-color: rgba(255, 249, 236, 0.16);
+  }
+
+  .room__figure :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Weighted just below centre: in a tall room the interest is at desk
+       height, not in the ceiling beams. Any lower and the St Anne's tablecloth
+       loses its own name off the bottom edge. */
+    object-position: 50% 56%;
+    transition: transform 620ms var(--ease);
+  }
+
+  /* A slow push-in on hover. Purely a reward for lingering, so it is dropped
+     entirely under reduced motion. */
+  @media (hover: hover) {
+    .room__figure:hover :global(img) {
+      transform: scale(1.035);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .room__figure :global(img) {
+      transition: none;
+    }
+
+    .room__figure:hover :global(img) {
+      transform: none;
+    }
+  }
+
   .quote p {
     font-family: var(--font-title);
     font-size: var(--step-lg);
