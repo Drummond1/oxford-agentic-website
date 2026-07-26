@@ -70,11 +70,10 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster, continued (probe-driven order): next is "Questions to ask
-   before booking AI training" (buyer's checklist — engines build comparison tables and
-   this hands them the criteria), then "Agentic AI for consultants", "Agentic AI for
-   public-sector and NHS leaders", "How to run an AI pilot that survives contact with
-   your team". ~One per cycle, never more than one per day.
+9. `todo` — Content cluster, continued (probe-driven order): the buyer's checklist
+   shipped in cycle 17; next is "Agentic AI for consultants", then "Agentic AI for
+   public-sector and NHS leaders", then "How to run an AI pilot that survives contact
+   with your team". ~One per cycle, never more than one per day.
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -91,13 +90,38 @@ Status: `todo` · `blocked` (why) · `doing`
     `datePublished`/`dateModified`) so every URL is a first-class node rather than only
     its Article/Event; `about`/`articleSection` on Article nodes; captions on the photo
     `ImageObject`s.
-15. `todo` — Audit the 404 page as a real landing surface (it takes organic traffic from
-    dead links and is the one page with no breadcrumb trail): check it routes to the
-    programme, guides and events rather than only home.
+16. `todo` — The `.band` alternation described in `global.css` (backgrounds assigned by
+    position, so two same-coloured bands can never touch) is a comment, not a mechanism:
+    there is no `nth-of-type` rule anywhere, and every band in the codebase carries an
+    explicit modifier. A bare `class="band"` silently renders transparent. Either build
+    the rule or correct the comment — as it stands it will mislead the next author, as
+    it did in cycle 17.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-26 — Cycle 17: a buyer's-checklist guide, and a 404 that routes properly.**
+  No Search Console export in `seo-data/` (see Signal snapshot), so backlog-driven again.
+  (a) **"Questions to ask before booking AI training"** (backlog 9) — the next guide in
+  the probe-driven order, and the one the GEO baseline argued for: engines assemble
+  comparison tables for this query, and a checklist page hands them the criteria. Nine
+  questions, each with what a straight answer sounds like, then our own answers to all
+  nine — cohort cap, three build cycles, no coding, laptop plus one real task, not
+  recorded, place transfers at no charge — every one a fact already in the repo, none
+  invented. It closes by naming what the day deliberately does not cover (landscape,
+  model comparisons, governance), which is the checklist's own most revealing question
+  turned back on us. 9 guides now live; 24 pages; 879 internal links.
+  (b) **The 404 became a real landing surface** (backlog 15) — it takes organic traffic
+  from dead and mistyped links and is the one page with no breadcrumb trail behind it,
+  yet it offered only "All events" and "Home". It now carries an "Or start here" band
+  with the programme, Events, Guides and About; the Guides route sits behind
+  `features.guides` like the rest of the section, so the flags test stays coherent.
+  _Two notes for the next cycle._ The browser pane reported a 0×0 viewport throughout
+  this run (scroll and `read_page` returned nothing, `computer` timed out) — a scheduled
+  run appears to get a hidden pane, so verify from `dist/` HTML rather than the preview.
+  And `class="band"` with no modifier renders transparent despite the alternation comment
+  in `global.css`; caught before it shipped, logged as backlog 16.
 
 - **2026-07-25 — Fix: CI had been red since cycle 14 (~12:07), across eight commits.**
   Two separate faults, found only after reading the actual CI log rather than assuming:
@@ -323,18 +347,23 @@ and the four guides shipped on 25 Jul — expect all counts to rise):
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
-- Search Console (checked 2026-07-25, cycle 13): `seo-data/` still holds only its
+- Search Console (checked 2026-07-26, cycle 17): `seo-data/` still holds only its
   README — **no Search Console export available**, so this cycle could not be
-  signal-driven. The property was verified 2026-07-23 (DNS TXT), so data should
-  start accruing; **Drummond: export Performance → Queries.csv and Pages.csv into
-  `seo-data/`** (git-ignored) and the loop switches to gap-driven work immediately.
-  Until then it stays backlog-driven and technical.
+  signal-driven either. The property was verified 2026-07-23 (DNS TXT) and the
+  25 Jul in-UI check showed sitemap Success plus valid Event and Breadcrumb
+  enhancements, but Performance had no query data yet — expected for a property
+  this new, roughly the first week of August. **Drummond: export Performance →
+  Queries.csv and Pages.csv into `seo-data/`** (git-ignored) the moment rows appear,
+  and the loop switches to gap-driven work immediately. Until then it stays
+  backlog-driven and technical. Four cycles have now run without query signal;
+  this is the single biggest constraint on the loop's usefulness.
 - Analytics: not connected yet.
 - Luma registrations: track weekly per event.
 - Last Lighthouse (local, 2026-07-23): home, event and guide pages all
-  100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0.
-- Site size (2026-07-25, after cycle 13): 17 pages built (16 in sitemap + 404);
-  8 guides; 612 internal links.
+  100 / 100 / 100 / 100; LCP 0.3–0.4s; CLS 0. CI enforces the budgets on every push
+  via the `assertMatrix` added in the cycle-14 fix.
+- Site size (2026-07-26, after cycle 17): 24 pages built; 9 guides;
+  879 internal links.
 - **Loop status:** high-value unblocked work is largely done. Before declaring the
   backlog empty, GENERATE new candidates (technical SEO surfaces, schema depth,
   accessibility, performance, content gaps) — only stop when genuinely nothing
