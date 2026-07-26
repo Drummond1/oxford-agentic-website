@@ -9,6 +9,25 @@ const { upcoming } = await getEventsForIndex();
 const programmes = await getProgrammes();
 const byId = new Map(programmes.map((p) => [p.id, p]));
 const next = upcoming.slice(0, 2);
+
+/**
+ * A 404 takes organic traffic from dead and mistyped links, and it is the one
+ * page with no breadcrumb trail behind it. So it carries a full set of routes
+ * rather than only "home" — a visitor who landed here from a stale link to a
+ * guide should be able to reach the guides, not just the events index.
+ */
+const routes = [
+  ...programmes.map((programme) => ({
+    href: paths.programme(programme.data.slug),
+    label: programme.data.name,
+    detail: programme.data.shortPitch,
+  })),
+  { href: paths.events(), label: 'Events', detail: 'Every cohort, upcoming and past.' },
+  ...(config.features.guides
+    ? [{ href: paths.guides(), label: 'Guides', detail: 'Practical writing on agentic AI for business leaders.' }]
+    : []),
+  { href: paths.about(), label: 'About', detail: `Who runs ${config.brand.name}, and why.` },
+];
 ---
 
 <Base
@@ -45,4 +64,29 @@ const next = upcoming.slice(0, 2);
       </section>
     )
   }
+
+  <section class="band band--dark" aria-labelledby="routes">
+    <div class="wrap">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="routes">Or start here</h2>
+      </div>
+      <ul class="squares routes">
+        {
+          routes.map((route) => (
+            <li>
+              <a href={route.href}>{route.label}</a> <span class="muted">- {route.detail}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 </Base>
+
+<style>
+  .routes {
+    max-width: var(--measure);
+    font-size: var(--step-lg);
+  }
+</style>
