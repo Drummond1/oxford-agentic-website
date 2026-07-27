@@ -68,7 +68,12 @@ const bands = {
   <div class="btn-row">
     {
       nextThree[0] ? (
-        <a href={paths.event(nextThree[0].data.slug)} class="btn btn--primary" data-analytics-event="next_event_cta_click" data-analytics-slug={nextThree[0].data.slug}>
+        <a
+          href={`${paths.event(nextThree[0].data.slug)}#register`}
+          class="btn btn--primary"
+          data-analytics-event="next_event_cta_click"
+          data-analytics-slug={nextThree[0].data.slug}
+        >
           Book the next cohort
         </a>
       ) : (

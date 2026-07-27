@@ -26,6 +26,16 @@ const statusLabel: Record<string, string> = {
     <span class="sep" aria-hidden="true"></span>
     {venueLine(event.data.venue)}
     {!event.data.venue.confirmed && <span class="event-card__tbc">venue to confirm</span>}
+    {
+      /* The cap is the honest scarcity signal — a real number from the event
+         file, shown only while booking is open. */
+      event.data.capacity && status === 'upcoming' && (
+        <>
+          <span class="sep" aria-hidden="true" />
+          {`Capped at ${event.data.capacity}`}
+        </>
+      )
+    }
   </p>
 
   <p class="event-card__summary">{event.data.summary}</p>

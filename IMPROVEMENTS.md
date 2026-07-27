@@ -85,14 +85,25 @@ Status: `todo` · `blocked` (why) · `doing`
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 13. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
-17. `todo` — Bookings/UX audit of the conversion path with fresh eyes: the event page's
-    register section, the mobile distance from hero CTA to booking form, and whether the
-    homepage event card says enough to earn the click. Signal-free for now, so treat as
-    heuristic review; revisit against analytics once Plausible is wired.
-
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-26 — Cycle 19: conversion-path audit (backlog 17), two friction points fixed.**
+  Walked the landing-to-booking path as a first-time visitor. Most of it held up —
+  the event hero's Register jump, the mobile sticky bar and the embed loading state
+  all shipped in earlier cycles, and `--burnt` (suspected undefined during the audit)
+  turned out to be a deliberate alias of rust. Two things did not hold up:
+  (a) **The homepage event card never used the capacity fact** — the cap is the honest
+  scarcity signal and it sat unused in frontmatter. The card's meta row now reads
+  date ■ venue ■ "Capped at 25", rendered only while status is `upcoming`, straight
+  from the event file, nothing invented. (b) **"Book the next cohort" now lands on the
+  booking form** (`…/#register`) instead of the top of the event page — a button whose
+  verb is "book" should not cost a second click to reach the thing it promised. The
+  event card deliberately still lands at the page top: its job is details, the hero
+  button's job is intent. Verified in dist/ HTML and by screenshot; 879 links, 24
+  pages, schema green. Audit item retired; re-run it against real analytics once
+  Plausible is wired.
 
 - **2026-07-26 — Cycle 18: every URL becomes a first-class entity (schema depth, backlog 14 + 16).**
   Overnight in-session loop, distinct from the 09:01 cron. (a) **A `WebPage` node on
