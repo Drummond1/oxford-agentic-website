@@ -70,10 +70,10 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster, continued (probe-driven order): the buyer's checklist
-   shipped in cycle 17; next is "Agentic AI for consultants", then "Agentic AI for
-   public-sector and NHS leaders", then "How to run an AI pilot that survives contact
-   with your team". ~One per cycle, never more than one per day.
+9. `todo` — Content cluster, continued (probe-driven order): consultants shipped in
+   cycle 21; next is "Agentic AI for public-sector and NHS leaders", then "How to run
+   an AI pilot that survives contact with your team". ~One per cycle, never more than
+   one per day (budget for 28 Jul is now SPENT).
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -89,7 +89,19 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
-- **2026-07-27 — Cycle 20: the Organization gains its founder edge.**
+- **2026-07-28 — Cycle 21: "Agentic AI for consultants" (backlog 9).**
+  The next guide in the probe-driven order. Angle: sell the judgement, not the
+  assembly — the assembly layer (discovery synthesis, proposal-from-proposals,
+  findings from meeting notes, a check-against-the-brief reviewer step) suits a
+  workflow; the recommendation, prioritisation and client relationship do not. Two
+  consultant-specific sections the sibling guides don't have: confidentiality as the
+  precondition (client material only into tools the engagement terms allow), and why
+  workflows compound for time-sellers in particular — an associate helps the
+  engagements they staff, a kept workflow helps every engagement after it. Facts
+  drawn from repo content only; no client claims invented. 10 guides now live;
+  25 pages, 932 links; propagated automatically into llms.txt, RSS, the guides
+  index, sibling links and the sitemap; Article carries articleSection + about.
+  Guide budget for 28 Jul: spent.
   Freshness sweep first: llms.txt turned out to be generated and current (all 9 guides,
   team pages, both events), and `hasCourseInstance` was already on the Course node from
   an earlier cycle — the "never redo" rule caught both before work started. The genuine
