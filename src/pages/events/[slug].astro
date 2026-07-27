@@ -40,11 +40,14 @@ const testimonials = await getTestimonials(programme.id);
 const photos = await getPhotos('event', event.id);
 
 // Consent-cleared photos double as schema images — Google's event rich results
-// prefer real photography over a generated card.
-const photoUrls = photos
-  .map((photo) => photo.data.file.src)
-  .filter(Boolean)
-  .map((src: string) => (src.startsWith('http') ? src : `${config.brand.domain}${src}`));
+// prefer real photography over a generated card. Each frame carries its alt
+// text as the caption, so a cited image explains what it shows.
+const schemaPhotos = photos
+  .filter((photo) => Boolean(photo.data.file.src))
+  .map((photo) => ({
+    url: photo.data.file.src.startsWith('http') ? photo.data.file.src : `${config.brand.domain}${photo.data.file.src}`,
+    caption: photo.data.alt,
+  }));
 
 const path = paths.event(data.slug);
 const ogImage = ogPathFor(path);
@@ -103,7 +106,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
   description={data.summary}
   path={path}
   ogImage={ogImage}
-  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), photoUrls), showFaq ? faqSchema(data.faqs) : null]}
+  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos), showFaq ? faqSchema(data.faqs) : null]}
   breadcrumbs={[
     { name: 'Events', path: paths.events() },
     { name: data.title, path },

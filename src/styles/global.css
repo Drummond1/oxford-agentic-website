@@ -271,10 +271,16 @@ a {
 /*
  * ---- The alternating rhythm (PRD §10, §11) ----
  *
- * Backgrounds are assigned BY POSITION, not per section, so switching a
- * section off can never leave two same-coloured bands touching. Every
- * <section class="band"> in a page's main flow participates; `band--gold`
- * dividers opt out of the alternation and reset it.
+ * The alternation is NOT a CSS mechanism. It is assigned in each page's
+ * frontmatter by `createRhythm()` (src/lib/site.ts), which hands out
+ * `band--dark` / `band--cream` by position among the sections that actually
+ * render — so switching a section off can never leave two same-coloured bands
+ * touching. `band--gold` dividers opt out and reset it.
+ *
+ * Consequence: every `.band` MUST carry an explicit modifier. A bare
+ * `class="band"` gets padding but no background — it renders transparent and
+ * silently breaks the rhythm (this bit cycle 17). If you add a section, take
+ * its colour from the page's `rhythm.next()` call, never hardcode it.
  */
 .band {
   padding-block: var(--section-pad);

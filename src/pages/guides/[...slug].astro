@@ -55,6 +55,7 @@ const showCapture = showSection('newsletter');
           authorName: author?.data.name ?? config.brand.name,
           authorSlug: author?.data.slug ?? 'team',
           ogImage: absoluteUrl(ogPathFor(paths.guide(guide.data.slug))),
+          about: related.map((p) => ({ name: p.data.name, path: paths.programme(p.data.slug) })),
         }),
       ]}
       breadcrumbs={[

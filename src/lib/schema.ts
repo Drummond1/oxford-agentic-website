@@ -47,6 +47,36 @@ export function websiteSchema() {
   };
 }
 
+/**
+ * A WebPage node for every page, so each URL is a first-class entity rather
+ * than existing only as the `mainEntityOfPage` string of its Article or the
+ * `url` of its Event. `isPartOf` ties it to the WebSite node, which ties to the
+ * Organization — one connected graph per page, which is the entity-consistency
+ * signal AI engines triangulate on (PRD §13).
+ */
+export function webPageSchema(page: {
+  title: string;
+  description: string;
+  path: string;
+  ogImage: string;
+  publishedTime?: Date;
+  modifiedTime?: Date;
+}) {
+  const url = absoluteUrl(page.path);
+  return {
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name: page.title,
+    description: page.description,
+    isPartOf: { '@id': `${config.brand.domain}/#website` },
+    primaryImageOfPage: { '@type': 'ImageObject', url: page.ogImage },
+    inLanguage: 'en-GB',
+    ...(page.publishedTime ? { datePublished: page.publishedTime.toISOString() } : {}),
+    ...(page.modifiedTime ? { dateModified: page.modifiedTime.toISOString() } : {}),
+  };
+}
+
 export function breadcrumbSchema(trail: Array<{ name: string; path: string }>) {
   return {
     '@type': 'BreadcrumbList',
@@ -115,7 +145,7 @@ export function eventSchema(
   event: EventEntry,
   programme: ProgrammeEntry,
   ogImage: string,
-  photoUrls: string[] = [],
+  photos: Array<{ url: string; caption: string }> = [],
 ) {
   const status = effectiveStatus(event);
   const url = absoluteUrl(paths.event(event.data.slug));
@@ -162,7 +192,12 @@ export function eventSchema(
     endDate: event.data.endDate.toISOString(),
     eventStatus,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    image: [ogImage, ...photoUrls],
+    // Real photography first-class: each frame carries its caption (the alt
+    // text), so an engine citing the image knows what it shows.
+    image: [
+      ogImage,
+      ...photos.map((photo) => ({ '@type': 'ImageObject', url: photo.url, caption: photo.caption })),
+    ],
     url,
     inLanguage: 'en-GB',
     location: {
@@ -227,18 +262,30 @@ export function articleSchema(guide: {
   authorName: string;
   authorSlug: string;
   ogImage: string;
+  /** The programmes this guide supports — becomes `about`, tying Article to Course. */
+  about?: Array<{ name: string; path: string }>;
 }) {
   return {
     '@type': 'Article',
     headline: guide.title,
     description: guide.description,
+    articleSection: 'Guides',
     datePublished: guide.publishDate.toISOString(),
     dateModified: guide.updatedDate.toISOString(),
     image: [guide.ogImage],
     author: { '@id': `${absoluteUrl(paths.teamMember(guide.authorSlug))}#person`, '@type': 'Person', name: guide.authorName },
     publisher: { '@id': ORG_ID },
-    mainEntityOfPage: absoluteUrl(paths.guide(guide.slug)),
+    mainEntityOfPage: { '@id': `${absoluteUrl(paths.guide(guide.slug))}#webpage` },
     inLanguage: 'en-GB',
+    ...(guide.about && guide.about.length > 0
+      ? {
+          about: guide.about.map((item) => ({
+            '@type': 'Thing',
+            name: item.name,
+            url: absoluteUrl(item.path),
+          })),
+        }
+      : {}),
   };
 }
 

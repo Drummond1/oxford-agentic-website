@@ -85,21 +85,33 @@ Status: `todo` · `blocked` (why) · `doing`
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 13. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
-14. `todo` — Schema depth, remaining (subEvent + event images shipped in cycle 15):
-    a `WebPage` node per page (`isPartOf` the WebSite, `primaryImageOfPage`,
-    `datePublished`/`dateModified`) so every URL is a first-class node rather than only
-    its Article/Event; `about`/`articleSection` on Article nodes; captions on the photo
-    `ImageObject`s.
-16. `todo` — The `.band` alternation described in `global.css` (backgrounds assigned by
-    position, so two same-coloured bands can never touch) is a comment, not a mechanism:
-    there is no `nth-of-type` rule anywhere, and every band in the codebase carries an
-    explicit modifier. A bare `class="band"` silently renders transparent. Either build
-    the rule or correct the comment — as it stands it will mislead the next author, as
-    it did in cycle 17.
+17. `todo` — Bookings/UX audit of the conversion path with fresh eyes: the event page's
+    register section, the mobile distance from hero CTA to booking form, and whether the
+    homepage event card says enough to earn the click. Signal-free for now, so treat as
+    heuristic review; revisit against analytics once Plausible is wired.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-26 — Cycle 18: every URL becomes a first-class entity (schema depth, backlog 14 + 16).**
+  Overnight in-session loop, distinct from the 09:01 cron. (a) **A `WebPage` node on
+  every indexable page** (22 of 24 — `noindex` pages deliberately excluded), emitted
+  from BaseHead so no page can forget it: `@id` `…#webpage`, `isPartOf` the WebSite,
+  `primaryImageOfPage`, article dates when present. Article `mainEntityOfPage` now
+  references that `@id` instead of a bare URL string, so the graph is connected rather
+  than parallel. (b) **Article nodes gain `articleSection: 'Guides'` and `about`** —
+  the related programme(s) as Things with URLs, tying every guide to the bootcamp
+  entity it supports. (c) **Event photo images are `ImageObject`s with captions**
+  (the alt text), replacing bare URL strings. (d) **Backlog 16 resolved by correcting
+  the comment** rather than building an `nth-of-type` mechanism: the alternation
+  comment in `global.css` now says plainly that `createRhythm()` in page frontmatter
+  is the mechanism, that a bare `class="band"` renders transparent, and that new
+  sections must take their colour from `rhythm.next()`. Chose the comment over a CSS
+  rule because a position-based CSS rule would fight the JS assignment and reintroduce
+  the very ambiguity it was meant to fix. Verified in built HTML: WebPage on 22 pages,
+  absent on `/home-original/`; captions and `about` present; 879 links, 24 pages,
+  schema check green.
 
 - **2026-07-26 — Cycle 17: a buyer's-checklist guide, and a 404 that routes properly.**
   No Search Console export in `seo-data/` (see Signal snapshot), so backlog-driven again.

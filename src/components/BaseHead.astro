@@ -1,7 +1,7 @@
 ---
 import config from '../../site.config';
 import { absoluteUrl } from '../lib/site';
-import { graph, organizationSchema, websiteSchema } from '../lib/schema';
+import { graph, organizationSchema, webPageSchema, websiteSchema } from '../lib/schema';
 
 interface Props {
   title: string;
@@ -23,7 +23,19 @@ const ogUrl = ogImage ? absoluteUrl(ogImage) : absoluteUrl('/og/index.png');
 
 // Organization and WebSite appear on every page — one entity, referenced by @id
 // from every other node. Entity consistency is the core AI-citation signal (PRD §13).
-const jsonLd = graph([organizationSchema(), websiteSchema(), ...schemaNodes]);
+// Each page also carries its own WebPage node tied into that graph — except
+// noindex pages, which are deliberately not offered to crawlers as entities.
+const pageNode = noindex
+  ? null
+  : webPageSchema({
+      title,
+      description,
+      path,
+      ogImage: ogUrl,
+      publishedTime: article?.publishedTime,
+      modifiedTime: article?.modifiedTime,
+    });
+const jsonLd = graph([organizationSchema(), websiteSchema(), pageNode, ...schemaNodes]);
 ---
 
 <meta charset="utf-8" />
