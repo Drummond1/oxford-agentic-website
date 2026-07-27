@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import config from '../../site.config';
 import { absoluteUrl } from '../lib/site';
 import { graph, organizationSchema, webPageSchema, websiteSchema } from '../lib/schema';
@@ -21,6 +22,11 @@ const { title, description, path, ogImage, schemaNodes = [], article, noindex = 
 const canonical = absoluteUrl(path);
 const ogUrl = ogImage ? absoluteUrl(ogImage) : absoluteUrl('/og/index.png');
 
+// The Organization's founder edge comes from whoever the team collection marks
+// as host — a person fact sourced from content, not hardcoded here.
+const host = (await getCollection('team', ({ data }) => data.isHost))[0];
+const founder = host ? { name: host.data.name, slug: host.data.slug } : undefined;
+
 // Organization and WebSite appear on every page — one entity, referenced by @id
 // from every other node. Entity consistency is the core AI-citation signal (PRD §13).
 // Each page also carries its own WebPage node tied into that graph — except
@@ -35,7 +41,7 @@ const pageNode = noindex
       publishedTime: article?.publishedTime,
       modifiedTime: article?.modifiedTime,
     });
-const jsonLd = graph([organizationSchema(), websiteSchema(), pageNode, ...schemaNodes]);
+const jsonLd = graph([organizationSchema(founder), websiteSchema(), pageNode, ...schemaNodes]);
 ---
 
 <meta charset="utf-8" />

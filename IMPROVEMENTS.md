@@ -89,6 +89,20 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-27 — Cycle 20: the Organization gains its founder edge.**
+  Freshness sweep first: llms.txt turned out to be generated and current (all 9 guides,
+  team pages, both events), and `hasCourseInstance` was already on the Course node from
+  an earlier cycle — the "never redo" rule caught both before work started. The genuine
+  gap: the Organization node asserted no `founder` even though the team page publicly
+  establishes one. Now emitted on every page, sourced from the team collection's
+  `isHost` entry rather than a hardcoded string, with the same `@id` as the Person node
+  on Drummond's team page so both references resolve to one entity — verified identical
+  in the built HTML. When `features.team` is off the URL and @id are withheld and only
+  the name is asserted (flags matrix green both ways). Entity triangulation is the GEO
+  lever here: Organization → founder → Person → sameAs LinkedIn is exactly the kind of
+  cross-confirmable chain engines reward. Next cycle: the guide-per-day budget has
+  reset — "Agentic AI for consultants" (backlog 9) is due.
+
 - **2026-07-26 — Cycle 19: conversion-path audit (backlog 17), two friction points fixed.**
   Walked the landing-to-booking path as a first-time visitor. Most of it held up —
   the event hero's Register jump, the mobile sticky bar and the embed loading state

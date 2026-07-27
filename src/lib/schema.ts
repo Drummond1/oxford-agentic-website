@@ -12,8 +12,31 @@ import { absoluteUrl, effectiveStatus, paths, type EventEntry, type ProgrammeEnt
 /** Stable @id for the Organization so every page references one entity node. */
 export const ORG_ID = `${config.brand.domain}/#organization`;
 
-export function organizationSchema() {
+export function organizationSchema(founder?: { name: string; slug: string }) {
   const sameAs = Object.values(config.brand.social).filter(Boolean);
+
+  /*
+   * The founder edge, sourced from the team collection's `isHost` entry rather
+   * than a string here — people facts live in content, not code. The @id
+   * matches the Person node on the team page, so the two references resolve to
+   * one entity. When the team section is flagged off that page does not exist,
+   * so only the name is asserted.
+   */
+  const founderNode = founder
+    ? {
+        founder: {
+          '@type': 'Person',
+          name: founder.name,
+          ...(config.features.team
+            ? {
+                '@id': `${absoluteUrl(paths.teamMember(founder.slug))}#person`,
+                url: absoluteUrl(paths.teamMember(founder.slug)),
+              }
+            : {}),
+        },
+      }
+    : {};
+
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
@@ -21,6 +44,7 @@ export function organizationSchema() {
     url: `${config.brand.domain}/`,
     description: config.brand.description,
     email: config.brand.email,
+    ...founderNode,
     logo: {
       '@type': 'ImageObject',
       url: absoluteUrl('/logo.svg'),
