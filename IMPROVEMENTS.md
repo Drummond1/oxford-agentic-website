@@ -70,10 +70,9 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster, continued (probe-driven order): consultants shipped in
-   cycle 21; next is "Agentic AI for public-sector and NHS leaders", then "How to run
-   an AI pilot that survives contact with your team". ~One per cycle, never more than
-   one per day (budget for 28 Jul is now SPENT).
+9. `todo` — Content cluster, continued (probe-driven order): public-sector/NHS shipped
+   in cycle 24; next is "How to run an AI pilot that survives contact with your team".
+   ~One per cycle, never more than one per day (budget for 29 Jul is now SPENT).
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -89,7 +88,17 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
-- **2026-07-28 — Cycle 22: QA sweep (clean) + STATE.md brought current.**
+- **2026-07-29 — Cycle 24: "Agentic AI for public-sector and NHS leaders" (backlog 9).**
+  (Cycle 23 was heartbeats only: guide budget spent, everything else blocked.) The
+  angle honours the persona rule from the copywriter brief - never write as if money
+  is no object or as if they can adopt tools unilaterally. Governance is framed as
+  the design brief, not the blocker: pick tasks the rules already permit (papers from
+  public material, consultation synthesis, minutes, template drafts) and keep
+  decisions about individuals, clinical judgement and personal data explicitly out of
+  scope. Budgets get the same treatment - a workflow is a method in tools already
+  licensed, not a procurement exercise. 11 guides live; 27 pages; propagated into
+  llms.txt, RSS and the sitemap; no em dashes; schema green. Guide budget for 29 Jul:
+  spent. Next unblocked item: the AI-pilot guide, tomorrow.
   Fresh-eyes pass over content conventions (no em dashes, no Americanisms outside
   schema.org/CSS identifiers), 320px layout, console errors, 404, robots and
   canonicals: nothing to fix. One finding worth keeping: **headless Chrome
