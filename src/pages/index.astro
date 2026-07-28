@@ -15,5 +15,8 @@ import { ogPathFor } from '../lib/og';
   ogImage={ogPathFor('/')}
   schemaNodes={[faqSchema(homeFaqs)]}
 >
-  <HomeSections />
+  {/* Drummond's call (28 Jul): the homepage is the typographic design — ink,
+      motif and micro-interactions. The photo variant lives at /home-photos/;
+      swap the two withPhotos values to trade them back. */}
+  <HomeSections withPhotos={false} />
 </Base>

@@ -16,11 +16,13 @@ Written 25 July 2026; last updated 28 July 2026 (cycle 22).
   every cycle in `IMPROVEMENTS.md`. That file is the loop's memory — read it before
   changing anything, so work compounds instead of repeating. (An in-session overnight
   loop ran cycles 18–22 on 26–28 Jul on the same rules.)
-- **Photography is live (26 Jul):** the homepage hero carries the Cohort 1 working shot
-  behind an ink scrim, plus a three-photo "This is what the day looks like" band. All
-  photos share one baked-in house grade (saturation 0.55, warm shift, gamma 1.12) —
-  grade new photos the same way rather than inventing a new look. The pre-photography
-  homepage is preserved at `/home-original/` (noindex, out of sitemap, unlinked).
+- **Homepage design (Drummond, 28 Jul): typographic, not photographic.** `/` is the
+  plain ink design with the motif and micro-interactions; the photo variant lives at
+  `/home-photos/` (noindex, out of sitemap, unlinked; `/home-original/` redirects
+  there). Swap the two `withPhotos` values in `index.astro` / `home-photos.astro` to
+  trade them back. Cohort 1 photos still show on the Cohort 1 event page. All photos
+  share one baked-in house grade (saturation 0.55, warm shift, gamma 1.12) — grade
+  new photos the same way rather than inventing a new look.
   **Consent caveat:** `cohort-1-room-and-cohort` and `cohort-1-flipchart-group` show
   identifiable attendees and were flipped to `consentCleared: true` in-session to build
   the preview — Drummond has seen them ship but has not explicitly confirmed the people

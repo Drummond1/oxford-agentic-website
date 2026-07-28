@@ -37,6 +37,10 @@ for (const file of files) {
   const html = await readFile(file, 'utf8');
   const page = `/${path.relative(DIST, file).replace(/index\.html$/, '')}`;
 
+  // Astro's redirect stubs (site.config `redirects`) are meta-refresh pages
+  // with no content of their own — content-page checks do not apply to them.
+  if (html.includes('http-equiv="refresh"')) continue;
+
   // ---- Title and meta description ----
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1];
   const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1];

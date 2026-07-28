@@ -149,7 +149,11 @@ const config: SiteConfig = {
    * break URLs: add the old path here and it 301s to the new one.
    * Emitted to the host in `public/_redirects` (Netlify) and `vercel.json`.
    */
-  redirects: [],
+  redirects: [
+    // 28 Jul: the reference homepage variant swapped designs and was renamed
+    // to say what it now holds. Anyone holding the old URL still lands right.
+    { from: '/home-original/', to: '/home-photos/' },
+  ],
 
   analytics: {
     // PRD §21: not yet set up. Set provider + siteId once the account exists;

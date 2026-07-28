@@ -53,7 +53,9 @@ const flaggedOffPrefixes = [
   !siteConfig.features.guides && '/guides',
   // Reference-only design variants. They carry noindex as well, but keeping
   // them out of the sitemap means never inviting a crawler to a second
-  // homepage in the first place.
+  // homepage in the first place. '/home-original' stays listed because a
+  // redirect page still exists at that address.
+  '/home-photos',
   '/home-original',
 ].filter(Boolean);
 

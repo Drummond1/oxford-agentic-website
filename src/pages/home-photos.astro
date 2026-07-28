@@ -1,0 +1,35 @@
+---
+/**
+ * The photographic homepage variant, kept live for comparison after Drummond
+ * chose the typographic design for `/` (28 Jul) — the plain ink background
+ * with the micro-interactions, photos held back for later.
+ *
+ * Deliberately invisible to search: noindex, out of the sitemap (see the
+ * filter in astro.config.mjs) and unlinked from the navigation. A second
+ * homepage that crawlers could reach would split the ranking signals for the
+ * one page on this site that matters most, and would give AI search engines
+ * two competing answers to "what is Oxford Agentic".
+ *
+ * It renders the same <HomeSections> component as `/`, with photography on, so
+ * it can never drift out of date on copy, events or FAQ. To swap the designs
+ * again, exchange the `withPhotos` values here and in index.astro.
+ *
+ * This URL was `/home-original/` until 28 Jul; a redirect in site.config.ts
+ * still carries the old address here.
+ */
+import Base from '../layouts/Base.astro';
+import HomeSections from '../components/HomeSections.astro';
+import config from '../../site.config';
+import { ogPathFor } from '../lib/og';
+---
+
+<Base
+  pageTitle="Homepage - photo design"
+  titleOverride={`${config.brand.name} - homepage, photo design`}
+  description="A reference copy of the Oxford Agentic homepage with Cohort 1 photography. Not indexed, and not part of the public site."
+  path="/home-photos/"
+  ogImage={ogPathFor('/')}
+  noindex
+>
+  <HomeSections withPhotos={true} />
+</Base>
