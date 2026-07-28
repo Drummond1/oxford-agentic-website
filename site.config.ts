@@ -56,6 +56,13 @@ export interface Features {
   team: boolean;
   testimonials: boolean;
   guides: boolean;
+  /**
+   * Whether Guides appears in the HEADER nav. The section itself is governed by
+   * `guides` above; this only controls top-nav placement. While false, Guides
+   * stays reachable from the footer, cross-links, sitemap and llms.txt — flip
+   * to true to put it back in the header when the content earns the slot.
+   */
+  guidesInHeaderNav: boolean;
   newsletter: boolean;
   pastEvents: boolean;
 }
@@ -128,6 +135,10 @@ const config: SiteConfig = {
     testimonials: false,
     // Live: three seed guides published (long-tail SEO/GEO capture).
     guides: true,
+    // Off 28 Jul (Drummond): the top nav leads with people over content until
+    // the guides are human-authored. Team takes the header slot; Guides stays
+    // in the footer. One flip restores it.
+    guidesInHeaderNav: false,
     // Live: drives the Cohort 2 "notify me" state while its Luma page is pending.
     newsletter: true,
     pastEvents: true,

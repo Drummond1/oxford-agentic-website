@@ -161,7 +161,14 @@ export interface NavItem {
   children?: NavItem[];
 }
 
-export async function getNav(): Promise<NavItem[]> {
+/**
+ * The nav differs by placement. The header is the booking path and leads with
+ * people: Guides sits there only while `guidesInHeaderNav` is on, and Team
+ * takes its slot otherwise. The footer is the full site map — Guides is always
+ * listed there while the section exists, so nothing becomes unreachable when
+ * it leaves the header.
+ */
+export async function getNav(placement: 'header' | 'footer' = 'header'): Promise<NavItem[]> {
   const programmes = await getProgrammes();
   const items: NavItem[] = [{ label: 'Events', href: paths.events() }];
 
@@ -174,7 +181,11 @@ export async function getNav(): Promise<NavItem[]> {
   }
 
   if (config.features.testimonials) items.push({ label: 'Outcomes', href: paths.testimonials() });
-  if (config.features.guides) items.push({ label: 'Guides', href: paths.guides() });
+
+  const guidesHere = placement === 'footer' || config.features.guidesInHeaderNav;
+  if (config.features.guides && guidesHere) items.push({ label: 'Guides', href: paths.guides() });
+  if (config.features.team && placement === 'header') items.push({ label: 'Team', href: paths.team() });
+
   items.push({ label: 'About', href: paths.about() });
 
   return items;
