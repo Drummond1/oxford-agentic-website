@@ -89,6 +89,21 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-28 — Cycle 22: QA sweep (clean) + STATE.md brought current.**
+  Fresh-eyes pass over content conventions (no em dashes, no Americanisms outside
+  schema.org/CSS identifiers), 320px layout, console errors, 404, robots and
+  canonicals: nothing to fix. One finding worth keeping: **headless Chrome
+  `--window-size=320` screenshots showed phantom horizontal clipping that does not
+  exist** — the real browser at 320px measures `scrollWidth` 320 with zero overflowing
+  elements (only the decorative `hero__motif`, by design). Do not chase overflow bugs
+  from bare headless captures; verify with a real viewport measurement first, the same
+  class of trap as the stale-computed-styles note from cycle 16. Since the sweep found
+  nothing, the cycle went to STATE.md instead, which was five cycles stale: page count,
+  the photography system + its consent caveat (two flags flipped in-session, Drummond
+  asked to confirm — now blocked-table item 9), `/home-original/`, the schema-depth
+  summary, and a corrupted duplicate of the blocked table removed. Loop note: unblocked
+  backlog is now thin; guide budget for 28 Jul spent; interval stretched.
+
 - **2026-07-28 — Cycle 21: "Agentic AI for consultants" (backlog 9).**
   The next guide in the probe-driven order. Angle: sell the judgement, not the
   assembly — the assembly layer (discovery synthesis, proposal-from-proposals,

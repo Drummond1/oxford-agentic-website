@@ -1,9 +1,11 @@
 # Current state — read this first
 
 One page, kept current, so anyone (or any future session) can pick this up cold.
-Written 25 July 2026.
+Written 25 July 2026; last updated 28 July 2026 (cycle 22).
 
-- **Live:** https://oxfordagentic.com — 17 pages, HTTPS enforced, Lighthouse 100/100/100/100.
+- **Live:** https://oxfordagentic.com — 25 pages, HTTPS enforced, Lighthouse
+  100/100/100/100 (event pages accept best-practices ≥75: Luma's iframe sets
+  third-party cookies; encoded in `lighthouserc.json`, do not re-fight it).
 - **Repo:** github.com/Drummond1/oxford-agentic-website (public).
 - **Deploy:** push to `main` → GitHub Actions builds, validates, publishes to GitHub Pages.
   There is no other deploy step. A failing build never reaches the live site.
@@ -12,7 +14,17 @@ Written 25 July 2026.
   recommended buying it defensively.
 - **The improvement loop:** a scheduled agent runs daily at 09:00, auto-ships, and records
   every cycle in `IMPROVEMENTS.md`. That file is the loop's memory — read it before
-  changing anything, so work compounds instead of repeating.
+  changing anything, so work compounds instead of repeating. (An in-session overnight
+  loop ran cycles 18–22 on 26–28 Jul on the same rules.)
+- **Photography is live (26 Jul):** the homepage hero carries the Cohort 1 working shot
+  behind an ink scrim, plus a three-photo "This is what the day looks like" band. All
+  photos share one baked-in house grade (saturation 0.55, warm shift, gamma 1.12) —
+  grade new photos the same way rather than inventing a new look. The pre-photography
+  homepage is preserved at `/home-original/` (noindex, out of sitemap, unlinked).
+  **Consent caveat:** `cohort-1-room-and-cohort` and `cohort-1-flipchart-group` show
+  identifiable attendees and were flipped to `consentCleared: true` in-session to build
+  the preview — Drummond has seen them ship but has not explicitly confirmed the people
+  in them agreed. If anyone objects, flip the flag back; the layout degrades cleanly.
 
 ---
 
@@ -45,15 +57,7 @@ confirming against the real Luma capacity.
 | 7 | Clear Cohort 1 testimonials + people photos for publication | Needs consent from named individuals | — |
 | 8 | Review the drafted bio in `src/content/speakers/drummond-gilbert.md`, then flip `features.speakers` | Drafted from vault facts, never reviewed. **Never publish an unreviewed biography of a real person** | 5 min |
 
----|---|---|---|
-| 1 | Create the Cohort 2 Luma page, then add its `lumaEventId` + `lumaUrl` to `src/content/events/oxford-agentic-bootcamp-cohort-2.md` | Needs the Luma account | 10 min + 1 line |
-| 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp) | 5 min |
-| 4 | Set `analytics.provider` + `siteId` | Needs a Plausible account. **Nothing is measured today** — the tracking layer is built and dispatches to Plausible/GA4, but no provider script loads while provider is `'none'` | 5 min + 1 line |
-| 5 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; a new property reports after ~3–7 days) | 2 min, weekly |
-| 6 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
-| 7 | Create a LinkedIn Company Page, add the URL to `brand.social` | Needs the page. Flows into `Organization.sameAs` for entity triangulation | 1 min once created |
-| 8 | Clear Cohort 1 testimonials + people photos for publication | Needs consent from named individuals | — |
-| 9 | Review the drafted bio in `src/content/speakers/drummond-gilbert.md`, then flip `features.speakers` | It was drafted from vault facts and never reviewed. **Never publish an unreviewed biography of a real person** | 5 min |
+| 9 | Confirm the two new Cohort 1 photos (room-and-cohort, flipchart-group) are consent-OK with the people shown | They went live 26 Jul with the flag flipped in-session; see the photography note above | 2 min |
 
 ---
 
@@ -92,6 +96,13 @@ confirming against the real Luma capacity.
   online, not hands-on" — which is the gap this brand occupies. Third-party aggregators
   carry the citations, so off-page mentions are the real lever. Re-probe monthly.
 - **Not indexed by Google yet** as of 25 Jul (domain registered 22 Jul). Normal.
+- **Schema graph is deep and connected (cycles 15–20):** Organization (+`founder` →
+  the team-page Person `@id`), WebSite, a WebPage node on every indexable page,
+  EducationEvent with `subEvent` agenda + captioned photo ImageObjects, Course with
+  `hasCourseInstance`, Articles with `articleSection`/`about`. Before adding a schema
+  idea, check the emitted graph — several "gaps" have already been closed.
+- **10 guides live** (28 Jul). Next in the probe-driven order: public-sector/NHS
+  leaders, then "How to run an AI pilot that survives contact with your team".
 
 ## Where the documentation lives
 
