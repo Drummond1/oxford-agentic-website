@@ -116,6 +116,11 @@ const config: SiteConfig = {
     region: 'Oxfordshire',
     country: 'GB',
     email: 'hello@oxfordagentic.com',
+    // Shown in the footer. NOTE: only URLs that identify the ORGANISATION reach
+    // `Organization.sameAs` — a personal linkedin.com/in/… profile is filtered
+    // out in schema.ts, because it identifies Drummond (it is already the Person
+    // node's sameAs) and claiming it here would merge the two entities. Replace
+    // this with a linkedin.com/company/… page and it flows into schema on its own.
     social: {
       luma: 'https://luma.com/oxfordagentic',
       linkedin: 'https://www.linkedin.com/in/drummondgilbert/',

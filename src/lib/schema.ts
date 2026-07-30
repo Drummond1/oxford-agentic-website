@@ -13,7 +13,20 @@ import { absoluteUrl, effectiveStatus, paths, type EventEntry, type ProgrammeEnt
 export const ORG_ID = `${config.brand.domain}/#organization`;
 
 export function organizationSchema(founder?: { name: string; slug: string }) {
-  const sameAs = Object.values(config.brand.social).filter(Boolean);
+  /*
+   * `sameAs` means "a page that unambiguously identifies THIS entity". A personal
+   * LinkedIn profile (linkedin.com/in/…) identifies a person, not the organisation
+   * — and the same URL is already the Person node's `sameAs` via the team file.
+   * Claiming it in both places tells an engine the org and the person are one
+   * entity, which is the opposite of the triangulation the whole schema layer is
+   * for. Company pages (linkedin.com/company/…) are the org's own identity and
+   * belong here; they pass this filter untouched.
+   *
+   * The link still renders in the footer, where a human reads it correctly.
+   */
+  const sameAs = Object.values(config.brand.social)
+    .filter(Boolean)
+    .filter((url) => !/linkedin\.com\/in\//i.test(url as string));
 
   /*
    * The founder edge, sourced from the team collection's `isHost` entry rather

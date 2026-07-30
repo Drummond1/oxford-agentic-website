@@ -98,6 +98,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 31: the Organization was claiming to be a person.**
+  No Search Console export in `seo-data/` (fourteenth cycle without one), so
+  backlog-driven. Went looking at the entity graph itself, since triangulation is the
+  mechanism the whole schema layer exists to serve, and found it contradicting itself.
+  `Organization.sameAs` included `linkedin.com/in/drummondgilbert/` — a **personal**
+  profile — asserted as an alternate identity of Oxford Agentic. The same URL is also
+  the Person node's `sameAs` on the team page, which is where it correctly belongs. So
+  the graph told engines that the organisation and the person are the same entity,
+  precisely inverting cycle 20's `founder` edge and the entity separation the schema is
+  built on. Silent, valid, and exactly the sort of thing that quietly degrades AI
+  citation without ever failing a validator.
+  Fixed in `organizationSchema()` with a filter on `linkedin.com/in/`, documented at
+  both ends: company pages (`/company/…`) pass through untouched, so dropping a real
+  Company Page URL into `brand.social` flows into schema with no further work. The
+  footer link is unchanged — a human reads "LinkedIn" under Elsewhere correctly.
+  Result: `Organization.sameAs` is now `[luma.com/oxfordagentic]`, `Person.sameAs` is
+  the personal profile, and the `founder` edge connects them. Flags matrix green.
+  _Standing note:_ this is the strongest remaining argument for backlog 2b. A real
+  LinkedIn Company Page would give the Organization its first genuine third-party
+  identity, and the code is now waiting for it.
+
 - **2026-07-30 — Cycle 30: the site is publishing a venue as confirmed that the vault
   calls a hold.** Went looking for comparison points a buyer would weigh against the
   competitors cycle 28 surfaced, and found something more important on the way.
