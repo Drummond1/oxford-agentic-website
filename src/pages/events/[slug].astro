@@ -76,11 +76,17 @@ const bands = {
 // The CTA has to tell the truth about what is actually below it. An announced
 // event whose Luma page does not exist yet offers a notify state, not a booking.
 const registrationOpen = Boolean(data.lumaEventId);
-const registerLabel = !registrationOpen
-  ? 'Get notified ↓'
+const registerVerb = !registrationOpen
+  ? 'Get notified'
   : status === 'soldout'
-    ? 'Join the waitlist ↓'
-    : 'Register below ↓';
+    ? 'Join the waitlist'
+    : 'Register';
+
+// Both CTAs jump to the same #register section, but from opposite directions:
+// the hero sits above it, the closing band below. One shared label would lie to
+// one of them, so each states its own direction.
+const heroRegisterLabel = `${registerVerb} below ↓`;
+const finalRegisterLabel = `${registerVerb} ↑`;
 
 // "Add to calendar" without a third-party script: a data: URI .ics file.
 const icsLines = [
@@ -134,7 +140,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
         ) : (
           <div class="btn-row">
             <a href="#register" class="btn btn--primary">
-              {registerLabel}
+              {heroRegisterLabel}
             </a>
             <a href={icsHref} download={`${data.slug}.ics`} class="btn btn--ghost" data-calendar-btn>
               Add to calendar
@@ -382,7 +388,7 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
             </p>
           </div>
           <a href="#register" class="btn btn--onGold">
-            {registerLabel}
+            {finalRegisterLabel}
           </a>
         </div>
       </section>

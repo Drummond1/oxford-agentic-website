@@ -91,6 +91,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 27: the closing CTA was pointing the wrong way.**
+  The cycle's hypothesis was wrong and worth recording as such: the Cohort 2 page was
+  expected to have accumulated too many sections, and it has not — four sections
+  (facts, register, agenda, FAQ) plus hero and closing band. It is lean. No
+  restructuring was warranted and none was invented.
+  What the read-through did find is a real bug. `registerLabel` was one shared string,
+  "Register below ↓", used by both the hero CTA and the closing gold band — but the
+  register section sits *above* the agenda and FAQ, so from the closing band the form
+  is upward. The label promised "below" and the arrow pointed down, at a section the
+  reader had already scrolled past. The page's own code comment states the rule it was
+  breaking: "The CTA has to tell the truth about what is actually below it." Now the
+  verb is extracted once (`Register` / `Join the waitlist` / `Get notified`) and each
+  CTA states its own direction: `heroRegisterLabel` ends "below ↓",
+  `finalRegisterLabel` ends "↑". The sticky bar keeps its deliberately shorter labels,
+  which fit a constrained bar and are not directional.
+  _Deliberately not fixed:_ the agenda still ends 16:20 while the day runs to 17:00
+  (blocked item 3). A closing row could be derived honestly from `endDate`, but
+  Drummond has an open decision on that agenda and one clean change per cycle beats
+  bundling churn into a decision that is his.
+
 - **2026-07-30 — Cycle 26: the guides section grows up (12 guides needs structure).**
   Two problems that arrived by accretion, both invisible at three guides and obvious
   at twelve. (a) **The index was a flat reverse-chronological grid** — fine as an
