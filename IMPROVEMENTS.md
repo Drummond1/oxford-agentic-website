@@ -98,6 +98,35 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 32: ten pages had titles Google would cut off.**
+  No Search Console export (fifteenth cycle), so backlog-driven — but this is the
+  closest thing to GSC work that can be done without it, because title truncation is a
+  direct CTR problem and it is measurable from `dist/` alone.
+  **The find.** 10 of 25 indexable pages carried `<title>` over ~60 characters. Worst
+  was the public-sector guide at 94: Google shows roughly the first 60, so it rendered
+  as "Agentic AI for public-sector and NHS leaders: start where gov…" and the brand
+  name never appeared at all. Eight were guides whose headlines are deliberately long
+  because they are good headlines.
+  **The fix separates the two jobs.** Guides gain an optional `seoTitle` (max 43, since
+  the " - Oxford Agentic" suffix is 17), used only for `<title>`. The `h1` still renders
+  the full headline, so the page reads exactly as written and only the search snippet
+  is trimmed. Eight short titles added, each front-loading the query-shaped phrase:
+  "Agentic AI for consultants", "How to run an AI pilot that survives", and so on.
+  All eight now fit; h1s verified unchanged.
+  **Left alone deliberately:** the two event pages (67 and 72 chars). Their dated
+  pattern is PRD §12 and the identifying words — "The Oxford Agentic Bootcamp - Cohort
+  2" — are the first 38 characters, so what gets cut is the tail, not the meaning.
+  Front-loading matters more than total length, and re-litigating a settled pattern to
+  win a character count is not an improvement.
+  **Also noted, not changed:** the homepage description is 166 chars, six over the
+  truncation point. It is `brand.description`, the canonical entity string the PRD
+  requires be reused verbatim on Luma, LinkedIn and in schema. Trimming it here would
+  desynchronise it from every off-site copy for six characters of snippet. Not worth it.
+  _Trade-off accepted:_ `og:title` now uses the short form too, while the OG *image*
+  still renders the full headline. Social previews do not truncate at 60, so the full
+  title would arguably be better there — but plumbing a second title through for that
+  is complexity out of proportion to the gain.
+
 - **2026-07-30 — Cycle 31: the Organization was claiming to be a person.**
   No Search Console export in `seo-data/` (fourteenth cycle without one), so
   backlog-driven. Went looking at the entity graph itself, since triangulation is the

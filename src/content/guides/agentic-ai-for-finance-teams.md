@@ -2,6 +2,7 @@
 title: "Agentic AI for finance teams: where it actually helps"
 slug: agentic-ai-for-finance-teams
 category: in-practice
+seoTitle: "Agentic AI for finance teams"
 description: The finance work that suits an agentic workflow, the work that does not, and where human judgement has to stay.
 capsule: >-
   Finance teams get the most from agentic AI on the repeated, evidence-heavy work

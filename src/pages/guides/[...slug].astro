@@ -56,7 +56,7 @@ const showCapture = showSection('newsletter');
 {
   guide ? (
     <Base
-      pageTitle={guide.data.title}
+      pageTitle={guide.data.seoTitle ?? guide.data.title}
       description={guide.data.description}
       path={paths.guide(guide.data.slug)}
       ogImage={ogPathFor(paths.guide(guide.data.slug))}

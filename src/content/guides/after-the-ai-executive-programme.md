@@ -2,6 +2,7 @@
 title: "You've finished an AI executive programme. Now what?"
 slug: after-the-ai-executive-programme
 category: choosing
+seoTitle: "After an AI executive programme: now what?"
 description: The gap most AI executive education leaves - and how to turn a strategic understanding of AI into something running in your own work.
 capsule: >-
   AI executive programmes are good at what they set out to do: the strategy, the

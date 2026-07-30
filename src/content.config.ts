@@ -219,6 +219,14 @@ const guides = defineCollection({
       title: z.string(),
       slug: z.string().regex(/^[a-z0-9-]+$/),
       category: z.enum(['start-here', 'choosing', 'in-practice']),
+      /**
+       * A shorter <title> for search results, when the on-page heading is longer
+       * than a SERP will show. Google truncates around 60 characters INCLUDING
+       * the " - Oxford Agentic" suffix, which is 17 — hence the 43 here. The h1
+       * keeps the full `title`, so the page reads as written and only the
+       * snippet is trimmed. Omit it when `title` already fits.
+       */
+      seoTitle: z.string().max(43, 'seoTitle + " - Oxford Agentic" must fit in ~60 chars').optional(),
       description: z.string().max(160),
       capsule: z.string(),
       author: reference('team'),
