@@ -98,6 +98,30 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 30: the site is publishing a venue as confirmed that the vault
+  calls a hold.** Went looking for comparison points a buyer would weigh against the
+  competitors cycle 28 surfaced, and found something more important on the way.
+  **The find.** `venue.confirmed: true` on Cohort 2, so the page states the Worcester
+  address flat. `Digital Brain/CLAUDE.md` (27–28 Jul, newer than the site value) says
+  the Nash Suite is provisionally held with **no contract, deposit or cancellation
+  terms and no stated expiry**, with a venue meeting diarised for Fri 31 Jul. The
+  `confirmed` flag exists for exactly this case and renders "Room booking being
+  finalised" when false.
+  **Deliberately not fixed.** Venue facts are a hard guardrail — "never change a
+  confirmed fact unless told to" — and Drummond may have contracted it since the vault
+  was written. Raised at the top of `STATE.md` as a decision, with both branches
+  spelled out. A loop that quietly edited a venue on the strength of a three-day-old
+  note would be exactly the kind of autonomy this ledger exists to prevent.
+  **Also found, and deliberately not used:** 16 completion certificates were issued
+  after Cohort 1 (one per confirmed attendee; corroborated in the vault). It is a real
+  fact and a real comparison point, since Saïd sells partly on a University of Oxford
+  certificate. It is still the wrong thing to lead on: it invites comparison on the one
+  axis where a university programme wins outright, and it dilutes the actual
+  differentiator, which is that you leave with something running. Recorded so a future
+  cycle does not "discover" it and reach for it.
+  No site changes this cycle beyond documentation, which is the correct outcome when
+  the finding is a decision rather than a defect.
+
 - **2026-07-30 — Cycle 29: four audits found nothing, so the cycle went to unblocking
   the one thing that matters.** Checked and clean, recorded so nobody re-checks:
   (a) **no-JS rendering** — homepage and event page both render fully with JavaScript

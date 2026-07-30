@@ -46,6 +46,28 @@ confirming against the real Luma capacity.
 
 ---
 
+## ⚠️ Needs a decision before anything else (raised by the loop, 30 Jul)
+
+**The Cohort 2 venue is published as confirmed, but the vault says it is a hold.**
+
+- The site's event file has `venue.confirmed: true`, so the page states "Worcester
+  College, Walton Street, Oxford, OX1 2HB" flat, with no qualifier.
+- `Digital Brain/CLAUDE.md` (27–28 Jul, newer than the site value) says Worcester's
+  Nash Suite is **provisionally held, with no contract, deposit or cancellation terms
+  and no stated expiry**, and records a venue meeting with Paula Wallbridge diarised
+  for **Fri 31 Jul 13:00–13:30**.
+
+The `confirmed` flag exists precisely for this: set to `false`, the page adds "Room
+booking being finalised" beside the address and nothing else changes. The loop has
+**deliberately not touched it** — venue facts are a hard guardrail, and Drummond may
+know something the vault does not.
+
+**Decide one of two things.** If it is contracted, the vault note is stale and should
+say so. If it is still a hold, flip `venue.confirmed` to `false` in
+`src/content/events/oxford-agentic-bootcamp-cohort-2.md` until it is signed — telling
+twenty-five senior people a confirmed address that later moves is the kind of thing
+this brand cannot afford, and the site already handles the provisional case gracefully.
+
 ## What needs Drummond (the loop cannot do these)
 
 | # | Task | Why it is blocked | Effort |
