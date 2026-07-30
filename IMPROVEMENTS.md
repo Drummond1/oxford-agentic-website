@@ -98,6 +98,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 29: four audits found nothing, so the cycle went to unblocking
+  the one thing that matters.** Checked and clean, recorded so nobody re-checks:
+  (a) **no-JS rendering** — homepage and event page both render fully with JavaScript
+  disabled. The FAQ is `<details>/<summary>`, reveals are gated behind a `.js-motion`
+  class that JS adds, and the Luma iframe plus its "Register on Luma" fallback link
+  both work. Progressive enhancement is real here, not aspirational.
+  (b) **OG cards at the longest title** — the 86-character public-sector title wraps to
+  two lines inside the card with room to spare. No overflow.
+  (c) **Attendee travel evidence** — searched the vault for any record of Cohort 1
+  attendees travelling from outside Oxford, to support an honest non-geographic angle
+  after the GEO probe. **There is none, so nothing was written.** Recording the absence
+  so a future cycle does not re-derive the idea and be tempted to assume it.
+  With no bugs to fix, the cycle produced **`outreach/off-page-listings.md`** instead:
+  a paste-ready listing pack for Eventbrite, LinkedIn and aggregators, since cycle 28
+  established that off-page citations are the binding constraint and the only thing
+  stopping it is Drummond having to write the copy. Facts drawn only from the Cohort 2
+  content file; the price is left as a marked `[NEEDS: …]`. It lives outside `src/` so
+  it is version-controlled but never built into the site (verified absent from `dist/`).
+  _Caught in review:_ the first draft used em dashes in the very blocks intended for
+  pasting, immediately under a section telling Drummond not to. Fixed.
+
 - **2026-07-30 — Cycle 28: GEO re-probe. The on-page ceiling has been reached.**
   The first genuinely new signal since the loop began, and it changes the priorities.
   Full detail under "GEO re-probe — 30 Jul" above; the short version is that the site
