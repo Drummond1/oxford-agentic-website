@@ -92,11 +92,21 @@ confirming against the real Luma capacity.
 - **Cohort 2:** Wed 16 Sept 2026, 09:00–17:00, Worcester College, Walton Street, Oxford
   OX1 2HB. Luma `evt-kcWdRFwqcgBbNcn` / luma.com/oxfordagentic2. Bookings live.
   (It was originally planned for 9 Sept at St Anne's — that changed; Luma is authoritative.)
-- **GEO baseline (Perplexity, 25 Jul):** oxfordagentic.com not yet cited. Elansio wins
-  the "hands-on AI training Oxford" citation with an exact-match landing page and
-  build-outcome language; Saïd's programmes are framed by the engine as "strategic,
-  online, not hands-on" — which is the gap this brand occupies. Third-party aggregators
-  carry the citations, so off-page mentions are the real lever. Re-probe monthly.
+- **GEO status (Perplexity, re-probed 30 Jul — supersedes the 25 Jul baseline):**
+  - **"hands-on AI training Oxford…" → now ranked #2**, up from uncited, quoting the
+    site's own capsule and FAQ. On-page work succeeded.
+  - **The national buyer question ("UK, one day, build an agent on my own task") →
+    still invisible**, twelve competitors named instead. Every citation there came from
+    an aggregator or a provider with off-site presence. **Off-page mentions are now the
+    binding constraint** — Eventbrite, AI-event aggregators, LinkedIn Company Page.
+    More schema will not move this.
+  - **Saïd is no longer "strategic, not hands-on".** Their new *Oxford Generative and
+    Agentic AI Programme* (£1,500, online, 4 weeks, next start 16 Sept 2026 — the same
+    day as Cohort 2) includes building a simple agent. The honest distinction is now
+    in-person, your own real task rather than a platform exercise, and the room —
+    **not** that they lack hands-on content. Site copy must not imply otherwise.
+  - New local competitor: **The Oxford AI School** (Witney), prices from £149.
+  - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probe ~30 Aug.
 - **Not indexed by Google yet** as of 25 Jul (domain registered 22 Jul). Normal.
 - **Schema graph is deep and connected (cycles 15–20):** Organization (+`founder` →
   the team-page Person `@id`), WebSite, a WebPage node on every indexable page,

@@ -62,6 +62,13 @@ Status: `todo` · `blocked` (why) · `doing`
    Sitemaps, and URL-Inspect → Request indexing for the homepage, the Cohort 2 event
    page and /guides/. Then export Performance CSVs into `seo-data/` so the loop has
    real query signal.
+2b. **`blocked` (Drummond, highest-leverage item on this list) — off-page presence.**
+   The 30 Jul GEO re-probe proved the on-page work has hit its ceiling: the site now
+   ranks #2 for Oxford-anchored queries and is absent from the national buyer question,
+   where every citation came from an aggregator. Concretely: list Cohort 2 on
+   **Eventbrite** (cited three times in that answer), on UK AI-event aggregators, and
+   create the **LinkedIn Company Page**. Each is a citable third-party mention of the
+   entity. This now outranks every remaining technical item on the backlog.
 3. `blocked` (needs Bing account) — Bing Webmaster verification + sitemap.
 4. `blocked` (needs Plausible account + site id) — wire analytics in site.config.
 5. `blocked` (needs a LinkedIn Company Page URL) — add it to `brand.social` so it flows
@@ -90,6 +97,28 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-30 — Cycle 28: GEO re-probe. The on-page ceiling has been reached.**
+  The first genuinely new signal since the loop began, and it changes the priorities.
+  Full detail under "GEO re-probe — 30 Jul" above; the short version is that the site
+  now ranks **#2** for Oxford-anchored queries (up from uncited on 25 Jul, quoting its
+  own capsule and FAQ back) and is **absent from the national buyer question**, where
+  an engine named twelve competitors and handed "spend the day on your own real task"
+  to JBI Training. Every citation in that answer was an aggregator or an off-site
+  provider page. On-page work did what it could; the remaining lever is off-page and
+  it is Drummond's — new **backlog 2b**, now the highest-leverage item on the list.
+  Two things changed on the site as a result. **STATE.md's competitive framing was
+  corrected**: Saïd now runs an Oxford Generative and Agentic AI Programme that
+  includes building an agent, so "they are strategic, not hands-on" is no longer true
+  and must not be implied. And the comparison guide was **sharpened where that framing
+  leaked into copy** — it now grants that executive programmes may include a build
+  exercise and relocates the distinction to where it actually holds: a guided build on
+  a sample case is not your own task running on Monday. Being generous about the
+  alternative makes the real difference land harder, and it is now also the accurate
+  thing to say. `updatedDate` bumped.
+  _Rejected this cycle:_ adding "UK" phrasing or a non-Oxford landing page to chase the
+  national query. That is the doorway-page rule in a new costume; the answer is
+  off-page citations, not another page.
 
 - **2026-07-30 — Cycle 27: the closing CTA was pointing the wrong way.**
   The cycle's hypothesis was wrong and worth recording as such: the Cohort 2 page was
@@ -478,6 +507,46 @@ and the four guides shipped on 25 Jul — expect all counts to rise):
   currently not indexed` is expected at this age and needs nothing.
 - **Performance: no query data yet.** Nothing to export into `seo-data/` until roughly
   the first week of August.
+
+## GEO re-probe — 30 Jul 2026 (cycle 28). The first real signal the loop has ever had.
+
+Same engine (Perplexity) as the 25 Jul baseline. Two queries, two opposite answers, and
+the gap between them is the finding.
+
+**1. "hands-on AI training Oxford for business leaders" — WE NOW RANK #2.**
+Up from not cited at all on 25 Jul. The engine pulled the capsule, the FAQ, the venue
+answer and "three build cycles, not three lectures" — the site's own words, verbatim.
+Five weeks of entity consistency, schema depth and 12 guides did the job they were
+meant to do. Elansio no longer appears in the top 8 for this phrasing.
+
+**2. The actual buyer question — WE ARE INVISIBLE.**
+Asked as a founder would ask it ("UK, one-day, in-person, build a working agent on my
+own real task, name providers"), the engine named twelve providers and **not one of
+them was Oxford Agentic**: Columbus/Microsoft Agent in a Day, BrainStation, ODSC,
+DataStax, JBI Training, TESS, Edinburgh, Cambridge. Worse, it concluded that the
+strongest fit for "spend the entire day on your own real task" is **JBI Training** —
+which is Oxford Agentic's exact positioning, awarded to someone else.
+
+**Why.** The word "Oxford" is doing all the retrieval work. Every citation in the
+national answer came from an aggregator or a provider with off-site presence
+(Eventbrite ×3, vendor event pages, university pages). The 25 Jul baseline predicted
+exactly this — "third-party aggregators carry the citations, so off-page mentions are
+the real lever" — and this probe is the proof. **On-page work has now taken the site
+about as far as on-page work can.** The remaining lever is off-page and it is
+Drummond's: an Eventbrite listing, AI-event aggregators, a LinkedIn Company Page,
+directory entries. No amount of further schema will substitute.
+
+**Competitive correction — STATE.md was out of date.** Saïd Business School has
+launched an **Oxford Generative and Agentic AI Programme**: £1,500, online, four weeks,
+next start **16 September 2026 — the same day as Cohort 2**. It explicitly includes
+"build a simple agent on an existing platform" and a governance checklist. The old
+framing ("Saïd is strategic, online, not hands-on; that gap is ours") is no longer
+safe: they now claim hands-on agent building too. The honest remaining distinction is
+in-person, your own real task rather than a platform exercise, and a room of peers —
+not "they don't do hands-on". Do not let site copy imply otherwise.
+Also new locally: **The Oxford AI School** (Witney), publishing prices from £149.
+
+_Re-probe again ~30 Aug, or sooner if Drummond lands an off-page listing._
 
 ## Signal snapshot
 

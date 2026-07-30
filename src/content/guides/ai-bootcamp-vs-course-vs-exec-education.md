@@ -10,7 +10,7 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-07-25T09:00:00+01:00"
+updatedDate: "2026-07-30T09:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -21,7 +21,7 @@ These labels get used interchangeably, but they describe genuinely different thi
 
 University executive programmes - the diplomas, the strategy modules - are good at what they are for: the landscape, the economics, the governance questions, a peer network, a credential. If you need to set direction, allocate budget or speak credibly about AI at board level, this is the right instrument.
 
-What it rarely leaves you with is anything running. That is not a flaw; it is not the job. Many of the people in our rooms have completed exactly this kind of programme and arrive saying some version of the same thing: I understand it - I have just never built anything.
+Some now include a build exercise as well, and the better ones are worth doing. What they rarely leave you with is your own work running afterwards: a guided build on a sample case is a different thing from the task that was actually on your desk on Monday. That is not a flaw; it is not the job. Many of the people in our rooms have completed exactly this kind of programme and arrive saying some version of the same thing: I understand it - I have just never built anything.
 
 ## An online course: knowledge, at your pace
 
