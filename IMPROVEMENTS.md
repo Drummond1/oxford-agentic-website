@@ -70,9 +70,12 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster, continued (probe-driven order): public-sector/NHS shipped
-   in cycle 24; next is "How to run an AI pilot that survives contact with your team".
-   ~One per cycle, never more than one per day (budget for 29 Jul is now SPENT).
+9. `todo` — Content cluster: the probe-driven list from the GEO baseline is now FULLY
+   SHIPPED (12 guides). Do NOT invent a thirteenth to keep the cadence going — the next
+   guide should answer a question real signal shows people asking. Blocked on Search
+   Console query data. If a topic is genuinely obvious before then, it must pass the
+   same test as the others: a real question, standing alone, one link to the programme.
+   (Budget for 30 Jul is SPENT.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -87,6 +90,26 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-30 — Cycle 25: "How to run an AI pilot that survives contact with your team"
+  — and the content cluster is now complete.** The last guide on the probe-driven list.
+  Angle: pilots do not fail on the technology, they fail organisationally, so the guide
+  is about scoping (a task, not a tool), ownership (the person whose task it is, not an
+  innovation team), defining "better" in advance against how the job is done today,
+  building the check in, and planning for week two — the fortnight-in drop-off where
+  most pilots quietly die. It is also the closest guide to a sales argument for the
+  bootcamp without making one: "if that person cannot build it, that is a stronger
+  argument for teaching them than for building it for them."
+  _Two process notes._ A draft sentence used an invented first name for an illustrative
+  colleague; cut before build, because on a site whose credibility rests on never
+  inventing people, even a hypothetical name is a bad habit. And the build caught the
+  meta description at >160 chars — the strict schema doing exactly its job.
+  12 guides, 28 pages. **The backlog's content list is now exhausted**: rather than
+  invent a thirteenth topic to keep the cadence, backlog 9 is rewritten to require real
+  query signal first. Guide budget for 30 Jul: spent.
+  _Loop status:_ the 09:01 cron has not fired since 27 Jul (`lastRunAt` 27 Jul, next
+  31 Jul) — the machine is asleep at that hour, so every cycle since has come from the
+  in-session loop. Worth moving to a cloud schedule if hands-off daily runs matter.
 
 - **2026-07-29 — Cycle 24: "Agentic AI for public-sector and NHS leaders" (backlog 9).**
   (Cycle 23 was heartbeats only: guide budget spent, everything else blocked.) The
