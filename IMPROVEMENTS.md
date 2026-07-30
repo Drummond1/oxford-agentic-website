@@ -63,6 +63,10 @@ Status: `todo` · `blocked` (why) · `doing`
    page and /guides/. Then export Performance CSVs into `seo-data/` so the loop has
    real query signal.
 2b. **`blocked` (Drummond, highest-leverage item on this list) — off-page presence.**
+   _Sharper as of 31 Jul: the Organization node now claims **no third-party identity at
+   all**, because its only `sameAs` entry (`luma.com/oxfordagentic`) was a 404 and was
+   removed. A LinkedIn Company Page would be its first. A real Luma calendar URL works
+   too — drop either into `brand.social` and it flows into schema automatically._
    The 30 Jul GEO re-probe proved the on-page work has hit its ceiling: the site now
    ranks #2 for Oxford-anchored queries and is absent from the national buyer question,
    where every citation came from an aggregator. Concretely: list Cohort 2 on
@@ -97,6 +101,33 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-07-31 — Cycle 33: the footer's Luma link had been 404 on every page.**
+  No Search Console export (sixteenth cycle). Audited three things the build never
+  checks. Two were clean and are recorded so they are not re-run: **crawl depth** —
+  every indexable page sits within two clicks of the homepage, nothing at depth 3+,
+  and the only unreachable page is `/home-photos/`, which is deliberately unlinked and
+  noindexed; and **heading hierarchy** — zero issues across 25 pages, exactly one `h1`
+  each and no skipped levels, including the `h3`/`h4` structure cycle 26 introduced on
+  the guides index.
+  The third found a real defect. **`https://luma.com/oxfordagentic` returns 404** —
+  confirmed with a browser user-agent and no redirects, against a 200 control on
+  `luma.com/oxfordagentic2`. It was rendering in the footer of every page, and after
+  cycle 31 removed the personal LinkedIn from `sameAs` it had become **the sole
+  identity the Organization claimed**. A broken `sameAs` is worse than none: it is a
+  positive assertion pointing nowhere.
+  Removed rather than repointed. The working Cohort 2 URL identifies an *event*, not
+  the organisation, and would go stale in September; `sameAs` has to be persistent.
+  The schema code already omits the key when the list is empty, so the graph degrades
+  cleanly, the `founder` edge still connects Organization to Person, and the footer
+  falls back to LinkedIn plus email. Both rules are now documented in `site.config.ts`
+  at the point of change.
+  **Consequence, and it sharpens backlog 2b considerably: the Organization now claims
+  no third-party identity at all.** A LinkedIn Company Page would be its first.
+  **Process note:** `check-links` validates internal links only, which is why a dead
+  external link survived sixteen cycles. Deliberately NOT adding external checking to
+  CI — a third-party outage should never turn this build red. Instead: **spot-check
+  outbound links each month alongside the GEO re-probe.** There are only four.
 
 - **2026-07-30 — Cycle 32: ten pages had titles Google would cut off.**
   No Search Console export (fifteenth cycle), so backlog-driven — but this is the

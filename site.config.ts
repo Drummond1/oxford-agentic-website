@@ -116,13 +116,27 @@ const config: SiteConfig = {
     region: 'Oxfordshire',
     country: 'GB',
     email: 'hello@oxfordagentic.com',
-    // Shown in the footer. NOTE: only URLs that identify the ORGANISATION reach
-    // `Organization.sameAs` — a personal linkedin.com/in/… profile is filtered
-    // out in schema.ts, because it identifies Drummond (it is already the Person
-    // node's sameAs) and claiming it here would merge the two entities. Replace
-    // this with a linkedin.com/company/… page and it flows into schema on its own.
+    /*
+     * Shown in the footer, and the source of `Organization.sameAs`.
+     *
+     * Two rules learned the hard way:
+     *
+     * 1. Only URLs that identify the ORGANISATION reach `sameAs`. A personal
+     *    linkedin.com/in/… profile is filtered out in schema.ts — it identifies
+     *    Drummond, is already the Person node's sameAs via the team file, and
+     *    claiming it here merges the two entities. A linkedin.com/company/…
+     *    page is the org's own identity and flows through untouched.
+     * 2. Every URL here must resolve. `luma.com/oxfordagentic` was listed until
+     *    31 Jul and had been returning 404 — a dead link in every page footer,
+     *    and after the sameAs filter it was the only identity the Organization
+     *    claimed. A broken sameAs is worse than none. Removed rather than
+     *    repointed at the Cohort 2 event URL, which identifies an event, not the
+     *    organisation, and would go stale in September.
+     *
+     * The Organization currently claims NO third-party identity. A LinkedIn
+     * Company Page, or a real Luma calendar URL, is the fix — drop it in here.
+     */
     social: {
-      luma: 'https://luma.com/oxfordagentic',
       linkedin: 'https://www.linkedin.com/in/drummondgilbert/',
     },
   },
