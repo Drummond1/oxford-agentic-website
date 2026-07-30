@@ -1,6 +1,7 @@
 ---
 title: "Agentic AI for business leaders: where to start"
 slug: agentic-ai-for-business-leaders-where-to-start
+category: start-here
 description: A practical starting point for senior leaders who already use AI and want to build agentic workflows that do real work.
 capsule: >-
   If you already use AI daily and want to go further, the place to start is one

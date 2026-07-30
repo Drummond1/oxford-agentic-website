@@ -1,6 +1,7 @@
 ---
 title: "How to run an AI pilot that survives contact with your team"
 slug: how-to-run-an-ai-pilot-that-survives
+category: in-practice
 description: AI pilots rarely fail on the technology. They fail because nobody owned the task, success was never defined, and week two was never planned for.
 capsule: >-
   AI pilots rarely fail on the technology. They fail because the pilot was designed to

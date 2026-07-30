@@ -1,6 +1,7 @@
 ---
 title: What is an agentic AI bootcamp?
 slug: what-is-an-agentic-bootcamp
+category: start-here
 description: What actually happens at an agentic AI bootcamp, who it is for, and how it differs from an AI course.
 capsule: >-
   An agentic AI bootcamp is a short, hands-on course where you build and run a working

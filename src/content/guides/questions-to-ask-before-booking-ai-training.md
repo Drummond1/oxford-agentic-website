@@ -1,6 +1,7 @@
 ---
 title: "Questions to ask before booking AI training"
 slug: questions-to-ask-before-booking-ai-training
+category: choosing
 description: A buyer's checklist for AI courses and bootcamps - nine questions worth asking any provider, and what a straight answer to each one sounds like.
 capsule: >-
   Before booking AI training, ask what you will personally have running at the end,

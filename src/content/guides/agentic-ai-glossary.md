@@ -1,6 +1,7 @@
 ---
 title: "A plain-English glossary of agentic AI"
 slug: agentic-ai-glossary
+category: start-here
 description: The terms that come up when people talk about agentic AI - agents, workflows, orchestration, MCP and the rest - defined without jargon.
 capsule: >-
   Agentic AI comes wrapped in vocabulary that makes a simple idea sound harder than it

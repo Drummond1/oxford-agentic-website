@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
+import { GUIDE_CATEGORIES } from '../../content.config';
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
@@ -32,9 +33,23 @@ const related = guide
   ? programmes.filter((p) => guide.data.relatedProgrammes.some((ref) => ref.id === p.id))
   : [];
 
-// Sibling guides — every guide links to the others, so no guide is reachable
-// only via the index and link equity circulates within the section.
-const otherGuides = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
+/*
+ * Sibling guides. Listing every other guide kept the section fully connected
+ * when there were three of them; at twelve it is a wall of undifferentiated
+ * links that helps nobody choose. Same-category guides come first, then the
+ * newest from elsewhere to fill, capped at four — with a link to the full
+ * index underneath, so nothing becomes unreachable.
+ */
+const siblings = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
+const sameCategory = siblings.filter((g) => g.data.category === guide?.data.category);
+const otherGuides = [...sameCategory, ...siblings.filter((g) => !sameCategory.includes(g))].slice(0, 4);
+
+// Index only: guides grouped into the reader's journey, in category order.
+const grouped = GUIDE_CATEGORIES.map((category) => ({
+  ...category,
+  entries: guides.filter((g) => g.data.category === category.id),
+})).filter((group) => group.entries.length > 0);
+
 const showCapture = showSection('newsletter');
 ---
 
@@ -111,6 +126,9 @@ const showCapture = showSection('newsletter');
                   </li>
                 ))}
               </ul>
+              <p class="more__all">
+                <a href={paths.guides()}>All guides</a>
+              </p>
             </nav>
           )}
 
@@ -155,25 +173,40 @@ const showCapture = showSection('newsletter');
         subline="Short, practical pieces for people who intend to build something rather than form a view."
       />
 
+      {
+        /* Grouped by where the reader is, not by publication date: someone
+           landing here wants the one guide for their situation, and a flat
+           reverse-chronological grid makes that a reading exercise. */
+      }
       <section class="band band--cream" aria-labelledby="all">
         <div class="wrap">
           <h2 id="all" class="visually-hidden">
             All guides
           </h2>
 
-          {guides.length > 0 ? (
-            <div class="grid grid--3">
-              {guides.map((entry, i) => (
-                <a href={paths.guide(entry.data.slug)} class="card guide-card" data-reveal data-reveal-delay={i * 80}>
-                  <span class="eyebrow">{formatDate(entry.data.updatedDate, { weekday: undefined, day: undefined })}</span>
-                  <h3>{entry.data.title}</h3>
-                  <p>{entry.data.description}</p>
-                  <span class="guide-card__cta">
-                    Read <span aria-hidden="true">→</span>
-                  </span>
-                </a>
-              ))}
-            </div>
+          {grouped.length > 0 ? (
+            grouped.map((group) => (
+              <div class="guide-group">
+                <div class="section-head" data-reveal>
+                  <hr class="dash" />
+                  <h3 id={group.id}>{group.label}</h3>
+                  <p>{group.blurb}</p>
+                </div>
+
+                <div class="grid grid--3">
+                  {group.entries.map((entry, i) => (
+                    <a href={paths.guide(entry.data.slug)} class="card guide-card" data-reveal data-reveal-delay={i * 80}>
+                      <span class="eyebrow">{formatDate(entry.data.updatedDate, { weekday: undefined, day: undefined })}</span>
+                      <h4>{entry.data.title}</h4>
+                      <p>{entry.data.description}</p>
+                      <span class="guide-card__cta">
+                        Read <span aria-hidden="true">→</span>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))
           ) : (
             <p class="empty">The first guides are being written.</p>
           )}
@@ -299,13 +332,33 @@ const showCapture = showSection('newsletter');
     color: var(--ink-dark);
   }
 
+  .more__all {
+    margin-block-start: 1.1rem;
+  }
+
+  .more__all a {
+    font-family: var(--font-label);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: var(--step-xs);
+  }
+
+  /* Groups need more air between them than the cards inside one, or the
+     headings stop reading as dividers. */
+  .guide-group + .guide-group {
+    margin-block-start: clamp(2.75rem, 2rem + 3vw, 4.5rem);
+  }
+
   .guide-card {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
-  .guide-card h3 {
+  /* h4 on the index (nested under a group h3), h3 nowhere else — same look. */
+  .guide-card :is(h3, h4) {
+    font-family: var(--font-title);
     font-size: var(--step-lg);
     margin-block-end: 0.75rem;
   }

@@ -199,12 +199,26 @@ const testimonials = defineCollection({
     }),
 });
 
+/**
+ * Guide groupings, in the order they appear on the index.
+ *
+ * Required on every guide rather than defaulted: past a handful of pieces a
+ * flat list stops helping anyone, and a guide nobody has placed in the
+ * reader's journey is usually a guide nobody decided the purpose of.
+ */
+export const GUIDE_CATEGORIES = [
+  { id: 'start-here', label: 'Start here', blurb: 'What agentic AI is, and what the words actually mean.' },
+  { id: 'choosing', label: 'Choosing how to learn', blurb: 'Formats, claims, and what to ask before booking anything.' },
+  { id: 'in-practice', label: 'Putting it to work', blurb: 'Where it helps in a particular kind of job, and how to make it stick.' },
+] as const;
+
 const guides = defineCollection({
   loader: glob({ base: './src/content/guides', pattern: '**/*.md' }),
   schema: () =>
     z.object({
       title: z.string(),
       slug: z.string().regex(/^[a-z0-9-]+$/),
+      category: z.enum(['start-here', 'choosing', 'in-practice']),
       description: z.string().max(160),
       capsule: z.string(),
       author: reference('team'),

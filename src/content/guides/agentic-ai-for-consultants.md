@@ -1,6 +1,7 @@
 ---
 title: "Agentic AI for consultants: sell the judgement, not the assembly"
 slug: agentic-ai-for-consultants
+category: in-practice
 description: Which consulting work suits an agentic workflow, which does not, and how a workflow built once becomes margin on every engagement after it.
 capsule: >-
   Consultants get the most from agentic AI on the assembly work inside an engagement:

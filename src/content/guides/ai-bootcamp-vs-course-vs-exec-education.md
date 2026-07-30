@@ -1,6 +1,7 @@
 ---
 title: "AI bootcamp, AI course or executive education: which do you need?"
 slug: ai-bootcamp-vs-course-vs-exec-education
+category: choosing
 description: The three main ways senior people learn AI, what each is actually for, and how to choose based on what you want to walk away with.
 capsule: >-
   An executive education programme gives you the strategic frame, an online course

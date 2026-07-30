@@ -91,6 +91,25 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-30 — Cycle 26: the guides section grows up (12 guides needs structure).**
+  Two problems that arrived by accretion, both invisible at three guides and obvious
+  at twelve. (a) **The index was a flat reverse-chronological grid** — fine as an
+  archive, useless for "which one is for me". Guides now carry a required `category`
+  (`start-here` / `choosing` / `in-practice`, defined once in `content.config.ts` with
+  labels and blurbs) and the index groups by it, in reader-journey order rather than
+  publication order. Required, not defaulted, deliberately: a guide nobody has placed
+  in the journey is usually a guide nobody decided the purpose of. (b) **Every guide
+  page listed all eleven siblings** — a wall of undifferentiated links. Now
+  same-category first, newest others to fill, capped at four, with an "All guides"
+  link underneath so nothing is orphaned: 13 guide links per page down to 7. The
+  CollectionPage ItemList still enumerates all 12, so crawlers lose nothing.
+  Verified: grouped index and the new sibling nav by screenshot, flags matrix green
+  both ways, 28 pages, schema green.
+  _Note for next time:_ the browser pane again refused to scroll (`scrollIntoView`
+  returned ok, screenshot unchanged) — headless Chrome with a tall `--window-size`
+  plus a sharp crop is the reliable way to see below the fold. Third time this pane
+  quirk has cost a cycle a few minutes.
+
 - **2026-07-30 — Cycle 25: "How to run an AI pilot that survives contact with your team"
   — and the content cluster is now complete.** The last guide on the probe-driven list.
   Angle: pilots do not fail on the technology, they fail organisationally, so the guide
