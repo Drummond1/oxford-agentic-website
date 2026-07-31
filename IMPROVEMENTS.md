@@ -102,6 +102,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-31 — Cycle 36: second dry cycle. Loop paused, as planned.**
+  No Search Console export (nineteenth cycle); venue flag still `confirmed: true`; no
+  LinkedIn Company Page. Site healthy, CI green.
+  Tested the last untested confident comment — Header.astro's "Opens on hover and on
+  keyboard focus, **so it is reachable by tab alone**". **The claim holds**: with the
+  Bootcamps link focused, the submenu renders and "The Oxford Agentic Bootcamp" is
+  visible and reachable. Verified by screenshot.
+  **Worth recording, because it nearly went the other way.** `getComputedStyle` in the
+  browser pane reported `visibility: hidden`, `opacity: 0` and a child that could not
+  take focus — while `:focus-within` matched. Read literally that is a hard WCAG
+  failure, and it was tempting to file. It is instead the exact stale-computed-styles
+  quirk logged in **cycle 16**, which says in as many words: do not trust
+  `getComputedStyle` here for state changes on pre-existing elements; verify visually
+  or in the built CSS. Both of those confirmed the menu opens correctly. A note written
+  eleven days ago stopped this loop shipping a fictional bug report — which is the
+  entire argument for keeping this ledger honest about tooling as well as code.
+  **Paused here.** Last cycle set the rule: if this one was also dry, stop rather than
+  stretch further. It was. The audit vein is genuinely worked out — 2 defects in the
+  first 3 attempts, 0 in the last 4 — and everything of real value now sits with
+  Drummond: the Search Console export, the Worcester venue decision, and backlog 2b.
+  Restart with `/loop` the moment any of those lands; the first has the most upside,
+  because it is the only one that turns this loop signal-driven for the first time.
+
 - **2026-07-31 — Cycle 35: nothing found. Slowing down, as instructed.**
   No Search Console export (eighteenth cycle). Cycles 33 and 34 both found defects by
   testing confident comments, so this cycle tested three more. All three held:
