@@ -102,6 +102,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-31 — Cycle 35: nothing found. Slowing down, as instructed.**
+  No Search Console export (eighteenth cycle). Cycles 33 and 34 both found defects by
+  testing confident comments, so this cycle tested three more. All three held:
+  - **Breadcrumbs** — "the markup and the JSON-LD can never disagree". Compared the
+    visible trail against the `BreadcrumbList` node on all 24 pages that carry one.
+    Zero disagreements, including the guides and team subtrees.
+  - **The FAQ's exclusive accordion** — `<details name="faq">` makes one group where
+    opening an item closes the rest, which would break if a page rendered two FAQ
+    groups. No page does: five pages carry FAQs, one group and one open item each.
+  - **Reduced motion** — the site has accumulated a lot of animation over 35 cycles
+    (reveals, stat counters, reading progress, drifting motif, hover transforms, photo
+    push-in). A blanket `*, *::before, *::after` rule neutralises animation and
+    transition duration, plus targeted rules for the progress bar and reveals. It
+    ships in the built CSS. Coverage is complete without per-component guards.
+  **No change shipped, deliberately.** The standing instruction is to log a dry cycle
+  and slow down rather than manufacture work, and that is the honest read: the site is
+  in good shape and everything genuinely valuable left is blocked on Drummond — the
+  Search Console export, the venue decision, and off-page listings (backlog 2b).
+  Cadence moved to the maximum the loop allows. **The vein of "test a confident
+  comment" is not exhausted, but it is thinning: 2 defects in the last 3 attempts, now
+  0 in 3.** If the next cycle is also dry, the useful move is to stop rather than
+  stretch further — a loop with nothing to do is better paused than idling.
+
 - **2026-07-31 — Cycle 34: the primary CTA's font was never preloaded.**
   No Search Console export (seventeenth cycle). Same technique as cycle 33's win —
   check a surface the build does not — turned inward to assets.
