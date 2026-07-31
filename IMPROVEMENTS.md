@@ -102,6 +102,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-07-31 — Cycle 34: the primary CTA's font was never preloaded.**
+  No Search Console export (seventeenth cycle). Same technique as cycle 33's win —
+  check a surface the build does not — turned inward to assets.
+  **Clean, recorded so they are not re-run:** every local asset referenced from HTML
+  exists in `dist/` (15 distinct), and every `url()` in the built CSS resolves (7 refs,
+  7 font files shipped). No missing favicon, icon or font.
+  **The find.** Only three faces were preloaded, and the comment said so proudly — but
+  the set was wrong. `plex-mono-600` (eyebrows) was preloaded while **`plex-mono-700`
+  was not**, and 700 is what the header nav and *every* `.btn` use, including "Book the
+  next cohort" and the "Next Bootcamp" header button. So the most prominent
+  above-the-fold interactive text on every page rendered in fallback monospace and
+  swapped once the real face arrived. Invisible to Lighthouse, which scores the paint
+  it gets rather than the one the reader wanted, and invisible to every check in CI.
+  Fixed by preloading it too — 15KB, and the comment now lists all four faces with
+  what each one paints, so the next person adding a weight can see whether it belongs.
+  Verified after: performance still 100 on all three audited URLs, CLS 0, LCP
+  323–368ms. (Not claiming the change improved LCP — that is a different measurement
+  session from the earlier 0.5s reading. The point is it cost nothing.)
+  _Generalisable lesson:_ two cycles running, the defects have been in things nothing
+  validates — an external link, a preload set. Both were also **documented as correct**
+  in a comment right above the bug. A confident comment is where to look, not where to
+  stop looking.
+
 - **2026-07-31 — Cycle 33: the footer's Luma link had been 404 on every page.**
   No Search Console export (sixteenth cycle). Audited three things the build never
   checks. Two were clean and are recorded so they are not re-run: **crawl depth** —
