@@ -81,12 +81,14 @@ Status: `todo` · `blocked` (why) · `doing`
    Cohort 1 testimonials and un-gate the people photos.
 7. `blocked` (needs venue confirm + Luma page) — set Cohort 2 `confirmed: true` and add
    its `lumaEventId` when the page exists (~28 Jul).
-9. `todo` — Content cluster: the probe-driven list from the GEO baseline is now FULLY
-   SHIPPED (12 guides). Do NOT invent a thirteenth to keep the cadence going — the next
-   guide should answer a question real signal shows people asking. Blocked on Search
-   Console query data. If a topic is genuinely obvious before then, it must pass the
-   same test as the others: a real question, standing alone, one link to the programme.
-   (Budget for 30 Jul is SPENT.)
+9. `todo` — Content cluster: **Drummond re-opened guides on 4 Aug** ("add more guides
+   for example"), overriding the wait-for-signal gate cycle 25 set. The quality bar is
+   unchanged: a real question, standing alone, one programme link, never more than one
+   guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
+   Remaining candidates that pass the bar, roughly in order: the scout-drafter-reviewer
+   pattern explained (the site's own core pattern, currently defined nowhere);
+   "do I need a paid AI subscription?" (expands a real event-page FAQ); agentic AI for
+   charities and non-profits (persona-established). (Budget for 4 Aug is SPENT.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -101,6 +103,21 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-04 — Cycle 38: "How to choose the task you bring" (guides re-opened by
+  Drummond).** His instruction — "add more guides for example" — overrides the
+  wait-for-signal gate from cycle 25, so backlog 9 is reworded and the cluster
+  continues under the same quality bar. This topic was chosen first because it is the
+  rare guide that serves both sides of the funnel: a buyer weighing the day gets a
+  concrete picture of what "bring one real task" means, and a booked attendee gets
+  better pre-work — which is also what the Cohort 1 retro asked for (more guided
+  building, a shared worksheet). Five tests, each grounded in the format's real
+  mechanics (frequency, text-based, checkable at a glance, annoying enough to care,
+  affordable to get wrong), closing on the recurring-assembly-job shape and the
+  event's actual deliverables. No facts invented; the "review step" and "written
+  recipe" claims come straight from the event file. 13 guides, 29 pages, propagated
+  into llms.txt, RSS, sitemap and the grouped index (in-practice). Budget for 4 Aug
+  spent; next candidates queued in backlog 9.
 
 - **2026-08-04 — Cycle 37: loop restarted; the vault moved while the site stood still.**
   No Search Console export (twentieth cycle). Four days of vault changes (3 Aug) were
