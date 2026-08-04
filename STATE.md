@@ -46,27 +46,49 @@ confirming against the real Luma capacity.
 
 ---
 
-## ⚠️ Needs a decision before anything else (raised by the loop, 30 Jul)
+## ⚠️ Needs a decision before anything else (raised 30 Jul, evidence updated 4 Aug)
 
-**The Cohort 2 venue is published as confirmed, but the vault says it is a hold.**
+**The Cohort 2 venue is published as confirmed. The vault now says: decided, not
+secured.**
 
-- The site's event file has `venue.confirmed: true`, so the page states "Worcester
-  College, Walton Street, Oxford, OX1 2HB" flat, with no qualifier.
-- `Digital Brain/CLAUDE.md` (27–28 Jul, newer than the site value) says Worcester's
-  Nash Suite is **provisionally held, with no contract, deposit or cancellation terms
-  and no stated expiry**, and records a venue meeting with Paula Wallbridge diarised
-  for **Fri 31 Jul 13:00–13:30**.
+Updated picture from `Digital Brain/CLAUDE.md` (3 Aug, Drummond's own words to
+Conference Oxford): *"We've chosen Worcester College - I'm just waiting confirmation
+about one specific question."* So the college will not change — it beat a five-venue
+shortlist — but there is **still no contract, deposit or cancellation terms**, plus an
+unnamed open question, and the 31 Jul Paula meeting left no first-party trace. The
+risk has narrowed from "address might move" to "booking not signed".
 
-The `confirmed` flag exists precisely for this: set to `false`, the page adds "Room
-booking being finalised" beside the address and nothing else changes. The loop has
-**deliberately not touched it** — venue facts are a hard guardrail, and Drummond may
-know something the vault does not.
+The loop still has not touched `venue.confirmed` — venue facts are a hard guardrail.
+Given the decision is now on record, leaving `true` is defensible; flipping to `false`
+(which renders "Room booking being finalised") is the cautious option until the
+contract exists. Drummond's call, made less urgent than the 30 Jul framing but not
+closed until something is signed.
 
-**Decide one of two things.** If it is contracted, the vault note is stale and should
-say so. If it is still a hold, flip `venue.confirmed` to `false` in
-`src/content/events/oxford-agentic-bootcamp-cohort-2.md` until it is signed — telling
-twenty-five senior people a confirmed address that later moves is the kind of thing
-this brand cannot afford, and the site already handles the provisional case gracefully.
+## New facts from the vault (3 Aug) the site does not yet reflect
+
+1. **Nicolai Thomson (founder, Jenesys AI) is confirmed for Cohort 2's technical
+   slot** — warm, in his own words "really stoked to be involved" (31 Jul). Naming
+   the guest speaker on the event page is one of the strongest bookings levers still
+   unpulled. The loop has NOT added him: he is still owed the promised assets
+   (referral links, codes, social cards, content brief) and a speaker announcement
+   should be coordinated with him, not sprung by a website update. When Drummond says
+   go: add him to `src/content/team/` (or a speakers entry), reference him from the
+   Cohort 2 `speakers` field, and the agenda's "Guest session" rows can carry a name.
+2. **Josh Lawman has vacated Cohort 2's technical slot.** He remains on the team page
+   as one of the four who run the bootcamp — probably still right for Cohort 1
+   history, but Drummond should confirm whether the team page and his bio still
+   describe the current arrangement. Not changed: facts about real people move only
+   on his say-so.
+3. **College-logo constraint (learned 3 Aug via the Mathematical Institute):** an
+   unaffiliated event may NOT use University or college logos in promotion. **Audited
+   4 Aug: the site is clean** — no crest or University logo assets anywhere, no
+   affiliation claims in copy (Drummond's bio states only where he studied and
+   teaches, which is factual). One grey area flagged, not changed: the Cohort 1
+   registration-desk photo shows a "St Anne's College, University of Oxford"
+   tablecloth. It is documentary photography of the real event rather than a logo
+   asset, but under a strict reading of the constraint Drummond may prefer to swap it
+   off the marketing pages. Check the same constraint against Worcester before any
+   Cohort 2 asset ships.
 
 ## What needs Drummond (the loop cannot do these)
 

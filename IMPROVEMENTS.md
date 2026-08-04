@@ -102,6 +102,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-04 — Cycle 37: loop restarted; the vault moved while the site stood still.**
+  No Search Console export (twentieth cycle). Four days of vault changes (3 Aug) were
+  newer than everything on the site, so the cycle went to reconciling them:
+  - **Venue** — now "decided, not secured" in Drummond's own words to Conference
+    Oxford; Worcester beat a five-venue shortlist but still has no contract. STATE.md's
+    30 Jul warning rewritten with the newer evidence: risk narrowed from "address might
+    move" to "booking not signed". Flag still untouched, still Drummond's call.
+  - **Speakers** — Nicolai Thomson (Jenesys AI) confirmed warm for the technical slot
+    Josh Lawman vacated. NOT added to the site: he is owed his promised assets and a
+    speaker announcement is coordinated with the speaker, not sprung on him. Recorded
+    in STATE.md as the strongest unpulled bookings lever, with the exact wiring steps
+    for when Drummond says go. Josh's team-page status flagged for Drummond to confirm.
+  - **College-logo constraint** (an unaffiliated event may not use University or
+    college logos) — audited the site: no crest assets, no affiliation claims; one
+    grey area flagged (the St Anne's tablecloth photo, documentary rather than a logo
+    asset). Clean, recorded so the check is not re-run.
+  Documentation-only cycle by design: every new fact concerns real people, a legal
+  constraint or an unsigned booking — exactly the three categories the guardrails
+  reserve for Drummond.
+
 - **2026-07-31 — Cycle 36: second dry cycle. Loop paused, as planned.**
   No Search Console export (nineteenth cycle); venue flag still `confirmed: true`; no
   LinkedIn Company Page. Site healthy, CI green.
