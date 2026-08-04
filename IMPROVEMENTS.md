@@ -104,6 +104,21 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-04 — Cycle 42 (first under the new prompt): the glossary learns what a
+  second brain is.** No Search Console data (step 1 of the new prompt), so the
+  highest-value unblocked item: the glossary predated the Second Brain launch and
+  never defined the new product's central term. A "Second brain" entry now sits
+  directly after "Context", framed as the fix for context being the bottleneck, with
+  the guide's one new internal link pointing at the programme page. This is the first
+  *refresh* under the refreshes-unlimited rule — an update to a proven page rather
+  than a new page, `updatedDate` bumped so sitemap `lastmod` reflects it, and the
+  IndexNow pipeline shipped in cycle 41 will ping the changed URL on deploy
+  automatically. Guide-per-day budget untouched (this is not a new guide).
+  _Off-page flags, restated per the new prompt rather than skipped:_ Eventbrite
+  listing (both events, packs ready in `outreach/`), LinkedIn Company Page (would
+  also give Organization.sameAs its first identity), Bing Webmaster, GSC export or
+  API credentials. All Drummond's; all standing.
+
 - **2026-08-04 — Cycle 41: IndexNow on every deploy.** Drummond asked how to make the
   loop's SEO/GEO work more rapid; this was the one immediate, unblocked answer (the
   others - GSC API access, Eventbrite, the LinkedIn page - are his). Every push now

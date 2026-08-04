@@ -10,7 +10,7 @@ capsule: >-
   business leaders who want to build rather than translate.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-07-25T09:00:00+01:00"
+updatedDate: "2026-08-04T21:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -36,6 +36,10 @@ The instruction you give a model. Prompting well matters, but it is a single-ste
 ## Context
 
 Everything the model can see when it works: your instructions, the documents you give it, the conversation so far. Most disappointing AI output is a context problem, not an intelligence problem - the model was never shown what good looks like.
+
+## Second brain
+
+A structured, maintained store of your own context - how you write, what good looks like, what your business knows - kept where your AI tools can draw on it, so you stop re-explaining yourself in every conversation. It is the fix for context being the bottleneck: build the supply once instead of retyping it each time. Building one from your own material is a day's work - [we run a bootcamp for exactly that](/bootcamps/second-brain-bootcamp/).
 
 ## Tool use
 
