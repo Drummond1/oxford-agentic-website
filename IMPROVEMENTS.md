@@ -85,10 +85,10 @@ Status: `todo` · `blocked` (why) · `doing`
    for example"), overriding the wait-for-signal gate cycle 25 set. The quality bar is
    unchanged: a real question, standing alone, one programme link, never more than one
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
-   Remaining candidates that pass the bar, roughly in order: the scout-drafter-reviewer
-   pattern explained (the site's own core pattern, currently defined nowhere);
-   "do I need a paid AI subscription?" (expands a real event-page FAQ); agentic AI for
-   charities and non-profits (persona-established). (Budget for 4 Aug is SPENT.)
+   Remaining candidates that pass the bar: "do I need a paid AI subscription?"
+   (expands a real event-page FAQ); agentic AI for charities and non-profits
+   (persona-established); "what should a second brain contain?" (supports the new
+   programme). (Budget for 5 Aug is SPENT — the pattern guide shipped in cycle 45.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -103,6 +103,15 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-05 — Cycle 45: "Scout, drafter, reviewer" gets its own guide.**
+  The site's core method was referenced on the homepage FAQ, both event pages, the
+  glossary and four guides — and defined in depth nowhere. Now it is: what each step
+  does, why three narrow steps beat one clever prompt (visibility of failure,
+  independent improvement, trust earned per step), where the human sits, and — per
+  the honesty rule that runs through the cluster — where the pattern is the wrong
+  shape. 14 guides, 32 pages; start-here category; IndexNow pings the two changed
+  URLs on deploy. Guide budget for 5 Aug: spent.
 
 - **2026-08-04 — Cycle 43: the homepage FAQ stopped pretending there is one bootcamp.**
   No GSC data; Luma copy unchanged (tenth check). The find: the homepage FAQ — which
