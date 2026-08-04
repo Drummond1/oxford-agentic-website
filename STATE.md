@@ -66,20 +66,12 @@ closed until something is signed.
 
 ## New facts from the vault (3 Aug) the site does not yet reflect
 
-1. **Nicolai Thomson (founder, Jenesys AI) is confirmed for Cohort 2's technical
-   slot** — warm, in his own words "really stoked to be involved" (31 Jul). Naming
-   the guest speaker on the event page is one of the strongest bookings levers still
-   unpulled. The loop has NOT added him: he is still owed the promised assets
-   (referral links, codes, social cards, content brief) and a speaker announcement
-   should be coordinated with him, not sprung by a website update. When Drummond says
-   go: add him to `src/content/team/` (or a speakers entry), reference him from the
-   Cohort 2 `speakers` field, and the agenda's "Guest session" rows can carry a name.
-2. **Josh Lawman has vacated Cohort 2's technical slot.** He remains on the team page
-   as one of the four who run the bootcamp — probably still right for Cohort 1
-   history, but Drummond should confirm whether the team page and his bio still
-   describe the current arrangement. Not changed: facts about real people move only
-   on his say-so.
-3. **College-logo constraint (learned 3 Aug via the Mathematical Institute):** an
+1. ✅ **RESOLVED 4 Aug (Drummond's instruction): Nicolai Thomson is on the team page
+   and Josh Lawman is off it.** Bio drawn from vault facts only (founder of Jenesys
+   AI, multimodal AI platform for accounting practices; leads the technical strand).
+   Still open if wanted later: referencing him from the Cohort 2 `speakers` field so
+   the event page names him against the agenda.
+2. **College-logo constraint (learned 3 Aug via the Mathematical Institute):** an
    unaffiliated event may NOT use University or college logos in promotion. **Audited
    4 Aug: the site is clean** — no crest or University logo assets anywhere, no
    affiliation claims in copy (Drummond's bio states only where he studied and
@@ -117,9 +109,11 @@ closed until something is signed.
 - **No doorway pages, ever.** No "AI bootcamp London" location variants or thin
   near-duplicates. Google penalises them and they cheapen a brand whose whole voice is
   anti-hype.
-- **Guides stay subtle.** The content layer is reachable only via the Guides nav item,
-  the footer, and cross-links. The homepage carries zero guide links in its main flow —
-  it is a lead-generation layer, never the site's primary feature.
+- **Guides are an SEO/GEO play only (Drummond, 4 Aug — tightened from the original
+  rule).** Reachable from the footer, their own index and guide-to-guide cross-links,
+  and nowhere else: not the header nav (28 Jul) and not the programme pages (4 Aug —
+  the "Further reading" band was removed; the booking path competes with nothing).
+  Guides still link TO programme pages, so crawlers keep the reverse edge.
 - **One new guide per day maximum.** Steady cadence reads as a living site; a burst of
   AI-written pages in one day is the pattern Google's helpful-content system penalises.
 - **The design guidelines are law** — the Quad logo, Newsreader/IBM Plex Sans/IBM Plex

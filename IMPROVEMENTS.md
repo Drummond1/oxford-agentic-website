@@ -104,6 +104,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-04 — Cycle 39 (Drummond-directed): the Second Brain Bootcamp joins the
+  site, Nicolai replaces Josh, and guides leave the programme page.**
+  Three instructions, shipped as three commits.
+  (a) **The Oxford Second Brain Bootcamp** — new programme + Cohort 1 event page. All
+  facts from Drummond's own live Luma page (`luma.com/7vcqji8g`, `evt-uIVsPanZjsQkHn1`):
+  Wed 21 Oct 2026, 09:00–17:00, Pitt Rivers Museum, South Parks Road. The booking
+  embed, schema (third Event node), homepage card, nav dropdown, sitemap and llms.txt
+  all picked it up from the two content files with zero template changes — the
+  config-driven architecture doing what it was built for. Copy re-checked ~20 min
+  after the first fetch per Drummond's instruction; unchanged, so shipped. Re-check
+  on the next wake in case his edit lands later. Rust accent to distinguish the
+  programme line. No price published (rule), capacity omitted (not stated on Luma).
+  Facilitator names beyond the team page NOT added — Glenn Smith and Adrian Shedden
+  are named publicly on Luma but have no vault-established bios; flag raised rather
+  than thin profiles invented.
+  (b) **Team**: Josh Lawman removed (his instruction; no dangling references — checked
+  before deletion), Nicolai Thomson added at the same order slot, bio from vault facts
+  only. Spelling follows the vault's repeated "Nicolai" over the message's "Nicholai".
+  (c) **Programme pages**: the "Further reading" guides band removed. Decision
+  recorded in STATE.md: guides are an SEO/GEO play — footer, own index and
+  cross-links only. Guides keep linking TO programmes, so the crawl edge survives.
+  31 pages, 3 Event nodes, flags matrix green, Lighthouse budgets enforced in CI.
+
 - **2026-08-04 — Cycle 38: "How to choose the task you bring" (guides re-opened by
   Drummond).** His instruction — "add more guides for example" — overrides the
   wait-for-signal gate from cycle 25, so backlog 9 is reworded and the cluster
