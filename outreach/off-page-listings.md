@@ -1,4 +1,8 @@
-# Off-page listing pack - Cohort 2
+# Off-page listing packs
+
+Two events, one pack each. The rules at the bottom apply to both.
+
+# Pack 1 - The Oxford Agentic Bootcamp, Cohort 2
 
 **Why this file exists.** The 30 July GEO re-probe (see `IMPROVEMENTS.md`) found that
 oxfordagentic.com now ranks #2 for Oxford-anchored AI-training queries but is absent
@@ -84,6 +88,69 @@ repeated.
 > Full details and the agenda: https://oxfordagentic.com/events/oxford-agentic-bootcamp-cohort-2/
 
 ---
+
+# Pack 2 - The Oxford Second Brain Bootcamp, Cohort 1
+
+## The facts, in one place
+
+| Field | Value |
+|---|---|
+| Event | The Oxford Second Brain Bootcamp - Cohort 1 |
+| Date | Wednesday 21 October 2026 |
+| Time | 09:00–17:00 BST |
+| Venue | Pitt Rivers Museum, South Parks Road, Oxford, OX1 3PP |
+| Format | In person, one day |
+| Booking | https://luma.com/7vcqji8g |
+| Site | https://oxfordagentic.com/events/oxford-second-brain-bootcamp-cohort-1/ |
+| Organiser | Oxford Agentic, Oxford, United Kingdom |
+| Contact | hello@oxfordagentic.com |
+| Price | `[NEEDS: the Luma price, including any early-bird rate]` |
+| Capacity | `[NEEDS: confirm - not stated on the Luma page]` |
+
+## Short description (≤140 characters)
+
+> A one-day bootcamp in Oxford. Build a second brain your AI tools can draw on, from
+> your own material. No coding.
+
+## Medium description (~60 words)
+
+> Cohort 1 of the Oxford Second Brain Bootcamp runs on Wednesday 21 October 2026 at
+> the Pitt Rivers Museum, Oxford. A one-day, in-person course for business leaders
+> who use AI daily and have hit the ceiling of prompting alone: build a structured
+> second brain from your own material and leave with it working. No coding required.
+
+## Long description (for Eventbrite and anywhere with room)
+
+> **Your AI tools have never met your business.**
+>
+> That is why the answers come back generic. The judgement you have accumulated - how
+> you write, what good looks like, what your organisation knows - lives in your head,
+> so every conversation starts from zero.
+>
+> This day fixes the supply problem. You build a second brain: a structured,
+> maintained store of your own context, voice and standards that your AI assistants
+> can draw on - built from your own material, not a template.
+>
+> **What you leave with**
+> - A working second brain, populated with your own material during the day
+> - An architecture for your context, so it stays findable as it grows
+> - A maintenance routine, so the system improves with use rather than decaying
+> - The connections that let your AI tools draw on it, across tools
+>
+> **Who it is for**
+> - Business leaders, founders, partners and senior operators who use AI most days
+> - People who have hit the ceiling of what prompting alone can do
+>
+> Nothing on the day requires code. The work is deciding what your context is and
+> structuring it - thinking clearly about your business, not programming.
+>
+> Wednesday 21 October 2026, 09:00–17:00, Pitt Rivers Museum, South Parks Road,
+> Oxford. Full details and the agenda:
+> https://oxfordagentic.com/events/oxford-second-brain-bootcamp-cohort-1/
+
+---
+
+# Rules for every listing (both packs)
 
 ## Where to list it, in order of likely return
 
