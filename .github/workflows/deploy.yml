@@ -50,3 +50,28 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # After a successful publish, tell IndexNow which URLs changed so Bing-family
+  # engines (which feed ChatGPT's web answers) re-crawl now rather than on
+  # their own schedule. The script maps changed files to page URLs and falls
+  # back to the live sitemap for template-wide changes — no rebuild needed.
+  # continue-on-error: an indexing hint must never redden a deploy.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Two commits of history, enough to diff the pushed change.
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Ping IndexNow with changed URLs
+        continue-on-error: true
+        run: |
+          CHANGED=$(git diff --name-only HEAD^ HEAD 2>/dev/null || true)
+          node scripts/indexnow-ping.mjs $CHANGED

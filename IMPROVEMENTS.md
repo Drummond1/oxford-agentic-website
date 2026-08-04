@@ -104,6 +104,22 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-04 — Cycle 41: IndexNow on every deploy.** Drummond asked how to make the
+  loop's SEO/GEO work more rapid; this was the one immediate, unblocked answer (the
+  others - GSC API access, Eventbrite, the LinkedIn page - are his). Every push now
+  pings `api.indexnow.org` with the URLs the change actually affected, so Bing-family
+  engines (which feed ChatGPT's web answers) re-crawl in minutes rather than on their
+  own schedule. Mechanics: a key file at the site root proves ownership;
+  `scripts/indexnow-ping.mjs` maps changed files to URLs (guide → its page + the
+  index; event → its page, the index and home; template/config → the whole live
+  sitemap, fetched over HTTP so CI never rebuilds); docs-only pushes submit nothing.
+  A new `indexnow` job in deploy.yml runs after publish with `continue-on-error` at
+  both levels - an indexing hint must never redden a deploy, the same principle that
+  keeps external link checks out of CI. Mapping verified with a stubbed fetch:
+  content changes → correct URL set, docs-only → no submission. Google note: Google
+  does not consume IndexNow; its path stays sitemap + lastmod, unchanged.
+  _Also this wake:_ ninth Luma check on the Second Brain page - copy still unchanged.
+
 - **2026-08-04 — Cycle 39 (Drummond-directed): the Second Brain Bootcamp joins the
   site, Nicolai replaces Josh, and guides leave the programme page.**
   Three instructions, shipped as three commits.
