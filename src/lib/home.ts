@@ -17,7 +17,7 @@ export const homeFaqs = [
   },
   {
     q: 'Who are the bootcamps for?',
-    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector, NHS and university staff. It suits anyone who has done an executive AI course and wants the hands-on follow-through.',
+    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector, NHS and university staff. The Oxford Agentic Bootcamp is for building working AI workflows; the Oxford Second Brain Bootcamp is for building the store of your own context those tools draw on. Both suit anyone who has done an executive AI course and wants the hands-on follow-through.',
   },
   {
     q: 'Do I need to be technical?',
@@ -29,7 +29,7 @@ export const homeFaqs = [
   },
   {
     q: 'What will I actually leave with?',
-    a: 'A working agentic AI workflow, built against a real task from your own work and running by the end of the day. You also leave with the pattern behind it - a scout step, a drafter step and a reviewer step handing off to each other - so you can build the next one yourself.',
+    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful.',
   },
   {
     q: 'Can I bring my team?',

@@ -104,6 +104,19 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-04 — Cycle 43: the homepage FAQ stopped pretending there is one bootcamp.**
+  No GSC data; Luma copy unchanged (tenth check). The find: the homepage FAQ — which
+  is also the FAQPage schema engines quote — still answered as a one-product site.
+  "What will I actually leave with?" promised an agentic workflow flatly, which is now
+  wrong for a Second Brain buyer, and "Who are the bootcamps for?" never distinguished
+  the two days. Both answers now name both bootcamps and their different deliverables,
+  keeping the shared audience sentence. This is exactly the drift the shared
+  `home.ts` FAQ was built to prevent within one page — but nothing guards it against
+  product-line changes; noted for future launches: **new programme → check the
+  homepage FAQ in the same cycle** (missed in cycle 39 by three cycles).
+  Verified in built JSON-LD; refresh not a new guide; IndexNow pings home +
+  /home-photos/ on deploy.
+
 - **2026-08-04 — Cycle 42 (first under the new prompt): the glossary learns what a
   second brain is.** No Search Console data (step 1 of the new prompt), so the
   highest-value unblocked item: the glossary predated the Second Brain launch and
