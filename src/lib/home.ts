@@ -28,6 +28,10 @@ export const homeFaqs = [
     a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Cohort 2 is at Worcester College on Walton Street, in central Oxford. Each event page confirms its own venue and date.",
   },
   {
+    q: 'Is Oxford Agentic affiliated with the University of Oxford?',
+    a: 'No. Oxford Agentic is independent - no affiliation with the University of Oxford, its colleges, or any other institution. We hire the city\'s rooms because they are good rooms, and that is the whole relationship. The name promises the city and the standard of the day rather than a university credential: you leave with something running, which is the point.',
+  },
+  {
     q: 'What will I actually leave with?',
     a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful.',
   },
