@@ -15,12 +15,13 @@ const { variant = 'lockup', class: className = '' } = Astro.props;
 ---
 
 <span class:list={['wordmark', `wordmark--${variant}`, className]} aria-label={config.brand.name}>
-  {/* "The Quad" mark from the design guidelines. Outer square follows the text
-      colour (cream on dark, ink on cream - both permitted); centre is always
-      amber. Never recoloured, rotated or skewed, per the guidelines. */}
+  {/* "The Quad" mark in the Gold guide's construction: lighter stroke, more
+      air. Outer square follows the text colour (cream on dark, ink on cream -
+      both permitted); centre is always gold. Never recoloured, rotated or
+      skewed. Geometry mirrors src/lib/marks.ts. */}
   <svg class="wordmark__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-    <rect x="8" y="8" width="84" height="84" fill="none" stroke="currentColor" stroke-width="16" />
-    <rect class="wordmark__centre" x="36.5" y="36.5" width="27" height="27" fill="var(--gold)" />
+    <rect x="14" y="14" width="72" height="72" fill="none" stroke="currentColor" stroke-width="10" />
+    <rect class="wordmark__centre" x="38" y="38" width="24" height="24" fill="var(--gold)" />
   </svg>
   <span class="wordmark__text">{config.brand.name}</span>
 </span>

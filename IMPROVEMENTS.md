@@ -104,6 +104,25 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-05 — Cycle 46 (Drummond-directed): the Gold brand guide is applied.**
+  Imported "Brand Guide Gold.dc.html" from his claude.ai/design project via
+  DesignSync. The delta from the shipped system was three things, so that is all
+  that changed: **gold** `#F1AF39` → `#D4AF37` (accent, buttons, rules, mark
+  centre, focus rings — button hover recomputed to `#C3A133`, ~8% darker per the
+  guide); **bronze** `#9A7B23` replaces rust `#AF4C1F` (links, eyebrows, tags —
+  hover already brightened to the accent, which is exactly the guide's rule, so
+  only values moved); and the **Quad construction** lightened (stroke 16→10,
+  outer 84→72, centre 27→24 per 100) in marks.ts — which regenerates favicon,
+  logo, apple-touch icon and OG cards — and in Wordmark.astro's mirror copy.
+  Type scale, spacing, layout, voice: already conformant, untouched. All 19
+  rgba(241,175,57) literals swept to rgba(212,175,55); zero old-colour residuals
+  in dist. Variable names --rust/--burnt kept (values now bronze), documented.
+  **Revert path: tag `pre-gold-redesign` (pushed). If Drummond types "revert",
+  git-revert the redesign commit.** Verified by screenshot at 1440; flags and
+  schema green. Mid-task note: a transient model-availability outage blocked all
+  write tools for ~10 minutes; work resumed cleanly because the colour sweep was
+  already in the working tree and nothing had been pushed half-done.
+
 - **2026-08-05 — Cycle 45: "Scout, drafter, reviewer" gets its own guide.**
   The site's core method was referenced on the homepage FAQ, both event pages, the
   glossary and four guides — and defined in depth nowhere. Now it is: what each step

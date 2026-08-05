@@ -4,10 +4,10 @@ import config from '../../site.config';
  * Brand marks, generated from config so a rename redraws them (PRD §4, §20).
  *
  * The logo is "The Quad" from the design guidelines: an Oxford quad seen in
- * plan — a square outline with a solid amber square at its centre. Geometric
- * first, collegiate second. The guidelines are strict about it:
- *   - outer square only ever ink, cream or amber
- *   - centre only ever amber (or ink when it sits ON amber)
+ * plan — a square outline with a solid gold square at its centre. Geometric
+ * first, collegiate second. The guidelines (Gold, V1 · 2026) are strict:
+ *   - outer square only ever ink, cream or gold
+ *   - centre only ever gold (or ink when it sits ON gold)
  *   - never rotated, skewed, gradient-filled or shadowed
  *   - never smaller than 24px on screen
  * These functions are the single source of the mark's geometry.
@@ -15,11 +15,15 @@ import config from '../../site.config';
 
 const INK = '#051817';
 const CREAM = '#FFF9EC';
-const GOLD = '#F1AF39';
+const GOLD = '#D4AF37';
 
-/** Proportions of the mark within a 100×100 box — see the guidelines' construction. */
-const OUTER = { x: 8, y: 8, size: 84, stroke: 16 };
-const CENTRE = { size: 27 };
+/**
+ * Proportions within a 100×100 box — the Gold guide's construction (V1 · 2026):
+ * a lighter outer stroke and more air than the first draft, so the mark reads
+ * as a court rather than a frame.
+ */
+const OUTER = { x: 14, y: 14, size: 72, stroke: 10 };
+const CENTRE = { size: 24 };
 
 /**
  * The Quad, as SVG child elements, sized to fill a `box`×`box` square at (0,0).

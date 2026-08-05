@@ -19,7 +19,7 @@ const mono = fs.readFileSync(path.join(fontDir, 'IBMPlexMono-SemiBold.ttf'));
 
 const INK = '#051817';
 const CREAM = '#FFF9EC';
-const GOLD = '#F1AF39';
+const GOLD = '#D4AF37';
 const MUTED = '#C9D2CE';
 
 export interface OgOptions {
@@ -53,8 +53,9 @@ function template({ eyebrow, title, meta }: OgOptions): Node {
       fontFamily: 'Newsreader',
     },
     children: [
-      // Top lockup: the Quad mark (cream square, amber centre — the dark
-      // variant) beside the eyebrow.
+      // Top lockup: the Quad mark (cream square, gold centre — the dark
+      // variant) beside the eyebrow. Border 6px approximates the Gold guide's
+      // lighter 10/100 stroke at this size.
       el('div', {
         style: { display: 'flex', alignItems: 'center', gap: '20px' },
         children: [
@@ -63,7 +64,7 @@ function template({ eyebrow, title, meta }: OgOptions): Node {
               display: 'flex',
               width: '42px',
               height: '42px',
-              border: `8px solid ${CREAM}`,
+              border: `6px solid ${CREAM}`,
               alignItems: 'center',
               justifyContent: 'center',
             },

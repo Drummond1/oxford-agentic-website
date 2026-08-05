@@ -116,10 +116,17 @@ closed until something is signed.
   Guides still link TO programme pages, so crawlers keep the reverse edge.
 - **One new guide per day maximum.** Steady cadence reads as a living site; a burst of
   AI-written pages in one day is the pattern Google's helpful-content system penalises.
-- **The design guidelines are law** — the Quad logo, Newsreader/IBM Plex Sans/IBM Plex
-  Mono, squared corners, hairline borders, flat fills, no shadows, ink/paper/amber/rust
-  with no teal. Source: `Digital Brain/Projects/Oxford Agentic Bootcamp/Oxford Agentic
-  Bootcamp Design Guidelines.pdf`.
+- **The design guidelines are law — now the GOLD guide (5 Aug 2026).** Drummond
+  applied "Brand Guide Gold" from his claude.ai/design project: gold `#D4AF37`
+  replaced amber `#F1AF39` as the single accent, bronze `#9A7B23` replaced rust
+  `#AF4C1F` for links/eyebrows (links brighten bronze→gold on hover), and the Quad
+  mark moved to the lighter construction (stroke 10/100, outer 72/100, centre 24).
+  Type, layout, voice and all other tokens unchanged. The CSS variable names
+  `--rust`/`--burnt` are historical; their value is bronze. Source of truth:
+  `Brand Guide Gold.dc.html` in design project `d7d9f000-7538-4684-90bf-6f20313a62f5`.
+  **REVERT PATH (standing offer): if Drummond types "revert", restore the previous
+  design — the pre-redesign state is tagged `pre-gold-redesign` (pushed). Mechanism:
+  `git revert` the redesign commit (clean history), or diff against the tag.**
 
 ## Facts worth not re-deriving
 

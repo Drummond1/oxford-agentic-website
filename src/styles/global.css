@@ -59,14 +59,15 @@
 }
 
 :root {
-  /* ---- Colour — the guidelines' warm editorial palette ----
-     Two backgrounds (ink, paper), one accent (amber), rust for links and
-     secondary marks. No teal: the guidelines dropped it. */
+  /* ---- Colour — the Gold guide's warm editorial palette (V1 · 2026) ----
+     Two backgrounds (ink, paper), gold the single accent, bronze for links and
+     secondary marks. Gold never carries body text. NOTE: the --rust/--burnt
+     variable NAMES are historical; their VALUE is the guide's bronze. */
   --ink-dark: #051817; /* Ink — dark bg + body text */
   --cream: #fff9ec; /* Paper — light bg */
-  --gold: #f1af39; /* Amber — the single accent: rules, fills, mark centre, primary buttons */
-  --rust: #af4c1f; /* Rust — links, eyebrows on paper, secondary marks */
-  --burnt: #af4c1f; /* alias, kept so existing references resolve to rust */
+  --gold: #d4af37; /* Gold — the single accent: rules, fills, mark centre, primary buttons */
+  --rust: #9a7b23; /* Bronze — links, eyebrows on paper, secondary marks */
+  --burnt: #9a7b23; /* alias, kept so existing references resolve to bronze */
   --deep-card: #0b2a27; /* raised card surface on ink */
   --muted-on-dark: #c9d2ce;
   --muted-on-dark-dim: #8a9a96;
@@ -74,7 +75,7 @@
 
   /* Hairlines — flat, printerly borders. */
   --hairline-cream: #e3d9c2; /* the guidelines' hairline on paper */
-  --gold-hairline: rgba(241, 175, 57, 0.34); /* mark/border accent on ink */
+  --gold-hairline: rgba(212, 175, 55, 0.34); /* mark/border accent on ink */
   --ink-hairline: rgba(5, 24, 23, 0.16);
 
   /* ---- Type: serif display, sans body, mono labels ---- */
@@ -464,7 +465,7 @@ a.card:hover [aria-hidden='true'],
 }
 
 .btn--primary:hover {
-  background: #dc9d2c;
+  background: #c3a133;
 }
 
 .btn--ghost {
