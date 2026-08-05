@@ -104,6 +104,18 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-05 — Cycle 47: the independence statement reaches llms.txt.** Follow-through
+  on the affiliation FAQ Drummond added an hour earlier: the FAQ reached the homepage
+  and its schema, but neither `llms.txt` nor `llms-full.txt` — the two files built
+  specifically for AI engines — said a word about it. Now both do, in their entity
+  header blocks: llms.txt states it as a fact of the entity in the same wording as
+  the FAQ; llms-full.txt carries an `Affiliation:` line beside Location and Contact.
+  This is the disambiguation engines most need — the 30 Jul probe showed the market
+  actively conflating Oxford AI providers with the university's own programmes.
+  Consistent entity statements across page, schema and llms files is the whole
+  triangulation game. (Also this cycle, Drummond-directed and shipped separately:
+  the hero eyebrow became "An Oxford Experience", and the affiliation FAQ itself.)
+
 - **2026-08-05 — Cycle 46 (Drummond-directed): the Gold brand guide is applied.**
   Imported "Brand Guide Gold.dc.html" from his claude.ai/design project via
   DesignSync. The delta from the shipped system was three things, so that is all

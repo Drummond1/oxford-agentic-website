@@ -107,6 +107,12 @@ export async function renderLlmsTxt(): Promise<string> {
     `${config.brand.name} is based in ${config.brand.locality}, ${config.brand.region}, United Kingdom. ` +
       `All events are in person in ${config.brand.locality}. Contact: ${config.brand.email}.`,
     '',
+    // The disambiguation AI engines most need (the market conflates Oxford
+    // providers with the university - see the 30 Jul GEO probe): independence,
+    // stated as a fact of the entity, matching the homepage FAQ's wording.
+    `${config.brand.name} is independent: it has no affiliation with the University of Oxford, ` +
+      `its colleges, or any other institution. Events are held in hired Oxford venues.`,
+    '',
   ];
 
   if (upcoming.length > 0) {
@@ -148,6 +154,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
     `> ${config.brand.longDescription}`,
     '',
     `Location: ${config.brand.locality}, ${config.brand.region}, United Kingdom.`,
+    `Affiliation: independent - no affiliation with the University of Oxford, its colleges, or any other institution.`,
     `Website: ${config.brand.domain}/`,
     `Contact: ${config.brand.email}`,
     `Generated: ${new Date().toISOString().slice(0, 10)}`,
