@@ -29,7 +29,11 @@ re-deriving from scratch. Same pattern as the delight ledger in the vault.
 4. **Change** — make small, focused edits. Update `updatedDate` on any content you touch.
 5. **Verify** — run `npm run build`. It MUST pass (link check, schema, Lighthouse).
    If it fails, fix or revert — never push a failing build.
-6. **Ship** — commit with a clear message and `git push origin main`.
+6. **Ship** — commit with a clear message and `git push origin main`. **One push per
+   cycle** (content + ledger in one commit, or wait for the first deploy to finish
+   before the second). Two pushes a minute apart overlap two Pages deployments and
+   can wedge the Pages lock — see the deploy incident under cycle 52 for the symptom
+   and the one-line fix.
 7. **Log** — move the item to "Shipped" with the date and what changed; add any new
    ideas to the Backlog; update "Signal snapshot".
 
@@ -144,6 +148,33 @@ _(dated, newest first — filled by the loop)_
   its own pages, it needs every shared surface re-read as a two-product site. Four
   found so far — homepage FAQ (50), glossary `about` edge (49), About page origin
   story (51), and now FAQ depth parity (52). Next launch: sweep these four first.
+
+  **Deploy incident — read this before shipping two commits in one cycle.**
+  The content and the ledger went out as two pushes a minute apart. That overlapped
+  two Pages deployments: the first was cancelled mid-flight, and its deployment
+  record then **stuck in `in_progress` and held the Pages lock**, so every
+  subsequent attempt was rejected. Six deploy runs failed before the cause was
+  legible, because the early failures only said "Deployment cancelled" — the useful
+  error came later and named it outright: _"due to in progress deployment. Please
+  cancel 492ff0e… first"_.
+  **The fix:** `gh api --method POST repos/<owner>/<repo>/pages/deployments/<sha>/cancel`,
+  then re-dispatch. Two wrong turns are worth recording so they are not repeated:
+  (a) `gh run rerun` twice created competing attempts that cancelled each other —
+  rerun once, then wait; (b) an empty commit for a "fresh SHA" was the wrong theory
+  (the SHA was never poisoned, the lock was) and it is what finally produced the
+  explicit error, so it was not wasted, but it was not the fix.
+  **Also learned:** `gh run watch … | tail` reports the *pipe's* exit code, not the
+  run's. It read as success while the deploy had failed. Never pipe `gh run watch`
+  when the exit status is the thing being checked.
+  **End state: the site is correctly published and verified live** — both pages
+  serve the new FAQs, homepage 200. The final deploy job still reports red because
+  the Pages status API never returned `succeeded` inside the action's 10-minute
+  window and it aborted; the content had already gone out and stayed out after the
+  deployment record was cancelled. **A red deploy job is therefore not proof the
+  site did not update — always curl the live URL before concluding either way.**
+  **Rule for future cycles: one push per cycle.** Stage the content and the ledger
+  into a single commit, or wait for the first deploy to complete before pushing the
+  second.
 
 - **2026-08-06 — Cycle 51: the About page told a one-product origin story.**
   No GSC export. Continuing the two-product reconciliation from cycle 50 into the
