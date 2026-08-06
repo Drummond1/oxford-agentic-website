@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-08-04T13:00:00+01:00"
+updatedDate: "2026-08-06T18:00:00+01:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -45,6 +45,32 @@ faqs:
       No. If you use AI tools most days you have everything the day requires. The
       work is deciding what your context is and structuring it - thinking clearly
       about your own business, not writing code.
+  - q: What do I need to bring?
+    a: >-
+      A laptop, and your own material - the documents, notes and examples that carry
+      how you work and what you know. The day is spent populating a second brain with
+      real content rather than a template, so bringing genuine material matters more
+      than any preparation.
+  - q: What if my material is confidential?
+    a: >-
+      A useful test is to bring what you would be comfortable putting in an email to
+      an external supplier, and leave out the rest. Credentials, keys and other
+      people's personal data do not belong in a second brain in any form. That still
+      leaves most of what makes AI answers specific to you: how you write, what good
+      looks like, and the decisions you have already made and why.
+  - q: Where in Oxford is it held?
+    a: >-
+      In central Oxford. Cohort 1 is at the Pitt Rivers Museum on South Parks Road.
+      The exact venue and date are confirmed on each event's own page.
+  - q: Can I bring my team, or book for several people?
+    a: >-
+      Yes. Teams are welcome, and bringing a colleague means the same approach goes
+      back to work with two of you rather than one. Email hello@oxfordagentic.com and
+      we will arrange it.
+  - q: What if I book but cannot make the date?
+    a: >-
+      Your place transfers to a future cohort at no charge. A date that no longer
+      works should not mean a lost seat - just let us know and we will move you.
 ---
 
 The limit on what AI can do for you is rarely the model. It is that the model has

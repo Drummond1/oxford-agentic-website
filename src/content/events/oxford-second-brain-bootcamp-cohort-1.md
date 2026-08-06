@@ -67,4 +67,23 @@ faqs:
       A laptop, and access to your own material - the documents, notes and examples
       that carry how you work. The day is built around populating your second brain
       with real content, not placeholders.
+  - q: How do I register for Cohort 1?
+    a: >-
+      Book directly on this page - the form takes your registration. If it does not
+      load for you, the same booking page is at luma.com/7vcqji8g.
+  - q: What if some of my material is confidential?
+    a: >-
+      Bring what you would be comfortable putting in an email to an external supplier.
+      Credentials, keys and other people's personal data stay out of a second brain in
+      any form. That still leaves most of what makes AI answers specific to you: how
+      you write, what good looks like, and the decisions you have already made.
+  - q: Can I bring my team?
+    a: >-
+      Yes. Teams are welcome, and bringing a colleague means the same approach goes
+      back to work with two of you rather than one. Email hello@oxfordagentic.com and
+      we will arrange it.
+  - q: What if I cannot make the date?
+    a: >-
+      Your place transfers to a future cohort at no charge. Just let us know and we
+      will move you.
 ---
