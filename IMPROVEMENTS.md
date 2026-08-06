@@ -87,8 +87,10 @@ Status: `todo` · `blocked` (why) · `doing`
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
    (expands a real event-page FAQ); agentic AI for charities and non-profits
-   (persona-established); "what should a second brain contain?" (supports the new
-   programme). (Budget for 5 Aug is SPENT — the pattern guide shipped in cycle 45.)
+   (persona-established). The second-brain contents guide shipped in cycle 48.
+   **The Second Brain line now has one supporting guide; the Agentic line has 13.
+   Weight new guides toward Second Brain until that is less lopsided.**
+   (Budget for 6 Aug is SPENT.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -103,6 +105,22 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-06 — Cycle 48: the Second Brain line gets its first supporting guide.**
+  Still no GSC export (twenty-somethingth cycle). New day, budget reset, and the
+  clearest gap was structural rather than topical: the Second Brain Bootcamp
+  launched two days ago with a programme page, an event page and **zero**
+  supporting content, while the Agentic line had thirteen guides feeding it.
+  "What actually goes in a second brain for AI?" is the question its own event
+  page provokes and never answers. Five kinds of context that earn their place
+  (voice samples, the written standard, decisions plus their reasons, recurring
+  facts, the shape of repeated work), then the exclusions — credentials, other
+  people's personal data, anything you would not email a supplier, and
+  everything-you-have-ever-written, since a curated supply beats an archive.
+  Closes on maintenance, which is the honest reason the day is a day.
+  Facts drawn only from the programme and event files; nothing about the day
+  invented. 15 guides, 34 pages; `about` edge verified pointing at the Second
+  Brain programme; IndexNow pings on deploy. Guide budget for 6 Aug: spent.
 
 - **2026-08-05 — Cycle 47: the independence statement reaches llms.txt.** Follow-through
   on the affiliation FAQ Drummond added an hour earlier: the FAQ reached the homepage
