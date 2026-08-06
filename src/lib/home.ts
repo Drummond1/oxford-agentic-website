@@ -12,8 +12,17 @@ import config from '../../site.config';
  */
 export const homeFaqs = [
   {
+    /*
+     * This answer used to be `config.brand.description` verbatim. That string is
+     * the canonical entity description reused off-site (PRD §13) and still
+     * describes the agentic day alone — so once the Second Brain Bootcamp
+     * launched, the single most quoted answer on the site described half the
+     * business. The entity string is Drummond's to change, because it must move
+     * in step with Luma and LinkedIn; this answer is site copy, and being
+     * complete matters more here than being identical.
+     */
     q: `What is ${config.brand.name}?`,
-    a: config.brand.description,
+    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across two one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. Both are hands-on, capped small, and require no coding.`,
   },
   {
     q: 'Who are the bootcamps for?',

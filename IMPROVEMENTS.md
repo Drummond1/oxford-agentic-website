@@ -106,6 +106,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-06 — Cycle 50: the most-quoted answer on the site described half the
+  business.** No GSC export. The find: the homepage FAQ's "What is Oxford Agentic?"
+  answer was `config.brand.description` verbatim — the canonical entity string,
+  written when there was one product, still describing the agentic day alone. Since
+  the Second Brain launch on 4 Aug that made the single answer engines quote most
+  a half-truth.
+  **Split the two concerns rather than editing the entity string.** The FAQ answer now
+  names both bootcamps and what each produces; `brand.description` is untouched,
+  because PRD §13 requires it verbatim off-site (Luma, LinkedIn, socials) and it can
+  only move when Drummond moves those. Verified: FAQPage answer updated,
+  `Organization.description` unchanged.
+  **Raised for Drummond in STATE.md** with a drafted 157-character replacement that
+  still fits a meta description, plus the note that `longDescription` needs the same.
+  That string is the Organization description on every page, the homepage meta, the
+  llms.txt entity line, the footer, About and the RSS channel — worth him doing once,
+  properly, everywhere.
+  _Also checked, correctly left alone:_ the Second Brain pages do not link to the new
+  guide. That is Drummond's 4 Aug decision (guides are an SEO/GEO play, reachable from
+  the footer and their own index only), not an oversight — do not "fix" it.
+
 - **2026-08-06 — Cycle 49: the glossary's schema catches up with its own body.**
   Guide budget spent for the day, so a refresh. Measured the programme balance
   properly first — a naive grep said 15/15 because the nav dropdown links both

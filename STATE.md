@@ -82,6 +82,34 @@ closed until something is signed.
    off the marketing pages. Check the same constraint against Worcester before any
    Cohort 2 asset ships.
 
+## ⚠️ Decision: the canonical entity description now covers half the business
+
+`brand.description` in `site.config.ts` still reads *"Hands-on agentic AI training in
+Oxford for business leaders. In one day, you build and run a working agentic AI
+workflow…"* — written when there was one product. Since 4 Aug there are two, and the
+Second Brain Bootcamp is not about building agentic workflows at all.
+
+That string is the **canonical entity description**: it is the Organization
+description in schema on every page, the homepage meta description, the llms.txt
+entity line, the footer, the About page and the RSS channel description. An AI engine
+asked "what is Oxford Agentic?" is being told about one bootcamp.
+
+**Not changed by the loop, deliberately.** PRD §13 requires this exact string be
+reused verbatim off-site — Luma, LinkedIn, socials — so it can only move when
+Drummond moves those too. Changing it here alone would trade one inconsistency for a
+worse one.
+
+**Proposed replacement, for Drummond to approve and propagate:**
+
+> Hands-on AI training in Oxford for business leaders, across two one-day bootcamps:
+> build a working agentic AI workflow on your own real task, or build the second brain
+> your AI tools draw on. No coding.
+
+(157 characters, so it still fits a meta description.) `longDescription` needs the
+same treatment. Until then, the homepage FAQ answer to "What is Oxford Agentic?" was
+given its own two-bootcamp wording (cycle 50) — the most-quoted surface on the site
+should not be half-true while this waits.
+
 ## What needs Drummond (the loop cannot do these)
 
 | # | Task | Why it is blocked | Effort |
