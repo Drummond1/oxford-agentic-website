@@ -30,6 +30,31 @@ Written 25 July 2026; last updated 28 July 2026 (cycle 22).
 
 ---
 
+## ℹ️ The deploy badge is red and the site is fine (6 Aug 2026)
+
+If you look at Actions and see **Deploy to GitHub Pages** failing, check the live URL
+before assuming anything is broken. On 6 Aug the deploy job began failing with
+`Timeout reached, aborting!` while **the content published correctly every time** —
+GitHub's Pages status API simply stops reporting `succeeded` back to
+`actions/deploy-pages` inside its 10-minute window, so the action gives up on a
+deployment that has already gone out.
+
+Root cause of the original wedge: two pushes a minute apart overlapped two Pages
+deployments; the first was cancelled mid-flight and its record stuck `in_progress`,
+holding the Pages lock against everything behind it. Cleared with:
+
+```
+gh api --method POST repos/Drummond1/oxford-agentic-website/pages/deployments/<sha>/cancel
+```
+
+**Two rules came out of it:** ship **one push per cycle**, and never treat a red
+deploy job as proof the site did not update — `curl` the page. Full write-up in
+`IMPROVEMENTS.md` under cycle 52. If the red persists across several days with the
+site updating fine, it is a GitHub-side reporting issue rather than anything in
+this repo.
+
+---
+
 ## ✅ Bookings are live (resolved 25 Jul)
 
 Cohort 2's Luma page went live and the embed is now on the event page. A visitor can
