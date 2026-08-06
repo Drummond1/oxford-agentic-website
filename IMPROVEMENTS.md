@@ -106,6 +106,19 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-06 — Cycle 49: the glossary's schema catches up with its own body.**
+  Guide budget spent for the day, so a refresh. Measured the programme balance
+  properly first — a naive grep said 15/15 because the nav dropdown links both
+  programmes on every page; the real signal is `relatedProgrammes`, and that read
+  **14 Agentic / 1 Second Brain**. The honest fix available today was not a new
+  guide but a mismatch: the glossary has linked to the Second Brain programme in
+  its body since cycle 42, while its `about` edge still declared the Agentic
+  Bootcamp alone. The article demonstrably covers both, so it now says so —
+  `about` emits two Things, verified in the built JSON-LD. Balance 14/2.
+  _Method note worth keeping:_ measure internal-link balance from
+  `relatedProgrammes`, never from grepping built HTML — site chrome links
+  everything from everywhere and drowns the signal.
+
 - **2026-08-06 — Cycle 48: the Second Brain line gets its first supporting guide.**
   Still no GSC export (twenty-somethingth cycle). New day, budget reset, and the
   clearest gap was structural rather than topical: the Second Brain Bootcamp

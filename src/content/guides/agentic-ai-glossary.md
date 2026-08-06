@@ -10,9 +10,10 @@ capsule: >-
   business leaders who want to build rather than translate.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-08-04T21:00:00+01:00"
+updatedDate: "2026-08-06T06:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+  - second-brain-bootcamp
 ---
 
 Most of the vocabulary around agentic AI describes simple ideas. Here are the terms worth knowing, defined the way we use them in the room.
