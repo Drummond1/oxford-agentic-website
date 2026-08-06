@@ -106,6 +106,23 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-06 — Cycle 51: the About page told a one-product origin story.**
+  No GSC export. Continuing the two-product reconciliation from cycle 50 into the
+  other surface that answers "what is this company": the About page's origin story
+  is entirely the agentic gap ("never chained three AI steps together"), written
+  before the second line existed. A new paragraph now gives the honest reason there
+  are two days - a workflow is only as good as what it knows about you, so the
+  context store is a different problem with its own day, and the two compound.
+  **Phrased as an argument, not a claim about attendees.** A first draft said people
+  "kept hitting the same wall", which would have been an assertion about real
+  attendees' experience with nothing in the vault behind it. Rewritten to state the
+  logic instead, which is both true and stronger. Unlike `brand.description` this is
+  site copy, so it is the loop's to change; the canonical entity string remains
+  Drummond's call (see STATE.md).
+  _Checked, no action:_ local `dist/og/` had duplicate "… 2.png" files — a Desktop
+  filesystem-sync artefact, not a build fault. Live is clean (dup 404s, real 200s)
+  because CI builds from a fresh checkout. Do not chase this again.
+
 - **2026-08-06 — Cycle 50: the most-quoted answer on the site described half the
   business.** No GSC export. The find: the homepage FAQ's "What is Oxford Agentic?"
   answer was `config.brand.description` verbatim — the canonical entity string,
