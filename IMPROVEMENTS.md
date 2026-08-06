@@ -102,9 +102,48 @@ Status: `todo` · `blocked` (why) · `doing`
 12. `todo` — Consider `changefreq`/`priority` in the sitemap only if Search Console shows
     a crawl-budget issue; otherwise leave them out (Google largely ignores them).
 13. `todo` (once GSC data) — rewrite titles/meta on any page with impressions but low CTR.
+14. `todo` — **two-product sweep checklist** (from cycles 49–52). When a product line
+    launches, these four shared surfaces silently keep describing the old single
+    product: the homepage FAQ (`src/lib/home.ts`), the glossary's `about` edge, the
+    About page origin story, and FAQ depth parity between the lines. All four are
+    now reconciled for the Second Brain launch; re-run the list on the next launch
+    rather than rediscovering them one cycle at a time.
+15. `blocked` (Drummond) — the Second Brain day has **no published capacity** anywhere,
+    including Luma, so its pages cannot answer "how big is the cohort?" while the
+    Agentic pages can. If there is a real number, adding it closes a genuine buyer
+    question. The loop will not guess one.
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-06 — Cycle 52: the Second Brain line had half the FAQ coverage of the
+  Agentic line.** No GSC export. Guide budget for 6 Aug spent (cycle 48), so a
+  refresh — and the fourth surface in the two-product reconciliation that cycles
+  49–51 have been working. Counted properly rather than eyeballed: the Agentic
+  programme carries **11** FAQs and Cohort 2 carries **9**; the Second Brain
+  programme carried **3** and its Cohort 1 page **5**. The missing ones were not
+  decoration — they were the practical booking questions a buyer actually blocks
+  on (what to bring, whether their material can be confidential, where it is,
+  teams, date transfers, how to book), and FAQ answers are the single thing AI
+  engines quote most from this site. Programme 3 → 8, event 5 → 9; verified in the
+  built FAQPage nodes, and `llms.txt`/`llms-full.txt` pick both up automatically
+  because they iterate the same frontmatter.
+  **Nothing invented, and the line is worth recording.** The booking, teams and
+  date-transfer answers are established organisation policy, already published
+  verbatim on the homepage FAQ and the Agentic pages — restating them is
+  consistency, not assertion. The confidentiality answer is drawn entirely from
+  the exclusions section of the second-brain guide (cycle 48): supplier-email
+  test, no credentials, no other people's personal data. **Deliberately left out:
+  cohort size (no capacity is stated for this day anywhere, including Luma),
+  lunch, recording policy, and the paid-subscription answer.** Those are
+  established for the Agentic day only; copying them across would have been
+  inventing operational facts about a day nobody has run yet. A first draft of the
+  confidentiality answer said the day "covers where that line sits" — cut, because
+  the agenda does not say that and curriculum is not the loop's to promise.
+  _Standing pattern, now four cycles deep:_ a new product line does not just need
+  its own pages, it needs every shared surface re-read as a two-product site. Four
+  found so far — homepage FAQ (50), glossary `about` edge (49), About page origin
+  story (51), and now FAQ depth parity (52). Next launch: sweep these four first.
 
 - **2026-08-06 — Cycle 51: the About page told a one-product origin story.**
   No GSC export. Continuing the two-product reconciliation from cycle 50 into the
@@ -958,6 +997,19 @@ _Re-probe again ~30 Aug, or sooner if Drummond lands an off-page listing._
 ## Signal snapshot
 
 _(latest numbers — filled once data sources are connected)_
+- **Search Console (checked 2026-08-06, cycle 52): still no export.** `seo-data/`
+  holds only its README. The property has been verified since 23 Jul and
+  Performance data should exist by now — this is no longer "too new", it is simply
+  unexported. **Drummond: Performance → last 28 days → Export → CSV → drop
+  `Queries.csv` and `Pages.csv` into `seo-data/`** (git-ignored). Roughly two dozen
+  cycles have now run blind; it remains the single biggest constraint on this
+  loop's usefulness, and every cycle spent on inference is a cycle that could have
+  been spent closing a measured gap.
+- Site size (2026-08-06, after cycle 52): 34 pages, 15 guides, 1,321 internal
+  links, 6 FAQPage nodes, 3 Event nodes. FAQ depth by line: Agentic 11 (programme)
+  / 9 (Cohort 2); Second Brain 8 (programme) / 9 (Cohort 1).
+- Guide balance by `relatedProgrammes` (the only honest measure — never grep built
+  HTML, site chrome links everything from everywhere): 14 Agentic / 2 Second Brain.
 - Search Console (checked 2026-07-26, cycle 17): `seo-data/` still holds only its
   README — **no Search Console export available**, so this cycle could not be
   signal-driven either. The property was verified 2026-07-23 (DNS TXT) and the
