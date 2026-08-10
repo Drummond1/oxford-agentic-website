@@ -12,6 +12,7 @@ import {
   venueLine,
 } from './site';
 import { getCollection } from 'astro:content';
+import { homeFaqs } from './home';
 
 /**
  * llms.txt / llms-full.txt — PRD §13.
@@ -136,7 +137,12 @@ export async function renderLlmsTxt(): Promise<string> {
     '',
     '## Full text',
     '',
-    `- [llms-full.txt](${absoluteUrl('/llms-full.txt')}): the complete text of every page on this site.`,
+    // Describe what is actually in there. It carries the FAQ, the programmes,
+    // the events, the people and every guide in full — not the prose of the
+    // homepage and About pages, which is rendered in components rather than
+    // held as content. Claiming "every page" was a promise the file did not keep.
+    `- [llms-full.txt](${absoluteUrl('/llms-full.txt')}): the full text of the FAQ, ` +
+      `both bootcamps, every cohort, the people who run them, and all guides.`,
     '',
   );
 
@@ -162,6 +168,24 @@ export async function renderLlmsFullTxt(): Promise<string> {
     '---',
     '',
   ];
+
+  /*
+   * The homepage FAQ, first, because it answers the entity-level questions
+   * everything below assumes: what this is, who it is for, the two bootcamps and
+   * how they differ, the independence point.
+   *
+   * It was missing entirely until cycle 62, which was the most expensive omission
+   * in this file. The 10 Aug GEO probe showed engines lifting these exact answers
+   * near-verbatim into result snippets, so they are the highest-value text on the
+   * site for this purpose — and the one surface an engine reading llms-full.txt
+   * could not see. They live in home.ts precisely so every consumer shares one
+   * copy; this is now the third, alongside the accordion and the FAQPage node.
+   */
+  out.push('## Frequently asked questions', '');
+  for (const faq of homeFaqs) {
+    out.push(`### ${faq.q}`, '', faq.a, '');
+  }
+  out.push('---', '');
 
   for (const programme of programmes) {
     out.push(
@@ -242,6 +266,31 @@ export async function renderLlmsFullTxt(): Promise<string> {
       );
     }
     out.push('---', '');
+  }
+
+  /*
+   * The people. Also missing until cycle 62, and it matters for the same reason
+   * the About page carries the Person schema: engines establish an entity by
+   * triangulating it across sources, and a training business whose full text
+   * names nobody is harder to place than one that does.
+   */
+  if (showSection('team')) {
+    const team = await getCollection('team');
+    if (team.length > 0) {
+      out.push('## People', '');
+      for (const person of [...team].sort((a, b) => a.data.order - b.data.order)) {
+        out.push(
+          `### ${person.data.name}`,
+          '',
+          `URL: ${absoluteUrl(paths.teamMember(person.data.slug))}`,
+          `Role: ${person.data.role}${person.data.company ? `, ${person.data.company}` : ''}`,
+          '',
+          person.data.bio,
+          '',
+        );
+      }
+      out.push('---', '');
+    }
   }
 
   if (showSection('guides')) {

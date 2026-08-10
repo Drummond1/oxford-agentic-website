@@ -160,6 +160,36 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-10 — Cycle 62: `llms-full.txt` was missing the single most-quoted text
+  on the site.** No GSC export; guide budget spent. Deliberately moved off seoTitle
+  work - cycles 59, 60 and 61 each shipped one and none is measured yet, so a fourth
+  would have been stacking bets rather than testing them.
+  Checked conversion off the guides first (they are 16 of 31 pages and the original
+  brief was bookings): fine, two primary CTAs and multiple paths to both bootcamps
+  and Cohort 2. Not the gap. Audited the GEO surfaces instead, which nothing had
+  ever done.
+  **`llms-full.txt` covered programmes, events and guides. It did not include the
+  homepage FAQ, the About page, or the people** - while `llms.txt` advertised it as
+  "the complete text of every page on this site".
+  The FAQ omission is the expensive one. The cycle-57 probe showed engines lifting
+  those exact answers near-verbatim into result snippets, which makes them the
+  highest-value text on the site for this purpose - and they were the one surface an
+  engine reading the full-text file could not see. They sit in `home.ts` precisely so
+  every consumer shares one copy; this is now the third, alongside the accordion and
+  the `FAQPage` node, and it cannot drift.
+  Added a `## People` block too. Same reasoning as the Person schema on About:
+  engines establish an entity by triangulating it, and a training business whose full
+  text names nobody is harder to place than one that does.
+  1038 lines to 1121, verified in `dist/`.
+  **Also fixed the claim rather than only the coverage.** The homepage and About
+  prose lives in `.astro` components, not in content collections, so it cannot be
+  pulled without restructuring those pages - out of scope for one cycle. Rather than
+  leave "the complete text of every page" standing as a promise the file does not
+  keep, the description now names what is actually in there. A file that overstates
+  its own contents to an AI reader is worse than one that is honestly partial.
+  **Left for later:** getting the About page's origin story into the full text would
+  need its prose moved into a collection. Worth doing, not worth doing hastily.
+
 - **2026-08-10 — Cycle 61: the public-sector guide competes with NHS England on
   NHS England's own ground.** No GSC export; guide budget spent. Probed the vertical
   guides, because cycle 60 established that buyer-qualified queries are the winnable
