@@ -50,14 +50,30 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Pages regularly sits in `deployment_in_progress` for longer than the
+          # action's 10-minute default while still publishing successfully — the
+          # status API lags the CDN. Aborting at 10 minutes marked good deploys
+          # as failed, which in turn skipped the IndexNow job below. 20 minutes
+          # covers the observed lag; a deploy genuinely stuck past that is a real
+          # failure worth seeing.
+          timeout: 1200000
 
   # After a successful publish, tell IndexNow which URLs changed so Bing-family
   # engines (which feed ChatGPT's web answers) re-crawl now rather than on
   # their own schedule. The script maps changed files to page URLs and falls
   # back to the live sitemap for template-wide changes — no rebuild needed.
   # continue-on-error: an indexing hint must never redden a deploy.
+  #
+  # The gate is `build` succeeding, not `deploy` succeeding. `needs: deploy`
+  # alone silently skipped this job every time the deploy status poll timed out
+  # on a deploy that had in fact published — so the ping stopped happening
+  # exactly when it was needed. The worst case in the other direction is a
+  # redundant ping after a genuinely failed deploy, which costs nothing: the
+  # crawler re-reads a page that has not changed.
   indexnow:
-    needs: deploy
+    needs: [build, deploy]
+    if: ${{ always() && needs.build.result == 'success' }}
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

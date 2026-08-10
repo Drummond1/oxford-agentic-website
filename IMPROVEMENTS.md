@@ -116,9 +116,48 @@ Status: `todo` · `blocked` (why) · `doing`
     including Luma, so its pages cannot answer "how big is the cohort?" while the
     Agentic pages can. If there is a real number, adding it closes a genuine buyer
     question. The loop will not guess one.
+16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
+    instruction was "remove Josh from the team slide"; he is gone from the homepage,
+    but `/team/josh-lawman/` is still live, indexed and in the sitemap, and
+    `/team/` still lists him. His bio reads in the present tense ("teaches the parts
+    of the day that go furthest"), so if he has left the team the live site is
+    currently inaccurate about a named real person. Flagged 10 Aug and deliberately
+    not actioned: deleting a person's page is his call, not the loop's, and the
+    literal instruction was satisfied. If confirmed: delete
+    `src/content/team/josh-lawman.md` and add a redirect for the old URL.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-10 — Cycle 53: every deploy since 6 Aug was red, and it had silently
+  switched IndexNow off.** No GSC export. Cycle 52 recorded that a red deploy badge
+  is not proof the site failed to update, and that was correct — but it stopped one
+  step short of the actual fault, and the missing step was costing something. Two
+  chained faults:
+  1. `actions/deploy-pages@v4` polls Pages for a terminal status and aborts at a
+     **10-minute default**. Pages was sitting in `deployment_in_progress` past that
+     while publishing fine — the status API lags the CDN. So the action aborted,
+     cancelled its own deployment record, and reported failure on deploys that had
+     already gone live. Fixed with `timeout: 1200000`.
+  2. `indexnow` had `needs: deploy`, so a failed deploy **skipped** it. The
+     `continue-on-error: true` on that job was doing nothing for this case — it only
+     suppresses the job's *own* failures, never a skip from an upstream `needs`. Net
+     effect: IndexNow last pinged on 6 Aug, so the Second Brain launch, the FAQ
+     parity work and the About page rewrite were never announced to Bing-family
+     crawlers — the engines that feed ChatGPT's web answers, and the whole reason the
+     ping exists. Re-gated on `needs.build.result` with `if: always()`, so a publish
+     that merely reports slowly still pings.
+  Ran the catch-up ping by hand: **31 URLs submitted, status 200.**
+  **The lesson worth keeping:** `continue-on-error` is not a substitute for an `if:`
+  condition. One protects against a job failing, the other against a job never
+  running — and a job that never runs is the harder failure to notice, because
+  nothing turns red. Any future job gated on `deploy` needs the same treatment.
+  Also re-audited crawlability end to end while in here (prompted by Drummond):
+  robots.txt allows every crawler including the AI ones, no `X-Robots-Tag`, and all
+  31 sitemap URLs return 200 with a self-referencing canonical and no `noindex`.
+  Nothing is blocking indexing. The three `noindex` pages (`/404/`, `/home-photos/`,
+  `/home-original/`) are deliberate and correctly filtered out of the sitemap.
 
 - **2026-08-06 — Cycle 52: the Second Brain line had half the FAQ coverage of the
   Agentic line.** No GSC export. Guide budget for 6 Aug spent (cycle 48), so a
