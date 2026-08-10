@@ -160,6 +160,41 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-10 — Cycle 60: "AI bootcamp" means something else to most searchers, and
+  that is a positioning fact, not a ranking bug.** No GSC export; guide budget spent.
+  Continued the guide-by-guide probe from cycle 59.
+  `ai-bootcamp-vs-course-vs-exec-education` is **absent** from "AI bootcamp vs AI
+  course vs executive education". But unlike cycle 59's case, the fix is *not*
+  formatting. Look at who wins it: Nexford (bootcamp vs certificate vs **degree**,
+  $9,995, 26 weeks), Emeritus, ai-x-leaders (12-week programme), ThinkPythonAI
+  ($10,000-$20,000, career switchers, Python), InstitutePM, AgileFever (TensorFlow,
+  job placement). **Every result is career-change technical upskilling.** In the
+  dominant sense of the phrase, an "AI bootcamp" is a 12-to-26-week programme costing
+  five figures that turns you into an ML engineer.
+  **So this query is not winnable, and should not be won.** The traffic is people
+  considering a career change into AI engineering. They will not book a one-day
+  executive day in Oxford at any price. Chasing the query would mean rewriting a good
+  guide to serve an audience that cannot convert - the same trap as a doorway page,
+  arrived at from the other direction.
+  What *is* actionable: the seoTitle led with "AI bootcamp" and carried no audience
+  qualifier, so it competed head-on in that space while signalling nothing about who
+  it is for. Changed to **"Which AI training format do leaders need?"** (41 chars) -
+  keeps the comparison intent, adds the qualifier that separates it from
+  career-change content, and uses "AI training", a phrase this site demonstrably wins
+  on (#1 for the Oxford-anchored and national buyer queries, cycle 57). The on-page
+  `title`/h1 is unchanged: it reads well and carries all three terms honestly.
+  **Hypothesis, flagged as such**, same as cycle 59. Re-probe both together.
+  **Checked and dismissed: cannibalisation.** This guide and
+  `after-the-ai-executive-programme` both touch the exec-ed graduate, but they target
+  cleanly different intents - "which of the three do I pick" versus "I have finished
+  one, now what". Not competing. No action.
+  **The strategic point worth carrying forward:** the site is #1 on every query that
+  contains a buyer qualifier (Oxford, business leaders, one day, hands-on) and absent
+  from generic informational ones owned by a different product category. That is the
+  correct shape for a business selling a specific day to a specific person, and
+  future cycles should not read absence from a generic query as a defect without
+  first checking who owns it and whether that audience can convert.
+
 - **2026-08-10 — Cycle 59: probed whether the guides earn anything, nearly drew the
   wrong conclusion from one query, and found a real format mismatch instead.**
   No GSC export; guide budget for 10 Aug spent, so a refresh cycle. The guides are

@@ -2,7 +2,7 @@
 title: "AI bootcamp, AI course or executive education: which do you need?"
 slug: ai-bootcamp-vs-course-vs-exec-education
 category: choosing
-seoTitle: "AI bootcamp, course or executive education?"
+seoTitle: "Which AI training format do leaders need?"
 description: The three main ways senior people learn AI, what each is actually for, and how to choose based on what you want to walk away with.
 capsule: >-
   An executive education programme gives you the strategic frame, an online course
@@ -11,7 +11,7 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-07-30T09:00:00+01:00"
+updatedDate: "2026-08-10T10:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
