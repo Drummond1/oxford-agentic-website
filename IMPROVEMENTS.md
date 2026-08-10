@@ -125,10 +125,56 @@ Status: `todo` · `blocked` (why) · `doing`
     not actioned: deleting a person's page is his call, not the loop's, and the
     literal instruction was satisfied. If confirmed: delete
     `src/content/team/josh-lawman.md` and add a redirect for the old URL.
+17. `todo` (wants GSC data first) — **`brand.tagline` describes half the business.**
+    `'Practical agentic AI training in Oxford'` is the homepage `<title>`, the footer
+    line and two OG cards, and the Second Brain day is not agentic AI training. Same
+    fault as the blocked `brand.description`, but a different call: the tagline is
+    not reused off-site, so the loop *could* change it. It is deliberately not doing
+    so, because it is the strongest keyword string on the highest-ranking page and
+    the 30 Jul probe had the site at #2 for Oxford-anchored queries. Rewrite it once
+    Search Console shows what the homepage actually ranks and converts for - not
+    before. If a rewrite happens, the OG cards and footer follow automatically.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-10 — Cycle 56: the buyer-consideration cluster was tagged to one
+  programme, so it supported one programme.** No GSC export; guide budget spent, so
+  a retag-and-refresh cycle. Cycle 55 made `relatedProgrammes` the axis the related-
+  guides ranking runs on, which promoted it from a loose label to load-bearing
+  metadata - and immediately exposed that it was wrong on the `choosing` category.
+  All five `choosing` guides were tagged `oxford-agentic-bootcamp` only, but they
+  answer **format** questions, not subject questions: is in-person worth it, what
+  does "hands-on" mean, what should I ask before booking. Those apply to both days.
+  The cost was compounding in three places at once: the Second Brain line got no
+  support from the entire buyer-consideration cluster, `Article.about` named one
+  programme, and after cycle 55 a Second Brain reader could never be shown any of
+  them as a sibling.
+  Retagged **two** - `why-in-person-beats-online` and `what-hands-on-actually-means`
+  - and added a short closing paragraph to each so the copy matches the tag rather
+  than the tag over-claiming on copy that only discusses one product. Both additions
+  are drawn from published facts (one day, in person, Oxford, own material, leave
+  with it running). **No capacity claimed for the Second Brain day** - it has none
+  published anywhere, per backlog 15.
+  **Deliberately retagged only two of five.** `questions-to-ask-before-booking`
+  closes with nine specific Agentic answers (cap, build ratio, paid-plan advice); a
+  matching set for the Second Brain day would need capacity data that does not
+  exist, and a half-answered comparison is worse than none. The two exec-education
+  guides are genuinely agentic-specific in argument, not just in example.
+  Verified in `dist/`: `Article.about` now names both programmes, both bootcamp
+  links render, and the Second Brain guides now surface both retagged guides as
+  siblings in place of two agentic-only ones.
+  Also fixed the `start-here` category blurb, which still read "What agentic AI is"
+  while describing a group that now contains a second-brain guide and the
+  both-programmes glossary.
+  **Flagged, not changed: `brand.tagline`** (`'Practical agentic AI training in
+  Oxford'`). It is the homepage `<title>`, the footer line and two OG cards, and it
+  describes half the business - the same fault as `brand.description`. But it is
+  also the strongest keyword string on the highest-ranking page, and the 30 Jul
+  probe had the site at #2 for Oxford-anchored queries. Rewriting the top page's
+  title on no data is exactly the gamble the loop prompt defers to Search Console.
+  Added as backlog 17.
 
 - **2026-08-10 — Cycle 55: the related-guides heuristic ranked on the wrong axis,
   and the Second Brain cluster had no internal cohesion.** No GSC export; guide

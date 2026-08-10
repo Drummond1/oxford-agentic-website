@@ -207,7 +207,9 @@ const testimonials = defineCollection({
  * reader's journey is usually a guide nobody decided the purpose of.
  */
 export const GUIDE_CATEGORIES = [
-  { id: 'start-here', label: 'Start here', blurb: 'What agentic AI is, and what the words actually mean.' },
+  // Blurbs describe what is actually in each group, so they move when the mix
+  // does. This one was agentic-only until the second-brain guides landed in it.
+  { id: 'start-here', label: 'Start here', blurb: 'What the ideas are, and what the words actually mean.' },
   { id: 'choosing', label: 'Choosing how to learn', blurb: 'Formats, claims, and what to ask before booking anything.' },
   { id: 'in-practice', label: 'Putting it to work', blurb: 'Where it helps in a particular kind of job, and how to make it stick.' },
 ] as const;

@@ -10,9 +10,10 @@ capsule: >-
   you leave having built something real rather than bookmarked another video.
 author: drummond-gilbert
 publishDate: "2026-07-23T09:00:00+01:00"
-updatedDate: "2026-07-23T09:00:00+01:00"
+updatedDate: "2026-08-10T07:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+  - second-brain-bootcamp
 ---
 
 There is no shortage of ways to learn about AI online, and many of them are excellent. But most people who have taken them will admit the same thing: they understand more than before, and they have still not built anything. That gap is worth taking seriously, because it is not about the content.
@@ -34,3 +35,5 @@ A course cannot walk over and unstick you. A person can, in about a minute.
 The honest test of any AI training is not whether the slides were good. It is whether you have something working afterwards. Online learning is measured in modules completed. A day in the room is measured in a workflow that runs against your real task after you have gone home.
 
 That is the whole design of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/): a small cohort, a facilitated day in Oxford, and one working agentic workflow built against a task you actually brought. No coding, and nothing to watch later, because you built it in the room.
+
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is built on the same principle and points it at a different problem. You spend the day populating a second brain with your own documents and notes rather than a worked example, and leave with it organised and running. None of the argument above is really about agentic workflows. It is about the difference between being told how something works and having it working by the time you go home.
