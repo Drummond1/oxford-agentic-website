@@ -92,9 +92,9 @@ Status: `todo` · `blocked` (why) · `doing`
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
    (expands a real event-page FAQ); agentic AI for charities and non-profits
    (persona-established). The second-brain contents guide shipped in cycle 48.
-   **The Second Brain line now has one supporting guide; the Agentic line has 13.
-   Weight new guides toward Second Brain until that is less lopsided.**
-   (Budget for 6 Aug is SPENT.)
+   **The Second Brain line now has two supporting guides; the Agentic line has 13.
+   Keep weighting new guides toward Second Brain until that is less lopsided.**
+   (Budget for 10 Aug is SPENT - the vs-note-taking guide, cycle 54.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
@@ -129,6 +129,31 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-10 — Cycle 54: the brand name collides with an established concept, and
+  nothing on the site addressed it.** No GSC export, so a step-2 cycle; guide budget
+  for 10 Aug unspent and the split was 13 Agentic to 2 Second Brain, so a Second
+  Brain guide. Shipped **"A second brain for AI is not the note-taking kind"**
+  (`/guides/second-brain-for-ai-vs-note-taking/`, `start-here`).
+  **Why this one over the two standing candidates** ("paid AI subscription?",
+  "agentic AI for charities"): "second brain" is not a term this site coined. It is
+  overwhelmingly associated with personal note-taking - Tiago Forte's book, PARA,
+  Obsidian and Notion - so anyone searching the phrase arrives with the wrong model
+  of what the product is. That is simultaneously a large existing query space with a
+  natural long tail ("is X the same as Y"), and a **GEO entity problem**: an engine
+  asked what the Oxford Second Brain Bootcamp teaches has an established, better-
+  documented meaning to fall back on. Disambiguation pages are one of the few things
+  that fix an entity collision, and no page addressed it.
+  **The substance is a real distinction, not filler.** The organising claim is that
+  the difference is *who retrieves* - a human reader brings memory, shorthand and the
+  ability to skim, and a model brings none of it. Four consequences follow (notes must
+  be self-contained; folder structure stops carrying meaning; volume actively harms
+  rather than merely clutters; nothing signals staleness). It does not duplicate the
+  cycle-48 guide, which covers *what goes in*; this covers *how it differs and why*.
+  It also does honest qualifying work - it says outright that if the problem is
+  finding your own notes again, this is not the day to book.
+  Facts checked: Forte's authorship and the note-taking association are public and
+  verifiable. No claim invented, no statistics, no capacity or price.
 
 - **2026-08-10 — Cycle 53: every deploy since 6 Aug was red, and it had silently
   switched IndexNow off.** No GSC export. Cycle 52 recorded that a red deploy badge
