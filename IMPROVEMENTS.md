@@ -160,6 +160,37 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-10 — Cycle 61: the public-sector guide competes with NHS England on
+  NHS England's own ground.** No GSC export; guide budget spent. Probed the vertical
+  guides, because cycle 60 established that buyer-qualified queries are the winnable
+  ones and these carry the strongest qualifiers on the site.
+  `agentic-ai-for-public-sector-and-nhs-leaders` is **absent** from two queries. The
+  first leaned on "information governance" and pulled the policy set, which was
+  arguably my query construction - so it was re-probed buyer-shaped ("what work can
+  NHS and council staff safely use AI for without touching patient data"). **Absent
+  from that too**, and the winners were: an NHS trust AI policy, an ICB policy PDF, an
+  NHS-provider governance policy, the King's Fund, and NHS England.
+  **This is a different case from cycle 60 and must not be filed with it.** There the
+  audience could not convert, so the answer was to leave the query alone. Here the
+  audience is explicitly in `whoFor` - "senior public-sector, NHS and university
+  staff" - so these are real buyers. What cannot be won is the *framing*: on "what am
+  I allowed to do", the answer that should rank is the reader's own organisation's
+  policy, and no training site outranks NHS England on that, nor should it.
+  The guide's actual value is the question policy documents never answer: **what to
+  build**. Every trust policy says what you must not do; not one says what the shape
+  of an agentic workflow for board papers looks like. That distinction was in the
+  h1 ("start where governance says yes") but the seoTitle was **"Agentic AI for the
+  public sector and NHS"** - generic, and head-on into the space Microsoft, AWS and
+  gov.uk own. Changed to **"The agentic AI work NHS governance allows"** (41 chars):
+  it concedes the permission question and claims the selection question, which is the
+  one the guide actually answers. "Public sector" stays in the h1 and description, so
+  nothing is lost on-page.
+  **Third consecutive seoTitle hypothesis** (cycles 59, 60, 61). All three are
+  unmeasured. Re-probe the set together in a few days rather than one at a time; if
+  none has moved, the pattern is authority and the answer is off-page, not framing.
+  **Not probed: the finance guide.** A classifier outage killed the request
+  mid-cycle. Still outstanding, along with ten others.
+
 - **2026-08-10 — Cycle 60: "AI bootcamp" means something else to most searchers, and
   that is a positioning fact, not a ranking bug.** No GSC export; guide budget spent.
   Continued the guide-by-guide probe from cycle 59.

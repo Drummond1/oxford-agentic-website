@@ -2,7 +2,7 @@
 title: "Agentic AI for public-sector and NHS leaders: start where governance says yes"
 slug: agentic-ai-for-public-sector-and-nhs-leaders
 category: in-practice
-seoTitle: "Agentic AI for the public sector and NHS"
+seoTitle: "The agentic AI work NHS governance allows"
 description: How to apply agentic AI inside a public-sector organisation - which work suits it, which never will, and why governance is the design brief, not the blocker.
 capsule: >-
   Public-sector and NHS leaders can apply agentic AI today by choosing tasks their
@@ -12,7 +12,7 @@ capsule: >-
   is not a blocker - it is the selection criterion for what to build first.
 author: drummond-gilbert
 publishDate: "2026-07-29T09:00:00+01:00"
-updatedDate: "2026-07-29T09:00:00+01:00"
+updatedDate: "2026-08-10T11:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
