@@ -160,6 +160,38 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-10 — Cycle 59: probed whether the guides earn anything, nearly drew the
+  wrong conclusion from one query, and found a real format mismatch instead.**
+  No GSC export; guide budget for 10 Aug spent, so a refresh cycle. The guides are
+  16 of 31 indexable pages and nothing had ever checked whether they rank.
+  **The near-miss, recorded because the reasoning matters more than the fix.**
+  First probe - "what questions should I ask before booking AI training for my team",
+  almost the exact title of a published guide - returned eight results with
+  oxfordagentic.com **nowhere in them**. Against the #1s on every commercial query,
+  that reads as "the guide cluster earns nothing", which would be an argument for
+  stopping guide production entirely. Second probe, "what is an agentic AI bootcamp",
+  returned the Oxford guide at **#1**, above Data Science Dojo's 10-week bootcamp and
+  a European NVIDIA-backed one. So guides *do* rank, and one query is not a cluster.
+  **The real finding is the contrast between those two queries.** Every result that
+  beat the checklist guide leads with a count: "10 Questions for Founders", "5
+  Questions to Ask Before Approving", "Five Questions to Ask Before You Buy", "33
+  questions". That query space is dominated by numbered listicles - and the Oxford
+  guide *is* one, nine numbered `##` sections, with the count stated in the
+  description but **not in the title**. It was competing in a listicle space without
+  the listicle signal. Title now "Nine questions to ask before booking AI training";
+  `seoTitle` "9 questions before booking AI training" (numeral, because every
+  competitor uses one and the SERP string is where it has to win). Title tag renders
+  at 55 chars; the h1 keeps the spelled form, per house style.
+  **This is a hypothesis, not a certainty** - it is a format-convention match
+  inferred from competitor structure, not measured. Re-probe the same query in a few
+  days; if it has not moved, the problem is authority rather than framing.
+  **Two other numbered guides were deliberately left alone:** "How to choose the task
+  you bring" and "What actually goes in a second brain" are both five-section lists
+  without a count in the title. The evidence for counts comes from *one* query space
+  where listicles dominate; those two sit in "how" and "what" spaces that may reward
+  question-matching instead. Test before repeating the trick - applying it everywhere
+  on one data point is cargo-culting.
+
 - **2026-08-10 — Cycle 58: the format objection was unanswered anywhere on the
   site.** No GSC export. Working the vein cycle 57's probe opened: buyer questions
   the *comparison set* forces, rather than gaps inferred from the repo.
