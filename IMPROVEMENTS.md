@@ -136,6 +136,16 @@ Status: `todo` · `blocked` (why) · `doing`
     not actioned: deleting a person's page is his call, not the loop's, and the
     literal instruction was satisfied. If confirmed: delete
     `src/content/team/josh-lawman.md` and add a redirect for the old URL.
+18. `blocked` (Drummond, one fact) — **do attendees get a certificate?** Nothing on
+    the site says, and the comparison set leads with it: Saïd issues an official
+    University of Oxford Certificate of Completion, the Queen Mary Eventbrite day
+    issues a university certificate, tutorials.co.uk says "Certificate included".
+    A senior buyer expensing a day will ask. The affiliation FAQ says the name
+    "promises the city and the standard of the day rather than a university
+    credential", which implies no *university* credential but does not say whether
+    any certificate exists at all. The loop will not guess either way - "no
+    certificate" and "yes, ours" are both assertions of fact it has no source for.
+    One sentence from Drummond closes it, and it belongs in the homepage FAQ.
 17. `todo` (wants GSC data first) — **`brand.tagline` describes half the business.**
     `'Practical agentic AI training in Oxford'` is the homepage `<title>`, the footer
     line and two OG cards, and the Second Brain day is not agentic AI training. Same
@@ -149,6 +159,35 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-10 — Cycle 58: the format objection was unanswered anywhere on the
+  site.** No GSC export. Working the vein cycle 57's probe opened: buyer questions
+  the *comparison set* forces, rather than gaps inferred from the repo.
+  Inventoried all **41** FAQs across the homepage, both programmes and all three
+  events. The biggest hole was the one the competitive landscape makes unavoidable:
+  **"Is one day really enough?"** A buyer looking at this is simultaneously looking
+  at Saïd's 3-week online programme, a 5-day Oxford Executive Institute course, a
+  2-day Maven course and a 2-day Oxford AI Summit. Every one of them is longer.
+  Nothing on the site addressed the obvious question.
+  The answer deliberately does not argue that more is fitted in. It argues the scope
+  is narrower on purpose, and names what the day leaves out - no tour of the AI
+  landscape, no model comparisons, no governance policy - because naming the
+  exclusions *is* the argument. Closing line does the competitive work without
+  naming anyone: "The alternative is not a better day. It is a longer course you
+  attend and then never apply."
+  Grounded throughout in published copy: the "deliberately does not cover" list is
+  already in the questions-to-ask guide, the build-cycle format and "leave with the
+  pattern" are on the Agentic pages, and Cohort 1's record shows three facilitated
+  build cycles with every attendee running what they built.
+  **Placed on the homepage only, deliberately.** `home.ts` is the shared-surface
+  file by design, the homepage FAQ is what the cycle-57 probe showed being extracted
+  into result snippets, and this is a site-wide question rather than a product-line
+  asymmetry - so it is not a cycle-52 parity case, and triplicating one answer
+  across three pages would create three places to maintain it and read as stuffing.
+  Homepage `FAQPage` node: 9 questions to 10, verified in `dist/`.
+  **Found and deliberately not answered: the certificate question** - see backlog 18.
+  The comparison set leads with certificates and the site is silent. Both possible
+  answers are assertions of fact the loop has no source for, so it stays open.
 
 - **2026-08-10 — Cycle 57: stopped guessing and re-probed, because the single-product
   sweep was running thin and a GEO probe is the one real signal obtainable without

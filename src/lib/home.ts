@@ -45,6 +45,19 @@ export const homeFaqs = [
     a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful.',
   },
   {
+    /*
+     * The format objection, and the one the comparison set makes unavoidable: a
+     * buyer looking at this is also looking at three-week online programmes and
+     * multi-day courses, and will reasonably ask what a single day can do that
+     * those cannot. Nothing on the site answered it (cycle 58 — checked all 41
+     * FAQs). The answer is not "we fit more in"; it is that the scope is
+     * deliberately narrower, so naming what the day leaves out is the argument
+     * rather than an admission.
+     */
+    q: 'Is one day really enough?',
+    a: 'It is enough for one thing done properly, which is what the day is scoped to. It is not a survey of the field: no tour of the AI landscape, no model comparisons, no governance policy. You bring one real task, you build against it in facilitated cycles with someone on hand when you get stuck, and you leave with it running plus the pattern underneath it, which is the part that transfers to the next task. The alternative is not a better day. It is a longer course you attend and then never apply.',
+  },
+  {
     q: 'Can I bring my team?',
     a: 'Yes. Teams are welcome, and bringing a colleague means the same pattern goes back to work with two of you rather than one. Email hello@oxfordagentic.com and we will arrange it.',
   },
