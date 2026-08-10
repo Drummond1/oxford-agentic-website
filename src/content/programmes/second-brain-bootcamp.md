@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-08-06T18:00:00+01:00"
+updatedDate: "2026-08-10T08:00:00+01:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -45,6 +45,14 @@ faqs:
       No. If you use AI tools most days you have everything the day requires. The
       work is deciding what your context is and structuring it - thinking clearly
       about your own business, not writing code.
+  - q: Which AI tools does this work with?
+    a: >-
+      The ones you already use. A second brain is your own material, structured and
+      stored so a model can read it. It is not a feature of any one product, and the
+      day is not a tutorial in a particular app: it is spent deciding what your
+      context is, organising it, and then connecting it to the tools you work in.
+      That is deliberate. Tools change, and a second brain built inside one of them
+      has to be rebuilt when you move.
   - q: What do I need to bring?
     a: >-
       A laptop, and your own material - the documents, notes and examples that carry

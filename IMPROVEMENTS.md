@@ -77,6 +77,17 @@ Status: `todo` · `blocked` (why) · `doing`
    **Eventbrite** (cited three times in that answer), on UK AI-event aggregators, and
    create the **LinkedIn Company Page**. Each is a citable third-party mention of the
    entity. This now outranks every remaining technical item on the backlog.
+   **Downgraded 10 Aug (cycle 57 re-probe) — still valuable, no longer "binding".**
+   The 30 Jul conclusion rested on the site being absent from the national buyer
+   question. It is no longer absent: it is **#1** there, and #1, #2, #3 and #5 on the
+   Oxford-anchored query, with still zero off-page listings. So off-page was not the
+   thing holding organic visibility back, and the ceiling the 30 Jul probe described
+   was not a ceiling. Keep the listings on the list - a third-party `sameAs` is still
+   the one thing the Organization node lacks, and aggregator citations still matter
+   for engines that lean on them - but stop treating them as the precondition for
+   everything else. Caveat on the new numbers: one engine, search results rather than
+   cited AI answers, and IndexNow has been pinging hard since cycle 53, so some of
+   the lift may be freshness. Re-probe on a different engine before relying on it.
 3. `blocked` (needs Bing account) — Bing Webmaster verification + sitemap.
 4. `blocked` (needs Plausible account + site id) — wire analytics in site.config.
 5. `blocked` (needs a LinkedIn Company Page URL) — add it to `brand.social` so it flows
@@ -138,6 +149,38 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-10 — Cycle 57: stopped guessing and re-probed, because the single-product
+  sweep was running thin and a GEO probe is the one real signal obtainable without
+  Drummond.** No GSC export (27th cycle). Four queries, Perplexity, GB.
+  **Position — much better than the 30 Jul picture:**
+  - Oxford-anchored agentic query: **#1, #2, #3 and #5** are all oxfordagentic.com
+    (was #2). Saïd's £1,500 online programme is #4.
+  - National buyer query, no Oxford anchor: **#1** (was *absent*, every citation to
+    an aggregator). This is the finding that changes the plan - see backlog 2b.
+  - "course to build a second brain for AI ... UK": **#1**.
+  - Exact-phrase "Oxford Second Brain Bootcamp": **#1**.
+  The homepage FAQ answers are being extracted near-verbatim into result snippets,
+  including the two-bootcamp entity paragraph, so the answer-capsule work is landing
+  where it was aimed.
+  **Read the numbers with care:** one engine, ranked results rather than cited AI
+  answers, and IndexNow has been pinging hard since cycle 53, so part of the lift is
+  plausibly freshness rather than authority. Re-probe elsewhere before betting on it.
+  **Competitive finding, which is the actionable half.** The AI-second-brain space is
+  crowded and almost entirely online or tool-locked: Forte Labs itself now sells "The
+  AI Second Brain" (3 weeks, online, PARA-based, taught with Claude); a London Luma
+  workshop is the nearest in-person equivalent and is welded to Claude Code plus
+  Obsidian; Maven has a 2-day online course at £495; the rest are self-paced or
+  developer-facing RAG courses. **Oxford's is the only one-day, in-person,
+  tool-agnostic option in the set** - and the site never answered the tool question a
+  buyer comparing against those would obviously ask.
+  Shipped: a **"Which AI tools does this work with?"** FAQ on the Second Brain
+  programme and Cohort 1 pages. Answer grounded entirely in published copy - the
+  programme already promises "the connections that let your AI tools actually draw on
+  it, **across tools**" - so this states an existing commitment plainly rather than
+  making a new one. No competitor is named on the site; the differentiator is stated
+  positively and lets the comparison happen in the reader's head.
+  Both surfaces updated together, per the cycle-52 parity lesson.
 
 - **2026-08-10 — Cycle 56: the buyer-consideration cluster was tagged to one
   programme, so it supported one programme.** No GSC export; guide budget spent, so

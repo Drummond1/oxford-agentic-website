@@ -62,6 +62,11 @@ faqs:
       The Agentic Bootcamp builds workflows - AI pipelines that do a task. This day
       builds the context those tools draw on. They compound, and neither assumes the
       other.
+  - q: Which AI tools does this work with?
+    a: >-
+      The ones you already use. What you build is your own material, structured so a
+      model can read it, rather than a setup inside one particular app. The day ends
+      with connecting it to the tools you work in, so it survives you changing them.
   - q: What should I bring?
     a: >-
       A laptop, and access to your own material - the documents, notes and examples
