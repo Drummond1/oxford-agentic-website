@@ -36,13 +36,31 @@ const related = guide
 /*
  * Sibling guides. Listing every other guide kept the section fully connected
  * when there were three of them; at twelve it is a wall of undifferentiated
- * links that helps nobody choose. Same-category guides come first, then the
- * newest from elsewhere to fill, capped at four — with a link to the full
+ * links that helps nobody choose. Capped at four, with a link to the full
  * index underneath, so nothing becomes unreachable.
+ *
+ * Ranked by subject first, journey stage second. Category alone used to decide
+ * the order, and it is the wrong axis on its own: it groups by where a reader
+ * is ("start here", "choosing"), not by what a guide is about. Once a second
+ * programme line existed the cost showed up immediately — the two second-brain
+ * guides sit in different categories, so neither ever surfaced the other, and
+ * both filled all four slots with agentic guides. A reader finishing one had no
+ * route to the other, and the cluster had no internal cohesion for search or AI
+ * engines to read. Shared programme is the subject axis, so it outranks
+ * category; recency breaks what is left.
  */
 const siblings = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
-const sameCategory = siblings.filter((g) => g.data.category === guide?.data.category);
-const otherGuides = [...sameCategory, ...siblings.filter((g) => !sameCategory.includes(g))].slice(0, 4);
+const guideProgrammes = new Set(guide?.data.relatedProgrammes.map((ref) => ref.id) ?? []);
+const otherGuides = siblings
+  .map((g) => ({
+    entry: g,
+    score:
+      (g.data.relatedProgrammes.some((ref) => guideProgrammes.has(ref.id)) ? 2 : 0) +
+      (g.data.category === guide?.data.category ? 1 : 0),
+  }))
+  .sort((a, b) => b.score - a.score || b.entry.data.publishDate.getTime() - a.entry.data.publishDate.getTime())
+  .slice(0, 4)
+  .map((scored) => scored.entry);
 
 // Index only: guides grouped into the reader's journey, in category order.
 const grouped = GUIDE_CATEGORIES.map((category) => ({

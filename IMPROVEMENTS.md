@@ -130,6 +130,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-10 — Cycle 55: the related-guides heuristic ranked on the wrong axis,
+  and the Second Brain cluster had no internal cohesion.** No GSC export; guide
+  budget for 10 Aug spent in cycle 54, so a technical/internal-linking cycle.
+  **Correcting a wrong reading first, because it nearly caused wasted work:** a grep
+  for `](/guides/…)` across the markdown returned zero, which looks like "no guide
+  cross-links anywhere" and would have justified building a whole related-guides
+  component. It was wrong - the links live in the page template, not the prose, and
+  every guide already renders four siblings. **Check the built HTML, not the source,
+  before concluding a link does not exist.**
+  The real fault was narrower and worth fixing. `otherGuides` ranked same-`category`
+  first, and category is the reader-journey axis (`start-here`, `choosing`,
+  `in-practice`), not the subject axis. That was harmless with one programme line.
+  With two it broke immediately: the two second-brain guides sit in *different*
+  categories, so neither ever surfaced the other, and both spent all four slots on
+  agentic guides. A reader finishing one had no route to the other, and search and
+  AI engines saw two second-brain pages with nothing connecting them - precisely the
+  cohesion a content cluster is supposed to supply.
+  Now scored: shared `relatedProgrammes` = 2, same category = 1, recency breaks ties.
+  Verified in `dist/`: both second-brain guides now surface each other in the top
+  slot, and the agentic guides' siblings are **unchanged**, so the fix adds cohesion
+  to the new cluster without disturbing the established one.
+  Self-correcting as the guide count grows - no per-guide curation to maintain.
+
 - **2026-08-10 — Cycle 54: the brand name collides with an established concept, and
   nothing on the site addressed it.** No GSC export, so a step-2 cycle; guide budget
   for 10 Aug unspent and the split was 13 Agentic to 2 Second Brain, so a Second
