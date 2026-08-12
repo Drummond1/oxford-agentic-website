@@ -84,14 +84,54 @@ const updated = '11 August 2026';
 
       <div class="prose" data-reveal>
         <p>
-          Your choice is stored in your own browser, not on our servers. Clearing this site's data in your
-          browser settings resets it, and the banner will ask again on your next visit.
+          Your choice is stored in your own browser, not on our servers. You can change it here, at any time,
+          without hunting through browser settings.
+        </p>
+        <p class="consent-control">
+          <button type="button" class="btn btn--primary" data-consent-reset>Change my cookie choice</button>
+          <span class="consent-control__status" data-consent-status role="status" aria-live="polite"></span>
         </p>
         <p>
           Declining costs you nothing on this site. Every page, guide and event listing works identically
           either way.
         </p>
       </div>
+
+      <script is:inline>
+        (function () {
+          /*
+           * Withdrawing consent has to be as easy as giving it, which a line of
+           * copy telling people to clear their browser data is not. This button
+           * revokes immediately rather than only forgetting the choice: the
+           * signal Google holds is updated to denied in the same click, and the
+           * stored answer is cleared so the banner asks again on the next page.
+           */
+          var button = document.querySelector('[data-consent-reset]');
+          var status = document.querySelector('[data-consent-status]');
+          if (!button) return;
+
+          button.addEventListener('click', function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+            gtag('consent', 'update', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+            });
+
+            try {
+              localStorage.removeItem('oa-consent');
+            } catch (e) {
+              /* Revocation above still applies to this page view. */
+            }
+
+            if (status) status.textContent = 'Done. Cookies are off, and we will ask again on your next page.';
+          });
+        })();
+      </script>
     </div>
   </section>
 
@@ -135,6 +175,26 @@ const updated = '11 August 2026';
 
   .prose p + p {
     margin-block-start: 1.2rem;
+  }
+
+  .consent-control {
+    margin-block-start: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .consent-control__status {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--step-xs);
+    color: var(--rust);
+  }
+
+  :global(.band--dark) .consent-control__status {
+    color: var(--gold);
   }
 
   .updated {
