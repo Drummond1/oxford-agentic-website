@@ -4,6 +4,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
 import config from '../../site.config';
 import { breadcrumbSchema } from '../lib/schema';
 
@@ -60,6 +61,16 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
   <body class={bodyClass}>
     {/* Reading progress on long-form pages only; decorative, so hidden from AT. */}
     {article && <div class="progress" data-progress aria-hidden="true"></div>}
+    {
+      /* GTM's no-JS fallback. It has to be the first thing in the body per
+         Google's spec. It fires nothing that consent gates, because with JS off
+         there is no consent UI to gate it. */
+      config.analytics.provider === 'gtm' && (
+        <noscript
+          set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${config.analytics.siteId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`}
+        />
+      )
+    }
     <a href="#main" class="skip-link">Skip to content</a>
     <Header />
     <main id="main">
@@ -67,6 +78,7 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
       <slot />
     </main>
     <Footer />
+    {config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && <ConsentBanner />}
 
     <script>
       // Motion: fade/slide-up once on scroll. The class is added by JS, so with

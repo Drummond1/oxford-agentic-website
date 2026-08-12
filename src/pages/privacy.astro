@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import config from '../../site.config';
+import { createRhythm, paths } from '../lib/site';
+
+/**
+ * Privacy and cookies.
+ *
+ * Written when the consent banner went in, because consent to advertising
+ * cookies is not valid unless the visitor can find out what is actually being
+ * set. Every statement here is checked against what the site does in code:
+ * if a tag, embed or form changes, this page changes in the same commit.
+ *
+ * Deliberately narrow. It describes this website. It is not a company-wide
+ * privacy policy, and it makes no claim about a legal entity, an ICO
+ * registration or a retention schedule, because those are facts the site
+ * cannot verify about itself.
+ */
+const rhythm = createRhythm('cream');
+const bands = { cookies: rhythm.next(), choices: rhythm.next(), rights: rhythm.next() };
+const updated = '11 August 2026';
+---
+
+<Base
+  pageTitle="Privacy and cookies"
+  description={`What ${config.brand.name} collects on this website, what sets a cookie, and how to change your choice.`}
+  path="/privacy/"
+  breadcrumbs={[{ name: 'Privacy and cookies', path: '/privacy/' }]}
+>
+  <Hero
+    eyebrow="Privacy and cookies"
+    title="What this site collects, and what it does not."
+    subline="Short version: nothing that identifies you is stored unless you accept cookies, and you can change that at any time."
+  />
+
+  <section class:list={['band', `band--${bands.cookies}`]} aria-labelledby="cookies">
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="cookies">Cookies</h2>
+      </div>
+
+      <div class="prose" data-reveal>
+        <p>
+          When you first arrive, this site sets no advertising or analytics cookies. A banner asks whether you
+          are happy for it to, and until you answer, the answer is treated as no.
+        </p>
+        <p>If you accept, two Google services run:</p>
+        <ul>
+          <li>
+            <strong>Google Tag Manager</strong>, which is the container that loads the tag below. It is a
+            delivery mechanism rather than a tracker in its own right.
+          </li>
+          <li>
+            <strong>Google Ads</strong>, which records that a browser visited this site so that we can show
+            our bootcamps to people who have already been here. This is what advertising people call
+            remarketing. It does not tell us who you are, and we do not upload customer lists to it.
+          </li>
+        </ul>
+        <p>
+          If you decline, neither loads, and the only storage used is a single entry recording that you said
+          no, so that you are not asked on every page.
+        </p>
+        <p>
+          Separately, the booking form on each event page is embedded from <strong>Luma</strong>, who run
+          registration for our events. If you register, Luma handles that booking under their own privacy
+          policy, and their embed may set its own cookies when you interact with it.
+        </p>
+        <p>
+          This site is hosted on GitHub Pages. Like any web host, GitHub processes the requests your browser
+          makes in order to serve the page.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.choices}`]} aria-labelledby="choices">
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="choices">Changing your mind</h2>
+      </div>
+
+      <div class="prose" data-reveal>
+        <p>
+          Your choice is stored in your own browser, not on our servers. Clearing this site's data in your
+          browser settings resets it, and the banner will ask again on your next visit.
+        </p>
+        <p>
+          Declining costs you nothing on this site. Every page, guide and event listing works identically
+          either way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.rights}`]} aria-labelledby="rights">
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="rights">Getting in touch</h2>
+      </div>
+
+      <div class="prose" data-reveal>
+        <p>
+          If you email us, we keep the email so that we can reply to it. If you ask to hear about future
+          cohorts, we keep your address until you tell us to stop, and every message includes a way to do
+          that.
+        </p>
+        <p>
+          Under UK data protection law you can ask what we hold about you, ask us to correct or delete it, or
+          object to how we use it. Ask at <a href={`mailto:${config.brand.email}`}>{config.brand.email}</a> and
+          we will deal with it. If you are not satisfied with how we handle a request, you can complain to the
+          Information Commissioner's Office at <a href="https://ico.org.uk/" rel="noopener">ico.org.uk</a>.
+        </p>
+        <p>
+          {config.brand.name} is independent and is not affiliated with the University of Oxford or any of its
+          colleges. Our events are held in hired Oxford venues. More about who runs it is on the{' '}
+          <a href={paths.about()}>about page</a>.
+        </p>
+        <p class="updated">Last updated: {updated}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .prose ul {
+    margin-block-start: 1rem;
+    padding-inline-start: 1.2rem;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .prose p + p {
+    margin-block-start: 1.2rem;
+  }
+
+  .updated {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    opacity: 0.7;
+  }
+</style>

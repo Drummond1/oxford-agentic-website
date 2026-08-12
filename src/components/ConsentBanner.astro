@@ -1,0 +1,152 @@
+---
+/**
+ * Cookie consent banner — the gate in front of Google Ads remarketing.
+ *
+ * Two things depend on this, and the second is the one people forget:
+ *
+ * 1. Legal. UK PECR requires prior consent before non-essential cookies are
+ *    set. Advertising cookies are about as non-essential as it gets.
+ * 2. Functional. Google requires Consent Mode v2 signals before it will add a
+ *    UK or EEA visitor to a remarketing audience. Without this banner the tag
+ *    still fires, the site still looks fine, and the audience quietly never
+ *    fills up — which is the failure mode worth designing against, because
+ *    nothing about it looks broken.
+ *
+ * Defaults live in BaseHead, inline and ahead of the GTM snippet, because a
+ * default that arrives after the tag has already run is not a default. This
+ * component only ever moves consent from denied to granted, or records that the
+ * visitor said no.
+ *
+ * No third-party CMP: one banner, two buttons, a choice remembered in
+ * localStorage. A consent tool that loads its own script to ask permission to
+ * load scripts is a poor trade on a site this size.
+ */
+---
+
+<div class="consent" id="consent-banner" hidden data-consent-banner>
+  <div class="consent__inner">
+    <p class="consent__copy">
+      We use cookies to measure how this site is used and to show our bootcamps to people who have already
+      visited. Decline and nothing is set beyond what the site needs to work.{' '}
+      <a href="/privacy/">How we handle data</a>
+    </p>
+    <div class="consent__actions">
+      <button type="button" class="btn btn--ghost" data-consent="denied">Decline</button>
+      <button type="button" class="btn btn--primary" data-consent="granted">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'oa-consent';
+    var banner = document.querySelector('[data-consent-banner]');
+    if (!banner) return;
+
+    function gtag() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(arguments);
+    }
+
+    function stored() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        // Private mode, or storage blocked. Treat as undecided and ask again;
+        // the default is denied, so failing closed is the safe direction.
+        return null;
+      }
+    }
+
+    // Only ask once. A banner that reappears after a decision reads as a dark
+    // pattern and is the most common reason people stop trusting the choice.
+    if (stored() === null) banner.hidden = false;
+
+    function decide(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (e) {
+        /* Choice still applies to this page view. */
+      }
+
+      if (value === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted',
+        });
+      }
+
+      // Denial needs no update call — denied is already the default, and
+      // re-asserting it would only risk overwriting a stricter signal.
+      banner.hidden = true;
+    }
+
+    banner.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-consent]');
+      if (button) decide(button.dataset.consent);
+    });
+  })();
+</script>
+
+<style>
+  .consent {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 60;
+    background: var(--ink-dark);
+    border-block-start: 1px solid var(--gold-hairline);
+    padding: 1rem clamp(1rem, 0.5rem + 2vw, 2rem);
+  }
+
+  .consent[hidden] {
+    display: none;
+  }
+
+  .consent__inner {
+    max-width: var(--max-width);
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .consent__copy {
+    color: var(--muted-on-dark);
+    font-size: var(--step-xs);
+    max-width: 46rem;
+    margin: 0;
+  }
+
+  .consent__copy a {
+    color: var(--gold);
+  }
+
+  .consent__actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  /* The two choices are given equal visual weight on purpose. Consent that is
+     only valid when freely given cannot sit behind a greyed-out Decline. */
+  .consent__actions .btn {
+    font-size: var(--step-xs);
+    padding-block: 0.55rem;
+  }
+
+  @media (max-width: 40rem) {
+    .consent__inner {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .consent__actions .btn {
+      flex: 1;
+    }
+  }
+</style>

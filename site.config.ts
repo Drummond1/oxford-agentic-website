@@ -73,12 +73,24 @@ export interface Redirect {
 }
 
 export interface Analytics {
-  /** 'plausible' | 'ga4' | 'none' — provider-agnostic per PRD §21. */
-  provider: 'plausible' | 'ga4' | 'none';
-  /** Plausible: the domain. GA4: the measurement id. */
+  /** 'plausible' | 'ga4' | 'gtm' | 'none' — provider-agnostic per PRD §21. */
+  provider: 'plausible' | 'ga4' | 'gtm' | 'none';
+  /** Plausible: the domain. GA4: the measurement id. GTM: the GTM-XXXXXXX container id. */
   siteId: string;
   /** Self-hosted or proxied Plausible script origin. */
   scriptSrc?: string;
+  /**
+   * Ask before setting advertising or analytics cookies.
+   *
+   * Consent Mode v2 defaults are emitted inline, ahead of the container, so a
+   * visitor who has not chosen is denied by default rather than tracked and
+   * apologised to afterwards. Google also requires these signals before it will
+   * add a UK or EEA visitor to a remarketing audience, so turning this off does
+   * not buy more data. It buys an empty audience and a PECR problem.
+   *
+   * Only meaningful for 'gtm' and 'ga4'.
+   */
+  requireConsent?: boolean;
 }
 
 export interface Newsletter {
@@ -175,10 +187,17 @@ const config: SiteConfig = {
   ],
 
   analytics: {
-    // PRD §21: not yet set up. Set provider + siteId once the account exists;
-    // nothing else in the codebase needs to change.
-    provider: 'none',
-    siteId: 'oxfordagentic.com',
+    /*
+     * Google Tag Manager, added 11 Aug 2026 to enable Google Ads remarketing.
+     *
+     * The container is the only thing on the site; the Google Ads tag
+     * (AW-18382942196) lives inside it, so ad tags can be changed without a
+     * deploy. Consent Mode v2 defaults are emitted ahead of the container by
+     * BaseHead, and ConsentBanner is the only thing that grants.
+     */
+    provider: 'gtm',
+    siteId: 'GTM-WQJLXFRN',
+    requireConsent: true,
   },
 
   newsletter: {

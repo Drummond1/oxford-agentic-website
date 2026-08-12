@@ -130,3 +130,32 @@ const jsonLd = graph([organizationSchema(founder), websiteSchema(), pageNode, ..
     </>
   )
 }
+{
+  /* Consent Mode v2 defaults. Order is the whole point: this must execute
+     before the container loads, because a default that arrives after the tag
+     has already fired is not a default. Everything advertising-related starts
+     denied; a stored choice is replayed here so a returning visitor is not
+     re-asked and is not silently downgraded.
+
+     ads_data_redaction strips ad click identifiers while consent is denied.
+     url_passthrough keeps gclid in the URL across pages instead, so a click
+     from an ad can still be attributed without a cookie. Together they are the
+     difference between "denied" costing some measurement and costing all of it. */
+  config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && (
+    <script
+      is:inline
+      set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});
+gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);
+try{if(localStorage.getItem('oa-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'})}}catch(e){}`}
+    />
+  )
+}
+{
+  config.analytics.provider === 'gtm' && (
+    <script
+      is:inline
+      set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer','${config.analytics.siteId}');`}
+    />
+  )
+}

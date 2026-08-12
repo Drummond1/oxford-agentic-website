@@ -79,6 +79,9 @@ const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn
   <div class="wrap site-footer__base">
     <p>© {year} {config.brand.name}</p>
     <p>{config.brand.tagline}</p>
+    {/* Reachable from every page, which is the point: a cookie notice a visitor
+        cannot find after dismissing the banner is not much of a notice. */}
+    <p><a href="/privacy/">Privacy and cookies</a></p>
   </div>
 </footer>
 
