@@ -185,6 +185,30 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-13 — Cycle 65: the team page said four people and listed five.** No GSC
+  export. Audited the OG cards, a surface never checked before and the one that
+  decides what a LinkedIn share looks like — which matters because LinkedIn is the
+  channel this actually gets promoted on.
+  **25 cards existed and 13 pages fell back to the generic homepage card**, including
+  every team profile and the bootcamps index. The guides block in `[key].png.ts`
+  already argued the case for its own set: "so a shared article gets its own headline
+  rather than the generic index card". Nobody had applied it to people. Announcing a
+  new facilitator is one of the few things anyone actively posts about this site, and
+  that post rendered a card with no person on it — the single share where the name is
+  the whole point. Now 32 cards; the only remaining fallbacks are `/`, `/404`,
+  `/home-photos/` and `/privacy/`, all correct.
+  **The better find was next to it.** The team index subline read "Four practitioners"
+  while listing five. It broke when Nicolai was added and the prose was not updated —
+  a hardcoded count sitting beside the list it contradicts. Now derived from
+  `members.length`, so it cannot drift again.
+  Also checked and dismissed: `dist/og/` holds duplicate `" 2.png"` files locally.
+  They are macOS artifacts from building without cleaning, `dist/` is gitignored, CI
+  builds fresh, and they 404 on production. Not a bug — recorded so a later cycle
+  does not spend time on it.
+  Incidental, useful for backlog 19: Nicolai's card confirms his company is
+  **Jenesys AI**, which narrows the search for the missing link considerably. Still
+  not guessed at.
+
 - **2026-08-13 — Cycle 64: the schema claimed links the page did not show.** No GSC
   export. Audited external links, which the build cannot check — `check-links.mjs` is
   internal-only by design, and the `luma.com/oxfordagentic` 404 that cost the

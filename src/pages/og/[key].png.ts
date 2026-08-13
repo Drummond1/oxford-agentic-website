@@ -52,11 +52,41 @@ export const getStaticPaths: GetStaticPaths = async () => {
     });
   }
 
+  entries.push({
+    path: paths.programmes(),
+    options: { eyebrow: `${config.brand.name} — Bootcamps`, title: 'One day. Your own real task.', meta: 'Oxford' },
+  });
+
   for (const programme of programmes) {
     entries.push({
       path: paths.programme(programme.data.slug),
       options: { eyebrow: config.brand.name, title: programme.data.name, meta: 'Oxford' },
     });
+  }
+
+  if (showSection('team')) {
+    entries.push({
+      path: paths.team(),
+      options: { eyebrow: `${config.brand.name} — Team`, title: 'The people who run the day', meta: 'Oxford' },
+    });
+
+    /*
+     * A card per person, for the same reason each guide gets one: a shared
+     * profile should carry the name of whoever is being shared. Announcing a
+     * new facilitator is one of the few things anyone actively posts about this
+     * site, and until now that post rendered the generic homepage card with no
+     * person on it — the single share where the name is the whole point.
+     */
+    for (const member of await getCollection('team')) {
+      entries.push({
+        path: paths.teamMember(member.data.slug),
+        options: {
+          eyebrow: config.brand.name,
+          title: member.data.name,
+          meta: [member.data.role, member.data.company].filter(Boolean).join(', '),
+        },
+      });
+    }
   }
 
   if (showSection('guides')) {

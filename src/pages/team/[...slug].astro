@@ -6,6 +6,7 @@ import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
 import { paths } from '../../lib/site';
 import { personSchema } from '../../lib/schema';
+import { ogPathFor } from '../../lib/og';
 
 /**
  * Team, a flagged section (PRD §11).
@@ -39,6 +40,15 @@ const initials = (name: string) =>
     .join('');
 
 /*
+ * Counted, not typed. The subline read "Four practitioners" while five people
+ * were listed, because the number was hardcoded when the team had four and
+ * nobody updated the prose when Nicolai was added. A count that can contradict
+ * the list beside it should not be a string.
+ */
+const NUMBER_WORDS = ['no', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const memberCountWord = NUMBER_WORDS[members.length] ?? String(members.length);
+
+/*
  * Labelled in a fixed order so profiles read consistently regardless of which
  * links a person happens to have. "Website" is deliberately vague: these are
  * studios and consultancies whose names are not self-explanatory, and guessing
@@ -61,6 +71,7 @@ const profileLinks = speaker
       pageTitle={speaker.data.name}
       description={`${speaker.data.name} - ${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}. ${speaker.data.bio.slice(0, 100)}`}
       path={paths.teamMember(speaker.data.slug)}
+      ogImage={ogPathFor(paths.teamMember(speaker.data.slug))}
       schemaNodes={[
         personSchema({
           name: speaker.data.name,
@@ -132,12 +143,13 @@ const profileLinks = speaker
       pageTitle="Team"
       description={`The people who run ${config.brand.name}: practitioners who build with these tools daily.`}
       path={paths.team()}
+      ogImage={ogPathFor(paths.team())}
       breadcrumbs={[{ name: 'Team', path: paths.team() }]}
     >
       <Hero
         eyebrow={config.brand.name}
         title="The people who run it"
-        subline="Four practitioners who build with these tools daily, rather than commentators on them. Each runs part of the day."
+        subline={`${memberCountWord} practitioners who build with these tools daily, rather than commentators on them. Each runs part of the day.`}
       />
 
       <section class="band band--cream" aria-labelledby="all">
