@@ -28,7 +28,7 @@ Some now include a build exercise as well, and the better ones are worth doing. 
 
 Online courses are the most flexible and the most affordable route, and the good ones teach real material. They suit people who want depth on their own schedule, and they are unbeatable for reference - you can return to a module the week you need it.
 
-Their weakness is completion, and more precisely application. Watching someone build is not building. The friction that stops people is rarely the concept; it is the first stuck moment at their own desk, with no one to unstick them. That is where most course journeys quietly end.
+Their weakness is completion, and more precisely application. Watching someone build is not building. The friction that stops people is rarely the concept; it is the first stuck moment at their own desk, with no one to unstick them. That is where most courses quietly end.
 
 ## A bootcamp: a result
 

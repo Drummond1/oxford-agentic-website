@@ -27,6 +27,7 @@ whoFor:
   - Graduates of Oxford AI executive education who want the hands-on follow-through
   - Consultants, and senior NHS, university and public-sector staff
   - Anyone who uses AI daily but has never chained several steps together
+  - Engineers and people who build AI for a living - several came to Cohort 1
 whatYoullBuild:
   - A working agentic pipeline running against a real task from your own work
   - A review step that checks the output, so the pipeline compounds rather than single-shots
@@ -75,12 +76,22 @@ faqs:
       load for you, the same booking page is at luma.com/oxfordagentic2.
   - q: Do I need to be technical?
     a: >-
-      No. The bootcamp is built for operators, not engineers. No coding is required and
-      the day is facilitated in the room, so nobody spends it stuck on setup.
+      No, and that is not the whole answer. No coding is required and the day is
+      facilitated in the room, so nobody spends it stuck on setup. Nothing is
+      hand-waved either: part of the day goes on where these workflows break, how you
+      would notice and what you constrain. Engineers are welcome, and several people
+      who build AI for a living came to Cohort 1.
   - q: What should I bring?
     a: >-
       A laptop and one real task from your own work that currently costs you meaningful
       time each week. That task is what you build against all day.
+  - q: Can I install software on my work laptop?
+    a: >-
+      Worth checking before you book. Corporate and government devices often block new
+      tool sign-ups, and the day involves setting things up on your own machine. This
+      caught people out in Cohort 1, so it is better found now than at 09:30 on the
+      day. If your laptop is locked down, email hello@oxfordagentic.com and we will
+      work out what you need beforehand.
   - q: How big is the cohort?
     a: >-
       Capped at roughly twenty-five people. Cohort 1 ran with sixteen. The day is
@@ -92,8 +103,8 @@ faqs:
       take part either way.
   - q: Can I bring my team?
     a: >-
-      Yes. Teams are welcome, and colleagues often get more from it by building
-      alongside each other. Email hello@oxfordagentic.com and we will arrange it.
+      Yes. Teams get more out of it than individuals do, and if two of you come, bring
+      the same task. Email hello@oxfordagentic.com and we will arrange it.
   - q: What if I cannot make the date?
     a: >-
       Your place transfers to a future cohort at no charge. Just let us know and we

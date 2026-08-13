@@ -25,6 +25,7 @@ whoFor:
   - Graduates of Oxford AI executive education looking for the hands-on follow-through
   - Consultants and senior public-sector, NHS and university staff
   - Anyone comfortable with AI who has never orchestrated several steps into a single workflow
+  - Engineers and people building AI for a living, who come for the pattern and the room
 faqs:
   - q: What is the Oxford Agentic Bootcamp?
     a: >-
@@ -33,10 +34,12 @@ faqs:
       capped at roughly twenty-five people and no coding is required.
   - q: Do I need to be technical?
     a: >-
-      No. The day is built for operators, not engineers - founders, directors and
-      consultants. If you can use a spreadsheet and have used a chatbot, you have
-      enough. Everything is facilitated in the room, and the point of the small cohort
-      is that nobody gets left stuck on tooling.
+      No, and that is not the whole answer. If you can use a spreadsheet and have used
+      a chatbot you have enough, everything is facilitated in the room, and the point
+      of the small cohort is that nobody gets left stuck on tooling. Nothing is
+      hand-waved either: part of the day goes on where these workflows break, how you
+      would notice and what you constrain so a bad run cannot do damage. Engineers are
+      welcome - several people who build AI for a living came to the first cohort.
   - q: What does "agentic" actually mean here?
     a: >-
       Most people use AI one question at a time - one prompt, one tab. Agentic means

@@ -59,8 +59,8 @@ const bands = {
 
 <Hero
   eyebrow="One day · Hands-on · An Oxford Experience"
-  title="Build agents. In a day. In Oxford."
-  subline="A room of about twenty-five senior people, one real task each, and a working agentic AI workflow running by the time you leave. No coding."
+  title="Build impactful agentic AI workflows"
+  subline="One day in Oxford. One real task from your own work. A workflow that runs by the time you leave."
   motif
   size="full"
   photo={heroPhoto && { src: heroPhoto.data.file, alt: heroPhoto.data.alt }}
@@ -129,6 +129,19 @@ const bands = {
     <div class="section-head" data-reveal>
       <hr class="dash" />
       <h2 id="why">Three reasons this is not another AI talk</h2>
+      {/* The stakes, stated without a manufactured deadline. */}
+      <p>
+        The tools improve every month. The ability to actually build with them does not improve on its own,
+        and the distance between the two is what widens.
+      </p>
+      {/* The ladder, all three rungs and in order. Stopping at "hours back" sells
+          efficiency, which is a commodity; the third rung is the thing senior
+          people actually want. */}
+      <p>
+        So the day is narrow on purpose. You automate the routine work that currently eats your week, that
+        gives you hours back, and you spend those hours on the work only you can do. The automation is never
+        the point. What the reclaimed time is for is the point.
+      </p>
     </div>
 
     <div class="grid grid--3">
@@ -145,10 +158,13 @@ const bands = {
       <div class="card" data-reveal data-reveal-delay="90">
         <span class="eyebrow">The room</span>
         <h3>Senior peers, in Oxford</h3>
+        {/* The room described in aggregate and by role. Every line is true of
+            Cohort 1, names nobody and needs no consent — which is what makes it
+            usable at all. */}
         <ul class="squares">
-          <li>Capped at roughly twenty-five people</li>
-          <li>Founders, directors, consultants, public sector</li>
-          <li>An Oxford college, laid out for small-group work</li>
+          <li>A head of software engineering from a clinical AI company</li>
+          <li>A partnerships lead from Google. A COO. Three founders</li>
+          <li>Sixteen people, four to a table, in an Oxford college</li>
         </ul>
       </div>
 
@@ -158,10 +174,19 @@ const bands = {
         <ul class="squares">
           <li>Scout, drafter, reviewer - narrow steps handing off</li>
           <li>No stretch of talk runs past twenty-five minutes</li>
-          <li>A recipe you can rebuild on Monday</li>
+          <li>Part of the day is working out what to leave alone</li>
         </ul>
       </div>
     </div>
+
+    {/* The paragraph that stops a senior engineer wincing — and the reason one
+        can forward this page to their COO. "No coding required" on its own reads
+        as "not serious" to a technical buyer, so it is never left on its own. */}
+    <p class="why__reliability" data-reveal>
+      No coding required, and nothing hand-waved. Engineers are welcome here and some of the room usually
+      builds AI for a living, so part of the day goes on where these things break: which steps fail quietly,
+      how you would notice, and what you constrain so a bad run cannot do any damage.
+    </p>
   </div>
 </section>
 
@@ -281,6 +306,24 @@ const bands = {
 }
 
 <style>
+  /* Sits under the three cards as a single paragraph rather than a fourth card:
+     it is a concession and an aside, and giving it equal visual weight to the
+     selling points would overstate it. */
+  .why__reliability {
+    margin-block-start: clamp(2rem, 1.5rem + 2vw, 3rem);
+    max-width: var(--measure);
+    font-size: var(--step-sm);
+    line-height: 1.65;
+  }
+
+  :global(.band--dark) .why__reliability {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .why__reliability {
+    color: var(--muted-on-cream);
+  }
+
   /*
    * Every source frame is landscape, so the layout is built from landscape
    * crops: one wide plate of the room across the top, two supporting frames

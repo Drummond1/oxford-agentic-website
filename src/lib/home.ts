@@ -26,11 +26,20 @@ export const homeFaqs = [
   },
   {
     q: 'Who are the bootcamps for?',
-    a: 'Senior people who already use AI and now want to build with it: founders, directors, C-suite, consultants, and senior public-sector, NHS and university staff. The Oxford Agentic Bootcamp is for building working AI workflows; the Oxford Second Brain Bootcamp is for building the store of your own context those tools draw on. Both suit anyone who has done an executive AI course and wants the hands-on follow-through.',
+    a: 'Senior people who already use AI daily and have hit the ceiling: good output from a chat window, and still doing the work by hand tomorrow. Founders, directors and C-suite in Oxford and London; senior NHS, university and public-sector staff; consultants and independent operators; product and operations leaders. Engineers and people who build AI for a living are welcome too, and several came to the first cohort. The Oxford Agentic Bootcamp is for building working AI workflows; the Oxford Second Brain Bootcamp is for building the store of your own context those tools draw on.',
   },
   {
+    /*
+     * "No coding required" is never left as the only framing. On its own it
+     * reads to a senior technical buyer as "not serious", and engineers do come:
+     * the pairing is what lets one of them forward this page to their COO.
+     */
     q: 'Do I need to be technical?',
-    a: 'No. Nothing on the day requires code. Everything is facilitated in the room, and the cohort is kept small so nobody spends the day stuck on setup.',
+    a: 'No, and that is not the only thing worth saying about it. Nothing on the day requires code, everything is facilitated in the room, and the cohort is kept small so nobody spends the day stuck on setup. Nothing is hand-waved either: part of the day goes on where these workflows break, how you would notice, and what you constrain so a bad run cannot do damage. Engineers are welcome, and some of the room usually builds AI for a living.',
+  },
+  {
+    q: 'Who is it not for?',
+    a: 'People who want a conceptual overview of AI - this is a build day, not a briefing. Anyone who cannot bring a real task from their own work, because the whole day runs against one and without it you get a demonstration instead of an outcome. Anyone expecting a vendor or platform pitch, because no tool is being sold. And anyone who cannot install software on their own laptop: corporate and government devices often block tool sign-ups, so it is worth checking before you book rather than at 09:30 on the day.',
   },
   {
     q: 'Where in Oxford are the events held?',
@@ -59,7 +68,17 @@ export const homeFaqs = [
   },
   {
     q: 'Can I bring my team?',
-    a: 'Yes. Teams are welcome, and bringing a colleague means the same pattern goes back to work with two of you rather than one. Email hello@oxfordagentic.com and we will arrange it.',
+    a: 'Yes. Teams get more out of it than individuals do, and if two of you come, bring the same task. Email hello@oxfordagentic.com and we will arrange it.',
+  },
+  {
+    /*
+     * Mentioned once, near the end, as an upside. Deliberately not sold as a
+     * reason to book, and deliberately not called a community, a network or an
+     * alumni network — those words promise infrastructure. Describe what
+     * actually happens instead.
+     */
+    q: 'What happens after the day?',
+    a: 'You leave with the group. Everyone in the room has built the same thing, they stay in touch afterwards, and you hear first when the next one is on - reunions and build sessions, editions for particular functions, and the free meetups. Some are paid and some are free. It is an upside rather than a reason to come.',
   },
   {
     q: 'What if I book but cannot make the date?',

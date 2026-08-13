@@ -17,7 +17,7 @@ relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
 
-Most AI pilots do not collapse because the model was not good enough. They collapse quietly, a fortnight in, when the person who was enthusiastic in the workshop goes back to doing the job the old way because the old way is what fits their Tuesday. That is an organisational failure, not a technical one, and it is avoidable.
+Most AI pilots do not collapse because the model was not good enough. They collapse quietly, a fortnight in, when the person who was enthusiastic in the kick-off goes back to doing the job the old way because the old way is what fits their Tuesday. That is an organisational failure, not a technical one, and it is avoidable.
 
 ## Pilot a task, not a tool
 
