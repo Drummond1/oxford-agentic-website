@@ -93,6 +93,18 @@ export async function publicPages(): Promise<PageRef[]> {
     description: `Who runs ${config.brand.name}, why it exists, and where it happens.`,
   });
 
+  /*
+   * Listed because this file claims to be every public page, and a list that
+   * quietly omits one is worse than no list. It is also the page an engine
+   * should be able to find when asked what this site does with visitor data,
+   * which is a question worth being answerable on rather than silent.
+   */
+  pages.push({
+    title: 'Privacy and cookies',
+    path: '/privacy/',
+    description: 'What this site collects, what sets a cookie, and how to change your choice.',
+  });
+
   return pages;
 }
 

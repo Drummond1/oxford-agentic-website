@@ -110,6 +110,22 @@ Status: `todo` · `blocked` (why) · `doing`
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
    "AI training Cambridge") or thin near-duplicates; Google penalises them and they
    cheapen the brand. Query-shaped and genuinely useful, or not at all.
+   **HARD RULE, added 12 Aug — probe the query BEFORE writing the guide.** Cycles
+   59-63 established this the expensive way, by finding published guides absent from
+   their own target queries. Run one search and answer two questions:
+   (a) **Is it winnable?** If the results are institutional publishers on their own
+       subject - NHS England and trust policies on "what AI am I allowed to use",
+       gov.uk, Microsoft, AWS - the answer is no, and it should be no. Reframe onto
+       the question they never answer (what to *build*, not what is *permitted*),
+       or leave it.
+   (b) **Does the searcher convert?** This is the one that catches good-looking
+       topics. "AI bootcamp vs course" is winnable but the intent is career-changers
+       wanting to become ML engineers. "Why does AI still sound generic" is winnable
+       but the intent is content marketers wanting better copy. Neither is a senior
+       leader who has hit the ceiling of prompting, so traffic from either is
+       vanity. **Winnable AND converting, or do not write it.**
+   Both tests failed on 12 Aug, which is why no guide shipped that day. A cycle that
+   correctly declines to publish is a good cycle; guide count is not the metric.
 10. `blocked` (needs Drummond to approve his own bio) — turn `speakers` on. His profile
     page would add a Person entity and strengthen the Article author signal, but the bio
     was drafted from vault facts and he has not reviewed it. Do not publish a biography
@@ -159,6 +175,31 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-12 — Cycle 63: declined to publish, and wrote down why.** No GSC export
+  (28th cycle). Guide budget for 12 Aug was unspent and the backlog said weight
+  toward Second Brain, so a guide was the obvious move. It was the wrong one.
+  Probed the candidate query first, per the discipline cycle 60 established.
+  **"Why does AI still sound generic after I gave it context"** is owned by
+  content-marketing blogs - Medium, ConversionMinded, StartupNation, Lilach Bullock,
+  Digiwell, Brandfolio. Winnable on authority, unlike the NHS space. But the intent
+  is a copywriter wanting better AI output, not a leader who has hit the ceiling of
+  prompting. Writing to it buys traffic that does not convert and enters a commodity
+  blog fight. **Not written.** The probe paid for itself by preventing the work.
+  Promoted the lesson from three cycles of evidence into a hard rule under backlog 9:
+  probe before writing, and require **winnable AND converting**, not either alone.
+  Recorded because guide count is a tempting metric and it is the wrong one.
+  Shipped instead: the privacy page added to `publicPages()`, so `llms.txt` lists it.
+  It was in the sitemap but missing from the file that claims to list every public
+  page - a gap introduced by my own consent work the day before.
+  **Also verified, and worth recording because it could have gone badly:** the GTM
+  and consent banner work added a third-party script and a fixed-position element to
+  all 35 pages. CI passed on both commits, including Lighthouse best-practices at a
+  **perfect 100** on non-event pages, where the budget allows no margin. The reason
+  it passes is the consent gate itself: Lighthouse never clicks Accept, so no
+  advertising cookie is ever set during an audit. Had the tag gone in ungated - the
+  faster option that was on the table - it would have set `_gcl_au`, tripped the
+  third-party-cookie audit and failed the build on every page.
 
 - **2026-08-10 — Cycle 62: `llms-full.txt` was missing the single most-quoted text
   on the site.** No GSC export; guide budget spent. Deliberately moved off seoTitle
