@@ -162,6 +162,15 @@ Status: `todo` · `blocked` (why) · `doing`
     any certificate exists at all. The loop will not guess either way - "no
     certificate" and "yes, ours" are both assertions of fact it has no source for.
     One sentence from Drummond closes it, and it belongs in the homepage FAQ.
+19. `blocked` (Drummond, one URL) — **Nicolai Thomson has no links**, so his profile
+    is the only one on the site with no `Person.sameAs` at all. The other four now
+    each corroborate to a real external profile: LinkedIn for Drummond and Jonathan,
+    novaria.ai for Emine, adder.dev for Josh. Entity triangulation is the weakest
+    part of this site's GEO position (the Organization node still has no `sameAs`
+    whatsoever, backlog 2b), so an unlinked person is a missed signal rather than a
+    cosmetic gap. A LinkedIn URL or a company site closes it. The loop will not
+    search for one and guess: attaching the wrong profile to a named real person is
+    a worse error than leaving it blank.
 17. `todo` (wants GSC data first) — **`brand.tagline` describes half the business.**
     `'Practical agentic AI training in Oxford'` is the homepage `<title>`, the footer
     line and two OG cards, and the Second Brain day is not agentic AI training. Same
@@ -175,6 +184,27 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-08-13 — Cycle 64: the schema claimed links the page did not show.** No GSC
+  export. Audited external links, which the build cannot check — `check-links.mjs` is
+  internal-only by design, and the `luma.com/oxfordagentic` 404 that cost the
+  Organization its only `sameAs` in July is the standing argument for looking
+  manually. **All five external URLs are healthy:** ico.org.uk 200, and both Luma
+  booking links 200, which are the two that actually matter. The LinkedIn 999s are
+  LinkedIn's bot block, not rot — worth writing down so a future cycle does not
+  "fix" a working link.
+  The audit surfaced something better than rot. Only `links.linkedin` was ever
+  rendered on a profile, but `personSchema` has always emitted **every** link into
+  `Person.sameAs`. So Emine's novaria.ai and Josh's adder.dev were in the structured
+  data and invisible on the page: schema describing something the page does not
+  show, which is the one thing structured data is not supposed to do.
+  Both URLs checked before surfacing — 200, and on-topic ("AI Transformation &
+  Strategy for Business Leaders", "AI Development Studio"). That is the point: for a
+  training brand, evidence that the people teaching it do this work for a living is
+  stronger corroboration than a LinkedIn profile, and it was being hidden.
+  Template now renders LinkedIn, X and Website in a fixed order. Verified in `dist/`:
+  visible links match `sameAs` on all four profiles that have any.
+  **Nicolai Thomson has none** — logged as backlog 19 rather than guessed at.
 
 - **2026-08-12 — Cycle 63: declined to publish, and wrote down why.** No GSC export
   (28th cycle). Guide budget for 12 Aug was unspent and the backlog said weight

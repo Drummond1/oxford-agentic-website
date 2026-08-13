@@ -37,6 +37,22 @@ const initials = (name: string) =>
     .split(' ')
     .map((part) => part[0])
     .join('');
+
+/*
+ * Labelled in a fixed order so profiles read consistently regardless of which
+ * links a person happens to have. "Website" is deliberately vague: these are
+ * studios and consultancies whose names are not self-explanatory, and guessing
+ * at a better label per person would mean asserting what someone's company is.
+ */
+const profileLinks = speaker
+  ? (
+      [
+        { label: 'LinkedIn', href: speaker.data.links.linkedin },
+        { label: 'X', href: speaker.data.links.x },
+        { label: 'Website', href: speaker.data.links.website },
+      ] as const
+    ).flatMap(({ label, href }) => (href ? [{ label, href }] : []))
+  : [];
 ---
 
 {
@@ -79,13 +95,31 @@ const initials = (name: string) =>
             <div class="prose profile__bio">{Bio && <Bio />}</div>
           </div>
 
-          {speaker.data.links.linkedin && (
-            <p class="profile__links">
-              <a href={speaker.data.links.linkedin} rel="noopener">
-                LinkedIn →
-              </a>
-            </p>
-          )}
+          {
+            /*
+             * Every link the person has, not just LinkedIn.
+             *
+             * `personSchema` has always put all of them into `Person.sameAs`, so
+             * until now the machine-readable page claimed a relationship the
+             * visible page did not show — two of five profiles had a site in
+             * schema and nothing on screen. Structured data is supposed to
+             * describe what is on the page.
+             *
+             * It also wastes the better signal. For a training brand the useful
+             * corroboration is that the people teaching it do this work for a
+             * living, and a link to the studio or consultancy they run says that
+             * more directly than a LinkedIn profile does.
+             */
+            profileLinks.length > 0 && (
+              <p class="profile__links">
+                {profileLinks.map(({ label, href }) => (
+                  <a href={href} rel="noopener">
+                    {label} →
+                  </a>
+                ))}
+              </p>
+            )
+          }
 
           <p class="profile__back">
             <a href={paths.team()}>Back to the team</a>
@@ -217,6 +251,14 @@ const initials = (name: string) =>
     text-transform: uppercase;
     letter-spacing: 0.12em;
     font-size: var(--step-xs);
+  }
+
+  /* Was a single LinkedIn link until people with more than one arrived, at
+     which point they ran together with no separation. */
+  .profile__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.6rem;
   }
 
   .empty {
