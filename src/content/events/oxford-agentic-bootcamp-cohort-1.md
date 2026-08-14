@@ -71,13 +71,6 @@ faqs:
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
       sixteen attendees working through three facilitated build cycles. Cohort 2 runs on
       Wednesday 16 September 2026.
-  - q: Who was in the room?
-    a: >-
-      Sixteen people, four to a table. A partnerships lead from Google, a COO, three
-      founders, and a head of software engineering from a clinical AI company, alongside
-      consultants and senior public-sector staff. Six of the sixteen built AI for a
-      living, which is worth saying plainly: this is not a beginners' room, and the day
-      is not pitched at beginners.
   - q: Can I still join this cohort?
     a: >-
       No - this date has passed. The next cohort is the one to book; it runs the same
