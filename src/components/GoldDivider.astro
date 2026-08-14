@@ -14,8 +14,12 @@ const { numeral, label, title } = Astro.props;
 
 <section class="band band--gold divider">
   <div class="wrap divider__inner">
-    <span class="divider__numeral" aria-hidden="true">{numeral}</span>
-    <div class="divider__text">
+    {/* The numeral lands first and the words follow it in, which is the order a
+        reader takes them anyway. Both use the sitewide reveal, so they inherit
+        the reduced-motion behaviour and the keyboard safety net rather than
+        inventing their own. */}
+    <span class="divider__numeral" data-reveal aria-hidden="true">{numeral}</span>
+    <div class="divider__text" data-reveal data-reveal-delay="110">
       <span class="eyebrow">{label}</span>
       {title && <p class="divider__title">{title}</p>}
     </div>

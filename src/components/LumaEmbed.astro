@@ -115,7 +115,14 @@ const canNotify = showSection('newsletter');
   }
 
   /* Placeholder occupies the same box as the iframe, so nothing shifts when the
-     embed paints (CLS stays at zero). */
+     embed paints (CLS stays at zero).
+
+     A gold sweep crosses it while Luma loads. This is the one place on the site
+     where the visitor is waiting on somebody else's server at the exact moment
+     they have decided to book, and a static line of text gives them no reason
+     to believe anything is happening. The sweep is a single background-position
+     animation on a gradient — no extra elements, nothing measured, and it stops
+     the instant the iframe paints. */
   .register__loading {
     position: absolute;
     inset: 0;
@@ -130,6 +137,37 @@ const canNotify = showSection('newsletter');
     font-size: var(--step-xs);
     color: var(--muted-on-dark-dim);
     transition: opacity 320ms var(--ease);
+
+    background-image: linear-gradient(
+      100deg,
+      transparent 38%,
+      rgba(212, 175, 55, 0.11) 50%,
+      transparent 62%
+    );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    animation: register-sweep 1.9s var(--ease) infinite;
+  }
+
+  @keyframes register-sweep {
+    from {
+      background-position: 160% 0;
+    }
+    to {
+      background-position: -60% 0;
+    }
+  }
+
+  /* Stop the moment it has paid off, so a loaded form is never sitting behind a
+     still-animating panel during the fade. */
+  .register__frame.is-loaded .register__loading {
+    animation: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .register__loading {
+      animation: none;
+    }
   }
 
   .register__loading[hidden] {

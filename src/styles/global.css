@@ -404,8 +404,14 @@ a.card,
 }
 
 /* Hover is a quiet lift and an amber edge — no soft shadow (printerly system). */
+/* Keyboard gets the same acknowledgement as the mouse. The focus ring alone
+   says "you are here"; the lift and the gold edge are what say "this is a
+   thing you can open", and a keyboard user was being told only half of it. */
 a.card:hover,
-.card--interactive:hover {
+.card--interactive:hover,
+a.card:focus-visible,
+.card--interactive:focus-visible,
+.card:focus-within {
   transform: translateY(-2px);
   border-color: var(--gold);
 }
