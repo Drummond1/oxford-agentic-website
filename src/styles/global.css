@@ -133,6 +133,21 @@ body {
   /* `clip`, not `hidden`: hidden turns body into a scroll container, which
      breaks position:sticky descendants and scrolled repaints. */
   overflow-x: clip;
+
+  /* Checkboxes and radios pick up the brand instead of the browser's blue.
+     One inherited declaration, and it removes the last default-browser colour
+     on the site. */
+  accent-color: var(--gold);
+}
+
+/*
+ * Selecting text is the most common thing a reader does that a page can answer,
+ * and by default it answers in Chrome blue. Gold on ink is the brand answering
+ * instead. Anyone who copies a sentence out of a guide sees it.
+ */
+::selection {
+  background: var(--gold);
+  color: var(--ink-dark);
 }
 
 img,
@@ -199,7 +214,14 @@ a {
   color: var(--rust);
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  transition: color 160ms var(--ease);
+  /* Sits clear of descenders at rest, then closes in on hover. Animating the
+     offset rather than the whole rule keeps the text on the same baseline, so
+     a paragraph never reflows under the cursor. */
+  text-underline-offset: 0.18em;
+  transition:
+    color 160ms var(--ease),
+    text-decoration-thickness 160ms var(--ease),
+    text-underline-offset 160ms var(--ease);
 }
 
 .prose a:hover,
@@ -208,6 +230,8 @@ a {
 .body-copy a:hover,
 .facts__programme a:hover {
   color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.12em;
 }
 
 /* Focus states in gold — square, to match the printerly system. */
@@ -423,6 +447,37 @@ a.card:hover [aria-hidden='true'],
   width: 0.5rem;
   height: 0.5rem;
   background: var(--gold);
+  /* Scaled from the centre so the stagger below grows each square in place
+     rather than sliding the text it sits beside. */
+  transform-origin: center;
+  transition: transform 320ms var(--ease);
+}
+
+/*
+ * The squares arrive one after another as their card reveals, ~70ms apart.
+ * The card already fades in as a block; this gives the eye something to follow
+ * down the list instead of three bullets landing at once. Delays are keyed to
+ * position rather than set in markup, so a fourth bullet inherits the rhythm
+ * without anyone remembering to add it.
+ */
+.js-motion [data-reveal]:not(.is-revealed) .squares li::before {
+  transform: scale(0);
+}
+
+.squares li:nth-child(2)::before {
+  transition-delay: 70ms;
+}
+
+.squares li:nth-child(3)::before {
+  transition-delay: 140ms;
+}
+
+.squares li:nth-child(4)::before {
+  transition-delay: 210ms;
+}
+
+.squares li:nth-child(n + 5)::before {
+  transition-delay: 280ms;
 }
 
 .band--cream .squares li::before {

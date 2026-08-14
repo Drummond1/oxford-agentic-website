@@ -5,6 +5,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ConsentBanner from '../components/ConsentBanner.astro';
+import BackToTop from '../components/BackToTop.astro';
 import config from '../../site.config';
 import { breadcrumbSchema } from '../lib/schema';
 
@@ -78,6 +79,7 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
       <slot />
     </main>
     <Footer />
+    <BackToTop />
     {config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && <ConsentBanner />}
 
     <script>

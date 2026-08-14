@@ -1,0 +1,126 @@
+---
+/**
+ * Back to top, for pages long enough to need it.
+ *
+ * Deliberately absent until it is useful: it appears once you are more than a
+ * screen and a half down, which is far enough that scrolling back is a chore
+ * and late enough that it never competes with the hero CTA. Fading it in on a
+ * transform keeps it off the main thread and out of layout, so it cannot move
+ * anything or cost CLS.
+ *
+ * Sits below the consent banner in the stack rather than beside it. The banner
+ * is dismissed once and this is permanent, so the overlap is brief and the
+ * alternative — reserving space for a banner most visitors have already
+ * dismissed — would leave a gap on every page forever.
+ */
+---
+
+<button type="button" class="to-top" data-to-top hidden aria-label="Back to top">
+  <span class="to-top__arrow" aria-hidden="true">↑</span>
+</button>
+
+<script is:inline>
+  (function () {
+    var button = document.querySelector('[data-to-top]');
+    if (!button) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // A sentinel beats a scroll listener: the browser reports the crossing
+    // itself, so nothing runs on every frame of every scroll.
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'position:absolute;top:150vh;height:1px;width:1px;pointer-events:none';
+    document.body.appendChild(sentinel);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(
+        function (entries) {
+          var past = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
+          button.hidden = !past;
+          // Toggled a frame later so the element is displayed before it animates,
+          // otherwise the transition has nothing to run from.
+          window.requestAnimationFrame(function () {
+            button.classList.toggle('is-shown', past);
+          });
+        },
+        { threshold: 0 },
+      ).observe(sentinel);
+    }
+
+    button.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+      // Send focus back to the top of the document as well as the viewport —
+      // scrolling alone would leave a keyboard user's place at the bottom.
+      var skip = document.querySelector('.skip-link');
+      if (skip instanceof HTMLElement) skip.focus({ preventScroll: true });
+    });
+  })();
+</script>
+
+<style>
+  .to-top {
+    position: fixed;
+    inset-block-end: clamp(1rem, 0.5rem + 2vw, 2rem);
+    inset-inline-end: clamp(1rem, 0.5rem + 2vw, 2rem);
+    z-index: 50;
+
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+
+    background: var(--ink-dark);
+    color: var(--gold);
+    border: 1px solid var(--gold-hairline);
+    border-radius: 0;
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition:
+      opacity 260ms var(--ease),
+      transform 260ms var(--ease),
+      background-color 200ms var(--ease),
+      border-color 200ms var(--ease);
+  }
+
+  .to-top[hidden] {
+    display: none;
+  }
+
+  .to-top.is-shown {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .to-top:hover {
+    background: var(--gold);
+    color: var(--ink-dark);
+    border-color: var(--gold);
+  }
+
+  .to-top__arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: transform 220ms var(--ease);
+  }
+
+  /* The arrow lifts a little on hover — the same nudge the event-card arrows
+     use, pointing the way it will actually travel. */
+  .to-top:hover .to-top__arrow {
+    transform: translateY(-2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .to-top,
+    .to-top__arrow {
+      transition: none;
+    }
+
+    .to-top {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
