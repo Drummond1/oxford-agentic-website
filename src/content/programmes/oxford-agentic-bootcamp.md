@@ -66,10 +66,18 @@ faqs:
       Bring a laptop. You will get the most from the day with a paid plan such as
       ChatGPT Plus or Claude Pro, but it is not essential - we make sure everyone can
       take part either way.
+  - q: How do I justify this to my manager?
+    a: >-
+      Some people pay for themselves, some expense it, and occasionally a company buys
+      two or three seats. If you need to put it in an email, this is the version that
+      survives being forwarded: a day out to build one working agentic workflow on a
+      task we already do by hand every week, and come back able to build the next one
+      without help. Pricing sits on each event's booking page, so the numbers are easy
+      to attach.
   - q: Can I bring my team, or book for several people?
     a: >-
-      Yes. Teams are welcome, and colleagues often get more from it by building
-      alongside each other and taking the same pattern back to work. Email
+      Yes. Teams get more out of it than individuals do, and if two of you come, bring
+      the same task so the same workflow goes back to work with both of you. Email
       hello@oxfordagentic.com and we will arrange it.
   - q: What if I book but cannot make the date?
     a: >-
