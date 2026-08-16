@@ -45,6 +45,14 @@ faqs:
       No. If you use AI tools most days you have everything the day requires. The
       work is deciding what your context is and structuring it - thinking clearly
       about your own business, not writing code.
+  - q: Who is it not for?
+    a: >-
+      People who want a conceptual overview of AI - this is a build day, not a briefing.
+      Anyone who cannot bring their own material, because the day is spent populating a
+      second brain with real documents and notes, and without them you leave with a
+      template rather than a second brain. Anyone expecting a vendor or platform pitch:
+      no tool is being sold, and the day is deliberately not a tutorial in one app. And
+      anyone whose work laptop blocks new sign-ups, which is worth checking first.
   - q: Which AI tools does this work with?
     a: >-
       The ones you already use. A second brain is your own material, structured and

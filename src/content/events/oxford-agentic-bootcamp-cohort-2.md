@@ -80,6 +80,13 @@ faqs:
       hand-waved either: part of the day goes on where these workflows break, how you
       would notice and what you constrain. Engineers are welcome, and several people
       who build AI for a living came to Cohort 1.
+  - q: Who is it not for?
+    a: >-
+      People who want a conceptual overview of AI - this is a build day, not a briefing.
+      Anyone who cannot bring a real task from their own work, because the whole day
+      runs against one and without it you get a demonstration instead of an outcome.
+      Anyone expecting a vendor or platform pitch, because no tool is being sold. And
+      anyone whose work laptop blocks new sign-ups, which is worth checking first.
   - q: What should I bring?
     a: >-
       A laptop and one real task from your own work that currently costs you meaningful

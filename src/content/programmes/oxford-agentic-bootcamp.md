@@ -41,6 +41,13 @@ faqs:
       hand-waved either: part of the day goes on where these workflows break, how you
       would notice and what you constrain so a bad run cannot do damage. Engineers are
       welcome - several people who build AI for a living came to the first cohort.
+  - q: Who is it not for?
+    a: >-
+      People who want a conceptual overview of AI - this is a build day, not a briefing.
+      Anyone who cannot bring a real task from their own work, because the whole day
+      runs against one and without it you get a demonstration instead of an outcome.
+      Anyone expecting a vendor or platform pitch, because no tool is being sold. And
+      anyone whose work laptop blocks new sign-ups, which is worth checking first.
   - q: What does "agentic" actually mean here?
     a: >-
       Most people use AI one question at a time - one prompt, one tab. Agentic means
