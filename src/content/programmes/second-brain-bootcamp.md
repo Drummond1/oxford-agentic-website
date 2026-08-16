@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-08-10T08:00:00+01:00"
+updatedDate: "2026-08-16T08:00:00+01:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -59,6 +59,14 @@ faqs:
       how you work and what you know. The day is spent populating a second brain with
       real content rather than a template, so bringing genuine material matters more
       than any preparation.
+  - q: Can I install software on my work laptop?
+    a: >-
+      Worth checking before you book. Corporate and government devices often block new
+      tool sign-ups, and the day involves connecting a second brain to the tools you
+      work in, on your own machine. This caught people out at the first Oxford Agentic
+      Bootcamp, so it is better found now than at 09:30 on the day. If your laptop is
+      locked down, email hello@oxfordagentic.com and we will work out what you need
+      beforehand.
   - q: What if my material is confidential?
     a: >-
       A useful test is to bring what you would be comfortable putting in an email to

@@ -52,6 +52,13 @@ faqs:
       One real task from your own work that currently costs you meaningful time, plus a
       laptop. The task is what you build against all day, so bringing a genuine one
       matters more than any preparation.
+  - q: Can I install software on my work laptop?
+    a: >-
+      Worth checking before you book. Corporate and government devices often block new
+      tool sign-ups, and the day is spent building on your own machine. This caught
+      people out in Cohort 1, so it is better found now than at 09:30 on the day. If
+      your laptop is locked down, email hello@oxfordagentic.com and we will work out
+      what you need beforehand.
   - q: Where in Oxford is it held?
     a: >-
       At an Oxford college - Cohort 1 ran at St Anne's College in Seminar Room 10, set

@@ -76,6 +76,13 @@ faqs:
     a: >-
       Book directly on this page - the form takes your registration. If it does not
       load for you, the same booking page is at luma.com/7vcqji8g.
+  - q: Can I install software on my work laptop?
+    a: >-
+      Worth checking before you book. Corporate and government devices often block new
+      tool sign-ups, and the day ends with connecting your second brain to the tools you
+      work in. This caught people out at the first Oxford Agentic Bootcamp, so it is
+      better found now than at 09:30 on the day. If your laptop is locked down, email
+      hello@oxfordagentic.com and we will work out what you need beforehand.
   - q: What if some of my material is confidential?
     a: >-
       Bring what you would be comfortable putting in an email to an external supplier.
