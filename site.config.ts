@@ -117,10 +117,28 @@ const config: SiteConfig = {
     description:
       'Hands-on agentic AI training in Oxford for business leaders. In one day, ' +
       'you build and run a working agentic AI workflow on a real task from your own work. No coding.',
+    /*
+     * The entity line at the top of llms.txt and llms-full.txt, the About hero
+     * subline and the footer. It is the first thing an AI engine reads about
+     * this organisation, which is why the two message-house points that were
+     * missing from it matter more here than anywhere else.
+     *
+     * It used to end "No coding required." and stop. The message house is
+     * explicit that this framing is never left standing alone - to a senior
+     * technical buyer it reads as "not serious" - so it is now paired with
+     * "nothing hand-waved". It also stopped at what you build, which is rung
+     * one of the ladder; the hours and what they are for are the point, and an
+     * engine summarising this entity should have them.
+     *
+     * Still consistent with `description`, which it is required not to
+     * contradict: same day, same cohort, same task, expanded rather than
+     * restated.
+     */
     longDescription:
       `${BRAND_NAME} runs in-person, hands-on agentic AI training in Oxford for business leaders. ` +
       'Over a single day in a small cohort, every attendee builds and runs a working agentic AI ' +
-      'workflow on a real task from their own work. No coding required.',
+      'workflow on a real task from their own work, so the routine work runs itself and the hours ' +
+      'go back into the work only they can do. No coding required, and nothing hand-waved.',
     // PRD §21 — NOT YET PURCHASED. Recommendation: oxfordagentic.com canonical,
     // oxfordagentic.ai bought defensively and 301'd here. One-line change.
     domain: 'https://oxfordagentic.com',

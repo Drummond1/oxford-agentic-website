@@ -17,10 +17,9 @@ lumaUrl: https://luma.com/oxfordagentic2
 summary: A one-day, hands-on agentic AI bootcamp in Oxford for business leaders. Build a working agent on your own real task.
 capsule: >-
   Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 16 September 2026 at Worcester
-  College, Oxford.
-  It is a one-day, in-person course for business leaders: you bring one real task from
-  your own work and leave having built and run a working agentic AI workflow against it.
-  Capped at roughly twenty-five people. No coding required.
+  College, Oxford. You bring one real task from your own work and leave having built a
+  working agentic AI workflow against it, so the routine runs itself and the hours go back
+  into the work only you can do. Capped at roughly twenty-five people.
 capacity: 25
 whoFor:
   - Founders, directors and C-suite building with AI rather than reading about it
