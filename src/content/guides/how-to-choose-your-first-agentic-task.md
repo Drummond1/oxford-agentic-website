@@ -3,16 +3,15 @@ title: "How to choose the task you bring to an AI bootcamp"
 slug: how-to-choose-your-first-agentic-task
 category: in-practice
 seoTitle: "Choosing your first agentic AI task"
-description: The task you pick decides what you get out of a build day. Five tests that separate a good first agentic task from one that fights you all afternoon.
+description: The task you pick decides what you get out of a build day. Five tests for choosing well, and the work worth leaving alone permanently.
 capsule: >-
-  The best first task for an agentic workflow is one you repeat, that runs on words
-  and documents rather than judgement about people, whose output you can check at a
-  glance, and that annoys you enough to care. Pick the report you assemble every week,
-  not the hardest problem in your business - the first build is for learning the
-  pattern, and the pattern transfers.
+  The best first task for an agentic workflow is one you repeat, that runs on words and
+  documents, whose output you can check at a glance, and that annoys you enough to care.
+  Some work is worth leaving alone permanently: the writing where doing it is the
+  thinking, and anything a person has to stand behind.
 author: drummond-gilbert
 publishDate: "2026-08-04T09:00:00+01:00"
-updatedDate: "2026-08-04T09:00:00+01:00"
+updatedDate: "2026-08-16T09:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -42,6 +41,20 @@ You will hit a snag at some point - everyone does - and the difference between p
 ## 5. Getting it wrong is affordable
 
 The first task should be one where an imperfect output costs you a correction, not a client. Decisions about people, anything with personal data your organisation has not approved for the tools, and outputs that go straight to someone important without review are all wrong for a learning build - not forever, just first. You are learning to build the check; do not pick the one task where a missed check is expensive.
+
+## The tasks to leave alone, permanently
+
+The five tests above are about picking a safe first build. There is a separate question that never goes away, and it is the one that separates people who get value from this from people who automate their way into a mess: not every task is worth automating, and some should not be. Working out the difference is most of the skill.
+
+Three kinds are worth protecting.
+
+**The ones where doing it is the thinking.** Some writing exists to work out what you believe. A strategy note, a difficult piece of feedback, the argument you are still forming. Hand that to a pipeline and you get a document without the thinking that was the actual output. You have not saved an hour; you have skipped it.
+
+**The ones you do rarely.** A workflow takes real time to build and a little to maintain. Something you do twice a year almost never repays that, and a half-remembered pipeline you have to debug before each use costs more than doing the job by hand.
+
+**The ones where a person has to stand behind the output.** Not because a workflow could not produce it, but because when someone asks "why does it say this", the answer has to be a person who decided, not a process that ran.
+
+None of this is squeamishness about the technology. It is the same judgement that decides what you delegate to people, applied consistently - and the reason the reclaimed hours are worth having is that they go back into exactly this kind of work.
 
 ## What this looks like in practice
 
