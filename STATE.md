@@ -1,9 +1,17 @@
 # Current state — read this first
 
 One page, kept current, so anyone (or any future session) can pick this up cold.
-Written 25 July 2026; last updated 28 July 2026 (cycle 22).
+Written 25 July 2026; last updated 17 August 2026 (cycle 76).
 
-- **Live:** https://oxfordagentic.com — 25 pages, HTTPS enforced, Lighthouse
+> **Read the message house before writing any copy.** Positioning was decided on
+> 13 August 2026 and supersedes sections 1–3 of the Event Brief. It sets the headline
+> verbatim ("Build impactful agentic AI workflows"), the three-rung ladder copy must
+> reach, a banned-word list, and the rule that "no coding" is never left standing on
+> its own. Source: `OxfordAgenticMessageHouse.md` in Drummond's Google Docs. The site
+> was swept against it over cycles 65–69; the packs in `outreach/` were refreshed on
+> 17 August. Anything written before 13 August is suspect.
+
+- **Live:** https://oxfordagentic.com — 37 pages, HTTPS enforced, Lighthouse
   100/100/100/100 (event pages accept best-practices ≥75: Luma's iframe sets
   third-party cookies; encoded in `lighthouserc.json`, do not re-fight it).
 - **Repo:** github.com/Drummond1/oxford-agentic-website (public).
@@ -130,17 +138,32 @@ worse one.
 > build a working agentic AI workflow on your own real task, or build the second brain
 > your AI tools draw on. No coding.
 
-(157 characters, so it still fits a meta description.) `longDescription` needs the
-same treatment. Until then, the homepage FAQ answer to "What is Oxford Agentic?" was
-given its own two-bootcamp wording (cycle 50) — the most-quoted surface on the site
-should not be half-true while this waits.
+(157 characters, so it still fits a meta description.)
+
+**Updated 17 Aug.** Two things have moved while this waits:
+
+- `longDescription` — a *different* string, site-only, not reused off-site — was
+  brought into line with the message house on 16 Aug (cycle 66). It is the entity line
+  at the top of both `llms.txt` files, so the first thing an engine reads is now
+  current even though `description` is not. The two no longer match in emphasis, which
+  is the least-bad state available until Drummond moves the canonical one.
+- The homepage FAQ answer to "What is Oxford Agentic?" got its own two-bootcamp
+  wording back in cycle 50, for the same reason: the most-quoted surface on the site
+  should not be half-true while this waits.
+
+**Also still true and now measured:** `description` renders at **166 characters**, six
+over the 160 its own schema comment specifies, so it is very slightly truncated in
+search results. `check-schema.mjs` prints this as a non-blocking warning on every
+build (cycle 74) rather than failing the deploy — the string cannot move here alone,
+and stopping the pipeline over six characters would be the wrong trade. Fixing the
+length and the positioning is the same edit, done once, in three places.
 
 ## What needs Drummond (the loop cannot do these)
 
 | # | Task | Why it is blocked | Effort |
 |---|---|---|---|
 | 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp). Until then the guide lead-capture cards degrade to a mailto | 5 min |
-| 2 | Set `analytics.provider` + `siteId` | Needs a Plausible account. **Nothing is measured today** — the tracking layer is built and dispatches to Plausible/GA4, but no provider script loads while provider is `'none'` | 5 min + 1 line |
+| 2 | ~~Set `analytics.provider`~~ **Done 12 Aug — do not wire Plausible on top** | Google Tag Manager (`GTM-WQJLXFRN`) is live with the Google Ads tag `AW-18382942196` inside it, gated behind Consent Mode v2 and a cookie banner. Remaining: confirm in Google Ads → Audience manager that the tag reads *Active*, and note the list needs 1,000 users before it can serve | 2 min |
 | 3 | Confirm the agenda for the longer day, and the real capacity | The published agenda ends 16:20 but the day now runs to 17:00; the site says "capped at roughly twenty-five" throughout | 5 min |
 | 4 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; reports after ~3–7 days) | 2 min, weekly |
 | 5 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
@@ -149,6 +172,9 @@ should not be half-true while this waits.
 | 8 | Review the drafted bio in `src/content/speakers/drummond-gilbert.md`, then flip `features.speakers` | Drafted from vault facts, never reviewed. **Never publish an unreviewed biography of a real person** | 5 min |
 
 | 9 | Confirm the two new Cohort 1 photos (room-and-cohort, flipchart-group) are consent-OK with the people shown | They went live 26 Jul with the flag flipped in-session; see the photography note above | 2 min |
+| 10 | Decide whether Josh Lawman comes off the site | Asked on 4 Aug to "remove Josh from the team slide". He is gone from the homepage but `/team/josh-lawman/` is still live, indexed and describing him in the present tense as someone who teaches the day. If he has left, the site is inaccurate about a named person. The loop will not delete a real person's page on its own reading of "team slide" | 1 word |
+| 11 | Give Nicolai Thomson a link | His is the only Person node on the site with no `sameAs`, so he is the one team member the entity graph cannot corroborate. His card confirms the company is Jenesys AI, which narrows it. The loop will not guess a URL for a named person | 1 min |
+| 12 | Answer the certificate question | Nothing on the site says whether attendees get one, and the comparison set leads with it — Saïd issues a University of Oxford certificate, the Queen Mary Eventbrite day issues one too. A senior person expensing a day will ask. Both "no certificate" and "yes, ours" are facts the loop has no source for | 1 sentence |
 
 ---
 
@@ -190,14 +216,28 @@ should not be half-true while this waits.
 - **Cohort 2:** Wed 16 Sept 2026, 09:00–17:00, Worcester College, Walton Street, Oxford
   OX1 2HB. Luma `evt-kcWdRFwqcgBbNcn` / luma.com/oxfordagentic2. Bookings live.
   (It was originally planned for 9 Sept at St Anne's — that changed; Luma is authoritative.)
-- **GEO status (Perplexity, re-probed 30 Jul — supersedes the 25 Jul baseline):**
-  - **"hands-on AI training Oxford…" → now ranked #2**, up from uncited, quoting the
-    site's own capsule and FAQ. On-page work succeeded.
-  - **The national buyer question ("UK, one day, build an agent on my own task") →
-    still invisible**, twelve competitors named instead. Every citation there came from
-    an aggregator or a provider with off-site presence. **Off-page mentions are now the
-    binding constraint** — Eventbrite, AI-event aggregators, LinkedIn Company Page.
-    More schema will not move this.
+- **GEO status (Perplexity, re-probed 10 Aug — supersedes the 30 Jul reading below):**
+  - **Oxford-anchored agentic query → #1, #2, #3 and #5 are all oxfordagentic.com**
+    (was #2). Saïd's £1,500 online programme is #4.
+  - **The national buyer question → #1**, having been *absent* on 30 Jul. This is the
+    finding that changed the plan.
+  - **"build a second brain for AI, UK" → #1.** Exact-phrase brand query → #1.
+  - **Off-page is no longer the "binding constraint".** That call rested entirely on
+    being absent from the national question, and the site now leads it with zero
+    listings. Still worth doing, for a narrower reason: `Organization.sameAs` is
+    **empty**, so the entity has no third-party corroboration anywhere. Paste-ready
+    packs are in `outreach/off-page-listings.md`, refreshed 17 Aug.
+  - Read with care: one engine, ranked results rather than cited AI answers, and
+    IndexNow has been pinging since 6 Aug, so some of the lift may be freshness.
+  - **Superseded 30 Jul reading, kept so nobody re-derives it:** the national question
+    was invisible and off-page was called the binding constraint.
+  - **Guides mostly do not rank on their target queries** (cycles 59–63). Two causes,
+    and they need different responses: queries owned by institutional publishers
+    (NHS England on "what AI am I allowed to use") cannot be won and should be
+    reframed onto what they never answer; queries that are winnable but attract the
+    wrong reader (career-switchers, content marketers) should be left alone. Hence the
+    hard rule in `IMPROVEMENTS.md` backlog 9: probe first, require **winnable AND
+    converting**.
   - **Saïd is no longer "strategic, not hands-on".** Their new *Oxford Generative and
     Agentic AI Programme* (£1,500, online, 4 weeks, next start 16 Sept 2026 — the same
     day as Cohort 2) includes building a simple agent. The honest distinction is now
@@ -211,8 +251,17 @@ should not be half-true while this waits.
   EducationEvent with `subEvent` agenda + captioned photo ImageObjects, Course with
   `hasCourseInstance`, Articles with `articleSection`/`about`. Before adding a schema
   idea, check the emitted graph — several "gaps" have already been closed.
-- **10 guides live** (28 Jul). Next in the probe-driven order: public-sector/NHS
-  leaders, then "How to run an AI pilot that survives contact with your team".
+- **17 guides live** (17 Aug). Newest: "Agentic workflows fail quietly. Here is how you
+  would notice" — the reliability paragraph the message house asks for, given somewhere
+  to point. Guide capsules are now schema-validated like programmes and events; page
+  titles are checked against the ~60-character SERP limit in `check-schema.mjs`, which
+  is how five truncated titles reached production before 17 Aug.
+- **Consent and tracking (12 Aug).** GTM container `GTM-WQJLXFRN` loads on every page
+  behind Consent Mode v2 defaults emitted *before* it, so nothing is set until a
+  visitor accepts. `ConsentBanner.astro` is the only thing that grants; the privacy
+  page carries a withdrawal control, because consent has to be as easy to take back as
+  to give. Verified on production: no advertising cookie before Accept, `_gcl_au`
+  after. Do not add a second analytics provider on top.
 
 ## Where the documentation lives
 
