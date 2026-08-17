@@ -25,7 +25,13 @@ async function walk(dir) {
   return out;
 }
 
+/** Roughly what Google renders before it cuts a title. */
+const TITLE_LIMIT = 60;
+/** The documented meta-description target; over this warns, over 200 fails. */
+const DESCRIPTION_TARGET = 160;
+
 const errors = [];
+const warnings = [];
 const titles = new Map();
 const descriptions = new Map();
 let eventNodes = 0;
@@ -52,6 +58,38 @@ for (const file of files) {
   if (!canonical) errors.push(`${page}: missing canonical URL`);
   if (description && description.length > 200) {
     errors.push(`${page}: meta description is ${description.length} chars (keep it under ~160)`);
+  }
+
+  /*
+   * Title length was not checked at all, which is how five pages — three of them
+   * event pages, including the one people book from — ended up truncated in
+   * search results. Entities are decoded first so an apostrophe is measured as
+   * the one character a reader sees rather than the six in the markup.
+   *
+   * Hard fail rather than a warning: unlike a long description, which Google
+   * often rewrites anyway, a cut title loses the words the page was written to
+   * rank for, and the fix is always available — shorten it.
+   */
+  if (title && !noindex) {
+    const shown = title
+      .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#x27;|&apos;/g, "'");
+    if (shown.length > TITLE_LIMIT) {
+      errors.push(`${page}: <title> is ${shown.length} chars, over the ~${TITLE_LIMIT} a search result shows`);
+    }
+  }
+
+  /*
+   * Descriptions between the documented target and the hard limit are reported
+   * without failing. The threshold above stays at 200 because the one page
+   * currently in this band is the homepage, whose description is the canonical
+   * entity string reused verbatim on Luma and LinkedIn — it cannot move here
+   * alone, and blocking every deploy until it does would be the wrong trade.
+   */
+  if (description && description.length > DESCRIPTION_TARGET && description.length <= 200) {
+    warnings.push(`${page}: meta description is ${description.length} chars (target ${DESCRIPTION_TARGET})`);
   }
 
   // Uniqueness only matters for indexable pages.
@@ -134,6 +172,13 @@ if (errors.length > 0) {
   for (const error of errors) console.error(`  ${error}`);
   console.error('');
   process.exit(1);
+}
+
+// Printed after the pass line so they are visible without ever gating a deploy.
+if (warnings.length > 0) {
+  console.log(`\n! ${warnings.length} SEO warning(s) — not blocking:\n`);
+  for (const warning of warnings) console.log(`  ${warning}`);
+  console.log('');
 }
 
 console.log(
