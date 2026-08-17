@@ -36,15 +36,15 @@ assurances:
   - Lunch and refreshments are included, and you leave with the workflow rather than a recording.
   - Bringing a colleague or two? Email hello@oxfordagentic.com and we will arrange it.
 whoFor:
-  - Founders, directors and C-suite building with AI rather than reading about it
+  - Founders, directors and C-suite building with AI, not reading about it
   - Graduates of Oxford AI executive education who want the hands-on follow-through
   - Consultants, and senior NHS, university and public-sector staff
   - Anyone who uses AI daily but has never chained several steps together
-  - Engineers and people who build AI for a living - several came to Cohort 1
+  - Engineers who build AI for a living - several came to Cohort 1
 whatYoullBuild:
-  - A working agentic pipeline running against a real task from your own work
-  - A review step that checks the output, so the pipeline compounds rather than single-shots
-  - A written recipe for the workflow, so you can rebuild and extend it on Monday
+  - A working agentic pipeline running on a real task from your own work
+  - A review step that checks its own output, so it compounds rather than single-shots
+  - A written recipe, so you can rebuild and extend it on Monday
 agenda:
   - time: 09:00
     title: Registration and coffee
@@ -53,13 +53,13 @@ agenda:
     detail: Why prompting and orchestrating are different skills, and what today is actually for.
   - time: 09:35
     title: Anatomy of an agent pipeline
-    detail: A pipeline built live in front of the room - scout, drafter, reviewer - on a real example.
+    detail: Built live in front of the room, on a real example - scout, drafter, reviewer.
   - time: 10:15
     title: Build one - your own task, first pass
     detail: Facilitated. Everyone gets to a rough working pass, however untidy.
   - time: 11:30
     title: Guest session
-    detail: A working practitioner on how they use this daily, feeding straight into the next build.
+    detail: A working practitioner on how they use this daily.
   - time: 12:15
     title: Build two - add a review step
     detail: Push the pipeline past single-shot by giving it something that checks its own work.
@@ -78,11 +78,15 @@ agenda:
     title: Making it stick
   - time: 16:20
     title: Wrap and networking
+# Cut from thirteen to seven on 17 Aug. Six answers were restating something the
+# same page already said: the date and venue (hero and facts card, twice),
+# transfers, lunch and recording, bringing a colleague (all three now sit in
+# `assurances`, directly under the form where they are actually needed), and how
+# to register (the form is on the page, and the embed carries its own Luma
+# fallback link). A thirteen-item accordion under a booking form reads as work,
+# and none of those six moved anyone closer to booking. Do not reinstate one
+# without checking it answers something the page does not already answer.
 faqs:
-  - q: When and where is it?
-    a: >-
-      Wednesday 16 September 2026, 09:00 to 17:00, at Worcester College on Walton Street
-      in central Oxford. Registration is open - you can book on this page.
   # "Will this work for MY task?" is the objection that stops this booking, and the
   # only honest answer is what people actually brought last time. Sourced from the
   # Cohort 1 page, which is the one place this was already written down.
@@ -93,13 +97,6 @@ faqs:
       marketing content. The common shape was a step that gathers, a step that produces
       and a step that checks, handing off to each other. If your task has that shape,
       it will fit the day.
-  - q: How do I justify this to my manager?
-    a: >-
-      Some people pay for themselves, some expense it, and occasionally a company buys
-      two or three seats. If you need to put it in an email, this is the version that
-      survives being forwarded: a day out to build one working agentic workflow on a
-      task we already do by hand every week, and come back able to build the next one
-      without help. Pricing is on the booking page, so the numbers are easy to attach.
   - q: Do I need to be technical?
     a: >-
       No, and that is not the whole answer. No coding is required and the day is
@@ -107,17 +104,12 @@ faqs:
       hand-waved either: part of the day goes on where these workflows break, how you
       would notice and what you constrain. Engineers are welcome, and several people
       who build AI for a living came to Cohort 1.
-  - q: Who is it not for?
-    a: >-
-      People who want a conceptual overview of AI - this is a build day, not a briefing.
-      Anyone who cannot bring a real task from their own work, because the whole day
-      runs against one and without it you get a demonstration instead of an outcome.
-      Anyone expecting a vendor or platform pitch, because no tool is being sold. And
-      anyone whose work laptop blocks new sign-ups, which is worth checking first.
   - q: What should I bring?
     a: >-
-      A laptop and one real task from your own work that currently costs you meaningful
-      time each week. That task is what you build against all day.
+      A laptop, and one real task from your own work that currently costs you
+      meaningful time each week. That task is what you build against all day. A paid
+      plan such as ChatGPT Plus or Claude Pro gets you more out of it, but it is not
+      essential and we make sure everyone can take part either way.
   - q: Can I install software on my work laptop?
     a: >-
       Worth checking before you book. Corporate and government devices often block new
@@ -125,30 +117,21 @@ faqs:
       caught people out in Cohort 1, so it is better found now than at 09:30 on the
       day. If your laptop is locked down, email hello@oxfordagentic.com and we will
       work out what you need beforehand.
+  - q: How do I justify this to my manager?
+    a: >-
+      If you need to put it in an email, this is the version that survives being
+      forwarded: a day out to build one working agentic workflow on a task we already
+      do by hand every week, and come back able to build the next one without help.
+      Pricing is on the booking page, so the numbers are easy to attach.
   - q: How big is the cohort?
     a: >-
       Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than
       lectured, which stops working in a large room. The exact number of places left is
       on the booking page.
-  - q: Do I need a paid AI subscription?
+  - q: Who is it not for?
     a: >-
-      Bring a laptop. You will get the most from the day with a paid plan such as
-      ChatGPT Plus or Claude Pro, but it is not essential - we make sure everyone can
-      take part either way.
-  - q: Can I bring my team?
-    a: >-
-      Yes. Teams get more out of it than individuals do, and if two of you come, bring
-      the same task. Email hello@oxfordagentic.com and we will arrange it.
-  - q: What if I cannot make the date?
-    a: >-
-      Your place transfers to a future cohort at no charge. Just let us know and we
-      will move you.
-  - q: Is the day recorded, and is lunch included?
-    a: >-
-      The day is not recorded - the value is in building in the room, and you leave with
-      the workflow rather than a video. Lunch and refreshments are provided.
-  - q: How do I register for Cohort 2?
-    a: >-
-      Book directly on this page - the form above takes your registration. If it does not
-      load for you, the same booking page is at luma.com/oxfordagentic2.
+      People who want a conceptual overview of AI - this is a build day, not a briefing.
+      Anyone who cannot bring a real task from their own work, because the whole day
+      runs against one and without it you get a demonstration instead of an outcome.
+      And anyone expecting a vendor or platform pitch, because no tool is being sold.
 ---

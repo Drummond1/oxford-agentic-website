@@ -111,14 +111,35 @@ const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasC
 const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
 const showPhotos = showSection('photos', { hidden: data.hideSections, hasContent: isPast && photos.length > 0 });
 
+/*
+ * Band order, reworked 17 Aug for conversion.
+ *
+ * The booking form used to sit third, under a key-facts card carrying a
+ * capsule, a definition list, five "who it is for" lines and three "what you
+ * will build" lines. Someone arriving from a paid ad had to read all of that
+ * before they could see a form — on the page taking the payment. The hero
+ * already states the promise, the date, the time and the venue, which is enough
+ * to decide whether to look at the form, so the form now comes straight after
+ * it and everything that supports the decision follows underneath.
+ *
+ * Proof and quotes moved up with it: evidence is worth most immediately after
+ * the ask, and the testimonial band was previously sixth, below the agenda and
+ * the photos, where nobody hesitating over a card field would ever reach it.
+ *
+ * `register` is pinned dark instead of taking its turn in the alternation.
+ * LumaEmbed's fallback link, loading placeholder and iframe border are all
+ * styled for a dark ground; letting the rhythm hand it a cream band would make
+ * the one component on the conversion path illegible. Pinned, it keeps working
+ * wherever it is moved to next.
+ */
 const rhythm = createRhythm('cream');
 const bands = {
-  facts: rhythm.next(),
-  register: rhythm.next(),
+  register: 'dark' as const,
   proof: showProof ? rhythm.next() : null,
+  quotes: showQuotes ? rhythm.next() : null,
+  facts: rhythm.next(),
   agenda: showAgenda ? rhythm.next() : null,
   photos: showPhotos ? rhythm.next() : null,
-  quotes: showQuotes ? rhythm.next() : null,
   faq: showFaq ? rhythm.next() : null,
 };
 
@@ -185,10 +206,12 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
         <span>{venueLine(data.venue)}</span>
       </p>
 
+      {/* No past-event line here any more. It read "This event has already run."
+          directly above a band headed "This event has run" once the booking band
+          moved up to second position, which is the same sentence twice in a row.
+          The band says it, and says what to do next. */}
       {
-        isPast ? (
-          <p class="event-hero__past">This event has already run.</p>
-        ) : (
+        !isPast && (
           <div class="btn-row">
             <a href="#register" class="btn btn--primary">
               {heroRegisterLabel}
@@ -202,90 +225,9 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
     </div>
   </section>
 
-  {/* ---- Key facts / answer capsule ----
-       Plain HTML, no iframe and no JS. Crawlers cannot read the Luma embed, so
-       every fact inside it also lives here (PRD §9.5, §13). */}
-  <section class:list={['band', `band--${bands.facts}`]} aria-labelledby="facts">
-    <div class="wrap">
-      <div class="facts-card card" data-reveal>
-        <h2 id="facts" class="visually-hidden">Key facts</h2>
-        <p class="capsule">{data.capsule}</p>
-
-        <dl class="facts">
-          <div>
-            <dt>Date</dt>
-            <dd>{formatDate(data.startDate)}</dd>
-          </div>
-          <div>
-            <dt>Time</dt>
-            <dd>{formatTimeRange(data.startDate, data.endDate)}</dd>
-          </div>
-          <div>
-            <dt>Venue</dt>
-            <dd>
-              {[data.venue.name, data.venue.street, data.venue.city, data.venue.postcode].filter(Boolean).join(', ')}
-              {!data.venue.confirmed && <span class="facts__note">Room booking being finalised.</span>}
-            </dd>
-          </div>
-          {
-            data.capacity && (
-              <div>
-                <dt>Capacity</dt>
-                <dd>Capped at {data.capacity}</dd>
-              </div>
-            )
-          }
-          {
-            data.whoFor.length > 0 && (
-              <div class="facts--wide">
-                <dt>Who it is for</dt>
-                <dd>
-                  <ul class="squares">
-                    {data.whoFor.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                </dd>
-              </div>
-            )
-          }
-          {
-            showBuild && (
-              <div class="facts--wide">
-                <dt>What you will build</dt>
-                <dd>
-                  <ul class="squares">
-                    {data.whatYoullBuild.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                </dd>
-              </div>
-            )
-          }
-        </dl>
-
-        <p class="facts__programme">
-          Part of <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a>.
-        </p>
-      </div>
-
-      {
-        data.outcomes.length > 0 && (
-          <div class="stats" data-reveal>
-            {data.outcomes.map((outcome) => (
-              <div class="stat">
-                <span class="stat__value">{outcome.stat}</span>
-                <span class="stat__label">{outcome.label}</span>
-              </div>
-            ))}
-          </div>
-        )
-      }
-    </div>
-  </section>
-
-  {/* ---- Registration ---- */}
+  {/* ---- Registration ----
+       Second on the page, directly under the hero. See the band-order note in
+       the frontmatter for why. */}
   <section class:list={['band', `band--${bands.register}`]} id="register" aria-labelledby="register-heading">
     <div class="wrap">
       {
@@ -396,6 +338,125 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
     )
   }
 
+  {/* ---- Testimonials ----
+       Beside the proof band rather than sixth, below the agenda and the photos.
+       An attendee's own words are evidence for the decision being made at the
+       form above, and they were previously three screens past it. */}
+  {
+    showQuotes && (
+      <section class:list={['band', `band--${bands.quotes}`]} aria-labelledby="quotes">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="quotes">From the room</h2>
+          </div>
+          <div class="grid grid--2">
+            {testimonials.slice(0, 4).map((t, i) => (
+              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
+                <p>“{t.data.quote}”</p>
+                <footer>
+                  <cite>
+                    {t.data.name} - {t.data.role}
+                    {t.data.company && `, ${t.data.company}`}
+                  </cite>
+                  <span class="quote__when">
+                    {t.data.cohort}, {formatDate(t.data.date, { weekday: undefined })}
+                  </span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {/* ---- Key facts / answer capsule ----
+       Plain HTML, no iframe and no JS. Crawlers cannot read the Luma embed, so
+       every fact inside it also lives here (PRD §9.5, §13). Below the form since
+       17 Aug: the hero already carries the promise, the date, the time and the
+       venue, so this is the detail someone reads to confirm a decision rather
+       than the copy they need in order to make one. */}
+  <section class:list={['band', `band--${bands.facts}`]} aria-labelledby="facts">
+    <div class="wrap">
+      <div class="facts-card card" data-reveal>
+        <h2 id="facts" class="visually-hidden">Key facts</h2>
+        <p class="capsule">{data.capsule}</p>
+
+        <dl class="facts">
+          <div>
+            <dt>Date</dt>
+            <dd>{formatDate(data.startDate)}</dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd>{formatTimeRange(data.startDate, data.endDate)}</dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>
+              {[data.venue.name, data.venue.street, data.venue.city, data.venue.postcode].filter(Boolean).join(', ')}
+              {!data.venue.confirmed && <span class="facts__note">Room booking being finalised.</span>}
+            </dd>
+          </div>
+          {
+            data.capacity && (
+              <div>
+                <dt>Capacity</dt>
+                <dd>Capped at {data.capacity}</dd>
+              </div>
+            )
+          }
+          {
+            data.whoFor.length > 0 && (
+              <div class="facts--wide">
+                <dt>Who it is for</dt>
+                <dd>
+                  <ul class="squares">
+                    {data.whoFor.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+          {
+            showBuild && (
+              <div class="facts--wide">
+                <dt>What you will build</dt>
+                <dd>
+                  <ul class="squares">
+                    {data.whatYoullBuild.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+
+        <p class="facts__programme">
+          Part of <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a>.
+        </p>
+      </div>
+
+      {
+        data.outcomes.length > 0 && (
+          <div class="stats" data-reveal>
+            {data.outcomes.map((outcome) => (
+              <div class="stat">
+                <span class="stat__value">{outcome.stat}</span>
+                <span class="stat__label">{outcome.label}</span>
+              </div>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+
   {/* ---- Agenda ---- */}
   {
     showAgenda && (
@@ -436,36 +497,6 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
               <figure class="photo" data-reveal data-reveal-delay={i * 80}>
                 <Image src={photo.data.file} alt={photo.data.alt} widths={[480, 800, 1200]} sizes="(max-width: 48rem) 100vw, 46rem" loading="lazy" />
               </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  {/* ---- Testimonials ---- */}
-  {
-    showQuotes && (
-      <section class:list={['band', `band--${bands.quotes}`]} aria-labelledby="quotes">
-        <div class="wrap">
-          <div class="section-head" data-reveal>
-            <hr class="dash" />
-            <h2 id="quotes">From the room</h2>
-          </div>
-          <div class="grid grid--2">
-            {testimonials.slice(0, 4).map((t, i) => (
-              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
-                <p>“{t.data.quote}”</p>
-                <footer>
-                  <cite>
-                    {t.data.name} - {t.data.role}
-                    {t.data.company && `, ${t.data.company}`}
-                  </cite>
-                  <span class="quote__when">
-                    {t.data.cohort}, {formatDate(t.data.date, { weekday: undefined })}
-                  </span>
-                </footer>
-              </blockquote>
             ))}
           </div>
         </div>
@@ -581,16 +612,6 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
     height: 0.42rem;
     background: var(--gold);
     flex: none;
-  }
-
-  .event-hero__past {
-    margin-block-start: 1.75rem;
-    font-family: var(--font-label);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: var(--step-xs);
-    color: var(--gold);
   }
 
   /* ---- Key facts ---- */

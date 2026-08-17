@@ -185,6 +185,60 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-17 — Cycle 81 (session, not the loop): put the booking form second on
+  every event page, cut the Cohort 2 FAQ from thirteen questions to seven, and gave
+  the empty testimonials collection its first quote.** Drummond's brief, verbatim:
+  simplify, use the Cohort 1 testimonials in part, make the Luma sign-up more
+  prominent, remove text that does not add value.
+  **Band order on `events/[slug].astro` changed and should not be changed back
+  without a reason.** It was facts → register → proof → agenda → photos → quotes →
+  faq. It is now register → proof → quotes → facts → agenda → photos → faq. The
+  booking form used to sit third, below a key-facts card carrying a capsule, a
+  definition list, five "who it is for" lines and three "what you will build"
+  lines — roughly a thousand pixels of reading on the page that takes the payment,
+  which paid traffic lands on directly. The hero already states the promise, the
+  date, the time and the venue, which is enough to decide whether to look at a
+  form. Measured on the dev server: the register band moved from ~1,670px to 683px.
+  Quotes moved up with it because evidence is worth most next to the ask, not three
+  screens past it.
+  **`bands.register` is now pinned `'dark'` rather than taking its turn in the
+  alternation.** LumaEmbed styles its fallback link, loading placeholder and iframe
+  border for a dark ground. Second position would have handed it a cream band and
+  made the one component on the conversion path illegible. Pinning survives the next
+  reorder too. Everything after it still alternates, starting cream.
+  **The past-event hero line went with it.** "This event has already run." now sat
+  directly above a band headed "This event has run", so it was cut along with the
+  unused `.event-hero__past` rule. The Cohort 1 page gained from the reorder as
+  well: its "next cohort" CTA is now under the hero instead of below the facts card.
+  **FAQ: thirteen → seven.** Cut were the date and venue (stated in the hero and the
+  facts card already), transfers, lunch-and-recording, and bringing a colleague — all
+  three of those are in `assurances`, directly under the form — and "how do I
+  register", which sits under the form itself and duplicates the embed's own Luma
+  fallback link. "What should I bring" absorbed "do I need a paid subscription".
+  Nothing that answers an objection was touched. FAQPage schema count is unchanged
+  at 6 across the site because the page still emits one node.
+  **First testimonial on the site: `src/content/testimonials/fei-gan.md`.** Source
+  is `Digital Brain/Projects/Oxford Agentic Bootcamp/Marketing/cohort-1-testimonials.md`
+  (email, 14 Aug 2026, unprompted). Trimmed not rewritten, with an ellipsis marking
+  the cut; Drummond's brief explicitly allowed partial use. This closes STATE.md
+  task 7 after eight weeks of Cohort 2 selling a £450 day with no attendee's words
+  on it anywhere.
+  **⚠️ Consent: shipped on Drummond's explicit instruction, with two caveats put to
+  him first and accepted.** She gave the testimonial willingly, unprompted and in
+  writing, but has not been shown the page or agreed this attribution format; and
+  `role` renders as "Cohort 1 attendee" because the vault holds her company and her
+  email and has never held her job title — accurate, but not chosen by her. Both are
+  recorded in the file's own header. If she objects, `consentGiven: false` takes the
+  band and the `/testimonials/` page back out cleanly. **Ask her, and get the title.**
+  **`features.testimonials` went on in the same commit, and the two must stay in
+  step.** The flag does not only reveal quote bands: it builds `/testimonials/`, adds
+  "Outcomes" to the header and footer nav and files the page in the sitemap. Flipping
+  it while the collection was unconsented was tried first and reverted — it shipped a
+  thin indexable page reading "quotes are being collected", caught by the page count
+  going 37 → 38. It tracks the *consented* quote count, not the collection count.
+  Build passes: 38 pages, 1,625 internal links resolve, schema valid, one
+  pre-existing non-blocking warning (`/` meta description 166 chars).
+
 - **2026-08-17 — Cycle 80: audited the conversion instrumentation, found it healthy, and
   wrote down why so nobody audits it again.** Every cycle in this ledger opens "No GSC
   export". Before adding more copy nobody can measure, the funnel tracking itself got

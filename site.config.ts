@@ -180,8 +180,17 @@ const config: SiteConfig = {
   features: {
     // Live: the four people who run the bootcamp.
     team: true,
-    // V1.1 — Cohort 1 NPS survey went out 22 Jul 2026; nothing consent-cleared.
-    testimonials: false,
+    // On since 17 Aug 2026 (Drummond), with Fei Gan's Cohort 1 quote consented.
+    //
+    // This flag does more than reveal quote bands: it also builds
+    // `/testimonials/`, puts "Outcomes" in the header and footer nav, and files
+    // the page in the sitemap. That is why it stayed off while the collection was
+    // empty — on with nothing consented, it ships a thin indexable page whose
+    // whole body reads "quotes are being collected".
+    //
+    // So it tracks the consented-quote count, not the collection count. If every
+    // quote is ever withdrawn, turn this off in the same edit.
+    testimonials: true,
     // Live: three seed guides published (long-tail SEO/GEO capture).
     guides: true,
     // Off 28 Jul (Drummond): the top nav leads with people over content until
