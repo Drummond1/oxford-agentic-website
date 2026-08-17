@@ -185,6 +185,43 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-17 — Cycle 80: audited the conversion instrumentation, found it healthy, and
+  wrote down why so nobody audits it again.** Every cycle in this ledger opens "No GSC
+  export". Before adding more copy nobody can measure, the funnel tracking itself got
+  checked.
+  **The hypothesis was wrong and it is worth recording as wrong.** `ConsentBanner.astro`
+  defines `function gtag()` *inside an IIFE* and never assigns it to `window.gtag`, which
+  looks exactly like the bug that would make `track()` in `Base.astro` a no-op, since it
+  dispatches via `window.gtag?.()` and `window.plausible?.()` and Plausible is
+  deliberately unwired. **On production `typeof window.gtag === "function"`.** GTM loads
+  `gtag/js` for both `G-3YJV42CLBC` and `AW-18382942196`, and that defines the global.
+  The IIFE-local `gtag` is only the Consent Mode shim, which is correct as written. The
+  events are dispatching.
+  **What could NOT be verified, and why it is not evidence of a fault.** The three
+  intent events (`register_section_viewed`, `luma_embed_interacted`, plus the click
+  events) never fired during testing even with the register section at 100% visibility
+  and a spy on `window.gtag` installed before any scroll. That looked damning until an
+  **independent IntersectionObserver, created in the page on the same element at the
+  same threshold, also never fired.** IntersectionObserver callbacks do not run in the
+  hidden/headless browser pane. The inability to observe was the tool, not the site.
+  Anyone re-testing this needs a real visible browser.
+  Two smaller things ruled out along the way, both recorded so they are not re-chased:
+  `window.scrollTo` appearing to do nothing is `html { scroll-behavior: smooth }` plus a
+  synchronous `scrollY` read, not a scroll lock; and `body { overflow: clip visible }` is
+  deliberate, with the reason in a comment at `global.css:133` — `hidden` would turn body
+  into a scroll container.
+  **Shipped alongside: the objection that actually stops this booking.** "Will this work
+  for *my* task?" had no answer on the Cohort 2 page. It had one on the Cohort 1 page,
+  in a FAQ nobody deciding about September reads: real tasks rather than a set exercise,
+  lead generation, internal reporting and marketing content, and the common shape of a
+  step that gathers, a step that produces and a step that checks. Now a FAQ on Cohort 2,
+  placed second, where the buyer asks it. Sourced, not invented.
+  **Standing note for future cycles: the funnel is instrumented and working, so the
+  constraint is that nobody has read the numbers.** GA4 `G-3YJV42CLBC` has been
+  collecting `register_section_viewed` and `luma_outbound_click` by event slug since
+  12 Aug. That is the signal this ledger keeps saying it does not have. It needs
+  somebody to open GA4, not more code.
+
 - **2026-08-17 — Cycle 79 (Drummond, in session): the page paid traffic lands on had no
   reason to care in it.** Second conversion pass on Cohort 2. (The fact-check commit
   `4f82762` sits between this and cycle 78; it was a separate session and logged no

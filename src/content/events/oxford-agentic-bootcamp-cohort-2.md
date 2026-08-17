@@ -83,6 +83,16 @@ faqs:
     a: >-
       Wednesday 16 September 2026, 09:00 to 17:00, at Worcester College on Walton Street
       in central Oxford. Registration is open - you can book on this page.
+  # "Will this work for MY task?" is the objection that stops this booking, and the
+  # only honest answer is what people actually brought last time. Sourced from the
+  # Cohort 1 page, which is the one place this was already written down.
+  - q: What did people in Cohort 1 actually build?
+    a: >-
+      Real tasks from their own work rather than a set exercise, so they varied. The
+      ones that surfaced in the room were lead generation, internal reporting and
+      marketing content. The common shape was a step that gathers, a step that produces
+      and a step that checks, handing off to each other. If your task has that shape,
+      it will fit the day.
   - q: How do I justify this to my manager?
     a: >-
       Some people pay for themselves, some expense it, and occasionally a company buys
