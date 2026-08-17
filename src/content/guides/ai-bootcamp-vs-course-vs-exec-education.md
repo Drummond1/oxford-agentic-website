@@ -45,4 +45,4 @@ The trade-off is scope. A day cannot cover a landscape; it covers one pattern, p
 
 They compound rather than compete: the frame from a programme, the depth from a course and a working result from a day of building are worth more together than any one alone.
 
-The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is our version of the third: one day in Oxford, about twenty-five senior people, one real task each, no coding, and a working agentic workflow by the time you leave.
+The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is our version of the third: one day in Oxford, a small room of senior people, one real task each, no coding, and a working agentic workflow by the time you leave.

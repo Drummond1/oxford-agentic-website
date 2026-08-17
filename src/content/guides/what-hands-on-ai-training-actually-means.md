@@ -43,6 +43,6 @@ Course pages rarely say which level they mean, so ask directly:
 
 The more senior you are, the scarcer the day and the higher the cost of a format that ends in intentions. An afternoon of demos can be worthwhile for orientation - once. After that, the only training worth a diary slot is the kind measured by what runs afterwards.
 
-For what it is worth, our own format is built deliberately at level four: the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) caps the room at roughly twenty-five, asks everyone to bring one real task, and treats "what will you use this for next week?" as the closing question of the day. No coding, and no stretch of anyone talking at you for more than twenty-five minutes.
+For what it is worth, our own format is built deliberately at level four: the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) caps the room small, asks everyone to bring one real task, and treats "what will you use this for next week?" as the closing question of the day. No coding, and no stretch of anyone talking at you for more than twenty-five minutes.
 
 The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) sits at the same level for the same reason. You are asked to bring your own documents and notes, and the day is spent building a second brain out of them rather than out of a supplied example, so what exists at the end is yours and already populated. Level four is not a property of the subject. It is a property of whose material is on the screen.

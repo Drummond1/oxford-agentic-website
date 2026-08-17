@@ -486,7 +486,9 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
           <div>
             <h2 class="final-cta__title">{registrationOpen ? 'Seats are limited.' : 'Seats will be limited.'}</h2>
             <p class="final-cta__copy">
-              Capped at {data.capacity ?? 25} so the day stays facilitated rather than lectured.
+              {data.capacity
+                ? `Capped at ${data.capacity} so the day stays facilitated rather than lectured.`
+                : 'A small cohort, so the day stays facilitated rather than lectured.'}
             </p>
           </div>
           <a href="#register" class="btn btn--onGold">

@@ -19,8 +19,12 @@ capsule: >-
   Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 16 September 2026 at Worcester
   College, Oxford. You bring one real task from your own work and leave having built a
   working agentic AI workflow against it, so the routine runs itself and the hours go back
-  into the work only you can do. Capped at roughly twenty-five people.
-capacity: 25
+  into the work only you can do. A small cohort, facilitated rather than lectured.
+# Deliberately unset. The published cap has to match whatever Luma will actually
+# sell, and re-syncing a number across two event files, two programme pages, the
+# About page and four guides every time the ticket limit moves is how the site
+# came to promise twenty-five while Luma sold ten. Say "small cohort" instead.
+# capacity: 25
 # Each line restates a promise this page already makes further down, moved to
 # where it is actually needed. Nothing new is offered here.
 assurances:
@@ -109,8 +113,9 @@ faqs:
       work out what you need beforehand.
   - q: How big is the cohort?
     a: >-
-      Capped at roughly twenty-five people. Cohort 1 ran with sixteen. The day is
-      facilitated rather than lectured, which stops working much above that.
+      Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than
+      lectured, which stops working in a large room. The exact number of places left is
+      on the booking page.
   - q: Do I need a paid AI subscription?
     a: >-
       Bring a laptop. You will get the most from the day with a paid plan such as

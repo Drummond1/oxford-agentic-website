@@ -12,7 +12,7 @@ capsule: >-
   back into the work only they can do. Cohorts are capped small and hands-on, not
   lecture-led.
 description: >-
-  A full day, in a room of about twenty-five senior people, spent building rather than
+  A full day, in a small room of senior people, spent building rather than
   listening. You arrive with one real task from your own work - the thing that
   currently eats a morning every week - and you spend the day turning it into a
   working agentic pipeline you can actually run.
@@ -32,7 +32,7 @@ faqs:
     a: >-
       A one-day, in-person, hands-on course in Oxford where business leaders build and
       run a working agentic AI workflow on a real task from their own work. Cohorts are
-      capped at roughly twenty-five people and no coding is required.
+      small and capped, and no coding is required.
   - q: Do I need to be technical?
     a: >-
       No, and that is not the whole answer. If you can use a spreadsheet and have used
@@ -73,8 +73,9 @@ faqs:
       on each event's own page.
   - q: How many people are in the room?
     a: >-
-      Roughly twenty-five, capped. The size is deliberate: the day is facilitated, not
-      lectured, which stops working above about that number.
+      Not many, and it is capped. The size is deliberate: the day is facilitated, not
+      lectured, which stops working in a large room. Cohort 1 ran with sixteen, and the
+      places left in the next one are shown on its booking page.
   - q: Do I need a paid AI subscription?
     a: >-
       Bring a laptop. You will get the most from the day with a paid plan such as

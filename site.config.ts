@@ -202,6 +202,11 @@ const config: SiteConfig = {
     // 28 Jul: the reference homepage variant swapped designs and was renamed
     // to say what it now holds. Anyone holding the old URL still lands right.
     { from: '/home-original/', to: '/home-photos/' },
+    // 17 Aug: Josh Lawman taught Cohort 1 and declined Cohort 2 (27 Jul, his own
+    // words). His page had stayed live and indexed, describing him in the present
+    // tense as someone who runs part of the day. Removed on Drummond's instruction;
+    // the URL redirects rather than 404s, because it has been indexed since July.
+    { from: '/team/josh-lawman/', to: '/team/' },
   ],
 
   analytics: {
