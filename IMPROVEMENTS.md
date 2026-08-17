@@ -185,6 +185,31 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-17 — Cycle 77: checked the booking path and found the Second Brain day is
+  free.** No GSC export. Cohort 2 is thirty days out and nothing on this project tests
+  the conversion path, so it got tested rather than assumed.
+  **The path itself is healthy.** All three Luma embed URLs return 200, the embedded
+  event ids match the content files, and Luma's dates agree with the site exactly -
+  16 September and 21 October. Worth recording as a clean result, because a silently
+  broken embed on a booking page is the single most expensive failure available here
+  and nothing would have caught it.
+  **The finding came from the data behind the embed.** `luma.com/7vcqji8g` reports
+  `price: null`, `is_free: true`, `spots_remaining: 30`, zero registrations. The
+  Second Brain Bootcamp is currently bookable for nothing, while Cohort 2 is £450 for
+  the same one-day format - and the site's own FAQ promises pricing on the booking
+  page, which is untrue for that event today. Flagged in `STATE.md`, not touched.
+  **Cohort 2: £450, ten guests registered, eight remaining on the Full Day Pass.**
+  The first real demand signal the project has produced.
+  **Nothing shipped to the site, deliberately.** Price stays off by standing decision.
+  A scarcity claim would be stale within a week and the message house bans one that is
+  not checked on the live page that day. And capacity is a confirmed fact - 30 is a
+  sound inference from `spots_remaining` at zero bookings, but an inference is not a
+  confirmation, so backlog 15 stays open until Drummond says the number.
+  **Method worth reusing:** the Luma page carries its own JSON, so the booking path,
+  the dates, the price and the availability can all be verified from outside without
+  an API key. Not put in CI - a third-party outage must never fail a deploy - but
+  worth running by hand before any promotion push.
+
 - **2026-08-13 — Cycle 65: the team page said four people and listed five.** No GSC
   export. Audited the OG cards, a surface never checked before and the one that
   decides what a LinkedIn share looks like — which matters because LinkedIn is the

@@ -38,6 +38,37 @@ Written 25 July 2026; last updated 17 August 2026 (cycle 76).
 
 ---
 
+## 🔴 The Second Brain Bootcamp is free on Luma (found 17 Aug 2026)
+
+Read from the live Luma page for `luma.com/7vcqji8g`:
+
+```
+"ticket_info": {"price":null,"is_free":true,"is_sold_out":false,"spots_remaining":30}
+"ticket_types": [{"cents":null,"currency":null}]
+```
+
+No price set, `is_free` **true**, open with 30 spots and 0 registrations. Anyone
+booking the 21 October day right now pays nothing. Cohort 2 is £450 for the same
+one-day format, so this reads as an unfinished Luma setup rather than a decision -
+but it is Drummond's to confirm, and the loop has not touched it.
+
+It also makes a site FAQ untrue: "Pricing is shown on the booking page for each
+event" is false for that event today.
+
+**Cohort 2 by contrast, same source, same day:** £450 "Full Day Pass", **10 guests
+registered**, 8 remaining on that ticket type, not sold out. First real demand signal
+the project has had.
+
+**Do not put either number on the site.** Price lives on Luma by standing decision,
+and a scarcity claim has to be checked on the live page the day it ships - a static
+"8 places left" is wrong within a week and the message house bans it outright.
+
+**If 30 is the intended Second Brain capacity, saying so closes backlog 15**, which has
+stopped that page answering "how big is the cohort?" since launch. The loop will not
+infer a capacity from a scrape.
+
+---
+
 ## ℹ️ The deploy badge is red and the site is fine (6 Aug 2026)
 
 If you look at Actions and see **Deploy to GitHub Pages** failing, check the live URL
