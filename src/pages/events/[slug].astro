@@ -52,8 +52,24 @@ const schemaPhotos = photos
 const path = paths.event(data.slug);
 const ogImage = ogPathFor(path);
 
-// PRD §12 title pattern for events: {Event title} | {Month Year} | {Brand}
-const title = `${data.title} | ${formatMonthYear(data.startDate)} | ${config.brand.name}`;
+/*
+ * PRD §12 title pattern for events: {Event title} | {Month Year} | {Brand}.
+ *
+ * The brand suffix is dropped when keeping it would push the title past what a
+ * search result shows. All three event titles were over — "The Oxford Agentic
+ * Bootcamp - Cohort 2 | September 2026 | Oxford Agentic" is 73 characters and
+ * says Oxford Agentic twice, and Cohort 2 is the page people book from, so it
+ * was the worst place on the site to be truncated.
+ *
+ * The rule keys off length rather than off whether the title already contains
+ * the brand: "The Oxford Second Brain Bootcamp" carries the city but not the
+ * brand, so a contains-check left it at 75 while fixing the other two.
+ */
+const SERP_TITLE_LIMIT = 60;
+const monthYear = formatMonthYear(data.startDate);
+const titleWithBrand = `${data.title} | ${monthYear} | ${config.brand.name}`;
+const title =
+  titleWithBrand.length > SERP_TITLE_LIMIT ? `${data.title} | ${monthYear}` : titleWithBrand;
 
 const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' - ');
 

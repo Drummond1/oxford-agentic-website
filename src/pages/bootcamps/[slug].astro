@@ -58,7 +58,10 @@ const bands = {
 
 <Base
   pageTitle={data.name}
-  titleOverride={`${data.name} | One-day AI bootcamp in Oxford`}
+  {/* "in Oxford" dropped from the suffix: both programme names already contain
+      Oxford, and the repetition took the Second Brain title to 64 characters,
+      past what a search result shows. The city is still in the title, once. */}
+  titleOverride={`${data.name} | One-day AI bootcamp`}
   description={data.shortPitch}
   path={path}
   ogImage={ogPathFor(path)}
