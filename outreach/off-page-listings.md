@@ -2,14 +2,20 @@
 
 Two events, one pack each. The rules at the bottom apply to both.
 
+**Refreshed 17 August 2026** against the message house of 13 August. The previous
+version predated it and led on "Build agents. In a day. In Oxford." Off-page copy is
+worse than site copy to get wrong: it is durable, awkward to update once a directory
+has it, and it is exactly what AI engines cite. Paste from here, not from memory.
+
 # Pack 1 - The Oxford Agentic Bootcamp, Cohort 2
 
-**Why this file exists.** The 30 July GEO re-probe (see `IMPROVEMENTS.md`) found that
-oxfordagentic.com now ranks #2 for Oxford-anchored AI-training queries but is absent
-from the national question a buyer actually asks. Every citation in that answer came
-from an aggregator or an off-site provider page - Eventbrite appeared three times. The
-on-page work has hit its ceiling; third-party listings are the remaining lever, and
-they are Drummond's to pull.
+**Why this file exists.** Third-party listings are the one lever the loop cannot pull.
+It was framed in July as the site's ceiling; the 10 August re-probe softened that -
+the site now ranks first for the national buyer question it was absent from, with no
+listings at all. So this is no longer the precondition for everything else. It is
+still worth doing, for a reason that has not changed: the Organization node has **no
+`sameAs` at all**, so the entity has no third-party corroboration anywhere, and a
+listing or a company page is the cheapest way to give it one.
 
 This is copy-and-paste material to make that ten minutes rather than an afternoon.
 **Nothing here is published by the loop.** Every fact comes from
@@ -43,30 +49,39 @@ repeated.
 
 ---
 
+## Title, where a listing has one
+
+> Build impactful agentic AI workflows - Oxford, 16 September
+
 ## Short description (≤140 characters, for cards and directory rows)
 
-> A one-day, hands-on agentic AI bootcamp in Oxford. Build a working agent on a real
-> task from your own work. No coding.
+> One day in Oxford. One real task from your own work. A workflow that runs by the
+> time you leave.
 
 ## Medium description (~60 words, for most listing forms)
 
 > Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 16 September 2026 at
-> Worcester College, Oxford. It is a one-day, in-person course for business leaders:
-> you bring one real task from your own work and leave having built and run a working
-> agentic AI workflow against it. Capped at 25. No coding required.
+> Worcester College, Oxford. You bring one real task from your own work and leave
+> having built a working agentic AI workflow against it, so the routine runs itself
+> and the hours go back into the work only you can do. Capped at 25.
 
 ## Long description (for Eventbrite and anywhere with room)
 
-> **Build agents. In a day. In Oxford.**
+> **Build impactful agentic AI workflows**
 >
-> Most people who come to this have done the reading. They have sat through the
-> sessions, they can talk about agentic AI credibly, and they still could not build
-> one if you asked them to tomorrow. That gap is what the day closes.
+> One day in Oxford. One real task from your own work. A workflow that runs by the
+> time you leave.
 >
-> You bring one real task from your own week. By the time you leave, you have a working
-> agentic AI workflow running against it, plus the pattern behind it - a scout step, a
-> drafter step and a reviewer step handing off to each other - so you can build the
-> next one yourself.
+> The tools improve every month. The ability to actually build with them does not
+> improve on its own, and the distance between the two is what widens. Most people who
+> come to this have done the reading. They can talk about agentic AI credibly, and they
+> still could not build one if you asked them to tomorrow.
+>
+> You bring one task you already do by hand every week. By the time you leave you have
+> a workflow running against it, plus the pattern behind it - a scout step, a drafter
+> step and a reviewer step handing off to each other - so you can build the next one
+> yourself. The routine work runs itself, that gives you hours back, and those hours go
+> into the work only you can do. The automation is never the point.
 >
 > **What you leave with**
 > - A working agentic pipeline running against a real task from your own work
@@ -79,10 +94,20 @@ repeated.
 > - Graduates of Oxford AI executive education who want the hands-on follow-through
 > - Consultants, and senior NHS, university and public-sector staff
 > - Anyone who uses AI daily but has never chained several steps together
+> - Engineers and people who build AI for a living - several came to Cohort 1
+>
+> **Who it is not for.** Anyone wanting a conceptual overview: this is a build day, not
+> a briefing. Anyone who cannot bring a real task from their own work. Anyone expecting
+> a vendor pitch - no tool is being sold. And it is worth checking beforehand that you
+> can install software on your laptop, because corporate devices often block sign-ups.
 >
 > **How the day runs.** Three build cycles rather than three lectures, in a room capped
 > at twenty-five so somebody can walk over when you get stuck. No stretch of talk runs
-> past twenty-five minutes. Nothing on the day requires code.
+> past twenty-five minutes. Part of the day is working out what to leave alone: not
+> every task is worth automating, and knowing the difference is most of the skill.
+>
+> No coding required, and nothing hand-waved - part of the day goes on where these
+> workflows break, how you would notice, and what you constrain.
 >
 > Wednesday 16 September 2026, 09:00–17:00, Worcester College, Walton Street, Oxford.
 > Full details and the agenda: https://oxfordagentic.com/events/oxford-agentic-bootcamp-cohort-2/
@@ -90,6 +115,10 @@ repeated.
 ---
 
 # Pack 2 - The Oxford Second Brain Bootcamp, Cohort 1
+
+The message house is written for the Agentic day. A skill edition keeps its sections on
+the category, the stakes, who it is not for, the room, the honest limit and the words,
+and **overrides the headline and the audience** - which is what this pack does.
 
 ## The facts, in one place
 
@@ -107,17 +136,22 @@ repeated.
 | Price | `[NEEDS: the Luma price, including any early-bird rate]` |
 | Capacity | `[NEEDS: confirm - not stated on the Luma page]` |
 
+## Title, where a listing has one
+
+> Build a second brain your AI can use - Oxford, 21 October
+
 ## Short description (≤140 characters)
 
-> A one-day bootcamp in Oxford. Build a second brain your AI tools can draw on, from
-> your own material. No coding.
+> One day in Oxford. Build a second brain your AI tools can draw on, from your own
+> material.
 
 ## Medium description (~60 words)
 
 > Cohort 1 of the Oxford Second Brain Bootcamp runs on Wednesday 21 October 2026 at
 > the Pitt Rivers Museum, Oxford. A one-day, in-person course for business leaders
 > who use AI daily and have hit the ceiling of prompting alone: build a structured
-> second brain from your own material and leave with it working. No coding required.
+> second brain from your own material and leave with it working and set up to
+> maintain.
 
 ## Long description (for Eventbrite and anywhere with room)
 
@@ -140,9 +174,21 @@ repeated.
 > **Who it is for**
 > - Business leaders, founders, partners and senior operators who use AI most days
 > - People who have hit the ceiling of what prompting alone can do
+> - Anyone tired of re-explaining their business to a tool that forgets by Tuesday
 >
-> Nothing on the day requires code. The work is deciding what your context is and
-> structuring it - thinking clearly about your business, not programming.
+> **Who it is not for.** Anyone wanting a conceptual overview: this is a build day, not
+> a briefing. Anyone who cannot bring their own material, because without it you leave
+> with a template rather than a second brain. Anyone expecting a vendor pitch - no tool
+> is being sold, and the day is deliberately not a tutorial in one app. And it is worth
+> checking beforehand that you can install software on your laptop.
+>
+> **Which tools it works with.** The ones you already use. A second brain is your own
+> material, structured so a model can read it, rather than a feature of any one
+> product - tools change, and one built inside a single app has to be rebuilt when you
+> move.
+>
+> No coding required, and nothing hand-waved. The work is deciding what your context is
+> and structuring it - thinking clearly about your business, not programming.
 >
 > Wednesday 21 October 2026, 09:00–17:00, Pitt Rivers Museum, South Parks Road,
 > Oxford. Full details and the agenda:
@@ -179,6 +225,17 @@ repeated.
 ## Tone rules, if you write anything new
 
 British spelling. Spaced hyphen ( - ), never an em dash. No exclamation marks, no
-emoji, no "revolutionary", "unlock", "transform" or "supercharge". Never publish a
-price anywhere except the listing's own price field and Luma. Say the concrete thing:
-"you leave with a working agent running against your own task" beats any adjective.
+emoji. Never publish a price anywhere except the listing's own price field and Luma.
+Say the concrete thing: "you leave with a working agent running against your own task"
+beats any adjective.
+
+**Never use:** workshop, unlock, transform, 10x, revolutionise, supercharge,
+game-changing, democratise, effortless, seamless, the future of work, don't get left
+behind, at scale, journey, ecosystem, paradigm, reimagine, anyone can.
+
+"Workshop" is the one people reach for by accident. It is downgrade language - it
+signals an afternoon with flipcharts and a takeaway PDF. If the name says Bootcamp, the
+listing says Bootcamp.
+
+**Never leave "no coding" standing on its own.** To a senior technical reader it reads
+as "not serious". Pair it every time: no coding required, and nothing hand-waved.
