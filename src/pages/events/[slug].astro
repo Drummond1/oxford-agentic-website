@@ -95,6 +95,16 @@ const title =
 
 const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' - ');
 
+/*
+ * The hero promise. Falls back to the programme's shortPitch so an event
+ * without its own line still says why the day is worth a day, rather than
+ * showing a product name and a postcode and nothing else.
+ *
+ * Past events are excluded: a promise in the future tense over an event that
+ * has already run reads as an error, and the past hero has its own line.
+ */
+const promise = isPast ? undefined : (data.promise ?? programme.data.shortPitch);
+
 const showAgenda = showSection('agenda', { hidden: data.hideSections, hasContent: data.agenda.length > 0 });
 const showBuild = showSection('whatYoullBuild', { hidden: data.hideSections, hasContent: data.whatYoullBuild.length > 0 });
 const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
@@ -164,6 +174,8 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
       <span class="eyebrow">{eyebrow}</span>
       <hr class="dash" />
       <h1>{data.title}</h1>
+
+      {promise && <p class="event-hero__promise">{promise}</p>}
 
       <p class="event-hero__meta">
         <span>{formatDate(data.startDate)}</span>
@@ -537,6 +549,17 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
   .event-hero h1 {
     max-width: 20ch;
     font-size: var(--step-2xl);
+  }
+
+  /* Set in the body face, not the label face the meta line uses: this is the
+     one sentence in the hero meant to be read rather than scanned, and it has
+     to win against a headline directly above it. */
+  .event-hero__promise {
+    margin-block-start: 1.4rem;
+    max-width: 34ch;
+    font-size: var(--step-lg);
+    line-height: 1.45;
+    color: var(--muted-on-dark);
   }
 
   .event-hero__meta {

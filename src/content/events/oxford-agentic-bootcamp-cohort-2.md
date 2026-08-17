@@ -15,6 +15,10 @@ venue:
 lumaEventId: evt-kcWdRFwqcgBbNcn
 lumaUrl: https://luma.com/oxfordagentic2
 summary: A one-day, hands-on agentic AI bootcamp in Oxford for business leaders. Build a working agent on your own real task.
+# The programme's shortPitch would do, but it opens "A one-day AI bootcamp in
+# Oxford" and the date and venue render on the very next line. This says the
+# part the meta line cannot. Substance is the capsule's, front-loaded.
+promise: Bring one real task from your own work. Leave with a working agentic AI workflow running against it.
 capsule: >-
   Cohort 2 of the Oxford Agentic Bootcamp runs on Wednesday 16 September 2026 at Worcester
   College, Oxford. You bring one real task from your own work and leave having built a

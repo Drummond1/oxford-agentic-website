@@ -185,11 +185,45 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-17 — Cycle 79 (Drummond, in session): the page paid traffic lands on had no
+  reason to care in it.** Second conversion pass on Cohort 2. (The fact-check commit
+  `4f82762` sits between this and cycle 78; it was a separate session and logged no
+  entry of its own. Its findings are in its commit message and in `STATE.md`.)
+  **Above the fold, a visitor got the product name twice and then a postcode.** The
+  eyebrow renders `{programme} - {cohort}` and the H1 renders the title, which on this
+  event *is* "{programme} - {cohort}" — the same string, one under the other — followed
+  by a date, a time and a venue. The reason to spend a day and £450 sat at 48% of the
+  page, inside the capsule.
+  **This matters more here than on any other page**, because the link Drummond is
+  working from carries `_gl` and `_ga` cross-domain linker parameters and GTM is live
+  with the Google Ads tag. Paid traffic lands on the event page directly and never sees
+  the homepage, where the promise actually lives ("One day in Oxford. One real task from
+  your own work. A workflow that runs by the time you leave.").
+  **Shipped: an optional `promise` on the event schema, rendered under the H1**, falling
+  back to the programme's `shortPitch` when unset. The fallback is the point — the
+  Second Brain cohort gained a promise it never had, from copy already published on its
+  programme page, without anyone writing one per cohort. Suppressed on past events,
+  where a future-tense promise over a finished day reads as an error.
+  Cohort 2 overrides the fallback, because `shortPitch` opens "A one-day AI bootcamp in
+  Oxford" and the date and venue render on the very next line. Its override is the
+  capsule's own substance, front-loaded: "Bring one real task from your own work. Leave
+  with a working agentic AI workflow running against it."
+  **Verified**: build green. On mobile at 377×816 the promise and the primary CTA are
+  both above the fold, no horizontal overflow at 375 or 1280.
+  **Noted, not changed: the eyebrow is still an exact duplicate of the H1** on any event
+  whose title is "{programme} - {cohort}". Two lines of the most valuable space on the
+  site saying one thing. Suppressing it is a one-line change, but the eyebrow-and-dash
+  is a design-system anchor used on every band, and what should replace it is a call for
+  Drummond rather than an inference — the homepage puts a real label there
+  ("ONE DAY · HANDS-ON · AN OXFORD EXPERIENCE"), which is the pattern worth copying.
+
 - **2026-08-17 — Cycle 78 (Drummond, in session): the page taking the money had no
   evidence the day had ever happened.** Asked directly to improve conversion to paid
   signups on the Cohort 2 page, thirty days out with ten seats already sold at £450.
   **The finding is one of placement, not of missing material.** Every asset that proves
-  this is real — sixteen attendees, three build cycles, four consent-cleared
+  this is real — sixteen attendees, three teaching blocks (written here as "build
+  cycles", which the fact-check in `4f82762` later corrected against the recordings),
+  four consent-cleared
   photographs — existed, and rendered only on the Cohort 1 page. `showPhotos` gates on
   `isPast`, `outcomes` is populated only for events that have run, and the
   `testimonials` collection is empty repo-wide. So the page with nothing left to sell

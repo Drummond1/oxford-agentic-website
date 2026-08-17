@@ -105,6 +105,23 @@ const events = defineCollection({
       /** Doubles as the meta description, so it must fit one. */
       summary: z.string().max(160, 'summary doubles as the meta description — keep it ≤160 chars'),
       /**
+       * One line of promise in the hero, under the H1.
+       *
+       * Event heroes had no reason-to-care in them at all: the eyebrow and the
+       * H1 are the same string on a "{Programme} - {Cohort}" title, so the
+       * product name was stated twice and followed straight by a date and a
+       * postcode. The homepage carries a promise; the event page people are
+       * sent to did not, and that is the page taking the payment — paid traffic
+       * lands here directly and never sees the homepage at all.
+       *
+       * Optional: when unset the hero falls back to the programme's
+       * `shortPitch`, so every event inherits its programme's promise rather
+       * than needing one written per cohort. Set it only to say something the
+       * shortPitch cannot — usually to avoid repeating the date and venue that
+       * render immediately beneath it.
+       */
+      promise: z.string().max(200, 'the hero promise is one line — keep it ≤200 chars').optional(),
+      /**
        * The answer capsule — PRD §13. 40–60 words, self-contained, quotable,
        * front-loaded, no marketing fluff. Rendered as plain HTML above the fold.
        */
