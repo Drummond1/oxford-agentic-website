@@ -185,6 +185,52 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-17 — Cycle 78 (Drummond, in session): the page taking the money had no
+  evidence the day had ever happened.** Asked directly to improve conversion to paid
+  signups on the Cohort 2 page, thirty days out with ten seats already sold at £450.
+  **The finding is one of placement, not of missing material.** Every asset that proves
+  this is real — sixteen attendees, three build cycles, four consent-cleared
+  photographs — existed, and rendered only on the Cohort 1 page. `showPhotos` gates on
+  `isPast`, `outcomes` is populated only for events that have run, and the
+  `testimonials` collection is empty repo-wide. So the page with nothing left to sell
+  carried all the proof, and the page asking for £450 carried none of it. Cohort 1 was
+  mentioned on the Cohort 2 page only inside two FAQ answers.
+  **Three changes, all placement, no new claims:**
+  1. **A proof band under the booking form**, on any upcoming event with a completed
+     predecessor in the same programme. New `getPredecessorEvent` — the mirror of
+     `getSuccessorEvent`, same-programme only and never falling back to another
+     programme, because an agentic result does not reassure a Second Brain buyer. The
+     copy is the predecessor's own `capsule` verbatim and the stats are its own
+     `outcomes`: this band reports, it never claims. Photos come through `getPhotos`,
+     which filters on consent first, so a held-back frame cannot reach it. It picked
+     `seminar-room-working` and `room-and-cohort` and **not** the St Anne's
+     registration desk, which keeps the college-logo grey area off a Cohort 2 page.
+  2. **An `assurances` field rendered directly beneath the Luma embed.** The transfer
+     promise was the eleventh item of a twelve-item accordion *below* the form — the
+     single most booking-relevant sentence on the page, placed where someone hesitating
+     over a card field will never see it. Per-event and opt-in: a transfer promise is a
+     commercial undertaking, so it appears only where the event has made one. All three
+     lines restate facts the same page states elsewhere.
+  3. **Two FAQ moves.** "How do I justify this to my manager?" — the expensing question
+     that decides a B2B purchase — went from ninth to second. "How do I register for
+     Cohort 2?" went from second to last, because it occupied the second-most-read slot
+     directly beneath the booking form to answer a question nobody who got there still
+     has. Its answer also said "the form below" while sitting below the form; corrected
+     to "above". "When and where is it?" stays first: it is the answer capsule engines
+     quote, and cycle 50 established the first FAQ as a GEO surface worth protecting.
+  **Verified**: build green (37 pages, 1519 links, schema valid, only the known 166-char
+  meta-description warning). Rendered DOM checked for order and content; computed styles
+  confirm gold bullets `#D4AF37` and `--muted-on-dark`, photos two-up at 1280 and stacked
+  at 516, stats on one row, no horizontal overflow at either width.
+  **Not touched, deliberately:** price (Luma, standing decision), capacity (confirmed
+  fact, and the ten-versus-twenty-five question is still open), and no consent flag was
+  flipped. `room-and-cohort` carries the STATE consent caveat and now appears on a
+  second page — same audience, no new exposure, but flagged rather than assumed.
+  **The three biggest remaining conversion gaps all need Drummond**, and each is worth
+  more than anything the loop can ship alone: zero testimonials anywhere in the repo for
+  a £450 day; two agenda slots that read "Guest session" with no name against them; and
+  no answer to the certificate question, which the comparison set leads with.
+
 - **2026-08-17 — Cycle 77: checked the booking path and found the Second Brain day is
   free.** No GSC export. Cohort 2 is thirty days out and nothing on this project tests
   the conversion path, so it got tested rather than assumed.

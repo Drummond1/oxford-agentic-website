@@ -1,7 +1,7 @@
 # Current state — read this first
 
 One page, kept current, so anyone (or any future session) can pick this up cold.
-Written 25 July 2026; last updated 17 August 2026 (cycle 76).
+Written 25 July 2026; last updated 17 August 2026 (cycle 78).
 
 > **Read the message house before writing any copy.** Positioning was decided on
 > 13 August 2026 and supersedes sections 1–3 of the Event Brief. It sets the headline
@@ -237,12 +237,13 @@ length and the positioning is the same edit, done once, in three places.
 | 4 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; reports after ~3–7 days) | 2 min, weekly |
 | 5 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
 | 6 | Create a LinkedIn Company Page, add the URL to `brand.social` | Needs the page. Flows into `Organization.sameAs` for entity triangulation | 1 min once created |
-| 7 | Clear Cohort 1 testimonials + people photos for publication | Needs consent from named individuals | — |
+| 7 | Clear Cohort 1 testimonials + people photos for publication | Needs consent from named individuals. **Sharpened 17 Aug (cycle 78): the `testimonials` collection is empty repo-wide — this is not a consent gate holding back written quotes, it is that no quote has been collected.** Cohort 2 sells a £450 day with not one attendee's words on the site anywhere. Sixteen people came in July; the ask is an email, not a campaign. Highest-value unblocked item on this list for conversion | — |
 | 8 | Review the drafted bio in `src/content/speakers/drummond-gilbert.md`, then flip `features.speakers` | Drafted from vault facts, never reviewed. **Never publish an unreviewed biography of a real person** | 5 min |
 
 | 9 | Confirm the two new Cohort 1 photos (room-and-cohort, flipchart-group) are consent-OK with the people shown | They went live 26 Jul with the flag flipped in-session; see the photography note above | 2 min |
 | 10 | Decide whether Josh Lawman comes off the site | Asked on 4 Aug to "remove Josh from the team slide". He is gone from the homepage but `/team/josh-lawman/` is still live, indexed and describing him in the present tense as someone who teaches the day. If he has left, the site is inaccurate about a named person. The loop will not delete a real person's page on its own reading of "team slide" | 1 word |
 | 11 | Give Nicolai Thomson a link | His is the only Person node on the site with no `sameAs`, so he is the one team member the entity graph cannot corroborate. His card confirms the company is Jenesys AI, which narrows it. The loop will not guess a URL for a named person | 1 min |
+| 12a | Name the two guest sessions on the Cohort 2 agenda | Two of twelve agenda slots read "Guest session" with no name, on the page selling a £450 day. Naming even one turns an unknown into a reason to book, and `speakers` already exists on the event schema and references the team collection. The loop will not attach a real person to a slot Drummond has not confirmed them for | 1 min |
 | 12 | Answer the certificate question | Nothing on the site says whether attendees get one, and the comparison set leads with it — Saïd issues a University of Oxford certificate, the Queen Mary Eventbrite day issues one too. A senior person expensing a day will ask. Both "no certificate" and "yes, ours" are facts the loop has no source for | 1 sentence |
 
 ---

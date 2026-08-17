@@ -21,6 +21,12 @@ capsule: >-
   working agentic AI workflow against it, so the routine runs itself and the hours go back
   into the work only you can do. Capped at roughly twenty-five people.
 capacity: 25
+# Each line restates a promise this page already makes further down, moved to
+# where it is actually needed. Nothing new is offered here.
+assurances:
+  - If 16 September stops working, your place transfers to a future cohort at no charge.
+  - Lunch and refreshments are included, and you leave with the workflow rather than a recording.
+  - Bringing a colleague or two? Email hello@oxfordagentic.com and we will arrange it.
 whoFor:
   - Founders, directors and C-suite building with AI rather than reading about it
   - Graduates of Oxford AI executive education who want the hands-on follow-through
@@ -69,10 +75,13 @@ faqs:
     a: >-
       Wednesday 16 September 2026, 09:00 to 17:00, at Worcester College on Walton Street
       in central Oxford. Registration is open - you can book on this page.
-  - q: How do I register for Cohort 2?
+  - q: How do I justify this to my manager?
     a: >-
-      Book directly on this page - the form below takes your registration. If it does not
-      load for you, the same booking page is at luma.com/oxfordagentic2.
+      Some people pay for themselves, some expense it, and occasionally a company buys
+      two or three seats. If you need to put it in an email, this is the version that
+      survives being forwarded: a day out to build one working agentic workflow on a
+      task we already do by hand every week, and come back able to build the next one
+      without help. Pricing is on the booking page, so the numbers are easy to attach.
   - q: Do I need to be technical?
     a: >-
       No, and that is not the whole answer. No coding is required and the day is
@@ -107,13 +116,6 @@ faqs:
       Bring a laptop. You will get the most from the day with a paid plan such as
       ChatGPT Plus or Claude Pro, but it is not essential - we make sure everyone can
       take part either way.
-  - q: How do I justify this to my manager?
-    a: >-
-      Some people pay for themselves, some expense it, and occasionally a company buys
-      two or three seats. If you need to put it in an email, this is the version that
-      survives being forwarded: a day out to build one working agentic workflow on a
-      task we already do by hand every week, and come back able to build the next one
-      without help. Pricing is on the booking page, so the numbers are easy to attach.
   - q: Can I bring my team?
     a: >-
       Yes. Teams get more out of it than individuals do, and if two of you come, bring
@@ -126,4 +128,8 @@ faqs:
     a: >-
       The day is not recorded - the value is in building in the room, and you leave with
       the workflow rather than a video. Lunch and refreshments are provided.
+  - q: How do I register for Cohort 2?
+    a: >-
+      Book directly on this page - the form above takes your registration. If it does not
+      load for you, the same booking page is at luma.com/oxfordagentic2.
 ---

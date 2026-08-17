@@ -122,6 +122,20 @@ const events = defineCollection({
       speakers: z.array(reference('team')).default([]),
       faqs: z.array(faq).default([]),
       capacity: z.number().int().positive().optional(),
+      /**
+       * Short reassurances rendered directly beneath the booking form.
+       *
+       * These are the answers that decide a paid booking — what happens if the
+       * date stops working, what the fee covers — and they were reachable only
+       * by opening the eleventh item of a twelve-item accordion below the form.
+       * Someone hesitating over a card field does not go looking.
+       *
+       * Per-event and opt-in by design: a transfer promise is a commercial
+       * undertaking, so it appears where the event has actually made one and
+       * nowhere else. Every line must restate a fact the same page states
+       * elsewhere — this is placement, not new terms.
+       */
+      assurances: z.array(z.string()).max(4).default([]),
       /** Dated, specific outcome stats for past events — PRD §13. */
       outcomes: z.array(z.object({ stat: z.string(), label: z.string() })).default([]),
       heroImage: image().optional(),

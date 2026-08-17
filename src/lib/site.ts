@@ -76,6 +76,23 @@ export async function getSuccessorEvent(event: EventEntry, now = new Date()) {
   return upcoming.find((e) => e.data.programme.id === event.data.programme.id) ?? upcoming[0];
 }
 
+/**
+ * For an UPCOMING event page: the most recent completed run of the same
+ * programme. The mirror of getSuccessorEvent, and it exists for one reason —
+ * everything proving the day is real (attendee counts, photographs) belongs to
+ * the run that has already happened, and lived only on that run's page, which
+ * nobody deciding whether to book the next one has any reason to open.
+ *
+ * Same-programme only, and never a fallback to some other programme: a Second
+ * Brain buyer is not reassured by an agentic bootcamp having gone well.
+ */
+export async function getPredecessorEvent(event: EventEntry, now = new Date()) {
+  const { past } = await getEventsForIndex(now);
+  return past.find(
+    (e) => e.data.programme.id === event.data.programme.id && e.data.status !== 'cancelled',
+  );
+}
+
 export async function getEventsForProgramme(programmeId: string, now = new Date()) {
   const all = await getEvents();
   const mine = all.filter((e) => e.data.programme.id === programmeId);

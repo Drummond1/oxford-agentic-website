@@ -12,6 +12,7 @@ import {
   formatTimeRange,
   getEvents,
   getPhotos,
+  getPredecessorEvent,
   getProgrammes,
   getSuccessorEvent,
   getTestimonials,
@@ -38,6 +39,27 @@ const programme = programmes.find((p) => p.id === data.programme.id)!;
 const successor = isPast ? await getSuccessorEvent(event) : undefined;
 const testimonials = await getTestimonials(programme.id);
 const photos = await getPhotos('event', event.id);
+
+/*
+ * Proof that the day is real — the evidence band below.
+ *
+ * An upcoming event page asks for money for something that has never visibly
+ * happened: photographs, attendee counts and outcome stats all belong to the
+ * run that is already over, and until now they rendered only on that run's own
+ * page. Nobody deciding whether to book September opens the July page. So the
+ * page taking the payment carried no evidence, while the evidence sat one
+ * click away on a page with nothing to sell.
+ *
+ * Everything here is already published elsewhere on this site — the same
+ * consent-cleared photos, the predecessor's own `outcomes`. Nothing new is
+ * claimed and no consent flag is touched: getPhotos filters on consent before
+ * anything else, so a held-back photo cannot reach this band either.
+ */
+const predecessor = isPast ? undefined : await getPredecessorEvent(event);
+const predecessorPhotos = predecessor ? await getPhotos('event', predecessor.id) : [];
+const showProof = Boolean(
+  predecessor && (predecessor.data.outcomes.length > 0 || predecessorPhotos.length > 0),
+);
 
 // Consent-cleared photos double as schema images — Google's event rich results
 // prefer real photography over a generated card. Each frame carries its alt
@@ -83,6 +105,7 @@ const rhythm = createRhythm('cream');
 const bands = {
   facts: rhythm.next(),
   register: rhythm.next(),
+  proof: showProof ? rhythm.next() : null,
   agenda: showAgenda ? rhythm.next() : null,
   photos: showPhotos ? rhythm.next() : null,
   quotes: showQuotes ? rhythm.next() : null,
@@ -292,11 +315,74 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
               Register
             </h2>
             <LumaEmbed event={event} />
+            {data.assurances.length > 0 && (
+              <ul class="assurances">
+                {data.assurances.map((line) => (
+                  <li>{line}</li>
+                ))}
+              </ul>
+            )}
           </div>
         )
       }
     </div>
   </section>
+
+  {/* ---- Proof: the last run of this programme ----
+       Sits directly under the booking form, because that is where the question
+       it answers gets asked. Copy is the predecessor's own capsule, verbatim,
+       and the stats are its own `outcomes` — this band reports, it never
+       claims. */}
+  {
+    showProof && predecessor && (
+      <section class:list={['band', `band--${bands.proof}`]} aria-labelledby="proof">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="proof">
+              {predecessor.data.cohort ?? 'The last cohort'} ran on{' '}
+              {formatDate(predecessor.data.startDate, { weekday: undefined })}
+            </h2>
+          </div>
+
+          <p class="proof__copy" data-reveal>{predecessor.data.capsule}</p>
+
+          {predecessor.data.outcomes.length > 0 && (
+            <div class="stats" data-reveal>
+              {predecessor.data.outcomes.map((outcome) => (
+                <div class="stat">
+                  <span class="stat__value">{outcome.stat}</span>
+                  <span class="stat__label">{outcome.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {predecessorPhotos.length > 0 && (
+            <div class="grid grid--2 proof__photos">
+              {predecessorPhotos.slice(0, 2).map((photo, i) => (
+                <figure class="photo" data-reveal data-reveal-delay={i * 80}>
+                  <Image
+                    src={photo.data.file}
+                    alt={photo.data.alt}
+                    widths={[480, 800, 1200]}
+                    sizes="(max-width: 48rem) 100vw, 22rem"
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
+            </div>
+          )}
+
+          <p class="proof__link" data-reveal>
+            <a href={paths.event(predecessor.data.slug)}>
+              How the day ran, in full →
+            </a>
+          </p>
+        </div>
+      </section>
+    )
+  }
 
   {/* ---- Agenda ---- */}
   {
@@ -598,6 +684,64 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
 
   :global(.band--cream) .ran__copy {
     color: var(--muted-on-cream);
+  }
+
+  /* ---- Assurances, under the booking form ---- */
+  .assurances {
+    list-style: none;
+    margin: 1.4rem 0 0;
+    padding: 0;
+    max-width: 600px;
+    display: grid;
+    gap: 0.55rem;
+    font-size: var(--step-sm);
+    line-height: 1.5;
+    color: var(--muted-on-dark);
+  }
+
+  .assurances li {
+    padding-inline-start: 1.15rem;
+    position: relative;
+  }
+
+  /* The same square the rest of the site marks a list item with. */
+  .assurances li::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.55em;
+    inset-inline-start: 0;
+    width: 0.36rem;
+    height: 0.36rem;
+    background: var(--gold);
+  }
+
+  /* ---- Proof ---- */
+  .proof__copy {
+    margin-block-start: 1.2rem;
+    font-size: var(--step-lg);
+    line-height: 1.5;
+    max-width: var(--measure);
+  }
+
+  :global(.band--dark) .proof__copy {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .proof__copy {
+    color: var(--muted-on-cream);
+  }
+
+  /* Deliberately smaller than the photo grid on a past event page. This is
+     evidence in support of a booking, not the gallery — it should not push the
+     agenda a screen further down. */
+  .proof__photos {
+    margin-block-start: 2rem;
+    max-width: 46rem;
+  }
+
+  .proof__link {
+    margin-block-start: 1.6rem;
+    font-size: var(--step-sm);
   }
 
   /* ---- Agenda ---- */
