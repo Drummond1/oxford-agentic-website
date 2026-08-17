@@ -8,8 +8,7 @@ capsule: >-
   A second brain for AI holds five kinds of context: how you write, what good looks
   like, the decisions you have already made and why, the recurring facts of your
   business, and the shape of the work you repeat. It is a curated supply, not an
-  archive - and credentials, personal data and anything you would not email a supplier
-  stay out of it.
+  archive - and credentials and other people's personal data stay out of it.
 author: drummond-gilbert
 publishDate: "2026-08-06T09:00:00+01:00"
 updatedDate: "2026-08-06T09:00:00+01:00"

@@ -7,9 +7,9 @@ description: The three-step agentic workflow pattern behind most useful business
 capsule: >-
   Scout, drafter, reviewer is the workflow shape behind most useful agentic AI: one
   step gathers the raw material, one produces a first version, and one checks it
-  against a stated standard before a human sees it. Three narrow steps beat one clever
-  prompt because each step can be tested, improved and trusted separately - and the
-  pattern transfers to almost any repeated knowledge task.
+  against a stated standard. Three narrow steps beat one clever prompt because each
+  can be tested, improved and trusted separately, and the pattern transfers to almost
+  any repeated knowledge task.
 author: drummond-gilbert
 publishDate: "2026-08-05T09:00:00+01:00"
 updatedDate: "2026-08-05T09:00:00+01:00"

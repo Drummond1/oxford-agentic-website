@@ -6,10 +6,9 @@ seoTitle: "How to run an AI pilot that survives"
 description: AI pilots rarely fail on the technology. They fail because nobody owned the task, success was never defined, and week two was never planned for.
 capsule: >-
   AI pilots rarely fail on the technology. They fail because the pilot was designed to
-  evaluate a tool rather than change a specific task, because nobody who actually does
-  the work owned it, and because "did it work?" was never defined before it started.
-  Pick one task, give it one owner who does that task, decide in advance what better
-  looks like, and plan for week two.
+  evaluate a tool rather than change a specific task, and because nobody who actually
+  does the work owned it. Pick one task, give it one owner who does that task, decide
+  in advance what better looks like, and plan for week two.
 author: drummond-gilbert
 publishDate: "2026-07-30T09:00:00+01:00"
 updatedDate: "2026-07-30T09:00:00+01:00"

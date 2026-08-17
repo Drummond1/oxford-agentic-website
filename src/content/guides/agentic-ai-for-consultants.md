@@ -7,7 +7,7 @@ description: Which consulting work suits an agentic workflow, which does not, an
 capsule: >-
   Consultants get the most from agentic AI on the assembly work inside an engagement:
   synthesising discovery interviews, drafting proposals from past proposals, turning
-  meeting notes into structured findings, checking a deliverable against the brief.
+  meeting notes into structured findings.
   The advice, the judgement and the client relationship stay human. Unlike hiring
   another pair of hands, a workflow built for one engagement is still there for the
   next one.

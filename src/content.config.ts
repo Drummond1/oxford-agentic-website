@@ -230,7 +230,23 @@ const guides = defineCollection({
        */
       seoTitle: z.string().max(43, 'seoTitle + " - Oxford Agentic" must fit in ~60 chars').optional(),
       description: z.string().max(160),
-      capsule: z.string(),
+      /*
+       * Same answer-capsule rule as programmes and events, which guides were
+       * missing entirely — so guide capsules had drifted to 70 words while the
+       * collections that are checked stayed in range. These are the paragraphs
+       * AI engines quote, and an over-long one gets cut mid-sentence, which is
+       * a worse outcome than a shorter answer.
+       *
+       * Band is deliberately wider than the 40–60 the message advises: the
+       * convention is an editorial target, the validator only needs to catch
+       * genuine drift.
+       */
+      capsule: z
+        .string()
+        .refine((s) => {
+          const words = s.trim().split(/\s+/).length;
+          return words >= 30 && words <= 75;
+        }, 'Answer capsules must be roughly 40–60 words (PRD §13)'),
       author: reference('team'),
       publishDate: isoDateTime,
       updatedDate: isoDateTime,
