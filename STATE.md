@@ -38,6 +38,43 @@ Written 25 July 2026; last updated 17 August 2026 (cycle 76).
 
 ---
 
+## 🔴 Luma's ticket limit for Cohort 2 looks like 10, not 25 (found 17 Aug 2026)
+
+From the live `luma.com/oxfordagentic2` data, one ticket type only:
+
+```
+"Full Day Pass"  cents=45000  num_tickets_registered=2  spots_remaining=8
+"guest_count": 10
+```
+
+Registered plus remaining is **10**, while the site says `capacity: 25` and "capped at
+roughly twenty-five" throughout. If that ticket limit is real, **sales stop at ten**
+while the page keeps promising a room of twenty-five - thirty days out, with the event
+already selling.
+
+Two things the loop cannot resolve from outside and has not guessed at:
+
+- Whether the limit is deliberate (a first release, with more to follow) or an
+  oversight. Raising it on Luma is a one-field change if it is the latter.
+- Why `guest_count` reads 10 while the only ticket type reports 2 registered. They may
+  count different things - comps, a guest list, an earlier ticket type since removed.
+  Worth a glance at the Luma dashboard, which shows what an outside reader cannot.
+
+**Site copy was not changed.** Capacity is a confirmed fact and Luma is authoritative
+per the note below, but "the outside data implies 10" is not the same as "the cap is
+10", and lowering a published capacity on an inference would be worse than the
+mismatch.
+
+**Resolved while checking this, and removed from the blocker list:** the long-standing
+worry that "the agenda ends at 16:20 while the day runs to 17:00" is not a
+contradiction. Agenda entries are start times, so the final block simply runs longer -
+16:20 to 16:30 at Cohort 1, 16:20 to 17:00 at Cohort 2. Luma's `end_at` matches the
+site exactly. The one real observation left is narrower: Cohort 2's agenda is Cohort
+1's, and the extra half hour of the longer day has all landed in "Wrap and
+networking". Fine if intended, worth thirty seconds if not.
+
+---
+
 ## 🔴 The Second Brain Bootcamp is free on Luma (found 17 Aug 2026)
 
 Read from the live Luma page for `luma.com/7vcqji8g`:
@@ -104,9 +141,10 @@ source and it says:
 - **Worcester College, Walton Street, Oxford OX1 2HB** (not St Anne's)
 - Luma: `evt-kcWdRFwqcgBbNcn` · https://luma.com/oxfordagentic2
 
-Two things worth Drummond's eye: the published agenda still ends at 16:20 while the day
-now runs to 17:00, and the site says "capped at roughly twenty-five" throughout — worth
-confirming against the real Luma capacity.
+The agenda-versus-hours worry recorded here in July was checked on 17 Aug and is not a
+contradiction — agenda entries are start times, and Luma's `end_at` matches the site.
+The capacity question turned out to be real and is now the red note at the top of this
+file: Luma's only ticket type implies a limit of ten, not twenty-five.
 
 ---
 
@@ -195,7 +233,7 @@ length and the positioning is the same edit, done once, in three places.
 |---|---|---|---|
 | 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp). Until then the guide lead-capture cards degrade to a mailto | 5 min |
 | 2 | ~~Set `analytics.provider`~~ **Done 12 Aug — do not wire Plausible on top** | Google Tag Manager (`GTM-WQJLXFRN`) is live with the Google Ads tag `AW-18382942196` inside it, gated behind Consent Mode v2 and a cookie banner. Remaining: confirm in Google Ads → Audience manager that the tag reads *Active*, and note the list needs 1,000 users before it can serve | 2 min |
-| 3 | Confirm the agenda for the longer day, and the real capacity | The published agenda ends 16:20 but the day now runs to 17:00; the site says "capped at roughly twenty-five" throughout | 5 min |
+| 3 | **Check the Cohort 2 ticket limit on Luma** | Registered + remaining comes to 10 on the only ticket type, while the site says 25. If the limit is real, sales stop at ten. See the red note above. The agenda half of this task is resolved - it was never a contradiction | 2 min |
 | 4 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; reports after ~3–7 days) | 2 min, weekly |
 | 5 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
 | 6 | Create a LinkedIn Company Page, add the URL to `brand.social` | Needs the page. Flows into `Organization.sameAs` for entity triangulation | 1 min once created |
