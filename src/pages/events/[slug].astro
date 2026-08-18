@@ -16,6 +16,7 @@ import {
   getProgrammes,
   getSuccessorEvent,
   getTestimonials,
+  lumaUrlWithUtm,
   paths,
   showSection,
   venueLine,
@@ -143,37 +144,46 @@ const bands = {
   faq: showFaq ? rhythm.next() : null,
 };
 
-// The CTA has to tell the truth about what is actually below it. An announced
-// event whose Luma page does not exist yet offers a notify state, not a booking.
+// The CTA has to tell the truth about what it does. An announced event whose
+// Luma page does not exist yet offers a notify state, not a booking.
 const registrationOpen = Boolean(data.lumaEventId);
-const registerVerb = !registrationOpen
+
+/*
+ * Every primary CTA goes straight to Luma (Drummond, 18 Aug), instead of jumping
+ * down the page to the embed.
+ *
+ * They used to be in-page anchors labelled "Register below ↓" and "Register ↑" —
+ * labels that describe a scroll rather than an outcome, and one of which sent
+ * people backwards up the page. Luma's own page is the better place to land
+ * anyway: it carries the guest count and host detail the iframe crops out, its
+ * checkout is proven on mobile, and it cannot be blocked the way a third-party
+ * embed can.
+ *
+ * The embed stays where it is for anyone who scrolls to it, so there are two
+ * routes to the same checkout rather than one route and a detour.
+ *
+ * `lumaUrlWithUtm` is used rather than the bare URL so these clicks keep landing
+ * on utm_source=oxfordagentic — the source that has already been credited with a
+ * registration. Sending traffic off-site on an untagged link would silently
+ * destroy the only working attribution this project has. The
+ * `luma_outbound_click` analytics event is on each one for the same reason.
+ */
+const bookHref = data.lumaUrl ? lumaUrlWithUtm(data.lumaUrl, data.slug) : '#register';
+const bookIsExternal = bookHref !== '#register';
+
+// "Book" beats "Register": it is what the visitor is actually doing, it implies a
+// held place rather than a form, and it does not share a word with the free
+// newsletter sign-up further down the page.
+const registerLabel = !registrationOpen
   ? 'Get notified'
   : status === 'soldout'
     ? 'Join the waitlist'
-    : 'Register';
+    : 'Book your place';
 
-// Both CTAs jump to the same #register section, but from opposite directions:
-// the hero sits above it, the closing band below. One shared label would lie to
-// one of them, so each states its own direction.
-const heroRegisterLabel = `${registerVerb} below ↓`;
-const finalRegisterLabel = `${registerVerb} ↑`;
-
-// "Add to calendar" without a third-party script: a data: URI .ics file.
-const icsLines = [
-  'BEGIN:VCALENDAR',
-  'VERSION:2.0',
-  `PRODID:-//${config.brand.name}//EN`,
-  'BEGIN:VEVENT',
-  `UID:${data.slug}@${new URL(config.brand.domain).hostname}`,
-  `DTSTART:${data.startDate.toISOString().replace(/[-:]|\.\d{3}/g, '')}`,
-  `DTEND:${data.endDate.toISOString().replace(/[-:]|\.\d{3}/g, '')}`,
-  `SUMMARY:${data.title}`,
-  `LOCATION:${[data.venue.name, data.venue.street, data.venue.city, data.venue.postcode].filter(Boolean).join('\\, ')}`,
-  `URL:${absoluteUrl(path)}`,
-  'END:VEVENT',
-  'END:VCALENDAR',
-];
-const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.join('\r\n'))}`;
+// The hand-rolled .ics data: URI that used to live here went with the "Add to
+// calendar" button, along with the click-feedback script at the bottom of this
+// file. Luma sends a calendar invite when someone books, which is the moment the
+// invite is actually worth having.
 ---
 
 <Base
@@ -210,14 +220,22 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
           directly above a band headed "This event has run" once the booking band
           moved up to second position, which is the same sentence twice in a row.
           The band says it, and says what to do next. */}
+      {/* "Add to calendar" was the second button here and is gone. Diarising an
+          event you have not booked is not a step towards booking it, and it sat
+          in the one place on the page where the only useful action is the
+          primary one. Luma sends a calendar invite on booking anyway, so nothing
+          is lost except a competing click. */}
       {
         !isPast && (
           <div class="btn-row">
-            <a href="#register" class="btn btn--primary">
-              {heroRegisterLabel}
-            </a>
-            <a href={icsHref} download={`${data.slug}.ics`} class="btn btn--ghost" data-calendar-btn>
-              Add to calendar
+            <a
+              href={bookHref}
+              class="btn btn--primary"
+              rel={bookIsExternal ? 'noopener' : undefined}
+              data-analytics-event={bookIsExternal ? 'luma_outbound_click' : undefined}
+              data-analytics-slug={data.slug}
+            >
+              {registerLabel}
             </a>
           </div>
         )
@@ -355,13 +373,19 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
               <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
                 <p>“{t.data.quote}”</p>
                 <footer>
+                  {/* Name, role and company only. The date used to render beside
+                      the cohort and it caused more confusion than it settled: a
+                      quote sent in August about a day in July showed as "Cohort
+                      1, 14 August 2026" directly under a band headed "Cohort 1
+                      ran on 21 July 2026", which reads as a contradiction rather
+                      than as the date it was written. `date` is still required on
+                      every quote and still orders this list — it just is not a
+                      line of copy any more. */}
                   <cite>
                     {t.data.name} - {t.data.role}
                     {t.data.company && `, ${t.data.company}`}
                   </cite>
-                  <span class="quote__when">
-                    {t.data.cohort}, {formatDate(t.data.date, { weekday: undefined })}
-                  </span>
+                  <span class="quote__when">{t.data.cohort}</span>
                 </footer>
               </blockquote>
             ))}
@@ -534,8 +558,14 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
                 : 'A small cohort, so the day stays facilitated rather than lectured.'}
             </p>
           </div>
-          <a href="#register" class="btn btn--onGold">
-            {finalRegisterLabel}
+          <a
+            href={bookHref}
+            class="btn btn--onGold"
+            rel={bookIsExternal ? 'noopener' : undefined}
+            data-analytics-event={bookIsExternal ? 'luma_outbound_click' : undefined}
+            data-analytics-slug={data.slug}
+          >
+            {registerLabel}
           </a>
         </div>
       </section>
@@ -547,30 +577,19 @@ const icsHref = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines.
     !isPast && (
       <div class="sticky-bar">
         <span class="sticky-bar__date">{formatDate(data.startDate, { weekday: 'short', year: undefined })}</span>
-        <a href="#register" class="btn btn--primary sticky-bar__cta">
-          {!registrationOpen ? 'Notify me' : status === 'soldout' ? 'Waitlist' : 'Register'}
+        <a
+          href={bookHref}
+          class="btn btn--primary sticky-bar__cta"
+          rel={bookIsExternal ? 'noopener' : undefined}
+          data-analytics-event={bookIsExternal ? 'luma_outbound_click' : undefined}
+          data-analytics-slug={data.slug}
+        >
+          {!registrationOpen ? 'Notify me' : status === 'soldout' ? 'Waitlist' : 'Book'}
         </a>
       </div>
     )
   }
 </Base>
-
-<script>
-  // A download gives no visible feedback, so people click it twice and wonder.
-  // Confirm briefly, then restore.
-  document.querySelectorAll<HTMLAnchorElement>('[data-calendar-btn]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (btn.dataset.busy) return;
-      btn.dataset.busy = 'true';
-      const original = btn.textContent ?? '';
-      btn.textContent = 'Calendar file saved';
-      window.setTimeout(() => {
-        btn.textContent = original;
-        delete btn.dataset.busy;
-      }, 2400);
-    });
-  });
-</script>
 
 <style>
   .event-hero {

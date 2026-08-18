@@ -180,7 +180,7 @@ const config: SiteConfig = {
   features: {
     // Live: the four people who run the bootcamp.
     team: true,
-    // On since 17 Aug 2026 (Drummond), with Fei Gan's Cohort 1 quote consented.
+    // On since 17 Aug 2026 (Drummond). Four consented Cohort 1 quotes as of 18 Aug.
     //
     // This flag does more than reveal quote bands: it also builds
     // `/testimonials/`, puts "Outcomes" in the header and footer nav, and files

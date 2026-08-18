@@ -185,6 +185,52 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-18 — Cycle 82 (session): three more Cohort 1 quotes, every CTA pointed
+  straight at Luma, and another cull.** Drummond's brief: add Kirsten, Shre and
+  Zeynep using the best parts; make the Register button a direct Luma link with
+  the highest-converting copy; keep culling anything that does not earn its place.
+  **Every quote was read from its source, and the vault was wrong about one.**
+  `memory/decisions/events.md` carried Kirsten Samuel's line truncated at *"…
+  attended to date"*. The sent thread has *"Best, most practical AI session I have
+  attended to date - highly recommend it!"* — the missing half is the half that
+  sells. The vault also carried Shrestha Mullick's with an ellipsis in every copy.
+  The workspace rule against quoting from a truncated extract paid for itself
+  twice in one cycle; do not skip it because a quote "looks complete".
+  **Provenance, because it decides how safe each one is.** Zeynep Hizir wrote hers
+  and published it on her own LinkedIn ~2 Aug, unprompted, after Drummond asked
+  carefully. Drummond then republished Zeynep's and Kirsten's, with these exact
+  attributions, in the 13–14 Aug email campaign — so those two were already public
+  in his own words before they reached the site. Fei's and Shre's were private
+  emails to him and are the two still owed a conversation. All four are recorded
+  in the files themselves.
+  **Zeynep's LinkedIn post text is still uncaptured** — the campaign email is the
+  only place these two sentences exist in the repo or the vault. If anyone finds
+  the post, check it: a longer original probably exists and is probably better.
+  **⚠️ A near-miss worth recording: the first drafts of these files carried
+  attendee purchase history — what each person paid, which discount code, what
+  they have bought since — into a PUBLIC repo.** It was caught before it was
+  written. Commercial detail about a named attendee belongs in the vault. Each
+  testimonial file now carries a note saying so.
+  **Every primary CTA now goes to `lumaUrlWithUtm(...)` rather than `#register`.**
+  Hero, closing gold band and sticky mobile bar. The old labels described a scroll
+  rather than an outcome, and the closing one — "Register ↑" — sent people
+  *backwards* up the page. Copy is "Book your place" ("Book" on the narrow sticky
+  bar): it names what the visitor is doing, implies a held place rather than a
+  form, and stops sharing a verb with the newsletter sign-up. **The UTM helper is
+  used deliberately and must stay** — these clicks keep landing on
+  `utm_source=oxfordagentic`, the source already credited with a registration, and
+  an untagged outbound link would silently destroy the only working attribution
+  this project has. `luma_outbound_click` fires on all three. The embed stays put
+  for anyone who scrolls to it, so there are two routes to one checkout.
+  **Culled:** the hero's "Add to calendar" button, its hand-rolled `.ics` data:
+  URI and its click-feedback script — diarising an event you have not booked is
+  not a step towards booking it, and Luma sends an invite on booking anyway. Also
+  the date line under each quote: "Cohort 1, 14 August 2026" sat under a band
+  headed "Cohort 1 ran on 21 July 2026" and read as a contradiction rather than as
+  the date it was written. `date` is still required and still orders the list.
+  Build passes: 38 pages, 1,619 internal links resolve, schema valid, one
+  pre-existing non-blocking warning (`/` meta description 166 chars).
+
 - **2026-08-17 — Cycle 81 (session, not the loop): put the booking form second on
   every event page, cut the Cohort 2 FAQ from thirteen questions to seven, and gave
   the empty testimonials collection its first quote.** Drummond's brief, verbatim:
