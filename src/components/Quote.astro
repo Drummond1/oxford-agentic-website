@@ -1,0 +1,172 @@
+---
+/**
+ * One attendee's words, in one of two weights.
+ *
+ * `lead` is the pull-quote: large, in the title face, with a gold quotation mark
+ * set behind it. One per page, directly under the booking form, where it is the
+ * last human voice before a decision.
+ *
+ * `card` is the supporting weight, used in a grid.
+ *
+ * Both carry a monogram. The site has no attendee photography it can publish —
+ * the consent bar for a face is much higher than for a sentence — but four
+ * quotes stacked as plain text read as a wall rather than as four people. Two
+ * initials in a square give each one a presence at no consent cost, and the
+ * square is already the site's mark (the bullets, the Quad centre) rather than a
+ * new shape invented for this.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  testimonial: CollectionEntry<'testimonials'>;
+  variant?: 'card' | 'lead';
+  /** Passed through by the index page for its CSS-only programme filter. */
+  programmeSlug?: string;
+  revealDelay?: number;
+}
+
+const { testimonial, variant = 'card', programmeSlug, revealDelay = 0 } = Astro.props;
+const t = testimonial.data;
+
+/*
+ * Initials, ignoring honorifics and post-nominals: "Dr Zeynep Hizir" has to give
+ * ZH, not DZ. Falls back to a single letter for a mononym rather than rendering
+ * an empty square.
+ */
+const HONORIFICS = new Set(['dr', 'mr', 'mrs', 'ms', 'miss', 'mx', 'prof', 'professor', 'sir', 'dame']);
+const nameParts = t.name
+  .split(/\s+/)
+  .filter((part) => !HONORIFICS.has(part.toLowerCase().replace(/\./g, '')));
+const initials = [nameParts.at(0), nameParts.length > 1 ? nameParts.at(-1) : undefined]
+  .filter(Boolean)
+  .map((part) => part![0]!.toUpperCase())
+  .join('');
+
+const attribution = [t.role, t.company].filter(Boolean).join(', ');
+---
+
+<blockquote
+  class:list={['quote', `quote--${variant}`]}
+  data-programme={programmeSlug}
+  data-reveal
+  data-reveal-delay={revealDelay}
+>
+  {variant === 'lead' && <span class="quote__mark" aria-hidden="true">&ldquo;</span>}
+
+  <p class="quote__text">&ldquo;{t.quote}&rdquo;</p>
+
+  <footer class="quote__by">
+    <span class="quote__monogram" aria-hidden="true">{initials}</span>
+    <span>
+      <cite class="quote__cite">{t.name}</cite>
+      {attribution && <span class="quote__role">{attribution}</span>}
+    </span>
+  </footer>
+</blockquote>
+
+<style>
+  .quote {
+    margin: 0;
+    position: relative;
+  }
+
+  .quote--card {
+    border: 1px solid var(--gold-hairline);
+    padding: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+    /* Cards in a grid are only tidy if they share a baseline, so the attribution
+       is pinned to the bottom however long the quote above it runs. */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  :global(.band--cream) .quote--card {
+    border-color: var(--ink-hairline);
+    background: rgba(255, 255, 255, 0.45);
+  }
+
+  .quote__text {
+    font-family: var(--font-title);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .quote--card .quote__text {
+    font-size: var(--step-lg);
+    flex: 1;
+  }
+
+  .quote--lead .quote__text {
+    font-size: var(--step-xl);
+    max-width: 34ch;
+  }
+
+  /* The one flourish. A quotation mark large enough to read as a graphic rather
+     than as punctuation, tucked behind the first line and low enough in contrast
+     that it never competes with the words it is introducing. */
+  .quote__mark {
+    position: absolute;
+    inset-block-start: -0.42em;
+    inset-inline-start: -0.12em;
+    font-family: var(--font-title);
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--gold);
+    opacity: 0.22;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .quote__by {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-block-start: 1.25rem;
+  }
+
+  .quote__monogram {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border: 1px solid var(--gold);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .quote__monogram {
+    border-color: var(--rust);
+    color: var(--rust);
+  }
+
+  .quote__cite {
+    display: block;
+    font-family: var(--font-label);
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+  }
+
+  .quote__role {
+    display: block;
+    margin-block-start: 0.2rem;
+    font-size: var(--step-xs);
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--cream) .quote__role {
+    color: var(--muted-on-cream);
+  }
+
+  @media (max-width: 34rem) {
+    .quote__mark {
+      font-size: 4rem;
+    }
+  }
+</style>

@@ -19,6 +19,9 @@ company: Kamwell
 programme: oxford-agentic-bootcamp
 cohort: Cohort 1
 date: "2026-08-13T00:00:00+01:00"
-featured: true
+# `featured` marks the single lead pull-quote and Zeynep Hizir holds it. This is
+# a close second — shorter and from a CEO — so it is the one to promote if hers
+# is ever withdrawn.
+featured: false
 consentGiven: true
 ---

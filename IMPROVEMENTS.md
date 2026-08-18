@@ -185,6 +185,49 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-18 — Cycle 83 (session): quotes got a hierarchy, a component and a
+  face.** Four equal cards in a 2×2 read as a list, and nothing in a list leads.
+  All four also sat below the fold of the decision, so someone hovering over the
+  booking form had no human voice anywhere near them.
+  **`featured` finally does something.** It has been in the content schema since
+  the start and was never read by any component. It now means "this is the lead
+  pull-quote": that one is promoted out of the grid and set directly beneath the
+  booking form, and the rest run three-across lower down. `find`, with a fallback
+  to the most recent, so an editing slip cannot leave a page with no lead.
+  **Zeynep Hizir holds it**, on two grounds: her line restates the page's own
+  promise back in a customer's words, and hers is the safest consent of the four
+  (she wrote and published it herself). Kirsten Samuel is the understudy if it is
+  ever withdrawn — shorter, and from a CEO.
+  **New `src/components/Quote.astro`, shared with `/testimonials/`**, so a quote
+  looks like itself wherever it appears. Two variants: `lead` (title face, a
+  6rem gold quotation mark at 0.22 opacity set behind the first line) and `card`
+  (flex column, so attributions sit on a common baseline however long the quote
+  above them runs). Quote styling was deleted from both pages.
+  **Monograms.** Two initials in a gold-hairline square beside every attribution.
+  The site has no attendee photography it can publish and the consent bar for a
+  face is far higher than for a sentence, but four quotes as plain text read as a
+  wall rather than as four people. The square is the site's existing mark, not a
+  new shape. Honorifics are stripped, so "Dr Zeynep Hizir" gives ZH and not DZ —
+  verified in the browser.
+  **Fei Gan's quote trimmed to its first sentence.** The teacher-to-student-ratio
+  half is true and good, but it made her card three times the height of the two
+  beside it and the imbalance was the first thing the eye landed on. Cards now
+  measure 333px each. The sentence that survives names the doubt and the outcome
+  in one breath, which is the objection that stops this booking.
+  **⚠️ Shrestha Mullick's quote is now the one weak link on the page.** Drummond
+  supplied new wording on 18 Aug ("It was a really good session… Looking forward
+  to the next one"). The second half is verbatim from her 23 Jul email; **the
+  first half is not in that email, not in the Gmail thread and not in WhatsApp via
+  Beeper.** He was in the room and has the relationship, so it is presumably
+  something she said in person — but it is the only quote on the site whose exact
+  words cannot be traced to a document, and its file says so. Replacing it with
+  the testimonial she agreed on 30 Jul to write closes the note.
+  One placement note: `.register__quote` has a `padding-block-start` sized to
+  clear the lead quote's oversized quotation mark, which would otherwise cross the
+  rule above it and read as a collision. Re-check it if the mark changes.
+  Build passes: 38 pages, 1,619 internal links resolve, schema valid. Mobile
+  checked at 375px — cards stack, nothing overflows.
+
 - **2026-08-18 — Cycle 82 (session): three more Cohort 1 quotes, every CTA pointed
   straight at Luma, and another cull.** Drummond's brief: add Kirsten, Shre and
   Zeynep using the best parts; make the Register button a direct Luma link with

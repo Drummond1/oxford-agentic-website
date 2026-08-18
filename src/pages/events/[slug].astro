@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Faq from '../../components/Faq.astro';
 import LumaEmbed from '../../components/LumaEmbed.astro';
+import Quote from '../../components/Quote.astro';
 import config from '../../../site.config';
 import {
   createRhythm,
@@ -40,6 +41,24 @@ const programme = programmes.find((p) => p.id === data.programme.id)!;
 const successor = isPast ? await getSuccessorEvent(event) : undefined;
 const testimonials = await getTestimonials(programme.id);
 const photos = await getPhotos('event', event.id);
+
+/*
+ * One quote is promoted out of the grid and set directly beneath the booking
+ * form; the rest stay together lower down.
+ *
+ * Four equal cards in a 2×2 read as a list to be skimmed, and nothing in a list
+ * leads. Worse, all four sat below the fold of the decision: someone hovering
+ * over the form had no human voice anywhere near them. Splitting the set fixes
+ * both — a single voice at the point of the ask, and a tidy 3-up of supporting
+ * evidence further down for anyone still reading.
+ *
+ * `featured` finally does something. It was in the content schema from the start
+ * and had never been read by any component; it now means "this is the lead
+ * pull-quote". Exactly one is expected, hence `find`, with a fall back to the
+ * most recent so a page can never lose its lead by an editing slip.
+ */
+const leadQuote = testimonials.find((t) => t.data.featured) ?? testimonials.at(0);
+const supportingQuotes = testimonials.filter((t) => t.id !== leadQuote?.id);
 
 /*
  * Proof that the day is real — the evidence band below.
@@ -108,7 +127,9 @@ const promise = isPast ? undefined : (data.promise ?? programme.data.shortPitch)
 
 const showAgenda = showSection('agenda', { hidden: data.hideSections, hasContent: data.agenda.length > 0 });
 const showBuild = showSection('whatYoullBuild', { hidden: data.hideSections, hasContent: data.whatYoullBuild.length > 0 });
-const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
+const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: supportingQuotes.length > 0 });
+const showLeadQuote =
+  !isPast && Boolean(leadQuote) && showSection('testimonials', { hidden: data.hideSections, hasContent: true });
 const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
 const showPhotos = showSection('photos', { hidden: data.hideSections, hasContent: isPast && photos.length > 0 });
 
@@ -294,6 +315,11 @@ const registerLabel = !registrationOpen
                 ))}
               </ul>
             )}
+            {showLeadQuote && leadQuote && (
+              <div class="register__quote">
+                <Quote testimonial={leadQuote} variant="lead" />
+              </div>
+            )}
           </div>
         )
       }
@@ -368,26 +394,15 @@ const registerLabel = !registrationOpen
             <hr class="dash" />
             <h2 id="quotes">From the room</h2>
           </div>
-          <div class="grid grid--2">
-            {testimonials.slice(0, 4).map((t, i) => (
-              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
-                <p>“{t.data.quote}”</p>
-                <footer>
-                  {/* Name, role and company only. The date used to render beside
-                      the cohort and it caused more confusion than it settled: a
-                      quote sent in August about a day in July showed as "Cohort
-                      1, 14 August 2026" directly under a band headed "Cohort 1
-                      ran on 21 July 2026", which reads as a contradiction rather
-                      than as the date it was written. `date` is still required on
-                      every quote and still orders this list — it just is not a
-                      line of copy any more. */}
-                  <cite>
-                    {t.data.name} - {t.data.role}
-                    {t.data.company && `, ${t.data.company}`}
-                  </cite>
-                  <span class="quote__when">{t.data.cohort}</span>
-                </footer>
-              </blockquote>
+          {/* Three across rather than two, because the lead quote is now up by
+              the booking form and what is left is supporting evidence. The date
+              that used to sit under each name is gone: "Cohort 1, 14 August
+              2026" rendered under a band headed "Cohort 1 ran on 21 July 2026"
+              and read as a contradiction rather than as the date it was
+              written. `date` is still required and still orders this list. */}
+          <div class="quotes-grid">
+            {supportingQuotes.slice(0, 3).map((t, i) => (
+              <Quote testimonial={t} revealDelay={i * 80} />
             ))}
           </div>
         </div>
@@ -880,32 +895,28 @@ const registerLabel = !registrationOpen
     height: auto;
   }
 
-  /* ---- Quotes ---- */
-  .quote p {
-    font-family: var(--font-title);
-    font-size: var(--step-lg);
-    line-height: 1.4;
+  /* ---- Quotes ----
+     Presentation lives in Quote.astro; these are placement only. */
+
+  /* The lead quote shares the form's 600px column and is separated from the
+     assurances above it by a gold rule, so it reads as a different kind of
+     statement rather than as a fourth bullet. */
+  /* padding-block-start clears the lead quote's oversized quotation mark, which
+     is positioned above its own first line and would otherwise cross the rule
+     and read as a collision rather than as a flourish. If the mark's size or
+     offset changes in Quote.astro, re-check this number. */
+  .register__quote {
+    max-width: 600px;
+    margin-block-start: 2.25rem;
+    padding-block-start: 2.9rem;
+    border-block-start: 1px solid var(--gold-hairline);
   }
 
-  .quote footer {
-    margin-block-start: 1.2rem;
-  }
-
-  .quote cite {
-    display: block;
-    font-family: var(--font-label);
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: var(--step-xs);
-  }
-
-  .quote__when {
-    display: block;
-    margin-block-start: 0.3rem;
-    font-size: var(--step-xs);
-    opacity: 0.7;
+  .quotes-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    align-items: stretch;
   }
 
   /* ---- Final CTA ---- */

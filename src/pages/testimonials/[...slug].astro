@@ -1,8 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
+import Quote from '../../components/Quote.astro';
 import config from '../../../site.config';
-import { formatDate, getProgrammes, getTestimonials, paths } from '../../lib/site';
+import { getProgrammes, getTestimonials, paths } from '../../lib/site';
 
 /**
  * Outcomes — a flagged section (PRD §11), and a consent-gated one (PRD §21):
@@ -57,20 +58,17 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
               </div>
             )}
 
+            {/* Shares Quote.astro with the event pages, so a quote looks like
+                itself wherever it appears and the monogram treatment only has to
+                be got right once. The programme slug still rides along for the
+                CSS-only filter above. */}
             <div class="grid grid--2 quotes">
               {testimonials.map((t, i) => (
-                <blockquote class="card quote" data-programme={byId.get(t.data.programme.id)?.data.slug} data-reveal data-reveal-delay={Math.min(i, 6) * 70}>
-                  <p>“{t.data.quote}”</p>
-                  <footer>
-                    <cite>
-                      {t.data.name} - {t.data.role}
-                      {t.data.company && `, ${t.data.company}`}
-                    </cite>
-                    <span class="quote__when">
-                      {[t.data.cohort, formatDate(t.data.date, { weekday: undefined })].filter(Boolean).join(' · ')}
-                    </span>
-                  </footer>
-                </blockquote>
+                <Quote
+                  testimonial={t}
+                  programmeSlug={byId.get(t.data.programme.id)?.data.slug}
+                  revealDelay={Math.min(i, 6) * 70}
+                />
               ))}
             </div>
           </>
@@ -137,32 +135,8 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
     outline-offset: 3px;
   }
 
-  .quote p {
-    font-family: var(--font-title);
-    font-size: var(--step-lg);
-    line-height: 1.4;
-  }
-
-  .quote footer {
-    margin-block-start: 1.2rem;
-  }
-
-  .quote cite {
-    display: block;
-    font-family: var(--font-label);
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: var(--step-xs);
-  }
-
-  .quote__when {
-    display: block;
-    margin-block-start: 0.3rem;
-    font-size: var(--step-xs);
-    color: var(--muted-on-cream);
-  }
+  /* Quote presentation moved to Quote.astro when this page and the event pages
+     started sharing it. Nothing quote-related belongs here any more. */
 
   .empty {
     max-width: var(--measure);
