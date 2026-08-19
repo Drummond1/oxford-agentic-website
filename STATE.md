@@ -1,7 +1,7 @@
 # Current state — read this first
 
 One page, kept current, so anyone (or any future session) can pick this up cold.
-Written 25 July 2026; last updated 17 August 2026 (cycle 78).
+Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 > **Read the message house before writing any copy.** Positioning was decided on
 > 13 August 2026 and supersedes sections 1–3 of the Event Brief. It sets the headline
@@ -38,44 +38,38 @@ Written 25 July 2026; last updated 17 August 2026 (cycle 78).
 
 ---
 
-## 🔴 Luma's ticket limit for Cohort 2 looks like 10, not 25 (found 17 Aug 2026)
+## 🟠 Cohort 2 capacity: three different numbers (corrected 19 Aug 2026)
 
-From the live `luma.com/oxfordagentic2` data, one ticket type only:
+**This corrects the 17 Aug note, which read one number and missed two.** Luma reports
+capacity at two levels and the earlier reading only caught the ticket type:
 
-```
-"Full Day Pass"  cents=45000  num_tickets_registered=2  spots_remaining=8
-"guest_count": 10
-```
+| Where | Reading |
+|---|---|
+| Ticket type "Full Day Pass" (£450) | 3 registered, **7 remaining** - so that type is capped at 10 |
+| Event overall (`ticket_info`) | **9 remaining**, `guest_count` 11 - so the event allows about 20 |
+| The site | `capacity: 25`, "capped at roughly twenty-five" throughout |
 
-Registered plus remaining is **10**, while the site says `capacity: 25` and "capped at
-roughly twenty-five" throughout. If that ticket limit is real, **sales stop at ten**
-while the page keeps promising a room of twenty-five - thirty days out, with the event
-already selling.
+So the 17 Aug claim that "sales stop at ten" was right about the ticket type and wrong
+about the event: the event itself has room for roughly twenty. The practical effect is
+still real, because there is only one ticket type - **it exhausts at ten while the
+event has capacity left**, unless another release is added.
 
-Two things the loop cannot resolve from outside and has not guessed at:
+Still unexplained from outside: `guest_count` 11 against 3 registered on the only
+ticket type, which implies registrations not attached to it - comps, a guest list, or a
+type since removed. The dashboard will show it.
 
-- Whether the limit is deliberate (a first release, with more to follow) or an
-  oversight. Raising it on Luma is a one-field change if it is the latter.
-- Why `guest_count` reads 10 while the only ticket type reports 2 registered. They may
-  count different things - comps, a guest list, an earlier ticket type since removed.
-  Worth a glance at the Luma dashboard, which shows what an outside reader cannot.
+**Site copy unchanged.** Twenty-five may well be the room's real capacity, with Luma
+configured more conservatively on purpose. Capacity is a confirmed fact and the loop
+does not lower a published one on an inference drawn from a scrape.
 
-**Site copy was not changed.** Capacity is a confirmed fact and Luma is authoritative
-per the note below, but "the outside data implies 10" is not the same as "the cap is
-10", and lowering a published capacity on an inference would be worse than the
-mismatch.
-
-**Resolved while checking this, and removed from the blocker list:** the long-standing
-worry that "the agenda ends at 16:20 while the day runs to 17:00" is not a
-contradiction. Agenda entries are start times, so the final block simply runs longer -
-16:20 to 16:30 at Cohort 1, 16:20 to 17:00 at Cohort 2. Luma's `end_at` matches the
-site exactly. The one real observation left is narrower: Cohort 2's agenda is Cohort
-1's, and the extra half hour of the longer day has all landed in "Wrap and
-networking". Fine if intended, worth thirty seconds if not.
+**Second Brain, same check, now priced** - the 17 Aug "free" problem is fixed. Two
+types: Early Bird £325 and Full Day £450, ten each, none sold yet. Its event-level cap
+therefore looks like twenty rather than the thirty read on 17 Aug, which was taken
+before the ticket types existed.
 
 ---
 
-## 🔴 The Second Brain Bootcamp is free on Luma (found 17 Aug 2026)
+## ✅ The Second Brain Bootcamp was free on Luma (found 17 Aug, fixed by 19 Aug)
 
 Read from the live Luma page for `luma.com/7vcqji8g`:
 
@@ -84,25 +78,22 @@ Read from the live Luma page for `luma.com/7vcqji8g`:
 "ticket_types": [{"cents":null,"currency":null}]
 ```
 
-No price set, `is_free` **true**, open with 30 spots and 0 registrations. Anyone
-booking the 21 October day right now pays nothing. Cohort 2 is £450 for the same
-one-day format, so this reads as an unfinished Luma setup rather than a decision -
-but it is Drummond's to confirm, and the loop has not touched it.
+**Resolved.** As of 19 Aug the page reports `is_free: false` with two ticket types,
+Early Bird at £325 and Full Day at £450. Kept as a record of the failure mode: an
+event can go live on Luma, be linked from the site and be fully bookable while no
+price has been set on it, and nothing on either side flags that.
 
-It also makes a site FAQ untrue: "Pricing is shown on the booking page for each
-event" is false for that event today.
+What it looked like when found - no price set, `is_free` **true**, open with 30 spots
+and 0 registrations, so anyone booking the 21 October day paid nothing. It also made a
+site FAQ untrue for two days: "Pricing is shown on the booking page for each event".
 
-**Cohort 2 by contrast, same source, same day:** £450 "Full Day Pass", **10 guests
-registered**, 8 remaining on that ticket type, not sold out. First real demand signal
-the project has had.
-
-**Do not put either number on the site.** Price lives on Luma by standing decision,
-and a scarcity claim has to be checked on the live page the day it ships - a static
-"8 places left" is wrong within a week and the message house bans it outright.
-
-**If 30 is the intended Second Brain capacity, saying so closes backlog 15**, which has
-stopped that page answering "how big is the cohort?" since launch. The loop will not
-infer a capacity from a scrape.
+**The standing rules this produced, which still apply:** price never goes on the site,
+it lives on Luma by decision. A scarcity claim has to be checked on the live page the
+day it ships, so no static "eight places left" - the message house bans it outright,
+and the numbers here have moved twice in two days, which is the argument. Capacity is
+a confirmed fact: the loop reads it, reports it, and does not publish it on inference.
+Backlog 15 - the Second Brain page cannot answer "how big is the cohort?" - stays open
+until Drummond states the number.
 
 ---
 
