@@ -303,8 +303,12 @@ length and the positioning is the same edit, done once, in three places.
     hard rule in `IMPROVEMENTS.md` backlog 9: probe first, require **winnable AND
     converting**.
   - **Saïd is no longer "strategic, not hands-on".** Their new *Oxford Generative and
-    Agentic AI Programme* (£1,500, online, 4 weeks, next start 16 Sept 2026 — the same
-    day as Cohort 2) includes building a simple agent. The honest distinction is now
+    Agentic AI Programme* (£1,500, online, 4 weeks) includes building a simple agent
+    on an existing platform. **The "next start 16 Sept 2026" that stood here is
+    unverified** — re-checked 24 Aug 2026 and their own page 403s to fetching, while
+    secondary listings show May and July 2026 cohorts instead. Treat the programme as
+    running several online cohorts a year, not as an autumn intake, and do not build
+    copy on a specific date without checking their site by hand. The honest distinction is now
     in-person, your own real task rather than a platform exercise, and the room —
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.

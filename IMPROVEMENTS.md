@@ -185,6 +185,32 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 89: grounding tomorrow's guide, and a competitor claim that was
+  not checkable.** Guide budget still spent (it is 18:20 on the 24th), so the exec-cohort
+  timing guide ships after midnight. No site-facing change this cycle - two documents.
+  **Oxfordshire services cluster (standing report):** unchanged at 28 impressions, 0
+  clicks. Search Console updates daily and was read at 17:00; no re-read.
+  **The check that mattered came back clean.** Tomorrow's guide is about *when* cohorts
+  run, so it reasons off the Saïd line in STATE.md, which asserted "next start 16 Sept
+  2026 - the same day as Cohort 2". First question: does any live site copy depend on
+  that? **No.** The only Saïd references on the site are Drummond's own biography. So
+  there was no factual error on a live page - worth confirming before assuming one.
+  **The claim itself does not hold up.** Their own page 403s to fetching, and secondary
+  listings show May and July 2026 cohorts, not September. Corroborated: £1,500, online,
+  four weeks, builds a simple agent on an existing platform. Not corroborated: the date.
+  STATE.md now says so plainly and warns against building copy on it. The useful shape
+  for the guide is that these programmes run **several online cohorts a year rather than
+  an autumn intake** - which is most of the honest answer to the 37-impression query,
+  and not something to assert from one competitor without saying so.
+  **Off-page target 3 was understated.** It named research.com as one site. The same
+  search shows a *cluster* ranking for the buyer's comparison with this site absent from
+  all of it: research.com (three separate comparison pages), digitaldefynd.com,
+  gogradia.com, createwith.com, datadrivendaily.com. Listed with the note that a
+  research.com comparison listing is worth more than several event directories, because
+  it sits inside the decision rather than beside it. Also recorded there: this site is
+  already **position 8 for Saïd's own programme name**, so buyers comparing the two can
+  find it - what is missing is any third-party page saying the two are comparable.
+
 - **2026-08-24 — Cycle 88: guides had no contextual links between them at all.**
   Guide budget spent today, so the exec-cohort timing guide ships tomorrow.
   **Oxfordshire services cluster (standing report, per Drummond 24 Aug):** 28

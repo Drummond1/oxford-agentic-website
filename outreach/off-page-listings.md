@@ -205,13 +205,26 @@ and **overrides the headline and the audience** - which is what this pack does.
 2. **LinkedIn Company Page**, then the event on it. This also fills the last gap in
    `Organization.sameAs` on the site - add the page URL to `brand.social` in
    `site.config.ts` and the loop will wire it into schema automatically.
-3. **Course-roundup sites that already rank for this query.** Searching for the
-   Cohort 2 event on 24 Aug returned zero third-party listings for it, and two results
-   from **research.com** - "Best Oxford AI Courses for Agentic AI" and a review of the
-   Oxford AI Programme. That is a page ranking for exactly the comparison a buyer
-   makes, listing Oxford AI courses, with this one absent from it. Whether they accept
-   submissions is unknown and worth ten minutes finding out; if they do not, the same
-   search shows which other roundups do.
+3. **Course-roundup and comparison sites that already rank for the buyer's question.**
+   This is a cluster, not one site. Searching the exact comparison a buyer makes on
+   24 Aug 2026 returned these, all listing Oxford AI courses, none of them listing this
+   one:
+   - **research.com** — three separate pages: "Best Oxford AI Courses for Agentic AI",
+     "Oxford AI Courses Compared by Cost and Duration", "Best Oxford Generative AI
+     Courses". The most valuable of the set, because the comparison pages are exactly
+     the question a buyer types.
+   - **digitaldefynd.com** — "Oxford Artificial Intelligence Program [In-Depth Review]"
+   - **gogradia.com** — course listing for the Saïd agentic programme
+   - **createwith.com** — event listing for the same programme
+   - **datadrivendaily.com** — review of the Oxford AI Programme
+   Every one of these ranks for a query where Oxford Agentic is absent. Whether any
+   accept submissions is unknown and worth ten minutes finding out; a listing on the
+   research.com comparison page is worth more than several event directories, because
+   it sits inside the decision rather than beside it.
+   Worth knowing before pitching: Search Console on 24 Aug shows this site already at
+   **position 8 for "oxford generative and agentic ai programme"** — Saïd's own
+   programme name. Buyers comparing the two can already find this site; what is missing
+   is any third-party page that says the two are comparable.
 4. **UK AI and tech event aggregators** - the ones that surfaced in the probe were
    general listing sites rather than niche AI directories, so breadth beats
    selectivity here.
