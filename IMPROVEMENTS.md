@@ -185,6 +185,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 86: nothing had ever checked a single outbound link.** No GSC
+  export. Guide budget spent, so no new guide.
+  `check-links.mjs` validates 1,668 internal links every build and skips anything
+  starting with `http` (line 71). That left two gaps, neither ever checked:
+  **1. Absolute self-links.** A link written `https://oxfordagentic.com/foo/` instead of
+  `/foo/` was classed as external and skipped, so a typo in one bypassed every guardrail
+  the build has. There are 37 of them. All resolve today - but nothing was watching.
+  **2. Third-party links.** The two Luma booking URLs the entire business transacts
+  through, the ICO link on /privacy/, novaria.ai, two LinkedIn profiles. All six resolve.
+  Shipped `scripts/check-external-links.mjs`, wired into `npm run build`. Self-links
+  resolve against `dist/` with the same rules the internal checker uses and **fail** the
+  build, because that answer is deterministic and entirely ours. Third-party links are
+  probed over the network and only ever **warn**: a build must not go red because someone
+  else's server is having a bad afternoon. LinkedIn answers bots with 999 by design, so
+  401/403/405/429/999 are reported as *unverifiable* rather than broken - the distinction
+  matters, or the check cries wolf twice on every build and gets ignored.
+  Negative-tested rather than assumed: injecting a bad absolute self-link makes it exit 1
+  and name the linking page. A guardrail that cannot fail is not a guardrail.
+  **Investigated and cleared, not fixed:** `/home-photos/` and `/home-original/` are
+  deliberate homepage variants - real pages in `src/pages`, correctly `noindex, follow`,
+  absent from the sitemap. The `index 2.html` files exist only in local `dist/`, which is
+  gitignored. Both looked like defects and neither is one.
+
 - **2026-08-24 — Cycle 85: swept for the rest of the class cycle 84 found.** No GSC
   export. Guide budget already spent today, so no new guide.
   Cycle 84 found one field the 13 August message house never reached. Rather than assume

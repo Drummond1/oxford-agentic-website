@@ -3,15 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Marketing site for Oxford Agentic — the parent brand for a family of in-person AI events in Oxford.",
+  "description": "Marketing site for Oxford Agentic \u2014 the parent brand for a family of in-person AI events in Oxford.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npm run check:links && npm run check:schema",
+    "build": "astro build && npm run check:links && npm run check:external && npm run check:schema",
     "build:only": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check:links": "node scripts/check-links.mjs",
+    "check:external": "node scripts/check-external-links.mjs",
     "check:schema": "node scripts/check-schema.mjs",
     "check": "astro check",
     "check:flags": "node scripts/check-flags.mjs"
