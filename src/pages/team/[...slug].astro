@@ -5,7 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
 import { paths } from '../../lib/site';
-import { personSchema } from '../../lib/schema';
+import { collectionPageSchema, personSchema } from '../../lib/schema';
 import { ogPathFor } from '../../lib/og';
 
 /**
@@ -144,6 +144,13 @@ const profileLinks = speaker
       description={`The people who run ${config.brand.name}: practitioners who build with these tools daily.`}
       path={paths.team()}
       ogImage={ogPathFor(paths.team())}
+      schemaNodes={[
+        collectionPageSchema(
+          'Team',
+          paths.team(),
+          members.map((m) => ({ name: m.data.name, path: paths.teamMember(m.data.slug) })),
+        ),
+      ]}
       breadcrumbs={[{ name: 'Team', path: paths.team() }]}
     >
       <Hero

@@ -4,6 +4,7 @@ import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
 import { getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
+import { collectionPageSchema } from '../../lib/schema';
 
 const programmes = await getProgrammes();
 
@@ -20,6 +21,13 @@ const rows = await Promise.all(
   description={`The programmes ${config.brand.name} runs in Oxford - repeating, in-person, hands-on formats for building with agentic AI.`}
   path={paths.programmes()}
   ogImage={ogPathFor(paths.programmes())}
+  schemaNodes={[
+    collectionPageSchema(
+      'Bootcamps',
+      paths.programmes(),
+      programmes.map((p) => ({ name: p.data.name, path: paths.programme(p.data.slug) })),
+    ),
+  ]}
   breadcrumbs={[{ name: 'Bootcamps', path: paths.programmes() }]}
 >
   <Hero

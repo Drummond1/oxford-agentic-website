@@ -5,6 +5,7 @@ import EventCard from '../../components/EventCard.astro';
 import config from '../../../site.config';
 import { absoluteUrl, createRhythm, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
+import { collectionPageSchema } from '../../lib/schema';
 
 const { upcoming, past } = await getEventsForIndex();
 const programmes = await getProgrammes();
@@ -20,21 +21,11 @@ const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() :
   path={paths.events()}
   ogImage={ogPathFor(paths.events())}
   schemaNodes={[
-    {
-      '@type': 'CollectionPage',
-      name: 'Events',
-      url: absoluteUrl(paths.events()),
-      isPartOf: { '@id': `${config.brand.domain}/#website` },
-      mainEntity: {
-        '@type': 'ItemList',
-        itemListElement: [...upcoming, ...past].map((event, i) => ({
-          '@type': 'ListItem',
-          position: i + 1,
-          name: event.data.title,
-          url: absoluteUrl(paths.event(event.data.slug)),
-        })),
-      },
-    },
+    collectionPageSchema(
+      'Events',
+      paths.events(),
+      [...upcoming, ...past].map((event) => ({ name: event.data.title, path: paths.event(event.data.slug) })),
+    ),
   ]}
   breadcrumbs={[{ name: 'Events', path: paths.events() }]}
 >

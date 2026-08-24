@@ -326,6 +326,38 @@ export function articleSchema(guide: {
   };
 }
 
+/**
+ * A listing page and the things it lists.
+ *
+ * The same twenty lines were written inline on the guides index and the events
+ * index and nowhere else, so /bootcamps/, /team/ and /testimonials/ - three
+ * pages that are just as much listings - carried no ItemList at all. That is
+ * the recurring shape in this codebase: a treatment applied by hand in two
+ * places and silently absent from the rest. Sharing it is what stops a sixth
+ * listing page inheriting the gap.
+ */
+export function collectionPageSchema(
+  name: string,
+  path: string,
+  items: Array<{ name: string; path: string }>,
+) {
+  return {
+    '@type': 'CollectionPage',
+    name,
+    url: absoluteUrl(path),
+    isPartOf: { '@id': `${config.brand.domain}/#website` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        url: absoluteUrl(item.path),
+      })),
+    },
+  };
+}
+
 /** Wraps the page's nodes into a single @graph so entities cross-reference. */
 export function graph(nodes: Array<Record<string, unknown> | null>) {
   return JSON.stringify(

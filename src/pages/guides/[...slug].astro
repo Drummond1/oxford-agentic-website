@@ -6,7 +6,7 @@ import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import { formatDate, getProgrammes, paths, showSection } from '../../lib/site';
-import { articleSchema } from '../../lib/schema';
+import { articleSchema, collectionPageSchema } from '../../lib/schema';
 import { absoluteUrl } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 
@@ -167,21 +167,11 @@ const showCapture = showSection('newsletter');
       path={paths.guides()}
       ogImage={ogPathFor(paths.guides())}
       schemaNodes={[
-        {
-          '@type': 'CollectionPage',
-          name: 'Guides',
-          url: absoluteUrl(paths.guides()),
-          isPartOf: { '@id': `${config.brand.domain}/#website` },
-          mainEntity: {
-            '@type': 'ItemList',
-            itemListElement: guides.map((entry, i) => ({
-              '@type': 'ListItem',
-              position: i + 1,
-              name: entry.data.title,
-              url: absoluteUrl(paths.guide(entry.data.slug)),
-            })),
-          },
-        },
+        collectionPageSchema(
+          'Guides',
+          paths.guides(),
+          guides.map((entry) => ({ name: entry.data.title, path: paths.guide(entry.data.slug) })),
+        ),
       ]}
       breadcrumbs={[{ name: 'Guides', path: paths.guides() }]}
     >
