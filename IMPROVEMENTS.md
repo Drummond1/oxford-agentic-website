@@ -185,6 +185,33 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 90: the Second Brain booking link had quietly moved.** Guide
+  budget still spent; timing guide ships after midnight.
+  **Went looking at the commercial layer rather than hunting for something to ship**, and
+  the check found a live defect. `luma.com/7vcqji8g` **302s to `luma.com/secondbrain`** -
+  Drummond has given that event a branded vanity URL and the site was still on the
+  generated id. Cohort 2 already uses a branded slug (`oxfordagentic2`), so the
+  convention was set; the Second Brain event had simply not been caught up.
+  **The checker built in cycle 86 could not see this**, because it follows redirects and
+  reported a clean 200 the whole time. Now fixed: `probe()` makes a `redirect: 'manual'`
+  request first and reports the hop, non-blocking, naming both destination and linking
+  page. Negative-tested by re-injecting the old URL. A link whose target you control
+  should point at the target, and redirects rot - the owner can retire the old URL, and
+  a booking link is the worst place to find that out.
+  **The worst instance was the fallback.** The event's FAQ carried "if it does not load
+  for you, the same booking page is at luma.com/7vcqji8g" - the escape hatch for someone
+  whose embed failed, typed by hand, and quoted in the FAQPage schema. Now
+  `luma.com/secondbrain`, which is also the version a human can retype.
+  **Commercial state, 24 Aug 19:23:**
+  - **Cohort 2** - £450, 7 spots left on the ticket type (cap 10), `guest_count` 11, not
+    sold out. **Identical to the 19 Aug reading: no movement in five days, 23 days out.**
+  - **Second Brain** - £325 early bird / £450 full day, 10 left on the ticket type, 20 at
+    event level. Confirms the free-ticket fault found on 17 Aug stayed fixed.
+  - **Oxfordshire services cluster** - unchanged, 28 impressions, 0 clicks.
+  **Flagged, not done:** Cohort 2 has no fallback booking line, while the Second Brain
+  event does. If the embed fails on the flagship bookable page there is no escape hatch.
+  Left for Drummond rather than added unasked - event-page copy has been his call before.
+
 - **2026-08-24 — Cycle 89: grounding tomorrow's guide, and a competitor claim that was
   not checkable.** Guide budget still spent (it is 18:20 on the 24th), so the exec-cohort
   timing guide ships after midnight. No site-facing change this cycle - two documents.

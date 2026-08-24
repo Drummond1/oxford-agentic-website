@@ -61,23 +61,49 @@ async function resolvesLocally(pathname) {
   return false;
 }
 
+const UA = { 'user-agent': 'Mozilla/5.0 (compatible; oxfordagentic-link-check)' };
+
+/**
+ * Redirects are reported, not just followed.
+ *
+ * The Second Brain booking link sat on a Luma-generated id that 302'd to a branded
+ * vanity URL for an unknown length of time, and this checker said 200 the whole while
+ * because it followed the hop without mentioning it. A link you control the target of
+ * should point at the target. Redirects also rot: whoever owns the old URL can retire
+ * it, and a booking link is the worst place to discover that.
+ */
 async function probe(url) {
+  let redirectedTo = null;
+  try {
+    const first = await fetch(url, {
+      method: 'GET',
+      redirect: 'manual',
+      signal: AbortSignal.timeout(TIMEOUT_MS),
+      headers: UA,
+    });
+    if (first.status >= 300 && first.status < 400) {
+      redirectedTo = first.headers.get('location');
+    }
+  } catch {
+    /* fall through to the followed request, which reports the real failure */
+  }
+
   for (const method of ['HEAD', 'GET']) {
     try {
       const res = await fetch(url, {
         method,
         redirect: 'follow',
         signal: AbortSignal.timeout(TIMEOUT_MS),
-        headers: { 'user-agent': 'Mozilla/5.0 (compatible; oxfordagentic-link-check)' },
+        headers: UA,
       });
       // Some servers reject HEAD but serve GET; only retry for that shape.
       if (res.status === 405 && method === 'HEAD') continue;
-      return { status: res.status };
+      return { status: res.status, redirectedTo };
     } catch (error) {
-      if (method === 'GET') return { status: 0, error: error.message };
+      if (method === 'GET') return { status: 0, error: error.message, redirectedTo };
     }
   }
-  return { status: 0, error: 'unreachable' };
+  return { status: 0, error: 'unreachable', redirectedTo };
 }
 
 /** url -> Set of page paths that link to it. */
@@ -108,18 +134,25 @@ for (const [url, pages] of selfLinks) {
 // 2. Third-party links — network, advisory only.
 const broken = [];
 const unverifiable = [];
+const redirected = [];
 const urls = [...external.keys()];
 
 for (let i = 0; i < urls.length; i += CONCURRENCY) {
   const batch = urls.slice(i, i + CONCURRENCY);
   const results = await Promise.all(batch.map(async (url) => [url, await probe(url)]));
 
-  for (const [url, { status, error }] of results) {
+  for (const [url, { status, error, redirectedTo }] of results) {
     const from = [...external.get(url)].slice(0, 3).join(', ');
+    if (redirectedTo) redirected.push(`${url}\n      → ${redirectedTo}  (linked from ${from})`);
     if (status >= 200 && status < 400) continue;
     if (BOT_BLOCKED.has(status)) unverifiable.push(`${status} ${url}`);
     else broken.push(`${status || 'ERR'} ${url}  (linked from ${from})${error ? ` — ${error}` : ''}`);
   }
+}
+
+if (redirected.length > 0) {
+  console.log(`\n! ${redirected.length} outbound link(s) redirect — point at the destination instead:\n`);
+  for (const line of redirected) console.log(`  ${line}`);
 }
 
 if (unverifiable.length > 0) {

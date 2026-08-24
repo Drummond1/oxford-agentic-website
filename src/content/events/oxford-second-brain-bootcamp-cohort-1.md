@@ -13,7 +13,7 @@ venue:
   postcode: OX1 3PP
   confirmed: true
 lumaEventId: evt-uIVsPanZjsQkHn1
-lumaUrl: https://luma.com/7vcqji8g
+lumaUrl: https://luma.com/secondbrain
 summary: One day in Oxford. Build a second brain your AI tools can draw on, from your own material, and leave with it working and set up to maintain.
 capsule: >-
   Cohort 1 of the Oxford Second Brain Bootcamp runs on Wednesday 21 October 2026 at
@@ -83,7 +83,7 @@ faqs:
   - q: How do I register for Cohort 1?
     a: >-
       Book directly on this page - the form takes your registration. If it does not
-      load for you, the same booking page is at luma.com/7vcqji8g.
+      load for you, the same booking page is at luma.com/secondbrain.
   - q: Can I install software on my work laptop?
     a: >-
       Worth checking before you book. Corporate and government devices often block new
