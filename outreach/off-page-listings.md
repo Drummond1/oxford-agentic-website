@@ -205,10 +205,17 @@ and **overrides the headline and the audience** - which is what this pack does.
 2. **LinkedIn Company Page**, then the event on it. This also fills the last gap in
    `Organization.sameAs` on the site - add the page URL to `brand.social` in
    `site.config.ts` and the loop will wire it into schema automatically.
-3. **UK AI and tech event aggregators** - the ones that surfaced in the probe were
+3. **Course-roundup sites that already rank for this query.** Searching for the
+   Cohort 2 event on 24 Aug returned zero third-party listings for it, and two results
+   from **research.com** - "Best Oxford AI Courses for Agentic AI" and a review of the
+   Oxford AI Programme. That is a page ranking for exactly the comparison a buyer
+   makes, listing Oxford AI courses, with this one absent from it. Whether they accept
+   submissions is unknown and worth ten minutes finding out; if they do not, the same
+   search shows which other roundups do.
+4. **UK AI and tech event aggregators** - the ones that surfaced in the probe were
    general listing sites rather than niche AI directories, so breadth beats
    selectivity here.
-4. **Oxfordshire business and chamber listings** - lower reach, but they reinforce the
+5. **Oxfordshire business and chamber listings** - lower reach, but they reinforce the
    Oxford entity association that is already working.
 
 ## Two things to get right on every listing

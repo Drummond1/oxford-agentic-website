@@ -185,6 +185,31 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 83: /testimonials/ is not missing an ItemList, and Cohort 2 is
+  not listed anywhere.** No GSC export. Twenty-three days to Cohort 2.
+  **Corrects last cycle.** Cycle 82 called `/testimonials/` "the one listing page still
+  without an ItemList", implying an oversight to fix later. It is not one. Testimonials
+  have no pages of their own - the route builds a single index and nothing else - so an
+  ItemList there would be a list of items with no URLs, which is degenerate schema
+  rather than a missing feature. The right shape for that page is the one it has.
+  Checked before concluding: the route emits exactly one HTML file, 340 words, and no
+  per-quote pages exist to link to. Also confirms the other session was right not to
+  build them - a page per quote would have been four thin pages.
+  Discoverability of that page is fine and was worth confirming rather than assuming:
+  footer-linked from every page, in the sitemap and in `llms.txt`.
+  **The off-page position, which the loop is meant to track and which has not moved.**
+  Searching for the Cohort 2 event by name, date and venue returns **no third-party
+  listing at all** - not Eventbrite, not an aggregator. Only Luma, which is a booking
+  page rather than a discovery surface, and the site itself.
+  **One concrete target came out of that search**, and it is better than "list it on
+  aggregators": research.com returned twice, once for "Best Oxford AI Courses for
+  Agentic AI". That is a page ranking for the exact comparison a buyer makes, listing
+  Oxford AI courses, with this one absent. Added to `outreach/off-page-listings.md` as
+  target 3, with the honest caveat that whether they accept submissions is unknown and
+  worth ten minutes finding out.
+  Nothing shipped to the site. A cycle that correctly declines to add schema is the
+  same call as one that declines to publish a guide.
+
 - **2026-08-24 — Cycle 81: two guides were published with the wrong date, and both
   were mine.** No GSC export. Cohort 2 is twenty-three days out.
   Established the date from three independent sources - the machine, the GitHub API
