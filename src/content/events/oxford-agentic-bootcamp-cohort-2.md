@@ -14,7 +14,7 @@ venue:
   confirmed: true
 lumaEventId: evt-kcWdRFwqcgBbNcn
 lumaUrl: https://luma.com/oxfordagentic2
-summary: A one-day, hands-on agentic AI bootcamp in Oxford for business leaders. Build a working agent on your own real task.
+summary: One day in Oxford. One real task from your own work. A workflow that runs by the time you leave, and the pattern to build the next one yourself.
 # The programme's shortPitch would do, but it opens "A one-day AI bootcamp in
 # Oxford" and the date and venue render on the very next line. This says the
 # part the meta line cannot. Substance is the capsule's, front-loaded.

@@ -185,6 +185,33 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 84: the money page was still serving pre-message-house copy,
+  and the machine feed stuttered.** No GSC export. Twenty-three days to Cohort 2.
+  **Started as a regression check, not a fix.** The message-house sweep rewrote the
+  homepage hero and entity strings on a site ranking #1, and that change had never been
+  verified. A WebSearch probe returned the site nowhere in eight results, and a
+  site-restricted probe returned nothing - both looked alarming and both were artefacts
+  (WebSearch is US-only; the earlier #1 readings were Perplexity/GB, and Perplexity is
+  still erroring on a schema dialect, so no like-for-like comparison was available).
+  An independent index confirmed the truth: **13 pages indexed including the newest
+  guide, no deindexation, no regression.** Alarm dropped rather than reported.
+  **What the probe did surface** is that `summary` in an event's frontmatter feeds three
+  surfaces at once - the meta description, the visible EventCard, and `llms.txt` /
+  `llms-full.txt` - and on Cohort 2, the page people actually book from, it was the one
+  field the 13 August message house never reached. It read "Build a working agent on
+  your own real task": the pre-house framing, and "agent" where every other surface now
+  says "agentic AI workflow". Replaced with the approved short line plus the pattern
+  clause. The Second Brain summary ended on a bare "No coding.", which the project's own
+  off-page rules forbid standing alone ("pair it every time"); rewritten to end on the
+  outcome. Fixing that exposed a stutter in `llms.txt`, where the generator prepends the
+  venue and the summary named it again - "Pitt Rivers Museum, Oxford. A one-day bootcamp
+  at the Pitt Rivers Museum, Oxford." Pre-existing, but that string is exactly what AI
+  engines quote, so the venue came out of the summary. Both events now open on the same
+  approved line. Build: 39 pages valid, all titles and descriptions unique.
+  **Still blocked on Drummond:** the homepage description is 166 chars and ends on the
+  same bare "No coding." - it is `brand.description`, reused verbatim off-site, so it is
+  his to move, and it is now the only SEO warning left in the build.
+
 - **2026-08-24 — Cycle 83: /testimonials/ is not missing an ItemList, and Cohort 2 is
   not listed anywhere.** No GSC export. Twenty-three days to Cohort 2.
   **Corrects last cycle.** Cycle 82 called `/testimonials/` "the one listing page still

@@ -14,7 +14,7 @@ venue:
   confirmed: true
 lumaEventId: evt-uIVsPanZjsQkHn1
 lumaUrl: https://luma.com/7vcqji8g
-summary: A one-day bootcamp at the Pitt Rivers Museum, Oxford. Build a second brain your AI tools can draw on, from your own material. No coding.
+summary: One day in Oxford. Build a second brain your AI tools can draw on, from your own material, and leave with it working and set up to maintain.
 capsule: >-
   Cohort 1 of the Oxford Second Brain Bootcamp runs on Wednesday 21 October 2026 at
   the Pitt Rivers Museum, Oxford. It is a one-day, in-person course for business
