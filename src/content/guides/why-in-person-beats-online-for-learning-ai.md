@@ -2,7 +2,7 @@
 title: Why in-person beats online for learning AI
 slug: why-in-person-beats-online-for-learning-ai
 category: choosing
-description: Online courses teach you about AI. A day in the room is what gets a working agent built. Here is the difference, and why it matters.
+description: Online courses teach you about AI. A day in the room is what gets an agentic workflow built. Here is the difference, and why it matters.
 capsule: >-
   Online courses are good at explaining AI and poor at getting you to build with it.
   The thing that stalls people is rarely the concept; it is being stuck on setup with

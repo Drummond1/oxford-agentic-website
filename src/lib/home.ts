@@ -22,7 +22,7 @@ export const homeFaqs = [
      * complete matters more here than being identical.
      */
     q: `What is ${config.brand.name}?`,
-    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across two one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. Both are hands-on, capped small, and require no coding.`,
+    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across two one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. Both are hands-on and capped small. No coding required, and nothing hand-waved.`,
   },
   {
     q: 'Who are the bootcamps for?',

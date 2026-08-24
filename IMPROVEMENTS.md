@@ -185,6 +185,30 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 85: swept for the rest of the class cycle 84 found.** No GSC
+  export. Guide budget already spent today, so no new guide.
+  Cycle 84 found one field the 13 August message house never reached. Rather than assume
+  Cohort 2 was unique, swept every field that feeds a meta description, a card or the
+  llms feeds for the same two defects. Two more, both fixed:
+  **1.** `src/lib/home.ts` - the "What is Oxford Agentic?" answer, the single most quoted
+  string on the site and a FAQPage node, ended "and require no coding." The project's own
+  off-page rules forbid that standing alone because it reads as "not serious" to a
+  technical buyer. Now closes on the approved pairing verbatim: "No coding required, and
+  nothing hand-waved."
+  **2.** `why-in-person-beats-online-for-learning-ai` - its meta description still read
+  "what gets a working agent built", the pre-house singular framing. Audited all 18 guide
+  descriptions: every other one already says "agentic workflow", and all 18 are under 160.
+  A single outlier across eighteen is a real miss, not a pattern match.
+  **Deliberately left:** the `what-is-an-agentic-bootcamp` capsule ends "Most need no
+  coding." That guide defines the category, so the line is a neutral factual claim rather
+  than a sales claim, and the pairing rule exists to stop *sales* copy reading as
+  unserious. Editing a working definition capsule for pattern-consistency is meddling.
+  **Deliberately skipped:** the ledger says bump `updatedDate` on any content touched.
+  Not done here. A meta-description fix is not a revision of the article, and bumping
+  `dateModified` would claim a freshness signal that did not happen.
+  Build: 39 pages valid, all titles and descriptions unique. The homepage's 166-char
+  `brand.description` remains the only warning, and remains Drummond's to move.
+
 - **2026-08-24 — Cycle 84: the money page was still serving pre-message-house copy,
   and the machine feed stuttered.** No GSC export. Twenty-three days to Cohort 2.
   **Started as a regression check, not a fix.** The message-house sweep rewrote the
