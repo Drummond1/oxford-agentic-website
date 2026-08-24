@@ -185,6 +185,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 87: the first real Google data, and it overturns the premise.**
+  Drummond opened Search Console; read via his logged-in Chrome. Baseline saved to
+  `seo-data/2026-08-24-search-console-baseline.md` — read that file, not this summary.
+  **44 clicks · 437 impressions · average position 28.3** over the site's whole life.
+  **Three things this corrects:**
+  **1. There is no impressions-vs-CTR gap**, and there never was. The loop's stated job
+  #1 for 31 cycles was not blocked on missing data - the premise was wrong. Every
+  high-impression query sits at position 44-90, where zero clicks is the expected
+  outcome rather than a symptom. The problem is ranking, not click-through.
+  Caught a live mistake: the plan this cycle was to rewrite the finance guide's title to
+  fix its "CTR gap". `agentic ai for finance` is at **position 81.9**. No title rewrite
+  moves a click from page eight. Pulling the position column before acting stopped it.
+  **2. Perplexity rankings are not Google rankings, and the loop reported them as if
+  they were.** STATE.md records #1s from Perplexity probes. Google says position 28.3
+  with exactly two queries in the top ten. Both readings are true of their own engine;
+  neither substitutes for the other. STATE.md now points at the baseline first.
+  **3. The only true CTR gap is too small to act on.** `agentic ai oxford`: position
+  4.0, six impressions, zero clicks. Six impressions is not evidence.
+  **Target chosen from evidence for the first time:** the executive-cohort cluster.
+  37 impressions at position 76 on "what time of year do executive ai cohorts usually
+  begin?", nothing on the site answering it, and the vault's persona file records four
+  of sixteen Cohort 1 attendees coming from Oxford Saïd exec-ed - the biggest
+  acquisition channel. Drummond chose the **timing and sequencing** angle. Guide budget
+  was already spent today, so it ships tomorrow.
+  **Standing instruction added:** report the Oxfordshire services cluster's volume and
+  intent every cycle (28 impressions, zero clicks, *build-it-for-me* intent, not
+  training). Track only - no pages, per the no-location-pages rule.
+
 - **2026-08-24 — Cycle 86: nothing had ever checked a single outbound link.** No GSC
   export. Guide budget spent, so no new guide.
   `check-links.mjs` validates 1,668 internal links every build and skips anything

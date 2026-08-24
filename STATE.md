@@ -309,7 +309,11 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probe ~30 Aug.
-- **Not indexed by Google yet** as of 25 Jul (domain registered 22 Jul). Normal.
+- **Google baseline, 24 Aug 2026:** 44 clicks, 437 impressions, average position 28.3
+  over the site's whole life. Full table and analysis in
+  `seo-data/2026-08-24-search-console-baseline.md` — **read it before trusting the GEO
+  block above**, which records Perplexity rankings, not Google ones. The two diverge
+  sharply and the loop conflated them until 24 Aug.
 - **Schema graph is deep and connected (cycles 15–20):** Organization (+`founder` →
   the team-page Person `@id`), WebSite, a WebPage node on every indexable page,
   EducationEvent with `subEvent` agenda + captioned photo ImageObjects, Course with
