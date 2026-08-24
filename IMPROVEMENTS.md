@@ -185,6 +185,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 81: two guides were published with the wrong date, and both
+  were mine.** No GSC export. Cohort 2 is twenty-three days out.
+  Established the date from three independent sources - the machine, the GitHub API
+  and a live HTTP `Date` header - after last cycle mistook elapsed time for a clock
+  discrepancy between this environment and GitHub's runners. There is no discrepancy.
+  Five days had simply passed between cycles, which is what a long-running loop looks
+  like from inside, and the correction is recorded here because the wrong version was
+  told to Drummond.
+  The consequence was real. `publishDate` had been set from an assumed date rather
+  than a checked one, so **`how-to-notice-when-an-ai-workflow-is-wrong` was backdated
+  a day and `keeping-a-second-brain-from-going-stale` by five**. Both corrected to the
+  day they were actually added.
+  **Sixteen of the eighteen guides were right**, every one of them written before this
+  habit crept in, which is what makes it a regression rather than a standing flaw.
+  `datePublished` is a real signal and a fabricated one is a small lie in structured
+  data, so the rule is now explicit: **derive the date, never assume it.**
+  Swept the rest of the content for the two date errors that actually harm - anything
+  dated in the future, which search engines can suppress, and any `updatedDate`
+  earlier than its `publishDate`. Zero of each across every collection.
+  Deliberately no new validator. The harmful cases are absent, a future-date check
+  would fail a build that runs before the publish hour on the day itself, and the fix
+  for the case that did happen is to check a date rather than to add a rule.
+
 - **2026-08-18 — Cycle 83 (session): quotes got a hierarchy, a component and a
   face.** Four equal cards in a 2×2 read as a list, and nothing in a list leads.
   All four also sat below the fold of the decision, so someone hovering over the

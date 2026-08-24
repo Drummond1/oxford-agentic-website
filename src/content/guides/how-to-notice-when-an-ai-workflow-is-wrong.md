@@ -10,8 +10,8 @@ capsule: >-
   Noticing takes deliberate checks rather than attention: a written standard, a known
   answer you re-run, a spot-check habit, and knowing which step failed.
 author: drummond-gilbert
-publishDate: "2026-08-16T09:00:00+01:00"
-updatedDate: "2026-08-16T09:00:00+01:00"
+publishDate: "2026-08-17T09:00:00+01:00"
+updatedDate: "2026-08-17T09:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---

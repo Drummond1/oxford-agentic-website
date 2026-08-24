@@ -10,8 +10,8 @@ capsule: >-
   AI reads it is worse, because the model treats a two-year-old position as current and
   answers with it. The fix is a review routine, not a bigger vault.
 author: drummond-gilbert
-publishDate: "2026-08-19T09:00:00+01:00"
-updatedDate: "2026-08-19T09:00:00+01:00"
+publishDate: "2026-08-24T09:00:00+01:00"
+updatedDate: "2026-08-24T09:00:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
