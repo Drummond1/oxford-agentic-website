@@ -185,6 +185,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 88: guides had no contextual links between them at all.**
+  Guide budget spent today, so the exec-cohort timing guide ships tomorrow.
+  **Oxfordshire services cluster (standing report, per Drummond 24 Aug):** 28
+  impressions, 0 clicks, positions 28-76 across `agentic ai companies / services /
+  providers / consultants oxfordshire` and `best agentic ai providers oxfordshire`.
+  Intent is *build it for me*, not *teach me*. Unchanged since the baseline six hours
+  ago; Search Console updates daily, so no re-read this cycle. No pages built.
+  **The find:** 17 of 18 guides have zero in-prose inbound links, and the 18th has one.
+  Verified against **built HTML**, not source - the same claim was made once before off
+  source alone and was wrong. Correctly stated this time: guides do link to each other,
+  but only through the template's "More guides" module, with the guide title as anchor
+  text. The prose of the exec guide contained exactly one internal link, to a programme
+  page. So there is no topical clustering signal anywhere on the site.
+  **The fix, kept deliberately small.** Bolting links into prose is how SEO ruins
+  writing, and persona P5 judges this copy as copy. Four links added, each one answering
+  a question its own sentence already raises: "a real task from your own work" now links
+  to choosing one, "a few narrow steps handing off to each other" to the scout-drafter-
+  reviewer pattern, "an executive programme or a good course" to the comparison guide,
+  and the comparison guide's line about people who *understand it but have never built
+  anything* now links to the guide that is entirely about that gap.
+  That builds the exec cluster before tomorrow's guide lands in it, rather than leaving
+  the new guide to stand alone at position 76.
+  `updatedDate` bumped on both - prose changed, so the freshness signal is real. That is
+  the same rule that said **not** to bump it in cycle 85 for a metadata-only fix.
+  **Not done, and worth saying:** this will not move a position-76 page on its own.
+  Internal links redistribute authority; they do not create it. The site ranks 44-90 for
+  almost everything because it is five weeks old with an empty `Organization.sameAs`.
+
 - **2026-08-24 — Cycle 87: the first real Google data, and it overturns the premise.**
   Drummond opened Search Console; read via his logged-in Chrome. Baseline saved to
   `seo-data/2026-08-24-search-console-baseline.md` — read that file, not this summary.

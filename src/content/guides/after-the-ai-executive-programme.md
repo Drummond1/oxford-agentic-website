@@ -11,7 +11,7 @@ capsule: >-
   next step is not another course; it is one built workflow.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-07-25T09:00:00+01:00"
+updatedDate: "2026-08-24T09:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -36,14 +36,14 @@ There is also a personal cost to the gap. The longer the distance between finish
 
 Less than the course did. Building a first agentic workflow is not a semester of work; it is a focused day, if three conditions are met:
 
-- **A real task from your own work** - not an exercise. The transfer problem disappears when there is nothing to transfer.
-- **A working pattern to follow** - a few narrow steps handing off to each other, with the judgement kept where it belongs. The pattern is learnable in a morning.
+- **A real task from your own work** - not an exercise, and [worth choosing carefully](/guides/how-to-choose-your-first-agentic-task/). The transfer problem disappears when there is nothing to transfer.
+- **A working pattern to follow** - [a few narrow steps handing off to each other](/guides/scout-drafter-reviewer-pattern/), with the judgement kept where it belongs. The pattern is learnable in a morning.
 - **Someone to unstick you** - because the thing that ends most self-directed attempts is not the concept but the first snag, alone at a desk.
 
 None of this requires code, and none of it repeats what the programme taught. It sits on top of it.
 
 ## The honest sequencing
 
-If you have not done any structured AI learning, an executive programme or a good course is a defensible place to start - the frame matters. If you have finished one, the highest-return next step is not a second course. It is turning what you know into one working thing, and taking the pattern home.
+If you have not done any structured AI learning, [an executive programme or a good course](/guides/ai-bootcamp-vs-course-vs-exec-education/) is a defensible place to start - the frame matters. If you have finished one, the highest-return next step is not a second course. It is turning what you know into one working thing, and taking the pattern home.
 
 That is the day the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is built to be: one day in Oxford, a small room of senior peers, your own real task, and a working agentic workflow by the time you leave.
