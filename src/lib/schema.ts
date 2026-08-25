@@ -200,24 +200,41 @@ export function eventSchema(
   /*
    * The published agenda, as machine-readable sub-events. An assistant asked
    * "what does the day look like?" can read the actual schedule rather than
-   * guessing from prose. Rows without a parseable time are still listed, just
-   * without a timestamp — nothing is invented.
+   * guessing from prose.
+   *
+   * Only rows with a parseable clock time become sub-events. This used to emit
+   * every row and simply omit the timestamp where there was none, on the
+   * principle that nothing should be invented. That principle is right and is
+   * kept: no time is guessed. But `startDate` is required on schema.org Event,
+   * so a row without one is not an untimed event, it is an **invalid** one, and
+   * Google rejects the whole item rather than the missing field. Search Console
+   * reported exactly four invalid Event items on 25 Aug 2026 - the Second Brain
+   * agenda, whose rows read "Morning", "Midday", "Afternoon" and "Close"
+   * because that day genuinely is not scheduled to the minute.
+   *
+   * Those rows still render in the visible agenda. They just stop making a
+   * machine-readable claim that cannot be completed. Not inventing a fact and
+   * not asserting an incomplete one are the same discipline.
    */
-  const subEvents = event.data.agenda.map((item, index) => {
+  const subEvents = event.data.agenda.flatMap((item, index) => {
     const startsAt = agendaInstant(event.data.startDate, item.time);
+    if (!startsAt) return [];
+
     const next = event.data.agenda[index + 1];
     const endsAt = next ? agendaInstant(event.data.startDate, next.time) : event.data.endDate.toISOString();
 
-    return {
-      '@type': 'Event',
-      name: item.title,
-      ...(item.detail ? { description: item.detail } : {}),
-      ...(startsAt ? { startDate: startsAt } : {}),
-      ...(startsAt && endsAt ? { endDate: endsAt } : {}),
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      location: { '@type': 'Place', name: event.data.venue.name },
-      superEvent: { '@id': `${url}#event` },
-    };
+    return [
+      {
+        '@type': 'Event',
+        name: item.title,
+        ...(item.detail ? { description: item.detail } : {}),
+        startDate: startsAt,
+        ...(endsAt ? { endDate: endsAt } : {}),
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: { '@type': 'Place', name: event.data.venue.name },
+        superEvent: { '@id': `${url}#event` },
+      },
+    ];
   });
 
   return {

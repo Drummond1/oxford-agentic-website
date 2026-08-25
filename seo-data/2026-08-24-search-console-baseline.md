@@ -223,3 +223,36 @@ cleanup.
 
 Left alone deliberately: `programmes[0]` decides the header destination by sort order,
 so adding a programme could silently move it. Worth knowing, not worth changing unasked.
+
+
+---
+
+## Events rich-result report — read 25 August 2026, 17:40
+
+**4 invalid Event items, 1 critical issue: missing `startDate`.** 2 valid.
+Invalid items cannot generate rich results at all.
+
+Traced to the **Second Brain event page**: its agenda rows read "Morning", "Midday",
+"Afternoon" and "Close", because that day is genuinely not scheduled to the minute.
+`agendaInstant()` cannot parse those, so `eventSchema` emitted four `Event` nodes with no
+`startDate`. Exactly four, matching Google's count.
+
+The original code did this on purpose - the comment read "Rows without a parseable time
+are still listed, just without a timestamp, nothing is invented". The principle is right
+and is kept. The implementation was wrong: `startDate` is **required** on schema.org
+Event, so a row without one is not an untimed event, it is an invalid one, and Google
+rejects the entire item rather than the missing field.
+
+Fixed by emitting sub-events only for rows with a parseable clock time. The four rows
+still render in the visible agenda; they simply stop making a machine-readable claim that
+cannot be completed. Verified after: zero Event nodes missing `startDate` site-wide, all
+four rows still on the page, Cohort 2 keeps all 12 of its timed sub-events.
+
+**Deliberately not fixed:** the report warns "Missing field 'price'" and
+"'priceCurrency' (in 'offers')" on the 2 valid items. Price is not published on the site
+by design (PRD §18) - it lives on Luma. That is a decision, not a defect. Do not "fix" it
+in a later cycle.
+
+The remaining appearance warnings (address in location, endDate, offers, image,
+eventStatus, performer, organizer, 4 items each) were all on the same four invalid
+sub-events and go with them.

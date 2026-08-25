@@ -185,6 +185,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 95: four invalid Event items, found in Google's own rich-result
+  report.** Guide budget spent.
+  Opened the Events enhancement report, never checked before. **4 invalid items, critical
+  issue: missing `startDate`.** Invalid items cannot produce rich results at all, on the
+  two pages people actually book from.
+  Traced precisely: the Second Brain agenda reads "Morning", "Midday", "Afternoon",
+  "Close" - that day is not scheduled to the minute - so `agendaInstant()` could not parse
+  a time and four sub-events were emitted with no `startDate`. Four, matching Google's
+  count exactly.
+  **The cause was a good principle implemented wrongly.** The code deliberately listed
+  untimed rows anyway, commented "nothing is invented". That principle is kept - no time
+  is guessed. But `startDate` is required on schema.org Event, so such a row is not an
+  untimed event, it is an invalid one, and Google discards the whole item. Not inventing a
+  fact and not asserting an incomplete one are the same discipline.
+  Sub-events are now emitted only for rows with a parseable clock time. Verified: zero
+  Event nodes missing `startDate` site-wide, all four rows still visible on the page,
+  Cohort 2 keeps all 12 timed sub-events. Nothing user-facing changed.
+  **Deliberately not fixed:** the same report warns about missing `price` and
+  `priceCurrency` on the 2 valid items. Price is unpublished by design (PRD §18) and lives
+  on Luma. Recorded in the baseline so a later cycle does not "fix" a decision.
+
 - **2026-08-25 — Cycle 94: Google confirms zero external links, and a near-orphaned
   hub page.** Guide budget spent.
   Opened Search Console's Links report, never checked before. **External links: Total 0**
