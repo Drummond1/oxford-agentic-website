@@ -185,6 +185,46 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 101: both shortlisted guides declined on the probe. The
+  objections belong on the event page, not in search.** No site change; guide budget was
+  already spent today anyway.
+  Probed cycle 100's two candidates against the standing rule, winnable AND converting.
+  **Both fail.**
+  - **"What company data can I put into AI tools?"** The query is owned by security
+    vendors and compliance firms - sealpath, ciso.inc, securityjourney, sosafe,
+    stickypassword, CPA practices. A five-week-old training site does not outrank that,
+    and the reader wants a policy answer rather than a bootcamp. Fails both tests.
+  - **"Who maintains an agentic workflow afterwards?"** Owned by developer-tooling and
+    automation-vendor content - Vellum, Mastra, DEV, forgeworkflows. Winnable is doubtful;
+    converting is worse, because the searchers are developers and platform shoppers, not
+    owner-operators. This is the "winnable but wrong reader" failure the rule exists for.
+  That makes **five candidates declined on this rule** across the loop's life, against two
+  written. The rule is doing its job.
+  **But the probe found the better answer.** Both are genuine *booking* objections from
+  the persona file. They fail as search plays and belong where the buyer already is.
+  Checked the Cohort 2 FAQs: seven questions, and neither objection is among them.
+  "Do I need to be technical?" covers **the day**, not **the after**, and nothing
+  addresses company data at all - the nearest is "Can I install software on my work
+  laptop?", which is adjacent but different.
+  **Drafted below rather than added.** Event-page copy has been Drummond's call since the
+  Cohort 1 FAQ was reverted, and these touch governance and commitments.
+
+  > **Q. What company data do I need to put into anything?**
+  > None that you are not comfortable with. The task you bring is yours to choose, and you
+  > can build against a redacted or sample version of it - the pattern transfers either
+  > way. Part of the day goes on deciding where a workflow's inputs should and should not
+  > come from, which is the question your IT and legal teams are already asking. This is
+  > not a substitute for your own policy, and nothing about the day requires putting
+  > restricted data anywhere it should not be.
+
+  > **Q. Who maintains it afterwards? Do I need someone technical?**
+  > You do, and no. You leave with a workflow you built yourself, in tools you can open
+  > without help, plus a written recipe for rebuilding and extending it. Part of the day is
+  > deliberately spent on where these break and how you would notice, because a workflow
+  > nobody can fix is one you stop trusting by the second week. If it later grows into
+  > something that genuinely needs engineering, you will know why - but that is not where
+  > most people start.
+
 - **2026-08-25 — Cycle 100: a guide shortlist from the personas, because Search Console
   has no next target left.** No site change - this is preparation, recorded so the next
   cycle acts on evidence rather than picking under time pressure.
