@@ -42,7 +42,18 @@ const bands = { story: rhythm.next(), host: rhythm.next(), venue: venuePhotos.le
   ]}
   breadcrumbs={[{ name: 'About', path: paths.about() }]}
 >
-  <Hero eyebrow={`About ${config.brand.name}`} title="Owned land, not rented." subline={config.brand.longDescription} />
+  {/* The h1 used to read "Owned land, not rented." - an internal line about owning
+      the domain rather than renting a platform, which meant nothing to a reader and
+      said nothing about the entity on the one page whose job is defining it. The
+      message house (19 Aug) settles the stance: the gap is not understanding AI, it
+      is building with it. The h1 now states that gap and the story section below
+      explains it. Deliberately not the homepage headline - that sells the day, this
+      says why the organisation exists. */}
+  <Hero
+    eyebrow={`About ${config.brand.name}`}
+    title="Understanding AI is not the same as building with it."
+    subline={config.brand.longDescription}
+  />
 
   <section class:list={['band', `band--${bands.story}`]} aria-labelledby="story">
     <div class="wrap wrap--narrow">
