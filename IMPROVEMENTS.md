@@ -185,6 +185,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 97: the guide-refresh backlog was mostly phantom. Correcting an
+  earlier claim.** No site change - nothing needed one.
+  Several cycles ago the loop told Drummond that ten of eighteen guides had never been
+  revised, that eight predated the message house, and that they were **"carrying the old
+  positioning, in the same way the Cohort 2 event summary was"**. That was asserted from
+  `publishDate == updatedDate` alone. Nobody read the guides. This cycle did.
+  **It does not hold.** `agentic-ai-for-business-leaders-where-to-start` (23 Jul, never
+  revised) carries the message house throughout in its own words: "the gap is not
+  knowledge, it is having built something that runs on its own", the prompting-to-
+  orchestrating shift, "the machine does the scaffolding; the decision at the end stays
+  yours", "the part which used to take a morning now takes a fraction of it". It needs
+  nothing.
+  **The grep that suggested otherwise was a bad proxy.** Counting message-house *phrases*
+  returned zero for that guide, which read as drift and was actually just a writer using
+  their own words. Acting on that count would have been busywork dressed as maintenance.
+  **Checked for real contradictions instead**, which is what a refresh should be for:
+  - **Capacity.** The site moved from "capped at 25" to "small cohort" once Luma's ticket
+    type turned out to cap at 10. Every surviving "twenty-five" is about **talk duration**
+    ("no block more than twenty-five minutes of anyone talking at you"), except one in
+    `what-is-an-agentic-bootcamp` which is a general claim about where facilitation stops
+    working, in a guide defining the category rather than describing this one. No
+    contradiction.
+  - **Superseded positioning** ("Build agents. In a day. In Oxford."): gone everywhere.
+  - **Prices on site** (PRD §18 keeps them on Luma): none.
+  **Conclusion: there is no refresh backlog.** Date-based staleness is not evidence of
+  drift, and future cycles should not treat `publishDate == updatedDate` as a work queue.
+  Refresh a guide when a fact changed under it, not when the calendar moved.
+
 - **2026-08-25 — Cycle 96: Search Console sweep finished, booking funnel verified, and
   nothing to fix.** Guide budget spent. No site change this cycle - saying so plainly
   rather than manufacturing one.

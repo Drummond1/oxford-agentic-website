@@ -303,6 +303,13 @@ length and the positioning is the same edit, done once, in three places.
     IndexNow has been pinging since 6 Aug, so some of the lift may be freshness.
   - **Superseded 30 Jul reading, kept so nobody re-derives it:** the national question
     was invisible and off-page was called the binding constraint.
+  - **There is no guide-refresh backlog** (checked 25 Aug 2026). Ten guides have
+    `publishDate == updatedDate` and eight predate the message house, and an earlier cycle
+    called them "carrying the old positioning". Reading them says otherwise: they carry it
+    in their own words. Checked for real contradictions - capacity claims, the superseded
+    "Build agents. In a day. In Oxford.", prices on site - and found none. Every surviving
+    "twenty-five" refers to talk duration, not room size. **Do not treat an unchanged
+    `updatedDate` as a work queue.** Refresh when a fact changed under a guide.
   - **Guides mostly do not rank on their target queries** (cycles 59–63). Two causes,
     and they need different responses: queries owned by institutional publishers
     (NHS England on "what AI am I allowed to use") cannot be won and should be
