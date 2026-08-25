@@ -286,11 +286,19 @@ length and the positioning is the same edit, done once, in three places.
   - **The national buyer question → #1**, having been *absent* on 30 Jul. This is the
     finding that changed the plan.
   - **"build a second brain for AI, UK" → #1.** Exact-phrase brand query → #1.
-  - **Off-page is no longer the "binding constraint".** That call rested entirely on
-    being absent from the national question, and the site now leads it with zero
-    listings. Still worth doing, for a narrower reason: `Organization.sameAs` is
-    **empty**, so the entity has no third-party corroboration anywhere. Paste-ready
-    packs are in `outreach/off-page-listings.md`, refreshed 17 Aug.
+  - **Off-page IS the binding constraint. This reverses the 10 Aug call below.**
+    On 10 Aug the loop downgraded off-page because the site led the national buyer
+    question on Perplexity with zero listings. Google's index-coverage report on 24 Aug
+    says the opposite, and Google is the one rationing: **11 pages are "Discovered -
+    currently not indexed" with last-crawled N/A**, meaning Google found them and has
+    never fetched them. Among them: **all three `/bootcamps/` pages** - the commercial
+    hubs carrying the Course schema - all three team profiles, and four guides.
+    It is not a discovery fault (sitemap submitted, read 23 Aug, status Success, 35
+    pages) and **not an internal-linking fault** - `/bootcamps/oxford-agentic-bootcamp/`
+    carries **257 inbound internal links** and has still never been crawled. That is
+    crawl budget on a five-week-old domain with **no external links at all**, and no
+    amount of on-page work buys it. `Organization.sameAs` is still **empty**.
+    Paste-ready packs are in `outreach/off-page-listings.md`.
   - Read with care: one engine, ranked results rather than cited AI answers, and
     IndexNow has been pinging since 6 Aug, so some of the lift may be freshness.
   - **Superseded 30 Jul reading, kept so nobody re-derives it:** the national question

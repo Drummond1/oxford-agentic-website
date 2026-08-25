@@ -185,6 +185,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-24 — Cycle 91: Google has never crawled the programme pages, and the
+  off-page call from 10 Aug is reversed.** Guide budget still spent.
+  Looked at Search Console's index-coverage report, never opened before. **23 indexed,
+  16 not.** Eleven are "Discovered - currently not indexed" with **last crawled N/A**:
+  Google found them and has never fetched them. Among them **all three `/bootcamps/`
+  pages** - the commercial hubs carrying the Course schema - three team profiles and
+  four guides.
+  **The obvious hypothesis was wrong, and checking killed it.** Under-linking was the
+  natural read and more internal links the natural fix. But
+  `/bootcamps/oxford-agentic-bootcamp/` has **257 inbound internal links** and has never
+  been crawled once; `/bootcamps/second-brain-bootcamp/` has 107. Sitemap is submitted,
+  read 23 Aug, status Success. Discovery works, linking is abundant, Google is simply
+  not spending crawl here. That is **crawl budget on a five-week-old domain with zero
+  external links**, and no on-page work buys it. Second time in three days that pulling
+  one more column before acting stopped a wasted cycle.
+  **This reverses the 10 Aug downgrade of off-page.** That call rested on the site
+  leading the national buyer question on Perplexity. Google's own coverage report says
+  off-page is the binding constraint after all. STATE.md now says so, in place of the
+  old line. Third time this session that a Perplexity-derived conclusion has been
+  overturned by Google data - the pattern is now the finding.
+  **The redirect error is stale, not live.** One page, `/guides` without a trailing
+  slash, last crawled 23 Jul - two days after launch. Re-tested: that path and six other
+  unslashed paths all 301 correctly and resolve 200. Residue from initial propagation.
+  **Two actions left for Drummond, both write-actions on his Search Console:** request
+  indexing on the three `/bootcamps/` pages via URL Inspection (~2 min, the standard
+  remedy), and clear the stale redirect error with Validate Fix if he wants it tidy.
+  Not done unasked - they act on his property and notify him.
+
 - **2026-08-24 — Cycle 90: the Second Brain booking link had quietly moved.** Guide
   budget still spent; timing guide ships after midnight.
   **Went looking at the commercial layer rather than hunting for something to ship**, and

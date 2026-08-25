@@ -85,3 +85,65 @@ demand for a service Oxford Agentic does not sell. Standing instruction is no lo
 pages, and the intent is wrong for the product regardless. **Drummond asked on 24 Aug
 for this to be tracked every cycle** — report volume and intent so he can see whether real
 service demand is building. Do not build pages for it.
+
+
+## Index coverage — read 24 August 2026, 20:30
+
+**23 indexed · 16 not indexed.** Sitemap submitted 23 Jul, last read 23 Aug, status
+Success, 35 pages discovered. Discovery is working fine.
+
+| reason | pages | source |
+|---|---|---|
+| Discovered – currently not indexed | 11 | Google systems |
+| Page with redirect | 3 | Website |
+| Redirect error | 1 | Website |
+| Crawled – currently not indexed | 1 | Google systems |
+
+### The 11 Google has never fetched (last crawled: N/A)
+
+`/bootcamps/` · `/bootcamps/oxford-agentic-bootcamp/` ·
+`/bootcamps/second-brain-bootcamp/` · `/guides/agentic-ai-for-consultants/` ·
+`/guides/ai-bootcamp-vs-course-vs-exec-education/` ·
+`/guides/scout-drafter-reviewer-pattern/` ·
+`/guides/what-hands-on-ai-training-actually-means/` · `/team/drummond-gilbert/` ·
+`/team/emine-gokce-phillips/` · `/team/jonathan-waddingham/` · (one more on page 2)
+
+**All three programme pages are in that list.** Those carry the Course schema and are
+the commercial hubs. Google has never looked at them.
+
+### The hypothesis this killed
+
+The obvious read was under-linking, and the obvious fix was more internal links. It is
+wrong. Inbound internal links in the built site:
+
+| page | inbound links | crawled? |
+|---|---|---|
+| /bootcamps/oxford-agentic-bootcamp/ | **257** | never |
+| /team/ | 141 | indexed |
+| /bootcamps/second-brain-bootcamp/ | **107** | never |
+| /bootcamps/ | 3 | never |
+
+A page with 257 internal links pointing at it has not been crawled once. Internal
+linking is not the constraint, and cycle 88's cluster work will not fix this. Checking
+before acting is what stopped a wasted cycle - the second time in three days that
+pulling one more column killed the plan.
+
+**Diagnosis: crawl budget on a domain registered 22 July with zero external links.**
+Not a technical fault. Not fixable on-page.
+
+### The "Redirect error" is stale, not live
+
+One page: `https://oxfordagentic.com/guides` (no trailing slash), last crawled 23 Jul -
+two days after the domain went live. Re-tested 24 Aug: that URL and six other
+non-trailing-slash paths all 301 correctly to the slashed version and resolve 200. It
+is residue from initial DNS/Pages propagation. **Not clicked "Validate fix"** - that
+acts on Drummond's property and emails him, and a failed validation would be noise.
+His call.
+
+### What actually moves this
+
+1. **Request indexing** on the three `/bootcamps/` pages via URL Inspection. Standard
+   remedy for discovered-not-crawled, about two minutes. Not done here - it is a write
+   action on his Search Console.
+2. **One external link.** `Organization.sameAs` is empty. Crawl budget on a new domain
+   is bought with external links and time, and nothing else on this list substitutes.
