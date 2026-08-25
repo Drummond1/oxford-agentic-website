@@ -147,3 +147,40 @@ His call.
    action on his Search Console.
 2. **One external link.** `Organization.sameAs` is empty. Crawl budget on a new domain
    is bought with external links and time, and nothing else on this list substitutes.
+
+
+---
+
+## Update — 25 August 2026, 15:30
+
+**45 clicks · 458 impressions · 9.8% CTR · average position 27.8** (22 Jul – 23 Aug).
+Up from 44 / 437 / 28.3 the previous day. One extra day of data, so treat every delta
+below as noise until it repeats.
+
+| query | clicks | impressions | position | vs 24 Aug |
+|---|---|---|---|---|
+| what time of year do executive ai cohorts usually begin? | 0 | 38 | 76.3 | +1 impression |
+| oxford agentic ai course | 4 | 28 | 4.2 | stable |
+| agentic ai for finance | 0 | 22 | 81.9 | unchanged |
+| agentic slang | 0 | 13 | 75.2 | unchanged |
+| agentic ai oxfordshire | 0 | 12 | **37.9** | **+2 impr, +6 positions** |
+| agentic terms | 0 | 12 | 86.2 | unchanged |
+| agentic ai oxford | 0 | 6 | 4.0 | unchanged |
+
+**Indexing requested (Drummond's authorisation, 25 Aug).** All three programme pages are
+now in Google's priority crawl queue: `/bootcamps/`,
+`/bootcamps/oxford-agentic-bootcamp/`, `/bootcamps/second-brain-bootcamp/`.
+The third failed first time with "We had a problem submitting your indexing request" -
+a rate limit, reached because the console's search box kept refusing focus and two
+duplicate requests went to the agentic page. It succeeded on retry 75 minutes later.
+**Lesson for next time: submit one URL, confirm, then navigate cleanly before the next.**
+Google states resubmitting does not change queue position, so duplicates are pure waste
+against a small daily quota.
+Guides were **not** submitted - Drummond chose the three programme pages specifically
+over the option that included them.
+
+**Oxfordshire services cluster (standing report).** ~30 impressions across the six
+variants, still zero clicks. `agentic ai oxfordshire` is the one that moved: position
+43.9 to 37.9. Intent is unchanged and still wrong for the product - *build it for me*,
+not *teach me*. No pages built. Worth another look if it reaches page one, because a
+query at position 10 with service intent is a different conversation from one at 38.

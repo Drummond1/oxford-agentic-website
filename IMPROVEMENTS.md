@@ -185,6 +185,24 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 93: all three programme pages now queued for crawl.** Guide
+  budget spent today on `when-ai-executive-cohorts-run`, which is live and in the sitemap.
+  **Finished what cycle 92 left broken.** `/bootcamps/second-brain-bootcamp/` had failed
+  with a rate-limit error; retried 75 minutes later and it went through. All three
+  programme pages are now in Google's priority crawl queue. The failure was self-
+  inflicted: the console's search box kept refusing focus, two duplicate requests went to
+  the agentic page, and those ate quota. Recorded in the baseline so the next run submits
+  one URL, confirms, then navigates cleanly.
+  **Did not request indexing for the guides**, including today's new one, even though it
+  would help. Drummond picked the three programme pages over the option that included
+  guides; that is his call and the quota is finite.
+  **Data refresh:** 45 clicks, 458 impressions, average position 27.8, through 23 Aug.
+  One extra day, so the deltas are noise until they repeat.
+  **Oxfordshire standing report:** ~30 impressions, still zero clicks. `agentic ai
+  oxfordshire` moved 43.9 to 37.9. Intent still *build it for me* rather than *teach me*,
+  so still not an SEO target. Flagged for another look if it reaches page one, where
+  service intent becomes a genuinely different conversation.
+
 - **2026-08-25 — Cycle 92: the guide the data asked for, and indexing requested.**
   Guide budget reset overnight. Another session pushed `d3542fb` (About h1) while this
   one slept; no overlap, left alone.
