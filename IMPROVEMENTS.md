@@ -185,6 +185,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 96: Search Console sweep finished, booking funnel verified, and
+  nothing to fix.** Guide budget spent. No site change this cycle - saying so plainly
+  rather than manufacturing one.
+  **Breadcrumbs: 0 invalid, 6 valid, no issues.** **Core Web Vitals: not enough usage
+  data on either device type** - CrUX needs real traffic and 45 clicks a month will not
+  produce it. Recorded in the baseline with a re-check column, so no later cycle spends
+  itself rediscovering that an empty report is empty. Synthetic performance is already
+  enforced by the Lighthouse budgets, so nothing is unmonitored.
+  **That completes the sweep.** Every Search Console report has now been read. The last
+  four cycles each found something real - zero external links, a near-orphaned hub page,
+  four invalid Event items - and all of it came from reports nobody had opened. That
+  seam is now exhausted.
+  **Verified the booking funnel rather than assuming.** Cohort 2 has taken nothing in five
+  days and the loop had been reading that as demand. Checked the technical explanation:
+  page is 222ms and 57KB, the Luma embed returns 200 with "Get Ticket" and £450 showing,
+  and **it is not consent-gated**, so declining cookies does not block booking. The funnel
+  works. Flat sales are a promotion question.
+  Chrome's automation timed out repeatedly on that page mid-check. The curl timings show
+  that was the extension or the third-party iframe, not the site, so it is **not** logged
+  as a performance problem - a flaky tool is not evidence.
+
 - **2026-08-25 — Cycle 95: four invalid Event items, found in Google's own rich-result
   report.** Guide budget spent.
   Opened the Events enhancement report, never checked before. **4 invalid items, critical

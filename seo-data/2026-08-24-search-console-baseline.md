@@ -256,3 +256,41 @@ in a later cycle.
 The remaining appearance warnings (address in location, endDate, offers, image,
 eventStatus, performer, organizer, 4 items each) were all on the same four invalid
 sub-events and go with them.
+
+
+---
+
+## Sweep complete — 25 August 2026, 18:45
+
+Every Search Console report is now checked. Recording the empty ones so no later cycle
+spends a cycle rediscovering that they are empty.
+
+| report | result | re-check when |
+|---|---|---|
+| Performance | 45 clicks, 458 impr, avg position 27.8 | daily-ish |
+| Index coverage | 23 indexed, 16 not; 11 discovered-not-crawled | after the crawl requests land |
+| Links | **External: 0.** Internal: 69 | after any external link exists |
+| Events | 4 invalid, fixed cycle 95 | after the fix is recrawled |
+| Breadcrumbs | **0 invalid, 6 valid, no issues** | only if breadcrumb code changes |
+| Core web vitals | **Not enough usage data (both device types)** | needs real traffic; do not re-check for months |
+| Sitemaps | submitted, read 23 Aug, Success, 35 pages | if the sitemap changes shape |
+
+Core Web Vitals needs CrUX data, which needs real traffic; 45 clicks a month will not
+produce it. Synthetic performance is already enforced by the Lighthouse budgets in the
+build, so nothing is unmonitored.
+
+## Booking funnel verified working — 25 August 2026
+
+Cohort 2 has taken no bookings in five days, and the loop had been reading that as
+demand. Checked the technical explanation before continuing to assume that:
+
+- Live event page: **TTFB 198ms, 222ms total, 57KB.** Fast.
+- Booking iframe present: `luma.com/embed/event/evt-kcWdRFwqcgBbNcn/simple`, **200,
+  77KB**, rendering "Get Ticket", "£450" and a waitlist option.
+- **The embed is not consent-gated.** Declining cookies does not block booking, which was
+  worth confirming given the banner ships on every page.
+
+So the funnel works. Flat sales are a demand and promotion question, not a broken button.
+Chrome's automation timed out repeatedly on this page during the check; the curl timings
+above show that was the extension or the third-party iframe, not the site. **Do not
+record the site as slow.**
