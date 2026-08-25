@@ -185,6 +185,35 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 100: a guide shortlist from the personas, because Search Console
+  has no next target left.** No site change - this is preparation, recorded so the next
+  cycle acts on evidence rather than picking under time pressure.
+  **First, the honest position on query data.** The one winnable query Search Console
+  offered has been written. What remains: `agentic ai for finance` (22 impr) already has a
+  guide and sits at **position 82**, so another finance page changes nothing; the glossary
+  cluster has no commercial intent; Oxfordshire is the wrong intent and barred by the
+  no-location-pages rule; `oxford agentic ai course` and `agentic ai oxford` already rank
+  4.2 and 4.0. **Search Console cannot choose the next guide.** Saying so beats inventing
+  a target from it.
+  **So back to the vault**, which is what Drummond asked for and which this only half did
+  before the Search Console data arrived. Mined the persona objections and checked each
+  against existing coverage:
+  - **"What can I actually put company data into, and what can't I?"** (P1 Governed
+    Adopter, 3 of 16). Appears only as a sub-topic inside the public-sector and consultants
+    guides. **No dedicated page.** Highest-anxiety objection on the list. Care needed: this
+    must not drift into legal advice, and no policy specifics can be invented.
+  - **"Do I need someone technical to maintain whatever we build?"** (P2 Lean
+    Owner-Operator, **5 of 16 - the largest persona and the primary homepage buyer**).
+    Maintenance is discussed in four guides, but all of them are about second brains or
+    task selection. **Nothing covers who owns an agentic workflow after the build day.**
+    This is an objection that blocks a booking outright.
+  - **"Does this just help people make more mediocre content faster?"** (P5). Ruled out:
+    twelve guides already carry the judgement-and-quality theme. A dedicated page would be
+    redundant.
+  **Both survivors still need a demand probe before anything is written** - the standing
+  rule is winnable AND converting, and neither has been tested yet. P2's maintenance
+  question is the stronger candidate on audience size and on being a live blocker.
+
 - **2026-08-25 — Cycle 98: IndexNow verified working. Third cycle running with nothing
   broken to find.** No site change.
   The brief says keep IndexNow pinging, and it had not been checked since the pipeline was
