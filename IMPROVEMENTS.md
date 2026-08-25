@@ -185,6 +185,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 92: the guide the data asked for, and indexing requested.**
+  Guide budget reset overnight. Another session pushed `d3542fb` (About h1) while this
+  one slept; no overlap, left alone.
+  **New guide: `when-ai-executive-cohorts-run`.** The first guide on this site chosen
+  from evidence rather than a guess about what might rank: 37 impressions at position 76
+  on "what time of year do executive ai cohorts usually begin?", nothing on the site
+  answering it, and the vault's persona file recording Saïd exec-ed graduates as the
+  biggest Cohort 1 channel. Drummond picked the timing-and-sequencing angle.
+  Its honest move is refusing the premise: the question assumes an autumn intake, and
+  online AI programmes now repeat through the year. Verified what could be verified
+  (Saïd's programme: online, four weeks, from £1,500, builds a simple agent) and said
+  plainly that in-person dates are set individually. **No claim about other providers'
+  calendars, and no career-outcome statistics** - the adjacent query asks about title
+  changes after a programme, and inventing a number there would have been the easy
+  wrong answer. Cross-linked into the exec cluster built in cycle 88.
+  Checked: no banned words, no em dashes, British spelling, capsule 51 words.
+  **Indexing requested** on Drummond's authorisation. `/bootcamps/` and
+  `/bootcamps/oxford-agentic-bootcamp/` both confirmed "Indexing requested - added to a
+  priority crawl queue". **`/bootcamps/second-brain-bootcamp/` was not submitted** - the
+  console's search box kept refusing focus, which sent two duplicate requests to the
+  agentic page before the Chrome extension dropped out entirely. Duplicates are harmless
+  (Google states resubmitting does not change queue position) but they were waste. That
+  third URL still needs doing.
+  **Off-page drafts written** to `outreach/submission-drafts.md`, per Drummond's choice:
+  a research.com inclusion request and full LinkedIn Company Page copy, both in his
+  voice. The research.com draft carries a warning that their pages 403 to fetching, so
+  the loop could not read them and he should sanity-check the framing before sending.
+
 - **2026-08-24 — Cycle 91: Google has never crawled the programme pages, and the
   off-page call from 10 Aug is reversed.** Guide budget still spent.
   Looked at Search Console's index-coverage report, never opened before. **23 indexed,
