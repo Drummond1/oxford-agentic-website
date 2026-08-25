@@ -294,3 +294,24 @@ So the funnel works. Flat sales are a demand and promotion question, not a broke
 Chrome's automation timed out repeatedly on this page during the check; the curl timings
 above show that was the extension or the third-party iframe, not the site. **Do not
 record the site as slow.**
+
+
+---
+
+## IndexNow verified working — 25 August 2026
+
+The brief says "keep IndexNow pinging on deploys", and the pipeline had not been checked
+since it was repaired weeks ago. Checked end to end rather than trusting the job's green
+tick, which is misleading here: the job runs `continue-on-error`, so it reports success
+even if the endpoint rejects the submission.
+
+- **Guide publish (`1293274`): `indexnow: submitted 2 URL(s), status 200`.** Accepted.
+- **Ledger-only push (`b97c3ee`): "no page URLs affected by this push; nothing to
+  submit".** Correct - those commits touch no pages.
+
+Note for anyone reading run logs: every commit triggers **two** workflow runs with the
+same title - `CI` (build, validate and audit) and `Deploy to GitHub Pages`. Only the
+deploy run has the `indexnow` job. Looking at the CI run and finding no IndexNow output
+means nothing.
+
+**Nothing to fix. Do not re-verify unless the deploy workflow changes.**

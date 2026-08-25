@@ -185,6 +185,25 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 98: IndexNow verified working. Third cycle running with nothing
+  broken to find.** No site change.
+  The brief says keep IndexNow pinging, and it had not been checked since the pipeline was
+  repaired. Did not trust the job's green tick - the job runs `continue-on-error`, so it
+  reports success even when the endpoint rejects the submission. Read the logs instead:
+  the guide publish shows **"submitted 2 URL(s), status 200"**, and ledger-only pushes
+  correctly report "no page URLs affected". Working end to end.
+  Recorded a trap while there: every commit triggers **two** runs with the same title, CI
+  and Deploy to GitHub Pages, and only the deploy run carries the `indexnow` job. Reading
+  the CI run and seeing no IndexNow output proves nothing - which is exactly the mistake
+  made mid-cycle before spotting it.
+  **On cadence.** Cycles 96, 97 and 98 each verified something and found nothing to fix.
+  That is a real signal, not a run of bad luck: Search Console is fully swept, the refresh
+  backlog turned out to be phantom, the funnel works and the pipeline works. The inputs
+  that could change anything now move on a **daily** clock (Search Console refresh, guide
+  budget) or a multi-day one (the crawl requests landing), while the two levers that
+  matter are Drummond's. Hourly cycles from here mostly re-read the same numbers, so the
+  interval is going to three hours until something upstream changes.
+
 - **2026-08-25 — Cycle 97: the guide-refresh backlog was mostly phantom. Correcting an
   earlier claim.** No site change - nothing needed one.
   Several cycles ago the loop told Drummond that ten of eighteen guides had never been
