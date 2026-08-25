@@ -184,3 +184,42 @@ variants, still zero clicks. `agentic ai oxfordshire` is the one that moved: pos
 43.9 to 37.9. Intent is unchanged and still wrong for the product - *build it for me*,
 not *teach me*. No pages built. Worth another look if it reaches page one, because a
 query at position 10 with service intent is a different conversation from one at 38.
+
+
+---
+
+## Links report — read 25 August 2026, 16:35
+
+**External links: Total 0.** Measured by Google, not inferred. Every off-page conclusion
+in this file now rests on a direct measurement rather than an argument.
+
+**Internal links: total 69.** Top linked, from Google's crawled subset only:
+`/` (14), `/about/` (14), `/events/oxford-agentic-bootcamp-cohort-2/` (14), `/guides/`
+(11), `/events/` (10), `/team/` (6). No programme page appears, which is consistent with
+them being linked mostly from pages Google has not crawled.
+
+### Correcting cycle 91
+
+Cycle 91 said `/bootcamps/oxford-agentic-bootcamp/` has "257 inbound internal links".
+That number was **href occurrences across all built HTML**, not linking pages. The
+correct figure is **44 distinct linking pages** (258 occurrences, because nav, footer,
+cards and prose all link it from the same page). The conclusion is unchanged and now
+better supported - 44 pages is abundant, and External links = 0 confirms the diagnosis
+outright - but the evidence was quoted in a way that overstated it.
+
+### What that recount actually found
+
+`/bootcamps/` had **3 inbound linking pages**: `/about/` and the two programme pages.
+Cause: `getNav` pointed the "Bootcamps" item at `programmes[0]`, the first programme
+page, in both header and footer, so the index was never linked from either. It sits in
+the sitemap carrying CollectionPage schema and Google had discovered it without crawling
+it.
+
+Fixed by pointing the **footer** item at the index, which the nav docblock already
+describes as "the full site map - so nothing becomes unreachable". **3 to 38 linking
+pages.** The header still goes straight to the flagship programme: that is the booking
+path, and where "Bootcamps" lands in the header is a funnel decision rather than a
+cleanup.
+
+Left alone deliberately: `programmes[0]` decides the header destination by sort order,
+so adding a programme could silently move it. Worth knowing, not worth changing unasked.

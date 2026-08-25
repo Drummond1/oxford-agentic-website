@@ -185,6 +185,28 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-25 — Cycle 94: Google confirms zero external links, and a near-orphaned
+  hub page.** Guide budget spent.
+  Opened Search Console's Links report, never checked before. **External links: Total 0**
+  - measured, not inferred. Every off-page conclusion in the ledger now rests on a
+  measurement instead of an argument.
+  **Correcting cycle 91.** It said the flagship programme page has "257 inbound internal
+  links". That was href *occurrences* across built HTML, not linking pages; the real
+  figure is **44 distinct pages**. The conclusion survives - 44 is still abundant, and
+  External links = 0 settles it - but the number was quoted in a way that overstated the
+  evidence.
+  **The recount found something the inflated number hid.** `/bootcamps/` had **3**
+  inbound linking pages: About and the two programme pages. `getNav` pointed the
+  "Bootcamps" item at `programmes[0]` in both header and footer, so the index was linked
+  from neither, while sitting in the sitemap with CollectionPage schema and discovered-
+  but-uncrawled by Google.
+  Fixed in the footer only, which the nav docblock already calls "the full site map - so
+  nothing becomes unreachable". **3 to 38 linking pages.** The header still goes straight
+  to the flagship: that is the booking path, and where "Bootcamps" lands there is a
+  funnel decision rather than a cleanup, so it stays Drummond's.
+  Also noted, not changed: `programmes[0]` decides the header destination by sort order,
+  so adding a third programme could silently move it.
+
 - **2026-08-25 — Cycle 93: all three programme pages now queued for crawl.** Guide
   budget spent today on `when-ai-executive-cohorts-run`, which is live and in the sitemap.
   **Finished what cycle 92 left broken.** `/bootcamps/second-brain-bootcamp/` had failed

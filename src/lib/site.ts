@@ -192,7 +192,22 @@ export async function getNav(placement: 'header' | 'footer' = 'header'): Promise
   if (programmes.length > 0) {
     items.push({
       label: 'Bootcamps',
-      href: paths.programme(programmes[0].data.slug),
+      /*
+       * Header goes straight to the flagship programme, because the header is
+       * the booking path and with two programmes an index is a click in the
+       * way. The footer is the full site map, so it points at the index.
+       *
+       * That difference is the only thing linking /bootcamps/ anywhere. Before
+       * this it had three inbound pages - About and the two programme pages -
+       * while sitting in the sitemap carrying CollectionPage schema, and Google
+       * had discovered it without ever crawling it (Search Console, 24 Aug).
+       * The footer runs on every page, so this takes it from three to all.
+       *
+       * `programmes[0]` deciding the header destination by sort order is left
+       * alone on purpose: where "Bootcamps" lands in the header is a funnel
+       * decision rather than a cleanup, and it belongs to Drummond.
+       */
+      href: placement === 'footer' ? paths.programmes() : paths.programme(programmes[0].data.slug),
       children: programmes.map((p) => ({ label: p.data.name, href: paths.programme(p.data.slug) })),
     });
   }
