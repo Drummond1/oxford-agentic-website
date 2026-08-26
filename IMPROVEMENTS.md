@@ -185,6 +185,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-26 — Cycle 107: first real growth in the data.** Search Console advanced to
+  24 Aug after being stuck on 23 Aug for roughly 18 hours across several cycles.
+  **50 clicks, 483 impressions, 10.4% CTR, average position 27.1.** In one day: +5 clicks,
+  +25 impressions, CTR +0.6pp, position improved 0.7. Best single-day gain since the site
+  launched.
+  `oxford agentic ai course` did most of it - 4 clicks to 5, position 4.2 to 4.0,
+  impressions 28 to 32. **`agentic second brain` appeared for the first time**: 1 click
+  from 1 impression at position 16, the first query the second programme has registered
+  on at all. One impression is not evidence and nothing is being built for it, but it is
+  worth watching for repetition.
+  **Still no actionable CTR gap**, so job #1 again falls through to job #2. `oxford
+  agentic ai course` converts at 15.6% from position 4, which is normal. Everything else
+  is position 37-90, where zero clicks is expected rather than symptomatic.
+  **Guide budget available and deliberately unspent.** The shortlist was declined on the
+  probe, and this data does not name a replacement target. `agentic second brain` at one
+  impression is not a brief. Writing a guide because the budget allows it is the
+  manufactured work this loop has been trying to avoid.
+  Noted for whoever reads the next data: the timing guide went live 25 Aug and **cannot**
+  appear in data through 24 Aug. The slight position drift on its target query is not a
+  verdict on it.
+
 - **2026-08-25 — Cycle 101: both shortlisted guides declined on the probe. The
   objections belong on the event page, not in search.** No site change; guide budget was
   already spent today anyway.

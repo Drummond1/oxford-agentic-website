@@ -315,3 +315,36 @@ deploy run has the `indexnow` job. Looking at the CI run and finding no IndexNow
 means nothing.
 
 **Nothing to fix. Do not re-verify unless the deploy workflow changes.**
+
+
+---
+
+## Update — 26 August 2026, 14:00 (data through 24 Aug)
+
+**50 clicks · 483 impressions · 10.4% CTR · average position 27.1.** First genuine
+movement since the baseline: +5 clicks, +25 impressions, CTR up 0.6pp, position improved
+0.7 in a single day. 24 queries, up from 22.
+
+| query | clicks | impr | position | vs 23 Aug |
+|---|---|---|---|---|
+| oxford agentic ai course | **5** | 32 | **4.0** | +1 click, +4 impr, position 4.2 to 4.0 |
+| agentic second brain | **1** | 1 | 16.0 | **new, and it converted** |
+| what time of year do executive ai cohorts usually begin? | 0 | 39 | 76.8 | +1 impr, position slightly worse |
+| agentic ai for finance | 0 | 22 | 81.9 | unchanged |
+| agentic ai oxfordshire | 0 | 12 | 37.9 | unchanged |
+
+**`agentic second brain` is the interesting one** - the first query the Second Brain
+programme has registered on, at position 16, and it took the click. One impression is not
+evidence, so nothing is being built for it. Watch whether it repeats.
+
+**Still no actionable impressions-vs-CTR gap.** `oxford agentic ai course` converts at
+15.6% from position 4, which is normal for that position. Everything else sits at 37-90
+where zero clicks is the expected outcome, not a symptom. The diagnosis from cycle 91
+holds: this is a ranking and crawl-budget problem, not a click-through one.
+
+The timing guide went live on 25 Aug, so it cannot show in data through 24 Aug. Do not
+read the position drift on that query as a verdict on it - too early by at least a week.
+
+**Oxfordshire services cluster (standing report):** unchanged. `agentic ai oxfordshire`
+12 impressions at 37.9, `agentic ai companies oxfordshire` 6 at 69.2, remainder in the
+tail. Zero clicks throughout. Intent unchanged.
