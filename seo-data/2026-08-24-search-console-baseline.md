@@ -348,3 +348,44 @@ read the position drift on that query as a verdict on it - too early by at least
 **Oxfordshire services cluster (standing report):** unchanged. `agentic ai oxfordshire`
 12 impressions at 37.9, `agentic ai companies oxfordshire` 6 at 69.2, remainder in the
 tail. Zero clicks throughout. Intent unchanged.
+
+
+---
+
+## Update — 27 August 2026, 15:30 (data through 25 Aug)
+
+**51 clicks · 507 impressions · 10.1% CTR · average position 26.6.** Position has now
+improved three readings running: 28.3 → 27.8 → 27.1 → 26.6.
+
+| query | clicks | impr | position | vs 24 Aug |
+|---|---|---|---|---|
+| oxford agentic ai course | 5 | 32 | 4.0 | unchanged |
+| **oxford generative and agentic ai programme** | 0 | **12** | **9.8** | **1 impr → 12** |
+| what time of year do executive ai cohorts usually begin? | 0 | 42 | 78.0 | +3 impr, position slightly worse |
+| agentic ai oxfordshire | 0 | 13 | **35.7** | improving again, 37.9 → 35.7 |
+| agentic ai for finance | 0 | 22 | 81.9 | unchanged |
+
+### The competitor-brand query is the development
+
+`oxford generative and agentic ai programme` is **Saïd's own programme name**, and this
+site went from 1 impression to 12 on it in two days, holding position ~10. People
+comparing Saïd's programme are now seeing Oxford Agentic at the page-one boundary with
+real volume. That is the strategic point the off-page file made in the abstract, now
+showing up in the data.
+
+**It is not a CTR gap, and it should not be treated as one.** At position 9.8, expected
+CTR is roughly 2-3%, so 12 impressions predicts about **0.3 clicks**. Zero is what the
+arithmetic expects. "Good position plus zero clicks" is a tempting pattern to act on and
+the numbers do not support it. Revisit only if impressions reach a level where expected
+clicks exceed one and the actual figure is still zero.
+
+### Do not misread the timing guide yet
+
+`what time of year do executive ai cohorts usually begin?` gained 3 impressions and lost
+1.2 positions. The guide published on **25 Aug**, so this data covers its first partial
+day and Google had not crawled it. This is not a verdict. Give it to roughly 5 September.
+
+**Oxfordshire cluster (standing report):** `agentic ai oxfordshire` continues climbing -
+43.9 → 37.9 → 35.7 across three readings, now 13 impressions, still zero clicks. Intent
+unchanged. The earlier note stands: if it reaches page one, service-intent traffic
+becomes a commercial question for Drummond rather than an SEO one.

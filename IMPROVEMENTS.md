@@ -185,6 +185,31 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-27 — Cycle 116: the competitor's brand query is now sending real volume.**
+  Data advanced to 25 Aug after three days stuck on 24 Aug. **51 clicks, 507 impressions,
+  average position 26.6** - position improving on three consecutive readings, 28.3 to
+  27.8 to 27.1 to 26.6.
+  **`oxford generative and agentic ai programme` went from 1 impression to 12, holding
+  position ~10.** That is Saïd's own programme name. Buyers comparing their programme are
+  now seeing this site at the page-one boundary with real volume, which is the point the
+  off-page file argued in the abstract.
+  **Deliberately not treated as a CTR gap.** Position 9.8 with 12 impressions and zero
+  clicks looks like the job #1 target, and the arithmetic says otherwise: expected CTR at
+  that position is 2-3%, so 12 impressions predicts about 0.3 clicks. Zero is exactly what
+  should happen. Doing the sum before acting is what stopped a cosmetic title rewrite
+  being dressed up as optimisation - the second time this month that pattern nearly won.
+  Recorded a trigger instead: revisit when expected clicks exceed one and actual is still
+  zero.
+  Tried to confirm which page ranks for it; the Pages tab would not respond and the
+  extension has been unreliable. Not chased, because the answer would not have changed the
+  decision.
+  **Guarded against a future misreading:** the timing guide's target query gained 3
+  impressions and lost 1.2 positions. The guide went live on 25 Aug, so this is its first
+  partial day and Google had not crawled it. Written into the baseline that this is not a
+  verdict and to wait until about 5 September.
+  **Oxfordshire (standing report):** `agentic ai oxfordshire` climbing steadily across
+  three readings, 43.9 to 37.9 to 35.7, now 13 impressions, still zero clicks.
+
 - **2026-08-26 — Cycle 107: first real growth in the data.** Search Console advanced to
   24 Aug after being stuck on 23 Aug for roughly 18 hours across several cycles.
   **50 clicks, 483 impressions, 10.4% CTR, average position 27.1.** In one day: +5 clicks,
