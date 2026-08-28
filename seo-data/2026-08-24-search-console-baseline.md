@@ -389,3 +389,40 @@ day and Google had not crawled it. This is not a verdict. Give it to roughly 5 S
 43.9 → 37.9 → 35.7 across three readings, now 13 impressions, still zero clicks. Intent
 unchanged. The earlier note stands: if it reaches page one, service-intent traffic
 becomes a commercial question for Drummond rather than an SEO one.
+
+
+---
+
+## Update — 28 August 2026, 08:35 (data through 26 Aug)
+
+**52 clicks · 536 impressions · 9.7% CTR · average position 26.6.** 27 queries, up from 24.
+
+| query | clicks | impr | position | vs 25 Aug |
+|---|---|---|---|---|
+| oxford agentic ai course | **6** | 35 | **3.9** | +1 click, +3 impr, 4.0 → 3.9 |
+| what time of year do executive ai cohorts usually begin? | 0 | 43 | **77.3** | +1 impr, **first position gain** |
+| oxford generative and agentic ai programme | 0 | **15** | 9.9 | +3 impr, holding ~10 |
+| **how long after an executive ai program do graduates usually see a title change?** | 0 | **7** | **59.9** | **3 → 7 impr, 74.7 → 59.9** |
+| agentic ai oxfordshire | 0 | 13 | 35.7 | unchanged |
+
+### The executive cluster is moving
+
+Both exec-family queries improved position on the same reading, and the outcomes one
+gained 15 places. That is consistent with the timing guide (25 Aug) being crawled and the
+cycle-88 cluster links taking hold - but **two days is not proof**, and the earlier note
+stands: no verdict before about 5 September. Recording the direction, not a conclusion.
+
+### Still no actionable CTR gap
+
+`oxford agentic ai course` converts at 17% from position 3.9, which is healthy.
+`oxford generative and agentic ai programme` now has 15 impressions at position 9.9;
+expected clicks ≈ 0.4, so zero remains what the arithmetic predicts. The trigger set on
+27 Aug has not been met.
+
+### The outcomes query is growing, and still cannot be written about
+
+`how long after an executive ai program do graduates usually see a title change?` is the
+angle Drummond declined on 25 Aug in favour of timing. It is now the fastest-improving
+query on the site. **This does not change the decision.** Answering it means stating how
+long after a programme people get promoted, and there is no data for that. Inventing a
+number would be the easy wrong answer, and the query growing does not make it available.

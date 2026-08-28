@@ -185,6 +185,24 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-28 — Cycle 127: the executive cluster starts moving.** Data through 26 Aug.
+  **52 clicks, 536 impressions, average position 26.6**, 27 queries up from 24.
+  `oxford agentic ai course` took another click and improved to position 3.9. More
+  interesting, **both executive-family queries gained position on the same reading**: the
+  timing query 78.0 → 77.3, its first gain, and the outcomes query **74.7 → 59.9 with
+  impressions up 3 → 7**, entering the top ten.
+  That is consistent with the 25 Aug timing guide being crawled and the cycle-88 cluster
+  links working. **Two days is not proof**, and the note written on 27 Aug stands: no
+  verdict before about 5 September. Direction recorded, conclusion withheld.
+  **The outcomes query is now the fastest-improving on the site, and it still cannot be
+  written about.** It is the angle declined on 25 Aug in favour of timing. Answering it
+  means saying how long after a programme people get promoted, and no data for that
+  exists. A query growing does not make a fact available - inventing a number would be
+  the easy wrong answer, and rising impressions are exactly the pressure that makes it
+  tempting.
+  Guide budget available and unspent for a fourth day. Still no target the evidence
+  supports.
+
 - **2026-08-27 — Cycle 116: the competitor's brand query is now sending real volume.**
   Data advanced to 25 Aug after three days stuck on 24 Aug. **51 clicks, 507 impressions,
   average position 26.6** - position improving on three consecutive readings, 28.3 to
