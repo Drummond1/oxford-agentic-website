@@ -185,6 +185,17 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-28 — Cycle 133: Cohort 2 took a booking.** First movement in about nine days.
+  `guest_count` 11 → **12**, ticket-type `spots_remaining` 7 → **6**, event-level 9 → **8**.
+  All three counters moved consistently, so this is a real sale rather than a Luma data
+  quirk. **19 days out, 6 spots left on the ticket type**, £450, not sold out.
+  Second Brain unchanged: 10 of 20 remaining, £325 early bird / £450 full day.
+  **No causal claim.** It would be easy to place this next to the search data improving
+  and imply the loop earned it. The site has taken **51 clicks in total across five
+  weeks**; a single £450 booking is far more likely to have come from Drummond's own
+  network, an email, or direct traffic. Recording the fact, not a story about it.
+  Nothing shipped - no site change was warranted.
+
 - **2026-08-28 — Cycle 127: the executive cluster starts moving.** Data through 26 Aug.
   **52 clicks, 536 impressions, average position 26.6**, 27 queries up from 24.
   `oxford agentic ai course` took another click and improved to position 3.9. More
