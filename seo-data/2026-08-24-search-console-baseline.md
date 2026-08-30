@@ -426,3 +426,36 @@ angle Drummond declined on 25 Aug in favour of timing. It is now the fastest-imp
 query on the site. **This does not change the decision.** Answering it means stating how
 long after a programme people get promoted, and there is no data for that. Inventing a
 number would be the easy wrong answer, and the query growing does not make it available.
+
+
+---
+
+## Update — 30 August 2026 (data through 27 Aug)
+
+**53 clicks · 576 impressions · 9.2% CTR · average position 25.4.** Position improving on
+five consecutive readings: 28.3 → 27.8 → 27.1 → 26.6 → 25.4.
+
+| query | clicks | impr | position | vs 26 Aug |
+|---|---|---|---|---|
+| oxford agentic ai course | 6 | 35 | 3.9 | unchanged |
+| what time of year do executive ai cohorts usually begin? | 0 | 43 | 77.3 | **flat** |
+| agentic ai for finance | 0 | 22 | 81.9 | unchanged |
+| oxford generative and agentic ai programme | 0 | **21** | 10.2 | +6 impr |
+| how long after an executive ai program do graduates usually see a title change? | 0 | **9** | **55.6** | +2 impr, 59.9 → 55.6 |
+
+### An honest note on the timing guide
+
+The executive cluster is improving, but **not on the query the guide targets**. The
+timing query is flat at 77.3 across two readings. The one climbing steadily is the
+**outcomes** query - 74.7 → 59.9 → 55.6 - which is the angle Drummond declined and which
+still cannot be written about honestly.
+
+It would be easy to present "the executive cluster is moving" as evidence the guide is
+working. It is not evidence of that. The cluster links from cycle 88 and general domain
+age are at least as plausible. Verdict on the guide still waits until about 5 September.
+
+### CTR trigger still not met
+
+`oxford generative and agentic ai programme` now has 21 impressions at position 10.2.
+Expected clicks ≈ 0.5, so zero remains consistent with the arithmetic. The trigger set on
+27 Aug - expected clicks above one, actual still zero - has not fired.
