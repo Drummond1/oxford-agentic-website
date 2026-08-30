@@ -459,3 +459,34 @@ age are at least as plausible. Verdict on the guide still waits until about 5 Se
 `oxford generative and agentic ai programme` now has 21 impressions at position 10.2.
 Expected clicks ≈ 0.5, so zero remains consistent with the arithmetic. The trigger set on
 27 Aug - expected clicks above one, actual still zero - has not fired.
+
+
+---
+
+## Update — 30 August 2026, 15:50 (data through 28 Aug)
+
+**54 clicks · 595 impressions · 9.1% CTR · average position 24.9.** Position improving on
+**six consecutive readings**: 28.3 → 27.8 → 27.1 → 26.6 → 25.4 → 24.9. 28 queries.
+
+| query | clicks | impr | position | note |
+|---|---|---|---|---|
+| oxford agentic ai course | 6 | 37 | **3.8** | +2 impr |
+| **oxford agentic ai** | **1** | **6** | **1.0** | **new - brand name at position 1** |
+| what time of year do executive ai cohorts usually begin? | 0 | 43 | 77.3 | flat, third reading |
+| oxford generative and agentic ai programme | 0 | **26** | 10.5 | +5 impr |
+| how long after an executive ai program do graduates usually see a title change? | 0 | 9 | 55.6 | unchanged |
+
+**The brand name now ranks first.** `oxford agentic ai` at position 1.0. Worth having and
+worth keeping in proportion: **six impressions**. A brand query ranking first is table
+stakes for a real business, not a marketing achievement - it means someone searching the
+exact name finds the site, which it should.
+
+**Still no actionable CTR gap.** `oxford generative and agentic ai programme` is now at 26
+impressions, position 10.5; expected clicks ≈ 0.6, so zero is consistent. The trigger
+(expected clicks above one, actual zero) has still not fired, though it is getting closer.
+`oxford agentic ai` converts at 16.7% from position 1, which is lowish for that position,
+but six impressions is not a sample.
+
+**The timing query is now flat across three readings** at 77.3. The guide targeting it
+went live 25 Aug. Verdict still waits until about 5 September, but flat-across-three is
+worth noticing rather than explaining away.
