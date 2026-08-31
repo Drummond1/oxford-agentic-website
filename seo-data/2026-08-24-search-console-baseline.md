@@ -490,3 +490,45 @@ but six impressions is not a sample.
 **The timing query is now flat across three readings** at 77.3. The guide targeting it
 went live 25 Aug. Verdict still waits until about 5 September, but flat-across-three is
 worth noticing rather than explaining away.
+
+
+---
+
+## Update — 31 August 2026 (data through 29 Aug)
+
+**55 clicks · 624 impressions · 8.8% CTR · average position 25.1.**
+
+**Position regressed for the first time in six readings** (24.9 → 25.1). The cause is
+visible rather than mysterious: `agentic ai oxfordshire` went 13 → 20 impressions at a
+*worse* position (35.7 → 42.6), and more impressions at a low position drags the
+site-wide average down. Impressions and clicks both still rose. This is a composition
+effect, not a decline.
+
+| query | clicks | impr | position | vs 28 Aug |
+|---|---|---|---|---|
+| oxford agentic ai course | 6 | 39 | **3.7** | +2 impr, still improving |
+| oxford agentic ai | 1 | 6 | 1.0 | unchanged |
+| what time of year do executive ai cohorts usually begin? | 0 | **43** | **77.3** | **identical, fourth reading** |
+| oxford generative and agentic ai programme | 0 | 27 | 10.4 | +1 impr |
+| agentic ai oxfordshire | 0 | **20** | **42.6** | +7 impr, position 35.7 → 42.6 |
+
+### The timing guide is not reaching its query
+
+`what time of year do executive ai cohorts usually begin?` has now returned **43
+impressions at position 77.3 across four consecutive readings** - identical on both
+numbers - while site-wide impressions grew 536 → 624. It contributed **zero** new
+impressions over four days.
+
+The verdict date set on 27 Aug was ~5 September and that has not arrived. But four
+readings with identical impressions *and* identical position is not the signature of a
+page slowly gaining ground; it looks like Google is not re-evaluating the site for that
+query at all. Do not quietly extend the deadline when it passes. On 5 Sept, if the
+numbers are still 43/77.3, record the guide as **not having reached its target query**
+and say so plainly rather than waiting for a better week.
+
+### Oxfordshire cluster (standing report)
+
+`agentic ai oxfordshire` is now the **third-largest query by impressions** at 20, having
+grown 10 → 12 → 13 → 20. Position moved the wrong way (35.7 → 42.6), which is what
+happens when a query starts surfacing on broader searches. Still zero clicks across all
+of it, and the intent is unchanged: *build it for me*, not *teach me*. No pages built.
