@@ -185,6 +185,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-08-31 — Competitor re-probe (due ~30 Aug), and the Saïd date finally verified.**
+  Their page 403s to `WebFetch` and to curl, which is why this sat unverified since
+  24 Aug. Read it in the browser instead and got the whole passage rather than a
+  snippet. **Start dates: 16 September 2026 and 11 November 2026.** Four weeks, online,
+  £1,500. Three modules; module 3 "Hands-on with Agents" builds a simple agent and
+  produces governance artefacts. Wooldridge and Holweg lead it. Audience is ops leaders,
+  technology directors and senior consultants.
+  - So the "unverified 16 Sept" recorded on 24 Aug was correct, and the secondary
+    listings showing May/July cohorts were simply stale. **Method note: when a
+    competitor site 403s, use the browser tools before recording a fact as unverifiable.**
+  - **Their September cohort starts the same day our Worcester College day runs.** Not a
+    clash, since theirs is four weeks online, but both market into the same window on the
+    same words.
+  - Refreshed `when-ai-executive-cohorts-run` on the back of it: the vague "comes round
+    several times a year" is now the two actual dates with the date they were checked,
+    and one restrained sentence on the 16 Sept coincidence. **This refresh does not
+    contaminate the 5 Sept verdict** on that guide - the verdict measures impressions
+    already banked at position 77.3, all of which predate today.
+  - No new entrants found beyond The Oxford AI School (Witney, from £149), already logged.
+
 - **2026-08-28 — Cycle 133: Cohort 2 took a booking.** First movement in about nine days.
   `guest_count` 11 → **12**, ticket-type `spots_remaining` 7 → **6**, event-level 9 → **8**.
   All three counters moved consistently, so this is a real sale rather than a Luma data

@@ -319,15 +319,21 @@ length and the positioning is the same edit, done once, in three places.
     converting**.
   - **Saïd is no longer "strategic, not hands-on".** Their new *Oxford Generative and
     Agentic AI Programme* (£1,500, online, 4 weeks) includes building a simple agent
-    on an existing platform. **The "next start 16 Sept 2026" that stood here is
-    unverified** — re-checked 24 Aug 2026 and their own page 403s to fetching, while
-    secondary listings show May and July 2026 cohorts instead. Treat the programme as
-    running several online cohorts a year, not as an autumn intake, and do not build
-    copy on a specific date without checking their site by hand. The honest distinction is now
+    on an existing platform. **Verified 31 Aug 2026** by reading their
+    own page in a browser (it 403s to `WebFetch` and to curl, so a plain fetch will keep
+    failing - use the browser tools). Start dates listed: **16 September 2026 and
+    11 November 2026**. Four weeks, online, £1,500, three modules, the third of which
+    ("Hands-on with Agents") builds a simple agent and produces governance artefacts.
+    Led by Mike Wooldridge and Matthias Holweg. Aimed at ops leaders, technology
+    directors and senior consultants. So the earlier "unverified 16 Sept" was right after
+    all, and the programme runs several online cohorts a year rather than one autumn
+    intake. **Their September cohort starts the same day our Worcester College day runs.**
+    Not a clash - theirs is four weeks online - but both market into the same window with
+    the same vocabulary. The honest distinction is now
     in-person, your own real task rather than a platform exercise, and the room —
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
-  - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probe ~30 Aug.
+  - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
 - **Google baseline, 24 Aug 2026:** 44 clicks, 437 impressions, average position 28.3
   over the site's whole life. Full table and analysis in
   `seo-data/2026-08-24-search-console-baseline.md` — **read it before trusting the GEO
