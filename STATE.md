@@ -334,8 +334,14 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
-- **Google baseline, 24 Aug 2026:** 44 clicks, 437 impressions, average position 28.3
-  over the site's whole life. Full table and analysis in
+- **Google baseline. Latest reading 2 Sept 2026 (data through 30 Aug): 55 clicks,
+  639 impressions, average position 25.3** over the site's whole life. Started at
+  44 clicks / 437 impressions / position 28.3 on 24 Aug.
+  - **Clicks have been flat at 55 for two readings while impressions grew.** Not yet a
+    pattern. If clicks are still 55 on 4 Sept with impressions still climbing, it is one.
+  - Google's data pipeline stalled 31 Aug to 1 Sept: six consecutive pulls all ended at
+    29 Aug. It caught up overnight. Expect this and do not read a flat window as flat
+    performance without checking the end date on the chart. Full table and analysis in
   `seo-data/2026-08-24-search-console-baseline.md` — **read it before trusting the GEO
   block above**, which records Perplexity rankings, not Google ones. The two diverge
   sharply and the loop conflated them until 24 Aug.

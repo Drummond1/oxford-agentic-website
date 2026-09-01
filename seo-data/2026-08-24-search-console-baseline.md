@@ -532,3 +532,36 @@ and say so plainly rather than waiting for a better week.
 grown 10 → 12 → 13 → 20. Position moved the wrong way (35.7 → 42.6), which is what
 happens when a query starts surfacing on broader searches. Still zero clicks across all
 of it, and the intent is unchanged: *build it for me*, not *teach me*. No pages built.
+
+---
+
+## Reading 2026-09-02 (data through 30 August)
+
+Google's pipeline had stalled: six identical pulls between 31 Aug and 1 Sept all ended
+at 29 August. It shipped 30 Aug overnight, so this is the first new day in four.
+
+**All time (22 Jul – 30 Aug): 55 clicks, 639 impressions, average position 25.3.**
+Previous reading, through 29 Aug: 55 clicks, 624 impressions, position 25.1.
+So +15 impressions, **no new clicks**, and position drifts 25.1 → 25.3.
+
+Two days running now with impressions growing and clicks flat at 55. One day is noise.
+Watch whether the third day breaks it; if clicks stay at 55 through 4 Sept while
+impressions keep climbing, that is a real pattern and not a rounding artefact.
+
+### The timing guide's target query, fifth consecutive reading
+
+`what time of year do executive ai cohorts usually begin?` — **43 impressions, 0 clicks.**
+
+Identical to the four readings before it. It has now been **43 for five straight
+readings** while the site around it grew 536 → 624 → 639 impressions. The query is not
+merely converting badly; it has **stopped accruing impressions altogether** while
+everything else moves.
+
+**Position not re-read this time.** The metric toggle did not add the column and the
+screenshot call failed on a zero-width window, so the last measured position stands at
+77.3 and is not confirmed as of today. Do not restate 77.3 as a current figure.
+
+**The 5 Sept verdict stands as written and is not being delivered early.** The
+pre-commitment was a date, and moving it forward because the evidence looks conclusive
+is the same error as moving it back because it looks inconvenient. On 5 Sept, read the
+query one more time, confirm the position, and record the outcome.
