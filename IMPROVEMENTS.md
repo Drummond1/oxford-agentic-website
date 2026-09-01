@@ -185,6 +185,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-01 — Probed a Second Brain guide angle and declined to write it.**
+  The ledger asks for new guides weighted toward Second Brain (2 against 13), so the
+  candidate was the retrieval question: *how to use AI to search and use your own notes*.
+  Probed before writing, per the 12 Aug hard rule. It fails both gates.
+  - **Winnable?** Marginally, and not worth it. No institutional publisher owns the
+    query, but the field is dense with tool-tutorial and listicle SEO - Obsidian plugin
+    walkthroughs, Smart Connections, AnythingLLM, Taskade, Claude Code plus MCP setups,
+    "11 best AI second brain tools". One guide does not outrank a category of blogs
+    whose whole business is that query.
+  - **Converts?** No, and this is the decisive one. Every top result is a free setup
+    tutorial, and the searcher wants install steps: `ollama serve`, plugin settings,
+    a vault folder structure. That is a tinkerer, not a senior leader who reads a lot
+    and retrieves none of it. Traffic from it would be vanity.
+  - **What this rules out:** the whole "how to build/set up an AI second brain" family
+    of queries, not just this phrasing. The tool-tutorial field owns the *setup*
+    question. If a Second Brain guide is to be written, it has to sit on a question the
+    tutorials never answer - what to do with the thing once it exists, or why capture
+    keeps failing for people who already have the tools - not on how to wire it up.
+  - No guide shipped. Today's budget is spent on the probe, which is the correct
+    outcome: guide count is not the metric.
+
 - **2026-08-31 — Competitor re-probe (due ~30 Aug), and the Saïd date finally verified.**
   Their page 403s to `WebFetch` and to curl, which is why this sat unverified since
   24 Aug. Read it in the browser instead and got the whole passage rather than a
