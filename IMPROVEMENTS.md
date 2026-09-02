@@ -185,6 +185,16 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-02 — Cohort 2 took a booking.** `guest_count` 12 → **13**, ticket-type
+  `spots_remaining` 6 → **5**, event-level 8 → **7**. All three counters moved together,
+  so this is a real sale rather than a Luma display quirk. Previous sale was 28 Aug, so
+  five days between bookings. **14 days out, 5 spots left on the ticket type**, £450,
+  not sold out.
+  - No site change caused this and none is claimed. The last two pushes were a ledger
+    entry and a competitor-date verification, neither of which a buyer would ever see.
+  - Search Console still ends at 30 Aug, so there is no way to tell whether this booking
+    arrived through organic search. Do not attribute it.
+
 - **2026-09-01 — Probed a Second Brain guide angle and declined to write it.**
   The ledger asks for new guides weighted toward Second Brain (2 against 13), so the
   candidate was the retrieval question: *how to use AI to search and use your own notes*.
