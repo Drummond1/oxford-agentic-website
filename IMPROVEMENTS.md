@@ -103,8 +103,10 @@ Status: `todo` · `blocked` (why) · `doing`
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
    (expands a real event-page FAQ); agentic AI for charities and non-profits
    (persona-established). The second-brain contents guide shipped in cycle 48.
-   **The Second Brain line now has two supporting guides; the Agentic line has 13.
-   Keep weighting new guides toward Second Brain until that is less lopsided.**
+   **The Second Brain line has four supporting guides as of 2 Sept 2026; the Agentic
+   line has 13. Keep weighting new guides toward Second Brain until that is less
+   lopsided.** (Said "two" until 2 Sept; it was wrong - count the files, do not trust
+   this line's memory of itself.)
    (Budget for 10 Aug is SPENT - the vs-note-taking guide, cycle 54.)
    Each must answer a real question, stand alone, and link to the programme once.
    HARD RULE — no doorway pages: never create location variants ("AI bootcamp London",
@@ -184,6 +186,49 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-02 — Shipped a Second Brain guide on the failure query.** Drummond asked for
+  more content to help the Second Brain event rank. `why-your-second-brain-stopped-getting-used`.
+  - **This is the angle yesterday's declined probe pointed at.** The 1 Sept probe ruled
+    out the whole "how to set up an AI second brain" family: tool-tutorial SEO owns it and
+    the searcher wants install steps. The finding said a Second Brain guide has to sit on
+    what the tutorials never answer. This is that question.
+  - **Probe, both gates.** *Winnable:* yes, and materially more so than the setup query.
+    No institutional publisher owns "why is my second brain not working" - the field is
+    small AI-product blogs and Reddit threads, several of them thin content marketing
+    for a tool. *Converts:* better than the setup query, though **not clean**. The
+    searcher already built a system and is frustrated, which is the right shape, but
+    r/productivity and r/PKMS in the results mean a real hobbyist contingent who will
+    never buy a day in Oxford. **Mitigated by writing it for someone with work to do**
+    - decisions, clients, recurring facts - rather than for PKM as a hobby. Watch this
+    one: if it draws impressions with no engagement, the intent read was wrong.
+  - **The angle is the site's own, not the field's.** Every competing piece diagnoses
+    capture-without-review and prescribes either more discipline or an AI tool that
+    auto-organises. This guide says the system failed because its only reader was you,
+    and you were never going to do the reading, which is why swapping the reader (not
+    the folders) is what changes the outcome. That sits directly on the existing
+    vs-note-taking distinction rather than restating a competitor's diagnosis.
+  - **Correction: there are four Second Brain guides now, not three.** The backlog said
+    two. Already live before today: `what-goes-in-a-second-brain`,
+    `second-brain-for-ai-vs-note-taking`, `keeping-a-second-brain-from-going-stale`.
+    Checked the last of those in full to confirm no overlap - it opens by naming the
+    graveyard problem and explicitly declines it to talk about decay, so the failure
+    query was genuinely unanswered on this site. The two are cross-linked.
+
+- **2026-09-02 — Cohort 2 is one seat from selling out.** Five sales in about a day.
+  `guest_count` 12 → 13 → **16**, Full Day Pass `spots_remaining` 6 → 5 → **1**,
+  event-level 8 → 7 → **3**. `is_sold_out` still false. £450, 13 days out.
+  - Counters moved consistently across all three fields, so this is real rather than a
+    Luma display quirk. Named guests appear in the payload too.
+  - **The site copy was deliberately not changed.** "One seat left" is true right now and
+    could be false within the hour; putting a volatile number into a static page invites
+    a stale claim, which is exactly the failure the capacity rules exist to prevent.
+    Luma already shows live remaining spots on the page people actually book from.
+  - **This breaks the flat-sales read.** Cohort 2 had not moved between 28 Aug and
+    2 Sept, and the loop had been treating slow sales as the standing condition. It was
+    not. Do not build any argument on "Cohort 2 is not selling".
+  - For Drummond: at one seat, the live decisions are whether to raise the cap, open a
+    waitlist, or let it close. The loop will not touch any of those.
 
 - **2026-09-02 — Cohort 2 took a booking.** `guest_count` 12 → **13**, ticket-type
   `spots_remaining` 6 → **5**, event-level 8 → **7**. All three counters moved together,
