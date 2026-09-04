@@ -6,7 +6,7 @@ company: Oxford Agentic
 isHost: true
 order: 1
 links:
-  linkedin: https://www.linkedin.com/in/drummondgilbert/
+  linkedin: https://www.linkedin.com/in/drummondgilbert
 bio: >-
   Drummond Gilbert runs the Oxford Agentic Bootcamp. He teaches on AI at the University
   of Oxford's Saïd Business School, organises Oxford's Practical AI meetup, and has

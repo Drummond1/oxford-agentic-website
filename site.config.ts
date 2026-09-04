@@ -167,7 +167,7 @@ const config: SiteConfig = {
      * Company Page, or a real Luma calendar URL, is the fix — drop it in here.
      */
     social: {
-      linkedin: 'https://www.linkedin.com/in/drummondgilbert/',
+      linkedin: 'https://www.linkedin.com/in/drummondgilbert',
     },
   },
 

@@ -187,6 +187,36 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-04 — The Second Brain event already ranks #1 for its own commercial query.**
+  Drummond asked twice for content to help it rank, so the loop probed the commercial
+  query directly (`second brain workshop course UK in person one day`, GB). The bootcamp
+  page **came back first**, above every competitor.
+  - **This changes what "help it rank" means.** More top-of-funnel guides are not the
+    lever for a page that already wins its own query. The remaining levers are the
+    upstream questions (which the guides serve) and off-page entity signals, which are
+    still blocked on Drummond - see backlog 2b.
+  - **Two guide probes ran and both failed the gates.** (1) *How to give ChatGPT context
+    about my business*: the setup-tutorial family again in different vocabulary, and
+    worse, **OpenAI itself ranks for it** with its own Company Knowledge feature page.
+    That is the institutional-publisher case backlog 9 says cannot be won and should not
+    be tried. (2) The commercial query: no gap, we already hold it.
+  - **What did pass: the term is overloaded, and every meaning is bookable.** Shipped
+    `what-second-brain-actually-means`. Winnable because no provider writes the
+    comparison (each only sells its own); converts because the searcher is at the
+    booking-decision stage. It sends task-system buyers away on purpose.
+  - **Competitive intel, from search extracts and therefore unverified** - open the
+    sources before relying on any of it:
+    - A UK provider runs full-day workshops where "second brain" means a task and
+      attention system. Closest in-person UK competitor for the term, different problem.
+    - A US instructor sells a short online "management second brain" workshop.
+    - **Name collision: another operator uses the exact phrase "Second Brain Bootcamp"**
+      for an online US programme. Worth Drummond knowing about for brand and search.
+    - Also on the term: a gut-health workshop, and a Manchester IT consultancy trading
+      under the name. Both harmless, both muddy the query.
+  - Fixed while in there: the checker flagged Drummond's LinkedIn URL as redirecting on
+    a trailing slash (`/in/drummondgilbert/` → no slash), on /404, /about and /bootcamps.
+    One character.
+
 - **2026-09-02 — Shipped a Second Brain guide on the failure query.** Drummond asked for
   more content to help the Second Brain event rank. `why-your-second-brain-stopped-getting-used`.
   - **This is the angle yesterday's declined probe pointed at.** The 1 Sept probe ruled
