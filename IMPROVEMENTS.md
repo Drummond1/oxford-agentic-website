@@ -196,6 +196,42 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-06 — Removed the UTM tags from every outbound Luma link. This reverses the
+  "the UTM helper must stay" decision recorded under the CTA cycle above, and that
+  earlier reasoning is now known to be wrong.**
+  - **What the old note said:** untagged outbound links would "silently destroy the only
+    working attribution this project has", so every CTA landed on
+    `utm_source=oxfordagentic&utm_medium=website&utm_campaign=<slug>`. That was true when
+    the only measurement was counting Luma referrals by hand. It stopped being true the
+    moment paid search started, and it then inverted: the tags became the thing
+    destroying attribution.
+  - **Why it inverted.** oxfordagentic.com and luma.com are one funnel, and Google
+    Analytics cross-domain measurement is configured for oxfordagentic.com, luma.com and
+    lu.ma. A visitor from a Google ad arrives carrying a click id; cross-domain
+    measurement is what carries it over to Luma so the ticket sale can be credited to the
+    ad. **A UTM overrides campaign attribution in GA4**, so tagging the internal hop ended
+    the ad session and opened a fresh one sourced to "oxfordagentic / website". The click
+    id died at the domain boundary.
+  - **The evidence, 6 Sept 2026.** GA4 (property `oxfordagentic.com`, last 30 days):
+    10 purchases, £4,125 total revenue, of which Paid Search = **70 sessions, 0 key
+    events, £0**, while 3 purchases worth £1,300 sat in **Unassigned** and 4 in Direct.
+    In Google Ads, the conversion action `Luma ticket purchase (GA4)` — correctly built,
+    imported from the GA4 `purchase` event, value from GA4, 90-day window, Primary on the
+    Purchases goal — read **"Awaiting conversions"** while three Search campaigns spent
+    £196 in seven days.
+  - **The change.** `lumaUrlWithUtm(url, slug)` is gone, replaced by
+    `lumaBookingUrl(url)` in `src/lib/site.ts`, which passes the URL through untouched.
+    Call sites: `src/pages/events/[slug].astro` (hero, closing gold band, sticky mobile
+    bar) and `src/components/LumaEmbed.astro` (the always-visible fallback link). Nothing
+    else changed: the embed iframe is untouched, `luma_outbound_click` still fires on
+    every CTA, and query parameters that belong to Luma — `coupon=` above all — are
+    preserved, because the helper no longer rewrites the URL at all.
+  - **The rule to keep.** UTMs are for INBOUND links from channels we do not own —
+    LinkedIn, lemlist, newsletters, ad final URLs. They are never right on an internal hop
+    between two domains that share one measurement setup. **Do not re-add UTM tagging to
+    the Luma links.** The site-to-Luma step is already visible in GA4 as a path within a
+    single session, and `luma_outbound_click` counts the clicks.
+
 - **2026-09-06 — Probed the team angle, declined it, and found a positioning boundary.**
   Candidate: the shared/team second brain, which none of the five existing Second Brain
   guides answers and which a department head would plausibly ask.

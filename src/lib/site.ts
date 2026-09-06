@@ -274,13 +274,36 @@ export function isoDuration(start: Date, end: Date): string {
  * Luma — PRD §9
  * ------------------------------------------------------------------ */
 
-/** Every outbound Luma link is UTM-tagged so referrals reconcile weekly. */
-export function lumaUrlWithUtm(url: string, eventSlug: string): string {
-  const parsed = new URL(url);
-  parsed.searchParams.set('utm_source', 'oxfordagentic');
-  parsed.searchParams.set('utm_medium', 'website');
-  parsed.searchParams.set('utm_campaign', eventSlug);
-  return parsed.toString();
+/**
+ * The booking URL for an event, passed through untouched.
+ *
+ * This function used to stamp `utm_source=oxfordagentic&utm_medium=website`
+ * on every outbound Luma link. That was actively destroying attribution, so
+ * the tagging was removed on 6 Sept 2026. Do not put it back.
+ *
+ * Why: oxfordagentic.com and luma.com are one funnel, and Google Analytics
+ * cross-domain measurement is configured for both (plus lu.ma). A visitor who
+ * arrives from a Google ad carries a click id, and cross-domain measurement is
+ * what carries it across to Luma so the ticket sale can be credited to the ad
+ * that paid for it. A UTM on the link overrides campaign attribution: GA4 ends
+ * the ad session and opens a fresh one sourced to "oxfordagentic / website",
+ * and the click id is gone. Every paid registration was therefore landing in
+ * Direct or Unassigned, and the Google Ads conversion action sat on "Awaiting
+ * conversions" while the ads spent.
+ *
+ * UTMs are for INBOUND links from channels we do not own — LinkedIn, lemlist,
+ * newsletters, ad final URLs. They are never right on an internal hop between
+ * two domains that share one measurement setup. The site-to-Luma step is
+ * already visible in GA4 as a path within the session, and the
+ * `luma_outbound_click` analytics event still counts these clicks.
+ *
+ * Query parameters that belong to Luma itself — `coupon=` above all — are
+ * preserved, because they arrive on `lumaUrl` in the event's markdown and
+ * carry real meaning at checkout. Google Analytics appends its own `_gl`
+ * parameter at click time; nothing here may interfere with that.
+ */
+export function lumaBookingUrl(url: string): string {
+  return url;
 }
 
 export function lumaEmbedSrc(lumaEventId: string): string {

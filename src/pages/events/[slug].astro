@@ -17,7 +17,7 @@ import {
   getProgrammes,
   getSuccessorEvent,
   getTestimonials,
-  lumaUrlWithUtm,
+  lumaBookingUrl,
   paths,
   showSection,
   venueLine,
@@ -183,13 +183,16 @@ const registrationOpen = Boolean(data.lumaEventId);
  * The embed stays where it is for anyone who scrolls to it, so there are two
  * routes to the same checkout rather than one route and a detour.
  *
- * `lumaUrlWithUtm` is used rather than the bare URL so these clicks keep landing
- * on utm_source=oxfordagentic — the source that has already been credited with a
- * registration. Sending traffic off-site on an untagged link would silently
- * destroy the only working attribution this project has. The
- * `luma_outbound_click` analytics event is on each one for the same reason.
+ * These links are deliberately UNTAGGED. They used to carry
+ * utm_source=oxfordagentic, which broke rather than preserved attribution: a
+ * UTM overrides campaign data in GA4, so every visitor arriving from a Google
+ * ad started a new session on Luma and the ad click id was discarded at the
+ * domain boundary. Cross-domain measurement (configured for oxfordagentic.com,
+ * luma.com and lu.ma) is what carries the click across; a UTM cancels it. See
+ * `lumaBookingUrl` in lib/site.ts. The `luma_outbound_click` analytics event
+ * still counts each of these clicks.
  */
-const bookHref = data.lumaUrl ? lumaUrlWithUtm(data.lumaUrl, data.slug) : '#register';
+const bookHref = data.lumaUrl ? lumaBookingUrl(data.lumaUrl) : '#register';
 const bookIsExternal = bookHref !== '#register';
 
 // "Book" beats "Register": it is what the visitor is actually doing, it implies a

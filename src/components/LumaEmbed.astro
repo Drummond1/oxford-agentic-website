@@ -1,6 +1,6 @@
 ---
 import NewsletterForm from './NewsletterForm.astro';
-import { lumaEmbedSrc, lumaUrlWithUtm, showSection, type EventEntry } from '../lib/site';
+import { lumaEmbedSrc, lumaBookingUrl, showSection, type EventEntry } from '../lib/site';
 
 /**
  * Registration — PRD §9.
@@ -24,7 +24,7 @@ interface Props {
 const { event } = Astro.props;
 const { lumaEventId, lumaUrl, slug } = { ...event.data, slug: event.data.slug };
 
-const fallbackHref = lumaUrl ? lumaUrlWithUtm(lumaUrl, slug) : null;
+const fallbackHref = lumaUrl ? lumaBookingUrl(lumaUrl) : null;
 const showNotifyInstead = !lumaEventId;
 const canNotify = showSection('newsletter');
 ---
