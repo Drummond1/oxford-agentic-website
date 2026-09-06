@@ -334,11 +334,18 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
-- **Google baseline. Latest reading 2 Sept 2026 (data through 30 Aug): 55 clicks,
-  639 impressions, average position 25.3** over the site's whole life. Started at
+- **Google baseline. Latest reading 6 Sept 2026 (data through 4 Sept): 65 clicks,
+  845 impressions, average position 20.6** over the site's whole life. Started at
   44 clicks / 437 impressions / position 28.3 on 24 Aug.
-  - **Clicks have been flat at 55 for two readings while impressions grew.** Not yet a
-    pattern. If clicks are still 55 on 4 Sept with impressions still climbing, it is one.
+  - **The flat-clicks watch is closed.** Clicks sat at 55 across two readings while
+    impressions grew; the check was whether they were still 55 on 4 Sept. They are 65.
+    It was noise, not a pattern.
+  - **`when-ai-executive-cohorts-run` did not reach its target query.** Verdict delivered
+    6 Sept, one day late, and the lateness is recorded rather than smoothed over. Twelve
+    days after publication the query had 45 impressions and **zero clicks**, across six
+    consecutive readings, while the site climbed from position 28.3 to 20.6 around it.
+    A 31 Aug refresh did not rescue it. **Do not re-open this query.** Full reasoning,
+    including the half-tested position criterion, in the baseline file.
   - Google's data pipeline stalled 31 Aug to 1 Sept: six consecutive pulls all ended at
     29 Aug. It caught up overnight. Expect this and do not read a flat window as flat
     performance without checking the end date on the chart. Full table and analysis in

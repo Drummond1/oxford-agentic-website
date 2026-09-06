@@ -565,3 +565,53 @@ screenshot call failed on a zero-width window, so the last measured position sta
 pre-commitment was a date, and moving it forward because the evidence looks conclusive
 is the same error as moving it back because it looks inconvenient. On 5 Sept, read the
 query one more time, confirm the position, and record the outcome.
+
+---
+
+## 2026-09-06 — THE VERDICT ON `when-ai-executive-cohorts-run`, ONE DAY LATE
+
+**The deadline was 5 September and the loop missed it.** It spent the 5th on health
+checks and did not deliver. Recording that plainly, because the whole point of the
+pre-commitment was to stop the deadline drifting, and a silent one-day slip is the
+smaller version of exactly the failure it was written to prevent. It is delivered now,
+not extended.
+
+### The call
+
+**The guide has not reached its target query.** Twelve days after publication:
+
+- `what time of year do executive ai cohorts usually begin?` — **45 impressions,
+  0 clicks**, over the guide's entire life.
+- **Zero clicks across six consecutive readings.** 43, 43, 43, 43, 43, now 45.
+- Meanwhile the site around it improved sharply: clicks 44 → 55 → **65**, impressions
+  437 → 639 → **845**, average position 28.3 → 25.3 → **20.6** (data through 4 Sept).
+
+So this is not a site-wide problem the guide is caught up in. The site is climbing and
+this query is not. **Verdict: it did not work.** Do not re-open it, do not wait for a
+better week, and do not count this query as a live prospect in any future plan.
+
+### One honest gap in the measurement
+
+**Position was not re-measured.** The commitment was phrased as "still 43/77.3", and only
+the impressions half was confirmed. The Average position column would not surface through
+text extraction on two separate attempts across two sessions, and the row-click filter did
+not apply. The last measured position, 77.3, is from late August and is **not confirmed as
+current**.
+
+That gap does not change the verdict. At zero clicks from 45 impressions over twelve days
+the guide has not reached the query, whether it sits at 77 or at 60. But the criterion as
+written was half-tested, and the next pre-commitment should be phrased against a number the
+loop can reliably read: impressions and clicks, not position.
+
+### What was genuinely learned
+
+The refresh on 31 Aug (adding Saïd's verified dates) did not rescue it either, which is
+worth knowing: **a content refresh does not fix a query the page was never going to win.**
+The earlier concern that the refresh might contaminate the reading turned out to be moot.
+
+### The flat-clicks watch, resolved
+
+On 2 Sept the loop flagged clicks stuck at 55 across two readings while impressions grew,
+and set a check: if still 55 on 4 Sept with impressions climbing, treat it as a pattern.
+**It is not a pattern.** Clicks are 65. Calling it noise at the time was right, and the
+check is now closed.

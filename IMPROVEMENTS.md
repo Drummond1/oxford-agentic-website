@@ -187,6 +187,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-06 — Verdict delivered on `when-ai-executive-cohorts-run`, one day late.**
+  **The guide did not reach its target query.** 45 impressions, zero clicks, across six
+  consecutive readings and twelve days, while the site around it went 28.3 → 20.6 on
+  average position and 44 → 65 on clicks. Full detail in the baseline file.
+  - **The loop missed its own deadline.** The commitment named 5 September; the 5th went
+    on health checks. A one-day silent slip is the small version of the exact failure the
+    pre-commitment was written to prevent, so it is recorded rather than quietly absorbed.
+  - **The criterion was half-tested.** It was phrased "still 43/77.3", and only impressions
+    were confirmed - the Average position column would not surface through text extraction
+    on two attempts across two sessions. **Lesson for the next pre-commitment: phrase the
+    trigger against numbers the loop can reliably read.** Impressions and clicks extract
+    cleanly from the Search Console UI; position does not.
+  - **A refresh does not rescue a query the page was never going to win.** The 31 Aug
+    refresh added Saïd's verified dates and changed nothing here.
+  - **Flat-clicks watch closed.** Clicks were 55 across two readings on 2 Sept with
+    impressions growing; the test was whether they were still 55 on 4 Sept. They are 65.
+    Calling it noise rather than a trend was correct.
+- **2026-09-06 — Cohort 2 counters imply the cap moved to 20.** `guest_count` 16 → **18**,
+  and both `spots_remaining` fields now read **2** (previously 1 on the ticket type and 3
+  at event level). 18 + 2 = 20, where the earlier pair implied about 17. **Reading the
+  counters, not the reason:** the loop does not know whether Drummond raised the cap,
+  added a ticket type, or something else, and is not guessing. `is_sold_out` still false.
+
 - **2026-09-04 — The Second Brain event already ranks #1 for its own commercial query.**
   Drummond asked twice for content to help it rank, so the loop probed the commercial
   query directly (`second brain workshop course UK in person one day`, GB). The bootcamp
