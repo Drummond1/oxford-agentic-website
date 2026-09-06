@@ -61,11 +61,20 @@ tier; propose-and-approve anything touching copy, claims or design._
 
 Status: `todo` · `blocked` (why) · `doing`
 
-2. `todo` (Drummond, 2 min in the GSC UI) — Search Console property is VERIFIED via
-   DNS TXT (confirmed 2026-07-23). Still to do: submit `sitemap-index.xml` under
-   Sitemaps, and URL-Inspect → Request indexing for the homepage, the Cohort 2 event
-   page and /guides/. Then export Performance CSVs into `seo-data/` so the loop has
-   real query signal.
+2. `todo` (Drummond, 2 min in the GSC UI) — **RAISED IN PRIORITY 6 Sept 2026. The CSV
+   export is now the loop's biggest self-inflicted blocker, not a nice-to-have.**
+   Search Console property is VERIFIED via DNS TXT (confirmed 2026-07-23). Still to do:
+   submit `sitemap-index.xml` under Sitemaps, and URL-Inspect → Request indexing for the
+   homepage, the Cohort 2 event page and /guides/. **Then export Performance CSVs into
+   `seo-data/`.**
+   - Without the CSV the loop cannot reliably read **Average position**: the metric
+     toggle does not surface the column through text extraction and the row-click filter
+     does not apply. It has cost twice - a near-miss title rewrite on a page sitting at
+     81.9, and a half-tested verdict criterion on 5 Sept.
+   - This blocks **step 1 of the loop's own standing instruction**, "fix the biggest
+     impressions-vs-CTR gap", because a zero-click query at position 8 is a fixable title
+     problem and the same query at position 42 is not. There are live zero-click queries
+     with real impressions right now and the loop cannot sort them.
 2b. **`blocked` (Drummond, highest-leverage item on this list) — off-page presence.**
    _Sharper as of 31 Jul: the Organization node now claims **no third-party identity at
    all**, because its only `sameAs` entry (`luma.com/oxfordagentic`) was a 404 and was
@@ -186,6 +195,44 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-06 — Probed the team angle, declined it, and found a positioning boundary.**
+  Candidate: the shared/team second brain, which none of the five existing Second Brain
+  guides answers and which a department head would plausibly ask.
+  - **Fails both gates, hard.** *Winnable:* no. The query routes into enterprise
+    knowledge-base SaaS - **Slack ranks on it**, alongside CustomGPT, fast.io and a row
+    of RAG vendors. Slack writing about knowledge bases is the institutional-publisher
+    case. A one-day workshop site does not outrank enterprise content marketing here.
+    *Converts:* no. The searcher is procuring a platform, not booking a day of training.
+  - **The finding worth keeping is a boundary, not a topic.** "Team second brain" in
+    search vocabulary means *enterprise knowledge-base procurement*. The bootcamp's team
+    proposition is real - the FAQ welcomes teams, and a colleague coming along means the
+    approach goes back with two people rather than one - but **it must not be marketed in
+    that vocabulary**, or it lands in a procurement fight it cannot win and attracts the
+    wrong buyer. Sell the team angle as two seats on a day, not as a knowledge platform.
+  - Three probes have now run since the Second Brain push began. One shipped
+    (`what-second-brain-actually-means`), two declined. That ratio is the rule working,
+    not the rule failing.
+
+- **2026-09-06 — ESCALATION: the loop cannot reliably read Average position, and it has
+  now cost something twice.** Backlog item 2 asks Drummond to export Search Console
+  Performance CSVs into `seo-data/`. That has been open a long time and read as a
+  nice-to-have. It is not.
+  - **Cost one:** an earlier cycle nearly rewrote the finance guide's title as a "CTR
+    fix" before pulling the position column showed it at 81.9. No title rewrite moves a
+    click from page eight. The arithmetic caught it, but only just.
+  - **Cost two:** the 5 Sept verdict criterion was phrased "still 43/77.3" and only the
+    impressions half could be confirmed, because the Average position column will not
+    surface through text extraction and the row-click filter does not apply. The verdict
+    held anyway, but the criterion was half-tested.
+  - **What this blocks:** step 1 of the loop's own standing instruction is "fix the
+    biggest impressions-vs-CTR gap". That cannot be done properly without position,
+    because a zero-click query at position 8 is a title problem and the same query at
+    position 42 is not a problem the loop can touch. Right now there are several
+    zero-click queries with real impressions - `agentic ai oxfordshire` at 22,
+    `agentic ai for finance` at 22 - and **the loop cannot tell which are winnable.**
+  - **The ask is small:** Search Console → Performance → Export → CSV, dropped into
+    `seo-data/`. Two minutes, and it permanently unblocks the loop's primary job.
 
 - **2026-09-06 — Verdict delivered on `when-ai-executive-cohorts-run`, one day late.**
   **The guide did not reach its target query.** 45 impressions, zero clicks, across six
