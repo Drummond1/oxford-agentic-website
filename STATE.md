@@ -334,6 +334,15 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
+- **SEARCH CONSOLE ACCESS IS DOWN (9 Sept 2026).** `oxfordagentic.com` returns "you do
+  not have access to this property" while other properties on the same account load
+  normally, and the `google-site-verification` TXT record is still published in DNS.
+  Cause unknown. **Until it is fixed the loop cannot pull query data at all.**
+- **Second Brain Bootcamp: ranking is NOT its constraint (9 Sept 2026).** 1 guest, 19 of
+  20 seats unsold, six weeks out, while ranking #1 for its commercial query with five
+  supporting guides. Search Console has recorded exactly one second-brain query in the
+  site's life, at 1 impression. **Do not commission more Second Brain SEO content
+  expecting bookings.** The lever is demand generation, not position.
 - **Google baseline. Latest reading 6 Sept 2026 (data through 4 Sept): 65 clicks,
   845 impressions, average position 20.6** over the site's whole life. Started at
   44 clicks / 437 impressions / position 28.3 on 24 Aug.

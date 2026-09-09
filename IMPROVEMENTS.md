@@ -196,6 +196,43 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-09 — STOP WRITING SECOND BRAIN GUIDES TO FIX RANKING. Ranking is not the
+  constraint.** The Second Brain Bootcamp (21 Oct, Pitt Rivers) has **1 guest and 19 of
+  20 seats unsold, six weeks out**. Full Day Pass £450 with 10 left, Early Bird £325 with
+  9 left.
+  - **It already ranks #1** for its commercial query in GB (verified 4 Sept), and it has
+    **five supporting guides**. So the page wins its query and sells almost nothing.
+  - **The reason is demand, not position.** Across the site's whole life Search Console
+    shows exactly one second-brain query: `agentic second brain`, at **1 impression and
+    1 click**. There is no second-brain search demand reaching this site to capture.
+    Ranking first for a query nobody runs produces nothing.
+  - **Therefore more Second Brain SEO content is low-value work**, and the loop was asked
+    twice to produce it. Continuing to comply without saying this would have been quietly
+    wasteful. The lever is demand generation through channels Drummond owns - the alumni
+    list, WhatsApp groups, LinkedIn, direct outreach - not another guide.
+  - **What the guides are still good for:** they are correct, they are cheap to keep, and
+    they will matter if demand ever arrives. Do not delete them. Just stop adding to the
+    pile expecting bookings.
+  - Contrast for scale: Cohort 2 of the Agentic Bootcamp is **19 of 20 sold, one week
+    out**. Same site, same SEO, wildly different result. Whatever is selling Cohort 2 is
+    not the website's search position.
+
+- **2026-09-09 — Search Console access to `oxfordagentic.com` is failing.** The property
+  returned data normally on 6 Sept. Today the same URL gives **"Oops, you don't have
+  access to this property"**, signed in as drummondgilbert@gmail.com.
+  - **Not a browser or account fault:** Search Console itself loads fine and opened a
+    different property of Drummond's (`findmyisland.com`) without complaint.
+  - **Not a missing DNS record:** checked directly, and
+    `google-site-verification=gWTPM5zaqp6Vr9cXAGM7vio-pcKKaGhvcoqspXzgDQM` is still
+    published on oxfordagentic.com, alongside the SPF record. Nameservers are GoDaddy.
+  - **Cause unknown and deliberately not guessed.** The record being present rules out
+    the obvious explanation. It could be the property was removed from the account, a
+    verification token rotated, or something transient at Google's end.
+  - **Impact: this is the loop's primary input.** Step 1 of the standing instruction is
+    to pull Search Console each cycle. Until access is restored the loop is flying on
+    Luma numbers and site health only. **Drummond: check whether the property still
+    exists in your Search Console account.**
+
 - **2026-09-06 — Removed the UTM tags from every outbound Luma link. This reverses the
   "the UTM helper must stay" decision recorded under the CTA cycle above, and that
   earlier reasoning is now known to be wrong.**
