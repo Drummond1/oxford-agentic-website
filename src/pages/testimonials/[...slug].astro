@@ -92,14 +92,33 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
   // Progressive enhancement only: without JS every quote stays visible.
   const inputs = document.querySelectorAll<HTMLInputElement>('.filter__input');
   const quotes = document.querySelectorAll<HTMLElement>('.quotes .quote');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  inputs.forEach((input) =>
-    input.addEventListener('change', () => {
-      quotes.forEach((quote) => {
-        quote.hidden = input.value !== 'all' && quote.dataset.programme !== input.value;
-      });
-    }),
-  );
+  // Cards on their way out fade first and are removed from the grid after,
+  // so a filter change reads as a change rather than a jump cut. Cards coming
+  // back are displayed and then, a frame later, faded in. A card that is
+  // re-selected mid-fade keeps its class removed, so the pending hide is a
+  // no-op.
+  const apply = (value: string) => {
+    quotes.forEach((quote) => {
+      const out = value !== 'all' && quote.dataset.programme !== value;
+      if (reduced) {
+        quote.hidden = out;
+        return;
+      }
+      if (out) {
+        quote.classList.add('is-out');
+        window.setTimeout(() => {
+          if (quote.classList.contains('is-out')) quote.hidden = true;
+        }, 240);
+      } else {
+        quote.hidden = false;
+        requestAnimationFrame(() => quote.classList.remove('is-out'));
+      }
+    });
+  };
+
+  inputs.forEach((input) => input.addEventListener('change', () => apply(input.value)));
 </script>
 
 <style>
@@ -137,6 +156,15 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
 
   /* Quote presentation moved to Quote.astro when this page and the event pages
      started sharing it. Nothing quote-related belongs here any more. */
+
+  /* The one exception: the filtered-out state, which only this page has. The
+     card inherits the reveal transition from global.css; a shorter duration on
+     the way out keeps it inside the script's 240ms before the card is hidden. */
+  .quotes :global(.quote.is-out) {
+    opacity: 0;
+    transform: translateY(6px);
+    transition-duration: 220ms;
+  }
 
   .empty {
     max-width: var(--measure);

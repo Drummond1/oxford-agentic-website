@@ -199,6 +199,31 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     transform: translateY(0);
   }
 
+  /* The links inside follow the panel in a beat apart, top to bottom, the
+     same rhythm the mobile menu keeps. Delays sit on the open state only, so
+     closing is immediate. */
+  .site-nav__menu li {
+    opacity: 0;
+    transform: translateY(-3px);
+    transition: opacity 180ms var(--ease), transform 180ms var(--ease);
+  }
+
+  .site-nav__item--has-menu:hover .site-nav__menu li,
+  .site-nav__item--has-menu:focus-within .site-nav__menu li {
+    opacity: 1;
+    transform: none;
+  }
+
+  .site-nav__item--has-menu:hover .site-nav__menu li:nth-child(2),
+  .site-nav__item--has-menu:focus-within .site-nav__menu li:nth-child(2) {
+    transition-delay: 45ms;
+  }
+
+  .site-nav__item--has-menu:hover .site-nav__menu li:nth-child(n + 3),
+  .site-nav__item--has-menu:focus-within .site-nav__menu li:nth-child(n + 3) {
+    transition-delay: 90ms;
+  }
+
   .site-nav__menu a {
     display: block;
     padding: 0.55rem 1rem;

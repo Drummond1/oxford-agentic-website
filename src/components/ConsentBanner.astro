@@ -42,6 +42,7 @@
     var KEY = 'oa-consent';
     var banner = document.querySelector('[data-consent-banner]');
     if (!banner) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function gtag() {
       window.dataLayer = window.dataLayer || [];
@@ -60,7 +61,14 @@
 
     // Only ask once. A banner that reappears after a decision reads as a dark
     // pattern and is the most common reason people stop trusting the choice.
-    if (stored() === null) banner.hidden = false;
+    // Displayed first, then given the class a frame later so it rises in from
+    // the bottom edge rather than appearing over the page fully formed.
+    if (stored() === null) {
+      banner.hidden = false;
+      window.requestAnimationFrame(function () {
+        banner.classList.add('is-shown');
+      });
+    }
 
     function decide(value) {
       try {
@@ -80,7 +88,14 @@
 
       // Denial needs no update call — denied is already the default, and
       // re-asserting it would only risk overwriting a stricter signal.
-      banner.hidden = true;
+      // The banner settles back below the edge, then is removed from the tree.
+      banner.classList.remove('is-shown');
+      window.setTimeout(
+        function () {
+          banner.hidden = true;
+        },
+        reduced ? 0 : 320,
+      );
     }
 
     banner.addEventListener('click', function (event) {
@@ -99,6 +114,15 @@
     background: var(--ink-dark);
     border-block-start: 1px solid var(--gold-hairline);
     padding: 1rem clamp(1rem, 0.5rem + 2vw, 2rem);
+    /* Rises in from below the viewport edge and settles back the same way, the
+       movement the event page's sticky bar already makes. The rest state is
+       off-screen; the script adds the class once the banner is displayed. */
+    transform: translateY(100%);
+    transition: transform 360ms var(--ease);
+  }
+
+  .consent.is-shown {
+    transform: none;
   }
 
   .consent[hidden] {

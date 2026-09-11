@@ -120,6 +120,26 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
         );
       }
 
+      // Lazy photographs fade in as they load. The class that hides unloaded
+      // images is added here, in the same synchronous pass that marks the ones
+      // already complete, so nothing already on screen can blink.
+      if (!reduced) {
+        const lazy = document.querySelectorAll<HTMLImageElement>('img[loading="lazy"]');
+        if (lazy.length > 0) {
+          document.documentElement.classList.add('js-lazyfade');
+          const mark = (img: HTMLImageElement) => img.classList.add('is-loaded');
+          lazy.forEach((img) => {
+            if (img.complete && img.naturalWidth > 0) {
+              mark(img);
+              return;
+            }
+            img.addEventListener('load', () => mark(img), { once: true });
+            // A broken image shows its alt text; that must not stay invisible.
+            img.addEventListener('error', () => mark(img), { once: true });
+          });
+        }
+      }
+
       // Stat tiles count up once as they scroll into view (PRD §10). The final
       // value is already in the HTML, so it is correct before, during and
       // without JS — the animation only ever replaces it temporarily.
@@ -146,7 +166,11 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
                 const eased = 1 - Math.pow(1 - p, 3);
                 el.textContent = String(Math.round(target * eased));
                 if (p < 1) requestAnimationFrame(tick);
-                else el.textContent = final;
+                else {
+                  el.textContent = final;
+                  // The tile acknowledges the number landing (styled per page).
+                  el.closest('.stat')?.classList.add('is-counted');
+                }
               };
               requestAnimationFrame(tick);
             }

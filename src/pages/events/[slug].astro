@@ -609,6 +609,29 @@ const registerLabel = !registrationOpen
   }
 </Base>
 
+<script>
+  // The sticky mobile bar parks while the booking form or the final CTA is on
+  // screen. Both are observed; the bar hides when either is visible.
+  const bar = document.querySelector<HTMLElement>('.sticky-bar');
+  const targets = document.querySelectorAll<HTMLElement>('[data-register-section], .final-cta');
+  if (bar && targets.length > 0 && 'IntersectionObserver' in window) {
+    const visible = new Set<Element>();
+    const park = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        const parked = visible.size > 0;
+        bar.classList.toggle('is-parked', parked);
+        bar.toggleAttribute('inert', parked);
+      },
+      { threshold: 0.2 },
+    );
+    targets.forEach((el) => park.observe(el));
+  }
+</script>
+
 <style>
   .event-hero {
     padding-block: clamp(3rem, 2rem + 6vw, 5.5rem);
@@ -721,6 +744,20 @@ const registerLabel = !registrationOpen
     border: 1px solid var(--gold-hairline);
     border-radius: var(--radius);
     padding: 1.4rem;
+  }
+
+  /* When the counter lands on its final number the tile's edge flashes gold
+     and relaxes, so the settling is felt as well as read. Added by the counter
+     in Base.astro; never fires under reduced motion because the counter does
+     not run there. */
+  .stat.is-counted {
+    animation: stat-settle 720ms var(--ease);
+  }
+
+  @keyframes stat-settle {
+    30% {
+      border-color: var(--gold);
+    }
   }
 
   :global(.band--cream) .stat {
@@ -848,12 +885,43 @@ const registerLabel = !registrationOpen
   }
 
   .agenda__time {
+    position: relative;
     font-family: var(--font-label);
     font-weight: 700;
     letter-spacing: 0.1em;
     font-size: var(--step-xs);
     padding-block-start: 0.3rem;
     color: var(--gold);
+  }
+
+  /* Under the pointer a row's rule brightens to gold and the site's square
+     marker grows in beside the time, the way a finger lands on a printed
+     programme. Pointer devices only; the rows are not links, so touch gets
+     nothing to mislead it. */
+  .agenda__row {
+    transition: border-color 220ms var(--ease);
+  }
+
+  .agenda__time::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: -1rem;
+    inset-block-start: 0.62rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: currentColor;
+    transform: scale(0);
+    transition: transform 220ms var(--ease);
+  }
+
+  @media (hover: hover) {
+    .agenda__row:hover {
+      border-block-start-color: var(--gold);
+    }
+
+    .agenda__row:hover .agenda__time::before {
+      transform: scale(1);
+    }
   }
 
   :global(.band--cream) .agenda__time {
@@ -957,6 +1025,15 @@ const registerLabel = !registrationOpen
     background: rgba(5, 24, 23, 0.96);
     backdrop-filter: blur(10px);
     border-block-start: 1px solid rgba(212, 175, 55, 0.28);
+    transition: transform 300ms var(--ease);
+  }
+
+  /* Parked below the edge while the booking form or the final CTA is on
+     screen: a bar that says "Book" over the form it points at is noise, and
+     it covered the bottom of the form on a phone. The script toggles it and
+     sets `inert` so the off-screen button drops out of the tab order too. */
+  .sticky-bar.is-parked {
+    transform: translateY(100%);
   }
 
   .sticky-bar__date {

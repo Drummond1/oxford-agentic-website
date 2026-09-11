@@ -704,6 +704,18 @@ a.card:hover [aria-hidden='true'],
   will-change: transform;
 }
 
+/* ---- Lazy photographs fade in as they arrive ----
+   Rather than popping in half-drawn as the bytes land. Gated on a class the
+   script in Base.astro adds, so with JS off, or under reduced motion, every
+   image is simply visible. Eager images (heroes, LCP candidates) are untouched. */
+img[loading='lazy'] {
+  transition: opacity 480ms var(--ease);
+}
+
+.js-lazyfade img[loading='lazy']:not(.is-loaded) {
+  opacity: 0;
+}
+
 /* ---- Animated stat counters (PRD §10) ----
    Values count up once as the tiles scroll into view. The final number is in
    the HTML, so it is correct before, during and without JS. */

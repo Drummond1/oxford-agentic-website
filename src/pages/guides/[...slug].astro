@@ -338,6 +338,19 @@ const showCapture = showSection('newsletter');
     font-family: var(--font-title);
     font-size: var(--step-lg);
     color: var(--ink-dark);
+    /* The same answer inline prose links give: the underline closes in and
+       the colour goes bronze, then gold. */
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: var(--hairline-cream);
+    transition: color 160ms var(--ease), text-underline-offset 160ms var(--ease), text-decoration-color 160ms var(--ease);
+  }
+
+  .more__list a:hover,
+  .more__list a:focus-visible {
+    color: var(--rust);
+    text-decoration-color: currentColor;
+    text-underline-offset: 0.12em;
   }
 
   .more__all {

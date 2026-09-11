@@ -196,6 +196,46 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-11 — Micro-interactions phase 6 (Drummond: "do more micro interactions").**
+  Nine more, this time on the surfaces phase 5 left silent, each chosen because a
+  visitor acted there and got nothing back. Same rules: transform/opacity only,
+  reduced-motion-safe throughout, nothing on an LCP element.
+  (a) **The consent banner rises in and settles out** (360ms) instead of popping. It
+  is the first thing every new visitor sees move; it was the crudest transition on
+  the site.
+  (b) **The header dropdown's links follow the panel in** a beat apart, the rhythm the
+  mobile menu keeps. Delays on the open state only, so closing is immediate.
+  (c) **Agenda rows respond under the pointer** - the row's rule brightens to gold and
+  the site's square marker grows in beside the time. Pointer devices only, since the
+  rows are not links and a tap should not be misled.
+  (d) **Stat tiles acknowledge the count landing** - when the counter reaches its
+  number the tile's edge flashes gold and relaxes (720ms). Added by the counter in
+  Base.astro, styled per page; never fires under reduced motion because the counter
+  does not run there.
+  (e) **Quote monograms stamp in** a beat after their card reveals, and the lead
+  quotation mark drifts in from the left over the same reveal. Both key off the
+  sitewide reveal class, so they inherit its keyboard safety net.
+  (f) **Lazy photographs fade in as they arrive** rather than appearing half-drawn.
+  Gated on a class the script adds in the same synchronous pass that marks images
+  already complete, so nothing on screen can blink; a broken image is marked too so
+  its alt text is never hidden. Eager images (heroes) are untouched.
+  (g) **The sticky mobile "Book" bar parks** below the edge while the booking form or
+  the final CTA is on screen, and returns after. A bar saying "Book" over the form it
+  points at was noise, and on a phone it covered the bottom of the form. `inert` is
+  set while parked so the off-screen button leaves the tab order.
+  (h) **Filtered testimonials fade out before leaving the grid** and fade back in when
+  re-selected, instead of a jump cut. Dormant for now: only one programme has
+  consent-cleared quotes, so the filter does not render. Verified synthetically.
+  (i) **"More guides" links answer like prose links** - bronze on hover, underline
+  closing in.
+  _Verified_ in headless Chrome (consent show/hide states, dropdown delays, agenda
+  border and marker, all three stat tiles flagged, monogram 0.6/0 before reveal and
+  1/1 after, lazy images hidden then loaded, bar parked and inert at the form and
+  restored at the agenda, filter class fades in 220ms). Local Lighthouse on the three
+  budget URLs, nine runs, all assertions passed: home 100/100/100, LCP 324-327ms;
+  event 100/100/78 (Luma, accepted), LCP 344ms; guide 99/95/100, LCP 951-1021ms; CLS
+  0 everywhere. Build clean: 2121 links, 47 pages of valid schema.
+
 - **2026-09-11 — Micro-interactions phase 5 (Drummond's request: "add more micro
   interactions to delight the user").** Eight additions, chosen by walking every
   surface a visitor touches and asking what still answered nothing. All are

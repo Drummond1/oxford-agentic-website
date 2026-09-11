@@ -143,6 +143,28 @@ const attribution = [t.role, t.company].filter(Boolean).join(', ');
     color: var(--rust);
   }
 
+  /* The monogram stamps in a beat after its quote has revealed, and the lead
+     quotation mark drifts in from the left over the same reveal. Both key off
+     the sitewide reveal class on the blockquote, so they inherit its
+     reduced-motion and keyboard behaviour rather than inventing their own. */
+  .quote__monogram {
+    transition: transform 320ms var(--ease) 240ms, opacity 320ms var(--ease) 240ms;
+  }
+
+  :global(.js-motion) .quote:not(.is-revealed) .quote__monogram {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+
+  .quote__mark {
+    transition: transform 720ms var(--ease) 120ms, opacity 720ms var(--ease) 120ms;
+  }
+
+  :global(.js-motion) .quote:not(.is-revealed) .quote__mark {
+    transform: translateX(-0.15em);
+    opacity: 0;
+  }
+
   .quote__cite {
     display: block;
     font-family: var(--font-label);
