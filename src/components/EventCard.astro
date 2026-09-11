@@ -81,6 +81,20 @@ const statusLabel: Record<string, string> = {
     height: 0.4rem;
     background: var(--gold);
     flex: none;
+    /* The squares grow in one after the other as the card reveals, the same
+       rhythm the bullet squares keep. Without a revealing ancestor they are
+       simply there. */
+    transform-origin: center;
+    transition: transform 300ms var(--ease) 260ms;
+  }
+
+  .sep + * + .sep,
+  .sep ~ .sep {
+    transition-delay: 340ms;
+  }
+
+  :global(.js-motion [data-reveal]:not(.is-revealed)) .sep {
+    transform: scale(0);
   }
 
   :global(.band--cream) .sep {
@@ -135,5 +149,30 @@ const statusLabel: Record<string, string> = {
     transform: translateX(3px);
     display: inline-block;
     transition: transform 200ms var(--ease);
+  }
+
+  /* The arrow's shaft lengthens behind the head as it moves, so the nudge
+     reads as the arrow reaching rather than the glyph sliding. A hairline in
+     the arrow's own colour, grown from the head leftwards. */
+  .event-card__cta span {
+    position: relative;
+  }
+
+  .event-card__cta span::before {
+    content: '';
+    position: absolute;
+    inset-inline-end: 0.5em;
+    /* On the glyph's own shaft, which sits below the box's midline in Plex
+       Mono; measured, not guessed. */
+    inset-block-start: calc(50% + 0.17em);
+    height: 1px;
+    width: 0;
+    background: currentColor;
+    transition: width 220ms var(--ease);
+  }
+
+  .event-card:hover .event-card__cta span::before,
+  .event-card:focus-within .event-card__cta span::before {
+    width: 0.55em;
   }
 </style>

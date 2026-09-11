@@ -150,6 +150,13 @@ body {
   color: var(--ink-dark);
 }
 
+/* On a gold band the gold highlight would vanish into the background, so the
+   answer inverts: ink behind cream text. */
+.band--gold ::selection {
+  background: var(--ink-dark);
+  color: var(--cream);
+}
+
 img,
 picture,
 svg,
@@ -641,6 +648,30 @@ a.card:hover [aria-hidden='true'],
 .section-head {
   max-width: 46rem;
   margin-block-end: clamp(2rem, 1.2rem + 2.5vw, 3.25rem);
+}
+
+/*
+ * A section head arrives in reading order as it reveals: the rule draws in
+ * (see .dash), then the heading, then the standfirst, ~100ms apart. The block
+ * still fades as one; this only orders what is inside it.
+ */
+.section-head > h2,
+.section-head > p {
+  transition: opacity 420ms var(--ease), transform 420ms var(--ease);
+}
+
+.section-head > h2 {
+  transition-delay: 120ms;
+}
+
+.section-head > p {
+  transition-delay: 220ms;
+}
+
+.js-motion .section-head[data-reveal]:not(.is-revealed) > h2,
+.js-motion .section-head[data-reveal]:not(.is-revealed) > p {
+  opacity: 0;
+  transform: translateY(8px);
 }
 
 .section-head p {

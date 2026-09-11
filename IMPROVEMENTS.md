@@ -196,6 +196,41 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-11 — Micro-interactions phase 7, homepage (Drummond: "add more micro
+  interactions on homepage").** Seven additions on the homepage's own surfaces, plus
+  one bug found on the way.
+  (a) **The hero recedes as you scroll on** - its words rise a little faster than the
+  band and dim to 35%, so it recedes rather than sliding off like a sheet of paper.
+  Scroll-driven CSS (`animation-timeline: view()`, range `exit`), no listener, nothing
+  at scroll 0 so LCP is untouched; off under reduced motion and without support.
+  **Found while verifying:** it never moved, because `.hero` used `overflow: hidden`,
+  which makes the hero a scroll container and pins the view timeline to it. Switched
+  to `overflow: clip`, which clips the motif identically and creates no scroll
+  container. The divider numeral's drift (phase 5) was re-measured at the same time
+  and does progress (+12.6px entering, -12.6px exiting).
+  (b) **Section heads arrive in reading order**: the rule draws (existing), then the
+  heading 120ms later, then the standfirst at 220ms. The block still fades as one.
+  (c) **Event card separator squares grow in** one after another as the card reveals,
+  the rhythm the bullet squares keep. Without a revealing ancestor they are simply
+  there.
+  (d) **Programme rows draw a 3px gold rule down their left edge** on hover and
+  keyboard focus, the signature dash turned on its side.
+  (e) **Event card arrows lengthen their shaft** behind the head as they nudge, so the
+  movement reads as reaching rather than sliding. The hairline sits on the glyph's own
+  shaft, which in Plex Mono is 0.17em below the box midline; first attempt sat on the
+  midline and read as a double arrow, caught by a 4x screenshot.
+  (f) **The open FAQ question holds the accent** while its answer is showing, so which
+  item is open is legible from the line as well as the icon.
+  (g) **Selection on the gold bands is now legible** - the sitewide gold selection
+  vanished into the gold background, so those bands invert to ink behind cream.
+  _Verified_ in headless Chrome: recede at 0.40 opacity / -37px at 450px scroll and
+  0.35 / -40px at 900px; heading opacity 0 with 120ms delay before reveal and 1 after;
+  separators scale(0) before reveal, none after; shaft 7.1px on hover; edge scaleY 1;
+  open question bronze on cream; gold-band selection ink/cream. Local Lighthouse on the
+  final build, nine runs, all assertions passed: home 100/100/100, LCP 323-327ms; event
+  100/100/78 (Luma, accepted), LCP 344-345ms; guide 99-100/95/100, LCP 327-953ms; CLS 0
+  everywhere. Build clean: 2123 links, 47 pages of valid schema.
+
 - **2026-09-11 — Micro-interactions phase 6 (Drummond: "do more micro interactions").**
   Nine more, this time on the surfaces phase 5 left silent, each chosen because a
   visitor acted there and got nothing back. Same rules: transform/opacity only,

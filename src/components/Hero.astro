@@ -47,7 +47,10 @@ const { eyebrow, title, subline, motif = false, size = 'compact', photo } = Astr
 <style>
   .hero {
     position: relative;
-    overflow: hidden;
+    /* clip, not hidden: hidden makes the hero a scroll container, and the
+       scroll-driven recede below would then measure against the hero rather
+       than the page and never move. clip clips the motif identically. */
+    overflow: clip;
     isolation: isolate;
   }
 
@@ -237,6 +240,31 @@ const { eyebrow, title, subline, motif = false, size = 'compact', photo } = Astr
     from {
       opacity: 0;
       transform: translateY(10px);
+    }
+  }
+
+  /*
+   * As the page scrolls on, the hero's words rise a little faster than the band
+   * they sit in and dim, so the hero recedes rather than sliding off like a
+   * sheet of paper. Scroll-driven, so there is no listener; the range covers
+   * only the hero's exit, and at rest (scroll 0) nothing is changed, which keeps
+   * the largest contentful paint exactly as it was. Off under reduced motion
+   * and in browsers without scroll timelines.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero--full .hero__inner {
+        animation: hero-recede linear both;
+        animation-timeline: view();
+        animation-range: exit 0% exit 100%;
+      }
+    }
+  }
+
+  @keyframes hero-recede {
+    to {
+      transform: translateY(-2.5rem);
+      opacity: 0.35;
     }
   }
 

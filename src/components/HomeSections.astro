@@ -422,10 +422,31 @@ const bands = {
   }
 
   .programme-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
+  }
+
+  /* A gold rule draws down the row's left edge under the pointer or keyboard
+     focus, the brand's signature mark turned on its side, on top of the lift
+     and the gold border every openable card already gets. */
+  .programme-row::before {
+    content: '';
+    position: absolute;
+    inset-block: -1px;
+    inset-inline-start: -1px;
+    width: 3px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 280ms var(--ease);
+  }
+
+  .programme-row:hover::before,
+  .programme-row:focus-visible::before {
+    transform: scaleY(1);
   }
 
   .programme-row h3 {

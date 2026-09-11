@@ -66,6 +66,16 @@ const { faqs } = Astro.props;
     color: var(--burnt);
   }
 
+  /* The open question keeps the accent while its answer is showing, so which
+     one is open is legible from the question line as well as the icon. */
+  .faq__item[open] .faq__q {
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .faq__item[open] .faq__q {
+    color: var(--burnt);
+  }
+
   /* The question steps forward a touch under the pointer, the same nudge the
      arrows make. Pointer devices only, so a tapped question does not stay
      shifted while its answer is open. */
