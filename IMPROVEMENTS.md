@@ -196,6 +196,38 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-11 — Four new guides, two for Cohort 3 and two for Second Brain (Drummond's
+  request).** Drummond asked for more pages after the loop had flagged that Second
+  Brain's constraint is demand rather than ranking. Treated as his decision. The quality
+  rules still applied: each topic probed against live search first, every fact sourced,
+  no thin near-duplicates.
+  - `where-the-human-goes-in-an-agentic-workflow` (in-practice). Results are vendor
+    platforms and developer patterns; nothing plain-English for a business leader. It
+    is also a named item on the Cohort 3 Luma curriculum. Goes well past the one
+    sentence the scout-drafter-reviewer guide gives the human, and links to it.
+  - `claude-cowork-claude-code-or-codex` (choosing). Crowded, but the searcher is the
+    Agentic buyer: a non-coder choosing a tool. Luma's curriculum names these four
+    tools. Product claims kept to what several September 2026 sources agree on.
+    **Prices and benchmarks deliberately omitted** because they move monthly. The page
+    is framed as a September 2026 snapshot. **Refresh it when a product changes.**
+  - `is-it-safe-to-put-company-documents-in-a-second-brain` (in-practice). The
+    governed-adopter objection, framed around storage rather than one-off pasting.
+    **States no vendor's data policy.** The sources contradict each other and the
+    terms change, so the page tells readers to read their own plan's terms instead.
+  - `how-long-to-build-a-second-brain` (choosing). Every result says "a week of setup,
+    do not build it in one sitting". The site's answer differs honestly: that figure
+    describes an accumulated note-taking system, whereas this one is written from
+    existing material in a day and then kept current by triggered updates.
+  - **Calls to action link the event pages directly:** Cohort 3 (15 Oct, Worcester) and
+    Second Brain Cohort 1 (21 Oct, Pitt Rivers). The wording is "Cohort 3 runs on 15
+    October", not "the next date is". That keeps it true while Cohort 2 still has
+    places, and after 16 September.
+  - Fact corrections made before shipping: removed "one of the parts of the day we
+    spend longest on" (no source), "in whichever tool suits it" (not confirmed),
+    "belong to you" / "yours to keep" (ownership claims that may not hold for
+    employees or under client agreements), and two generalisations about most people.
+  - Second Brain now has six guides and the Agentic line fifteen.
+
 - **2026-09-11 — Added Cohort 3 of the Oxford Agentic Bootcamp (Drummond's request).**
   Thursday 15 October 2026, 09:00-17:00, Worcester College. Luma `oxfordagentic3`,
   event `evt-fFS9i7ABiGVWPAC`. Facts taken from the Luma page, not assumed.
