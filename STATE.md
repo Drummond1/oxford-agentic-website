@@ -334,10 +334,17 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
-- **SEARCH CONSOLE ACCESS IS DOWN (9 Sept 2026).** `oxfordagentic.com` returns "you do
-  not have access to this property" while other properties on the same account load
-  normally, and the `google-site-verification` TXT record is still published in DNS.
-  Cause unknown. **Until it is fixed the loop cannot pull query data at all.**
+- **Search Console access restored 11 Sept 2026** after being refused 9-11 Sept (cause
+  never established; the DNS verification record was present throughout). Latest
+  reading, data through 8 Sept: **68 clicks, 942 impressions, average position 19.3.**
+  Index coverage: 29 indexed, 13 not indexed.
+- **Events rich-result report shows 4 invalid items, and they are stale.** All four fail
+  on "Missing field 'startDate'" and lack every other Event field too, which is the shape
+  of the old agenda sub-events. A scan of every built page on 11 Sept found 33 Event nodes
+  and **none without `startDate`**; commit `3eb995d` fixed this earlier. Google has not
+  re-checked (validation "Not Started"). **Action for Drummond:** Search Console → Events
+  → "Missing field 'startDate'" → Validate Fix. The drill-down would not open through
+  browser automation.
 - **Second Brain Bootcamp: ranking is NOT its constraint (9 Sept 2026).** 1 guest, 19 of
   20 seats unsold, six weeks out, while ranking #1 for its commercial query with five
   supporting guides. Search Console has recorded exactly one second-brain query in the

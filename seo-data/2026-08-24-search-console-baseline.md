@@ -615,3 +615,27 @@ On 2 Sept the loop flagged clicks stuck at 55 across two readings while impressi
 and set a check: if still 55 on 4 Sept with impressions climbing, treat it as a pattern.
 **It is not a pattern.** Clicks are 65. Calling it noise at the time was right, and the
 check is now closed.
+
+---
+
+## 2026-09-11 — Access restored; reading through 8 September
+
+Search Console refused `oxfordagentic.com` from 9 to 11 Sept ("you don't have access to
+this property") while other properties on the same account loaded. Restored on 11 Sept.
+The DNS `google-site-verification` record was present throughout, so the cause is not
+known.
+
+**All time (22 Jul – 8 Sept): 68 clicks, 942 impressions, CTR 7.2%, average position
+19.3.** Previous reading (through 4 Sept): 65 / 845 / 20.6. Position keeps improving.
+
+Top queries: `oxford agentic ai course` 7 clicks / 62 impressions; `oxford agentic ai`
+2 / 13; `agentic ai oxford` 1 / 9. The timing guide's query is still 0 / 45, which is
+consistent with the 6 Sept verdict. `oxford generative and agentic ai programme` is 0 / 37:
+that is Saïd's programme name, so zero clicks is the expected outcome, not a gap.
+
+Index coverage: 29 indexed, 13 not indexed. Events enhancement: 2 valid, 4 invalid, and
+the invalid four are stale (see STATE.md).
+
+Cohort 3's page (`/events/oxford-agentic-bootcamp-cohort-3/`) went live on 11 Sept.
+Requesting indexing through the URL-inspection box failed under automation, so it was not
+retried. It is in the sitemap, linked from four pages, and IndexNow pinged on deploy.
