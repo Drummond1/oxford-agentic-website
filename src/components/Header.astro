@@ -101,6 +101,10 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
        guidelines are a flat, printerly system. */
     border-block-end: 1px solid transparent;
     transition: border-color 240ms var(--ease), background-color 240ms var(--ease);
+    /* Named for the cross-page crossfade in global.css: the header is the one
+       thing on both pages, so it holds still while the content beneath it
+       fades. Must be unique per page, and it is - there is one header. */
+    view-transition-name: site-header;
   }
 
   .site-header.is-stuck {
@@ -223,15 +227,70 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     width: 1.15rem;
     height: 2px;
     background: var(--gold);
+    transform-origin: center;
+    transition: transform 260ms var(--ease);
   }
 
   .nav-toggle__bar + .nav-toggle__bar {
     margin-block-start: 0.32rem;
   }
 
+  /* The two bars fold into a cross while the menu is open, so the same control
+     visibly becomes "close". Each bar travels half the gap plus half its own
+     height to meet the other at the centre. */
+  .nav-toggle[aria-expanded='true'] .nav-toggle__bar:first-child {
+    transform: translateY(calc(0.16rem + 1px)) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded='true'] .nav-toggle__bar:last-child {
+    transform: translateY(calc(-0.16rem - 1px)) rotate(-45deg);
+  }
+
   .mobile-nav {
     border-block-start: 1px solid rgba(212, 175, 55, 0.18);
     padding-block: 1rem 1.5rem;
+    transition: opacity 200ms var(--ease), transform 220ms var(--ease);
+  }
+
+  /* The panel settles in and its links follow a beat apart, top to bottom.
+     The un-open state only exists between the panel being displayed and the
+     next frame, when the script adds the class; without JS it stays hidden. */
+  .mobile-nav:not(.is-open) {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .mobile-nav__list li {
+    transition: opacity 260ms var(--ease), transform 260ms var(--ease);
+  }
+
+  .mobile-nav:not(.is-open) .mobile-nav__list li {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(2) {
+    transition-delay: 35ms;
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(3) {
+    transition-delay: 70ms;
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(4) {
+    transition-delay: 105ms;
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(5) {
+    transition-delay: 140ms;
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(6) {
+    transition-delay: 175ms;
+  }
+
+  .mobile-nav.is-open .mobile-nav__list li:nth-child(n + 7) {
+    transition-delay: 210ms;
   }
 
   .mobile-nav__list {
@@ -307,11 +366,30 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const panel = document.getElementById('mobile-nav');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let closeTimer = 0;
+
+  // Opening displays the panel and then, a frame later, adds the class that
+  // transitions it in; closing removes the class and hides the panel once the
+  // transition has had time to finish. The timer is cleared on every call so a
+  // quick reopen can never be hidden by the close before it.
+  const setMenu = (open: boolean) => {
+    if (!toggle || !panel) return;
+    toggle.setAttribute('aria-expanded', String(open));
+    window.clearTimeout(closeTimer);
+    if (open) {
+      panel.hidden = false;
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+    } else {
+      panel.classList.remove('is-open');
+      closeTimer = window.setTimeout(() => {
+        panel.hidden = true;
+      }, reducedMotion ? 0 : 220);
+    }
+  };
 
   toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    if (panel) panel.hidden = open;
+    setMenu(toggle.getAttribute('aria-expanded') !== 'true');
   });
 
   // Escape closes the open menu and hands focus back to the toggle, so a
@@ -319,8 +397,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     if (toggle?.getAttribute('aria-expanded') !== 'true') return;
-    toggle.setAttribute('aria-expanded', 'false');
-    if (panel) panel.hidden = true;
+    setMenu(false);
     toggle.focus();
   });
 </script>

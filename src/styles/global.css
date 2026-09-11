@@ -241,6 +241,22 @@ a {
   border-radius: 0;
 }
 
+/* The ring closes in from a little way out, so the eye is led to where focus
+   landed rather than finding it already there. Keyboard users otherwise get
+   the least acknowledgement of anyone on the site. */
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    animation: focus-in 240ms var(--ease);
+  }
+
+  @keyframes focus-in {
+    from {
+      outline-offset: 9px;
+      outline-color: transparent;
+    }
+  }
+}
+
 /* ---- Layout primitives ---- */
 .wrap {
   width: 100%;
@@ -414,6 +430,32 @@ a.card:focus-visible,
 .card:focus-within {
   transform: translateY(-2px);
   border-color: var(--gold);
+}
+
+/*
+ * The eyebrow on an openable card loosens its tracking as the card lifts: a
+ * typographic acknowledgement on a typographic site. The eyebrow sits on a
+ * line of its own, so the extra tracking moves nothing else.
+ */
+a.card .eyebrow,
+.card--interactive .eyebrow {
+  transition: letter-spacing 280ms var(--ease), color 200ms var(--ease);
+}
+
+a.card:hover .eyebrow,
+.card--interactive:hover .eyebrow,
+a.card:focus-visible .eyebrow,
+.card--interactive:focus-visible .eyebrow {
+  letter-spacing: 0.24em;
+}
+
+/* Press feedback for a tap: the lift settles back under the finger, the way
+   the buttons already do. Touch has no hover, so this is the only
+   acknowledgement a phone gets between tapping a card and the next page. */
+a.card:active,
+.card--interactive:active {
+  transform: translateY(0) scale(0.995);
+  transition-duration: 70ms;
 }
 
 /*
@@ -699,6 +741,26 @@ a.card:hover [aria-hidden='true'],
 .js-motion [data-reveal]:not(.is-revealed):focus-within {
   opacity: 1;
   transform: none;
+}
+
+/*
+ * ---- Cross-page crossfade ----
+ * Pure CSS, no client router: the browser keeps a snapshot of the outgoing
+ * page and fades the incoming one over it, so moving between pages no longer
+ * flashes to blank. The sticky header is named in Header.astro so it stays
+ * pinned while the content beneath it changes. Browsers without support
+ * navigate exactly as before, and reduced motion opts out entirely.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: var(--ease);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

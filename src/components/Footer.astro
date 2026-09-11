@@ -159,6 +159,23 @@ const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn
     color: var(--gold);
   }
 
+  /* The same hairline underline the top nav draws, so the two navs answer a
+     hover in one voice. Links carrying a date on a second line are excluded:
+     an underline under the date would read as underlining the wrong thing. */
+  .site-footer__col a:not(:has(.site-footer__date)) {
+    background: linear-gradient(var(--gold), var(--gold)) no-repeat left bottom / 0 1px;
+    padding-block-end: 0.1rem;
+    transition: color 200ms var(--ease), background-size 220ms var(--ease);
+  }
+
+  .site-footer__col a:not(:has(.site-footer__date)):hover {
+    background-size: 100% 1px;
+  }
+
+  .site-footer__col a:hover .site-footer__date {
+    color: var(--gold);
+  }
+
   .site-footer__date {
     display: block;
     font-family: var(--font-label);
@@ -167,6 +184,7 @@ const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn
     text-transform: uppercase;
     color: var(--muted-on-dark-dim);
     margin-block-start: 0.15rem;
+    transition: color 200ms var(--ease);
   }
 
   .site-footer__signup {

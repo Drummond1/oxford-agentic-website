@@ -34,6 +34,7 @@ const { eyebrow, title, subline, motif = false, size = 'compact', photo } = Astr
     )
   }
   {motif && <div class="hero__motif" aria-hidden="true" />}
+  {motif && <div class="hero__glow" aria-hidden="true" />}
   <div class="wrap hero__inner">
     <span class="eyebrow">{eyebrow}</span>
     <hr class="dash" />
@@ -157,9 +158,139 @@ const { eyebrow, title, subline, motif = false, size = 'compact', photo } = Astr
     }
   }
 
+  /*
+   * A second copy of the grid, brighter, revealed only inside a soft circle
+   * around the pointer: the grid catches the light where you are looking. It
+   * shares the motif's box and animation so the two grids stay in register.
+   * Pointer devices only; absent on touch, under reduced motion, and behind a
+   * photograph, where it would be one texture too many.
+   */
+  .hero__glow {
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(212, 175, 55, 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(212, 175, 55, 0.55) 1px, transparent 1px),
+      radial-gradient(circle, rgba(212, 175, 55, 0.95) 1.2px, transparent 2px);
+    background-size: 82px 82px, 82px 82px, 246px 246px;
+    animation: drift 68s linear infinite;
+    mask-image: radial-gradient(
+      circle 190px at var(--mx, -999px) var(--my, -999px),
+      #000 0%,
+      rgba(0, 0, 0, 0.45) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 360ms var(--ease);
+    will-change: opacity;
+  }
+
+  .hero.is-lit .hero__glow {
+    opacity: 1;
+  }
+
+  .hero--photo .hero__glow {
+    display: none;
+  }
+
+  @media (hover: none) {
+    .hero__glow {
+      display: none;
+    }
+  }
+
+  /*
+   * The full hero arrives in reading order on first paint: eyebrow, then the
+   * gold rule draws in, then the subline and the buttons rise. The headline
+   * itself never animates. It is the page's largest contentful paint, and
+   * fading it in would push that metric out for a flourish nobody would
+   * notice. Compact heroes on interior pages stay still, as before.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero--full .eyebrow,
+    .hero--full .hero__subline,
+    .hero--full :global(.btn-row) {
+      animation: hero-rise 620ms var(--ease) both;
+    }
+
+    .hero--full .eyebrow {
+      animation-delay: 40ms;
+    }
+
+    .hero--full .hero__subline {
+      animation-delay: 300ms;
+    }
+
+    .hero--full :global(.btn-row) {
+      animation-delay: 440ms;
+    }
+
+    .hero--full .dash {
+      transform-origin: left;
+      animation: hero-rule 680ms var(--ease) 160ms both;
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes hero-rule {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero__motif {
       animation: none;
     }
+
+    .hero__glow {
+      display: none;
+    }
   }
 </style>
+
+<script>
+  // The glow follows the pointer. Coordinates are written as custom properties
+  // at most once per frame, and only while the pointer is over a hero that has
+  // a glow layer. The masked box is inset -20% from the hero, so the pointer
+  // position is offset by that margin to land in the same place on both grids.
+  const glow = document.querySelector<HTMLElement>('.hero__glow');
+  const hero = glow?.closest<HTMLElement>('.hero');
+  const pointer = window.matchMedia('(hover: hover)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (glow && hero && pointer && !reduced) {
+    let x = 0;
+    let y = 0;
+    let frame = 0;
+
+    const paint = () => {
+      frame = 0;
+      const r = hero.getBoundingClientRect();
+      glow.style.setProperty('--mx', `${x - r.left + r.width * 0.2}px`);
+      glow.style.setProperty('--my', `${y - r.top + r.height * 0.2}px`);
+    };
+
+    hero.addEventListener(
+      'pointermove',
+      (event) => {
+        x = event.clientX;
+        y = event.clientY;
+        // Lit here as well as on enter: a pointer already resting on the hero
+        // when the page loads never fires pointerenter.
+        hero.classList.add('is-lit');
+        if (!frame) frame = requestAnimationFrame(paint);
+      },
+      { passive: true },
+    );
+    hero.addEventListener('pointerleave', () => hero.classList.remove('is-lit'));
+  }
+</script>

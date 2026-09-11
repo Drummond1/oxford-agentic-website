@@ -66,6 +66,19 @@ const { faqs } = Astro.props;
     color: var(--burnt);
   }
 
+  /* The question steps forward a touch under the pointer, the same nudge the
+     arrows make. Pointer devices only, so a tapped question does not stay
+     shifted while its answer is open. */
+  .faq__q > span:first-child {
+    transition: transform 220ms var(--ease);
+  }
+
+  @media (hover: hover) {
+    .faq__q:hover > span:first-child {
+      transform: translateX(4px);
+    }
+  }
+
   .faq__icon {
     flex: none;
     position: relative;

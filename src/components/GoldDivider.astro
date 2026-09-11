@@ -46,6 +46,31 @@ const { numeral, label, title } = Astro.props;
     flex: none;
   }
 
+  /*
+   * Where scroll-driven animations exist, the numeral drifts up a little as the
+   * band passes through the viewport: a printed numeral catching the light, not
+   * a parallax showpiece. Its own scroll position is the timeline, so there is
+   * no listener and nothing runs per frame. Browsers without support, and
+   * anyone preferring reduced motion, see it sit still.
+   */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .divider__numeral {
+        animation: numeral-drift linear both;
+        animation-timeline: view();
+      }
+    }
+  }
+
+  @keyframes numeral-drift {
+    from {
+      transform: translateY(0.16em);
+    }
+    to {
+      transform: translateY(-0.16em);
+    }
+  }
+
   .divider__text .eyebrow {
     margin-block-end: 0.4rem;
   }

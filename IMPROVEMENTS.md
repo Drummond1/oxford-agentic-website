@@ -196,6 +196,51 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-11 — Micro-interactions phase 5 (Drummond's request: "add more micro
+  interactions to delight the user").** Eight additions, chosen by walking every
+  surface a visitor touches and asking what still answered nothing. All are
+  transform/opacity-only, all inherit the global reduced-motion override or opt out
+  explicitly, and the hero headline was deliberately left static because it is the
+  page's largest contentful paint.
+  (a) **The hero arrives in reading order** on first paint: eyebrow, then the gold rule
+  draws in from the left, then the subline and the buttons rise, ~620ms with staggered
+  delays. Full heroes only; compact interior heroes stay still as before.
+  (b) **The hero grid catches the light under the pointer** - a second, brighter copy of
+  the drifting grid is revealed inside a soft 190px circle that follows the cursor. It
+  shares the motif's box and animation so the two grids stay in register. Pointer devices
+  only (`hover: hover`), off under reduced motion and hidden behind a photograph.
+  Coordinates are written once per frame via rAF; nothing runs while the pointer is
+  elsewhere.
+  (c) **Cross-page crossfade**, pure CSS (`@view-transition { navigation: auto }`), 220ms,
+  with the sticky header given a `view-transition-name` so it holds still while the
+  content beneath it fades. No client router, no script changes, unsupported browsers
+  navigate exactly as before.
+  (d) **The mobile menu now opens** rather than appearing: the two toggle bars fold into
+  a cross, the panel settles in and its links follow a beat apart (35ms stagger).
+  Closing waits 220ms before re-hiding the panel, with the timer cleared on every call so
+  a quick reopen is never hidden by the close before it. Escape uses the same path.
+  (e) **Openable cards answer typographically** - the eyebrow's tracking loosens from
+  0.18em to 0.24em as the card lifts - and **tap feedback** on touch, where the lift
+  settles under the finger (`:active`), the only acknowledgement a phone gets between
+  tapping a card and the next page.
+  (f) **The focus ring closes in** from 9px out over 240ms, so the eye is led to where
+  keyboard focus landed rather than finding it already there.
+  (g) **FAQ questions step forward 4px** under the pointer (pointer devices only, so a
+  tapped question does not stay shifted), and **footer links draw the same gold hairline
+  underline the top nav uses**, so the two navs answer a hover in one voice. Links that
+  carry a date on a second line are excluded via `:not(:has(...))`.
+  (h) **The gold divider numeral drifts with scroll** using a CSS scroll-driven animation
+  (`animation-timeline: view()`) behind `@supports`: no listener, nothing per frame,
+  still in browsers without support and under reduced motion.
+  _Verified_ in headless Chrome rather than the browser pane, which throttles transitions
+  badly enough that a 260ms toggle took several seconds to settle (same class of problem
+  as the stale-computed-style note under cycle 16). Local Lighthouse on the three budget
+  URLs: home 99-100 performance, LCP 325-925ms, CLS 0; event page unchanged at
+  best-practices 78 (Luma cookies, accepted); guide page accessibility 95 from
+  pre-existing contrast on the guide byline and the brand link's label mismatch, neither
+  touched here and both inside the budget - worth a later cycle. `npm run build` clean:
+  2121 links, 47 pages of valid schema.
+
 - **2026-09-11 — Four new guides, two for Cohort 3 and two for Second Brain (Drummond's
   request).** Drummond asked for more pages after the loop had flagged that Second
   Brain's constraint is demand rather than ranking. Treated as his decision. The quality
