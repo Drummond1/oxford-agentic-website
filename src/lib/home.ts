@@ -43,7 +43,7 @@ export const homeFaqs = [
   },
   {
     q: 'Where in Oxford are the events held?',
-    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Cohort 2 is at Worcester College on Walton Street, in central Oxford. Each event page confirms its own venue and date.",
+    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Cohorts 2 and 3 are at Worcester College on Walton Street, in central Oxford. Each event page confirms its own venue and date.",
   },
   {
     q: 'Is Oxford Agentic affiliated with the University of Oxford?',

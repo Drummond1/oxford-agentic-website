@@ -196,6 +196,24 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-11 — Added Cohort 3 of the Oxford Agentic Bootcamp (Drummond's request).**
+  Thursday 15 October 2026, 09:00-17:00, Worcester College. Luma `oxfordagentic3`,
+  event `evt-fFS9i7ABiGVWPAC`. Facts taken from the Luma page, not assumed.
+  - **Built as a copy of the Cohort 2 file**, because the two Luma descriptions are
+    byte-identical once extracted - same programme, same hosts, same hours. Only the date,
+    Luma IDs, capsule, summary and the transfer assurance changed. Agenda and FAQs carry
+    over unchanged.
+  - **Summary rewritten, not copied**, because the event page uses `summary` as its meta
+    description and the schema check requires every description to be unique.
+  - **Renders automatically** on the bootcamp page (upcoming runs and `hasCourseInstance`)
+    and the events index, both of which read the events collection. The header CTA stays
+    on Cohort 2 until 16 September passes, then moves to Cohort 3 on its own.
+  - **Prose updated where cohorts are listed by hand:** the timing guide (now linking all
+    three upcoming dates to their event pages), the Cohort 1 "has it run before?" FAQ, and
+    the homepage venue FAQ.
+  - Prices deliberately not added to the site. As with Cohort 2, pricing stays on the
+    booking page.
+
 - **2026-09-09 — STOP WRITING SECOND BRAIN GUIDES TO FIX RANKING. Ranking is not the
   constraint.** The Second Brain Bootcamp (21 Oct, Pitt Rivers) has **1 guest and 19 of
   20 seats unsold, six weeks out**. Full Day Pass £450 with 10 left, Early Bird £325 with
