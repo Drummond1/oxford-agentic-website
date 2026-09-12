@@ -6,7 +6,8 @@
  * screen and a half down, which is far enough that scrolling back is a chore
  * and late enough that it never competes with the hero CTA. Fading it in on a
  * transform keeps it off the main thread and out of layout, so it cannot move
- * anything or cost CLS.
+ * anything or cost CLS. Its gold edge fills with scroll progress, so it also
+ * answers "how much is left".
  *
  * Sits below the consent banner in the stack rather than beside it. The banner
  * is dismissed once and this is permanent, so the overlap is brief and the
@@ -26,27 +27,59 @@
 
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // A sentinel beats a scroll listener: the browser reports the crossing
-    // itself, so nothing runs on every frame of every scroll.
-    var sentinel = document.createElement('div');
-    sentinel.setAttribute('aria-hidden', 'true');
-    sentinel.style.cssText = 'position:absolute;top:150vh;height:1px;width:1px;pointer-events:none';
-    document.body.appendChild(sentinel);
+    // One passive, rAF-throttled scroll handler does both jobs: it shows the
+    // button once you are more than a screen and a half down, and fills its
+    // gold edge with how far down the page you are. (It replaced a 1px
+    // sentinel and an IntersectionObserver, which never fired when a jump -
+    // an anchor link, a keyboard End - skipped the sentinel past the viewport
+    // in one step.) scrollHeight forces a reflow, so it is measured on resize
+    // and cached; scrolling does arithmetic only.
+    var max = 0;
+    var ticking = false;
+    var shown = false;
 
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(
-        function (entries) {
-          var past = !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0;
-          button.hidden = !past;
-          // Toggled a frame later so the element is displayed before it animates,
-          // otherwise the transition has nothing to run from.
-          window.requestAnimationFrame(function () {
-            button.classList.toggle('is-shown', past);
-          });
-        },
-        { threshold: 0 },
-      ).observe(sentinel);
+    function measure() {
+      max = document.documentElement.scrollHeight - window.innerHeight;
     }
+
+    function paint() {
+      ticking = false;
+      var y = window.scrollY;
+      var past = y > window.innerHeight * 1.5;
+
+      if (past !== shown) {
+        shown = past;
+        button.hidden = !past;
+        // Toggled a frame later so the element is displayed before it animates,
+        // otherwise the transition has nothing to run from.
+        window.requestAnimationFrame(function () {
+          button.classList.toggle('is-shown', past);
+        });
+      }
+
+      if (past) {
+        var p = max > 0 ? Math.min(Math.max(y / max, 0), 1) : 0;
+        button.style.setProperty('--p', p.toFixed(3));
+      }
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(paint);
+    }
+
+    measure();
+    paint();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener(
+      'resize',
+      function () {
+        measure();
+        paint();
+      },
+      { passive: true },
+    );
 
     button.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
@@ -70,9 +103,12 @@
     width: 2.75rem;
     height: 2.75rem;
 
-    background: var(--ink-dark);
+    /* The 1px edge is a conic gradient: gold for the fraction scrolled, the
+       usual hairline for the rest. The ink face is a pseudo-element inset by
+       that 1px, so the edge reads as a border that fills. */
+    background: conic-gradient(var(--gold) calc(var(--p, 0) * 1turn), var(--gold-hairline) 0);
     color: var(--gold);
-    border: 1px solid var(--gold-hairline);
+    border: 0;
     border-radius: 0;
     cursor: pointer;
 
@@ -94,13 +130,24 @@
     transform: translateY(0);
   }
 
+  .to-top::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: var(--ink-dark);
+    transition: background-color 200ms var(--ease);
+  }
+
   .to-top:hover {
-    background: var(--gold);
     color: var(--ink-dark);
-    border-color: var(--gold);
+  }
+
+  .to-top:hover::before {
+    background: var(--gold);
   }
 
   .to-top__arrow {
+    position: relative;
     font-size: 1.1rem;
     line-height: 1;
     transition: transform 220ms var(--ease);

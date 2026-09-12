@@ -27,6 +27,25 @@ const { faqs } = Astro.props;
   }
 </div>
 
+<script>
+  // An answer that opens partly below the fold, or under the sticky header
+  // when the item above it just closed, is brought into view. Only for
+  // toggles the visitor caused (the summary is focused or hovered), so the
+  // item open on load never moves the page.
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLDetailsElement>('.faq__item').forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (!item.open || !item.matches(':hover, :focus-within')) return;
+      requestAnimationFrame(() => {
+        const r = item.getBoundingClientRect();
+        if (r.bottom > window.innerHeight || r.top < 88) {
+          item.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
 <style>
   .faq {
     max-width: 48rem;

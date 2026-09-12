@@ -196,6 +196,46 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-12 — Micro-interactions phase 8, homepage (Drummond: "create more micro
+  interactions on the homepage then ship").** Seven more, this round about the moments
+  between sections - attention hand-offs and orientation - rather than the components
+  themselves. Plus one bug found and fixed on the way.
+  (a) **The primary CTA sends out one quiet echo of its outline** 1.25s after load, once
+  the entrance has settled, so the eye that has just read the headline is drawn to the
+  one thing the page wants done. Once, 900ms, low opacity, never under reduced motion.
+  (b) **Attention hand-off to the header**: the first time the hero's buttons scroll off
+  the top, the header CTA's arrow nudges once. Observed once and disconnected; the class
+  is removed on animationend so it can never stick. Only on pages with a full hero.
+  (c) **The three "Why" cards acknowledge attention without promising a click**: no lift,
+  no gold edge (they are not links), but the gold squares grow a touch one after another
+  down the list, reusing the stagger the reveal already keys to position. Pointer only.
+  (d) **Homepage quote cards: the attribution follows the words in** a beat behind, so
+  the quote lands first and the name arrives to sign it.
+  (e) **An opened FAQ answer that is cut off scrolls itself into view** (`block:
+  nearest`), only for toggles the visitor caused, so the item open on load never moves
+  the page. Verified: an item 9px below the fold opened and settled exactly on it.
+  (f) **The back-to-top button's edge fills clockwise with scroll progress** - a conic
+  gradient behind an ink face inset 1px - so it also answers "how much is left". Hover
+  fills the face gold.
+  **Bug found while verifying (f):** the button's 1px sentinel + IntersectionObserver
+  never fired when a jump (anchor link, keyboard End, a test's scrollTo) carried the
+  sentinel past the viewport in one step, because its intersection state never changed.
+  The button now shows from the same passive, rAF-throttled scroll handler that paints
+  the progress; sentinel and observer removed. Behaviour on ordinary scrolling is
+  unchanged.
+  (g) **The header hairline draws in from the left** when the header sticks, the way the
+  signature rule above a title does, rather than fading up in place.
+  _Verified_ in headless Chrome: echo opacity sampled 0 until 1.2s, 0.45 at 1.4s, 0 by
+  2.2s; hand-off class present with `cta-nudge` running at 900px scroll and removed
+  after; squares scale 1.4 with 0/70/140ms delays on hover, none at rest; attribution
+  opacity 0 (260ms delay) before reveal, 1 after; header hairline scaleX 0 at top, 1 when
+  stuck; button hidden at top, shown at y=3000 with --p 0.512, hover face gold. Two
+  earlier readings were false negatives caused by the consent banner covering the bottom
+  of the viewport in the test - decline it before testing anything down there. Local
+  Lighthouse on the final build, nine runs, all assertions passed: home 100/100/100,
+  LCP 324-327ms; event 100/100/78 (Luma, accepted), LCP 344ms; guide 100/95/100, LCP
+  365-366ms; CLS 0 everywhere. Build clean: 2164 links, 47 pages of valid schema.
+
 - **2026-09-11 — Micro-interactions phase 7, homepage (Drummond: "add more micro
   interactions on homepage").** Seven additions on the homepage's own surfaces, plus
   one bug found on the way.

@@ -108,8 +108,45 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
   }
 
   .site-header.is-stuck {
-    border-block-end-color: rgba(212, 175, 55, 0.34);
     background: rgba(5, 24, 23, 0.97);
+  }
+
+  /* The hairline draws in from the left when the header sticks, the way the
+     signature rule above a title does, rather than fading up in place. */
+  .site-header::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    height: 1px;
+    background: rgba(212, 175, 55, 0.34);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 480ms var(--ease);
+  }
+
+  .site-header.is-stuck::after {
+    transform: scaleX(1);
+  }
+
+  /* Attention hand-off: as the hero's own buttons scroll out of view, the
+     header's arrow nudges once to say the same action is still here. Added by
+     the script the first time the hero buttons leave the top of the viewport,
+     and removed when the animation ends so it can never stick. */
+  .site-header__cta.is-handoff [aria-hidden='true'] {
+    animation: cta-nudge 720ms var(--ease);
+  }
+
+  @keyframes cta-nudge {
+    30% {
+      transform: translateX(6px);
+    }
+    60% {
+      transform: translateX(0);
+    }
+    80% {
+      transform: translateX(3px);
+    }
   }
 
   .site-header__inner {
@@ -389,9 +426,24 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     }).observe(sentinel);
   }
 
+  // Hand-off from the hero's buttons to the header's: watched once, on pages
+  // with a full hero, and the nudge fires the first time they scroll off the
+  // top. Nothing runs on pages without one.
+  const headerCta = document.querySelector<HTMLElement>('.site-header__cta');
+  const heroButtons = document.querySelector<HTMLElement>('.hero--full .btn-row');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (headerCta && heroButtons && !reducedMotion && 'IntersectionObserver' in window) {
+    const handoff = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting || entry.boundingClientRect.top >= 0) return;
+      headerCta.classList.add('is-handoff');
+      headerCta.addEventListener('animationend', () => headerCta.classList.remove('is-handoff'), { once: true });
+      handoff.disconnect();
+    });
+    handoff.observe(heroButtons);
+  }
+
   const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
   const panel = document.getElementById('mobile-nav');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let closeTimer = 0;
 
   // Opening displays the panel and then, a frame later, adds the class that

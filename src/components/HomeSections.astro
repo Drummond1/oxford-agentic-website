@@ -145,7 +145,7 @@ const bands = {
     </div>
 
     <div class="grid grid--3">
-      <div class="card" data-reveal>
+      <div class="card why__card" data-reveal>
         <span class="eyebrow">The day</span>
         <h3>You build, we facilitate</h3>
         <ul class="squares">
@@ -155,7 +155,7 @@ const bands = {
         </ul>
       </div>
 
-      <div class="card" data-reveal data-reveal-delay="90">
+      <div class="card why__card" data-reveal data-reveal-delay="90">
         <span class="eyebrow">The room</span>
         <h3>Senior peers, not an audience</h3>
         {/* Nothing here varies by cohort. Job titles, headcounts and table
@@ -170,7 +170,7 @@ const bands = {
         </ul>
       </div>
 
-      <div class="card" data-reveal data-reveal-delay="180">
+      <div class="card why__card" data-reveal data-reveal-delay="180">
         <span class="eyebrow">What you leave with</span>
         <h3>Something running, and the pattern</h3>
         {/* "What to leave alone" was the last bullet of the last card, which
@@ -397,14 +397,35 @@ const bands = {
     }
   }
 
+  /*
+   * These three cards are not links, so they get no lift and no gold edge: a
+   * hover that promises a click it cannot deliver is worse than none. What
+   * they do get is an acknowledgement of attention - the gold squares grow a
+   * touch, one after another down the list, using the stagger the reveal
+   * already keys to their position. Pointer devices only.
+   */
+  @media (hover: hover) {
+    .why__card:hover .squares li::before {
+      transform: scale(1.4);
+    }
+  }
+
   .quote p {
     font-family: var(--font-title);
     font-size: var(--step-lg);
     line-height: 1.4;
   }
 
+  /* The attribution follows the words in, a beat behind: the quote lands
+     first and the name arrives to sign it. Keys off the sitewide reveal. */
   .quote footer {
     margin-block-start: 1.2rem;
+    transition: opacity 360ms var(--ease) 260ms, transform 360ms var(--ease) 260ms;
+  }
+
+  :global(.js-motion) .quote[data-reveal]:not(.is-revealed) footer {
+    opacity: 0;
+    transform: translateY(6px);
   }
 
   .quote cite {
