@@ -35,6 +35,12 @@ jobs:
       # an invalid Event block fails here and never reaches the live site.
       - run: npm run build
 
+      # Stamp the artifact with the commit it was built from. The IndexNow job
+      # polls this file on the live site and only pings once it matches, so an
+      # indexing hint is never sent for a deploy that did not publish. Not in
+      # the sitemap and not a page, so it has no SEO footprint.
+      - run: echo "${{ github.sha }}" > dist/build.txt
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
@@ -59,18 +65,20 @@ jobs:
           # failure worth seeing.
           timeout: 1200000
 
-  # After a successful publish, tell IndexNow which URLs changed so Bing-family
-  # engines (which feed ChatGPT's web answers) re-crawl now rather than on
-  # their own schedule. The script maps changed files to page URLs and falls
-  # back to the live sitemap for template-wide changes — no rebuild needed.
+  # After a publish is CONFIRMED LIVE, tell IndexNow which URLs changed so
+  # Bing-family engines (which feed ChatGPT's web answers) re-crawl now rather
+  # than on their own schedule. The script maps changed files to page URLs and
+  # falls back to the live sitemap for template-wide changes.
   # continue-on-error: an indexing hint must never redden a deploy.
   #
-  # The gate is `build` succeeding, not `deploy` succeeding. `needs: deploy`
-  # alone silently skipped this job every time the deploy status poll timed out
-  # on a deploy that had in fact published — so the ping stopped happening
-  # exactly when it was needed. The worst case in the other direction is a
-  # redundant ping after a genuinely failed deploy, which costs nothing: the
-  # crawler re-reads a page that has not changed.
+  # Gate history. `needs: deploy` alone silently skipped this job whenever the
+  # deploy status poll timed out on a deploy that had in fact published, so the
+  # job was changed to run on build success. That pinged even after a genuinely
+  # failed deploy. Since 13 Sept 2026 it runs on build success but pings ONLY
+  # once https://oxfordagentic.com/build.txt serves this commit's SHA: a
+  # timed-out-but-published deploy still gets its ping, a failed one does not.
+  # If a later push supersedes this one before it is seen live, this job logs
+  # that and skips; the later push pings its own changes.
   indexnow:
     needs: [build, deploy]
     if: ${{ always() && needs.build.result == 'success' }}
@@ -86,7 +94,25 @@ jobs:
         with:
           node-version: 22
 
+      - name: Confirm this commit is live
+        id: live
+        continue-on-error: true
+        run: |
+          for i in $(seq 1 30); do
+            LIVE=$(curl -sf -H 'Cache-Control: no-cache' "https://oxfordagentic.com/build.txt?t=$(date +%s)" | tr -d '[:space:]')
+            if [ "$LIVE" = "${{ github.sha }}" ]; then
+              echo "live build matches ${{ github.sha }}"
+              echo "confirmed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "attempt $i: live build is '${LIVE:-none}', waiting"
+            sleep 30
+          done
+          echo "deploy not confirmed live after 15 minutes; not pinging IndexNow"
+          echo "confirmed=false" >> "$GITHUB_OUTPUT"
+
       - name: Ping IndexNow with changed URLs
+        if: ${{ steps.live.outputs.confirmed == 'true' }}
         continue-on-error: true
         run: |
           CHANGED=$(git diff --name-only HEAD^ HEAD 2>/dev/null || true)

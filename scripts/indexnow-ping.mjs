@@ -64,8 +64,9 @@ let wholeSite = changed.length === 0;
 for (const file of changed) {
   const content = file.match(/^src\/content\/(guides|events|programmes|team)\/([^/]+)\.md$/);
   if (!content) {
-    // Docs and outreach never affect pages; anything else rebuilt the site.
-    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\//.test(file)) wholeSite = true;
+    // Docs, outreach, CI and the check/ping scripts never change a page;
+    // anything else rebuilt the site.
+    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping)\.mjs$/.test(file)) wholeSite = true;
     continue;
   }
   const [, kind] = content;

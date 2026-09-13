@@ -196,6 +196,18 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-13 — IndexNow now pings only once the deploy is confirmed live (Drummond
+  approved).** Previously the ping job ran on build success, so it could ping after a
+  genuinely failed deploy. It still runs on build success, so a deploy that published
+  but timed out on GitHub's status poll keeps its ping. But it now pings only after
+  `https://oxfordagentic.com/build.txt` serves the pushed commit's SHA, polling for up
+  to 15 minutes. The build writes `dist/build.txt`, which is not a page and not in the
+  sitemap.
+  - Also: `.github/` changes and the `scripts/check-*` and `indexnow-ping` scripts no
+    longer count as template-wide. A CI-only commit used to ping the whole sitemap.
+  - Known edge: if a second push supersedes the first before the first is seen live,
+    the first job skips its ping and the second pings only its own changes.
+
 - **2026-09-13 — Position unblocked, no CTR gap, one guide shipped.**
   - **Search Console position is readable.** Click the Average position metric card,
     then `read_page` (not `get_page_text`) returns every row's position. This resolves the
