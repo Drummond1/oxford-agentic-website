@@ -104,6 +104,6 @@ faqs:
       we will arrange it.
   - q: What if I cannot make the date?
     a: >-
-      Your place transfers to a future cohort at no charge. Just let us know and we
-      will move you.
+      Tickets are not refundable, but your place transfers to a future cohort at no
+      charge. Just let us know and we will move you.
 ---

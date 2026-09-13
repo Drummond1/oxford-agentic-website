@@ -150,10 +150,8 @@ Status: `todo` · `blocked` (why) · `doing`
     About page origin story, and FAQ depth parity between the lines. All four are
     now reconciled for the Second Brain launch; re-run the list on the next launch
     rather than rediscovering them one cycle at a time.
-15. `blocked` (Drummond) — the Second Brain day has **no published capacity** anywhere,
-    including Luma, so its pages cannot answer "how big is the cohort?" while the
-    Agentic pages can. If there is a real number, adding it closes a genuine buyer
-    question. The loop will not guess one.
+15. `done` 13 Sept 2026 — Second Brain group size. **Drummond: "small group", no number.**
+    The Second Brain programme FAQ now answers "Small, and capped". Do not publish a number.
 16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
     instruction was "remove Josh from the team slide"; he is gone from the homepage,
     but `/team/josh-lawman/` is still live, indexed and in the sitemap, and
@@ -163,16 +161,9 @@ Status: `todo` · `blocked` (why) · `doing`
     not actioned: deleting a person's page is his call, not the loop's, and the
     literal instruction was satisfied. If confirmed: delete
     `src/content/team/josh-lawman.md` and add a redirect for the old URL.
-18. `blocked` (Drummond, one fact) — **do attendees get a certificate?** Nothing on
-    the site says, and the comparison set leads with it: Saïd issues an official
-    University of Oxford Certificate of Completion, the Queen Mary Eventbrite day
-    issues a university certificate, tutorials.co.uk says "Certificate included".
-    A senior buyer expensing a day will ask. The affiliation FAQ says the name
-    "promises the city and the standard of the day rather than a university
-    credential", which implies no *university* credential but does not say whether
-    any certificate exists at all. The loop will not guess either way - "no
-    certificate" and "yes, ours" are both assertions of fact it has no source for.
-    One sentence from Drummond closes it, and it belongs in the homepage FAQ.
+18. `answered, not published` 13 Sept 2026 — **Certificate: not yet confirmed, maybe in
+    future** (Drummond). Say nothing on the site either way until he confirms. Do not write
+    "no certificate", and do not imply one.
 19. `blocked` (Drummond, one URL) — **Nicolai Thomson has no links**, so his profile
     is the only one on the site with no `Person.sameAs` at all. The other four now
     each corroborate to a real external profile: LinkedIn for Drummond and Jonathan,
@@ -195,6 +186,28 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-13 — Drummond answered the buyer questions. Recorded here, and the safe ones
+  are published.**
+  - **Refunds: none.** Added "Tickets are not refundable, but your place transfers to a
+    future cohort at no charge" to the date question on the homepage, both programme
+    pages and the Second Brain event page. The Cohort 2 and 3 event pages were left alone:
+    they no longer carry that FAQ, and the transfer assurance sits under their form.
+  - **Invoices: yes.** Added to the homepage cost answer, via hello@oxfordagentic.com.
+    **VAT treatment was not answered, so it is not mentioned.**
+  - **Dietary and access needs: "attendees asked in advance".** Added to the Agentic
+    programme's lunch answer. **Step-free access at either venue is still unanswered, so
+    it is not claimed.** Not added to Second Brain pages, which make no lunch claim.
+  - **Second Brain size: "small group".** New Second Brain programme FAQ: "Small, and
+    capped." No number.
+  - **Certificate: not yet confirmed, maybe in future.** Not published (see backlog 18).
+  - **Guest speakers: "same as Cohort 2".** Cohort 3's agenda already mirrors Cohort 2's,
+    and neither names the guest sessions. Nothing changed.
+  - **Consultancy: considering it, but does not want to dilute the offer.** Do not target
+    the `agentic ai providers/consultants/services oxfordshire` cluster. Do not build
+    services content.
+  - **Still open for Drummond:** a Nicolai Thomson profile URL, a LinkedIn Company Page,
+    Bing Webmaster verification, VAT treatment, and step-free access.
 
 - **2026-09-13 — IndexNow now pings only once the deploy is confirmed live (Drummond
   approved).** Previously the ping job ran on build success, so it could ping after a

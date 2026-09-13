@@ -82,10 +82,10 @@ export const homeFaqs = [
   },
   {
     q: 'What if I book but cannot make the date?',
-    a: 'Your place transfers to a future cohort at no charge. A date that no longer works should not mean a lost seat - just let us know and we will move you.',
+    a: 'Tickets are not refundable, but your place transfers to a future cohort at no charge. A date that no longer works should not mean a lost seat - just let us know and we will move you.',
   },
   {
     q: 'How much does it cost?',
-    a: 'Pricing is shown on the booking page for each event, along with any early-bird rate. Open the event you are interested in and the booking form sits on that page.',
+    a: 'Pricing is shown on the booking page for each event, along with any early-bird rate. Open the event you are interested in and the booking form sits on that page. If your organisation would rather pay by invoice, email hello@oxfordagentic.com and we will arrange it.',
   },
 ];

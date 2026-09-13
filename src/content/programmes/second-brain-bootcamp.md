@@ -91,10 +91,14 @@ faqs:
       Yes. Teams are welcome, and bringing a colleague means the same approach goes
       back to work with two of you rather than one. Email hello@oxfordagentic.com and
       we will arrange it.
+  - q: How big is the group?
+    a: >-
+      Small, and capped. The exact number of places left is on the booking page.
   - q: What if I book but cannot make the date?
     a: >-
-      Your place transfers to a future cohort at no charge. A date that no longer
-      works should not mean a lost seat - just let us know and we will move you.
+      Tickets are not refundable, but your place transfers to a future cohort at no
+      charge. A date that no longer works should not mean a lost seat - just let us
+      know and we will move you.
 ---
 
 The limit on what AI can do for you is rarely the model. It is that the model has

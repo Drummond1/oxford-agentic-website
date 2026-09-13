@@ -96,8 +96,9 @@ faqs:
       hello@oxfordagentic.com and we will arrange it.
   - q: What if I book but cannot make the date?
     a: >-
-      Your place transfers to a future cohort at no charge. A date that no longer works
-      should not mean a lost seat - just let us know and we will move you.
+      Tickets are not refundable, but your place transfers to a future cohort at no
+      charge. A date that no longer works should not mean a lost seat - just let us
+      know and we will move you.
   - q: Is the day recorded?
     a: >-
       No. The value is in being in the room and building, not in a video to watch later.
@@ -105,7 +106,8 @@ faqs:
   - q: Is lunch included?
     a: >-
       Yes. Lunch and refreshments are provided, so you can spend the day building rather
-      than sorting out food.
+      than sorting out food. We ask attendees about dietary and access needs before
+      the day.
 ---
 
 The day runs on one idea: most people are still using AI the way they used Google in 2004 - one question, one tab. That is fine, and it is not the interesting part.
