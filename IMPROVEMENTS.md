@@ -187,6 +187,33 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-13 (13:15 local cycle) — Stopped inventing a ticket on-sale date in event
+  structured data.** This is the first cycle of the local 6-hourly loop, which replaced
+  the cloud routine: that routine is paused because it had no GitHub write access.
+  - **Evidence.** `eventSchema` set `offers.validFrom` to `new Date()`, so every build
+    stamped the build time into all four event pages' Offer and told search engines tickets
+    had just gone on sale. That was an invented date. Luma publishes no on-sale date for the
+    Full Day Pass on any event (`valid_start_at: null`), so these are not date-restricted
+    offers, and Google only asks for `validFrom` on date-restricted offers.
+  - **Change.** Removed `validFrom`. A comment records why, and to restore it only from a
+    real Luma `valid_start_at`.
+  - **Checks.** Build, links and schema pass (48 pages, 4 Event, 7 FAQPage). No `validFrom`
+    left in dist. Only the four event pages changed, and their visible HTML is byte-identical
+    outside the JSON-LD. Builds are now deterministic: the same page is identical across two
+    builds.
+  - **Search Console.** Reachable, but data still ends 10 Sept, identical to the morning
+    reading. No fresh data, so step 4 does not apply.
+  - **GEO.** Started `seo-data/geo-citations.md`: cited 2 of 3 buyer questions, not cited on
+    the national "one-day AI workshop UK" query. Perplexity served a stale About-page copy.
+  - **Off-page.** Started `outreach/review-list.md` with Daily Info. Nothing submitted.
+  - **IndexNow note.** `src/lib/schema.ts` is shared code, so this deploy pings the whole
+    sitemap although only four pages changed. The script cannot map shared code to specific
+    pages. Pre-existing behaviour, recorded rather than worked around.
+  - **Still open from the cloud run:** mapping `src/lib/home.ts` to `/` only in the IndexNow
+    script. Deferred to keep this cycle to one change.
+  - Seen in Luma data, for later: Cohort 2's Full Day Pass sales close 14 Sept 2026 at
+    12:00 BST (`valid_end_at`).
+
 - **2026-09-13 — Drummond answered the buyer questions. Recorded here, and the safe ones
   are published.**
   - **Refunds: none.** Added "Tickets are not refundable, but your place transfers to a

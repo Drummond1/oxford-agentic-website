@@ -276,12 +276,17 @@ export function eventSchema(
     ...(subEvents.length > 0 ? { subEvent: subEvents } : {}),
     ...(event.data.capacity ? { maximumAttendeeCapacity: event.data.capacity } : {}),
     // Price lives on Luma and is deliberately not published here — PRD §18.
+    //
+    // No `validFrom`. It used to be `new Date()`, which stamped every build time
+    // into the offer and told search engines tickets had just gone on sale. Luma
+    // publishes no on-sale date for these passes (`valid_start_at` is null), so
+    // they are not date-restricted offers, which is the only case Google asks
+    // for validFrom. Add it back only from a real Luma `valid_start_at`.
     offers: {
       '@type': 'Offer',
       url,
       availability,
       category: 'Paid',
-      validFrom: new Date().toISOString(),
     },
   };
 }
