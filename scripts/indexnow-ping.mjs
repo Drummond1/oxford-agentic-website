@@ -10,6 +10,7 @@
  *   src/content/events/x.md      -> /events/<slug>/, /events/ and /
  *   src/content/programmes/x.md  -> /bootcamps/<slug>/ and /
  *   src/content/team/x.md        -> /team/
+ *   src/pages/a/b.astro (static) -> /a/b/, if it is in the sitemap
  *   any template/config/style change -> every URL in the sitemap, since every
  *   page was rebuilt
  *
@@ -61,7 +62,18 @@ async function allSitemapUrls() {
 
 let wholeSite = changed.length === 0;
 
+// A static page file (no [param] in its path) builds exactly one URL, so it
+// maps to that URL rather than the whole site. Only URLs in the sitemap are
+// kept, so noindex pages such as /home-photos/ are never submitted.
+const pageCandidates = new Set();
+
 for (const file of changed) {
+  const page = file.match(/^src\/pages\/((?:[a-z0-9-]+\/)*)([a-z0-9-]+)\.astro$/);
+  if (page) {
+    const [, dir, name] = page;
+    pageCandidates.add(`https://${HOST}/${name === 'index' ? dir : `${dir}${name}/`}`);
+    continue;
+  }
   const content = file.match(/^src\/content\/(guides|events|programmes|team)\/([^/]+)\.md$/);
   if (!content) {
     // Docs, outreach, CI and the check/ping scripts never change a page;
@@ -84,6 +96,11 @@ for (const file of changed) {
   } else if (kind === 'team') {
     urls.add(`https://${HOST}/team/`);
   }
+}
+
+if (!wholeSite && pageCandidates.size > 0) {
+  const inSitemap = new Set(await allSitemapUrls());
+  for (const url of pageCandidates) if (inSitemap.has(url)) urls.add(url);
 }
 
 const urlList = wholeSite ? await allSitemapUrls() : [...urls];

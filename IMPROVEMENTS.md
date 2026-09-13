@@ -187,6 +187,34 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-13 (16:00 local cycle) — Gave the events hub a title that says what is on it.**
+  Run on Drummond's request to test the local loop end to end.
+  - **Evidence (Search Console, 28 days 15 Aug to 11 Sept, read 13 Sept from raw rows).**
+    Data now runs one day later than the morning reading. Site: 46 clicks, 724 impressions,
+    CTR 6.4%, position 12.7. Pages with meaningful impressions and weak CTR:
+    `/events/oxford-agentic-bootcamp-cohort-2/` 117 impr, 0.9%, pos 7.2;
+    `/bootcamps/oxford-agentic-bootcamp/` 95 impr, 2.1%, pos 11.0; `/guides/` 83 impr,
+    1.2%, pos 11.9; `/events/` 82 impr, 1.2%, pos 10.0.
+  - **Why `/events/`.** Cohort 2's attributed queries are the brand course query, where the
+    homepage ranks higher and takes the click, and its sales close 14 Sept, so a change there
+    has days of value. The bootcamp page's 2.1% is roughly normal for position 11, and its
+    few attributed queries are brand or an unrelated IBM course. `/events/` sat on page one
+    with the title "Events - Oxford Agentic", which tells a searcher nothing, and it is the
+    hub for Cohort 3 and Second Brain Cohort 1, both with no bookings yet.
+  - **Change.** `<title>` (and og/twitter title, WebPage name) is now "AI bootcamp dates in
+    Oxford - Oxford Agentic". True whether or not a cohort is open, since past cohorts keep
+    their dates. H1, description, canonical and breadcrumbs unchanged. No dates in the title,
+    so nothing to go stale.
+  - **IndexNow.** `scripts/indexnow-ping.mjs` sent the whole sitemap for any `src/pages` edit.
+    A static page file now maps to its own URL, kept only if it is in the sitemap. Dry-run:
+    events index → `/events/` only; `about.astro` → `/about/`; `index.astro` → `/`;
+    `home-photos.astro` (noindex) → nothing; `[slug].astro` and `src/lib/*` → whole site as before.
+  - **Checks.** Build, links and schema pass (48 pages; titles unique). Only
+    `dist/events/index.html` changed. Inspected at 375px and 1440px locally: no overflow,
+    no console errors. Pre-existing, not touched: homepage meta description is 166 chars.
+  - **Re-check.** Compare `/events/` CTR over the 28 days to about 11 Oct against 1.2% at
+    82 impressions. Too small a sample for a firm verdict; look for direction only.
+
 - **2026-09-13 (13:15 local cycle) — Stopped inventing a ticket on-sale date in event
   structured data.** This is the first cycle of the local 6-hourly loop, which replaced
   the cloud routine: that routine is paused because it had no GitHub write access.
