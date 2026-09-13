@@ -639,3 +639,55 @@ the invalid four are stale (see STATE.md).
 Cohort 3's page (`/events/oxford-agentic-bootcamp-cohort-3/`) went live on 11 Sept.
 Requesting indexing through the URL-inspection box failed under automation, so it was not
 retried. It is in the sitemap, linked from four pages, and IndexNow pinged on deploy.
+
+---
+
+## 2026-09-13 — Reading through 10 Sept, and position is finally readable
+
+**All time (22 Jul – 10 Sept): 73 clicks, 1,009 impressions, CTR 7.2%, average position
+18.7.** Previous (through 8 Sept): 68 / 942 / 19.3.
+
+### The method that unblocks position (record this)
+
+`get_page_text` never returns the Position column. **`read_page` (the accessibility tree)
+does**, once the "Average position" metric card is clicked on. Each table row appears as a
+generic node holding the query and its numbers. Verify from the raw rows rather than a
+`find` paraphrase. This removes the blocker escalated on 6 Sept, so the CSV export is now
+a convenience rather than a necessity.
+
+### Every query, with position (all time, through 10 Sept)
+
+| Query | Clicks / Impr. | Position |
+|---|---|---|
+| oxford agentic ai course | 7 / 63 | 3.5 |
+| oxford agentic ai | 2 / 13 | 1.2 |
+| agentic ai oxford | 1 / 10 | 3.4 |
+| agentic second brain | 1 / 1 | 16.0 |
+| what time of year do executive ai cohorts usually begin? | 0 / 45 | 76.2 |
+| oxford generative and agentic ai programme | 0 / 39 | 10.0 |
+| agentic ai oxfordshire | 0 / 25 | 35.7 |
+| agentic ai for finance | 0 / 22 | 81.9 |
+| best agentic ai providers oxfordshire | 0 / 13 | 21.0 |
+| agentic slang | 0 / 13 | 75.2 |
+| agentic terms | 0 / 12 | 86.2 |
+
+Lower-volume rows (impressions not captured in the tree read): agentic ai consultants
+oxfordshire 34.1; how long after an executive ai program... 53.3; agentic dictionary 64.5;
+agentic ai companies oxfordshire 69.6; why does the scout playbook include a human review
+step? **1.0**; agentic ai providers oxfordshire 36.0; agentic ai services oxfordshire 54.0;
+drummond gilbert **9.5**; oxford boot camp **11.0**; agentic ai boot camp 59.0; agentic ai
+glossary 83.0; mem.ai second brain 74.0; plus two Danish IBM bootcamp queries.
+
+### Reading
+
+- **There is still no impressions-vs-CTR gap to fix.** Every zero-click query with volume
+  is either below page 2 or intent-mismatched. The only page-1 zero-click query is
+  `oxford generative and agentic ai programme` at 10.0, which is **Saïd's programme name**.
+  Rewriting a title to catch it would be trading on their brand, so it is left alone.
+- **The timing guide's query has moved from 77.3 to 76.2.** That is consistent with the
+  6 Sept verdict: the query is not reached.
+- **A local services cluster has formed:** `agentic ai [providers|consultants|services|
+  companies] oxfordshire`, positions 21-70. The intent is hiring a provider, not training,
+  and the obvious capture is location pages, which are banned. **Flagged, not built.**
+- `drummond gilbert` at 9.5 is low for his own name. That is an entity and off-page signal
+  (LinkedIn, other profiles), not something the site can fix on-page.

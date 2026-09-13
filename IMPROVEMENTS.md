@@ -196,6 +196,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-13 — Position unblocked, no CTR gap, one guide shipped.**
+  - **Search Console position is readable.** Click the Average position metric card,
+    then `read_page` (not `get_page_text`) returns every row's position. This resolves the
+    6 Sept escalation. Full table in the baseline file.
+  - **No impressions-vs-CTR gap exists to fix** (see baseline). The only page-1
+    zero-click query is Saïd's programme name at 10.0, left alone on principle.
+  - **Flag for Drummond: a local services cluster**
+    (`agentic ai providers/consultants/services/companies oxfordshire`, positions 21-70).
+    The searchers are hiring a provider. The capture would be location pages, which are
+    banned, and it is the wrong buyer for a training day. Recorded, not built.
+  - **Shipped `getting-an-ai-workflow-past-it-and-legal`** (in-practice). Probe: every
+    ranking result is written for the approver - CISO checklists and security vendors -
+    and nothing is written for the manager who has to ask. That manager is the
+    governed-adopter buyer, and the topic is a named Cohort 3 curriculum item ("the
+    security and stakeholder questions that decide whether it sticks"). No overlap with the
+    pilot guide (ownership and success criteria) or the public-sector guide (what
+    governance permits). Unsourced generalisations removed before shipping. No regulation
+    named beyond "data protection law applies".
+  - Repo checked before work because another session pushed homepage micro-interactions on
+    11-12 Sept. It was clean: no locks, no uncommitted foreign changes, nothing new for 25h.
+
 - **2026-09-12 — Micro-interactions phase 8, homepage (Drummond: "create more micro
   interactions on the homepage then ship").** Seven more, this round about the moments
   between sections - attention hand-offs and orientation - rather than the components
