@@ -67,7 +67,18 @@ let wholeSite = changed.length === 0;
 // kept, so noindex pages such as /home-photos/ are never submitted.
 const pageCandidates = new Set();
 
+// Shared sources that feed only one public page. HomeSections also renders
+// /home-photos/, but that page is noindex and out of the sitemap.
+const SINGLE_PAGE_SOURCES = new Map([
+  ['src/lib/home.ts', '/'],
+  ['src/components/HomeSections.astro', '/'],
+]);
+
 for (const file of changed) {
+  if (SINGLE_PAGE_SOURCES.has(file)) {
+    pageCandidates.add(`https://${HOST}${SINGLE_PAGE_SOURCES.get(file)}`);
+    continue;
+  }
   const page = file.match(/^src\/pages\/((?:[a-z0-9-]+\/)*)([a-z0-9-]+)\.astro$/);
   if (page) {
     const [, dir, name] = page;

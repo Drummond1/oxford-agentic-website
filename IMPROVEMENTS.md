@@ -187,6 +187,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-13 (18:40 local cycle) — Homepage-only sources now ping `/`, not the whole site.**
+  - **Search Console.** Reachable; read the 3-month view (the property's whole history) from
+    raw accessibility-tree rows. No new data since the 16:00 reading (chart still ends 11 Sept,
+    "Last update: 7 hours ago"), and that reading was already acted on (`/events/` title). No
+    second change off the same data, so step 5 applies.
+  - **Change.** `scripts/indexnow-ping.mjs`: `src/lib/home.ts` and
+    `src/components/HomeSections.astro` map to `/` only. HomeSections also renders
+    `/home-photos/`, which is noindex and not in the sitemap. Closes known candidate (1).
+  - **Why this over alternatives.** Candidate (2) waits for 16 Sept; (3) was done at 13:15;
+    (4) GEO found no winnable gap (below). Homepage FAQ edits are the most frequent kind of
+    change, and each was submitting 44 URLs where one changed.
+  - **Checks.** Dry-run: `home.ts` → `/`; `HomeSections.astro` + docs → `/`; `home.ts` + a
+    guide → `/`, the guide and `/guides/`; `home.ts` + `schema.ts` → whole site; docs and this
+    script → nothing. Build, links and schema pass. No page output changes, so this deploy
+    should submit nothing to IndexNow.
+  - **GEO (5 questions, `seo-data/geo-citations.md`).** Second Brain cited #1 for "in-person
+    course UK" and "workshop Oxford"; not cited for tool-led DIY phrasing. The IT/legal and
+    Cowork/Code/Codex guides are not cited; both fields are vendor-dominated, so no Q&A block.
+  - **Off-page.** Nothing credible to add; results were competitors, not listing sites.
+
 - **2026-09-13 (16:00 local cycle) — Gave the events hub a title that says what is on it.**
   Run on Drummond's request to test the local loop end to end.
   - **Evidence (Search Console, 28 days 15 Aug to 11 Sept, read 13 Sept from raw rows).**
