@@ -4,13 +4,13 @@ slug: why-in-person-beats-online-for-learning-ai
 category: choosing
 description: Online courses teach you about AI. A day in the room is what gets an agentic workflow built. Here is the difference, and why it matters.
 capsule: >-
-  Online courses are good at explaining AI and poor at getting you to build with it.
-  The thing that stalls people is rarely the concept; it is being stuck on setup with
-  no one to unstick them. A facilitated day in a small room removes that friction, so
-  you leave having built something real rather than bookmarked another video.
+  For senior leaders who want to build with AI rather than learn about it, a day in
+  the room usually beats an online course. Online is better at explaining concepts and
+  reaching a spread-out team. What stalls people is rarely the concept; it is being
+  stuck on setup with no one to unstick them, and a facilitated small room removes that.
 author: drummond-gilbert
 publishDate: "2026-07-23T09:00:00+01:00"
-updatedDate: "2026-08-10T07:00:00+01:00"
+updatedDate: "2026-09-14T06:45:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
@@ -29,6 +29,16 @@ A course cannot walk over and unstick you. A person can, in about a minute.
 - **It removes the setup tax.** Someone is there to get you past the tooling so you spend the day on the idea, not the plumbing.
 - **It creates a deadline.** A booked day with other people in the room is a commitment you keep. "I'll get to it" quietly loses to everything else; a date in the diary does not.
 - **It gives you peers.** Building alongside other senior people working on their own real tasks is its own teacher. You see five other ways to approach a problem, and you leave with their contact details.
+
+## When online is the better choice
+
+In-person is not always the right answer, and it is worth being plain about when it is not.
+
+- **You need the concepts, not a build.** If the aim is to understand agentic AI well enough to judge proposals and question vendors, a good online course does that well, costs less and fits round your diary.
+- **Your team is spread out.** A day in one room means travel for everyone who is not nearby. For a distributed team, live online sessions built around real tasks will reach more people.
+- **You are already building.** Once your first workflow is running, going deeper on one tool is often quicker with targeted online material than with another day away.
+
+The case for a room is narrower and stronger than "in-person is better": it is the right choice when you want to leave with something built against your own work, and the likeliest thing to stop you is getting stuck alone at your desk. If you are weighing executive education and bootcamps as well, [which AI training format leaders need](/guides/ai-bootcamp-vs-course-vs-exec-education/) compares all three.
 
 ## The measure is what runs on Monday
 

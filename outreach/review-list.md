@@ -11,6 +11,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **OxGen AI Summit (Oxford Generative AI Summit 2026)** - found 14 Sept 2026.
+  - 15-16 Oct 2026, Jesus College Cheng Kar Shun Digital Hub, Oxford. Dates checked against
+    the Eventbrite listing's structured data on 14 Sept 2026. Its site,
+    https://www.oxgensummit.org/, has a "Sponsorship opportunities" section. **Cost and terms
+    not checked.**
+  - Why: its own listing describes 200+ leaders from enterprise, startups, government and
+    academia in Oxford, which overlaps the bootcamp buyer. Possible mention, partnership or
+    attendee-offer route.
+  - **Clash:** day one is the same date as Oxford Agentic Bootcamp Cohort 3 (Thu 15 Oct).
+    Drummond to decide whether that matters.
+  - Needs: Drummond's decision. Nothing contacted or submitted.
+
 - **Daily Info (Oxford what's-on listings)** - found 13 Sept 2026.
   - Has an organiser page at https://www.dailyinfo.co.uk/list-event, titled "List your event
     on Daily Info" (loads, checked 13 Sept 2026).

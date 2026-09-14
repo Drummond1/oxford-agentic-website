@@ -187,6 +187,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-14 (06:40 local cycle) — Made the in-person guide answer the balanced question
+  answer engines are asked.**
+  - **Search Console.** Not read: Claude in Chrome was not connected on the one attempt. The
+    00:40 reading (same session) matched 18:40 exactly, data ending 11 Sept.
+  - **Evidence (GEO).** "Is in-person AI training better than online courses for senior
+    leaders" cites 10 pages, none ours, though `why-in-person-beats-online-for-learning-ai` is
+    indexed. Every cited page gives a two-sided answer; ours argued one side. Probe: WINNABLE
+    (small providers plus one exec-ed school) and CONVERTING (choosing a format for leaders).
+  - **Change.** Capsule now opens with the senior-leader answer and names what online does
+    better. New section "When online is the better choice" (concepts not a build; spread-out
+    team; already building), linking `ai-bootcamp-vs-course-vs-exec-education`. No
+    statistics, prices or outcomes added. `updatedDate` 14 Sept.
+  - **Checks.** Build, links and schema pass (48 pages, 2,220 internal links). Capsule 61
+    words (limit 75). Output changes limited to this guide, the Guides index date, sitemap
+    lastmod, RSS and llms-full. Canonical unchanged. Inspected locally at 375px and 1440px.
+  - **Not shipped, flagged.** Cohort 2's only Luma ticket (Full Day Pass) stops selling at
+    12:00 BST today; the site has no "sales closed" state. Awaiting Drummond.
+  - **Also in this commit:** GEO rows from the 00:40 no-ship cycle, and OxGen AI Summit
+    (15-16 Oct, same day as Cohort 3) added to `outreach/review-list.md`.
+  - **Re-check.** Put the same question to Perplexity after it re-crawls (two to three weeks).
+
 - **2026-09-13 (18:40 local cycle) — Homepage-only sources now ping `/`, not the whole site.**
   - **Search Console.** Reachable; read the 3-month view (the property's whole history) from
     raw accessibility-tree rows. No new data since the 16:00 reading (chart still ends 11 Sept,

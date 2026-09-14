@@ -5,6 +5,40 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-09-14 (06:40 BST cycle)
+
+Engine: Perplexity search, country GB.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to choose the first task to automate with an AI agent | **Yes**: #4 `how-to-choose-your-first-agentic-task` | beeagent.ai, Taskade, Product Talk, Vybe, Fivetran, Boomi, builderlog, ennphasis, G2 |
+| is in-person AI training better than online courses for senior leaders | **No** (not in top 10) | AJAIA, The Oxford AI School (theoxfordaischool.com, 31 Aug), Better People, AI CERTs, The AI Activators, Training Industry, MIT Sloan Exec Ed, Precision AI Academy, Alice Labs, The AI Edit |
+| agentic AI for finance teams, practical use cases for a finance director | **No** (not in top 10) | ICAEW, CFI (x2), CFA Institute RPC, Moveworks, Auxis, BCG, assistents.ai, Centric, Futureview |
+
+**Reading.**
+- **In-person vs online is a gap on a page we already have.** A site-anchored search shows
+  `why-in-person-beats-online-for-learning-ai` is indexed, so this is selection, not
+  discovery. Every cited page gives a *balanced* answer (when in-person, when online); ours
+  argued one side. That query is WINNABLE (small providers, one exec-ed school) and
+  CONVERTING (someone choosing a format for leaders). Acted on this cycle.
+- **Finance** is owned by ICAEW, CFI, CFA Institute and BCG. Not winnable. No action.
+- **Stale citation again:** Perplexity quoted `ai-bootcamp-vs-course-vs-exec-education` as
+  "about twenty-five senior people". The live page does not say that (checked with curl,
+  14 Sept). Nothing to fix on-site.
+
+## 2026-09-14 (00:40 BST cycle)
+
+Engine: Perplexity search, country GB. (Logged here from the no-ship cycle.)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what is an agentic AI bootcamp and is it worth it for a business leader | **Yes**: #1 `what-is-an-agentic-bootcamp`, #3 homepage, #6 Guides | DASA (online, €1,850), aiifi review of Vanderbilt/Coursera, Coursera, SSON, Maven, AgileFever |
+| what to do after finishing an executive AI programme to actually use it at work | **Yes**: #1 `after-the-ai-executive-programme` | Careers360, raybogman.com, Product Talk, Elite AI Advantage, Microsoft, Happy, Leland, BVP |
+| AI training day in Oxford October 2026 | **Yes**: #2 homepage (shows Cohort 3), #3 Second Brain programme, #5 Second Brain Cohort 1, #9 Events (stale 21 Jul copy) | #1 oxfordaitraining.com (4-week evening classes, Headington); University IT Services; Imperial Training; Oxford Martin AIGI; OxGen AI Summit (Eventbrite); OeRC |
+
+**Reading.** Question-shaped and Oxford-dated queries cite the site. The Cohort 3 event page
+(published 13 Sept) is not yet cited; the homepage carries it.
+
 ## 2026-09-13 (18:40 BST cycle)
 
 Engine: Perplexity search, country GB.
