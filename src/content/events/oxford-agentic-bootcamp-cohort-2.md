@@ -3,7 +3,10 @@ title: The Oxford Agentic Bootcamp - Cohort 2
 slug: oxford-agentic-bootcamp-cohort-2
 programme: oxford-agentic-bootcamp
 cohort: Cohort 2
-status: upcoming
+# soldout since 15 Sept 2026 17:00 BST: Luma's only ticket (Full Day Pass) stopped
+# selling then, and Luma reports registration "sold-out" with its waitlist enabled.
+# The page's waitlist button matches what the booking page now offers.
+status: soldout
 startDate: "2026-09-16T09:00:00+01:00"
 endDate: "2026-09-16T17:00:00+01:00"
 venue:

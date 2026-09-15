@@ -187,6 +187,26 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-15 (18:40 local cycle) — Marked Cohort 2 sold out, matching Luma.**
+  - **Evidence.** Luma, read 15 Sept 18:37 BST: the only ticket type (Full Day Pass, 13 of 14
+    sold) stopped selling at 17:00:59 BST; `registration_availability` "sold-out",
+    `sold_out` true, waitlist enabled. The live site still said "Book your place" and the
+    Event schema said `InStock`, which was no longer true.
+  - **Change.** `status: soldout` in the Cohort 2 event file, with a dated comment. Existing
+    templates do the rest: buttons read "Join the waitlist" / "Waitlist" (Luma now offers
+    exactly that), the event card on `/`, `/events/`, the bootcamp page and 404 reads "Join
+    the waitlist", and `offers.availability` is `SoldOut`. Cohort 3 stays `InStock`. The event
+    turns `past` on the first build after 16 Sept 17:00.
+  - **Checks.** Build, links and schema pass (48 pages, 4 Event). Output diff limited to
+    those cards and buttons, the Cohort 2 JSON-LD, llms-full and sitemap lastmod. Inspected
+    locally at 375px and 1440px. The 2px width difference at 375px is the emulator's
+    scrollbar gutter: the live page before this change measures identically.
+  - **Search Console (fresh, through 13 Sept).** 75 / 1.09k / 6.9% / 18.9. No page qualifies
+    for a step-4 change; see the baseline log.
+  - **Also in this commit:** Search Console readings for 14-15 Sept, GEO rows from six cycles
+    (14 Sept 12:40 to 15 Sept 18:40) logged while nothing shipped, and whatisai.co.uk added to
+    the off-page review list.
+
 - **2026-09-14 (06:40 local cycle) — Made the in-person guide answer the balanced question
   answer engines are asked.**
   - **Search Console.** Not read: Claude in Chrome was not connected on the one attempt. The

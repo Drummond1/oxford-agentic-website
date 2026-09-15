@@ -691,3 +691,45 @@ glossary 83.0; mem.ai second brain 74.0; plus two Danish IBM bootcamp queries.
   and the obvious capture is location pages, which are banned. **Flagged, not built.**
 - `drummond gilbert` at 9.5 is low for his own name. That is an entity and off-page signal
   (LinkedIn, other profiles), not something the site can fix on-page.
+
+---
+
+## 2026-09-14 and 15 — Readings through 12 and 13 Sept
+
+**All time through 12 Sept (read 14 Sept 12:40): 74 clicks, 1.06k impressions, CTR 6.9%,
+position 19. Through 13 Sept (read 15 Sept 18:40): 75 / 1.09k / 6.9% / 18.9.** Query
+positions re-read from the accessibility tree both times; the only movement is `oxford
+agentic ai course` (3.5 to 3.4) and `agentic ai oxford` (3.4 to 3.3).
+
+### Pages (through 13 Sept: clicks / impressions / CTR / position)
+
+| Page | Through 13 Sept |
+|---|---|
+| `/` | 49 / 555 / 8.8% / 5.6 |
+| `/events/oxford-agentic-bootcamp-cohort-2/` | 4 / 145 / 2.8% / 6.7 |
+| `/bootcamps/second-brain-bootcamp/` | 4 / 51 / 7.8% / 5.7 |
+| `/team/` | 3 / 98 / 3.1% / 17.7 |
+| `/guides/` | 2 / 113 / 1.8% / 17.1 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 2 / 101 / 2% / 10.6 |
+| `/events/` | 2 / 100 / 2% / 11.5 |
+| `/guides/after-the-ai-executive-programme/` | 2 / 67 / 3% / 63.2 |
+| `/bootcamps/` | 2 / 46 / 4.3% / 7.3 |
+| `/events/oxford-second-brain-bootcamp-cohort-1/` | 2 / 45 / 4.4% / 11.3 |
+
+### Where the low-CTR impressions come from (page filter, read 14 Sept)
+
+- `/guides/` (8 queries): best agentic ai providers oxfordshire 11 impr at 19.5; oxford agentic
+  ai 7 at 9.7; then the providers/companies/consultants oxfordshire cluster and two brand rows.
+- `/team/` (12 queries): the consultants/companies/services/providers oxfordshire cluster (8, 4,
+  4, 3, 2 impr), plus drummond gilbert 2 at 9.5 and consultants hertfordshire 2 at 64.5.
+- `/bootcamps/oxford-agentic-bootcamp/` (6 queries): two Danish IBM bootcamp queries (4 and 2
+  impr), brand queries, and agentic ai boot camp 1 at 59.
+
+### Reading
+
+- **No step-4 change is justified.** The low-CTR impressions are the local services cluster
+  (not targeted, Drummond 13 Sept), brand searches where the homepage takes the click, or an
+  unrelated IBM course.
+- **The services cluster is spreading:** new rows for `agentic ai consultants hertfordshire`
+  (64.5), `agentic ai providers hertfordshire` (54.0) and `agentic ai buckinghamshire` (67.0).
+- The `/events/` title changed on 13 Sept; the effect is not yet in the data.

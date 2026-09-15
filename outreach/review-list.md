@@ -11,6 +11,14 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **whatisai.co.uk - "Best AI Courses for Business Leaders in 2026"** - found 15 Sept 2026.
+  - URL: https://whatisai.co.uk/best-ai-courses-for-business-leaders/ (loads, 15 Sept 2026).
+    Cited #3 by Perplexity for "best AI course for business leaders in Oxford", the only
+    non-Saïd source in that answer. Has a contact page: https://whatisai.co.uk/contact-connect/.
+  - Why: a UK roundup that answer engines already cite for the exact buyer question.
+  - **Not checked:** whether it accepts suggestions, its editorial policy, or any cost.
+  - Needs: Drummond's decision. Nothing contacted.
+
 - **OxGen AI Summit (Oxford Generative AI Summit 2026)** - found 14 Sept 2026.
   - 15-16 Oct 2026, Jesus College Cheng Kar Shun Digital Hub, Oxford. Dates checked against
     the Eventbrite listing's structured data on 14 Sept 2026. Its site,
