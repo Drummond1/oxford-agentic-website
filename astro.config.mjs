@@ -57,6 +57,8 @@ const flaggedOffPrefixes = [
   // redirect page still exists at that address.
   '/home-photos',
   '/home-original',
+  // The application form is noindex and footer-only (23 Sept 2026).
+  '/apply',
 ].filter(Boolean);
 
 /**

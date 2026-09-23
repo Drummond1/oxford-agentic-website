@@ -1,0 +1,816 @@
+---
+/**
+ * Apply for a place: a qualifying form, one question per screen.
+ *
+ * Added 23 Sept 2026 at Drummond's request, modelled on the stepped "profile"
+ * flows that ask a few questions before letting someone in. It filters for
+ * fit (role, AI experience, outcomes, budget) ahead of a Luma booking.
+ *
+ * Deliberately quiet: noindex, out of the sitemap (astro.config.mjs) and linked
+ * only from the footer base row. It is a page to send people to, not a page
+ * for crawlers to rank, and it must not compete with the Luma booking path on
+ * the event pages.
+ *
+ * Progressive enhancement. Without JavaScript every question renders at once
+ * and the form posts (or mails) in one go. With it, the questions step one at
+ * a time with a progress bar and per-step validation.
+ *
+ * No prices here, by standing decision: the budget question asks for bands and
+ * states nothing about what a place costs.
+ */
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import config from '../../site.config';
+import { createRhythm, getEventsForIndex, formatShortDate } from '../lib/site';
+
+const { upcoming } = await getEventsForIndex();
+const endpoint = config.applications.endpoint;
+const email = config.brand.email;
+
+const rhythm = createRhythm('cream');
+const bands = { why: rhythm.next(), form: rhythm.next() };
+
+const pillars = [
+  {
+    title: 'Limited availability',
+    body: 'Every cohort is kept small so that everyone gets hands-on help with their own task. Places go to the people the day will help most.',
+  },
+  {
+    title: 'Leadership',
+    body: 'Built for founders, directors and senior leaders who decide how AI gets used in their organisation, not only whether it does.',
+  },
+  {
+    title: 'Agentic AI',
+    body: 'Not prompting tips. You build a working agentic workflow, several steps chained together with a review step that checks its own output, on a real task from your own work.',
+  },
+  {
+    title: 'Experience',
+    body: 'Daily AI users who have never chained steps together sit next to engineers who build AI for a living. We ask about your experience so the room is pitched right.',
+  },
+];
+
+const roles = [
+  'Founder or business owner',
+  'C-suite or director',
+  'Senior manager or head of function',
+  'Consultant or adviser',
+  'Something else',
+];
+
+const experience = [
+  { value: 'New to it', hint: 'I have tried ChatGPT or similar a handful of times.' },
+  { value: 'Regular user', hint: 'I use AI tools most days for writing, research or analysis.' },
+  { value: 'Getting practical', hint: 'I have built custom GPTs, projects or simple automations.' },
+  { value: 'Builder', hint: 'I build AI systems or agentic workflows for a living.' },
+];
+
+const outcomes = [
+  'Build a working agentic workflow on a real task',
+  'Free up hours spent on routine work',
+  'Lead AI adoption across my team or organisation',
+  'Know what agents can and cannot do reliably',
+  'Meet other leaders doing the same',
+];
+
+const budgets = ['Under £300', '£300 to £500', '£500 to £1,000', 'Over £1,000', 'Not sure yet'];
+const payers = ['I am paying myself', 'My organisation is paying', 'To be agreed'];
+
+const totalSteps = 6;
+---
+
+<Base
+  pageTitle="Apply for a place"
+  description={`Apply for a place on an ${config.brand.name} bootcamp. Small cohorts, for leaders building with agentic AI.`}
+  path="/apply/"
+  breadcrumbs={[{ name: 'Apply', path: '/apply/' }]}
+  noindex
+>
+  <Hero
+    eyebrow="By application"
+    title="A small room, filled on purpose."
+    subline="Tell us a little about you and what you want to build. It takes about two minutes, and we will be in touch if it is a good fit."
+    motif
+  />
+
+  <section class:list={['band', `band--${bands.why}`]} aria-labelledby="why">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="why">Why we ask first</h2>
+      </div>
+
+      <ul class="pillars" role="list">
+        {
+          pillars.map((p, i) => (
+            <li class="pillar" data-reveal>
+              <span class="pillar__num">0{i + 1}</span>
+              <h3 class="pillar__title">{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#application" data-apply-start>Apply now <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.form}`]} aria-labelledby="application-title" id="application">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="application-title">Your application</h2>
+      </div>
+
+      <form
+        class="apply"
+        action={endpoint || `mailto:${email}?subject=Application`}
+        method="POST"
+        enctype={endpoint ? undefined : 'text/plain'}
+        data-endpoint={endpoint}
+        data-email={email}
+        data-analytics-event="application_submit"
+        novalidate
+      >
+        <div class="apply__progress" aria-hidden="true" hidden>
+          <span class="apply__count">Step <b data-step-now>1</b> of {totalSteps}</span>
+          <span class="apply__bar"><span class="apply__fill" data-fill></span></span>
+        </div>
+
+        {/* Spam trap. Humans never see or fill it. */}
+        <div class="apply__trap" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <fieldset class="apply__step" data-step="1">
+          <legend class="apply__q">Which day are you applying for?</legend>
+          <div class="apply__options">
+            {
+              upcoming.map((event, i) => (
+                <label class="option">
+                  <input type="radio" name="programme" value={`${event.data.title} (${formatShortDate(event.data.startDate)})`} required={i === 0} />
+                  <span class="option__text">
+                    {event.data.title}
+                    <small>{formatShortDate(event.data.startDate)} · {event.data.venue.name}</small>
+                  </span>
+                </label>
+              ))
+            }
+            <label class="option">
+              <input type="radio" name="programme" value="Not sure yet" required={upcoming.length === 0} />
+              <span class="option__text">
+                Not sure yet
+                <small>Point me at the right day.</small>
+              </span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="apply__step" data-step="2">
+          <legend class="apply__q">Which best describes your role?</legend>
+          <div class="apply__options">
+            {
+              roles.map((r, i) => (
+                <label class="option">
+                  <input type="radio" name="role" value={r} required={i === 0} />
+                  <span class="option__text">{r}</span>
+                </label>
+              ))
+            }
+          </div>
+          <label class="field">
+            <span class="field__label">Job title <small>(optional)</small></span>
+            <input class="field__input" type="text" name="job_title" autocomplete="organization-title" />
+          </label>
+        </fieldset>
+
+        <fieldset class="apply__step" data-step="3">
+          <legend class="apply__q">What level of experience do you have with AI?</legend>
+          <div class="apply__options">
+            {
+              experience.map((e, i) => (
+                <label class="option">
+                  <input type="radio" name="ai_experience" value={e.value} required={i === 0} />
+                  <span class="option__text">
+                    {e.value}
+                    <small>{e.hint}</small>
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="apply__step" data-step="4" data-min-checked="1">
+          <legend class="apply__q">What are the key outcomes you want from the day?</legend>
+          <p class="apply__hint">Choose any that apply.</p>
+          <div class="apply__options">
+            {
+              outcomes.map((o) => (
+                <label class="option option--check">
+                  <input type="checkbox" name="outcomes" value={o} />
+                  <span class="option__text">{o}</span>
+                </label>
+              ))
+            }
+          </div>
+          <label class="field">
+            <span class="field__label">What is the one task you would most like to hand off? <small>(optional)</small></span>
+            <textarea class="field__input" name="task" rows="3"></textarea>
+          </label>
+          <p class="apply__error" role="alert" hidden>Choose at least one outcome to carry on.</p>
+        </fieldset>
+
+        <fieldset class="apply__step" data-step="5">
+          <legend class="apply__q">What budget do you have for AI training, per person?</legend>
+          <div class="apply__options apply__options--grid">
+            {
+              budgets.map((b, i) => (
+                <label class="option">
+                  <input type="radio" name="budget" value={b} required={i === 0} />
+                  <span class="option__text">{b}</span>
+                </label>
+              ))
+            }
+          </div>
+          <p class="apply__sub">Who is paying?</p>
+          <div class="apply__options apply__options--grid">
+            {
+              payers.map((p, i) => (
+                <label class="option">
+                  <input type="radio" name="paying" value={p} required={i === 0} />
+                  <span class="option__text">{p}</span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="apply__step" data-step="6">
+          <legend class="apply__q">Where should we reach you?</legend>
+          <div class="apply__fields">
+            <label class="field">
+              <span class="field__label">Full name</span>
+              <input class="field__input" type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Email address</span>
+              <input class="field__input" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+            </label>
+            <label class="field">
+              <span class="field__label">Phone number</span>
+              <input class="field__input" type="tel" name="phone" required autocomplete="tel" placeholder="+44" />
+            </label>
+            <label class="field">
+              <span class="field__label">Organisation <small>(optional)</small></span>
+              <input class="field__input" type="text" name="organisation" autocomplete="organization" />
+            </label>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required />
+            <span>
+              {config.brand.name} may use these details to review my application and contact me about it. More in the{' '}
+              <a href="/privacy/#applications">privacy note</a>.
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="apply__nav">
+          <button type="button" class="btn btn--ghost" data-back hidden>
+            <span aria-hidden="true">←</span> Back
+          </button>
+          <button type="button" class="btn btn--primary" data-next hidden>
+            Next <span aria-hidden="true">→</span>
+          </button>
+          <button type="submit" class="btn btn--primary" data-submit>Send application</button>
+        </div>
+
+        <p class="apply__status" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <div class="apply__done" tabindex="-1" hidden>
+        <p class="eyebrow">Application received</p>
+        <h3 class="apply__done-title" data-done-title>Thank you.</h3>
+        <p data-done-body>We will review your application and be in touch if you are a good fit.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .pillar {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 1.1rem;
+  }
+
+  .pillar__num {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    color: var(--rust);
+  }
+
+  .pillar__title {
+    font-size: var(--step-lg);
+    margin-block: 0.4rem 0.6rem;
+  }
+
+  .pillar p {
+    font-size: var(--step-sm);
+    line-height: 1.6;
+  }
+
+  .btn-row {
+    margin-block-start: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  /* ---- The form ---- */
+
+  .apply,
+  .apply__done {
+    border: 1px solid var(--hairline-cream);
+    background: rgba(255, 249, 236, 0.6);
+    padding: clamp(1.25rem, 0.8rem + 2.5vw, 2.5rem);
+  }
+
+  :global(.band--dark) .apply,
+  :global(.band--dark) .apply__done {
+    background: var(--deep-card);
+    border-color: var(--gold-hairline);
+  }
+
+  .apply__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .apply__progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-block-end: 1.75rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .apply__progress[hidden] {
+    display: none;
+  }
+
+  .apply__bar {
+    flex: 1;
+    height: 2px;
+    background: var(--ink-hairline);
+    position: relative;
+  }
+
+  .apply__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    background: var(--gold);
+    transition: width 320ms var(--ease);
+  }
+
+  .apply__step {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  /* Without JS every step shows, stacked. */
+  .apply__step + .apply__step {
+    margin-block-start: 2.5rem;
+  }
+
+  .apply.is-stepped .apply__step {
+    margin-block-start: 0;
+  }
+
+  .apply.is-stepped .apply__step:not(.is-current) {
+    display: none;
+  }
+
+  .apply.is-stepped .apply__step.is-current {
+    animation: step-in 280ms var(--ease);
+  }
+
+  @keyframes step-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .apply.is-stepped .apply__step.is-current {
+      animation: none;
+    }
+    .apply__fill {
+      transition: none;
+    }
+  }
+
+  .apply__q {
+    font-family: var(--font-display, 'Newsreader', Georgia, serif);
+    font-size: var(--step-xl);
+    line-height: 1.25;
+    padding: 0;
+    margin-block-end: 1.25rem;
+  }
+
+  .apply__hint,
+  .apply__sub {
+    font-size: var(--step-sm);
+    margin-block: -0.6rem 1rem;
+    color: var(--muted-on-cream);
+  }
+
+  .apply__sub {
+    margin-block: 1.75rem 0.75rem;
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    color: inherit;
+  }
+
+  .apply__options {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .apply__options--grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--ink-hairline);
+    background: var(--cream);
+    cursor: pointer;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .option:hover {
+    border-color: var(--rust);
+  }
+
+  .option:has(input:checked) {
+    border-color: var(--gold);
+    box-shadow: inset 3px 0 0 0 var(--gold);
+  }
+
+  .option:has(input:focus-visible) {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* The form band falls on ink in the page rhythm: options become outlined
+     rows on the dark card rather than paper tiles. */
+  :global(.band--dark) .option {
+    background: transparent;
+    border-color: var(--gold-hairline);
+    color: var(--cream);
+  }
+
+  :global(.band--dark) .option:hover {
+    border-color: var(--gold);
+  }
+
+  :global(.band--dark) .option__text small,
+  :global(.band--dark) .field__label small,
+  :global(.band--dark) .apply__hint {
+    color: var(--muted-on-dark);
+  }
+
+  :global(.band--dark) .apply__bar {
+    background: var(--gold-hairline);
+  }
+
+  :global(.band--dark) .option input,
+  :global(.band--dark) .consent input {
+    accent-color: var(--gold);
+  }
+
+  :global(.band--dark) .apply__error {
+    color: var(--gold);
+  }
+
+  .option input {
+    margin-block-start: 0.25rem;
+    accent-color: var(--rust);
+    flex: none;
+  }
+
+  .option__text {
+    display: grid;
+    gap: 0.15rem;
+    font-size: var(--step-md);
+  }
+
+  .option__text small {
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+  }
+
+  .apply__fields {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    margin-block-start: 1.25rem;
+  }
+
+  .apply__fields .field {
+    margin-block-start: 0;
+  }
+
+  .field__label {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    font-weight: 700;
+  }
+
+  .field__label small {
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: var(--muted-on-cream);
+  }
+
+  .field__input {
+    width: 100%;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(5, 24, 23, 0.35);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--ink-dark);
+    font: inherit;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .field__input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: inset 0 -2px 0 0 var(--gold);
+  }
+
+  .field__input:user-invalid {
+    border-color: var(--rust);
+  }
+
+  .consent {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-block-start: 1.5rem;
+    font-size: var(--step-sm);
+    line-height: 1.55;
+  }
+
+  .consent input {
+    margin-block-start: 0.3rem;
+    accent-color: var(--rust);
+    flex: none;
+  }
+
+  .apply__error {
+    margin-block-start: 1rem;
+    font-size: var(--step-sm);
+    color: var(--rust);
+  }
+
+  .apply__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-block-start: 2rem;
+  }
+
+  .apply__nav [data-next],
+  .apply__nav [data-submit] {
+    margin-inline-start: auto;
+  }
+
+  .apply__nav [hidden] {
+    display: none;
+  }
+
+  .apply__nav [disabled] {
+    opacity: 0.75;
+    cursor: progress;
+  }
+
+  .apply__status {
+    margin-block-start: 1rem;
+    font-size: var(--step-sm);
+  }
+
+  .apply__done:focus {
+    outline: none;
+  }
+
+  .apply__done-title {
+    font-size: var(--step-2xl);
+    margin-block: 0.6rem 0.9rem;
+  }
+
+  .apply__done p:not(.eyebrow) {
+    max-width: var(--measure);
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form.apply');
+  const done = document.querySelector<HTMLElement>('.apply__done');
+
+  if (form && done) {
+    const steps = Array.from(form.querySelectorAll<HTMLFieldSetElement>('.apply__step'));
+    const progress = form.querySelector<HTMLElement>('.apply__progress');
+    const stepNow = form.querySelector<HTMLElement>('[data-step-now]');
+    const fill = form.querySelector<HTMLElement>('[data-fill]');
+    const back = form.querySelector<HTMLButtonElement>('[data-back]');
+    const next = form.querySelector<HTMLButtonElement>('[data-next]');
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const status = form.querySelector<HTMLElement>('.apply__status');
+    const endpoint = form.dataset.endpoint ?? '';
+    const email = form.dataset.email ?? '';
+    let current = 0;
+
+    form.classList.add('is-stepped');
+    if (progress) progress.hidden = false;
+
+    const show = (index: number, focus = true) => {
+      current = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach((s, i) => s.classList.toggle('is-current', i === current));
+      const last = current === steps.length - 1;
+      if (back) back.hidden = current === 0;
+      if (next) next.hidden = last;
+      if (submit) submit.hidden = !last;
+      if (stepNow) stepNow.textContent = String(current + 1);
+      if (fill) fill.style.width = `${((current + 1) / steps.length) * 100}%`;
+      if (focus) {
+        const first = steps[current].querySelector<HTMLInputElement>('input, textarea');
+        first?.focus({ preventScroll: true });
+        form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
+    };
+
+    const stepValid = (step: HTMLFieldSetElement): boolean => {
+      const min = Number(step.dataset.minChecked ?? 0);
+      if (min > 0) {
+        const checked = step.querySelectorAll('input[type="checkbox"]:checked').length;
+        const error = step.querySelector<HTMLElement>('.apply__error');
+        if (error) error.hidden = checked >= min;
+        if (checked < min) return false;
+      }
+      const fields = Array.from(step.querySelectorAll<HTMLInputElement>('input, textarea'));
+      for (const field of fields) {
+        if (!field.checkValidity()) {
+          field.reportValidity();
+          return false;
+        }
+      }
+      return true;
+    };
+
+    next?.addEventListener('click', () => {
+      if (stepValid(steps[current])) show(current + 1);
+    });
+    back?.addEventListener('click', () => show(current - 1));
+
+    // Choosing a single-answer option on a one-question screen moves on by itself,
+    // as the stepped quizzes this is modelled on do. Screens with a second group
+    // or free text wait for Next.
+    form.addEventListener('change', (event) => {
+      const target = event.target as HTMLInputElement;
+      if (target.type !== 'radio') return;
+      const step = steps[current];
+      const groups = new Set(Array.from(step.querySelectorAll<HTMLInputElement>('input[type="radio"]')).map((r) => r.name));
+      const hasOther = step.querySelector('input:not([type="radio"]), textarea');
+      if (groups.size === 1 && !hasOther) window.setTimeout(() => show(current + 1), 220);
+    });
+
+    // Enter in a text field should advance a step, not submit the whole form early.
+    form.addEventListener('keydown', (event) => {
+      const target = event.target as HTMLElement;
+      if (event.key === 'Enter' && target.tagName === 'INPUT' && current < steps.length - 1) {
+        event.preventDefault();
+        next?.click();
+      }
+    });
+
+    document.querySelector('[data-apply-start]')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      show(0);
+    });
+
+    const summary = (data: FormData): string => {
+      const line = (label: string, key: string) => `${label}: ${data.getAll(key).filter(Boolean).join('; ') || '-'}`;
+      return [
+        line('Applying for', 'programme'),
+        line('Role', 'role'),
+        line('Job title', 'job_title'),
+        line('AI experience', 'ai_experience'),
+        line('Outcomes wanted', 'outcomes'),
+        line('Task to hand off', 'task'),
+        line('Budget per person', 'budget'),
+        line('Who is paying', 'paying'),
+        '',
+        line('Name', 'name'),
+        line('Email', 'email'),
+        line('Phone', 'phone'),
+        line('Organisation', 'organisation'),
+        line('Consent to be contacted', 'consent'),
+      ].join('\n');
+    };
+
+    const finish = (title: string, body: string) => {
+      form.hidden = true;
+      done.hidden = false;
+      const t = done.querySelector('[data-done-title]');
+      const b = done.querySelector('[data-done-body]');
+      if (t) t.textContent = title;
+      if (b) b.textContent = body;
+      done.focus();
+      done.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!stepValid(steps[current])) return;
+
+      const data = new FormData(form);
+      const firstName = String(data.get('name') ?? '').trim().split(/\s+/)[0];
+      const thanks = firstName ? `Thank you, ${firstName}.` : 'Thank you.';
+
+      // A filled trap field is a bot. Show it the same ending and send nothing.
+      if (data.get('_gotcha')) {
+        finish(thanks, 'We will review your application and be in touch if you are a good fit.');
+        return;
+      }
+
+      if (!endpoint) {
+        const subject = `Application: ${data.get('name')} - ${data.get('programme')}`;
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary(data))}`;
+        finish(
+          'One last step.',
+          `Your email app should have opened with your answers filled in. Press send and we will be in touch if you are a good fit. If nothing opened, email ${email} and we will pick it up from there.`,
+        );
+        return;
+      }
+
+      if (submit) {
+        submit.disabled = true;
+        submit.textContent = 'Sending…';
+      }
+      data.append('_subject', `Application: ${data.get('name')} - ${data.get('programme')}`);
+      data.append('summary', summary(data));
+
+      try {
+        const response = await fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+        if (!response.ok) throw new Error(String(response.status));
+        finish(thanks, 'We will review your application and be in touch if you are a good fit.');
+      } catch {
+        if (submit) {
+          submit.disabled = false;
+          submit.textContent = 'Send application';
+        }
+        if (status) {
+          status.hidden = false;
+          status.textContent = `That did not go through. Please try again, or email ${email}.`;
+        }
+      }
+    });
+
+    show(0, false);
+  }
+</script>

@@ -15,6 +15,7 @@ export interface SiteConfig {
   redirects: Redirect[];
   analytics: Analytics;
   newsletter: Newsletter;
+  applications: Applications;
 }
 
 export interface Brand {
@@ -102,6 +103,19 @@ export interface Newsletter {
   method: 'POST' | 'GET';
   /** Name of the email field the provider expects. */
   fieldName: string;
+}
+
+export interface Applications {
+  /**
+   * Where the /apply/ form sends applications. Provider-agnostic, like the
+   * newsletter: any service that accepts a form POST and answers JSON
+   * (Formspree, Basin, Web3Forms, a Zapier catch hook) drops in here.
+   *
+   * Empty string is an honest fallback, not a dead form: the answers are
+   * written into an email to `brand.email` in the visitor's own mail app, and
+   * the page tells them to press send rather than claiming it went.
+   */
+  endpoint: string;
 }
 
 /**
@@ -238,6 +252,11 @@ const config: SiteConfig = {
     endpoint: '',
     method: 'POST',
     fieldName: 'email',
+  },
+
+  applications: {
+    // 23 Sept 2026: no provider chosen yet, so applications arrive by email.
+    endpoint: '',
   },
 };
 

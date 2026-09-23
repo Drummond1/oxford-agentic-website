@@ -244,6 +244,16 @@ length and the positioning is the same edit, done once, in three places.
 
 ## Decisions already made (do not re-litigate)
 
+- **`/apply/` is a qualifying application form, hidden on purpose (Drummond, 23 Sept 2026).**
+  Six stepped screens: which day, role, AI experience, outcomes, budget band and who pays,
+  then name, email and phone. Noindex, out of the sitemap, linked only from the footer base
+  row. Do not add it to the header, the event pages or the booking path. Budget asks for
+  bands and never states a price. **Applications currently arrive by email**: with
+  `applications.endpoint` empty in `site.config.ts`, the answers open pre-filled in the
+  visitor's own mail app, addressed to hello@oxfordagentic.com. Paste a form-service
+  endpoint (Formspree, Basin, a Zapier hook) into that field and it posts directly instead.
+  The privacy page's `#applications` paragraph describes it; change both together.
+
 - **Pricing never appears on the site.** It lives on Luma (PRD §18), which also keeps
   commercially sensitive numbers off an indexed page.
 - **Testimonials and photos are consent-gated in code.** A quote needs `consentGiven: true`;
