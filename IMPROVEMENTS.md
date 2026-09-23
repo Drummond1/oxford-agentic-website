@@ -187,6 +187,15 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-23 — Cohort 3 moved to Thursday 19 November (Drummond's request).**
+  - Luma (`luma.com/oxfordagentic3`, read 23 Sep 2026) now shows 19 Nov 2026, 09:00-17:00
+    Europe/London, still Worcester College. Supersedes the 15 October date everywhere.
+  - Changed: Cohort 3 event dates (now `+00:00`, GMT after clocks change), summary, capsule
+    and transfer assurance; Cohort 1 and 2 FAQs and capsule; four guide CTAs; the
+    `when-ai-executive-cohorts-run` guide now says the online/in-person choice recurs in
+    November (Oxford's online programme starts 11 Nov). OxGen clash note in
+    `outreach/review-list.md` marked resolved.
+
 - **2026-09-23 (20:40 local cycle) — Cohort 2 moved into the past across the site.**
   - **Why it mattered.** Nothing had deployed since 15 Sept, and the site is static, so a
     week after the day ran the live pages still showed Cohort 2 as an upcoming event with a

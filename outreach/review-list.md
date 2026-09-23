@@ -27,8 +27,7 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - Why: its own listing describes 200+ leaders from enterprise, startups, government and
     academia in Oxford, which overlaps the bootcamp buyer. Possible mention, partnership or
     attendee-offer route.
-  - **Clash:** day one is the same date as Oxford Agentic Bootcamp Cohort 3 (Thu 15 Oct).
-    Drummond to decide whether that matters.
+  - **Clash resolved (23 Sep 2026):** Cohort 3 moved from Thu 15 Oct to Thu 19 Nov, so this no longer clashes.
   - Needs: Drummond's decision. Nothing contacted or submitted.
 
 - **Daily Info (Oxford what's-on listings)** - found 13 Sept 2026.

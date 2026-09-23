@@ -66,7 +66,7 @@ faqs:
     a: >-
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
       sixteen attendees. Cohort 2 ran on Wednesday 16 September 2026, and Cohort 3 runs on
-      Thursday 15 October 2026.
+      Thursday 19 November 2026.
   - q: Can I still join this cohort?
     a: >-
       No - this date has passed. The next cohort is the one to book; it runs the same

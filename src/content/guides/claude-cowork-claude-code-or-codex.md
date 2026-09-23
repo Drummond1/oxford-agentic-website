@@ -53,4 +53,4 @@ The tools will look different by next spring. What carries across all four is th
 
 ## Where this gets practical
 
-The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) covers where each of these tools fits as part of the day, and then spends most of it building: you bring one real task and leave with a working agentic workflow running against it. Cohort 3 runs on [15 October at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
+The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) covers where each of these tools fits as part of the day, and then spends most of it building: you bring one real task and leave with a working agentic workflow running against it. Cohort 3 runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.

@@ -27,7 +27,7 @@ capsule: >-
   Cohort 2 of the Oxford Agentic Bootcamp ran on Wednesday 16 September 2026 at Worcester
   College, Oxford, and sold out beforehand. Everyone brought one real task from their own
   work and spent the day building a working agentic AI workflow against it, facilitated
-  rather than lectured. Cohort 3 runs on 15 October at the same college.
+  rather than lectured. Cohort 3 runs on 19 November at the same college.
 # Deliberately unset. The published cap has to match whatever Luma will actually
 # sell, and re-syncing a number across two event files, two programme pages, the
 # About page and four guides every time the ticket limit moves is how the site
@@ -101,7 +101,7 @@ faqs:
     a: >-
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
       sixteen attendees, and Cohort 2 on Wednesday 16 September 2026 at Worcester
-      College. Cohort 3 runs on Thursday 15 October 2026, also at Worcester College.
+      College. Cohort 3 runs on Thursday 19 November 2026, also at Worcester College.
   - q: Can I still join this cohort?
     a: >-
       No - this date has passed. Cohort 3 is the one to book; it runs the same format,

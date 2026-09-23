@@ -4,8 +4,8 @@ slug: oxford-agentic-bootcamp-cohort-3
 programme: oxford-agentic-bootcamp
 cohort: Cohort 3
 status: upcoming
-startDate: "2026-10-15T09:00:00+01:00"
-endDate: "2026-10-15T17:00:00+01:00"
+startDate: "2026-11-19T09:00:00+00:00"
+endDate: "2026-11-19T17:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -14,13 +14,13 @@ venue:
   confirmed: true
 lumaEventId: evt-fFS9i7ABiGVWPAC
 lumaUrl: https://luma.com/oxfordagentic3
-summary: Thursday 15 October at Worcester College, Oxford. Bring one real task from your own work and leave with an agentic workflow running against it.
+summary: Thursday 19 November at Worcester College, Oxford. Bring one real task from your own work and leave with an agentic workflow running against it.
 # The programme's shortPitch would do, but it opens "A one-day AI bootcamp in
 # Oxford" and the date and venue render on the very next line. This says the
 # part the meta line cannot. Substance is the capsule's, front-loaded.
 promise: Bring one real task from your own work. Leave with a working agentic AI workflow running against it.
 capsule: >-
-  Cohort 3 of the Oxford Agentic Bootcamp runs on Thursday 15 October 2026 at Worcester
+  Cohort 3 of the Oxford Agentic Bootcamp runs on Thursday 19 November 2026 at Worcester
   College, Oxford. You bring one real task from your own work and leave having built a
   working agentic AI workflow against it, so the routine runs itself and the hours go back
   into the work only you can do. A small cohort, facilitated rather than lectured.
@@ -32,7 +32,7 @@ capsule: >-
 # Each line restates a promise this page already makes further down, moved to
 # where it is actually needed. Nothing new is offered here.
 assurances:
-  - If 15 October stops working, your place transfers to a future cohort at no charge.
+  - If 19 November stops working, your place transfers to a future cohort at no charge.
   - Lunch and refreshments are included, and you leave with the workflow rather than a recording.
   - Bringing a colleague or two? Email hello@oxfordagentic.com and we will arrange it.
 whoFor:

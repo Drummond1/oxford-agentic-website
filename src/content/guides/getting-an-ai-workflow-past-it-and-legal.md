@@ -60,4 +60,4 @@ Start with the smallest version that still earns its keep. A workflow that only 
 
 ## Where this gets practical
 
-The security and stakeholder questions that decide whether a workflow sticks are part of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) curriculum, alongside building one. You bring one real task, build the workflow against it, and leave with a concrete plan for introducing it where you work. Cohort 3 runs on [15 October at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
+The security and stakeholder questions that decide whether a workflow sticks are part of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) curriculum, alongside building one. You bring one real task, build the workflow against it, and leave with a concrete plan for introducing it where you work. Cohort 3 runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
