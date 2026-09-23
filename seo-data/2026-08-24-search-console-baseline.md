@@ -733,3 +733,41 @@ agentic ai course` (3.5 to 3.4) and `agentic ai oxford` (3.4 to 3.3).
 - **The services cluster is spreading:** new rows for `agentic ai consultants hertfordshire`
   (64.5), `agentic ai providers hertfordshire` (54.0) and `agentic ai buckinghamshire` (67.0).
 - The `/events/` title changed on 13 Sept; the effect is not yet in the data.
+
+---
+
+## 2026-09-23 — Reading through 21 September
+
+**All time (22 Jul - 21 Sept): 89 clicks, 1.3k impressions, CTR 6.9%, average position 17.1.**
+Previous (through 13 Sept): 75 / 1.09k / 6.9% / 18.9. Eight more days of data; position
+improved about two places.
+
+### Pages (clicks / impressions / CTR / position)
+
+| Page | Now | Through 13 Sept |
+|---|---|---|
+| `/` | 58 / 682 / 8.5% / 5.5 | 49 / 555 / 8.8% / 5.6 |
+| `/events/oxford-agentic-bootcamp-cohort-2/` | 5 / 166 / 3% / 6.4 | 4 / 145 / 2.8% / 6.7 |
+| `/team/` | 4 / 131 / 3.1% / 15.2 | 3 / 98 / 3.1% / 17.7 |
+| `/bootcamps/second-brain-bootcamp/` | 4 / 63 / 6.3% / 7.6 | 4 / 51 / 7.8% / 5.7 |
+| `/guides/` | 3 / 137 / 2.2% / 15.1 | 2 / 113 / 1.8% / 17.1 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 2 / 137 / 1.5% / 9.9 | 2 / 101 / 2% / 10.6 |
+| `/events/` | 2 / 121 / 1.7% / 10.6 | 2 / 100 / 2% / 11.5 |
+
+### The page-one programme page, and why it was still left alone
+
+`/bootcamps/oxford-agentic-bootcamp/` is now on page one (9.9) with the site's weakest CTR
+(1.5%). Filtering to that page returns **7 queries totalling 14 impressions** - two Danish
+IBM bootcamp queries, `oxford agentic ai course` at 2.5, `agentic bootcamp` at 2.0,
+`agentic ai oxford` at 4.0, and two long-tail rows. The other ~123 impressions are queries
+Google anonymises. **A CTR gap that is 90% invisible cannot be diagnosed, only guessed at**,
+and the visible rows are brand queries the homepage already wins. Watch it; do not rewrite
+the title on a hunch.
+
+### Other movement
+
+- `why does the scout playbook include a human review step?` drifted 1.0 to 3.2.
+- `oxford generative and agentic ai programme` sits at 9.6. Still Saïd's programme name,
+  still left alone on principle.
+- New rows: `ai bootcamp 1 dag` (48.0), `second brain talent` (73.0). The Oxfordshire and
+  Hertfordshire services cluster continues, unchanged in intent.

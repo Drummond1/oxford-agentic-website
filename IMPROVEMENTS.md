@@ -187,6 +187,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-23 (20:40 local cycle) — Cohort 2 moved into the past across the site.**
+  - **Why it mattered.** Nothing had deployed since 15 Sept, and the site is static, so a
+    week after the day ran the live pages still showed Cohort 2 as an upcoming event with a
+    "Join the waitlist" button, and every header CTA pointed at it. `effectiveStatus` derives
+    "past" from `endDate`, but only at build time. **A quiet site goes stale on its own.**
+  - **Change.** Cohort 2's `status` is now `past`; its capsule and summary are past tense and
+    record that it sold out (Luma, 13 of 14, verified 15 Sept); its seven booking-era FAQs are
+    replaced with the three a past page needs (has it run, what to book now, what Cohort 1
+    built). The Cohort 1 FAQ and `when-ai-executive-cohorts-run` now say Cohort 2 ran and
+    Cohort 3 runs. **No outcomes are claimed** - nothing about the day has been confirmed.
+  - **Site-wide effect.** Every header and footer CTA, the homepage cards and `llms.txt` now
+    point at Cohort 3 (15 Oct). 48 pages rebuilt; that is the intended blast radius.
+  - **Checks.** Build, links (2,172) and schema (4 Event, 7 FAQPage) pass. Cohort 2 renders
+    "This event has run", no sticky bar, no waitlist button anywhere, and a Cohort 3 CTA;
+    schema matches Cohort 1's past-event shape. Inspected at 375px and 1440px.
+  - **Search Console (fresh, through 21 Sept).** 89 clicks, 1.3k impressions, 6.9%, position
+    17.1. `/bootcamps/oxford-agentic-bootcamp/` reached page one (9.9) but only 14 of its 137
+    impressions carry a named query, so its 1.5% CTR cannot be diagnosed. No step-4 change.
+  - **GEO: none.** The Perplexity API is out of credits (401, insufficient_quota). Recorded
+    rather than worked around.
+  - **Backlog.** Homepage meta description is 166 chars against a 160 target (build warning,
+    not blocking). Left for a cycle that is changing the homepage anyway.
+
 - **2026-09-15 (18:40 local cycle) — Marked Cohort 2 sold out, matching Luma.**
   - **Evidence.** Luma, read 15 Sept 18:37 BST: the only ticket type (Full Day Pass, 13 of 14
     sold) stopped selling at 17:00:59 BST; `registration_availability` "sold-out",
