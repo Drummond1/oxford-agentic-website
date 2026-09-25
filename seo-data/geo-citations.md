@@ -5,6 +5,30 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-09-25 (18:50 BST cycle)
+
+Engine: Perplexity search, country GB. Credits restored by Drummond after the 23 Sept outage.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| in-person agentic coding bootcamp UK, non-developers, one day | **Yes**: #1 homepage, #4 Oxford Agentic Bootcamp | Edinburgh DRS (1-day, June), NobleProg, Summone (Claude Code training for developers), Founders and Coders, Data Science Dojo, wigsat |
+| can a non-developer actually ship a real app with Claude Code or Codex | **No** | CatDoes, Taskade, Totalum, Emergent, Zapier, claude.com startups guide, buildmvpfast, Softr, MindStudio, Builder.io |
+| what to learn around AI coding agents (git, terminal, deployment) if you do not code | **No** | OpenCode docs, GitHub docs, RealPython, Microsoft repo, theneuron.ai, bitdoze, Developers Digest, OpenHands, Leland |
+| how to keep Claude Code costs under control | **No** | Claude Code docs (x4 languages), two vibe-coding academies, finout, a GitHub cost optimiser |
+
+**Reading.**
+- **The category question already cites us first**, before the new Coding Bootcamp pages are
+  indexed. The competition is a university workshop, developer-audience training and
+  multi-week bootcamps, not a one-day non-developer day in Oxford.
+- **"Can a non-developer ship?" is the gap worth owning.** Every page on it belongs to an
+  app-builder vendor making the same argument: the agent writes code, you still need
+  repository, hosting, database, domain, so use our platform. None explains what the gap
+  consists of for someone who wants to own the result. Acted on this cycle.
+- The git/terminal question returns developer documentation, so the intent is mixed and the
+  field is not owned by competitors. Candidate for a later cycle.
+- **Costs is not winnable and not converting**: Anthropic's own docs own it, and the searcher
+  is a tool user, not a training buyer. No action.
+
 ## 2026-09-15 (18:40 BST cycle)
 
 Engine: Perplexity search, country GB.

@@ -187,6 +187,28 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-25 (18:50 local cycle) — First guide for the Coding Bootcamp, aimed at the gap
+  answer engines currently hand to app-builder vendors.**
+  - **Context.** Another session shipped the Coding Bootcamp programme and Cohort 1 event
+    today (01ceb38) and moved Agentic Cohort 3 to 19 November (5dadcb3). Both are live. This
+    cycle adds the supporting guide Drummond asked for, and invents nothing about the day:
+    every fact comes from those files, which come from Luma.
+  - **Evidence (GEO, credits restored).** Four probes. "In-person agentic coding bootcamp UK"
+    already cites the homepage #1. "Can a non-developer actually ship a real app with Claude
+    Code or Codex" cites ten pages, **all of them app-builder vendors** arguing the same
+    thing: the agent writes code, you still need repository, hosting, database and domain, so
+    use our platform instead. Nobody answers it for someone who wants to own the result.
+    WINNABLE (no institutional owner) and CONVERTING (that searcher is this bootcamp's buyer).
+  - **Change.** New guide `why-the-code-an-agent-wrote-is-not-live`: the six things between
+    working code and something live (repository, undo, hosting, memory, secrets, a check),
+    an honest treatment of the builder trade-off (faster, but you own less), and the order
+    that works. No statistics, no quotes from truncated extracts, no claims about the day.
+  - **Checks.** Build, links (2,559 across 52 pages) and schema (5 Event, 9 FAQPage, all
+    titles unique) pass. Capsule 69 words, description 149 chars, seoTitle 37. Inspected at
+    375px and 1440px. Guides this week: 1 of 3.
+  - **Still not verifiable:** the Saïd start-date sentence in `when-ai-executive-cohorts-run`
+    is dated 31 Aug; sbs.ox.ac.uk returns 403 to direct fetches, so it stays as a dated claim.
+
 - **2026-09-23 — Cohort 3 moved to Thursday 19 November (Drummond's request).**
   - Luma (`luma.com/oxfordagentic3`, read 23 Sep 2026) now shows 19 Nov 2026, 09:00-17:00
     Europe/London, still Worcester College. Supersedes the 15 October date everywhere.
