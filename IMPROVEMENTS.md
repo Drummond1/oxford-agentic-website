@@ -187,6 +187,28 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-25 (19:10 local cycle) — Pointed the tools guide at the Coding Bootcamp.**
+  - **Evidence.** `claude-cowork-claude-code-or-codex` ends its non-developer section with
+    "skip Claude Code until you have a reason". Since this morning that reason has a day
+    attached to it, and the guide is the single page on the site whose reader is most likely
+    to be the Coding Bootcamp's buyer. Before the change, nothing in any guide's body linked
+    to the new programme; the only paths in were the nav and the new guide.
+  - **Change.** Two sentences and a related-programme reference in that one guide: the reason
+    to reach for Claude Code is wanting to build something rather than automate something,
+    linking the new `why-the-code-an-agent-wrote-is-not-live` guide, and a closing pointer to
+    the Coding Bootcamp on 26 November. The guide's original argument is untouched.
+  - **Checks.** Build, links (2,562 across 52 pages) and schema pass. Inspected at 375px and
+    1440px. Dev-server console shows ERR_CONNECTION_REFUSED from Astro's own dev tooling; the
+    page's assets return 200 and the live page is the gate.
+  - **Search Console (fresh, through 23 Sept).** 95 clicks, 1.37k impressions, 6.9% CTR. Same
+    picture as 21 Sept: brand queries converting, the Oxfordshire and Hertfordshire services
+    cluster and a Danish IBM course making up the low-CTR impressions. No step-4 change.
+  - **GEO.** Two probes. The git/terminal candidate is **not winnable** (GitHub docs,
+    Codecademy, a university library) and was dropped. "Workflows or software, which bootcamp"
+    is winnable and converting: that is tomorrow's guide, since today's cap is used.
+  - **Date check.** No stale "15 October" anywhere: Cohort 3's move to 19 November was carried
+    through the Cohort 1 and 2 FAQs and the cohorts guide by the session that made it.
+
 - **2026-09-25 (18:50 local cycle) — First guide for the Coding Bootcamp, aimed at the gap
   answer engines currently hand to app-builder vendors.**
   - **Context.** Another session shipped the Coding Bootcamp programme and Cohort 1 event

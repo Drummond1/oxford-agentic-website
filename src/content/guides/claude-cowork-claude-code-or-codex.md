@@ -12,9 +12,10 @@ capsule: >-
   workflow, not learning the app.
 author: drummond-gilbert
 publishDate: "2026-09-11T18:10:00+01:00"
-updatedDate: "2026-09-11T18:10:00+01:00"
+updatedDate: "2026-09-25T19:15:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+  - agentic-coding-bootcamp
 ---
 
 Four tools, two companies, and names that seem designed to be confused. Most comparisons of them are written by developers for developers, which is not much use if your working day is documents, spreadsheets and email rather than code.
@@ -47,6 +48,8 @@ Start with whichever agent comes with the subscription you already pay for. That
 
 Skip Claude Code until you have a reason. It is excellent, and it is the wrong first step for someone whose work does not end in software.
 
+The reason, when it arrives, is usually that you want to build something rather than automate something: an idea you would like running on the internet rather than a task you would like to stop doing by hand. That is a different day's work, and [what stands between the code an agent writes and something live](/guides/why-the-code-an-agent-wrote-is-not-live/) is mostly not code.
+
 ## The part that does not change
 
 The tools will look different by next spring. What carries across all four is the part underneath: choosing a task worth automating, breaking it into steps that each do one thing, and deciding where [a human needs to stay in the loop](/guides/where-the-human-goes-in-an-agentic-workflow/). Someone who can do that picks up any new tool in an afternoon. Someone who learned one app's buttons starts again every time it changes.
@@ -54,3 +57,5 @@ The tools will look different by next spring. What carries across all four is th
 ## Where this gets practical
 
 The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) covers where each of these tools fits as part of the day, and then spends most of it building: you bring one real task and leave with a working agentic workflow running against it. Cohort 3 runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
+
+If the thing you want is software rather than a workflow, the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is the one for that: Claude Code and Codex do the typing, and the day is spent on the workbench around them. It runs on 26 November, also at Worcester College.

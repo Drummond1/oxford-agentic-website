@@ -5,6 +5,23 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-09-25 (19:10 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| learn git, GitHub and terminal basics as a non-developer using AI coding agents | **No** | GitHub docs and github.blog (x3), Codecademy, Microsoft Copilot CLI course, University of Bath library, ZeroLabs, pasqualepillitteri |
+| should I learn to build AI workflows or build software with AI, which bootcamp | **No** | TechGuide, Dataquest, Maven (AI Builder Bootcamp and AI Workflows Bootcamp), USF, Le Wagon, Coding Temple, Zero To Mastery, OpenAI Academy |
+
+**Reading.**
+- **The git/terminal question is not winnable.** It is owned by GitHub's own documentation,
+  Codecademy and a university library. Killing this candidate is the point of probing first:
+  it was on the shortlist after the 18:50 cycle and would have been a wasted guide.
+- **"Workflows or software, which bootcamp" is winnable and converting.** The field is
+  multi-week online bootcamps (Maven runs one of each, which is the same split Oxford Agentic
+  now has) and generic bootcamp directories. Nobody answers it for a one-day in-person buyer,
+  and the site now has three programmes and no guide comparing them. **Next guide candidate**,
+  held back only because one guide had already been published today.
+
 ## 2026-09-25 (18:50 BST cycle)
 
 Engine: Perplexity search, country GB. Credits restored by Drummond after the 23 Sept outage.
