@@ -55,6 +55,16 @@ const { trail } = Astro.props;
     font-size: var(--step-xs);
   }
 
+  /* Flex items floor at their min-content width by default, and the current
+     crumb's min-content width is its whole un-wrapped title because of the
+     nowrap below. That floor pushed the list past the viewport on every guide
+     and event page at phone width, even though the crumb itself painted
+     correctly truncated. Letting the item shrink puts the ellipsis back in
+     charge of the width. */
+  .crumbs__item {
+    min-width: 0;
+  }
+
   .crumbs__item + .crumbs__item::before {
     content: '/';
     margin-inline-end: 0.6rem;
