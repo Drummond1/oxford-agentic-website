@@ -183,9 +183,60 @@ Status: `todo` · `blocked` (why) · `doing`
     Search Console shows what the homepage actually ranks and converts for - not
     before. If a rewrite happens, the OG cards and footer follow automatically.
 
+20. `blocked` (Drummond, one environment setting) — **NEEDS DRUMMOND. The loop's cloud
+    session cannot reach the live site.** `oxfordagentic.com`, `www.oxfordagentic.com` and
+    `drummond1.github.io` are all refused by this session's network egress policy
+    (`connect_rejected`, organisation policy), over curl and WebFetch alike. GitHub's API
+    and the npm registry are reachable, so the loop can still read deploy state, build, and
+    inspect its own preview — but it cannot spot-check production, compare production
+    against a local build, or verify a deploy afterwards, and the revert safety net cannot
+    work. Under the loop's own step-2 stop condition that means it must not push to `main`,
+    so from here it can only prepare verified fixes in draft PRs. Fix: allow
+    `oxfordagentic.com` in the environment's network policy
+    (code.claude.com/docs/en/claude-code-on-the-web). Until then, expect a draft PR per
+    cycle rather than a deploy.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-26 (08:10 UTC cycle 134) — Stopped the breadcrumb dragging 31 pages sideways on
+  a phone. PREPARED AND VERIFIED, NOT DEPLOYED — see "not deployed" below.**
+  - **Problem.** At 375px, 31 of the site's 51 pages scrolled horizontally: every guide page
+    and every event page. Worst case, `/guides/agentic-ai-for-public-sector-and-nhs-leaders/`
+    measured a `scrollWidth` of 742px against a 375px viewport, so a phone user could swipe
+    into 367px of dead space beside the content.
+  - **Cause.** One rule in `Breadcrumbs.astro`. The current crumb is `white-space: nowrap`
+    with an ellipsis, which is deliberate and right. But its `<li>` is a flex item, and a
+    flex item floors at its min-content width unless told otherwise — with nowrap, that floor
+    is the whole untruncated title. The `<span>` truncated correctly at 265px while its `<li>`
+    stayed 721px wide and pushed the document out. Nothing looked broken, which is why
+    eighty-odd cycles of visual review walked past it.
+  - **Change.** `min-width: 0` on `.crumbs__item`, ten lines including the comment. No markup,
+    content, schema, token or copy change.
+  - **Result.** Zero horizontal overflow across all 51 pages at 375, 768 and 1280px, down from
+    31. The rendered band is pixel-identical before and after: the crumb still wraps to a
+    second line and still truncates with an ellipsis.
+  - **Checks.** `npm run build` (2,562 internal links across 52 pages, outbound, schema) and
+    `npm run check:flags` both pass. Whole-site audit at three widths before and after.
+    Keyboard Tab onto a breadcrumb link gives the gold 2px `:focus-visible` ring, cream text
+    and the gold underline — read after the 240ms `focus-in` animation settles, not during it,
+    which is what made an earlier reading look like a missing focus ring.
+  - **Not deployed, and why.** This session's egress policy blocks the live site (backlog 20).
+    Step 1's production spot-check, the production-versus-preview comparison and the
+    post-deploy verification could not be run, and a revert could not be judged. The loop's
+    own stop condition covers exactly that, so nothing was pushed to `main`; the verified fix
+    and this entry sit in a draft PR for Drummond to merge, which deploys it.
+  - **Everything else was green.** `main` at 28a8529, Deploy and CI both succeeded on that
+    SHA, no open PRs, no branches ahead of main.
+  - **Trap for the next session.** The container's clone left the local `main` ref three
+    commits stale at 5dadcb3 while HEAD was detached at 28a8529, so `git checkout main`
+    silently moved *backwards* and the Coding Bootcamp pages vanished from the build. Run
+    `git fetch origin main` and compare before trusting a local branch ref.
+  - **Two audit flags deliberately not acted on**, both unchanged by this fix and neither a
+    defect: header nav links measure 22px tall against an arbitrary 24px tap-target threshold,
+    and the three desktop nav dropdown links report empty `innerText` at 1280px only because
+    the dropdown is closed — their accessible names come from the markup and are intact.
 
 - **2026-09-25 (19:10 local cycle) — Pointed the tools guide at the Coding Bootcamp.**
   - **Evidence.** `claude-cowork-claude-code-or-codex` ends its non-developer section with
