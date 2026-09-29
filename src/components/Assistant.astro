@@ -791,12 +791,11 @@ const suggestions = ['What happens on the day?', 'Which bootcamp suits me?', 'Do
             inline(item, row.replace(LIST_ITEM, ''));
             list.append(item);
           } else {
+            // Models put a single line break between thoughts; give each its
+            // own paragraph so a reply reads in steps rather than a slab.
             list = null;
-            if (paragraph) paragraph.append(document.createElement('br'));
-            else {
-              paragraph = document.createElement('p');
-              fragment.append(paragraph);
-            }
+            paragraph = document.createElement('p');
+            fragment.append(paragraph);
             inline(paragraph, row.replace(/^#{1,6}\s+/, ''));
           }
         }

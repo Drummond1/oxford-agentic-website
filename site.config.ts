@@ -298,7 +298,7 @@ const config: SiteConfig = {
   assistant: {
     // "Oxford Agentic - AI Drummond (website)" in Drummond's ElevenLabs workspace.
     agentId: 'agent_9501m3p6649hfjpsve5qzzv0jexv',
-    previewOnly: true,
+    previewOnly: false,
     greeting:
       "Hi, I'm an AI version of Drummond. I can answer questions about the bootcamps from what's on this site - what would you like to know?",
   },
