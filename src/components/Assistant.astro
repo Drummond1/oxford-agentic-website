@@ -711,16 +711,20 @@ const suggestions = ['What happens on the day?', 'Which bootcamp suits me?', 'Do
 
     if (lines.length > 0) {
       reveal(); // Mid-conversation: keep the way back in view.
-    } else {
+    } else if (document.documentElement.scrollHeight <= window.innerHeight + 80) {
+      // A page too short to scroll has no hero to get out of the way of.
       const timer = window.setTimeout(reveal, 4000);
+      cancelReveal = () => window.clearTimeout(timer);
+    } else {
+      // Otherwise it waits until the visitor has scrolled past the top of the
+      // hero. On a short window the hero's booking button sits exactly where
+      // the launcher goes, and the booking button always wins that corner.
       const onScroll = () => {
-        if (window.scrollY > window.innerHeight * 0.4) reveal();
+        if (window.scrollY > window.innerHeight * 0.35) reveal();
       };
       window.addEventListener('scroll', onScroll, { passive: true });
-      cancelReveal = () => {
-        window.clearTimeout(timer);
-        window.removeEventListener('scroll', onScroll);
-      };
+      cancelReveal = () => window.removeEventListener('scroll', onScroll);
+      onScroll(); // Arrived part-way down, from a back button or an anchor.
     }
 
     // ---- Rendering: text nodes only, links only to this site ---------------

@@ -45,8 +45,9 @@ subtle, never revealing personal information, and sending every money question t
 event page. What shipped:
 
 - **What visitors see.** A small ink "Ask Drummond · AI" button in the bottom-left corner
-  (Back to top owns the right). It appears after four seconds or a little scroll, and
-  never while the cookie banner is up. It opens a squared, hairlined panel: type, or press
+  (Back to top owns the right). It appears once the visitor scrolls past the top of the
+  hero - never on arrival, where the hero's booking button owns that corner - and never
+  while the cookie banner is up. It opens a squared, hairlined panel: type, or press
   Talk to hear the answers in Drummond's own cloned voice. On phones it is a bottom sheet,
   and on event pages it sits above the booking bar rather than on it.
 - **Where the agent lives.** ElevenLabs (Drummond's workspace), agent
