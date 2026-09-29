@@ -16,6 +16,7 @@ export interface SiteConfig {
   analytics: Analytics;
   newsletter: Newsletter;
   applications: Applications;
+  assistant: Assistant;
 }
 
 export interface Brand {
@@ -66,6 +67,12 @@ export interface Features {
   guidesInHeaderNav: boolean;
   newsletter: boolean;
   pastEvents: boolean;
+  /**
+   * "Ask Drummond", the AI version of Drummond in the bottom-left corner.
+   * Settings live in `assistant` below. Off removes the launcher, its script
+   * and every trace of it from the HTML.
+   */
+  assistant: boolean;
 }
 
 export interface Redirect {
@@ -116,6 +123,32 @@ export interface Applications {
    * the page tells them to press send rather than claiming it went.
    */
   endpoint: string;
+}
+
+export interface Assistant {
+  /**
+   * The ElevenLabs agent that answers as AI Drummond. Public by design, like
+   * any embed id: ElevenLabs only accepts conversations for it from
+   * oxfordagentic.com, with daily and concurrency caps set on the agent.
+   *
+   * Everything about what it says - prompt, voice, guardrails, caps - lives on
+   * the agent in ElevenLabs, not here. Its knowledge is this site's own
+   * llms.txt and llms-full.txt, re-synced daily, so anything published there
+   * is something it can say.
+   */
+  agentId: string;
+  /**
+   * While true, the launcher only appears for a visitor who opens a page with
+   * `?assistant=preview` (remembered for that browser tab). Lets a change to
+   * the agent be tried on the live site before everyone sees it.
+   */
+  previewOnly: boolean;
+  /**
+   * Shown in the panel before anything connects. Keep it identical to the
+   * agent's first message in ElevenLabs: the panel hides that first message
+   * when it arrives, so a visitor never reads the same greeting twice.
+   */
+  greeting: string;
 }
 
 /**
@@ -214,6 +247,9 @@ const config: SiteConfig = {
     // Live: drives the Cohort 2 "notify me" state while its Luma page is pending.
     newsletter: true,
     pastEvents: true,
+    // On 29 Sept 2026 (Drummond): "Ask Drummond", an AI version of him that
+    // answers questions from this site. See `assistant` below and STATE.md.
+    assistant: true,
   },
 
   /**
@@ -257,6 +293,14 @@ const config: SiteConfig = {
   applications: {
     // 23 Sept 2026: no provider chosen yet, so applications arrive by email.
     endpoint: '',
+  },
+
+  assistant: {
+    // "Oxford Agentic - AI Drummond (website)" in Drummond's ElevenLabs workspace.
+    agentId: 'agent_9501m3p6649hfjpsve5qzzv0jexv',
+    previewOnly: true,
+    greeting:
+      "Hi, I'm an AI version of Drummond. I can answer questions about the bootcamps from what's on this site - what would you like to know?",
   },
 };
 

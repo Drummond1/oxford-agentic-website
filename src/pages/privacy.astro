@@ -18,8 +18,13 @@ import { createRhythm, paths } from '../lib/site';
  * cannot verify about itself.
  */
 const rhythm = createRhythm('cream');
-const bands = { cookies: rhythm.next(), choices: rhythm.next(), rights: rhythm.next() };
-const updated = '23 September 2026';
+const bands = {
+  cookies: rhythm.next(),
+  ...(config.features.assistant ? { assistant: rhythm.next() } : {}),
+  choices: rhythm.next(),
+  rights: rhythm.next(),
+};
+const updated = '29 September 2026';
 ---
 
 <Base
@@ -31,7 +36,9 @@ const updated = '23 September 2026';
   <Hero
     eyebrow="Privacy and cookies"
     title="What this site collects, and what it does not."
-    subline="Short version: nothing that identifies you is stored unless you accept cookies, and you can change that at any time."
+    subline={config.features.assistant
+      ? 'Short version: nothing that identifies you is stored unless you accept cookies or choose to chat with the assistant, and you can change your cookie choice at any time.'
+      : 'Short version: nothing that identifies you is stored unless you accept cookies, and you can change that at any time.'}
   />
 
   <section class:list={['band', `band--${bands.cookies}`]} aria-labelledby="cookies">
@@ -74,6 +81,47 @@ const updated = '23 September 2026';
       </div>
     </div>
   </section>
+
+  {
+    config.features.assistant && (
+      <section class:list={['band', `band--${bands.assistant}`]} aria-labelledby="assistant">
+        <div class="wrap wrap--narrow">
+          <div class="section-head" data-reveal>
+            <hr class="dash" />
+            <h2 id="assistant">The Ask Drummond assistant</h2>
+          </div>
+          <div class="prose" data-reveal>
+            <p>
+              The <strong>Ask Drummond</strong> button in the corner of each page opens an AI version of Drummond. It
+              answers questions about the bootcamps from what is published on this website, by text or, if you press
+              Talk, out loud in Drummond's voice. It is an AI, not Drummond, and it can get things wrong - for
+              anything that matters, email <a href={`mailto:${config.brand.email}`}>{config.brand.email}</a>.
+            </p>
+            <p>
+              Nothing is sent to ElevenLabs until you send a message or press Talk. When you do, what you type or say goes
+              to <strong>ElevenLabs</strong>, the voice AI company that runs the assistant, so that it can answer. A
+              written transcript of the conversation is kept for 90 days, so that we can see what people ask and
+              improve this site, and is then deleted. Recordings of your voice are not kept.
+            </p>
+            <p>
+              If you press Talk, your browser asks for permission to use your microphone first. The microphone
+              switches off when you end the call or close the panel.
+            </p>
+            <p>
+              The assistant sets no cookies. While you move between pages, the conversation is kept in your browser
+              tab so that it is still there on the next page. It is cleared when you close the tab or press Start
+              over.
+            </p>
+            <p>
+              It cannot take bookings or pass on messages, so please do not share personal or sensitive details with
+              it. ElevenLabs handles conversations under{' '}
+              <a href="https://elevenlabs.io/privacy-policy" rel="noopener">its own privacy policy</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class:list={['band', `band--${bands.choices}`]} aria-labelledby="choices">
     <div class="wrap wrap--narrow">

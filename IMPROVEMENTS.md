@@ -51,6 +51,11 @@ gate prevents breakage. Keep each cycle small and reversible.
 - British spelling; brand voice (plain, practical, confident, no hype, no exclamation
   marks, no emoji). Newsreader/Plex/Plex Mono and the design tokens are law.
 - One clean commit per cycle; if the build fails, do not push.
+- "Ask Drummond" (the AI assistant, 29 Sept 2026) answers from `llms.txt` and
+  `llms-full.txt`, re-synced daily: whatever this site publishes, it will repeat. Never
+  add a price, discount code or personal detail to any page, and never change
+  `assistant.greeting` or the privacy page's `#assistant` section without the matching
+  change in ElevenLabs. See STATE.md.
 
 _When the site goes public, switch this section to: auto-ship the technical/freshness
 tier; propose-and-approve anything touching copy, claims or design._
@@ -186,6 +191,22 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-29 (session, Drummond's request) — "Ask Drummond": an AI version of Drummond on
+  every page.**
+  - **Change.** New `Assistant.astro` (bottom-left launcher and panel, text or voice in his
+    ElevenLabs voice clone), `features.assistant` and `assistant` in `site.config.ts`,
+    `@elevenlabs/client` as a lazily loaded dependency, and a new "The Ask Drummond
+    assistant" section on the privacy page. Shipped behind `previewOnly` first, checked on
+    the live site, then opened to everyone.
+  - **Agent.** ElevenLabs `agent_9501m3p6649hfjpsve5qzzv0jexv`. Knowledge is this site's
+    `llms.txt` and `llms-full.txt` only. Never states prices or personal information and
+    sends money questions to the event page; twelve ElevenLabs tests pass (STATE.md).
+  - **Checks.** Build, links and schema pass; `check:flags` passes with 7 flags. Lighthouse
+    run locally: performance 100 on all three budget pages, accessibility 100/100/95 as
+    before. The SDK chunk (148KB gzipped) is never requested until a visitor sends a
+    message or presses Talk; the per-page cost is a 4KB script. Launcher inspected at
+    1440px and 390px, on the hero, a cream band and an event page with the booking bar.
 
 - **2026-09-25 (19:10 local cycle) — Pointed the tools guide at the Coding Bootcamp.**
   - **Evidence.** `claude-cowork-claude-code-or-codex` ends its non-developer section with

@@ -1,0 +1,1160 @@
+---
+/**
+ * "Ask Drummond" - an AI version of Drummond that answers questions about the
+ * bootcamps, by text or by voice, in his own cloned voice.
+ *
+ * The agent itself lives in ElevenLabs (see `assistant` in site.config.ts and
+ * STATE.md): its prompt, voice, guardrails and caps are set there. This file
+ * is only the way in, and it is built to cost nothing until someone uses it.
+ *
+ * - Nothing third-party loads with the page. The launcher is plain HTML; the
+ *   ElevenLabs SDK is a separate chunk fetched on the first message or the
+ *   first press of Talk. Lighthouse, page weight and the consent position are
+ *   unchanged for every visitor who never opens it.
+ * - It is the site's own UI rather than ElevenLabs' stock widget. The widget is
+ *   a 1.5MB bundle with its own font and rounded styling, and its floating
+ *   pill sat on top of the event pages' mobile booking bar. This is squared,
+ *   hairlined and typeset like everything else here.
+ * - What it knows is this website: its knowledge base is /llms.txt and
+ *   /llms-full.txt, re-synced daily. Prices and personal details are refused
+ *   three times over: by the agent's prompt, by a blocking guardrail on every
+ *   reply, and by a knowledge base that contains neither.
+ * - Everything the model says is built into the page as text nodes, never as
+ *   HTML, and the only links it can produce are to pages on this site.
+ */
+import config from '../../site.config';
+
+const { agentId, previewOnly, greeting } = config.assistant;
+
+// Short, answerable, and a fair sample of what people actually ask.
+const suggestions = ['What happens on the day?', 'Which bootcamp suits me?', 'Do I need to code?'];
+---
+
+<div
+  class="assistant"
+  hidden
+  data-assistant
+  data-agent-id={agentId}
+  data-preview-only={previewOnly ? 'true' : 'false'}
+  data-greeting={greeting}
+>
+  <button
+    type="button"
+    class="assistant__launcher"
+    aria-expanded="false"
+    aria-controls="assistant-panel"
+    aria-haspopup="dialog"
+    data-assistant-launcher
+    data-analytics-event="assistant_open"
+  >
+    <span class="assistant__mark" aria-hidden="true"></span>
+    <span>Ask Drummond</span>
+    <span class="assistant__tag">AI</span>
+  </button>
+
+  <section
+    id="assistant-panel"
+    class="assistant__panel"
+    role="dialog"
+    aria-labelledby="assistant-title"
+    aria-describedby="assistant-note"
+    hidden
+    data-assistant-panel
+  >
+    <header class="assistant__head">
+      <span class="assistant__mark" aria-hidden="true"></span>
+      <div class="assistant__heading">
+        <p class="assistant__title" id="assistant-title">Ask Drummond <span class="assistant__tag">AI</span></p>
+        <p class="assistant__sub">Answers from this site</p>
+      </div>
+      <button type="button" class="assistant__clear" data-assistant-clear hidden>Start over</button>
+      <button type="button" class="assistant__close" aria-label="Close" data-assistant-close>
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
+          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" fill="none"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="assistant__log" role="log" aria-live="polite" aria-label="Conversation" data-assistant-log>
+      <div class="assistant__msg assistant__msg--agent">
+        <p class="assistant__who">Drummond · AI</p>
+        <div class="assistant__text"><p>{greeting}</p></div>
+      </div>
+      <div class="assistant__chips" data-assistant-chips>
+        {
+          suggestions.map((text) => (
+            <button type="button" class="assistant__chip" data-suggestion={text}>
+              {text}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="assistant__status" role="status" hidden data-assistant-status></p>
+
+    <form class="assistant__form" data-assistant-form>
+      <label class="visually-hidden" for="assistant-input">Your question</label>
+      <textarea
+        id="assistant-input"
+        class="assistant__input"
+        rows="1"
+        maxlength="600"
+        placeholder="Ask about a bootcamp"
+        autocomplete="off"
+        enterkeyhint="send"
+        data-assistant-input></textarea>
+      <button type="submit" class="assistant__send">
+        <span aria-hidden="true">→</span>
+        <span class="visually-hidden">Send</span>
+      </button>
+      <button type="button" class="assistant__talk" aria-pressed="false" data-assistant-talk>
+        <svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true" focusable="false">
+          <rect x="3.5" y="0.8" width="5" height="9" rx="2.5" stroke="currentColor" stroke-width="1.5" fill="none"
+          ></rect>
+          <path d="M1 7.5a5 5 0 0 0 10 0M6 12.5V15" stroke="currentColor" stroke-width="1.5" fill="none"></path>
+        </svg>
+        <span data-assistant-talk-label>Talk</span>
+      </button>
+    </form>
+
+    <p class="assistant__note" id="assistant-note">
+      An AI, not Drummond himself - it answers from this website and can get things wrong. Please don't share
+      personal details. <a href="/privacy/#assistant">How chats are handled</a>
+    </p>
+  </section>
+</div>
+
+<style is:global>
+  /* Global rather than scoped: the conversation is built at runtime, and
+     elements created by script never carry Astro's scoping attribute. Every
+     selector is namespaced under .assistant, so nothing leaks. */
+
+  .assistant {
+    position: fixed;
+    inset-inline-start: clamp(1rem, 0.5rem + 2vw, 2rem);
+    inset-block-end: clamp(1rem, 0.5rem + 2vw, 2rem);
+    /* Above Back to top (50), under the consent banner and the event pages'
+       booking bar (60) - until it is opened, when it sits over both. */
+    z-index: 55;
+  }
+
+  .assistant[hidden] {
+    display: none;
+  }
+
+  .assistant.is-open {
+    z-index: 70;
+  }
+
+  /* ---- Launcher ---- */
+
+  .assistant__launcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    height: 2.75rem;
+    padding: 0 0.85rem 0 0.8rem;
+    background: var(--ink-dark);
+    color: var(--cream);
+    border: 1px solid var(--gold-hairline);
+    border-radius: 0;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--step-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition:
+      opacity 260ms var(--ease),
+      transform 260ms var(--ease),
+      border-color 200ms var(--ease);
+  }
+
+  .assistant.is-shown .assistant__launcher {
+    opacity: 1;
+    transform: none;
+  }
+
+  .assistant__launcher:hover,
+  .assistant__launcher[aria-expanded='true'] {
+    border-color: var(--gold);
+  }
+
+  /* The Quad's amber centre, the same mark the logo grows on hover. */
+  .assistant__mark {
+    flex: none;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: var(--gold);
+    transition: transform 200ms var(--ease);
+  }
+
+  .assistant__launcher:hover .assistant__mark {
+    transform: scale(1.35);
+  }
+
+  .assistant__tag {
+    display: inline-block;
+    padding: 0.12rem 0.3rem 0.1rem;
+    border: 1px solid var(--gold-hairline);
+    color: var(--gold);
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    vertical-align: 0.2em;
+  }
+
+  .assistant__title .assistant__tag {
+    margin-inline-start: 0.3rem;
+  }
+
+  /* ---- Panel ---- */
+
+  .assistant__panel {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: calc(100% + 0.6rem);
+    width: min(24rem, calc(100vw - 2rem));
+    max-height: min(36rem, calc(100dvh - 7rem));
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    color: var(--ink-dark);
+    /* Gold rather than ink, so the edge holds on the dark bands as well as
+       the light ones. */
+    border: 1px solid var(--gold);
+  }
+
+  .assistant__panel[hidden] {
+    display: none;
+  }
+
+  .assistant__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 0.6rem 0.8rem 1rem;
+    background: var(--ink-dark);
+    color: var(--cream);
+    border-block-end: 1px solid var(--gold-hairline);
+  }
+
+  .assistant__heading {
+    min-width: 0;
+  }
+
+  .assistant__title {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .assistant__sub {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-label);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-on-dark);
+  }
+
+  .assistant__clear,
+  .assistant__close {
+    flex: none;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    transition: border-color 200ms var(--ease);
+  }
+
+  .assistant__clear {
+    margin-inline-start: auto;
+    padding: 0.4rem 0.5rem;
+    font-family: var(--font-label);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-on-dark);
+  }
+
+  .assistant__clear[hidden] {
+    display: none;
+  }
+
+  .assistant__close {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .assistant__clear[hidden] + .assistant__close {
+    margin-inline-start: auto;
+  }
+
+  .assistant__clear:hover,
+  .assistant__close:hover {
+    border-color: var(--gold-hairline);
+  }
+
+  .assistant__log {
+    flex: 1 1 auto;
+    min-height: 8rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .assistant__who {
+    margin: 0 0 0.3rem;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-on-cream);
+  }
+
+  .assistant__text {
+    font-size: var(--step-sm);
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+  }
+
+  .assistant__text p {
+    margin: 0;
+  }
+
+  .assistant__text > * + * {
+    margin-block-start: 0.55rem;
+  }
+
+  .assistant__text ul,
+  .assistant__text ol {
+    margin-block-end: 0;
+    padding-inline-start: 1.15rem;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .assistant__text a {
+    color: var(--ink-dark);
+    text-decoration-line: underline;
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .assistant__text a:hover {
+    text-decoration-color: var(--ink-dark);
+  }
+
+  .assistant__msg--user .assistant__text {
+    border-inline-start: 2px solid var(--gold);
+    padding-inline-start: 0.7rem;
+  }
+
+  .assistant__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .assistant__chips[hidden] {
+    display: none;
+  }
+
+  .assistant__chip {
+    padding: 0.45rem 0.7rem;
+    background: transparent;
+    color: var(--ink-dark);
+    border: 1px solid var(--ink-hairline);
+    border-radius: 0;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    text-align: start;
+    cursor: pointer;
+    transition: border-color 200ms var(--ease);
+  }
+
+  .assistant__chip:hover {
+    border-color: var(--ink-dark);
+  }
+
+  /* Waiting for a reply: three amber squares, not a spinner. */
+  .assistant__typing {
+    display: inline-flex;
+    gap: 0.3rem;
+    padding-block: 0.35rem;
+  }
+
+  .assistant__typing span {
+    width: 0.4rem;
+    height: 0.4rem;
+    background: var(--gold);
+    opacity: 0.3;
+    animation: assistant-pulse 1.1s var(--ease) infinite;
+  }
+
+  .assistant__typing span:nth-child(2) {
+    animation-delay: 160ms;
+  }
+
+  .assistant__typing span:nth-child(3) {
+    animation-delay: 320ms;
+  }
+
+  @keyframes assistant-pulse {
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .assistant__status {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0.6rem 1rem;
+    border-block-start: 1px solid var(--hairline-cream);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .assistant__status[hidden] {
+    display: none;
+  }
+
+  /* Voice states read as labels, the way the rest of the site marks state. */
+  .assistant__status.is-live {
+    font-family: var(--font-label);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .assistant__status.is-live::before {
+    content: '';
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--gold);
+    animation: assistant-pulse 1.4s var(--ease) infinite;
+  }
+
+  .assistant__status.is-error {
+    border-inline-start: 2px solid var(--gold);
+  }
+
+  .assistant__form {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    padding: 0.7rem;
+    border-block-start: 1px solid var(--hairline-cream);
+  }
+
+  .assistant__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 2.75rem;
+    max-height: 7.5rem;
+    padding: 0.6rem 0.7rem;
+    resize: none;
+    background: #fffdf8;
+    color: var(--ink-dark);
+    border: 1px solid rgba(5, 24, 23, 0.35);
+    border-radius: 0;
+    font-family: var(--font-body);
+    /* 16px, so iOS does not zoom the page when the field takes focus. */
+    font-size: 1rem;
+    line-height: 1.4;
+    transition:
+      border-color 180ms var(--ease),
+      box-shadow 180ms var(--ease);
+  }
+
+  .assistant__input::placeholder {
+    color: rgba(5, 24, 23, 0.5);
+  }
+
+  .assistant__input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: inset 0 -2px 0 0 var(--gold);
+  }
+
+  .assistant__send,
+  .assistant__talk {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    height: 2.75rem;
+    border-radius: 0;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--step-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition:
+      background-color 200ms var(--ease),
+      color 200ms var(--ease),
+      border-color 200ms var(--ease);
+  }
+
+  .assistant__send {
+    width: 2.75rem;
+    background: var(--gold);
+    color: var(--ink-dark);
+    border: 1px solid var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .assistant__send:hover {
+    background: #c3a133;
+  }
+
+  .assistant__talk {
+    padding: 0 0.75rem;
+    background: transparent;
+    color: var(--ink-dark);
+    border: 1px solid var(--ink-dark);
+  }
+
+  .assistant__talk:hover,
+  .assistant__talk[aria-pressed='true'] {
+    background: var(--ink-dark);
+    color: var(--cream);
+  }
+
+  .assistant__send:disabled,
+  .assistant__talk:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+
+  .assistant__note {
+    margin: 0;
+    padding: 0 0.9rem 0.85rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--muted-on-cream);
+  }
+
+  .assistant__note a {
+    color: inherit;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 2px;
+  }
+
+  /* Event pages carry a booking bar across the bottom of a phone screen.
+     Sit above it rather than on it. */
+  @media (max-width: 48rem) {
+    body.has-sticky-bar .assistant {
+      inset-block-end: calc(4.25rem + env(safe-area-inset-bottom, 0px) + 0.5rem);
+    }
+  }
+
+  /* On a phone the panel becomes a sheet across the bottom of the screen. */
+  @media (max-width: 40rem) {
+    .assistant__panel {
+      position: fixed;
+      inset-inline: 0;
+      inset-block-end: 0;
+      width: auto;
+      height: min(85dvh, 40rem);
+      max-height: none;
+      border-inline: 0;
+      border-block-end: 0;
+      padding-block-end: env(safe-area-inset-bottom, 0px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .assistant__launcher,
+    .assistant__mark {
+      transition: none;
+    }
+
+    .assistant__typing span,
+    .assistant__status.is-live::before {
+      animation: none;
+      opacity: 0.8;
+    }
+  }
+</style>
+
+<script>
+  import type { Conversation as ElevenLabsConversation } from '@elevenlabs/client';
+
+  type Role = 'user' | 'agent';
+  type Line = { role: Role; text: string };
+  type Kind = 'text' | 'voice';
+
+  const root = document.querySelector<HTMLElement>('[data-assistant]');
+  if (root) init(root);
+
+  function init(root: HTMLElement) {
+    const agentId = root.dataset.agentId ?? '';
+    const greeting = root.dataset.greeting ?? '';
+    const previewOnly = root.dataset.previewOnly === 'true';
+
+    const launcher = root.querySelector<HTMLButtonElement>('[data-assistant-launcher]')!;
+    const panel = root.querySelector<HTMLElement>('[data-assistant-panel]')!;
+    const log = root.querySelector<HTMLElement>('[data-assistant-log]')!;
+    const chips = root.querySelector<HTMLElement>('[data-assistant-chips]')!;
+    const status = root.querySelector<HTMLElement>('[data-assistant-status]')!;
+    const form = root.querySelector<HTMLFormElement>('[data-assistant-form]')!;
+    const input = root.querySelector<HTMLTextAreaElement>('[data-assistant-input]')!;
+    const send = form.querySelector<HTMLButtonElement>('.assistant__send')!;
+    const talk = root.querySelector<HTMLButtonElement>('[data-assistant-talk]')!;
+    const talkLabel = root.querySelector<HTMLElement>('[data-assistant-talk-label]')!;
+    const clear = root.querySelector<HTMLButtonElement>('[data-assistant-clear]')!;
+    const close = root.querySelector<HTMLButtonElement>('[data-assistant-close]')!;
+
+    const STORE = 'oa-assistant';
+    const PREVIEW = 'oa-assistant-preview';
+    const CONTACT = 'hello@oxfordagentic.com';
+    const NO_CONNECT = `That didn't connect. Please try again in a moment, or email ${CONTACT}.`;
+
+    // ---- Who sees it -------------------------------------------------------
+
+    const store = (() => {
+      try {
+        return window.sessionStorage;
+      } catch {
+        return null; // Storage blocked: everything still works, nothing is remembered.
+      }
+    })();
+
+    if (previewOnly) {
+      const param = new URLSearchParams(window.location.search).get('assistant');
+      try {
+        if (param === 'preview') store?.setItem(PREVIEW, '1');
+        if (param === 'off') store?.removeItem(PREVIEW);
+      } catch {
+        /* Preview simply lasts for this page. */
+      }
+      const allowed = param === 'preview' || (param !== 'off' && store?.getItem(PREVIEW) === '1');
+      if (!allowed) return;
+    }
+
+    // ---- Transcript, kept in this tab so it survives moving between pages ----
+
+    let lines: Line[] = [];
+    try {
+      const saved = JSON.parse(store?.getItem(STORE) ?? 'null');
+      if (Array.isArray(saved?.lines)) {
+        lines = saved.lines
+          .filter((l: Line) => (l?.role === 'user' || l?.role === 'agent') && typeof l.text === 'string')
+          .slice(-30);
+      }
+    } catch {
+      lines = [];
+    }
+
+    // The "replying" indicator, while one is showing.
+    let typing: HTMLElement | null = null;
+    let waitTimer = 0;
+
+    function persist() {
+      try {
+        if (lines.length) store?.setItem(STORE, JSON.stringify({ lines: lines.slice(-30) }));
+        else store?.removeItem(STORE);
+      } catch {
+        /* Not remembered across pages; this page still works. */
+      }
+    }
+
+    // ---- Appearing: quietly, and never over the hero on arrival -------------
+
+    let revealed = false;
+    let waitingForBanner = false;
+    let cancelReveal = () => {};
+
+    // A first-time visitor gets the cookie banner across the bottom edge. The
+    // launcher waits for it to go rather than peeking out from under it.
+    const banner = document.querySelector<HTMLElement>('[data-consent-banner]');
+    const bannerUp = () => banner !== null && !banner.hidden;
+    if (banner) {
+      new MutationObserver(() => {
+        if (waitingForBanner && !bannerUp()) reveal();
+      }).observe(banner, { attributes: true, attributeFilter: ['hidden'] });
+    }
+
+    function reveal() {
+      if (revealed) return;
+      cancelReveal();
+      if (bannerUp()) {
+        waitingForBanner = true;
+        return;
+      }
+      revealed = true;
+      root.hidden = false;
+      // A frame later, so the fade has a starting point to run from.
+      window.requestAnimationFrame(() => root.classList.add('is-shown'));
+    }
+
+    if (lines.length > 0) {
+      reveal(); // Mid-conversation: keep the way back in view.
+    } else {
+      const timer = window.setTimeout(reveal, 4000);
+      const onScroll = () => {
+        if (window.scrollY > window.innerHeight * 0.4) reveal();
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      cancelReveal = () => {
+        window.clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+      };
+    }
+
+    // ---- Rendering: text nodes only, links only to this site ---------------
+
+    const INLINE = /\[([^\]\n]{1,200})\]\(([^)\s]{1,500})\)|\*\*([^*\n]{1,300})\*\*|(https?:\/\/[^\s<>()]+[^\s<>().,;:!?'"])/g;
+    const LIST_ITEM = /^(?:[-*•]|\d+[.)])\s+/;
+
+    function localPath(href: string): string | null {
+      try {
+        const url = new URL(href, window.location.origin);
+        const ours =
+          url.origin === window.location.origin ||
+          url.hostname === 'oxfordagentic.com' ||
+          url.hostname === 'www.oxfordagentic.com';
+        if (ours && (url.protocol === 'https:' || url.protocol === 'http:')) return url.pathname + url.search + url.hash;
+      } catch {
+        /* Not a URL. */
+      }
+      return null;
+    }
+
+    function inline(target: HTMLElement, text: string) {
+      let last = 0;
+      for (const match of text.matchAll(INLINE)) {
+        const at = match.index ?? 0;
+        if (at > last) target.append(text.slice(last, at));
+        const [whole, label, href, bold, bare] = match;
+        if (label !== undefined) {
+          const path = localPath(href);
+          target.append(path ? anchor(label, path) : label);
+        } else if (bold !== undefined) {
+          const strong = document.createElement('strong');
+          strong.textContent = bold;
+          target.append(strong);
+        } else if (bare !== undefined) {
+          const path = localPath(bare);
+          target.append(path ? anchor(bare.replace(/^https?:\/\/(www\.)?/, ''), path) : bare);
+        }
+        last = at + whole.length;
+      }
+      if (last < text.length) target.append(text.slice(last));
+    }
+
+    function anchor(label: string, path: string) {
+      const a = document.createElement('a');
+      a.href = path;
+      a.textContent = label;
+      return a;
+    }
+
+    function render(raw: string): DocumentFragment {
+      const fragment = document.createDocumentFragment();
+      const text = raw.replace(/\r/g, '').replace(/[ \t]{2,}/g, ' ').trim();
+
+      for (const block of text.split(/\n{2,}/)) {
+        let paragraph: HTMLParagraphElement | null = null;
+        let list: HTMLElement | null = null;
+
+        for (const row of block.split('\n').map((r) => r.trim())) {
+          if (!row) continue;
+          if (LIST_ITEM.test(row)) {
+            paragraph = null;
+            if (!list) {
+              list = document.createElement(/^\d/.test(row) ? 'ol' : 'ul');
+              fragment.append(list);
+            }
+            const item = document.createElement('li');
+            inline(item, row.replace(LIST_ITEM, ''));
+            list.append(item);
+          } else {
+            list = null;
+            if (paragraph) paragraph.append(document.createElement('br'));
+            else {
+              paragraph = document.createElement('p');
+              fragment.append(paragraph);
+            }
+            inline(paragraph, row.replace(/^#{1,6}\s+/, ''));
+          }
+        }
+      }
+      return fragment;
+    }
+
+    function addLine(role: Role, text: string, remember = true) {
+      const message = document.createElement('div');
+      message.className = `assistant__msg assistant__msg--${role}`;
+      const who = document.createElement('p');
+      who.className = 'assistant__who';
+      who.textContent = role === 'agent' ? 'Drummond · AI' : 'You';
+      const body = document.createElement('div');
+      body.className = 'assistant__text';
+      body.append(render(text));
+      message.append(who, body);
+      log.insertBefore(message, typing?.isConnected ? typing : null);
+      if (remember) {
+        lines.push({ role, text });
+        persist();
+      }
+      chips.hidden = true;
+      clear.hidden = false;
+      scrollToEnd();
+    }
+
+    function scrollToEnd() {
+      log.scrollTop = log.scrollHeight;
+    }
+
+    lines.forEach((line) => addLine(line.role, line.text, false));
+
+    // ---- Status line and the waiting indicator -------------------------------
+
+    function setStatus(text: string, tone: 'info' | 'error' | 'live' = 'info') {
+      status.textContent = text;
+      status.hidden = text === '';
+      status.classList.toggle('is-error', tone === 'error');
+      status.classList.toggle('is-live', tone === 'live');
+    }
+
+    function startWaiting() {
+      stopWaiting();
+      typing = document.createElement('div');
+      typing.className = 'assistant__msg assistant__msg--agent';
+      typing.setAttribute('aria-label', 'Drummond is replying');
+      const who = document.createElement('p');
+      who.className = 'assistant__who';
+      who.textContent = 'Drummond · AI';
+      const dots = document.createElement('div');
+      dots.className = 'assistant__typing';
+      dots.append(document.createElement('span'), document.createElement('span'), document.createElement('span'));
+      typing.append(who, dots);
+      log.append(typing);
+      scrollToEnd();
+      waitTimer = window.setTimeout(() => {
+        stopWaiting();
+        setStatus('That is taking longer than it should. Please try asking again.', 'error');
+      }, 30000);
+    }
+
+    function stopWaiting() {
+      window.clearTimeout(waitTimer);
+      typing?.remove();
+      typing = null;
+    }
+
+    // ---- The conversation ----------------------------------------------------
+
+    let conversation: ElevenLabsConversation | null = null;
+    let kind: Kind | null = null;
+    let session = 0; // Callbacks from a superseded session are ignored.
+    let greetingPending = false;
+    const echoes: string[] = []; // Typed lines the server may echo back.
+
+    const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
+    const isGreeting = (s: string) => norm(s).slice(0, 40) === norm(greeting).slice(0, 40);
+
+    function track(name: string) {
+      const w = window as unknown as {
+        plausible?: (n: string) => void;
+        gtag?: (...args: unknown[]) => void;
+      };
+      w.plausible?.(name);
+      w.gtag?.('event', name);
+    }
+
+    function earlier(): Line[] {
+      return lines.filter((l) => !(l.role === 'agent' && isGreeting(l.text))).slice(-8);
+    }
+
+    function handleMessage(id: number, role: Role, message: string) {
+      if (id !== session) return;
+      const text = (message ?? '').trim();
+      if (!text) return;
+
+      if (role === 'agent') {
+        // The agent opens every session with its greeting, which the panel
+        // already shows. Only hide it if it really is the greeting.
+        if (greetingPending) {
+          greetingPending = false;
+          if (isGreeting(text)) return;
+        }
+        stopWaiting();
+        setStatus(kind === 'voice' ? 'Speaking' : '', 'live');
+        addLine('agent', text);
+        return;
+      }
+
+      // Typed questions are on screen already; spoken ones arrive here.
+      const echo = echoes.indexOf(norm(text));
+      if (echo !== -1) {
+        echoes.splice(echo, 1);
+        return;
+      }
+      addLine('user', text);
+    }
+
+    function handleDisconnect(id: number, reason: string) {
+      if (id !== session) return;
+      const was = kind;
+      conversation = null;
+      kind = null;
+      stopWaiting();
+      setTalk(false);
+      if (reason === 'error') {
+        setStatus(`The connection dropped. Send another message to carry on, or email ${CONTACT}.`, 'error');
+      } else if (reason === 'agent') {
+        setStatus(
+          was === 'voice'
+            ? 'Call ended. Type or press Talk to start again.'
+            : 'That conversation has ended. Ask another question to start a new one.',
+        );
+      } else {
+        setStatus('');
+      }
+    }
+
+    async function begin(next: Kind, history: Line[]) {
+      const id = ++session;
+      greetingPending = true;
+
+      const { Conversation } = await import('@elevenlabs/client');
+      if (id !== session) return; // Closed while loading.
+
+      const callbacks = {
+        agentId,
+        onMessage: ({ message, role }: { message: string; role: Role }) => handleMessage(id, role, message),
+        onDisconnect: (details: { reason: string }) => handleDisconnect(id, details.reason),
+        onModeChange: ({ mode }: { mode: 'speaking' | 'listening' }) => {
+          if (id === session && kind === 'voice') setStatus(mode === 'speaking' ? 'Speaking' : 'Listening', 'live');
+        },
+        onAgentResponseCorrection: (props: { original_agent_response: string; corrected_agent_response: string }) => {
+          if (id !== session) return;
+          // An interrupted or corrected reply: show what was actually said.
+          const lastAgent = [...log.querySelectorAll<HTMLElement>('.assistant__msg--agent .assistant__text')].pop();
+          const line = [...lines].reverse().find((l) => l.role === 'agent');
+          if (lastAgent && line && norm(line.text) === norm(props.original_agent_response)) {
+            line.text = props.corrected_agent_response;
+            lastAgent.replaceChildren(render(line.text));
+            persist();
+          }
+        },
+        onError: (message: string) => console.warn('[assistant]', message),
+      };
+
+      const started =
+        next === 'text'
+          ? await Conversation.startSession({ ...callbacks, textOnly: true, overrides: { conversation: { textOnly: true } } })
+          : await Conversation.startSession({ ...callbacks, textOnly: false });
+
+      if (id !== session) {
+        // Closed while connecting: hang up rather than leave a session open.
+        void started.endSession();
+        return;
+      }
+
+      conversation = started;
+      kind = next;
+      track(next === 'voice' ? 'assistant_voice_start' : 'assistant_text_start');
+
+      // Carry on from what was said earlier - on another page, or before a
+      // switch from typing to talking - rather than starting cold.
+      if (history.length) {
+        const recap = history
+          .map((l) => `${l.role === 'user' ? 'Visitor' : 'You'}: ${l.text}`)
+          .join('\n')
+          .slice(-2000);
+        started.sendContextualUpdate(
+          `Earlier in this visit the visitor and you exchanged these messages, most recent last:\n${recap}\nCarry on from there.`,
+        );
+      }
+    }
+
+    async function end() {
+      session++;
+      const current = conversation;
+      conversation = null;
+      kind = null;
+      greetingPending = false;
+      echoes.length = 0;
+      if (current) {
+        try {
+          await current.endSession();
+        } catch {
+          /* Already closed. */
+        }
+      }
+    }
+
+    async function ask(raw: string) {
+      const text = raw.trim().slice(0, 600);
+      if (!text) return;
+      const history = earlier();
+      if (kind !== 'voice') setStatus('');
+      addLine('user', text);
+      echoes.push(norm(text));
+      startWaiting();
+      send.disabled = true;
+      try {
+        if (!conversation) await begin('text', history);
+        if (!conversation) throw new Error('not connected');
+        conversation.sendUserMessage(text);
+      } catch {
+        stopWaiting();
+        setStatus(NO_CONNECT, 'error');
+      } finally {
+        send.disabled = false;
+      }
+    }
+
+    function setTalk(active: boolean) {
+      talk.setAttribute('aria-pressed', String(active));
+      talkLabel.textContent = active ? 'End' : 'Talk';
+    }
+
+    async function toggleVoice() {
+      if (kind === 'voice') {
+        await end();
+        setTalk(false);
+        setStatus('Call ended. Type or press Talk to start again.');
+        return;
+      }
+
+      if (!navigator.mediaDevices?.getUserMedia) {
+        setStatus('This browser cannot use a microphone here, so please type instead.', 'error');
+        return;
+      }
+
+      talk.disabled = true;
+      setTalk(true);
+      setStatus('Connecting', 'live');
+      try {
+        // Ask for the microphone first, so a refusal gets a plain answer
+        // instead of a failed connection.
+        const probe = await navigator.mediaDevices.getUserMedia({ audio: true });
+        probe.getTracks().forEach((track) => track.stop());
+      } catch {
+        talk.disabled = false;
+        setTalk(false);
+        setStatus('Your microphone is blocked, so please type instead - it works just the same.', 'error');
+        return;
+      }
+
+      const history = earlier();
+      await end();
+      try {
+        await begin('voice', history);
+        if (!conversation) throw new Error('not connected');
+        setStatus('Listening', 'live');
+      } catch {
+        setTalk(false);
+        setStatus(NO_CONNECT, 'error');
+      } finally {
+        talk.disabled = false;
+      }
+    }
+
+    // ---- Opening and closing ------------------------------------------------
+
+    function open() {
+      panel.hidden = false;
+      root!.classList.add('is-open');
+      launcher.setAttribute('aria-expanded', 'true');
+      scrollToEnd();
+      input.focus({ preventScroll: true });
+    }
+
+    function shut() {
+      // Closing always hangs up: a microphone never stays live behind a
+      // closed panel. The transcript stays, and the next message reconnects.
+      void end();
+      stopWaiting();
+      setTalk(false);
+      setStatus('');
+      panel.hidden = true;
+      root!.classList.remove('is-open');
+      launcher.setAttribute('aria-expanded', 'false');
+      launcher.focus({ preventScroll: true });
+    }
+
+    launcher.addEventListener('click', () => (panel.hidden ? open() : shut()));
+    close.addEventListener('click', shut);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !panel.hidden) shut();
+    });
+
+    clear.addEventListener('click', () => {
+      void end();
+      stopWaiting();
+      setTalk(false);
+      setStatus('');
+      lines = [];
+      persist();
+      log.querySelectorAll('.assistant__msg').forEach((m, i) => {
+        if (i > 0) m.remove(); // Keep the greeting.
+      });
+      chips.hidden = false;
+      clear.hidden = true;
+      input.focus({ preventScroll: true });
+    });
+
+    chips.addEventListener('click', (event) => {
+      const chip = (event.target as HTMLElement | null)?.closest<HTMLButtonElement>('[data-suggestion]');
+      if (chip?.dataset.suggestion) void ask(chip.dataset.suggestion);
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const text = input.value;
+      input.value = '';
+      input.style.height = '';
+      void ask(text);
+    });
+
+    let lastActivity = 0;
+    input.addEventListener('input', () => {
+      input.style.height = 'auto';
+      input.style.height = `${Math.min(input.scrollHeight, 120)}px`;
+      // Typing counts as being present, so a slow typist is not timed out.
+      const now = Date.now();
+      if (conversation && now - lastActivity > 1500) {
+        lastActivity = now;
+        conversation.sendUserActivity();
+      }
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
+        event.preventDefault();
+        form.requestSubmit();
+      }
+    });
+
+    talk.addEventListener('click', () => void toggleVoice());
+
+    window.addEventListener('pagehide', () => void end());
+  }
+</script>

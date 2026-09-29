@@ -38,6 +38,55 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 🟢 "Ask Drummond" - an AI version of Drummond on every page (29 Sept 2026)
+
+Asked for by Drummond: "a version of me that people can ask questions about the bootcamp",
+subtle, never revealing personal information, and sending every money question to the
+event page. What shipped:
+
+- **What visitors see.** A small ink "Ask Drummond · AI" button in the bottom-left corner
+  (Back to top owns the right). It appears after four seconds or a little scroll, and
+  never while the cookie banner is up. It opens a squared, hairlined panel: type, or press
+  Talk to hear the answers in Drummond's own cloned voice. On phones it is a bottom sheet,
+  and on event pages it sits above the booking bar rather than on it.
+- **Where the agent lives.** ElevenLabs (Drummond's workspace), agent
+  *Oxford Agentic - AI Drummond (website)*, id `agent_9501m3p6649hfjpsve5qzzv0jexv`. Its
+  prompt, voice ("Drummond Voice", his professional clone), model and caps are set there,
+  not in this repo.
+- **What it knows is this site.** Its knowledge base is `/llms.txt` (always in view) and
+  `/llms-full.txt` (searched), both re-synced by ElevenLabs daily. **Anything published on
+  this site is something AI Drummond can say, and nothing else is.** That is the privacy
+  design, and it is why the existing rules matter twice over now: no prices, no discount
+  codes, no personal details on any page.
+- **Money.** It never gives a price, early-bird rate, discount, code, refund term or places
+  left. It names the event and links its page, where the booking form shows the price.
+  Refused three times over: the prompt, a blocking guardrail on every reply ("No prices or
+  personal information"), and a knowledge base with no prices in it.
+- **Locked down.** Only accepts conversations from oxfordagentic.com (origin required);
+  100 conversations a day, 5 at once, 8 minutes each; every client override off except
+  text-only; prompt-injection guardrail on. Transcripts kept 90 days; voice audio is not
+  recorded. The privacy page section `#assistant` says exactly this - change it in the
+  same commit if a setting changes.
+- **Tested.** Twelve ElevenLabs tests named "OA web - ..." (price, a quoted price, discount
+  codes, personal details, attendees, prompt injection, AI disclosure, university
+  affiliation, next-event facts, repeating a visitor's text in his voice, off-topic, and a
+  multi-turn simulation of a finance director pushing for a figure). All pass. Re-run them
+  after any change to the prompt.
+- **The code.** `src/components/Assistant.astro` is the site's own UI, not ElevenLabs'
+  widget (1.5MB, its own font, rounded, and its pill sat on the mobile booking bar). The
+  SDK, `@elevenlabs/client`, is a separate chunk fetched only on the first message or
+  press of Talk, so a visitor who never uses it downloads about 4KB. Model output is
+  rendered as text nodes only, and the only links it can make are to this site.
+- **Switches.** `features.assistant` in `site.config.ts` removes it entirely.
+  `assistant.previewOnly: true` hides it from everyone except a tab that has opened a page
+  with `?assistant=preview` - use that to try a change on the live site first.
+  `assistant.greeting` must match the agent's first message in ElevenLabs.
+- **Not done, by choice or by plan.** ElevenLabs transcript redaction is enterprise-only,
+  so it is off and visitors are asked not to share personal details. The ElevenLabs
+  shareable "talk to" page is blocked by the domain lock, deliberately.
+
+---
+
 ## 🟠 Cohort 2 capacity: three different numbers (corrected 19 Aug 2026)
 
 **This corrects the 17 Aug note, which read one number and missed two.** Luma reports
