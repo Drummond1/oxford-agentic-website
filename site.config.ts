@@ -247,9 +247,12 @@ const config: SiteConfig = {
     // Live: drives the Cohort 2 "notify me" state while its Luma page is pending.
     newsletter: true,
     pastEvents: true,
-    // On 29 Sept 2026 (Drummond): "Ask Drummond", an AI version of him that
-    // answers questions from this site. See `assistant` below and STATE.md.
-    assistant: true,
+    // "Ask Drummond", an AI version of him that answers questions from this site
+    // (see `assistant` below and STATE.md). Launched 29 Sept 2026 and taken off
+    // the same day at Drummond's request until it has been further tested. Only
+    // Drummond switches it back on; `previewOnly` below is set so that it
+    // returns for `?assistant=preview` tabs first.
+    assistant: false,
   },
 
   /**
@@ -298,7 +301,9 @@ const config: SiteConfig = {
   assistant: {
     // "Oxford Agentic - AI Drummond (website)" in Drummond's ElevenLabs workspace.
     agentId: 'agent_9501m3p6649hfjpsve5qzzv0jexv',
-    previewOnly: false,
+    // True since 29 Sept 2026: when `features.assistant` goes back on, only a
+    // tab opened with `?assistant=preview` sees it until Drummond has tested it.
+    previewOnly: true,
     greeting:
       "Hi, I'm an AI version of Drummond. I can answer questions about the bootcamps from what's on this site - what would you like to know?",
   },

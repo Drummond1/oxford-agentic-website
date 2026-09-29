@@ -38,7 +38,14 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
-## 🟢 "Ask Drummond" - an AI version of Drummond on every page (29 Sept 2026)
+## ⏸️ "Ask Drummond" - an AI version of Drummond - OFF since 29 Sept 2026
+
+> **Taken off the site on 29 Sept 2026, the day it launched.** Drummond asked for it to be
+> removed "until it has been further tested". `features.assistant` is false, so no page
+> carries the launcher, its script or the privacy section. `assistant.previewOnly` is
+> true, so switching it back on shows it only to a tab opened with `?assistant=preview`
+> until he opens it to everyone. Only Drummond switches it back on. The ElevenLabs agent
+> is unchanged. Everything below describes it as built and holds for when it returns.
 
 Asked for by Drummond: "a version of me that people can ask questions about the bootcamp",
 subtle, never revealing personal information, and sending every money question to the

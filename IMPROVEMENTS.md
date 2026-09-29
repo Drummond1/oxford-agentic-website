@@ -56,6 +56,10 @@ gate prevents breakage. Keep each cycle small and reversible.
   add a price, discount code or personal detail to any page, and never change
   `assistant.greeting` or the privacy page's `#assistant` section without the matching
   change in ElevenLabs. See STATE.md.
+- "Ask Drummond" is **OFF** - taken off the site on 29 Sept 2026, the day it launched, at
+  Drummond's request "until it has been further tested". Never set `features.assistant`
+  back to true or `assistant.previewOnly` to false: only Drummond switches it back on.
+  The rule above still applies while it is off: when it returns, it reads the same files.
 
 _When the site goes public, switch this section to: auto-ship the technical/freshness
 tier; propose-and-approve anything touching copy, claims or design._
@@ -191,6 +195,18 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-09-29 (session, Drummond's request) — "Ask Drummond" taken off the site until it
+  has been further tested.**
+  - **Change.** `features.assistant: false` in `site.config.ts`, which removes the
+    launcher, its script and the privacy page's `#assistant` section from every page.
+    `assistant.previewOnly: true`, so when it is switched back on only a tab opened with
+    `?assistant=preview` sees it. The component, the `@elevenlabs/client` dependency and
+    the ElevenLabs agent are untouched, so it comes back with one line.
+  - **Checks.** Build, links and schema pass (52 pages). No built page contains
+    `data-assistant` or the agent id, and none loads the assistant script or the
+    ElevenLabs SDK. Astro still writes those two unused files to `_astro/`, because
+    `Base.astro` imports the component; nothing references them.
 
 - **2026-09-29 (session, Drummond's request) — "Ask Drummond": an AI version of Drummond on
   every page.**
