@@ -84,6 +84,8 @@
           ad_personalization: 'granted',
           analytics_storage: 'granted',
         });
+        // Meta has no consent-default mode, so its pixel is only loaded now.
+        if (typeof window.oaMetaPixel === 'function') window.oaMetaPixel();
       }
 
       // Denial needs no update call — denied is already the default, and

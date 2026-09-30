@@ -111,6 +111,13 @@ export interface Analytics {
    * Only meaningful for 'gtm' and 'ga4'.
    */
   requireConsent?: boolean;
+  /**
+   * Meta (Facebook/Instagram) pixel id, for Meta ads retargeting and
+   * attribution. Same dataset Luma uses at calendar level, so site visits and
+   * Luma purchases land in one audience. Loaded only after the visitor accepts
+   * cookies; see oaMetaPixel in BaseHead.astro.
+   */
+  metaPixelId?: string;
 }
 
 export interface Newsletter {
@@ -313,6 +320,8 @@ const config: SiteConfig = {
     siteId: 'GTM-WQJLXFRN',
     ga4MeasurementId: 'G-3YJV42CLBC',
     googleAdsTagId: 'AW-18383990238',
+    // 30 Sep 2026: "Oxford Agentic Pixel" in business portfolio 1561371971778554.
+    metaPixelId: '2272071460195423',
     requireConsent: true,
   },
 

@@ -20,11 +20,25 @@ export function track(name: string, props: Props = {}) {
   const w = window as unknown as {
     plausible?: (n: string, o?: { props: Props }) => void;
     gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
   };
   w.plausible?.(name, { props });
   const ga4 = document.body?.dataset.ga4Id;
   w.gtag?.('event', name, ga4 ? { ...props, send_to: ga4 } : props);
+  // Meta pixel exists only after cookie consent. Two events map to Meta's
+  // standard events so they can seed retargeting audiences and ad optimisation;
+  // the rest go as custom events.
+  if (w.fbq) {
+    const std = META_STANDARD[name];
+    if (std) w.fbq('track', std, props);
+    else w.fbq('trackCustom', name, props);
+  }
 }
+
+const META_STANDARD: Record<string, string> = {
+  register_section_viewed: 'ViewContent',
+  luma_booking_click: 'InitiateCheckout',
+};
 
 const LUMA_HOST = /^(www\.)?(lu\.ma|luma\.com)$/;
 

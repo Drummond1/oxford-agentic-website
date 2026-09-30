@@ -3144,3 +3144,12 @@ _(latest numbers — filled once data sources are connected)_
   backlog empty, GENERATE new candidates (technical SEO surfaces, schema depth,
   accessibility, performance, content gaps) — only stop when genuinely nothing
   truthful and useful remains. Never manufacture churn; never invent facts.
+
+## 30 Sep 2026 - Meta pixel (manual session, not a loop cycle)
+- Added Meta pixel 2272071460195423 (same dataset Luma uses) via `analytics.metaPixelId`.
+  Consent-gated by not loading at all: `window.oaMetaPixel()` in BaseHead runs for a stored
+  `granted`, and ConsentBanner calls it on Accept. Privacy page lists it; "Change my cookie
+  choice" calls `fbq('consent','revoke')`. `track()` mirrors events to Meta:
+  register_section_viewed -> ViewContent, luma_booking_click -> InitiateCheckout, rest trackCustom.
+  Verified headless: no fbq/no facebook request before consent, loads on Accept and on return,
+  absent after Decline. Do not load the pixel ahead of consent - PECR, same rule as Google.

@@ -170,6 +170,20 @@ try{if(localStorage.getItem('oa-consent')==='granted'){gtag('consent','update',{
   )
 }
 {
+  /* Meta pixel, added 30 Sep 2026 for Meta ads retargeting. Meta has no
+     equivalent of Consent Mode defaults that stops its cookie, so the script is
+     not loaded at all until the visitor accepts: oaMetaPixel() is defined here,
+     run immediately for a returning visitor who already accepted, and otherwise
+     run by ConsentBanner on Accept. Declining means Meta never loads. */
+  config.analytics.metaPixelId && (
+    <script
+      is:inline
+      set:html={`window.oaMetaPixel=function(){if(window.fbq)return;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${config.analytics.metaPixelId}');fbq('track','PageView');};
+${config.analytics.requireConsent === false ? 'window.oaMetaPixel();' : "try{if(localStorage.getItem('oa-consent')==='granted')window.oaMetaPixel()}catch(e){}"}`}
+    />
+  )
+}
+{
   config.analytics.provider === 'gtm' && (
     <script
       is:inline
