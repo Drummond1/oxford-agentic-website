@@ -50,8 +50,10 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   pick a day by hand from the three cards. A direct link like `#coding-bootcamp` opens that day.
 - **The agent.** *Oxford Agentic - Bootcamp Finder (hidden page)*, `agent_8601m3raa78necethhgpvz71hf05`
   (id in `site.config.ts` → `assistant.finderAgentId`). Duplicated from the Ask Drummond agent, so it
-  keeps the origin lock (oxfordagentic.com only - it will not connect on localhost), caps, and the
-  blocking no-prices / no-personal-info guardrail, widened to internal business detail. Knowledge:
+  keeps the origin lock (oxfordagentic.com only - it will not connect on localhost) and caps. Voice
+  runs over WebSocket (WebRTC sends no Origin and every call failed). Tuned for speed on 30 Sept:
+  claude-haiku-4-5, eleven_v4_turbo, speculative turns, and the no-prices / no-personal-info /
+  no-internal-detail guardrail in streaming mode (checks while it speaks; a breach ends the call). Knowledge:
   llms.txt, llms-full.txt, plus a finder brief written from the vault with no prices, figures or names.
   13 tests attached ("OA finder - ..." and the applicable "OA web - ..." ones).
 - **When a cohort passes** it drops off the page automatically (`isUpcoming`). The agent's prompt lists
