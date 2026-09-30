@@ -342,10 +342,29 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     // ---- The reveal ---------------------------------------------------------
 
+    let shownKey = '';
+
+    /**
+     * Fallback for when the agent recommends a bootcamp out loud but skips the
+     * show_bootcamp tool call: spot the bootcamp it named alongside "below" and
+     * open that panel anyway. Only fires once, and never overrides a tool call.
+     */
+    const spoken: [RegExp, string][] = [
+      [/second brain bootcamp/i, 'second-brain'],
+      [/coding bootcamp/i, 'coding-bootcamp'],
+      [/oxford agentic bootcamp|agentic bootcamp/i, 'agentic-bootcamp'],
+    ];
+    function revealFromSpeech(text: string) {
+      if (shownKey || !/\bbelow\b/i.test(text)) return;
+      const hit = spoken.find(([re]) => re.test(text));
+      if (hit) reveal(hit[1], '');
+    }
+
     function reveal(key: string, reason?: string) {
       const panel = match.querySelector<HTMLElement>(`[data-panel="${key}"]`);
       if (!panel) return false;
 
+      shownKey = key;
       match.hidden = false;
       match.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => (p.hidden = p !== panel));
       document.querySelectorAll<HTMLElement>('[data-option]').forEach((o) =>
@@ -357,10 +376,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (reason && reason.trim()) {
         panel.querySelector<HTMLElement>('[data-reason-text]')!.textContent = reason.trim();
         quote.hidden = false;
-        eyebrow.textContent = "Drummond's pick for you";
+        eyebrow.textContent = 'Suggested for you';
       } else {
         quote.hidden = true;
-        eyebrow.textContent = 'You chose';
+        eyebrow.textContent = reason === '' ? 'Suggested for you' : 'You chose';
       }
 
       const iframe = panel.querySelector<HTMLIFrameElement>('iframe[data-src]');
@@ -380,7 +399,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       void panel.offsetWidth;
       panel.classList.add('is-in');
       match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-      track('office_bootcamp_shown', { bootcamp: key, via: reason ? 'agent' : 'visitor' });
+      track('office_bootcamp_shown', { bootcamp: key, via: reason ? 'agent' : reason === '' ? 'agent_speech' : 'visitor' });
       return true;
     }
 
@@ -439,6 +458,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
             }
           }
           addLine(role, text);
+          if (role === 'agent') revealFromSpeech(text);
           if (role === 'agent' && kind === 'text') setStatus('');
         },
         onModeChange: ({ mode: m }: { mode: 'speaking' | 'listening' }) => {
