@@ -184,6 +184,17 @@ ${config.analytics.requireConsent === false ? 'window.oaMetaPixel();' : "try{if(
   )
 }
 {
+  /* LinkedIn Insight Tag, added 30 Sep 2026 for LinkedIn website retargeting.
+     Same consent pattern as the Meta pixel above: nothing loads until Accept. */
+  config.analytics.linkedinPartnerId && (
+    <script
+      is:inline
+      set:html={`window.oaLinkedInTag=function(){if(window.lintrk)return;window._linkedin_partner_id='${config.analytics.linkedinPartnerId}';window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(window._linkedin_partner_id);(function(l){if(!l){window.lintrk=function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}var s=document.getElementsByTagName('script')[0];var b=document.createElement('script');b.type='text/javascript';b.async=true;b.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';s.parentNode.insertBefore(b,s)})(window.lintrk);};
+${config.analytics.requireConsent === false ? 'window.oaLinkedInTag();' : "try{if(localStorage.getItem('oa-consent')==='granted')window.oaLinkedInTag()}catch(e){}"}`}
+    />
+  )
+}
+{
   config.analytics.provider === 'gtm' && (
     <script
       is:inline

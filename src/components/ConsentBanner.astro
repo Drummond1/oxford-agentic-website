@@ -86,6 +86,7 @@
         });
         // Meta has no consent-default mode, so its pixel is only loaded now.
         if (typeof window.oaMetaPixel === 'function') window.oaMetaPixel();
+        if (typeof window.oaLinkedInTag === 'function') window.oaLinkedInTag();
       }
 
       // Denial needs no update call — denied is already the default, and

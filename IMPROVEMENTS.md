@@ -3153,3 +3153,6 @@ _(latest numbers — filled once data sources are connected)_
   register_section_viewed -> ViewContent, luma_booking_click -> InitiateCheckout, rest trackCustom.
   Verified headless: no fbq/no facebook request before consent, loads on Accept and on return,
   absent after Decline. Do not load the pixel ahead of consent - PECR, same rule as Google.
+- Same day: LinkedIn Insight Tag, partner 10831801 (Campaign Manager 553270380), via
+  `analytics.linkedinPartnerId`, same consent gate (`window.oaLinkedInTag()`). Privacy page lists it.
+  Verified headless: loads only after Accept, absent after Decline.

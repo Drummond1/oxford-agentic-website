@@ -118,6 +118,12 @@ export interface Analytics {
    * cookies; see oaMetaPixel in BaseHead.astro.
    */
   metaPixelId?: string;
+  /**
+   * LinkedIn Insight Tag partner id, for LinkedIn website retargeting and
+   * conversions. Consent-gated like the Meta pixel; see oaLinkedInTag in
+   * BaseHead.astro.
+   */
+  linkedinPartnerId?: string;
 }
 
 export interface Newsletter {
@@ -322,6 +328,8 @@ const config: SiteConfig = {
     googleAdsTagId: 'AW-18383990238',
     // 30 Sep 2026: "Oxford Agentic Pixel" in business portfolio 1561371971778554.
     metaPixelId: '2272071460195423',
+    // 30 Sep 2026: Insight Tag for Campaign Manager account 553270380.
+    linkedinPartnerId: '10831801',
     requireConsent: true,
   },
 
