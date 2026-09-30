@@ -65,22 +65,23 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ## 🎓 Office hours - unlisted voice page, since 30 Sept 2026
 
-> **/office-hours/** - noindex, out of the sitemap and llms.txt, linked from nowhere except
-> `/find-your-bootcamp/` (the two hidden pages may link each other). Only Drummond promotes it.
+> **/office-hours/** - noindex, out of the sitemap and llms.txt, linked from nowhere. Only Drummond promotes it.
 
-- **What it is.** "The class ends. The door stays open." Same gold orb stage as the finder, but for
-  questions, not choosing: visitors (and past attendees) talk or type to AI Drummond about what the
-  bootcamps teach and how the days work. Six question chips, and a six-module "syllabus, on the
-  record" grid where each module has an "Ask about this" button that sends the question to the agent.
-  If someone shows interest in attending, the agent asks a question or two and calls `show_bootcamp`,
-  which reveals the same Luma panel as the finder.
+- **What it is.** "Ask anything we teach." Same gold orb stage as the finder, but for questions: visitors
+  (and past attendees) talk or type to AI Drummond about what the bootcamps teach and how the days work. Four
+  question chips, then the booking panel (hidden until used), then a compact six-module "What we teach" grid
+  where each "Ask →" sends that question. Copy trimmed to the essentials and checked at 375px on 30 Sept.
+- **The steer.** For the first two questions it only teaches. From about the third it asks one light question
+  about the visitor's work, recommends one bootcamp in a sentence, and calls `show_bootcamp`, which reveals that
+  day's Luma form directly under the voice stage. Once only; drops it if they're not interested. Asking to book
+  skips straight there.
 - **The agent.** *Oxford Agentic - Office Hours (hidden page)*, `agent_1701m3se2rwsfss9dda6e8az3vpc`
   (`site.config.ts` → `assistant.officeHoursAgentId`). Same voice, model, speed settings, origin lock
   and streaming guardrail as the finder. Knowledge: sanitised Cohort 1 and Cohort 2 teaching notes
   (primary - content only, no attendee names, prices or figures; the C2 afternoon was not recorded,
   so it is marked planned), the finder brief, and llms-full.txt. Never names attendees or the C1 guest
-  AI engineer. Evals: no price, no personal info, answered well. 15 tests attached ("OA office - ..."
-  plus the shared safety tests).
+  AI engineer. Evals: no price, no personal info, answered well. 16 tests attached ("OA office - ..."
+  plus the shared safety tests), including one that the steer lands on the right bootcamp.
 - **When a cohort runs**, add its teaching notes to the knowledge base and the syllabus if it changes.
 
 ---

@@ -67,8 +67,15 @@ const bootcamps = choices
   })
   .filter((b): b is NonNullable<typeof b> => b !== null);
 
-const syllabus: [string, string, string, string][] = [["01", "Start with the job, not the tool", "Jobs to be done, and the five-part workflow map: trigger, inputs, steps, judgement, output.", "Walk me through the workflow map you teach - trigger, inputs, steps, judgement and output."], ["02", "Context engineering", "Why generic AI gives generic answers, and the five ways to give it yours: Projects, memory, connectors, a second brain and CLAUDE.md.", "What is context engineering, and where should I start with it?"], ["03", "Skills", "Turning something you explain twice into a saved procedure - what a good skill looks like and how to test it.", "How do I write a good skill, and how is it different from project instructions?"], ["04", "Agents and subagents", "An agent is a model with tools in a loop. Subagents, fan-out, QA, critic and tournament patterns - and when not to use them.", "What's the difference between a workflow, an agent and a subagent?"], ["05", "The human in the loop", "Where judgement stays human, gates between steps, and why a 90%-right report is a different problem from a 90%-right blog post.", "Where should the human stay in an agentic workflow?"], ["06", "Taking it into the organisation", "The five-level adoption journey, collective skills from senior expertise, and getting a workflow past IT and legal.", "How do I take this from my own laptop into my organisation?"]];
-const starters = ["What will I actually build on the day?", "Do I need to be technical?", "Cowork or Claude Code - which should I use?", "I was at Cohort 2 - remind me what Nicolai said about model choice.", "How do I stop it making things up?", "Which connectors should I set up first?"];
+const syllabus: [string, string, string, string][] = [
+  ['01', 'Start with the job', 'Map it first: trigger, inputs, steps, judgement, output.', 'Walk me through the workflow map you teach.'],
+  ['02', 'Context', 'Generic input, generic output. Give it yours.', 'What is context engineering, and where do I start?'],
+  ['03', 'Skills', 'Explain it twice? Save it as a skill.', 'How do I write a good skill?'],
+  ['04', 'Agents', 'A model with tools in a loop - and when not to use one.', "What's the difference between a workflow, an agent and a subagent?"],
+  ['05', 'Human in the loop', 'Where judgement stays with you.', 'Where should the human stay in an agentic workflow?'],
+  ['06', 'Into the organisation', 'From your laptop to your team, past IT and legal.', 'How do I take this into my organisation?'],
+];
+const starters = ['What will I build on the day?', 'Do I need to be technical?', 'Cowork or Claude Code?', 'How do I stop it making things up?'];
 const ticks = Array.from({ length: 60 }, (_, i) => i);
 ---
 
@@ -84,13 +91,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     <div class="finder__halo" aria-hidden="true"></div>
 
     <div class="wrap finder__inner">
-      <span class="eyebrow">Office hours · AI Drummond</span>
+      <span class="eyebrow">Office hours</span>
       <hr class="dash" />
-      <h1 class="finder__title" id="finder-title">The class ends. <em>The door stays open.</em></h1>
-      <p class="finder__sub">
-        Ask anything we teach - context, skills, agents, getting a workflow past IT - and how the bootcamps work.
-        Came to Cohort 1 or 2? Pick up where you left off.
-      </p>
+      <h1 class="finder__title" id="finder-title">Ask anything <em>we teach.</em></h1>
+      <p class="finder__sub">Agentic AI, the bootcamps, or what we covered at Cohorts 1 and 2.</p>
 
       <div class="orb" data-orb data-state="idle">
         <svg class="orb__dial" viewBox="0 0 200 200" aria-hidden="true">
@@ -120,11 +124,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           <svg class="orb__icon orb__icon--end" viewBox="0 0 24 24" aria-hidden="true">
             <rect x="7" y="7" width="10" height="10" />
           </svg>
-          <span class="orb__label" data-talk-label>Ask a question</span>
+          <span class="orb__label" data-talk-label>Tap to talk</span>
         </button>
       </div>
 
-      <p class="finder__status" data-status role="status" aria-live="polite">The door's open</p>
+      <p class="finder__status" data-status role="status" aria-live="polite"></p>
 
       <div class="captions" data-captions hidden>
         <p class="captions__agent" data-caption-agent></p>
@@ -132,7 +136,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </div>
 
       <div class="starters" aria-label="Questions to start with">
-        <p class="starters__label">Or tap a question</p>
         <ul class="starters__list" role="list">
           {starters.map((q) => (
             <li><button class="starter" type="button" data-ask={q}>{q}</button></li>
@@ -142,7 +145,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
       <div class="finder__alt">
         <button class="finder__link" type="button" data-type-toggle aria-expanded="false" aria-controls="finder-type">
-          Prefer to type your own?
+          Type instead
         </button>
         <form class="typebox" id="finder-type" data-type-form hidden>
           <label class="visually-hidden" for="finder-input">Your question for AI Drummond</label>
@@ -165,38 +168,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </details>
 
       <p class="finder__fine">
-        You are talking to an AI version of Drummond, in his own cloned voice - not Drummond himself. It answers from
-        what we taught at Cohorts 1 and 2 and from this site. It will not discuss prices, the business, or anyone's
-        personal details - including who attended. Your voice is not recorded; transcripts are kept for 90 days to
-        improve it. Voice by <a href="https://elevenlabs.io/" rel="noopener" target="_blank">ElevenLabs</a>.
-      </p>
-    </div>
-  </section>
-
-  <section class="band band--cream syllabus" aria-labelledby="syllabus-title">
-    <div class="wrap">
-      <div class="section-head">
-        <hr class="dash" />
-        <h2 id="syllabus-title">The syllabus, on the record</h2>
-      </div>
-      <p class="options__lede">
-        Six ideas the Oxford Agentic Bootcamp keeps coming back to, from the notes of Cohorts 1 and 2. Tap any of them to
-        ask about it.
-      </p>
-      <ol class="syllabus__list" role="list">
-        {syllabus.map(([num, title, blurb, q]) => (
-          <li class="module">
-            <span class="module__num">{num}</span>
-            <h3 class="module__title">{title}</h3>
-            <p class="module__blurb">{blurb}</p>
-            <button class="option__btn" type="button" data-ask={q}>
-              Ask about this <span aria-hidden="true">→</span>
-            </button>
-          </li>
-        ))}
-      </ol>
-      <p class="syllabus__more">
-        Thinking of coming along? <button class="syllabus__link" type="button" data-ask="I'd like to come to a bootcamp - which one would suit me?">Ask which bootcamp would suit you</button>, or <a href="/find-your-bootcamp/">talk it through with the bootcamp finder</a>.
+        An AI in Drummond's cloned voice, not Drummond. No prices or personal details. Voice not recorded; transcripts
+        kept 90 days. Voice by <a href="https://elevenlabs.io/" rel="noopener" target="_blank">ElevenLabs</a>.
       </p>
     </div>
   </section>
@@ -208,9 +181,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         bootcamps.map((b) => (
           <article class="match__panel" data-panel={b.key} hidden>
             <div class="match__info">
-              <span class="eyebrow" data-panel-eyebrow>
-                Drummond's pick for you
-              </span>
+              <span class="eyebrow" data-panel-eyebrow>Suggested for you</span>
               <hr class="dash" />
               <h3 class="match__title">{b.title}</h3>
               <p class="match__when">
@@ -221,7 +192,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
               <blockquote class="match__reason" data-reason hidden>
                 <p data-reason-text />
               </blockquote>
-              <p class="match__promise">{b.promise}</p>
               {b.whatYoullBuild.length > 0 && (
                 <ul class="match__builds" role="list">
                   {b.whatYoullBuild.map((w) => (
@@ -230,7 +200,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
                 </ul>
               )}
               <p class="match__more">
-                <a href={b.eventPath}>Everything about this day →</a>
+                <a href={b.eventPath}>Full details →</a>
               </p>
             </div>
 
@@ -253,14 +223,13 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
               ) : null}
               {b.booking && (
                 <p class="match__fallback">
-                  Having trouble?{' '}
                   <a
                     href={b.booking}
                     rel="noopener"
                     data-analytics-event="luma_outbound_click"
                     data-analytics-slug={b.slug}
                   >
-                    Book on Luma →
+                    Open on Luma →
                   </a>
                 </p>
               )}
@@ -270,6 +239,32 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       }
     </div>
   </section>
+
+  <section class="band band--cream syllabus" aria-labelledby="syllabus-title">
+    <div class="wrap">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="syllabus-title">What we teach</h2>
+      </div>
+      <ol class="syllabus__list" role="list">
+        {syllabus.map(([num, title, blurb, q]) => (
+          <li class="module">
+            <span class="module__num">{num}</span>
+            <h3 class="module__title">{title}</h3>
+            <p class="module__blurb">{blurb}</p>
+            <button class="option__btn" type="button" data-ask={q}>
+              Ask <span aria-hidden="true">→</span>
+            </button>
+          </li>
+        ))}
+      </ol>
+      <p class="syllabus__more">
+        <button class="syllabus__link" type="button" data-ask="I'd like to come to a bootcamp - which one would suit me?">Which bootcamp suits me? →</button>
+      </p>
+    </div>
+  </section>
+
+
 </Base>
 
 <script>
@@ -299,7 +294,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     const match = document.querySelector<HTMLElement>('[data-match]')!;
 
     const NO_CONNECT =
-      "Couldn't connect just now. Try again in a moment.";
+      "Couldn't connect. Try again.";
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let conversation: ElevenLabsConversation | null = null;
@@ -320,7 +315,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     function setTalk(active: boolean) {
       talk.setAttribute('aria-pressed', String(active));
-      talkLabel.textContent = active ? 'End conversation' : 'Ask a question';
+      talkLabel.textContent = active ? 'End' : 'Tap to talk';
     }
 
     function addLine(role: Role, text: string) {
@@ -450,7 +445,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           if (id !== session || kind !== 'voice') return;
           mode = m;
           setState(m);
-          setStatus(m === 'speaking' ? 'Drummond is speaking' : 'Listening - go ahead');
+          setStatus(m === 'speaking' ? 'Speaking' : 'Listening');
         },
         onDisconnect: (details: { reason: string }) => {
           if (id !== session) return;
@@ -463,10 +458,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           orb.style.setProperty('--level', '0');
           setStatus(
             details.reason === 'error'
-              ? 'The connection dropped. Ask a question to start again.'
+              ? 'Connection dropped. Tap to retry.'
               : was === 'voice'
-                ? 'Conversation ended. Ask a question to start again.'
-                : 'Conversation ended. Type again to start a new one.',
+                ? 'Ended.'
+                : 'Ended.',
           );
         },
         onError: (message: string) => console.warn('[finder]', message),
@@ -507,11 +502,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (kind === 'voice' || orb.dataset.state === 'connecting') {
         await end();
         setTalk(false);
-        setStatus('Conversation ended. Ask a question to start again.');
+        setStatus('Ended.');
         return;
       }
       if (!navigator.mediaDevices?.getUserMedia) {
-        setStatus('This browser cannot use a microphone here - type below instead.');
+        setStatus('No microphone here - type instead.');
         openTyping();
         return;
       }
@@ -526,7 +521,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       } catch {
         setTalk(false);
         setState('idle');
-        setStatus('No microphone access - you can type below instead.');
+        setStatus('No microphone access - type instead.');
         openTyping();
         return;
       }
@@ -1380,6 +1375,29 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     font-size: var(--step-sm);
     line-height: 1.6;
     color: var(--muted-on-cream);
+  }
+
+  @media (max-width: 40rem) {
+    .syllabus__list {
+      grid-template-columns: 1fr 1fr;
+    }
+    .module {
+      gap: 0.4rem;
+      padding: 1rem 0.85rem;
+    }
+    .module__num {
+      font-size: 1.5rem;
+    }
+    .module__title {
+      font-size: var(--step-lg);
+    }
+    .module__blurb {
+      line-height: 1.45;
+    }
+    .starter {
+      font-size: var(--step-xs);
+      padding: 0.5rem 0.75rem;
+    }
   }
 
   .syllabus__more {
