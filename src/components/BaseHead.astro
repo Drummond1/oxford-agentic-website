@@ -152,6 +152,24 @@ try{if(localStorage.getItem('oa-consent')==='granted'){gtag('consent','update',{
   )
 }
 {
+  /* The Google Ads account's own Google tag (account 330-502-6991), loaded
+     directly rather than through GTM. The AW tag inside the GTM container
+     (AW-18382942196) belongs to a DIFFERENT Ads account, so this account could
+     not see the site at all: no remarketing, no tag-based conversions, and its
+     conversion-tracking credit stuck on "Place your Google tag". Added 30 Sep
+     2026. It sits after the Consent Mode defaults above, so it starts denied
+     like everything else, and it is its own id so GTM edits cannot remove it. */
+  config.analytics.provider === 'gtm' && config.analytics.googleAdsTagId && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${config.analytics.googleAdsTagId}`} />
+      <script
+        is:inline
+        set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${config.analytics.googleAdsTagId}');`}
+      />
+    </>
+  )
+}
+{
   config.analytics.provider === 'gtm' && (
     <script
       is:inline

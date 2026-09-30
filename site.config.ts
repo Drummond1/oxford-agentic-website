@@ -94,6 +94,12 @@ export interface Analytics {
    */
   ga4MeasurementId?: string;
   /**
+   * The Google Ads account's own Google tag (AW-…), loaded directly after the
+   * Consent Mode defaults. Separate from GTM because the AW tag inside the
+   * container belongs to a different Ads account. See BaseHead.astro.
+   */
+  googleAdsTagId?: string;
+  /**
    * Ask before setting advertising or analytics cookies.
    *
    * Consent Mode v2 defaults are emitted inline, ahead of the container, so a
@@ -299,6 +305,7 @@ const config: SiteConfig = {
     provider: 'gtm',
     siteId: 'GTM-WQJLXFRN',
     ga4MeasurementId: 'G-3YJV42CLBC',
+    googleAdsTagId: 'AW-18383990238',
     requireConsent: true,
   },
 

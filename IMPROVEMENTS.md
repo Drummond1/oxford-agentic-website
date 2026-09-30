@@ -199,6 +199,20 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-30 (session, Drummond's request) — The Google Ads account's own tag is now on
+  every page.**
+  - **Why.** The AW tag inside GTM (`AW-18382942196`) belongs to a different Google Ads
+    account. Account 330-502-6991, which runs the campaigns, uses `AW-18383990238` and
+    could not see the site: its £250 conversion-tracking credit (due 3 Oct) was stuck on
+    "Place your Google tag across your website", and no tag-based conversion or
+    remarketing list could work.
+  - **Change.** `config.analytics.googleAdsTagId: 'AW-18383990238'`; `BaseHead.astro`
+    loads `gtag/js` for it and calls `config`, directly after the Consent Mode defaults and
+    before the GTM snippet, so it starts denied like every other tag. GTM and the other
+    account's tag inside it are untouched.
+  - **Do not** remove it or move it into GTM without first confirming the container tag
+    is `AW-18383990238`. Do not move it above the consent defaults.
+
 - **2026-09-30 (session, Drummond's request) — Custom analytics events now actually reach
   GA4, and every click through to Luma sends `luma_booking_click` for Google Ads.**
   - **Why.** Google's £250 conversion-tracking credit needs one recorded conversion by
