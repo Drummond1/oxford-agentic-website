@@ -171,6 +171,13 @@ export interface Assistant {
    * or personal details in it. Independent of `features.assistant`.
    */
   finderAgentId: string;
+  /**
+   * The ElevenLabs agent behind the unlisted /office-hours/ page ("Oxford
+   * Agentic - Office Hours (hidden page)"): answers questions about what the
+   * bootcamps teach, from sanitised Cohort 1 and 2 teaching notes, and only
+   * steers to a bootcamp when a visitor shows interest.
+   */
+  officeHoursAgentId: string;
 }
 
 /**
@@ -332,6 +339,8 @@ const config: SiteConfig = {
       "Hi, I'm an AI version of Drummond. I can answer questions about the bootcamps from what's on this site - what would you like to know?",
     // Added 30 Sept 2026 for the unlisted /find-your-bootcamp/ page.
     finderAgentId: 'agent_8601m3raa78necethhgpvz71hf05',
+    // Added 30 Sept 2026 for the unlisted /office-hours/ page.
+    officeHoursAgentId: 'agent_1701m3se2rwsfss9dda6e8az3vpc',
   },
 };
 

@@ -61,6 +61,8 @@ const flaggedOffPrefixes = [
   '/apply',
   // The voice bootcamp finder is noindex and unlinked (30 Sept 2026).
   '/find-your-bootcamp',
+  // The voice office hours page is noindex and unlinked (30 Sept 2026).
+  '/office-hours',
 ].filter(Boolean);
 
 /**
