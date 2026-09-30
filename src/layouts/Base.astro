@@ -60,7 +60,7 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
       noindex={noindex}
     />
   </head>
-  <body class={bodyClass}>
+  <body class={bodyClass} data-ga4-id={config.analytics.ga4MeasurementId}>
     {/* Reading progress on long-form pages only; decorative, so hidden from AT. */}
     {article && <div class="progress" data-progress aria-hidden="true"></div>}
     {
@@ -85,6 +85,8 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
     {config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && <ConsentBanner />}
 
     <script>
+      import { track, lumaLink } from '../lib/track';
+
       // Motion: fade/slide-up once on scroll. The class is added by JS, so with
       // JS off (or IntersectionObserver missing) content is simply visible.
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -219,22 +221,27 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
       }
 
       // Analytics is provider-agnostic: components declare intent with
-      // data-analytics-event and this dispatches to whichever provider is on.
-      type Props = Record<string, string>;
-
-      function track(name: string, props: Props = {}) {
-        const w = window as unknown as {
-          plausible?: (n: string, o?: { props: Props }) => void;
-          gtag?: (...args: unknown[]) => void;
-        };
-        w.plausible?.(name, { props });
-        w.gtag?.('event', name, props);
-      }
-
+      // data-analytics-event and lib/track dispatches to whichever provider is on.
       document.addEventListener('click', (event) => {
         const el = (event.target as HTMLElement | null)?.closest<HTMLElement>('[data-analytics-event]');
         if (!el) return;
         track(el.dataset.analyticsEvent!, el.dataset.analyticsSlug ? { event_slug: el.dataset.analyticsSlug } : {});
+      });
+
+      // The Google Ads conversion. GA4's automatic outbound-click event never
+      // fires for Luma, because luma.com is a cross-domain measurement domain and
+      // GA4 does not count a hop between its own domains as leaving. So the
+      // `luma_booking_click` key event (imported into Google Ads as "Luma booking
+      // click (GA4)") is sent here, on every click through to Luma.
+      document.addEventListener('click', (event) => {
+        const url = lumaLink(event.target);
+        if (!url) return;
+        const slug = (event.target as HTMLElement).closest<HTMLElement>('[data-analytics-slug]')?.dataset.analyticsSlug;
+        track('luma_booking_click', {
+          link_domain: url.hostname,
+          link_url: url.origin + url.pathname,
+          ...(slug ? { event_slug: slug } : {}),
+        });
       });
 
       // We cannot see inside the Luma iframe, so registration intent is measured

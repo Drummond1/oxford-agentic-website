@@ -600,6 +600,7 @@ const suggestions = ['What happens on the day?', 'Which bootcamp suits me?', 'Do
 
 <script>
   import type { Conversation as ElevenLabsConversation } from '@elevenlabs/client';
+  import { track } from '../lib/track';
 
   type Role = 'user' | 'agent';
   type Line = { role: Role; text: string };
@@ -878,15 +879,6 @@ const suggestions = ['What happens on the day?', 'Which bootcamp suits me?', 'Do
 
     const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
     const isGreeting = (s: string) => norm(s).slice(0, 40) === norm(greeting).slice(0, 40);
-
-    function track(name: string) {
-      const w = window as unknown as {
-        plausible?: (n: string) => void;
-        gtag?: (...args: unknown[]) => void;
-      };
-      w.plausible?.(name);
-      w.gtag?.('event', name);
-    }
 
     function earlier(): Line[] {
       return lines.filter((l) => !(l.role === 'agent' && isGreeting(l.text))).slice(-8);

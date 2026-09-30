@@ -274,6 +274,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
 <script>
   import type { Conversation as ElevenLabsConversation } from '@elevenlabs/client';
+  import { track } from '../lib/track';
 
   type Kind = 'voice' | 'text';
   type Role = 'user' | 'agent';
@@ -308,12 +309,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     let raf = 0;
     const echoes: string[] = [];
     const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
-
-    function track(name: string, props?: Record<string, string>) {
-      const w = window as unknown as { gtag?: (...a: unknown[]) => void; plausible?: (n: string, o?: unknown) => void };
-      w.gtag?.('event', name, props);
-      w.plausible?.(name, props ? { props } : undefined);
-    }
 
     function setState(state: 'idle' | 'connecting' | 'listening' | 'speaking' | 'text') {
       orb.dataset.state = state;

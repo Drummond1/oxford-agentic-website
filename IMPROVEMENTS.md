@@ -199,6 +199,33 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-09-30 (session, Drummond's request) — Custom analytics events now actually reach
+  GA4, and every click through to Luma sends `luma_booking_click` for Google Ads.**
+  - **Why.** Google's £250 conversion-tracking credit needs one recorded conversion by
+    3 Oct. The "Luma booking click (GA4)" conversion in Google Ads had recorded nothing
+    since 3 Sep, and GA4 showed no `luma_booking_click` in 28 days despite paid clicks.
+  - **Two separate faults, both verified live 30 Sep.**
+    1. GA4's automatic outbound `click` never fires for Luma links, because `luma.com` and
+       `lu.ma` are cross-domain measurement domains. The GA4 custom event built from it
+       therefore could never trigger.
+    2. **This reverses cycle 80 (17 Aug), which recorded the funnel as "instrumented and
+       working".** It was not. GA4 loads through GTM, and a page-level
+       `gtag('event', name)` with no `send_to` is pushed to the dataLayer and then dropped.
+       GA4 had received none of `register_section_viewed`, `luma_outbound_click` or
+       `luma_embed_interacted` in 28 days. A live probe produced a `/g/collect` hit only
+       once `send_to` named `G-3YJV42CLBC`.
+  - **Change.** New `src/lib/track.ts` is the one dispatcher; it sets `send_to` from
+    `config.analytics.ga4MeasurementId` (read from `data-ga4-id` on `<body>`).
+    `Base.astro`, `find-your-bootcamp.astro` and `Assistant.astro` use it instead of their
+    own copies. `Base.astro` also sends `luma_booking_click` (`link_domain`, `link_url`
+    without query string, `event_slug`) on any click to a Luma link. Event names are
+    unchanged otherwise.
+  - **Do not** remove `send_to`, reintroduce a local `track()` that calls `gtag` without
+    it, or rename `luma_booking_click`: the Google Ads conversion imports that exact name.
+  - **Checks.** Build, links and schema pass (53 pages). Headless click test: Book button
+    emits `luma_outbound_click` and `luma_booking_click` with `send_to`; a bare `lu.ma`
+    link emits `luma_booking_click`; a non-Luma link emits nothing.
+
 - **2026-09-29 (session, Drummond's request) — "Ask Drummond" taken off the site until it
   has been further tested.**
   - **Change.** `features.assistant: false` in `site.config.ts`, which removes the

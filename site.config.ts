@@ -88,6 +88,12 @@ export interface Analytics {
   /** Self-hosted or proxied Plausible script origin. */
   scriptSrc?: string;
   /**
+   * GA4 measurement id, when GA4 runs inside the GTM container. Custom events
+   * are sent with send_to set to this, because GTM's Google tag drops a
+   * page-level gtag('event') that names no destination. See src/lib/track.ts.
+   */
+  ga4MeasurementId?: string;
+  /**
    * Ask before setting advertising or analytics cookies.
    *
    * Consent Mode v2 defaults are emitted inline, ahead of the container, so a
@@ -292,6 +298,7 @@ const config: SiteConfig = {
      */
     provider: 'gtm',
     siteId: 'GTM-WQJLXFRN',
+    ga4MeasurementId: 'G-3YJV42CLBC',
     requireConsent: true,
   },
 
