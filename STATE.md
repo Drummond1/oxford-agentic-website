@@ -38,6 +38,29 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 🎙️ Find your bootcamp - unlisted voice page, since 30 Sept 2026
+
+> **/find-your-bootcamp/** - noindex, out of the sitemap and llms.txt, linked from nowhere.
+> Only Drummond links or promotes it; the daily loop leaves it unlinked and unchanged.
+
+- **What it is.** A dark, gold stage with one large "Press to talk" orb. Visitors talk (or type) to AI
+  Drummond in his cloned voice (ElevenLabs `eleven_v4`), who asks two or three questions and picks
+  one of the three upcoming days. The agent calls its `show_bootcamp` client tool and the page reveals
+  that bootcamp - its reason, what you leave with, and the Luma booking iframe. Visitors can also
+  pick a day by hand from the three cards. A direct link like `#coding-bootcamp` opens that day.
+- **The agent.** *Oxford Agentic - Bootcamp Finder (hidden page)*, `agent_8601m3raa78necethhgpvz71hf05`
+  (id in `site.config.ts` → `assistant.finderAgentId`). Duplicated from the Ask Drummond agent, so it
+  keeps the origin lock (oxfordagentic.com only - it will not connect on localhost), caps, and the
+  blocking no-prices / no-personal-info guardrail, widened to internal business detail. Knowledge:
+  llms.txt, llms-full.txt, plus a finder brief written from the vault with no prices, figures or names.
+  13 tests attached ("OA finder - ..." and the applicable "OA web - ..." ones).
+- **When a cohort passes** it drops off the page automatically (`isUpcoming`). The agent's prompt lists
+  the three dates and keys by hand - update it, the finder brief and `choices` in the page together
+  when a new cohort goes on sale.
+- Independent of `features.assistant`, which stays off.
+
+---
+
 ## ⏸️ "Ask Drummond" - an AI version of Drummond - OFF since 29 Sept 2026
 
 > **Taken off the site on 29 Sept 2026, the day it launched.** Drummond asked for it to be

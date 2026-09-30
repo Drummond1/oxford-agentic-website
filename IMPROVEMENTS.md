@@ -60,6 +60,9 @@ gate prevents breakage. Keep each cycle small and reversible.
   Drummond's request "until it has been further tested". Never set `features.assistant`
   back to true or `assistant.previewOnly` to false: only Drummond switches it back on.
   The rule above still applies while it is off: when it returns, it reads the same files.
+- `/find-your-bootcamp/` (30 Sept 2026) is a deliberately **unlisted** voice page. Never link it
+  from any nav, footer, page, sitemap or llms file, never remove its noindex, and never change
+  `assistant.finderAgentId`. Only Drummond promotes it. See STATE.md.
 
 _When the site goes public, switch this section to: auto-ship the technical/freshness
 tier; propose-and-approve anything touching copy, claims or design._

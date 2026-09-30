@@ -149,6 +149,16 @@ export interface Assistant {
    * when it arrives, so a visitor never reads the same greeting twice.
    */
   greeting: string;
+  /**
+   * The ElevenLabs agent behind the unlisted /find-your-bootcamp/ page
+   * ("Oxford Agentic - Bootcamp Finder (hidden page)"): a voice-first version
+   * of AI Drummond whose one job is to match a visitor to a bootcamp, then
+   * put that bootcamp's Luma booking form on the page through its
+   * show_bootcamp client tool. Same origin lock, caps and guardrails as the
+   * agent above; its knowledge adds a finder brief with no prices, figures
+   * or personal details in it. Independent of `features.assistant`.
+   */
+  finderAgentId: string;
 }
 
 /**
@@ -306,6 +316,8 @@ const config: SiteConfig = {
     previewOnly: true,
     greeting:
       "Hi, I'm an AI version of Drummond. I can answer questions about the bootcamps from what's on this site - what would you like to know?",
+    // Added 30 Sept 2026 for the unlisted /find-your-bootcamp/ page.
+    finderAgentId: 'agent_8601m3raa78necethhgpvz71hf05',
   },
 };
 

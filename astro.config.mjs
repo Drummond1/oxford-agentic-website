@@ -59,6 +59,8 @@ const flaggedOffPrefixes = [
   '/home-original',
   // The application form is noindex and footer-only (23 Sept 2026).
   '/apply',
+  // The voice bootcamp finder is noindex and unlinked (30 Sept 2026).
+  '/find-your-bootcamp',
 ].filter(Boolean);
 
 /**
