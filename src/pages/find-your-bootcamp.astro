@@ -426,6 +426,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
       const options = {
         agentId,
+        // WebSocket, not WebRTC: the agent only accepts oxfordagentic.com and
+        // checks the Origin header, which WebRTC (LiveKit) sessions do not send.
+        // With WebRTC every voice call failed at connect ("Client did not
+        // provide the origin header") while typed chats worked.
+        connectionType: 'websocket' as const,
         clientTools: {
           show_bootcamp: async (params: { bootcamp?: string; reason?: string }) => {
             const ok = reveal(String(params?.bootcamp ?? ''), params?.reason);
