@@ -130,9 +130,19 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
       <p class="finder__status" data-status role="status" aria-live="polite"></p>
 
-      <div class="captions" data-captions hidden>
+      <div class="captions" data-captions hidden aria-live="polite">
+        <span class="captions__label">Live captions</span>
         <p class="captions__agent" data-caption-agent></p>
         <p class="captions__user" data-caption-user></p>
+      </div>
+
+      <div class="pick" data-pick hidden>
+        <span class="pick__eyebrow">Suggested for you</span>
+        <p class="pick__title" data-pick-title></p>
+        <p class="pick__when" data-pick-when></p>
+        <button class="btn btn--primary pick__go" type="button" data-pick-go>
+          See details and book <span aria-hidden="true">↓</span>
+        </button>
       </div>
 
       <div class="starters" aria-label="Questions to start with">
@@ -161,6 +171,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           <button class="btn btn--primary typebox__send" type="submit">Ask</button>
         </form>
       </div>
+
+      <button class="floatend" type="button" data-float-end hidden>
+        <span class="floatend__dot" aria-hidden="true"></span> End conversation
+      </button>
 
       <details class="transcript" data-transcript-wrap hidden>
         <summary>Full transcript</summary>
@@ -292,6 +306,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     const transcriptWrap = root.querySelector<HTMLDetailsElement>('[data-transcript-wrap]')!;
     const transcript = root.querySelector<HTMLOListElement>('[data-transcript]')!;
     const match = document.querySelector<HTMLElement>('[data-match]')!;
+    const pick = root.querySelector<HTMLElement>('[data-pick]')!;
+    const pickTitle = root.querySelector<HTMLElement>('[data-pick-title]')!;
+    const pickWhen = root.querySelector<HTMLElement>('[data-pick-when]')!;
+    const pickGo = root.querySelector<HTMLButtonElement>('[data-pick-go]')!;
+    const floatEnd = root.querySelector<HTMLButtonElement>('[data-float-end]')!;
 
     const NO_CONNECT =
       "Couldn't connect. Try again.";
@@ -312,6 +331,29 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     function setStatus(text: string) {
       status.textContent = text;
     }
+
+    // Say up front that the browser will ask for the mic, so the permission
+    // prompt is expected rather than a surprise. Blocked mics go straight to typing.
+    let idleHint = '';
+    navigator.permissions
+      ?.query({ name: 'microphone' as PermissionName })
+      .then((p) => {
+        const apply = () => {
+          idleHint =
+            p.state === 'prompt'
+              ? 'Your browser will ask for your mic'
+              : p.state === 'denied'
+                ? 'Mic blocked in this browser - type instead'
+                : '';
+          if (!kind && !status.textContent) setStatus(idleHint);
+        };
+        apply();
+        p.addEventListener?.('change', apply);
+      })
+      .catch(() => {
+        idleHint = 'Your browser will ask for your mic';
+        if (!kind && !status.textContent) setStatus(idleHint);
+      });
 
     function setTalk(active: boolean) {
       talk.setAttribute('aria-pressed', String(active));
@@ -398,7 +440,21 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       panel.classList.remove('is-in');
       void panel.offsetWidth;
       panel.classList.add('is-in');
-      match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+
+      // Agent picks land as a small card under the orb, so the visitor keeps
+      // the conversation (and the End button) in view. Only a visitor's own
+      // tap scrolls them down to the booking form.
+      const fromAgent = reason !== undefined;
+      if (fromAgent) {
+        pickTitle.textContent = panel.querySelector('.match__title')?.textContent?.trim() ?? '';
+        pickWhen.textContent = (panel.querySelector('.match__when')?.textContent ?? '').replace(/\s+/g, ' ').trim();
+        pick.hidden = false;
+        pick.classList.remove('is-in');
+        void pick.offsetWidth;
+        pick.classList.add('is-in');
+      } else {
+        match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      }
       track('office_bootcamp_shown', { bootcamp: key, via: reason ? 'agent' : reason === '' ? 'agent_speech' : 'visitor' });
       return true;
     }
@@ -425,6 +481,32 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       };
       if (!reduceMotion) raf = requestAnimationFrame(tick);
     }
+
+    pickGo.addEventListener('click', () => {
+      track('office_pick_opened', { bootcamp: shownKey });
+      match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+
+    // When a voice call is live and the orb has scrolled out of view, keep an
+    // End button on screen so nobody is left talking to a page they can't stop.
+    let orbVisible = true;
+    const syncFloat = () => {
+      floatEnd.hidden = !(kind === 'voice' && !orbVisible);
+      // Keep the cookie banner out of the way while a conversation is live.
+      document.body.classList.toggle('is-talking', kind !== null);
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        orbVisible = entry.isIntersecting;
+        syncFloat();
+      }).observe(orb);
+    }
+    floatEnd.addEventListener('click', async () => {
+      await end();
+      setTalk(false);
+      setStatus('Ended - tap to talk again');
+      syncFloat();
+    });
 
     // ---- The conversation ---------------------------------------------------
 
@@ -467,22 +549,31 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           setState(m);
           setStatus(m === 'speaking' ? 'Speaking' : 'Listening');
         },
-        onDisconnect: (details: { reason: string }) => {
+        onDisconnect: (details: { reason: string; message?: string; closeCode?: number; closeReason?: string }) => {
           if (id !== session) return;
           const was = kind;
+          const why = `${details.closeReason ?? ''} ${details.message ?? ''}`;
+          const blocked = /guardrail/i.test(why) || details.closeCode === 1008;
           conversation = null;
           kind = null;
           setState('idle');
           setTalk(false);
           cancelAnimationFrame(raf);
           orb.style.setProperty('--level', '0');
-          setStatus(
-            details.reason === 'error'
-              ? 'Connection dropped. Tap to retry.'
-              : was === 'voice'
-                ? 'Ended.'
-                : 'Ended.',
-          );
+          syncFloat();
+          if (blocked) {
+            // The safety check stopped a reply mid-sentence. Say so kindly and
+            // invite the next question rather than leaving a bare "Ended".
+            captions.hidden = false;
+            capAgent.textContent = "That's one I can't go into here - ask me something else.";
+            capAgent.classList.remove('is-new');
+            void capAgent.offsetWidth;
+            capAgent.classList.add('is-new');
+            setStatus(was === 'text' ? 'Type another question' : 'Tap to ask something else');
+            track('office_guardrail_stop');
+            return;
+          }
+          setStatus(details.reason === 'error' ? 'Connection dropped - tap to try again' : 'Ended - tap to talk again');
         },
         onError: (message: string) => console.warn('[finder]', message),
       };
@@ -498,6 +589,9 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       }
       conversation = started;
       kind = next;
+      captions.hidden = false;
+      document.body.classList.add('is-talking');
+      syncFloat();
       track(next === 'voice' ? 'office_voice_start' : 'office_text_start');
     }
 
@@ -509,6 +603,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       cancelAnimationFrame(raf);
       orb.style.setProperty('--level', '0');
       setState('idle');
+      syncFloat();
       if (current) {
         try {
           await current.endSession();
@@ -522,7 +617,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (kind === 'voice' || orb.dataset.state === 'connecting') {
         await end();
         setTalk(false);
-        setStatus('Ended.');
+        setStatus('Ended - tap to talk again');
         return;
       }
       if (!navigator.mediaDevices?.getUserMedia) {
@@ -534,10 +629,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
       setTalk(true);
       setState('connecting');
-      setStatus('Connecting');
+      setStatus('Allow your mic if asked');
       try {
         const probe = await navigator.mediaDevices.getUserMedia({ audio: true });
         probe.getTracks().forEach((t) => t.stop());
+        setStatus('Connecting');
       } catch {
         setTalk(false);
         setState('idle');
@@ -905,6 +1001,135 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     margin-top: 0.75rem;
     font-size: var(--step-sm);
     color: var(--muted-on-dark-dim);
+  }
+
+  .captions__label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-on-dark-dim);
+  }
+
+  .captions__agent:empty::before {
+    content: 'Captions appear here as we talk.';
+    color: var(--muted-on-dark-dim);
+  }
+
+  @media (max-width: 40rem) {
+    .captions__agent {
+      font-size: 1.25rem;
+    }
+    .captions__user {
+      font-size: 1rem;
+      color: var(--muted-on-dark);
+    }
+  }
+
+  /* ---- The pick: an agent recommendation, kept beside the conversation ---- */
+
+  .pick {
+    margin-top: 1.25rem;
+    width: min(100%, 30rem);
+    padding: 1rem 1.25rem;
+    text-align: left;
+    border: 1px solid var(--gold);
+    background: rgba(212, 175, 55, 0.07);
+  }
+
+  .pick.is-in {
+    animation: caption-in 500ms var(--ease);
+  }
+
+  .pick__eyebrow {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .pick__title {
+    margin-top: 0.35rem;
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.25;
+    color: var(--cream);
+  }
+
+  .pick__when {
+    margin-top: 0.25rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .pick__go {
+    margin-top: 0.85rem;
+    width: 100%;
+  }
+
+  /* ---- Floating End, shown only mid-call with the orb off screen --------- */
+
+  .floatend {
+    position: fixed;
+    z-index: 55;
+    inset-block-end: max(1rem, env(safe-area-inset-bottom));
+    inset-inline-end: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    font: inherit;
+    font-size: var(--step-sm);
+    color: var(--ink-dark);
+    background: var(--gold);
+    border: 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .floatend[hidden] {
+    display: none;
+  }
+
+  .floatend__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--ink-dark);
+    animation: floatend-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes floatend-pulse {
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  /* ---- A slimmer cookie banner on this page only -------------------------- */
+
+  :global(body.office-page .consent) {
+    padding: 0.6rem 1rem;
+  }
+
+  :global(body.office-page.is-talking .consent) {
+    display: none;
+  }
+
+  :global(body.office-page .consent__copy) {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  :global(body.office-page .consent__inner) {
+    gap: 0.5rem;
+  }
+
+  :global(body.office-page .consent__actions .btn) {
+    padding-block: 0.4rem;
   }
 
   @keyframes caption-in {
