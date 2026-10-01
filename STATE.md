@@ -107,6 +107,12 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   show up as failures in the ElevenLabs conversation list; (4) four trap tests (invented session, outcome
   statistic, popularity, false premise). Office hours 48/48, finder 29/30 (one tool-call miss, now caught on
   the page: the finder has the same "named it + below" fallback as office hours).
+- **Card matches speech (1 Oct).** Drummond's test call: agent said "Coding Bootcamp" but the Agentic card showed -
+  a leftover from his previous call (the agent never opened a card). Fixes: a new conversation clears any earlier
+  agent suggestion; on both pages, if the agent names exactly one bootcamp while recommending and it differs from
+  the card (or there is none), the page switches to it; prompt routes "learn to code" to Coding, outreach
+  personalisation to Agentic, and never talks about tools/cards. Routing tests per bootcamp (coding x2, Second
+  Brain, wrong-card report).
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.

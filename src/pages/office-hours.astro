@@ -553,21 +553,35 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     // ---- The reveal ---------------------------------------------------------
 
     let shownKey = '';
+    let shownByAgent = false;
 
     /**
-     * Fallback for when the agent recommends a bootcamp out loud but skips the
-     * show_bootcamp tool call: spot the bootcamp it named alongside "below" and
-     * open that panel anyway. Only fires once, and never overrides a tool call.
+     * Keeps the card in step with what the agent says. If it recommends one
+     * bootcamp by name (and only one) but skipped the show_bootcamp tool, or the
+     * card on screen is a different one, open the bootcamp it actually named.
+     * "Agentic Bootcamp" must not match "Agentic Coding Bootcamp".
      */
     const spoken: [RegExp, string][] = [
-      [/second brain bootcamp/i, 'second-brain'],
-      [/coding bootcamp/i, 'coding-bootcamp'],
-      [/oxford agentic bootcamp|agentic bootcamp/i, 'agentic-bootcamp'],
+      [/second brain boot ?camp/i, 'second-brain'],
+      [/coding boot ?camp/i, 'coding-bootcamp'],
+      [/agentic boot ?camp/i, 'agentic-bootcamp'],
     ];
+    const recommending =
+      /\b(below|suits?|fit|for you|recommend|exactly what|is for|built for|that's where|I'd start|I'd suggest|right one)\b/i;
     function revealFromSpeech(text: string) {
-      if (shownKey || !/\bbelow\b/i.test(text)) return;
-      const hit = spoken.find(([re]) => re.test(text));
-      if (hit) reveal(hit[1], '');
+      const named = spoken.filter(([re]) => re.test(text)).map(([, key]) => key);
+      if (named.length !== 1 || !recommending.test(text)) return;
+      if (named[0] !== shownKey) reveal(named[0], '');
+    }
+
+    /** A new conversation starts clean: no suggestion left over from the last one. */
+    function clearAgentPick() {
+      if (!shownByAgent) return;
+      shownKey = '';
+      shownByAgent = false;
+      pick.hidden = true;
+      match.hidden = true;
+      match.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => (p.hidden = true));
     }
 
     function reveal(key: string, reason?: string) {
@@ -575,6 +589,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (!panel) return false;
 
       shownKey = key;
+      shownByAgent = reason !== undefined;
       match.hidden = false;
       match.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => (p.hidden = p !== panel));
 
@@ -809,6 +824,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     async function begin(next: Kind) {
       const id = ++session;
+      clearAgentPick();
       const { Conversation } = await import('@elevenlabs/client');
       if (id !== session) return;
 

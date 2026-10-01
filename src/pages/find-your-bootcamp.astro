@@ -356,18 +356,20 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     /**
      * Fallback for when the agent recommends a bootcamp out loud but skips the
-     * show_bootcamp tool call: spot the bootcamp it named alongside "below" and
-     * open that panel anyway. Only fires once, and never overrides a tool call.
+     * show_bootcamp tool call, or the panel on screen is a different one: if it
+     * names exactly one bootcamp while recommending, open that one.
      */
     const spoken: [RegExp, string][] = [
-      [/second brain bootcamp/i, 'second-brain'],
-      [/coding bootcamp/i, 'coding-bootcamp'],
-      [/oxford agentic bootcamp|agentic bootcamp/i, 'agentic-bootcamp'],
+      [/second brain boot ?camp/i, 'second-brain'],
+      [/coding boot ?camp/i, 'coding-bootcamp'],
+      [/agentic boot ?camp/i, 'agentic-bootcamp'],
     ];
+    const recommending =
+      /\b(below|suits?|fit|for you|recommend|exactly what|is for|built for|that's where|I'd start|I'd suggest|right one)\b/i;
     function revealFromSpeech(text: string) {
-      if (shownKey || !/\bbelow\b/i.test(text)) return;
-      const hit = spoken.find(([re]) => re.test(text));
-      if (hit) reveal(hit[1], '');
+      const named = spoken.filter(([re]) => re.test(text)).map(([, key]) => key);
+      if (named.length !== 1 || !recommending.test(text)) return;
+      if (named[0] !== shownKey) reveal(named[0], '');
     }
 
     function reveal(key: string, reason?: string) {
