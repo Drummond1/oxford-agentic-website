@@ -125,8 +125,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </button>
 
       <div class="captions" data-captions hidden aria-live="polite">
-        <p class="captions__agent" data-caption-agent></p>
         <p class="captions__user" data-caption-user></p>
+        <p class="captions__agent" data-caption-agent></p>
         <div class="rate" data-rate hidden>
           <span class="rate__q" data-rate-q>Was that helpful?</span>
           <button type="button" class="rate__btn" data-rate-btn="up" aria-label="Yes, helpful">
@@ -317,10 +317,15 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     const rateQ = root.querySelector<HTMLElement>('[data-rate-q]')!;
     const copyBtn = root.querySelector<HTMLButtonElement>('[data-copy]')!;
 
-    const NO_CONNECT =
-      "Couldn't connect. Try again.";
+    const NO_CONNECT = "Couldn't connect - try again, or type instead";
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    // "Tap" on phones, "Click" with a mouse.
+    const TAP = finePointer ? 'Click' : 'Tap';
+    const tap = TAP.toLowerCase();
+    const endedMessage = () =>
+      shownKey ? 'Ended - your suggested bootcamp is below' : `Ended - ${tap} to talk again`;
+    talkLabel.textContent = `${TAP} to talk`;
 
     // ---- Micro-interactions ---------------------------------------------------
     // Small, quick and optional: every one is skipped under reduced motion, and a
@@ -516,13 +521,14 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     function setTalk(active: boolean) {
       talk.setAttribute('aria-pressed', String(active));
-      talkLabel.textContent = active ? 'End' : 'Tap to talk';
+      talkLabel.textContent = active ? 'End' : `${TAP} to talk`;
     }
 
     const starterWrap = root.querySelector<HTMLElement>('.starters')!;
 
     function addLine(role: Role, text: string) {
       // The starter chips have done their job once the visitor has asked something.
+      if (role === 'user') awaitingAnswer = true;
       if (role === 'user' && !starterWrap.hidden && !starterWrap.classList.contains('is-leaving')) {
         starterWrap.classList.add('is-leaving');
         window.setTimeout(() => (starterWrap.hidden = true), reduceMotion ? 0 : 260);
@@ -661,7 +667,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     floatEnd.addEventListener('click', async () => {
       await end();
       setTalk(false);
-      setStatus('Ended - tap to talk again');
+      setStatus(endedMessage());
       syncFloat();
     });
 
@@ -712,7 +718,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     let canFeedback = false;
     let rated = false;
+    let awaitingAnswer = false;
     function offerRating() {
+      if (!awaitingAnswer) return;
+      awaitingAnswer = false;
       rated = false;
       rateQ.textContent = 'Was that helpful?';
       rate.querySelectorAll('button').forEach((b) => {
@@ -861,11 +870,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
             // invite the next question rather than leaving a bare "Ended".
             captions.hidden = false;
             setCaption("That's one I can't go into here - ask me something else.");
-            setStatus(was === 'text' ? 'Type another question' : 'Tap to ask something else');
+            setStatus(was === 'text' ? 'Type another question' : `${TAP} to ask something else`);
             track('office_guardrail_stop');
             return;
           }
-          setStatus(details.reason === 'error' ? 'Connection dropped - tap to try again' : 'Ended - tap to talk again');
+          setStatus(details.reason === 'error' ? `Connection dropped - ${tap} to try again` : endedMessage());
         },
         onError: (message: string) => console.warn('[finder]', message),
       };
@@ -910,7 +919,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (kind === 'voice' || orb.dataset.state === 'connecting') {
         await end();
         setTalk(false);
-        setStatus('Ended - tap to talk again');
+        setStatus(endedMessage());
         return;
       }
       if (!navigator.mediaDevices?.getUserMedia) {

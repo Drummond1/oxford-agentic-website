@@ -92,6 +92,13 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 - **Trimmed (1 Oct, "less is more").** Removed the idle "browser will ask for your mic" hint (only a blocked
   mic is flagged), the "Live captions" label and placeholder, the booking panel's eyebrow and "Book your
   place" label, "not Drummond" from the fine print, and dead code. Starter chips hide once the visitor asks.
+- **UX review (1 Oct), from the 4 real calls.** Two of four failed: the guardrail ended a call after the agent
+  *correctly* refused a revenue question (both guardrails now never block a refusal), and the steer came on
+  message 6. Answers ran 60-90 words in two paragraphs and the greeting got talked over. Now: greeting cut to one
+  line, replies capped at ~50 words with one idea and a closing question, recommendation on the first mention of
+  any work task, no popularity claims, show_bootcamp speaks once. Page: the visitor's question shows above the
+  answer, rating only after a real answer (not the greeting), "Click" vs "Tap" by device, ended state points to
+  the suggested bootcamp, friendlier connect error. 20 tests (3 new from real transcripts), 40/40 passing x2.
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.
