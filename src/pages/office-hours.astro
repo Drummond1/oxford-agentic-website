@@ -130,10 +130,24 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
       <p class="finder__status" data-status role="status" aria-live="polite"></p>
 
+      <button class="mute" type="button" data-mute aria-pressed="false" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5z" /><path class="mute__x" d="M17 9l4 6M21 9l-4 6" /></svg>
+        <span data-mute-label>Mute mic</span>
+      </button>
+
       <div class="captions" data-captions hidden aria-live="polite">
         <span class="captions__label">Live captions</span>
         <p class="captions__agent" data-caption-agent></p>
         <p class="captions__user" data-caption-user></p>
+        <div class="rate" data-rate hidden>
+          <span class="rate__q" data-rate-q>Was that helpful?</span>
+          <button type="button" class="rate__btn" data-rate-btn="up" aria-label="Yes, helpful">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11v9H4v-9h3zm2 9h8.2a2 2 0 0 0 2-1.6l1.2-6A2 2 0 0 0 18.4 10H14V6a2 2 0 0 0-2-2l-3 7v9z" /></svg>
+          </button>
+          <button type="button" class="rate__btn" data-rate-btn="down" aria-label="No, not helpful">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 13V4h3v9h-3zm-2-9H6.8a2 2 0 0 0-2 1.6l-1.2 6A2 2 0 0 0 5.6 14H10v4a2 2 0 0 0 2 2l3-7V4z" /></svg>
+          </button>
+        </div>
       </div>
 
       <div class="pick" data-pick hidden>
@@ -179,6 +193,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       <details class="transcript" data-transcript-wrap hidden>
         <summary>Full transcript</summary>
         <ol class="transcript__log" data-transcript role="log" aria-label="Conversation"></ol>
+        <button type="button" class="transcript__copy" data-copy>Copy transcript</button>
       </details>
 
       <p class="finder__fine">
@@ -311,6 +326,11 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     const pickWhen = root.querySelector<HTMLElement>('[data-pick-when]')!;
     const pickGo = root.querySelector<HTMLButtonElement>('[data-pick-go]')!;
     const floatEnd = root.querySelector<HTMLButtonElement>('[data-float-end]')!;
+    const muteBtn = root.querySelector<HTMLButtonElement>('[data-mute]')!;
+    const muteLabel = root.querySelector<HTMLElement>('[data-mute-label]')!;
+    const rate = root.querySelector<HTMLElement>('[data-rate]')!;
+    const rateQ = root.querySelector<HTMLElement>('[data-rate-q]')!;
+    const copyBtn = root.querySelector<HTMLButtonElement>('[data-copy]')!;
 
     const NO_CONNECT =
       "Couldn't connect. Try again.";
@@ -494,6 +514,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       floatEnd.hidden = !(kind === 'voice' && !orbVisible);
       // Keep the cookie banner out of the way while a conversation is live.
       document.body.classList.toggle('is-talking', kind !== null);
+      syncMute();
     };
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => {
@@ -507,6 +528,113 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       setStatus('Ended - tap to talk again');
       syncFloat();
     });
+
+    // ---- Mute: a pause button for noisy rooms ------------------------------
+
+    let muted = false;
+    let keepAlive = 0;
+    function setMuted(next: boolean) {
+      muted = next;
+      muteBtn.setAttribute('aria-pressed', String(next));
+      muteLabel.textContent = next ? 'Unmute' : 'Mute mic';
+      try {
+        conversation?.setMicMuted(next);
+      } catch {
+        /* Text sessions have no mic. */
+      }
+      window.clearInterval(keepAlive);
+      if (next) {
+        setStatus('Paused - tap Unmute to carry on');
+        // Tell the agent the visitor is still here, so a pause doesn't
+        // trigger "Are you still there?".
+        keepAlive = window.setInterval(() => {
+          try {
+            conversation?.sendUserActivity();
+          } catch {
+            /* Closed. */
+          }
+        }, 15000);
+      } else if (kind === 'voice') {
+        setStatus(mode === 'speaking' ? 'Speaking' : 'Listening');
+      }
+      track(next ? 'office_mic_muted' : 'office_mic_unmuted');
+    }
+    muteBtn.addEventListener('click', () => setMuted(!muted));
+    const syncMute = () => {
+      muteBtn.hidden = kind !== 'voice';
+      if (kind !== 'voice' && muted) {
+        muted = false;
+        window.clearInterval(keepAlive);
+        muteBtn.setAttribute('aria-pressed', 'false');
+        muteLabel.textContent = 'Mute mic';
+      }
+    };
+
+    // ---- Feedback: one tap after each answer --------------------------------
+
+    let canFeedback = false;
+    let rated = false;
+    function offerRating() {
+      rated = false;
+      rateQ.textContent = 'Was that helpful?';
+      rate.querySelectorAll('button').forEach((b) => (b.hidden = false));
+      rate.hidden = false;
+    }
+    rate.addEventListener('click', (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-rate-btn]');
+      if (!btn || rated) return;
+      rated = true;
+      const like = btn.dataset.rateBtn === 'up';
+      if (conversation && canFeedback) {
+        try {
+          conversation.sendFeedback(like);
+        } catch {
+          /* Closed: the analytics event still records it. */
+        }
+      }
+      track('office_answer_rated', { helpful: like ? 'yes' : 'no' });
+      rateQ.textContent = like ? 'Thanks.' : 'Thanks - noted.';
+      rate.querySelectorAll('button').forEach((b) => (b.hidden = true));
+    });
+
+    // ---- Copy transcript -----------------------------------------------------
+
+    copyBtn.addEventListener('click', async () => {
+      const lines = [...transcript.querySelectorAll('li')].map((li) => {
+        const [who, body] = li.querySelectorAll('span');
+        return `${who?.textContent ?? ''}: ${body?.textContent ?? ''}`;
+      });
+      const text = `Oxford Agentic office hours\n\n${lines.join('\n\n')}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = 'Copied';
+      } catch {
+        copyBtn.textContent = 'Copy failed - select the text above';
+      }
+      track('office_transcript_copied', { lines: lines.length });
+      window.setTimeout(() => (copyBtn.textContent = 'Copy transcript'), 2500);
+    });
+
+    // ---- Warm up the voice SDK so the first tap answers faster --------------
+
+    let warmed = false;
+    const warm = () => {
+      if (warmed) return;
+      warmed = true;
+      void import('@elevenlabs/client').catch(() => (warmed = false));
+    };
+    talk.addEventListener('pointerenter', warm, { once: true });
+    talk.addEventListener('touchstart', warm, { once: true, passive: true });
+    talk.addEventListener('focus', warm, { once: true });
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    if (!saveData) {
+      const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number })
+        .requestIdleCallback;
+      window.addEventListener('load', () => {
+        if (idle) idle(warm, { timeout: 4000 });
+        else window.setTimeout(warm, 2500);
+      });
+    }
 
     // ---- The conversation ---------------------------------------------------
 
@@ -540,14 +668,21 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
             }
           }
           addLine(role, text);
-          if (role === 'agent') revealFromSpeech(text);
+          if (role === 'agent') {
+            revealFromSpeech(text);
+            offerRating();
+          }
           if (role === 'agent' && kind === 'text') setStatus('');
         },
         onModeChange: ({ mode: m }: { mode: 'speaking' | 'listening' }) => {
           if (id !== session || kind !== 'voice') return;
           mode = m;
           setState(m);
-          setStatus(m === 'speaking' ? 'Speaking' : 'Listening');
+          if (!muted) setStatus(m === 'speaking' ? 'Speaking' : 'Listening');
+        },
+        onCanSendFeedbackChange: ({ canSendFeedback }: { canSendFeedback: boolean }) => {
+          if (id !== session) return;
+          canFeedback = canSendFeedback;
         },
         onDisconnect: (details: { reason: string; message?: string; closeCode?: number; closeReason?: string }) => {
           if (id !== session) return;
@@ -1026,6 +1161,107 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       font-size: 1rem;
       color: var(--muted-on-dark);
     }
+  }
+
+  /* ---- Mute, rating and copy -------------------------------------------- */
+
+  .mute {
+    margin-top: 0.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    font: inherit;
+    font-size: var(--step-sm);
+    color: var(--cream);
+    background: transparent;
+    border: 1px solid var(--gold-hairline);
+    cursor: pointer;
+  }
+
+  .mute[hidden] {
+    display: none;
+  }
+
+  .mute svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mute .mute__x {
+    display: none;
+  }
+
+  .mute[aria-pressed='true'] {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .mute[aria-pressed='true'] .mute__x {
+    display: inline;
+  }
+
+  .mute:focus-visible,
+  .rate__btn:focus-visible,
+  .transcript__copy:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .rate {
+    margin-top: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .rate[hidden],
+  .rate__btn[hidden] {
+    display: none;
+  }
+
+  .rate__btn {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: 1px solid var(--gold-hairline);
+    color: var(--cream);
+    cursor: pointer;
+  }
+
+  .rate__btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .rate__btn svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+
+  .transcript__copy {
+    margin-top: 0.75rem;
+    padding: 0.45rem 0.85rem;
+    font: inherit;
+    font-size: var(--step-sm);
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold-hairline);
+    cursor: pointer;
   }
 
   /* ---- The pick: an agent recommendation, kept beside the conversation ---- */

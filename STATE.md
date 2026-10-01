@@ -78,6 +78,12 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   problems default to the Agentic Bootcamp. Belt and braces: if the agent names a bootcamp and says "below"
   without calling the tool, the page opens that panel itself (`revealFromSpeech`). Tuned 30 Sept after
   Drummond went eight turns with no recommendation.
+- **In-call controls (1 Oct).** Mute mic button (shows "Paused", keeps the call alive with `sendUserActivity`
+  every 15s); thumbs up/down under each answer (`sendFeedback` + GA `office_answer_rated`); "Copy transcript";
+  the ~570KB ElevenLabs SDK is warmed on hover/focus and at browser idle so the first tap connects faster.
+  Agent side: background voice detection on (finder too), `turn_timeout` 45s, `silence_end_call_timeout`
+  240s, and a prompt rule to check in once at most when the visitor goes quiet - a real call had ~15
+  self-interruptions from someone else's phone call and repeated "Are you still there?".
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.
