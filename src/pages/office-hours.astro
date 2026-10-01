@@ -26,23 +26,14 @@ const choices = [
   {
     key: 'second-brain',
     slug: 'oxford-second-brain-bootcamp-cohort-1',
-    short: 'Second Brain Bootcamp',
-    ceiling: 'Your AI tools do not know you, so every answer comes back generic.',
-    builds: 'A second brain of your own context, voice and standards that your AI tools draw on.',
   },
   {
     key: 'agentic-bootcamp',
     slug: 'oxford-agentic-bootcamp-cohort-3',
-    short: 'Agentic Bootcamp',
-    ceiling: 'A task eats a morning every week and you still do it by hand.',
-    builds: 'A working agentic workflow that runs that task, with a review step that checks itself.',
   },
   {
     key: 'coding-bootcamp',
     slug: 'oxford-agentic-coding-bootcamp-cohort-1',
-    short: 'Coding Bootcamp',
-    ceiling: 'You have an idea you want running and live, not stuck in a demo.',
-    builds: 'A live website and a working prototype in your own repository, with the agents doing the typing.',
   },
 ];
 
@@ -57,8 +48,6 @@ const bootcamps = choices
       title: d.title,
       when: formatDate(d.startDate, { weekday: 'long', day: 'numeric', month: 'long' }),
       where: venueLine(d.venue),
-      venueName: d.venue.name,
-      promise: d.promise ?? d.summary,
       whatYoullBuild: (d.whatYoullBuild ?? []).slice(0, 3),
       eventPath: paths.event(d.slug),
       embed: d.lumaEventId ? lumaEmbedSrc(d.lumaEventId) : null,
@@ -136,7 +125,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </button>
 
       <div class="captions" data-captions hidden aria-live="polite">
-        <span class="captions__label">Live captions</span>
         <p class="captions__agent" data-caption-agent></p>
         <p class="captions__user" data-caption-user></p>
         <div class="rate" data-rate hidden>
@@ -197,7 +185,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </details>
 
       <p class="finder__fine">
-        An AI in Drummond's cloned voice, not Drummond. Voice not recorded; transcripts
+        An AI in Drummond's cloned voice. Voice not recorded; transcripts
         kept 90 days. Voice by <a href="https://elevenlabs.io/" rel="noopener" target="_blank">ElevenLabs</a>.
       </p>
     </div>
@@ -210,8 +198,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         bootcamps.map((b) => (
           <article class="match__panel" data-panel={b.key} hidden>
             <div class="match__info">
-              <span class="eyebrow" data-panel-eyebrow>Suggested for you</span>
-              <hr class="dash" />
               <h3 class="match__title">{b.title}</h3>
               <p class="match__when">
                 {b.when} · 09:00 to 17:00
@@ -234,7 +220,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
             </div>
 
             <div class="match__book">
-              <span class="eyebrow">Book your place</span>
               {b.embed ? (
                 <div class="match__frame" data-frame>
                   <p class="match__loading" data-frame-loading>
@@ -468,35 +453,30 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (text && !reduceMotion) replay(status, 'is-swap');
     }
 
-    // Say up front that the browser will ask for the mic, so the permission
-    // prompt is expected rather than a surprise. Blocked mics go straight to typing.
-    let idleHint = '';
+    // Only speak up before a call if the mic is blocked: point to typing.
     navigator.permissions
       ?.query({ name: 'microphone' as PermissionName })
       .then((p) => {
         const apply = () => {
-          idleHint =
-            p.state === 'prompt'
-              ? 'Your browser will ask for your mic'
-              : p.state === 'denied'
-                ? 'Mic blocked in this browser - type instead'
-                : '';
-          if (!kind && !status.textContent) setStatus(idleHint);
+          if (kind) return;
+          if (p.state === 'denied') setStatus('Mic blocked in this browser - type instead');
+          else if (status.textContent?.startsWith('Mic blocked')) setStatus('');
         };
         apply();
         p.addEventListener?.('change', apply);
       })
-      .catch(() => {
-        idleHint = 'Your browser will ask for your mic';
-        if (!kind && !status.textContent) setStatus(idleHint);
-      });
+      .catch(() => {});
 
     function setTalk(active: boolean) {
       talk.setAttribute('aria-pressed', String(active));
       talkLabel.textContent = active ? 'End' : 'Tap to talk';
     }
 
+    const starterWrap = root.querySelector<HTMLElement>('.starters')!;
+
     function addLine(role: Role, text: string) {
+      // The starter chips have done their job once the visitor has asked something.
+      if (role === 'user') starterWrap.hidden = true;
       const li = document.createElement('li');
       li.className = `transcript__line transcript__line--${role}`;
       const who = document.createElement('span');
@@ -542,19 +522,13 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       shownKey = key;
       match.hidden = false;
       match.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => (p.hidden = p !== panel));
-      document.querySelectorAll<HTMLElement>('[data-option]').forEach((o) =>
-        o.classList.toggle('is-chosen', o.dataset.option === key),
-      );
 
       const quote = panel.querySelector<HTMLElement>('[data-reason]')!;
-      const eyebrow = panel.querySelector<HTMLElement>('[data-panel-eyebrow]')!;
       if (reason && reason.trim()) {
         panel.querySelector<HTMLElement>('[data-reason-text]')!.textContent = reason.trim();
         quote.hidden = false;
-        eyebrow.textContent = 'Suggested for you';
       } else {
         quote.hidden = true;
-        eyebrow.textContent = reason === '' ? 'Suggested for you' : 'You chose';
       }
 
       const iframe = panel.querySelector<HTMLIFrameElement>('iframe[data-src]');
@@ -590,10 +564,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       track('office_bootcamp_shown', { bootcamp: key, via: reason ? 'agent' : reason === '' ? 'agent_speech' : 'visitor' });
       return true;
     }
-
-    document.querySelectorAll<HTMLButtonElement>('[data-show]').forEach((btn) =>
-      btn.addEventListener('click', () => reveal(btn.dataset.show!)),
-    );
 
     // ---- The orb follows the voice -----------------------------------------
 
@@ -1269,21 +1239,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     color: var(--muted-on-dark-dim);
   }
 
-  .captions__label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-family: var(--font-label);
-    font-size: var(--step-xs);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted-on-dark-dim);
-  }
-
-  .captions__agent:empty::before {
-    content: 'Captions appear here as we talk.';
-    color: var(--muted-on-dark-dim);
-  }
-
   @media (max-width: 40rem) {
     .captions__agent {
       font-size: 1.25rem;
@@ -1843,11 +1798,6 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     color: var(--gold);
   }
 
-  .match__book .eyebrow {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
   .match__frame {
     position: relative;
     width: 100%;
@@ -1897,6 +1847,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
   .office .finder__title {
     max-width: 20ch;
+  }
+
+  .starters[hidden] {
+    display: none;
   }
 
   .starters {

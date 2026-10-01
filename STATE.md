@@ -89,6 +89,9 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   captions arrive word by word; chips drift in and flash gold when sent; thumbs pop; copy draws a tick; pick
   card sheen plus arrow nudge; syllabus modules rise in on scroll with a cursor spotlight. Hover only on fine
   pointers, press states on touch, all off under prefers-reduced-motion.
+- **Trimmed (1 Oct, "less is more").** Removed the idle "browser will ask for your mic" hint (only a blocked
+  mic is flagged), the "Live captions" label and placeholder, the booking panel's eyebrow and "Book your
+  place" label, "not Drummond" from the fine print, and dead code. Starter chips hide once the visitor asks.
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.
