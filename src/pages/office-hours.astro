@@ -16,6 +16,7 @@
  * nowhere. Only Drummond links or promotes it.
  */
 import Base from '../layouts/Base.astro';
+import MicHelp from '../components/MicHelp.astro';
 import config from '../../site.config';
 import { getEvents, formatDate, venueLine, lumaEmbedSrc, lumaBookingUrl, paths, isUpcoming } from '../lib/site';
 
@@ -118,6 +119,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </div>
 
       <p class="finder__status" data-status role="status" aria-live="polite"></p>
+      <MicHelp />
 
       <button class="mute" type="button" data-mute aria-pressed="false" hidden>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5z" /><path class="mute__x" d="M17 9l4 6M21 9l-4 6" /></svg>
@@ -284,6 +286,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 <script>
   import type { Conversation as ElevenLabsConversation } from '@elevenlabs/client';
   import { track } from '../lib/track';
+  import { detectMicEnv, micAskLine, micHelpCopy, micProblemFrom, type MicProblem } from '../lib/mic';
 
   type Kind = 'voice' | 'text';
   type Role = 'user' | 'agent';
@@ -505,14 +508,64 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       if (text && !reduceMotion) replay(status, 'is-swap');
     }
 
-    // Only speak up before a call if the mic is blocked: point to typing.
+    // ---- Microphone help ------------------------------------------------------
+    // Blocked, missing or busy mics, and in-app browsers (LinkedIn, Instagram...)
+    // that can't use the mic at all, each get plain steps for that device.
+    const micEnv = detectMicEnv();
+    const micHelp = root.querySelector<HTMLElement>('[data-mic-help]')!;
+    const micTitle = micHelp.querySelector<HTMLElement>('[data-mic-title]')!;
+    const micSteps = micHelp.querySelector<HTMLElement>('[data-mic-steps]')!;
+    const micCopy = micHelp.querySelector<HTMLButtonElement>('[data-mic-copy]')!;
+    let micState: PermissionState | '' = '';
+
+    function showMicHelp(problem: MicProblem) {
+      const { title, steps } = micHelpCopy(problem, micEnv);
+      micTitle.textContent = title;
+      micSteps.textContent = steps;
+      micCopy.hidden = problem !== 'inapp';
+      micHelp.hidden = false;
+      setStatus('');
+      // Keep it clear of the cookie banner on small screens.
+      requestAnimationFrame(() =>
+        micHelp.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' }),
+      );
+      buzz(20);
+      track('mic_help_shown', { problem, in_app: micEnv.inApp || 'no' });
+    }
+    const hideMicHelp = () => (micHelp.hidden = true);
+    micHelp.querySelector('[data-mic-retry]')!.addEventListener('click', () => {
+      hideMicHelp();
+      talk.click();
+    });
+    micHelp.querySelector('[data-mic-type]')!.addEventListener('click', () => {
+      hideMicHelp();
+      openTyping();
+    });
+    micCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(location.href.split('#')[0]);
+        micCopy.textContent = 'Copied';
+      } catch {
+        micCopy.textContent = 'Copy failed';
+      }
+      window.setTimeout(() => (micCopy.textContent = 'Copy link'), 2500);
+    });
+
+    // Before a call, flag a blocked mic or an in-app browser on the status line.
+    if (micEnv.inApp) {
+      setStatus(`Voice may not work inside ${micEnv.inApp} - open in ${micEnv.platform === 'ios' ? 'Safari' : 'Chrome'} or type`);
+    }
     navigator.permissions
       ?.query({ name: 'microphone' as PermissionName })
       .then((p) => {
         const apply = () => {
+          micState = p.state;
           if (kind) return;
-          if (p.state === 'denied') setStatus('Mic blocked in this browser - type instead');
-          else if (status.textContent?.startsWith('Mic blocked')) setStatus('');
+          if (p.state === 'denied') setStatus(`Mic blocked - ${tap} to see how to allow it`);
+          else if (p.state === 'granted' && !micHelp.hidden) {
+            hideMicHelp();
+            setStatus(`Mic on - ${tap} to talk`);
+          } else if (status.textContent?.startsWith('Mic blocked')) setStatus('');
         };
         apply();
         p.addEventListener?.('change', apply);
@@ -939,24 +992,23 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         return;
       }
       if (!navigator.mediaDevices?.getUserMedia) {
-        setStatus('No microphone here - type instead.');
-        openTyping();
+        showMicHelp(micEnv.inApp ? 'inapp' : 'unsupported');
         return;
       }
+      hideMicHelp();
       if (kind === 'text') await end();
 
       setTalk(true);
       setState('connecting');
-      setStatus('Allow your mic if asked');
+      setStatus(micState === 'granted' ? 'Connecting' : micAskLine(micEnv));
       try {
         const probe = await navigator.mediaDevices.getUserMedia({ audio: true });
         probe.getTracks().forEach((t) => t.stop());
         setStatus('Connecting');
-      } catch {
+      } catch (error) {
         setTalk(false);
         setState('idle');
-        setStatus('No microphone access - type instead.');
-        openTyping();
+        showMicHelp(micProblemFrom(error, micEnv));
         return;
       }
       try {

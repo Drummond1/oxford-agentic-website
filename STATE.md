@@ -117,6 +117,13 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   the card (or there is none), the page switches to it; prompt routes "learn to code" to Coding, outreach
   personalisation to Agentic, and never talks about tools/cards. Routing tests per bootcamp (coding x2, Second
   Brain, wrong-card report).
+- **Microphone help (1 Oct, both voice pages).** `src/lib/mic.ts` + `src/components/MicHelp.astro`. Before the
+  browser's prompt the status says 'Tap "Allow" when asked for the mic' (desktop: 'Click...'). If the mic fails, a
+  panel gives the fix for that device: iPhone Safari (aA > Website Settings), iOS Chrome (Settings app), Android
+  (icon left of the address > Permissions), desktop Chrome/Edge/Safari/Firefox; plus "no microphone found", "mic
+  busy" (another app or call), and in-app browsers (LinkedIn, Instagram, Facebook, X, WhatsApp, Google app) with
+  "open in Safari/Chrome" and a Copy link button. Buttons: Try again, Type instead. If the visitor allows the mic
+  in settings and comes back, the panel clears itself. GA event `mic_help_shown` {problem, in_app}.
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.

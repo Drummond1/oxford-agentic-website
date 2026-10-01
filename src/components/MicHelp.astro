@@ -1,0 +1,118 @@
+---
+/**
+ * Shown under the voice orb when the microphone can't be used: blocked,
+ * missing, busy, or inside an app's built-in browser. Text is filled in by
+ * the page script from src/lib/mic.ts.
+ */
+---
+
+<div class="michelp" data-mic-help hidden role="alert">
+  <svg class="michelp__icon" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="9" y="3" width="6" height="11" rx="3" />
+    <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" />
+    <path class="michelp__slash" d="M4 4l16 16" />
+  </svg>
+  <div class="michelp__body">
+    <p class="michelp__title" data-mic-title></p>
+    <p class="michelp__steps" data-mic-steps></p>
+    <div class="michelp__actions">
+      <button type="button" class="michelp__btn michelp__btn--primary" data-mic-retry>Try again</button>
+      <button type="button" class="michelp__btn" data-mic-copy hidden>Copy link</button>
+      <button type="button" class="michelp__btn" data-mic-type>Type instead</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .michelp {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    width: min(100%, 30rem);
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    text-align: left;
+    border: 1px solid var(--gold);
+    background: rgba(212, 175, 55, 0.07);
+    animation: michelp-in 320ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .michelp[hidden] {
+    display: none;
+  }
+
+  .michelp__icon {
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-top: 0.1rem;
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  .michelp__title {
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: var(--step-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .michelp__steps {
+    margin-top: 0.4rem;
+    font-size: var(--step-sm);
+    line-height: 1.5;
+    color: var(--cream);
+  }
+
+  .michelp__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .michelp__btn {
+    min-height: 2.5rem;
+    padding: 0.45rem 0.85rem;
+    font: inherit;
+    font-size: var(--step-sm);
+    color: var(--cream);
+    background: transparent;
+    border: 1px solid var(--gold-hairline);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 140ms ease, border-color 200ms ease;
+  }
+
+  .michelp__btn--primary {
+    color: var(--ink-dark);
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .michelp__btn:active {
+    transform: scale(0.97);
+  }
+
+  .michelp__btn:focus-visible {
+    outline: 2px solid var(--cream);
+    outline-offset: 2px;
+  }
+
+  @keyframes michelp-in {
+    from {
+      opacity: 0;
+      translate: 0 6px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .michelp {
+      animation: none;
+    }
+  }
+</style>
