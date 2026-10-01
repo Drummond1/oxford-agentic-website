@@ -84,6 +84,11 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   Agent side: background voice detection on (finder too), `turn_timeout` 45s, `silence_end_call_timeout`
   240s, and a prompt rule to check in once at most when the visitor goes quiet - a real call had ~15
   self-interruptions from someone else's phone call and repeated "Are you still there?".
+- **Micro-interactions (1 Oct).** Gold ripple and haptic tick on orb press; orb leans toward the cursor
+  (desktop); "we teach." underlines itself; status lines slide in, "Thinking"/"Connecting" get animated dots;
+  captions arrive word by word; chips drift in and flash gold when sent; thumbs pop; copy draws a tick; pick
+  card sheen plus arrow nudge; syllabus modules rise in on scroll with a cursor spotlight. Hover only on fine
+  pointers, press states on touch, all off under prefers-reduced-motion.
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.

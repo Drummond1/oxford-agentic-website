@@ -94,7 +94,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       <span class="eyebrow">Office hours</span>
       <hr class="dash" />
       <h1 class="finder__title" id="finder-title">Ask anything <em>we teach.</em></h1>
-      <p class="finder__sub">Agentic AI, the bootcamps, or what we covered at Cohorts 1 and 2.</p>
+      <p class="finder__sub">Agentic AI, the bootcamps and the material we cover.</p>
 
       <div class="orb" data-orb data-state="idle">
         <svg class="orb__dial" viewBox="0 0 200 200" aria-hidden="true">
@@ -155,14 +155,14 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         <p class="pick__title" data-pick-title></p>
         <p class="pick__when" data-pick-when></p>
         <button class="btn btn--primary pick__go" type="button" data-pick-go>
-          See details and book <span aria-hidden="true">↓</span>
+          See details and book <span class="pick__arrow" aria-hidden="true">↓</span>
         </button>
       </div>
 
       <div class="starters" aria-label="Questions to start with">
         <ul class="starters__list" role="list">
-          {starters.map((q) => (
-            <li><button class="starter" type="button" data-ask={q}>{q}</button></li>
+          {starters.map((q, i) => (
+            <li style={`--i:${i}`}><button class="starter" type="button" data-ask={q}>{q}</button></li>
           ))}
         </ul>
       </div>
@@ -197,7 +197,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </details>
 
       <p class="finder__fine">
-        An AI in Drummond's cloned voice, not Drummond. No prices or personal details. Voice not recorded; transcripts
+        An AI in Drummond's cloned voice, not Drummond. Voice not recorded; transcripts
         kept 90 days. Voice by <a href="https://elevenlabs.io/" rel="noopener" target="_blank">ElevenLabs</a>.
       </p>
     </div>
@@ -275,9 +275,9 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         <hr class="dash" />
         <h2 id="syllabus-title">What we teach</h2>
       </div>
-      <ol class="syllabus__list" role="list">
-        {syllabus.map(([num, title, blurb, q]) => (
-          <li class="module">
+      <ol class="syllabus__list" role="list" data-syllabus>
+        {syllabus.map(([num, title, blurb, q], i) => (
+          <li class="module" style={`--i:${i}`}>
             <span class="module__num">{num}</span>
             <h3 class="module__title">{title}</h3>
             <p class="module__blurb">{blurb}</p>
@@ -335,6 +335,119 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     const NO_CONNECT =
       "Couldn't connect. Try again.";
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // ---- Micro-interactions ---------------------------------------------------
+    // Small, quick and optional: every one is skipped under reduced motion, and a
+    // light haptic tick is added on phones that support it (Android; iOS ignores).
+    const buzz = (pattern: number | number[]) => {
+      if (reduceMotion) return;
+      try {
+        navigator.vibrate?.(pattern);
+      } catch {
+        /* Not supported. */
+      }
+    };
+    const replay = (el: Element, cls: string) => {
+      el.classList.remove(cls);
+      void (el as HTMLElement).offsetWidth;
+      el.classList.add(cls);
+    };
+
+    /** Agent captions arrive word by word, quickly, like someone speaking. */
+    function setCaption(text: string) {
+      capAgent.classList.remove('is-new');
+      if (reduceMotion) {
+        capAgent.textContent = text;
+        return;
+      }
+      capAgent.textContent = '';
+      const words = text.split(/(\s+)/);
+      const step = Math.max(12, Math.min(35, 900 / Math.max(1, words.length / 2)));
+      let n = 0;
+      for (const w of words) {
+        if (!w.trim()) {
+          capAgent.append(w);
+          continue;
+        }
+        const span = document.createElement('span');
+        span.className = 'cap-word';
+        span.style.setProperty('--d', `${Math.round(n++ * step)}ms`);
+        span.textContent = w;
+        capAgent.append(span);
+      }
+    }
+
+    // The orb leans gently toward the cursor on desktop.
+    if (finePointer && !reduceMotion) {
+      let pending = 0;
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          if (pending) return;
+          pending = requestAnimationFrame(() => {
+            pending = 0;
+            const r = orb.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = e.clientX - cx;
+            const dy = e.clientY - cy;
+            const reach = r.width * 0.9;
+            const dist = Math.hypot(dx, dy);
+            const pull = dist < reach ? 1 - dist / reach : 0;
+            orb.style.setProperty('--mx', `${((dx / reach) * 10 * pull).toFixed(2)}px`);
+            orb.style.setProperty('--my', `${((dy / reach) * 10 * pull).toFixed(2)}px`);
+          });
+        },
+        { passive: true },
+      );
+    }
+
+    // A gold ripple from the orb on every press.
+    talk.addEventListener('pointerdown', () => {
+      if (reduceMotion) return;
+      const burst = document.createElement('span');
+      burst.className = 'orb__burst';
+      burst.setAttribute('aria-hidden', 'true');
+      orb.append(burst);
+      burst.addEventListener('animationend', () => burst.remove(), { once: true });
+      buzz(8);
+    });
+
+    // Starter chips flash gold when sent.
+    document.querySelectorAll<HTMLButtonElement>('.starter').forEach((chip) =>
+      chip.addEventListener('click', () => {
+        replay(chip, 'is-sent');
+        buzz(6);
+        window.setTimeout(() => chip.classList.remove('is-sent'), 900);
+      }),
+    );
+
+    // Syllabus modules rise in as they scroll into view, with a soft gold
+    // spotlight that follows the cursor on desktop.
+    const syllabusList = document.querySelector<HTMLElement>('[data-syllabus]');
+    if (syllabusList && !reduceMotion && 'IntersectionObserver' in window) {
+      syllabusList.classList.add('reveal-ready');
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((en) => {
+            if (!en.isIntersecting) return;
+            en.target.classList.add('is-visible');
+            io.unobserve(en.target);
+          }),
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+      );
+      syllabusList.querySelectorAll('.module').forEach((m) => io.observe(m));
+    }
+    if (syllabusList && finePointer) {
+      syllabusList.querySelectorAll<HTMLElement>('.module').forEach((m) =>
+        m.addEventListener('pointermove', (e) => {
+          const r = m.getBoundingClientRect();
+          m.style.setProperty('--px', `${e.clientX - r.left}px`);
+          m.style.setProperty('--py', `${e.clientY - r.top}px`);
+        }),
+      );
+    }
 
     let conversation: ElevenLabsConversation | null = null;
     let kind: Kind | null = null;
@@ -349,7 +462,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     }
 
     function setStatus(text: string) {
+      if (status.textContent === text) return;
       status.textContent = text;
+      status.classList.toggle('is-busy', /^(Thinking|Connecting)$/.test(text));
+      if (text && !reduceMotion) replay(status, 'is-swap');
     }
 
     // Say up front that the browser will ask for the mic, so the permission
@@ -393,10 +509,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       transcriptWrap.hidden = false;
       captions.hidden = false;
       if (role === 'agent') {
-        capAgent.textContent = text;
-        capAgent.classList.remove('is-new');
-        void capAgent.offsetWidth;
-        capAgent.classList.add('is-new');
+        setCaption(text);
       } else {
         capUser.textContent = `You: ${text}`;
       }
@@ -469,9 +582,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         pickTitle.textContent = panel.querySelector('.match__title')?.textContent?.trim() ?? '';
         pickWhen.textContent = (panel.querySelector('.match__when')?.textContent ?? '').replace(/\s+/g, ' ').trim();
         pick.hidden = false;
-        pick.classList.remove('is-in');
-        void pick.offsetWidth;
-        pick.classList.add('is-in');
+        replay(pick, 'is-in');
+        buzz([10, 50, 14]);
       } else {
         match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       }
@@ -577,7 +689,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     function offerRating() {
       rated = false;
       rateQ.textContent = 'Was that helpful?';
-      rate.querySelectorAll('button').forEach((b) => (b.hidden = false));
+      rate.querySelectorAll('button').forEach((b) => {
+        b.hidden = false;
+        b.classList.remove('is-chosen');
+      });
       rate.hidden = false;
     }
     rate.addEventListener('click', (event) => {
@@ -593,8 +708,20 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         }
       }
       track('office_answer_rated', { helpful: like ? 'yes' : 'no' });
-      rateQ.textContent = like ? 'Thanks.' : 'Thanks - noted.';
-      rate.querySelectorAll('button').forEach((b) => (b.hidden = true));
+      buzz(10);
+      rate.querySelectorAll<HTMLButtonElement>('button').forEach((b) => {
+        if (b !== btn) b.hidden = true;
+      });
+      btn.classList.add('is-chosen');
+      window.setTimeout(
+        () => {
+          btn.hidden = true;
+          btn.classList.remove('is-chosen');
+          rateQ.textContent = like ? 'Thanks.' : 'Thanks - noted.';
+          if (!reduceMotion) replay(rateQ, 'is-swap');
+        },
+        reduceMotion ? 0 : 550,
+      );
     });
 
     // ---- Copy transcript -----------------------------------------------------
@@ -607,12 +734,18 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       const text = `Oxford Agentic office hours\n\n${lines.join('\n\n')}`;
       try {
         await navigator.clipboard.writeText(text);
-        copyBtn.textContent = 'Copied';
+        copyBtn.innerHTML =
+          '<svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>Copied';
+        copyBtn.classList.add('is-done');
+        buzz(8);
       } catch {
         copyBtn.textContent = 'Copy failed - select the text above';
       }
       track('office_transcript_copied', { lines: lines.length });
-      window.setTimeout(() => (copyBtn.textContent = 'Copy transcript'), 2500);
+      window.setTimeout(() => {
+        copyBtn.textContent = 'Copy transcript';
+        copyBtn.classList.remove('is-done');
+      }, 2500);
     });
 
     // ---- Warm up the voice SDK so the first tap answers faster --------------
@@ -700,10 +833,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
             // The safety check stopped a reply mid-sentence. Say so kindly and
             // invite the next question rather than leaving a bare "Ended".
             captions.hidden = false;
-            capAgent.textContent = "That's one I can't go into here - ask me something else.";
-            capAgent.classList.remove('is-new');
-            void capAgent.offsetWidth;
-            capAgent.classList.add('is-new');
+            setCaption("That's one I can't go into here - ask me something else.");
             setStatus(was === 'text' ? 'Type another question' : 'Tap to ask something else');
             track('office_guardrail_stop');
             return;
@@ -781,6 +911,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         if (!conversation) throw new Error('not connected');
         mode = 'listening';
         setState('listening');
+        buzz([8, 60, 8]);
         loop();
       } catch {
         setTalk(false);
@@ -985,7 +1116,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       0 0 calc(40px + var(--level) * 90px) rgba(212, 175, 55, calc(0.3 + var(--level) * 0.4)),
       inset 0 -10px 30px rgba(5, 24, 23, 0.35);
     transform: scale(calc(1 + var(--level) * 0.08));
-    transition: transform 90ms linear, box-shadow 90ms linear;
+    transition: transform 90ms linear, box-shadow 90ms linear, translate 260ms var(--ease);
   }
 
   .orb__button {
@@ -1899,5 +2030,429 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     font: inherit;
     text-decoration: underline;
     cursor: pointer;
+  }
+  /* ---- Micro-interactions ---------------------------------------------------
+     Quick (under 600ms), gold, and never in the way. Hover effects are desktop
+     only; touch gets press states instead. All off under reduced motion. */
+
+  .orb__core {
+    translate: var(--mx, 0px) var(--my, 0px);
+  }
+
+  .orb__button {
+    -webkit-tap-highlight-color: transparent;
+    translate: calc(var(--mx, 0px) * 0.6) calc(var(--my, 0px) * 0.6);
+    transition: translate 220ms var(--ease);
+  }
+
+  .orb__icon,
+  .orb__label {
+    transition: transform 160ms var(--ease);
+  }
+
+  .orb__button:active .orb__icon {
+    transform: scale(0.88);
+  }
+
+  .orb__button:active .orb__label {
+    transform: translateY(1px);
+  }
+
+  .orb__burst {
+    width: 46%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+    animation: orb-burst 650ms cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+  }
+
+  @keyframes orb-burst {
+    from {
+      transform: scale(0.9);
+      opacity: 0.9;
+    }
+    to {
+      transform: scale(2.1);
+      opacity: 0;
+      border-width: 1px;
+    }
+  }
+
+  /* Hero: the gold words underline themselves on arrival. */
+  .finder__title em {
+    background: linear-gradient(var(--gold), var(--gold)) no-repeat 0 92% / 0% 2px;
+    animation: underline-in 900ms 450ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  @keyframes underline-in {
+    to {
+      background-size: 100% 2px;
+    }
+  }
+
+  /* Status: each new state slides in; waiting states get three dots. */
+  .finder__status.is-swap {
+    animation: status-in 320ms var(--ease);
+  }
+
+  @keyframes status-in {
+    from {
+      opacity: 0;
+      translate: 0 -4px;
+      letter-spacing: 0.3em;
+    }
+  }
+
+  .finder__status.is-busy::after {
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    text-align: left;
+    animation: dots 1.2s steps(4, end) infinite;
+  }
+
+  @keyframes dots {
+    0% {
+      content: '';
+    }
+    25% {
+      content: '.';
+    }
+    50% {
+      content: '..';
+    }
+    75% {
+      content: '...';
+    }
+  }
+
+  /* Captions arrive word by word. */
+  .cap-word {
+    display: inline-block;
+    animation: word-in 380ms var(--ease) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  @keyframes word-in {
+    from {
+      opacity: 0;
+      translate: 0 0.3em;
+      filter: blur(3px);
+    }
+  }
+
+  /* Starter chips: drift in on load, press down, flash gold when sent. */
+  .starters__list li {
+    animation: chip-in 500ms var(--ease) both;
+    animation-delay: calc(300ms + var(--i, 0) * 60ms);
+  }
+
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      translate: 0 8px;
+    }
+  }
+
+  .starter {
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      border-color 200ms var(--ease),
+      background-color 200ms var(--ease),
+      transform 140ms var(--ease),
+      color 200ms var(--ease);
+  }
+
+  .starter:active {
+    transform: scale(0.96);
+  }
+
+  .starter.is-sent {
+    animation: chip-sent 900ms var(--ease);
+  }
+
+  @keyframes chip-sent {
+    0% {
+      background: var(--gold);
+      color: var(--ink-dark);
+      border-color: var(--gold);
+    }
+    100% {
+      background: rgba(212, 175, 55, 0.08);
+    }
+  }
+
+  /* Mute: the cross draws itself. */
+  .mute {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 140ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
+  }
+
+  .mute .mute__x {
+    stroke-dasharray: 12;
+    stroke-dashoffset: 12;
+    transition: stroke-dashoffset 280ms var(--ease), opacity 120ms;
+  }
+
+  .mute[aria-pressed='true'] .mute__x {
+    stroke-dashoffset: 0;
+  }
+
+  /* Rating: the chosen thumb pops and fills. */
+  .rate:not([hidden]) {
+    animation: caption-in 400ms 250ms var(--ease) both;
+  }
+
+  .rate__btn {
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 140ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);
+  }
+
+  .rate__btn:active {
+    transform: scale(0.9);
+  }
+
+  .rate__btn.is-chosen {
+    color: var(--ink-dark);
+    background: var(--gold);
+    border-color: var(--gold);
+    animation: thumb-pop 550ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .rate__btn.is-chosen svg {
+    fill: currentColor;
+  }
+
+  .rate__btn[data-rate-btn='up'].is-chosen svg {
+    animation: thumb-tilt 550ms var(--ease);
+  }
+
+  @keyframes thumb-pop {
+    0% {
+      transform: scale(0.85);
+    }
+    45% {
+      transform: scale(1.18);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes thumb-tilt {
+    40% {
+      transform: rotate(-14deg);
+    }
+  }
+
+  .rate__q.is-swap {
+    animation: caption-in 350ms var(--ease);
+  }
+
+  /* Copy transcript: a tick draws itself. */
+  .transcript__copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: transform 140ms var(--ease), border-color 200ms var(--ease), background-color 200ms var(--ease);
+  }
+
+  .transcript__copy:active {
+    transform: scale(0.96);
+  }
+
+  .transcript__copy.is-done {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  .transcript__copy .tick {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 22;
+    stroke-dashoffset: 22;
+    animation: tick-draw 380ms 60ms var(--ease) forwards;
+  }
+
+  @keyframes tick-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* The pick: a gold sheen sweeps across as it lands, and the arrow nudges. */
+  .pick {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pick.is-in::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 35%, rgba(255, 236, 170, 0.28) 50%, transparent 65%);
+    translate: -100% 0;
+    animation: sheen 1100ms 250ms var(--ease) forwards;
+    pointer-events: none;
+  }
+
+  @keyframes sheen {
+    to {
+      translate: 100% 0;
+    }
+  }
+
+  .pick__arrow {
+    display: inline-block;
+  }
+
+  .pick.is-in .pick__arrow {
+    animation: nudge-down 700ms 900ms ease-in-out 2;
+  }
+
+  @keyframes nudge-down {
+    50% {
+      transform: translateY(4px);
+    }
+  }
+
+  .pick__go:active,
+  .typebox__send:active {
+    transform: scale(0.97);
+  }
+
+  /* Typing: the box opens with a short slide. */
+  .typebox:not([hidden]) {
+    animation: caption-in 300ms var(--ease);
+  }
+
+  /* Floating End slides up from the corner. */
+  .floatend:not([hidden]) {
+    animation: float-in 360ms cubic-bezier(0.34, 1.4, 0.64, 1);
+  }
+
+  .floatend:active {
+    transform: scale(0.96);
+  }
+
+  @keyframes float-in {
+    from {
+      opacity: 0;
+      translate: 0 1.5rem;
+    }
+  }
+
+  /* Syllabus: modules rise in on scroll; Ask arrows nudge; a cursor spotlight. */
+  .syllabus__list.reveal-ready .module {
+    opacity: 0;
+    translate: 0 14px;
+    transition:
+      opacity 600ms var(--ease),
+      translate 600ms var(--ease),
+      background-color 300ms var(--ease);
+    transition-delay: calc(var(--i, 0) * 80ms), calc(var(--i, 0) * 80ms), 0ms;
+  }
+
+  .syllabus__list.reveal-ready .module.is-visible {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .module {
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .module:active {
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  .module__num {
+    display: inline-block;
+    transition: transform 300ms var(--ease);
+    transform-origin: left bottom;
+  }
+
+  .option__btn span,
+  .syllabus__link {
+    display: inline-block;
+    transition: transform 200ms var(--ease);
+  }
+
+  .option__btn:active span {
+    transform: translateX(4px);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .starter:hover {
+      transform: translateY(-2px);
+    }
+
+    .module:hover {
+      background:
+        radial-gradient(16rem circle at var(--px, 50%) var(--py, 50%), rgba(212, 175, 55, 0.14), transparent 70%),
+        rgba(212, 175, 55, 0.04);
+    }
+
+    .module:hover .module__num {
+      transform: translateY(-3px) scale(1.06);
+    }
+
+    .module:hover .option__btn span,
+    .option__btn:hover span {
+      transform: translateX(4px);
+    }
+
+    .syllabus__link:hover {
+      transform: translateX(3px);
+    }
+
+    .rate__btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .mute:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .orb__burst,
+    .cap-word,
+    .starters__list li,
+    .starter.is-sent,
+    .rate:not([hidden]),
+    .rate__btn.is-chosen,
+    .rate__btn.is-chosen svg,
+    .pick.is-in::after,
+    .pick.is-in .pick__arrow,
+    .typebox:not([hidden]),
+    .floatend:not([hidden]),
+    .finder__status.is-swap,
+    .finder__status.is-busy::after,
+    .transcript__copy .tick {
+      animation: none !important;
+    }
+    .finder__title em {
+      animation: none;
+      background-size: 100% 2px;
+    }
+    .transcript__copy .tick {
+      stroke-dashoffset: 0;
+    }
+    .orb__core,
+    .orb__button {
+      translate: none;
+    }
+    .syllabus__list .module {
+      opacity: 1 !important;
+      translate: none !important;
+    }
   }
 </style>
