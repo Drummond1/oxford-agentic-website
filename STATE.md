@@ -99,6 +99,14 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   any work task, no popularity claims, show_bootcamp speaks once. Page: the visitor's question shows above the
   answer, rating only after a real answer (not the greeting), "Click" vs "Tap" by device, ended state points to
   the suggested bootcamp, friendlier connect error. 20 tests (3 new from real transcripts), 40/40 passing x2.
+- **Anti-fabrication checks (1 Oct, both voice agents).** Four layers: (1) prompt - office hours has an "Only say
+  what you know" section (every fact must be in the knowledge base, say "I don't have that detail", no numbers,
+  no popularity/scarcity, never accept a false premise), temperature 0.2 on both; (2) live guardrail clause 4
+  blocks popularity/scarcity claims, attendee statistics or quotes, and accreditation/university claims; (3) a
+  post-call evaluation "Nothing made up" that checks every claim against the knowledge base, so fabrications
+  show up as failures in the ElevenLabs conversation list; (4) four trap tests (invented session, outcome
+  statistic, popularity, false premise). Office hours 48/48, finder 29/30 (one tool-call miss, now caught on
+  the page: the finder has the same "named it + below" fallback as office hours).
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.
