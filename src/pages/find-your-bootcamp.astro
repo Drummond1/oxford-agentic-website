@@ -324,12 +324,17 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     }
 
     function addLine(role: Role, text: string) {
-      const li = document.createElement('li');
+      // Copy the page's Astro scope attribute so the transcript styles apply.
+      const scope = (el: HTMLElement) => {
+        [...orb.attributes].forEach((a) => a.name.startsWith('data-astro-cid-') && el.setAttribute(a.name, ''));
+        return el;
+      };
+      const li = scope(document.createElement('li'));
       li.className = `transcript__line transcript__line--${role}`;
-      const who = document.createElement('span');
+      const who = scope(document.createElement('span'));
       who.className = 'transcript__who';
       who.textContent = role === 'agent' ? 'AI Drummond' : 'You';
-      const body = document.createElement('span');
+      const body = scope(document.createElement('span'));
       body.textContent = text;
       li.append(who, body);
       transcript.append(li);

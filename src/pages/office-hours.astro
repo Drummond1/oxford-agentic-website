@@ -80,7 +80,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     <div class="finder__halo" aria-hidden="true"></div>
 
     <div class="wrap finder__inner">
-      <span class="eyebrow">Office hours</span>
+      <span class="eyebrow">Office hours <span class="open-now"><span class="open-now__dot" aria-hidden="true"></span>Open now</span></span>
       <hr class="dash" />
       <h1 class="finder__title" id="finder-title">Ask anything <em>we teach.</em></h1>
       <p class="finder__sub">Agentic AI, the bootcamps and the material we cover.</p>
@@ -179,7 +179,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       </button>
 
       <details class="transcript" data-transcript-wrap hidden>
-        <summary>Full transcript</summary>
+        <summary>Full transcript <span class="transcript__chev" aria-hidden="true"></span></summary>
         <ol class="transcript__log" data-transcript role="log" aria-label="Conversation"></ol>
         <button type="button" class="transcript__copy" data-copy>Copy transcript</button>
       </details>
@@ -333,6 +333,16 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         /* Not supported. */
       }
     };
+    // Astro scopes this page's CSS with a data-astro-cid attribute. Elements the
+    // script creates don't get it, so copy it on, or their styles never apply.
+    const cid = [...orb.attributes].map((a) => a.name).filter((n) => n.startsWith('data-astro-cid-'));
+    const scoped = <T extends Element>(el: T): T => {
+      cid.forEach((n) => el.setAttribute(n, ''));
+      return el;
+    };
+    const make = <K extends keyof HTMLElementTagNameMap>(tag: K, className: string) =>
+      scoped(Object.assign(document.createElement(tag), { className }));
+
     const replay = (el: Element, cls: string) => {
       el.classList.remove(cls);
       void (el as HTMLElement).offsetWidth;
@@ -355,13 +365,51 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
           capAgent.append(w);
           continue;
         }
-        const span = document.createElement('span');
-        span.className = 'cap-word';
+        const span = make('span', 'cap-word');
         span.style.setProperty('--d', `${Math.round(n++ * step)}ms`);
         span.textContent = w;
         capAgent.append(span);
       }
     }
+
+    /** A small burst of gold sparks from the orb when a bootcamp is suggested. */
+    function celebrate() {
+      if (reduceMotion) return;
+      const count = 10;
+      for (let i = 0; i < count; i++) {
+        const spark = make('span', 'orb__spark');
+        spark.setAttribute('aria-hidden', 'true');
+        const angle = (360 / count) * i + Math.random() * 18;
+        spark.style.setProperty('--a', `${angle}deg`);
+        spark.style.setProperty('--r', (0.32 + Math.random() * 0.14).toFixed(2));
+        spark.style.setProperty('--d', `${Math.round(Math.random() * 120)}ms`);
+        orb.append(spark);
+        spark.addEventListener('animationend', () => spark.remove(), { once: true });
+      }
+      replay(orb, 'is-celebrate');
+    }
+
+    // The tab title shows a live call, so it's easy to find again.
+    const baseTitle = document.title;
+    const syncTitle = () => {
+      document.title = kind === 'voice' ? `${muted ? 'Paused' : '●'} ${baseTitle}` : baseTitle;
+    };
+
+    // Rotate example questions through the empty type box.
+    const examples = [
+      "e.g. How do I give Claude my company's context?",
+      'e.g. When should I use an agent, not a workflow?',
+      'e.g. How do I write a good skill?',
+      'e.g. How do I get this past IT?',
+    ];
+    let exampleIndex = 0;
+    window.setInterval(() => {
+      if (typeForm.hidden || typeInput.value || document.activeElement === typeInput) return;
+      exampleIndex = (exampleIndex + 1) % examples.length;
+      typeInput.placeholder = examples[exampleIndex];
+      if (!reduceMotion) replay(typeInput, 'is-swap');
+    }, 3800);
+    typeInput.addEventListener('input', () => typeForm.classList.toggle('has-text', typeInput.value.trim() !== ''));
 
     // The orb leans gently toward the cursor on desktop.
     if (finePointer && !reduceMotion) {
@@ -391,8 +439,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     // A gold ripple from the orb on every press.
     talk.addEventListener('pointerdown', () => {
       if (reduceMotion) return;
-      const burst = document.createElement('span');
-      burst.className = 'orb__burst';
+      const burst = make('span', 'orb__burst');
       burst.setAttribute('aria-hidden', 'true');
       orb.append(burst);
       burst.addEventListener('animationend', () => burst.remove(), { once: true });
@@ -476,13 +523,14 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 
     function addLine(role: Role, text: string) {
       // The starter chips have done their job once the visitor has asked something.
-      if (role === 'user') starterWrap.hidden = true;
-      const li = document.createElement('li');
-      li.className = `transcript__line transcript__line--${role}`;
-      const who = document.createElement('span');
-      who.className = 'transcript__who';
+      if (role === 'user' && !starterWrap.hidden && !starterWrap.classList.contains('is-leaving')) {
+        starterWrap.classList.add('is-leaving');
+        window.setTimeout(() => (starterWrap.hidden = true), reduceMotion ? 0 : 260);
+      }
+      const li = make('li', `transcript__line transcript__line--${role}`);
+      const who = make('span', 'transcript__who');
       who.textContent = role === 'agent' ? 'AI Drummond' : 'You';
-      const body = document.createElement('span');
+      const body = scoped(document.createElement('span'));
       body.textContent = text;
       li.append(who, body);
       transcript.append(li);
@@ -492,6 +540,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         setCaption(text);
       } else {
         capUser.textContent = `You: ${text}`;
+        if (!reduceMotion) replay(capUser, 'is-new');
       }
     }
 
@@ -558,6 +607,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         pick.hidden = false;
         replay(pick, 'is-in');
         buzz([10, 50, 14]);
+        celebrate();
       } else {
         match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
       }
@@ -587,6 +637,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     pickGo.addEventListener('click', () => {
       track('office_pick_opened', { bootcamp: shownKey });
       match.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      const panel = match.querySelector<HTMLElement>(`[data-panel="${shownKey}"]`);
+      if (panel && !reduceMotion) window.setTimeout(() => replay(panel, 'is-arrived'), 550);
     });
 
     // When a voice call is live and the orb has scrolled out of view, keep an
@@ -597,6 +649,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       // Keep the cookie banner out of the way while a conversation is live.
       document.body.classList.toggle('is-talking', kind !== null);
       syncMute();
+      orb.toggleAttribute('data-muted', muted && kind === 'voice');
+      syncTitle();
     };
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => {
@@ -619,6 +673,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       muted = next;
       muteBtn.setAttribute('aria-pressed', String(next));
       muteLabel.textContent = next ? 'Unmute' : 'Mute mic';
+      orb.toggleAttribute('data-muted', next);
+      syncTitle();
       try {
         conversation?.setMicMuted(next);
       } catch {
@@ -706,6 +762,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
         await navigator.clipboard.writeText(text);
         copyBtn.innerHTML =
           '<svg class="tick" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>Copied';
+        copyBtn.querySelectorAll('svg, path').forEach((el) => scoped(el));
         copyBtn.classList.add('is-done');
         buzz(8);
       } catch {
@@ -838,6 +895,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       cancelAnimationFrame(raf);
       orb.style.setProperty('--level', '0');
       setState('idle');
+      if (current && !reduceMotion) replay(orb, 'is-settle');
       syncFloat();
       if (current) {
         try {
@@ -907,6 +965,7 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       e.preventDefault();
       const text = typeInput.value;
       typeInput.value = '';
+      typeForm.classList.remove('has-text');
       void sendText(text);
     });
 
@@ -2407,6 +2466,256 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
     .syllabus__list .module {
       opacity: 1 !important;
       translate: none !important;
+    }
+  }
+  /* ---- Round two: small moments of delight ---------------------------------- */
+
+  /* "Open now": office hours that never close. */
+  .open-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    margin-left: 0.7em;
+    padding-left: 0.8em;
+    border-left: 1px solid var(--gold-hairline);
+    color: var(--muted-on-dark);
+  }
+
+  .open-now__dot {
+    position: relative;
+    width: 0.45em;
+    height: 0.45em;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .open-now__dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: open-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes open-ping {
+    75%,
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  /* Gold sparks when a bootcamp is suggested. */
+  .orb__spark {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    pointer-events: none;
+    rotate: var(--a);
+    animation: spark 900ms cubic-bezier(0.15, 0.8, 0.3, 1) var(--d, 0ms) both;
+  }
+
+  .orb__spark:nth-of-type(3n) {
+    width: 4px;
+    height: 4px;
+    background: #f3dc8a;
+  }
+
+  @keyframes spark {
+    0% {
+      transform: translateY(calc(var(--size) * -0.2)) scale(0.4);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(calc(var(--size) * var(--r) * -1)) scale(1) rotate(90deg);
+      opacity: 0;
+    }
+  }
+
+  .orb.is-celebrate .orb__core {
+    animation: orb-celebrate 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes orb-celebrate {
+    40% {
+      transform: scale(1.08);
+      filter: brightness(1.15);
+    }
+  }
+
+  .orb.is-celebrate .orb__tick--major {
+    animation: tick-flash 900ms var(--ease);
+  }
+
+  @keyframes tick-flash {
+    30% {
+      stroke: #f3dc8a;
+      stroke-width: 3;
+    }
+  }
+
+  /* A gentle settle when a call ends. */
+  .orb.is-settle .orb__core {
+    animation: orb-settle 600ms var(--ease);
+  }
+
+  @keyframes orb-settle {
+    35% {
+      transform: scale(0.92);
+    }
+  }
+
+  /* Muted: the orb dims and slows, so the pause is visible at a glance. */
+  .orb[data-muted] .orb__core {
+    filter: saturate(0.35) brightness(0.8);
+    animation: orb-breathe 4.8s var(--ease) infinite;
+    transition: filter 400ms var(--ease);
+  }
+
+  .orb[data-muted] .orb__ring {
+    opacity: 0.35;
+    transition: opacity 400ms var(--ease);
+  }
+
+  /* Your words in the captions fade in too. */
+  .captions__user.is-new {
+    animation: caption-in 360ms var(--ease);
+  }
+
+  /* Starter chips bow out once used. */
+  .starters.is-leaving {
+    opacity: 0;
+    translate: 0 -6px;
+    transition: opacity 240ms var(--ease), translate 240ms var(--ease);
+  }
+
+  /* Type box: rotating examples, and Ask lights up when there's something to send. */
+  .typebox__input.is-swap::placeholder {
+    animation: placeholder-in 400ms var(--ease);
+  }
+
+  @keyframes placeholder-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .typebox__send {
+    transition: opacity 200ms var(--ease), transform 140ms var(--ease), box-shadow 300ms var(--ease);
+  }
+
+  .typebox:not(.has-text) .typebox__send {
+    opacity: 0.55;
+  }
+
+  .typebox.has-text .typebox__send {
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  }
+
+  /* Transcript: a chevron that turns, and lines that slide in. */
+  .transcript summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .transcript summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .transcript__chev {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    rotate: -45deg;
+    transition: rotate 220ms var(--ease);
+  }
+
+  .transcript[open] .transcript__chev {
+    rotate: 45deg;
+  }
+
+  .transcript__line {
+    animation: caption-in 320ms var(--ease);
+  }
+
+  /* The booking panel glows gold once you arrive from the suggestion. */
+  .match__panel.is-arrived {
+    animation: arrive-glow 1400ms var(--ease);
+  }
+
+  @keyframes arrive-glow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+    25% {
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.9), 0 0 40px rgba(212, 175, 55, 0.25);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+  }
+
+  /* Booking form: a soft shimmer while it loads. */
+  .match__loading {
+    background: linear-gradient(
+        100deg,
+        transparent 30%,
+        rgba(212, 175, 55, 0.08) 50%,
+        transparent 70%
+      )
+      0 0 / 250% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: -150% 0;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    /* Floating End: the live dot turns into a stop square on hover. */
+    .floatend__dot {
+      transition: border-radius 200ms var(--ease), transform 200ms var(--ease);
+    }
+    .floatend:hover .floatend__dot {
+      border-radius: 1px;
+      transform: scale(1.15);
+      animation: none;
+    }
+
+    .transcript summary:hover {
+      color: var(--gold);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .open-now__dot::after,
+    .orb__spark,
+    .orb.is-celebrate .orb__core,
+    .orb.is-celebrate .orb__tick--major,
+    .orb.is-settle .orb__core,
+    .orb[data-muted] .orb__core,
+    .captions__user.is-new,
+    .typebox__input.is-swap::placeholder,
+    .transcript__line,
+    .match__panel.is-arrived,
+    .match__loading {
+      animation: none !important;
+    }
+    .starters.is-leaving,
+    .transcript__chev {
+      transition: none;
     }
   }
 </style>
