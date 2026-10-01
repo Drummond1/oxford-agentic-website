@@ -203,6 +203,11 @@ const team = defineCollection({
       links: z
         .object({ linkedin: z.string().url().optional(), x: z.string().url().optional(), website: z.string().url().optional() })
         .default({}),
+      /**
+       * Which bootcamps this person teaches on. The team page groups by it, so a
+       * Second Brain facilitator is never presented as running the Agentic day.
+       */
+      programmes: z.array(reference('programmes')).default([]),
       /** Set true for the canonical host, which drives Person schema on /about/. */
       isHost: z.boolean().default(false),
       order: z.number().int().default(0),

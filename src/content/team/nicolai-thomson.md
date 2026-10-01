@@ -4,6 +4,9 @@ slug: nicolai-thomson
 role: Founder
 company: Jenesys AI
 order: 2
+programmes: ['oxford-agentic-bootcamp']
+photo: ./photos/nicolai-thomson.jpg
+photoAlt: Portrait of Nicolai Thomson
 links: {}
 bio: >-
   Nicolai Thomson is the founder of Jenesys AI, a multimodal AI platform for

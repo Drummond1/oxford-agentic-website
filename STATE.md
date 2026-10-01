@@ -35,6 +35,10 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   identifiable attendees and were flipped to `consentCleared: true` in-session to build
   the preview — Drummond has seen them ship but has not explicitly confirmed the people
   in them agreed. If anyone objects, flip the flag back; the layout degrades cleanly.
+- **Team page (1 Oct 2026):** grouped by bootcamp via the team `programmes` field; Second
+  Brain facilitators Adrian Shedden, Glenn Smith and Adam Martin added. All seven headshots
+  approved by Drummond on 1 Oct, backgrounds blurred and house-graded, in
+  `src/content/team/photos/`.
 
 ---
 

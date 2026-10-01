@@ -5,6 +5,9 @@ role: Founder and host
 company: Oxford Agentic
 isHost: true
 order: 1
+programmes: ['oxford-agentic-bootcamp', 'second-brain-bootcamp']
+photo: ./photos/drummond-gilbert.jpg
+photoAlt: Portrait of Drummond Gilbert
 links:
   linkedin: https://www.linkedin.com/in/drummondgilbert
 bio: >-

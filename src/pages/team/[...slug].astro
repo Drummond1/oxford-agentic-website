@@ -22,15 +22,28 @@ export async function getStaticPaths() {
   if (!config.features.team) return [];
 
   const members = (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
+  const programmes = (await getCollection('programmes')).sort((a, b) => a.data.order - b.data.order);
+
+  /*
+   * One section per bootcamp, in programme order, holding only the people who
+   * teach on it. Someone on two bootcamps appears in both. A bootcamp with no
+   * one assigned is left out rather than shown empty.
+   */
+  const groups = programmes
+    .map((programme) => ({
+      programme,
+      people: members.filter((m) => m.data.programmes.some((ref) => ref.id === programme.id)),
+    }))
+    .filter((group) => group.people.length > 0);
 
   return [
-    // `slug: undefined` generates the index at /speakers/.
-    { params: { slug: undefined }, props: { members } },
-    ...members.map((member) => ({ params: { slug: member.data.slug }, props: { speaker: member, members } })),
+    // `slug: undefined` generates the index at /team/.
+    { params: { slug: undefined }, props: { members, groups } },
+    ...members.map((member) => ({ params: { slug: member.data.slug }, props: { speaker: member, members, groups } })),
   ];
 }
 
-const { speaker, members } = Astro.props;
+const { speaker, members, groups } = Astro.props;
 const Bio = speaker ? (await render(speaker)).Content : null;
 
 const initials = (name: string) =>
@@ -156,7 +169,7 @@ const profileLinks = speaker
       <Hero
         eyebrow={config.brand.name}
         title="The people who run it"
-        subline={`${memberCountWord} practitioners who build with these tools daily, rather than commentators on them. Each runs part of the day.`}
+        subline={`${memberCountWord} practitioners who build with these tools daily, rather than commentators on them. Each runs part of a day.`}
       />
 
       <section class="band band--cream" aria-labelledby="all">
@@ -165,9 +178,14 @@ const profileLinks = speaker
             The team
           </h2>
 
-          {members.length > 0 ? (
-            <div class="grid grid--3">
-              {members.map((person, i) => (
+          {groups.length > 0 ? (
+            groups.map(({ programme, people }) => (
+            <div class="team-group">
+            <h3 class="team-group__title">
+              <a href={paths.programme(programme.data.slug)}>{programme.data.name}</a>
+            </h3>
+            <div class="grid grid--3 team-grid">
+              {people.map((person, i) => (
                 <a href={paths.teamMember(person.data.slug)} class="card person" data-reveal data-reveal-delay={i * 80}>
                   {person.data.photo && person.data.photoAlt ? (
                     <Image class="person__photo" src={person.data.photo} alt={person.data.photoAlt} width={320} height={320} loading="lazy" />
@@ -184,6 +202,8 @@ const profileLinks = speaker
                 </a>
               ))}
             </div>
+            </div>
+            ))
           ) : (
             <p class="empty">The team for the next cohort is being confirmed.</p>
           )}
@@ -228,6 +248,32 @@ const profileLinks = speaker
 
   .person__name {
     font-size: var(--step-lg);
+  }
+
+  .team-group + .team-group {
+    margin-block-start: clamp(3rem, 2rem + 4vw, 5rem);
+  }
+
+  /* Each bootcamp has four people, which left one orphan on a row of three.
+     Four across on wide screens; the shared grid's breakpoints take over below. */
+  @media (min-width: 62rem) {
+    .team-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .team-group__title {
+    margin-block-end: 1.75rem;
+    font-size: var(--step-xl);
+  }
+
+  .team-group__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .team-group__title a:hover {
+    text-decoration: underline;
   }
 
   .person__role {

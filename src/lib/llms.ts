@@ -77,7 +77,7 @@ export async function publicPages(): Promise<PageRef[]> {
 
   if (showSection('team')) {
     const speakers = await getCollection('team');
-    pages.push({ title: 'Team', path: paths.team(), description: 'The people who run the bootcamp.' });
+    pages.push({ title: 'Team', path: paths.team(), description: 'The people who run the bootcamps.' });
     for (const speaker of speakers) {
       pages.push({
         title: speaker.data.name,

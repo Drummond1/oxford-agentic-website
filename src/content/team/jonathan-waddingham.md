@@ -3,6 +3,9 @@ name: Jonathan Waddingham
 slug: jonathan-waddingham
 role: Product consultant
 order: 4
+programmes: ['oxford-agentic-bootcamp']
+photo: ./photos/jonathan-waddingham.jpg
+photoAlt: Portrait of Jonathan Waddingham
 links:
   linkedin: https://www.linkedin.com/in/jonathanwaddingham
 bio: >-

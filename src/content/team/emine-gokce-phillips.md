@@ -4,6 +4,9 @@ slug: emine-gokce-phillips
 role: Co-founder and CEO
 company: Novaria
 order: 3
+programmes: ['oxford-agentic-bootcamp']
+photo: ./photos/emine-gokce-phillips.jpg
+photoAlt: Portrait of Dr Emine Gokce Phillips
 links:
   website: https://novaria.ai
 bio: >-
