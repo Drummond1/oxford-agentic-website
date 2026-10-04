@@ -125,6 +125,7 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
   "open in Safari/Chrome" and a Copy link button. Buttons: Try again, Type instead. If the visitor allows the mic
   in settings and comes back, the panel clears itself. GA event `mic_help_shown` {problem, in_app}.
   - **iOS fix (4 Oct).** iOS 26 Safari shows ≡ not aA, so the old step failed. iOS Safari keeps a "Don't Allow" until the page reloads, so on iOS the button now says Reload and reloads the page (`retryReloads`); copy names ≡ or aA, then the Settings app route (Apps, Safari, Microphone, Ask).
+  - **Hiss (4 Oct).** Background sound is NOT set on either agent (no source_id). Voice clone noise suspected: similarity_boost 0.8 -> 0.6 on both agents as a quick fix. Revert to 0.8 if likeness suffers; proper fix is a re-clone from clean audio with noise removal.
 - **Guardrail scope (both voice agents).** Blocks only Oxford Agentic's own prices and figures, personal
   details and internal information. A visitor's own data (e.g. prospects' company revenue) is allowed - the
   old wording ended one of Drummond's calls when he mentioned it.
