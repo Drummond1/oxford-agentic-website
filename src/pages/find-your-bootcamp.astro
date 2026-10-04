@@ -277,7 +277,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
 <script>
   import type { Conversation as ElevenLabsConversation } from '@elevenlabs/client';
   import { track } from '../lib/track';
-  import { detectMicEnv, micAskLine, micHelpCopy, micProblemFrom, type MicProblem } from '../lib/mic';
+  import { detectMicEnv, micAskLine, micHelpCopy,
+      retryReloads, micProblemFrom, type MicProblem } from '../lib/mic';
 
   type Kind = 'voice' | 'text';
   type Role = 'user' | 'agent';
@@ -337,6 +338,8 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       micTitle.textContent = title;
       micSteps.textContent = steps;
       micCopy.hidden = problem !== 'inapp';
+      micReload = retryReloads(problem, micEnv);
+      micRetry.textContent = micReload ? 'Reload' : 'Try again';
       micHelp.hidden = false;
       setStatus('');
       // Keep it clear of the cookie banner on small screens.
@@ -346,7 +349,10 @@ const ticks = Array.from({ length: 60 }, (_, i) => i);
       track('mic_help_shown', { problem, in_app: micEnv.inApp || 'no', page: 'finder' });
     }
     const hideMicHelp = () => (micHelp.hidden = true);
-    micHelp.querySelector('[data-mic-retry]')!.addEventListener('click', () => {
+    const micRetry = micHelp.querySelector<HTMLButtonElement>('[data-mic-retry]')!;
+    let micReload = false;
+    micRetry.addEventListener('click', () => {
+      if (micReload) return location.reload();
       hideMicHelp();
       talk.click();
     });

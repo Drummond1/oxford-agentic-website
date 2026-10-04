@@ -91,8 +91,8 @@ export function micHelpCopy(problem: MicProblem, env: MicEnv): { title: string; 
 function deniedSteps({ platform, browser }: MicEnv): string {
   if (platform === 'ios') {
     if (browser === 'safari')
-      return 'Tap aA in the address bar, then Website Settings, and set Microphone to Allow. Then tap Try again.';
-    return `Open the Settings app, find ${browser === 'chrome' ? 'Chrome' : 'this browser'}, turn on Microphone, then come back and tap Try again.`;
+      return 'Tap Reload below, then tap the orb and choose Allow. Still blocked? Tap the ≡ or aA button beside the web address, choose Website Settings and set Microphone to Allow - or in the Settings app go to Apps, Safari, Microphone and choose Ask.';
+    return `Open the Settings app, find ${browser === 'chrome' ? 'Chrome' : 'this browser'}, turn on Microphone, then come back and tap Reload.`;
   }
   if (platform === 'android')
     return 'Tap the icon to the left of the web address, open Permissions, and allow Microphone. Then tap Try again.';
@@ -101,6 +101,14 @@ function deniedSteps({ platform, browser }: MicEnv): string {
   if (browser === 'firefox')
     return 'Click the crossed-out microphone in the address bar and remove the block. Then try again.';
   return "Click the icon to the left of the web address and set Microphone to Allow. Then try again. If it's still blocked, check your computer's privacy settings.";
+}
+
+/**
+ * iOS remembers a "Don't Allow" until the page is reloaded, so asking again
+ * in place fails silently. There, the retry button reloads instead.
+ */
+export function retryReloads(problem: MicProblem, env: MicEnv): boolean {
+  return problem === 'denied' && env.platform === 'ios';
 }
 
 /** Short line shown just before the browser's own permission prompt. */
