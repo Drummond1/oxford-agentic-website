@@ -200,6 +200,27 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-07 (22:35 local cycle) — The About page has been missing "Who runs it" entirely.**
+  - **The bug.** `about.astro` read `getCollection('speakers')`. That collection does not
+    exist - it became `team` when the team page was built - so the read returned nothing,
+    `host` was always undefined, and the whole band was skipped: photo, role, bio and
+    LinkedIn, on the one page the file's own comment calls the entity anchor. Astro logs a
+    warning rather than failing, and CI treats it as noise, so it shipped and stayed shipped.
+  - **How it surfaced.** Not from a probe. The line `The collection "speakers" does not exist
+    or is empty` has been in every build log this loop has run for weeks, and this cycle
+    followed it instead of filtering it out.
+  - **Change.** One read, `speakers` to `team`, with a dated comment. The host band now
+    renders, and `/about/`'s Person node gains jobTitle, description, worksFor and the
+    LinkedIn `sameAs` - before, it was a bare name, @id and url.
+  - **Checks.** Build, links (2,798 across 57 pages) and schema pass, and the warning is gone.
+    Inspected at 375px and 1440px. No other page changes.
+  - **Search Console (fresh, through 4 Oct).** 112 clicks, 1.68k impressions, 6.7%, position
+    15.1. No step-4 title change: `/bootcamps/` is page one with 1.7% CTR, but the one
+    precedent for rewriting a hub title made CTR worse. Detail in the baseline log.
+  - **Local debris, untouched.** `src/content/team/` holds Finder duplicates
+    (`adam-martin 2.md` and two more, plus seven duplicated photos). All untracked, none on
+    the live site, and the build ignores them. Left for Drummond rather than tidied away.
+
 - **2026-09-30 (session, Drummond's request) — The Google Ads account's own tag is now on
   every page.**
   - **Why.** The AW tag inside GTM (`AW-18382942196`) belongs to a different Google Ads

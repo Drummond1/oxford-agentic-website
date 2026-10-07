@@ -771,3 +771,41 @@ the title on a hunch.
   still left alone on principle.
 - New rows: `ai bootcamp 1 dag` (48.0), `second brain talent` (73.0). The Oxfordshire and
   Hertfordshire services cluster continues, unchanged in intent.
+
+---
+
+## 2026-10-07 — Reading through 4 October
+
+**All time (22 Jul - 4 Oct): 112 clicks, 1.68k impressions, CTR 6.7%, average position 15.1.**
+Previous (through 23 Sept): 95 / 1.37k / 6.9% / 16.x. Position keeps improving; clicks are
+growing roughly in line with impressions.
+
+### Pages (clicks / impressions / CTR / position)
+
+| Page | Now | Through 21 Sept |
+|---|---|---|
+| `/` | 70 / 899 / 7.8% / 5.6 | 58 / 682 / 8.5% / 5.5 |
+| `/bootcamps/second-brain-bootcamp/` | 8 / 94 / 8.5% / 6.2 | 4 / 63 / 6.3% / 7.6 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 6 / 181 / 3.3% / 9.2 | 2 / 137 / 1.5% / 9.9 |
+| `/team/` | 6 / 180 / 3.3% / 14.2 | 4 / 131 / 3.1% / 15.2 |
+| `/events/oxford-agentic-bootcamp-cohort-2/` | 5 / 187 / 2.7% / 6.9 | 5 / 166 / 3% / 6.4 |
+| `/guides/` | 3 / 163 / 1.8% / 14.8 | 3 / 137 / 2.2% / 15.1 |
+| `/events/` | 2 / 152 / 1.3% / 10.0 | 2 / 121 / 1.7% / 10.6 |
+| `/bootcamps/` | 2 / 117 / 1.7% / 6.7 | 2 / 63 / 3.2% / 7.1 |
+
+### The hub pages, and why their titles were left alone again
+
+`/bootcamps/` is page one (6.7) on 117 impressions with 1.7% CTR, and its title is the generic
+"Bootcamps - Oxford Agentic". That is the same shape as the events hub before its 13 Sept
+title change - which is exactly the reason not to repeat it: **`/events/` CTR went 2% to 1.3%
+after that rewrite**, while impressions grew. Both hubs surface on brand and navigational
+queries where the homepage takes the click; their low CTR looks structural, not fixable by
+wording. Only 21 of `/bootcamps/`'s 117 impressions carry a visible query, and two of the
+three are Saïd's programme name and a query the homepage already wins at 3.4.
+
+### Movement worth noting
+
+- **The Agentic Bootcamp programme page more than doubled its CTR** (1.5% to 3.3%) while
+  holding position 9.2. Nothing was done to that page; the likeliest cause is Cohort 3 moving
+  to a date further out, so the page sells an available day rather than a sold-out one.
+- Second Brain's programme page is the best-converting page after the homepage (8.5%).

@@ -5,6 +5,24 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-07 (22:35 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I learn to build AI workflows or build software with AI, which bootcamp | **No** | Zero To Mastery, Course Report, TripleTen, USF, WorkForce Institute, Maven (Hyperskill and AI Builder), Coursiv, Metana |
+| second brain bootcamp Oxford October 2026, book | **Yes**: #1 Cohort 1 event, #2 programme page, #3 Events, #4 homepage, #5 Cohort 3 | Luma's London Loop calendar (lists the day at £325), buildingasecondbrain.com |
+
+**Reading.**
+- **The "which bootcamp" candidate is weaker than it looked on 25 Sept.** Re-run with the same
+  wording, the field is career-change AI engineering bootcamps (ML engineer, 10-14 weeks) and
+  Maven's non-technical builder course. The searcher is choosing a career path, not a day in
+  Oxford. Shelved rather than written: it would have been a branded navigation page dressed
+  as a guide.
+- Second Brain is cited five times for its own buyer question, two weeks out from the day.
+- **Perplexity's copies of `/events/` and the cohorts guide still say Cohort 3 is 15 October.**
+  The live pages say 19 November and the page title derives from `startDate`, so this is their
+  cache, not our error. Checked with curl, 7 Oct.
+
 ## 2026-09-25 (19:10 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

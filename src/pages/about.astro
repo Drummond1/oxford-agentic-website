@@ -14,8 +14,14 @@ import { ogPathFor } from '../lib/og';
  * schema live canonically. AI engines triangulate entities across sources;
  * this page is the anchor.
  */
-const speakers = await getCollection('speakers');
-const host = speakers.find((s) => s.data.isHost);
+// The collection is `team`, and has been since the team page replaced the old
+// speakers list. This read asked for `speakers`, which does not exist, so it
+// silently returned nothing: `host` was always undefined and the whole "Who
+// runs it" band - photo, role, bio, LinkedIn - never rendered on the live page.
+// Astro logs it as a warning rather than failing the build, which is why it
+// survived. Found 7 Oct 2026.
+const team = await getCollection('team');
+const host = team.find((s) => s.data.isHost);
 const HostBio = host ? (await render(host)).Content : null;
 
 const venuePhotos = await getPhotos('venue');
