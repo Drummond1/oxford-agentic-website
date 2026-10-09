@@ -24,14 +24,29 @@ const team = await getCollection('team');
 const host = team.find((s) => s.data.isHost);
 const HostBio = host ? (await render(host)).Content : null;
 
+/*
+ * "Who runs it" is off, Drummond's call on 9 Oct 2026: a single founder bio on
+ * the entity page made the whole thing read as one person's operation, and the
+ * day is taught by several. The band below is kept, not deleted, so turning it
+ * back on is one word. The Person node in the schema stays either way - that is
+ * entity wiring for search and answer engines, not a claim on the page.
+ */
+const SHOW_HOST_BAND = false;
+
 const venuePhotos = await getPhotos('venue');
 const rhythm = createRhythm('cream');
-const bands = { story: rhythm.next(), host: rhythm.next(), venue: venuePhotos.length > 0 ? rhythm.next() : null };
+// A hidden band must not take a turn in the alternation, or the two bands either
+// side of it come out the same colour.
+const bands = {
+  story: rhythm.next(),
+  host: SHOW_HOST_BAND ? rhythm.next() : null,
+  venue: venuePhotos.length > 0 ? rhythm.next() : null,
+};
 ---
 
 <Base
   pageTitle="About"
-  description={`Who runs ${config.brand.name}, why it exists, and where in Oxford the bootcamps happen.`}
+  description={`Who is behind ${config.brand.name}, why it exists, and where in Oxford the bootcamps happen.`}
   path={paths.about()}
   ogImage={ogPathFor(paths.about())}
   schemaNodes={[
@@ -101,7 +116,7 @@ const bands = { story: rhythm.next(), host: rhythm.next(), venue: venuePhotos.le
   </section>
 
   {
-    host && (
+    bands.host && host && (
       <section class:list={['band', `band--${bands.host}`]} aria-labelledby="host">
         <div class="wrap wrap--narrow">
           <div class="section-head" data-reveal>

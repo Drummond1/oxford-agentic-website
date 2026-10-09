@@ -200,6 +200,23 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-09 (Drummond's request) — "Who runs it" taken off the About page.**
+  - **Why.** Drummond: the site should read as a team, not one person's operation. The band
+    had only been visible since 7 Oct, when the broken `speakers` collection read was fixed.
+  - **Change.** `SHOW_HOST_BAND = false` in `about.astro`, with a dated note. The markup is
+    kept, not deleted, so it is one word to turn back on. Meta description now says "Who is
+    behind Oxford Agentic" rather than "Who runs".
+  - **Caught while shipping.** The hidden band was still taking a turn in the colour rhythm,
+    so the story and venue bands both came out cream. Fixed: a band that does not render no
+    longer consumes a slot.
+  - **Deliberately kept.** The Person node in `/about/`'s schema. It is entity wiring for
+    search and answer engines, not a visible claim, and removing it would weaken how the
+    business is identified. Flagged to Drummond rather than decided silently.
+  - **Checks.** Build, links (2,798 across 57 pages) and schema pass. Bands alternate again
+    (dark, cream, dark, gold). Inspected at 375px and 1440px, no console errors.
+  - **Left alone.** The Coding Bootcamp's own "Who runs it?" FAQ already names three people,
+    so it reads as a team already.
+
 - **2026-10-07 (22:35 local cycle) — The About page has been missing "Who runs it" entirely.**
   - **The bug.** `about.astro` read `getCollection('speakers')`. That collection does not
     exist - it became `team` when the team page was built - so the read returned nothing,
