@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Cohort 3 is already listed on two third-party directories, one of them wrong** - found
+  11 Oct 2026 by answer-engine probe, not by us submitting anything.
+  - `aieventlist.ai/en/events/oxford-agentic-bootcamp-oxford-2026-11/` - **accurate**: 19 Nov,
+    Worcester College, the four facilitators, and it states we are independent of the
+    University. No action needed; good coverage.
+  - `foundercal.com/events/the-oxford-agentic-bootcamp-fFS9i7ABiGVWPAC` - **says the city is
+    London** ("Workshop in London", "City: London gb") while the venue line says Worcester
+    College. It also publishes the price band and gives the postcode as OX1 2JL.
+  - **Both directories have the postcode wrong (OX1 2JL).** Worcester College's own site
+    gives OX1 2HB, which is what our event files say. Ours is right; do not "correct" it.
+  - Needs: Drummond's decision on asking foundercal for a correction. Nothing contacted.
+
+- **EnSpire Oxford "What's On"** (https://enspire.ox.ac.uk/whats-on) - found 11 Oct 2026.
+  - Oxford's enterprise community calendar. Currently lists the Oxford Moonshot, Oxford
+    Climate Ventures, the Saïd Entrepreneurship Forum and the Oxfordshire business
+    Marketplace. None of our events appear.
+  - **Not checked:** whether it accepts third-party listings, any cost, or editorial policy.
+  - Needs: Drummond's decision. Nothing contacted.
+
 - **whatisai.co.uk - "Best AI Courses for Business Leaders in 2026"** - found 15 Sept 2026.
   - URL: https://whatisai.co.uk/best-ai-courses-for-business-leaders/ (loads, 15 Sept 2026).
     Cited #3 by Perplexity for "best AI course for business leaders in Oxford", the only

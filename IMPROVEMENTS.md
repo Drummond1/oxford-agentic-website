@@ -200,6 +200,29 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-11 (00:47 local cycle, first firing of the restored schedule) — The About page now
+  says the business is independent of the University.**
+  - **The gap.** "Oxford Agentic is independent - no affiliation with the University of Oxford"
+    was on the homepage FAQ, the privacy page and `llms.txt`, but not on `/about/`, the page
+    whose own comment calls it the entity anchor. A third-party event directory
+    (aieventlist.ai) had taken the trouble to state it about us before we stated it there.
+  - **Change.** One paragraph in the story section, wording copied verbatim from the homepage
+    FAQ so the two cannot drift, with a dated note explaining why.
+  - **Checks.** Build, links (2,798 across 57 pages) and schema pass. Inspected at 375px and
+    1440px, no console errors. The only em dashes in the built page are in JavaScript
+    comments, not copy.
+  - **Search Console (fresh, through 6 Oct).** 116 clicks, 1.73k impressions, 6.7%, position
+    14.9. No step-4 change; see the baseline log. `/bootcamps/` CTR rose on its own from 1.7%
+    to 2.4%, which supports the 7 Oct decision not to rewrite its title.
+  - **Off-page, found by probe rather than by submitting anything:** two directories already
+    list Cohort 3. One is accurate; foundercal calls it a London workshop. Both give Worcester
+    College's postcode as OX1 2JL - **the college's own site says OX1 2HB, which is what our
+    files say**, so ours is right and should not be "corrected" to match them. EnSpire Oxford's
+    What's On calendar lists no Oxford Agentic events. Both added to the review list.
+  - **Deliberate deviation, flagged:** the rule says do not commit when nothing ships. The
+    evidence above is committed anyway, because holding it in a scratchpad has already lost a
+    cycle's notes once. The site change is the independence paragraph; the rest is the record.
+
 - **2026-10-09 (Drummond's request) — "Who runs it" taken off the About page.**
   - **Why.** Drummond: the site should read as a team, not one person's operation. The band
     had only been visible since 7 Oct, when the broken `speakers` collection read was fixed.

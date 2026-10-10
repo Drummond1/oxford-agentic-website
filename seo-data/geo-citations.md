@@ -5,6 +5,26 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-11 (00:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how do I stop re-explaining my business to ChatGPT every time | **No** | LinkedIn posts (x4), Reddit r/smallbusinessuk and r/canadasmallbusiness, BetaNews, Substack, justinmckelvey, Canny |
+| build internal tools without a developer UK, learn in a day | **No** | Hostinger, Superblocks, Blink, Softr, Taskade, skopx, NoCode.Tech, Rocket, Vybe, Bolt |
+| Oxford AI events and workshops November 2026 | **Partly**: not on our own pages, but two directories list Cohort 3 | EnSpire Oxford What's On, Oxford Institute for Ethics in AI, Oxford AI Meetup via createwith, OeRC AI Competency Centre, Medical Sciences |
+
+**Reading.**
+- **The ChatGPT re-explaining question is the Second Brain buyer's own words**, and the field
+  is low-authority: LinkedIn carousels, two Reddit threads and tool-settings tips. It looks
+  winnable. It is **not acted on**, because the standing decision says Second Brain's
+  constraint is demand rather than ranking, and the site already carries eight Second Brain
+  guides. Recorded so a later cycle can reconsider if that decision changes.
+- Internal tools without a developer is owned by no-code vendors selling the tool. The
+  searcher wants software this afternoon, not a day in Oxford. Not converting.
+- **The Oxford events question found us through other people's directories**, not our pages.
+  See `outreach/review-list.md`: one listing is accurate, one says the bootcamp is in London,
+  and both have Worcester College's postcode wrong.
+
 ## 2026-10-07 (22:35 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

@@ -809,3 +809,29 @@ three are Saïd's programme name and a query the homepage already wins at 3.4.
   holding position 9.2. Nothing was done to that page; the likeliest cause is Cohort 3 moving
   to a date further out, so the page sells an available day rather than a sold-out one.
 - Second Brain's programme page is the best-converting page after the homepage (8.5%).
+
+---
+
+## 2026-10-11 — Reading through 6 October
+
+**All time: 116 clicks, 1.73k impressions, CTR 6.7%, average position 14.9.** Two days more
+than the 7 Oct reading (112 / 1.68k / 6.7% / 15.1). Everything drifted the right way.
+
+| Page | Now | Through 4 Oct |
+|---|---|---|
+| `/` | 71 / 934 / 7.6% / 5.6 | 70 / 899 / 7.8% / 5.6 |
+| `/bootcamps/second-brain-bootcamp/` | 9 / 100 / 9% / 6.1 | 8 / 94 / 8.5% / 6.2 |
+| `/team/` | 6 / 184 / 3.3% / 14.1 | 6 / 180 / 3.3% / 14.2 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 6 / 182 / 3.3% / 9.2 | 6 / 181 / 3.3% / 9.2 |
+| `/events/oxford-agentic-bootcamp-cohort-2/` | 5 / 189 / 2.6% / 6.9 | 5 / 187 / 2.7% / 6.9 |
+| `/bootcamps/` | 3 / 123 / 2.4% / 6.8 | 2 / 117 / 1.7% / 6.7 |
+| `/events/` | 2 / 156 / 1.3% / 9.9 | 2 / 152 / 1.3% / 10.0 |
+
+**No step-4 change.** No page shows a gap that is both valuable and fixable: the low-CTR
+impressions remain the excluded Oxfordshire cluster, brand queries the homepage already wins,
+and queries Google anonymises. `/bootcamps/` CTR rose from 1.7% to 2.4% on its own, which is
+another reason not to have rewritten its title on 7 Oct.
+
+**Worth watching:** the Cohort 2 page still draws 189 impressions at position 6.9 for a day
+that ran in September. It now reads as a record and points at Cohort 3, which is the right
+shape for that traffic.
