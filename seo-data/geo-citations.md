@@ -5,6 +5,19 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-11 (12:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| second brain bootcamp vs agentic AI bootcamp, which first | **Yes**: #1 `what-second-brain-actually-means`, #2 `when-ai-executive-cohorts-run`, #5 Second Brain programme page | LinkedIn posts, pickbits.ai, Timeback, Retention AI, buildingasecondbrain.com, Leland |
+| what a good AI workflow looks like for a small business owner | **No** | Lilach Bullock (x2), Layer3 (x2), LinkedIn, HoneyBook, Techpresso, OpenAI PDF, Flowlu, Housecall Pro |
+
+**Reading.**
+- **We own the "which of the two" question outright**, three of the top five. That is the
+  pairing guide doing its job, and it is the strongest GEO position the site holds.
+- The small-business workflow question is a crowded affiliate and vendor field with no clear
+  owner, but the searcher wants a template today rather than a day in Oxford. Not converting.
+
 ## 2026-10-11 (06:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

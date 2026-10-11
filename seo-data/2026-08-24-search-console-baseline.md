@@ -835,3 +835,32 @@ another reason not to have rewritten its title on 7 Oct.
 **Worth watching:** the Cohort 2 page still draws 189 impressions at position 6.9 for a day
 that ran in September. It now reads as a record and points at Cohort 3, which is the right
 shape for that traffic.
+
+---
+
+## 2026-10-11 (12:47) — Reading through 9 October
+
+**125 clicks, 1.82k impressions, CTR 6.9%, average position 14.6**, up from 116 / 1.73k /
+6.7% / 14.9 through 6 Oct.
+
+| Page | Now | Through 6 Oct |
+|---|---|---|
+| `/` | 76 / 990 / 7.7% / 5.6 | 71 / 934 / 7.6% / 5.6 |
+| `/bootcamps/second-brain-bootcamp/` | 9 / 109 / 8.3% / 6.1 | 9 / 100 / 9% / 6.1 |
+| `/events/oxford-second-brain-bootcamp-cohort-1/` | **6 / 89 / 6.7% / 7.8** | 3 / 77 / 3.9% / 8.3 |
+| `/team/` | 6 / 193 / 3.1% / 14.0 | 6 / 184 / 3.3% / 14.1 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 6 / 189 / 3.2% / 9.5 | 6 / 182 / 3.3% / 9.2 |
+| `/about/` | 2 / 92 / 2.2% / 11.3 | not in top 10 |
+
+**No step-4 change.** Same three explanations as every recent cycle: the Oxfordshire cluster
+(now spreading to Salford, Bedfordshire and Buckinghamshire) is excluded by decision, brand
+queries are won by the homepage, and the rest is anonymised.
+
+### Two things worth noticing
+
+- **The Second Brain event page doubled its clicks and its CTR** (3 to 6 clicks, 3.9% to
+  6.7%) ten days out from the day. That is the booking window opening, not an SEO change.
+- **Cowork and Codex queries have started appearing**: `codex or cowork` 5.0,
+  `claude cowork vs codex` 10.0, `codex cowork` 18.0, `claude code vs cowork` 93.0. The tools
+  guide is beginning to rank for its own subject, which is the guide that now carries the
+  Coding Bootcamp link.

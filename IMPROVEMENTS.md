@@ -200,6 +200,28 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-11 (12:47 local cycle) — The guide parked this morning is live: in-house day or
+  open cohort.**
+  - **Evidence.** The 06:47 probe on "AI training away day for a leadership team UK" returned
+    ten pages and every one was an in-house trainer selling a private day. Nobody writes the
+    comparison, because nobody selling only one side of it wants to. The question is
+    CONVERTING: it is the group-seat buyer, which is the fastest route to filling a cohort.
+  - **What it says.** What an in-house day is genuinely better at (alignment across a team,
+    your own systems, confidential work, one date), what a cohort is better at (no organising,
+    the other people in the room, honest value below about four people, being out of the
+    building), and the question that settles it: are you buying alignment or capability.
+    It ends by saying plainly that if you need alignment across a large team, buy the
+    in-house version from someone who does it well.
+  - **Nothing invented.** The team paragraph uses the published wording: teams welcome, two
+    people should bring the same task, email hello@ to arrange. No private day is implied,
+    because none is offered. No prices, no competitor claims, no quotes.
+  - **Checks.** Build, links (2,851 across 58 pages) and schema pass. Capsule 60 words,
+    description 151 chars, seoTitle 42. The page is 375px wide at 375px with the breadcrumb
+    truncating, which is this morning's fix doing its job on the page that found the bug.
+  - **Search Console (fresh, through 9 Oct).** 125 clicks, 1.82k impressions, 6.9%, position
+    14.6. No step-4 change; see the baseline log for the two movements worth watching.
+  - **Guides this week:** 1 of 3.
+
 - **2026-10-11 (06:47 local cycle) — Long breadcrumbs were making 32 pages scroll sideways on
   a phone.**
   - **The bug.** `.crumbs__item--current span` truncates at 34 characters, but it never got
