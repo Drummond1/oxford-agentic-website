@@ -76,6 +76,17 @@ const { trail } = Astro.props;
 
   /* The current page is named in full by the <h1> directly below, so the crumb
      stays on one line rather than wrapping a long guide title over three. */
+
+  /* The span below truncates, but it never got the chance: as a flex item the
+     <li> defaults to min-width:auto, so it refused to shrink below the full
+     width of the untruncated title and pushed the document wider than the
+     viewport. On a 375px screen the public-sector guide made the page 742px
+     wide - a sideways scroll on every long-titled page. min-width:0 lets the
+     item shrink, and the ellipsis then does its job. Found 11 Oct 2026. */
+  .crumbs__item--current {
+    min-width: 0;
+  }
+
   .crumbs__item--current span {
     display: inline-block;
     max-width: min(100%, 34ch);

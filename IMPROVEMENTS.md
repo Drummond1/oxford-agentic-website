@@ -200,6 +200,32 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-11 (06:47 local cycle) — Long breadcrumbs were making 32 pages scroll sideways on
+  a phone.**
+  - **The bug.** `.crumbs__item--current span` truncates at 34 characters, but it never got
+    the chance. As a flex item the `<li>` around it defaults to `min-width: auto`, so it
+    refused to shrink below the full width of the untruncated title and pushed the document
+    wider than the viewport. On a 375px screen the public-sector guide rendered a **742px
+    wide document**: a real sideways scroll, on the format Google measures.
+  - **Scale.** 32 of 57 pages carry a breadcrumb longer than the truncation point, including
+    most guides and every event page. This was not new; it has been shipping for as long as
+    the long titles have.
+  - **How it surfaced.** Writing a new guide and measuring the page at 375px, which is the
+    inspection step the rules require. The guide was the messenger, not the cause: an
+    existing page was worse than the new one.
+  - **Change.** One declaration, `min-width: 0` on the current crumb, with a dated comment.
+    Mobile now truncates with an ellipsis and the document is 375px wide; desktop still shows
+    the title in full.
+  - **Checks.** Build, links (2,798 across 57 pages) and schema pass. Measured before and
+    after on the worst page, a guide, an event page and the homepage; inspected at 375px and
+    1440px; no console errors.
+  - **Parked, not dropped.** The guide that found this - in-house day versus open cohort, the
+    group-seat buyer's question, where every competing page is an in-house trainer selling a
+    private day - is written and held in the scratchpad. It ships next cycle, alone. Two
+    unrelated changes in one commit would have made either one harder to revert.
+  - **Search Console: attempted, unavailable.** The Chrome extension was blocked from reading
+    the page on three attempts. The 00:47 reading (through 6 Oct) stands; nothing estimated.
+
 - **2026-10-11 (00:47 local cycle, first firing of the restored schedule) — The About page now
   says the business is independent of the University.**
   - **The gap.** "Oxford Agentic is independent - no affiliation with the University of Oxford"

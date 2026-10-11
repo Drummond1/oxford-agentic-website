@@ -5,6 +5,25 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-11 (06:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to prepare for a hands-on AI workshop, what to bring | **No** | Infomedia, Dennis Yu, UNSW (PDF), aitrainingforteams, harness.institute, an Eventbrite listing, a GitHub course repo, Gather Shot, SmarterX, NN/g |
+| AI training away day for a leadership team UK | **No** | ReadyToday, Ignite AI Solutions, AI Accelerator, Powerhouse Digital, Coaley Peak (x3), NKD Agility |
+| agentic AI for professional services, accountants and lawyers | **No** | Thomson Reuters (x4), Wolters Kluwer (x4), Harvard Law corpgov, Codebridge |
+
+**Reading.**
+- **The away-day question is the group-seat buyer, and every page in it is an in-house
+  trainer selling a private day.** Nobody writes the honest comparison between buying a
+  private day and sending two or three people to an open cohort, which is the actual choice
+  and the one we can answer truthfully from published copy. Strong candidate: a guide was
+  written this cycle and **parked**, not because of the topic but because shipping it
+  surfaced a layout bug that mattered more (see IMPROVEMENTS). It ships next cycle.
+- Professional services is owned by Thomson Reuters, Wolters Kluwer and Harvard. Not winnable.
+- Workshop preparation is winnable but weakly converting: most people searching it have
+  already booked something, usually with someone else.
+
 ## 2026-10-11 (00:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |
