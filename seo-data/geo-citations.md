@@ -5,6 +5,25 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-12 (00:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is it worth paying for AI training or can I just learn it myself | **No** | Noble Desktop (x2), GUVI, skillscouter, bestaicertifications, SNHU, LinkedIn, learn.org, learnsignal |
+| what can you realistically build in one day with AI, no coding | **No** | Bolt, Lovable, QuantumByte, Softr, Zapier, aibuilderclub, newly.app |
+| do I need to know Python to build AI agents for my business | **No** | Upwork, ciela.ai, Lilach Bullock, Scrimba, KnowledgeHut, Albato, UiPath, Zapier |
+
+**Reading.**
+- **The one-day scope question is the strongest candidate seen in a fortnight**, and a guide
+  shipped this cycle. Every source in it is a no-code vendor whose answer is its own builder,
+  so the scope question itself — what finishes in a day, what does not — is unowned. It is
+  also CONVERTING: it is the question a buyer asks the week before deciding.
+- "Worth paying for training" is owned by course directories and affiliate roundups ranking on
+  breadth of listings. Not winnable with one guide, and the searcher is mostly looking for a
+  free alternative. No action.
+- The Python question is winnable in principle but weakly converting: the people asking it want
+  to build agents themselves, not spend a day in Oxford. Watch, do not write.
+
 ## 2026-10-11 (12:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

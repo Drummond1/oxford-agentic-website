@@ -200,6 +200,30 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-12 (00:47 local cycle) — New guide: what you can actually build in one day with AI.**
+  - **Evidence.** This cycle's probe on "what can you realistically build in one day with AI
+    no coding" returned ten sources and every one was a no-code vendor selling its own
+    builder: Bolt, Lovable, Softr, Zapier, QuantumByte, aibuilderclub, newly.app. Nobody
+    answers the scope question without a product attached to the answer. CONVERTING: it maps
+    directly onto the one-day promise, and someone asking it is deciding whether a day is
+    worth their time.
+  - **Not a near-duplicate.** Three existing guides sit near it and none answers it.
+    `how-to-choose-your-first-agentic-task` is which task to pick, `scout-drafter-reviewer-pattern`
+    is the shape of the workflow, `what-is-an-agentic-bootcamp` is the format of the day.
+    This one is about scope and limits — what finishes inside a day and what cannot — and
+    links to all three rather than restating them.
+  - **Nothing invented.** The three-pass structure comes from the published agenda, the three
+    deliverables from the published `whatYoullBuild`, and the task examples from the published
+    Cohort 1 FAQ, which says those tasks *surfaced in the room* — the guide says the same and
+    claims no outcomes. The four things that do not fit are argued, not sourced to anyone.
+  - **Checks.** Build, links (2,911 across 59 pages) and schema pass. Capsule 59 words,
+    description 149 chars, seoTitle 37. Inspected at 375px (scrollWidth 375, no overflow,
+    breadcrumb truncating) and at desktop.
+  - **Search Console (returned, no new data).** Still through 9 October: 125 clicks, 1.82k
+    impressions, 6.9% CTR, position 14.6 — identical to the 11 Oct 12:47 reading, so no
+    CTR work was possible and rule 5 applied.
+  - **Guides this week.** 1 of 3 (week of Mon 12 Oct).
+
 - **2026-10-11 (12:47 local cycle) — The guide parked this morning is live: in-house day or
   open cohort.**
   - **Evidence.** The 06:47 probe on "AI training away day for a leadership team UK" returned

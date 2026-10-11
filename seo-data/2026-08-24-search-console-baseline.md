@@ -864,3 +864,15 @@ queries are won by the homepage, and the rest is anonymised.
   `claude cowork vs codex` 10.0, `codex cowork` 18.0, `claude code vs cowork` 93.0. The tools
   guide is beginning to rank for its own subject, which is the guide that now carries the
   Coding Bootcamp link.
+
+## Update — 12 October 2026, 00:50 BST
+
+Search Console returned, but with **no new data**. Totals still through 9 October:
+**125 clicks · 1.82k impressions · 6.9% CTR · average position 14.6** — identical to the
+11 Oct 12:47 reading, and the top pages unchanged (`/` 76/990/7.7%/5.6 ·
+`/bootcamps/second-brain-bootcamp/` 9/109/8.3%/6.1 · `/team/` 6/193/3.1%/14.0 ·
+`/bootcamps/oxford-agentic-bootcamp/` 6/189/3.2%/9.5 · the Second Brain event page
+6/89/6.7%/7.8 · `/events/` 2/162/1.2%/9.7 · `/about/` 2/92/2.2%/11.3).
+
+Nothing new to diagnose, so no CTR work was possible this cycle. Google's reporting lag is
+two to three days; a reading taken twice inside twelve hours will usually show this.
