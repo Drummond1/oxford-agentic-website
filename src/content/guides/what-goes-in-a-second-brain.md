@@ -11,12 +11,14 @@ capsule: >-
   archive - and credentials and other people's personal data stay out of it.
 author: drummond-gilbert
 publishDate: "2026-08-06T09:00:00+01:00"
-updatedDate: "2026-08-06T09:00:00+01:00"
+updatedDate: "2026-10-13T01:00:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
 
 "Build a second brain" is easy to nod at and hard to start, because the obvious next question has no obvious answer: what do you actually put in it? Dump everything and you have a worse search engine. Put in too little and the answers stay generic. The useful middle is narrower and more specific than most people expect.
+
+If the term itself is doing too much work, [what a second brain actually means](/guides/what-second-brain-actually-means/) settles that first.
 
 Five kinds of context earn their place.
 

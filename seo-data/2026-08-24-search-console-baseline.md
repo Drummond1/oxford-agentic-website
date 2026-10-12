@@ -989,3 +989,28 @@ CTR diagnosis is not available to this site yet.** Every apparent CTR gap on the
 been opened and closed with raw rows. A future cycle should not re-open one unless the named
 share rises above roughly a quarter of impressions, or total impressions grow enough to pull
 more queries above the anonymisation threshold.
+
+## Update — 13 October 2026, 00:50 BST
+
+Search Console returned, **no new data** - identical to the 18:47 reading yesterday
+(126 clicks, 1.85k impressions, same page figures, "last update 7.5 hours ago"). Still
+through 10 October.
+
+Nothing to act on under rule 4, and nothing left to diagnose. Every page on the site with
+meaningful impressions has now been opened and closed:
+
+| page | impressions | CTR | position | verdict |
+|---|---|---|---|---|
+| `/` | 1,005 | 7.6% | 5.8 | healthy |
+| `/bootcamps/second-brain-bootcamp/` | 110 | 9.1% | 6.1 | healthy, best on site |
+| `/team/` | 200 | 3.0% | 14.5 | position 14.5 explains it; page 2 |
+| `/bootcamps/oxford-agentic-bootcamp/` | 189 | 3.2% | 9.5 | **closed** - 90% anonymised |
+| `/events/oxford-second-brain-bootcamp-cohort-1/` | 90 | 6.7% | 7.7 | healthy |
+| `/events/oxford-agentic-bootcamp-cohort-2/` | 192 | 2.6% | 6.9 | **closed** - 92% anonymised |
+| `/guides/` | 174 | 1.7% | 14.5 | hub, position 14.5 |
+| `/bootcamps/` | 139 | 2.2% | 6.6 | **closed** - 82% anonymised |
+| `/events/` | 162 | 1.2% | 9.7 | hub, title already burnt once |
+
+The standing instruction holds: do not re-open one of these unless the named query share
+rises above roughly a quarter of impressions, or total impressions grow enough to pull more
+queries above Google's anonymisation threshold.

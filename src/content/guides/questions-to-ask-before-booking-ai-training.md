@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-08-10T09:00:00+01:00"
+updatedDate: "2026-10-13T01:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -25,6 +25,8 @@ None of them are trick questions. A provider who has thought about their format 
 The single most useful question, and the one that separates formats faster than any other. Answers range from "notes and a framework" through "a demo you watched someone build" to "a workflow of your own, running". All three are legitimate products. Only you know which one you are paying for, so make them say which it is.
 
 If the answer is a list of things you will "understand" or "be able to", that is a knowledge product, not a build one.
+
+The word itself is the problem. "Hands-on" covers [four quite different formats](/guides/what-hands-on-ai-training-actually-means/), and this question is usually what settles which one you are being sold.
 
 ## 2. Whose work do I build against - mine, or a case study?
 

@@ -11,7 +11,7 @@ capsule: >-
   next step is not another course; it is one built workflow.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-08-24T09:00:00+01:00"
+updatedDate: "2026-10-13T01:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -45,5 +45,7 @@ None of this requires code, and none of it repeats what the programme taught. It
 ## The honest sequencing
 
 If you have not done any structured AI learning, [an executive programme or a good course](/guides/ai-bootcamp-vs-course-vs-exec-education/) is a defensible place to start - the frame matters. If you have finished one, the highest-return next step is not a second course. It is turning what you know into one working thing, and taking the pattern home.
+
+If your question is when rather than whether, [how the cohort calendar usually falls](/guides/when-ai-executive-cohorts-run/) is worth a look before you plan around it.
 
 That is the day the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is built to be: one day in Oxford, a small room of senior peers, your own real task, and a working agentic workflow by the time you leave.

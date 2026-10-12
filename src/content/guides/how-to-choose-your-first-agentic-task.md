@@ -11,12 +11,14 @@ capsule: >-
   thinking, and anything a person has to stand behind.
 author: drummond-gilbert
 publishDate: "2026-08-04T09:00:00+01:00"
-updatedDate: "2026-08-16T09:00:00+01:00"
+updatedDate: "2026-10-13T01:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
 
 "Bring one real task from your own work" is easy to say and quietly difficult to do. Asked cold, most people either reach for the hardest problem in their business - too big to build in a day - or something so trivial that automating it proves nothing. The task you choose decides what you walk away with, so it is worth choosing deliberately.
+
+If the format itself is new to you, [what an agentic bootcamp actually is](/guides/what-is-an-agentic-bootcamp/) covers the shape of the day the task is for.
 
 Five tests, in the order they matter.
 

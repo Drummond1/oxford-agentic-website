@@ -209,6 +209,42 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-13 (00:47 local cycle) — Eleven of twenty-nine guides had no inbound links. The
+  five that matter most now do.**
+  - **Evidence.** Yesterday's fix covered the two newest guides. Auditing the whole library
+    showed the problem is a third of it: **11 of 29 guides had zero inbound contextual links**,
+    reachable only from the hub and the generated "More guides" block. Among them were
+    `what-is-an-agentic-bootcamp`, the definitional page for the flagship product, and
+    `what-second-brain-actually-means` and `when-ai-executive-cohorts-run`, **both of which
+    Perplexity already cites** at #1 and #2 for the second-brain pairing question.
+  - **What changed.** Five links, one each, placed where the argument already went that way:
+    `after-the-ai-executive-programme` → `when-ai-executive-cohorts-run` (sequencing);
+    `questions-to-ask-before-booking-ai-training` → `what-hands-on-ai-training-actually-means`
+    (reciprocating yesterday's link, and question 1 is literally the hands-on test);
+    `how-to-choose-your-first-agentic-task` → `what-is-an-agentic-bootcamp` (what the task is
+    for); `what-goes-in-a-second-brain` → `what-second-brain-actually-means` (the definition
+    first); `what-is-an-agentic-bootcamp` → `agentic-ai-for-business-leaders-where-to-start`
+    (for readers who are earlier than that). No existing sentence was rewritten.
+  - **Six orphans remain, deliberately.** The three sector guides (consultants, finance,
+    public sector), the glossary, `how-long-to-build-a-second-brain` and
+    `why-in-person-beats-online-for-learning-ai`. They are lower value, and a forced link is
+    worse than no link. A later cycle can place them properly.
+  - **No guide today, although one was allowed.** The orphan finding was worth more than a
+    thirtieth guide, and the one strong candidate on the list - "is it saving time or does it
+    just feel faster" - still needs its supporting study traced to a primary source before
+    anything cites it.
+  - **Checks.** Build, links (2,920 across 59 pages, exactly five more) and schema pass, no
+    SEO warnings, no em dashes anywhere in the guide library. All five edited pages inspected
+    at 375px (scrollWidth 375 on each) and desktop (1024/1024); `updatedDate` bumped on all
+    five, and each new link verified by anchor text in the built output.
+  - **Search Console (returned, no new data).** Still through 10 October. Nothing left to
+    diagnose - the full page-by-page verdict table is now in the baseline file.
+  - **GEO.** Three probes, none cited. The useful one is negative and strategic: **"AI bootcamp
+    UK" belongs to the Department for Education Skills Bootcamp scheme**, not to us. That is
+    the same conclusion the Danish IBM cluster pointed at from the other direction, and it
+    says generic bootcamp terms are a mismatch rather than an opportunity.
+  - **Guides this week.** 1 of 3.
+
 - **2026-10-12 (18:47 local cycle) — The two guides shipped this week had no inbound links
   from anywhere. They do now.**
   - **Evidence.** `what-you-can-build-in-one-day-with-ai` (shipped 00:47 today) and

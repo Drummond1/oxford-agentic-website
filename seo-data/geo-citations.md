@@ -5,6 +5,35 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-13 (00:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what should I look for when choosing an AI bootcamp in the UK | **No** | cotalentai, Nucamp (x4), certselect, **theoxfordaischool**, dreamsaicanbuy, SUAI, Imperial/HyperionDev |
+| how do I stop my team each using AI in a different way | **No** | Flexera, Teramind, Push Security, Cyberhaven, agilityportal, Atlassian, NN/g, impactplus, viktor.com, wildfirelabs |
+| should I build my own software with AI or hire a developer | **No** | Bolt, Softr, layer3labs, anything.com, Playcode, cognio, interexy, lowcode.agency, Upwork, justinmckelvey |
+
+**Reading.**
+- **"AI bootcamp UK" is not our phrase, and we should stop treating its impressions as
+  demand.** Every result is the Department for Education Skills Bootcamp world: government
+  funded, 12 to 16 weeks, career changers, job-outcome guarantees, Nucamp and Imperial via
+  HyperionDev. In a UK search context the word "bootcamp" means that scheme. This is the same
+  finding the Search Console data produced from the other end - generic `agentic ai bootcamp`
+  impressions convert at zero - and the two together say the term is a mismatch, not an
+  opportunity. Do not write for it.
+- The team-consistency question routes almost entirely into **shadow-AI governance and
+  monitoring vendors**. The engine reads "everyone using AI differently" as a security
+  control problem, not a training one. Our in-house-versus-cohort guide answers the same
+  question as alignment versus capability, which is the right answer for our buyer and the
+  wrong shape for this query. Not winnable.
+- Build-it-or-hire-a-developer is wall-to-wall no-code builder vendors, every answer with a
+  product behind it. Worth noting that our own differentiated answer already exists -
+  `why-the-code-an-agent-wrote-is-not-live` is about exactly what happens after you build
+  with one of these - and it does not surface. That is the Coding Bootcamp's buyer question
+  and it is currently owned by the tools.
+- **theoxfordaischool.com for the second day running**, this time at #6 for the UK training
+  comparison with published prices. It is occupying the UK comparison space consistently.
+
 ## 2026-10-12 (18:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

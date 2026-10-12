@@ -10,7 +10,7 @@ capsule: >-
   running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
-updatedDate: "2026-10-12T19:00:00+01:00"
+updatedDate: "2026-10-13T01:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -41,6 +41,8 @@ What that adds up to by the end of the day is narrower than most training pages 
 Overwhelmingly, operators rather than engineers: founders, directors, consultants, senior public-sector and university staff. People who already use AI daily, have formed real views about it, and have still never chained three steps together on something they own.
 
 Technical depth is rarely the constraint. Most agentic bootcamps require no coding at all - the tools have moved far enough that the interesting problem is decomposition, not syntax. Knowing which part of your job to hand to a machine, and which judgement to keep, is the actual skill.
+
+If you are earlier than that, and still working out where any of this fits your own work, [there is a slower starting point](/guides/agentic-ai-for-business-leaders-where-to-start/).
 
 ## How to tell a good one from a bad one
 
