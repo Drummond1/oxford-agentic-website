@@ -16,7 +16,9 @@ venue:
   confirmed: true
 lumaEventId: evt-zaLSsbdEhtA1THK
 lumaUrl: https://luma.com/agenticcoding
-summary: Thursday 26 November at Worcester College, Oxford. Build and ship a live website and a working prototype, with Claude Code and Codex doing the typing.
+# Opens on the promise, not the date: the card prints the date and the venue on
+# the line directly above. (12 Oct 2026, same fix as Cohort 3.)
+summary: Build and ship a live website and a working prototype, with Claude Code and Codex doing the typing.
 promise: Leave having shipped two things you own outright - a live website and a working product prototype.
 capsule: >-
   Cohort 1 of the Oxford Agentic Coding Bootcamp runs on Thursday 26 November 2026 at

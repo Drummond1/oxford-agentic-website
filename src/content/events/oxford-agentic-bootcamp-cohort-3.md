@@ -14,10 +14,11 @@ venue:
   confirmed: true
 lumaEventId: evt-fFS9i7ABiGVWPAC
 lumaUrl: https://luma.com/oxfordagentic3
-summary: Thursday 19 November at Worcester College, Oxford. Bring one real task from your own work and leave with an agentic workflow running against it.
-# The programme's shortPitch would do, but it opens "A one-day AI bootcamp in
-# Oxford" and the date and venue render on the very next line. This says the
-# part the meta line cannot. Substance is the capsule's, front-loaded.
+# Says the part the meta line cannot. The card prints the date and the venue on
+# the line directly above this one, so the summary opens on the promise instead.
+# (12 Oct 2026: it used to open "Thursday 19 November at Worcester College,
+# Oxford", which was the line above repeated word for word.)
+summary: Bring one real task from your own work and leave with an agentic workflow running against it.
 promise: Bring one real task from your own work. Leave with a working agentic AI workflow running against it.
 capsule: >-
   Cohort 3 of the Oxford Agentic Bootcamp runs on Thursday 19 November 2026 at Worcester

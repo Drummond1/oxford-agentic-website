@@ -195,10 +195,63 @@ Status: `todo` · `blocked` (why) · `doing`
     the 30 Jul probe had the site at #2 for Oxford-anchored queries. Rewrite it once
     Search Console shows what the homepage actually ranks and converts for - not
     before. If a rewrite happens, the OG cards and footer follow automatically.
+20. `todo` **(needs Drummond, one click)** — **PR #1 is open, stale and superseded.**
+    "Stop the breadcrumb pushing 31 pages past the viewport on a phone", branch
+    `fix/breadcrumb-mobile-overflow`, opened 26 September from a cycle that could not
+    reach production and has had no activity since. Its base is `28a8529`, long behind
+    `main`. The change it carries — `min-width: 0` on `.crumbs__item` — shipped
+    independently in `384564e` on 11 October and is live, so merging it would be a
+    no-op and leaving it open reads as unfinished work to every future cycle, which is
+    a stop condition in the loop's own rules. Close the PR and delete the branch. The
+    loop will not close someone else's pull request on its own.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-12 (09:09 local cycle) — Two of the three upcoming event cards opened by
+  repeating the line printed directly above them.**
+  - **The defect.** `EventCard` renders the date and the venue, then the summary. Cohort 3's
+    summary opened "Thursday 19 November at Worcester College, Oxford" and the Coding
+    Bootcamp's opened "Thursday 26 November at Worcester College, Oxford" — the same two
+    facts again, word for word, in the one sentence the card has to say what the day gives
+    you. The Second Brain card does not do it, so the three upcoming cards read
+    inconsistently side by side on the homepage.
+  - **It contradicted its own note.** The comment above Cohort 3's summary says the field is
+    written the way it is to say "the part the meta line cannot". The string said the meta
+    line. The non-duplicating version was already sitting one field below, in `promise`.
+  - **Where it showed.** The homepage "Next in Oxford" band, `/events/`, both programme
+    pages and `/404/`. Also twice in `llms.txt`, whose generator already prefixes the date
+    and venue: "Thursday, 19 November 2026, 9:00–17:00, Worcester College, Oxford. Thursday
+    19 November at Worcester College, Oxford. Bring one real task…" That file is the
+    knowledge base both voice agents read.
+  - **Change.** The repeated sentence comes out of both summaries and nothing else is
+    touched. No date, venue, capacity or claim moves: all of them still render on the line
+    above, in the Event schema (which uses `capsule`, not `summary`) and in `llms.txt`. The
+    surviving halves are the published wording, verbatim.
+  - **Meta descriptions.** `summary` doubles as the event page's meta description, so those
+    shorten to 93 and 98 characters — inside the site's existing range of 78 to 157, and
+    still unique. The date reaches the SERP through the Event node, not the description.
+  - **Checks.** Build, links (2,911 across 59 pages) and schema pass with no SEO warnings;
+    `check:flags` passes on the all-on and all-off builds. `astro check` reports the same
+    77 pre-existing errors with and without the change (it is not in the build or CI, and
+    `@astrojs/check` is not a dependency). Whole-site sweep in headless Chromium at 375,
+    768 and 1280px: no horizontal overflow on any of 59 pages, no missing alt text, no
+    unlabelled form controls, one `h1` per page, no heading-level skips. The card grids
+    compared before and after at all three widths — equal-height cards, CTAs still aligned.
+  - **Production could not be read this cycle, and this is the second time the sandbox has
+    limited a check.** The egress policy denies `oxfordagentic.com`, so the before/after
+    comparison is against a local preview of the exact `main` HEAD that GitHub Pages reports
+    deployed (`98f991e`, deployment 7007447634, state `success`, environment
+    `https://oxfordagentic.com/`). Deployment state, not a fetch, is the evidence that
+    production matches `main`. The outbound-link checker reports all ten third-party links
+    as unreachable for the same reason — that is the proxy, not the links.
+  - **Note on screenshots, for future cycles.** Chromium's `fullPage: true` capture renders
+    `data-reveal` sections as blank bands even when the DOM reports them revealed at opacity
+    1. The "Already run" band on `/events/` looked empty and is not. Capture viewport slices
+    or element screenshots instead, and verify a suspected blank band in the DOM before
+    believing it.
+  - **Left for Drummond:** PR #1 is still open from 26 September. See backlog 20.
 
 - **2026-10-12 (06:47 local cycle) — The brand description loses a bare "No coding." and
   comes in under 160 characters.**
