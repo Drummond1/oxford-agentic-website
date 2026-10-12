@@ -200,6 +200,32 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-12 (06:47 local cycle) — The brand description loses a bare "No coding." and
+  comes in under 160 characters.**
+  - **Evidence.** Two defects in one string. It ran to 166 characters, which the schema
+    check has warned about since 7 October and which means Google truncates it in the SERP,
+    so the final sentence was delivering nothing. And that final sentence was "No coding."
+    standing alone - the exact framing the message house (13 Aug) forbids, and the one
+    `longDescription` was already fixed for, which is how the inconsistency was spotted.
+  - **What changed.** The sentence comes out; nothing else is touched. The string is now 155
+    characters. There is no room to qualify "no coding" properly inside 160, and the paired
+    version ("No coding required, and nothing hand-waved") survives in `longDescription`, in
+    the homepage FAQ and in the programme copy, all of which were checked in the built output.
+  - **Wider than the homepage.** `brand.description` also feeds the Organization and WebSite
+    schema nodes, `llms.txt` and the RSS channel description. All four were verified in
+    `dist/` after the build, which is the point: the bare framing was reaching answer engines
+    and feed readers in full, not truncated.
+  - **Checks.** Build, links (2,911 across 59 pages) and schema all pass, and the schema
+    check now reports **no SEO warnings at all** for the first time in a week. Homepage
+    inspected at 375px (scrollWidth 375) and desktop; `og:description` tracks the change.
+  - **Search Console (returned, no new data, one real finding).** Still through 9 October.
+    The Cohort 2 event page looked like the site's clearest CTR gap - 192 impressions, 2.6%,
+    position 6.9 - and filtering its queries closed the question: **92% of its impressions
+    are Google-anonymised**, and the visible remainder is brand queries the homepage wins
+    plus the excluded Oxfordshire cluster. No change made to it; raw rows recorded in the
+    baseline file so no future cycle re-opens it.
+  - **Guides this week.** 1 of 3, and today's one is already used (00:47). None written.
+
 - **2026-10-12 (00:47 local cycle) — New guide: what you can actually build in one day with AI.**
   - **Evidence.** This cycle's probe on "what can you realistically build in one day with AI
     no coding" returned ten sources and every one was a no-code vendor selling its own

@@ -5,6 +5,29 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-12 (06:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| my team did AI training and nothing changed, what should we do differently | **No** | Phos AI Labs (x2), Candova, hyperight, itstauf, tommasomariaricci, AI Trainer Thailand, LinkedIn, dev.to |
+| how can I tell if an AI course is genuinely hands-on or just slides | **No** | cybercorsairs, learnist, coursiv, course.careers, cloudthat, timtis, erasmuscourse, skillarbitrage, mentorcruise, nightschoolai |
+| should the founder attend AI training themselves or send a member of staff | **No** | Lilach Bullock (x2), ProfileTree (x2), onoffgroup, mentorcruise, dancumberlandlabs, sagnikbhattacharya, AI Simplifier, vc.ru |
+
+**Reading.**
+- **The "is it really hands-on" question is the one we already wrote for and still do not
+  rank on.** `what-hands-on-ai-training-actually-means` and
+  `questions-to-ask-before-booking-ai-training` both answer it, and neither surfaced. The
+  field is affiliate course-review sites, and every answer is written for online courses:
+  notebooks, GitHub repos, capstones, graded projects. Nobody writes the test for an
+  in-person day. That is a gap in an **existing** guide rather than a case for a new one -
+  a future cycle should look at whether the hands-on guide can own the in-person version of
+  the test, not add a fourth page to the pile.
+- The two adoption questions are both owned by consultants selling adoption programmes, and
+  both sit next to the consultancy cluster that is **under consideration and not to be
+  targeted**. The searcher wants a programme, not a day in Oxford. No action on either.
+- Worth noting: onoffgroup now publishes "Public vs in-house AI training: how to choose",
+  which is the comparison yesterday's guide makes. The question is no longer unwritten.
+
 ## 2026-10-12 (00:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

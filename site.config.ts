@@ -203,9 +203,23 @@ const config: SiteConfig = {
   brand: {
     name: BRAND_NAME,
     tagline: 'Practical agentic AI training in Oxford',
+    /*
+     * Shown as the homepage meta description, and reused by the Organization and
+     * WebSite schema nodes, llms.txt and the RSS channel.
+     *
+     * It ended "No coding." until 12 Oct 2026. Two problems, one edit. The message
+     * house is explicit that this framing is never left standing alone - the same
+     * rule that made `longDescription` below say "No coding required, and nothing
+     * hand-waved" - and the sentence had been left bare here, in the one place
+     * Google actually renders. It also pushed the string to 166 characters, past
+     * the 160 the schema check warns at, so in a SERP it was being truncated and
+     * delivering nothing anyway. There is no room to qualify it properly inside
+     * 160 characters, so it comes out; the paired version survives in
+     * `longDescription`, on the homepage itself and in the programme copy.
+     */
     description:
       'Hands-on agentic AI training in Oxford for business leaders. In one day, ' +
-      'you build and run a working agentic AI workflow on a real task from your own work. No coding.',
+      'you build and run a working agentic AI workflow on a real task from your own work.',
     /*
      * The entity line at the top of llms.txt and llms-full.txt, the About hero
      * subline and the footer. It is the first thing an AI engine reads about

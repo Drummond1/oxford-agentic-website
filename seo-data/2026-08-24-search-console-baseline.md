@@ -876,3 +876,40 @@ Search Console returned, but with **no new data**. Totals still through 9 Octobe
 
 Nothing new to diagnose, so no CTR work was possible this cycle. Google's reporting lag is
 two to three days; a reading taken twice inside twelve hours will usually show this.
+
+## Update — 12 October 2026, 06:50 BST
+
+Search Console returned. Totals unchanged for the third reading running - still through
+9 October: **125 clicks · 1,823 impressions · 6.9% CTR · average position 14.6**
+("last update 4.5 hours ago"). No new day of data since the 11 Oct 12:47 cycle.
+
+**The one finding worth having: `/events/oxford-agentic-bootcamp-cohort-2/` is explained.**
+
+That page carries **192 impressions, 5 clicks, 2.6% CTR, average position 6.9** - the
+second-highest impression count on the site after the homepage, at a better position than
+the Oxford Agentic Bootcamp programme page, and barely a third of its CTR. It looked like
+the clearest CTR gap on the site. Filtering queries to that page settles it. Raw rows:
+
+| query | clicks | impressions | CTR | position |
+|---|---|---|---|---|
+| oxford agentic ai course | 0 | 12 | 0% | 7.9 |
+| agentic ai oxford | 0 | 1 | 0% | 4.0 |
+| ibm agentic ai bootcamp 2 dage | 0 | 1 | 0% | 76.0 |
+| agentic ai oxfordshire | 0 | 1 | 0% | 90.0 |
+
+Four named queries, **15 of 192 impressions (7.8%)**, and **none of the 5 clicks**. So:
+
+- **177 impressions (92%) are Google-anonymised.** Every click the page earned came from a
+  query we cannot see. There is no title or description that can be written against an
+  invisible query mix.
+- Of the 15 visible, 13 are brand or near-brand (`oxford agentic ai course`,
+  `agentic ai oxford`) - queries the homepage also ranks for and wins.
+- One is `agentic ai oxfordshire`, position 90, which is the **excluded Oxfordshire cluster**
+  we have a standing decision not to target.
+- One is a Danish query about IBM's bootcamp at position 76. Noise.
+
+**No change made to that page, and this is the reason.** All three of the recurring causes
+the loop has logged since August are present at once, and this is the first time the
+anonymised share has been measured for a single page: 92%. Treat a sub-3% CTR on a
+high-impression event page as explained unless the named queries move above roughly a
+quarter of impressions. Do not rewrite that title.
