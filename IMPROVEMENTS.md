@@ -209,6 +209,35 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-12 (18:47 local cycle) — The two guides shipped this week had no inbound links
+  from anywhere. They do now.**
+  - **Evidence.** `what-you-can-build-in-one-day-with-ai` (shipped 00:47 today) and
+    `in-house-ai-day-or-send-people-to-a-cohort` (11 Oct) were each linked from exactly one
+    file: themselves. A mature guide like `scout-drafter-reviewer-pattern` has four inbound
+    links from other guides. Both new pages were reachable only from the guides hub and the
+    generated "More guides" block, which is the weakest possible internal position for a page
+    we want indexed and ranked.
+  - **This is a process flaw, not a one-off.** The loop writes outbound links from each new
+    guide and never adds inbound ones from the old pages, so every guide it ships arrives
+    orphaned. **Future cycles that publish a guide should add its inbound links in the same
+    commit.**
+  - **What changed.** Three contextual links across two existing guides, each placed where the
+    argument already went that way. `ai-bootcamp-vs-course-vs-exec-education` now points to
+    the one-day guide where it says a day cannot cover a landscape, and to the in-house guide
+    where it notes the three formats leave out the open-cohort-versus-private-day axis.
+    `what-is-an-agentic-bootcamp` points to the one-day guide at the end of "what actually
+    happens on the day". No existing sentence was rewritten.
+  - **Checks.** Build, links (2,915 across 59 pages, exactly three more) and schema pass, no
+    SEO warnings, no em dashes. Both edited pages inspected at 375px (scrollWidth 375) and
+    desktop; `updatedDate` bumped on both.
+  - **Search Console (new data, first time in four readings).** One more day landed: 126
+    clicks, homepage 990 → 1,005 impressions. Diagnosed the flagship programme page, the last
+    untouched candidate: **90% of its 189 impressions are anonymised**, and eleven of the
+    nineteen visible ones are a **Danish IBM-bootcamp cluster** at positions 42 to 76, which
+    is a fourth recurring cause and new today. No change. Three pages closed in one day; the
+    conclusion is systemic and recorded in the baseline file.
+  - **Guides this week.** 1 of 3. None today; today's allowance went at 00:47.
+
 - **2026-10-12 (12:47 local cycle) — The hands-on guide now answers the in-person version of
   the question, because every checklist it competes with is written for online courses.**
   - **Evidence.** This morning's probe on "how can I tell if an AI course is genuinely

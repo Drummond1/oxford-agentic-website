@@ -10,7 +10,7 @@ capsule: >-
   running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
-updatedDate: "2026-07-22T09:00:00+01:00"
+updatedDate: "2026-10-12T19:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -33,6 +33,8 @@ The format varies, but the ones worth attending share a shape:
 - **You build in cycles, not lectures.** A rough working version early, then something that reviews its own output, then a proper pass at the real thing. Each cycle ends with the room comparing notes.
 - **Someone walks the room.** The failure mode of hands-on AI training is people getting stuck on setup rather than on the idea. A facilitated room fixes that in a minute rather than an afternoon.
 - **You leave with it running.** The test of the day is whether the thing works on Monday, not whether the slides were good.
+
+What that adds up to by the end of the day is narrower than most training pages imply, and worth knowing before you book: [what you can realistically build in one day](/guides/what-you-can-build-in-one-day-with-ai/).
 
 ## Who they are for
 

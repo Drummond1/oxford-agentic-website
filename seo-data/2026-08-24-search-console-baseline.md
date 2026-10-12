@@ -947,3 +947,45 @@ impressions (82%) are Google-anonymised. Of the 25 visible:
 80-90% invisible, and it is direct support for the standing rule not to rewrite the
 `/bootcamps/` title: there is no visible query there worth writing for. Both of the site's
 apparent CTR gaps are now closed with raw rows rather than judgement.
+
+## Update — 12 October 2026, 18:50 BST
+
+**New data at last** - one more day has landed after four readings stuck on 9 October.
+**126 clicks · ~1,840 impressions · position broadly flat.** The movement is small:
+homepage 990 → 1,005 impressions (7.7% → 7.6%, position 5.6 → 5.8), `/team/` 193 → 200,
+`/bootcamps/second-brain-bootcamp/` 109 → 110 and 9 → 10 clicks, the Second Brain event
+page 89 → 90, `/guides/` 173 → 174, `/about/` 92 → 93. Nothing else moved.
+
+**`/bootcamps/oxford-agentic-bootcamp/` - the flagship programme page - is explained the
+same way as the other two.** 189 impressions, 6 clicks, 3.2% CTR, average position 9.5.
+Raw rows, filtered to that page:
+
+| query | clicks | impressions | CTR | position |
+|---|---|---|---|---|
+| ibm agentic ai bootcamp 1 dag | 0 | 6 | 0% | 42.3 |
+| ibm agentic ai bootcamp 2 dage | 0 | 4 | 0% | 76.5 |
+| agentic ai bootcamp | 0 | 3 | 0% | 32.7 |
+| oxford agentic ai course | 0 | 2 | 0% | 2.5 |
+| agentic bootcamp | 0 | 1 | 0% | 2.0 |
+| agentic ai oxford | 0 | 1 | 0% | 4.0 |
+| ai bootcamp 1 dag | 0 | 1 | 0% | 48.0 |
+| agentic ai boot camp | 0 | 1 | 0% | 59.0 |
+
+Eight named queries, **19 of 189 impressions (10%)**, and **none of the 6 clicks**. So 170
+impressions (90%) are Google-anonymised, and all six clicks came from queries we cannot see.
+
+**A fourth recurring cause, new this cycle: a Danish IBM cluster.** Eleven of the nineteen
+visible impressions are `ibm agentic ai bootcamp 1 dag`, `ibm agentic ai bootcamp 2 dage`
+and `ai bootcamp 1 dag` - Danish for "day" and "days". These are people in Denmark looking
+for IBM's bootcamp, and we surface at positions 42 to 76. It is noise, it will never
+convert, and it drags the page's average position down. The same cluster appeared on the
+Cohort 2 page this morning. **Do not read "agentic ai bootcamp" impressions as demand
+without checking for it first.**
+
+**No change made.** That is three pages in one day - Cohort 2 (92% anonymised), `/bootcamps/`
+(82%), and now the flagship programme page (90%). The conclusion is systemic rather than
+per-page: **at this traffic volume Google anonymises 80-90% of the query mix, so page-level
+CTR diagnosis is not available to this site yet.** Every apparent CTR gap on the site has now
+been opened and closed with raw rows. A future cycle should not re-open one unless the named
+share rises above roughly a quarter of impressions, or total impressions grow enough to pull
+more queries above the anonymisation threshold.

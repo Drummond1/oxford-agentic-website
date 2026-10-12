@@ -11,7 +11,7 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-08-24T09:00:00+01:00"
+updatedDate: "2026-10-12T19:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -36,6 +36,8 @@ A bootcamp - at least as we mean it - is a short, facilitated stretch of time wi
 
 The trade-off is scope. A day cannot cover a landscape; it covers one pattern, properly, applied to one real task from your own work. Our view is that this trade is the right one for operators - the pattern transfers, and the working result is what turns understanding into habit.
 
+That is a narrower promise than most training pages make, and it is worth being precise about it: [what you can actually build in one day](/guides/what-you-can-build-in-one-day-with-ai/) sets out what finishes inside a day and the four things that do not.
+
 ## Choosing between them
 
 - **You need to set strategy or govern AI use** - executive education.
@@ -44,5 +46,7 @@ The trade-off is scope. A day cannot cover a landscape; it covers one pattern, p
 - **You have already done the first two** - that is the most common person in our room, and the gap they describe is exactly what a bootcamp closes.
 
 They compound rather than compete: the frame from a programme, the depth from a course and a working result from a day of building are worth more together than any one alone.
+
+One axis this leaves out. If you are choosing for a team rather than for yourself, the question is not only which of the three formats but whether to send two or three people at all: [an in-house day or an open cohort](/guides/in-house-ai-day-or-send-people-to-a-cohort/) is the comparison, and it usually turns on whether you are buying alignment across a team or capability in a few people.
 
 The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is our version of the third: one day in Oxford, a small room of senior people, one real task each, no coding, and a working agentic workflow by the time you leave.

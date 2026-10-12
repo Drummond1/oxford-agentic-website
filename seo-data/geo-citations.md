@@ -5,6 +5,34 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-12 (18:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| I already use ChatGPT every day, what is the next step at work | **No** | OpenAI Academy, Microsoft, LinkedIn, Nucamp, Dan Martell (x2), dupple, fyxer, beginnersinai, sabrina.dev |
+| how do I know if an AI workflow is actually saving time or just feels faster | **No** | Lilach Bullock, aiadvisoryboard, founderz, web4business, talkmarkets, therundown, Wix, LinkedIn (x2), 36kr |
+| how do I justify the cost of a paid AI training day to my boss | **No** | bestaicertifications, Trainetics, Data Lover, **Oxford AI School**, duotach, Teamland, precisionaiacademy, 30Elevate, learnwithparam, Pertama |
+
+**Reading.**
+- **"Is it saving time or does it just feel faster" is the best candidate seen this week, and
+  the only recent probe whose field is not owned by institutions or vendors.** It is small
+  blogs and content sites - no Microsoft, no OpenAI, no Thomson Reuters. It is also the
+  question a senior person asks before committing more of their own time, which puts it next
+  to "is a day worth it". **Caveat before anyone writes it:** several results cite a study of
+  1,237 participants reporting that expected savings were far larger than measured ones. That
+  reached us through a Chinese tech-media summary and a LinkedIn post. **Trace it to the
+  primary source and read the actual passage before citing it, or do not cite it at all.**
+- The "I already use ChatGPT daily, what next" question is exactly our buyer's starting
+  position - it is almost our own homepage FAQ wording - but OpenAI Academy and Microsoft own
+  it outright. Converting, not winnable. No action.
+- **Competitor worth knowing about: theoxfordaischool.com** ranks for the budget-justification
+  question with a "business case for AI training" page. Another provider using "Oxford" in its
+  name. Not an outreach target, recorded here as competitive intelligence.
+- The budget question itself is a field of training vendors leading with ROI arithmetic -
+  payback periods, percentage productivity gains, per-seat price tables. We cannot and will
+  not publish figures like those, so competing there would mean either inventing numbers or
+  entering without the thing every competing page leads on. Not worth it.
+
 ## 2026-10-12 (12:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |
