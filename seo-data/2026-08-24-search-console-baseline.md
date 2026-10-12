@@ -913,3 +913,37 @@ the loop has logged since August are present at once, and this is the first time
 anonymised share has been measured for a single page: 92%. Treat a sub-3% CTR on a
 high-impression event page as explained unless the named queries move above roughly a
 quarter of impressions. Do not rewrite that title.
+
+## Update — 12 October 2026, 12:50 BST
+
+Search Console returned. **Fourth consecutive reading with no new data** - still through
+9 October, every page figure identical to the 06:47 reading ("last update 4 hours ago").
+Google's lag is now three days.
+
+**`/bootcamps/` is explained too, and the standing rule on its title is vindicated.**
+
+With the Cohort 2 page closed this morning, `/bootcamps/` was the last page that looked
+like a CTR gap: **139 impressions, 3 clicks, 2.2% CTR, average position 6.6**. Raw rows,
+filtered to that page:
+
+| query | clicks | impressions | CTR | position |
+|---|---|---|---|---|
+| oxford generative and agentic ai programme | 0 | 13 | 0% | 9.2 |
+| oxford agentic ai course | 0 | 9 | 0% | 10.2 |
+| oxford agentic ai | 0 | 2 | 0% | 8.0 |
+| oxford boot camp | 0 | 1 | 0% | 11.0 |
+
+Four named queries, **25 of 139 impressions (18%)**, and **none of the 3 clicks**. So 114
+impressions (82%) are Google-anonymised. Of the 25 visible:
+
+- 11 are brand or near-brand (`oxford agentic ai course`, `oxford agentic ai`) - the
+  homepage ranks for those and wins them.
+- 13 are `oxford generative and agentic ai programme`, which is somebody looking for the
+  **University's own programme**. We appear at 9.2 and they click the institutional result,
+  as they should. Not our buyer, and not a title we could win by rewriting.
+- One is `oxford boot camp`, a single ambiguous impression at position 11.
+
+**No change made.** This is the second page in a day where a sub-3% CTR turns out to be
+80-90% invisible, and it is direct support for the standing rule not to rewrite the
+`/bootcamps/` title: there is no visible query there worth writing for. Both of the site's
+apparent CTR gaps are now closed with raw rows rather than judgement.

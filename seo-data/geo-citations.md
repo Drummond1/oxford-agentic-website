@@ -5,6 +5,31 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-12 (12:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is a one-day AI bootcamp worth it for a non-technical executive | **Yes**: #5 `ai-bootcamp-vs-course-vs-exec-education` | SmarterX, iternal.ai (x2), Pertama Partners (x2), explainx, trainingcamp, Coursera, theinterviewguys |
+| my AI workflow works once then breaks the next time I run it | **No** | Cloudflare, JetBrains (x4), Mastra (x2), Make, Cognee, developersdigest |
+| which of my weekly tasks should I automate with AI first | **No** | magicteams, dupple, G2, Lilach Bullock (x2), zemith, coworker.ai, ANZ, launchlemonade, sabrina.dev |
+
+**Reading.**
+- **A citation, and on a genuinely converting question.** The format-comparison guide is cited
+  #5 for the one-day-bootcamp question, in a field of providers all selling their own day.
+  That is the second question the site owns a position on, after the second-brain pairing.
+- **The engine is quoting a superseded line from us.** Perplexity's extract of that guide says
+  the bootcamp is "about twenty-five senior people". The page has not said that for some time -
+  the repo and the live page both read "a small room of senior people", which is the standing
+  decision (capacity is never published as a number). **Nothing to fix; do not "correct" the
+  page.** It is a stale cache on their side, and it should age out.
+- The broken-workflow question reads as a developer question to the engine, and comes back
+  entirely infrastructure publishers - Cloudflare, JetBrains, Mastra. Not winnable, and the
+  people it answers are not our buyer.
+- "What to automate first" is wall-to-wall automation vendors and affiliate blogs, all giving
+  the same three criteria. Our guide adds two tests they do not have and a list of work to
+  leave alone permanently, and it still would not break a field where every result has a
+  product funnel behind it. No action.
+
 ## 2026-10-12 (06:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

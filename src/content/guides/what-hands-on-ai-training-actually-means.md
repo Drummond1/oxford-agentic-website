@@ -11,7 +11,7 @@ capsule: >-
   ask what you will personally have running at the end.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-08-10T07:00:00+01:00"
+updatedDate: "2026-10-12T13:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
@@ -38,6 +38,18 @@ Course pages rarely say which level they mean, so ask directly:
 - **What will I personally have running at the end?** The honest answers range from "notes and ideas" to "a working workflow against your own task". Both are legitimate products; they are different products.
 - **Whose problem do I work on?** A demo, a script, a case study, or my own work.
 - **What happens when I get stuck?** A forum, office hours, or a person who walks over. The answer predicts whether you finish.
+
+## The checklists you will find elsewhere are written for online courses
+
+Search for how to tell whether a course is genuinely hands-on and most of the advice you will find is built for self-paced video: look for executable notebooks, a GitHub repository, graded projects rather than quizzes, a capstone, a syllabus that lists deliverables, a recent content-update date. All sensible. None of it tells you anything about a day in a room, because a day in a room has no syllabus page to inspect and no repository to open.
+
+Two signals replace them, and both can be checked before you pay.
+
+**What you are asked to bring.** A day built around your own work has to ask you for something in advance - a task, a document, an account you can sign into. If nothing is required of you beforehand, your material will not be on the screen, whatever the page says. Level four cannot be arranged on the morning.
+
+**Whether anyone has mentioned your laptop.** Building means installing or signing into something, and corporate and government devices often block tool sign-ups. A provider who expects you to build has usually hit this before and will warn you; a provider who has not raised it is not planning on you installing anything.
+
+For the rest - how many people are in the room, the ratio of talking to building, what happens when you get stuck - there is a fuller list in [nine questions to ask before booking AI training](/guides/questions-to-ask-before-booking-ai-training/).
 
 ## Why this matters more for senior people
 

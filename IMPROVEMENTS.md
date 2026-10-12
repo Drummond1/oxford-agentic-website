@@ -209,6 +209,40 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-12 (12:47 local cycle) — The hands-on guide now answers the in-person version of
+  the question, because every checklist it competes with is written for online courses.**
+  - **Evidence.** This morning's probe on "how can I tell if an AI course is genuinely
+    hands-on" returned ten sources and not one of ours, despite the site answering that
+    question twice. Reading them, the reason is not a content gap: every competing answer
+    tells you to look for notebooks, a GitHub repository, graded projects, a capstone, a
+    syllabus listing deliverables, a recent update date. All written for self-paced video,
+    and none of it checkable about a day in a room.
+  - **What changed.** One new section in `what-hands-on-ai-training-actually-means`, saying
+    plainly that those checklists do not transfer and naming the two signals that replace
+    them: what you are asked to bring beforehand, and whether anyone has mentioned your
+    laptop. Both are honest inferences from how a level-four day has to work, and the laptop
+    point uses the published wording ("corporate and government devices often block tool
+    sign-ups"). It then hands off to the nine-questions checklist rather than restating it.
+  - **Why an edit and not a guide.** `questions-to-ask-before-booking-ai-training` already
+    covers room size, ratio, what to bring and getting stuck. A new page would have been a
+    near-duplicate of two existing ones. The missing piece was the framing, not the content -
+    and the two guides had never linked to each other, which they now do.
+  - **Checks.** Build, links (2,912 across 59 pages, one more than before) and schema pass,
+    no SEO warnings. No em dashes. Inspected at 375px (scrollWidth 375, section renders and
+    wraps cleanly) and desktop; `updatedDate` bumped to 12 Oct.
+  - **Search Console (returned, fourth reading with no new data).** Still through 9 October.
+    Diagnosed `/bootcamps/` the same way as the Cohort 2 page this morning: **82% of its 139
+    impressions are anonymised**, and the visible remainder is brand queries the homepage
+    wins plus 13 impressions from someone looking for the University's own programme. No
+    change, and it is direct support for the standing rule on that title. Both of the site's
+    apparent CTR gaps are now closed with raw rows.
+  - **GEO.** One citation: `ai-bootcamp-vs-course-vs-exec-education` is cited #5 for "is a
+    one-day AI bootcamp worth it for a non-technical executive". Note that the engine quotes
+    a superseded "about twenty-five senior people" line from it - the page and the repo both
+    say "a small room of senior people", so that is a stale cache, not a page to fix.
+  - **Guides this week.** 1 of 3. None written today; today's single-guide allowance went at
+    00:47.
+
 - **2026-10-12 (09:09 local cycle) — Two of the three upcoming event cards opened by
   repeating the line printed directly above them.**
   - **The defect.** `EventCard` renders the date and the venue, then the summary. Cohort 3's

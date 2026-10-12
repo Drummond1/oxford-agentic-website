@@ -11,6 +11,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **explainx.ai - "Top 10 AI Workshops for Professionals in 2026"** - found 12 Oct 2026
+  by answer-engine probe.
+  - URL: https://explainx.ai/blog/top-ai-workshops-professionals-2026 (HTTP 200, checked
+    12 Oct 2026). Cited by Perplexity for "is a one-day AI bootcamp worth it for a
+    non-technical executive", the same answer that cites one of our guides at #5.
+  - Why: a comparison roundup that an answer engine already draws on for a converting buyer
+    question, and it explicitly covers one-to-five-day workshop formats rather than
+    multi-week bootcamps, which is our shape.
+  - **Not checked:** whether it accepts suggestions, its editorial or commercial policy, or
+    any cost. The page was loaded to confirm it resolves; nothing beyond that.
+  - Needs: Drummond's decision. Nothing contacted.
+
 - **Cohort 3 is already listed on two third-party directories, one of them wrong** - found
   11 Oct 2026 by answer-engine probe, not by us submitting anything.
   - `aieventlist.ai/en/events/oxford-agentic-bootcamp-oxford-2026-11/` - **accurate**: 19 Nov,
