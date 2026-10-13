@@ -205,9 +205,70 @@ Status: `todo` · `blocked` (why) · `doing`
     a stop condition in the loop's own rules. Close the PR and delete the branch. The
     loop will not close someone else's pull request on its own.
 
+21. `todo` **(needs Drummond, a colour decision)** — **the bronze link and eyebrow colour
+    fails WCAG AA on cream.** `--rust` / `--burnt` is `#9A7B23` on the `#FFF9EC` page
+    background, which measures **3.83:1** against the 4.5:1 that normal-size text needs.
+    Measured on 13 Oct across all 60 built pages at 375px: it is the colour of every
+    eyebrow, every byline, the "More guides" headings, the event-card "Register" labels,
+    the agenda times, the team roles and most inline links, so it is on 58 of 60 pages
+    rather than in one component. The gold `#D4AF37` arrows (`programme-row__arrow`,
+    `module__num`) measure 2.0:1 on the same background. A pre-existing instance of this
+    was flagged on the guide byline in the 7 Sept cycle as "worth a later cycle"; the
+    measurement above is the whole of it. **The loop will not change it**: bronze is
+    Drummond's own Brand Guide Gold token, applied 5 Aug, and the design tokens are law.
+    The fix is one number — darkening the bronze to about `#7E6415` clears 4.5:1 while
+    staying the same hue — but it is a brand-colour change and his call. Note that the
+    recorded Lighthouse accessibility scores of 100 do not contradict this: the 7 Sept
+    cycle logged a guide page at 95 for exactly this cause.
+22. `todo` **(needs Drummond, facts only he has)** — **Cohort 2 ran on 16 September and
+    the site records nothing about it.** `/events/` says in its own standfirst that "past
+    ones stay here with what came out of them", and Cohort 1's page carries three outcome
+    figures. Cohort 2's file carries none, with the comment "nothing about the day has
+    been confirmed". Four weeks on, that is the one past-cohort page that does not keep
+    the page's promise, and it is the most recent proof the site has. Attendee count and
+    anything about what the room built would close it. The loop will not infer either.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-13 (08:47 local cycle) — The homepage's last band told visitors no cohort was
+  set, under three cohorts that are set, dated, venued and on sale.**
+  - **The defect.** The gold "Not ready to book?" band is the final thing on the homepage,
+    directly under the FAQ. Its one sentence read "You will get the date, venue and booking
+    link as soon as the next cohort is set." Three cohorts are listed higher up the same
+    page with their dates, their venues and a Register link each, and the nearest of them
+    (Second Brain, Pitt Rivers Museum) is **eight days away**. The band was written for a
+    site with nothing on sale and was never revisited.
+  - **The page already knew better.** `HomeSections.astro` branches the "Next in Oxford"
+    heading and standfirst on `nextThree.length` — "Next in Oxford" with cards, "The next
+    cohort / Dates are not fixed yet" without. The capture band 200 lines below was the one
+    place that hardcoded the empty-diary case, so the same page answered the same question
+    two different ways.
+  - **Change.** One paragraph, branched on the same condition. With cohorts listed it reads
+    "The cohorts above are open for booking. Leave your email and you will hear about the
+    ones after them as soon as the dates are set." With none, the original sentence survives
+    verbatim. Nothing else moves: the heading, the form, its label and the single CTA are
+    untouched, and no date, venue, price or capacity is stated.
+  - **Checks.** Build, links (2,976 across 60 pages, unchanged) and schema pass with no SEO
+    warnings; `check:flags` passes on the all-on and all-off builds. `astro check`, installed
+    with `--no-save` so the diff stays clean, reports the same 5 errors and 69 hints with and
+    without the change. Whole-site sweep in headless Chromium at 375, 768 and 1280px: 180
+    page-widths, **zero** findings — no horizontal overflow, no missing alt text, no
+    unlabelled controls, no links or buttons without an accessible name, one `h1` per page,
+    no heading-level skips. The band captured before and after at all three widths; 40
+    keyboard tab stops on the homepage all show a visible focus ring. No em dashes.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403
+    to `oxfordagentic.com`, `www.` and the `github.io` host alike, so the comparison is
+    against a local preview of the exact `main` HEAD that Pages reports deployed (`edc7bca`,
+    deployment 7031174259, state `success`, environment `https://oxfordagentic.com/`). Same
+    substitution and same evidence as 12 Oct. All twelve outbound links report unreachable
+    for the same reason; that is the proxy, not the links.
+  - **Two findings raised for Drummond rather than shipped**, as backlog 21 and 22: the
+    bronze accent measures 3.83:1 on cream across 58 of 60 pages (a brand-token change, his
+    call), and Cohort 2 still has no outcomes four weeks after it ran, on a page whose own
+    standfirst promises them.
+  - **No guide written.** This cycle's remit is the existing site.
 
 - **2026-10-13 (06:47 local cycle) — New guide: is your AI workflow saving time, or just
   feeling faster?**

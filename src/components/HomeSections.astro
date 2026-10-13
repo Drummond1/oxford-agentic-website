@@ -302,7 +302,14 @@ const bands = {
           <h2 id="capture" class="capture__title">
             Not ready to book?
           </h2>
-          <p class="capture__copy">You will get the date, venue and booking link as soon as the next cohort is set.</p>
+          {/* Branches on the same condition as the "Next in Oxford" head above, which
+              has always done this. The single hardcoded sentence told a visitor sitting
+              below three dated, venued, bookable cards that no cohort was set yet. */}
+          <p class="capture__copy">
+            {nextThree.length > 0
+              ? 'The cohorts above are open for booking. Leave your email and you will hear about the ones after them as soon as the dates are set.'
+              : 'You will get the date, venue and booking link as soon as the next cohort is set.'}
+          </p>
         </div>
         <NewsletterForm label="Hear about the next cohort first" />
       </div>
