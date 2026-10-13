@@ -435,7 +435,7 @@ const timings = ['Weekday daytime and dinner', 'Evening only', 'Either'];
                 <label class:list={['tier', b.recommended && 'tier--recommended']}>
                   <input type="radio" name="budget_tier" value={b.value} required />
                   <span class="tier__text">
-                    {b.recommended && <span class="tier__badge">Most popular</span>}
+                    {b.recommended && <span class="tier__badge">Recommended</span>}
                     <span class="tier__label">{b.label}</span>
                     {b.hint && <small>{b.hint}</small>}
                   </span>
@@ -1129,7 +1129,7 @@ const timings = ['Weekday daytime and dinner', 'Evening only', 'Either'];
 
       submit.disabled = true;
       const label = submit.textContent;
-      submit.textContent = 'Sending…';
+      submit.textContent = 'Sending';
 
       try {
         if (!endpoint) throw new Error('no endpoint');
