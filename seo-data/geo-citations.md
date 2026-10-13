@@ -5,6 +5,50 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-13 (06:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| AI training day where you bring your own real work rather than exercises | **No** | Beyond, Houtini, Claude Readiness, JustAutomate, MCEL, WithPT, Clustr, ai.nl, mycocoon, **theoxfordaischool** |
+| what is the difference between AI automation and an AI agent for a business | **No** | AWS, Zapier (x2), Slack, Oracle (x2), monday.com, Moveworks, Hostinger, Aalpha |
+
+**Correction to the 12 Oct 18:47 entry, now that the source has been traced.** Yesterday's
+note referred to "a study of 1,237 participants" reporting expected savings far larger than
+measured ones, reaching us through a Chinese tech-media summary and a LinkedIn post. Both
+secondhand sources had **conflated two companion papers**, which is exactly why the rule
+exists. Traced and read at the primary source:
+
+- **arXiv:2605.23177**, *Cognitive offloading and the speedup illusion in human-AI
+  interaction*, Yu, Cheng, Jabbar, Sucholutsky, Collins, Jurafsky and Hawkins, submitted
+  22 May 2026, in the proceedings of the Cognitive Science Society's 48th meeting.
+  Preregistered, **N = 1237**, simple cognitive tasks. Actual completion times with and
+  without AI did not differ; participants predicted AI would be significantly faster; the
+  bias was absent for imagined human help; subjective effort was lower with AI despite
+  equivalent times.
+- **arXiv:2605.22687**, *The efficiency-gain illusion*, same seven authors, 21 May 2026.
+  Three preregistered studies, **N = 2691**. People frequently use AI where it saves
+  neither time nor effort, and prior use entrenches the miscalibration.
+
+The "55.7 seconds predicted versus 7.5 actual" figure circulating secondhand belongs to the
+second paper's Study 2, not to the N = 1237 study, and sits in the body rather than the
+abstract. **The guide shipped this cycle cites only abstract-level findings that were read
+at source, and states the papers' own scope limit - simple tasks, not workflows.** Author
+institutions were not listed on the arXiv pages and are therefore not claimed anywhere.
+
+**Reading on this cycle's probes.**
+- **"Bring your own real work" has stopped being a differentiator.** Ten providers answer
+  that question and every one of them promises it: your own files, your own backlog, no
+  demo data, small rooms, trainers walking the tables. Our nine-questions guide already says
+  the descriptions have converged; this is evidence the convergence has reached the thing the
+  site leans on hardest. **That is a positioning question for Drummond, not something a guide
+  fixes.** What still appears rare in that field is a published agenda with named build
+  blocks and an honest account of what does not fit in a day.
+- Automation versus agent is owned by AWS, Zapier, Slack, Oracle, monday.com and Moveworks.
+  Definitional queries belong to the platforms. The glossary sits at position 52.6 on 63
+  impressions and will not move. Do not chase it.
+- **theoxfordaischool.com for the third day running.** It now appears in the UK training
+  comparison, the budget-justification question and the bring-your-own-work question.
+
 ## 2026-10-13 (00:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

@@ -11,7 +11,7 @@ capsule: >-
   in advance what better looks like, and plan for week two.
 author: drummond-gilbert
 publishDate: "2026-07-30T09:00:00+01:00"
-updatedDate: "2026-07-30T09:00:00+01:00"
+updatedDate: "2026-10-13T07:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -35,6 +35,8 @@ If that person cannot build it, that is worth knowing early. It is a stronger ar
 Write down, in advance, what the task costs today and what would count as an improvement. Hours, error rate, turnaround, or simply "it stops being the thing they dread on a Wednesday". Vague success criteria always resolve to "it was interesting" and then to nothing.
 
 Be honest that the comparison is against how the job is done now, not against perfection. A workflow that gets a summary eighty per cent right in four minutes may beat a person doing it perfectly in three hours, or may not - but you cannot tell without having written down which one matters here.
+
+Be precise about which kind of better you are claiming, too. On small tasks AI has been measured to reduce effort without reducing clock time, and people cannot reliably tell the two apart: [saving time, or just feeling faster](/guides/is-your-ai-workflow-saving-time-or-just-effort/).
 
 ## Build the check into the workflow
 

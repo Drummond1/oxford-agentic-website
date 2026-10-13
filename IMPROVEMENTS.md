@@ -209,6 +209,41 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-13 (06:47 local cycle) — New guide: is your AI workflow saving time, or just
+  feeling faster?**
+  - **Evidence.** Flagged on 12 Oct as the best candidate of the week: the only recent probe
+    whose field was small blogs rather than institutions or vendors, and a question a senior
+    person asks before committing more of their own time. It was held back twice because the
+    supporting study reached us secondhand. **This cycle it was traced and read at source** -
+    and the secondhand versions turned out to have conflated two companion papers, which
+    vindicates the hold. Details and the correction are in the GEO log.
+  - **What it says.** Two preregistered studies by Yu, Cheng and five co-authors (May 2026,
+    arXiv:2605.23177 and arXiv:2605.22687) found that on simple tasks AI-assisted and
+    unassisted completion took the same time, while people predicted AI would be much faster
+    and reported it felt easier. The guide uses that to separate three returns people
+    conflate - time, effort and quality - and then says plainly what the research does **not**
+    show: both papers are about short tasks, not multi-step workflows, so this is not evidence
+    that AI never saves time. It closes with four things to measure, including timing the
+    third run rather than the first and counting the checking.
+  - **Accuracy discipline.** Only abstract-level findings that were read at the primary source
+    are cited. The vivid "55.7 versus 7.5 seconds" figure circulating secondhand is left out,
+    because it belongs to the other paper's body. Author institutions are not claimed, because
+    the arXiv pages do not list them. One short quoted phrase, attributed.
+  - **Inbound link in the same commit**, per the process lesson recorded on 12 Oct:
+    `how-to-run-an-ai-pilot-that-survives` now points at it from "define better before you
+    start", which is where the distinction actually bites. No guide the loop ships should
+    arrive orphaned again.
+  - **Checks.** Build, links (2,976 across 60 pages) and schema pass, no SEO warnings, no em
+    dashes. Capsule 60 words, description 152 chars, seoTitle 38. Both arXiv links verified
+    reachable by the outbound checker. Inspected at 375px (scrollWidth 375) and desktop
+    (1024/1024).
+  - **Search Console (returned, no new data).** Still through 10 October, identical to 00:47.
+  - **GEO.** Two probes, neither cited, and one matters commercially: **"bring your own real
+    work" is no longer a differentiator.** Ten providers answer that question and every one
+    promises it. That is a positioning question for Drummond rather than something a guide
+    fixes.
+  - **Guides this week.** 2 of 3.
+
 - **2026-10-13 (00:47 local cycle) — Eleven of twenty-nine guides had no inbound links. The
   five that matter most now do.**
   - **Evidence.** Yesterday's fix covered the two newest guides. Auditing the whole library

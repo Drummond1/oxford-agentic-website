@@ -1014,3 +1014,9 @@ meaningful impressions has now been opened and closed:
 The standing instruction holds: do not re-open one of these unless the named query share
 rises above roughly a quarter of impressions, or total impressions grow enough to pull more
 queries above Google's anonymisation threshold.
+
+## Update — 13 October 2026, 06:50 BST
+
+Search Console returned, **no new data**. Identical to the 00:47 reading - 126 clicks,
+1.85k impressions, every page figure unchanged, still through 10 October. Nothing to act
+on under rule 4, and the page-by-page verdict table from the 00:47 entry still stands.
