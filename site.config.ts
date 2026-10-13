@@ -16,6 +16,7 @@ export interface SiteConfig {
   analytics: Analytics;
   newsletter: Newsletter;
   applications: Applications;
+  ceoRoundtable: CeoRoundtable;
   assistant: Assistant;
 }
 
@@ -147,6 +148,17 @@ export interface Applications {
    * written into an email to `brand.email` in the visitor's own mail app, and
    * the page tells them to press send rather than claiming it went.
    */
+  endpoint: string;
+}
+
+export interface CeoRoundtable {
+  /** Working name of the format. Display only; the URL never changes. */
+  name: string;
+  /** Seats in the first cohort. Scarcity copy reads from here, never a literal. */
+  seats: number;
+  /** "within X" in the thank-you state. */
+  replyWithin: string;
+  /** n8n production webhook that stores the application. Empty = error state with email fallback. */
   endpoint: string;
 }
 
@@ -358,6 +370,15 @@ const config: SiteConfig = {
   applications: {
     // 23 Sept 2026: no provider chosen yet, so applications arrive by email.
     endpoint: '',
+  },
+
+  // 13 Oct 2026: ad-only demand-validation page at /ceo-roundtable/ (noindex, not linked).
+  ceoRoundtable: {
+    name: 'Oxford Agentic CEO Roundtable',
+    seats: 16, // ASSUMPTION - confirm with Drummond
+    replyWithin: 'five working days', // TBC
+    // n8n workflow "CEO Roundtable Applications" - inactive until Drummond publishes it.
+    endpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/ceo-roundtable-apply',
   },
 
   assistant: {
