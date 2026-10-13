@@ -1026,3 +1026,15 @@ on under rule 4, and the page-by-page verdict table from the 00:47 entry still s
 Search Console returned, **no new data** - fifth reading on the same window. 126 clicks,
 1.85k impressions, every page figure identical, still through 10 October. Google's lag is
 holding at three days. Nothing to act on under rule 4.
+
+## Update — 13 October 2026, 18:50 BST
+
+Search Console returned with **new data** - one more day. **129 clicks · 1.88k
+impressions**, through 11 October. Movement is small and in the right direction:
+`/` 1,005 → 1,013 impressions (77 clicks), `/bootcamps/second-brain-bootcamp/` 110 → 116
+and 10 → 11 clicks (CTR 9.1% → 9.5%, position 6.1 → 5.9, still the best page on the site
+eight days out from its event), `/bootcamps/oxford-agentic-bootcamp/` 189 → 192 and 6 → 7
+clicks (3.2% → 3.6%), `/team/` 200 → 202, Cohort 2 192 → 194.
+
+No rule-4 action. Every page with meaningful impressions was opened and closed on 12-13
+October, and nothing in these increments suggests the named query share has moved.

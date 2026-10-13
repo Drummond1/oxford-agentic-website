@@ -1,9 +1,24 @@
 name: Deploy to GitHub Pages
 
-# Every push to main rebuilds and republishes the site. Nothing else to run.
+# Every push to main rebuilds and republishes the site, and so does a daily
+# cron.
+#
+# The cron is not housekeeping. A static site cannot notice that an event has
+# passed: `effectiveStatus()` derives "past" from endDate AT BUILD TIME, so a
+# site that does not rebuild keeps serving whatever was true at the last build.
+# Between 15 and 23 September 2026 - eight days with no push - the live site
+# went on advertising Cohort 2 as upcoming, with a waitlist button, a week after
+# it had run. A daily rebuild makes the date-derived status self-correcting,
+# which is what the code already assumes. Added 13 Oct 2026, eight days before
+# the Second Brain Bootcamp; it earns its keep on the days nobody pushes.
 on:
   push:
     branches: [main]
+  schedule:
+    # 03:17 UTC daily. Events end at 17:00 UK, so a day that finishes on Tuesday
+    # reads as past by early Wednesday. Off the hour because scheduled runs
+    # queued on the hour are the ones GitHub delays.
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 # Pages needs these; the job cannot deploy without them.
@@ -79,9 +94,13 @@ jobs:
   # timed-out-but-published deploy still gets its ping, a failed one does not.
   # If a later push supersedes this one before it is seen live, this job logs
   # that and skips; the later push pings its own changes.
+  #
+  # Push only. A scheduled or manual rebuild has no new commit, so the diff
+  # below would resolve to the LAST push's files and hint at them again every
+  # day. Nothing changed on those runs, so there is nothing to tell IndexNow.
   indexnow:
     needs: [build, deploy]
-    if: ${{ always() && needs.build.result == 'success' }}
+    if: ${{ always() && needs.build.result == 'success' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:

@@ -232,6 +232,46 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-13 (18:47 local cycle) — The site now rebuilds daily, so a past event stops
+  advertising itself as upcoming.**
+  - **Evidence.** The deploy workflow fired on `push` and `workflow_dispatch` only. There
+    was no scheduled build, and `effectiveStatus()` derives "past" from `endDate` **at build
+    time**, so a static site that does not rebuild keeps serving whatever was true at the
+    last build. That is precisely what happened between 15 and 23 September: eight days with
+    no push, and the live site went on advertising Cohort 2 as upcoming, with a waitlist
+    button, a week after it ran. The fix then was a manual rebuild; the cause was never
+    removed.
+  - **Why now.** The Second Brain Bootcamp runs on **21 October, eight days away**, and the
+    loop is still hand-started rather than running from the cloud routine. The gap that
+    caused the September incident is open again and on a date we can see coming.
+  - **What changed.** A `schedule:` trigger at 03:17 UTC daily, so a day that finishes on a
+    Tuesday evening reads as past by early Wednesday. Off the hour, because scheduled runs
+    queued on the hour are the ones GitHub delays.
+  - **And the trap that came with it.** The IndexNow job derives changed URLs from
+    `git diff HEAD^ HEAD`. On a scheduled run there is no new commit, so that diff resolves
+    to the **last push's** files and would have hinted at them again every single day -
+    daily spurious pings for unchanged URLs, which is how a key stops being trusted. The job
+    is now gated on `github.event_name == 'push'`, which also covers manual dispatches. This
+    push pinged normally, as a push should; the first scheduled run will not, and that is the
+    part only tomorrow can confirm.
+  - **Audit of the merged CEO Roundtable PR (#2) - clean, no action.** It touched
+    `BaseHead.astro`, `Base.astro`, `astro.config.mjs` and `check-schema.mjs`, which is a
+    site-wide blast radius worth checking. `hidden` defaults to false everywhere, so no
+    existing page changed behaviour. Verified live and in `dist`: `/ceo-roundtable/` carries
+    `noindex, nofollow` and no JSON-LD, and is absent from the sitemap, `llms.txt` and
+    `llms-full.txt`; no other page gained a robots meta; the eight that carry one are all
+    pre-existing and intentional; sitemap holds 53 entries live and locally; `robots.txt`
+    unchanged and permissive. The one page that looked wrong - `team/josh-lawman` with no
+    JSON-LD - is a deliberate redirect stub to `/team/`.
+  - **Checks.** Build, links (3,024 across 61 pages) and schema pass, no SEO warnings. The
+    workflow YAML was parsed to confirm all three triggers, the cron and all three jobs
+    survived the edit. No page content changed, so there was nothing to inspect at 375px.
+  - **Search Console (new data).** 129 clicks, 1.88k impressions, through 11 October. No
+    rule-4 action; the increments change nothing.
+  - **GEO.** Three probes, none cited, none winnable - enterprise IT, major publishers, and
+    SaaS vendors respectively.
+  - **Guides this week.** 2 of 3, and today's allowance went at 06:47.
+
 - **2026-10-13 (12:47 local cycle) — The last two orphaned guides that had a natural home
   now have one. The remaining four are left alone on purpose.**
   - **Evidence.** Monday's audit found 11 guides with no inbound contextual links and fixed

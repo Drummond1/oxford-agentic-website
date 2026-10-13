@@ -5,6 +5,30 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-13 (18:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| why do AI pilots never make it past the pilot stage | **No** | thinkinsights, Spiceworks, ITPro, InformationWeek, The Information, itweb, BankInfoSecurity, robotsandpencils, hatchworks |
+| is agentic AI actually useful for a small business or is it hype | **No** | Forbes, QuickBooks, Nextiva, Sage, Deloitte, MIT Sloan, Coveo, Taskade, smallbiztrends, jstribune |
+| what does a working AI workflow actually look like day to day | **No** | Scaler, Adobe, Mastra, Domo, aline, LifeInAI, masterai, veereshbashetti, vantagelabs, LinkedIn |
+
+**Reading.**
+- The pilot question is **enterprise IT, not our buyer**. Every result is a consultancy or
+  trade title citing MIT, Gartner or McKinsey, and the failure modes are legacy systems of
+  record, ungoverned data pipelines and compliance arriving in month four. Our pilot guide is
+  written for someone far smaller. Not winnable and not worth winning.
+- The hype question is Forbes, Deloitte, MIT Sloan, Sage and QuickBooks. Not winnable.
+  Worth noting that **the honest-counterweight niche now has occupants**: Taskade's answer
+  ("if verifying the result is as hard as doing the work, the agent saves nothing") is
+  almost exactly the argument in the guide we shipped this morning. Being right is no longer
+  differentiating on its own.
+- "What a workflow looks like day to day" is answered mostly with generic pipeline diagrams
+  by SaaS vendors. The only two results that give a real day are individual bloggers writing
+  about their own week. There is a gap there for a concrete, specific account - but we cannot
+  fill it without a named person's real workflow, and nothing like that is cleared to publish.
+  **Recorded as blocked on material rather than as an opportunity.**
+
 ## 2026-10-13 (12:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |
