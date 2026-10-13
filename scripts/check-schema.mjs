@@ -109,6 +109,13 @@ for (const file of files) {
   const h1s = [...html.matchAll(/<h1[\s>]/g)].length;
   if (h1s !== 1) errors.push(`${page}: expected exactly one <h1>, found ${h1s}`);
 
+  // Ad-only pages (noindex, nofollow) carry no JSON-LD on purpose.
+  const adOnly = html.includes('name="robots" content="noindex, nofollow"');
+  if (adOnly) {
+    if (html.includes('application/ld+json')) errors.push(`${page}: ad-only page must not carry JSON-LD`);
+    continue;
+  }
+
   // ---- JSON-LD ----
   const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   if (blocks.length === 0) {

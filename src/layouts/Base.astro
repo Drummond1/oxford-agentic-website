@@ -23,6 +23,8 @@ interface Props {
   /** Set on long-form pages so crawlers read them as articles, not brochure pages. */
   article?: { publishedTime: Date; modifiedTime: Date; author?: string };
   noindex?: boolean;
+  /** Ad-only page: noindex, nofollow, no schema. See BaseHead. */
+  hidden?: boolean;
   bodyClass?: string;
 }
 
@@ -36,6 +38,7 @@ const {
   breadcrumbs = [],
   article,
   noindex = false,
+  hidden = false,
   bodyClass = '',
 } = Astro.props;
 
@@ -44,7 +47,7 @@ const {
 const title = titleOverride ?? `${pageTitle} - ${config.brand.name}`;
 
 const trail = [{ name: 'Home', path: '/' }, ...breadcrumbs];
-const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null];
+const nodes = hidden ? [] : [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null];
 ---
 
 <!doctype html>
@@ -58,7 +61,9 @@ const nodes = [...schemaNodes, trail.length > 1 ? breadcrumbSchema(trail) : null
       schemaNodes={nodes}
       article={article}
       noindex={noindex}
+      hidden={hidden}
     />
+    <slot name="head" />
   </head>
   <body class={bodyClass} data-ga4-id={config.analytics.ga4MeasurementId}>
     {/* Reading progress on long-form pages only; decorative, so hidden from AT. */}

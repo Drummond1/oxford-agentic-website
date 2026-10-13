@@ -15,9 +15,14 @@ interface Props {
   /** Present on long-form pages; switches og:type and adds the article dates. */
   article?: { publishedTime: Date; modifiedTime: Date; author?: string };
   noindex?: boolean;
+  /**
+   * Ad-only page: robots "noindex, nofollow" and no JSON-LD at all, so the page
+   * is not offered to crawlers as an entity. Implies noindex.
+   */
+  hidden?: boolean;
 }
 
-const { title, description, path, ogImage, schemaNodes = [], article, noindex = false } = Astro.props;
+const { title, description, path, ogImage, schemaNodes = [], article, noindex = false, hidden = false } = Astro.props;
 
 const canonical = absoluteUrl(path);
 const ogUrl = ogImage ? absoluteUrl(ogImage) : absoluteUrl('/og/index.png');
@@ -31,7 +36,7 @@ const founder = host ? { name: host.data.name, slug: host.data.slug } : undefine
 // from every other node. Entity consistency is the core AI-citation signal (PRD §13).
 // Each page also carries its own WebPage node tied into that graph — except
 // noindex pages, which are deliberately not offered to crawlers as entities.
-const pageNode = noindex
+const pageNode = noindex || hidden
   ? null
   : webPageSchema({
       title,
@@ -49,7 +54,7 @@ const jsonLd = graph([organizationSchema(founder), websiteSchema(), pageNode, ..
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
-{noindex && <meta name="robots" content="noindex, follow" />}
+{hidden ? <meta name="robots" content="noindex, nofollow" /> : noindex && <meta name="robots" content="noindex, follow" />}
 
 <meta name="generator" content={Astro.generator} />
 <meta name="theme-color" content="#051817" />
@@ -106,7 +111,7 @@ const jsonLd = graph([organizationSchema(founder), websiteSchema(), pageNode, ..
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogUrl} />
 
-<script type="application/ld+json" is:inline set:html={jsonLd} />
+{!hidden && <script type="application/ld+json" is:inline set:html={jsonLd} />}
 
 {
   /* Analytics is provider-agnostic (PRD §14, §21) — swapping providers is a

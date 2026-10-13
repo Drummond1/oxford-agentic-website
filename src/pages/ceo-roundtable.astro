@@ -1,0 +1,1160 @@
+---
+/**
+ * CEO Roundtable: a demand-validation page and application form.
+ *
+ * Added 13 Oct 2026. A new Oxford Agentic format for chief executives and other
+ * senior leaders: a chaired leadership debate and a dinner in an Oxford college
+ * hall. There is no date, venue or price on the page by design - this exists to
+ * test whether the right people will apply, and what they will say they can pay.
+ *
+ * AD-ONLY, AND HIDDEN FROM SEARCH
+ *  - robots "noindex, nofollow" and no JSON-LD (Base `hidden`).
+ *  - Not in the sitemap (astro.config.mjs), llms.txt or llms-full.txt (both are
+ *    built from content collections, so nothing to remove), the nav or the footer.
+ *    Nothing on the site links here. There is no robots.txt Disallow either, on
+ *    purpose: a disallowed URL cannot have its noindex read.
+ *
+ * SOFT GATE, NOT SECURITY
+ *  The head script sends a visitor to the homepage unless the URL carries
+ *  utm_source or li_fat_id, or this tab already passed the gate (sessionStorage),
+ *  or the URL has ?preview=1. Anyone who knows the trick can open the page. It
+ *  exists so organic visitors and stray crawlers that run JavaScript do not
+ *  land on a page that is only meant for paid traffic.
+ *
+ * COPY RULES
+ *  No price anywhere except the budget question. No venue, college name or crest.
+ *  The only quote is a consented, verbatim one already on the testimonials
+ *  collection. Seats, reply time and the endpoint all read from site.config.ts.
+ */
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Quote from '../components/Quote.astro';
+import config from '../../site.config';
+import { createRhythm, getTestimonials } from '../lib/site';
+
+const rt = config.ceoRoundtable;
+const email = config.brand.email;
+
+const rhythm = createRhythm('cream');
+const bands = { facts: rhythm.next(), table: rhythm.next(), how: rhythm.next(), proof: rhythm.next(), form: rhythm.next() };
+
+const testimonials = await getTestimonials();
+const ceoQuote = testimonials.find((t) => t.data.name === 'Kirsten Samuel');
+
+const facts = [
+  { label: 'Who', value: 'Chief executives, managing directors, founders, chairs and other C-suite' },
+  { label: 'What', value: 'A chaired leadership debate on AI, then dinner in an Oxford college hall' },
+  { label: 'Seats', value: `${rt.seats} in the first cohort` },
+  { label: 'When', value: 'Date announced to applicants' },
+];
+
+const pillars = [
+  {
+    title: 'Peers only',
+    body: 'Chief executives, managing directors, founders, chairs and other C-suite. Nobody is there to sell to you, and nobody is there to watch.',
+  },
+  {
+    title: 'A debate, not a keynote',
+    body: 'A chaired conversation between people who carry the decision: where to start, what to govern, what to stop, and what your board will ask next.',
+  },
+  {
+    title: 'Built on the Bootcamp',
+    body: 'From the team behind the Oxford Agentic Bootcamp, where sixteen founders, directors and senior professionals spent Cohort 1 building working agents on their own tasks. The same standard applies here: real organisations, real decisions.',
+  },
+  {
+    title: 'Dinner in an Oxford college hall',
+    body: 'The day ends at the table. A private dinner in an Oxford college hall, for the conversations that do not fit in a session.',
+  },
+];
+
+const topics = [
+  { title: 'Knowing where to start', body: 'Which one or two things to do first, and what to leave alone for now.' },
+  { title: 'Getting the team to adopt', body: 'Why good tools sit unused, and what changes when the leadership team uses them first.' },
+  { title: 'Governance, risk and data', body: 'What you can safely hand to an agent today, and who signs it off.' },
+  { title: 'Proving the return', body: 'How to tell a real gain from a busy pilot before the next budget round.' },
+  { title: 'Choosing tools and vendors', body: 'How to buy in a market that changes every quarter without being locked in.' },
+  { title: 'The skills gap at the top', body: 'What the leadership team needs to understand to steer this well.' },
+];
+
+const steps = [
+  { title: 'Apply', body: 'About three minutes. Tell us about your organisation and where AI is sticking.' },
+  { title: 'We review it personally', body: `Every application is read by a person. We reply within ${rt.replyWithin}.` },
+  { title: 'If there is a seat', body: 'You hear the date, the venue and the details first, before anything is announced more widely.' },
+];
+
+const roles = ['CEO', 'Managing Director', 'Founder-owner', 'Chair', 'Other C-suite', 'Other'];
+const sizes = ['1-10', '11-50', '51-250', '251-1,000', '1,000+'];
+
+const challenges = [
+  'Knowing where to start',
+  'Getting the team to adopt',
+  'Governance, risk and data',
+  'Proving ROI',
+  'Choosing tools and vendors',
+  'Skills gap in the leadership team',
+];
+const opportunities = [
+  'Customer service',
+  'Sales and marketing',
+  'Operations and back office',
+  'Finance',
+  'Product',
+  'Knowledge management',
+  'Decision support',
+];
+const tools = [
+  'ChatGPT',
+  'Claude',
+  'Microsoft Copilot',
+  'Gemini',
+  'Custom agents or automations',
+  'Sector-specific tools',
+  'None yet',
+];
+
+/*
+ * Budget tiers. `value` is what is stored (and what the n8n validator accepts),
+ * so change the two together. The £700 tier is the recommended one.
+ * Perks listed on each tier are working copy, not promises - see the PR.
+ */
+const budgets = [
+  { value: 'Under £300', label: 'Under £300', hint: '' },
+  { value: '£300-£500', label: '£300-£500', hint: '' },
+  {
+    value: '£700 - Full seat',
+    label: '£700 - Full seat',
+    hint: 'Roundtable, private college dinner and 1:1 follow-up call',
+    recommended: true,
+  },
+  {
+    value: '£1,000+ - Full seat plus a second place',
+    label: '£1,000+',
+    hint: 'Full seat plus a second place for a leadership-team colleague',
+  },
+  {
+    value: 'Company to pay - send an invoice option',
+    label: 'Would need my company to pay',
+    hint: 'Please send an invoice option',
+  },
+];
+
+const timings = ['Weekday daytime and dinner', 'Evening only', 'Either'];
+---
+
+<Base
+  pageTitle="CEO Roundtable"
+  description={`${rt.name}: a closed leadership debate on AI and a dinner in an Oxford college hall. By application.`}
+  path="/ceo-roundtable/"
+  hidden
+>
+  {/* The soft gate. Inline and in the head so a blocked visitor is redirected
+      before the page paints; it only hides the body while redirecting, so a
+      visitor without JavaScript still sees the page. */}
+  <script slot="head" is:inline>
+    (function () {
+      var KEY = 'oa_ceo_ok';
+      var CTX = 'oa_ceo_ctx';
+      var q = new URLSearchParams(window.location.search);
+      var hasParam = q.has('utm_source') || q.has('li_fat_id');
+      var preview = q.get('preview') === '1';
+      var store = null;
+      try {
+        store = window.sessionStorage;
+      } catch (e) {}
+
+      var passed = false;
+      try {
+        passed = !!store && store.getItem(KEY) === '1';
+      } catch (e) {}
+
+      if (hasParam || preview) {
+        try {
+          if (store) {
+            store.setItem(KEY, '1');
+            if (hasParam && !store.getItem(CTX)) {
+              var ctx = { params: {}, referrer: document.referrer || '' };
+              q.forEach(function (v, k) {
+                if (/^utm_/i.test(k) || k === 'li_fat_id') ctx.params[k] = v;
+              });
+              store.setItem(CTX, JSON.stringify(ctx));
+            }
+          }
+        } catch (e) {}
+        return;
+      }
+      if (passed) return;
+
+      document.documentElement.classList.add('ceo-gate-closed');
+      window.location.replace('/');
+    })();
+  </script>
+  <style is:global>
+    .ceo-gate-closed body {
+      visibility: hidden;
+    }
+  </style>
+
+  <Hero
+    eyebrow="By application - first cohort"
+    title="A closed table for the people who run the company."
+    subline={`${rt.name}: a small, senior room to debate what AI should and should not do in your organisation, followed by dinner in an Oxford college hall. There are ${rt.seats} seats. Apply to be considered.`}
+    motif
+  >
+    <p class="hero-cta">
+      <a class="btn btn--primary" href="#apply" data-ceo-start>Apply now <span aria-hidden="true">→</span></a>
+    </p>
+  </Hero>
+
+  <section class:list={['band', `band--${bands.facts}`]} aria-labelledby="facts-title">
+    <div class="wrap">
+      <h2 id="facts-title" class="visually-hidden">The format at a glance</h2>
+      <dl class="facts">
+        {
+          facts.map((f) => (
+            <div class="fact" data-reveal>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.table}`]} aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="why-title">Why a closed room</h2>
+      </div>
+      <ul class="pillars" role="list">
+        {
+          pillars.map((p, i) => (
+            <li class="pillar" data-reveal>
+              <span class="pillar__num">0{i + 1}</span>
+              <h3 class="pillar__title">{p.title}</h3>
+              <p>{p.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.how}`]} aria-labelledby="topics-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="topics-title">What we expect the room to bring</h2>
+        <p class="lede">
+          Six questions senior leaders get stuck on. Your answers in the application decide which ones we put at the
+          centre of the table.
+        </p>
+      </div>
+      <ul class="topics" role="list">
+        {
+          topics.map((t) => (
+            <li class="topic" data-reveal>
+              <h3 class="topic__title">{t.title}</h3>
+              <p>{t.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="section-head section-head--spaced" data-reveal>
+        <hr class="dash" />
+        <h2>How it works</h2>
+      </div>
+      <ol class="steps" role="list">
+        {
+          steps.map((s, i) => (
+            <li class="step" data-reveal>
+              <span class="step__num">{i + 1}</span>
+              <div>
+                <h3 class="step__title">{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {
+    ceoQuote && (
+      <section class:list={['band', `band--${bands.proof}`]} aria-label="What a Bootcamp attendee said">
+        <div class="wrap wrap--narrow">
+          <Quote testimonial={ceoQuote} variant="lead" />
+          <p class="quote-context">Said of the Oxford Agentic Bootcamp, Cohort 1.</p>
+        </div>
+      </section>
+    )
+  }
+
+  <section
+    class:list={['band', `band--${ceoQuote ? bands.form : bands.proof}`]}
+    aria-labelledby="apply-title"
+    id="apply"
+  >
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="apply-title">Apply for a seat</h2>
+        <p class="lede">About three minutes. Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      </div>
+
+      <form class="ceo" data-endpoint={rt.endpoint} data-email={email} data-seats={rt.seats} novalidate>
+        {/* Spam trap. Humans never see or fill it. */}
+        <div class="ceo__trap" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        {/* Campaign context, filled by the script from the URL or the gate's stored copy. */}
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="li_fat_id" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="page_url" />
+        <input type="hidden" name="client_timestamp" />
+
+        <fieldset class="ceo__group">
+          <legend class="ceo__legend">About you</legend>
+          <div class="ceo__grid">
+            <label class="field">
+              <span class="field__label">Name <span class="req" aria-hidden="true">*</span></span>
+              <input class="field__input" type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Work email <span class="req" aria-hidden="true">*</span></span>
+              <input class="field__input" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+            </label>
+            <label class="field">
+              <span class="field__label">Company <span class="req" aria-hidden="true">*</span></span>
+              <input class="field__input" type="text" name="company" required autocomplete="organization" />
+            </label>
+            <label class="field">
+              <span class="field__label">Role <span class="req" aria-hidden="true">*</span></span>
+              <select class="field__input" name="role" required autocomplete="organization-title">
+                <option value="">Choose one</option>
+                {roles.map((r) => <option value={r}>{r}</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Company size <small>(optional)</small></span>
+              <select class="field__input" name="company_size">
+                <option value="">Choose one</option>
+                {sizes.map((s) => <option value={s}>{s} people</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">LinkedIn URL <small>(optional)</small></span>
+              <input class="field__input" type="text" inputmode="url" name="linkedin_url" autocomplete="url" placeholder="linkedin.com/in/your-name" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="ceo__group" data-group="challenges" data-min="1">
+          <legend class="ceo__legend">Where AI is sticking <span class="req" aria-hidden="true">*</span></legend>
+          <p class="ceo__hint" id="challenges-hint">Your biggest challenge with AI. Choose any that apply.</p>
+          <div class="chips">
+            {
+              challenges.map((c) => (
+                <label class="chip">
+                  <input type="checkbox" name="challenges" value={c} aria-describedby="challenges-hint" />
+                  <span>{c}</span>
+                </label>
+              ))
+            }
+          </div>
+          <p class="ceo__error" role="alert" hidden>Choose at least one to carry on.</p>
+          <label class="field">
+            <span class="field__label">Anything to add? <small>(optional)</small></span>
+            <textarea class="field__input" name="challenges_other" rows="3" maxlength="1000"></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset class="ceo__group">
+          <legend class="ceo__legend">Where you see the opportunity <small>(optional)</small></legend>
+          <p class="ceo__hint">Key opportunities you see in AI rollouts.</p>
+          <div class="chips">
+            {
+              opportunities.map((o) => (
+                <label class="chip">
+                  <input type="checkbox" name="opportunities" value={o} />
+                  <span>{o}</span>
+                </label>
+              ))
+            }
+            <label class="chip">
+              <input type="checkbox" name="opportunities" value="Other" data-other="opportunities_other" />
+              <span>Other</span>
+            </label>
+          </div>
+          <label class="field field--other" hidden data-other-field="opportunities_other">
+            <span class="field__label">Which other opportunity?</span>
+            <input class="field__input" type="text" name="opportunities_other" maxlength="300" />
+          </label>
+        </fieldset>
+
+        <fieldset class="ceo__group">
+          <legend class="ceo__legend">What is working today <small>(optional)</small></legend>
+          <p class="ceo__hint">The tools providing most value in your organisation now.</p>
+          <div class="chips">
+            {
+              tools.map((t) => (
+                <label class="chip">
+                  <input type="checkbox" name="tools" value={t} />
+                  <span>{t}</span>
+                </label>
+              ))
+            }
+            <label class="chip">
+              <input type="checkbox" name="tools" value="Other" data-other="tools_other" />
+              <span>Other</span>
+            </label>
+          </div>
+          <label class="field field--other" hidden data-other-field="tools_other">
+            <span class="field__label">Which other tool?</span>
+            <input class="field__input" type="text" name="tools_other" maxlength="300" />
+          </label>
+        </fieldset>
+
+        <fieldset class="ceo__group">
+          <legend class="ceo__legend">Budget for attending <span class="req" aria-hidden="true">*</span></legend>
+          <p class="ceo__hint">
+            This helps us size the room and the format. It is not a quote and it is not a commitment.
+          </p>
+          <div class="tiers">
+            {
+              budgets.map((b) => (
+                <label class:list={['tier', b.recommended && 'tier--recommended']}>
+                  <input type="radio" name="budget_tier" value={b.value} required />
+                  <span class="tier__text">
+                    {b.recommended && <span class="tier__badge">Most popular</span>}
+                    <span class="tier__label">{b.label}</span>
+                    {b.hint && <small>{b.hint}</small>}
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="ceo__group">
+          <legend class="ceo__legend">Making it work for you</legend>
+          <label class="field">
+            <span class="field__label">What would make this a must-attend for you? <small>(optional)</small></span>
+            <textarea class="field__input" name="must_attend" rows="4" maxlength="2000"></textarea>
+          </label>
+          <p class="ceo__sub">Preferred timing <small>(optional)</small></p>
+          <div class="chips">
+            {
+              timings.map((t) => (
+                <label class="chip">
+                  <input type="radio" name="timing" value={t} />
+                  <span>{t}</span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <label class="consent">
+          <input type="checkbox" name="consent" value="yes" required />
+          <span>
+            {config.brand.name} may use these details, and the campaign link I arrived from, to review my application and
+            contact me about it. I will not be added to a mailing list because I applied. More in the{' '}
+            <a href="/privacy/#applications">privacy note</a>. <span class="req" aria-hidden="true">*</span>
+          </span>
+        </label>
+
+        <div class="ceo__actions">
+          <button type="submit" class="btn btn--primary" data-submit>Send application</button>
+        </div>
+        <p class="ceo__status" role="status" aria-live="polite" hidden></p>
+        <p class="ceo__fine">
+          {config.brand.name} is independent and is not affiliated with the University of Oxford or any of its
+          colleges. Events are held in hired Oxford venues.
+        </p>
+      </form>
+
+      <div class="ceo-done" tabindex="-1" hidden>
+        <p class="eyebrow">Application received</p>
+        <h3 class="ceo-done__title" data-done-title>Thank you.</h3>
+        <p data-done-body>
+          We review every application personally and reply within {rt.replyWithin}.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-cta {
+    margin-block-start: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .lede {
+    max-width: var(--measure);
+    margin-block-start: 0.75rem;
+  }
+
+  .section-head--spaced {
+    margin-block-start: clamp(3rem, 2rem + 4vw, 5rem);
+  }
+
+  /* ---- At a glance ---- */
+  .facts {
+    display: grid;
+    gap: 1.25rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+    margin: 0;
+  }
+
+  .fact {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 0.9rem;
+  }
+
+  .fact dt {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-block-end: 0.35rem;
+  }
+
+  :global(.band--dark) .fact dt {
+    color: var(--gold);
+  }
+
+  .fact dd {
+    margin: 0;
+    font-size: var(--step-md);
+    line-height: 1.45;
+  }
+
+  /* ---- Pillars, topics, steps ---- */
+  .pillars,
+  .topics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+
+  .pillar,
+  .topic {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 1.1rem;
+  }
+
+  .pillar__num {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    color: var(--rust);
+  }
+
+  :global(.band--dark) .pillar__num {
+    color: var(--gold);
+  }
+
+  .pillar__title,
+  .topic__title {
+    font-size: var(--step-lg);
+    margin-block: 0.4rem 0.6rem;
+  }
+
+  .pillar p,
+  .topic p {
+    font-size: var(--step-sm);
+    line-height: 1.6;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+    max-width: 44rem;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .step__num {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--gold);
+    font-family: var(--font-label);
+    font-weight: 700;
+  }
+
+  .step__title {
+    font-size: var(--step-lg);
+    margin: 0 0 0.25rem;
+  }
+
+  .step p {
+    font-size: var(--step-md);
+  }
+
+  .quote-context {
+    margin-block-start: 1rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* ---- The form ---- */
+  .ceo,
+  .ceo-done {
+    border: 1px solid var(--hairline-cream);
+    background: rgba(255, 249, 236, 0.6);
+    padding: clamp(1.25rem, 0.8rem + 2.5vw, 2.5rem);
+  }
+
+  :global(.band--dark) .ceo,
+  :global(.band--dark) .ceo-done {
+    background: var(--deep-card);
+    border-color: var(--gold-hairline);
+  }
+
+  .ceo__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .ceo__group {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .ceo__group + .ceo__group {
+    margin-block-start: 2.25rem;
+    padding-block-start: 2.25rem;
+    border-block-start: 1px solid var(--ink-hairline);
+  }
+
+  :global(.band--dark) .ceo__group + .ceo__group {
+    border-block-start-color: var(--gold-hairline);
+  }
+
+  .ceo__legend {
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    line-height: 1.25;
+    padding: 0;
+    margin-block-end: 0.75rem;
+  }
+
+  .ceo__legend small,
+  .ceo__sub small,
+  .field__label small {
+    font-family: var(--font-body);
+    font-size: var(--step-sm);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
+    color: var(--muted-on-cream);
+  }
+
+  :global(.band--dark) .ceo__legend small,
+  :global(.band--dark) .ceo__sub small,
+  :global(.band--dark) .field__label small,
+  :global(.band--dark) .ceo__hint,
+  :global(.band--dark) .tier small {
+    color: var(--muted-on-dark);
+  }
+
+  .ceo__hint {
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+    margin-block: 0 1rem;
+  }
+
+  .ceo__sub {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    margin-block: 1.5rem 0.75rem;
+  }
+
+  .req {
+    color: var(--rust);
+  }
+
+  .ceo__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+  }
+
+  .ceo__group > .field,
+  .chips + .field {
+    margin-block-start: 1.25rem;
+  }
+
+  .field[hidden] {
+    display: none;
+  }
+
+  .field__label {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: var(--step-xs);
+    font-weight: 700;
+  }
+
+  .field__input {
+    width: 100%;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(5, 24, 23, 0.35);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--ink-dark);
+    font: inherit;
+    font-size: max(1rem, var(--step-md));
+    min-height: 3rem;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .field__input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: inset 0 -2px 0 0 var(--gold);
+  }
+
+  .field__input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .field__input.is-invalid {
+    border-color: var(--rust);
+  }
+
+  /* Chips: multi-select and single-select pills, a thumb-sized target each. */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+  }
+
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .chip span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--ink-hairline);
+    background: var(--cream);
+    font-size: var(--step-sm);
+    transition: border-color 180ms var(--ease), background 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .chip:hover span {
+    border-color: var(--rust);
+  }
+
+  .chip input:checked + span {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.18);
+    box-shadow: inset 0 -2px 0 0 var(--gold);
+    font-weight: 600;
+  }
+
+  .chip input:focus-visible + span {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  :global(.band--dark) .chip span {
+    background: transparent;
+    border-color: var(--gold-hairline);
+    color: var(--cream);
+  }
+
+  :global(.band--dark) .chip input:checked + span {
+    background: rgba(212, 175, 55, 0.22);
+  }
+
+  /* Budget tiers: stacked cards. The recommended one is lifted, tinted and badged. */
+  .tiers {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .tier {
+    position: relative;
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--ink-hairline);
+    background: var(--cream);
+    cursor: pointer;
+    transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+  }
+
+  .tier:hover {
+    border-color: var(--rust);
+  }
+
+  .tier input {
+    margin-block-start: 0.3rem;
+    accent-color: var(--rust);
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .tier__text {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .tier__label {
+    font-size: var(--step-lg);
+    font-family: var(--font-title);
+  }
+
+  .tier small {
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+    line-height: 1.5;
+  }
+
+  .tier:has(input:checked) {
+    border-color: var(--gold);
+    box-shadow: inset 4px 0 0 0 var(--gold);
+  }
+
+  .tier:has(input:focus-visible) {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .tier--recommended {
+    border: 2px solid var(--gold);
+    background: rgba(212, 175, 55, 0.14);
+    padding-block: 1.35rem 1.15rem;
+  }
+
+  .tier__badge {
+    justify-self: start;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--ink-dark);
+    color: var(--gold);
+    padding: 0.2rem 0.6rem;
+    margin-block-end: 0.25rem;
+  }
+
+  :global(.band--dark) .tier {
+    background: transparent;
+    border-color: var(--gold-hairline);
+    color: var(--cream);
+  }
+
+  :global(.band--dark) .tier--recommended {
+    background: rgba(212, 175, 55, 0.12);
+    border-color: var(--gold);
+  }
+
+  :global(.band--dark) .tier__badge {
+    background: var(--gold);
+    color: var(--ink-dark);
+  }
+
+  .consent {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-block-start: 2rem;
+    font-size: var(--step-sm);
+    line-height: 1.55;
+  }
+
+  .consent input {
+    margin-block-start: 0.3rem;
+    accent-color: var(--rust);
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .ceo__error {
+    margin-block: 0.75rem 0;
+    font-size: var(--step-sm);
+    color: var(--rust);
+  }
+
+  :global(.band--dark) .ceo__error,
+  :global(.band--dark) .req {
+    color: var(--gold);
+  }
+
+  .ceo__actions {
+    margin-block-start: 1.75rem;
+  }
+
+  .ceo__actions .btn[disabled] {
+    opacity: 0.75;
+    cursor: progress;
+  }
+
+  .ceo__status {
+    margin-block-start: 1rem;
+    font-size: var(--step-md);
+    padding: 0.9rem 1rem;
+    border-inline-start: 3px solid var(--rust);
+  }
+
+  .ceo__status[hidden],
+  .ceo__error[hidden] {
+    display: none;
+  }
+
+  .ceo__fine {
+    margin-block-start: 1.5rem;
+    font-size: var(--step-xs);
+    color: var(--muted-on-cream);
+    line-height: 1.55;
+  }
+
+  :global(.band--dark) .ceo__fine {
+    color: var(--muted-on-dark);
+  }
+
+  .ceo-done:focus {
+    outline: none;
+  }
+
+  .ceo-done__title {
+    font-size: var(--step-2xl);
+    margin-block: 0.6rem 0.9rem;
+  }
+
+  .ceo-done p:not(.eyebrow) {
+    max-width: var(--measure);
+  }
+</style>
+
+<script>
+  import { track } from '../lib/track';
+
+  const form = document.querySelector<HTMLFormElement>('form.ceo');
+  const done = document.querySelector<HTMLElement>('.ceo-done');
+
+  if (form && done) {
+    const status = form.querySelector<HTMLElement>('.ceo__status')!;
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const endpoint = form.dataset.endpoint ?? '';
+    const email = form.dataset.email ?? '';
+
+    // ---- Campaign context: URL first, then the copy the gate stored ----
+    let stored: { params?: Record<string, string>; referrer?: string } = {};
+    try {
+      stored = JSON.parse(window.sessionStorage.getItem('oa_ceo_ctx') ?? '{}');
+    } catch {
+      /* storage blocked: the URL alone is enough */
+    }
+    const query = new URLSearchParams(window.location.search);
+    const campaign: Record<string, string> = { ...(stored.params ?? {}) };
+    query.forEach((value, key) => {
+      if (/^utm_/i.test(key) || key === 'li_fat_id') campaign[key] = value;
+    });
+
+    const setHidden = (name: string, value: string) => {
+      const el = form.elements.namedItem(name);
+      if (el instanceof HTMLInputElement) el.value = value;
+    };
+    for (const name of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'li_fat_id']) {
+      setHidden(name, campaign[name] ?? '');
+    }
+    setHidden('referrer', stored.referrer ?? document.referrer ?? '');
+    setHidden('page_url', window.location.href);
+
+    // ---- Interaction ----
+    let started = false;
+    const markStarted = () => {
+      if (started) return;
+      started = true;
+      track('ceo_apply_start');
+    };
+    form.addEventListener('focusin', markStarted);
+    document.querySelector('[data-ceo-start]')?.addEventListener('click', () => track('ceo_apply_cta_click'));
+
+    // "Other" reveals its text box.
+    form.querySelectorAll<HTMLInputElement>('input[data-other]').forEach((box) => {
+      const field = form.querySelector<HTMLElement>(`[data-other-field="${box.dataset.other}"]`);
+      box.addEventListener('change', () => {
+        if (field) field.hidden = !box.checked;
+        if (box.checked) field?.querySelector('input')?.focus();
+      });
+    });
+
+    // Group rules: at least `data-min` checked.
+    const groups = Array.from(form.querySelectorAll<HTMLElement>('[data-min]'));
+    const groupOk = (group: HTMLElement) =>
+      group.querySelectorAll('input[type="checkbox"]:checked').length >= Number(group.dataset.min ?? 0);
+    groups.forEach((group) => {
+      group.addEventListener('change', () => {
+        const error = group.querySelector<HTMLElement>('.ceo__error');
+        if (error && groupOk(group)) error.hidden = true;
+      });
+    });
+
+    const values = (name: string) =>
+      Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((i) => i.value);
+    const text = (name: string) => {
+      const el = form.elements.namedItem(name);
+      return el && 'value' in el ? String((el as HTMLInputElement).value).trim() : '';
+    };
+
+    const showStatus = (message: string) => {
+      status.hidden = false;
+      status.textContent = message;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.hidden = true;
+
+      for (const group of groups) {
+        if (!groupOk(group)) {
+          const error = group.querySelector<HTMLElement>('.ceo__error');
+          if (error) error.hidden = false;
+          group.querySelector<HTMLInputElement>('input')?.focus();
+          group.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          return;
+        }
+      }
+      if (!form.checkValidity()) {
+        const bad = form.querySelector<HTMLElement>(':invalid');
+        bad?.classList.add('is-invalid');
+        form.reportValidity();
+        return;
+      }
+
+      const firstName = text('name').split(/\s+/)[0];
+      const utm: Record<string, string> = {};
+      for (const [key, value] of Object.entries(campaign)) if (/^utm_/i.test(key)) utm[key] = value;
+
+      const payload = {
+        _gotcha: text('_gotcha'),
+        name: text('name'),
+        email: text('email'),
+        company: text('company'),
+        role: text('role'),
+        company_size: text('company_size'),
+        linkedin_url: text('linkedin_url'),
+        challenges: values('challenges'),
+        challenges_other: text('challenges_other'),
+        opportunities: values('opportunities'),
+        opportunities_other: text('opportunities_other'),
+        tools: values('tools'),
+        tools_other: text('tools_other'),
+        budget_tier: values('budget_tier')[0] ?? '',
+        must_attend: text('must_attend'),
+        timing: values('timing')[0] ?? '',
+        consent: true,
+        utm,
+        li_fat_id: text('li_fat_id'),
+        referrer: text('referrer'),
+        page_url: text('page_url'),
+        client_timestamp: new Date().toISOString(),
+      };
+
+      submit.disabled = true;
+      const label = submit.textContent;
+      submit.textContent = 'Sending…';
+
+      try {
+        if (!endpoint) throw new Error('no endpoint');
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+
+        track('ceo_apply_submit', { budget_tier: payload.budget_tier });
+        form.hidden = true;
+        done.hidden = false;
+        const title = done.querySelector('[data-done-title]');
+        if (title) title.textContent = firstName ? `Thank you, ${firstName}.` : 'Thank you.';
+        done.focus();
+        done.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      } catch {
+        submit.disabled = false;
+        submit.textContent = label;
+        showStatus(
+          `That did not go through, and nothing you typed has been lost. Please try again, or email ${email} and we will pick it up from there.`,
+        );
+        status.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
+    });
+  }
+</script>

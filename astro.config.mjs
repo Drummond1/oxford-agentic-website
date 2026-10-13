@@ -63,6 +63,8 @@ const flaggedOffPrefixes = [
   '/find-your-bootcamp',
   // The voice office hours page is noindex and unlinked (30 Sept 2026).
   '/office-hours',
+  // The CEO roundtable demand page is ad-only: noindex, nofollow, no sitemap entry.
+  '/ceo-roundtable',
 ].filter(Boolean);
 
 /**
