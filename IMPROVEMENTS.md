@@ -232,6 +232,38 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-13 (12:47 local cycle) — The last two orphaned guides that had a natural home
+  now have one. The remaining four are left alone on purpose.**
+  - **Evidence.** Monday's audit found 11 guides with no inbound contextual links and fixed
+    the five highest-value ones. Two of the six left over turned out to have homes that were
+    already half-written: `what-goes-in-a-second-brain` closes on the sentence "that is why
+    building one is a day's work rather than an afternoon's", which is the exact claim
+    `how-long-to-build-a-second-brain` exists to answer; and the four-level ladder in
+    `what-hands-on-ai-training-actually-means` turns on facilitation and room size, which is
+    where delivery mode belongs and where `why-in-person-beats-online-for-learning-ai` fits.
+  - **Four orphans remain and should stay that way for now.** The three sector guides and the
+    glossary have no sentence anywhere that genuinely wants to link to them, and the glossary
+    in particular sits in a query space owned by AWS, Zapier and Oracle. A forced link is
+    worse than no link.
+  - **Checked and deliberately did not change: the Coding Bootcamp's internal linking.** It
+    has 3 inbound links from content against the flagship's 21, which looked like a defect
+    worth fixing given Cohort 1 is six weeks out. It is not one. Only three guides are about
+    building software with agents, and all three already link to it. The ratio reflects the
+    **subject mix of the guide library**, not a linking failure, so the honest fix is coding
+    content on probe evidence rather than links bolted onto workflow guides. Recorded so a
+    later cycle does not "fix" it by forcing them.
+  - **No guide today.** The daily allowance went at 06:47.
+  - **Checks.** Build, links (2,978 across 60 pages, exactly two more) and schema pass, no SEO
+    warnings. Both edited pages inspected at 375px (scrollWidth 375) and desktop (1024/1024);
+    `updatedDate` bumped on both; both links verified by anchor text in the built output.
+  - **Search Console (returned, no new data).** Fifth reading on the same window, still
+    through 10 October.
+  - **GEO.** Three probes, none cited, and one pattern worth naming: this is the **second**
+    question in two days where the site has competitive content and is simply not retrieved
+    (the hands-on question on 12 Oct, the business-context question today). Two instances
+    suggest a retrieval problem rather than a coverage one, which more guides will not fix.
+  - **Guides this week.** 2 of 3.
+
 - **2026-10-13 (08:47 local cycle) — The homepage's last band told visitors no cohort was
   set, under three cohorts that are set, dated, venued and on sale.**
   - **The defect.** The gold "Not ready to book?" band is the final thing on the homepage,

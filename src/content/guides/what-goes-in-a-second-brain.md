@@ -11,7 +11,7 @@ capsule: >-
   archive - and credentials and other people's personal data stay out of it.
 author: drummond-gilbert
 publishDate: "2026-08-06T09:00:00+01:00"
-updatedDate: "2026-10-13T01:00:00+01:00"
+updatedDate: "2026-10-13T13:00:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
@@ -61,4 +61,4 @@ For each task you do regularly: what triggers it, what inputs it needs, what the
 
 A second brain decays. Standards change, people move, decisions get superseded, and a store that silently goes stale is worse than none because you stop being able to trust it. So the maintenance routine is not an afterthought to the build: what gets reviewed, how often, and what triggers an update.
 
-That is why building one is a day's work rather than an afternoon's, and why the day ends with the routine rather than the contents. The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) does exactly that: you build yours from your own material, organise it so it stays findable as it grows, and leave with the routine that keeps it worth having.
+That is why building one is [a day's work rather than an afternoon's](/guides/how-long-to-build-a-second-brain/), and why the day ends with the routine rather than the contents. The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) does exactly that: you build yours from your own material, organise it so it stays findable as it grows, and leave with the routine that keeps it worth having.

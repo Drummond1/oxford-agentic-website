@@ -1020,3 +1020,9 @@ queries above Google's anonymisation threshold.
 Search Console returned, **no new data**. Identical to the 00:47 reading - 126 clicks,
 1.85k impressions, every page figure unchanged, still through 10 October. Nothing to act
 on under rule 4, and the page-by-page verdict table from the 00:47 entry still stands.
+
+## Update — 13 October 2026, 12:50 BST
+
+Search Console returned, **no new data** - fifth reading on the same window. 126 clicks,
+1.85k impressions, every page figure identical, still through 10 October. Google's lag is
+holding at three days. Nothing to act on under rule 4.

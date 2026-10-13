@@ -5,6 +5,35 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-13 (12:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how do I get an AI workflow to run on a schedule without a developer | **No** | OpenHands (x3), Cloudflare, Mistral (x2), Boltic, Abacus, nexos.ai, Mintlify |
+| what actually sticks a month after an AI training course | **No** | SFAI Labs (x2), kju.ai, AIBL, modernbizops, ProfileTree, Savia, weareaiinstitute, peoplepilot, kendratech |
+| what should I give an AI about my company so its answers stop being generic | **No** | swarmz, Systems Success Pro, Astola, PR Daily, learnaile, zemith, Meta, YMNIZA, Atlan, ctxflow |
+
+**Reading.**
+- The scheduling question **ignored the "without a developer" clause entirely** and came back
+  engineering platforms - OpenHands, Cloudflare, Mistral. Same shape as yesterday's
+  broken-workflow probe. Anything phrased around running, deploying or scheduling routes to
+  infrastructure vendors regardless of who is asking. Our honest answer to it already exists
+  in `why-the-code-an-agent-wrote-is-not-live`; the query space is not ours.
+- **"What sticks after training" is worth understanding before anyone writes for it.** The
+  field is L&D vendors and consultants, and their consensus answer is that training must be
+  "a rhythm, not an event" - spaced repetition, monthly touchpoints, ongoing coaching. That
+  premise argues against a one-day format. We do have a real counter, and it is already our
+  published position: the day ends with something running and a written recipe, which is the
+  part that survives. But entering that conversation means arguing with its premise rather
+  than answering its question, and that is a harder piece to write well. **Candidate, with
+  the warning attached.**
+- The context question is **Second Brain territory and a second instance of a pattern worth
+  naming.** `what-goes-in-a-second-brain` answers it directly with five kinds of context; the
+  top result answers it with six fields, which is structurally the same answer. We are
+  invisible anyway. That is the same situation as the hands-on question on 12 Oct: we have
+  the content, it is competitive, and it is not retrieved. **Two instances now suggest the
+  problem is retrieval rather than coverage**, which content alone may not fix.
+
 ## 2026-10-13 (06:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

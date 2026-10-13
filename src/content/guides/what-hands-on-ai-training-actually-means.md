@@ -11,7 +11,7 @@ capsule: >-
   ask what you will personally have running at the end.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-10-12T13:00:00+01:00"
+updatedDate: "2026-10-13T13:00:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
@@ -30,6 +30,8 @@ Nearly every AI course now describes itself as hands-on, practical or applied. T
 **4. Building against your own task.** You bring a piece of your actual work - the report, the sift, the weekly assembly job - and build the workflow against that. When the day ends there is nothing to transfer, because the thing you built is already about your job.
 
 Each step up costs more facilitation and caps the room size, which is why most large-format training stops at levels one or two. That is an economic choice, not a dishonest one - but it is worth knowing which one you are buying.
+
+Delivery mode is tangled up in it as well, because the upper two levels are harder to run at a distance: when someone is stuck, the fix is a person walking over. That is [the case for doing this in a room](/guides/why-in-person-beats-online-for-learning-ai/).
 
 ## Three questions that settle it
 
