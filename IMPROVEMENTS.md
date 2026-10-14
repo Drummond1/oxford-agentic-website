@@ -227,10 +227,74 @@ Status: `todo` · `blocked` (why) · `doing`
     been confirmed". Four weeks on, that is the one past-cohort page that does not keep
     the page's promise, and it is the most recent proof the site has. Attendee count and
     anything about what the room built would close it. The loop will not infer either.
+23. `todo` **(needs Drummond, a wording call)** - **two of the three quotes on a past
+    cohort's page read as if they came from that cohort.** Testimonials are attached to
+    the programme rather than to an event, so Cohort 2's page shows the three Cohort 1
+    voices under the heading "From the room". Fei Gan's names its own day ("the July 2026
+    AI Agentic Bootcamp", "Cohort 1 attendee"); Kirsten Samuel's and Shrestha Mullick's
+    carry a role and a company and no cohort, so on the Cohort 2 page a reader can fairly
+    take them for Cohort 2 attendees. The date under each name was removed on purpose in
+    an earlier cycle because it read as a contradiction, so this is not a case of putting
+    it back. A heading that says whose room it was, on past events only, would fix it in
+    one line. The loop is not rewording how a real person's quote is presented without
+    his say-so.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-14 (08:47 local cycle) - The only control that opens the navigation on a
+  phone was 31px tall. Its touch target is now 44px and the button looks exactly the
+  same.**
+  - **Evidence.** A touch-target sweep at 375px across eleven templates turned up one
+    outlier, and it is on all 60 pages: `.nav-toggle`, the hamburger in the header,
+    renders 43 by 31. On a phone it is the only way to Events, Bootcamps, Outcomes, Team
+    and the next-bootcamp button, and 31px is under the 44px that Apple and Google both
+    specify and that WCAG 2.5.5 asks for. Nothing else fell short: the links inside the
+    open menu are 40 to 43px tall and full width, and the buttons, cards and footer rows
+    are all comfortably over.
+  - **Change.** A transparent pad on the button (`::after`, `inset: -0.5rem -0.3rem`)
+    widens the target to roughly 45 by 50 instead of growing the button, so the header
+    keeps its proportions and nothing on any page moves. Measured from the centre of the
+    control: a press 22px above, below, left or right of it now lands on the button, and
+    24px above or below does not, so the target is bigger and still tight. A click 4px
+    under the visible box opens the menu at 320, 375 and 768px; Escape still closes it
+    and returns focus; the focus ring still draws on the visible box, gold, 2px, 3px
+    offset.
+  - **Proof it changes nothing visually.** The header was captured at 375, 768 and 1280px
+    with the rule live and with it disabled. All three pairs are byte-identical PNGs. At
+    1280px the button is `display: none`, so the rule renders nothing at all.
+  - **Checks.** Build, links (3,024 across 61 pages, unchanged) and schema pass with no
+    SEO warnings; `check:flags` passes on the all-on and all-off builds. `astro check`,
+    installed with `--no-save` so the diff stays clean, reports 79 errors and 4 hints both
+    with and without the change, so none of them is this. Whole-site sweep in headless
+    Chromium at 375, 768 and 1280px: 180 page-widths, no horizontal overflow, no missing
+    alt text, no unlabelled controls, one `h1` per page, no heading-level skips.
+  - **Also swept, nothing to fix: 320 and 360px**, which this loop had never tested.
+    All 60 pages at both widths are clean, so the layout holds on the narrowest phones
+    still in use. Keyboard focus was re-checked across eleven templates (29 to 56 tab
+    stops each) and every stop has a visible ring. Every Luma and GTM iframe carries a
+    title.
+  - **Harness trap, recorded so a later cycle does not lose an hour to it.** `global.css`
+    sets `scroll-behavior: smooth`, so a screenshot script that calls `window.scrollTo`
+    in a tight loop never actually reaches the bottom: the reveal animations do not fire,
+    and whole bands come out blank. It looks exactly like a rendering defect and is not
+    one. Set `document.documentElement.style.scrollBehavior = 'auto'` before scrolling.
+  - **The daily rebuild has not fired yet.** The `schedule:` trigger added yesterday at
+    03:17 UTC had produced no run by 08:35 UTC today (`event=schedule`, total 0). The
+    workflow was on `main` from 17:52 yesterday, so it was eligible. GitHub delays and
+    sometimes drops scheduled runs; today's push rebuilds the site anyway. Worth
+    confirming tomorrow before the Second Brain Bootcamp on 21 October, which is the date
+    the trigger exists for.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers
+    403 to `oxfordagentic.com`, so the comparison is against a local preview of the exact
+    `main` HEAD that Pages reports deployed (`3d71595`, deployment 7045897881, state
+    `success`, environment `https://oxfordagentic.com/`). Same substitution as 12 and 13
+    Oct. The 12 outbound links report unreachable for the same reason.
+  - **One finding raised for Drummond rather than shipped**, as backlog 23: on a past
+    cohort's page the programme's testimonials sit under "From the room", and two of the
+    three name no cohort.
+  - **No guide written.** This cycle's remit is the existing site.
 
 - **2026-10-13 (18:47 local cycle) — The site now rebuilds daily, so a past event stops
   advertising itself as upcoming.**

@@ -277,11 +277,22 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 
   .nav-toggle {
     display: none;
+    position: relative;
     background: none;
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: var(--radius);
     padding: 0.62rem 0.7rem;
     cursor: pointer;
+  }
+
+  /* The box is 43 by 31, which is a small thing to hit with a thumb and it is
+     the only way into the navigation on a phone. The target is widened to 44 by
+     44 with a transparent pad rather than by growing the button, so the header
+     keeps its proportions and nothing moves. */
+  .nav-toggle::after {
+    content: '';
+    position: absolute;
+    inset: -0.5rem -0.3rem;
   }
 
   .nav-toggle__bar {
