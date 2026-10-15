@@ -44,6 +44,39 @@ November, and the line is invisible on every one of them.**
   can be concluded about indexing from it. Not evidence either way.
 - **Incidental find, logged to `outreach/review-list.md`:** allai.events carries a listing
   for "The Oxford Agentic Bootcamp" showing 21 Jul 2026 and a price band.
+## 2026-10-15 (01:21 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI consultants Oxfordshire *(intelligence, not a content target)* | **No** | bestaiconsultant.co.uk, how-do-ai.com, voliom, Bell Integration, **InAgentic**, LinkedIn profiles |
+| should we build AI skills in-house or outsource it to an agency | **No** | codiste, Mighty & True, monterail, FeatherFlow, outsourceaccelerator, avenga, Upwork, kanerika, empat, codebridge |
+| how do I tell whether I am actually behind on AI compared to others | **No** | catalysts.net, paragondesign, anglero, **theoxfordaischool**, aisa.to, theaieducator, tigertail, layer3labs, phosailabs |
+
+**Reading.**
+- **The Oxfordshire probe was run to inform Drummond's open consultancy decision, not to find
+  a content target**, and it closes the question. The cluster belongs to town-by-town page
+  farms: `bestaiconsultant.co.uk` has a page for each of ten Oxfordshire towns,
+  `how-do-ai.com` covers 45 towns across six counties, `voliom.com` runs
+  `/uk/county/<county>/agentic-ai`, and Bell Integration lists three dozen counties in one
+  block of boilerplate. Entering means building location pages. Paired with the Search
+  Console finding - 50 visible impressions from that cluster, positions 20 to 71, zero clicks
+  - the standing decision is confirmed at a cost of nothing.
+- **A direct local competitor surfaced: InAgentic**, an Oxford AI agency (INAGENTIC LTD,
+  Wolvercote) running four-hour instructor-led workshops on Claude Code and AWS Bedrock plus
+  agent builds, founded 2026. Closer to our format and our city than anything else seen so
+  far. Intelligence for Drummond, not an outreach target.
+- The in-house-versus-outsource question **is not the question I expected it to be**. I
+  probed it thinking it was "learn enough to use AI myself, or pay someone" - a comparison
+  question of the kind the site is already cited for. The engine hears it as enterprise AI
+  engineering staffing: MLOps, model drift, data scientists, fine-tuning pipelines. Every
+  answerer is a dev agency or an outsourcing marketplace. **The hypothesis that conflicted
+  comparison questions are our winnable niche is not supported by this probe**, at least not
+  at this phrasing.
+- "Am I behind on AI" is crowded with consultancies and assessment-tool vendors whose answer
+  is to take their assessment. Some of the answers are honest and good. We would enter with
+  no differentiated evidence, so no.
+- **theoxfordaischool.com for the fourth cycle running**, now on the falling-behind question.
+  It is systematically working the UK buyer-question space.
 
 ## 2026-10-13 (18:47 BST cycle)
 

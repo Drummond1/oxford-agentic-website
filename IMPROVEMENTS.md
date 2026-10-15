@@ -314,6 +314,42 @@ _(dated, newest first — filled by the loop)_
     preview of the exact `main` HEAD. Same substitution as 12, 13 and 14 Oct. The 12
     outbound links report unreachable for the same reason - 0 of 12, which is the proxy,
     not twelve simultaneous third-party outages.
+- **2026-10-15 (01:21 local cycle) — No site change. `/team/` diagnosed, and the Oxfordshire
+  decision is now settled with evidence rather than assumed.**
+  - **The daily rebuild works, including the part I could not verify on Monday.** The cron
+    fired on 14 Oct (08:40 UTC - GitHub delays scheduled runs, as the comment anticipated),
+    built and deployed successfully, and **`indexnow: skipped`**. A scheduled rebuild now
+    republishes the site without pinging IndexNow for a stale diff, which was the trap worth
+    guarding. Note for the record: the 14 Oct ledger entry from the other loop says the
+    scheduled rebuild had not fired - that session checked at 08:36, four minutes early.
+  - **`/team/` is the last page with real volume that had never been examined**, and it was
+    this week's fastest mover: 202 → 212 impressions, 6 → 9 clicks, 3.0% → 4.2%. Its visible
+    query share is **35%**, far above any other page, so it was worth opening. Two thirds of
+    what is visible is the county-provider cluster - Oxfordshire, and also Hertfordshire,
+    Buckinghamshire and Salford, which is a query template rather than local demand - sitting
+    at positions 20 to 71 with **zero clicks**. Full rows in the baseline file.
+  - **What that settles.** The standing decision not to target that cluster has a measurable
+    cost of zero clicks, and a probe shows the cluster is owned by town-by-town page farms
+    (one competitor has a page for each of ten Oxfordshire towns, another covers 45 towns
+    across six counties). Entering means location pages, which is a standing no. The decision
+    was previously a judgement; it is now evidenced from both ends.
+  - **Deliberately not acted on.** `drummond gilbert` is the top named query for `/team/`
+    (23 impressions, position 7.4) and resolves to the team index rather than the individual
+    profile. That is consistent with the 9 Oct preference that the site read as a team rather
+    than one person, so it is working as intended.
+  - **Nothing shipped, and nothing was worth shipping.** Rule 4 points at an excluded cluster,
+    so no change. Three GEO probes returned nothing both winnable and converting, so no guide,
+    although one was allowed today. No technical defect: the build is clean and Monday's audit
+    of the hidden-page PR found nothing outstanding.
+  - **A note on the "if nothing ships, do not commit" rule.** This commit touches only the
+    three log files and no site file. Losing a Search Console reading, a page diagnosis that
+    closes a standing question and three probes seemed worse than the empty-commit the rule
+    guards against - the rule reads as a guard against padding the site to justify a push.
+    Flagging it so Drummond can say if he would rather these cycles went unrecorded.
+  - **Competitive intelligence.** **InAgentic**, an Oxford AI agency running four-hour
+    instructor-led Claude Code workshops, is the closest direct competitor seen so far - same
+    city, adjacent format. And theoxfordaischool.com appeared for the fourth cycle running.
+  - **Guides this week.** 2 of 3.
 
 - **2026-10-14 (08:47 local cycle) - The only control that opens the navigation on a
   phone was 31px tall. Its touch target is now 44px and the button looks exactly the

@@ -1038,3 +1038,56 @@ clicks (3.2% → 3.6%), `/team/` 200 → 202, Cohort 2 192 → 194.
 
 No rule-4 action. Every page with meaningful impressions was opened and closed on 12-13
 October, and nothing in these increments suggests the named query share has moved.
+
+## Update — 15 October 2026, 01:30 BST
+
+New data, two more days. **134 clicks · 1.91k impressions**, through roughly 13 October.
+`/` 1,013 → 1,032 (79 clicks), `/guides/` 174 → 181, `/events/` 162 → 168, Cohort 3's event
+page 31 → 38. The Second Brain programme page holds at 117 impressions and 9.4%, six days
+out from its event.
+
+**`/team/` is diagnosed, and it settles the Oxfordshire question.**
+
+It is the second-biggest page on the site and the fastest mover this week: 202 → **212
+impressions, 6 → 9 clicks, 3.0% → 4.2% CTR, position 14.5 → 13.9**. It is also the only page
+with real volume the loop had never examined. Raw rows, filtered to that page - 15 named
+queries, **75 of 212 impressions visible (35%)**, by far the highest visible share of any
+page examined:
+
+| query | clicks | impressions | CTR | position |
+|---|---|---|---|---|
+| drummond gilbert | 1 | 23 | 4.3% | 7.4 |
+| agentic ai companies oxfordshire | 0 | 11 | 0% | 24.0 |
+| agentic ai services oxfordshire | 0 | 10 | 0% | 30.2 |
+| agentic ai consultants oxfordshire | 0 | 10 | 0% | 39.0 |
+| agentic ai oxfordshire | 0 | 5 | 0% | 49.2 |
+| best agentic ai providers oxfordshire | 0 | 4 | 0% | 55.5 |
+| agentic ai providers oxfordshire | 0 | 2 | 0% | 20.0 |
+| agentic ai consultants hertfordshire | 0 | 2 | 0% | 64.5 |
+| agentic ai buckinghamshire | 0 | 2 | 0% | 71.0 |
+| agentic ai providers hertfordshire | 0 | 1 | 0% | 54.0 |
+| agentic ai providers buckinghamshire | 0 | 1 | 0% | 58.0 |
+| agentic ai consultants salford | 0 | 1 | 0% | 59.0 |
+| oxford agentic ai course | 0 | 1 | 0% | 3.0 |
+| agentic ai oxford | 0 | 1 | 0% | 4.0 |
+| oxford agentic ai | 0 | 1 | 0% | 6.0 |
+
+**The county-provider cluster is 50 of the 75 visible impressions - two thirds - at positions
+20 to 71, with zero clicks between them.** It is not only Oxfordshire: Hertfordshire,
+Buckinghamshire and Salford appear too, which is the signature of a query template rather
+than local demand. Of the rest, 23 impressions are `drummond gilbert`, a branded personal
+search, and three are brand queries.
+
+**No change made, and this is now settled rather than assumed.** The standing decision not
+to target the Oxfordshire providers / consultants / services cluster has a measurable cost
+of **zero clicks**. The cluster is also not winnable on our terms: a Perplexity probe of
+`agentic ai consultants Oxfordshire` returns town-by-town page farms -
+`bestaiconsultant.co.uk` with a dedicated page for each of ten Oxfordshire towns,
+`how-do-ai.com` with 45 towns across six counties, `voliom.com/uk/county/oxfordshire/`, and a
+Bell Integration page that lists three dozen counties in one block of boilerplate. Competing
+means building location pages, which is a standing no.
+
+One thing worth not acting on: `drummond gilbert` resolves to `/team/` rather than to the
+individual profile page, at position 7.4. That is **consistent with the 9 Oct preference that
+the site read as a team rather than one person**, so it is working as intended. Do not chase
+it.
