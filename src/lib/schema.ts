@@ -253,6 +253,25 @@ export function eventSchema(
       ...photos.map((photo) => ({ '@type': 'ImageObject', url: photo.url, caption: photo.caption })),
     ],
     url,
+    /*
+     * `sameAs` names the Luma listing of this same event.
+     *
+     * Added 15 Oct 2026 from a GEO probe, not from theory. Asked our own
+     * proposition back ("one day AI course Oxford where you build a working
+     * workflow on your own task") a web engine answered that the Oxford
+     * Agentic Bootcamp was the closest match and the only one in Oxford, then
+     * cited two Luma listings and a third-party directory page - and not
+     * oxfordagentic.com. Both Luma listings are past cohorts, so the engine
+     * read their two venues and two host lists as contradictions in one event
+     * and told the reader the date had passed and to look for a newer session.
+     *
+     * Nothing here fixes retrieval. What it does is give an engine that holds
+     * both pages the one fact it was missing: that the Luma listing and this
+     * page are the same event, and which of them is ours. Each cohort's URL is
+     * already published on its own page as the booking link, so this asserts
+     * no new fact.
+     */
+    ...(event.data.lumaUrl ? { sameAs: [event.data.lumaUrl] } : {}),
     inLanguage: 'en-GB',
     location: {
       '@type': 'Place',
@@ -270,6 +289,11 @@ export function eventSchema(
     performer: { '@id': ORG_ID },
     superEvent: {
       '@type': 'EventSeries',
+      // A stable @id, so the cohorts of one bootcamp declare membership of one
+      // identified series rather than each carrying its own anonymous copy of
+      // it. Three Agentic cohorts previously emitted three unlinked
+      // EventSeries nodes that happened to share a name.
+      '@id': `${absoluteUrl(paths.programme(programme.data.slug))}#series`,
       name: programme.data.name,
       url: absoluteUrl(paths.programme(programme.data.slug)),
     },

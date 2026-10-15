@@ -243,6 +243,71 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (20:08 local cycle) - A probe on our own brand name returned two of our own
+  past Luma listings and not our website. Each event now declares which Luma listing it is,
+  and the three cohorts of a bootcamp now share one identified series.**
+  - **Evidence, and it is the sharpest the GEO log holds.** Two web-search probes this cycle
+    - the bare brand name "Oxford Agentic Bootcamp", and the proposition in a buyer's words,
+    "one day AI course Oxford where you build a working workflow on your own task" - returned
+    the **same top three**: `luma.com/oxfordagentic2` (Cohort 2, ran 16 September),
+    `luma.com/k7c2rm5s` (Cohort 1, ran 21 July) and the stale `allai.events` listing.
+    **oxfordagentic.com was in neither top ten**, and nor was `luma.com/oxfordagentic3`, the
+    live Cohort 3 listing.
+  - **On the proposition query we win the recommendation and lose the click.** The engine
+    answered that the Oxford Agentic Bootcamp was "the closest match" and "the only one of
+    these in Oxford", then pointed the reader at two days that had already happened and
+    added: "That date has already passed as of today, so look for a newer session." The newer
+    session exists on two pages it could not see.
+  - **Both answers reported our two cohorts as one contradictory event**: "different venues,
+    Worcester College and St Anne's College", "the hosts differ between them". Each statement
+    is true of a different cohort - St Anne's is genuinely where Cohort 1 ran - but nothing
+    anywhere said they were two instances of one series, so the engine read them as
+    discrepancies. The older listing is also where it got a host Drummond asked to be taken
+    off the team slide in August (backlog 16).
+  - **The engine's description of what we teach was accurate and detailed**, read off Luma.
+    Content is not what is failing here.
+  - **Change: one file, `src/lib/schema.ts`, two identity statements and no copy.**
+    (1) Each `EducationEvent` now carries `sameAs: [lumaUrl]`, naming the Luma listing of
+    that same event. (2) The `superEvent` `EventSeries` gains a stable `@id`
+    (`.../bootcamps/<slug>/#series`), so the three Agentic cohorts declare membership of one
+    identified series instead of each emitting its own anonymous copy that merely shared a
+    name. All five event pages verified in the built output.
+  - **No new fact, and one deliberate non-change.** Every `lumaUrl` used is already published
+    on its own event page as the booking link. `offers.url` was **left pointing at our event
+    page**: that is a documented earlier decision (the site is the canonical place to
+    register and the embed lives there) and this cycle does not reopen it. `sameAs` is a
+    statement of identity, not of where to buy, so the two do not conflict.
+  - **Honest limit, stated plainly.** Nothing on-page makes an engine retrieve a page it is
+    not retrieving, and this is not offered as a fix for that. It supplies the one fact that
+    was missing for an engine that holds both pages - same event, this one is ours, these
+    cohorts are one series. The lever that would actually move the finding is on Luma and is
+    Drummond's: see the review list.
+  - **Checks.** Build, links (3,024 across 61 pages, unchanged - JSON-LD carries no crawlable
+    links) and schema pass with no SEO warnings; 5 Event nodes, 9 FAQPage nodes, titles and
+    descriptions unique. `check:flags` passes on the all-on and all-off builds. JSON-LD
+    re-parsed on all five event pages: correct `sameAs` on each, and the three Agentic
+    cohorts share `.../oxford-agentic-bootcamp/#series`. Headless Chromium over all five
+    event pages at **375px and 1280px**: renders, no horizontal overflow, correct `h1`, no
+    page errors beyond the sandbox proxy's failures on third-party resources. The diff is one
+    file that emits only JSON-LD, so no visible copy, no `updatedDate` and no event fact
+    moved - Cohort 3 is still Thursday 19 November 2026 at Worcester College, as the
+    screenshot and every file in the repo say.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403
+    to `oxfordagentic.com` and DNS does not resolve `luma.com`, so verification is against a
+    local preview of the exact `main` HEAD that Actions reports deployed (`b2ddab4`, run
+    38741091891, conclusion `success`, 13:16 UTC). Same substitution as 12 to 15 Oct.
+  - **Search Console: unavailable from the cloud checkout.** One attempt: no credentials,
+    `gcloud` has no account, the API returns 401, and no newer export exists in `seo-data/`.
+    Nothing estimated; the 13 October data stands.
+  - **Off-page.** One new item, and it is the largest the loop has found, because all of it
+    sits in Drummond's own Luma account: the two past listings absorb the brand traffic and
+    end it, while the live one is not returned at all. Nothing contacted.
+  - **No guide.** The two generic probes are both unwinnable and are logged to close them -
+    the ChatGPT-context question belongs to OpenAI's own documentation, and "what is an
+    agentic workflow" is held by Slack with seven of ten results from locale variants of one
+    article. **Guides this week: 2 of 3**, today's allowance unused by choice for the third
+    day running.
+
 - **2026-10-15 (14:15 local cycle) — Six guides appeared in no other guide's "More guides"
   block, and three of them had one inbound internal link in the whole site. Every guide now
   gets about four.**

@@ -1120,3 +1120,10 @@ No rule-4 action.
 environment, `gcloud` reports no credentialed accounts, and the Search Analytics API answers
 HTTP 401. No Search Console export newer than the 13 October reading exists in `seo-data/`.
 Nothing estimated. The 12:50 reading above stands as the latest data.
+
+## Update - 15 October 2026, 20:08 BST
+
+**Unavailable from this cloud checkout.** One attempt: no Google credentials in the
+environment, `gcloud` reports no credentialed accounts, and the Search Analytics API answers
+HTTP 401. No Search Console export newer than the 13 October reading exists in `seo-data/`.
+Nothing estimated. The 12:50 reading above stands as the latest data.

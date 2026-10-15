@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-15 (20:08 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as at 02:15,
+08:05 and 14:15 today). Not comparable with the Perplexity rows; read as a second opinion.
+This set was rotated onto the **brand and proposition axis** deliberately, because the 08:05
+cycle's near-brand probe suggested the misses logged all week are retrieval rather than
+content, and that hypothesis had never been tested on the plainest possible query.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| Oxford Agentic Bootcamp *(bare brand name)* | **No** | **luma.com/oxfordagentic2 (#1, our Cohort 2 - past)**, **luma.com/k7c2rm5s (#2, our Cohort 1 - past)**, **allai.events (#3, stale)**, NobleProg (x2), Saïd Business School online programme (x2), createwith, learnersink, coursereport |
+| one day AI course Oxford where you build a working workflow on your own task | **No** | **luma.com/oxfordagentic2 (#1)**, **luma.com/k7c2rm5s (#2)**, **allai.events (#3)**, Maven (x2), Curtin, Trustpilot pages for oxfordaitraining.com (x2), Meetup, Singapore Polytechnic |
+| how do I stop re-explaining my business to ChatGPT every time I use it | **No** | customgpt.ai, flexos.work, OpenAI Academy (personalization), leadwithai.co (x2), traeai, releases.sh (x3), memx.app |
+| what is an agentic workflow for business | **No** | bookipi, tech.co, chatbotkit, **Slack (x7 locale variants of one article)** |
+
+**Reading.**
+
+- **The second probe is the finding of the week, and it is worse than absence.** That query
+  is this site's own proposition in the buyer's words - one day, Oxford, build a working
+  workflow, your own task. The engine answered that **The Oxford Agentic Bootcamp is the
+  closest match and "the only one of these in Oxford"**. So we win the recommendation. It
+  then cited, as the places to go: our **past** Cohort 2 Luma page, our **past** Cohort 1
+  Luma page, and the stale allai.events listing. oxfordagentic.com was not among the ten
+  results. **We win the recommendation and lose the click**, and the buyer it sends arrives
+  at an event that already happened.
+- **It then told the reader the thing we least want said.** Verbatim: "That date has already
+  passed as of today, so look for a newer session." The newer session exists - Cohort 3 on
+  19 November, on our own page and on luma.com/oxfordagentic3 - and the engine could not
+  see either.
+- **The bare brand name does not return our domain.** Ten results for "Oxford Agentic
+  Bootcamp": two of our own Luma listings, one third-party directory, and seven competitors
+  or unrelated courses. This is the 08:05 near-brand finding reproduced on the plainest query
+  there is, and it settles the question that cycle left open. On this engine the canonical
+  source for our brand is a Luma page we did not design for search.
+- **The two listings read to the engine as one contradictory event.** Both answers said the
+  two Luma listings "name different venues, Worcester College and St Anne's College" and that
+  "the hosts differ between them". Both statements are true and innocent - they are Cohort 2
+  and Cohort 1, nine weeks apart, and St Anne's is where Cohort 1 genuinely ran - but with no
+  machine-readable statement anywhere that these are two instances of one series, the engine
+  had no way to resolve them and reported them as discrepancies in a single event. It also
+  named a host Drummond asked to be taken off the team slide in August (backlog 16), from the
+  older listing.
+- **The engine's description of what we teach is accurate and detailed.** Claude, Cowork,
+  Claude Code and Codex, designing skills, multi-agent workflows, human in the loop, leave
+  with a working workflow. **Content is not the problem.** It read all of that off Luma.
+- **What this cycle did about it, and what it honestly cannot do.** Each event's JSON-LD now
+  carries `sameAs` naming its Luma listing, and the cohorts of one bootcamp now share one
+  identified `EventSeries`. That does not make an engine retrieve us - nothing on-page can -
+  but it is the one statement that was missing for an engine that holds both pages: these are
+  the same event, this is the canonical one, and these three cohorts are one series. It is
+  the smallest honest response to the finding and it is not offered as a fix for retrieval.
+- **The two generic probes are unwinnable and are logged to close them.** The ChatGPT-context
+  question belongs to OpenAI's own documentation and to tool vendors explaining their own
+  settings, which is the correct answer to it. "What is an agentic workflow" is a definitional
+  query owned by Slack, which holds seven of ten results with locale variants of one article.
+  Neither is a buyer booking a day in Oxford. **No guide.**
+- **Off-page.** One new item, and it is the biggest one the loop has found: **the two past
+  Luma listings outrank the live one and outrank us**, and Drummond controls all three.
+  Review list updated. Nothing contacted.
+
 ## 2026-10-15 (14:15 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as at 02:15 and

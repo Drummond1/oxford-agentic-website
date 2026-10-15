@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Our own two past Luma listings outrank the live one, and outrank our website** - found
+  15 Oct 2026 by answer-engine probe. **Highest-value off-page item the loop has found, and
+  the whole of it is in Drummond's own account.**
+  - On a web engine, two queries - the bare brand name "Oxford Agentic Bootcamp", and the
+    proposition in a buyer's words ("one day AI course Oxford where you build a working
+    workflow on your own task") - returned the same top three: **luma.com/oxfordagentic2**
+    (Cohort 2, ran 16 September), **luma.com/k7c2rm5s** (Cohort 1, ran 21 July) and the stale
+    allai.events page. **oxfordagentic.com appeared in neither top ten**, and neither did
+    **luma.com/oxfordagentic3**, the live Cohort 3 listing for 19 November.
+  - On the second query the engine recommended the bootcamp in as many words - "the closest
+    match", "the only one of these in Oxford" - and then sent the reader to two events that
+    have already happened, adding: "That date has already passed as of today, so look for a
+    newer session."
+  - It also read the two listings as one contradictory event: "different venues, Worcester
+    College and St Anne's College", "the hosts differ between them". Both are true of two
+    different cohorts, but nothing told the engine they were two.
+  - **Why this is Drummond's and not the loop's.** All three Luma pages are his. The site
+    change this cycle (`sameAs` on each event, one shared `EventSeries`) is the most the
+    repo can say. What would actually move it is on Luma: pointing the two past listings at
+    the Cohort 3 listing or at oxfordagentic.com, so the indexed pages that currently absorb
+    our brand traffic pass it on rather than ending it.
+  - **Not checked:** the Luma pages were NOT loaded. DNS does not resolve `luma.com` from the
+    sandbox, so everything above comes from the search results and from URLs this repo
+    already publishes. Confirm against the live pages before acting.
+  - Needs: Drummond's decision, and about ten minutes in Luma. Nothing contacted or changed.
+
 - **techUK - "Speak at an event"** - found 15 Oct 2026 by deliberate off-page search.
   - techUK is the UK technology trade body. Its events page
     (https://www.techuk.org/events, loaded 15 Oct 2026) lists conferences, roundtables and
