@@ -47,6 +47,39 @@ noted. These are snapshots, not rankings: results vary by engine, location and d
   one unverified "save 5+ hours per employee every week" claim among them. Winnable only
   with evidence we do not have. No action.
 
+## 2026-10-15 (12:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I learn to build AI workflows or build software with AI coding tools | **No** | Scrimba, kodekloud, Hostinger, Apple App Store, thenadcoder, jellyfish, Anaconda, DX, Microsoft, UT Austin |
+| should I organise my notes and documents first or just start using AI | **No** | the-f.com.au, attv.uk, agentarius, sciencenewstoday, note.com, gptprompts, vocal.media, FreeAcademy, Otio, Recapio |
+| do I need to sort out my AI context before building workflows, or the other way round | **No** | Dropbox, Mastra, CIO, LogRocket, **Anthropic**, promptessor, Neo4j, GitLab, Tabular Editor, Atlassian |
+
+**Reading.**
+- **Two guides were killed by their probes this cycle, which is the probe-first rule earning
+  its keep twice in one day.** The agentic-versus-coding choice looked like the strongest
+  remaining candidate on this morning's "choices between options we uniquely sit between"
+  finding - it is a choice only we offer, it serves the product with the least discovery, and
+  Cohort 1 is six weeks out. The engine hears it as a **developer career roadmap** question:
+  Scrimba, Anaconda, Microsoft, a UT Austin certificate. Not our buyer, not our question.
+- **The third probe mis-fired and I am recording that rather than the result.** I intended it
+  as a regression check on the pairing question we were cited #1 for on 11 October. Phrased
+  as "sort out my context before building workflows", it routed to **context engineering** -
+  Anthropic's own article, Neo4j, Mastra, GitLab. That is a different question with a
+  different audience. **It is not evidence that our pairing position has moved**, and nothing
+  here should be read as a change to it. A proper regression check needs the original
+  phrasing.
+- The note-organising probe is PKM tool vendors again, as the second-brain definitional probe
+  was this morning. Consistent.
+- **The honest conclusion from roughly 31 probes.** The niche - choices between options we
+  uniquely sit between - is real but **small by construction**, because it depends on us
+  sitting between the options, and there are only three products. The two questions in that
+  shape that exist have been written, and the three-way routing question became a programme
+  FAQ this morning. **The guide library looks sufficient for the current product set.** New
+  guides should now wait for a new product, a new probe that genuinely surfaces an unowned
+  converting question, or evidence that an existing guide is underperforming - not for the
+  weekly allowance.
+
 ## 2026-10-15 (06:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

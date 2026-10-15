@@ -1107,3 +1107,9 @@ included as of last night, and nothing in this reading reopens any of them.
 environment and no OAuth session, so the Search Analytics API answers HTTP 401, and no
 Search Console export newer than the 13 October reading exists in `seo-data/`. Nothing
 estimated. The 06:50 reading above stands as the latest data.
+
+## Update — 15 October 2026, 12:50 BST
+
+Search Console returned, **no new data** - third reading today on the same window. 134
+clicks, 1.91k impressions, every page figure identical, still through roughly 13 October.
+No rule-4 action.

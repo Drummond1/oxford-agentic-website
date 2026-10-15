@@ -243,6 +243,56 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (12:47 local cycle) — No site change. Two guides killed by their probes, and
+  the 22 October handover written down while it is still cheap.**
+  - **Search Console returned with no new data**, third reading today on the same window. No
+    rule-4 action.
+  - **The daily rebuild has now fired twice**, 14 and 15 October, both successful, both with
+    `indexnow` skipped. It lands around 08:15-08:40 UTC rather than the 03:17 cron - GitHub
+    delays scheduled runs by several hours - which is irrelevant for a mechanism that only
+    needs day granularity.
+  - **Two guides killed by their probes.** The agentic-versus-coding choice was the strongest
+    remaining candidate on this morning's finding, and it serves the product with the least
+    discovery six weeks out from its first cohort. The engine hears it as a developer career
+    roadmap. The note-organising choice went to PKM vendors. Probing first has now prevented
+    three guides in two days that would each have shipped into an owned field.
+  - **One probe mis-fired and the log says so.** The third was meant as a regression check on
+    the pairing question we were cited #1 for on 11 October; the phrasing routed it to
+    context engineering instead. **Nothing in this cycle is evidence about our pairing
+    position**, and a proper check needs the original wording.
+  - **The guide library looks sufficient for the current product set.** The niche the GEO
+    record identifies - choices between options we uniquely sit between - is real but small
+    by construction, because it depends on there being options only we sit between, and there
+    are three products. Both questions in that shape are written, and the three-way routing
+    question became a programme FAQ this morning. New guides should wait for a new product, a
+    probe that genuinely surfaces an unowned converting question, or an existing guide
+    underperforming. **Not for the weekly allowance.** Today's went unused for the second day.
+  - **The 22 October handover, written down now so it is mechanical rather than rediscovered.**
+    The Second Brain Bootcamp runs on 21 October. The daily rebuild will flip
+    `effectiveStatus` to `past` on its own, and the template handles that part correctly -
+    verified against Cohort 2's live page today, which shows "This event has run", "How the
+    day ran", and no Luma embed or booking furniture. What does **not** self-correct is the
+    prose. On `oxford-second-brain-bootcamp-cohort-1.md`, these read wrongly the moment it
+    flips:
+    - **`capsule`** - "runs on Wednesday 21 October 2026". Highest priority: it feeds the
+      Event schema and `llms-full.txt`, so it is what engines quote.
+    - **`summary`** - "Build a second brain ... and leave with it working" reads as an offer.
+    - **`assurances`** - written for someone deciding whether to book.
+    - **Six booking-era FAQs**: "When and where is it?", "What should I bring?", "How do I
+      register for Cohort 1?", "Can I install software on my work laptop?", "Can I bring my
+      team?", "What if I cannot make the date?".
+    The Cohort 2 precedent (23 Sept) is the model: rewrite capsule and summary in the past
+    tense, cut the booking-era FAQs to the few a reader of a past page needs, and **claim no
+    outcomes** until something is sourced.
+  - **One decision this raises.** Cohort 2's past page works because it can say "Cohort 3 is
+    the one to book". **There is no Second Brain Cohort 2 announced**, so the equivalent
+    sentence has nowhere to point. If no date exists by 22 October, that page needs to route
+    somewhere deliberate - the programme page, or the other two bootcamps - and that is
+    Drummond's call, not a default.
+  - **Checks.** Build clean: 3,024 links across 61 pages, schema valid, no SEO warnings. Logs
+    only; no site file touched.
+  - **Guides this week.** 2 of 3.
+
 - **2026-10-15 (09:25 local cycle) — The programmes hub listed three bootcamps and no
   dates. Each row now names its next cohort.**
   - **Evidence.** `/bootcamps/` is the page where someone picks a programme, and it is in
