@@ -243,6 +243,40 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (09:25 local cycle) — The programmes hub listed three bootcamps and no
+  dates. Each row now names its next cohort.**
+  - **Evidence.** `/bootcamps/` is the page where someone picks a programme, and it is in
+    the primary navigation on all 61 pages. Its three rows read "1 upcoming" (the first,
+    "1 upcoming · 2 already run") and nothing else, so "can I make it?" - half of that
+    decision - cost a click. Every other listing on the site already names the day: the
+    events index, the footer's upcoming list, the header button, and each programme page's
+    own "Upcoming runs" band. The hub was the one surface that did not.
+  - **Change.** One block in `src/pages/bootcamps/index.astro`. The count becomes
+    "Next cohort 21 Oct 2026", taken from the events collection (`upcoming[0]`, which
+    `getEvents()` sorts soonest first) and formatted with the shared `formatShortDate`, so
+    it reads exactly as the footer does. Fallbacks kept: "Next dates being confirmed" when
+    a programme has nothing upcoming, "N upcoming, next <date>" if one ever has more than
+    one date open, and "· 2 already run" unchanged.
+  - **No new fact.** The rows render 19 Nov 2026, 21 Oct 2026 and 26 Nov 2026, which is
+    what the content collection already publishes on four other surfaces. No content entry
+    was touched, so no `updatedDate` moved.
+  - **Checks.** Build, links (3,024 across 61 pages), external and schema all pass with no
+    SEO warnings; `check:flags` passes on the all-on and all-off builds; `astro check`
+    (installed `--no-save` so the diff stays clean) reports 79 errors and 4 hints both with
+    and without the change, none of them in this file. Whole-site sweep in headless
+    Chromium at 375, 768 and 1280px: no horizontal overflow on any of the 61 pages, and the
+    per-element readings on `/bootcamps/` are identical to the pre-change run. The hub is
+    also clean at 320 and 360px, where the longest line ("Next cohort 19 Nov 2026 · 2
+    already run") wraps to two lines and stays inside the card. 39 tab stops, the three
+    rows reached in order.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers
+    403 to `oxfordagentic.com`, so before and after are both local previews of the exact
+    `main` HEAD that Pages reports deployed (`11dccbf`, deployment 7086242606, state
+    `success`, environment `https://oxfordagentic.com/`). Same substitution as 12 to 15
+    Oct. The 12 outbound links report unreachable for the same reason.
+  - **Left for Drummond:** PR #1 is still open from 26 September, stale and superseded.
+    See backlog 20.
+
 - **2026-10-15 (08:05 local cycle) — The flagship programme page never mentioned the other
   two bootcamps. It now answers the choice, in the one place engines quote from.**
   - **Evidence, and it is the loop's own GEO record.** Last cycle established that across

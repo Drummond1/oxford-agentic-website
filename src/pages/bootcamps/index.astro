@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
-import { getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
+import { formatShortDate, getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 import { collectionPageSchema } from '../../lib/schema';
 
@@ -47,8 +47,16 @@ const rows = await Promise.all(
                 <span class="eyebrow">{`0${i + 1}`}</span>
                 <h3>{programme.data.name}</h3>
                 <p>{programme.data.shortPitch}</p>
+                {/* The date, not a count. This is the page where someone picks a
+                    programme, and "can I make it?" is half of that decision - every
+                    other listing on the site (events index, footer, the programme
+                    page itself) names the day, so a bare "1 upcoming" sent them a
+                    click further for the one fact they came for. */}
                 <p class="row__counts">
-                  {upcoming.length > 0 ? `${upcoming.length} upcoming` : 'Next dates being confirmed'}
+                  {upcoming.length === 0 && 'Next dates being confirmed'}
+                  {upcoming.length === 1 && `Next cohort ${formatShortDate(upcoming[0].data.startDate)}`}
+                  {upcoming.length > 1 &&
+                    `${upcoming.length} upcoming, next ${formatShortDate(upcoming[0].data.startDate)}`}
                   {past.length > 0 && ` · ${past.length} already run`}
                 </p>
               </div>
