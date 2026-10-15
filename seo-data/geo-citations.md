@@ -5,6 +5,48 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-15 (08:05 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox again, as at
+02:15). Not comparable with the Perplexity rows; read as a second opinion.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I do an AI workflow bootcamp, a second brain workshop, or learn to ship software with AI coding agents first | **No** | Codecademy, Maven (x3, incl. Human AI Studio), Luma listings (x4), Augmented Designer |
+| one-day hands-on AI bootcamp Oxford November 2026 for business leaders build a workflow | **No** | happeningnext/createwith (Slingshot, Louisville KY), Oxford Institute for Ethics in AI (3-day, 10-12 Nov), EnSpire Oxford, Oxford Royale, NobleProg |
+| is an AI workshop worth it if my team already uses ChatGPT every day | **No** | Maven CollabLab, datanorth.ai, SSW, Mostly Serious, lilachbullock, blckalpaca, Luma |
+| Oxford Agentic Bootcamp Worcester College one-day bootcamp oxfordagentic.com | **No** | **allai.events (#1, our own event, stale)**, NobleProg (x6 Oxford pages), Saïd Business School online programme |
+
+**Reading.**
+- **The fourth probe is the finding, and it is the sharpest version of the retrieval
+  problem yet.** Asked a near-brand question - our product name, our venue, our domain -
+  this engine did not return oxfordagentic.com at all. What it returned instead was
+  **allai.events' third-party listing of our own bootcamp**, which still advertises
+  **21 July 2026** (Cohort 1, three months past) and prices "from **$275**", in dollars, on
+  a UK event. So on this engine the canonical source for "The Oxford Agentic Bootcamp" is a
+  stale directory page we did not create, and the engine told me the Worcester College
+  venue was "unconfirmed" because our own page was not in front of it.
+- **That reframes the three absences logged on 12, 13 and 15 October.** If the site is not
+  retrieved on its own name plus venue, the earlier misses are not evidence that our guides
+  are out-argued. On this engine they are evidence of index or retrieval, not of content.
+  Perplexity cites the site at #1-#3 for Oxford-anchored queries, so this is engine-specific
+  and should not be read as a site-wide fall. **No content action is warranted by it**, and
+  a cycle that wrote a guide in response to it would be treating the wrong cause.
+- **The second probe is the flagship's own description** - Oxford, one day, hands-on,
+  business leaders, build a workflow, November 2026 - and the engine answered that it could
+  not find such a thing, offering a three-day Oxford ethics programme and a one-day bootcamp
+  in Louisville, Kentucky. Cohort 3 is five weeks out on 19 November. Same engine caveat.
+- **The first probe says the three-way choice question is genuinely unowned.** The engine
+  stated in as many words that it found no independent comparison of the three options, and
+  every result was a seller's own listing. That is the question this cycle answered on the
+  flagship programme page, and it is the shape the GEO record says the site is cited for -
+  choices between options we uniquely sit between. **Logged as a guide candidate, not
+  written**: it needs a probe on a second engine, and it must be written as a decision about
+  three capabilities rather than three products, or it is a brochure.
+- The ChatGPT-objection question is owned by training vendors arguing their own case, with
+  one unverified "save 5+ hours per employee every week" claim among them. Winnable only
+  with evidence we do not have. No action.
+
 ## 2026-10-15 (06:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

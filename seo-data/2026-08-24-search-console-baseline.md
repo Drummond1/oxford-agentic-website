@@ -1100,3 +1100,10 @@ Still through roughly 13 October.
 
 No rule-4 action. Every page with meaningful impressions is now opened and closed, `/team/`
 included as of last night, and nothing in this reading reopens any of them.
+
+## Update - 15 October 2026, 08:05 BST
+
+**Unavailable from this cloud checkout.** One attempt: no Google credentials in the
+environment and no OAuth session, so the Search Analytics API answers HTTP 401, and no
+Search Console export newer than the 13 October reading exists in `seo-data/`. Nothing
+estimated. The 06:50 reading above stands as the latest data.

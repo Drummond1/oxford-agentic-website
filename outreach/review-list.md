@@ -39,7 +39,16 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Not checked:** the page was NOT loaded. The sandbox egress policy blocks outbound
     fetches this cycle, so everything above comes from the search result itself. Confirm the
     URL resolves and the date before acting.
-  - Needs: Drummond's decision. Nothing contacted.
+  - **Raised in priority 15 Oct 2026 (08:05 cycle).** A near-brand probe - "Oxford Agentic
+    Bootcamp Worcester College one-day bootcamp oxfordagentic.com" - returned this listing
+    **first and returned oxfordagentic.com not at all**. So on that engine the stale page is
+    not merely a third-party mention, it is the source that stands in for our own site, and
+    the engine reported the Worcester College venue as unconfirmed on the strength of it.
+  - **The price is shown in dollars**, "from $275", on a UK event with a past date. Wrong
+    currency and a dead date on the page an engine treats as canonical is a commercial
+    problem as well as an SEO one.
+  - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
+    contacted.
 
 - **explainx.ai - "Top 10 AI Workshops for Professionals in 2026"** - found 12 Oct 2026
   by answer-engine probe.

@@ -243,6 +243,64 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (08:05 local cycle) — The flagship programme page never mentioned the other
+  two bootcamps. It now answers the choice, in the one place engines quote from.**
+  - **Evidence, and it is the loop's own GEO record.** Last cycle established that across
+    roughly 28 probes the site has been cited for exactly two things, and both are **choices
+    between options we uniquely sit between**. So the comparison answer is the site's
+    strongest retrieved asset. The flagship page did not have one. `/bootcamps/
+    oxford-agentic-bootcamp/` carried 14 FAQs and **not one of them named the Second Brain
+    or Coding Bootcamp**, while both newer pages carry a sourced "How is this different from
+    the Oxford Agentic Bootcamp?" pointing back at it. The comparison ran one way only, from
+    the two small pages to the big one.
+  - **The built page proved it.** Every link from the flagship page to the other two
+    bootcamps is in the header and mobile navigation. No body copy on the site's
+    highest-authority commercial page mentions, compares or routes to the other two lines.
+  - **Change: one FAQ, fourth of fifteen.** "Which of the three bootcamps should I do
+    first?" It routes by the ceiling the reader has hit - a recurring task by hand to this
+    day, generic AI answers to the Second Brain Bootcamp, an idea you want running to the
+    Coding Bootcamp - and closes on the compounding, which is the Second Brain page's own
+    sourced line. **Every clause is lifted from copy already published** on the three
+    programme pages; nothing is new fact. `updatedDate` moved to today.
+  - **Why that surface.** A programme FAQ renders three times: the visible accordion, the
+    FAQPage JSON-LD, and `llms-full.txt`, which is the knowledge base both voice agents
+    read. The cycle-62 note records engines lifting these answers near-verbatim. It is also
+    the only part of the page where the Coding Bootcamp - invisible on every probe since it
+    launched - can be reached from the page engines actually retrieve.
+  - **Deliberately not done.** The Second Brain and Coding pages each answer "how is this
+    different from the Agentic Bootcamp?". Naming a third line in an answer to a two-way
+    question would blunt two clean answers, so they are untouched. Worth a later cycle only
+    if a probe shows the gap.
+  - **Checks.** Build, links (3,024 across 61 pages, unchanged - FAQ answers are plain text
+    by design, so no new links) and schema pass with no SEO warnings. FAQPage JSON-LD
+    re-parsed: 15 questions, the new one fourth, answer intact. The same text confirmed in
+    `dist/llms-full.txt`. Headless Chromium at 375, 768 and 1280px, opening the item by
+    clicking the summary as a visitor would: renders, no horizontal overflow, nothing
+    clipped, answer 347px tall at 375px. Only console errors are the sandbox proxy's
+    `ERR_TUNNEL_CONNECTION_FAILED` on third-party resources.
+  - **The finding Drummond should see is in the GEO log.** A near-brand probe - our product
+    name, our venue, our domain - returned **allai.events' stale listing of our own bootcamp
+    at #1 and oxfordagentic.com nowhere**. That listing still advertises 21 July 2026 and
+    prices "from $275", in dollars, on a UK event, and the engine told me the Worcester
+    College venue was unconfirmed because our page was not in front of it. On this engine
+    the canonical source for our flagship is a directory page we did not create. It also
+    **reframes the absences logged on 12, 13 and 15 October**: if we are not retrieved on
+    our own name, those were never evidence that our content is out-argued. Review list
+    updated; nothing contacted.
+  - **No guide, and one was allowed.** 2 of 3 this week, none today. The best candidate
+    came out of this cycle's first probe - the engine said outright that no independent
+    comparison exists of "build workflows, build context, or learn to ship software" - which
+    is winnable, converting, and exactly the niche shape. Declined this cycle on two counts:
+    it needs a probe on a second engine, and written carelessly it is a brochure for our own
+    three products rather than a decision about three capabilities. Recorded for the next
+    cycle with the evidence.
+  - **Search Console: unavailable from the cloud checkout.** No credentials, API returns 401,
+    no newer export in `seo-data/`. Nothing estimated; the 13 October data stands.
+  - **Production still unreadable from here** (egress 403 on oxfordagentic.com, Luma blocked
+    by DNS), so verification is against a local preview of the exact HEAD, and **no event
+    fact was touched** - Cohort 3 stays 19 November as every file in the repo says.
+  - **Guides this week.** 2 of 3.
+
 - **2026-10-15 (06:47 local cycle) — No site change. Three audits came back clean, a guide
   was killed by its own probe, and the off-page list gains one honest entry.**
   - **Search Console returned with no new data**, identical to six hours earlier. No rule-4

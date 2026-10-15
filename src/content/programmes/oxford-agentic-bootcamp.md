@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-07-25T09:00:00+01:00"
+updatedDate: "2026-10-15T08:10:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -48,6 +48,16 @@ faqs:
       runs against one and without it you get a demonstration instead of an outcome.
       Anyone expecting a vendor or platform pitch, because no tool is being sold. And
       anyone whose work laptop blocks new sign-ups, which is worth checking first.
+  - q: Which of the three bootcamps should I do first?
+    a: >-
+      Start from the ceiling you have hit. If a task you already do by hand eats a
+      morning every week, this is the day: you leave with a workflow running against
+      it. If your AI answers come back generic because the tools know nothing about
+      your business, the Oxford Second Brain Bootcamp builds that context from your own
+      material. If it is an idea you want to see running rather than described, the
+      Oxford Agentic Coding Bootcamp ships a website and a working prototype you own.
+      They compound, because a workflow gets better the moment it can read your second
+      brain, so pick the one that matches the problem in front of you now.
   - q: What does "agentic" actually mean here?
     a: >-
       Most people use AI one question at a time - one prompt, one tab. Agentic means
