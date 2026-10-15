@@ -11,6 +11,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **techUK - "Speak at an event"** - found 15 Oct 2026 by deliberate off-page search.
+  - techUK is the UK technology trade body. Its events page
+    (https://www.techuk.org/events, loaded 15 Oct 2026) lists conferences, roundtables and
+    briefings in London and Manchester, and the two "Get involved" routes are **Speak at an
+    event** (https://www.techuk.org/get-involved/promote-your-expertise/speak-at-an-event)
+    and Sponsor an event.
+  - **It is not a listing route.** The programme is techUK's own events, run with members, so
+    there is no "submit your event" path and the bootcamp cannot be listed there. Recorded so
+    nobody tries. The speaking route is the opportunity: a slot in front of that audience is
+    both the right seniority and a credible citation.
+  - **Not checked:** whether speaking requires techUK membership, what membership costs, or
+    their editorial and commercial policy. Only the events page was loaded; the speak-at-an-
+    event page itself was not opened.
+  - Needs: Drummond's decision. Nothing contacted.
+
 - **allai.events carries a stale listing of the Oxford Agentic Bootcamp** - found
   15 Oct 2026 by answer-engine probe, not by us submitting anything.
   - URL as returned: https://allai.events/event/the-oxford-agentic-bootcamp

@@ -5,6 +5,36 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-15 (06:47 BST cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what actually happens hour by hour at a one-day hands-on AI workshop | **No** | GrowthPerf, Pertama Partners (x2), mycocoon, solway.ai, digitalworkshopcenter, maven, aidevlab, harness.institute, learnapart |
+| is it worth sending two people from the same team to the same AI workshop | **No** | **onoffgroup (#1)**, 30Elevate, adventuremedia, hierarchy.ch, powerhouse-digital, agentaccelerator, woyce, ProfileTree, whitelabeliq, ATD |
+| what is a second brain for AI and do I actually need one | **No** | learnwithhasan, matthewkruczek, mindstudio, vectorize, IIT, dev.to, Taskade, ronforbes, InfraNodus, Vitally |
+
+**Reading.**
+- **This corrects a note I wrote on 13 October.** I recorded then that "a published agenda
+  with named build blocks" looked rare in this field, and flagged it as the thing that might
+  still differentiate us now that "bring your own real work" has become table stakes. That
+  was wrong. Hour-by-hour schedules are **widely published** - GrowthPerf, Pertama Partners
+  and mycocoon all print full timetables, and several more give an hour-by-hour arc. Our
+  agenda is genuinely a different shape (three build cycles, guest sessions between them, no
+  block over twenty-five minutes of talking) but the **question** is owned, so a guide on it
+  would not be retrieved. Probing first killed a guide I would otherwise have written.
+- **onoffgroup is #1 again**, on a second question, with the same "Public vs in-house AI
+  training" page that outranked us on 12 October. Its answer covers "send two people" in
+  depth, including the sequence. We have a guide on that comparison and it does not surface.
+  That is a third instance of the retrieval pattern.
+- The second-brain probe **sharpens what our GEO position actually is.** The definitional
+  question belongs to PKM tool vendors and the Tiago Forte framework, as definitional
+  questions always do. Our 11 October citation was for the **pairing** question - which of
+  our two formats to do first. Across roughly 28 probes the site has been cited for exactly
+  two things, and both are **choices between options we uniquely sit between**: our two
+  bootcamp formats, and bootcamp versus course versus executive education. Not definitions,
+  not how-to, not generic buyer questions. **That is a narrower and more useful statement of
+  the niche than "comparison questions".**
+
 ## 2026-10-15 (02:15 BST cycle)
 
 **Engine: web search, not Perplexity** (the sandbox has no Perplexity route this cycle).

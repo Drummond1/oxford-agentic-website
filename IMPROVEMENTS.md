@@ -243,6 +243,43 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (06:47 local cycle) — No site change. Three audits came back clean, a guide
+  was killed by its own probe, and the off-page list gains one honest entry.**
+  - **Search Console returned with no new data**, identical to six hours earlier. No rule-4
+    action; every page is now opened and closed, `/team/` included as of last night.
+  - **Audited the three things the loop had never looked at, all clean.** `llms.txt` carries
+    all 30 guides with title and description; `llms-full.txt` carries their full bodies,
+    including both guides shipped this week; the guides hub already groups by category
+    ("Start here", "Choosing how to learn", "Putting it to work") and links all 30. These are
+    the artefacts answer engines actually read, and they are in good order, so the retrieval
+    gap recorded on 13 October is **not** a coverage or structure problem.
+  - **A guide was killed by its own probe, and it corrected me.** On 13 October I wrote that
+    a published hour-by-hour agenda looked rare, and flagged it as a possible differentiator
+    now that "bring your own real work" has become table stakes. Probing it showed the
+    opposite: timetables are widely published, by GrowthPerf, Pertama Partners, mycocoon and
+    several others. Our agenda is a genuinely different shape; the question is not ours. Had
+    I written from the 13 Oct note instead of probing, the guide would have shipped into an
+    owned field.
+  - **What the GEO record now says, more precisely.** Across roughly 28 probes the site has
+    been cited for exactly two questions, and both are **choices between options we uniquely
+    sit between** - our two bootcamp formats, and bootcamp versus course versus executive
+    education. Definitional questions go to tool vendors, how-to questions to platforms,
+    generic buyer questions to consultancies. That is a sharper niche statement than
+    "comparison questions", and it should steer what gets written next.
+  - **Off-page, done deliberately rather than harvested from probes.** A search of UK event
+    listing routes produced mostly ticketing platforms and "40 free places to promote your
+    event" listicles, which are worth nothing - recorded so a later cycle does not repeat the
+    search. One credible item: **techUK**, the UK tech trade body. Its events programme is
+    its own, run with members, so there is **no listing route** and the bootcamp cannot be
+    submitted; the opportunity is their "Speak at an event" path, which is the right audience
+    and a credible citation. Added to the review list with the membership question explicitly
+    unchecked.
+  - **Nothing shipped to the site, and nothing was worth shipping.** Build clean (3,024 links
+    across 61 pages, schema valid, no SEO warnings). As on the 01:21 cycle, this commit
+    touches logs and the review list only.
+  - **Guides this week.** 2 of 3, and today's allowance is unused by choice rather than by
+    the cap.
+
 - **2026-10-15 (02:15 local cycle) - The homepage FAQ said "two one-day bootcamps" three
   weeks after the third one launched. It now describes all three.**
   - **Evidence.** This is backlog 14 - the two-product sweep checklist - recurring exactly

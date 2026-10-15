@@ -1091,3 +1091,12 @@ One thing worth not acting on: `drummond gilbert` resolves to `/team/` rather th
 individual profile page, at position 7.4. That is **consistent with the 9 Oct preference that
 the site read as a team rather than one person**, so it is working as intended. Do not chase
 it.
+
+## Update — 15 October 2026, 06:50 BST
+
+Search Console returned, **no new data** - identical to the 01:30 reading six hours earlier
+(134 clicks, 1.91k impressions, every page figure unchanged, same "last update" timestamp).
+Still through roughly 13 October.
+
+No rule-4 action. Every page with meaningful impressions is now opened and closed, `/team/`
+included as of last night, and nothing in this reading reopens any of them.
