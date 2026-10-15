@@ -5,6 +5,46 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-15 (02:15 BST cycle)
+
+**Engine: web search, not Perplexity** (the sandbox has no Perplexity route this cycle).
+Different engine, so these are not comparable with the Perplexity rows above - read them
+as a second opinion, which the 10 Aug note asked for, rather than as movement.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what should I bring to a hands-on AI workshop to get something working by the end of the day | **No** | Humanitix, Eventbrite, BrainStation (x4 locales), CalCPA, air.nuilab, polyrhythm, studiomeyer |
+| can a non-developer learn to build software with AI coding agents in one day | **No** | ivee.jobs, Maven (x4), Progress blog (x2), recall.it summary of a Y Combinator talk |
+| agentic coding bootcamp Oxford UK in person Claude Code one day | **No** | Noble Desktop, Eventbrite "Build with Claude Code" (Greenford Quay), Luma (x2), checkin.no, Maven, inspari.dk, valantic, trueoriginal |
+| what do you need to learn to use a coding agent if you cannot code (terminal, git, deploy) | **No** | blog.jonudell.net, Storytel/Audible "Terminal 101 for Claude Code" (one self-published audiobook across 7 locales), bensbites |
+
+**Reading. All four probes were about the Coding Bootcamp, which runs Cohort 1 on 26
+November, and the line is invisible on every one of them.**
+
+- **The third probe is the finding.** Asked for an Oxford, in-person, one-day Claude Code
+  bootcamp - a description of our own product - the engine answered in as many words that
+  it *did not find one*, and offered Greenford Quay in west London as the nearest fit. Our
+  Oxford-anchored queries normally cite the site at #1-#3 for the flagship. So this is not
+  the site being weak at Oxford queries; it is the coding line specifically.
+- **The fourth probe is winnable and converting on paper, and we must not write for it.**
+  The field is one personal blog, a newsletter excerpt and a self-published audiobook
+  spammed across seven Storytel locales - about as weak as competition gets - and the
+  searcher is exactly the Coding Bootcamp's stated buyer. But `why-the-code-an-agent-wrote-
+  is-not-live` already answers it, point for point: repository, undo, somewhere it runs,
+  memory, secrets, a check. **Writing it would be a near-duplicate of our own page**, which
+  rule 6 forbids. Declined.
+- **That makes three instances of the same pattern**, after the hands-on question on 12 Oct
+  and the context question on 13 Oct: we have the content, it is competitive, it is not
+  retrieved. The 13 Oct note said two instances suggest retrieval rather than coverage.
+  A third says it more loudly, and it now applies to a line with a cohort six weeks out.
+  **Content is not the lever here.** The things that would move it are off-page: backlog 2b
+  (no third-party `sameAs` on the Organization node at all) and the listing routes already
+  drafted in `outreach/`.
+- **A `site:` probe was attempted and the operator was ignored by this engine**, so nothing
+  can be concluded about indexing from it. Not evidence either way.
+- **Incidental find, logged to `outreach/review-list.md`:** allai.events carries a listing
+  for "The Oxford Agentic Bootcamp" showing 21 Jul 2026 and a price band.
+
 ## 2026-10-13 (18:47 BST cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

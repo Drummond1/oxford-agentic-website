@@ -243,6 +243,78 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (02:15 local cycle) - The homepage FAQ said "two one-day bootcamps" three
+  weeks after the third one launched. It now describes all three.**
+  - **Evidence.** This is backlog 14 - the two-product sweep checklist - recurring exactly
+    where that item predicted it would, on the next launch. The Oxford Agentic Coding
+    Bootcamp launched on 25 September with Cohort 1 on 26 November, and `src/lib/home.ts`
+    still opened with "across two one-day bootcamps", named only the Agentic and Second
+    Brain days, and closed "Both are hands-on". Four of the twelve answers described a
+    two-product business: the entity answer, who the bootcamps are for, the venues, and
+    what you leave with.
+  - **Why it is the highest-value thing available.** That first answer is not ordinary page
+    copy. It is the single most quoted text on the site: the cycle-62 note records engines
+    lifting these answers near-verbatim into snippets, and it renders three times over - the
+    visible accordion, the FAQPage JSON-LD on the homepage, and `llms-full.txt`, which is
+    the knowledge base both voice agents read. So the canonical answer to "what is Oxford
+    Agentic?" has been omitting a third of the business, in structured data, for three weeks.
+  - **Change.** Four answers in `home.ts`, plus one wrong published string in `llms.ts`
+    ("the full text of the FAQ, both bootcamps" -> "all three bootcamps") and its stale
+    comment. The entity answer gains a sentence on the Coding Bootcamp; "Who are the
+    bootcamps for?" gains its audience (shipping software without waiting on a developer);
+    "What will I actually leave with?" gains its outcomes; the venue answer now covers all
+    three lines.
+  - **Two claims deliberately NOT made.** The old answer said "Both are hands-on and capped
+    small". **The Coding Bootcamp has no capacity or cap claim anywhere in the repo**, so
+    "all three are capped small" would have been invented. The cap clause was dropped from
+    this answer rather than widened; it survives verbatim in "Do I need to be technical?"
+    and on each programme page, where it is sourced. Likewise "No coding required" became
+    "none of them expects you to arrive able to code", which is what the Coding Bootcamp's
+    own FAQ says ("the day does not assume you can code: the agents do the typing"), and it
+    is still never left standing on its own, per the message house.
+  - **Also corrected: the venue answer opened "In Oxford colleges."** The Second Brain
+    Bootcamp is at the Pitt Rivers Museum, so that sentence had been wrong since that line
+    launched too - the same defect, one surface over. All five venues re-read from the event
+    files, every one `confirmed: true`.
+  - **Checks.** Build, links (3,024 across 61 pages, unchanged) and schema pass with no SEO
+    warnings; FAQPage JSON-LD re-parsed and valid, 12 questions, the four changed answers
+    present. `grep` confirms "two one-day bootcamps" is gone from `dist/` entirely and the
+    new text reaches all three surfaces. Headless Chromium at 375, 768 and 1280px: no
+    horizontal overflow with all four answers expanded, the accordion still toggles, and the
+    only console errors are the proxy's `ERR_TUNNEL_CONNECTION_FAILED` on third-party
+    resources, which is the sandbox and not the change.
+  - **Harness note, so a later cycle does not lose time to it.** The first FAQ item is
+    **open by default**. A verification script that "clicks to open it" closes it, then
+    reports the answer missing and the panel 63px tall. It looks exactly like a broken
+    accordion and is not one. Read the initial state first.
+  - **No guide. Declined on the rule, not on the budget** - two published this week against
+    a limit of three, and none today, so one was allowed. The best candidate by far was
+    "what do you need to learn to work with a coding agent if you cannot code": the field is
+    a personal blog, a newsletter excerpt and a self-published audiobook, and the searcher is
+    the Coding Bootcamp's buyer. It was dropped because
+    `why-the-code-an-agent-wrote-is-not-live` already answers it point for point, and a
+    near-duplicate of our own page is still a near-duplicate.
+  - **The finding worth Drummond's attention is in the GEO log.** Four probes this cycle,
+    all aimed at the coding line, all absent. Asked for an Oxford, in-person, one-day Claude
+    Code bootcamp, the engine said it could not find one. Combined with 12 and 13 Oct, that
+    is three instances of having the content and not being retrieved, so the lever is
+    off-page (backlog 2b), not another guide.
+  - **The daily rebuild fired - yesterday's open question is closed.** The 13 Oct cycle
+    added a 03:17 UTC cron and could not confirm it. Run 229 ran as `event=schedule` on
+    14 Oct and succeeded. It was **5h23m late** (08:40 UTC, not 03:17), which is GitHub
+    delaying a queued cron rather than a fault, but it is worth knowing the margin is hours,
+    not minutes, with the Second Brain Bootcamp on 21 October.
+  - **Cohort 3's date in the scheduled prompt is wrong and the repo is right.** The standing
+    prompt still says Cohort 3 is 15 October. Every file in the repo says **19 November** at
+    Worcester College, the Coding Bootcamp 26 November, and the 11 Oct cycle logged
+    aieventlist.ai independently carrying 19 Nov. Luma could not be reached to confirm
+    (DNS blocked), so **no event fact was touched**. Raised for Drummond below.
+  - **Production could not be read again.** The egress policy answers 403 to
+    `oxfordagentic.com` and blocks `luma.com` by DNS, so verification is against a local
+    preview of the exact `main` HEAD. Same substitution as 12, 13 and 14 Oct. The 12
+    outbound links report unreachable for the same reason - 0 of 12, which is the proxy,
+    not twelve simultaneous third-party outages.
+
 - **2026-10-14 (08:47 local cycle) - The only control that opens the navigation on a
   phone was 31px tall. Its touch target is now 44px and the button looks exactly the
   same.**

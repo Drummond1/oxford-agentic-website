@@ -20,13 +20,19 @@ export const homeFaqs = [
      * business. The entity string is Drummond's to change, because it must move
      * in step with Luma and LinkedIn; this answer is site copy, and being
      * complete matters more here than being identical.
+     *
+     * It happened a second time with the Coding Bootcamp (launched 25 Sept
+     * 2026, swept here 15 Oct): this answer still said "two one-day bootcamps"
+     * three weeks later. Four answers below name the product line explicitly -
+     * this one, who the bootcamps are for, the venues, and what you leave with.
+     * When a fourth line launches, change all four in the same commit.
      */
     q: `What is ${config.brand.name}?`,
-    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across two one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. Both are hands-on and capped small. No coding required, and nothing hand-waved.`,
+    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across three one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. The Oxford Agentic Coding Bootcamp is where you ship software you own outright, with Claude Code and Codex doing the typing. All three are hands-on, and none of them expects you to arrive able to code. Nothing is hand-waved either.`,
   },
   {
     q: 'Who are the bootcamps for?',
-    a: 'Senior people who already use AI daily and have hit the ceiling: good output from a chat window, and still doing the work by hand tomorrow. Founders, directors and C-suite in Oxford and London; senior NHS, university and public-sector staff; consultants and independent operators; product and operations leaders. Engineers and people who build AI for a living are welcome too, and several came to the first cohort. The Oxford Agentic Bootcamp is for building working AI workflows; the Oxford Second Brain Bootcamp is for building the store of your own context those tools draw on.',
+    a: 'Senior people who already use AI daily and have hit the ceiling: good output from a chat window, and still doing the work by hand tomorrow. Founders, directors and C-suite in Oxford and London; senior NHS, university and public-sector staff; consultants and independent operators; product and operations leaders. Engineers and people who build AI for a living are welcome too, and several came to the first cohort. The Oxford Agentic Bootcamp is for building working AI workflows; the Oxford Second Brain Bootcamp is for building the store of your own context those tools draw on; the Oxford Agentic Coding Bootcamp is for shipping software without waiting on a developer.',
   },
   {
     /*
@@ -43,7 +49,7 @@ export const homeFaqs = [
   },
   {
     q: 'Where in Oxford are the events held?',
-    a: "In Oxford colleges. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. Cohorts 2 and 3 are at Worcester College on Walton Street, in central Oxford. Each event page confirms its own venue and date.",
+    a: "In Oxford colleges and museums. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne's College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. The Agentic Bootcamp's Cohorts 2 and 3 and the Coding Bootcamp's first cohort are at Worcester College on Walton Street, in central Oxford; the Second Brain Bootcamp is at the Pitt Rivers Museum on South Parks Road. Each event page confirms its own venue and date.",
   },
   {
     q: 'Is Oxford Agentic affiliated with the University of Oxford?',
@@ -51,7 +57,7 @@ export const homeFaqs = [
   },
   {
     q: 'What will I actually leave with?',
-    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful.',
+    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful. At the Oxford Agentic Coding Bootcamp it is a personal website live on the internet and a working prototype that saves real data, both in your own repository.',
   },
   {
     /*

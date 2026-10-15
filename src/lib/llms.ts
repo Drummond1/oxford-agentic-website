@@ -154,7 +154,7 @@ export async function renderLlmsTxt(): Promise<string> {
     // homepage and About pages, which is rendered in components rather than
     // held as content. Claiming "every page" was a promise the file did not keep.
     `- [llms-full.txt](${absoluteUrl('/llms-full.txt')}): the full text of the FAQ, ` +
-      `both bootcamps, every cohort, the people who run them, and all guides.`,
+      `all three bootcamps, every cohort, the people who run them, and all guides.`,
     '',
   );
 
@@ -183,7 +183,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
 
   /*
    * The homepage FAQ, first, because it answers the entity-level questions
-   * everything below assumes: what this is, who it is for, the two bootcamps and
+   * everything below assumes: what this is, who it is for, the three bootcamps and
    * how they differ, the independence point.
    *
    * It was missing entirely until cycle 62, which was the most expensive omission

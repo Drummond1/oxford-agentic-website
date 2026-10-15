@@ -11,6 +11,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **allai.events carries a stale listing of the Oxford Agentic Bootcamp** - found
+  15 Oct 2026 by answer-engine probe, not by us submitting anything.
+  - URL as returned: https://allai.events/event/the-oxford-agentic-bootcamp
+  - The listing shows **21 July 2026** - Cohort 1, which ran nearly three months ago - and
+    publishes a price band. It is the third third-party directory found carrying our events
+    without us having submitted anything, after aieventlist.ai and foundercal.com.
+  - Why it matters: it is a live citable mention of the entity, which the Organization node
+    still lacks entirely (backlog 2b), but it is currently advertising a day that has
+    already happened. Either getting it updated to 19 Nov or getting it taken down is worth
+    more than leaving it.
+  - **Not checked:** the page was NOT loaded. The sandbox egress policy blocks outbound
+    fetches this cycle, so everything above comes from the search result itself. Confirm the
+    URL resolves and the date before acting.
+  - Needs: Drummond's decision. Nothing contacted.
+
 - **explainx.ai - "Top 10 AI Workshops for Professionals in 2026"** - found 12 Oct 2026
   by answer-engine probe.
   - URL: https://explainx.ai/blog/top-ai-workshops-professionals-2026 (HTTP 200, checked
