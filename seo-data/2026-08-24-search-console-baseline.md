@@ -1113,3 +1113,10 @@ estimated. The 06:50 reading above stands as the latest data.
 Search Console returned, **no new data** - third reading today on the same window. 134
 clicks, 1.91k impressions, every page figure identical, still through roughly 13 October.
 No rule-4 action.
+
+## Update - 15 October 2026, 14:15 BST
+
+**Unavailable from this cloud checkout.** One attempt: no Google credentials in the
+environment, `gcloud` reports no credentialed accounts, and the Search Analytics API answers
+HTTP 401. No Search Console export newer than the 13 October reading exists in `seo-data/`.
+Nothing estimated. The 12:50 reading above stands as the latest data.

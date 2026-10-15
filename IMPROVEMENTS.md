@@ -243,6 +243,80 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-15 (14:15 local cycle) — Six guides appeared in no other guide's "More guides"
+  block, and three of them had one inbound internal link in the whole site. Every guide now
+  gets about four.**
+  - **Evidence, measured on the built site rather than reasoned about.** Counting unique
+    inbound internal links per sitemap URL across all 61 built pages: three guides had
+    **exactly one** - `agentic-ai-for-consultants`, `agentic-ai-for-finance-teams` and
+    `agentic-ai-for-public-sector-and-nhs-leaders`, each reachable only from the guides
+    index. Counting the "More guides" blocks separately: 30 guides x 4 slots = 120 links,
+    and **six guides held none of them** while nine guides held eight or nine each. The
+    other three with nothing were `ai-bootcamp-vs-course-vs-exec-education`,
+    `how-to-run-an-ai-pilot-that-survives` and `why-the-code-an-agent-wrote-is-not-live`.
+  - **Two of the six are pages the loop's own record says matter most.**
+    `ai-bootcamp-vs-course-vs-exec-education` is one of only **two** pages answer engines
+    have cited this site for across roughly 31 probes - the 06:47 entry states it in those
+    words. `why-the-code-an-agent-wrote-is-not-live` is the guide for the Coding Bootcamp,
+    the product with the least discovery and a first cohort on 26 November. Those are the
+    last two pages that should have no route in from the rest of the corpus.
+  - **Cause, found in the code and not guessed.** `src/pages/guides/[...slug].astro` ranked
+    siblings by shared programme (2) plus shared category (1), then broke ties by
+    **recency**. With **22 of the 30 guides** sharing the flagship programme, almost
+    everything ties at 2 or 3, so recency was effectively the only axis that decided
+    anything and the newest guides took nearly every slot. The subject-axis part of that
+    scoring is a deliberate earlier fix (the two second-brain guides never surfaced each
+    other under category alone) and is **kept**.
+  - **Change: one file, the tiebreak only.** The four siblings are now chosen for the whole
+    corpus in a single deterministic pass instead of page by page. Score still leads, so the
+    picks stay subject-relevant; equal-scoring siblings are then ordered by how few slots
+    they have been given so far, then by slug. One clause sits above score: a guide offered
+    **nowhere at all** jumps the queue, provided it is related to that source at all. Without
+    it `why-the-code-an-agent-wrote-is-not-live` stays on zero, because it is the only guide
+    tied to the Coding Bootcamp alone and so scores 2 for exactly two sources. The clause
+    stops applying the moment a guide is offered once.
+  - **Result, measured the same way.** "More guides" appearances went from **0-9 with six
+    zeroes** to **1-6, with 23 guides on exactly four**. Total inbound internal links per
+    guide went from **min 1, max 11** to **min 3, max 9**, mean unchanged at 6.0 because the
+    site's internal link count is unchanged at 3,024 - the same links, shared out. The three
+    persona guides went from 1 to 5 each.
+  - **No content, no copy, no new fact.** No markdown file was touched, so no `updatedDate`
+    moved and no claim changed. Nothing in `llms.txt`, `llms-full.txt` or any schema node
+    changes, because the related block is navigation.
+  - **Why this and not a guide.** Four probes, all absent, none winnable and converting - the
+    three persona questions and a proper regression check on the pairing question (see the
+    GEO log). The 12:47 conclusion that the guide library is sufficient for the current
+    product set stands. This is the other half of the same problem: the guides exist and the
+    graph was not pointing at them.
+  - **Honest limit.** This does not explain why those guides are absent from their own
+    queries, and it is not offered as the cause. It is the lever available on a page an
+    engine may never have fetched - four guides sat in "Discovered - currently not indexed"
+    at the last coverage reading - and whether it moves anything is testable at the next one.
+  - **Checks.** Build, links (3,024 across 61 pages, unchanged) and schema pass with no SEO
+    warnings. `check:flags` passes on the all-on and all-off builds. `astro check` (installed
+    `--no-save` so the diff stays clean) reports **79 errors and 4 hints both with and
+    without the change**, all pre-existing implicit-`any` noise; the per-file count in the
+    changed file is 17 either way. Headless Chromium over **all 30 guide pages at 375px and
+    1280px**: every page has a "More guides" block with exactly four links, no horizontal
+    overflow, nothing clipped at the viewport edge, no page errors. Screenshots of the block
+    on the finance persona guide and the coding guide at both widths read correctly.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403
+    to `oxfordagentic.com` and DNS does not resolve `luma.com`, so verification is against a
+    local preview of the exact `main` HEAD that Pages reports deployed (`ecbb081`, run
+    38730274530, conclusion `success`, 11:51 UTC). Same substitution as 12 to 15 Oct. **No
+    event fact was touched** - Cohort 3 stays 19 November and the Second Brain Bootcamp
+    21 October, as every file in the repo says.
+  - **Search Console: unavailable from the cloud checkout.** One attempt: no credentials,
+    `gcloud` has no account, the API returns 401, and no newer export exists in `seo-data/`.
+    Nothing estimated; the 13 October data stands.
+  - **Off-page.** No new opportunity worth adding: the four probe fields produced Microsoft
+    marketplace consulting listings, two competitors and free Microsoft-partner NHS events.
+    One stale item updated instead - **the OxGen AI Summit runs today and tomorrow** on the
+    dates recorded on the review list, so that edition's sponsorship window has closed and
+    the open route is 2027. Nothing contacted.
+  - **Guides this week.** 2 of 3, and today's allowance is unused by choice rather than by
+    the cap.
+
 - **2026-10-15 (12:47 local cycle) — No site change. Two guides killed by their probes, and
   the 22 October handover written down while it is still cheap.**
   - **Search Console returned with no new data**, third reading today on the same window. No

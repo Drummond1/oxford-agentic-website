@@ -98,6 +98,11 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     academia in Oxford, which overlaps the bootcamp buyer. Possible mention, partnership or
     attendee-offer route.
   - **Clash resolved (23 Sep 2026):** Cohort 3 moved from Thu 15 Oct to Thu 19 Nov, so this no longer clashes.
+  - **Time-check, 15 Oct 2026:** on the dates recorded here the summit is running today and
+    tomorrow, so the sponsorship and partnership window for this edition has closed. The
+    route that is still open is the 2027 edition, or an approach to the organisers after it
+    while they are between editions. The dates were not re-verified this cycle - the sandbox
+    egress policy blocks outbound fetches - so confirm before acting.
   - Needs: Drummond's decision. Nothing contacted or submitted.
 
 - **Daily Info (Oxford what's-on listings)** - found 13 Sept 2026.

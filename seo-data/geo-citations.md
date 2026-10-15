@@ -5,6 +5,53 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-15 (14:15 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as at 02:15 and
+08:05 today). Not comparable with the Perplexity rows; read as a second opinion.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| second brain bootcamp vs agentic AI bootcamp, which first | **No** | Data Science Dojo help centre (x4), three Luma "AI Unlocked: Build Your AI Brain" listings, Brown University professional education, IBM community, iwoszapar.com |
+| agentic AI for consultants, is a one-day hands-on workshop worth it | **No** | Microsoft AppSource and Azure Marketplace consulting listings (x6: NTT Germany, Oakwood, OnTargIT, FutureAbility), Data Science Dojo (Houston, Dallas), ODSC London |
+| hands-on AI workflow training for finance directors UK, not strategy | **No** | BDO UK (London, Copilot labs, 8 Sept - past), "The AI Lab" 2-day London course on Luma (13-14 Aug - past), FE Training, Learnsignal, PwC Hungary, UAB |
+| practical agentic AI training for NHS and public sector leaders UK one day | **No** | Westminster Insight, Trustmarque NHS Agent-a-thon (York), Telefonica Tech NHS Trust Agentathon (London, free), AI Awareness (one-day, GBP 995-1,995), Public Sector Network |
+
+**Reading.**
+
+- **The pairing regression check is answered and the answer is "not on this engine".** The
+  12:47 cycle recorded that its third probe mis-fired and that a proper check needed the
+  original wording. The original wording is above, run verbatim. On web search we are absent:
+  the field is Data Science Dojo's own help centre explaining the difference between its two
+  bootcamps, three copies of a Luma "Build Your AI Brain" listing, and Brown. **This is not
+  evidence that the Perplexity position has moved** - that citation was #1, #2 and #5 on a
+  different engine on 11 October, and the two engines have disagreed about this site all
+  week. It does say the question is answered elsewhere by vendors describing their own
+  products, which is the usual shape.
+- **The three persona guides are absent from their own questions, and each field is owned by
+  a different kind of incumbent.** Consultants goes to **platform marketplaces** - six of the
+  ten results are Microsoft AppSource or Azure Marketplace entries for "Agent in a Day"
+  workshops built on Copilot Studio or AI Foundry. Public sector goes to **public-sector
+  training bodies and Microsoft partners**, including two free NHS "Agent-a-thons". Neither
+  is winnable and neither should be chased.
+- **Finance is the one that is not owned, and it is still not ours to take.** The two closest
+  UK results are both **past-dated** (BDO's London Copilot day, 8 September; the two-day AI
+  Lab, 13-14 August), so the field has no upcoming in-person UK option in front of it. That
+  is a real gap, but filling it would mean a finance-specific day, which is not a thing we
+  sell, and our finance guide already exists and is not retrieved. **No guide and no new
+  page**: the gap is in the product, not the content.
+- **What this cycle did instead.** All three persona guides were, until today, the three
+  least-linked pages on the site - one inbound internal link each, the guides index, and
+  nothing else. They appeared in no other guide's "More guides" block at all. That is now
+  fixed (see IMPROVEMENTS). Internal linking is not a claim about why they are absent from
+  these queries; it is the one lever available on a page an engine has never fetched, and
+  whether it moves is testable at the next index-coverage reading.
+- **No new off-page opportunity.** The four fields produced vendor marketplaces, two
+  competitors (Westminster Insight, Learnsignal) and free Microsoft-partner events. One
+  near-miss recorded so it is not re-searched: Learnsignal's "AI Training for Finance Teams:
+  The Complete Guide for Finance Directors (2026)" is roundup-shaped, but it is published by
+  a training provider selling its own courses, so it will not cite a competitor.
+
 ## 2026-10-15 (08:05 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox again, as at

@@ -47,20 +47,64 @@ const related = guide
  * both filled all four slots with agentic guides. A reader finishing one had no
  * route to the other, and the cluster had no internal cohesion for search or AI
  * engines to read. Shared programme is the subject axis, so it outranks
- * category; recency breaks what is left.
+ * category.
+ *
+ * What breaks a tie changed on 15 October 2026. It used to be recency, and with
+ * 22 of the 30 guides sharing the flagship programme, recency had quietly become
+ * the only axis that decided anything. Measured on the built site: the newest
+ * guides were offered eight or nine times each, while SIX guides appeared in no
+ * "More guides" block at all. Three of those six had exactly one inbound
+ * internal link in the whole site - the guides index - and the six included the
+ * three persona guides (consultants, finance, public sector) and
+ * `ai-bootcamp-vs-course-vs-exec-education`, which is one of only two pages
+ * answer engines cite this site for.
+ *
+ * So the four are now chosen for the whole corpus in one deterministic pass
+ * rather than page by page. Score still leads, so the picks stay
+ * subject-relevant; equal-scoring siblings are then ordered by how few slots
+ * they have been given so far, and by slug last. Every guide ends up offered
+ * about four times, and the pass depends on nothing but the collection, so the
+ * result is identical on every page and in every build - the HTML does not
+ * churn between deploys.
+ *
+ * One clause sits above score, and it earns its place: a guide that is still
+ * offered nowhere at all jumps the queue, provided it is related to the source
+ * at all. Without it, `why-the-code-an-agent-wrote-is-not-live` stays on zero,
+ * because it is the only guide tied to the Coding Bootcamp alone - so it scores
+ * 2 for exactly two sources, and loses to the 22 guides that share the flagship
+ * programme every other time. That is the guide for the newest product and the
+ * one with the least discovery, which is the last page that should have no route
+ * in. The clause costs at most one weaker pick per guide and nothing after that,
+ * since it stops applying the moment a guide is offered once.
  */
-const siblings = guide ? guides.filter((g) => g.data.slug !== guide.data.slug) : [];
-const guideProgrammes = new Set(guide?.data.relatedProgrammes.map((ref) => ref.id) ?? []);
-const otherGuides = siblings
-  .map((g) => ({
-    entry: g,
-    score:
-      (g.data.relatedProgrammes.some((ref) => guideProgrammes.has(ref.id)) ? 2 : 0) +
-      (g.data.category === guide?.data.category ? 1 : 0),
-  }))
-  .sort((a, b) => b.score - a.score || b.entry.data.publishDate.getTime() - a.entry.data.publishDate.getTime())
-  .slice(0, 4)
-  .map((scored) => scored.entry);
+const offered = new Map<string, number>();
+for (const g of guides) offered.set(g.data.slug, 0);
+const strandedFirst = (scored: { entry: (typeof guides)[number]; score: number }) =>
+  scored.score > 0 && (offered.get(scored.entry.data.slug) ?? 0) === 0 ? 1 : 0;
+const picks = new Map<string, typeof guides>();
+for (const source of [...guides].sort((a, b) => a.data.slug.localeCompare(b.data.slug))) {
+  const sourceProgrammes = new Set(source.data.relatedProgrammes.map((ref) => ref.id));
+  const chosen = guides
+    .filter((g) => g.data.slug !== source.data.slug)
+    .map((g) => ({
+      entry: g,
+      score:
+        (g.data.relatedProgrammes.some((ref) => sourceProgrammes.has(ref.id)) ? 2 : 0) +
+        (g.data.category === source.data.category ? 1 : 0),
+    }))
+    .sort(
+      (a, b) =>
+        strandedFirst(b) - strandedFirst(a) ||
+        b.score - a.score ||
+        (offered.get(a.entry.data.slug) ?? 0) - (offered.get(b.entry.data.slug) ?? 0) ||
+        a.entry.data.slug.localeCompare(b.entry.data.slug),
+    )
+    .slice(0, 4)
+    .map((scored) => scored.entry);
+  for (const g of chosen) offered.set(g.data.slug, (offered.get(g.data.slug) ?? 0) + 1);
+  picks.set(source.data.slug, chosen);
+}
+const otherGuides = guide ? (picks.get(guide.data.slug) ?? []) : [];
 
 // Index only: guides grouped into the reader's journey, in category order.
 const grouped = GUIDE_CATEGORIES.map((category) => ({
