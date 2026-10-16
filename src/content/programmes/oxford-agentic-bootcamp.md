@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-15T08:10:00+01:00"
+updatedDate: "2026-10-16T08:05:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -78,9 +78,11 @@ faqs:
       what you need beforehand.
   - q: Where in Oxford is it held?
     a: >-
-      At an Oxford college - Cohort 1 ran at St Anne's College in Seminar Room 10, set
-      up cabaret-style so people can work in small groups. The exact venue is confirmed
-      on each event's own page.
+      At Worcester College on Walton Street, in central Oxford. Cohort 2 ran there in
+      September 2026 and Cohort 3 is there on Thursday 19 November 2026. Cohort 1 ran at
+      St Anne's College in July 2026, in a seminar room laid out cabaret-style for
+      small-group work, so an older listing may still show that address. Each event page
+      confirms its own venue and date, and that is the page to go by.
   - q: How many people are in the room?
     a: >-
       Not many, and it is capped. The size is deliberate: the day is facilitated, not

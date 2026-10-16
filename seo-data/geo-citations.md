@@ -5,6 +5,59 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-16 (08:06 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Not comparable with the Perplexity rows; read as a second opinion.
+Rotated onto two axes the log had not tested: a **venue-anchored** query, which is as close
+to a brand query as a buyer gets without naming us, and two **objection** questions a buyer
+asks before booking anything.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| AI bootcamp Worcester College Oxford one day workshop | **No** | **luma.com/oxfordagentic2** (our Cohort 2, ran 16 Sept), onlinecourses.worc.ox.ac.uk, **luma.com/k7c2rm5s** (our Cohort 1, ran 21 July, St Anne's), **allai.events** (stale, 21 July), createwith (Oxford, Aug, students), cife.org.uk, tutorials.co.uk (x3, incl. "AI training in Oxfordshire") |
+| agentic AI training for charity and non-profit leaders UK one day hands-on | **No** | dsc.org.uk (**9 of 10 results**, its own AI Hub and course pages), events.pwc.co.uk (past, 15 May) |
+| will the AI tools we learn on a training course be out of date in six months | **No** | trainingindustry.com (x2), salesforce.com, aicerts.ai, tianpan.co, chatgate.ai, g2.com (x2), linkedin |
+| should I run an AI workshop for my team internally or bring in an external trainer | **No** | profiletree.com (x2), mentorcruise, maven.com (x2), ivee.jobs, business.codecool.com (x2), datanorth.ai |
+
+**Reading.**
+
+- **The venue probe is the third query axis this week to return our own past Luma listings
+  instead of us, and it produced the worst buyer-facing answer yet.** Asked for an AI
+  bootcamp at Worcester College, the engine found the Oxford Agentic Bootcamp, then said the
+  listings disagree on the venue - one gives Worcester College, another gives "St Anne's
+  College, 56 Woodstock Rd" and "5 spots remaining" - and told the reader in as many words:
+  **"Confirm the venue with the organisers before booking."** It also surfaced the hosts and
+  the format accurately. So the engine knows what we sell, recommends it, and then hands the
+  buyer a reason to hesitate, built entirely out of two of Drummond's own past listings.
+  Neither oxfordagentic.com nor the live `luma.com/oxfordagentic3` was returned.
+- **That is the first measured buyer-side cost of the 15 Oct finding**, rather than a ranking
+  observation. The 15 Oct probes showed the past listings absorbing brand traffic; this one
+  shows them actively producing a confirm-before-you-book warning about a venue that has been
+  settled since September. The review-list item has been updated with it. Nothing contacted.
+- **It also found a stale answer on our own site, which is what this cycle shipped.** The
+  flagship programme page's "Where in Oxford is it held?" FAQ still answered with Cohort 1
+  and St Anne's College - three cohorts out of date, and the very address the engine was
+  calling a contradiction. The homepage FAQ has named all four venues correctly for some
+  time; the programme page had drifted behind it. Now rewritten to lead with Worcester
+  College, where the bookable cohort is.
+- **The charity probe closes a standing backlog candidate.** "Agentic AI for charities and
+  non-profits" has sat on backlog 9 as persona-established since early September. The field
+  is owned by **DSC** - the Directory of Social Change, sector infrastructure writing on its
+  own subject - with nine of ten results, and the live alternatives are a £200-£289 online
+  day and a **free** funded TechSoup/Google.org course. Not winnable, and a reader choosing
+  between free and funded options is not booking a paid day in Oxford. **Killed, with
+  evidence, rather than left open.**
+- **Both objection probes are unwinnable.** The shelf-life question is held by L&D trade
+  publishers and certification vendors answering about their own products (Training Industry,
+  Salesforce, AI CERTs), and the intent is reading. The in-house-versus-external question is
+  held by training providers and job boards answering in their own commercial interest, and
+  we already publish a guide on exactly that question
+  (`in-house-ai-day-or-send-people-to-a-cohort`) which was not returned - so this is evidence
+  about retrieval, not a content gap. **Winnable and converting: none of the four. No guide.**
+- **Off-page.** No new item. One existing item strengthened with a new query axis and a
+  dated, quotable buyer-facing harm (the Luma listings). Nothing contacted.
+
 ## 2026-10-16 (01:59 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

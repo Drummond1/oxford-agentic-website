@@ -36,6 +36,15 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     sandbox, so everything above comes from the search results and from URLs this repo
     already publishes. Confirm against the live pages before acting.
   - Needs: Drummond's decision, and about ten minutes in Luma. Nothing contacted or changed.
+  - **Strengthened 16 Oct 2026 (08:06 cycle) with a third query axis and the first measured
+    buyer-side harm.** A venue-anchored probe - "AI bootcamp Worcester College Oxford one day
+    workshop" - again returned `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` and not
+    oxfordagentic.com. This time the engine did not merely send the reader to a past date: it
+    said the listings disagree on the venue, quoted "St Anne's College, 56 Woodstock Rd" and
+    "5 spots remaining" off the July listing, and told the reader **"Confirm the venue with
+    the organisers before booking."** That is a hesitation manufactured out of two of our own
+    pages, about a venue that has been settled since September. It raises the value of the
+    ten minutes in Luma above anything else on this list.
 
 - **techUK - "Speak at an event"** - found 15 Oct 2026 by deliberate off-page search.
   - techUK is the UK technology trade body. Its events page

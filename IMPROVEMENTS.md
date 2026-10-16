@@ -123,8 +123,11 @@ Status: `todo` · `blocked` (why) · `doing`
    unchanged: a real question, standing alone, one programme link, never more than one
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
-   (expands a real event-page FAQ); agentic AI for charities and non-profits
-   (persona-established). The second-brain contents guide shipped in cycle 48.
+   (expands a real event-page FAQ). **Agentic AI for charities and non-profits is KILLED,
+   16 Oct 2026, by its probe** - DSC (the Directory of Social Change) holds nine of ten
+   results on its own subject, and the live alternatives are a £200-£289 online day and a
+   free funded TechSoup/Google.org course, so the field is neither winnable nor converting.
+   Do not re-pitch it. The second-brain contents guide shipped in cycle 48.
    **The Second Brain line has four supporting guides as of 2 Sept 2026; the Agentic
    line has 13. Keep weighting new guides toward Second Brain until that is less
    lopsided.** (Said "two" until 2 Sept; it was wrong - count the files, do not trust
@@ -271,6 +274,86 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-16 (08:06 local cycle) - The flagship programme page answered "Where in Oxford is
+  it held?" with a venue we last used in July, which is the exact address an answer engine is
+  telling buyers to query. It now leads with Worcester College.**
+  - **Evidence, and it is the first measured buyer-side cost of the 15 Oct finding.** A
+    venue-anchored probe - `AI bootcamp Worcester College Oxford one day workshop`, about as
+    close to a brand query as a buyer gets without naming us - returned, in order,
+    `luma.com/oxfordagentic2` (our Cohort 2, ran 16 Sept), `onlinecourses.worc.ox.ac.uk`,
+    `luma.com/k7c2rm5s` (our Cohort 1, ran 21 July, at St Anne's) and the stale `allai.events`
+    page. **oxfordagentic.com was not returned, and nor was `luma.com/oxfordagentic3`.** The
+    engine found the bootcamp, described the hosts and the format accurately, then said the
+    listings disagree on the venue - quoting "St Anne's College, 56 Woodstock Rd" and "5 spots
+    remaining" off the July page - and told the reader: **"Confirm the venue with the
+    organisers before booking."** Three cycles this week have shown our past Luma listings
+    absorbing brand traffic. This one shows them manufacturing a reason to hesitate.
+  - **The on-page half of that is ours, and it was real.** `/bootcamps/oxford-agentic-bootcamp/`
+    is the page that sells the flagship day and the page that ranks on Oxford-anchored
+    queries. Its FAQ answered "Where in Oxford is it held?" with **"At an Oxford college -
+    Cohort 1 ran at St Anne's College in Seminar Room 10..."** - three cohorts out of date,
+    naming only the address the engine was calling a contradiction, and never naming Worcester
+    College at all, where Cohort 2 ran, where Cohort 3 is on 19 November and where the Coding
+    Bootcamp's first cohort is on 26 November.
+  - **Change: one FAQ answer on one file, and no new fact in it.** It now opens "At Worcester
+    College on Walton Street, in central Oxford", names Cohort 2 and Cohort 3 there, keeps
+    Cohort 1's St Anne's as history with the cabaret-style seminar room (which is true of that
+    room and is corroborated by the photo captions), notes plainly that an older listing may
+    still show that address, and ends on each event page being the one to go by. Every fact is
+    already published in this repo: the venue blocks of the event files and the photo alt text.
+  - **This was drift, not an oversight.** `src/lib/home.ts` - the homepage FAQ - has carried
+    the complete, correct four-venue answer for some time. The programme page simply did not
+    get the same sweep, which is the failure mode backlog 14 describes in the other direction.
+    The two surfaces now agree.
+  - **It lands on three surfaces, not one.** Verified in the built output: the visible FAQ, the
+    page's `FAQPage` JSON-LD (so an engine that retrieves the programme page gets the
+    resolution), and `llms-full.txt`, which both voice agents read daily. `Seminar Room 10` no
+    longer appears anywhere in `dist/`.
+  - **No guide, and the probes earned that.** Four probes, all absent, all killed. The charity
+    and non-profit candidate - open on backlog 9 as persona-established since early September -
+    is **killed with evidence**: DSC owns nine of ten results on its own subject, and the live
+    alternatives are a £200-£289 online day and a free funded TechSoup/Google.org course, so a
+    reader choosing between free options is not booking a paid day in Oxford. The two objection
+    probes (shelf life of what you learn; in-house versus external trainer) are held by L&D
+    trade publishers, certification vendors and training providers answering in their own
+    commercial interest. Note on the second: **we already publish a guide on exactly that
+    question** (`in-house-ai-day-or-send-people-to-a-cohort`) and it was not returned, so that
+    row is evidence about retrieval, not a content gap. **Guides this week: 2 of 3**, today's
+    allowance unused by choice for the fifth day running.
+  - **Checks.** `npm ci` then `npm run build` clean: 61 pages, 3,024 internal links, schema
+    valid with 5 Event and 9 FAQPage nodes and no SEO warnings. `check:flags` passes on the
+    all-on and all-off builds. The 12 outbound third-party links report unreachable, which is
+    the sandbox egress policy and not a site fault. Headless Chromium over the changed page at
+    **375px and 1280px**: `h1` correct, 15 FAQ items, no horizontal overflow at either width
+    (`scrollWidth` equals `clientWidth`), the answer opened and screenshotted at both sizes and
+    reading correctly, no page errors beyond the sandbox proxy's failures on third-party
+    resources. `updatedDate` moved on the one file changed. **No event fact moved** - Cohort 3
+    is still Thursday 19 November 2026 at Worcester College, the Second Brain Bootcamp 21
+    October at the Pitt Rivers Museum and the Coding Bootcamp 26 November, as every file in the
+    repo says.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    `oxfordagentic.com` and DNS does not resolve `luma.com`, so `build.txt` could not be polled
+    and **no event fact could be re-verified against its Luma page**. Deployment state comes
+    from the Actions API instead: run 38833860043 for `d5fb535` concluded `success` at 01:13 UTC
+    on 16 Oct, nothing queued or running, and `origin/main` is `d5fb535`. Same substitution as
+    12 to 16 Oct.
+  - **Search Console: unavailable from the cloud checkout.** One attempt: no credentials,
+    `gcloud` reports no credentialed accounts, the Search Analytics API answers HTTP 401, and no
+    newer export exists in `seo-data/`. Nothing estimated; the 13 October data stands.
+  - **Off-page.** No new item. The Luma item - already the largest open one - is strengthened
+    with this cycle's third query axis and the confirm-before-you-book quote, because that is a
+    harm rather than a ranking observation. Nothing contacted.
+  - **Worth Drummond knowing.** The scheduled prompt that starts these cycles still names
+    Cohort 3 as **15 October at Worcester College**. Every file in the repo says **Thursday 19
+    November**. The repo is right and the prompt is stale; this is the second cycle to say so,
+    and correcting the standing prompt is worth a minute so a future cycle does not trust it
+    over the content collection.
+  - **One small gap left on the record, not shipped.** The Coding Bootcamp programme page has
+    five FAQs and **no venue question at all**, while the Agentic page has fifteen and the
+    Second Brain page answers its own. That is the FAQ-depth-parity item in backlog 14, now
+    with a named instance. Left for a cycle that can give it its own evidence rather than
+    riding on this one.
 
 - **2026-10-16 (01:59 local cycle) - No site change. A buyer asking for our exact day, by
   city and by month, was told it does not exist; four audits found nothing on-page left to
