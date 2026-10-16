@@ -5,6 +5,46 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-16 (19:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Read as a second opinion, not as movement against the Perplexity rows.
+Rotated onto an axis the log has not tested: four **method** questions, the kind a reader
+asks while trying to do the thing rather than while shopping for a course. Two of them map
+onto guides we already publish, so they test selection rather than discovery.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| where should the human review step go in an agentic AI workflow | **No** | n8n docs (x3), UiPath docs, gotohuman docs, Pipefy help, Domo blog, airia, tianpan.co |
+| how do I check an AI agent's work before trusting it business | **No** | horizenlabs.io, fullstory.com, vouched.id (x3), nebulaconsulting, tibco blog, datacamp, firstaimovers |
+| one day hands-on AI agent training for law firm partners and accountants UK | **No** | aiawareness.ai (two one-day legal courses, GBP 995-1,995), lilachbullock.com (x2), lccsa.org.uk, nbi-sems.com, mlex (x2), legalfutures |
+| what can a business leader actually build in one day with AI agents no coding | **No** | agentman.ai single-day workshop, getcoai.com (x3), chatsimple, profoundlogic, gnani.ai, goodreads |
+
+**Reading.**
+
+- **All four absent, and all four correctly declined as guide topics.** The first two are
+  owned by platform vendors documenting their own products (n8n, UiPath, Pipefy, gotohuman,
+  Domo) and by identity and observability vendors selling the problem (vouched.id,
+  fullstory, tibco). That is the institutional-vendor pattern the topic-probe rule names, and
+  we already publish `where-the-human-goes-in-an-agentic-workflow` and
+  `how-to-notice-when-an-ai-workflow-is-wrong` against both. Their absence is selection, not
+  a content gap.
+- **The fourth is the clearest case of a field answering in its own interest.** Asked what a
+  leader can build in a day, the engine returned vendor marketing and one workshop listing
+  whose "single day" turns out to be two-hour sessions, and said in as many words that it
+  found no independent evidence. We publish `what-you-can-build-in-one-day-with-ai`, written
+  from cohorts that actually ran. Not retrieved.
+- **The legal and accountancy probe found a real hole in the market and still fails the
+  second test.** The engine answered that it found no UK one-day hands-on **agent** course
+  for law firm partners or accountants: what exists is one-day ChatGPT awareness training for
+  legal and compliance teams at GBP 995 to 1,995, and consultancy day rates. Tempting, and
+  declined: a segment page for legal would be the near-duplicate of
+  `agentic-ai-for-consultants` and `agentic-ai-for-finance-teams`, the field is held by
+  providers with published prices and certificates, and the standing decision rules out
+  building toward services and location or segment variants. Recorded, not written.
+- **No new off-page route.** Every name returned is a competitor rather than a listing
+  surface. Nothing added to `outreach/review-list.md`, nothing contacted.
+
 ## 2026-10-16 (14:05 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

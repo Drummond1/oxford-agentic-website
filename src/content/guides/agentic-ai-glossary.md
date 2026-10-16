@@ -10,10 +10,11 @@ capsule: >-
   business leaders who want to build rather than translate.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-08-06T06:00:00+01:00"
+updatedDate: "2026-10-16T19:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
+  - agentic-coding-bootcamp
 ---
 
 Most of the vocabulary around agentic AI describes simple ideas. Here are the terms worth knowing, defined the way we use them in the room.
@@ -66,6 +67,14 @@ The underlying AI - ChatGPT, Claude, Gemini and their peers. For business use th
 
 A standard that lets AI tools connect to your systems - calendars, files, databases - in a common way, so an agent can reach the things your work actually lives in. You do not need to know how it works; you will increasingly benefit from tools that use it.
 
+## Coding agent
+
+An AI that writes and changes code itself, working in your files and your terminal rather than in a chat window. Claude Code and Codex are the two most people meet first. The typing stops being the hard part; what matters is the brief the agent reads before it starts, asking for a plan before it builds, and checking what it wrote. That workflow is the subject of the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/).
+
+## Repository
+
+The folder a project's files live in, kept with a full history of every change. It is the undo button for work an agent did: if a change makes things worse, you go back to the version before it. Agents write quickly, which is exactly why the history is worth keeping.
+
 ## No-code
 
-Building all of the above through plain-language instructions and existing tools, without programming. The entire [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) runs this way: the constraint is clear thinking about your task, not code.
+Building all of the above through plain-language instructions and existing tools, without programming. The entire [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) runs this way: the constraint is clear thinking about your task, not code. The Coding Bootcamp is the exception in subject rather than in prerequisite - it builds real software, and the agents still do the typing. None of our days expects you to arrive able to code.

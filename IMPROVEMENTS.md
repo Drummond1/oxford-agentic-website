@@ -166,6 +166,12 @@ Status: `todo` · `blocked` (why) · `doing`
     About page origin story, and FAQ depth parity between the lines. All four are
     now reconciled for the Second Brain launch; re-run the list on the next launch
     rather than rediscovering them one cycle at a time.
+    **Re-run for the Coding Bootcamp launch (25 Sept) over 16 Oct**, which is what the
+    checklist is for: FAQ depth parity closed at 14:05, the glossary swept at 19:00 (two
+    coding terms, the `No-code` entry reconciled, all three lines in `relatedProgrammes`).
+    `src/lib/home.ts` already named all three lines in four answers and needed nothing.
+    **Still unswept for this line: the About page origin story** - check it before assuming
+    it is clean.
 15. `done` 13 Sept 2026 — Second Brain group size. **Drummond: "small group", no number.**
     The Second Brain programme FAQ now answers "Small, and capped". Do not publish a number.
 16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
@@ -274,6 +280,77 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-16 (19:00 local cycle) - The glossary was swept for the second product line and
+  never for the third. It now defines the coding line's vocabulary and links it.**
+  - **Evidence, measured rather than reasoned about.** Inbound internal links to each
+    programme page, counted inside `<main>` only (so navigation and footer do not flatter the
+    total), across the built site: Agentic **50** from 23 guides, Second Brain **25** from 10
+    guides, **Agentic Coding 10 from 3 guides**. The coding line is the newest bookable
+    product (launched 25 Sept, Cohort 1 on 26 November) and the most weakly connected
+    commercial page on the site. Two cycles this week also had an engine report that line as
+    not existing at all.
+  - **The named surface, from our own checklist.** Backlog 14 lists the four shared surfaces
+    that silently keep describing the old product when a line launches: the homepage FAQ, the
+    **glossary's `about` edge**, the About page origin story, and FAQ depth parity. Parity was
+    closed for this line at 14:05 today. `src/lib/home.ts` already names all three bootcamps in
+    four separate answers. The glossary had not been swept since the Second Brain launch: 13
+    terms, a "Second brain" entry linking that bootcamp, `relatedProgrammes` listing two lines
+    of three, and **no coding vocabulary at all** - no "coding agent", no Claude Code, no
+    repository - on the page a reader who does not yet know the words lands on, and the kind of
+    definitional page an answer engine quotes.
+  - **Change: one content file, two new terms, one clause, no new fact.**
+    - *Coding agent* - an AI that writes and changes code in your files and terminal rather
+      than in a chat window; Claude Code and Codex; the brief it reads first, asking for a plan
+      before it builds, checking what it wrote. Every element is already published in the
+      programme file's capsule, description and FAQs. Links the Coding Bootcamp once.
+    - *Repository* - the folder a project lives in with the history of every change, and the
+      undo button for work an agent did. The programme page already teaches "version control as
+      an undo button" and sends people home with a GitHub repository.
+    - *No-code* gains one clause so the two lines stop contradicting each other on the same
+      page: the Coding Bootcamp is the exception in subject rather than in prerequisite, the
+      agents still do the typing, and none of our days expects you to arrive able to code -
+      which is exactly what the homepage FAQ has said since the launch.
+    - `relatedProgrammes` now lists all three lines.
+  - **It lands on three surfaces**, verified in `dist/`: the visible page (13 terms to 15), the
+    `Article` node's `about` array, which now carries all three programme entities rather than
+    two, and `llms-full.txt`, which both voice agents read daily - so "what is a coding agent"
+    is answerable from published copy. Internal links rose 3,024 to 3,026.
+  - **No guide.** Four method-shaped probes, all absent, all correctly declined: two fields are
+    owned by platform vendors documenting their own products (n8n, UiPath, Pipefy, gotohuman)
+    and we already publish against both, so that is selection rather than a gap; one is vendor
+    marketing that the engine itself flagged as having no independent evidence behind it. The
+    fourth found a real hole - no UK one-day hands-on **agent** course for law firm partners or
+    accountants, only GBP 995-1,995 ChatGPT awareness days - and was still declined, because a
+    legal segment page is the near-duplicate of the consultants and finance guides and the
+    field is held by priced providers. **Guides this week: 2 of 3** (12 and 13 Oct); today's
+    allowance unused by choice for the seventh day running.
+  - **Checks.** `npm ci` then `npm run build` clean: 61 pages, 3,026 internal links all resolve,
+    schema valid with 5 Event and 9 FAQPage nodes, all titles and descriptions unique, no SEO
+    warnings. `check:flags` passes on both the all-on and all-off builds. Headless Chromium
+    against a local `astro preview` of this exact build, at **375px and 1280px**: `h1` correct,
+    both new terms present as headings, the related block renders three items with the coding
+    one visible, two links to the coding programme page in `<main>`, `scrollWidth` equals
+    `clientWidth` at both widths, no page errors and no failed local requests; screenshots taken
+    at both. The 12 outbound third-party links report unreachable, which is this sandbox's
+    egress policy and not a site fault. `updatedDate` moved on the one file changed. **No event
+    fact moved**: Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 Thursday
+    19 November and Coding Cohort 1 Thursday 26 November at Worcester College, as every file says.
+  - **Production could not be read, for the sixth day.** The sandbox egress policy refuses
+    `oxfordagentic.com` (`connect_rejected`) and `luma.com`, so `build.txt` could not be polled
+    and **no event fact could be re-verified against its Luma page**. Deployment state comes
+    from the Actions API instead: CI and Deploy to GitHub Pages both `success` on `7c4e4ea`, the
+    `origin/main` HEAD, at 13:08Z, with nothing queued or in progress when this cycle started.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, the Search Analytics API answers HTTP 401, there
+    is no credential in the environment, and `seo-data/` holds no export newer than the 13
+    October reading. Nothing estimated.
+  - **Off-page.** No new item. Every name the four probes returned is a competitor rather than a
+    listing route. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma item (backlog 2b and
+    the review list), PR #1 (backlog 20), the bronze contrast token (21), Cohort 2's outcomes
+    (22), the past-cohort testimonial heading (23), and the one-line call on whether guide
+    bylines should link the team profile (24).
 
 - **2026-10-16 (14:05 local cycle) - The newest bookable page named no venue anywhere, on
   the one line a search engine says does not exist. It now answers the three questions both
