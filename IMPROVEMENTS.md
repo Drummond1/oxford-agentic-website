@@ -275,6 +275,92 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-16 (14:05 local cycle) - The newest bookable page named no venue anywhere, on
+  the one line a search engine says does not exist. It now answers the three questions both
+  sibling programme pages already answer.**
+  - **Evidence.** A venue-anchored probe for the Coding line - `one day Claude Code bootcamp
+    Oxford where is it held venue` - came back: *"I couldn't find any one-day Claude Code
+    bootcamp held in Oxford, so I can't give you a venue. None of the results mention
+    Oxford."* It offered an online Eventbrite course and a workshop in Nairobi instead. That
+    is the **second cycle running** in which this line is reported as not existing (15 Oct,
+    `agentic coding bootcamp Oxford UK in person Claude Code one day`, same answer), and the
+    first on a venue phrasing - the same axis that produced the confirm-before-you-book
+    warning on the flagship eight hours ago.
+  - **The checkable half of that was ours.** `/bootcamps/agentic-coding-bootcamp/` carried
+    **five** FAQs against the Agentic page's fifteen and the Second Brain page's twelve, and
+    **named no venue in any prose or FAQ**: "Worcester College" appeared exactly once on the
+    whole built page, in the upcoming-event card, with no street, and the page's `FAQPage`
+    node had no venue answer at all. This is the FAQ-depth-parity item in backlog 14, with
+    the named instance the 08:06 cycle recorded and deliberately left for a cycle that could
+    bring its own evidence. This is that cycle.
+  - **Change: three FAQ entries on one content file, and no new fact in any of them.** The
+    three are exactly the ones **both** sibling pages answer and this one did not:
+    - *Where in Oxford is it held?* - Worcester College on Walton Street, central Oxford, the
+      same venue as the Agentic Bootcamp, Cohort 1 there on Thursday 26 November 2026, and
+      each event page is the one to go by. Every fact from the event file's own venue block
+      (`confirmed: true`) and its capsule; the weekday was re-checked rather than copied.
+    - *Can I bring my team, or book for several people?* - same substance as the siblings,
+      worded for this line, pointing at hello@oxfordagentic.com.
+    - *What if I book but cannot make the date?* - the site-wide policy, in the wording both
+      sibling pages already carry: not refundable, place transfers to a future cohort at no
+      charge. Second Brain is also a first cohort with no successor scheduled and carries the
+      same answer, so this asserts nothing new about this line.
+    No price, no group size (no capacity fact is published for this line, and inventing
+    "capped" from the Second Brain wording would have been a new claim), no certificate, no
+    access claim.
+  - **It lands on three surfaces**, verified in `dist/`: the visible FAQ (5 items to 8), the
+    page's `FAQPage` JSON-LD (same 8, the venue answer parsed back and read), and
+    `llms-full.txt`, which both voice agents read daily - so "where is the Coding Bootcamp"
+    is now answerable by the office-hours agent from published copy rather than not at all.
+  - **A second finding from the same probe set, recorded not shipped.** Our cancellation
+    terms are better than every provider the engine returned on the transfer question - 25%
+    to move inside 30 days (COPC), full fee inside 10 working days (ECC), 20% late-transfer
+    fee (Mind BLMK), 100% inside 14 days (BSA) - against our free transfer to a future
+    cohort. The query itself is not winnable (it is owned by providers' own terms pages) and
+    the searcher is someone else's booker, so nothing was written for it. It is a buyer-facing
+    contrast worth knowing when the page copy next gets a pass.
+  - **The Second Brain Bootcamp runs in five days and a date-anchored probe says it does not
+    exist.** `second brain bootcamp Oxford 21 October 2026 one day in person` returned an
+    online two-day course on 21-22 November and Forte Labs' multi-week cohort, and answered
+    that it found no Oxford, in-person listing for that date. On Perplexity on 13 Sept the
+    same product held **#1, #2, #3 and #4** for its category query. Nothing on-page explains
+    it - the event page carries the date in its title, h1, capsule, card and `EducationEvent`
+    node. Fourth instance this week of retrieval rather than coverage, now on the most
+    imminent event. No content was written for it, per the standing decision that Second
+    Brain's constraint is demand and not ranking.
+  - **No guide.** Nothing probed this cycle was both winnable and converting: the transfer
+    question is owned by providers' terms pages, the team-booking question by the Oxfordshire
+    provider field (tutorials.co.uk, The Oxford AI School, oxfordaitraining.com, NobleProg),
+    and the other two were retrieval checks on pages we already publish. **Guides this week:
+    2 of 3** (12 and 13 Oct); today's allowance unused by choice for the sixth day running.
+  - **Checks.** `npm ci` then `npm run build` clean: 61 pages, 3,024 internal links all
+    resolve, schema valid with 5 Event and 9 FAQPage nodes, all titles and descriptions
+    unique, no SEO warnings. `check:flags` passes on both the all-on and all-off builds. The
+    12 outbound third-party links report unreachable, which is this sandbox's egress policy
+    and not a site fault. Headless Chromium against a local `astro preview` of this exact
+    build, at **375px and 1280px**: `h1` correct, 8 FAQ items at both widths, the venue
+    answer opened and screenshotted at both and reading correctly, `scrollWidth` equals
+    `clientWidth` before and after opening it, no page errors and no failed local requests.
+    `updatedDate` moved on the one file changed. **No event fact moved**: Second Brain 21
+    October at the Pitt Rivers Museum, Agentic Cohort 3 Thursday 19 November and Coding
+    Cohort 1 Thursday 26 November, both at Worcester College, exactly as every file says.
+  - **Production could not be read, for the fifth day.** The sandbox egress policy refuses
+    `oxfordagentic.com` (`connect_rejected`) and `luma.com`, so `build.txt` could not be
+    polled and **no event fact could be re-verified against its Luma page**. Deployment state
+    comes from the Actions API instead: CI and Deploy to GitHub Pages both `success` on
+    `1c36180`, the `origin/main` HEAD, at 08:29Z, with nothing queued or in progress when
+    this cycle started.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, the Search Analytics API answers HTTP 401,
+    there is no credential in the environment, and `seo-data/` holds no export newer than
+    the 13 October reading. Nothing estimated.
+  - **Off-page.** No new item. The three Oxfordshire names the team probe surfaced are
+    competitors rather than listing routes, so none was added. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma item (backlog 2b
+    and the review list), PR #1 (backlog 20), the bronze contrast token (21), Cohort 2's
+    outcomes (22), the past-cohort testimonial heading (23), and the one-line call on whether
+    guide bylines should link the team profile (24).
+
 - **2026-10-16 (09:30 local cycle) - The one link every page opens with told a screen
   reader "Home" while the page showed "Oxford Agentic". It now says both, and a voice
   user can reach it.**

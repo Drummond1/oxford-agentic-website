@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-09-25T13:00:00+01:00"
+updatedDate: "2026-10-16T13:30:00+01:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -56,6 +56,21 @@ faqs:
       a terminal and a GitHub account on your own machine, and corporate or government
       devices often block that. If your laptop is locked down, email
       hello@oxfordagentic.com before you book and we will work out what you need.
+  - q: Where in Oxford is it held?
+    a: >-
+      At Worcester College on Walton Street, in central Oxford, which is also where the
+      Oxford Agentic Bootcamp runs. Cohort 1 is there on Thursday 26 November 2026. Each
+      event page confirms its own venue and date, and that is the page to go by.
+  - q: Can I bring my team, or book for several people?
+    a: >-
+      Yes. Bringing a colleague means two of you go back able to build rather than one,
+      and it helps if you arrive with the same idea in mind. Email
+      hello@oxfordagentic.com and we will arrange it.
+  - q: What if I book but cannot make the date?
+    a: >-
+      Tickets are not refundable, but your place transfers to a future cohort at no
+      charge. A date that no longer works should not mean a lost seat - just let us
+      know and we will move you.
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs

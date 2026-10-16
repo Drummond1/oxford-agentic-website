@@ -5,6 +5,58 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-16 (14:05 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Read as a second opinion, not as movement against the Perplexity rows.
+Rotated onto axes the log has not tested: three **commitment** questions a buyer asks after
+they have decided but before they pay (what if I cannot make it, can I bring my team, where
+exactly is it), and a **date-anchored** probe for the event that runs in five days.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what happens if I book an AI training day and cannot attend, can I transfer my place to a later cohort UK | **No** | copc.com (3 PDFs), ecc.ac.uk (4 course pages), mind-blmk.org.uk, conwy.gov.uk, bsa.org.uk |
+| one day Claude Code bootcamp Oxford where is it held venue | **No** | eventbrite.co.uk "Claude Code Bootcamp" (x4, online), luma.com/pd6uzmef (Nairobi), adventuremedia.ai (x2), every.to, hackceleration.com |
+| book AI training day in Oxford for a team of three people group booking hands-on | **No** | tutorials.co.uk (x2), oxfordaitraining.com (Eventbrite + 2 Trustpilot locales), The Oxford AI School (charlbury.info), nobleprog.co.uk (x2), leoron.com (x2), oxford-royale.com |
+| second brain bootcamp Oxford 21 October 2026 one day in person | **No** | luma.com/p30sbe3h (Aivian, online, 21-22 Nov), help.fortelabs.com (x2), hypnotherapists.org.uk, st-hughs.ox.ac.uk, enspire.ox.ac.uk, oxfordhealthbrc |
+
+**Reading.**
+
+- **The venue probe for the Coding line is what this cycle shipped against.** Asked where a
+  one-day Claude Code bootcamp in Oxford is held, the engine answered in as many words:
+  *"I couldn't find any one-day Claude Code bootcamp held in Oxford, so I can't give you a
+  venue. None of the results mention Oxford."* It offered an online Eventbrite course and a
+  workshop in Nairobi. That is the second cycle running in which the coding line is reported
+  as not existing (15 Oct, "agentic coding bootcamp Oxford UK in person Claude Code one day"),
+  and the first on a venue-anchored phrasing.
+- **Part of that one was ours, and it was checkable.** The Coding Bootcamp programme page
+  carried five FAQs to the Agentic page's fifteen and the Second Brain page's twelve, and
+  **named no venue anywhere in its prose or its FAQ** - "Worcester College" appeared exactly
+  once on the whole built page, in the upcoming-event card, with no street and nothing in the
+  `FAQPage` JSON-LD. The three questions both sibling pages answer and this one did not are
+  now answered. Retrieval is still the larger half and no on-page change fixes it; this
+  closes the half that was ours.
+- **Our cancellation terms are better than every one the first probe returned, and until
+  today the newest bookable page did not state them.** The engine's answer was built from
+  other providers' T&Cs: a 25% fee to move inside 30 days (COPC), the full fee chargeable
+  inside 10 working days (ECC), a 20% late-transfer fee (Mind BLMK), 100% inside 14 days
+  (BSA). Ours is a free transfer to a future cohort, published on the two sibling pages and
+  now on the third. Not winnable as a query - it is owned by providers' own terms pages, and
+  the searcher is someone else's booker - but worth recording as a buyer-facing contrast.
+- **The team-of-three probe returns the Oxfordshire field, not us**: tutorials.co.uk, The
+  Oxford AI School, oxfordaitraining.com and NobleProg, several of them offering private
+  on-site sessions. Both sibling programme pages answer the team question; the Coding page
+  did not, and now does. These are competitors rather than listing routes, so nothing was
+  added to `outreach/review-list.md`.
+- **The Second Brain Bootcamp runs in five days and a query naming the city, the format and
+  the exact date says it does not exist.** On Perplexity (13 Sept) the same product was cited
+  **#1, #2, #3 and #4** for "second brain for AI one-day in-person course UK" and #1 for
+  "second brain workshop Oxford". This engine instead offered an online two-day course on
+  21-22 November and Forte Labs' multi-week cohort. Nothing on-page explains it: the event
+  page carries the date in its title, h1, capsule, card and `EducationEvent` node. It is the
+  same retrieval finding as 15 and 16 Oct, now on the most imminent event, and it is a
+  reason to re-run these on a second engine rather than to write anything.
+
 ## 2026-10-16 (08:06 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
