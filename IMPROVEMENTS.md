@@ -275,6 +275,66 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-16 (09:30 local cycle) - The one link every page opens with told a screen
+  reader "Home" while the page showed "Oxford Agentic". It now says both, and a voice
+  user can reach it.**
+  - **Evidence, from a full axe-core sweep of all 53 sitemap URLs at 375px and 1280px**
+    (106 page-loads, the first time this loop has run axe across the whole site). It
+    returned exactly three findings. One is `label-content-name-mismatch`, impact
+    *serious*, **106 nodes - one on every page at both widths**: the header brand link
+    carried `aria-label="Home"` while its visible text, the wordmark, reads "Oxford
+    Agentic". That is a WCAG 2.5.3 *Label in Name* failure at **Level A**, and the
+    practical cost is specific rather than theoretical - someone driving the browser by
+    voice who says "click Oxford Agentic", which is the only name the page gives them,
+    does not reach the link that every page starts with, and a screen-reader user tabbing
+    off the skip link hears a name that is not the one on screen.
+  - **Change: one attribute, in one component.** `src/components/Header.astro` now builds
+    the brand link's `aria-label` from `config.brand.name` followed by ", home", so the
+    accessible name reads "Oxford Agentic, home" - it contains the visible text, which is
+    what 2.5.3 asks for, and it still says where the link goes. The name is drawn from
+    config rather than typed in, so a brand rename carries into it exactly as it does
+    into the wordmark (PRD section 4, section 10). Nothing else moved: the built HTML
+    for the homepage and for a programme page is **byte-identical to the previous build apart from that one
+    attribute**, checked by normalising it back and diffing. No CSS, no analytics
+    attribute, no schema, no link.
+  - **The other two axe findings were left alone, deliberately.** `color-contrast`
+    (serious, 686 nodes) is the bronze `#9A7B23` on cream at 3.82:1 - that is backlog 21,
+    a brand-token decision that is Drummond's and not the loop's, and this sweep is
+    simply a second, independent measurement of it. `region` (moderate, 106 nodes) is the
+    consent banner's copy sitting outside any landmark; it is a best-practice rule rather
+    than a WCAG failure, and it touches the consent component, so it is left for a cycle
+    that can give it its own checks. **Nothing else failed**: no missing alt text, no
+    unlabelled form control, no nameless button, no horizontal overflow on any page at
+    375, 768 or 1280, and a visible 2px gold focus ring on every element in the header
+    tab order.
+  - **Checks.** `npm run build` clean (3,024 internal links across 61 pages, schema valid
+    on all 61, no SEO warnings); `npm run check:flags` passes on both the all-on and
+    all-off builds; `astro check` reports 79 errors **before and after the change
+    alike** - they are pre-existing and come from `@astrojs/check`, which is not a
+    dependency of this repo and so is not run by CI. Header screenshotted at 375, 768 and
+    1280 with the brand link focused and it is unchanged; the Playwright aria snapshot
+    reads `link "Oxford Agentic, home"`; axe re-run across all 53 URLs at both widths and
+    the finding is gone, with the other two unchanged.
+  - **The live site was unreachable from this cycle's sandbox, and that is worth
+    recording.** `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`
+    all return `connect_rejected` from this session's egress proxy - the host is not on
+    the allow list - as do all twelve third-party links the build checks
+    (`0/12 third-party link(s) reachable`, which is the sandbox and not a site fault).
+    So this cycle could **not** fetch production, screenshot it, or run a GEO probe. What
+    it could do instead: the Actions API is reachable, and it shows CI and Deploy to
+    GitHub Pages both `success` on `ad56471`, the current `main` HEAD, twice today
+    (07:10Z push and the 08:08Z scheduled rebuild), with nothing queued or in progress.
+    The change was therefore inspected against a local `astro preview` of a build from
+    that same commit. **Production verification after this push is limited to the
+    workflow run; if the loop is to keep its "re-fetch production and confirm" step, the
+    environment's network policy needs `oxfordagentic.com` added.**
+  - **PR #1 is still open and still superseded** (backlog 20) - its `min-width: 0`
+    breadcrumb fix shipped independently in `384564e`. Read as known-stale rather than as
+    unfinished work, which is the same reading the last several cycles took. The
+    `feat/ceo-roundtable-demand-page` branch is leftover from PR #2, which was
+    squash-merged as `1805456`; it is merged work, not work in flight.
+  - **Guides this week.** 2 of 3, and today's allowance is unused by choice.
+
 - **2026-10-16 (08:06 local cycle) - The flagship programme page answered "Where in Oxford is
   it held?" with a venue we last used in July, which is the exact address an answer engine is
   telling buyers to query. It now leads with Worcester College.**

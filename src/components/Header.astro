@@ -1,6 +1,6 @@
 ---
 import Wordmark from './Wordmark.astro';
-import { getNav, getNextEvent, paths, formatShortDate } from '../lib/site';
+import { config, getNav, getNextEvent, paths, formatShortDate } from '../lib/site';
 
 const nav = await getNav();
 const nextEvent = await getNextEvent();
@@ -11,7 +11,14 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
 
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a href={paths.home()} class="site-header__brand" aria-label="Home">
+    {
+      /* The accessible name has to contain the visible wordmark text (WCAG 2.5.3,
+         Label in Name), or someone driving the page by voice who says "click
+         Oxford Agentic" cannot reach the one link every page starts with. It
+         read "Home" until 16 Oct 2026. The name is drawn from config, so a
+         brand rename carries into it the way the wordmark does. */
+    }
+    <a href={paths.home()} class="site-header__brand" aria-label={`${config.brand.name}, home`}>
       <Wordmark />
     </a>
 
