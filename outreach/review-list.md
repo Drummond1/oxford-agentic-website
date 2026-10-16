@@ -104,7 +104,15 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - Oxford's enterprise community calendar. Currently lists the Oxford Moonshot, Oxford
     Climate Ventures, the Saïd Entrepreneurship Forum and the Oxfordshire business
     Marketplace. None of our events appear.
+  - **Measured evidence, added 16 Oct 2026, and it raises this item.** A web-search probe of
+    `one day AI bootcamp Oxford November 2026` - city, format, month and year, which is Cohort
+    3 exactly - returned ten results, **oxfordagentic.com was not among them**, and
+    `enspire.ox.ac.uk/event/ai-product-management-bootcamp` was. So this calendar's event pages
+    rank for the query our own bookable day should own, carrying somebody else's AI bootcamp.
+    That is the first evidence that the route is worth something rather than merely plausible.
   - **Not checked:** whether it accepts third-party listings, any cost, or editorial policy.
+    Only the "What's On" index was loaded, on 11 Oct; the event page above was seen in search
+    results only.
   - Needs: Drummond's decision. Nothing contacted.
 
 - **whatisai.co.uk - "Best AI Courses for Business Leaders in 2026"** - found 15 Sept 2026.

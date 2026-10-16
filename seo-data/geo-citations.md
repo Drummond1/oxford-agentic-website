@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-16 (01:59 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Not comparable with the Perplexity rows; read as a second opinion. This
+set was rotated onto the **date-anchored axis**, which the log had never tested: last night's
+finding was that an engine recommended us and then sent the reader to a cohort that had
+already run, telling them to "look for a newer session". The obvious next question is whether
+an engine can find the newer session when the buyer asks for it by month.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI bootcamp UK November 2026 one day in person | **No** | waimakers.com (London, three evenings, 7 and 21 Oct and 4 Nov), **learnersink.com (x8 locale variants of one page)** |
+| one day AI bootcamp Oxford November 2026 | **No** | createwith (Oxford, Aug, students), happeningnext (Louisville KY), oxford-royale (x2, summer school), **enspire.ox.ac.uk (AI Product Management Bootcamp)**, OxML via Google Groups (x3), law.ox.ac.uk |
+| what should a senior leader learn after prompt engineering | **No** | bernardmarr.com, SHRM, charterworks, fdmgroup (x3), flexos.work, leadwithai.co, nriglobe, kitemetric |
+| how to get AI to do a recurring task in my business without hiring a developer | **No** | b-tu.de, g2/spawnbase, taskade, udemy blog, growwstacks (Zapier), trycentral, notion, gumroad, godberrystudios |
+
+**Reading.**
+
+- **The date-anchored probe is the sharpest evidence the log holds, and it is worse than
+  absence.** Asked for a one-day AI bootcamp in Oxford in November 2026, the engine answered
+  in as many words: **"I didn't find a one-day AI bootcamp in Oxford in November 2026."** That
+  is exactly what Cohort 3 is - one day, Oxford, Thursday 19 November 2026 - and it has a live
+  page that says so in its `<title>`, its `h1`, its capsule, its card and its JSON-LD. The
+  engine then offered an Oxford workshop in **August**, a one-day bootcamp in **Kentucky**,
+  and a **six-day** online programme in May.
+- **The UK-wide version of the same question fails the same way.** The engine said it found no
+  one-day in-person agentic AI bootcamp in the UK for November 2026 and offered a three-evening
+  London course instead. Both answers are wrong in our favour and neither can see us.
+- **This closes a question the last three cycles left open.** The 08:05 and 20:08 cycles on
+  15 Oct found that we are not returned on our own brand name and inferred that the misses
+  logged all week were retrieval rather than content. The date query settles it from the other
+  side: content, title, schema and freshness are all correct on the one page that answers it,
+  and the page is still not retrieved. **No on-page change can fix this**, and this cycle
+  deliberately did not invent one.
+- **One of the pages that beat us is already on the review list.** `enspire.ox.ac.uk` - Oxford's
+  own enterprise community calendar, added to the review list on 11 Oct as an unverified
+  listing route - ranks in the top ten for our exact query with somebody else's AI bootcamp.
+  That is the first measured evidence that the route is worth something rather than merely
+  plausible, and the entry has been updated with it. Nothing contacted.
+- **Both generic probes are unwinnable and are logged to close them.** "What should a senior
+  leader learn after prompt engineering" is held by opinion publishers writing on their own
+  subject - Bernard Marr, SHRM, FDM Group with three URLs of one article - and the intent is
+  reading, not booking. The recurring-task question is held by no-code tool vendors answering
+  about their own products (Zapier, Make, n8n, Taskade, Spawnbase), which is the correct answer
+  to it, and the searcher is a small-business owner looking for a free automation, not a leader
+  booking a day in Oxford. **Winnable and converting: neither. No guide.**
+- **Off-page.** No new item. One existing item strengthened with dated evidence (EnSpire
+  Oxford). The 15 Oct finding - that Drummond's own two past Luma listings outrank the live
+  one and outrank the website - remains the largest open off-page item and is unchanged by
+  this cycle.
+
 ## 2026-10-15 (20:08 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as at 02:15,

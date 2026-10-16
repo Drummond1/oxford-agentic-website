@@ -239,9 +239,103 @@ Status: `todo` · `blocked` (why) · `doing`
     one line. The loop is not rewording how a real person's quote is presented without
     his say-so.
 
+24. `todo` **(needs Drummond, a positioning call)** - **the seven team profiles have one
+    inbound internal link each, and every place that would fix it argues with a decision
+    already on the record.** Measured on the built site on 16 Oct: counting unique inbound
+    internal links per sitemap URL across all 61 pages, `/team/<person>/` scores **1** for all
+    seven people - `/team/` is the only route in - while every page in the nav or footer scores
+    58 or 59 and the least-linked guide now scores 3. The site's own JSON-LD leans on those
+    pages: all 30 guides declare `author` as `.../team/drummond-gilbert/#person`, and the
+    Organization node names the same `@id` as `founder`. The ledger calls entity triangulation
+    the weakest part of this site's GEO position (backlog 2b, 19), so Person pages with one
+    route in are a missed signal rather than a cosmetic gap. **Three placements were considered
+    and all three were declined by the loop, which is why this is his call and not a cycle:**
+    - **The guide byline.** It is plain text today ("By Drummond Gilbert · Updated ..."), and
+      linking it is the standard pattern for author corroboration. But all 30 guides are his,
+      so it adds 30 links anchored on his name to his own profile - which is precisely what the
+      15 Oct `/team/` diagnosis said not to chase: `drummond gilbert` resolves to `/team/`
+      rather than the profile at position 7.4, and that is "working as intended" under the
+      9 Oct preference that the site read as a team rather than one person.
+    - **The programme pages.** They would link the four people tagged to each bootcamp, which
+      is the mapping `/team/` already publishes ("Each runs part of a day"), so it asserts
+      nothing new and it answers a real buyer question. But the programme page template carries
+      Drummond's own 4 Aug instruction that guides deliberately do not surface there because
+      "the programme page's one job is the booking path", and four profile links are four more
+      off-ramps on the page that sells the day.
+    - **The About page.** Lowest tension and lowest value: it names only Drummond, so it would
+      duplicate `/team/` to reach the other six.
+    **What would settle it in one line from him:** whether the guides' bylines should link his
+    profile. If yes, the loop ships the byline link. If no, the loop leaves all seven at one
+    link and stops re-measuring this.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-16 (01:59 local cycle) - No site change. A buyer asking for our exact day, by
+  city and by month, was told it does not exist; four audits found nothing on-page left to
+  fix, and the one real gap needs a decision from Drummond.**
+  - **The probe that settles three cycles of inference.** Asked `one day AI bootcamp Oxford
+    November 2026` - the city, the format, the month and the year, which is Cohort 3 exactly -
+    a web engine answered **"I didn't find a one-day AI bootcamp in Oxford in November 2026"**
+    and offered an Oxford workshop in August, a one-day bootcamp in Kentucky and a six-day
+    online programme in May. The UK-wide version of the question failed the same way. Cohort
+    3's page carries the date in its `<title>`, its `h1`, its capsule, its card, its agenda and
+    its `EducationEvent` node, and it is still not retrieved. The 08:05 and 20:08 cycles on
+    15 Oct inferred that this week's misses were retrieval rather than content; this measures
+    it from the other side and confirms it. **Nothing on-page fixes retrieval, and this cycle
+    refused to invent a change that pretends otherwise.**
+  - **Four on-page audits, run rather than reasoned about, all clean.** (1) Every title on the
+    built site is 61 characters or fewer and every meta description 157 or fewer, so nothing is
+    being truncated in a result. (2) `robots.txt` admits all fifteen named AI crawlers plus
+    `*`, and carries the sitemap and both llms files. (3) Each of the five event pages links
+    the live Cohort 3 page, and Cohort 2's past page offers it as a button above the fold with
+    "This event has run" beside it, so our own past pages hand off the way the Luma ones do
+    not. (4) Inbound internal links per sitemap URL across all 61 pages: every nav and footer
+    page scores 58 or 59 and no guide is now below 3, which holds the 14:15 cycle's result from
+    yesterday.
+  - **The one gap the audit did find is on the record as backlog 24, not shipped.** All seven
+    `/team/<person>/` pages have exactly **one** inbound internal link, and the site's JSON-LD
+    leans on them - 30 guides declare their author as `.../team/drummond-gilbert/#person` and
+    the Organization node names the same `@id` as founder. The natural fix is to link the guide
+    byline, which is plain text today. The loop declined it: all 30 guides are Drummond's, so
+    it would add 30 links anchored on his name to his own profile, and the 15 Oct `/team/`
+    diagnosis explicitly said not to chase that, because `drummond gilbert` resolving to
+    `/team/` is the 9 Oct preference working as intended. The programme-page alternative argues
+    with his own 4 Aug instruction that the programme page's one job is the booking path. **One
+    line from him settles it**; the measurement and all three placements are written down so no
+    future cycle re-derives them.
+  - **No guide, and the allowance was free.** Two generic probes, both correctly killed.
+    "What should a senior leader learn after prompt engineering" is held by opinion publishers
+    on their own subject - Bernard Marr, SHRM, FDM Group with three URLs of one article - and
+    the intent is reading. "How to get AI to do a recurring task without hiring a developer" is
+    held by no-code vendors answering about their own products, which is the right answer to it,
+    and the searcher is not booking a day in Oxford. **Guides this week: 2 of 3**, today's
+    allowance unused by choice for the fourth day running.
+  - **Checks.** `npm ci` then `npm run build` clean: 61 pages, 3,024 internal links, schema
+    valid with 5 Event and 9 FAQPage nodes and no SEO warnings. The 12 outbound third-party
+    links report unreachable, which is the sandbox egress policy and not a site fault. No site
+    file was touched, so no page changed, no `updatedDate` moved and no event fact moved -
+    Cohort 3 is still Thursday 19 November 2026 at Worcester College, the Second Brain Bootcamp
+    21 October and the Coding Bootcamp 26 November, as every file in the repo says.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    `oxfordagentic.com` and DNS does not resolve `luma.com`, so `build.txt` could not be polled
+    and **no event fact could be re-verified against its Luma page**. Deployment state comes
+    from the Actions API instead: run 38791407289 for `224302f` concluded `success` at 19:09 UTC
+    on 15 Oct, nothing is queued or running, and `origin/main` is `224302f`. Same substitution
+    as 12 to 15 Oct.
+  - **Search Console: unavailable from the cloud checkout.** One attempt: no credentials,
+    `gcloud` reports no credentialed accounts, the Search Analytics API answers HTTP 401, and no
+    newer export exists in `seo-data/`. Nothing estimated; the 13 October data stands.
+  - **Off-page.** No new item. One existing item raised with measured evidence: **EnSpire
+    Oxford**, added on 11 Oct as a plausible-but-unverified listing route, has an event page
+    ranking in the top ten for the query above while we are absent from it, carrying somebody
+    else's AI bootcamp. Nothing contacted.
+  - **Worth Drummond knowing.** The scheduled prompt that starts these cycles still names
+    Cohort 3 as 15 October at Worcester College. Every file in the repo, four live surfaces and
+    the 7 Oct Search Console reading ("Cohort 3 moving to a date further out") say **19
+    November**. The repo is right and the prompt is stale; the standing prompt is worth
+    correcting so a future cycle does not trust it over the content collection.
 
 - **2026-10-15 (20:08 local cycle) - A probe on our own brand name returned two of our own
   past Luma listings and not our website. Each event now declares which Luma listing it is,
