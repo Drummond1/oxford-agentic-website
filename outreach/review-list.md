@@ -170,3 +170,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     third-party mention of the events. It fits the in-person Oxford positioning without being
     a location page.
   - Needs: Drummond's decision, then an account and submission. Neither has been done.
+
+- **aiwhatson.com - a worldwide AI workshop directory** - found 17 Oct 2026 by answer-engine
+  probe. **Added at the bottom rather than the top, against this file's own convention, on
+  purpose:** the Luma item above has now been strengthened by five separate query axes in
+  three days and should not be pushed down the page by a weaker lead.
+  - Where it came from: a group-booking probe ("book places for two colleagues from the same
+    company at a one-day hands-on AI workshop UK") returned its page
+    https://aiwhatson.com/workshops, titled "AI Workshops 2026 & 2027 - Worldwide", alongside
+    UK providers. So it is indexed and retrieved on buyer-worded workshop queries, which is
+    the behaviour that makes an aggregator worth a listing.
+  - **Not checked at all.** The host does not resolve from this sandbox, so whether it accepts
+    submissions, what it costs, whether it covers the UK properly and whether its listings
+    carry a followed link are all unknown. This is a lead, not a route.
+  - Why it might be worth ten minutes: it is one of the few non-US aggregators the probes have
+    returned that is not already on this list, and a third-party listing is still the one thing
+    the Organization node lacks (`sameAs` is empty).
+  - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.

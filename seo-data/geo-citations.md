@@ -5,6 +5,53 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-17 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **payment and procurement** axis, which the log had
+never tested: how an organisation actually pays, as distinct from what the day costs.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| can my company pay by invoice for a one-day AI training workshop UK purchase order | **No** | eactivities.union.ic.ac.uk, training.sap.com (Payment by Purchase Order FAQ), staffnet.manchester.ac.uk, nottinghamshire.gov.uk, its-training-uk.com, invoicequick.com, auditconsultinggroup.co.uk (VAT), Wikipedia, canadacollege.edu |
+| how do I get my employer to pay for a hands-on AI course invoice billing company | **No** | ziplines.fiu.edu, ziplines.charlotte.edu, advance.ce.unm.edu, upskill.ziplines.com, skills.mccombs.utexas.edu (x2), myaievolution.com (x2), dev.to |
+| book places for two colleagues from the same company at a one-day hands-on AI workshop UK group booking | **No** | tessgroup.co.uk (x2), practical-ai-for-business.co.uk, science.ai.cam.ac.uk, ai.cam.ac.uk, industry.visitwales.com, nicknisi.com, aiwhatson.com, klantke.com |
+| what do you actually get for the money at a one-day AI bootcamp for business leaders | **No** | trainingcamp.com, bootcampdigital.com, fortune.com/education, eventbrite.sg, tekgenie.co.uk, productledhub.com, voicetechhub.com, careercenters.com, agilefever.com, iternal.ai |
+
+**Reading.**
+
+- **The payment axis is answered off providers' own billing pages, and ours did not have
+  one.** The two procurement probes returned university procurement policies, a council's
+  supplier-payment page and - the relevant shape - **training providers publishing their own
+  billing route**: SAP's "Payment by Purchase Order (Invoice)" help page, a UK training
+  company's "Pay an Invoice" page, and US providers' employer-reimbursement pages, one
+  noting that Stanford invoices the company while Berkeley invoices the delegate. The engine's
+  own advice was "confirm which billing route your provider uses before you ask". **We publish
+  that answer** - organisations can pay by invoice via hello@oxfordagentic.com, a standing
+  decision of Drummond's from 13 September - **and it was on exactly one page: the homepage
+  FAQ** (plus `llms-full.txt` and the unlisted CEO roundtable form). It appeared on no
+  programme page and on none of the five event pages, which are the pages that take a booking.
+  Acted on this cycle: the three upcoming event pages now answer it.
+- **The group-booking probe says the same thing from a second angle.** The field answers it
+  out of provider pages that state their own terms - TESS Group's "closed cohorts, from 2
+  delegates", Practical AI's "small groups of typically up to 5" - and the engine ended by
+  telling the reader to ask a provider for a quote. We answer "Can I bring my team?" on all
+  three programme pages and on two of the five event pages, so that half is largely in place;
+  the payment half was the hole beside it.
+- **Nothing was written about price, and nothing could be.** The value probe is the one that
+  would tempt a guide, and the field is wall-to-wall vendor sales pages - the engine said so
+  itself ("most of these sources are vendor sales pages, so inclusions and outcome claims are
+  unverified"). A guide from us would be one more. The first probe also surfaced a UK VAT
+  analysis of paid workshops; **VAT treatment is explicitly unconfirmed for us and is never to
+  be stated**, and the shipped answer says nothing about it, about payment terms, or about
+  purchase-order handling. Only the published route.
+- **Guides this week: 2 of 3** (12 and 13 Oct). Today's allowance unused by choice, for the
+  tenth day running.
+- **Off-page: one unverified candidate added**, `aiwhatson.com`, a worldwide AI workshop
+  directory returned by the group-booking probe. The host does not resolve from this sandbox,
+  so whether it takes submissions is unchecked; recorded on the review list as a lead, not a
+  route. Nothing contacted.
+
 ## 2026-10-17 (08:05 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

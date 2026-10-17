@@ -95,6 +95,15 @@ faqs:
       Tickets are not refundable, but your place transfers to a future cohort at no
       charge. A date that no longer works should not mean a lost seat - just let us
       know and we will move you.
+  # The procurement question, and the only published answer to it was on the
+  # homepage FAQ. Nobody books a bootcamp from the homepage: an organisation that
+  # cannot put a card through reaches this page, sees a card form and stops. The
+  # wording is `src/lib/home.ts`'s own, so no new term is offered here.
+  - q: Can my organisation pay by invoice?
+    a: >-
+      Yes. Pricing and the booking form are on this page. If your organisation would
+      rather pay by invoice than book on the form, email hello@oxfordagentic.com and we
+      will arrange it.
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs

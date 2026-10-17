@@ -124,6 +124,15 @@ faqs:
       forwarded: a day out to build one working agentic workflow on a task we already
       do by hand every week, and come back able to build the next one without help.
       Pricing is on the booking page, so the numbers are easy to attach.
+  # The procurement question, and the only published answer to it was on the
+  # homepage FAQ. Nobody books a bootcamp from the homepage: an organisation that
+  # cannot put a card through reaches this page, sees a card form and stops. The
+  # wording is `src/lib/home.ts`'s own, so no new term is offered here.
+  - q: Can my organisation pay by invoice?
+    a: >-
+      Yes. Pricing and the booking form are on this page. If your organisation would
+      rather pay by invoice than book on the form, email hello@oxfordagentic.com and we
+      will arrange it.
   - q: How big is the cohort?
     a: >-
       Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than

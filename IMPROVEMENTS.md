@@ -315,6 +315,82 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-17 (14:00 local cycle) - An organisation that cannot put a card through had
+  nowhere on a booking page to learn it can be invoiced. The answer has been published
+  since 13 September, on one page nobody books from.**
+  - **Evidence: the payment and procurement axis, which the GEO log had never tested.** Four
+    probes, two of them on how an organisation actually pays rather than on what the day
+    costs. Neither returned a page of ours. What they returned is the shape that matters:
+    **training providers publishing their own billing route** - SAP's "Payment by Purchase
+    Order (Invoice)" help page, a UK training company's "Pay an Invoice" page, and US
+    providers' employer-reimbursement pages, one of which notes that Stanford invoices the
+    company while Berkeley invoices the delegate. The engine closed by telling the reader to
+    "confirm which billing route your provider uses before you ask". The group-booking probe
+    said the same from a second angle: the field answers it off provider pages stating their
+    own terms (TESS Group's "closed cohorts, from 2 delegates"), and ended by telling the
+    reader to ask a provider for a quote.
+  - **The gap, measured.** `grep` for "invoice" across `src/`: **one published occurrence**,
+    `src/lib/home.ts` - the homepage FAQ - plus the unlisted CEO roundtable form. In `dist/`
+    it reaches `index.html`, `home-photos/` and `llms-full.txt` and nothing else. So the one
+    answer a public-sector, NHS, university or finance-gated buyer needs appeared on **no
+    programme page and none of the five event pages**, while all three upcoming event pages
+    embed a Luma form whose only visible route is a card. Those same buyers are named in
+    `whoFor` on every one of those pages.
+  - **Change: one FAQ on each of the three upcoming event pages, no new fact in any of
+    them.** `oxford-second-brain-bootcamp-cohort-1`, `oxford-agentic-bootcamp-cohort-3` and
+    `oxford-agentic-coding-bootcamp-cohort-1` gain "Can my organisation pay by invoice?",
+    answered in `home.ts`'s own words: pricing and the booking form are on this page, and an
+    organisation that would rather be invoiced emails hello@oxfordagentic.com. It is placed
+    with the other procurement answers - after the team and transfer questions on the two
+    that have them, after "How do I justify this to my manager?" on Cohort 3. Past event
+    pages are untouched. FAQ counts go 12 to 13, 7 to 8 and 7 to 8; site totals unchanged at
+    9 `FAQPage` and 5 `Event` nodes.
+  - **What it deliberately does not say.** Nothing about VAT (explicitly unconfirmed, and the
+    first probe surfaced a UK VAT analysis of paid workshops as a live trap), nothing about
+    payment terms, purchase-order handling or lead times, and no price. Only the published
+    route. It did **not** go in `assurances` either: that field's own schema rule is that
+    every line must restate a fact the same page states elsewhere, and on these pages the
+    invoice route was not stated anywhere, so the FAQ is the honest home for it. The three
+    programme pages are the other half of this and were deliberately left for a later cycle
+    with its own evidence - this cycle's evidence is about the page that takes the payment.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings.
+    `check:flags` passes on the all-on and all-off builds. Verified in `dist/` that the new
+    answer lands on all three surfaces - visible HTML, the `FAQPage` JSON-LD, and
+    `llms-full.txt` (three occurrences), which both voice agents read. Headless Chromium
+    against a local `astro preview` of this exact build, all three pages at **375px and
+    1280px**: one `h1` each and correct, the new accordion found by its summary text, clicked
+    open and its answer confirmed visible and correct at both widths, `scrollWidth` equal to
+    `clientWidth`, no page errors, no failed local requests; six screenshots. **No event fact
+    moved**: Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 on 19
+    November and Coding Cohort 1 on 26 November at Worcester College.
+  - **Two known candidates checked and found already done**, recorded so the next cycle does
+    not re-check them: `scripts/indexnow-ping.mjs` already maps `src/lib/home.ts` to `/` alone
+    via `SINGLE_PAGE_SOURCES`, and every sentence naming Cohort 2 as upcoming is already in
+    the past tense, on its own event page, Cohort 1's FAQ and
+    `when-ai-executive-cohorts-run`. Past event pages were re-read end to end: the template
+    withholds `assurances` and the booking form from them, the hero says "This event has run"
+    and points at Cohort 3, so there is nothing stale there either.
+  - **No guide.** The one tempting probe - what you get for the money at a one-day bootcamp -
+    returned a field of vendor sales pages that the engine itself flagged as unverified, and a
+    guide from us would be one more of them. **Guides this week: 2 of 3** (12 and 13 Oct);
+    today's allowance unused by choice for the tenth day running.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export at all. Nothing estimated.
+  - **Production could not be read, for the ninth day.** The sandbox egress policy answers 403
+    to `oxfordagentic.com` (`connect_rejected` in the proxy's own failure log) and the host
+    does not resolve for `WebFetch` either, so `build.txt` could not be polled and **no event
+    fact could be re-verified against Luma**. Deployment state comes from the Actions API:
+    Deploy to GitHub Pages run 39017867979 on `60d9019`, the `origin/main` HEAD, **success**
+    at 08:35Z, with nothing queued or in progress when this cycle started.
+  - **Off-page.** One unverified lead added to the review list, `aiwhatson.com`, placed at the
+    bottom on purpose so it does not push down the Luma item. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma listings (2b and the
+    review list), PR #1 (20), the bronze contrast token (21), Cohort 2's outcomes (22), the
+    past-cohort testimonial heading (23), the guide-byline call (24), the Coding Bootcamp's
+    paid-plan requirement (25) and the duplicated event hero eyebrow (26).
+
 - **2026-10-17 (09:12 local cycle) - The newest bootcamp called itself two different
   things one line apart, on the page that takes its booking.**
   - **Evidence.** Four of the five event entries are titled "The Oxford ... Bootcamp -
