@@ -1,5 +1,5 @@
 ---
-title: Oxford Agentic Coding Bootcamp - Cohort 1
+title: The Oxford Agentic Coding Bootcamp - Cohort 1
 slug: oxford-agentic-coding-bootcamp-cohort-1
 programme: agentic-coding-bootcamp
 cohort: Cohort 1

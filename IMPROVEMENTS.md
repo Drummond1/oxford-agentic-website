@@ -299,9 +299,74 @@ Status: `todo` · `blocked` (why) · `doing`
     strands someone at 09:30 on the day or invents a cost. One line from him closes it on the
     programme page and the event page together.
 
+26. `todo` **(needs Drummond, a hero-layout call)** - **every event page prints its own
+    heading twice.** The hero eyebrow is built as `programme name - cohort` and the `h1` is
+    the event title, and since 17 Oct all five event titles follow the same convention, so
+    the two strings are now identical on all five: "THE OXFORD AGENTIC CODING BOOTCAMP -
+    COHORT 1" sits directly above "The Oxford Agentic Coding Bootcamp - Cohort 1". A screen
+    reader reads the day's name twice before reaching the promise, and the hero spends a
+    line saying nothing new. The event **cards** already solve this - programme name as the
+    eyebrow, "Cohort 1" as the heading - so the fix is to borrow that split on the event
+    page. **The loop will not do it**: it changes the first thing a buyer sees on the page
+    that takes the booking, which is a layout call on the conversion journey. One line from
+    him either way.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-17 (09:12 local cycle) - The newest bootcamp called itself two different
+  things one line apart, on the page that takes its booking.**
+  - **Evidence.** Four of the five event entries are titled "The Oxford ... Bootcamp -
+    Cohort N". The Agentic Coding one was titled "Oxford Agentic Coding Bootcamp -
+    Cohort 1", with no article, while its own programme is named **The** Oxford Agentic
+    Coding Bootcamp in the nav dropdown, on `/bootcamps/`, on the events index card and
+    in the eyebrow printed directly above its own `h1`. The bare form rendered in the
+    `h1`, the breadcrumb, both schema `name` fields, the Luma iframe title, the two
+    `llms.txt` files the voice agents read, and the footer "Upcoming" list on **59
+    pages** - so on most of the site the footer and the nav named the same day
+    differently.
+  - **Why it had not been fixed.** Adding the article takes the search-result title to
+    **61 characters**, one over the 60 `check-schema.mjs` enforces, so the obvious edit
+    fails the build. The title rule in `src/pages/events/[slug].astro` already had one
+    fallback (drop the brand suffix); it now has a second that drops a leading "The"
+    from the **search-result title only**. That is a general rule keyed on length, not a
+    per-page exception, and it is the right place to lose the article: the heading, the
+    breadcrumb, the footer, the `Event` node and `llms.txt` keep the real name.
+  - **Change.** Two files. `title` in
+    `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md` gains "The"; the
+    title builder gains the third fallback and the comment explaining it. No new fact, no
+    copy, no token, no layout rule. The rendered `<title>`, `og:title` and `twitter:title`
+    are byte-identical to before (57 characters), so nothing in search or on a shared card
+    moves. The other four event pages are unchanged - their titles already fit with the
+    brand dropped.
+  - **Checks.** `npm run build` passes: 3,026 internal links across 61 pages, schema valid,
+    5 `Event` nodes, 9 `FAQPage` nodes, all titles and descriptions unique, no SEO warnings.
+    `check:flags` passes on the all-on and all-off builds. `astro check` (installed
+    `--no-save`, diff stays clean) reports 79 errors and 4 hints both with and without the
+    change, so none is this. Whole-site sweep in headless Chromium at 375, 768 and 1280px,
+    plus the four unlisted pages: no horizontal overflow, no missing alt text, no
+    unlabelled controls, one `h1` per page, no heading-level skips. Before and after
+    screenshots of the event page and `/events/` at all three widths; the OG card renders
+    the longer title on two lines with room to spare. Keyboard tab over the hero: every
+    stop keeps its gold ring.
+  - **Two sweeps run and clean, recorded so they are not repeated soon.** Contrast across
+    all 53 sitemap pages: **328 failing text instances and every one of them is the same
+    pair**, bronze `#9A7B23` on cream `#FFF9EC` at 3.83:1 - backlog 21, Drummond's colour
+    call, nothing new beside it. Rendering with JavaScript disabled and under
+    `prefers-reduced-motion`: no reveal band stays hidden on any page, so the scroll
+    animations degrade correctly.
+  - **One finding raised for Drummond rather than shipped**, as backlog 26: on all five
+    event pages the hero eyebrow now prints the `h1` verbatim.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers
+    403 to `oxfordagentic.com` and to the `github.io` origin, so before and after are both
+    local previews of builds from the exact `main` HEAD that Actions reports deployed
+    (`74ed21f`, run 39014796398, success). The 12 outbound links report unreachable for the
+    same reason; that is the proxy, not the links.
+  - **PR #1 is still open and still superseded** (backlog 20), and
+    `feat/ceo-roundtable-demand-page` is still the merged leftover of PR #2. Read as
+    known-stale, as the last several cycles did.
+  - **No guide written.** This cycle's remit is the existing site.
 
 - **2026-10-17 (08:05 local cycle) - The booking page for the newest bootcamp did not answer
   the two questions a buyer asks after deciding and before paying. Both were already published

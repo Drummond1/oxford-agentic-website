@@ -106,12 +106,22 @@ const ogImage = ogPathFor(path);
  * The rule keys off length rather than off whether the title already contains
  * the brand: "The Oxford Second Brain Bootcamp" carries the city but not the
  * brand, so a contains-check left it at 75 while fixing the other two.
+ *
+ * Added 17 Oct 2026: a third fallback that drops the leading "The". Every
+ * programme is named "The Oxford ...", and the coding cohort is the one whose
+ * title plus month lands on 61 characters, one over. Shortening the search
+ * result is the right place to lose the article, rather than the name itself:
+ * the heading, the breadcrumb, the footer list and the Event node keep it, so
+ * the page no longer calls the day two different things one line apart.
  */
 const SERP_TITLE_LIMIT = 60;
 const monthYear = formatMonthYear(data.startDate);
 const titleWithBrand = `${data.title} | ${monthYear} | ${config.brand.name}`;
+const titleWithMonth = `${data.title} | ${monthYear}`;
+const titleWithoutArticle = `${data.title.replace(/^The /, '')} | ${monthYear}`;
 const title =
-  titleWithBrand.length > SERP_TITLE_LIMIT ? `${data.title} | ${monthYear}` : titleWithBrand;
+  [titleWithBrand, titleWithMonth, titleWithoutArticle].find((t) => t.length <= SERP_TITLE_LIMIT) ??
+  titleWithoutArticle;
 
 const eyebrow = [programme.data.name, data.edition ?? data.cohort].filter(Boolean).join(' - ');
 
