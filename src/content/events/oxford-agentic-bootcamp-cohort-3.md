@@ -111,6 +111,17 @@ faqs:
       meaningful time each week. That task is what you build against all day. A paid
       plan such as ChatGPT Plus or Claude Pro gets you more out of it, but it is not
       essential and we make sure everyone can take part either way.
+  # The day's whole premise is that you bring a real task from your own work, and
+  # the page never said what to do if that work is confidential. Its Second Brain
+  # sibling answers the same question on both its pages; the wording and the
+  # external-supplier test are that answer's, adapted from material to task.
+  - q: What if my task is confidential?
+    a: >-
+      You choose the task, so a useful test is to bring one you would be comfortable
+      describing to an external supplier, and leave the rest out. Credentials, keys and
+      other people's personal data do not belong in an AI workflow in any form. You
+      build on your own machine, and the day is not recorded. That still leaves most of
+      the tasks that cost you a morning every week.
   - q: Can I install software on my work laptop?
     a: >-
       Worth checking before you book. Corporate and government devices often block new

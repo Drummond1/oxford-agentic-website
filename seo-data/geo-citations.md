@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-17 (19:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **confidentiality** axis, which the log had never
+tested: not what the day costs or what you must install, but whether a buyer is allowed to
+bring their own real work into the room at all.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| can I bring real client work to a hands-on AI training workshop confidentiality | **No** | bluewiremedia.com.au, enterprisedna.co, studiomeyer.io, bannerwitcoff.com (x2), mrs.org.uk (MRS/Esomar client data statement), socialwork.uky.edu, case.edu, artificiallawyer.com |
+| what data should not go into an AI second brain confidential client information | **No** | aisolopreneurhub.substack.com, aifire.co, mindstudio.ai, pycon.sg, producthunt.com, codefinity.com (x2), services.nwu.ac.za, cadencebank.com |
+| AI workshop bring your own real work what if my company data is confidential UK one day bootcamp | **No** | bluewiremedia.com.au, enterprisedna.co, 13labs.au (x2), confidentialcomputing.io, events.humanitix.com, brainstation.io, blckalpaca.at, createwith.com (UKAI London) |
+
+**Reading.**
+
+- **Same shape as the payment axis five hours ago: the field answers it out of providers'
+  own pages, and the engine ends by telling the reader to go and ask one.** Every useful
+  result was a provider stating its own conditions - one running sessions on "your own files,
+  your client comms and your service lines" and saying how it protects confidentiality, one
+  asking participants to bring **anonymised** emails and reports, one holding a call a week
+  ahead to choose which tasks to use, one giving a data-security briefing, one telling
+  attendees to get IT approval before connecting a work account. The engine's own closing
+  advice, both times: "confirm with the organiser which tools will be used", "ask any UK
+  provider how they handle data". There is no editorial page in this field. The provider page
+  is the answer, which makes this a page problem rather than a guide problem.
+- **The gap was inside our own site, and only on one of the two lines that has it.** The
+  Second Brain line answers this on **both** its pages - "What if my material is
+  confidential?" on the programme page and "What if some of my material is confidential?" on
+  the Cohort 1 event page - and the guide
+  `is-it-safe-to-put-company-documents-in-a-second-brain` works through it at length. The
+  **Agentic Bootcamp** line answers it **nowhere**, across 15 programme FAQs and 8 on the
+  Cohort 3 event page, while that day's entire premise is "one real task from your own work"
+  and `Who is it not for?` excludes "anyone who cannot bring a real task from their own
+  work". So the line that makes bringing real work a condition of attending was the line
+  that never said what to do if the work is confidential. Acted on this cycle: one FAQ on
+  the programme page and on the Cohort 3 booking page, in the Second Brain answer's own
+  wording and test, adapted from material to task.
+- **The Coding Bootcamp was considered and deliberately left out.** Its day builds a new
+  website and a product prototype from an idea, in your own repository; it does not ask you
+  to bring existing company material, so the question is not live on it in the same way.
+  Adding the FAQ there would be pattern-matching rather than answering something a buyer of
+  that day is actually asking. Revisit if a probe on the coding axis ever returns it.
+- **No guide.** The second-brain data probe is the only one that could carry one, and the
+  field is substacks, vendor blogs and a bank's consumer advice page - winnable, but we
+  already publish the better version of it as a guide, and a second page on the same question
+  would be a near-duplicate. **Guides this week: 2 of 3** (12 and 13 Oct); today's allowance
+  unused by choice, for the eleventh day running.
+- **Off-page: no new item.** Every name the probes returned is a competitor or a provider,
+  not a listing route, and the two platforms that did appear (Eventbrite, Humanitix) are
+  already on the review list or are ticketing we do not use. Nothing contacted.
+
 ## 2026-10-17 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

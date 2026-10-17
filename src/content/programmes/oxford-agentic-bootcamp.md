@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-16T08:05:00+01:00"
+updatedDate: "2026-10-17T19:30:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -69,6 +69,17 @@ faqs:
       One real task from your own work that currently costs you meaningful time, plus a
       laptop. The task is what you build against all day, so bringing a genuine one
       matters more than any preparation.
+  # The day's whole premise is that you bring a real task from your own work, and
+  # the page never said what to do if that work is confidential. Its Second Brain
+  # sibling answers the same question on both its pages; the wording and the
+  # external-supplier test are that answer's, adapted from material to task.
+  - q: What if my task is confidential?
+    a: >-
+      You choose the task, so a useful test is to bring one you would be comfortable
+      describing to an external supplier, and leave the rest out. Credentials, keys and
+      other people's personal data do not belong in an AI workflow in any form. You
+      build on your own machine, and the day is not recorded. That still leaves most of
+      the tasks that cost you a morning every week.
   - q: Can I install software on my work laptop?
     a: >-
       Worth checking before you book. Corporate and government devices often block new

@@ -315,6 +315,85 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-17 (19:00 local cycle) - The bootcamp that makes "bring a real task from your
+  own work" a condition of attending never said what to do if that work is confidential.
+  Its Second Brain sibling answers the same question on both its pages.**
+  - **Evidence: the confidentiality axis, which the GEO log had never tested.** Three probes
+    on whether a buyer is allowed to bring their own real work into the room. None returned a
+    page of ours. What they returned is the same shape the payment axis returned five hours
+    ago: **providers publishing their own conditions**, with no editorial page anywhere in the
+    field. One runs sessions on "your own files, your client comms and your service lines" and
+    states how it protects confidentiality; one asks participants to bring **anonymised**
+    emails and reports; one holds a call a week ahead to choose which tasks to use; one gives
+    a data-security briefing; one tells attendees to get IT approval before connecting a work
+    account. The engine closed both booking-shaped probes by telling the reader to go and ask
+    the provider: "confirm with the organiser which tools will be used", "ask any UK provider
+    how they handle data". When the answer lives on provider pages, the provider page is the
+    fix, not a guide.
+  - **The gap, measured, and it was an asymmetry inside our own site.** The **Second Brain**
+    line answers this on both its pages - "What if my material is confidential?" on the
+    programme page, "What if some of my material is confidential?" on the Cohort 1 event page
+    - and `is-it-safe-to-put-company-documents-in-a-second-brain` works through it at length.
+    The **Agentic Bootcamp** line answers it **nowhere**: 15 FAQs on the programme page, 8 on
+    the Cohort 3 booking page, none of them this. That is the line whose `whoFor` names
+    consultants, public-sector and professional-services buyers, whose one instruction is
+    "one real task from your own work", and whose `Who is it not for?` excludes "anyone who
+    cannot bring a real task from their own work". The condition was published; the reassurance
+    was not.
+  - **Change: one FAQ, two files, no new fact in it.** "What if my task is confidential?" on
+    `programmes/oxford-agentic-bootcamp.md` and `events/oxford-agentic-bootcamp-cohort-3.md`,
+    placed directly after "What do I need to bring?" / "What should I bring?", which is the
+    answer it qualifies. The wording and the external-supplier test are the Second Brain
+    answer's own, adapted from material to task, so the two lines cannot say different things.
+    Every clause restates something the same page already publishes: you choose the task
+    ("One real task from your own work"), you build on your own machine ("the day is spent
+    building on your own machine"), and the day is not recorded ("Is the day recorded? No").
+    The credentials-and-personal-data clause is the Second Brain answer's, verbatim in
+    substance. `FAQPage` question counts go 15 to 16 and 8 to 9; site totals unchanged at 9
+    `FAQPage` and 5 `Event` nodes. Both event pages were given the same treatment the invoice
+    FAQ got at 14:00, so the 16 Oct mistake - fixing a programme page and not carrying it to
+    the page that takes the booking - is not repeated.
+  - **The Coding Bootcamp was considered and deliberately left out**, recorded so the next
+    cycle does not add it by pattern-matching. Its day builds a new website and a product
+    prototype from an idea, in your own repository. It does not ask you to bring existing
+    company material, so the question is not live on it in the way it is on a day built
+    against a task you already do. Revisit if a probe on the coding axis returns it.
+  - **What it deliberately does not say.** Nothing about how any AI provider treats data,
+    which plan you are on, what the room sees, GDPR, or any undertaking about how we handle
+    material. Those are either unconfirmed or not ours to state. The answer is a test the
+    buyer applies themselves, plus three facts already on the page.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings.
+    `check:flags` passes on the all-on and all-off builds. Verified in `dist/` that the answer
+    lands on all three surfaces - visible HTML, the `FAQPage` JSON-LD on both pages, and
+    `llms-full.txt`, which both voice agents read. Headless Chromium against a local
+    `astro preview` of this exact build, both pages at **375px and 1280px**: one `h1` each and
+    correct, the new accordion found by its summary text, clicked open, its answer visible and
+    complete at both widths, `scrollWidth` equal to `clientWidth`, no page errors, no failed
+    local requests; four screenshots. `updatedDate` moved on the one content file that carries
+    one. **No event fact moved**: Second Brain 21 October at the Pitt Rivers Museum, Agentic
+    Cohort 3 on 19 November and Coding Cohort 1 on 26 November at Worcester College.
+  - **No guide.** The second-brain data probe is the only one that could carry one, and we
+    already publish the better version of that answer as a guide, so a second page would be a
+    near-duplicate. **Guides this week: 2 of 3** (12 and 13 Oct); today's allowance unused by
+    choice for the eleventh day running.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export. Nothing estimated.
+  - **Production could not be read, for the ninth day.** The sandbox egress policy answers 403
+    to `oxfordagentic.com` (`connect_rejected`, logged by the proxy) and the host does not
+    resolve for `WebFetch` either, so `build.txt` could not be polled and **no event fact could
+    be re-verified against Luma**. Deployment state comes from the Actions API: Deploy to
+    GitHub Pages run 39035386583 on `292930f`, the `origin/main` HEAD, **success** at 13:10Z,
+    with nothing queued or in progress when this cycle started.
+  - **Off-page: no new item.** Every name the probes returned is a competitor or a provider
+    rather than a listing route; the two platforms that appeared are already on the list or are
+    ticketing we do not use. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma listings (2b and the
+    review list), PR #1 (20), the bronze contrast token (21), Cohort 2's outcomes (22), the
+    past-cohort testimonial heading (23), the guide-byline call (24), the Coding Bootcamp's
+    paid-plan requirement (25) and the duplicated event hero eyebrow (26).
+
 - **2026-10-17 (14:00 local cycle) - An organisation that cannot put a card through had
   nowhere on a booking page to learn it can be invoiced. The answer has been published
   since 13 September, on one page nobody books from.**
