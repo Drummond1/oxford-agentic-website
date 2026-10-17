@@ -284,9 +284,98 @@ Status: `todo` · `blocked` (why) · `doing`
     profile. If yes, the loop ships the byline link. If no, the loop leaves all seven at one
     link and stops re-measuring this.
 
+25. `todo` **(needs Drummond, one fact only he has)** - **does the Agentic Coding Bootcamp
+    require a paid Claude or ChatGPT plan, and which?** The Agentic Bootcamp answers this on
+    both its programme and its event page: a paid plan "gets you more out of it, but it is not
+    essential and we make sure everyone can take part either way". The Coding Bootcamp answers
+    it nowhere, and the honest answer is probably not the same one, because Claude Code and
+    Codex both sit behind paid plans rather than free tiers. The 17 Oct prerequisite probe
+    found **every** competitor listing in the field stating its requirement outright - one
+    warning that turning up without it means missing the first thirty minutes, another naming
+    the exact plan and the desktop app - and found no editorial page answering the question at
+    all, so the listing is where buyers check it. **The loop will not write this one**: "a paid
+    plan is required" and "a paid plan is not required" are both event facts, both unverifiable
+    from here with `luma.com` blocked by the sandbox egress policy, and getting it wrong either
+    strands someone at 09:30 on the day or invents a cost. One line from him closes it on the
+    programme page and the event page together.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-17 (08:05 local cycle) - The booking page for the newest bootcamp did not answer
+  the two questions a buyer asks after deciding and before paying. Both were already published
+  on its own programme page.**
+  - **Evidence: the prerequisite axis, which the GEO log had never tested.** Four probes, two
+    of them on what a buyer must have, install or pay for before they arrive. Both came back
+    answered **entirely out of event listings** - Luma (x5 across the two probes), Eventbrite,
+    Humanitix, SCORE, Tulane, Wichita State, CPA Ontario - with no editorial page in either
+    result set. What those listings publish is concrete and uniform: a laptop you can install
+    on, a charger, a paid plan sorted the night before, a warning about locked-down work
+    laptops, sometimes a hardware spec. The conclusion is not that this needs a guide; it is
+    that **the event page is the surface a buyer checks before paying**, and ours for the
+    newest bookable day was the thinnest of the three.
+  - **The gap, measured.** `FAQPage` questions per event page, counted in the built JSON-LD:
+    Second Brain Cohort 1 **12**, Agentic Cohort 3 **7**, **Agentic Coding Cohort 1 five**.
+    The two it was missing - "Can I bring my team?" and "What if I cannot make the date?" - are
+    answered on **both** sibling event pages and on its own programme page. The 16 Oct 14:05
+    cycle closed exactly these two gaps on the three *programme* pages and did not carry them
+    to the event pages, which is the half this closes. The transfer answer matters most: that
+    cycle established that our terms (a free transfer to a future cohort) are better than every
+    one its probe returned - a 25% fee inside 30 days at COPC, the full fee inside 10 working
+    days at ECC, 100% inside 14 days at BSA - and the page selling a day 40 days out did not
+    state them.
+  - **Change: two FAQ entries on one file, no new fact in either.**
+    `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md` gains "Can I bring my
+    team?" and "What if I cannot make the date?", worded to the event-page pattern its Second
+    Brain sibling already uses (the short question form, the tightened answer) and carrying the
+    coding-specific substance from its own programme page verbatim - "two of you go back able
+    to build rather than one", "it helps if you arrive with the same idea in mind", and the
+    no-refund-but-free-transfer terms that are a published standing decision. Every word was
+    already live on two other pages. A comment in the file says why they are duplicated onto
+    the booking page. Its `FAQPage` node goes **5 questions to 7**; site total is unchanged at
+    9 `FAQPage` nodes and 5 `Event` nodes.
+  - **No guide, and the one that was tempting was declined on a stated rule.** "Can a
+    non-technical founder build a working website with Claude Code in one day" is the best
+    guide candidate the log has turned up for the coding line: the field is personal blogs,
+    substacks and low-code vendor marketing with no institutional publisher in it, so it is
+    **winnable**, and the searcher is the Coding Bootcamp's exact buyer, so it **converts**.
+    It fails a different test. The engine itself said no source tests the one-day question and
+    that the success claims it found are "not independently verified" - and **the Coding
+    Bootcamp has not run yet** (Cohort 1 is 26 November), so we have no room to write from and
+    a guide answering "yes, in a day" would be one more unverified vendor claim of exactly the
+    kind the engine flagged. Logged to re-probe after 26 November. **Guides this week: 2 of 3**
+    (12 and 13 Oct); today's allowance unused by choice for the ninth day running.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links all resolve, schema valid, all titles and descriptions unique, no SEO warnings.
+    Headless Chromium against a local `astro preview` of this exact build, at **375px and
+    1280px**: `h1` correct, 7 FAQ accordions present, each new one clicked open and its answer
+    confirmed visible and correct at both widths, `scrollWidth` equal to `clientWidth` at both,
+    no page errors and no failed local requests; screenshots at both widths. Note for future
+    cycles: these accordions share `name="faq"`, so setting every `<details open>` at once
+    leaves only the last one open - click each summary instead, or the check silently reports
+    the answer as absent. The 12 outbound third-party links report unreachable, which is this
+    sandbox's egress policy and not a site fault. **No event fact moved**: Second Brain 21
+    October at the Pitt Rivers Museum, Agentic Cohort 3 on 19 November and Coding Cohort 1 on
+    26 November at Worcester College, as every file says.
+  - **Production could not be read, for the eighth day.** The sandbox egress policy refuses
+    `oxfordagentic.com` (`connect_rejected`, confirmed in the proxy's own failure log) and
+    `luma.com`, so `build.txt` could not be polled and **no event fact could be re-verified
+    against its Luma page**. Deployment state comes from the Actions API instead: CI and Deploy
+    to GitHub Pages both `success` on `d36ccfd`, the `origin/main` HEAD, at 01:13Z and 01:15Z
+    on 17 Oct, with nothing queued or in progress when this cycle started.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export at all. Nothing estimated.
+  - **Off-page.** No new item. Every listing surface the probes returned is US, Canadian or
+    Australian, or already open on the review list (`allai.events`). Nothing contacted.
+  - **New for Drummond: backlog 25** - whether the Coding Bootcamp requires a paid Claude or
+    ChatGPT plan. It is the one prerequisite the field always publishes and we answer nowhere,
+    and it is an event fact the loop cannot supply. **Still waiting**, unchanged and not
+    re-pitched: the Luma item (backlog 2b and the review list), PR #1 (20), the bronze contrast
+    token (21), Cohort 2's outcomes (22), the past-cohort testimonial heading (23), and the
+    guide-byline call (24).
+
 
 - **2026-10-17 (01:00 local cycle) - An engine asked what this organisation is answered off
   our dead Luma listings, and named a former team member as a host. The first line we give

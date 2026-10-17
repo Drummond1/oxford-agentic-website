@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-17 (08:05 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Read as a second opinion, not as movement against the Perplexity rows.
+Rotated onto the **prerequisite** axis the log had never tested - what a buyer has to have,
+install or pay for before they turn up - plus the one-day feasibility question for the
+coding line.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need a paid ChatGPT or Claude subscription to attend a hands-on AI workshop | **No** | eventbrite.ca, allai.events (x2), score.org (x2), celt.tulane.edu (x2), luma.com/l3zj973t, pd.cpaontario.ca, wichita.edu |
+| what do you actually need to bring to a hands-on AI agent bootcamp laptop accounts subscription UK | **No** | luma.com (x4: 8akf33d5, it9v580b, nqsvz713, h4tgln2w), bootcamps.hackinghrlab.io, events.humanitix.com, valoremreply.com, developer.microsoft.com, help.datasciencedojo.com |
+| can a non-technical founder build a working website with Claude Code in one day | **No** | theanna.io, lynxcollective.substack.com, chrislema.com, lowcode.agency (x2), skool.com, growwstacks.com, applet.studio, a Notion page |
+| after an AI training day how do you keep the workflow going back at work | **No** | beehiiv (Kerzie), maven.com, csuohio.edu, hongkong.ahk.de (x2), happeningnext.com, mostlyserious.io, ssw.com.au, mkmlabs.pl, ivee.jobs |
+
+**Reading.**
+
+- **The prerequisite axis is answered entirely inside event listings, and that is where this
+  cycle shipped.** Both prerequisite probes returned workshop and bootcamp **listings** -
+  Luma, Eventbrite, Humanitix, SCORE, university continuing-education pages - and no
+  editorial page at all. What those listings publish is concrete and consistent: a laptop you
+  can install on, a charger, a paid plan sorted the night before, a warning that locked-down
+  work laptops are the thing most likely to spoil the day, and in one case the hardware spec.
+  The lesson is not that we need a guide. It is that **the event page is the surface a buyer
+  checks**, and ours for the newest bookable day answered five questions where its two
+  siblings answer seven and twelve.
+- **What was ours and is now fixed.** The Agentic Coding Bootcamp's **event** page - the
+  booking page for 26 November - carried no answer to "can I bring my team?" or "what if I
+  cannot make the date?", though both are published verbatim on its own programme page and on
+  both sibling event pages. The 16 Oct 14:05 cycle closed exactly these two gaps on the
+  *programme* page and did not carry them to the event page, which is the page an engine
+  retrieves for a date-anchored or commitment query. Added this cycle, unchanged in wording:
+  its `FAQPage` node goes from 5 questions to 7. No new fact: every word already published.
+- **The Claude Code one-day probe is winnable and was still declined.** The field is personal
+  blogs, substacks, agency marketing and low-code vendors - no institutional publisher, no
+  platform vendor on its own docs - and the engine said in as many words that **"the search
+  didn't turn up a source that tests the one-day question directly"** and that "most of these
+  sources are vendor blogs, courses, or agency marketing, so the success claims are not
+  independently verified". That is a winnable field and a converting searcher, and it is
+  precisely why nothing was written: **the Coding Bootcamp has not run yet**, so a guide
+  answering "yes, in a day" would be one more unverified vendor claim of the kind the engine
+  just complained about. Re-probe after Cohort 1 runs on 26 November, when there is an actual
+  room to write from. The three limits the probe did surface - a coding agent cannot create
+  accounts or API keys, cannot click deploy, and loops on upstream API and config mismatches -
+  are already the subject of `why-the-code-an-agent-wrote-is-not-live`, so there is no gap to
+  fill there either.
+- **A question for Drummond came out of this, and it is a fact the loop cannot supply.** The
+  Agentic Bootcamp answers "do I need a paid AI subscription?" with "not essential, we make
+  sure everyone can take part either way". The **Coding** Bootcamp has no such answer on
+  either its programme or its event page, and the honest one is probably different, because
+  Claude Code and Codex both sit behind paid plans. Every competitor listing in the first
+  probe states its requirement explicitly, one of them warning that turning up without it
+  means missing the first thirty minutes. Raised on the backlog; not written.
+- **The after-the-day probe found the field answering in its own interest** - training vendors
+  describing their own follow-up offers - and the engine said so ("mostly returned
+  training-vendor marketing pages rather than practical advice"). We publish
+  `after-the-ai-executive-programme` against it. Not retrieved, and not a content gap.
+- **No new off-page route.** Every listing surface returned is US, Canadian or Australian, or
+  already on the review list (`allai.events`). Nothing added, nothing contacted.
+
 ## 2026-10-17 (01:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

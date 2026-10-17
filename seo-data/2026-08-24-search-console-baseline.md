@@ -1135,3 +1135,11 @@ environment, `gcloud` reports no credentialed accounts, and the Search Analytics
 HTTP 401. No Search Console export newer than the 13 October reading exists in `seo-data/`.
 Nothing estimated. The 12:50 reading on 15 October stands as the latest data, still through
 roughly 13 October.
+
+## Update - 17 October 2026, 08:05 BST
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud` reports
+"No credentialed accounts", there is no Google credential anywhere in the environment, and
+`seo-data/` contains no CSV or TSV export at all, so nothing newer than the 13 October
+reading exists. Nothing estimated. The 12:50 reading on 15 October stands as the latest
+data, still through roughly 13 October.
