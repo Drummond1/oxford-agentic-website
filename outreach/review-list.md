@@ -45,6 +45,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the organisers before booking."** That is a hesitation manufactured out of two of our own
     pages, about a venue that has been settled since September. It raises the value of the
     ten minutes in Luma above anything else on this list.
+  - **Strengthened again 17 Oct 2026 (01:00 cycle) with a fourth query axis - the entity
+    question - and the first harm that touches a named person.** Asked "what is Oxford
+    Agentic who runs the Oxford Agentic Bootcamp", the engine returned
+    `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and allai.events, and **no page of ours**.
+    Working only from those, it named **Josh Lawman as a host of the bootcamp** - he was
+    removed from the team on 4 August - and could not resolve the roster at all: "Listings
+    differ on the fourth host: one names Nicolai Thomson, another names Josh Lawman." It gave
+    the date as 21 July 2026 and repeated the venue contradiction.
+  - **The site is clean on this and cannot fix it.** Verified in `dist/` the same cycle:
+    "Josh Lawman" appears in no built page, `/team/` does not list him, `/team/josh-lawman/`
+    is a noindex redirect to `/team/`, and the name is absent from `llms-full.txt`. The only
+    remaining source of the claim is the Luma listings, which are Drummond's. A past listing
+    that misattributes a current role to a named real person is a different order of problem
+    from a stale date, and it is the second thing the ten minutes in Luma would fix.
 
 - **techUK - "Speak at an event"** - found 15 Oct 2026 by deliberate off-page search.
   - techUK is the UK technology trade body. Its events page

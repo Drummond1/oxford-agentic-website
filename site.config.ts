@@ -248,12 +248,26 @@ const config: SiteConfig = {
      * Still consistent with `description`, which it is required not to
      * contradict: same day, same cohort, same task, expanded rather than
      * restated.
+     *
+     * Widened 17 Oct 2026 to all three bootcamps. It had described only the
+     * agentic-workflow line since cycle 66 (16 Aug), while the Second Brain
+     * and Agentic Coding lines launched behind it, so the first thing an engine
+     * read about this entity covered a third of what it sells. An entity-axis
+     * probe that day ("what is Oxford Agentic who runs the Oxford Agentic
+     * Bootcamp") returned no page of ours at all and answered off two past Luma
+     * listings instead. This string is site-only - it is NOT the one PRD §13
+     * requires reused verbatim off-site, so the loop can move it; `description`
+     * above still waits for Drummond. Add it to the backlog-14 launch checklist:
+     * when a line launches, this is a fifth surface that silently keeps
+     * describing the old product.
      */
     longDescription:
-      `${BRAND_NAME} runs in-person, hands-on agentic AI training in Oxford for business leaders. ` +
-      'Over a single day in a small cohort, every attendee builds and runs a working agentic AI ' +
-      'workflow on a real task from their own work, so the routine work runs itself and the hours ' +
-      'go back into the work only they can do. No coding required, and nothing hand-waved.',
+      `${BRAND_NAME} runs in-person, hands-on AI training in Oxford for business leaders, across three ` +
+      'one-day bootcamps, each in a small cohort. Build and run a working agentic AI workflow on a real ' +
+      'task from your own work, so the routine runs itself and the hours go back into the work only you ' +
+      'can do. Build a second brain: the structured store of your own context that AI tools draw on. Or ' +
+      'ship a live website and a working prototype, with Claude Code and Codex doing the typing. No day ' +
+      'assumes you arrive able to code, and nothing is hand-waved.',
     // PRD §21 — NOT YET PURCHASED. Recommendation: oxfordagentic.com canonical,
     // oxfordagentic.ai bought defensively and 301'd here. One-line change.
     domain: 'https://oxfordagentic.com',

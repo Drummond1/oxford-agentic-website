@@ -5,6 +5,62 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-17 (01:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Read as a second opinion, not as movement against the Perplexity rows.
+Rotated onto an axis the log has never tested: an **entity** question - "what is this
+organisation and who runs it" - alongside one definitional and two buyer questions.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what is Oxford Agentic who runs the Oxford Agentic Bootcamp | **No** | luma.com/oxfordagentic2, luma.com/k7c2rm5s, allai.events, sbs.ox.ac.uk (x2), learnersink, coursereport, maven (x2), datasciencedojo |
+| who offers hands-on agentic AI training in Oxford for business leaders no coding | **No** | luma.com/k7c2rm5s, luma.com/oxfordagentic2, allai.events, sbs.ox.ac.uk (x2), iimcal, plus.columbia.edu, esmt.berlin (x2), handsonai.info |
+| what is an agentic workflow for business explained simply | **No** | netsuite, productleadership, bookipi, pickl.ai (x2), chatbotkit, techtarget, box.com, myndsolution |
+| how to build a second brain for AI tools one day course | **No** | techsoup/infoxchange (x3), eventbrite.ca (Niagara-on-the-Lake half day), fortelabs, superlore.ai, maven, kevinstratvert, sourceforge |
+
+**Reading.**
+
+- **The entity question is answered entirely off our own past Luma listings, and the answer
+  is wrong in three ways.** Asked what Oxford Agentic is and who runs it, the engine returned
+  no page of ours at all. It described the format accurately - one day, hands-on, small
+  groups, no coding, Drummond tutoring AI in Management at Said Business School - and then:
+  named **Josh Lawman** as a host, who was removed from the team on 4 August; gave the date
+  as **21 July 2026**, Cohort 1, which ran three months ago; and said the venue is "Worcester
+  College in one version and St Anne's College in another, so check the event page before
+  booking". The fourth host it could not resolve at all: "Listings differ on the fourth host:
+  one names Nicolai Thomson, another names Josh Lawman."
+- **This is the fourth query axis in three days to land on the same off-page cause** (brand,
+  proposition, venue, and now entity), and the sharpest harm yet: a stale listing is
+  attributing a current role to a named person who left. **It is not an on-page fault.**
+  Checked in `dist/` this cycle: "Josh Lawman" appears in no built page, the `/team/` index
+  does not list him, `/team/josh-lawman/` is a noindex redirect to `/team/`, and the name is
+  absent from `llms-full.txt`. Backlog 16 can be read as closed on the site's side - the
+  remaining instance of this claim is on Luma, which is Drummond's. Evidence added to the
+  Luma item in `outreach/review-list.md`; nothing contacted.
+- **The buyer query repeats it.** Asked who offers this in Oxford, the engine again named the
+  bootcamp as "the closest match", again off the two past listings, and again warned the
+  reader: "the allai.events listing gives its date as 21 July 2026, which is before today (17
+  October 2026), so check the Luma page for any upcoming session." Our live listings for 19
+  and 26 November were not returned.
+- **The on-page half that was ours, and what shipped for it.** When an engine does read this
+  site, the first line it reads is `brand.longDescription`, at the top of `llms.txt` and
+  `llms-full.txt`. It described only the agentic-workflow bootcamp - one of three products -
+  and had done since 16 August, through two product launches. Widened this cycle to all
+  three, and the About page's origin story, which described exactly two gaps and two days,
+  now names the third.
+- **The two non-entity probes are correctly declined as guide topics.** "What is an agentic
+  workflow" is held by ERP, productivity and analytics vendors defining the term on their own
+  blogs (NetSuite, Box, TechTarget) - winnable only as a definition page, which the glossary
+  already is, and the searcher is reading, not booking. The second-brain course question
+  returns a Canadian half day, an Australian two-hour webinar and Forte Labs' multi-week
+  programme, and the engine said in as many words that it "didn't find a course that runs a
+  full single day" - which is precisely what we sell, four days out from running it. That is
+  a retrieval failure on a product whose constraint is demand rather than ranking, so per the
+  standing decision nothing was written for it.
+- **No new off-page route.** Both routes this cycle's probes returned - the Luma listings and
+  allai.events - are already open items on the review list. Nothing added, nothing contacted.
+
 ## 2026-10-16 (19:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

@@ -11,6 +11,21 @@ const showNewsletter = showSection('newsletter');
 
 const socials = Object.entries(config.brand.social).filter(([, url]) => Boolean(url)) as Array<[string, string]>;
 const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn', x: 'X' };
+
+/*
+ * The footer carries the OPENING SENTENCE of the entity line, not the whole
+ * paragraph. `brand.longDescription` was widened on 17 Oct 2026 to cover all
+ * three bootcamps, which took it from four sentences to five and this block
+ * from ten rendered lines to fifteen, on every page - a wall of boilerplate
+ * where the footer's job is orientation. The full paragraph still runs in both
+ * llms files and as the About hero subline, which is where an engine and a
+ * reader actually want it.
+ *
+ * Derived rather than duplicated, so the two can never drift: whoever edits
+ * `longDescription` edits this. Keep its first sentence self-contained - who,
+ * what, where - and the footer stays right.
+ */
+const entityLine = `${config.brand.longDescription.split('. ')[0]}.`;
 ---
 
 <footer class="site-footer">
@@ -21,7 +36,7 @@ const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn
     }
     <div class="site-footer__entity">
       <Wordmark />
-      <p class="site-footer__desc">{config.brand.longDescription}</p>
+      <p class="site-footer__desc">{entityLine}</p>
       <p class="site-footer__place">
         {config.brand.locality}, {config.brand.region}, United Kingdom
       </p>

@@ -170,8 +170,15 @@ Status: `todo` · `blocked` (why) · `doing`
     checklist is for: FAQ depth parity closed at 14:05, the glossary swept at 19:00 (two
     coding terms, the `No-code` entry reconciled, all three lines in `relatedProgrammes`).
     `src/lib/home.ts` already named all three lines in four answers and needed nothing.
-    **Still unswept for this line: the About page origin story** - check it before assuming
-    it is clean.
+    **The About page origin story was swept 17 Oct** - it described exactly two gaps and two
+    days, and now names the third. That closes the four-surface list for this line.
+    **A fifth surface, added 17 Oct 2026: `brand.longDescription` in `site.config.ts`.** It
+    is the entity line at the top of `llms.txt` and `llms-full.txt`, the About hero subline
+    and (its first sentence) the footer on every page, and it had described only the
+    agentic-workflow line since 16 Aug, through two launches. It is site-only - NOT the
+    string PRD §13 requires reused verbatim off-site - so the loop can move it, and did.
+    Check it on the next launch. `brand.description` and `brand.tagline` still wait for
+    Drummond (the decision note in STATE.md, and backlog 17).
 15. `done` 13 Sept 2026 — Second Brain group size. **Drummond: "small group", no number.**
     The Second Brain programme FAQ now answers "Small, and capped". Do not publish a number.
 16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
@@ -280,6 +287,109 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-17 (01:00 local cycle) - An engine asked what this organisation is answered off
+  our dead Luma listings, and named a former team member as a host. The first line we give
+  an engine described one bootcamp of three; it now describes all three.**
+  - **Evidence: a query axis the GEO log had never tested.** "what is Oxford Agentic who runs
+    the Oxford Agentic Bootcamp" - the entity question, the one an answer engine asks itself
+    before it recommends anything. **No page of ours was returned.** The answer was built from
+    `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and allai.events, and it was wrong three
+    ways: it named **Josh Lawman** as a host (removed from the team on 4 August), gave the
+    date as **21 July 2026** (Cohort 1, three months past), and reported the venue as
+    "Worcester College in one version and St Anne's College in another, so check the event
+    page before booking". On the fourth host it gave up: "Listings differ on the fourth host:
+    one names Nicolai Thomson, another names Josh Lawman." The buyer-worded probe in the same
+    set repeated all of it.
+  - **The off-page half is Drummond's and was already on the list; this adds the sharpest
+    evidence yet.** Fourth axis in three days (brand, proposition, venue, entity) landing on
+    the same cause. Verified in `dist/` that none of it is ours: "Josh Lawman" appears in no
+    built page, `/team/` does not list him, `/team/josh-lawman/` is a noindex redirect, and
+    the name is absent from `llms-full.txt` - so **backlog 16 is closed on the site's side**,
+    and the only surviving source of that claim is on Luma. Added to the existing review-list
+    item rather than opened as a new one. Nothing contacted.
+  - **The on-page half was real and is what shipped.** When an engine *does* read this site,
+    the first thing it reads is `brand.longDescription` - the blockquote at the top of both
+    `llms.txt` and `llms-full.txt`, the About hero subline, and the footer paragraph on every
+    page. It read: *"Oxford Agentic runs in-person, hands-on agentic AI training in Oxford for
+    business leaders. Over a single day... builds and runs a working agentic AI workflow..."*
+    One product, out of three. It had not moved since cycle 66 (16 Aug), and the Second Brain
+    and Agentic Coding lines launched behind it. **This string is site-only** - it is not the
+    one PRD §13 requires reused verbatim off-site, which is `brand.description`, still
+    waiting for Drummond - so the loop could move it, and the precedent for moving it alone
+    is cycle 66's own.
+  - **Change: one string, one paragraph, one derived line. No new fact in any of them.**
+    - `brand.longDescription` now names all three bootcamps in one sentence each, drawn
+      verbatim in substance from the three programme files' own capsules: the agentic
+      workflow on a real task (with the hours clause cycle 66 deliberately added, kept), the
+      second brain as the structured store of your own context, and the live website and
+      working prototype with **Claude Code and Codex doing the typing**. It closes on the
+      message house's paired framing, reconciled for three lines the way yesterday's glossary
+      entry reconciled it: *"No day assumes you arrive able to code, and nothing is
+      hand-waved."* Naming the two coding tools in the entity line is deliberate - that is the
+      exact query on which an engine twice this week reported the coding line as not existing.
+    - **The About page origin story** described a first gap and "a second gap sitting behind
+      the first", and ended "The two compound, and neither assumes the other". It now has the
+      third: people who understand the concepts and have never built and shipped something of
+      their own, with the brief, the repository, the deploy and the check on what the agent
+      wrote. "The three compound, and none of them assumes another - and none expects you to
+      arrive able to code. The coding day is the exception in subject rather than in
+      prerequisite." Every clause from the coding programme file's capsule, description and
+      FAQs. This was the last unswept surface on backlog 14's list for this line.
+    - **The footer takes the entity line's opening sentence, not the paragraph.** Widening the
+      string took the footer block from ten rendered lines to fifteen on all 59 pages, which
+      measured 302px tall at 375px wide and 372px at 1280px - a wall of boilerplate where the
+      footer's job is orientation. `Footer.astro` now derives its line from the same string
+      (`longDescription.split('. ')[0]`), so the two cannot drift, and the block is **93px at
+      both widths** - shorter than before the change and more accurate than before it, while
+      the full paragraph still runs where it earns its length. A comment says to keep the
+      first sentence self-contained.
+  - **It lands on four surfaces**, verified in `dist/`: the `llms.txt` and `llms-full.txt`
+    entity blockquotes (full paragraph), the About hero subline (full paragraph), the About
+    story (the new third-gap paragraph, 6 paragraphs to 7), and the footer on 59 of 61 built
+    HTML files (opening sentence; the two without are `/home-original/` and
+    `/team/josh-lawman/`, both redirect stubs with no footer). `longDescription` is not used
+    in schema and is not a meta description, so no length check applies and none was tripped.
+  - **No guide.** Two of the four probes were real candidates and both fail the second test.
+    "What is an agentic workflow for business" is winnable only as a definition page - which
+    the glossary already is - and the searcher is reading rather than booking. The
+    second-brain course probe is the interesting one: the engine answered that it "didn't
+    find a course that runs a full single day", returning a Canadian half day, an Australian
+    two-hour webinar and Forte Labs' multi-week programme - a clean description of the gap we
+    fill, **four days before we run it**, and still declined, because Second Brain's
+    constraint is demand and not ranking (standing decision) and no new page changes
+    retrieval. **Guides this week: 2 of 3** (12 and 13 Oct); today's allowance unused by
+    choice for the eighth day running.
+  - **Checks.** `npm ci` then `npm run build` clean: 61 pages, 3,026 internal links all
+    resolve, schema valid with 5 Event and 9 FAQPage nodes, all titles and descriptions
+    unique, no SEO warnings. `check:flags` passes on both the all-on and all-off builds.
+    Headless Chromium against a local `astro preview` of this exact build, at **375px and
+    1280px**, on the changed page and on a page that only sees the footer: `h1` correct, the
+    third-gap paragraph present, the story at 7 paragraphs, the About hero carrying the full
+    entity line, the footer block 93px at both widths, `scrollWidth` equal to `clientWidth`
+    at both, no page errors and no failed local requests; screenshots of hero, story and
+    footer at both widths. The 12 outbound third-party links report unreachable, which is this
+    sandbox's egress policy and not a site fault. **No event fact moved**: Second Brain 21
+    October at the Pitt Rivers Museum, Agentic Cohort 3 on 19 November and Coding Cohort 1 on
+    26 November at Worcester College, as every file says.
+  - **Production could not be read, for the seventh day.** The sandbox egress policy refuses
+    `oxfordagentic.com` (`connect_rejected`) and `luma.com`, so `build.txt` could not be
+    polled and **no event fact could be re-verified against its Luma page**. Deployment state
+    comes from the Actions API instead: CI and Deploy to GitHub Pages both `success` on
+    `3e2da55`, the `origin/main` HEAD, at 19:11Z on 16 Oct, with nothing queued or in progress
+    when this cycle started.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, there is no Google credential in the
+    environment, and `seo-data/` holds no export newer than the 13 October reading. Nothing
+    estimated.
+  - **Off-page.** No new item. Both routes the probes returned were already open on the review
+    list; the Luma item gained the entity-axis evidence and the Josh Lawman finding. Nothing
+    contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma item (backlog 2b and
+    the review list, now the highest-value item on it twice over), PR #1 (backlog 20), the
+    bronze contrast token (21), Cohort 2's outcomes (22), the past-cohort testimonial heading
+    (23), and the one-line call on whether guide bylines should link the team profile (24).
+    **Newly closed without him: backlog 16** (Josh Lawman) is done on the site's side.
 
 - **2026-10-16 (19:00 local cycle) - The glossary was swept for the second product line and
   never for the third. It now defines the coding line's vocabulary and links it.**
