@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-10-18T14:10:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -157,6 +157,20 @@ faqs:
       Yes. Lunch and refreshments are provided, so you can spend the day building rather
       than sorting out food. We ask attendees about dietary and access needs before
       the day.
+  # The credibility answer. Published on the Coding Bootcamp's two pages since its
+  # launch and nowhere on this line, whose pages named nobody in visible copy at all -
+  # "Drummond Gilbert" reached this page only inside the Organization JSON-LD. Wording
+  # and role format follow the Coding page's own answer so the two cannot drift; the
+  # three names and their roles are what `src/content/team/` publishes for this
+  # programme. Deliberately unlinked, because linking the four profiles from the page
+  # that sells the day is backlog 24 and Drummond's call. Guest speakers stay unnamed.
+  - q: Who runs it?
+    a: >-
+      Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
+      Oxford’s Practical AI meetup, with Nicolai Thomson (founder, Jenesys AI), Emine
+      Gokce Phillips (co-founder and CEO, Novaria) and Jonathan Waddingham (product
+      consultant). Each runs part of the day, and the day is facilitated rather than
+      lectured, so there are people in the room with you while you build.
 ---
 
 The day runs on one idea: most people are still using AI the way they used Google in 2004 - one question, one tab. That is fine, and it is not the interesting part.

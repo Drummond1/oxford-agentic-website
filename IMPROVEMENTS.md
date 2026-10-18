@@ -336,9 +336,106 @@ Status: `todo` · `blocked` (why) · `doing`
     build-time warning added in the same cycle skips them too, since it only reads indexable
     pages, so nothing will nag about this. One word from him and the loop closes it in a line.
 
+29. `todo` **(needs Drummond, one word about a named real person)** - **the site gives
+    Jonathan Waddingham two different former employers.** His team profile says he is "an
+    independent product consultant and the former Chief Product Officer at **Lightful**";
+    the Coding Bootcamp's "Who runs it?" answer, on both its programme and its booking page,
+    says "Jonathan Waddingham (**CPO, ex-JustGiving**)". Both can be true read charitably -
+    CPO at one, earlier career at the other - but "CPO, ex-JustGiving" reads to most people,
+    and to an answer engine, as CPO *of* JustGiving. The 17 Oct probe that put Josh Lawman
+    back on the roster is why this is worth a word rather than a shrug: a misattributed role
+    for a named real person is the error class this site has already been bitten by. **The
+    loop will not resolve it**: it cannot check either employment history from here, and
+    guessing between two published claims about someone's career is worse than asking. This
+    cycle's new answer on the Agentic pages deliberately names him as "product consultant"
+    only, which is what `src/content/team/` publishes and what `/team/` shows, so it adds no
+    third version. One word from him fixes whichever of the two is wrong.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-18 (14:00 local cycle) - The bootcamp the whole site is built around never said
+  who teaches it. The Coding Bootcamp, three weeks old, answers that question on both of its
+  pages; the flagship line answered it on neither, and an engine asked it today answered from
+  a Luma listing instead.**
+  - **Evidence: the proof axis, which the GEO log had never tested in 121 probes.** Four
+    probes on whether one day produces anything real - what past attendees built, and who the
+    reader should believe. **None returned a page of ours.** The field has no proof and the
+    engines said so: every result was "an event listing describing what attendees are supposed
+    to build, not verified results", "treat the promises as marketing claims", "I found no
+    independent evidence for the 'one day' claim", and, asked directly, it "didn't turn up any
+    examples of what past attendees built".
+  - **The proof half needed nothing, and nothing was written for it.** We already publish the
+    specifics the field lacks: Cohort 1's page carries sixteen attendees, three teaching blocks
+    and the tasks that surfaced in the room, two event pages carry "What did people in Cohort 1
+    actually build?", and `what-you-can-build-in-one-day-with-ai` (12 Oct) answers the first
+    probe's query almost verbatim. The built programme page names Cohort 1 eleven times. A
+    six-day-old guide not being cited is engine lag, not a gap, so no guide and **no Q&A block**:
+    padding a guide that already answers the question is not an improvement.
+  - **The credibility half was a real gap, measured in `dist/`.** On the Agentic Bootcamp's own
+    programme page the string "Drummond Gilbert" appeared **only inside the Organization
+    JSON-LD** - no visible copy named anyone, no "Saïd Business School", no "Practical AI
+    meetup" - and the Cohort 3 booking page was the same. The **Coding** Bootcamp answers "Who
+    runs it?" on both its programme and its booking page. So the flagship line, which this log
+    repeatedly shows ranking for the undated queries, was the one line that never said who
+    teaches the day, while the fourth probe answered that question for a buyer off Luma:
+    "Drummond Gilbert, who tutors in AI in Management at Saïd Business School, runs Oxford's
+    Practical AI meetup, along with three co-hosts."
+  - **Change: one FAQ, two files, no new fact in either.** "Who runs it?" on
+    `programmes/oxford-agentic-bootcamp.md` and on
+    `events/oxford-agentic-bootcamp-cohort-3.md`, last in both lists, which is where the
+    Coding pages put theirs. The wording and the role format are the Coding answer's own, so
+    the two lines cannot drift; the three names and their roles are exactly what
+    `src/content/team/` publishes for `programmes: ['oxford-agentic-bootcamp']` - Nicolai
+    Thomson (founder, Jenesys AI), Emine Gokce Phillips (co-founder and CEO, Novaria),
+    Jonathan Waddingham (product consultant) - and the closing clause restates this page's own
+    published lines, "the day is facilitated rather than lectured" and `/team/`'s "Each runs
+    part of a day". `FAQPage` question counts go 18 to 19 and 10 to 11; site totals unchanged
+    at 9 `FAQPage` and 5 `Event` nodes.
+  - **What it deliberately does not do.** The four names are **not linked**: linking the
+    profiles from the page that sells the day is backlog 24 and Drummond's call, and this
+    cycle does not pre-empt it. **Guest speakers stay unnamed** (his 13 Sept decision), and
+    nothing claims which people will be in the room on 19 November, because that is an event
+    fact and `luma.com` does not resolve from here. It adds no employment history beyond the
+    `role` and `company` fields `/team/` already shows, which is also why it does not repeat
+    the Coding pages' "ex-JustGiving" clause - see the new backlog 29.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings (the 12
+    outbound warnings are the sandbox egress policy, not the site). `check:flags` passes on the
+    all-on and all-off builds. Verified in `dist/` that the answer lands on all three surfaces -
+    visible HTML on both pages, the `FAQPage` JSON-LD (19 and 11 questions counted in the built
+    graph), and `llms-full.txt`, which both voice agents read. Headless Chromium against a local
+    `astro preview` of this exact build, both pages at **375px and 1280px**: one correct `h1`
+    each, the new accordion found by its summary text, clicked open, its answer visible and
+    complete at both widths, `scrollWidth` equal to `clientWidth`, no page errors, no failed
+    local requests; four screenshots, and `Saïd` and `Oxford’s` both render with no fallback
+    glyph. `updatedDate` moved on the one file that carries one. **No event fact moved**:
+    Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 on 19 November and
+    Coding Cohort 1 on 26 November, all unchanged.
+  - **No guide. Guides this week: 2 of 3** (12 and 13 Oct); today's allowance unused by choice
+    for the fourteenth day running.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export. Nothing estimated.
+  - **Production could not be read, for the thirteenth day, and neither could Luma.** The
+    sandbox egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by the
+    proxy) and `luma.com` does not resolve, so `build.txt` could not be polled and **no event
+    fact could be re-verified against the live Luma pages**. Deployment state comes from the
+    Actions API: Deploy to GitHub Pages run 39111258713 on `8eeab28`, the `origin/main` HEAD,
+    **success** at 08:24Z, with nothing queued or in progress when this cycle started.
+  - **Off-page: one new lead and the same item worse for the fourth day.** `createwith.com`
+    added to the bottom of the review list - it carried a one-day Oxford AI workshop on the 18
+    Oct travel probe and Saïd Business School's own programme today, so it indexes both ends of
+    the field. And the Luma item gained a fifth axis: today's brand-adjacent probe took the
+    **host roster** off the stale listing as well as the date and the venue contradiction.
+    Nothing contacted, nothing submitted, no account made.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 and the two stale
+    branches (20), the bronze contrast token (21), Cohort 2's outcomes (22), the testimonial
+    heading on past-cohort pages (23), the team-profile byline link (24), the Coding Bootcamp's
+    paid-plan prerequisite (25), the doubled event-page heading (26), the lunch and travel lines
+    (27), the two voice pages' apostrophes (28) and, new today, Jonathan Waddingham's two
+    published former employers (29).
 
 - **2026-10-18 (09:20 local cycle) - The site set the same phrase two ways on the same
   page. Markdown prose goes through the typographer and gets a curly apostrophe;

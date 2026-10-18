@@ -53,6 +53,16 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     removed from the team on 4 August - and could not resolve the roster at all: "Listings
     differ on the fourth host: one names Nicolai Thomson, another names Josh Lawman." It gave
     the date as 21 July 2026 and repeated the venue contradiction.
+  - **A fifth axis, 18 Oct 2026 (14:00 cycle): the engine now takes the host roster off Luma
+    too.** A proof-shaped brand probe - "Oxford agentic AI bootcamp what people built examples
+    senior leaders one day Worcester College" - returned `luma.com/oxfordagentic2`,
+    `luma.com/k7c2rm5s`, allai.events and **no page of ours**, gave the date as 21 July 2026,
+    repeated the Worcester-versus-St-Anne's venue contradiction, and answered "who runs it"
+    straight off the listing: "Drummond Gilbert, who tutors in AI in Management at Saïd
+    Business School, runs Oxford's Practical AI meetup, along with three co-hosts." The site
+    half of that was closed the same cycle - both Agentic pages now answer "Who runs it?" in
+    visible copy - but the listing is still the page being read, and it is still his.
+
   - **The site is clean on this and cannot fix it.** Verified in `dist/` the same cycle:
     "Josh Lawman" appears in no built page, `/team/` does not list him, `/team/josh-lawman/`
     is a noindex redirect to `/team/`, and the name is absent from `llms-full.txt`. The only
@@ -213,4 +223,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Note on the standing decision:** this is a directory listing of the bootcamps, not a
     location page and not services content, so it does not touch the "no Oxfordshire services
     cluster" rule. If the site only accepts providers on a services footing, drop it.
+  - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.
+
+- **createwith.com - event-listing site carrying both small providers and institutions** -
+  found 18 Oct 2026 by answer-engine probe. Added at the bottom, like the two entries above
+  it, so the Luma item at the top keeps its place.
+  - Where it came from: returned on the 18 Oct travel probe carrying a **one-day Oxford AI
+    workshop** with its hours and venue published ("9:00am-5:00pm at Regus"), and again on the
+    18 Oct proof probe carrying **Saïd Business School's own Oxford Generative and Agentic AI
+    Programme** (https://www.createwith.com/event/oxford-oxford-generative-and-agentic-ai-programme-may-2026).
+    A directory that indexes both a Regus-room workshop and a Saïd programme is retrieving on
+    exactly our query shape.
+  - **Not checked at all.** The host does not resolve from this sandbox. Whether it takes
+    submissions, whether it charges, whether listings carry a followed link, and whether it
+    would accept a one-day in-person bootcamp are all unknown.
+  - Why it might be worth ten minutes: a third-party listing is still the one thing the
+    Organization node lacks (`sameAs` is empty), and this one already sits beside the exec-ed
+    programme our buyers compare us with.
   - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.

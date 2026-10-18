@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-18 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **proof** axis, which the log had never tested in 121
+probes: not what the day costs, what to bring, when it finishes or what follows it, but
+whether one day produces anything real at all - what past attendees built, and who the
+reader should believe.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what can you actually build in one day at an AI workshop examples of agentic workflows business leaders built | **No** | luma.com/9qhgfozh, lu.ma/epemg9nx, maven.com (two one-day courses), Microsoft AppSource "Agent in a Day" (x3), odsc.ai London, meetup.com |
+| does a one-day AI training course actually change how you work afterwards evidence outcomes UK | **No** | ivee.jobs (a live-cohort vendor), academy.xebia.com, executivecourses.com, fari.brussels, happeningnext London, aiawareness.ai (x2) |
+| is one day enough to learn agentic AI what do attendees have working by the end of the day hands-on bootcamp | **No** | datasciencedojo.com (Dallas, Houston), odsc.ai London, **luma.com/k7c2rm5s and luma.com/oxfordagentic2**, MindStudio "AI Agent Ninja" bootcamps, ibm.com TechXchange, **allai.events** |
+| Oxford agentic AI bootcamp what people built examples senior leaders one day Worcester College | **No** | **luma.com/oxfordagentic2 and luma.com/k7c2rm5s**, sbs.ox.ac.uk (Generative and Agentic AI Programme, online, x2), createwith.com, **allai.events**, nobleprog.co.uk, onlinecourses.worc.ox.ac.uk |
+
+**Reading.**
+
+- **The field has no proof and says so.** The first probe's engine called every result an
+  event listing describing "what attendees are supposed to build, not verified results", said
+  the promises should be treated as marketing claims, and reported "I found no independent
+  evidence for the 'one day' claim". The second found "no independent evidence on whether a
+  one-day AI course changes how people work afterwards, and nothing UK-specific with outcome
+  data", and noted that the one behaviour-change claim came from a company selling live AI
+  cohorts. The fourth, asked directly, said it "didn't turn up any examples of what past
+  attendees built".
+- **No on-site gap on the proof half, and nothing was written for it.** The site already
+  publishes the specifics the field lacks: Cohort 1's page carries sixteen attendees, three
+  teaching blocks and the tasks that surfaced in the room (lead generation, internal reporting,
+  marketing content), the Cohort 2 and Cohort 3 pages carry "What did people in Cohort 1
+  actually build?", and `what-you-can-build-in-one-day-with-ai` (published 12 Oct) answers the
+  first probe's query almost verbatim, including what will *not* fit in a day. The built
+  programme page names Cohort 1 eleven times. Six days is not long enough for an engine to
+  pick a guide up, so the absence is lag, not a hole. **No guide, and no Q&A block**: padding a
+  guide that already answers the question is not an improvement.
+- **The credibility half was a real gap, and it was ours.** The fourth probe answered "who
+  runs it" off a Luma listing - "Drummond Gilbert, who tutors in AI in Management at Saïd
+  Business School, runs Oxford's Practical AI meetup, along with three co-hosts" - because no
+  page of ours came back. Checked in `dist/`: on the Agentic Bootcamp's own programme page the
+  string "Drummond Gilbert" appeared **only inside the Organization JSON-LD**, with no visible
+  copy naming anyone, no "Saïd Business School" and no "Practical AI meetup"; the Cohort 3
+  booking page was the same. The **Coding** Bootcamp, launched 25 September, answers "Who runs
+  it?" on both its programme and its booking page. So the flagship line, which this log
+  repeatedly shows ranking for the undated queries, was the one line that never said who
+  teaches the day. Acted on this cycle.
+- **The brand-adjacent probe is the same off-page problem for the fourth time in four days,
+  and it now reaches a fifth axis.** Probes 3 and 4 both returned `luma.com/oxfordagentic2`,
+  `luma.com/k7c2rm5s` and allai.events and **no page of oxfordagentic.com**. The engine gave
+  the date as 21 July 2026, said the venue "should be confirmed" because two listings disagree
+  (Worcester College and St Anne's), and this time also took the **host roster** off Luma. Note
+  appended to that entry on the review list. Nothing on-site fixes it; the ten minutes in Luma
+  still would.
+- **One new off-page lead, unverified: createwith.com.** It was returned on the Oxford travel
+  probe on 18 Oct (a one-day Oxford AI workshop, hours and venue published) and again today
+  carrying Saïd Business School's own programme, so it indexes both small providers and
+  institutions. Added to the bottom of the review list. The host was not loaded; nothing
+  contacted.
+
 ## 2026-10-18 (08:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

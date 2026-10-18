@@ -166,4 +166,14 @@ faqs:
       Anyone who cannot bring a real task from their own work, because the whole day
       runs against one and without it you get a demonstration instead of an outcome.
       And anyone expecting a vendor or platform pitch, because no tool is being sold.
+  # Same answer as the programme page, which is where the facts live. The Coding
+  # Bootcamp answers this on both its programme and its booking page; this line
+  # answered it on neither. Names unlinked, and the guest speakers stay unnamed.
+  - q: Who runs it?
+    a: >-
+      Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
+      Oxford’s Practical AI meetup, with Nicolai Thomson (founder, Jenesys AI), Emine
+      Gokce Phillips (co-founder and CEO, Novaria) and Jonathan Waddingham (product
+      consultant). Each runs part of the day, and the day is facilitated rather than
+      lectured, so there are people in the room with you while you build.
 ---
