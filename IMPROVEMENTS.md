@@ -311,9 +311,108 @@ Status: `todo` · `blocked` (why) · `doing`
     that takes the booking, which is a layout call on the conversion journey. One line from
     him either way.
 
+27. `todo` **(needs Drummond, two event facts only he has)** - **is lunch provided on the
+    Second Brain and Coding days, and should either page say anything about getting there?**
+    "Is lunch included?" is published on exactly one page of the whole site, the Agentic
+    programme page, and "Lunch and refreshments are included" sits in `assurances` on the
+    Agentic event pages. The **Second Brain** and **Coding** lines say nothing about food on
+    any page. The 18 Oct travel probe found the field answering this straight off booking
+    pages - a council course naming a sandwich lunch, a Manchester one listing "Lunch, Snacks
+    and beverages", a London agenda printing a 12:00 lunch break - and both workshop probes
+    closed by telling the reader to go and ask the provider. **The loop will not write it**:
+    whether lunch is laid on at the Pitt Rivers Museum on 21 October, or on the coding day at
+    Worcester College, is an event fact, and `luma.com` does not resolve from the sandbox.
+    The same cycle declined **travel detail** on the same rule: nearest station, walking time,
+    parking and Park & Ride are facts about the world that an invented sentence gets wrong,
+    and the street and postcode are already on every event page. If he wants a "getting here"
+    line, it needs to come from him. One line closes the lunch half across four pages.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-18 (02:00 local cycle) - Every event page tells you the day ends at 17:00.
+  No programme page said when the day ends at all, and the programme pages are the ones
+  that rank for the queries with no date in them.**
+  - **Evidence: the arrival-and-travel axis, which the GEO log had never tested in 114
+    probes.** Three probes on the question a buyer who does not live in Oxford asks last -
+    what time does it start, when does it finish, does that mean a hotel. None returned a
+    page of ours. The shape is the one the payment and confidentiality axes returned on 17
+    Oct: **every useful answer came off a provider's own booking or listing page** publishing
+    its hours, its lunch line and its getting-here note - "9:00am to 5:00pm at Regus" on a
+    one-day Oxford workshop, "approximately 9.30am to 4pm" with a sandwich lunch on a council
+    course, "8:30 AM arrival ... 12:00 PM lunch ... 4:00 PM wrap-up" on a London agenda. Both
+    workshop probes closed by telling the reader to check the provider's booking page or email
+    the organiser. No editorial page appeared in any of the three result sets, so this is a
+    page fix, not a guide.
+  - **The gap, measured.** All five event pages print **9:00-17:00** in the Key facts card,
+    and the Second Brain and Coding event pages say it again inside an answer. The three
+    **programme** pages said it **nowhere** - not in body copy, not in any of their 16, 12 and
+    8 FAQs, not in visible text anywhere on the page. Those are the pages this same log shows
+    ranking for the undated queries (`second brain for AI one-day in-person course UK`, #1 on
+    13 Sept; the Agentic programme page is the hub the nav and every guide link into). So a
+    buyer weighing a train, and possibly a night in Oxford, had to open a dated event page to
+    find out when the day ends.
+  - **Change: one FAQ on each of the three programme pages, no new fact in any of them.**
+    "What time does the day start and finish?", placed directly after "Where in Oxford is it
+    held?" on all three, because where and when are the same decision. 09:00 to 17:00 is what
+    all five event files publish in `startDate` and `endDate` and what the Key facts card
+    already renders. Each answer closes with that page's own existing deferral idiom - "Each
+    event page confirms its own date and times, and that is the page to go by" on the Agentic
+    and Coding pages, "The exact date and times are confirmed on each event's own page" on
+    Second Brain - so the authoritative surface stays the event page. The Agentic answer adds
+    one clause the other two cannot: its event agendas run to "16:00 Making it stick, 16:20
+    Wrap and networking", so its last block genuinely is the wrap and networking rather than
+    new material. The Second Brain and Coding agendas carry no clock times at all ("Morning",
+    "Session 1"), so neither answer claims anything about their shape. `FAQPage` question
+    counts go 16 to 17, 12 to 13 and 8 to 9; site totals unchanged at 9 `FAQPage` and 5
+    `Event` nodes.
+  - **What it deliberately does not say.** Nothing about trains, walking times, parking, Park
+    and Ride or hotels; nothing promising that a return trip from London fits in the day;
+    nothing about lunch on the two lines that have never mentioned it. The travel probe's
+    whole field was JustPark, Parkopedia and hotel directions pages, and a sentence of ours in
+    that field would be a guess about the world. Both declined items are raised as backlog 27.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings. `check:flags`
+    passes on the all-on and all-off builds. Verified in `dist/` that the answer lands on all
+    three surfaces - visible HTML, the `FAQPage` JSON-LD on each page (17, 13 and 9 questions
+    counted in the built graph), and `llms-full.txt` (three occurrences), which both voice
+    agents read. Headless Chromium against a local `astro preview` of this exact build, all
+    three pages at **375px and 1280px**: one `h1` each and correct, the new accordion found by
+    its summary text, clicked open, its answer visible and containing both 09:00 and 17:00 at
+    both widths, `scrollWidth` equal to `clientWidth`, no page errors, no failed local
+    requests; six screenshots. `updatedDate` moved on all three files. **No event fact moved**:
+    Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 on 19 November and
+    Coding Cohort 1 on 26 November at Worcester College, all unchanged.
+  - **No guide. Guides this week: 2 of 3** (12 and 13 Oct); today's allowance unused by choice
+    for the twelfth day running. The travel probe is the clearest decline the topic rule has
+    produced in a while: the field is car parks and hotels, it is not ours, and a page from us
+    would convert nobody.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export. Nothing estimated.
+  - **Production could not be read, for the tenth day, and neither could Luma.** The sandbox
+    egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by the proxy)
+    and `luma.com` does not resolve for `curl` or `WebFetch`, so `build.txt` could not be
+    polled and **no event fact could be re-verified against the live Luma pages**. That is why
+    this cycle moved none. Deployment state comes from the Actions API: Deploy to GitHub Pages
+    run 39061117557 on `dcec06c`, the `origin/main` HEAD, **success** at 19:08Z on 17 Oct,
+    with nothing queued or in progress when this cycle started.
+  - **A note for whoever reads the scheduled prompt next.** Its CONTEXT block still describes
+    Cohort 2 (16 Sept), Cohort 3 as 15 Oct and `luma.com/oxfordagentic2`/`3` as the live pages.
+    The repo and the Actions history disagree and are right: Cohort 3 is **19 November**, the
+    Coding Bootcamp Cohort 1 is **26 November**, and Second Brain Cohort 1 is on **21 October**,
+    three days from now. The prompt's two "known candidates" about stale Cohort 2 sentences and
+    `indexnow-ping.mjs` were both checked off as already done on 17 Oct and are still done.
+  - **Off-page: one unverified lead added**, `tutorials.co.uk`, a UK training directory whose
+    Oxfordshire page came back on two separate probes this cycle. Placed at the bottom of the
+    review list so the Luma item keeps the top. The rest of what the probes returned was
+    hotels, car parks and providers. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma listings (2b and the
+    review list), PR #1 (20), the bronze contrast token (21), Cohort 2's outcomes (22), the
+    past-cohort testimonial heading (23), the guide-byline call (24), the Coding Bootcamp's
+    paid-plan requirement (25), the duplicated event hero eyebrow (26) and now lunch on the
+    Second Brain and Coding days (27).
 
 - **2026-10-17 (19:00 local cycle) - The bootcamp that makes "bring a real task from your
   own work" a condition of attending never said what to do if that work is confidential.

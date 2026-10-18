@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-17T19:30:00+01:00"
+updatedDate: "2026-10-18T02:10:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -94,6 +94,18 @@ faqs:
       St Anne's College in July 2026, in a seminar room laid out cabaret-style for
       small-group work, so an older listing may still show that address. Each event page
       confirms its own venue and date, and that is the page to go by.
+  # Where and when belong together. The three upcoming event pages each print
+  # "9:00-17:00" in their key facts card and the Second Brain one says it in an
+  # answer, but no programme page said it anywhere, and the programme pages are
+  # the ones that rank for the queries with no date in them. A buyer deciding
+  # whether the day costs them a hotel should not have to open an event page to
+  # find out. No new fact: 09:00 to 17:00 is what every event file publishes.
+  - q: What time does the day start and finish?
+    a: >-
+      Registration and coffee are from 09:00 and the day finishes at 17:00. The last
+      block is the wrap and networking rather than new material, so check both ends
+      against your travel before you book. Each event page confirms its own date and
+      times, and that is the page to go by.
   - q: How many people are in the room?
     a: >-
       Not many, and it is capped. The size is deliberate: the day is facilitated, not

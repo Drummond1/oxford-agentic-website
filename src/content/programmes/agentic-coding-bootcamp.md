@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-16T13:30:00+01:00"
+updatedDate: "2026-10-18T02:10:00+01:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -61,6 +61,13 @@ faqs:
       At Worcester College on Walton Street, in central Oxford, which is also where the
       Oxford Agentic Bootcamp runs. Cohort 1 is there on Thursday 26 November 2026. Each
       event page confirms its own venue and date, and that is the page to go by.
+  # See the note on the same answer on the Agentic programme page: the hours are
+  # on every event page and were on no programme page.
+  - q: What time does the day start and finish?
+    a: >-
+      The day runs 09:00 to 17:00, so it is worth checking both ends against your
+      travel before you book. Each event page confirms its own date and times, and
+      that is the page to go by.
   - q: Can I bring my team, or book for several people?
     a: >-
       Yes. Bringing a colleague means two of you go back able to build rather than one,

@@ -187,3 +187,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     returned that is not already on this list, and a third-party listing is still the one thing
     the Organization node lacks (`sameAs` is empty).
   - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.
+
+- **tutorials.co.uk - UK training directory with an Oxfordshire page** - found 18 Oct 2026 by
+  answer-engine probe. Added at the bottom, like the entry above it, so the Luma item at the
+  top keeps its place.
+  - Where it came from: it was returned on two separate probes this cycle, on
+    https://www.tutorials.co.uk/oxfordshire and https://www.tutorials.co.uk/oxfordshire/oxford
+    ("AI training in Oxfordshire") and again on https://www.tutorials.co.uk/train-your-team.
+    So it is indexed and retrieved on both a county-level training query and a team-training
+    query, which is the behaviour that makes a directory worth a listing.
+  - **Not checked at all.** The host does not resolve from this sandbox. Whether it takes
+    submissions, whether it charges, whether it would accept a one-day in-person bootcamp
+    rather than a scheduled course, and whether its listings carry a followed link are all
+    unknown.
+  - Why it might be worth ten minutes: a third-party listing is still the one thing the
+    Organization node lacks (`sameAs` is empty), and this is a UK directory rather than
+    another US aggregator.
+  - **Note on the standing decision:** this is a directory listing of the bootcamps, not a
+    location page and not services content, so it does not touch the "no Oxfordshire services
+    cluster" rule. If the site only accepts providers on a services footing, drop it.
+  - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.

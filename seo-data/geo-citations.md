@@ -5,6 +5,49 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-18 (02:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **arrival and travel** axis, which the log had never
+tested in 114 probes: not what the day costs, what you must install or whether you may bring
+your own work, but the question a buyer who does not live in Oxford asks last - what time does
+it start, when does it finish, and does that mean a hotel.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what time does a one-day AI training workshop in Oxford start and finish can I travel from London and back in the same day | **No** | OeRC/Oxford AI centre training events, createwith.com (one-day Oxford workshop, 9:00am-5:00pm at Regus), tutorials.co.uk (Oxfordshire, Oxford), Eventbrite, Oxford Royale timetable PDF, talks.ox.ac.uk, NobleProg Oxford, Oxford Entrepreneurs |
+| getting to a one-day training course in Oxford city centre by train or car, is there parking, where to stay the night before | **No** | JustPark, Parkopedia, Courtyard by Marriott, Leonardo Royal, Jurys Inn, Malmaison directions, Secret Escapes, newtonimpact.com event travel page |
+| is lunch included one-day paid business AI training workshop UK what time does it finish | **No** | Eventbrite (London 1-day), South Norfolk & Broadland council course (9.30am-4pm, sandwich lunch, GBP 130), happeningnext (Manchester, "Lunch, Snacks and beverages will be provided"), STL Training, BrainStation London (8:30 arrival, 12:00 lunch, 4:00 wrap), LSBU short courses, tutorials.co.uk |
+
+**Reading.**
+- **Same shape as the payment and confidentiality axes, and the same conclusion: this is
+  answered off provider pages, not out of editorial.** Every useful answer in all three
+  result sets came from a booking or listing page publishing its own hours, its own lunch
+  line and its own getting-here note - 9:00am to 5:00pm at Regus, 9.30am to 4pm with a
+  sandwich lunch, an 8:30 arrival and a 4:00 wrap. Both workshop probes closed by telling
+  the reader to go and check the provider's booking page or email the organiser. So the fix,
+  if there is one, is on our own pages, not in a guide. **No guide candidate here**: the
+  travel probe's field is hotels, car parks and Parkopedia, which we have nothing to add to
+  and no business writing about.
+- **The gap, measured on our own site.** All five event pages print "9:00-17:00" in the Key
+  facts card, and the Second Brain and Coding event pages say it again in an answer. **No
+  programme page said it anywhere** - not in copy, not in an FAQ, not in the Course node's
+  visible text - and the programme pages are the ones this log repeatedly shows ranking for
+  the queries with no date in them (`second brain for AI one-day in-person course UK`, #1 on
+  13 Sept). A buyer weighing a train and possibly a hotel had to open an event page to learn
+  when the day ends. Acted on this cycle.
+- **Lunch is a real second gap and was deliberately not closed.** "Is lunch included?" is
+  published on exactly one page of the site, the Agentic programme page, and the Agentic
+  event pages carry "Lunch and refreshments are included" in `assurances`. The Second Brain
+  and Coding lines say nothing about food anywhere. Whether lunch is provided at the Pitt
+  Rivers Museum on 21 October, or on the coding day, is an event fact this loop cannot
+  verify - Luma does not resolve from the sandbox - so nothing was written. Raised for
+  Drummond instead (backlog 27).
+- **Travel detail was also declined, on the same rule.** Nearest station, walking times,
+  parking and Park & Ride are facts about the world that we could get wrong, and the venue
+  street and postcode are already published on every event page. Raised with the lunch item
+  rather than guessed.
+
 ## 2026-10-17 (19:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

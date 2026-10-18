@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-08-16T08:00:00+01:00"
+updatedDate: "2026-10-18T02:10:00+01:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -86,6 +86,13 @@ faqs:
     a: >-
       In central Oxford. Cohort 1 is at the Pitt Rivers Museum on South Parks Road.
       The exact venue and date are confirmed on each event's own page.
+  # See the note on the same answer on the Agentic programme page: the hours are
+  # on every event page and were on no programme page.
+  - q: What time does the day start and finish?
+    a: >-
+      The day runs 09:00 to 17:00, so it is worth checking both ends against your
+      travel before you book. The exact date and times are confirmed on each event's
+      own page.
   - q: Can I bring my team, or book for several people?
     a: >-
       Yes. Teams are welcome, and bringing a colleague means the same approach goes
