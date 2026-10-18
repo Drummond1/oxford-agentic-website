@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-18T02:10:00+01:00"
+updatedDate: "2026-10-18T08:30:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -138,6 +138,20 @@ faqs:
     a: >-
       No. The value is in being in the room and building, not in a video to watch later.
       You leave with the workflow you built rather than a recording you might get back to.
+  # The post-day half of the arrival-and-after axis. "What happens after the day?"
+  # was published on exactly one page, the homepage FAQ in `src/lib/home.ts`, and
+  # nobody books a bootcamp from the homepage. The wording is that answer's own,
+  # kept deliberately short of community, network or alumni, which promise
+  # infrastructure; the first sentence restates this page's own `outcomes` line and
+  # the recording answer directly above.
+  - q: What happens after the day?
+    a: >-
+      You leave with the workflow you built rather than a recording, and you leave with
+      the group. Everyone in the room has built the same thing, you go away with their
+      contact details, and people stay in touch afterwards. You also hear first when the
+      next one is on - reunions and build sessions, editions for particular functions,
+      and the free meetups. Some of those are paid and some are free. It is an upside
+      rather than a reason to come.
   - q: Is lunch included?
     a: >-
       Yes. Lunch and refreshments are provided, so you can spend the day building rather

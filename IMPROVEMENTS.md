@@ -331,6 +331,92 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-18 (08:00 local cycle) - The bootcamp whose own outcomes promise "a room of
+  senior peers ... and their contact details" never answered what happens after the day.
+  The answer has been published since before September, on the homepage, which is not a
+  page anybody books from.**
+  - **Evidence: the after-the-day axis, which the GEO log had never tested in 117 probes.**
+    Four probes on what a buyer has once the day is over - materials, follow-up, and whether
+    the room turns into anything. **None returned a page of ours.** The shape is the one the
+    payment, confidentiality and travel axes returned: the answer lives on provider pages and
+    the engine closes by sending the reader to one. The first probe found "no authoritative UK
+    standard", said every result was a provider's own marketing, and advised the reader to
+    "ask the provider directly what follow-up is included, how long it lasts, and whether it
+    costs extra"; the second said it "depends on the organiser" and to "check the event page
+    for a 'what's included' section, or email the organiser". What competitors publish is the
+    bar: a follow-up session inside the package, a separate 2-hour 1-2-1 at GBP 95, three
+    months of support on a funded course, recordings about a week later, and - on two of the
+    three bootcamp-shaped results - an **alumni community**, one of them describing a cohort
+    community "meant to outlast the programme".
+  - **The gap, measured, and it is the 17 Oct invoice shape exactly.** `grep` for "after the
+    day" across `src/`: **one published occurrence**, the homepage FAQ in `src/lib/home.ts`.
+    In `dist/` it reached `index.html`, `home-photos/` and `llms-full.txt` and nothing else.
+    No programme page and none of the five event pages carried it, while the Agentic
+    programme page's `outcomes` promises "a room of senior peers working on the same problem,
+    and their contact details" and Cohort 3's `whatYoullBuild` promises "a written recipe, so
+    you can rebuild and extend it on Monday". The promise was published on the page; the
+    question that asks about it was not.
+  - **Change: one FAQ, two files, no new fact in either.** "What happens after the day?" on
+    `programmes/oxford-agentic-bootcamp.md` (after "Is the day recorded?", which is the answer
+    that raises it) and on `events/oxford-agentic-bootcamp-cohort-3.md` (after "How big is the
+    cohort?", because the room and what the room becomes are one thought). The substance is
+    `home.ts`'s own answer, so the two surfaces cannot drift, and each version opens on its own
+    page's published facts: the programme version on its `outcomes` contact-details line and
+    the recording answer directly above it, the Cohort 3 version on its written-recipe line and
+    its `assurances` "you leave with the workflow rather than a recording". It keeps `home.ts`'s
+    deliberate restraint, recorded in the comment there: never community, network or alumni
+    network, because those words promise infrastructure - describe what happens instead, and
+    close on "an upside rather than a reason to come". `FAQPage` question counts go 17 to 18 and
+    9 to 10; site totals unchanged at 9 `FAQPage` and 5 `Event` nodes.
+  - **The other two lines were deliberately left out**, recorded so the next cycle does not add
+    them by pattern-matching. The homepage answer rests on rooms that have run: "everyone in the
+    room has built the same thing, they stay in touch afterwards" is an observation about Agentic
+    Cohorts 1 and 2. Second Brain Cohort 1 is on 21 October and Coding Cohort 1 on 26 November,
+    so neither has a room to describe. Revisit after each has run.
+  - **What it deliberately does not say.** Nothing about included follow-up sessions, email
+    support, a portal, materials sent afterwards, a certificate (unconfirmed, say nothing either
+    way), or how often reunions and function editions actually happen. Every competitor answer
+    the probes returned was a commitment with a duration or a price on it; we have no such
+    commitment to publish, so none was invented.
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, 3,026 internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings (the 12 outbound
+    warnings are the sandbox egress policy, not the site). `check:flags` passes on the all-on and
+    all-off builds. Verified in `dist/` that the answer lands on all three surfaces - visible HTML
+    on both pages, the `FAQPage` JSON-LD (18 and 10 questions counted in the built graph), and
+    `llms-full.txt` (3 occurrences), which both voice agents read. Headless Chromium against a
+    local `astro preview` of this exact build, both pages at **375px and 1280px**: one `h1` each
+    and correct, the new accordion found by its summary text, clicked open, its answer visible and
+    complete at both widths, `scrollWidth` equal to `clientWidth`, no page errors, no failed local
+    requests; four screenshots. `updatedDate` moved on the one file that carries one. **No event
+    fact moved**: Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 on 19
+    November and Coding Cohort 1 on 26 November at Worcester College, all unchanged.
+  - **No guide. Guides this week: 2 of 3** (12 and 13 Oct); today's allowance unused by choice for
+    the thirteenth day running. This axis cannot carry one: "what follow-up do you get" is a
+    question about one provider's terms, and no editorial page of ours can answer it for the field.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment, and
+    `seo-data/` holds no CSV or TSV export. Nothing estimated.
+  - **Production could not be read, for the eleventh day, and neither could Luma.** The sandbox
+    egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by the proxy) and
+    the host does not resolve for `WebFetch`, so `build.txt` could not be polled and **no event
+    fact could be re-verified against the live Luma pages**. That is why this cycle moved none.
+    Deployment state comes from the Actions API: Deploy to GitHub Pages run 39085420689 on
+    `4839a84`, the `origin/main` HEAD, **success** at 01:10Z, with nothing queued or in progress
+    when this cycle started.
+  - **Off-page: no new item, and one existing item got materially worse.** The brand-adjacent
+    probe - "hands-on agentic AI bootcamp Oxford what happens after the day" - returned two Luma
+    pages, **allai.events** and five competitors, and **no page of oxfordagentic.com at all**. The
+    engine then reported the date as "21 Jul 2026", said "that session has already passed ... I
+    didn't find a newer date", and noted that "the listings disagree" on the venue, naming
+    Worcester College and St Anne's. That is the second probe in three days in which the stale
+    allai.events listing stands in for our own site, and the first in which the engine tells the
+    reader the bootcamp is over. Note appended to that entry on the review list; nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: the Luma listings and the stale
+    allai.events page (2b and the review list), PR #1 (20), the bronze contrast token (21), Cohort
+    2's outcomes (22), the past-cohort testimonial heading (23), the guide-byline call (24), the
+    Coding Bootcamp's paid-plan requirement (25), the duplicated event hero eyebrow (26) and lunch
+    on the Second Brain and Coding days (27).
+
 - **2026-10-18 (02:00 local cycle) - Every event page tells you the day ends at 17:00.
   No programme page said when the day ends at all, and the programme pages are the ones
   that rank for the queries with no date in them.**

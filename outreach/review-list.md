@@ -88,6 +88,13 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Not checked:** the page was NOT loaded. The sandbox egress policy blocks outbound
     fetches this cycle, so everything above comes from the search result itself. Confirm the
     URL resolves and the date before acting.
+  - **Reconfirmed and worse, 18 Oct 2026 (08:00 cycle).** A second, differently-worded probe -
+    "hands-on agentic AI bootcamp Oxford what happens after the day" - again returned the two
+    Luma pages and allai.events and **no page of oxfordagentic.com**. This time the engine
+    stated the date as "21 Jul 2026", added that "that session has already passed" and that it
+    "didn't find a newer date", and said "the listings disagree" on the venue, naming Worcester
+    College and St Anne's College. So on that engine a buyer asking about the bootcamp today is
+    told it is over. Still nothing contacted and the page still not loaded from here.
   - **Raised in priority 15 Oct 2026 (08:05 cycle).** A near-brand probe - "Oxford Agentic
     Bootcamp Worcester College one-day bootcamp oxfordagentic.com" - returned this listing
     **first and returned oxfordagentic.com not at all**. So on that engine the stale page is

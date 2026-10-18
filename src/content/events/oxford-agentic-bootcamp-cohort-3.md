@@ -149,6 +149,17 @@ faqs:
       Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than
       lectured, which stops working in a large room. The exact number of places left is
       on the booking page.
+  # Published on the homepage FAQ and nowhere else, while this is the page that
+  # takes the booking. Same wording, with this page's own `whatYoullBuild` recipe
+  # line and `assurances` recording line in front of it.
+  - q: What happens after the day?
+    a: >-
+      You leave with the workflow running, plus the written recipe for rebuilding and
+      extending it on Monday, rather than a recording. You also leave with the group:
+      everyone in the room has built the same thing, people stay in touch afterwards,
+      and you hear first when the next one is on - reunions and build sessions,
+      editions for particular functions, and the free meetups. Some of those are paid
+      and some are free. It is an upside rather than a reason to come.
   - q: Who is it not for?
     a: >-
       People who want a conceptual overview of AI - this is a build day, not a briefing.

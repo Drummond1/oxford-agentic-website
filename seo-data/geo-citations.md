@@ -5,6 +5,60 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-18 (08:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **after the day** axis, which the log had never tested
+in 117 probes: not what the day costs, what to bring or when it finishes, but what a buyer
+has once it is over - materials, follow-up, and whether the room turns into anything.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what support do you get after a one-day AI training course UK follow-up after the workshop | **No** | designforonline.com, profiletree.com (five of nine results), aibusiness.com (2023 government-backed course, "three months of support"), excaliburpress.co.uk (a 2-hour 1-2-1 follow-up sold separately at GBP 95), lilachbullock.com |
+| do you get slides notes or recordings after an in-person AI workshop one day course | **No** | csulb.edu (recording posted about a week later), Eventbrite London 1-day, training.cam.ac.uk, tikkio, happeningnext, asu.edu, xray.tech |
+| AI bootcamp UK alumni community after the course do attendees stay in touch cohort network | **No** | City St George's MSc AI alumni reunion, ML4Good ("alumni community", ~20 per cohort, UK session), UBC AI Builders Bootcamp ("peer cohort community meant to outlast the programme"), EA Forum / LessWrong posts |
+| hands-on agentic AI bootcamp Oxford what happens after the day | **No** | luma.com/oxfordagentic2 and luma.com/k7c2rm5s, **allai.events**, Saïd Business School's online Generative and Agentic AI Programme, NobleProg Oxford, learnersink, transfer-solutions, NUS |
+
+**Reading.**
+
+- **Same shape as the payment, confidentiality and travel axes: the answer lives on provider
+  pages, and the engine closes by telling the reader to go and ask one.** The first probe
+  found "no authoritative UK standard" and said every result was a provider's own marketing,
+  advising the reader to "ask the provider directly what follow-up is included, how long it
+  lasts, and whether it costs extra". The second said it "depends on the organiser" and told
+  the reader to "check the event page for a 'what's included' section, or email the
+  organiser". Both are page fixes, not guide openings. **No guide candidate on this axis**:
+  it is a question about one provider's terms, which no editorial page can answer for us.
+- **What competitors publish, which is the bar.** A follow-up session included in the
+  package; a separate 2-hour 1-2-1 at GBP 95; three months of support on a funded course;
+  recordings posted about a week later; "resources before and after the session". Two of the
+  three bootcamp-shaped results lead with an **alumni community** and one says its cohort
+  community is "meant to outlast the programme". So the post-day story is something buyers in
+  this field are told, and several providers sell on it.
+- **The gap, measured on our own site, and it is the invoice shape exactly.** `grep` for
+  "after the day" across `src/`: **one published occurrence**, the homepage FAQ in
+  `src/lib/home.ts`. In `dist/` it reached `index.html`, `home-photos/` and `llms-full.txt`
+  and nothing else. No programme page and none of the five event pages answered it, while the
+  Agentic line's own `outcomes` promises "a room of senior peers working on the same problem,
+  and their contact details" and its Cohort 3 page promises "a written recipe, so you can
+  rebuild and extend it on Monday". The promise was published; the question that asks about
+  it was not. Acted on this cycle, on the Agentic programme page and the Cohort 3 booking
+  page.
+- **The other two lines were deliberately left out.** The homepage answer rests on rooms that
+  have actually run: "everyone in the room has built the same thing, they stay in touch
+  afterwards" is an observation about Agentic Cohorts 1 and 2. Second Brain Cohort 1 is on 21
+  October and the Coding Cohort 1 on 26 November, so neither has a room to describe yet.
+  Revisit after each has run.
+- **The brand-adjacent probe is the one to read twice, and it is an off-page problem.** Asked
+  the question with "Oxford" and "agentic bootcamp" in it, the engine returned **two Luma
+  pages, allai.events and five competitors, and no page of oxfordagentic.com at all**. It then
+  reported the date as **21 July 2026**, added "that session has already passed ... I didn't
+  find a newer date", and noted that "the listings disagree" on the venue, naming Worcester
+  College and St Anne's College. So a buyer asking this today is told our bootcamp is over.
+  Nothing on-site fixes that: the stale listing is already the top item of its kind on the
+  off-page review list, and this is the second probe in three days to show it standing in for
+  our own site. Note added to that entry.
+
 ## 2026-10-18 (02:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
