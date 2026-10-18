@@ -327,9 +327,78 @@ Status: `todo` · `blocked` (why) · `doing`
     and the street and postcode are already on every event page. If he wants a "getting here"
     line, it needs to come from him. One line closes the lunch half across four pages.
 
+28. `todo` **(needs Drummond, two one-character edits he has to want)** - **the two unlisted
+    voice pages are the only pages left with a typewriter apostrophe.** The 18 Oct sweep took
+    the indexable site from 46 straight marks to 0; `/find-your-bootcamp/` keeps three
+    ("Drummond's pick for you", "anyone's personal details") and `/office-hours/` one ("An AI
+    in Drummond's cloned voice"). The loop did not fix them because STATE.md records that it
+    leaves those pages unchanged, and that is a settled decision rather than an oversight. The
+    build-time warning added in the same cycle skips them too, since it only reads indexable
+    pages, so nothing will nag about this. One word from him and the loop closes it in a line.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-18 (09:20 local cycle) - The site set the same phrase two ways on the same
+  page. Markdown prose goes through the typographer and gets a curly apostrophe;
+  frontmatter, `.astro` copy and `.json` data bypass it and keep the typewriter mark, and
+  nobody had ever looked.**
+  - **Evidence, counted across the built site.** Stripping scripts, styles, code and tags
+    from all 61 built pages and reading what is left: **46 straight marks on 23 pages**
+    against 55 curly ones on 24, with 8 pages carrying both. The worst instance is
+    `/guides/what-hands-on-ai-training-actually-means/`, where the `h1` reads
+    `'hands-on'` in Newsreader at display size and its own `h2`, forty lines below, reads
+    `“hands-on”`. The same split put `'second brain'` in one guide title and
+    `You've finished` in another, both of which are also the `<title>`, the OG card, the
+    RSS item, the llms.txt line and the anchor text of every cross-link to them.
+  - **The cause is structural, not a typo.** Remark's typographer runs over markdown body
+    prose only. Every string that reaches a page another way keeps what was typed: event
+    and guide frontmatter, programme FAQ answers, team bios, `photos.json` alt text, the
+    homepage FAQ in `src/lib/home.ts`, and copy written straight into `about.astro`,
+    `privacy.astro` and `HomeSections.astro`.
+  - **Change: apply the same conversion to the strings that bypass the pipeline.**
+    Possessives and contractions to `’`, and the two quoted phrases in guide titles to
+    `‘ ’` - exactly what the typographer would have produced had the text been body prose.
+    No word, claim, date, venue, name or testimonial changed; `St Anne's College` became
+    `St Anne’s College` and nothing else moved. 20 files: 5 events, 5 guides, 3 programmes,
+    2 team bios, `photos.json`, `home.ts`, `HomeSections.astro`, `about.astro`,
+    `privacy.astro`.
+  - **Plus a guard, so it cannot come back quietly.** `check-schema.mjs` now warns -
+    non-blocking, like the description-length warning from cycle 74 - when an indexable
+    page's rendered copy carries a straight apostrophe, with `code` and `pre` excluded so a
+    quoted command never trips it. It earned its place during this cycle: it caught a
+    second copy of the affiliation answer in `home.ts` that the manual sweep had missed.
+  - **Verified.** Built site re-scanned: **46 straight marks to 0** on every indexable page.
+    Build green (3026 links, 61 pages, schema valid, no warnings); `check:flags` passes
+    all-on and all-off; `astro check` reports 79 errors before and after this diff, all
+    pre-existing implicit-`any` and content-collection typing in files this cycle did not
+    touch, and it is not a CI gate here. Font coverage checked before shipping rather than
+    after: `’ ‘ “ ”` are present in all seven self-hosted woff2 subsets and all three OG
+    TTFs, so no fallback glyph and no tofu - confirmed by eye on the OG card, on
+    `ST ANNE’S COLLEGE, OXFORD` in IBM Plex Mono caps, and on the guide `h1` at 375, 768
+    and 1280. Full audit re-run at all three widths over 17 pages: no horizontal overflow,
+    no missing alt text, no unlabelled control, no link without an accessible name, one
+    `h1` per page. `rss.xml`, `sitemap-0.xml` and `sitemap-index.xml` all still parse.
+    `updatedDate` moved on the 8 content entries that carry one. **No event fact moved**:
+    Second Brain 21 October at the Pitt Rivers Museum, Cohort 3 on 19 November and Coding
+    Cohort 1 on 26 November are untouched, and no price, figure, quote or consent flag was
+    added or changed.
+  - **Two pages deliberately left.** `/find-your-bootcamp/` and `/office-hours/` still carry
+    five straight marks between them. STATE.md says the daily loop leaves those unlisted
+    voice pages unchanged, so it did; the new warning skips them because they are noindex.
+    Logged as backlog 28 for Drummond rather than fixed here.
+  - **Production could not be read, for the twelfth day, and neither could Luma.** The
+    sandbox egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by
+    the proxy), so before and after are both local previews of the exact build that shipped.
+    Deployment state comes from the Actions API: Deploy to GitHub Pages run 39109709851 on
+    `9546805`, the `origin/main` HEAD, **success** at 08:00Z, with nothing queued or in
+    progress when this cycle started.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 and the stale
+    `fix/breadcrumb-mobile-overflow` and `feat/ceo-roundtable-demand-page` branches (20),
+    the bronze contrast token (21), Cohort 2's outcomes (22), the testimonial heading on
+    past-cohort pages (23), the team-profile byline link (24), the Coding Bootcamp's paid-plan
+    prerequisite (25), the doubled event-page heading (26) and the lunch and travel lines (27).
 
 - **2026-10-18 (08:00 local cycle) - The bootcamp whose own outcomes promise "a room of
   senior peers ... and their contact details" never answered what happens after the day.

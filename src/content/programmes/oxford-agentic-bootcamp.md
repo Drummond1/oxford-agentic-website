@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-18T08:30:00+01:00"
+updatedDate: "2026-10-18T09:20:00+01:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -77,7 +77,7 @@ faqs:
     a: >-
       You choose the task, so a useful test is to bring one you would be comfortable
       describing to an external supplier, and leave the rest out. Credentials, keys and
-      other people's personal data do not belong in an AI workflow in any form. You
+      other people’s personal data do not belong in an AI workflow in any form. You
       build on your own machine, and the day is not recorded. That still leaves most of
       the tasks that cost you a morning every week.
   - q: Can I install software on my work laptop?
@@ -91,7 +91,7 @@ faqs:
     a: >-
       At Worcester College on Walton Street, in central Oxford. Cohort 2 ran there in
       September 2026 and Cohort 3 is there on Thursday 19 November 2026. Cohort 1 ran at
-      St Anne's College in July 2026, in a seminar room laid out cabaret-style for
+      St Anne’s College in July 2026, in a seminar room laid out cabaret-style for
       small-group work, so an older listing may still show that address. Each event page
       confirms its own venue and date, and that is the page to go by.
   # Where and when belong together. The three upcoming event pages each print
@@ -122,7 +122,7 @@ faqs:
       two or three seats. If you need to put it in an email, this is the version that
       survives being forwarded: a day out to build one working agentic workflow on a
       task we already do by hand every week, and come back able to build the next one
-      without help. Pricing sits on each event's booking page, so the numbers are easy
+      without help. Pricing sits on each event’s booking page, so the numbers are easy
       to attach.
   - q: Can I bring my team, or book for several people?
     a: >-

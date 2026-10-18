@@ -1,8 +1,8 @@
 ---
-title: "Three different things get sold as a 'second brain'"
+title: "Three different things get sold as a ‘second brain’"
 slug: what-second-brain-actually-means
 category: choosing
-seoTitle: "What 'second brain' actually means"
+seoTitle: "What ‘second brain’ actually means"
 description: The phrase is attached to at least three unrelated products, all bookable, all using the same two words. How to tell which one you are looking at.
 capsule: >-
   The phrase now covers at least three different products. One is a task and attention
@@ -11,7 +11,7 @@ capsule: >-
   question before booking anything is which problem it solves.
 author: drummond-gilbert
 publishDate: "2026-09-04T14:00:00+01:00"
-updatedDate: "2026-09-04T14:00:00+01:00"
+updatedDate: "2026-10-18T09:20:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---

@@ -107,6 +107,6 @@ faqs:
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
-      Oxford's Practical AI meetup, with Jonathan Waddingham (CPO, ex-JustGiving) and
+      Oxford’s Practical AI meetup, with Jonathan Waddingham (CPO, ex-JustGiving) and
       Mike Bailey (Coppice Labs).
 ---

@@ -99,7 +99,7 @@ faqs:
   # sourced answer about what people actually built.
   - q: Has the Oxford Agentic Bootcamp run before?
     a: >-
-      Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
+      Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne’s College, Oxford, with
       sixteen attendees, and Cohort 2 on Wednesday 16 September 2026 at Worcester
       College. Cohort 3 runs on Thursday 19 November 2026, also at Worcester College.
   - q: Can I still join this cohort?

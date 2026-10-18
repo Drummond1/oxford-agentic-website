@@ -7,19 +7,19 @@ status: past
 startDate: "2026-07-21T09:00:00+01:00"
 endDate: "2026-07-21T17:00:00+01:00"
 venue:
-  name: St Anne's College
+  name: St Anne’s College
   street: 56 Woodstock Road
   city: Oxford
   postcode: OX2 6HS
   confirmed: true
 lumaEventId: evt-ilXzPEtAvZEowaf
 lumaUrl: https://luma.com/k7c2rm5s
-summary: The first Oxford Agentic Bootcamp. Sixteen leaders spent a day at St Anne's College building working agents.
+summary: The first Oxford Agentic Bootcamp. Sixteen leaders spent a day at St Anne’s College building working agents.
 # Capsule, agenda and stats below are drawn from the delivery record built from the
 # three session recordings of the day (Digital Brain, 28 July 2026), not from the
 # pre-event draft run sheet that stood here until 17 August.
 capsule: >-
-  Cohort 1 of the Oxford Agentic Bootcamp ran on Tuesday 21 July 2026 at St Anne's
+  Cohort 1 of the Oxford Agentic Bootcamp ran on Tuesday 21 July 2026 at St Anne’s
   College, Oxford. Sixteen founders, directors and senior professionals spent the day
   taking a real workflow apart, building agents and skills against their own work, and
   working through what it takes to bring that back into an organisation. No coding
@@ -64,7 +64,7 @@ agenda:
 faqs:
   - q: Has the Oxford Agentic Bootcamp run before?
     a: >-
-      Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne's College, Oxford, with
+      Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne’s College, Oxford, with
       sixteen attendees. Cohort 2 ran on Wednesday 16 September 2026, and Cohort 3 runs on
       Thursday 19 November 2026.
   - q: Can I still join this cohort?

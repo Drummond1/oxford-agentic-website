@@ -94,7 +94,7 @@ faqs:
   - q: What if some of my material is confidential?
     a: >-
       Bring what you would be comfortable putting in an email to an external supplier.
-      Credentials, keys and other people's personal data stay out of a second brain in
+      Credentials, keys and other people’s personal data stay out of a second brain in
       any form. That still leaves most of what makes AI answers specific to you: how
       you write, what good looks like, and the decisions you have already made.
   - q: Can I bring my team?

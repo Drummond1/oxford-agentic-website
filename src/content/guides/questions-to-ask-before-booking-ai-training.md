@@ -3,7 +3,7 @@ title: "Nine questions to ask before booking AI training"
 slug: questions-to-ask-before-booking-ai-training
 category: choosing
 seoTitle: "9 questions before booking AI training"
-description: A buyer's checklist for AI courses and bootcamps - nine questions worth asking any provider, and what a straight answer to each one sounds like.
+description: A buyer’s checklist for AI courses and bootcamps - nine questions worth asking any provider, and what a straight answer to each one sounds like.
 capsule: >-
   Ask what you will personally have running at the end, whose work you build against,
   how many people are in the room, what happens when you get stuck, and what the day
@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-10-13T01:00:00+01:00"
+updatedDate: "2026-10-18T09:20:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---

@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-18T02:10:00+01:00"
+updatedDate: "2026-10-18T09:20:00+01:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -81,7 +81,7 @@ faqs:
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
-      Oxford's Practical AI meetup, with Jonathan Waddingham (CPO, ex-JustGiving) and
+      Oxford’s Practical AI meetup, with Jonathan Waddingham (CPO, ex-JustGiving) and
       Mike Bailey (Coppice Labs). Every session is show, then do, with facilitators in
       the room.
 ---

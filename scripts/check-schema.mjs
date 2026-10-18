@@ -92,6 +92,25 @@ for (const file of files) {
     warnings.push(`${page}: meta description is ${description.length} chars (target ${DESCRIPTION_TARGET})`);
   }
 
+  /*
+   * Straight apostrophes in rendered copy. Markdown prose is run through the
+   * typographer, so body text gets a curly apostrophe; frontmatter strings,
+   * page copy written in .astro files and data in .json bypass it and keep the
+   * typewriter mark. That put 'hands-on' in a guide's Newsreader h1 directly
+   * above “hands-on” in its own body — the same phrase set two ways on one
+   * page. Warn rather than fail: the deploy is not worth stopping over a
+   * glyph, and a quoted terminal command could legitimately carry one.
+   */
+  if (!noindex) {
+    const prose = html
+      .replace(/<(script|style|code|pre)[\s\S]*?<\/\1>/g, ' ')
+      .replace(/<[^>]+>/g, ' ');
+    const straight = prose.match(/\S{0,24}(?:&#(?:39|x27);|')\S{0,16}/);
+    if (straight) {
+      warnings.push(`${page}: straight apostrophe in rendered copy — ${straight[0].trim()}`);
+    }
+  }
+
   // Uniqueness only matters for indexable pages.
   if (!noindex) {
     if (title) {

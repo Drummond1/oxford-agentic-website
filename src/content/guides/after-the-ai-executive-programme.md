@@ -1,5 +1,5 @@
 ---
-title: "You've finished an AI executive programme. Now what?"
+title: "You’ve finished an AI executive programme. Now what?"
 slug: after-the-ai-executive-programme
 category: choosing
 seoTitle: "After an AI executive programme: now what?"
@@ -11,7 +11,7 @@ capsule: >-
   next step is not another course; it is one built workflow.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-10-13T01:00:00+01:00"
+updatedDate: "2026-10-18T09:20:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---

@@ -8,7 +8,7 @@ photo: ./photos/adam-martin.jpg
 photoAlt: Portrait of Adam Martin
 links: {}
 bio: >-
-  Adam Martin is a founding CTO with exits behind him and a master's in computing from
+  Adam Martin is a founding CTO with exits behind him and a master’s in computing from
   Cambridge. He built a second brain memory system for teams, where humans and agents
   share one memory.
 ---

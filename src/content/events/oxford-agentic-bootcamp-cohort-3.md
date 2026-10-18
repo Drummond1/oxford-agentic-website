@@ -119,7 +119,7 @@ faqs:
     a: >-
       You choose the task, so a useful test is to bring one you would be comfortable
       describing to an external supplier, and leave the rest out. Credentials, keys and
-      other people's personal data do not belong in an AI workflow in any form. You
+      other people’s personal data do not belong in an AI workflow in any form. You
       build on your own machine, and the day is not recorded. That still leaves most of
       the tasks that cost you a morning every week.
   - q: Can I install software on my work laptop?
