@@ -12,7 +12,7 @@ capsule: >-
   unwatched.
 author: drummond-gilbert
 publishDate: "2026-10-12T08:00:00+01:00"
-updatedDate: "2026-10-12T08:00:00+01:00"
+updatedDate: "2026-10-18T19:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - agentic-coding-bootcamp
@@ -32,7 +32,7 @@ What this means in practice: budget your day in thirds, not in one heroic sittin
 
 The jobs that finish inside a day all have the same silhouette. Something collects the raw material, something writes a first version from it, and something checks that version against a stated standard. Three narrow steps, each testable on its own - [the scout, drafter, reviewer pattern](/guides/scout-drafter-reviewer-pattern/) in full.
 
-In our own rooms, the tasks that surfaced were lead generation, internal reporting and marketing content. Different industries, same shape: gather, produce, check. If the thing you want to build has that shape and runs on words and documents rather than on a system you cannot reach from a laptop, a day is enough. If it does not, no amount of time in a room will help, and [choosing the task](/guides/how-to-choose-your-first-agentic-task/) matters more than choosing the tool.
+In [Cohort 1’s room](/events/oxford-agentic-bootcamp-cohort-1/), the tasks that surfaced were lead generation, internal reporting and marketing content. Different industries, same shape: gather, produce, check. If the thing you want to build has that shape and runs on words and documents rather than on a system you cannot reach from a laptop, a day is enough. If it does not, no amount of time in a room will help, and [choosing the task](/guides/how-to-choose-your-first-agentic-task/) matters more than choosing the tool.
 
 ## Four things that will not fit
 

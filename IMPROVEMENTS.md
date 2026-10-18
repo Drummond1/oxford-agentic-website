@@ -336,6 +336,18 @@ Status: `todo` · `blocked` (why) · `doing`
     build-time warning added in the same cycle skips them too, since it only reads indexable
     pages, so nothing will nag about this. One word from him and the loop closes it in a line.
 
+30. `todo` **(needs Drummond, a component call)** - **no FAQ answer anywhere on the site can
+    carry a link.** `src/components/Faq.astro` renders each answer as escaped plain text
+    (`<p>{faq.a}</p>`), so the 100-odd answers across 9 `FAQPage` nodes are the one body of copy on
+    this site with no internal links in it. It cost something measurable on 18 Oct: the claim "the
+    ones that surfaced in the room were lead generation, internal reporting and marketing content"
+    is published in the **"What did people in Cohort 1 actually build?"** answer on both Cohort 2’s
+    and Cohort 3’s pages - the pages that take the booking - and neither could be pointed at the
+    page that evidences it, while the same sentence in a guide could be and was. **The loop will not
+    do it**: allowing markup in answers changes how every answer on the site renders and what goes
+    into the JSON-LD `acceptedAnswer.text`, on the conversion path, and it needs a decision about
+    whether answers become markdown or a narrow allowlist. One line from him either way.
+
 29. `todo` **(needs Drummond, one word about a named real person)** - **the site gives
     Jonathan Waddingham two different former employers.** His team profile says he is "an
     independent product consultant and the former Chief Product Officer at **Lightful**";
@@ -354,6 +366,104 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-18 (19:00 local cycle) - Two cycles of probes found the field with no evidence of
+  what a day produces. The site has that evidence on one page, and almost nothing points at it:
+  `/events/oxford-agentic-bootcamp-cohort-1/` had two routes in, both card listings whose anchor
+  text is the date and the venue, and not one of the 30 guides linked to it.**
+  - **Evidence: the format-choice axis, which the GEO log had never tested in 125 probes.** Four
+    probes on which of three similarly named bootcamps a buyer should pick. **None returned a page
+    of ours.** The engines named the problem almost in our own words - "The labels aren’t
+    standardised, so the syllabus matters more than the name" - and both generic probes closed by
+    telling the reader to ask the provider whether code reading is expected. Probe 2 showed how
+    badly names travel: a London "AI Coding Bootcamp" that is actually a no-code programme for
+    non-technical founders, and a "Generative AI Skills Bootcamp" flagged as for technically-minded
+    learners.
+  - **That axis needed nothing, and nothing was written for it.** Checked in the source before
+    writing: the Agentic programme page already carries **"Which of the three bootcamps should I do
+    first?"**, the full three-way answer, the Coding and Second Brain pages each carry "How is this
+    different from the Oxford Agentic Bootcamp?", and all three answer "Do I need to be technical?"
+    or "Do I need to be able to code?" - the exact question both probes told the reader to go and
+    ask. A fourth consecutive FAQ on pages that already answer the question is padding, not an
+    improvement, so **no FAQ and no guide**.
+  - **Three other candidates were measured and declined, so later cycles do not re-derive them.**
+    (a) **Internal linking is healthy where it matters**: counting unique inbound internal links per
+    sitemap URL across the 61 built pages, all three programme pages and all three upcoming event
+    pages score **58**, the same as every nav page, and guides score 3 to 9. (b) **The structured
+    data is already there**: the programme pages carry `Course` and `CourseInstance` with
+    `courseMode`, `courseWorkload`, dates and location, and the event pages carry `EducationEvent`
+    with `offers`, `organizer`, `performer`, `superEvent` and a full `subEvent` agenda. (c) The
+    **IndexNow mapping** named as a standing candidate is already correct: `scripts/indexnow-ping.mjs`
+    maps `src/lib/home.ts` to `/` alone, confirmed on 17 Oct and still so.
+  - **The real gap was measured in `dist/`.** Cohort 1’s page is the only page on the site that
+    records what a room actually produced - sixteen attendees, three teaching blocks, and the tasks
+    that surfaced - and it had **2 inbound internal links** against 58 for every nav page. Both
+    anchors are the event card ("Cohort 1 / Tuesday, 21 July 2026 / St Anne’s College"), so the
+    only description a crawler had of that page was when it happened, not what came out of it.
+    Meanwhile exactly **one sentence in any guide** makes a factual claim about a past room, and it
+    cited nothing: `what-you-can-build-in-one-day-with-ai` (12 Oct) said "In our own rooms, the
+    tasks that surfaced were lead generation, internal reporting and marketing content" - the same
+    three tasks Cohort 1’s page publishes verbatim.
+  - **Change: one link, one guide, one sentence, no new fact.** "In our own rooms" becomes
+    "In [Cohort 1’s room](/events/oxford-agentic-bootcamp-cohort-1/)". It sources the claim on the
+    page that evidences it, gives the proof page a third route in with an anchor that names the
+    cohort rather than the date, and makes the attribution **more** accurate: the plural was
+    unevidenced, because Cohort 2’s page still carries no outcomes (backlog 22), so the three tasks
+    are Cohort 1’s room specifically. Internal links go 3,026 to 3,027; page, FAQPage and Event
+    totals all unchanged.
+  - **What it deliberately does not do.** The same claim appears on two **booking** pages, in the
+    "What did people in Cohort 1 actually build?" answer on Cohort 2’s and Cohort 3’s pages, and
+    those could not be linked: `Faq.astro` renders answers as escaped plain text (`<p>{faq.a}</p>`),
+    so no FAQ answer anywhere on the site can carry a link. Making them able to would change how all
+    9 `FAQPage` nodes and every answer on the site render, including the JSON-LD `acceptedAnswer`,
+    on the pages that take the booking. That is a component decision, not a focused cycle - logged
+    as **backlog 30**. Nothing was added to `/team/` either (backlog 24 is still his call).
+  - **Checks.** `npm ci` then `npm run build` clean before and after: 61 pages, **3,027** internal
+    links resolve, schema valid, titles and descriptions unique, no SEO warnings (the 12 outbound
+    warnings are the sandbox egress policy, not the site). `check:flags` passes on the all-on and
+    all-off builds. Verified in `dist/` that the link lands on all three surfaces - visible HTML,
+    the inbound count on Cohort 1 moving **2 to 3**, and `llms-full.txt`, which both voice agents
+    read - and that the guide’s canonical is unchanged. Headless Chromium against a local
+    `astro preview` of this exact build, at **375px and 1280px**: one correct `h1` on both the guide
+    and Cohort 1’s page, the new link visible and styled exactly like the existing inline links
+    (same bronze, same underline, 18px), **clicked through at 1280 and it lands on
+    `/events/oxford-agentic-bootcamp-cohort-1/` with the right `h1`**, `scrollWidth` equal to
+    `clientWidth`, no page errors, no failed local requests; four screenshots, and `Cohort 1’s`
+    renders with no fallback glyph. `updatedDate` moved on the one file changed. **No event fact
+    moved**: Second Brain 21 October at the Pitt Rivers Museum, Agentic Cohort 3 on 19 November and
+    Coding Cohort 1 on 26 November, all unchanged.
+  - **No guide. Guides this week: 2 of 3** (12 and 13 Oct); today’s allowance unused by choice for
+    the fifteenth day running, and this is the last day of that week.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment, and
+    `seo-data/` holds no CSV or TSV export. Nothing estimated.
+  - **Production could not be read, for the fourteenth day, and neither could Luma.** The sandbox
+    egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by the proxy), so
+    `build.txt` could not be polled and **no event fact could be re-verified against the live Luma
+    pages**. Deployment state comes from the Actions API: CI and Deploy to GitHub Pages both
+    **success** on `7fe852d`, the `origin/main` HEAD, at 13:13-13:15Z, with nothing queued or in
+    progress when this cycle started.
+  - **Off-page: one new lead, and the brand problem for the fifth day.** `maven.com` added to the
+    bottom of the review list - it supplied two of the four answers today and is the only route on
+    that list ever retrieved on a buyer question with **no Oxford in it**, which is the query shape
+    the site has never ranked for. It is a marketplace rather than a free directory, so listing is a
+    commercial decision and his. And probes 3 and 4 again answered brand queries entirely off
+    `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` with no page of ours: the date given as **21
+    July 2026**, the venue "should be confirmed" because the listings disagree, and this time no
+    pricing found either. A buyer searching our own name is still being told the event has passed.
+    Nothing contacted, nothing submitted, no account made.
+  - **Also worth his eye, and new today:** probe 3 asked about both bootcamps by name and the engine
+    answered *"I couldn’t find any listing for an ‘Oxford Agentic Coding Bootcamp’ ... check the
+    exact title of the event you saw"*. Nothing on-site explains it - that page sits in the nav and
+    footer with 58 inbound links, is in the sitemap, and carries `Course`, `CourseInstance` and
+    `FAQPage` nodes. It is three weeks old with no third-party listing anywhere, which is the
+    off-page item again rather than a page fix.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 and the two stale branches
+    (20), the bronze contrast token (21), Cohort 2’s outcomes (22), the testimonial heading on
+    past-cohort pages (23), the team-profile byline link (24), the Coding Bootcamp’s paid-plan
+    prerequisite (25), the doubled event-page heading (26), the lunch and travel lines (27), the two
+    voice pages’ apostrophes (28), Jonathan Waddingham’s two published former employers (29) and,
+    new today, links inside FAQ answers (30).
 
 - **2026-10-18 (14:00 local cycle) - The bootcamp the whole site is built around never said
   who teaches it. The Coding Bootcamp, three weeks old, answers that question on both of its

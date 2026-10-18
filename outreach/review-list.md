@@ -241,3 +241,29 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     Organization node lacks (`sameAs` is empty), and this one already sits beside the exec-ed
     programme our buyers compare us with.
   - Needs: someone with an unblocked browser to open it and decide. Nothing contacted.
+
+- **maven.com - cohort-course marketplace that ranks on our own buyer question** - found
+  18 Oct 2026 by answer-engine probe. Added at the bottom, like the entries above it, so the
+  Luma item at the top keeps its place.
+  - Where it came from: the 18 Oct format-choice probe asked which bootcamp a non-technical
+    manager should pick, and Maven supplied two of the answers - "Hands-on Agentic AI for
+    Leaders", which the engine described as a cohort course for leaders who want to build
+    workflows and agents with no coding experience required, and an "AI Workflows Bootcamp"
+    (https://maven.com/no-code-ai/ai-workflows-bootcamp) which the engine said "needs zero
+    coding skills". Both were returned on the generic question with no location in it, and the
+    engine closed one answer by saying the full syllabus and pricing are on Maven. Two of the
+    four probes returned it.
+  - **Not checked at all.** The host does not resolve from this sandbox. Whether it accepts a
+    one-day in-person bootcamp rather than a multi-week online cohort, what it charges or takes
+    as a share, whether a listing carries a followed link, and whether listing there would put
+    our day beside courses it does not compete with are all unknown.
+  - Why it might be worth ten minutes: it is a marketplace rather than a directory, so a listing
+    is a commercial decision rather than a free submission, and that makes it his call and not a
+    loop one. It is also the only route on this list that was retrieved on a buyer question with
+    no Oxford in it, which is the query shape where the site has never ranked.
+  - **Note on the standing decision:** a marketplace listing of the bootcamps is not services
+    content and not a location page, so it does not touch the "no Oxfordshire services cluster"
+    rule. If the revenue share or the positioning is wrong, drop it - the reason it is here is
+    the retrieval evidence, not an argument that we should be on it.
+  - Needs: someone with an unblocked browser to open it and decide. Nothing contacted, nothing
+    submitted, no account made.

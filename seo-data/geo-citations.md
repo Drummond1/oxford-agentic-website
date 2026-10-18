@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-18 (19:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **format-choice** axis, which the log had never tested
+in 125 probes: not what the day costs, what to bring, when it ends, what follows it or whether
+it works, but which of three similarly named bootcamps a buyer should pick in the first place.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| which AI bootcamp should I do agentic workflows or AI coding or personal knowledge management non-technical manager how to choose | **No** | **maven.com** (Hands-on Agentic AI for Leaders), infosectrain.com (x2), tp.edu.sg, udemy.com (x2), naya-college.co.il, bmu.edu.in (x2), handsonai.info |
+| difference between an AI workflow bootcamp and an AI coding bootcamp which one do I need if I don’t write code UK | **No** | **maven.com/no-code-ai/ai-workflows-bootcamp**, **createwith.com** (x3, incl. a funded Brighton bootcamp), codecademy.com, eventbrite.co.uk, teamtreehouse.com, joinleland.com |
+| Oxford Agentic Bootcamp vs Oxford Agentic Coding Bootcamp which one is for me do I need to code | **No** | **luma.com/oxfordagentic2 and luma.com/k7c2rm5s**, nobleprog.co.uk (x4 Oxford training pages), **allai.events**, sbs.ox.ac.uk, help.datasciencedojo.com |
+| one day hands-on AI bootcamp Oxford which format to pick build a workflow or learn to code with AI agents senior leaders | **No** | **luma.com/oxfordagentic2 and luma.com/k7c2rm5s**, luma.com/ek5gq6fz, **allai.events**, tutorials.co.uk, sbs.ox.ac.uk (x2), fisher.osu.edu, leadwithai.co |
+
+**Reading.**
+
+- **The engines say the labels are the problem, in almost those words.** Probe 2’s answer
+  opened “The labels aren’t standardised, so the syllabus matters more than the name”, and
+  both generic probes closed on the same instruction: ask the provider whether any code
+  reading is expected, and check the prerequisites before booking. Probe 2 also showed how
+  badly the names travel - it found a London “AI Coding Bootcamp” that is actually a no-code
+  programme for non-technical founders, and a “Generative AI Skills Bootcamp” it flagged as
+  for technically-minded learners. A buyer cannot read our three names and know which is
+  which either.
+- **But the on-site gap is already closed, so nothing was written for it.** Checked in the
+  source before writing anything: the Agentic programme page carries **“Which of the three
+  bootcamps should I do first?”**, the full three-way answer, and the Coding and Second Brain
+  pages each carry “How is this different from the Oxford Agentic Bootcamp?”. All three also
+  answer “Do I need to be technical?” or “Do I need to be able to code?”, which is the exact
+  question both probes told the reader to go and ask. **No FAQ and no guide**: adding a fourth
+  consecutive FAQ to pages that already answer the question is padding, not an improvement.
+- **The newest line is invisible, and that is the finding worth recording.** Probe 3 named
+  both our bootcamps and the engine answered: *“I couldn’t find any listing for an ‘Oxford
+  Agentic Coding Bootcamp.’ ... Your question may be based on a different name, so check the
+  exact title of the event you saw”*, and later *“I couldn’t confirm that for an Oxford
+  event”*. The programme launched 25 September and its Cohort 1 is on 26 November. Nothing
+  on-site explains it: that page sits in the nav and the footer with **58 inbound internal
+  links**, the same as every other nav page, it is in the sitemap, and it carries `Course`,
+  `CourseInstance` and `FAQPage` nodes. It is three weeks old with no third-party listing, so
+  this is the off-page item and engine lag, not a page fix.
+- **The brand-adjacent probes are the stale Luma listing for the fifth day running.** Probes
+  3 and 4 both returned `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` and **no page of
+  oxfordagentic.com**. The engine again gave the date as **21 July 2026**, again said the
+  venue “should be confirmed” because the listings disagree (Worcester College in one, St
+  Anne’s in another), and this time told the reader it found no pricing and to check the
+  ticket page. A buyer searching our own brand is being told the event has passed. Unchanged
+  conclusion: nothing on-site fixes it, the ten minutes in Luma would.
+- **What the probes did change on-site: the proof page had two routes in.** Both the 14:00
+  proof probes and today’s found the field with no evidence of outcomes. Measured on the
+  built site, `/events/oxford-agentic-bootcamp-cohort-1/` - the only page that records what a
+  room actually produced - had **2 inbound internal links**, both card listings whose anchor
+  text is the date and the venue, against 58 for every nav page. Not one of the 30 guides
+  linked to it. Acted on this cycle: the single sentence in any guide that makes a factual
+  claim about a past room now cites the page that publishes it.
+- **One new off-page lead, unverified: maven.com.** Returned on both generic probes, and the
+  only route on the review list ever retrieved on a buyer question with no Oxford in it. It is
+  a marketplace rather than a free directory, so it is a commercial decision and his call.
+  Added at the bottom of the review list. Nothing contacted, nothing submitted, no account made.
+
 ## 2026-10-18 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
