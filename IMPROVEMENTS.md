@@ -367,6 +367,83 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-19 (01:00 local cycle) - The site had a state it had never been in, arriving on
+  21 October: a programme with no scheduled cohort. Simulated it in the build rather than
+  waiting to find out, and it broke in two ways on the page that ranks first for its own
+  commercial query.**
+  - **Evidence: the waitlist axis, which the GEO log had never tested in 129 probes.** Four
+    probes on what a buyer does when the day they want has no date published. **None returned a
+    page of ours**, and all four answers closed by sending the reader to the provider's own
+    notify route - three naming the control (Stony Brook's "JOIN THE WAITLIST" button, ARBOx's
+    future-iterations form, OxML's `register` link). Probe 1's closing advice: "check the
+    bootcamp's site for a waitlist or register-interest form".
+  - **Why that axis, today.** The Second Brain Bootcamp runs on **21 October** and the
+    programme has no further cohort set, so `/bootcamps/second-brain-bootcamp/` enters the
+    no-upcoming-run state in two days. It has never been reachable before: Cohort 1 overlapped
+    Cohort 2 on the Agentic line, and the Coding line launched with its cohort already dated.
+  - **Measured, not assumed.** Backdated the Second Brain cohort in a throwaway build and read
+    the output. Two faults, both on that page: the `Course` node emitted
+    **`"hasCourseInstance": []`** - a property that claims the course has runs and then supplies
+    none - and the "Runs" band rendered a single dead sentence, "Dates for the next cohort are
+    being confirmed.", with no next step. The notify form existed only in the global footer,
+    where it reads as site furniture rather than as an answer to the line above it.
+  - **Change: omit the property, and reuse the answer the site already gives.**
+    `hasCourseInstance` is now built in the frontmatter and spread in only when there is at
+    least one run, so the node is a valid `Course` with the property absent rather than a
+    malformed one with it empty. And the empty state now carries `NewsletterForm`, which is
+    exactly what `LumaEmbed` already does in the mirror case (an event whose Luma page does not
+    exist yet shows "Tell me when registration opens"). No new component, no new pattern.
+  - **Plus a guard, so this cannot ship silently again.** `check-schema.mjs` now walks every
+    JSON-LD node, nested objects included, and fails the build on any empty-array property.
+    It generalises the `FAQPage has no questions` check that was already there. Verified both
+    ways: **zero** empty arrays across the current 61 pages, and reintroducing the bug fails
+    the build with exit 1 and the message naming the page and the property.
+  - **What it deliberately does not do.** It does **not** fall back to listing past runs as
+    `CourseInstance`s to keep the rich result alive. That would put a date that has already
+    happened in front of a buyer looking for one that has not, and the Course node is valid
+    without the property. No copy promises a date, a frequency or a cadence for the next Second
+    Brain cohort, because none is confirmed. Second Brain content was not expanded either -
+    ranking is not its constraint, per the standing decision.
+  - **Checks.** `npm ci` then `npm run build` clean before and after, with today's output
+    **identical** to the baseline: 61 pages, **3,027** internal links resolve, schema valid, 5
+    Event and 9 FAQPage nodes, titles and descriptions unique, no SEO warnings (the 12 outbound
+    warnings are the sandbox egress policy, not the site). Confirmed all three `Course` nodes
+    still carry their instance today - Agentic 19 Nov, Second Brain 21 Oct, Coding 26 Nov - so
+    nothing live moved. Then built the simulated post-21-October state and confirmed the
+    property **absent** and the notify block present. Headless Chromium against a local
+    `astro preview` of that simulated build at **375px and 1280px**: one correct `h1`, the
+    notify label and its `mailto:hello@oxfordagentic.com` route visible and styled like the
+    footer's, 24px above it, `scrollWidth` equal to `clientWidth`, no page errors, no failed
+    local requests. Four screenshots. The newsletter endpoint is still unset, so the form
+    renders its honest mailto fallback rather than a control that silently does nothing.
+  - **No guide. Guides this week: 0 of 3** - this is the first day of a new Monday-Sunday week.
+    Today's allowance unused by choice, for the sixteenth day running.
+  - **Search Console: unavailable from the cloud checkout.** One attempt, as the rules ask:
+    `gcloud` reports no credentialed accounts, no Google credential exists in the environment,
+    and `seo-data/` holds no CSV or TSV export newer than the 13 Sept reading. Nothing estimated.
+  - **Production could not be read, for the fifteenth day, and neither could Luma.** The sandbox
+    egress policy answers 403 to `oxfordagentic.com` (`connect_rejected`, logged by the proxy)
+    and `luma.com` does not resolve, so `build.txt` could not be polled and **no event fact
+    could be re-verified against the live Luma pages**. None was touched. Deployment state comes
+    from the Actions API: CI and Deploy to GitHub Pages both **success** on `bfa9f38`, the
+    `origin/main` HEAD, at 19:09-19:12Z, with nothing queued or in progress when this cycle
+    started.
+  - **Off-page: the brand problem again, and it is now the Second Brain line too.** Probe 2
+    asked for our own event by name, two days before it runs, and got **no page of ours** - the
+    engine answered off Forte Labs' "AI Second Brain" cohort course instead, down to its
+    enrolment dates, and said plainly "I couldn't find any 'Oxford Second Brain Bootcamp' in the
+    results". That is the third line in a row to fail a brand-name query (stale Luma for
+    Agentic, "no such listing" for Coding, somebody else's product for Second Brain), and all
+    three are the off-page item rather than a page fix. `enspire.ox.ac.uk` corroborated on two
+    further query shapes and the note was appended to its existing entry; `happeningnext.com`
+    added at the bottom of the review list, flagged honestly as probably not worth his ten
+    minutes. Nothing contacted, nothing submitted, no account made.
+  - **For his eye:** the Second Brain programme has no cohort after 21 October. The page now
+    handles that honestly and captures interest, but the page cannot supply a date. **Backlog 22
+    is also now two cohorts deep** - neither Cohort 2's nor Cohort 1's Second Brain outcomes are
+    recorded, and after Wednesday there will be a second room whose results nothing on the site
+    reports.
+
 - **2026-10-18 (19:00 local cycle) - Two cycles of probes found the field with no evidence of
   what a day produces. The site has that evidence on one page, and almost nothing points at it:
   `/events/oxford-agentic-bootcamp-cohort-1/` had two routes in, both card listings whose anchor

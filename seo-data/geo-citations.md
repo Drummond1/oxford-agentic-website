@@ -5,6 +5,49 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-19 (01:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **waitlist axis** - what a buyer does when the day they
+want has no date published. The log had never tested it in 129 probes, and it is not
+hypothetical: the Second Brain Bootcamp runs on 21 October and that programme has no further
+cohort set, so this is the state our own page enters in two days.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| AI bootcamp I want to attend has no dates listed how do I get notified of the next cohort waiting list UK | **No** | tally.so, **happeningnext.com** (an "AI for Business Bootcamps Waiting List"), businesssouth.org, gmchamber.co.uk, **enspire.ox.ac.uk** (x3), forum.effectivealtruism.org |
+| Oxford Second Brain Bootcamp next cohort dates after October 2026 | **No** | **help.fortelabs.com** (x4), fortelabs.com (x3), mpls.ox.ac.uk, goodreads.com |
+| one day AI workshop for business leaders sold out how do I get a place in the next cohort | **No** | stonybrook.edu (x2), ai.gov.au, **innovationvisual.com** (x4), whitman.syracuse.edu, softway.com |
+| how do I hear about the next Oxford AI bootcamp cohort when dates are announced register interest | **No** | forum.effectivealtruism.org (x2), groups.google.com (x3, OxML), ouess.web.ox.ac.uk (x3), **enspire.ox.ac.uk** |
+
+**Reading.**
+
+- **Every one of the four answers closed by sending the reader to the provider's own notify
+  route**, and three named the control: Stony Brook's one-day executive workshop has a "JOIN
+  THE WAITLIST" button on the page, ARBOx (the Oxford alignment bootcamp) publishes a form for
+  "if you would like to hear about if/when we open applications for future iterations", and
+  OxML gives `www.oxfordml.school/register`. Probe 1's closing advice was to "check the
+  bootcamp's site for a waitlist or register-interest form". So the field's answer to a
+  dateless programme is a visible capture control on the programme page itself.
+- **Ours was a dead sentence, and that is what this cycle changed.** With no upcoming run the
+  programme page's "Runs" band rendered exactly one line - "Dates for the next cohort are being
+  confirmed." - and nothing else. The notify form existed, but only in the global footer, where
+  it reads as site furniture rather than as the answer to the line above it. `LumaEmbed` already
+  gives the right answer in the mirror case (an event whose Luma page does not exist yet shows
+  "Tell me when registration opens"), so the fix was to reuse that pattern, not to invent one.
+- **Probe 2 is the one to show Drummond.** A buyer searching our own event by name, two days
+  before it runs, got **no page of ours** and was handed Forte Labs' "AI Second Brain" cohort
+  course instead, down to its enrolment dates and its "come back for Cohort 2 free" line. Our
+  `/events/oxford-second-brain-bootcamp-cohort-1/` carries the date, the venue, an `Event` node
+  and a `FAQPage` node, and still did not come back. The engine said plainly: "I couldn't find
+  any 'Oxford Second Brain Bootcamp' in the results". Same shape as the Coding Bootcamp finding
+  on 18 Oct and the stale-Luma finding on the four days before it - a brand-name query
+  answered entirely off other people's pages. This is the off-page item again, not a page fix.
+- **Nothing was written for the axis as content.** No guide and no FAQ: the question "how do I
+  hear about the next cohort" is not one a buyer searches for on its way to booking a day that
+  *is* on sale, and all three programmes have a bookable date today. What it needed was a
+  control, which is what it got.
+
 ## 2026-10-18 (19:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

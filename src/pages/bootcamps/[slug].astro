@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import EventCard from '../../components/EventCard.astro';
 import Faq from '../../components/Faq.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 import config from '../../../site.config';
 import {
   createRhythm,
@@ -46,6 +47,46 @@ const path = paths.programme(data.slug);
 const showQuotes = showSection('testimonials', { hidden: data.hideSections, hasContent: testimonials.length > 0 });
 const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
 
+/*
+ * A programme between cohorts has nothing to book, so the "Runs" band is the one
+ * place on the page with no next step. Same answer LumaEmbed already gives an
+ * event whose Luma page does not exist yet: offer the notify route instead of a
+ * dead sentence. The footer carries the same form, but below the fold and on
+ * every page, so it reads as site furniture rather than an answer to the line
+ * directly above it.
+ *
+ * Reachable for the first time on 21 October 2026, when the Second Brain
+ * Bootcamp's only cohort runs and that programme has no further date set.
+ */
+const showNotify = upcoming.length === 0 && showSection('newsletter');
+
+/*
+ * Google's course rich result reads the dates, workload and mode off each
+ * instance. Built here rather than inline so the property can be omitted
+ * entirely when a programme has no scheduled run: `hasCourseInstance: []`
+ * claims the course has instances and then supplies none, which is malformed,
+ * and the node is still a valid Course without it.
+ */
+const courseInstances = upcoming.map((event) => ({
+  '@type': 'CourseInstance',
+  name: event.data.title,
+  url: `${config.brand.domain}${paths.event(event.data.slug)}`,
+  courseMode: 'onsite',
+  // Computed from the published start and end times, never asserted.
+  courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
+  startDate: event.data.startDate.toISOString(),
+  endDate: event.data.endDate.toISOString(),
+  location: {
+    '@type': 'Place',
+    name: event.data.venue.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: event.data.venue.city,
+      addressCountry: config.brand.country,
+    },
+  },
+}));
+
 const rhythm = createRhythm('cream');
 const bands = {
   capsule: rhythm.next(),
@@ -76,26 +117,7 @@ const bands = {
       inLanguage: 'en-GB',
       teaches: data.outcomes,
       courseMode: 'onsite',
-      // Google's course rich result reads the workload off each instance; it is
-      // computed from the published start and end times, never asserted.
-      hasCourseInstance: upcoming.map((event) => ({
-        '@type': 'CourseInstance',
-        name: event.data.title,
-        url: `${config.brand.domain}${paths.event(event.data.slug)}`,
-        courseMode: 'onsite',
-        courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
-        startDate: event.data.startDate.toISOString(),
-        endDate: event.data.endDate.toISOString(),
-        location: {
-          '@type': 'Place',
-          name: event.data.venue.name,
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: event.data.venue.city,
-            addressCountry: config.brand.country,
-          },
-        },
-      })),
+      ...(courseInstances.length > 0 ? { hasCourseInstance: courseInstances } : {}),
     },
     showFaq ? faqSchema(data.faqs) : null,
   ]}
@@ -177,7 +199,14 @@ const bands = {
             ))}
           </div>
         ) : (
-          <p class="empty">Dates for the next cohort are being confirmed.</p>
+          <Fragment>
+            <p class="empty">Dates for the next cohort are being confirmed.</p>
+            {showNotify && (
+              <div class="empty-notify">
+                <NewsletterForm label="Tell me when the next dates are set" />
+              </div>
+            )}
+          </Fragment>
         )
       }
 
@@ -318,6 +347,10 @@ const bands = {
   .empty {
     max-width: var(--measure);
     font-size: var(--step-lg);
+  }
+
+  .empty-notify {
+    margin-block-start: 1.5rem;
   }
 
   .quote p {

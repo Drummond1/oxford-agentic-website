@@ -25,6 +25,22 @@ async function walk(dir) {
   return out;
 }
 
+/**
+ * Every empty-array property in a JSON-LD node, nested objects included, as
+ * [dottedPath, value] pairs. Yields nothing for a well-formed node.
+ */
+function* emptyArrays(value, trail = '') {
+  if (Array.isArray(value)) {
+    for (const [i, item] of value.entries()) yield* emptyArrays(item, `${trail}[${i}]`);
+  } else if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      const here = trail ? `${trail}.${key}` : key;
+      if (Array.isArray(child) && child.length === 0) yield [here, child];
+      else yield* emptyArrays(child, here);
+    }
+  }
+}
+
 /** Roughly what Google renders before it cuts a title. */
 const TITLE_LIMIT = 60;
 /** The documented meta-description target; over this warns, over 200 fails. */
@@ -179,6 +195,14 @@ for (const file of files) {
         if (!Array.isArray(node.mainEntity) || node.mainEntity.length === 0) {
           errors.push(`${page}: FAQPage has no questions`);
         }
+      }
+
+      // An empty array claims a property and then supplies no value for it.
+      // Omit the property instead. Generalises the FAQPage check above, and
+      // added after `hasCourseInstance: []` was found waiting for the first
+      // programme to run out of scheduled cohorts.
+      for (const [key] of emptyArrays(node)) {
+        errors.push(`${page}: ${node['@type']} JSON-LD has an empty array at "${key}" — omit the property instead`);
       }
     }
   }

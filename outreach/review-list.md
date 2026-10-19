@@ -150,6 +150,12 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     `enspire.ox.ac.uk/event/ai-product-management-bootcamp` was. So this calendar's event pages
     rank for the query our own bookable day should own, carrying somebody else's AI bootcamp.
     That is the first evidence that the route is worth something rather than merely plausible.
+  - **Corroborated again 19 Oct 2026.** The waitlist-axis probe returned
+    `enspire.ox.ac.uk/event/ai-product-management-bootcamp` on **two** of four questions - the
+    generic "no dates listed, how do I get on the waiting list" question and "how do I hear
+    about the next Oxford AI bootcamp cohort". Neither carried a month or a year, so this is a
+    second query shape, not a repeat of the 16 Oct one. Same page, same competitor, still no
+    page of ours. Three retrievals across three distinct query shapes now.
   - **Not checked:** whether it accepts third-party listings, any cost, or editorial policy.
     Only the "What's On" index was loaded, on 11 Oct; the event page above was seen in search
     results only.
@@ -267,3 +273,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the retrieval evidence, not an argument that we should be on it.
   - Needs: someone with an unblocked browser to open it and decide. Nothing contacted, nothing
     submitted, no account made.
+
+- **happeningnext.com - free event aggregator, low value, recorded for completeness** - found
+  19 Oct 2026 by answer-engine probe. Added at the bottom, like the entries above it.
+  - Where it came from: the 19 Oct waitlist-axis probe asked how to get on the list for a
+    bootcamp with no dates published, and this host supplied the one concrete waitlist example
+    in the answer ("AI for Business Bootcamps Waiting List - June").
+  - **Why it is probably not worth ten minutes, said plainly.** It is a generic syndicated
+    what's-on aggregator rather than an AI or Oxford audience, it was retrieved once on one
+    question, and the listing it carried was a competitor's waiting-list page rather than a
+    bookable day. It is here so a later cycle does not spend a probe rediscovering it and
+    mistake it for a find.
+  - **Not checked at all.** The host does not resolve from this sandbox: whether it accepts
+    submissions, what a listing costs, and whether any link is followed are all unknown.
+  - Needs: nothing, unless Drummond wants the volume. Nothing contacted, nothing submitted, no
+    account made.
