@@ -123,16 +123,20 @@ Status: `todo` · `blocked` (why) · `doing`
    unchanged: a real question, standing alone, one programme link, never more than one
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
-   (expands a real event-page FAQ); **"who should take the seat - you or someone in your
-   team?", added 19 Oct 2026 by the delegation-axis probes.** Two of three answers said
-   outright that nothing in the field compares the two ("I found no independent comparison of
+   (expands a real event-page FAQ). **"Who should take the seat - you or someone in your
+   team?" SHIPPED 19 Oct 2026 (13:00 cycle)** as `/guides/who-should-take-the-seat/`, after the
+   delegation axis was probed twice on four phrasings across two cycles. Four separate engine
+   admissions that nothing in the field answers it ("I found no independent comparison of
    sending a delegate versus attending yourself"; "No source compares founders and heads of
-   operations for an AI workshop"), and everything returned was a provider's own marketing.
-   Winnable, and converting, because the searcher is deciding who takes a paid seat. It is
-   cross-programme, so it does not worsen the Second Brain weighting below. It would be built
-   from published facts only - the bring-one-real-task format, `whoFor`, "Who is it not for?",
-   and Cohort 1's recorded composition and tasks - which is exactly the evidence the probes
-   said the field lacks. **Agentic AI for charities and non-profits is KILLED,
+   operations for an AI workshop"; "The search didn't find anything that answers who should
+   attend"; "no direct evidence on which leader gets the most out of a hands-on workshop"),
+   with everything returned being a provider's own marketing. Built from published facts only -
+   the bring-one-real-task format, `whoFor`, "Who is it not for?", the laptop and team-booking
+   answers, and Cohort 1's recorded composition and tasks. Cross-programme, so it does not
+   worsen the Second Brain weighting below. **The level-fit axis ("I already use ChatGPT daily,
+   is this too basic?") was probed the same cycle and DECLINED:** the programme pages answer
+   both the floor and the ceiling already, so a guide would restate pages that rank. Do not
+   re-pitch it without new evidence. **Agentic AI for charities and non-profits is KILLED,
    16 Oct 2026, by its probe** - DSC (the Directory of Social Change) holds nine of ten
    results on its own subject, and the live alternatives are a £200-£289 online day and a
    free funded TechSoup/Google.org course, so the field is neither winnable nor converting.
@@ -375,6 +379,69 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-19 (13:00 local cycle) - The one question a buyer asks before booking a single
+  seat is which of two people should take it, and four engines in two days said in their own
+  words that nothing in the field answers it. Written: `/guides/who-should-take-the-seat/`.**
+  - **Evidence: the delegation axis, re-probed on two phrasings the 07:00 cycle did not use.**
+    The ledger's topic-probe rule has to be satisfied before a guide is written, and one
+    cycle's four probes are a thin basis for publishing, so the axis was tested again rather
+    than taken on trust. It held. Probe 1: *"The search didn't find anything that answers who
+    should attend."* Probe 2: *"The search didn't turn up any direct evidence on which leader
+    gets the most out of a hands-on workshop, or on who should decide attendance. The results
+    are mostly vendor event listings"* - and of the one source that did argue a side, *"This
+    is a vendor's marketing claim, not independent evidence."* Five probes, four phrasings,
+    four admissions, no page of ours in any of them. WINNABLE (no institutional publisher owns
+    it; the only pages addressing it sell the in-house version) and CONVERTING (the searcher
+    is deciding who takes a paid seat).
+  - **The guide argues from published facts, not from the engines' inference.** Its spine is
+    the programme page's own "Who is it not for?" answer - anyone who cannot bring a real task
+    should not come, because without one you get a demonstration instead of an outcome - which
+    makes task ownership, not rank, the axis that decides. Three tests (whose morning the task
+    eats, who can change the process on Monday, who will build the next one), then the two
+    cases where it should be you (the adoption-and-governance material, and recalibrating what
+    you approve), the case where it should be them, the one-seat fallback, and the two failure
+    modes. Every fact in it is already on the site: the bring-one-task format, the five-level
+    adoption journey from Cohort 1's agenda, Cohort 1's recorded tasks (lead generation,
+    internal reporting, marketing content), the team-booking answer and the locked-down-laptop
+    answer. No price, no number of places, no claim about any other provider.
+  - **Twice now an engine has reached for our own format unprompted.** Yesterday: "Some
+    sessions ask each participant to bring one real process ... That favors whoever owns the
+    day-to-day workflow the AI would change." Today, of a Zurich workshop: its output is "A
+    working AI workflow automation built during the session", which "points to the people who
+    will run workflows day to day." Both inferred the rule our page already states, from
+    someone else's listing, with no page of ours in the answer.
+  - **The second axis was declined, which is the other half of the cycle.** Level fit - "I
+    already use ChatGPT every day, is this too basic for me" - had never been tested in 137
+    probes. No page of ours came back, but there is no gap: both answers resolved to "check
+    the listing for prerequisites", and all three programme pages already answer both ends,
+    the floor ("if you can use a spreadsheet and have used a chatbot you have enough") and the
+    ceiling ("Engineers are welcome - several people who build AI for a living came to the
+    first cohort"). A guide there would restate pages that already rank. Logged as do-not-
+    re-pitch.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 62 pages (was 61),
+    **3,084** internal links resolve (was 3,027), schema valid, 5 Event and 9 FAQPage nodes,
+    titles and descriptions unique, no SEO warnings (the 12 outbound warnings are the sandbox
+    egress policy, not the site). Verified in `dist`: canonical
+    `https://oxfordagentic.com/guides/who-should-take-the-seat/`, indexable, in the sitemap,
+    in `llms.txt` and `llms-full.txt` (both voice agents read them), `Article` and
+    `BreadcrumbList` nodes present, `<title>` 50 characters with the suffix, description 140.
+    The category mechanism gave it **five inbound internal links** on publication, including
+    from `in-house-ai-day-or-send-people-to-a-cohort`, the guide it is most often confused
+    with and deliberately distinct from (format versus person). Headless Chromium against a
+    local preview at 375px and 1280px: one correct h1, no heading-level skips, no horizontal
+    overflow, no missing alt text, no unlabelled control, 0 of 2 reveal blocks left hidden,
+    no page errors beyond the sandbox's own blocked tag-manager request.
+  - **Production could not be read again this cycle.** The egress policy answers 403 to
+    `oxfordagentic.com` on CONNECT and `luma.com` does not resolve, so no event fact could be
+    re-verified and none was touched. Deployment state comes from the Actions API: CI and
+    Deploy to GitHub Pages both **success** on `1068073`, the `origin/main` HEAD, with nothing
+    queued or in progress when this cycle started.
+  - **Off-page:** `coursereport.com` and `humanitix.com` added to the review list with fit
+    verdicts (both doubtful, neither urgent). The stale Luma listing is now **seven days
+    running** and remains the highest-value item on that list, and it is ten minutes of
+    Drummond's time, not the loop's.
+  - Guide count: **1 of 3 this week** (week of Mon 19 Oct), 1 of 1 today.
 
 - **2026-10-19 (08:00 local cycle) - The site had no print stylesheet, so a page saved as a
   PDF came out as a hero and then six blank sheets with the cookie banner stamped on every

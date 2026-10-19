@@ -5,6 +5,62 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-19 (13:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Two axes. The first is a deliberate **re-test of the delegation axis**
+on two phrasings the 07:00 cycle did not use, because the ledger's topic-probe rule has to
+be satisfied before a guide is written and one cycle's four probes are a thin basis for
+publishing. The second is the **level-fit** axis - whether the day is pitched below someone
+who already uses AI daily - which the log had never tested in 137 probes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I send my head of operations or attend myself one day hands-on AI workshop for leaders UK who should take the seat | **No** | innovationvisual.com, happeningnext.com (x5), ivee.jobs, createwith.com |
+| who in a leadership team gets the most out of a hands-on AI workflow workshop CEO or operations lead decide who attends | **No** | eventbrite.co.uk, emc-dnl.co.uk, eventfrog (x3), innovationvisual.com, growthhub.eastmidlands-cca.gov.uk, eaignite.com, coveros.com, kiwisaas.com |
+| I already use ChatGPT every day is a one day AI workshop for business leaders too basic for me | **No** | flexos.work, trybooking.com, happeningnext.com (x2), thehoneycombers.com, intrust-it.com, **humanitix.com**, innovationvisual.com, ai.gov.au |
+| how experienced should you be before attending a hands-on agentic AI bootcamp prerequisites non-technical | **No** | ask.datasciencedojo.com (x2), help.datasciencedojo.com (x2), luma.com (x3), academy.xebia.com, tally.so, **coursereport.com** |
+
+**Reading.**
+
+- **The delegation gap held on both new phrasings, and the engine said so in its own words
+  both times.** Probe 1: *"The search didn't find anything that answers who should attend.
+  The results describe what these workshops cover, so the choice depends on your goals."*
+  Probe 2: *"The search didn't turn up any direct evidence on which leader gets the most out
+  of a hands-on workshop, or on who should decide attendance. The results are mostly vendor
+  event listings describing their target audiences"* - and, on the one source that did argue
+  a side, *"This is a vendor's marketing claim, not independent evidence."* That is now five
+  probes across two cycles on four distinct phrasings, with four separate admissions that
+  nothing in the field answers the question. WINNABLE, because no institutional publisher
+  owns it and the only pages that address it are providers selling the in-house version.
+  CONVERTING, because the searcher is a buyer deciding who takes a paid seat. **Written this
+  cycle**, as `/guides/who-should-take-the-seat/`.
+- **Probe 2 reached for our own format a second time, unprompted.** Of the Zurich workshop it
+  returned, it picked out the output - "A working AI workflow automation built during the
+  session" - and drew the conclusion itself: that *"points to the people who will run
+  workflows day to day"*. Yesterday's probe 3 got there by the same route ("Some sessions ask
+  each participant to bring one real process ... That favors whoever owns the day-to-day
+  workflow the AI would change"). Two engines, two days, no page of ours in either answer,
+  both inferring the rule that the Oxford Agentic Bootcamp's published "Who is it not for?"
+  answer already states. The guide makes that argument from our own published facts rather
+  than from the engines' inference.
+- **The level-fit axis needed nothing, and that is the honest finding.** Neither probe
+  returned a page of ours, but neither found a gap either: the field is providers' own
+  listings (FlexOS's deep dive for people who have already experimented, Humanitix's
+  "Advanced AI Workshop", Data Science Dojo's Python and LLM prerequisites), and both answers
+  resolved to the same advice - check the listing, because *"Descriptions that mention 'basic
+  familiarity' or 'advanced prompts' are the clearest signal of its level"* and *"look for
+  programs that explicitly say no coding is needed"*. All three of our programme pages already
+  do exactly that, at both ends: the floor in "Do I need to be technical?" ("if you can use a
+  spreadsheet and have used a chatbot you have enough"), and the ceiling in the same answer
+  and in `whoFor` ("Engineers and people building AI for a living, who come for the pattern
+  and the room", "several people who build AI for a living came to the first cohort"). A
+  guide here would restate pages that already rank. **Declined.**
+- **Two new off-page leads, unverified:** `coursereport.com`, a bootcamp directory with
+  reviews, and `humanitix.com`, a not-for-profit ticketing platform carrying an advanced AI
+  workshop. Added to the review list with fit verdicts. Nothing contacted, nothing submitted,
+  no account made.
+
 ## 2026-10-19 (07:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

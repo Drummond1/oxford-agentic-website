@@ -11,6 +11,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two directory routes found 19 Oct 2026 (13:00 cycle), both unverified and neither urgent.**
+  - **`coursereport.com`** - a bootcamp directory that carries reviews and course pages, returned
+    on a prerequisites query against an agentic AI bootcamp. It is the kind of third-party page
+    the Organization node still has no `sameAs` for. **Fit is doubtful and worth ten seconds
+    before ten minutes:** its catalogue is US-weighted and built around multi-week career-change
+    bootcamps with published tuition, which is neither the format nor the buyer. Check whether it
+    accepts a one-day UK programme at all before writing anything.
+  - **`humanitix.com`** - a not-for-profit ticketing platform, carrying an "Advanced AI Workshop"
+    that surfaced on the level-fit query. Same shape of route as Eventbrite in
+    `off-page-listings.md`, and the same decision applies: it is a second public listing of a day
+    that is already sold on Luma, so it only earns its place if the listing points back at
+    oxfordagentic.com. Lower priority than fixing the two stale Luma listings above.
+  - Needs: Drummond's view on whether a second ticketing surface is wanted at all. Nothing
+    contacted, nothing submitted, no account made.
+
 - **Our own two past Luma listings outrank the live one, and outrank our website** - found
   15 Oct 2026 by answer-engine probe. **Highest-value off-page item the loop has found, and
   the whole of it is in Drummond's own account.**
