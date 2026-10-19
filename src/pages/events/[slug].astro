@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Faq from '../../components/Faq.astro';
 import LumaEmbed from '../../components/LumaEmbed.astro';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 import Quote from '../../components/Quote.astro';
 import config from '../../../site.config';
 import {
@@ -142,6 +143,19 @@ const showLeadQuote =
   !isPast && Boolean(leadQuote) && showSection('testimonials', { hidden: data.hideSections, hasContent: true });
 const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data.faqs.length > 0 });
 const showPhotos = showSection('photos', { hidden: data.hideSections, hasContent: isPast && photos.length > 0 });
+
+/*
+ * The notify control in the past band, and only where there is no next run of
+ * this programme to point at. It mirrors the programme page's empty "Runs"
+ * band: the sentence above it says no date is set, the only other route offered
+ * is /events/, which lists the other bootcamps rather than this one, and the
+ * form exists in the global footer, where it reads as site furniture rather
+ * than an answer to the line directly above it.
+ *
+ * Reachable for the first time on 21 October 2026, when the Second Brain
+ * Bootcamp's only cohort has run and that programme has no further date set.
+ */
+const showNotify = isPast && !successor && showSection('newsletter');
 
 /*
  * Band order, reworked 17 Aug for conversion.
@@ -308,11 +322,18 @@ const registerLabel = !registrationOpen
                 </a>
               </div>
             ) : (
-              <div class="btn-row">
-                <a href={paths.events()} class="btn btn--primary">
-                  All events
-                </a>
-              </div>
+              <Fragment>
+                <div class="btn-row">
+                  <a href={paths.events()} class="btn btn--primary">
+                    All events
+                  </a>
+                </div>
+                {showNotify && (
+                  <div class="ran__notify">
+                    <NewsletterForm label="Tell me when the next dates are set" />
+                  </div>
+                )}
+              </Fragment>
             )}
           </div>
         ) : (
@@ -814,6 +835,10 @@ const registerLabel = !registrationOpen
 
   :global(.band--cream) .ran__copy {
     color: var(--muted-on-cream);
+  }
+
+  .ran__notify {
+    margin-block-start: 1.5rem;
   }
 
   /* ---- Assurances, under the booking form ---- */

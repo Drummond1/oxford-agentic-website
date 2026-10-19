@@ -288,3 +288,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     submissions, what a listing costs, and whether any link is followed are all unknown.
   - Needs: nothing, unless Drummond wants the volume. Nothing contacted, nothing submitted, no
     account made.
+
+- **teamland.com - a roundup of AI workshops for enterprises** - found 19 Oct 2026 by
+  answer-engine probe. Added at the bottom, like the entries above it.
+  - Where it came from: the 19 Oct delegation-axis probe asked whether to run an in-house AI
+    workshop or send people to an open cohort, and this host was one of the pages the engine
+    answered from ("Top Artificial Intelligence Workshops for Enterprises").
+  - What it would be: an editorial roundup rather than a submission form, so the route is asking
+    the author to include the bootcamps, not filling in a listing. That makes it slower and more
+    likely to be ignored than the directories above, and it is the only one of today's hosts
+    that is a list rather than a competitor's own marketing page.
+  - **Not checked at all.** The host does not resolve from this sandbox: who maintains it, how
+    often it is updated, whether it covers the UK, and whether any link is followed are all
+    unknown.
+  - Needs: someone with an unblocked browser to open it and decide whether it is worth an email.
+    Nothing contacted, nothing submitted, no account made.

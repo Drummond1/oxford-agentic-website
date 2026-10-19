@@ -5,6 +5,61 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-19 (07:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **delegation** axis, which the log had never tested in
+133 probes: not which bootcamp to pick, but which person in a leadership team should take the
+seat. The fourth probe is a date-anchored check on the next bookable day.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I attend AI training myself or send a member of my team senior leader UK one day workshop | **No** | innovationvisual.com (x3), bilginc.com, aiawareness.ai (x2), ivee.jobs, happeningnext.com |
+| is it better to run an in-house AI workshop for our team or send people to an open cohort bootcamp | **No** | pertamapartners.com (x2), bootcampdigital.com, createit.com, **teamland.com**, aitraining2u.com, blckalpaca.at, lbbonline.com |
+| which of my leadership team should attend a hands-on AI workshop founder or head of operations who to send | **No** | scandiweb.com (x2), start.uipath.com, ima-india.com, rgi.rollins.edu, brainstation.io (x3), chdc.com.au |
+| one day hands-on AI bootcamp Oxford November 2026 build an agentic workflow | **No** | **luma.com/k7c2rm5s and luma.com/oxfordagentic2**, sbs.ox.ac.uk, **allai.events**, business.lehigh.edu, science.ai.cam.ac.uk, createwith.com, odsc.ai, educationweek.ieee.org |
+
+**Reading.**
+
+- **The field has no answer to "who should I send", and said so twice.** Probe 1: "I found no
+  independent comparison of sending a delegate versus attending yourself, so the decision
+  depends on your goals." Probe 3: "No source compares founders and heads of operations for an
+  AI workshop." Everything returned on both was a provider's own marketing page. By the
+  ledger's own test that is WINNABLE - no institutional publisher owns it - and CONVERTING,
+  because the searcher is a buyer deciding who takes a seat. **Recorded as a live candidate,
+  not written today**, because this cycle's evidence pointed somewhere more urgent.
+- **Probe 3 handed us the answer our own format already gives.** Its closing reasoning: "Some
+  sessions ask each participant to bring one real process or bottleneck from their own company.
+  That favors whoever owns the day-to-day workflow the AI would change." That is the Oxford
+  Agentic Bootcamp's format described by an engine that had never seen our page. Nothing on the
+  site says it: `whoFor` lists roles and "Who is it not for?" rules people out, but no page
+  answers which of two colleagues should come.
+- **Probe 2 is selection, not discovery.** `in-house-ai-day-or-send-people-to-a-cohort` answers
+  that question directly and was not returned. The engine's own caveat on the answer it gave
+  instead - "most of the sources are vendors with a stake in the answer" - is the opening our
+  guide has and is not being read for. No on-site change is warranted; this is engine lag or
+  authority, not a gap.
+- **Probe 4 is the stale Luma listing for the sixth day running, and it is worse on a dated
+  query.** The question names Oxford, November 2026, one day, hands-on and agentic workflow -
+  about as close to Cohort 3's purchase intent as a query gets. **No page of ours came back at
+  all.** The engine answered off `luma.com/k7c2rm5s` (Cohort 1) and `luma.com/oxfordagentic2`
+  (Cohort 2) and `allai.events`, repeated the venue contradiction ("St Anne's College according
+  to one listing and Worcester College according to another"), and concluded: *"I found no
+  confirmed one-day Oxford AI bootcamp in November 2026 ... its listing shows a July 2026 date,
+  which has already passed"* and *"the Luma pages I found show no November date"*. A buyer
+  looking for the day that is on sale is being told our product has already happened. Unchanged
+  conclusion, now six days old and worth escalating: nothing on-site fixes it, ten minutes in
+  Luma would.
+- **What the probes did change on-site.** They did not supply the change - the build did - but
+  probe 4 is why it mattered today. If engines route buyers to us through past-dated listings,
+  the past-event page is not an edge case on this site, it is a common entry point. Checked what
+  one of those pages will say from 21 October, and `getSuccessorEvent` would have offered the
+  **Agentic Bootcamp's Cohort 3** as the Second Brain Bootcamp's next cohort, under the sentence
+  "The next cohort runs the same format". Fixed this cycle.
+- **One new off-page lead, unverified: teamland.com.** A roundup of AI workshops for
+  enterprises, returned on probe 2. Added to the review list. Nothing contacted, nothing
+  submitted, no account made.
+
 ## 2026-10-19 (01:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

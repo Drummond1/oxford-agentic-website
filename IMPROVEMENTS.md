@@ -123,7 +123,16 @@ Status: `todo` · `blocked` (why) · `doing`
    unchanged: a real question, standing alone, one programme link, never more than one
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
    Remaining candidates that pass the bar: "do I need a paid AI subscription?"
-   (expands a real event-page FAQ). **Agentic AI for charities and non-profits is KILLED,
+   (expands a real event-page FAQ); **"who should take the seat - you or someone in your
+   team?", added 19 Oct 2026 by the delegation-axis probes.** Two of three answers said
+   outright that nothing in the field compares the two ("I found no independent comparison of
+   sending a delegate versus attending yourself"; "No source compares founders and heads of
+   operations for an AI workshop"), and everything returned was a provider's own marketing.
+   Winnable, and converting, because the searcher is deciding who takes a paid seat. It is
+   cross-programme, so it does not worsen the Second Brain weighting below. It would be built
+   from published facts only - the bring-one-real-task format, `whoFor`, "Who is it not for?",
+   and Cohort 1's recorded composition and tasks - which is exactly the evidence the probes
+   said the field lacks. **Agentic AI for charities and non-profits is KILLED,
    16 Oct 2026, by its probe** - DSC (the Directory of Social Change) holds nine of ten
    results on its own subject, and the live alternatives are a £200-£289 online day and a
    free funded TechSoup/Google.org course, so the field is neither winnable nor converting.
@@ -366,6 +375,60 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-19 (07:00 local cycle) - A past event page was about to offer a different
+  bootcamp as its own next cohort. `getSuccessorEvent` fell back to any upcoming event when
+  the same programme had none, and from 21 October that fallback produces a false sentence on
+  the page that ranks first for "second brain workshop Oxford".**
+  - **The defect, in the repo's own words.** `getSuccessorEvent` read
+    `upcoming.find(same programme) ?? upcoming[0]`, documented as "Falls back to any upcoming
+    event, then to the events index - PRD §6". Its stated mirror, `getPredecessorEvent`,
+    carries the opposite rule in a comment written on the same file: *"Same-programme only, and
+    never a fallback to some other programme: a Second Brain buyer is not reassured by an
+    agentic bootcamp having gone well."* The fallback was written when there was one programme
+    and cost nothing while there was, because `find` always matched.
+  - **Reproduced, not reasoned about.** Backdated the Second Brain cohort and built. With the
+    old line, `/events/oxford-second-brain-bootcamp-cohort-1/` rendered "The next cohort runs
+    the same format - details below." above a primary button reading **"Cohort 3 - 19 November
+    2026"** pointing at `/events/oxford-agentic-bootcamp-cohort-3/`, with
+    `data-analytics-slug="oxford-agentic-bootcamp-cohort-3"`. Three errors in one control: a
+    different bootcamp, a claim that it is the same format, and a cohort number of a programme
+    that has no Cohort 3. It fires at 17:00 on 21 October, unprompted.
+  - **Change: same-programme only, and make the resulting state useful.** The fallback is gone,
+    so the page falls through to PRD §6's remaining rung, the events index. That branch had been
+    effectively unreachable - it needs *no* upcoming events anywhere - so making it reachable for
+    the first time meant giving it the answer the 01:00 cycle gave the programme page's empty
+    "Runs" band six hours earlier: `NewsletterForm`, labelled "Tell me when the next dates are
+    set", under the "All events" button. Same component, same label, same 1.5rem gap. No new
+    component, no new pattern, and no copy promising a date, a frequency or a cadence.
+  - **Evidence: the delegation axis, which the GEO log had never tested in 133 probes,** plus a
+    date-anchored check on the next bookable day. The delegation probes found a real gap the
+    field does not fill ("I found no independent comparison of sending a delegate versus
+    attending yourself"; "No source compares founders and heads of operations for an AI
+    workshop") - logged as a live guide candidate, not written today. The fourth probe is why
+    this cycle's fix mattered: asked for a one-day hands-on Oxford agentic bootcamp in November
+    2026, the engine returned **no page of ours**, answered off `luma.com/k7c2rm5s` and
+    `luma.com/oxfordagentic2`, and concluded the bootcamp "has already passed". If engines route
+    buyers to us through past-dated listings, a past-event page is a common entry point on this
+    site rather than an edge case, and what it says about the next cohort has to be true.
+  - **Checks:** build clean before and after, with today's output **identical** to the baseline -
+    61 pages, 3,027 internal links, schema valid, 5 Event and 9 FAQPage nodes, no SEO warnings;
+    `check:flags` passes on the all-on and all-off builds. Confirmed in `dist` that both Agentic
+    past pages still point at Cohort 3 and that the notify block appears on **no** page today.
+    Then built the simulated post-21-October state and confirmed the Agentic offer is gone, the
+    "being confirmed" sentence stands, and the notify block is present. Headless Chromium against
+    a local preview of that simulated build at 375px and 1280px: one correct h1, the label and
+    its mailto route visible, 24px below the button row, cream on the ink band, no horizontal
+    overflow, no page errors. The newsletter endpoint is still unset, so the form renders its
+    honest mailto fallback.
+  - **No event fact moved** - `luma.com` does not resolve from the sandbox, so none could be
+    re-verified and none was touched. **`oxfordagentic.com` does not resolve either this cycle**
+    (the egress policy refused it, 403 on CONNECT), so the live page could not be read; the
+    deploy workflow's own conclusion was used for production state instead.
+  - **Also logs the four probes** and adds `teamland.com` to the review list. **The stale Luma
+    listing is now six days running** and today it beat us on a dated commercial query. That is
+    the off-page item, and it is worth ten minutes of his time.
+  - No guide: 0 of 3 this week, today's allowance unused by choice.
 
 - **2026-10-19 (01:00 local cycle) - The site had a state it had never been in, arriving on
   21 October: a programme with no scheduled cohort. Simulated it in the build rather than

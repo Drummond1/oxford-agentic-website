@@ -69,11 +69,20 @@ export async function getNextEvent(now = new Date()): Promise<EventEntry | undef
 
 /**
  * For a past event page: the next run of the SAME programme, so the page still
- * converts. Falls back to any upcoming event, then to the events index — PRD §6.
+ * converts. Falls back to the events index — PRD §6.
+ *
+ * Same-programme only, for the reason getPredecessorEvent gives below. The
+ * middle rung of PRD §6's chain, "any upcoming event", was written when there
+ * was one programme and cost nothing while there was, because `find` always
+ * matched. With three it hands the reader a different bootcamp under the
+ * sentence "The next cohort runs the same format", labelled with that other
+ * programme's cohort number. It would have fired for the first time on 21
+ * October 2026, on the past Second Brain Bootcamp page, offering the Agentic
+ * Bootcamp's Cohort 3 as the Second Brain Bootcamp's next cohort.
  */
 export async function getSuccessorEvent(event: EventEntry, now = new Date()) {
   const { upcoming } = await getEventsForIndex(now);
-  return upcoming.find((e) => e.data.programme.id === event.data.programme.id) ?? upcoming[0];
+  return upcoming.find((e) => e.data.programme.id === event.data.programme.id);
 }
 
 /**
