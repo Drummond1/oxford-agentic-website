@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-19 (19:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Today's guide allowance was spent by the 13:00 cycle, so these four
+probes were run to find an on-page gap rather than a guide. Two axes. The first is the
+**paid-versus-free** objection - why pay for a day when the material is public - which the log
+had never tested in 141 probes. The second is **audience fit for a solo founder**, plus a
+date-anchored check on the bootcamp that runs in two days.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| second brain bootcamp Oxford 21 October 2026 one day in person last places to book | **No** | luma.com/p30sbe3h (a different, online, two-day event), oxfordhealthbrc.nihr.ac.uk, hypnotherapists.org.uk, help.fortelabs.com (x2), st-hughs.ox.ac.uk, groups.google.com (x2), enspire.ox.ac.uk |
+| why pay for a one day AI workshop when there are free YouTube tutorials and online courses worth it | **No** | marcillyaiplaybook.it.com (x2), claudelog.com, searchenterpriseai.techtarget.com, kr-asia.com, trustpilot, mctaba.com, tinkerllm.com |
+| everything in a paid AI course is free online is it worth paying for a workshop instead of self study | **No** | marcillyaiplaybook.it.com, kr-asia.com, claudelog.com, lilachbullock.com, areganti.notion.site, boredom-at-work.com, tinkerllm.com, mctaba.com |
+| is a hands-on AI bootcamp worth it for a solo founder with no team one day UK | **No** | luma.com/1swa5ccx, cheshireandwarrington.com, fi.co (x3), **api.coursereport.com** (Nucamp), blog.nobledesktop.com, startupstudio.berkeley.edu, is4.ai |
+| how to spend remaining training budget before year end on AI skills UK one day course | **No** | hemsleyfraser.com, comptia.org, itbrief.co.uk (South Thames College), shortcourses.lsbu.ac.uk, tutorials.co.uk (x2), orbit-rri.org, profiletree.com (x2) |
+
+**Reading.**
+
+- **The paid-versus-free objection is a real gap, and it held on both phrasings.** Neither
+  returned a page of ours. The field is blogs and vendors arguing about courses in general -
+  and the second answer said so outright: *"The sources were mostly about courses in general,
+  so I didn't find direct comparisons of workshops versus self-study."* WINNABLE by the
+  ledger's test, because no institutional publisher owns it. CONVERTING, because the searcher
+  is at the moment of deciding whether to pay at all. **Acted on this cycle, as a Q&A block on
+  an existing guide rather than a new one** - the day's guide allowance was already spent, and
+  the objection belongs inside the page that compares the ways to learn rather than beside it.
+- **Both engines converged on the same answer, and it is the one our page already makes in
+  other words.** *"Paying makes sense mainly for structure, feedback, and accountability, not
+  for secret content."* *"Most people who stall in AI learning stall from isolation and lack of
+  feedback, not from lack of free content."* *"Free resources are excellent libraries but bad
+  curricula."* The guide already said "watching someone build is not building" and "the
+  friction that stops people is rarely the concept", but the words a searcher uses for this -
+  free, YouTube, self-study, do it myself - appeared nowhere on the site. One guide mentioned
+  "free" at all, and in an unrelated sense. That is a matching problem, not a content problem.
+- **One engine handed over the qualifying test unprompted:** *"ask whether you'll build and
+  deploy real projects, whether someone reviews your work, and whether there's accountability
+  to finish. If the answer to any of these is no, the programme is not worth paying for."*
+  Our published format answers all three, which is why the new block answers the objection
+  honestly - very little in the day cannot be found for free - rather than claiming otherwise.
+- **The solo-founder and year-end-budget axes needed nothing.** Both resolved to "it depends,
+  check the provider", and the pages returned were funded regional schemes, US accelerators and
+  pre-pay vendor offers. Neither is a gap we can fill without inventing a fact: eligibility for
+  a funded scheme and levy treatment are claims about someone else's rules, and the standing
+  decision is that VAT treatment is never stated. **Declined.**
+- **The event that runs in two days is invisible on its own date.** A query naming the
+  programme, the city, the date and the format returned no page of ours and no Luma page of
+  ours - the engine concluded *"I found no listing for a Second Brain bootcamp in Oxford on 21
+  October 2026 ... The search results don't support that event existing."* It answered off a
+  different, online two-day event and off Forte Labs' help centre instead. That is the fourth
+  line running to fail a query that names our own event, and it is the off-page item
+  (`outreach/review-list.md`, backlog 2b), not a page fix: there is nothing left to add to the
+  page, which already carries the date, the venue, the postcode and a valid `EducationEvent`.
+- **Off-page:** no new route worth adding. `fi.co`, `trybooking.com` and the regional funded
+  schemes are not listing surfaces for a one-day Oxford day, and `tutorials.co.uk`,
+  `happeningnext.com` and `enspire.ox.ac.uk` are already on the list. `coursereport.com`, added
+  at 13:00, returned again on an unrelated query and its entry now records that the second
+  sighting firms up the doubtful verdict. Nothing contacted, nothing submitted, no account made.
+
 ## 2026-10-19 (13:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

@@ -380,6 +380,75 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-19 (19:00 local cycle) - The guide that compares the ways to learn AI compared
+  three of them and never mentioned the fourth, which is the one a buyer actually weighs the
+  fee against: doing it yourself, for nothing. Added a three-question block to
+  `/guides/ai-bootcamp-vs-course-vs-exec-education/`.**
+  - **Evidence: the paid-versus-free axis, untested in 141 probes, probed twice.** Neither
+    phrasing returned a page of ours. The field is blogs and vendors arguing about courses in
+    general, and the engine said so itself: *"The sources were mostly about courses in general,
+    so I didn't find direct comparisons of workshops versus self-study."* WINNABLE (no
+    institutional publisher owns it) and CONVERTING (the searcher is deciding whether to pay at
+    all). Today's guide allowance was already spent by the 13:00 cycle, so this ships as a Q&A
+    refresh on an existing page, which is where the objection belongs anyway.
+  - **The gap was a matching problem, not a content problem.** The page already carried the
+    argument - "watching someone build is not building", "the friction that stops people is
+    rarely the concept" - but the words a searcher uses for it (free, YouTube, self-study, do it
+    myself) appeared nowhere on the site. One guide used "free" at all, in an unrelated sense.
+    The page compared executive education, an online course and a bootcamp, and left the free
+    option out of its own bullet list, so a reader weighing the fee against nothing found no
+    column for it.
+  - **The block answers the objection honestly rather than arguing with it.** "Is there anything
+    in the day you could not find for free?" - very little, and the pattern we teach is
+    published on this site; what a day buys is a finished thing, not withheld information. "You
+    are disciplined, so why not just do it yourself?" - the test is not whether you could but
+    whether you already have. "When is a paid day not worth it?" - when you have nothing real to
+    bring, which is the programme page's own "Who is it not for?" answer. Every fact in it is
+    already published: the scout/drafter/reviewer pattern, someone walking the room, the
+    one-real-task format, and the "I understand it, I have just never built anything" line that
+    was already in this guide's own opening section.
+  - **An engine handed over the qualifying test unprompted:** *"ask whether you'll build and
+    deploy real projects, whether someone reviews your work, and whether there's accountability
+    to finish. If the answer to any of these is no, the programme is not worth paying for."*
+    Our published format answers all three, which is why the block can afford to concede the
+    content point.
+  - **Two axes were declined, which is the other half of the cycle.** Solo-founder fit and
+    year-end training budget both resolved to "it depends, check the provider", and what came
+    back was funded regional schemes, US accelerators and pre-pay vendor offers. Filling either
+    would mean stating eligibility rules or levy and VAT treatment, and VAT is on the
+    never-state list. Logged, not written.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 62 pages, **3,086**
+    internal links resolve (was 3,084 - the two new in-body links), schema valid, 5 Event and 9
+    FAQPage nodes, titles and descriptions unique, no new SEO warnings (the 12 outbound warnings
+    are the sandbox egress policy). Verified in the rendered page: one h1, no heading-level
+    skips, the three questions render as `h3` under one `h2` - the same treatment
+    `second-brain-for-ai-vs-note-taking` already uses, measured identical at 21px Newsreader -
+    and the typographer turned the quoted line's marks curly, so the straight-apostrophe warning
+    stays at zero. `updatedDate` bumped; `title`, `seoTitle`, `description` and `capsule`
+    deliberately untouched, because this page ranks and the three-format thesis has not changed.
+    Headless Chromium against a local preview at 375px and 1280px: one h1, no heading skip,
+    0 of 2 reveal blocks hidden, no missing alt text, no horizontal overflow, no page errors
+    beyond the sandbox's own blocked tag-manager requests.
+  - **Production state came from the Actions API again.** The egress policy answers 403 to
+    `oxfordagentic.com` on CONNECT and `luma.com` does not resolve, so `build.txt` could not be
+    read and no event fact could be re-verified - none was touched. Deploy to GitHub Pages run
+    261 **success** on `5b806a5`, the `origin/main` HEAD, finished 13:11 UTC with nothing queued
+    or in progress when this cycle started.
+  - **The event that runs in two days is invisible on its own date.** A query naming the
+    programme, the city, 21 October 2026 and the format returned no page of ours and no Luma
+    page of ours: *"I found no listing for a Second Brain bootcamp in Oxford on 21 October 2026
+    ... The search results don't support that event existing."* Fourth line running to fail a
+    query naming our own event. Nothing is missing from the page - it carries the date, venue,
+    postcode and a valid `EducationEvent` - so this is backlog 2b and the stale Luma listings,
+    which are now **eight days running** and still ten minutes of Drummond's time.
+  - **Off-page:** no new route worth adding. `coursereport.com` returned again on an unrelated
+    query, for Nucamp's multi-week US bootcamp, and its review-list entry now records that the
+    second sighting firms up the doubtful verdict rather than softening it.
+  - **Search Console:** unavailable from the cloud checkout, and no export newer than the
+    24 Aug baseline exists in `seo-data/`.
+  - Guide count: **1 of 3 this week** (week of Mon 19 Oct), 1 of 1 today - spent by the 13:00
+    cycle. This is a Q&A refresh, 1 of the 2 allowed in a day.
+
 - **2026-10-19 (13:00 local cycle) - The one question a buyer asks before booking a single
   seat is which of two people should take it, and four engines in two days said in their own
   words that nothing in the field answers it. Written: `/guides/who-should-take-the-seat/`.**

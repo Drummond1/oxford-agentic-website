@@ -17,7 +17,10 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the Organization node still has no `sameAs` for. **Fit is doubtful and worth ten seconds
     before ten minutes:** its catalogue is US-weighted and built around multi-week career-change
     bootcamps with published tuition, which is neither the format nor the buyer. Check whether it
-    accepts a one-day UK programme at all before writing anything.
+    accepts a one-day UK programme at all before writing anything. **Corroborated 19 Oct
+    (19:00 cycle)** on an unrelated solo-founder query, where it returned again - for Nucamp's
+    multi-week "Solo AI Tech Entrepreneur Bootcamp". That is the same US career-change shape,
+    so it firms up the doubtful verdict rather than softening it.
   - **`humanitix.com`** - a not-for-profit ticketing platform, carrying an "Advanced AI Workshop"
     that surfaced on the level-fit query. Same shape of route as Eventbrite in
     `off-page-listings.md`, and the same decision applies: it is a second public listing of a day

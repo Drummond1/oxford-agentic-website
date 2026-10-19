@@ -11,7 +11,7 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-10-12T19:00:00+01:00"
+updatedDate: "2026-10-19T20:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -46,6 +46,22 @@ That is a narrower promise than most training pages make, and it is worth being 
 - **You have already done the first two** - that is the most common person in our room, and the gap they describe is exactly what a bootcamp closes.
 
 They compound rather than compete: the frame from a programme, the depth from a course and a working result from a day of building are worth more together than any one alone.
+
+## The fourth option: doing it yourself, for nothing
+
+All three formats above cost money, and an honest comparison has a fourth column, because most of the material is public. Documentation, tutorials and recorded talks cover a great deal of what any of them teach. It is worth being direct about what that does and does not settle.
+
+### Is there anything in the day you could not find for free?
+
+Very little, and we would rather say so. The pattern we teach is [scout, drafter, reviewer](/guides/scout-drafter-reviewer-pattern/), and it is written down in public, on this site included - these guides give the argument away rather than trail it. What a day buys is not withheld information. It is a finished thing: your own task, built and running by the time you leave, with someone walking the room at the moment it stalls.
+
+### You are disciplined, so why not just do it yourself?
+
+You might, and some people should. The useful test is not whether you could but whether you already have. Many of the people in our rooms are not short of material or of ability - they arrive saying some version of "I understand it, I have just never built anything", and the thing that stopped them was never the concept. It was the first stuck moment at their own desk, on an ordinary working day, with something more urgent waiting. A date in the diary and other people in the room is what removes the deferral. If self-directed study has already left you with something you use every week, you do not need a bootcamp.
+
+### When is a paid day not worth it?
+
+When you have nothing real to bring. The day is built around one task from your own work, so arriving without one gets you a demonstration instead of an outcome - and a demonstration is the one thing free material already does well. [What you can build in one day](/guides/what-you-can-build-in-one-day-with-ai/) sets out what finishes inside a day and what does not; if your task sits outside that, the money is better spent elsewhere.
 
 One axis this leaves out. If you are choosing for a team rather than for yourself, the question is not only which of the three formats but whether to send two or three people at all: [an in-house day or an open cohort](/guides/in-house-ai-day-or-send-people-to-a-cohort/) is the comparison, and it usually turns on whether you are buying alignment across a team or capability in a few people.
 
