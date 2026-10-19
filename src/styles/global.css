@@ -824,3 +824,100 @@ img[loading='lazy'] {
     transform: none !important;
   }
 }
+
+/*
+ * ---- Print ----
+ * Saving a page as a PDF is how a day reaches someone who was never on the
+ * site: a manager approving the cost, a colleague sent the agenda. Three
+ * things stood between the screen and the paper.
+ *
+ * Blocks wait for the scroll observer above, so everything the reader had not
+ * already scrolled past printed as empty space — a cohort page printed its
+ * hero and then six blank sheets. Browsers leave backgrounds off by default,
+ * so cream text on an ink band printed white on white. And fixed elements
+ * repeat on every sheet, so the cookie banner and the phone booking bar were
+ * stamped across the whole document.
+ *
+ * So paper gets one ink on white, no floating furniture, and the booking link
+ * prints the address paper cannot click. Nothing here reaches the screen.
+ */
+@media print {
+  .js-motion [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Furniture that belongs to a scrolling window, plus the booking iframe,
+     which prints as an empty 450px box wherever third-party frames are not
+     rendered. The fallback link below it carries the booking. */
+  .site-header,
+  .consent,
+  .to-top,
+  .progress,
+  .sticky-bar,
+  .register__frame {
+    display: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: var(--ink-dark) !important;
+    box-shadow: none !important;
+    /* A reveal that is still fading when the sheet is rendered prints faint.
+       Paper has no motion, so nothing animates on it. */
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* The signature rule and the buttons are carried by fill on screen. On paper
+     the fill is gone, so they are drawn in ink instead. */
+  .dash {
+    background: var(--ink-dark) !important;
+    transform: none !important;
+  }
+
+  .btn {
+    border-color: var(--ink-dark) !important;
+  }
+
+  /* Screen spacing is set in viewport widths; on A4 it leaves half-empty
+     sheets between sections. */
+  .band {
+    padding-block: 1.5rem !important;
+  }
+
+  /* A sheet break through a card, a quote or a list item separates things that
+     only mean anything together — the footer's cohort dates sit under their own
+     titles, and a break between the two reads as the wrong date. */
+  .card,
+  figure,
+  blockquote,
+  li {
+    break-inside: avoid;
+  }
+
+  /* Photographs are held at zero opacity until they load, which on paper is an
+     empty frame where a picture of the room should be. */
+  .js-lazyfade img[loading='lazy'] {
+    opacity: 1 !important;
+  }
+
+  /* The accordion is a screen affordance. A closed <details> prints closed, so
+     every FAQ answer but the first came out as a question with nothing under
+     it — including the one about justifying the day to a manager, which is the
+     reason the page is being printed at all. On paper they are all open. */
+  details::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+  }
+
+  a[href*='luma.com']::after,
+  a[href*='lu.ma']::after {
+    content: ' (' attr(href) ')';
+    font-family: var(--font-label);
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+}

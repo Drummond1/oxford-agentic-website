@@ -376,6 +376,53 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-19 (08:00 local cycle) - The site had no print stylesheet, so a page saved as a
+  PDF came out as a hero and then six blank sheets with the cookie banner stamped on every
+  one.** The site has 61 pages and not one `@media print` rule anywhere in `src/`.
+  - **Reproduced in Chromium, not reasoned about.** Printed `/events/oxford-agentic-bootcamp-cohort-3/`
+    from a local preview at A4: **22 of its 22 `[data-reveal]` blocks measured opacity 0 under
+    print media**, so the agenda, the key facts, the three quotes and the whole FAQ printed as
+    white space. The homepage: 21 of 21. Two further causes behind the same symptom: fixed
+    elements repeat on every sheet, so the consent banner sat at the foot of all ten pages and
+    the phone booking bar at the head of each; and browsers leave backgrounds off by default,
+    which on this palette means cream text on an ink band prints white on white.
+  - **Change: one `@media print` block in `src/styles/global.css`, 97 lines, screen untouched.**
+    The reveal hold and the lazy-image hold are released, transitions and animations are off so
+    nothing renders mid-fade, the floating furniture (header, consent banner, back to top,
+    reading progress, phone booking bar) comes off the paper, everything prints as ink on white,
+    the gold rule and the buttons are redrawn in ink since their fill is gone, band padding set
+    in viewport widths drops to 1.5rem, cards, quotes and list items do not break across a
+    sheet, every FAQ answer prints open, and a link to Luma prints its address, because paper
+    cannot be clicked.
+  - **The FAQ half was a documented intention that was not true.** `Faq.astro`'s own comment
+    says the accordion is "open-by-default-when-printed". It is not in current Chromium: only
+    the first `<details>` printed its answer, so "How do I justify this to my manager?" - the
+    question a printed page exists to answer - came out as a heading with nothing under it.
+    `details::details-content { content-visibility: visible }` opens them all on paper.
+  - **Nothing reaches the screen, and that is measured rather than asserted.** The compiled
+    `Base.*.css` from this build is **byte-identical to the pre-change build once the new
+    `@media print` block is removed**, so no screen pixel on any of the 61 pages can move.
+  - **Checks:** `npm run build` clean - 61 pages, 3,027 internal links, schema valid, 5 Event
+    and 9 FAQPage nodes, no SEO warnings (the 12 outbound warnings are the sandbox egress
+    policy); `check:flags` passes on the all-on and all-off builds; `astro check` reports the
+    same 79 errors and 4 hints as before the diff. Headless Chromium sweep of 20 pages at 375,
+    768 and 1280px: no horizontal overflow, no missing alt text, no unlabelled control, no link
+    or button without an accessible name, one `h1` per page, no heading-level skips, no page
+    errors. Printed before and after at A4 across an event page, a past event page with photos,
+    a programme page, the homepage, a guide, `/about/`, `/team/` and `/apply/`: 0 hidden blocks
+    after, against 22, 21, 14 and 1 before.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    `oxfordagentic.com` on CONNECT, and `luma.com` does not resolve, so no event fact could be
+    re-verified and none was touched. Deployment state comes from the Actions API: CI and Deploy
+    to GitHub Pages both **success** on `5491939`, the `origin/main` HEAD, with nothing queued
+    or in progress when this cycle started.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (backlog 20), the bronze
+    contrast token (21), Cohort 2's outcomes (22), the past-cohort quote heading (23), the team
+    byline call (24), the Coding Bootcamp's paid-plan question (25), the event hero's doubled
+    heading (26), lunch and travel (27), the two voice-page apostrophes (28), Jonathan
+    Waddingham's former employer (29) and links in FAQ answers (30).
+  - No guide: today's allowance unused by choice.
+
 - **2026-10-19 (07:00 local cycle) - A past event page was about to offer a different
   bootcamp as its own next cohort. `getSuccessorEvent` fell back to any upcoming event when
   the same programme had none, and from 21 October that fallback produces a false sentence on
