@@ -384,9 +384,96 @@ Status: `todo` · `blocked` (why) · `doing`
     only, which is what `src/content/team/` publishes and what `/team/` shows, so it adds no
     third version. One word from him fixes whichever of the two is wrong.
 
+31. `todo` **(needs Drummond, a consent-UI call)** - **the cookie banner's buttons are cut
+    off at large text.** Measured 20 Oct with the browser default font at 24px: at a 320px
+    viewport the "Accept" button reaches `right: 369` in a 320px window, and at 32px it
+    reaches 491 in a 375px window, so on a narrow phone a visitor who has enlarged their
+    text cannot see the whole of either control on the one panel that gates the site. The
+    banner is `position: fixed`, so it clips silently without adding to the page's own
+    scroll width, which is why the overflow sweep in the same cycle scored those pages 0.
+    **The loop will not touch it**: it is the consent surface, and changes affecting
+    tracking or consent are his call, not a cycle's. The fix is almost certainly the same
+    shape as the header's - let `.consent__inner` and `.consent__actions` wrap - and it is a
+    few minutes once he says yes.
+
+32. `todo` **(needs Drummond, a brand-typography call)** - **the wordmark alone exceeds a
+    phone viewport at 200% text.** `.wordmark__text` is `font-size: 1.3rem` with
+    `white-space: nowrap`, so at a 32px browser default it measures 266px and the lockup
+    338px, against a 375px window. The header now wraps, so nothing is lost and the page no
+    longer scrolls sideways because of it, but the brand line itself is wider than the
+    screen. Capping its growth (a `clamp`, or letting it wrap) would hold it inside the
+    viewport. **The loop will not do it**: the wordmark is Drummond's Brand Guide lockup and
+    the design tokens and typefaces are law. Same class of call as the bronze contrast
+    token (backlog 21). Not urgent - 200% is a far less common setting than the 150% this
+    cycle fixed.
+
+33. `todo` - **one inline `<code>` string still overflows at 320px with 150% text.**
+    `Clients/Acme/Pricing` in `/guides/second-brain-for-ai-vs-note-taking/` measures 325px
+    in a 320px window and is the only page of 55 still scrolling sideways in that
+    combination after this cycle. Loop-shippable, not a Drummond item: the fix is
+    `overflow-wrap: anywhere` on inline `code`, which needs checking against every other
+    code span on the site first so a path is not broken in a place where the break reads as
+    part of the path. Left for a later cycle rather than widening this one.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-20 (09:00 local cycle) - Raising the browser's default text size pushed the
+  menu button off the right edge of every page on a phone, and the menu button is the only
+  way into the navigation there. The header row now wraps instead of overflowing.**
+  - **Evidence: measured, not inferred.** Chromium driven through CDP `Page.setFontSizes`,
+    which is the real browser preference rather than a page-level `font-size` override, so
+    `rem` media queries scale with it the way they do for a visitor. At **24px** (Chrome's
+    one-click "Very large" setting) on a 375px viewport, **all 55 indexable pages** scrolled
+    sideways by 14px and the `.nav-toggle` sat at `right: 383` in a 375px window - the
+    screenshot shows it sliced by the viewport edge. At 320px it was 69px. The cause is one
+    rule: `.site-header__inner` is a non-wrapping flex row, and the wordmark beside it is
+    `white-space: nowrap` and sized in `rem`, so the brand grows until it shoves the button
+    out. Nothing is wrong at 16px or 20px, which is why 100-odd cycles of 375/768/1280
+    screenshots never caught it.
+  - **The fix is two declarations and it only acts when the row has run out of room.**
+    `flex-wrap: wrap` plus a `row-gap` on `.site-header__inner`, and
+    `margin-inline-start: auto` on `.nav-toggle` so it keeps its right-hand position on the
+    wrapped row rather than dropping to the left. On one line the brand's existing auto
+    margin already does that job and the pair changes nothing. Verified identical geometry
+    (toggle position, header height, overflow) at 375/16, 375/20, 768/24, 1280/24 and
+    1280/16, and the 375/16 and 1280/16 screenshots are visually unchanged.
+  - **One page then still overflowed, so the same defect got its second cause.** With the
+    header fixed, `/about/` was the last page scrolling sideways at 24px: its contact band
+    prints `hello@oxfordagentic.com` as a button label, and the address has no space or
+    hyphen to break on, so one 23-character word set a 397px minimum width in a 375px
+    window. `a[href^='mailto:'] { overflow-wrap: anywhere }` lets it break only when it will
+    not otherwise fit. The button measures **265x52 at 375, 768 and 1280 with normal text,
+    byte-identical with the rule on and off**; at 24px it wraps to two lines and the whole
+    address is on screen instead of half of it. A `.btn`-wide version of the rule was
+    prototyped first and measured no better, so it was dropped rather than shipped.
+  - **Result.** Zero horizontal overflow on all 55 pages at 320, 375, 768 and 1280 with
+    normal text, and at 375 with the browser set to 24px; the menu button is fully on
+    screen in **0 of 55 x 7 combinations off-screen**, against 55 before. Keyboard: three
+    tabs to the toggle at both 16px and 24px, visible focus ring, Enter opens
+    `aria-expanded="true"` with all 9 mobile-nav links on screen and no overflow, Enter
+    closes it again.
+  - **Checks:** `npm ci`, then `npm run build` clean - 61 pages, **3,151** internal links
+    resolve, schema valid, 5 Event and 9 FAQPage nodes, titles and descriptions unique. The
+    12 outbound warnings are the sandbox egress policy and are unchanged. `npm run
+    check:flags` passes both the all-on and all-off builds. `astro check` reports **79
+    errors, 0 warnings, 4 hints - identical to unmodified HEAD**, measured by stashing the
+    diff and re-running, so this change adds none; they are pre-existing implicit-`any`
+    reports. Full accessibility sweep re-run across 55 pages x 375/768/1280 and the 4
+    non-sitemap pages: no missing alt text, no unlabelled control, no link or button without
+    an accessible name, one h1 each, no heading-level skip, no page errors. Screenshots read
+    at 375 (16px and 24px), 1280 and on the About contact band.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers 403 on CONNECT from the sandbox, so the live site could not be fetched or
+    re-screenshotted and **no event fact was re-verified or touched.** Deploy to GitHub Pages
+    run on `3796983`, the `origin/main` HEAD, **success** at 07:09 UTC, nothing queued or in
+    progress when this cycle started.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (backlog 20), read as
+    known-stale rather than unfinished work, and `feat/ceo-roundtable-demand-page`, which is
+    the merged leftover of PR #2.
+  - **Three residues of the same defect were found and deliberately not shipped** - backlog
+    31, 32 and 33 below.
 
 - **2026-10-20 (08:00 local cycle) - The page that answers "can a day really produce
   anything" has been live since 12 Oct and is cited on none of the three ways a buyer asks

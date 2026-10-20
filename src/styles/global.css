@@ -241,6 +241,16 @@ a {
   text-underline-offset: 0.12em;
 }
 
+/* The address has no space or hyphen to break on, so wherever it is printed it
+   is one 23-character word. In the footer, in the About page's button and in
+   body copy that is wide enough to carry the page past the right edge once a
+   visitor raises their browser's default text size, which is a setting rather
+   than a zoom and so does not reflow the layout for them. `anywhere` breaks it
+   only when it will not otherwise fit, so at ordinary sizes nothing moves. */
+a[href^='mailto:'] {
+  overflow-wrap: anywhere;
+}
+
 /* Focus states in gold — square, to match the printerly system. */
 :focus-visible {
   outline: 2px solid var(--gold);

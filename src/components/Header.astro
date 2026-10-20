@@ -156,10 +156,19 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     }
   }
 
+  /* The row wraps rather than overflowing. Everything in the header is sized in
+     rem, so when a visitor raises their browser's default font size the wordmark
+     grows with it and, on a phone, pushes the menu button off the right edge:
+     at Chrome's "Very large" setting the only way into the navigation is already
+     half outside the viewport. Wrapping drops the button onto a second row
+     instead, where it stays reachable. There is room on one line at every
+     ordinary setting, so nothing moves unless it would otherwise be lost. */
   .site-header__inner {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
+    row-gap: 0.5rem;
     min-height: 4.25rem;
   }
 
@@ -285,6 +294,10 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
   .nav-toggle {
     display: none;
     position: relative;
+    /* Keeps the button against the right edge on the wrapped row too, so it
+       stays where the eye already looks for it. On one line the brand's auto
+       margin has already done this, and the pair of them changes nothing. */
+    margin-inline-start: auto;
     background: none;
     border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: var(--radius);
