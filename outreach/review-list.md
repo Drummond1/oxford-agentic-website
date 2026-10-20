@@ -131,6 +131,17 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **The price is shown in dollars**, "from $275", on a UK event with a past date. Wrong
     currency and a dead date on the page an engine treats as canonical is a commercial
     problem as well as an SEO one.
+  - **Corroborated a third time and on a new axis, 20 Oct 2026 (02:00 cycle).** A probe
+    naming the programme, Oxford, **19 November 2026** and the format returned the two past
+    Luma pages and this listing, **no page of ours**, and the conclusion *"I couldn't confirm
+    a session on 19 November 2026 ... none of the listings give that date"* - then offered
+    Said Business School's £1,500 online programme instead. Two further readings off the
+    stale pages: **"5 Spots Remaining"** taken from the past Cohort 1 listing and reported as
+    live availability, and the **"$275"** price again. **New: the listings now disagree about
+    the team.** The engine reported *"Josh Lawman replaces Thomson in another"* listing, so a
+    buyer checking who runs the day is given a roster that has not been current since 4 Aug.
+    That makes this a named-real-person accuracy problem off-site as well as a dead-date one,
+    and it is the same ten minutes of Drummond's time either way.
   - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
     contacted.
 

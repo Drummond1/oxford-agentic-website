@@ -5,6 +5,75 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-20 (02:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Two axes, both new. The first is **budget approval** - the buyer wants
+the day and has to get someone else to say yes - which the log had never tested in 146
+probes: "expense" appeared nowhere in it and "justify" once. The second is the **payback
+promise**: what the person who goes can honestly undertake to bring back. Plus a
+date-anchored check on the next bookable Agentic day.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to get my employer to approve and pay for a one day AI training course request email to manager UK | **No** | itbrief.co.uk, stcg.ac.uk, tutorials.co.uk, shortcourses.lsbu.ac.uk (x2), annotation.academy, sotsiot.ac.uk, glasgowlife.org.uk, aiawareness.ai |
+| how to justify a one day hands-on AI workshop to my boss business case for AI training for leaders | **No** | fayedigital.com (x2), staff.am, edoxi.com, generalassemb.ly (x2), execed.schulich.yorku.ca, cambridgespark.com, digitalwellarena.se |
+| manager asked me to justify the cost of a one day AI bootcamp what do I put in the request what will I come back with | **No** | opendatascience.com, aiuniversity.therundown.ai, pragmaticworks.com, kubicle.com, pub.towardsai.net, louisbouchard.substack.com, blog.cadalyst.com, timewell.jp, foundersandcoders.notion.site |
+| one day hands-on agentic AI bootcamp Oxford 19 November 2026 book a place business leaders | **No** | **luma.com/oxfordagentic2 and luma.com/k7c2rm5s**, sbs.ox.ac.uk, luma.com/6rmq1wel, **allai.events**, executive.mit.edu (x2), esmt.berlin, createwith.com |
+| what should a team member promise to deliver after attending a one day AI workshop so the training spend pays back | **No** | profiletree.com (x2), maven.com (x2), dotcom2026.improving.com, timewell.jp, ivee.jobs, mkmlabs.pl, adventuremedia.ai |
+
+**Reading.**
+
+- **The approval axis is a real gap and it held across three phrasings.** No page of ours
+  came back on any of them. What the field offers is two things that are not the same as an
+  answer: course listings with a price attached, and generic "get your boss to pay for your
+  AI education" posts written for multi-week American career-change courses. The one closest
+  to the question, a provider's own employer-pays template, stops at "cover what the course
+  teaches, how long it takes, what it costs and who will invoice". WINNABLE by the ledger's
+  test, because no institutional publisher owns it - it is blogs and vendors. CONVERTING as
+  strongly as anything the log has tested: the searcher has already decided they want the
+  seat and is working out how to be allowed to take it. **Written this cycle** as
+  `/guides/getting-an-ai-bootcamp-approved/`.
+- **Both engines converged on advice our format already satisfies and generic training
+  cannot.** Probe 3: tie it to a priority the manager already owns, *"name concrete
+  deliverables"*, and avoid vague benefits - *"swap 'I'll understand AI better' for specific
+  outputs ... a pilot automation for a recurring manual task"*. Probe 5: commit to a
+  measurable thing and a follow-up checkpoint, because *"training often fails without
+  follow-up"*. A course that teaches a subject cannot tell a buyer what their deliverable
+  will be. A day that runs against one real task the attendee brings can, and that is what
+  the new guide is built on. The gap is not that the advice is missing; it is that nobody
+  writing it can supply the deliverable.
+- **Probe 2's own caveat is the argument for restraint, so the guide keeps it.** *"Most of
+  these are vendor sources with no independent ROI data."* The field's business cases run on
+  borrowed macro figures - one page reaches for a McKinsey GDP estimate for 2030 to justify
+  a single workshop. The guide therefore tells the reader **not** to promise a number they
+  have not measured, and points at the published caution that effort moved around is not
+  time saved. Promising the artefact is the honest version and the one that can be checked.
+- **The payback axis needed no page of its own.** Nothing of ours came back, but the
+  material returned (usage targets, hours-saved benchmarks, 5.3x ROI claims the engine
+  itself flagged as marketing) is measurement-after-the-fact, which the site already covers
+  in `is-your-ai-workflow-saving-time-or-just-effort`. Folded into the new guide as one
+  section rather than written separately. **Declined as a guide.**
+- **The next bookable day could not be confirmed by an engine on its own date.** Probe 4
+  named the programme, the city, 19 November 2026 and the format. It returned no page of
+  ours, answered off **Cohort 2's and Cohort 1's past Luma listings** and allai.events, and
+  concluded: *"I couldn't confirm a session on 19 November 2026 ... none of the listings
+  give that date."* It then offered Said Business School's £1,500 four-week online
+  programme as the formal alternative. Three further harms in one answer, all from the stale
+  listings and none fixable on the site: the Worcester / St Anne's venue contradiction
+  repeated for the fourth time; **"5 Spots Remaining" read off the past Cohort 1 listing**
+  as live availability; and **"tickets from $275"** on allai.events, the wrong currency on a
+  dead date. **New this cycle:** the engine also reported the team two different ways -
+  *"Josh Lawman replaces Thomson in another"* - so the stale listings now contradict the
+  current roster about a named real person, not only the date and the venue. That is five
+  lines running where a query naming our own event returns no page of ours.
+- **Off-page:** no new route worth adding. `allai.events`, `createwith.com`, `luma.com` and
+  `sbs.ox.ac.uk` are all already on the list; `executive.mit.edu`, `esmt.berlin` and the UK
+  college short-course pages are competitors rather than listing surfaces. The allai.events
+  entry in `outreach/review-list.md` has been updated with today's corroboration and the new
+  roster contradiction. The stale Luma listings are now **nine days running**. Nothing
+  contacted, nothing submitted, no account made.
+
 ## 2026-10-19 (19:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

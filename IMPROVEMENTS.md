@@ -136,7 +136,15 @@ Status: `todo` · `blocked` (why) · `doing`
    worsen the Second Brain weighting below. **The level-fit axis ("I already use ChatGPT daily,
    is this too basic?") was probed the same cycle and DECLINED:** the programme pages answer
    both the floor and the ceiling already, so a guide would restate pages that rank. Do not
-   re-pitch it without new evidence. **Agentic AI for charities and non-profits is KILLED,
+   re-pitch it without new evidence.
+   **"Getting a one-day AI bootcamp approved" SHIPPED 20 Oct 2026 (02:00 cycle)** as
+   `/guides/getting-an-ai-bootcamp-approved/`, after the budget-approval axis - untested in 146
+   probes - came back empty on three phrasings. It is the last step of the `choosing` journey:
+   the buyer has decided and now needs someone else's yes. **The payback-promise axis was probed
+   the same cycle and DECLINED:** what the field offers there is measurement after the fact,
+   which `is-your-ai-workflow-saving-time-or-just-effort` already covers, so it went in as one
+   section rather than a guide. Do not re-pitch it as a guide without new evidence.
+   **Agentic AI for charities and non-profits is KILLED,
    16 Oct 2026, by its probe** - DSC (the Directory of Social Change) holds nine of ten
    results on its own subject, and the live alternatives are a £200-£289 online day and a
    free funded TechSoup/Google.org course, so the field is neither winnable nor converting.
@@ -379,6 +387,89 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-20 (02:00 local cycle) - A buyer who wants the seat still has to be allowed to
+  take it, and the site answered that in one sentence on one page. Written:
+  `/guides/getting-an-ai-bootcamp-approved/`.**
+  - **Evidence: the budget-approval axis, which the GEO log had never tested in 146 probes.**
+    "expense" appeared nowhere in the log and "justify" once. Three phrasings, no page of ours
+    in any of them. The field is two things, neither of them an answer: college and vendor
+    course listings with a price attached, and generic "get your boss to pay for your AI
+    education" posts written for multi-week American career-change courses. The closest thing
+    to the question, a provider's own employer-pays template, stops at *"cover what the course
+    teaches, how long it takes, what it costs and who will invoice"*. WINNABLE, because no
+    institutional publisher owns it. CONVERTING as strongly as anything the log has tested:
+    the searcher has already decided they want the day and is working out how to be allowed
+    to go.
+  - **The gap is one the format closes and generic training cannot.** Both engines gave the
+    same advice - tie it to a priority the manager already owns, *"name concrete
+    deliverables"*, swap *"I'll understand AI better"* for a specific output such as *"a pilot
+    automation for a recurring manual task"*, and set a follow-up date, because *"training
+    often fails without follow-up"*. A course that teaches a subject cannot tell a buyer what
+    their deliverable will be. A day that runs against one real task the attendee brings
+    already has one. So the guide's spine is that the three things the request needs - the
+    task, the deliverable and the date - are the format rather than something to invent.
+  - **Every fact in it is already published**: bring one real task from your own work that
+    costs you meaningful time; "Who is it not for?" and its demonstration-instead-of-an-outcome
+    line; the `outcomes` list (the workflow running, the scout/drafter/reviewer pattern, where
+    the human judgement stays); Cohort 1's sixteen attendees and their recorded tasks; the day
+    is not recorded; places are not refundable but transfer to a future cohort at no charge;
+    no tool is being sold; an organisation can pay by invoice; 09:00 to 17:00; Thursday
+    19 November at Worcester College. No price, no number of places, no claim about another
+    provider, nothing about funding eligibility, levy or VAT.
+  - **It tells the reader not to promise a number, which is the opposite of what the field
+    does.** One engine flagged its own sources: *"Most of these are vendor sources with no
+    independent ROI data"*, and one page reaches for a McKinsey GDP estimate for 2030 to
+    justify a single workshop. The guide says promise the artefact, measure afterwards, and
+    points at the published caution that effort moved around is not time saved.
+  - **The payback axis was probed and declined as a guide.** Nothing of ours came back, but
+    what the field offers there (usage targets, hours-saved benchmarks, a 5.3x ROI figure the
+    engine itself called marketing) is measurement after the fact, which
+    `is-your-ai-workflow-saving-time-or-just-effort` already covers. Folded in as one section
+    rather than written separately.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. **63 pages** (was 62),
+    **3,148** internal links resolve (was 3,086), schema valid, 5 Event and 9 FAQPage nodes,
+    titles and descriptions unique, no SEO warnings and no straight-apostrophe warning (the 12
+    outbound warnings are the sandbox egress policy). Verified in `dist`: canonical
+    `https://oxfordagentic.com/guides/getting-an-ai-bootcamp-approved/`, no `noindex`, in the
+    sitemap and in both `llms.txt` and `llms-full.txt`, `Article` and `BreadcrumbList` nodes
+    present, `<title>` 50 characters with the suffix, description 149, capsule 60 words. The
+    category mechanism gave it **six inbound internal links** on publication. Headless Chromium
+    against a local preview at 375px and 1280px: one correct h1, no heading-level skips, 0 of 2
+    reveal blocks hidden, no missing alt text, no unlabelled control, no horizontal overflow,
+    no page errors beyond the sandbox's own blocked tag-manager requests. Screenshots read at
+    both widths: the h1 wraps cleanly on a phone and the capsule reads as the standfirst.
+  - **Production state came from the Actions API.** `oxfordagentic.com` does not resolve from
+    the sandbox this cycle and `luma.com` does not either, so `build.txt` could not be read and
+    **no event fact could be re-verified - none was touched.** Deploy to GitHub Pages run 262
+    **success** on `2552223`, the `origin/main` HEAD, finished 19:13 UTC on 19 Oct with nothing
+    queued or in progress when this cycle started.
+  - **The next bookable day is invisible on its own date, and the stale listings now get the
+    team wrong too.** A probe naming the programme, Oxford, 19 November 2026 and the format
+    returned no page of ours, answered off Cohort 2's and Cohort 1's past Luma listings and
+    allai.events, and concluded *"I couldn't confirm a session on 19 November 2026"* before
+    offering Said Business School's £1,500 online programme instead. It also read **"5 Spots
+    Remaining" off the past Cohort 1 listing** as live availability, repeated the **$275**
+    price, repeated the Worcester / St Anne's contradiction, and - new this cycle - reported
+    the team two ways, *"Josh Lawman replaces Thomson in another"*. So the stale listings are
+    now inaccurate about a named real person as well as about the date, the venue, the
+    currency and the availability. Fifth line running where a query naming our own event
+    returns no page of ours. Nothing is missing from our pages; this is backlog 2b and ten
+    minutes of Drummond's time.
+  - **Off-page:** no new route worth adding - `allai.events`, `createwith.com` and
+    `sbs.ox.ac.uk` are already on the list, and the MIT, ESMT and UK college short-course pages
+    are competitors rather than listing surfaces. The `allai.events` entry in
+    `outreach/review-list.md` carries today's corroboration and the new roster contradiction.
+    The stale Luma listings are **nine days running**. Nothing contacted, nothing submitted,
+    no account made.
+  - **Search Console:** unavailable from the cloud checkout, and no export newer than the
+    24 Aug baseline exists in `seo-data/`.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (backlog 20), the bronze
+    contrast token (21), Cohort 2's outcomes (22), the past-cohort quote heading (23), the team
+    byline call (24), the Coding Bootcamp's paid-plan question (25), the event hero's doubled
+    heading (26), lunch and travel (27), the two voice-page apostrophes (28), Jonathan
+    Waddingham's former employer (29) and links in FAQ answers (30).
+  - Guide count: **2 of 3 this week** (week of Mon 19 Oct), 1 of 1 today.
 
 - **2026-10-19 (19:00 local cycle) - The guide that compares the ways to learn AI compared
   three of them and never mentioned the fourth, which is the one a buyer actually weighs the
