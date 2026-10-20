@@ -11,6 +11,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`lilachbullock.com` - a named UK AI-training-provider roundup, found 20 Oct 2026 (14:00
+  cycle) and corroborated inside the same cycle.** It returned on two unrelated probes: the
+  timing question ("should I wait before paying for AI training until the tools settle down")
+  and the independence question ("independent AI training not a vendor sales pitch"). The
+  course-roundup cluster in `outreach/off-page-listings.md` names Oxford-specific roundups
+  (research.com, digitaldefynd, gogradia) and has been generic about UK-wide ones; this is a
+  named UK-wide one that an engine currently reads as the buyer's guide to the field.
+  **The caveat is the engine's own, not ours:** it flagged that the guide is "written by
+  someone who sells AI training, so treat its advice with the same care". So it is a
+  competitor-run roundup, and inclusion may not be on offer at any price worth paying.
+  **Needs:** Drummond's view on whether a mention in a competitor's roundup is wanted at all,
+  before anyone looks at whether it accepts submissions. Nothing contacted, nothing
+  submitted, no account made.
+
 - **Two directory routes found 19 Oct 2026 (13:00 cycle), both unverified and neither urgent.**
   - **`coursereport.com`** - a bootcamp directory that carries reviews and course pages, returned
     on a prerequisites query against an agentic AI bootcamp. It is the kind of third-party page

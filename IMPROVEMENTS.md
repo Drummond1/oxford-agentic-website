@@ -419,6 +419,84 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-20 (14:00 local cycle) - "Will this be out of date in six months?" is the
+  objection to paying for any AI day, and the site had never written the words. The page
+  that holds the answer - the pattern guide - now answers it in the searcher's vocabulary.**
+  - **Evidence: the durability axis, untested in 218 probe rows, probed three ways plus one
+    control.** "Obsolete" appeared nowhere in the GEO log, "out of date" twice and both times
+    about stale notes in a second brain, "should I wait" and "too early" nowhere. No page of
+    ours came back on any phrasing. WINNABLE by the ledger's test - the field is one
+    Salesforce blog post served from three regional paths, a training vendor and a personal
+    blog, with no institutional publisher and no platform vendor on its own product - and
+    CONVERTING at the point where a buyer has already priced the day and is looking for a
+    reason to defer. Today's guide allowance was spent by the 02:00 cycle, so this ships as
+    a Q&A refresh: 2 of the 2 allowed in a day.
+  - **The engine reached our conclusion and could not cite a page that makes it.** Its own
+    answer was *"expect the button-level details to be outdated in six months, but the
+    underlying skills ... should still apply"* and *"what holds up is adaptability ... the
+    lasting part of a workshop is usually the general habits"*. That is
+    `scout-drafter-reviewer-pattern`'s argument, published since 5 August and absent from the
+    answer. Selection, not discovery, and the third cycle running on the same failure mode.
+  - **The block takes the strongest hit in the field on the chin.** `tianpan.co` argues
+    training programmes are structurally 6-12 months behind the models, and that techniques
+    taught in early programmes were automated away by the models before the first cohort
+    finished. That lands on a curriculum; it lands much less on a day that runs on the
+    attendee's own task. So the three questions are: does what I learn go out of date in six
+    months (some of it, and it is the part that matters least); if the models keep getting
+    better, will one prompt not just do it (they have, and it has not, because the reasons
+    for the split were never about the model being weak - and for a small job nobody depends
+    on, let it); should I wait until the tools settle down (they are not going to, and
+    waiting improves the half that was never the constraint).
+  - **Every fact in it is already published**: the three things the pattern makes you write
+    down, which are this page's own scout, drafter and reviewer sections; the three reasons
+    for the split, also this page's; and "no tool is being sold", which is the published
+    "not for" line on the homepage and on both Agentic surfaces. No price, no availability,
+    no claim about another provider, and no new fact. Two in-body links, to
+    `how-to-choose-your-first-agentic-task` and `when-ai-executive-cohorts-run`; the single
+    programme link in the CTA was left alone, because no guide on this site links its
+    programme twice.
+  - **Two axes were probed the same cycle and neither produced a change.** *Independence*:
+    the engine said it *"didn't find a UK workshop that explicitly says it sells no tools"*
+    and that every provider's claim was a self-description - ours is published on four
+    surfaces, so that is an off-page retrieval problem, not a content gap, and it got one
+    sentence rather than a section. *Transferability*: the phrasing collided with model
+    training and the engine answered on LoRA adapters and fine-tuned weights, which is logged
+    so the axis is not re-probed in those words.
+  - **Checks:** `npm ci` then `npm run build` clean. 61 pages built and 63 checked, **3,153**
+    internal links resolve (was 3,151 - the two new in-body links), schema valid, 5 Event and
+    9 FAQPage nodes, titles and descriptions unique, no new SEO warnings and no
+    straight-apostrophe warning. The 12 outbound warnings are the sandbox egress policy and
+    are unchanged. Verified in `dist`: canonical
+    `https://oxfordagentic.com/guides/scout-drafter-reviewer-pattern/`, no `noindex`, in the
+    sitemap and in both `llms.txt` and `llms-full.txt`, one h1, heading sequence h2 → h3 × 3
+    → h2 with no skip. `updatedDate` bumped from 5 August; `title`, `seoTitle`, `description`
+    and `capsule` deliberately untouched - the capsule already ends on "the pattern transfers
+    to almost any repeated knowledge task", which is the same thesis, and the ledger's
+    near-miss rule on rewriting a title without Search Console data still stands. Headless
+    Chromium against a local preview at 320px, 375px and 1280px: one h1, no heading-level
+    skip, no missing alt text, no unlabelled control, **zero horizontal overflow at all
+    three widths**, no page errors beyond the sandbox's own blocked tag-manager requests.
+    The one `opacity: 0` element is the lead-capture card, which reveals correctly on scroll.
+    The three `h3` measure 21px Newsreader on desktop and 19.2px at 375px, identical to the
+    treatment the ledger recorded for the two previous blocks. Screenshots read at both
+    widths: each question wraps to two lines on a phone and still reads as a question.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers 403 on CONNECT from the sandbox and `luma.com` does not resolve, so `build.txt`
+    could not be read and **no event fact could be re-verified - none was touched.** Deploy
+    to GitHub Pages run **266 success** on `26bcd8e`, the `origin/main` HEAD, finished 08:57
+    UTC, with nothing queued or in progress when this cycle started.
+  - **Known candidate 1 is already done and should come off the brief:**
+    `scripts/indexnow-ping.mjs` maps `src/lib/home.ts` to `/` alone, so a homepage FAQ edit
+    no longer pings all 44 sitemap URLs. **Known candidate 2 is not yet due:** every published
+    date is correct today - 16 September reads in the past tense, 19 November and 26 November
+    in the future, and **21 October is tomorrow**, so the two Second Brain guides that carry
+    it in the present tense are correct until then and must not be moved early.
+  - **Off-page:** one new named lead, `lilachbullock.com`, a UK AI-training-provider roundup
+    that returned on two unrelated probes in the same cycle. Added to
+    `outreach/review-list.md` with the engine's own caveat - its author sells AI training, so
+    it is a competitor-run roundup. Everything else returned is a competitor, US or
+    Australian, or a 2024 funding page. Nothing contacted, nothing submitted, no account made.
+
 - **2026-10-20 (09:00 local cycle) - Raising the browser's default text size pushed the
   menu button off the right edge of every page on a phone, and the menu button is the only
   way into the navigation there. The header row now wraps instead of overflowing.**

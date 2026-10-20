@@ -12,7 +12,7 @@ capsule: >-
   any repeated knowledge task.
 author: drummond-gilbert
 publishDate: "2026-08-05T09:00:00+01:00"
-updatedDate: "2026-08-05T09:00:00+01:00"
+updatedDate: "2026-10-20T14:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -52,6 +52,22 @@ The pattern also places the human deliberately: after the reviewer, at the point
 Anything with the shape *gather, produce, check* is a candidate: the weekly report, the meeting minutes, inbound triage, first-draft anything, the comparison you rebuild every month. That is most repeated knowledge work.
 
 It is the wrong shape where the output is a judgement about a person, where being subtly wrong is expensive and hard to spot, or where the task runs on information you cannot give the scout. Those are the tasks to keep, not to force into the pattern.
+
+## Will this still be true when the tools change?
+
+The tools move every few months, so the question is a fair one: how much of this has a shelf life.
+
+### Does what I learn go out of date in six months?
+
+Some of it does, and it is the part that matters least. Which agent you opened, where the button sat, what the menu was called in April - all of that moves, and quickly. The shape does not, because gather, produce, check describes the work rather than a product. A report that needs its evidence assembled before anyone writes prose needed that before these tools existed and will need it after they have been replaced. What the pattern actually makes you do is write three things down - what the scout may use, what the drafter is for, and the standard the reviewer checks against - and not one of them is an instruction for a particular tool. It is also why no tool is being sold on the day itself. A day built around a product dates when the product does.
+
+### If the models keep getting better, will one prompt not just do it?
+
+The models have got better and the split has not stopped earning its keep, because the reasons for it were never mainly about the model being weak. You keep the steps apart so you can see which one went wrong, improve one without disturbing the others, and hand over the parts you have come to trust while keeping the rest. A better model makes each of the three steps better and leaves all three reasons standing. The honest version: for a small job nobody else depends on, a strong model can do the lot in one pass, and you should let it. From the moment someone else relies on the output, you will want to know which step produced the sentence you are being asked about.
+
+### Should I wait until the tools settle down?
+
+They are not going to settle, so waiting is a decision to carry on without anything running rather than a decision to get something better later. It also improves the half that was never the constraint. What decides whether one of these is worth the effort is the task you point it at, which is your own and is not changing, and [choosing that task well](/guides/how-to-choose-your-first-agentic-task/) is the part most people get wrong. There is a longer version of the same argument about [waiting for the right cohort](/guides/when-ai-executive-cohorts-run/), and it ends in the same place.
 
 ## Where this gets practical
 

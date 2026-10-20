@@ -5,6 +5,71 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-20 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **durability** axis - whether what a buyer learns
+survives the next few months of tool churn - which the log had never tested in 218 probe
+rows: "obsolete" appeared nowhere, "out of date" twice and both times about stale notes in
+a second brain, "should I wait" and "too early" nowhere. Plus one on vendor independence.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| will what I learn in a one day AI workshop be out of date in six months the tools change so fast | **No** | salesforce.com (one post served from three regional paths), ascendientlearning.com, tianpan.co (x2) |
+| should I wait before paying for AI training until the tools settle down business leader UK | **No** | lilachbullock.com, bosch.co.uk, cfotech.co.uk, blogs.kent.ac.uk (a 2024 funding window), techradar.com, rics.org, startups.co.uk, educationawards.ie, channellife.news |
+| is AI training tool specific or transferable will it still apply when the AI tools change | **No** | segmind.com, morphic.com (x8 locale copies of one glossary entry on transfer learning) |
+| independent AI training not a vendor sales pitch no tool being sold UK workshop | **No** | anicca.co.uk (x2), internshala.com (x2), lilachbullock.com, tutorials.co.uk (x4), manchestercommunitycentral.org |
+
+**Reading.**
+
+- **The durability objection is a real gap and the field answering it is thin.** WINNABLE by
+  the ledger's test: a single Salesforce blog post served from three regional paths, a
+  training vendor and one personal blog - no institutional publisher, and no platform vendor
+  writing about its own product. CONVERTING at the point where a buyer has already priced the
+  day and is looking for a reason to defer. **Acted on this cycle as a Q&A block on
+  `/guides/scout-drafter-reviewer-pattern/`**, which is where the answer already lived.
+- **The engine reached our conclusion and could not cite a page that makes it.** Its own
+  answer: *"expect the button-level details to be outdated in six months, but the underlying
+  skills ... should still apply"*, and *"what holds up is adaptability ... the lasting part of
+  a workshop is usually the general habits: how to frame a task for a model, how to check
+  outputs, and when AI is or isn't a good fit"*. That is the pattern guide's argument,
+  published since 5 August, and it was absent from the answer. Selection, not discovery -
+  the third cycle running on the same failure mode, and the same fix: write the objection in
+  the searcher's vocabulary rather than only answering its substance.
+- **The sharpest line in the field is against us, and it is a fair one.** `tianpan.co` argues
+  that training programmes are structurally 6-12 months behind the models, because course
+  development takes that long, and that techniques taught in early programmes had been
+  automated away by the models before the first cohort finished. That lands on a curriculum.
+  It lands much less on a day that runs on the attendee's own task and teaches a shape rather
+  than a product, which is what the block says, rather than ignoring the hit.
+- **The timing probe is half an answer the loop shipped yesterday.** "Should I wait" returned
+  UK trade press and vendor blogs, and the engine's advice was to take the free government AI
+  Skills Hub foundations training and *"hold off on expensive, generic programmes until you've
+  identified specific tasks worth training for"*. The free-versus-paid half of that shipped on
+  19 Oct as a block on `ai-bootcamp-vs-course-vs-exec-education`; the timing half is the third
+  question in today's block. **New fact in the field worth recording:** free, 20-minute
+  government AI foundations courses are now cited as the default alternative to paying, which
+  raises the bar on any day that is not pointed at one specific task.
+- **Probe 3 was a vocabulary collision and is logged so it is not repeated.** "AI training"
+  next to "transferable" reads to an engine as *model* training: it answered on transfer
+  learning, LoRA adapters and fine-tuned weights, and said so. That is not a buyer query.
+  Phrase this axis as "what I learn", "out of date" or "settle down", never as
+  "training ... transferable".
+- **Independence is published, not retrieved, and nothing is missing from the page.** The
+  engine said in as many words that it *"didn't find a UK workshop that explicitly says it
+  sells no tools"*, and that every provider's independence claim on the page was a
+  self-description. Ours is a published "not for" line on the homepage, on both Agentic
+  surfaces and on the Second Brain programme page: no tool is being sold. So this is an
+  off-page retrieval problem on a differentiator the site already states, not a content gap.
+  It earned one sentence inside today's block and no more.
+- **Off-page: one new named lead, corroborated inside the same cycle.** `lilachbullock.com`
+  returned on two unrelated probes - the timing question and the independence question - as a
+  guide to UK AI training providers. It is a named member of the course-roundup cluster in
+  `outreach/off-page-listings.md`, which has been generic about UK-wide roundups. Added to
+  `outreach/review-list.md` with the caveat the engine itself raised: she sells AI training,
+  so it is a competitor-run roundup. Nothing contacted, nothing submitted, no account made.
+  Everything else returned is a competitor, US or Australian, or a 2024 funding page.
+
 ## 2026-10-20 (08:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
