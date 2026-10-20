@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-20 (08:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Today's guide allowance was spent by the 02:00 cycle, so these five
+probes were run to find an on-page gap rather than a guide. The axis is **duration
+sufficiency** - not what a day produces, which the log has tested, but whether one day is
+enough at all - which the log had never tested in 151 probes: "too short" appeared nowhere
+in it and "one day enough" once. Plus a date-anchored check rotated onto the Coding
+Bootcamp.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is one day long enough to learn to build an AI workflow or is a one day AI workshop too short | **No** | maven.com (x4), business.pitt.edu, odsc.ai, getclear.ca, ssw.com.au, createwith.com |
+| can you really learn AI in one day is a single day enough or do you need a multi week course business leaders UK | **No** | business-school.exeter.ac.uk (x2), bilginc.com (x3), flane.co.uk, cambridgespark.com, shortcourses.lsbu.ac.uk, salford.ac.uk, be.lambeth.gov.uk |
+| will I actually finish anything in a one day AI workshop or just watch demos what do you leave with | **No** | luma.com (x4, other organisers), eventbrite.com, happeningnext.com, meetup.com (x2), anicca.co.uk, studiomeyer.io |
+| what to do the week after a one day AI workshop to keep the workflow running instead of it being forgotten | **No** | maven.com (x2), getclear.ca, dev.to, knowledgewave.com, spicyadvisory.com, aismartventures.com (x2), lilachbullock.com |
+| one day agentic coding bootcamp Oxford 26 November 2026 for non-developers book a place | **No** | **luma.com/oxfordagentic2 and luma.com/k7c2rm5s**, **allai.events**, cmd-prompt.designinformatics.org, digitalresearchservices.ed.ac.uk (x2), lifelong-learning.ox.ac.uk (x2), tickettailor.com, maven.com |
+
+**Reading.**
+
+- **The duration objection is a real gap and it held across three phrasings.** No page of
+  ours came back on any of them, and `what-you-can-build-in-one-day-with-ai` has been
+  published since 12 Oct and answers the substance in its first line. So this is selection,
+  not discovery, and the same matching problem the paid-versus-free probe found yesterday:
+  the page is written in the vocabulary of *capability* ("what you can build") and the
+  searcher uses the vocabulary of *sufficiency* ("enough", "too short", "just watch demos").
+  "Too short" appeared nowhere on the site, "watch demos" nowhere, and "enough" once in a
+  body sentence. WINNABLE by the ledger's test and CONVERTING at the hardest point there is:
+  the searcher is deciding whether a one-day format can work at all, which is the objection
+  to our entire proposition. **Acted on this cycle as a Q&A block on that page.**
+- **The engine's own answer is the argument for writing it.** Probe 2 concluded *"one day is
+  enough for an introduction, but not for hands-on skills"*, and it said why: *"The UK
+  one-day courses I found aim at leaders who need to make decisions about AI, not at building
+  it."* Every one-day course it could find was a strategy-overview day, so it generalised the
+  format from the field. Our day is the counter-example and was not in the answer. Probe 1
+  reached the same conclusion from vendor pages: *"too short to learn the skills thoroughly
+  ... plan on practice and follow-up"*.
+- **The field concedes the half we should concede too.** Probe 3: *"A workflow built in one
+  day is usually a working draft that needs a week of refinement, not a polished product."*
+  Probe 4: usage *"peaks in the week after training and then drifts back"*. Both are true of
+  our day and both are already published here - the page's own capsule says what you will not
+  have, and `how-to-run-an-ai-pilot-that-survives` has a "Plan for week two" section. So the
+  third question in the block answers "no" and says why the recipe matters more than the
+  workflow, rather than arguing with the objection.
+- **One engine handed over its own booking checklist, unprompted:** *"whether you work on
+  your own task with your own laptop, whether the day ends with something you run yourself,
+  and whether a follow-up or community is included."* The first two are the format. The third
+  is the one we do not claim, which is why the block concedes it in the reader's words.
+- **The retention axis was probed and declined.** Nothing of ours came back on probe 4, but
+  what the field offers there (name an owner, book a 30-day review, write the SOP, measure a
+  baseline) is organisational follow-through, which `how-to-run-an-ai-pilot-that-survives`
+  and `is-your-ai-workflow-saving-time-or-just-effort` already cover between them, and the
+  sources are vendor and consultant guides offering timings the engine itself flagged as
+  *"reasonable defaults rather than proven benchmarks"*. Folded into the new block as one
+  question with links to both, rather than written as a guide. **Declined as a guide.**
+- **The stale listings now substitute one product for another.** The date anchor was rotated
+  onto the **Coding Bootcamp, 26 November 2026** - a different day, format and Luma page from
+  last cycle's probe - and the same two past **Agentic** listings came back first, with
+  allai.events third and no page of ours. The engine answered *"I couldn't confirm a
+  26 November 2026 date"*, then described the Agentic Bootcamp as though it were the day
+  asked about. It repeated the Worcester / St Anne's contradiction for the fifth time, read
+  **"5 Spots Remaining"** off the past Cohort 1 listing as live availability again, and
+  quoted **"tickets from $275"** again. So the harm has widened: the stale listings no longer
+  only misdate one programme, they stand in for a second programme that has a live listing of
+  its own. Sixth line running where a query naming one of our own events returns no page of
+  ours. Nothing is missing from our pages; this is backlog 2b and ten minutes of Drummond's
+  time.
+- **Off-page:** no new route worth adding. `maven.com`, `happeningnext.com`, `allai.events`
+  and `luma.com` are already on the list. `tickettailor.com` is a fourth ticketing surface
+  and adds nothing to the open `humanitix.com` question, which is whether a second ticketing
+  surface is wanted at all - recorded there rather than duplicated. `getclear.ca`,
+  `anicca.co.uk`, `studiomeyer.io`, `business-school.exeter.ac.uk`, `salford.ac.uk`,
+  `cambridgespark.com`, `lifelong-learning.ox.ac.uk` and `digitalresearchservices.ed.ac.uk`
+  are competitors rather than listing surfaces, and the two university routes are out of
+  bounds for the loop anyway under the unaffiliated-event constraint in STATE.md. The
+  `allai.events` entry in `outreach/review-list.md` carries today's corroboration. Nothing
+  contacted, nothing submitted, no account made.
+
 ## 2026-10-20 (02:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

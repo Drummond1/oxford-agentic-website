@@ -12,7 +12,7 @@ capsule: >-
   unwatched.
 author: drummond-gilbert
 publishDate: "2026-10-12T08:00:00+01:00"
-updatedDate: "2026-10-18T19:30:00+01:00"
+updatedDate: "2026-10-20T08:15:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - agentic-coding-bootcamp
@@ -46,6 +46,22 @@ In [Cohort 1’s room](/events/oxford-agentic-bootcamp-cohort-1/), the tasks tha
 Most of what is described above is built by chaining tools that already exist, which is why most people who do this never write a line of code. The skill being learned is orchestration - deciding what each step is for, what it hands to the next one, and how you would know it had gone wrong.
 
 Code starts to matter when the thing has to run on a schedule, live somewhere other than your own machine, or talk to a system that offers an API and no interface. That is a genuinely different day, and the reason [the Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) exists as its own format rather than as an advanced afternoon.
+
+## Is one day enough?
+
+Three versions of this question arrive, and they want different answers.
+
+### Would a longer course not give me more?
+
+It would give you more time, and time is not usually what is missing. A day is enough to get one workflow running on a task you already repeat. It is not enough to make you fluent at building them, and it would be a poor claim to make. The people in our rooms tend to arrive saying some version of "I understand it, I have just never built anything" - they are not short of explanation, material or ability, and a few more weeks of any of those would not move the thing that is stuck. What they are short of is one finished example with their own work inside it. If what you want is the frame, the governance view or the breadth, [a programme or an online course is the better buy](/guides/ai-bootcamp-vs-course-vs-exec-education/), and the formats compound rather than compete.
+
+### Will I build something, or watch someone else build it?
+
+You build. You bring one real task from your own work and a laptop, and the day is spent building rather than watching. On the Oxford Agentic Bootcamp that is structural: the day runs on build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you, and someone walking the room so the first stuck moment costs you a few minutes rather than an evening. The day is not recorded, which is the other half of the same decision - there is nothing to take home except the thing you built and the recipe for rebuilding it. The one condition is the task. Arrive without a real one and you get a demonstration instead of an outcome, which is the one thing a day in a room does no better than a video.
+
+### Is a day enough if nothing happens afterwards?
+
+No, and that is worth saying plainly rather than waiting to be asked. What you leave with is a working draft, and a draft nobody opens again stops being worth the day inside a fortnight. It is why the recipe matters more than the workflow it produced: the recipe is the part that lets you rebuild and extend the thing at your own desk, on an ordinary Tuesday, with the task in front of you and nobody walking the room. If other people are meant to use what you built, [planning for week two](/guides/how-to-run-an-ai-pilot-that-survives/) is the same discipline applied to a team. And before concluding that it worked, [measure the whole job rather than the step that impressed you](/guides/is-your-ai-workflow-saving-time-or-just-effort/).
 
 ## What you should expect to leave with
 

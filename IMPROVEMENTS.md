@@ -388,6 +388,107 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-20 (08:00 local cycle) - The page that answers "can a day really produce
+  anything" has been live since 12 Oct and is cited on none of the three ways a buyer asks
+  it. The argument was there; the words were not. Added a three-question block to
+  `/guides/what-you-can-build-in-one-day-with-ai/`.**
+  - **Evidence: the duration-sufficiency axis, untested in 151 probes, probed three times.**
+    "Too short" appeared nowhere in the GEO log and "one day enough" once. No page of ours
+    came back on any phrasing. WINNABLE by the ledger's test - the field is vendor workshop
+    listings and university short-course pages, none of them answering the question - and
+    CONVERTING at the hardest point there is: the searcher is deciding whether a one-day
+    format can work at all, which is the objection to the whole proposition. Today's guide
+    allowance was spent by the 02:00 cycle, so this ships as a Q&A refresh, which is where
+    an objection belongs anyway.
+  - **This is selection, not discovery, and the same matching problem as yesterday.** The
+    page answers the substance in its first line ("A day is not long enough to build a
+    product. It is more than long enough to get something real running"). But it is written
+    in the vocabulary of *capability* - "what you can build" - and the searcher uses the
+    vocabulary of *sufficiency*. Checked across the whole site: "too short" appeared nowhere,
+    "watch demos" nowhere, "enough" once in a body sentence.
+  - **The engine's own answer is the argument for writing it.** Probe 2 concluded *"one day
+    is enough for an introduction, but not for hands-on skills"* and said why: *"The UK
+    one-day courses I found aim at leaders who need to make decisions about AI, not at
+    building it."* Every one-day course it could find was a strategy-overview day, so it
+    generalised the format from the field. Our day is the counter-example and was absent from
+    the answer.
+  - **The block concedes the half that is true.** Probe 3: *"A workflow built in one day is
+    usually a working draft that needs a week of refinement."* Probe 4: usage *"peaks in the
+    week after training and then drifts back."* Both are true of our day and both are already
+    published here, so the third question answers "no, a day is not enough if nothing happens
+    afterwards" and says why the recipe matters more than the workflow it produced. Honest
+    beats defensive, and it is the same move that worked on the paid-versus-free block.
+  - **Every fact in it is already published**: one real task from your own work and a laptop;
+    build cycles rather than talks with no block longer than twenty-five minutes of anyone
+    talking at you (attributed to the Agentic Bootcamp, which is where it is published -
+    *not* asserted of the Coding day, where it is not); someone walking the room; the day is
+    not recorded; a demonstration instead of an outcome without a real task; "I understand
+    it, I have just never built anything"; the formats compound rather than compete; and the
+    page's own written recipe. No price, no number of places, no claim about another
+    provider, and no new fact.
+  - **The retention axis was probed the same cycle and DECLINED as a guide.** Nothing of ours
+    came back, but what the field offers (name an owner, book a 30-day review, write the SOP,
+    measure a baseline) is organisational follow-through that
+    `how-to-run-an-ai-pilot-that-survives` and `is-your-ai-workflow-saving-time-or-just-effort`
+    already cover between them, from sources the engine itself called *"reasonable defaults
+    rather than proven benchmarks"*. Folded in as one question linking both. Do not re-pitch
+    it as a guide without new evidence.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,151**
+    internal links resolve (was 3,148 - the three new in-body links), schema valid, 5 Event
+    and 9 FAQPage nodes, titles and descriptions unique, no new SEO warnings and no
+    straight-apostrophe warning (the typographer curled the quoted line's marks; the 12
+    outbound warnings are the sandbox egress policy). Verified in `dist`: canonical
+    `https://oxfordagentic.com/guides/what-you-can-build-in-one-day-with-ai/`, no `noindex`,
+    in the sitemap and in both `llms.txt` and `llms-full.txt`, one h1, heading sequence
+    h2 → h3 × 3 → h2 with no skip. `updatedDate` bumped; `title`, `seoTitle`, `description`
+    and `capsule` deliberately untouched - the page is eight days old, the three-question
+    block carries the new vocabulary in its own headings, and the ledger's near-miss rule on
+    rewriting a title without Search Console data still stands. Headless Chromium against a
+    local preview at 375px and 1280px: one h1, no heading-level skip, 0 of 2 reveal blocks
+    hidden, no missing alt text, no unlabelled control, no horizontal overflow, no page
+    errors beyond the sandbox's own blocked tag-manager requests. The three `h3` measure
+    21px Newsreader on desktop and 19.2px at 375px, identical to the
+    `second-brain-for-ai-vs-note-taking` treatment the ledger recorded. Screenshots read at
+    both widths: the longest question wraps to two lines on a phone and still reads as a
+    question.
+  - **Production state came from the Actions API.** `oxfordagentic.com` answers 403 on CONNECT
+    from the sandbox and then does not resolve, and `luma.com` does not resolve either, so
+    `build.txt` could not be read and **no event fact could be re-verified - none was
+    touched.** Deploy to GitHub Pages run 263 **success** on `2025693`, the `origin/main`
+    HEAD, finished 01:09 UTC on 20 Oct with nothing queued or in progress when this cycle
+    started.
+  - **The stale listings now substitute one product for another.** The date anchor was rotated
+    onto the **Coding Bootcamp, 26 November 2026**. The same two past **Agentic** Luma
+    listings came back first, allai.events third, no page of ours, and the engine then
+    described the Agentic Bootcamp as though it were the day asked about - *"I couldn't
+    confirm a 26 November 2026 date"*. Worcester / St Anne's repeated for the fifth time,
+    **"5 Spots Remaining"** read off the past Cohort 1 listing again, **"$275"** again. The
+    harm has widened from misdating one programme to standing in for a second programme that
+    has a live listing of its own. Sixth line running. Backlog 2b, ten minutes of his time.
+  - **Off-page:** no new route worth adding. `maven.com`, `happeningnext.com`, `allai.events`
+    and `luma.com` are already listed; `tickettailor.com` is a fourth ticketing surface and
+    was recorded against the open `humanitix.com` question rather than duplicated; the rest
+    are competitors, and the two university routes are out of bounds under the
+    unaffiliated-event constraint. The `allai.events` entry in `outreach/review-list.md`
+    carries today's corroboration. Nothing contacted, nothing submitted, no account made.
+  - **Search Console:** unavailable from the cloud checkout, and no export newer than the
+    24 Aug baseline exists in `seo-data/`.
+  - **For the next cycle, after tomorrow.** The Second Brain Bootcamp runs on **21 October**,
+    and two guides carry it in the present tense - "It runs on [21 October at the Pitt Rivers
+    Museum]" in `how-long-to-build-a-second-brain` and
+    `is-it-safe-to-put-company-documents-in-a-second-brain`. Both go stale at 17:00 tomorrow,
+    and unlike the Agentic line there is **no next Second Brain cohort** to point them at, so
+    a straight date swap is not available: the honest rewrite is past tense plus the
+    programme page, which is where the newsletter fallback the 19 Oct cycle built now lives.
+    Not touched today, because both sentences are true today.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (backlog 20), the
+    bronze contrast token (21), Cohort 2's outcomes (22), the past-cohort quote heading (23),
+    the team byline call (24), the Coding Bootcamp's paid-plan question (25), the event hero's
+    doubled heading (26), lunch and travel (27), the two voice-page apostrophes (28),
+    Jonathan Waddingham's former employer (29) and links in FAQ answers (30).
+  - No new guide: **2 of 3 this week** (week of Mon 19 Oct), today's guide allowance already
+    spent by the 02:00 cycle. This is a Q&A refresh, 1 of the 2 allowed in a day.
+
 - **2026-10-20 (02:00 local cycle) - A buyer who wants the seat still has to be allowed to
   take it, and the site answered that in one sentence on one page. Written:
   `/guides/getting-an-ai-bootcamp-approved/`.**

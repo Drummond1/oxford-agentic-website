@@ -142,6 +142,19 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     buyer checking who runs the day is given a roster that has not been current since 4 Aug.
     That makes this a named-real-person accuracy problem off-site as well as a dead-date one,
     and it is the same ten minutes of Drummond's time either way.
+  - **Corroborated a fourth time, on a different programme, 20 Oct 2026 (08:00 cycle).** The
+    date anchor was rotated to the **Agentic Coding Bootcamp on 26 November 2026** - a
+    different day, a different format and a different Luma page - and the same two stale
+    Agentic listings came back first, with allai.events third and **no page of ours**. The
+    engine answered *"I couldn't confirm a 26 November 2026 date"*, described the Agentic
+    Bootcamp as though it were the day asked about, repeated the Worcester / St Anne's
+    contradiction for the fifth time, read **"5 Spots Remaining"** off the past Cohort 1
+    listing again and quoted **"tickets from $275"** again. **The new harm is substitution
+    across products:** the stale listings no longer merely misdate one programme, they now
+    stand in for a second programme that has its own live listing, so a buyer searching the
+    coding day is shown the wrong day, at a past date, at a contested venue, in the wrong
+    currency. Sixth consecutive cycle in which a query naming one of our own events returns
+    no page of ours. Still nothing contacted and the pages still not loaded from here.
   - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
     contacted.
 
