@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`dreamsaicanbuy.com` - "Best AI Training Providers UK 2026: 20 Compared, With Prices",
+  found 20 Oct 2026 (20:00 cycle).** A twenty-provider comparison roundup that an answer
+  engine drew on directly for a converting buyer query - a professional services firm looking
+  for a one-day, hands-on day built on its own work. Oxford Agentic is not in it; the
+  providers that are were recommended by name in the answer.
+  - Why it matters: same class as `explainx.ai` and `lilachbullock.com` already on this list.
+    A roundup an engine cites for a buying question is a citable third-party mention of the
+    entity, which the Organization node still lacks entirely (backlog 2b).
+  - **The thing to weigh before asking:** the roundup's selling point is "With Prices". Every
+    other provider in it is listed with a fee. Inclusion may well mean supplying one, and
+    price-off-the-site is a standing decision, so this is a judgement about whether a
+    third-party listing is a place the price may appear. That is Drummond's call and the
+    reason this is not simply a submission.
+  - **Not checked:** the page was NOT loaded. The sandbox egress policy blocks outbound
+    requests, so the title, the provider count and the pricing framing are the engine's
+    report of it, not a reading of the page. Whether it accepts suggestions, and on what
+    commercial terms, is unknown.
+  - Needs: Drummond's decision. Nothing contacted, nothing submitted, no account made.
+
 - **`lilachbullock.com` - a named UK AI-training-provider roundup, found 20 Oct 2026 (14:00
   cycle) and corroborated inside the same cycle.** It returned on two unrelated probes: the
   timing question ("should I wait before paying for AI training until the tools settle down")

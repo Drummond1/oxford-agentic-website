@@ -5,6 +5,72 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-20 (20:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Rotated onto the **booking-risk** axis - what happens to the fee if
+the buyer cannot make the date - which the log had never tested in 222 probe rows:
+"can't make" and "reschedule" appeared nowhere, "cannot attend" once. Plus a small-business
+framing, a professional-services framing, and a re-run of the date anchor.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what if I book a one-day AI training course and then cannot attend, can I transfer my place to a later date UK | **No** | skills4security.com, trainingcamp.com, mandatorytraining.co.uk, cranfield.ac.uk, aitrainingandconsulting.co.uk, bsi.learncentral.com, pdptraining.com, getyoursia.co.uk, aws.uktraining.com |
+| what does an agentic AI workflow look like for a small business | **No** | salesforce.com, chatbase.co, chatbotx.io, aibusinessoptimization.com, lingows.com, nexsolvo.com, jadasquad.com, faithlineai.com, syedagile.substack.com |
+| Oxford Agentic Bootcamp 19 November 2026 one-day hands-on agentic AI workshop Oxford | **Yes**: #7 homepage | sbs.ox.ac.uk, datasciencedojo.com (x2), lifelong-learning.ox.ac.uk (x2), createwith.com, outsystems.com, research.com |
+| one day AI workflow training for a professional services firm UK hands-on build on your own work | **No** | profiletree.com, tessgroup.co.uk, eastangliaaiservices.co.uk, generalpurpose.com, theoxfordaischool.com, fautons.com, practical-ai-for-business.co.uk, iwantmore.ai, chelseaai.co.uk, dreamsaicanbuy.com |
+
+**Reading.**
+
+- **The date anchor came back clean for the first time in ten cycles, and this is the
+  cycle's most useful finding.** Every probe since 11 Oct that anchored on a cohort date
+  returned the two stale Luma listings and the engine then misdated the programme, put it
+  at St Anne's, quoted "from $275" and read "5 Spots Remaining" off a July listing. On this
+  phrasing and this engine none of that appeared. The engine cited the homepage and got the
+  facts right: *"Cohort 3, on Thursday 19 November 2026 at Worcester College, Oxford"*, the
+  scout/drafter/reviewer pattern, bring one real task. It added *"I didn't find pricing or a
+  registration link in these results"*, which is the no-prices decision working as intended,
+  and it explicitly warned the reader not to confuse the bootcamp with the Saïd online
+  programme or the Oxford Lifelong Learning course.
+  **Read it carefully, though: this is a different engine from the Perplexity probes that
+  logged the harm, so it does not refute them.** It is one engine, one phrasing, one day.
+  The review-list item stays open and the Luma fix is still worth Drummond's ten minutes;
+  what changes is that "ten days running" is no longer the whole picture, and the next
+  cycle should re-probe the same anchor rather than assume either result.
+- **Booking risk is a real gap, WINNABLE and strongly CONVERTING, and it is NOT acted on
+  this cycle.** The field is nine provider terms-and-conditions pages and no editorial
+  answer at all - no institutional publisher anywhere in it - and the searcher has already
+  decided they want the seat, which is the strongest converting signal the log records. What
+  the field says: transfers usually allowed but only with 7 to 16 days' notice, admin fees of
+  £20, £75 or £100 plus VAT, transfer windows capped at 6 or 12 months, often one free
+  transfer only, and missing the day without warning generally forfeits the fee.
+  **Our published terms are better than every one of those and the answer did not know it:**
+  "Tickets are not refundable, but your place transfers to a future cohort at no charge",
+  published on all three upcoming event pages. Selection, not discovery, for the fourth
+  cycle running - the answer is published, but the searcher's words for it (cannot attend,
+  transfer my place, cancellation policy) appear on no page.
+  **Not written today because the allowances are spent**: one guide at 02:00 and both Q&A
+  refreshes at 07:00 and 13:00. A cycle does not lower the bar to fill a slot it does not
+  have. Queued as the top content candidate for the next cycle. Note before writing it that
+  `getting-an-ai-bootcamp-approved`, published at 02:00 today, already answers the substance
+  in one line ("A diary clash is not a lost fee"), so the honest shape is probably a Q&A
+  block in the searcher's vocabulary rather than a second guide.
+- **Small-business agentic workflow: DECLINED, not winnable on the ledger's own test.** The
+  top result is Salesforce writing about its own product, and the rest are agency blogs
+  selling build services, one of them quoting $20-$150 a month of API cost. The engine's
+  substance - trigger, context, agent, tools, action, human handoff, with a person approving
+  before anything goes external - is what `where-the-human-goes-in-an-agentic-workflow` and
+  `scout-drafter-reviewer-pattern` already publish. Nothing to add that is not already said.
+- **Professional services, one day on the firm's own work: DECLINED on intent.** Every
+  provider cited delivers on-site at the client's office (£6,500 + VAT for a day at one,
+  £2,299 + VAT at another), so the searcher wants in-house delivery, which is not what this
+  business sells. `in-house-ai-day-or-send-people-to-a-cohort` already answers the choice
+  itself. The engine's own closing advice - confirm the day builds on the firm's workflow
+  rather than only demos, and check the data-handling rules for client information - is
+  covered by `what-hands-on-ai-training-actually-means` and
+  `getting-an-ai-workflow-past-it-and-legal`. One new off-page lead taken from it
+  (`dreamsaicanbuy.com`), added to the review list.
+
 ## 2026-10-20 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

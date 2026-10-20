@@ -407,17 +407,108 @@ Status: `todo` · `blocked` (why) · `doing`
     token (backlog 21). Not urgent - 200% is a far less common setting than the 150% this
     cycle fixed.
 
-33. `todo` - **one inline `<code>` string still overflows at 320px with 150% text.**
-    `Clients/Acme/Pricing` in `/guides/second-brain-for-ai-vs-note-taking/` measures 325px
-    in a 320px window and is the only page of 55 still scrolling sideways in that
-    combination after this cycle. Loop-shippable, not a Drummond item: the fix is
-    `overflow-wrap: anywhere` on inline `code`, which needs checking against every other
-    code span on the site first so a path is not broken in a place where the break reads as
-    part of the path. Left for a later cycle rather than widening this one.
+33. `done` 20 Oct 2026 (20:00 cycle) - **one inline `<code>` string still overflows at 320px
+    with 150% text.** `Clients/Acme/Pricing` in `/guides/second-brain-for-ai-vs-note-taking/`
+    measured 325px in a 320px window and set the page's own minimum width. Fixed with
+    `overflow-wrap: anywhere` on `code` in `global.css`. The check the item asked for was
+    done first: the whole site has exactly **five** inline code spans across three pages,
+    and no `<pre>`, `<kbd>` or `<samp>` anywhere, so there is no code block for the rule to
+    reach. The break lands mid-segment (`Clients/Acme/Pr` + `icing`), which is the safe
+    outcome the item was worried about - a break after a slash is the one that reads as part
+    of the path, and `anywhere` does not produce one here.
+
+34. `todo` - **the `#` heading anchor is now the last thing overflowing at 320px with 150%
+    text, on two guides.** Measured 20 Oct (20:00 cycle) across all 55 indexable pages at
+    320px and 375px, at both a 16px and a 24px browser default: everything is clean except
+    `/guides/agentic-ai-glossary/` (+21px sideways) and
+    `/guides/how-to-choose-your-first-agentic-task/` (+1px), both at 320px/24px only. The
+    cause in both is `<a class="heading-anchor">#</a>`, which is appended inside an `h2`/`h3`
+    with `margin-inline-start: 0.4em`: when a heading's last line already ends near the right
+    edge, the anchor and its margin sit past it. It is `opacity: 0` until hover, so it is an
+    invisible element that scrolls the page sideways.
+    **Loop-shippable, deliberately not done this cycle** to keep the change set to one thing.
+    It needs more care than backlog 33 did: the anchor carries the `[data-copied]` "copied"
+    confirmation, so taking it out of the text flow (absolute positioning) or letting it wrap
+    has to be checked against that state as well as against hover and focus-visible.
+    This supersedes the 13 Oct claim that the code span was the only page still scrolling
+    sideways in that combination - it was the only one measured, not the only one.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-20 (20:00 local cycle) - an invisible 20-character file path was scrolling a
+  guide sideways on a narrow phone whenever the reader had enlarged their text. Inline code
+  may now break when it will not otherwise fit.**
+  - **Evidence: reproduced, then fixed, then re-measured.** Chromium driven through CDP
+    `Page.setFontSizes`, which is the browser's own preference rather than a page-level
+    override, so `rem` media queries scale the way they do for a real visitor. Before: at a
+    320px viewport with a 24px default font, `/guides/second-brain-for-ai-vs-note-taking/`
+    scrolled sideways by **35px**, and the single cause was
+    `<code>Clients/Acme/Pricing</code>` measuring **325px** in a 320px window. A word with no
+    space and no hyphen in it sets the page's minimum width, and the page is then wider than
+    the screen. After: **0px** at every width and text size tested.
+  - **`overflow-wrap: anywhere`, not `break-word`, and that is the whole of the fix.** Only
+    `anywhere` shrinks the min-content width, which is what the page's scroll width is taken
+    from; `break-word` would have wrapped the text and left the page just as wide. One rule,
+    fifteen lines including the comment, no markup change.
+  - **The check backlog 33 asked for was done before the rule went in.** The site has exactly
+    **five** inline code spans on three pages - `Clients/Acme/Pricing` in the guide,
+    `/team/josh-lawman/` and `/team/`, `/home-photos/` and `/home-original/` - and **no
+    `<pre>`, `<kbd>` or `<samp>` anywhere in `dist`**, so there is no code block the rule can
+    reach and nothing that needs to hold its line breaks. The item's worry was that a path
+    might break where the break reads as part of the path: it breaks mid-segment
+    (`Clients/Acme/Pr` + `icing`), which is the opposite, and a reader can see it is a wrap
+    rather than a slash.
+  - **Nothing moves at ordinary text sizes.** Measured on the built page: the code span is
+    **217px on one line at both 375px and 1280px**, before and after, in the same 18px
+    monospace. The screenshot at 1280px is indistinguishable from the old rendering. It
+    breaks only in the 320px/24px case, where the alternative is the whole page moving.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,153**
+    internal links resolve - unchanged, as a CSS-only change should be - schema valid, 5
+    Event and 9 FAQPage nodes, titles and descriptions unique, no new SEO warnings. The 12
+    outbound warnings are the sandbox egress policy blocking `luma.com` and are unchanged.
+    Affected page inspected at 375px and 1280px: one h1, no heading-level skip, no missing
+    alt text, no unlabelled control, no page errors.
+  - **A full-site sweep came with it, and found the next defect.** All **55** indexable pages
+    at 320px and 375px, at a 16px and a 24px default font: every combination now scrolls 0px
+    except two guides at 320px/24px, where the cause is not code but the `#` heading anchor
+    sitting past the right edge of a long heading. Logged as **backlog 34** with the
+    measurements and deliberately left for another cycle rather than widening this one. It
+    also corrects the 13 Oct note: the code span was the only page *measured*, not the only
+    one overflowing.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers **403 on CONNECT** from the sandbox and `luma.com` does not resolve, so
+    `build.txt` could not be read and **no event fact could be re-verified - none was
+    touched.** Deploy run **267 success** on `4a66d30`, the `origin/main` HEAD, finished
+    13:10 UTC, nothing queued or in progress when this cycle started.
+  - **GEO: four probes, and the date anchor came back clean for the first time in ten
+    cycles.** A query naming the programme, Oxford, 19 November 2026 and the format cited the
+    homepage and got every fact right - Cohort 3, Thursday 19 November 2026, Worcester
+    College - with no St Anne's contradiction, no "$275", no "5 Spots Remaining", and the
+    engine volunteering that it found no pricing, which is the no-prices decision working.
+    **This is a different engine from the Perplexity probes that logged the harm, so it does
+    not refute them**; the review-list item stays open and the next cycle should re-probe the
+    same anchor rather than assume either reading.
+  - **The strongest content finding was deliberately not acted on.** Booking risk - "I have
+    booked and now I cannot make the date" - is untested in 222 probe rows, WINNABLE (nine
+    provider T&C pages, no institutional publisher, no editorial answer at all) and the most
+    strongly CONVERTING axis the log records, because the searcher has already decided they
+    want the seat. The field charges £20-£100 + VAT admin fees, caps transfers at 6-12 months
+    and forfeits the fee for a no-show; **our published terms beat all of it** ("your place
+    transfers to a future cohort at no charge", on all three upcoming event pages) and the
+    answer did not know it. **Today's allowances were spent before this cycle began** - one
+    guide at 02:00, both Q&A refreshes at 07:00 and 13:00 - so it is queued for the next
+    cycle rather than written. A cycle does not lower the bar to fill a slot it does not have.
+  - **Off-page:** one new named lead, `dreamsaicanbuy.com`, a twenty-provider UK roundup an
+    engine cited for a converting buyer query, added to `outreach/review-list.md` with the
+    thing that needs weighing first - its selling point is published prices, and price-off-
+    the-site is a standing decision. Nothing contacted, nothing submitted, no account made.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 Sept reading).
+  - **No guide**: 2 of 3 this week, today's single guide spent by the 02:00 cycle. Not a Q&A
+    refresh either - both of the day's two were spent by the 13:00 cycle. This cycle is a
+    CSS fix, which neither allowance governs.
 
 - **2026-10-20 (14:00 local cycle) - "Will this be out of date in six months?" is the
   objection to paying for any AI day, and the site had never written the words. The page

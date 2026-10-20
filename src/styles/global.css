@@ -202,6 +202,21 @@ li {
   text-wrap: pretty;
 }
 
+/*
+ * Inline code is the one string in reading copy that cannot be hyphenated or
+ * broken at a space, so a long one sets the page's minimum width and the page
+ * itself then scrolls sideways. `Clients/Acme/Pricing` measured 325px in a
+ * 320px window once the browser's default text size was raised to 24px, and it
+ * was the last horizontal overflow left after the header fix on 20 October.
+ * `anywhere` rather than `break-word`: only `anywhere` shrinks the min-content
+ * width, which is what the page's scroll width is taken from. It breaks only
+ * when the span will not otherwise fit, so at ordinary text sizes all five
+ * code spans on the site render exactly as they did before.
+ */
+code {
+  overflow-wrap: anywhere;
+}
+
 a {
   color: inherit;
   text-decoration-thickness: 1px;
