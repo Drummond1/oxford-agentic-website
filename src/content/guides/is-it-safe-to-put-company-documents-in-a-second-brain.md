@@ -12,7 +12,7 @@ capsule: >-
   contract need their own answer, and credentials never go in.
 author: drummond-gilbert
 publishDate: "2026-09-11T18:20:00+01:00"
-updatedDate: "2026-09-11T18:20:00+01:00"
+updatedDate: "2026-10-21T20:30:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
@@ -54,4 +54,4 @@ The practical answer is usually to store the lesson rather than the document. Wh
 
 ## Where this gets practical
 
-The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is built from your own material, so it is worth running this sort before you arrive and bringing what passes it. The day is spent turning that material into a second brain your AI tools can draw on, organised so it stays findable and set up to maintain. It runs on [21 October at the Pitt Rivers Museum](/events/oxford-second-brain-bootcamp-cohort-1/). No coding required.
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is built from your own material, so it is worth running this sort before you arrive and bringing what passes it. The day is spent turning that material into a second brain your AI tools can draw on, organised so it stays findable and set up to maintain. [Cohort 1 ran on 21 October at the Pitt Rivers Museum](/events/oxford-second-brain-bootcamp-cohort-1/), and dates for the next cohort are being confirmed. No coding required.

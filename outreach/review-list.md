@@ -11,6 +11,24 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`cademy.io` - a UK course-booking directory that providers list themselves on. Found
+  21 Oct 2026 (20:00 cycle) on a Second Brain probe.** It surfaced carrying a third party's
+  "1 Day Intro Training in Milton Keynes", which is the shape of listing we would place: a
+  named one-day course, a named town, its own indexed page.
+  - Why it matters: it is a self-serve listing rather than an editor's roundup, so unlike
+    `learnsignal.com`, `dreamsaicanbuy.com` and `lilachbullock.com` below it needs nobody's
+    permission - and the Organization node still has no third-party `sameAs` at all
+    (backlog 2b). It also ranks: it came back on a query it is only loosely relevant to.
+  - **The thing to check first, because it decides whether this is worth anything.** Cademy
+    appears to take bookings, so a listing may want a price, and prices live on Luma by
+    standing decision. If the listing can carry a description and a link to
+    oxfordagentic.com without a ticket, it is cheap and worth doing; if it insists on being
+    the ticketing surface, it is the same question as Eventbrite in `off-page-listings.md`
+    and wants the same answer from Drummond first.
+  - **Not checked:** the page was NOT loaded - the sandbox egress policy blocks outbound
+    fetches, so this is from the search result alone. Confirm it is a UK open directory, and
+    the terms, before acting. Nothing contacted, nothing submitted, no account made.
+
 - **`learnsignal.com` - the finance vertical's buyer's guide, and a CPD question that is
   Drummond's alone. Found 21 Oct 2026 (14:00 cycle) by a deliberate off-page search.** The
   finance probes that drove this cycle's content change surfaced no directory we could join,
@@ -243,6 +261,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the site at #2, #3 and #5 on this same query on 13 September, so it is not a like-for-like
     ranking drop. It is the seventh consecutive cycle on this axis and the first on a query with
     no date in it. Nothing contacted and the pages still not loaded from here.
+  - **Eighth consecutive cycle, and the first on the Second Brain programme - 21 Oct 2026
+    (20:00 cycle).** Two probes, neither naming a date. *"second brain workshop Oxford build
+    AI context from your own documents"* is the most Oxford-anchored phrasing the Second
+    Brain line has, and Perplexity returned our pages at **#1, #2, #3, #4 and #5** on almost
+    exactly it on 13 September. Tonight, on web search, **no page of ours came back** and the
+    engine answered *"I found no workshop held in Oxford"*, then told the reader to *"try
+    searching Eventbrite, Meetup, or the University of Oxford's continuing-education pages
+    directly"* - which is the aggregator route backlog 2b has been asking for. The second
+    probe, *"one day in-person course to build a second brain for your AI tools UK"*, also
+    returned nothing of ours and concluded *"I didn't find a one-day, in-person, UK-based
+    course that specifically teaches building a second brain for AI tools"*, offering Maven
+    workshops instead. **What is new is the spread:** the pattern has now been reproduced on
+    both bootcamp lines, on queries with no date in them, so it is not a Cohort 3 freshness
+    artefact. **Caveat, unchanged:** web search, not the Perplexity probes that logged those
+    September positions, so this is not a like-for-like ranking reading.
   - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
     contacted.
 

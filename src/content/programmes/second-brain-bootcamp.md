@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-10-21T20:30:00+01:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -84,7 +84,7 @@ faqs:
       looks like, and the decisions you have already made and why.
   - q: Where in Oxford is it held?
     a: >-
-      In central Oxford. Cohort 1 is at the Pitt Rivers Museum on South Parks Road.
+      In central Oxford. Cohort 1 was at the Pitt Rivers Museum on South Parks Road.
       The exact venue and date are confirmed on each event’s own page.
   # See the note on the same answer on the Agentic programme page: the hours are
   # on every event page and were on no programme page.

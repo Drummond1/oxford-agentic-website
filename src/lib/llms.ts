@@ -64,7 +64,7 @@ export async function publicPages(): Promise<PageRef[]> {
   }
 
   if (showSection('testimonials')) {
-    pages.push({ title: 'Outcomes', path: paths.testimonials(), description: 'What attendees said, with names and dates.' });
+    pages.push({ title: 'Outcomes', path: paths.testimonials(), description: 'What attendees said, named and attributed.' });
   }
 
   if (showSection('guides')) {

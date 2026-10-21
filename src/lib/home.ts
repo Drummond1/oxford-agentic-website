@@ -49,7 +49,7 @@ export const homeFaqs = [
   },
   {
     q: 'Where in Oxford are the events held?',
-    a: "In Oxford colleges and museums. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne’s College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. The Agentic Bootcamp’s Cohorts 2 and 3 and the Coding Bootcamp’s first cohort are at Worcester College on Walton Street, in central Oxford; the Second Brain Bootcamp is at the Pitt Rivers Museum on South Parks Road. Each event page confirms its own venue and date.",
+    a: "In Oxford colleges and museums. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne’s College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. The Agentic Bootcamp’s Cohorts 2 and 3 and the Coding Bootcamp’s first cohort are at Worcester College on Walton Street, in central Oxford; the Second Brain Bootcamp’s first cohort was at the Pitt Rivers Museum on South Parks Road. Each event page confirms its own venue and date.",
   },
   {
     q: 'Is Oxford Agentic affiliated with the University of Oxford?',

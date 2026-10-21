@@ -449,10 +449,152 @@ Status: `todo` · `blocked` (why) · `doing`
     version is the line the empty state already uses, under the quotes; the better one
     probably names the next cohort. One line from him either way. (Found 21 Oct 2026 in
     the 09:00 cycle, alongside the "dated" claim that cycle fixed.)
+36. `todo` **(needs Drummond, one fact only he has)** - **is there a second Second Brain
+    cohort?** Cohort 1 ran on 21 Oct 2026 and the 20:00 cycle moved every sentence that
+    called it upcoming into the past tense. The programme now has no date, so
+    `/bootcamps/second-brain-bootcamp/` and the Cohort 1 event page both fall back to the
+    template's "Dates for the next cohort are being confirmed" plus the notify form, which
+    is honest and is as far as the loop can go. Two things follow and both are his: whether
+    a date exists to publish, and - if one does not for a while - whether that line should
+    keep saying "being confirmed". Four Second Brain guides and the programme page now end
+    on a cohort nobody can book.
+37. `todo` - **the Second Brain Cohort 1 FAQ block still answers a buyer, not a reader of a
+    past page.** The 20:00 cycle on 21 Oct fixed only what had become false: the capsule and
+    summary tense, "Registration is open", "Book directly on this page", and the invoice
+    answer's pointer to a booking form. Left standing, because they are odd rather than
+    untrue: "What should I bring?", "Can I install software on my work laptop?" ("worth
+    checking before you book") and "What if I cannot make the date?". Cohort 2's own page is
+    the precedent and the pace - it was cut from seven questions to three on 23 Sept, a week
+    after the day ran, once there was something true to say about what happened. Do the same
+    here in about a week, and only with outcomes in hand. Do not invent any.
+38. `todo` - **the legal vertical is the strongest untried content candidate in the log.**
+    Probed 21 Oct (20:00 cycle): *"agentic AI training for law firms UK hands-on one day
+    workshop"* returned no page of ours and the engine said *"I found no UK one-day hands-on
+    course that is clearly labelled agentic AI for law firms"*, naming its own near misses -
+    a London taster of unstated duration, a morning session it suspects is US, a one-hour
+    talk inside a vendor's London event, and aiawareness.ai's one-day courses, which it
+    notes are ChatGPT prompting and *"neither is framed around agents"*. That is the same
+    shape as the finance gap the 14:00 cycle acted on, one vertical over, and the site has
+    `agentic-ai-for-finance-teams` and `agentic-ai-for-consultants` but nothing for legal.
+    **Probe a second phrasing before writing anything**, exactly as finance was. Weigh the
+    confidentiality angle carefully: a law firm's material is privileged, and the honest
+    answer is the published one (bring what you would be comfortable describing to an
+    external supplier), not a new claim. The operations vertical was probed the same cycle
+    and is NOT the same gap - BrainStation London and Columbus both run full-day in-person
+    agent courses - so do not write it on the strength of the finance result.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-21 (20:00 local cycle) - the Second Brain Bootcamp ended at 17:00 today, and
+  six published strings across four files still said it was coming. They now say it ran.
+  This is known candidate 2, handed forward by the 14:00 cycle, which correctly judged it
+  three hours early.**
+  - **What was still claiming an upcoming day, at 19:58 BST, two hours after it ended.**
+    The event file's `status: upcoming`; its capsule, *"Cohort 1 of the Oxford Second Brain
+    Bootcamp **runs** on Wednesday 21 October 2026"*, which is also the page's meta
+    description, its `og:description`, its schema description and its line in `llms.txt`;
+    its summary, an offer in the imperative (*"Build a second brain ... and leave with it
+    working"*) rendered on the `/events/` card; the FAQ *"When and where is it?"*, answering
+    **"Registration is open - you can book on this page"**; the FAQ *"How do I register for
+    Cohort 1?"*, answering **"Book directly on this page - the form takes your
+    registration"**; and the invoice FAQ's **"Pricing and the booking form are on this
+    page"**. On the programme page, *"Cohort 1 **is** at the Pitt Rivers Museum"*. In the
+    homepage FAQ (`src/lib/home.ts`), *"the Second Brain Bootcamp **is** at the Pitt Rivers
+    Museum"*, which a reader asking where the events are held reads as a day that exists.
+    And in three guides, *"It **runs** on 21 October at the Pitt Rivers Museum"* twice and
+    *"and the Second Brain Bootcamp **on** 21 October"* once.
+  - **The template was already honest; the content strings were not.** `effectiveStatus`
+    derives "past" from `endDate`, so the event page had already flipped itself: it renders
+    "This event has run", hides the booking bar and the final call to action, and - because
+    no successor exists - shows *"Dates for the next cohort are being confirmed"* with the
+    notify form. Confirmed in the 1280px screenshot. What no derivation can reach is a
+    sentence someone typed into a content file, and every string above is one.
+  - **The test applied to each string, so the diff stayed a correction rather than a
+    rewrite.** Does it, published tonight, tell a reader something untrue or ask them to do
+    something they cannot do? Six did and were changed. Several did not and were left:
+    "What should I bring?", the work-laptop answer's "worth checking before you book", and
+    "What if I cannot make the date?" are odd on a past page but not false. Cohort 2's page
+    is the precedent for the deeper cut - seven questions to three, on 23 Sept, **a week**
+    after it ran, once there was something true to say about the day - and that pace is
+    right. Logged as backlog 37; nothing about today was invented in the meantime.
+  - **No new fact, no event fact, and no future date.** The dates, venue, times and
+    `lumaEventId` are untouched, and `luma.com` answers 403 on CONNECT from the sandbox so
+    nothing could have been re-verified anyway. Nothing claims a Second Brain Cohort 2
+    exists and nothing claims one does not: the two guides and the event FAQs now use the
+    site's own published wording for this state, *"dates for the next cohort are being
+    confirmed"*, which is the line the template already renders. **Whether a date exists is
+    Drummond's and is backlog 36** - four Second Brain guides and the programme page now end
+    on a cohort nobody can book, which is honest and is not nothing.
+  - **Two wordings were written and rejected.** The "Can I still join this cohort?" answer
+    first steered the reader to the Agentic Bootcamp, which cross-sells between two
+    programmes the FAQ directly above it works to keep distinct, and is a commercial call
+    the loop does not make. It then offered "the form on this page takes your email", which
+    is true only while `features.newsletter` is on - content that silently goes false when a
+    flag moves, which `check:flags` exists to prevent. The published answer depends on
+    neither.
+  - **One string outside the Second Brain, and it is this morning's fix finished.** The
+    09:00 cycle removed the unmet "dated" claim from `/testimonials/`. `src/lib/llms.ts`
+    carried its own hardcoded copy - *"What attendees said, with names and dates."* - so the
+    claim was still live in `llms.txt`, which is the knowledge base the two voice agents
+    read. Now *"What attendees said, named and attributed."*, matching the page.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 61 pages built, 63
+    checked, **3,094** internal links resolve - **unchanged**, because every link was kept
+    and only its sentence moved tense - schema valid, 5 Event and 9 FAQPage nodes, titles
+    and descriptions still unique, no SEO warnings. The schema check caught two real faults
+    on the way: a summary at 174 characters against a 160 limit, and a straight apostrophe.
+    The 11 outbound warnings are the sandbox egress policy blocking `luma.com`,
+    `linkedin.com`, `arxiv.org`, `elevenlabs.io`, `novaria.ai` and `ico.org.uk`, unchanged.
+    In `dist`: no page still says "runs on Wednesday 21 October" or "Cohort 1 is at the Pitt
+    Rivers"; the only surviving "Registration is open" is the Coding Bootcamp's 26 November
+    cohort, which is genuinely on sale; the FAQPage node carries the rewritten questions;
+    canonical correct and indexable; `llms.txt` lists the event below the two upcoming ones
+    and above Cohort 2, which is the right past ordering; sitemap `lastmod` moved for the
+    four content URLs touched.
+  - **Inspected in headless Chromium at 375px and 1280px on all seven affected pages** - the
+    event page, the programme page, the three guides, the homepage and `/events/`:
+    **0px of horizontal overflow in all fourteen configurations**, one h1 each, no
+    heading-level skip, no image without alt text, no unlabelled control, no page errors.
+    The three "unlabelled" links a naive check reports at 1280px are the collapsed desktop
+    nav dropdown, which has text, and report identically on untouched pages. The event page
+    was read at 1280px and renders the past state correctly.
+  - **GEO: five probes, none cited, and the finding is one the repo cannot fix.** *"second
+    brain workshop Oxford build AI context from your own documents"* - the most
+    Oxford-anchored phrasing that line has, and one Perplexity answered with our pages at
+    #1 to #5 on 13 September - returned **no page of ours**, the engine saying *"I found no
+    workshop held in Oxford"* and advising the reader to try Eventbrite, Meetup or the
+    University's continuing-education pages. Its sister probe concluded *"I didn't find a
+    one-day, in-person, UK-based course that specifically teaches building a second brain
+    for AI tools"*. **No Second Brain content was written on the strength of it**, because
+    the standing decision is explicit that Second Brain's constraint is demand rather than
+    ranking. **Caveat, as all month:** web search, not Perplexity, so not a like-for-like
+    ranking drop. Full table in `seo-data/geo-citations.md`.
+  - **Two vertical axes opened, one kept and one closed.** Legal is the same shape as the
+    finance gap acted on at 14:00 - *"I found no UK one-day hands-on course that is clearly
+    labelled agentic AI for law firms"*, with the near misses named and dismissed by the
+    engine itself - and is logged as **backlog 38** for a second phrasing before anything is
+    written. Operations is **not** the same gap and must not be written on the strength of
+    the finance result: BrainStation runs a full-day in-person agent course in London and
+    Columbus runs "Agent in a Day UK", so the engine can answer that question. The
+    after-the-training-day axis is declined - vendor and consultancy blogs own it, and two
+    of our guides already carry our half.
+  - **Off-page: one new lead and an eighth corroboration.** `cademy.io`, a UK course-booking
+    directory providers list themselves on, surfaced carrying a third party's one-day course
+    in Milton Keynes; it needs nobody's permission, which the editorial roundups above it on
+    the list all do, but it may want a price, and prices live on Luma - so the entry says to
+    check that first. And the stale-Luma item gains its eighth consecutive cycle, now on the
+    **Second Brain** programme and on queries with **no date in them**, which rules out a
+    Cohort 3 freshness artefact. Nothing contacted, nothing submitted, no account made.
+  - **Production state came from the Actions API, as all week.** `oxfordagentic.com` answers
+    **403 on CONNECT** from the sandbox, so `build.txt` could not be read. Deploy run **273
+    success** on `f545349`, the `origin/main` HEAD, finished 13:09 UTC; nothing queued or in
+    progress. Working tree clean and local `main` level with `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **Allowances:** no new guide - still **2 of 3 this week** and today's unspent. Not a Q&A
+    refresh either: no question was added anywhere. This is a freshness and accuracy
+    correction, which neither allowance governs.
 
 - **2026-10-21 (14:00 local cycle) - an answer engine said twice, in two different
   phrasings, that it could not find a UK one-day hands-on agentic AI day for finance

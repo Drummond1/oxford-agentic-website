@@ -12,7 +12,7 @@ capsule: >-
   documents, then kept current in minutes at a time.
 author: drummond-gilbert
 publishDate: "2026-09-11T18:30:00+01:00"
-updatedDate: "2026-09-11T18:30:00+01:00"
+updatedDate: "2026-10-21T20:30:00+01:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
@@ -51,4 +51,4 @@ That does not need a weekly review ritual. It needs an update at the moment some
 
 ## Where this gets practical
 
-The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is that day. You build your second brain from your own material, organise it so it stays findable as it grows, connect it to your tools, and finish with the routine that keeps it current. It runs on [21 October at the Pitt Rivers Museum](/events/oxford-second-brain-bootcamp-cohort-1/). No coding required.
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is that day. You build your second brain from your own material, organise it so it stays findable as it grows, connect it to your tools, and finish with the routine that keeps it current. [Cohort 1 ran on 21 October at the Pitt Rivers Museum](/events/oxford-second-brain-bootcamp-cohort-1/), and dates for the next cohort are being confirmed. No coding required.

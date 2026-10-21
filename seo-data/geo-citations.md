@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-21 (20:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions, rotated away from finance, which the 14:00 cycle worked.
+Two open new vertical axes (legal, operations), two test the Second Brain line on the evening
+its only cohort ran, and one tests the after-the-day axis.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI training for law firms UK hands-on one day workshop | **No** | info.litera.com, luma.com/hnxatfh3 (LegalTechTalk/Factor), luma.com/oyz7zbmn (Ping), lccsa.org.uk, agenda.unifr.ch (x2), legalcheek.com, aiawareness.ai (x2) |
+| hands-on agentic AI workshop for operations teams UK one day build your own workflow | **No** | columbusglobal.com (x2), odsc.ai, rse.shef.ac.uk / sheffield.ac.uk (x3), luma.com/cschoxg0, invite.salesforce.com, brainstation.io |
+| one day in-person course to build a second brain for your AI tools UK | **No** | luma.com (x3, Aivian "Build Your AI Brain"), dreeam.ac.uk, lsbu.ac.uk (x2), bilginc.com, maven.com (Human AI Studio), wiseowl.co.uk, cademy.io |
+| second brain workshop Oxford build AI context from your own documents | **No** | maven.com (x3), cybersafety.infoxchange.org (x2), it.tulane.edu (x3), luma.com/i54540vs (Vilnius), luma.com/m4yif4v4 |
+| how do you make an AI workflow stick after the training day | **No** | voltagecontrol.com, metacto.com, avepoint.com, honehq.com, lilachbullock.com, grantthornton.com, knowledgewave.com, trainingindustry.com, gyde.ai |
+
+**Reading.**
+
+- **The finding is "second brain workshop Oxford", and it is not a content problem.** This is
+  the most Oxford-anchored phrasing the Second Brain line has, and on 13 September Perplexity
+  returned our pages at **#1, #2, #3, #4 and #5** on almost exactly it. Tonight the engine
+  returned **no page of ours** and said *"I found no workshop held in Oxford"*, then advised
+  the reader to *"try searching Eventbrite, Meetup, or the University of Oxford's
+  continuing-education pages directly"*. The sister probe said *"I didn't find a one-day,
+  in-person, UK-based course that specifically teaches building a second brain for AI tools"*.
+  **Nothing on the site can fix that**, and the standing decision on Second Brain is explicit
+  that ranking is not its constraint - demand is - so no Second Brain content was written.
+  What it does do is corroborate the stale-listing item on the review list for an eighth
+  consecutive cycle, and for the first time on the Second Brain programme and on queries with
+  no date in them. **Caveat, as every cycle this month:** web search, not the Perplexity probes
+  that logged those September positions, so it is not a like-for-like ranking drop.
+- **The legal vertical is the best new candidate this log holds, and it was deliberately not
+  acted on tonight.** The engine said in terms: *"I found no UK one-day hands-on course that is
+  clearly labelled agentic AI for law firms"*, then named its own near misses - a London taster
+  of unstated duration, a morning session it suspects is US, a one-hour talk inside Litera's
+  London event, and aiawareness.ai's one-day courses, which it notes are *"ChatGPT prompt
+  techniques for legal work"* and *"neither is framed around agents"*. That is the same shape
+  as the finance gap the 14:00 cycle acted on, one vertical over. WINNABLE: vendors and event
+  listings, no institutional publisher holding an editorial answer. CONVERTING: a partner or
+  head of legal ops typing that is the buyer. **Not written tonight** because this cycle's
+  change was the time-critical one and the rules allow one commit; it is the first thing a
+  later cycle should probe a second phrasing of.
+- **The operations vertical is NOT the same gap, and should not be written on the strength of
+  the finance result.** Here the engine found real competitors: BrainStation London runs a
+  full-day in-person agent course on Rivington Street, Columbus runs "Agent in a Day UK" on
+  Copilot Studio, and a £699 London product-teams day exists. A vertical page is only worth
+  writing where the engine cannot answer; here it can.
+- **The after-the-day axis is declined.** Voltage Control, Grant Thornton, AvePoint,
+  TrainingIndustry and four vendor blogs own it, and two of our own guides -
+  `after-the-ai-executive-programme` and `is-your-ai-workflow-saving-time-or-just-effort` -
+  already say our half of it. Logged so it is not re-probed in these words.
+
 ## 2026-10-21 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
