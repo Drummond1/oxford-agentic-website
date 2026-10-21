@@ -24,14 +24,21 @@ const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.
 
 <Base
   pageTitle="Outcomes"
-  description={`What people who attended ${config.brand.name} events in Oxford said afterwards - named, dated and attributed.`}
+  description={`What people who attended ${config.brand.name} events in Oxford said afterwards - named and attributed, never anonymous.`}
   path={paths.testimonials()}
   breadcrumbs={[{ name: 'Outcomes', path: paths.testimonials() }]}
 >
+  {/* The subline and the description above both said "named, dated and
+      attributed" until 21 Oct 2026. Nothing on this page is dated: the date
+      each quote carries in its content file is deliberately not rendered, and
+      re-adding it is a settled no (it read as a contradiction on an event page
+      whose cohort differed from the quote's). So the claim went instead of the
+      evidence - on the one page whose whole job is evidence, promising a date
+      and not showing one costs more than the word is worth. */}
   <Hero
     eyebrow={config.brand.name}
     title="What came out of the room"
-    subline="Named, dated and attributed. Specific beats polished."
+    subline="Named and attributed. Specific beats polished."
   />
 
   <section class="band band--cream" aria-labelledby="quotes">

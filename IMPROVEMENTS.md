@@ -436,9 +436,92 @@ Status: `todo` · `blocked` (why) · `doing`
     +1px, both at 320px/24px only, both caused by `<a class="heading-anchor">#</a>` appended
     inside an `h2`/`h3` with `margin-inline-start: 0.4em`.)
 
+35. `todo` **(needs Drummond, a call-to-action decision)** - **the Outcomes page is the
+    only page on the site that ends in nothing.** `/testimonials/` sits in the primary
+    nav, is the page a buyer opens to check that real people have said real things, and
+    once it has quotes on it there is no link out of it at all: the four cards, then the
+    footer. Its own empty state does better - "See the events ->" - and every other page
+    on the site closes with a call to action (the homepage and event pages with a booking
+    band, programme pages with a booking band, guides with one programme link). So the
+    page converts a visitor's belief into nothing, at the moment the belief is strongest.
+    **The loop will not do it**: adding a call to action to a nav-level page that has none
+    is a new call to action, which the loop's own rules put on Drummond. The cheapest
+    version is the line the empty state already uses, under the quotes; the better one
+    probably names the next cohort. One line from him either way. (Found 21 Oct 2026 in
+    the 09:00 cycle, alongside the "dated" claim that cycle fixed.)
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-21 (09:00 local cycle) - the one page whose whole job is evidence promised a
+  date it does not show. The claim went, because the evidence is a settled no.**
+  - **What was wrong.** `/testimonials/` - "Outcomes" in the nav, and the only page a
+    buyer can open to check that anyone has said anything - led with the subline
+    **"Named, dated and attributed."** and carried the same three words in its meta
+    description. Nothing on the page is dated. Four quotes, four names, four roles, no
+    date anywhere except inside Fei Gan's own sentence ("the July 2026 AI Agentic
+    Bootcamp"), which is hers rather than the page's. The description also rides into
+    `og:description`, `twitter:description` and the `WebPage` node, so the unmet claim
+    was in five places and was what a search engine and an answer engine read.
+  - **The evidence exists; rendering it is a settled no.** Every testimonial content file
+    carries a `date`, and Fei's carries `cohort: Cohort 1`. `Quote.astro` deliberately
+    renders neither - backlog 23 records that the date under each name was removed on
+    purpose because, with testimonials attached to a programme rather than an event, a
+    July date sat under a quote on a September cohort's page and read as a
+    contradiction. So putting dates back would re-open a decision, and backlog 23 is
+    explicitly Drummond's wording call. The honest move was to drop the claim.
+  - **Two strings, one file.** Subline: "Named, dated and attributed." -> **"Named and
+    attributed."** Description: "...said afterwards - named, dated and attributed." ->
+    **"...said afterwards - named and attributed, never anonymous."** 113 characters, so
+    it stays inside the 160 the schema check measures, and it still says the thing worth
+    saying next to a field full of anonymous "Finance Director, FTSE 250" quotes. A
+    comment in the file records why "dated" went, so a later cycle does not put it back.
+  - **Two wordings were written and rejected before this one.** "...the cohort they came
+    to" would have reintroduced the same fault - three of the four cards do not name a
+    cohort. "...in their own words" is not verifiable for all four: STATE.md 7b records
+    that the first half of Shrestha Mullick's line cannot be traced to any document and
+    was supplied by Drummond, so a blanket claim about exact wording is exactly the kind
+    this loop must not publish.
+  - **Nothing moved.** Full-page screenshots at 375px and 1280px before and after: same
+    page height to the pixel (2694px at 375px), subline still two lines at 375 and one at
+    1280, cards, monograms and reveal order unchanged. No content file touched, so no
+    `updatedDate` and no sitemap `lastmod` moved.
+  - **Checks:** `npm run build` clean - 61 pages, **3,154** internal links resolve, schema
+    valid, 5 Event and 9 FAQPage nodes, titles and descriptions still unique. The 12
+    outbound warnings are the sandbox egress policy blocking `luma.com`, `linkedin.com`,
+    `arxiv.org`, `elevenlabs.io` and `ico.org.uk`, unchanged. `npm run check:flags` passes
+    both the all-on and all-off builds. `npm run check` (astro check, with `@astrojs/check`
+    installed `--no-save`) reports **79 errors, 0 warnings, 4 hints both before and after**
+    - an unchanged pre-existing baseline of implicit-`any` content-collection parameters,
+    which is also why CI does not run it.
+  - **The sweep that found it, and found nothing else.** All **55** indexable pages at 375,
+    768 and 1280px: 0px horizontal overflow, exactly one `h1` each, no heading-level skip,
+    no `img` without `alt`, no form control without a label, no link or button without an
+    accessible name, no page error. Re-run after the change: still 0 findings. A keyboard
+    pass over 11 representative pages, 70 tabs each at 375 and 1280px, found **no focusable
+    element without a visible outline or shadow**. Page weight at 375px tops out at 131KB
+    (`/team/`); no image is served more than 2.2x its displayed width, and none is missing
+    `width`/`height`, so there is nothing to win on media.
+  - **Not shipped, and why.** `/testimonials/` has **no onward link at all** once it has
+    quotes on it - the empty state offers "See the events", the populated state offers
+    nothing, and every other page on the site ends in a call to action. That is a new
+    call to action on a nav-level page, which this loop does not add on its own. Logged as
+    backlog 35.
+  - **Production could not be read, as on every cycle this week.** `oxfordagentic.com`
+    answers **403 on CONNECT** from the sandbox (confirmed against the proxy's own status
+    endpoint, `connect_rejected`, policy denial) and `drummond1.github.io` does not resolve,
+    so `build.txt` could not be fetched and before/after had to be local build against local
+    build. Deploy run **270 success** on `4e2b0ca`, the `origin/main` HEAD, finished 07:14
+    UTC; CI run 261 success on the same SHA; nothing queued or in progress.
+  - **Repository state.** `main` fast-forwarded from the stale local ref to `4e2b0ca`.
+    PR #1 (backlog 20) and the `feat/ceo-roundtable-demand-page` branch are both the
+    known-stale leftovers already on record, not unfinished work.
+  - **The Second Brain Bootcamp is running today.** Its page is correctly still `upcoming`
+    until 16:00 UTC - `effectiveStatus` keys off `endDate` - and no event fact was touched.
+    `luma.com` does not resolve from the sandbox, so none could have been verified anyway.
+  - **No guide, no Q&A refresh.** This is a copy-accuracy fix on an existing page, which
+    neither allowance governs.
 
 - **2026-10-21 (08:00 local cycle) - an invisible `#` was the last thing scrolling the site
   sideways. One declaration closed the overflow sweep that has run since 20 October: every
