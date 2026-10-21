@@ -5,6 +5,77 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-21 (02:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Two jobs: **re-probe the date anchor** that came back clean yesterday,
+which the 20:00 cycle explicitly asked the next cycle to do rather than assume either
+reading, and take the **booking-risk** axis - queued as the top content candidate - through
+three further phrasings before writing anything.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| Oxford Agentic Bootcamp Cohort 3 19 November 2026 one-day hands-on agentic AI workshop Oxford | **No** | luma.com/oxfordagentic2, luma.com/k7c2rm5s, sbs.ox.ac.uk (x2), allai.events, learnersink.com, groups.google.com (OxML, x2), help.datasciencedojo.com, maven.com |
+| what should I ask about the cancellation and transfer policy before booking a one-day AI training course UK | **No** | ecc.ac.uk (x4 course pages), copc.com (PDF), mind-blmk.org.uk (PDF), cherwell.gov.uk, spso.org.uk (PDF), engage.isaca.org, hager.com |
+| AI bootcamp Oxford cancellation policy can I transfer my place to a later cohort | **No** | jiangren.com.au, courseread.duckdns.org, help.datasciencedojo.com, ask.datasciencedojo.com, techelevator.com, educ.cam.ac.uk (PDF), lang.web.ox.ac.uk, lang.site.ox.ac.uk, copc.com |
+| can I send a colleague in my place if I cannot attend a one-day training course I booked UK | **No** | safeguardingwarwickshire.co.uk, staff.admin.ox.ac.uk, hants.gov.uk, sparsholt.ac.uk, southtyneside.gov.uk, clocs.org.uk, gloucestershire.gov.uk, cheshireeast.gov.uk, vub.be |
+
+**Reading.**
+
+- **The date anchor harm is back, and yesterday's clean reading does not survive the
+  re-probe.** Same axis, same engine class, one day later: no page of ours in the results,
+  `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` first and second, and the engine saying
+  in as many words *"I didn't find any listing that confirms a Cohort 3 on 19 November
+  2026"*. It then reproduced every fault the review list already records - *"One Luma
+  listing places it at Worcester College... A second Luma listing places it at St Anne's
+  College... and that listing also shows 5 Spots Remaining"* - and took the date and price
+  off allai.events: *"lists the event on 21 Jul 2026... with tickets from $275"*. So the
+  20:00 reading was one phrasing on one day, exactly as it was logged; the harm is the
+  normal case and the clean answer was the exception. Review-list item strengthened with
+  this as its sixth axis. **Nothing on-site can fix it** - all three listings are
+  Drummond's.
+- **Booking risk: the gap is real, but it is NOT the vocabulary gap the 20:00 cycle
+  diagnosed, and that changes what was written.** The searcher's own words are already
+  published: `questions-to-ask-before-booking-ai-training` has carried the h2 *"9. What if I
+  book and then cannot make the date?"* since at least 10 August, and it is still cited on
+  none of the three phrasings. What the section lacked was an answer. It was two sentences
+  telling the reader to ask a question, on a page whose own description promises "what a
+  straight answer to each one sounds like". A fourth restatement of our terms in different
+  words would have moved nothing. Acted on this cycle by making the section answer.
+- **The field has no editorial answer at all, which is why engines fall back to terms
+  pages.** Across the three booking-risk probes, every source returned was a provider's own
+  T&Cs, a council training policy or a PDF: no institutional publisher, no platform vendor,
+  no editorial page about how to read a training cancellation policy. WINNABLE on the
+  ledger's test, and CONVERTING at the point where the buyer has decided and is weighing
+  the risk of losing the fee.
+- **What the field actually does, as evidence for the three things worth asking** (sources
+  as returned by the engine; none of this is published on our pages and no provider is
+  named in the shipped copy): refund scales keyed to notice - full refund over three weeks
+  ahead, 50% at ten working days, nothing under ten working days (ecc.ac.uk); transfers to
+  a later cohort capped - one free transfer only, requested before the batch starts
+  (datasciencedojo), or allowed within the same term but **never between terms**
+  (lang.ox.ac.uk); fees for moving a date quoted as a percentage of the fee rather than a
+  flat charge - 20% inside five working days at one provider, 5% at 31-60 days and 25%
+  inside 30 days at another; non-attendance charged outright, £100 for a full day
+  (safeguardingwarwickshire). The working-days-not-calendar-days trap is explicit in two of
+  them. **Our published terms are better than all of it** and say so in one line on all
+  three event pages, all three programme pages, the homepage FAQ and two guides; what they
+  were missing was the context that makes a reader see it as better.
+- **Substitution is a genuine published gap and is NOT answered on the site - flagged for
+  Drummond, not written.** "Can I send a colleague instead?" is standard in this market and
+  splits both ways: nominate a colleague with 24 hours' notice
+  (safeguardingwarwickshire), "always open to you to send a substitute" (sparsholt.ac.uk),
+  a place passed to a colleague but the **date** never moved (hants.gov.uk) - and, against
+  it, Oxford University's own staff guidance asking people **not** to send someone in their
+  place. Our terms say nothing either way, so the loop cannot answer it and deliberately
+  left it out of the guide rather than publish a question it could not answer for itself.
+  One sentence from Drummond closes it. Added to the report, not to a page.
+- **No new off-page lead worth the name.** The booking-risk field is council policies, a
+  Belgian university's no-show rules and provider PDFs - nothing that lists training
+  providers and nothing an engine treats as a buyer's guide. `allai.events` and the two
+  Luma listings returned again and are already on the review list. Declining to add a lead
+  is the honest outcome of a cycle whose probes went looking for terms pages.
+
 ## 2026-10-20 (20:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

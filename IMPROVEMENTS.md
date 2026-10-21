@@ -437,6 +437,98 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-21 (02:00 local cycle) - the buyer's checklist asked "what if I book and then
+  cannot make the date?" and then did not answer it. The question that decides whether a
+  provider's "transferable" means anything now gets the three things worth asking.**
+  - **Evidence: four probes, and the 20:00 cycle's diagnosis was half wrong.** That cycle
+    queued booking risk as the top candidate and read it as a vocabulary gap - the answer
+    published, the searcher's words absent. The words are not absent.
+    `questions-to-ask-before-booking-ai-training` has carried the h2 **"9. What if I book
+    and then cannot make the date?"** since at least 10 August, and three separate
+    booking-risk phrasings still returned no page of ours. What the section lacked was an
+    answer: two sentences telling the reader to ask, on a page whose own description
+    promises "what a straight answer to each one sounds like". A fourth restatement of our
+    terms in different words would have moved nothing, so none was written.
+  - **WINNABLE and CONVERTING, checked rather than assumed.** Across the three probes every
+    source returned was a provider's own T&Cs, a council training policy or a PDF -
+    ecc.ac.uk, cherwell.gov.uk, spso.org.uk, datasciencedojo, lang.ox.ac.uk,
+    safeguardingwarwickshire, sparsholt.ac.uk, hants.gov.uk. **No institutional publisher,
+    no platform vendor, and no editorial answer anywhere in the field.** The searcher has
+    already decided they want the seat and is weighing the risk of losing the fee, which is
+    the strongest converting signal the GEO log records.
+  - **What the field does, which is what makes our line worth reading.** Refunds keyed to
+    notice (full over three weeks, 50% at ten working days, nothing under ten); transfers to
+    a later cohort capped at one, or allowed within a term but never between terms; moves
+    priced as a percentage of the fee - 20% inside five working days at one provider, 5% at
+    31-60 days and 25% inside 30 at another; non-attendance charged outright at £100 for a
+    full day; and the working-days-not-calendar-days trap explicit in two of them. **No
+    provider is named and no figure of theirs is published** in the shipped copy - it goes
+    in the GEO log as evidence. The section says what to ask and why it matters, which is
+    the page's job, and our own answer was already in its closing paragraph.
+  - **Three paragraphs, one new in-body link, no new fact.** The link is to
+    `getting-an-ai-bootcamp-approved`, because fee risk is the approver's question too and
+    that guide answers it in a line. The closing "for the record" paragraph gains five words
+    - "let us know and we will move you" - lifted verbatim from the homepage FAQ, so our own
+    answer is as concrete as the questions. Nothing about notice periods, expiry or
+    substitution is claimed on our behalf, because the published terms do not say.
+  - **Substitution is a real gap and was deliberately left unanswered.** "Can I send a
+    colleague instead?" is standard in this market and splits both ways - nominate a
+    colleague with 24 hours' notice, "always open to you to send a substitute", a place
+    passed to a colleague but the date never moved, and Oxford University's own staff
+    guidance asking people **not** to send someone in their place. Our terms say nothing
+    either way, so the guide does not raise a question it cannot answer for itself. **One
+    sentence from Drummond closes it**; it is in the report, not on a page.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,154**
+    internal links resolve (was 3,153 - the one new in-body link), schema valid, 5 Event and
+    9 FAQPage nodes, titles and descriptions unique, no new SEO warnings and no
+    straight-apostrophe warning. The 12 outbound warnings are the sandbox egress policy and
+    are unchanged. Verified in `dist`: canonical
+    `https://oxfordagentic.com/guides/questions-to-ask-before-booking-ai-training/`, no
+    `noindex`, in the sitemap and in both `llms.txt` and `llms-full.txt`, one h1 and 14 h2
+    with no heading-level skip. `updatedDate` bumped from 18 October; `title`, `seoTitle`,
+    `description` and `capsule` deliberately untouched - the description already promises
+    exactly what the section now delivers, and the near-miss rule on rewriting a title
+    without Search Console data stands. Headless Chromium against a local preview at 320px,
+    375px and 1280px: one h1, no heading skip, no missing alt text, no unlabelled control
+    on either phone width, **zero horizontal overflow at all three widths**, and zero again
+    at 320px and 375px with the browser's default font raised to 24px through CDP
+    `Page.setFontSizes`, so this page is not one of backlog 34's two. No page errors beyond
+    the sandbox's own blocked tag-manager requests. The new paragraphs measure 3, 6 and 4
+    lines on desktop and 6, 11 and 8 at 375px, inside the 3-16 line range the page's
+    existing paragraphs already occupy. The three "unlabelled" controls counted at 1280px
+    are the collapsed desktop dropdown's bootcamp links, which report no text while hidden;
+    they are pre-existing and untouched.
+  - **GEO: the date anchor harm is back, and yesterday's clean reading does not survive the
+    re-probe.** The 20:00 cycle asked the next cycle to re-probe rather than assume either
+    result. Re-probed: **no page of ours in the results**, the two past Luma listings first
+    and second, the engine stating *"I didn't find any listing that confirms a Cohort 3 on
+    19 November 2026"*, then reproducing the Worcester-versus-St-Anne's contradiction, the
+    "5 Spots Remaining" off the July listing and allai.events' *"21 Jul 2026 ... tickets
+    from $275"*. The 20 Oct clean answer stays logged as one phrasing on one day and is
+    still the only clean reading the log records on this axis. Review-list item strengthened
+    as its sixth axis. **Nothing in the repo can fix it** - all three listings are
+    Drummond's.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers **403 on CONNECT** from the sandbox and does not resolve through the fetch tool,
+    and `luma.com` does not resolve either, so `build.txt` could not be read and **no event
+    fact could be re-verified - none was touched.** Deploy run **268 success** on `2ff673c`,
+    the `origin/main` HEAD, finished 19:11 UTC, nothing queued or in progress when this
+    cycle started.
+  - **Known candidate 2 is still not due.** The Second Brain Bootcamp runs **today**, 21
+    October, so the two guides carrying it in the present tense are correct for one more
+    day. Moving them tonight would have made the site wrong rather than current. The 22
+    October cycle inherits it, and the honest version needs Drummond: there is no second
+    Second Brain cohort to point a past-tense sentence at.
+  - **Off-page: no new lead, and that is the correct outcome.** The booking-risk field is
+    council policies, provider PDFs and a Belgian university's no-show rules - nothing that
+    lists training providers, nothing an engine treats as a buyer's guide. `allai.events`
+    and the two Luma listings returned again and are already on the list. Nothing contacted,
+    nothing submitted, no account made.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **No guide**: 2 of 3 this week and today's allowance unspent, kept rather than filled.
+    This is a Q&A refresh, 1 of the 2 allowed in a day.
+
 - **2026-10-20 (20:00 local cycle) - an invisible 20-character file path was scrolling a
   guide sideways on a narrow phone whenever the reader had enlarged their text. Inline code
   may now break when it will not otherwise fit.**

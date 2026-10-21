@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-10-21T02:20:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -60,12 +60,16 @@ The most revealing question on this list. Any honest one-day format has a scope 
 
 ## 9. What if I book and then cannot make the date?
 
-Diaries move. Ask whether a place transfers to a later cohort, and whether that costs anything. It is a small question that tells you how the provider treats the people who have already paid.
+Diaries move, and this is the question most buyers only think to ask afterwards. The cancellation policy is usually the last line on a course page and the first thing that matters once a client meeting lands on the same morning.
+
+"Transferable" on its own does not tell you much. Three things decide whether it means anything. Does the place move to another date at all, or is the fee simply gone? Is there a charge for moving it, and is that a flat admin fee or a percentage of what you paid? And is the move gated by a notice period - often counted in working days rather than calendar days, which can close the window a week earlier than you would expect.
+
+Ask for the answers in writing before you pay rather than after. If someone else is approving the spend, [they will ask the same thing](/guides/getting-an-ai-bootcamp-approved/), and a clear answer removes the easiest reason to say not yet. It is a small question that tells you how a provider treats the people who have already paid.
 
 ## Using the checklist
 
 You do not need perfect answers to all nine. You need answers that are consistent with each other: a room capped small enough for the help promised, a build ratio consistent with the result claimed, a scope narrow enough to be delivered in the time. Most mismatches show up when you put two answers side by side.
 
-For the record, here are ours. The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge.
+For the record, here are ours. The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge: let us know and we will move you.
 
 What it deliberately does not cover: the AI landscape, model comparisons, and governance policy. One pattern, applied properly to one real task, is what fits in a day.

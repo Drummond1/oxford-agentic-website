@@ -114,6 +114,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     half of that was closed the same cycle - both Agentic pages now answer "Who runs it?" in
     visible copy - but the listing is still the page being read, and it is still his.
 
+  - **A sixth axis, 21 Oct 2026 (02:00 cycle), and the reason yesterday's clean reading
+    must not be mistaken for this item closing.** The 20:00 cycle on 20 Oct put a
+    date-anchored query to a web engine and got a correct answer off our homepage - right
+    cohort, right date, right venue, no St Anne's, no "$275", no "5 Spots Remaining" - and
+    logged it as one engine on one phrasing. Re-probed the next morning on the same axis:
+    **no page of ours in the results at all**, `luma.com/oxfordagentic2` and
+    `luma.com/k7c2rm5s` first and second, the engine stating *"I didn't find any listing
+    that confirms a Cohort 3 on 19 November 2026"*, then reproducing the venue
+    contradiction, the "5 Spots Remaining" off the July listing, and taking the date and
+    price straight off allai.events: *"lists the event on 21 Jul 2026 ... with tickets from
+    $275"*. **The 20 Oct 20:00 answer is still the only clean reading this log records on the
+    axis; every other probe shows the harm.** The ten minutes
+    in Luma is still the highest-value off-page action available and nothing in the repo
+    changes it.
+
   - **The site is clean on this and cannot fix it.** Verified in `dist/` the same cycle:
     "Josh Lawman" appears in no built page, `/team/` does not list him, `/team/josh-lawman/`
     is a noindex redirect to `/team/`, and the name is absent from `llms-full.txt`. The only
