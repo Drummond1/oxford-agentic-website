@@ -454,6 +454,106 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-21 (14:00 local cycle) - an answer engine said twice, in two different
+  phrasings, that it could not find a UK one-day hands-on agentic AI day for finance
+  teams. That is the day we sell, and no page of ours joined "finance" to any of those
+  words. Three Q&A sections on the vertical guide, which had not been touched since 23
+  July.**
+  - **What the probes said, in their own words.** *"agentic AI training for finance teams
+    UK hands-on one day"* returned **no page of ours** and the answer opened: *"I found no
+    UK one-day course that is clearly hands-on and focused on agentic AI for finance
+    teams."* A second phrasing hours later - *"one day agentic AI workshop for finance
+    directors UK build your own workflow no coding"* - also returned nothing of ours and
+    named the near misses itself: a London hackathon as the best match, BDO's full day
+    built around Copilot, and the University of Essex workshop, which *"says no coding
+    required, but it runs over two days, not one, and is not finance-specific"*.
+  - **Why the gap is real rather than a phrasing artefact.** Two phrasings, hours apart,
+    same answer. And the cause is on our side: `agentic-ai-for-finance-teams` is a good
+    in-practice guide about where agentic workflows help a finance month, and its only
+    training sentence was the closing "a day at the Oxford Agentic Bootcamp". Nowhere on
+    the site did "finance" sit next to one day, in person, no coding, UK or bring your own
+    task. The programme page carries every one of those facts and never says finance.
+  - **The topic probe passes on both halves, which is why this was written and the 08:00
+    cycle's two axes were not.** WINNABLE: the field is providers writing about their own
+    courses - aiawareness.ai is prompting with Copilot and ChatGPT rather than agents, ZHAW
+    is Switzerland, BDO is Copilot, Essex is two days and not finance - plus one London
+    event listing. No institutional publisher owns an editorial answer here, so it is not
+    the Salesforce-and-NetSuite field that was correctly declined this morning. CONVERTING:
+    a finance director typing that phrase is the buyer.
+  - **Three questions, and the first one answers itself honestly.** *"Is there a one-day,
+    hands-on agentic AI course for finance teams in the UK?"* says there is a one-day
+    in-person build day in Oxford **and that it is not a finance-only course** - what is
+    finance-specific is the task you bring, your own variance commentary, your own
+    reconciliation triage, your own board pack. *"Can we build against real finance data on
+    a day like that?"* uses the programme page's own published test (bring a task you would
+    be comfortable describing to an external supplier) and adds the finance-shaped part: the
+    pipeline is the deliverable, so it can be built against a redacted or representative
+    extract and pointed at the real ledger once it is back inside your own controls.
+    *"Does this need sign-off before anyone books?"* splits the two approvals - the spend is
+    a manager's, the workflow in a finance process is the audit-trail conversation - which
+    continues the paragraph directly above it rather than being bolted on.
+  - **No new fact was invented and no event fact was touched.** Every claim is already
+    published: one day, in person, Oxford, no coding, capped small, bring one real task,
+    leave with it running, not recorded, you build on your own machine. **No date and no
+    venue is restated** - the Q&As link pages that render those from the content files, so
+    there is one source of truth, and `luma.com` does not resolve from the sandbox so
+    nothing could have been re-verified anyway.
+  - **Four new internal links, all from a vertical page to decision-stage pages:** the
+    Agentic Bootcamp programme page, `in-house-ai-day-or-send-people-to-a-cohort`,
+    `getting-an-ai-bootcamp-approved` and `getting-an-ai-workflow-past-it-and-legal`.
+  - **One question was drafted and dropped.** "Is one day enough?" is already an h2 on
+    `what-you-can-build-in-one-day-with-ai`, and a second copy of it on a vertical page is
+    the near-duplicate the rules forbid. The sign-off question replaced it.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,158**
+    internal links resolve against 3,154 - the four new ones - schema valid, 5 Event and 9
+    FAQPage nodes, titles and descriptions still unique, no new SEO warnings. The 12
+    outbound warnings are the sandbox egress policy blocking `luma.com`, `linkedin.com`,
+    `arxiv.org`, `elevenlabs.io`, `novaria.ai` and `ico.org.uk`, unchanged. In dist:
+    canonical correct, indexable, in the sitemap with `lastmod` moved to today, in
+    `llms.txt` and `llms-full.txt`, one h1 and no heading-level skip. `seoTitle`,
+    `description` and the capsule are untouched - the page's own job has not changed, only
+    what it answers at the bottom.
+  - **Inspected at four configurations in headless Chromium:** 375px, 1280px, and 320px and
+    375px with the browser's default text raised to 24px through CDP `Page.setFontSizes`.
+    **0px of horizontal overflow in all four**, one h1, no heading skip, no image without
+    alt text, no unlabelled control, no page errors. The three "unlabelled" links a naive
+    `innerText` check reports at 1280px are the collapsed desktop nav dropdown, which has
+    text; they report identically on an untouched guide. The new section was screenshotted
+    at 375px and 1280px and renders as the rest of the page does.
+  - **GEO: five probes, none cited, and three of the misses are not yet a verdict.** The two
+    finance probes are above. The other three test guides published in the last fortnight -
+    `is-your-ai-workflow-saving-time-or-just-effort` (13 Oct),
+    `in-house-ai-day-or-send-people-to-a-cohort` (11 Oct) and `who-should-take-the-seat`
+    (19 Oct) - and all three are inside the indexing lag this log has recorded repeatedly.
+    Re-probe in a few weeks rather than writing anything new for them; their fields are
+    measurement blogs, vendor L&D content and providers' own "who is this for" pages. Full
+    table in `seo-data/geo-citations.md`.
+  - **Off-page: one new lead, and a negative finding worth not re-searching.**
+    `learnsignal.com` owns the finance axis with three roundups including a "Best AI
+    Training for Finance Professionals - 2026 Buyer's Guide". It is a competitor, and its
+    own selling point is accreditation by ICAEW, ACCA and CIMA, which runs straight into the
+    certificate decision Drummond has not made - so the entry says plainly that nothing
+    about CPD, accreditation or certificates may be claimed on any finance route. The
+    negative finding: **no institute directory of external AI training providers exists**
+    that a search could turn up; the ICAEW Academy catalogue lists its own courses. Nothing
+    contacted, nothing submitted, no account made.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers **403 on CONNECT** from the sandbox (confirmed against the proxy's own status
+    endpoint, `connect_rejected`, policy denial), so `build.txt` could not be read. Deploy
+    run **272 success** on `1dca33f`, the `origin/main` HEAD, finished 08:32 UTC; CI run 262
+    success on the same SHA; nothing queued or in progress. Working tree clean and local
+    `main` level with `origin/main` before any edit.
+  - **Known candidate 2 is still not due, by about three hours.** The Second Brain Bootcamp
+    runs **today** and ends at 17:00 BST, so the two guides carrying it in the present tense
+    are correct as this cycle ships. The next cycle inherits it, and the honest version still
+    needs Drummond: there is no second Second Brain cohort for a past-tense sentence to point
+    at. Known candidate 1 (the `src/lib/home.ts` IndexNow mapping) is **already fixed** -
+    `scripts/indexnow-ping.mjs` maps it to `/` only.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **Allowances:** no new guide - still **2 of 3 this week** and today's unspent. This is a
+    Q&A refresh, the **2nd of the 2** allowed in a day (the 02:00 cycle spent the first).
+
 - **2026-10-21 (09:00 local cycle) - the one page whose whole job is evidence promised a
   date it does not show. The claim went, because the evidence is a settled no.**
   - **What was wrong.** `/testimonials/` - "Outcomes" in the nav, and the only page a

@@ -5,6 +5,50 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-21 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions, rotated away from the commercial and booking-risk axes
+the last three cycles worked. Three of them test guides published in the last fortnight; two
+open a vertical axis the log has never probed - finance.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to tell if an AI workflow is actually saving time or just moving effort | **No** | therundown.ai, getdx.com, larridin.com (x2), metacto.com, antoinebuteau.com, 12thwonder.com, firstaimovers.com (x2) |
+| should we run an in-house AI training day or send people to a public course | **No** | aitraining2u.com (x2), pertamapartners.com (x2), aicerts.ai, agilefever.com, ivee.jobs, lumifywork.com, mishu.my |
+| who should we send to an agentic AI bootcamp from our team | **No** | datasciencedojo.com (x2), executive.mit.edu, analyticsindiamag.com, amrita.edu (x2), online.iitkgp.ac.in, community.ibm.com, cict.iba.edu.pk |
+| agentic AI training for finance teams UK hands-on one day | **No** | aiawareness.ai (x4), zhaw.ch (x2), luma.com/72a92ede (WAIMAKERS with Female x Finance), ibs.edu.jo |
+| one day agentic AI workshop for finance directors UK build your own workflow no coding | **No** | luma.com/8rcrfsii (enki, Future of Finance Hackathon), bdo.co.uk (x2), essex.ac.uk (x2), hso.com, odsc.ai, nnrg.edu.in, happeningnext.com |
+
+**Reading.**
+
+- **The finance axis is the finding, and it was acted on.** Two different phrasings, hours
+  apart, and on both the engine said in terms that it could not find the thing we sell. On the
+  first: *"I found no UK one-day course that is clearly hands-on and focused on agentic AI for
+  finance teams."* On the second it named the near misses itself - a London hackathon as the
+  best match, BDO's full day built around Copilot, and the University of Essex workshop, which
+  *"says no coding required, but it runs over two days, not one, and is not finance-specific"*.
+  A one-day, in-person, no-coding, bring-your-own-task agentic build day in the UK is exactly
+  what the Oxford Agentic Bootcamp is, and no page of ours joined "finance" to any of those
+  words. The vertical guide was published on 23 July and had not been touched since.
+- **It passes the topic probe on both halves.** WINNABLE: the field is providers writing about
+  their own courses - aiawareness.ai is prompting with Copilot and ChatGPT rather than agents,
+  ZHAW is Switzerland, BDO is Copilot, Essex is two days and not finance - plus one London
+  event listing. No institutional publisher owns an editorial answer to this question, so it is
+  not the Salesforce-and-NetSuite field the 08:00 cycle correctly declined. CONVERTING: a
+  finance director searching this phrase is the buyer, not a browser.
+- **Three guides from the last fortnight came back uncited, and that is not yet a verdict.**
+  `is-your-ai-workflow-saving-time-or-just-effort` (13 Oct),
+  `in-house-ai-day-or-send-people-to-a-cohort` (11 Oct) and `who-should-take-the-seat`
+  (19 Oct) each match one of the first three probes closely, and none appeared. All three are
+  days or weeks old, which is inside the lag this log has recorded repeatedly. Re-probe in a
+  few weeks before reading anything into it. The fields they sit in are, respectively,
+  measurement blogs and vendor L&D content and bootcamp providers' own "who is this for"
+  pages - crowded, and none of them worth a second guide.
+- **Caveat, same as every cycle this month.** Web search, not the Perplexity probes that
+  logged positions in September, so none of this is a like-for-like ranking reading. One
+  engine, one day, five phrasings.
+
 ## 2026-10-21 (08:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

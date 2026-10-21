@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`learnsignal.com` - the finance vertical's buyer's guide, and a CPD question that is
+  Drummond's alone. Found 21 Oct 2026 (14:00 cycle) by a deliberate off-page search.** The
+  finance probes that drove this cycle's content change surfaced no directory we could join,
+  but one publisher owns the axis: Learnsignal runs "Best AI Training for Finance
+  Professionals - 2026 Buyer's Guide", "AI Training for UK Accountants" and "AI CPD for
+  Finance Professionals", and those pages were most of the field on an institute-CPD query.
+  - Why it matters: same class as `dreamsaicanbuy.com` and `lilachbullock.com` above - a
+    roundup an engine reads as the guide to a field we sell into. Oxford Agentic is not in it.
+  - **The thing to weigh before asking, and it is a hard one.** Learnsignal sells AI courses
+    to accountants, so it is a competitor roundup, and its own selling point is that its
+    programmes are "recognised by ICAEW, ACCA, CIMA". Inclusion in a field framed that way
+    invites the accreditation question, and **the certificate is a standing decision Drummond
+    has not made** - the rule is to say nothing either way. So nothing about CPD,
+    accreditation or certificates may be claimed in any approach to this or any other finance
+    route, now or later.
+  - **The related finding is a negative one worth recording so nobody re-searches it.** No
+    official ICAEW, ACCA or CIMA directory of externally delivered AI training turned up. The
+    ICAEW Academy catalogue lists its own courses. If a finance-vertical listing route exists
+    it is not an institute one.
+  - **Not checked:** no page was loaded. The sandbox egress policy blocks outbound requests,
+    so the titles, the accreditation claim and the institutes' CPD-hour figures are the
+    engine's report, not a reading of any page. Verify before relying on any of it.
+  - Needs: Drummond's view on whether a competitor's roundup is wanted at all, and separately
+    his decision on the certificate before anyone goes near a finance route. Nothing
+    contacted, nothing submitted, no account made.
+
 - **`dreamsaicanbuy.com` - "Best AI Training Providers UK 2026: 20 Compared, With Prices",
   found 20 Oct 2026 (20:00 cycle).** A twenty-provider comparison roundup that an answer
   engine drew on directly for a converting buyer query - a professional services firm looking

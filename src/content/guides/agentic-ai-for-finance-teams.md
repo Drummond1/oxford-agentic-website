@@ -12,7 +12,7 @@ capsule: >-
   not the accountability.
 author: drummond-gilbert
 publishDate: "2026-07-23T09:00:00+01:00"
-updatedDate: "2026-07-23T09:00:00+01:00"
+updatedDate: "2026-10-21T14:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -37,6 +37,20 @@ Anything where the output is the number itself, or where being subtly wrong is e
 The single most useful habit in a finance context is making the reviewer a step in the pipeline rather than an afterthought. A workflow that drafts and then explicitly checks its own draft against a stated standard catches far more than one that drafts and stops. It also leaves you something to show: a record of what was checked and against what.
 
 Keep the audit trail in mind from the start. Where the inputs came from, what the workflow did, and who approved the output are not bureaucratic extras in finance - they are the thing that makes the output usable.
+
+## Is there a one-day, hands-on agentic AI course for finance teams in the UK?
+
+There is a one-day, in-person build day in Oxford - the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) - and it is worth being straight about what it is not. It is not a finance-only course, and no part of the day is pitched at the finance function in particular. What is finance-specific is the task you bring: you spend the day building against your own variance commentary, your own reconciliation triage, your own board pack, rather than a worked example from somebody else's business. No coding is required, the cohort is capped small and mixed by function, and you leave with the workflow running. If the prior question is whether a cohort seat is the right unit of training at all, [an in-house day or a cohort seat](/guides/in-house-ai-day-or-send-people-to-a-cohort/) is the comparison to read first.
+
+## Can we build against real finance data on a day like that?
+
+You bring a task, not a data set, and that distinction does most of the work. A useful test when choosing one is whether you would be comfortable describing the task to an external supplier; if you would not, pick a different one. Credentials, keys and other people's personal data do not belong in an agentic workflow in any form.
+
+That still leaves plenty. A commentary or reconciliation-triage workflow can be built against a redacted or representative extract and pointed at the real ledger once it is back inside your own controls, because what you are building is the pipeline rather than a one-off output. The day is not recorded, and you build on your own machine.
+
+## Does this need sign-off before anyone books?
+
+Usually two different ones, and they are easier taken separately. The spend and the day out are a manager's decision, and [getting an AI bootcamp approved](/guides/getting-an-ai-bootcamp-approved/) is the version of that case which survives being forwarded. Putting the resulting workflow into a finance process is the other, and it is the one finance has to answer properly: where the inputs came from, what the workflow did, and who approved the output. [Getting an AI workflow past IT and legal](/guides/getting-an-ai-workflow-past-it-and-legal/) sets out what each side tends to ask for. Neither conversation needs the workflow to exist first, but both go better once it does.
 
 ## Where this gets practical
 
