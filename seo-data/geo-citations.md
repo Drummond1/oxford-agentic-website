@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-21 (08:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions, rotated away from the booking-risk axis the last two
+cycles worked: the plain commercial query, two of the standing example questions, and two
+fresh axes (no-code agent building, and the "we already pay for Copilot" objection).
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on agentic AI course Oxford for business leaders | **No** | sbs.ox.ac.uk (x2), createwith.com, luma.com/k7c2rm5s, luma.com/oxfordagentic2, coursera.org (x4) |
+| can you learn to build AI agents without coding at a one-day workshop UK | **No** | odsc.ai, columbusglobal.com (x2), luma.com/vnvhk89s, eventbrite.co.uk, community.vercel.com (x2), eventbrite.se, createwith.com |
+| what is an agentic workflow for business with an example | **No** | salesforce.com, netsuite.com, gamut.so, gptbots.ai, slack.com (five locale paths) |
+| how to build a second brain for AI tools like Claude and ChatGPT | **No** | axios.com, buildtolaunch.substack.com (x2), vitally.io, mindstudio.ai, learnwithhasan.com, hjarni.com (x2), gist.github.com |
+| we already have Microsoft Copilot, is agentic AI training still worth it for our team | **No** | ctme.caltech.edu, cloudthat.com (x2), hrizns.com (x2), marketplace.microsoft.com (x2), workativ.com, persistent.com |
+
+**Reading.**
+
+- **The date-anchor harm has reached the commercial query, and that is the finding of the
+  cycle.** Every previous corroboration of the stale-Luma problem came from a probe that
+  named a date. This one did not: "hands-on agentic AI course Oxford for business leaders" is
+  the plainest phrasing of what we sell, and it is the phrasing the loop's own standing
+  instruction gives as an example. **No page of ours came back.** `luma.com/k7c2rm5s` and
+  `luma.com/oxfordagentic2` - Cohort 1 and Cohort 2, both past - came back third and fourth,
+  and the engine characterised the business off them: *"an in-person event hosted by Oxford's
+  Practical AI meetup ... a community event rather than an accredited course, and the search
+  results don't show its dates or price, so check the event page"*. Seventh consecutive cycle
+  on this axis, first on a query with no date in it. **Caveat, and it matters:** this is web
+  search, not the Perplexity probes that had the homepage at #2, About at #3 and the Cohort 2
+  page at #5 on this exact query on 13 September, so it is not a like-for-like ranking drop.
+  **Nothing in the repo can fix it** - all three listings are Drummond's. Review-list item
+  strengthened as its seventh axis.
+- **The no-code axis is an off-page finding for the second cycle running, not a content gap.**
+  The engine's own words were *"I found no UK one-day workshop that is strictly no-code for
+  building AI agents"*, and the Agentic Bootcamp is exactly that, published on four surfaces.
+  What it cited instead is the shape of the answer: odsc.ai, Microsoft's "Agent in a Day" via
+  Columbus, two Eventbrite listings, a Luma page and a Vercel community meetup - **every one
+  of them an event aggregator or a vendor's own events page.** Our days live on our own domain
+  and on Luma listings an engine misreads. That is backlog 2b, which the 20 Oct cycle reached
+  from the independence axis and answered with one sentence rather than a section. No on-site
+  change is warranted and none was made.
+- **Agentic workflow definitions: NOT WINNABLE, do not re-pitch.** Salesforce, NetSuite,
+  Slack (five locale paths of one post) and GPTBots - platform vendors writing about their own
+  product, which is the topic-probe rule's own example of a field to leave alone. The one
+  figure the answer offered was a Gartner cancellation rate the engine itself flagged as worth
+  checking. Declined.
+- **"We already have Copilot" is a new axis, and it is declined for the same reason.**
+  Strongly CONVERTING - the searcher has a licence, a team and a budget already - but the field
+  is Caltech's exec-ed arm, two Microsoft partners, two consultancies and Microsoft's own
+  marketplace, all writing about Microsoft's product. Not winnable through a Q&A block. Worth
+  recording that the engine's practical take was *"choose a short, use-case-focused program
+  over a generic course"*, which is our format and is already the argument of the pattern and
+  first-task guides; there is nothing for us to add that the field would cite. Logged so it is
+  not re-probed in these words.
+- **Second brain: no action, by standing decision.** Not cited; the field is Axios, two
+  Substack builders and vendor blogs. Ranking is not this line's constraint - demand is - so
+  the log records it and moves on.
+
 ## 2026-10-21 (02:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

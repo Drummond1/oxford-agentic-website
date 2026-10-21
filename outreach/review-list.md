@@ -203,6 +203,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     coding day is shown the wrong day, at a past date, at a contested venue, in the wrong
     currency. Sixth consecutive cycle in which a query naming one of our own events returns
     no page of ours. Still nothing contacted and the pages still not loaded from here.
+  - **Now on the commercial query, not just the dated ones - 21 Oct 2026 (08:00 cycle).**
+    Every corroboration above came from a probe that named a date. This one did not: *"hands-on
+    agentic AI course Oxford for business leaders"*, which is the plainest commercial phrasing
+    of what we sell. **No page of ours came back.** In their place, Said Business School twice,
+    createwith.com, four Coursera paths - and `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2`,
+    the two past listings, at third and fourth. The engine then described the bootcamp off them:
+    *"an in-person event hosted by Oxford's Practical AI meetup ... a community event rather
+    than an accredited course, and the search results don't show its dates or price, so check
+    the event page"*. So the stale listings are not only misdating the day, they are the source
+    an engine uses to characterise the business, and off them it cannot say when the next one
+    runs. **Caveat, as before:** this is web search rather than the Perplexity probes that had
+    the site at #2, #3 and #5 on this same query on 13 September, so it is not a like-for-like
+    ranking drop. It is the seventh consecutive cycle on this axis and the first on a query with
+    no date in it. Nothing contacted and the pages still not loaded from here.
   - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
     contacted.
 

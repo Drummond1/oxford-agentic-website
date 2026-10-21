@@ -417,25 +417,124 @@ Status: `todo` · `blocked` (why) · `doing`
     outcome the item was worried about - a break after a slash is the one that reads as part
     of the path, and `anywhere` does not produce one here.
 
-34. `todo` - **the `#` heading anchor is now the last thing overflowing at 320px with 150%
-    text, on two guides.** Measured 20 Oct (20:00 cycle) across all 55 indexable pages at
-    320px and 375px, at both a 16px and a 24px browser default: everything is clean except
-    `/guides/agentic-ai-glossary/` (+21px sideways) and
-    `/guides/how-to-choose-your-first-agentic-task/` (+1px), both at 320px/24px only. The
-    cause in both is `<a class="heading-anchor">#</a>`, which is appended inside an `h2`/`h3`
-    with `margin-inline-start: 0.4em`: when a heading's last line already ends near the right
-    edge, the anchor and its margin sit past it. It is `opacity: 0` until hover, so it is an
-    invisible element that scrolls the page sideways.
-    **Loop-shippable, deliberately not done this cycle** to keep the change set to one thing.
-    It needs more care than backlog 33 did: the anchor carries the `[data-copied]` "copied"
-    confirmation, so taking it out of the text flow (absolute positioning) or letting it wrap
-    has to be checked against that state as well as against hover and focus-visible.
-    This supersedes the 13 Oct claim that the code span was the only page still scrolling
-    sideways in that combination - it was the only one measured, not the only one.
+34. `done` 21 Oct 2026 (08:00 cycle) - **the `#` heading anchor was the last thing
+    overflowing at 320px with 150% text, on two guides.** Fixed with `display: inline-block`
+    on `.heading-anchor` in `global.css` - one declaration. The script appends the anchor
+    straight after the heading text with no space between them, so as an inline box there was
+    no point at which the line could break and the `#` sat wherever the last word ended, even
+    past the right edge. An atomic inline can be moved to the next line, and is only moved
+    when it will not otherwise fit. The three states the item asked to be checked all hold:
+    hover, `:focus-visible` and `[data-copied]` (which grows the box to 95.8px at 375px and
+    110.6px at 1280px for its " copied" label, with no overflow in either). Screenshots of the
+    visible anchor at 375px and 1280px are **byte-identical** before and after, so nothing
+    about the rendering moved; the only layout change anywhere is one heading per page gaining
+    a line at 320px/24px, where the alternative was the page moving 21px sideways. The full
+    sweep that found this item now reads **0px on all 55 indexable pages at 320px and 375px,
+    at both a 16px and a 24px browser default** - the first time every combination has been
+    clean. (Original diagnosis, kept: measured 20 Oct across the same grid,
+    `/guides/agentic-ai-glossary/` +21px and `/guides/how-to-choose-your-first-agentic-task/`
+    +1px, both at 320px/24px only, both caused by `<a class="heading-anchor">#</a>` appended
+    inside an `h2`/`h3` with `margin-inline-start: 0.4em`.)
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-21 (08:00 local cycle) - an invisible `#` was the last thing scrolling the site
+  sideways. One declaration closed the overflow sweep that has run since 20 October: every
+  indexable page is now 0px at every width and text size tested.**
+  - **Backlog 34, measured, fixed and re-measured.** Reproduced first, exactly as logged:
+    Chromium driven through CDP `Page.setFontSizes`, which is the browser's own text
+    preference rather than a page zoom, so `rem` media queries behave as they do for a real
+    visitor. At a 320px viewport with a 24px default font,
+    `/guides/agentic-ai-glossary/` scrolled **21px** sideways and
+    `/guides/how-to-choose-your-first-agentic-task/` **1px**, and in both cases the single
+    element past the right edge was `a.heading-anchor` - the `#` that appears on hover so a
+    section can be linked. It is `opacity: 0` until hovered, so an invisible element was
+    moving the page.
+  - **`display: inline-block`, and that is the whole of the fix.** The script appends the
+    anchor straight after the heading text with no space between them, so as an inline box
+    there was no point at which the line could break: the `#` and its 0.4em margin sat
+    wherever the last word ended, even when that was past the right edge. An atomic inline
+    can be moved to the next line, and only is when it will not otherwise fit.
+  - **Four candidates were tried in the browser before one was written into the file.**
+    `overflow-wrap: anywhere` on the anchor alone does nothing (still 21px) - the break
+    needed is before its content, not inside it. `overflow-wrap: anywhere` on the anchored
+    headings works, and so does a zero-width space inserted before the anchor, but both reach
+    wider than the defect: the first changes how every heading in all 30 guides breaks its
+    own words, the second puts an invisible character inside heading text, which is also the
+    accessible name. `display: inline-block` produces **the same measurements as both** -
+    identical article heights at every width tested - while touching nothing but the one
+    element.
+  - **Nothing about the rendering moved.** The anchor's x position and width are unchanged to
+    the pixel at 375px and 1280px, and heading positions and heights are identical. Better
+    than that: screenshots of the heading with the anchor forced visible are **byte-identical
+    before and after** at both widths (sha256 `54b61c0e…` at 375px, `1da2d9b0…` at 1280px).
+    The box is 2.7px taller because an inline-block's box is its line box rather than the
+    font's content box, and the glyph sits on the same baseline, which is why the pixels
+    match.
+  - **The three states the backlog item asked about all hold.** Hover (`opacity` 0 -> 1,
+    bronze `rgb(154, 123, 35)`), `:focus-visible`, and `[data-copied]`, which widens the box
+    to 95.8px at 375px and 110.6px at 1280px for its " copied" label and still reports 0px of
+    page overflow. Checked on both affected pages at both widths.
+  - **The one visible cost, stated plainly.** At 320px with a 24px default font, exactly one
+    heading per page gains a line - "Orchestration" on the glossary, one on the other guide -
+    because the anchor wraps below it. Seven anchors on the glossary wrap in that
+    configuration and six of them land on a line the heading already had. At 320px/16px,
+    375px/16px, 375px/24px and 1280px nothing moves at all. The alternative was 21px of
+    sideways scroll on the whole page, which is the same trade backlog 33 made for inline
+    code.
+  - **The sweep is closed.** All **55** indexable pages at 320px and 375px, at both a 16px and
+    a 24px browser default: **0px of horizontal overflow in all 220 combinations.** This is
+    the first clean reading since the sweep started on 20 October. The cookie banner's cut-off
+    buttons (backlog 31) are unchanged and still Drummond's call - it is `position: fixed`, so
+    it clips silently without adding to any page's scroll width.
+  - **Checks:** `npm ci` then `npm run build` clean before and after, with **identical check
+    output**: 63 pages, **3,154** internal links resolve, schema valid, 5 Event and 9 FAQPage
+    nodes, titles and descriptions unique, no new SEO warnings. The 12 outbound warnings are
+    the sandbox egress policy blocking `luma.com`, `linkedin.com`, `arxiv.org` and `ico.org.uk`
+    and are unchanged. Affected pages at 375px and 1280px: one h1, no heading-level skip, no
+    missing alt text, no unlabelled control, no page errors beyond the sandbox's own blocked
+    tag-manager requests. No content file touched, so no `updatedDate` moved and no sitemap or
+    canonical changed.
+  - **GEO: five probes, and the stale-Luma harm has reached the commercial query.** Every
+    previous corroboration came from a probe that named a date. This one did not - *"hands-on
+    agentic AI course Oxford for business leaders"*, the plainest phrasing of what we sell -
+    and **no page of ours came back**. `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2`, both
+    past, came third and fourth, and the engine described the business off them: *"an in-person
+    event hosted by Oxford's Practical AI meetup ... the search results don't show its dates or
+    price"*. Seventh consecutive cycle on this axis, first with no date in the query. **Caveat:**
+    web search, not the Perplexity probes that had us at #2, #3 and #5 on this same query on 13
+    September, so it is not a like-for-like ranking drop. Review-list item strengthened as its
+    seventh axis. **Nothing in the repo can fix it** - all three listings are Drummond's.
+  - **Two axes probed and both declined, which is the correct outcome.** *"What is an agentic
+    workflow"* is Salesforce, NetSuite, Slack and GPTBots - platform vendors writing about
+    their own product, the topic-probe rule's own example of a field to leave alone. *"We
+    already have Copilot, is agentic AI training still worth it"* is a new and strongly
+    CONVERTING axis - the searcher has the licence, the team and the budget - but the field is
+    Caltech exec ed, two Microsoft partners, two consultancies and Microsoft's own
+    marketplace. Not winnable through a Q&A block. Both logged so they are not re-probed in
+    those words. The no-code axis came back as an off-page finding for the second cycle
+    running: the engine said *"I found no UK one-day workshop that is strictly no-code for
+    building AI agents"* and cited six event aggregators and vendor event pages, which is
+    backlog 2b rather than a content gap.
+  - **Production state came from the Actions API, as it has all week.** `oxfordagentic.com`
+    answers **403 on CONNECT** from the sandbox, so `build.txt` could not be read, and
+    `luma.com` does not resolve, so **no event fact could be re-verified - none was touched.**
+    Deploy run **269 success** on `5325d5e`, the `origin/main` HEAD, finished 01:08 UTC,
+    nothing queued or in progress when this cycle started.
+  - **Known candidate 2 is still not due, for a few more hours.** The Second Brain Bootcamp
+    runs **today**, 21 October, so the two guides carrying it in the present tense are correct
+    until the day ends. The 22 October cycle inherits it, and the honest version still needs
+    Drummond: there is no second Second Brain cohort for a past-tense sentence to point at.
+  - **Off-page: no new lead.** `createwith.com`, which returned on two unrelated probes today,
+    is already on the review list from an earlier cycle; `eventbrite.co.uk` and the Luma
+    listings are already there too. Nothing contacted, nothing submitted, no account made.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **No guide**: 2 of 3 this week and today's allowance unspent. Not a Q&A refresh either -
+    this is a CSS fix, which neither allowance governs, and 1 of the day's 2 refreshes was
+    spent by the 02:00 cycle.
 
 - **2026-10-21 (02:00 local cycle) - the buyer's checklist asked "what if I book and then
   cannot make the date?" and then did not answer it. The question that decides whether a

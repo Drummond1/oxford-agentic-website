@@ -715,8 +715,18 @@ a.card:hover [aria-hidden='true'],
 
 /* ---- Heading anchors on long-form articles ----
    Invisible until the heading is hovered or the anchor is focused, so the
-   reading surface stays clean but every section is shareable. */
+   reading surface stays clean but every section is shareable.
+
+   `inline-block` is there to stop an invisible element scrolling the page
+   sideways. The script appends the anchor straight after the heading text with
+   no space between them, so as an inline box there was no point at which the
+   line could break: the `#` and its margin sat wherever the last word ended,
+   even when that was past the right edge. At a 320px viewport with the
+   browser's default text raised to 24px that carried two guides 21px and 1px
+   sideways. An atomic inline can be moved to the next line, and only is when
+   it will not otherwise fit, so at ordinary text sizes nothing moves. */
 .heading-anchor {
+  display: inline-block;
   margin-inline-start: 0.4em;
   color: var(--rust);
   text-decoration: none;
