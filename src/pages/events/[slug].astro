@@ -456,6 +456,11 @@ const registerLabel = !registrationOpen
         <h2 id="facts" class="visually-hidden">Key facts</h2>
         <p class="capsule">{data.capsule}</p>
 
+        {/* Two of these labels change tense once the day has run, the same way the
+             agenda heading below already does. The list items are what the day set
+             out to produce, so on a past page the label describes how the day was
+             designed, not what any individual left with - no outcome is asserted
+             that the event file has not recorded. */}
         <dl class="facts">
           <div>
             <dt>Date</dt>
@@ -483,7 +488,7 @@ const registerLabel = !registrationOpen
           {
             data.whoFor.length > 0 && (
               <div class="facts--wide">
-                <dt>Who it is for</dt>
+                <dt>{isPast ? 'Who it was for' : 'Who it is for'}</dt>
                 <dd>
                   <ul class="squares">
                     {data.whoFor.map((item) => (
@@ -497,7 +502,7 @@ const registerLabel = !registrationOpen
           {
             showBuild && (
               <div class="facts--wide">
-                <dt>What you will build</dt>
+                <dt>{isPast ? 'What the day was built around' : 'What you will build'}</dt>
                 <dd>
                   <ul class="squares">
                     {data.whatYoullBuild.map((item) => (

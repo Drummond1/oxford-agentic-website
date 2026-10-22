@@ -227,6 +227,9 @@ export async function renderLlmsFullTxt(): Promise<string> {
   for (const event of [...upcoming, ...past]) {
     const programme = programmeById.get(event.data.programme.id);
     const status = effectiveStatus(event);
+    // Same tense switch as the event page's own facts card: once the day has run,
+    // these two labels stop promising it.
+    const isPastEvent = status === 'past' || status === 'cancelled';
 
     out.push(
       `## Event: ${event.data.title}`,
@@ -246,10 +249,12 @@ export async function renderLlmsFullTxt(): Promise<string> {
     );
 
     if (event.data.whoFor.length > 0) {
-      out.push('Who it is for:', ...event.data.whoFor.map((w) => `- ${w}`), '');
+      const whoForLabel = isPastEvent ? 'Who it was for' : 'Who it is for';
+      out.push(`${whoForLabel}:`, ...event.data.whoFor.map((w) => `- ${w}`), '');
     }
     if (event.data.whatYoullBuild.length > 0) {
-      out.push('What you will build:', ...event.data.whatYoullBuild.map((w) => `- ${w}`), '');
+      const buildLabel = isPastEvent ? 'What the day was built around' : 'What you will build';
+      out.push(`${buildLabel}:`, ...event.data.whatYoullBuild.map((w) => `- ${w}`), '');
     }
     if (event.data.agenda.length > 0) {
       out.push(

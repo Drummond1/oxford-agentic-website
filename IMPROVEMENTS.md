@@ -502,6 +502,62 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-22 (09:00 local cycle) - the three past event pages still headed their own
+  facts card "Who it is for" and "What you will build", so a day that ran in July was
+  promising a reader what they would build on it. The labels now change tense once the
+  day has run, exactly as the agenda heading on the same page already did.**
+  - **The fault.** `src/pages/events/[slug].astro` already switches one heading on
+    `isPast` - `{isPast ? 'How the day ran' : 'What happens on the day'}` at the agenda
+    band. The two `<dt>` labels in the facts card above it were never given the same
+    treatment, so on `/events/oxford-agentic-bootcamp-cohort-1/`,
+    `.../cohort-2/` and `/events/oxford-second-brain-bootcamp-cohort-1/` the card read
+    **WHO IT IS FOR** and **WHAT YOU WILL BUILD** directly under a hero band headed *"This
+    event has run"* and a capsule in the past tense. The same two labels went into
+    `llms-full.txt` for the same three events, from `src/lib/llms.ts`.
+  - **Why it is worth a cycle.** It is the same class the last three cycles have been
+    working - a past page still speaking as if the day is ahead - and it sat on the part
+    of the page that answers *what was this?*, which is the whole job of a past cohort
+    page under the `/events/` standfirst ("past ones stay here with what came out of
+    them"). It also reads oddly to a buyer sent to Cohort 1 or 2 as evidence: the page
+    tells them what they *will* build on a day they cannot attend.
+  - **The wording, and what it deliberately does not claim.** Past pages get **"Who it was
+    for"** and **"What the day was built around"**. The list items are the day's intended
+    deliverables, so the past label describes how the day was *designed*, not what any
+    individual left with. That matters here: Cohort 2 records no outcomes, and the Second
+    Brain Cohort 1 file says in its own comment that nothing about the day has been
+    confirmed, so a label like "What the room built" would have asserted an outcome the
+    content does not carry. No fact was added, no content file was touched, and no
+    `updatedDate` moved, so no sitemap `lastmod` changes.
+  - **Measured, whole-site, before against after.** Exactly **four** files in `dist/`
+    differ across all 63 pages: the three past event pages (two `<dt>` strings each) and
+    `llms-full.txt` (the same two labels, three times). The two upcoming event pages,
+    `/events/`, the homepage, the sitemap, `llms.txt` and every canonical are
+    **byte-identical**. Full-page screenshots at 375, 768 and 1280px are byte-identical on
+    every upcoming page and on `/events/`, and on the three past pages every screenshot has
+    **identical dimensions** before and after, so there is no layout shift - the longer
+    label still sets on one line at 375px.
+  - **Checks:** `npm run build` clean before and after (63 pages, 3,094 internal links
+    resolve, schema valid, 5 Event and 9 FAQPage nodes, titles and descriptions unique);
+    `check:flags` passes on both the all-on and all-off builds; `astro check` is
+    **79 errors / 0 warnings / 4 hints before and after**, all pre-existing `implicitly
+    any` map callbacks, none on a changed line, and `src/lib/llms.ts` reports none.
+    The whole-site audit in headless Chromium at 375, 768 and 1280px - horizontal overflow,
+    missing alt text, unlabelled form controls, links and buttons without accessible names,
+    duplicate ids, dangling `aria-*` references, `h1` count and heading order - is
+    **identical across all 165 page/width rows**, with overflow still 0 everywhere. The 11
+    outbound warnings are the sandbox egress policy, unchanged.
+  - **Production could not be read, as on every cycle since late September.**
+    `oxfordagentic.com` answers **403 on CONNECT** from the sandbox (`connect_rejected`,
+    confirmed against the proxy's own status endpoint), so before/after is local build
+    against local build from `ca67723`, which is the SHA the live site was deployed from.
+    Deploy and CI both succeeded on `ca67723` at 07:10 UTC; nothing queued or in progress.
+    Backlog 20 and the blocker note below still stand.
+  - **Repository state.** `main` fast-forwarded from the stale checkout to `ca67723`. PR #1
+    and the `feat/ceo-roundtable-demand-page` branch are the known-stale leftovers already
+    on record (backlog 20), not unfinished work.
+  - **No guide, no Q&A refresh.** This is a template tense fix, which neither allowance
+    governs.
+
 - **2026-10-22 (08:00 local cycle) - every past event page published a machine-readable
   "sold out" claim that nobody had written. It was derived from the day having passed, on
   the morning an answer engine answered *"can you still book the Oxford Agentic Bootcamp"*
