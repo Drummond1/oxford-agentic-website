@@ -11,6 +11,40 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **An engine asked for reviews of the Oxford Agentic Bootcamp answered with Trustpilot
+  reviews of a different company, `oxfordaitraining.com`.** Found 22 Oct 2026 (14:00 cycle)
+  on the reviews query, which this log had never put to an engine before.
+  - **What came back.** The answer opened *"I couldn't find any reviews from attendees of the
+    Oxford Agentic Bootcamp itself"*, then offered a Trustpilot page for `oxfordaitraining.com`
+    - *"a 4-star rating from only five reviews in the past 12 months"*, one reviewer finding the
+    content *"too technical for their goals"* - while flagging the risk itself: *"I can't
+    confirm this company is connected to the bootcamp, so treat these reviews with caution."*
+    It closed by telling the reader to *"look for reviews posted on the Luma event page, or ask
+    the organisers for past attendee references"*, and read *"tickets start at from $275"* off
+    a stale listing on the way.
+  - **Why it is an off-page item and not a content one.** `/testimonials/` carries four named,
+    attributed quotes from real people and is in the primary nav. It was cited nowhere. The
+    site has no third-party review presence of any kind, so the nearest name-shaped thing in
+    the index wins the question - and that is a confusable third party whose one published
+    criticism is the objection this day most needs to answer.
+  - **Two separate decisions, both Drummond's.** First, whether Oxford Agentic should have any
+    third-party review surface at all (Trustpilot, Google Business Profile, a Luma review, a
+    course directory that carries reviews - `coursereport.com` is already on this list and does).
+    Second, nothing may be done with the existing quotes without the consent each one already
+    carries, and asking a past attendee to repost their words on a review platform is a request
+    to a real person, not a listing submission.
+  - **Not checked at all.** Neither Trustpilot nor the other company resolves from this
+    sandbox, so whether `oxfordaitraining.com` is a real competitor, a reseller or something
+    unrelated is unknown, and nothing should be assumed about it.
+  - **Recorded as evidence only, not as a lead:** `learnersink.com` held two of the first ten
+    results on the next-date query with per-tool Oxford location pages
+    (`/data-ai/agentic-ai-training-online-training-oxford-uk` and a second variant). That is
+    the same doorway pattern as the nobleprog.co.uk finding logged at 08:00 and the backlog's
+    hard rule forbids it, so it is noted so a later cycle knows what occupies that result set
+    and not as a route to copy.
+  - Needs: a yes or no from Drummond on whether a review surface is wanted. Nothing contacted,
+    nothing submitted, no account made.
+
 - **`gogradia.com` - a course aggregator already carrying an Oxford AI programme, and
   `iternal.ai` - an executive-education roundup we are not in. Both found 22 Oct 2026
   (02:00 cycle) on the Oxford-anchored commercial query.** Gradia returned a listing page

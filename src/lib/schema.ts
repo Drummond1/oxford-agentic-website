@@ -178,6 +178,67 @@ function agendaInstant(eventStart: Date, time: string): string | null {
   return Number.isNaN(Date.parse(composed)) ? null : composed;
 }
 
+/**
+ * The venue, as a Place. Shared so the event page and the events index describe
+ * one address rather than two that have to be kept in step by hand.
+ */
+function eventPlace(event: EventEntry) {
+  return {
+    '@type': 'Place',
+    name: event.data.venue.name,
+    address: {
+      '@type': 'PostalAddress',
+      ...(event.data.venue.street ? { streetAddress: event.data.venue.street } : {}),
+      addressLocality: event.data.venue.city,
+      addressRegion: config.brand.region,
+      ...(event.data.venue.postcode ? { postalCode: event.data.venue.postcode } : {}),
+      addressCountry: config.brand.country,
+    },
+  };
+}
+
+/** Cancelled is authored; everything else is scheduled, past days included. */
+function eventStatusOf(event: EventEntry) {
+  return effectiveStatus(event) === 'cancelled'
+    ? 'https://schema.org/EventCancelled'
+    : 'https://schema.org/EventScheduled';
+}
+
+/**
+ * One cohort as the events index lists it: when it is, where it is, and which
+ * page is the whole of it.
+ *
+ * `/events/` is titled "AI bootcamp dates in Oxford" and every card on it shows
+ * a date and a venue, but its `ItemList` published five names and five URLs and
+ * not one date. So the page an engine would read to answer "when is the next
+ * cohort?" carried, machine-readably, no answer - while a third-party listing
+ * with a July date did. Twelve consecutive GEO probes have recorded an engine
+ * taking a passed date off someone else's crawl; this closes the half of that
+ * which is ours.
+ *
+ * The `@id` is the one the cohort's own page already publishes, so a consumer
+ * holding both describes one event rather than two. Nothing here is a new fact:
+ * every field is on the detail page and on the card. The agenda, the photos, the
+ * series and the offer stay on the detail page, which is what the `url` is for.
+ */
+export function eventListingItem(event: EventEntry) {
+  const url = absoluteUrl(paths.event(event.data.slug));
+
+  return {
+    '@type': 'EducationEvent',
+    '@id': `${url}#event`,
+    name: event.data.title,
+    description: event.data.capsule,
+    startDate: event.data.startDate.toISOString(),
+    endDate: event.data.endDate.toISOString(),
+    eventStatus: eventStatusOf(event),
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: eventPlace(event),
+    organizer: { '@id': ORG_ID },
+    url,
+  };
+}
+
 export function eventSchema(
   event: EventEntry,
   programme: ProgrammeEntry,
@@ -211,8 +272,7 @@ export function eventSchema(
         ? 'https://schema.org/InStock'
         : undefined;
 
-  const eventStatus =
-    status === 'cancelled' ? 'https://schema.org/EventCancelled' : 'https://schema.org/EventScheduled';
+  const eventStatus = eventStatusOf(event);
 
   /*
    * The published agenda, as machine-readable sub-events. An assistant asked
@@ -290,18 +350,7 @@ export function eventSchema(
      */
     ...(event.data.lumaUrl ? { sameAs: [event.data.lumaUrl] } : {}),
     inLanguage: 'en-GB',
-    location: {
-      '@type': 'Place',
-      name: event.data.venue.name,
-      address: {
-        '@type': 'PostalAddress',
-        ...(event.data.venue.street ? { streetAddress: event.data.venue.street } : {}),
-        addressLocality: event.data.venue.city,
-        addressRegion: config.brand.region,
-        ...(event.data.venue.postcode ? { postalCode: event.data.venue.postcode } : {}),
-        addressCountry: config.brand.country,
-      },
-    },
+    location: eventPlace(event),
     organizer: { '@id': ORG_ID },
     performer: { '@id': ORG_ID },
     superEvent: {
@@ -402,7 +451,7 @@ export function articleSchema(guide: {
 export function collectionPageSchema(
   name: string,
   path: string,
-  items: Array<{ name: string; path: string }>,
+  items: Array<{ name: string; path: string; item?: Record<string, unknown> }>,
 ) {
   return {
     '@type': 'CollectionPage',
@@ -411,11 +460,15 @@ export function collectionPageSchema(
     isPartOf: { '@id': `${config.brand.domain}/#website` },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: items.map((item, i) => ({
+      itemListElement: items.map((entry, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        name: item.name,
-        url: absoluteUrl(item.path),
+        name: entry.name,
+        url: absoluteUrl(entry.path),
+        // Optional, because most listings here list pages. Where the listed
+        // thing is an entity in its own right - a dated cohort - the list can
+        // carry it instead of only pointing at it.
+        ...(entry.item ? { item: entry.item } : {}),
       })),
     },
   };

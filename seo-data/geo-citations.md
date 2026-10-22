@@ -5,6 +5,59 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-22 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions, rotated: the Oxford-anchored commercial query, the next-date
+question asked by name, one definitional query, and the reviews question - *what do attendees
+say, is it worth it* - which has never been probed and is the one that found something new.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on agentic AI course Oxford one day business leaders | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, gmchamber.co.uk, sbs.ox.ac.uk (x2), createwith.com, jellyfish.com, onereach.ai, plus.columbia.edu |
+| when is the next Oxford Agentic Bootcamp cohort date November 2026 | **No** | sbs.ox.ac.uk (x2), `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, learnersink.com (x2), maven.com, two Google Groups threads |
+| what is an agentic workflow for business how is it different from automation | **No** | elevenlabs.io, mindstudio.ai, netsuite.com, dataiku.com, patoliyainfotech.com (x2), iitkgp.ac.in, customerthink.com, thinktoshare.com |
+| Oxford Agentic Bootcamp reviews what do attendees say worth it | **No** | trustpilot.com (for **oxfordaitraining.com**, a different company), `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, allai.events, getsmarter.com, sbs.ox.ac.uk, coursereport.com |
+
+**Reading.**
+
+- **Twelfth and thirteenth consecutive readings of the stale-listing harm, and the second
+  query shape that asks for a date by name and gets a passed one.** Asked when the next cohort
+  is, the engine answered *"I couldn't find a November 2026 date for the Oxford Agentic Bootcamp
+  itself"*, gave the allai.events date as *"21 July 2026"*, said the two Luma pages *"give no
+  date in these results"*, noted that *"one lists St Anne's College as the venue and the other
+  lists Worcester College, so the pages may be for different sessions"*, and closed with *"to
+  confirm a bootcamp date, check the Luma page directly or ask the organisers."* The site
+  publishes **19 November 2026, Worcester College** on `/events/`, on the cohort page, in the
+  header and in the footer of all 63 pages. The commercial query repeated it: *"the event is
+  listed for 21 July 2026"*, with the venue disagreement again.
+
+- **This cycle found the half of that which is ours, and shipped it.** `/events/` is titled
+  "AI bootcamp dates in Oxford" and every card on it carries a date and a venue, but its
+  `ItemList` published **five names and five URLs and not one date**. So the page an engine
+  would read to answer *when is the next cohort* carried, machine-readably, no answer - while a
+  third-party listing with a July date did. Each `ListItem` now carries the cohort as an
+  `EducationEvent` under the same `@id` the cohort's own page publishes. It does not fix
+  retrieval, and nothing here reaches a third party's crawl; what it does is stop the one page
+  built to answer the question from being silent on it.
+
+- **The reviews question is new and is an entity-confusion finding, not a content one.** Asked
+  what attendees say, the engine opened *"I couldn't find any reviews from attendees of the
+  Oxford Agentic Bootcamp itself"* and then offered **Trustpilot reviews for
+  `oxfordaitraining.com`** - a different company with a confusable name - while flagging it
+  itself: *"I can't confirm this company is connected to the bootcamp, so treat these reviews
+  with caution."* It also read *"tickets start at from $275"* off a stale listing again.
+  `/testimonials/` carries four named, attributed quotes and was cited nowhere. **Nothing was
+  written on the strength of it**: the page exists and says what it should, so this is
+  discovery and third-party absence, which is backlog 2b's territory and Drummond's. Logged as
+  an off-page item instead.
+
+- **The definitional query is not winnable and should not be re-probed.** The field is vendor
+  blogs writing about their own products (ElevenLabs, MindStudio, NetSuite, Dataiku) and the
+  searcher is reading rather than booking, so it fails the second half of the topic probe as
+  well as the first. `agentic-ai-glossary` already covers the term for the reader who lands on
+  us.
+
 ## 2026-10-22 (08:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

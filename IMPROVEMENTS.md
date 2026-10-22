@@ -498,9 +498,144 @@ Status: `todo` · `blocked` (why) · `doing`
     and is NOT the same gap - BrainStation London and Columbus both run full-day in-person
     agent courses - so do not write it on the strength of the finance result.
 
+39. `todo` (loop-actionable, found 22 Oct 2026 in the 14:00 cycle) - **`/testimonials/` still
+    carries no `ItemList`, which is the gap `collectionPageSchema` was written to close.** The
+    helper's own comment says it was shared because "`/bootcamps/`, `/team/` and
+    `/testimonials/` - three pages that are just as much listings - carried no `ItemList` at
+    all". Two of the three were then wired to it; `/testimonials/` never was. Measured on the
+    built site today: `/bootcamps/`, `/team/`, `/guides/` and `/events/` each emit a
+    `CollectionPage` with an `ItemList`, and `/testimonials/` emits only `WebPage` plus the
+    breadcrumb. **Weigh before doing it**: the things it lists are quotes, not pages with URLs,
+    so an `ItemList` of them would be an entity list rather than a list of links, and `Review`
+    markup is explicitly NOT the answer - self-serving reviews about one's own organisation are
+    what Google asks sites not to publish, and the loop should not. Possibly the honest version
+    is no `ItemList` at all and a line in this ledger saying so, which is why it is a backlog
+    item rather than a cycle.
+
+40. `todo` (loop-actionable, found 22 Oct 2026 in the 14:00 cycle) - **the homepage publishes
+    no machine-readable event data.** Its JSON-LD is `Organization`, `WebSite`, `WebPage`,
+    `Person`, `FAQPage` and nothing else, while the page itself - and the header and footer of
+    all 63 pages - names the next cohort and its date ("Next Bootcamp - 19 Nov 2026"). It is
+    the highest-ranking page the site has, and on the two probes of 22 Oct an engine asked for
+    the next cohort date by name and answered off a third party's July listing. `/events/` was
+    the sharper case and was done first this cycle, because its whole content is the dated list
+    and the fix needed no new facts. Whether the homepage should carry the same two upcoming
+    cohorts as `EducationEvent` under their existing `@id`s is the same judgement one page
+    over: the argument for is that it is where engines land, the argument against is that the
+    homepage's primary entity is the Organization and events are not its main content. Re-probe
+    once `/events/` has been recrawled before deciding - if the index fix moves anything, that
+    is the evidence; if it does not, adding more of the same to the homepage will not either.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-22 (14:00 local cycle) - the page titled "AI bootcamp dates in Oxford" published
+  five names, five URLs and not one date in its structured data. On the same morning an engine
+  asked when the next cohort runs, found no page of ours, and took 21 July 2026 off a third
+  party. Each cohort on `/events/` now carries its own date, venue and status.**
+  - **The fault.** `collectionPageSchema` emits a `CollectionPage` whose `ItemList` holds a bare
+    `ListItem` per entry - `position`, `name`, `url`. That is right for `/guides/`, `/bootcamps/`
+    and `/team/`, which list pages. On `/events/` the listed things are dated events, and the
+    visible page is nothing but their dates: five cards, each with a weekday, a full date and a
+    venue, plus the two upcoming ones in the header and the footer of all 63 pages. The
+    machine-readable half of that page said only that five pages exist.
+  - **Why it is worth a cycle.** This is the thirteenth consecutive GEO reading of the same
+    harm, and the first where the loop found a cause on our own side rather than a third
+    party's. Asked *"when is the next Oxford Agentic Bootcamp cohort date November 2026"* - the
+    bootcamp named outright - the engine answered **"I couldn't find a November 2026 date for
+    the Oxford Agentic Bootcamp itself"**, gave allai.events's **21 July 2026**, said the two
+    Luma pages *"give no date in these results"*, noted *"one lists St Anne's College as the
+    venue and the other lists Worcester College, so the pages may be for different sessions"*,
+    and ended *"to confirm a bootcamp date, check the Luma page directly or ask the
+    organisers."* The Oxford-anchored commercial query the same cycle repeated the July date
+    and the venue contradiction. The site publishes 19 November 2026 at Worcester College. The
+    page built to answer that question had no answer in the format an engine extracts most
+    reliably, and a stale third-party listing did.
+  - **The change.** `collectionPageSchema` takes an optional `item` per entry, used only by
+    `/events/`. `eventListingItem()` returns each cohort as an `EducationEvent` under the
+    **same `@id` its own page already publishes**, so a consumer holding both describes one
+    event rather than two. It carries name, description, startDate, endDate, eventStatus,
+    eventAttendanceMode, location and organizer; the agenda, the photos, the series and the
+    offer stay on the detail page, which is what the `url` is for.
+  - **No fact is new, and that was checked rather than asserted.** Every field in all five
+    summary nodes was compared field-by-field against the canonical node on the matching detail
+    page: **0 disagreements**, because both now derive from two extracted helpers - `eventPlace`
+    for the address and `eventStatusOf` for the status - which `eventSchema` was refactored to
+    use at the same time. The seven fields the summary omits (`image`, `inLanguage`, `offers`,
+    `performer`, `sameAs`, `subEvent`, `superEvent`) are omissions, not contradictions. No
+    content file was touched, no copy written, no `updatedDate` moved, so no sitemap `lastmod`
+    changes.
+  - **Measured, whole-site, before against after.** Exactly **one** file in `dist/` differs
+    across all 63 pages: `/events/index.html`. Everything outside its JSON-LD block is
+    **byte-identical**, and so is its visible text. The homepage, the five event pages, the
+    sitemap, `llms.txt`, `llms-full.txt` and every canonical are untouched.
+  - **IndexNow will over-submit this one, by design and not by fault.** `src/lib/schema.ts` is
+    not in `scripts/indexnow-ping.mjs`'s specific map, so it counts as a template change and the
+    deploy job submits every sitemap URL - where exactly one page's output moved. That is the
+    script's deliberate default (a shared template usually does change every page) and it is
+    not worth a second change in the same cycle to special-case; noted so a later cycle reading
+    the ping log knows why ~44 URLs went in for a one-file diff.
+  - **Checks:** `npm ci` then `npm run build` clean before and after - 63 pages, **3,094**
+    internal links resolve (unchanged), schema valid, **5 Event and 9 FAQPage nodes
+    (unchanged** - the checker counts top-level graph nodes, so nested items are not
+    double-counted, the same as the existing `subEvent` nodes), titles and descriptions unique,
+    no SEO warnings. `check:flags` passes on both the all-on and all-off builds. `astro check`
+    could not run - `@astrojs/check` is not installed and `npx` wanted to fetch it, which this
+    cycle would not do - so `tsc --noEmit` was run on `src/lib/schema.ts` instead: **17 errors
+    before and 17 after**, the same pre-existing `implicitly any` map callbacks, none on a
+    changed line, and none in the new code.
+  - **Inspected in headless Chromium at 375, 768 and 1280px on `/events/`, the homepage and
+    both upcoming event pages - 12 configurations.** 0px horizontal overflow in every one, one
+    h1 each, no heading-level skip, no image without alt text, every JSON-LD block parses, zero
+    page errors, and `/events/` reports its five dated items at all three widths. The only
+    failed requests are `googletagmanager.com` and `luma.com`, which is the sandbox egress
+    policy. Screenshots of `/events/` are **byte-identical** before and after at all three
+    widths, which is what a JSON-LD-only change should produce. Three other screenshots did
+    differ - the homepage at 375 and 1280 and the Coding Bootcamp page at 375 - and all three
+    were then shown to differ **between two runs of the same build**, so they are the reveal
+    animations and the Luma placeholder, not this change; their HTML is byte-identical. The
+    page was also read at 375 and 1280 with reveals forced and the consent banner removed: all
+    five cards render, one column on mobile and three across on desktop, and the dates on the
+    cards match the dates in the new nodes exactly.
+  - **GEO: four probes, none cited, and one of them is new.** *"Oxford Agentic Bootcamp reviews
+    what do attendees say worth it"* had never been asked. The engine said **"I couldn't find
+    any reviews from attendees of the Oxford Agentic Bootcamp itself"** and offered **Trustpilot
+    reviews for `oxfordaitraining.com`** - a different company with a confusable name - while
+    warning it could not confirm the connection, and read *"tickets start at from $275"* off a
+    stale listing again. `/testimonials/` has four named, attributed quotes and was cited
+    nowhere. **Nothing was written on the strength of it**: the page exists and says what it
+    should, so that is third-party absence, which is backlog 2b's territory and his. It went on
+    the review list instead. The definitional *"what is an agentic workflow"* query was probed
+    and **declined on both halves of the topic rule** - the field is vendor blogs about their
+    own products and the searcher is reading, not booking - and should not be re-probed. Full
+    table in `seo-data/geo-citations.md`.
+  - **Off-page: one new item, no new directory lead.** The Trustpilot entity-confusion finding
+    above, which needs a yes or no from him on whether a third-party review surface is wanted at
+    all. Recorded as evidence only, not as a route: **learnersink.com held two of the first ten
+    results** on the next-date query with per-tool Oxford location pages, the same doorway
+    pattern as the nobleprog.co.uk finding at 08:00 and the one the backlog's hard rule forbids.
+    allai.events, coursereport.com and createwith.com all recurred and are already on the list,
+    so nothing was duplicated. Nothing contacted, nothing submitted, no account made.
+  - **Production could not be read, as on every cycle since late September.**
+    `oxfordagentic.com` answers **403 on CONNECT** from the sandbox, so `build.txt` could not be
+    read and before/after is local build against local build from `719cad3`, the SHA the live
+    site was deployed from. Deploy run **278 success** on `719cad3` at 08:34 UTC; nothing queued
+    or in progress. Working tree clean and local `main` level with `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials, and
+    no export in `seo-data/` newer than the 13 September reading).
+  - **Two loop-actionable gaps found and deliberately not shipped**, logged as backlog 39
+    (`/testimonials/` still has no `ItemList`, and the honest answer may be that it should not
+    have one, since `Review` markup about oneself is not something this site should publish) and
+    40 (the homepage publishes no event data either - re-probe once `/events/` is recrawled
+    before deciding, so the decision rests on whether this cycle moved anything).
+  - **Allowances:** no new guide - **2 of 3** this week (19 and 20 October) and today's unspent.
+    Not a Q&A refresh either: no question was added anywhere. This is a structured-data change,
+    which neither allowance governs.
+  - **The standing prompt's event facts are stale, third cycle running.** It names Cohort 3 as
+    15 October at Worcester College and the Second Brain Bootcamp as upcoming on 21 October,
+    where the repo has **Cohort 3 on 19 November**, the **Second Brain Cohort 1 already run**,
+    and a **Coding Bootcamp on 26 November** the prompt does not list at all. Worth refreshing.
 
 - **2026-10-22 (09:00 local cycle) - the three past event pages still headed their own
   facts card "Who it is for" and "What you will build", so a day that ran in July was
