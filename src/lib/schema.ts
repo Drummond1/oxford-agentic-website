@@ -187,12 +187,29 @@ export function eventSchema(
   const status = effectiveStatus(event);
   const url = absoluteUrl(paths.event(event.data.slug));
 
+  /*
+   * `availability` is only ever asserted from a fact somebody authored.
+   *
+   * It used to fall through to SoldOut for every other case, which meant every
+   * past day published a machine-readable "sold out" claim. Two of the three
+   * never made that claim anywhere: nothing on the site says Cohort 1 filled up,
+   * and the Second Brain Cohort 1 file records that nothing about the day is
+   * confirmed. A day that has simply happened is not sold out - schema.org has
+   * no term for "this has run", and SoldOut reads as "it filled up".
+   *
+   * Cohort 2 did sell out, and that fact is not lost: it is published in the
+   * summary and the capsule, so it is inside this very node's `description`, in
+   * the words the author chose. What goes is the inference, not the evidence.
+   *
+   * The Offer stays valid without it - `availability` is recommended rather than
+   * required, as `price` is, which is already omitted deliberately (PRD §18).
+   */
   const availability =
     status === 'soldout'
       ? 'https://schema.org/SoldOut'
       : status === 'upcoming'
         ? 'https://schema.org/InStock'
-        : 'https://schema.org/SoldOut';
+        : undefined;
 
   const eventStatus =
     status === 'cancelled' ? 'https://schema.org/EventCancelled' : 'https://schema.org/EventScheduled';
@@ -309,7 +326,7 @@ export function eventSchema(
     offers: {
       '@type': 'Offer',
       url,
-      availability,
+      ...(availability ? { availability } : {}),
       category: 'Paid',
     },
   };

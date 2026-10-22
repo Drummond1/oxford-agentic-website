@@ -502,6 +502,105 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-22 (08:00 local cycle) - every past event page published a machine-readable
+  "sold out" claim that nobody had written. It was derived from the day having passed, on
+  the morning an answer engine answered *"can you still book the Oxford Agentic Bootcamp"*
+  with no page of ours at all. The one availability signal this site controls now comes
+  only from an authored fact.**
+  - **The fault.** `eventSchema` in `src/lib/schema.ts` set `offers.availability` from
+    `effectiveStatus`: `soldout` gave `SoldOut`, `upcoming` gave `InStock`, **and everything
+    else fell through to `SoldOut`**. `effectiveStatus` derives `past` from `endDate`, so all
+    three past days published `https://schema.org/SoldOut` in their `Event` JSON-LD. Only one
+    of the three ever made that claim: *"sold out"* appears in `src/content/` for **Cohort 2
+    alone** (its file records Luma's single Full Day Pass stopping at 13 of 14 the evening
+    before). Nothing anywhere says Cohort 1 filled up, and the Second Brain Cohort 1 file says
+    in its own comment that *nothing about the day has been confirmed* - while its schema told
+    every engine the day had sold out.
+  - **Why it is worth a cycle rather than a backlog line.** A day that has simply happened is
+    not sold out. schema.org has no term for *"this has run"*, and `SoldOut` reads as *"it
+    filled up"* - so the fall-through was not a neutral placeholder, it was an inference
+    published as a fact about availability, which is the one class of claim the loop's
+    accuracy rules name outright. The commercial edge is live rather than theoretical: the
+    Second Brain Bootcamp is the most recent day, it has no successor date (backlog 36), and
+    the 02:00 cycle recorded an engine offering its 21 October date to a buyer as *"the next
+    listed cohort"* of the Agentic Bootcamp. An engine that takes the date from that page and
+    the availability from the same node tells a buyer the next Oxford day is sold out.
+  - **The change.** The fall-through becomes `undefined`, and `offers` spreads `availability`
+    only when there is one. `SoldOut` is now reachable only from an authored `status:
+    soldout`; `InStock` is unchanged for the two bookable days. **Cohort 2's sold-out fact is
+    not lost** - it is published in the summary and the capsule, so it is inside that same
+    `Event` node's own `description` (*"and sold out beforehand"*), in the words the author
+    chose. What goes is the inference, not the evidence. The `Offer` stays valid without
+    `availability`, which is recommended rather than required, exactly as `price` is - already
+    omitted deliberately under PRD §18. `cancelled` also stops asserting `SoldOut`, which
+    `eventStatus: EventCancelled` already says properly; no event is cancelled today.
+  - **The evidence it was written from, this cycle's own probes.** *"can you still book the
+    Oxford Agentic Bootcamp or is it sold out"* returned **no page of oxfordagentic.com**: the
+    engine answered from `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2` (both cohorts that
+    have run) and allai.events, read *"5 Spots Remaining"* off a stale crawl, gave the date as
+    *"21 Jul 2026 ... with tickets from $275"*, and concluded *"that session has passed unless
+    there's a later date I didn't find."* The date-anchored query the same cycle produced *"I
+    didn't find a one-day hands-on agentic AI workshop in Oxford in November 2026"* and sent
+    the reader to *"the Oxford Agentic Bootcamp organiser's page for upcoming dates, since
+    the listings I found don't show one."* **Tenth and eleventh
+    consecutive readings of the stale-listing harm**, and the first on the buying question
+    itself. Nothing in this repo reaches a third party's crawl; the availability this site
+    publishes about itself is the part it owns, and it was wrong.
+  - **Measured, whole-site, before against after.** Exactly **three files** in `dist/` differ
+    across all 63 pages, and each differs by a single deletion of 44 characters -
+    `"availability":"https://schema.org/SoldOut"` - on the three past event pages. Every other
+    page, the sitemap, `llms.txt`, `llms-full.txt` and every canonical are **byte-identical**.
+    `schema.org/SoldOut` now appears nowhere in the built site. No content file was touched,
+    no copy written, no fact asserted, no `updatedDate` moved, so no sitemap `lastmod` changes.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,094**
+    internal links resolve, unchanged; schema valid, 5 Event and 9 FAQPage nodes, titles and
+    descriptions unique, no SEO warnings; `check:flags` passes both the all-on and all-off
+    builds. The schema checker requires `offers` on every Event node and still passes, which
+    is the point: the node stayed, the unsupported field went. The 11 outbound warnings are
+    the sandbox egress policy, unchanged.
+  - **Inspected in headless Chromium on all five event pages at 375px and 1280px - 10
+    configurations.** 0px horizontal overflow in every one, one h1 each, no heading-level
+    skip, no image without alt text, every JSON-LD block parses, `SoldOut` absent from the
+    DOM, and **zero page errors**. The only failed requests are `googletagmanager.com` on all
+    ten and `luma.com` on the two upcoming pages, which is the sandbox egress policy. The
+    Second Brain page screenshots as it should at 375px: *"This event has run"*, no booking
+    bar.
+  - **GEO: five probes, none cited.** Three of the five misses are pages we already have -
+    the national *"one day ... no coding"* query (missing since 13 September, and every one
+    of those words is on the programme page), `how-to-choose-your-first-agentic-task`, and
+    the delegation question `who-should-take-the-seat` was written for three days ago, where
+    the engine again volunteered that *"the search didn't turn up any neutral guidance ...
+    most results are vendor marketing pages"*. **Nothing was written on the strength of any
+    of them**: restating a page that exists is the near-duplicate the rules forbid, and this
+    is the second consecutive cycle whose probes say discovery rather than content. Full
+    table in `seo-data/geo-citations.md`.
+  - **Off-page: no new lead.** Everything returned today was a competitor's own marketing.
+    `allai.events` recurred on two more queries and is already on the review list with the
+    `$275` finding, so nothing was duplicated. Recorded as evidence only:
+    **nobleprog.co.uk holds five of the first ten results** on the booking query, all
+    location-shaped (`/agentic-ai/training/oxford`, `/ai-agents/training/oxford`, and three
+    more per-tool variants) - the doorway pattern the backlog's hard rule forbids, noted so a
+    later cycle knows what occupies that result set and not as a reason to reconsider.
+    Nothing contacted, nothing submitted, no account made.
+  - **Production state came from the Actions API, as all week.** `oxfordagentic.com` answers
+    **403 on CONNECT** from the sandbox and does not resolve for `WebFetch`, so `build.txt`
+    could not be read. Deploy run **275 success** on `3bab7bd`, the `origin/main` HEAD,
+    finished 01:14 UTC; nothing queued or in progress. Working tree clean and local `main`
+    level with `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **Allowances:** no new guide - **2 of 3** this week (19 and 20 October) and today's
+    unspent. Not a Q&A refresh either: no question was added anywhere. This is a
+    structured-data accuracy fix, which neither allowance governs.
+  - **Known candidates, checked.** Candidate 1 (the `src/lib/home.ts` IndexNow mapping) is
+    already fixed and still correct. Candidate 2 is discharged and was re-verified: nothing in
+    `src/` or `dist/` still names a passed cohort as upcoming, and the two upcoming days are
+    19 and 26 November. **The standing prompt's event facts are stale** - it names Cohort 3 as
+    15 October at Worcester College and the Second Brain as upcoming, where the repo has
+    Cohort 3 on **19 November** and a **Coding Bootcamp on 26 November** that the prompt does
+    not list at all. Second cycle running that this has been flagged; worth Drummond
+    refreshing the prompt.
+
 - **2026-10-22 (02:00 local cycle) - the guide for the product that is on sale was offered
   in one "More guides" block out of 32, against a fair share of four. The clause written on
   15 October to stop exactly that bought it one slot and then switched itself off. It is now

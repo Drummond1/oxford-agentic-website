@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-22 (08:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions, rotated: one date-anchored Oxford commercial query, one
+national "no coding" query that has missed since 13 Sept, two that test guides we have
+already published, and one that asks the booking question directly - *can you still book* -
+which has never been probed and turned out to be the sharpest reading of the stale-listing
+harm this log has recorded.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI workshop Oxford November 2026 one day hands-on | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, allai.events, sbs.ox.ac.uk, science.ai.cam.ac.uk, odsc.ai, aichemy.ac.uk (x3), members.brandonchamber.ca |
+| one day course build an AI agent for your own work UK no coding required | **No** | aiawareness.ai, columbusglobal.com (x2), odsc.ai, udemy.com (x2), eventbrite.com, venzo.com, springest.de, meetup.com |
+| how to choose your first agentic AI task at work | **No** | botpress.com, kore1.com, codesignal.com (x2), producthunt.com, clickup.com, mikareyes.com, vercel.com, cloudthat.com |
+| should I attend an AI bootcamp myself or send someone from my team | **No** | farotech.com (x2), rackspace.com, learnit.com, boti.co.za, infosecinstitute.com, zapier.com, tdwi.org, shrm.org |
+| can you still book the Oxford Agentic Bootcamp or is it sold out | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, allai.events, **nobleprog.co.uk (x5)**, sbs.ox.ac.uk |
+
+**Reading.**
+
+- **The booking question is answered entirely from our own stale third-party listings, and
+  the answer is that the day has probably already happened.** Asked whether the Oxford
+  Agentic Bootcamp can still be booked, the engine returned three pages about us - two Luma
+  pages for cohorts that have run and the allai.events listing - and **no page of
+  oxfordagentic.com**. It read *"5 Spots Remaining"* off one stale Luma crawl, gave the date
+  as *"21 Jul 2026 ... with tickets from $275"* off allai.events, and closed: *"Today is 22
+  October 2026, so that session has passed unless there's a later date I didn't find ... I
+  couldn't confirm whether a newer session is scheduled."* Two bookable days are published on
+  this site, on 19 and 26 November, with their dates in prose, in the nav, on `/events/`, on
+  the homepage and in `Event` JSON-LD. **Tenth and eleventh consecutive readings of the
+  stale-listing harm**, and the first time it has landed on the buying question itself.
+- **The date-anchored query is the same harm in its earlier form.** *"agentic AI workshop
+  Oxford November 2026"* produced *"I didn't find a one-day hands-on agentic AI workshop in
+  Oxford in November 2026"*, from the same two past Luma pages plus allai.events, and sent
+  the reader to *"the Oxford Agentic Bootcamp organiser's page for upcoming dates, since the
+  listings I found don't show one."* The engine knows the entity, recommends finding us, and
+  does not have our site. That is a discovery problem, not a copy problem.
+- **What the repo could do about it, and did.** Nothing in this repo reaches a third party's
+  crawl. What it does control is the availability this site publishes about itself, and that
+  was wrong: every past event page carried `offers.availability: SoldOut` in its `Event`
+  JSON-LD, derived from the day having passed rather than from anything anyone wrote. On the
+  one question where a buyer asks whether seats are gone, the only availability signal we own
+  was telling engines that the two most recent Oxford days were sold out, including the
+  Second Brain day, whose own file records that nothing about it is confirmed. Fixed this
+  cycle; see IMPROVEMENTS.md.
+- **Three of the five misses are discovery, not content, and that is now the pattern.** The
+  national *"one day ... no coding"* query has missed since 13 September and the field is
+  unchanged - aiawareness.ai (one day, online, £595 + VAT, Copilot Studio, which the engine
+  itself notes is *"not explicitly pitched as no-code"*), Columbus *"Agent in a Day"* (London,
+  needs a Microsoft tenant), ODSC (Langflow and CrewAI). Every one of those words already sits
+  on our programme page. *"how to choose your first agentic AI task"* is a guide we published
+  and did not rank for. *"should I attend myself or send someone"* produced the engine's own
+  admission that *"the search didn't turn up any neutral guidance ... most results are vendor
+  marketing pages"* - which is exactly the gap `who-should-take-the-seat` was written for on
+  19 October, three days ago and inside the indexing lag this log keeps recording. **Nothing
+  was written on the strength of any of them**: restating pages we already have is the
+  near-duplicate the rules forbid.
+- **nobleprog.co.uk holds five of the first ten results on the booking query**, all of them
+  location-shaped (`/agentic-ai/training/oxford`, `/ai-agents/training/oxford`,
+  `/autogen/training/oxford`, `/autogpt/training/oxford`,
+  `/amazon-bedrock-agentcore/training/oxford`). Recorded as evidence, not as a
+  recommendation: location pages are a standing no, and a page per tool per city is the
+  doorway pattern the backlog's hard rule names. Worth knowing that it is what currently
+  occupies that result set.
+- **allai.events recurred on two more queries** and is already on the off-page review list
+  with the `$275` finding, so nothing new was added there. **No new off-page lead this
+  cycle:** everything else returned was a competitor's own marketing.
+
 ## 2026-10-22 (02:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
