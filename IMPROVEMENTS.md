@@ -526,9 +526,130 @@ Status: `todo` · `blocked` (why) · `doing`
     once `/events/` has been recrawled before deciding - if the index fix moves anything, that
     is the evidence; if it does not, adding more of the same to the homepage will not either.
 
+41. `todo` (loop-actionable, found 22 Oct 2026 in the 20:00 cycle) - **the third IndexNow
+    under-submission, and the only one that cannot be fixed with a static map.** Measured the
+    same way as the two this cycle shipped: changing one guide's `title` and rebuilding moves
+    **6 sitemap pages** - the guide itself, `/guides/`, and the **4 sibling guides whose "More
+    guides" block offers it** - and the ping script submits 2. The events and programmes cases
+    were fixable because their blast radius follows from frontmatter (`relatedProgrammes`) or is
+    simply the whole site. This one does not: which four siblings offer a guide is decided by the
+    deterministic greedy pass in `src/pages/guides/[...slug].astro`, including the FLOOR clause
+    that lets an under-offered guide jump the queue, and reimplementing that inside
+    `scripts/indexnow-ping.mjs` would be a second copy of a non-trivial algorithm that will drift
+    from the first. **The shape of the right fix**: have the build emit the sibling mapping it
+    already computes (a small JSON beside the sitemap in `dist/`) and have the ping script read
+    it, which also makes `/guides/`-adjacent changes exact rather than guessed. Smaller than it
+    sounds, but it is a build-output change rather than a script change, so it was not folded
+    into this cycle. Until then a guide edit under-submits by four pages, which is the mildest of
+    the three by a wide margin - the pages that miss the hint are siblings whose only change is
+    four words of link text.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-22 (20:00 local cycle) - the loop's own indexing lever was telling the engines
+  about three pages when sixty-one had changed. Every cohort date, venue and past-tense sweep
+  this month went out with fifty-eight changed pages unannounced.**
+  - **The fault.** `scripts/indexnow-ping.mjs` maps changed files to page URLs so the deploy job
+    can tell Bing-family engines (and so ChatGPT's web answers) what moved. An event file mapped
+    to three URLs - `/events/<slug>/`, `/events/` and `/`. A programme file mapped to two -
+    `/bootcamps/<slug>/` and `/`. Both were wrong, and had been since the script was written in
+    cycle 41.
+  - **Measured, not reasoned.** The baseline build was kept and each case was reproduced by
+    editing one field and rebuilding:
+    - **Events.** Moving Cohort 3 from 19 to 20 November changes **61 of 63 built pages**, plus
+      `llms.txt`, `llms-full.txt` and the sitemap. The cause is on every page: the header CTA
+      renders "Next Bootcamp - 19 Nov 2026" and the footer repeats the date under the cohort
+      name. An event file is the only thing that can move them. **55 sitemap URLs change; three
+      were submitted.**
+    - **Programmes.** Changing `second-brain-bootcamp`'s `shortPitch` changes **13 sitemap
+      pages** - the programme page, `/bootcamps/` (which prints each programme's name,
+      shortPitch and next cohort date), `/`, and the **10 guides naming it in
+      `relatedProgrammes`**, each of which carries the same programme card. **Two were
+      submitted.** Repeated on the flagship as a check: 24 tagged guides, 27 sitemap pages, and
+      the new mapping predicts 27 exactly.
+  - **Why this was worth the cycle over anything on-page.** Fourteen consecutive cycles have now
+    read the same harm - an engine answering a question about our own dates off a stale third
+    party - and this cycle's four probes were a fourth clean sweep of misses that are
+    *discovery*, not content. Most of discovery is backlog 2b's and Drummond's. This is the one
+    part of it the loop owns outright, and it has been quietly half-working through every
+    past-tense sweep of the last fortnight, which are exactly the pushes whose whole point was
+    to stop engines repeating something that had stopped being true.
+  - **The change, one file.** `events` now sets `wholeSite`, the same branch a template change
+    takes, because there is no smaller correct set: the header and footer are on every page.
+    `programmes` gains `/bootcamps/` and the guides that name it, via a new
+    `guidesForProgramme()` that reads `relatedProgrammes` out of the guides directory - **not**
+    whole-site, because the 42 pages that never name the programme genuinely do not change.
+  - **And a `--dry-run` flag, which is the part that stops this recurring.** This bug survived
+    44 deploys because the only way to check the mapping was to ping production, and the
+    standing rules rightly forbid running the script by hand. `--dry-run` prints the URL list
+    and exits before the POST. Every claim above was verified through it: event file 55,
+    second-brain programme 13 (naming the exact 10 guides the rebuild moved), flagship programme
+    27. Regression-checked on the branches that were already right and are unchanged: guide 2,
+    team 1, static page 1, `src/lib/home.ts` 1, `src/lib/schema.ts` 55, `IMPROVEMENTS.md` and
+    the ping script itself 0.
+  - **Nothing a reader can see changed.** All **63 built pages are byte-identical** before and
+    after; the only files that differ are the two sitemaps, by their build timestamps. No content
+    file was touched, no copy written, no fact asserted, no `updatedDate` moved.
+  - **This push will submit nothing, and that is correct.** `scripts/` check and ping scripts and
+    `IMPROVEMENTS.md`, `outreach/` and `seo-data/` are all in the script's own
+    never-changed-a-page list, so the deploy's ping job will report nothing to submit. The fix
+    takes effect on the next push that touches an event or a programme.
+  - **Checks:** `npm ci` then `npm run build` clean - 63 pages, **3,094** internal links resolve,
+    schema valid, **5 Event and 9 FAQPage nodes**, titles and descriptions unique, no SEO
+    warnings. `check:flags` passes on both the all-on and all-off builds. `node --check` on the
+    changed script. The 11 outbound warnings are the sandbox egress policy.
+  - **Inspected in headless Chromium at 375 and 1280px** on the homepage, `/events/`,
+    `/bootcamps/` and both bookable event pages - 10 configurations: 0px horizontal overflow in
+    every one, one h1 each, no image without alt text, every JSON-LD block parses, a correct
+    canonical on each, zero page errors. A formality for a change with no page diff, and run
+    because the rule says to run it.
+  - **GEO: four probes, none cited, and the booking question is now a finding about Drummond's
+    own Luma pages.** Asked *"when is the next Oxford Agentic Bootcamp cohort and can I book
+    it"*, the engine ranked `luma.com/k7c2rm5s` (July) first and `luma.com/oxfordagentic2`
+    (September) second, and **`luma.com/oxfordagentic3` - the page that sells 19 November - was
+    not in the first ten**. On the review list. The **team-sized booking** question was asked for
+    the first time and the engine dismissed the day as *"a fixed-size group"* from a stale
+    listing; the site answers that question in four places already, and **nothing was reinstated
+    into Cohort 3's FAQ**, because the file's own 17 Aug comment says that answer was moved into
+    `assurances` under the booking form on purpose. The **one-day-enough** question was declined
+    on WINNABLE - all ten results were providers describing their own courses, and the page we
+    would have written exists. The **Coding Bootcamp** re-probe is unchanged one day after the
+    linking fix, which is a recrawl interval, not a verdict. Full table in
+    `seo-data/geo-citations.md`.
+  - **Backlog 40 was deliberately not taken.** Its own test is to re-probe once `/events/` has
+    been recrawled, and the `/events/` fix shipped six hours ago; this cycle's probes returned no
+    page of ours at all on the date question, which measures the engine's index rather than the
+    fix. A stronger variant was considered and declined on its merits so a later cycle does not
+    reach for it: putting `event` on the **Organization** node would carry the next dates onto all
+    63 pages, but by `@id` alone it would be an unresolvable reference on the 61 pages that do not
+    define those nodes, and inlining the full event nodes site-wide duplicates event data on every
+    page and invites exactly the contradictions the 14:00 cycle spent itself removing.
+  - **Off-page:** one new item - the two retired Luma pages outranking the bookable one, which is
+    his to decide because they are his pages. Recorded as evidence only, `tutorials.co.uk` held
+    five of the first ten results on the team-booking query with per-town Oxfordshire pages, the
+    same doorway pattern as learnersink.com and nobleprog.co.uk. Nothing contacted, nothing
+    submitted, no account made.
+  - **Production state came from the Actions API:** run **279 success** on `9cf133a` at 13:12
+    UTC, nothing queued or in progress. `oxfordagentic.com` answers **403 on CONNECT** from the
+    sandbox and does not resolve through the fetch tool either, so `build.txt` could not be read,
+    as on every cycle since late September. Working tree clean and local `main` level with
+    `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials, and
+    no export in `seo-data/` newer than the 13 September reading).
+  - **One new backlog item, 41** - the third and mildest under-submission, a guide edit moving
+    its four sibling guides' "More guides" blocks. Not fixable with a static map; the shape of
+    the right fix is recorded.
+  - **Allowances:** no new guide - **2 of 3** this week (19 and 20 October) and today's unspent.
+    Not a Q&A refresh: no question was added anywhere, and the one that was considered was
+    declined against a settled decision in the file itself.
+  - **The standing prompt's event facts are stale, fourth cycle running.** It names Cohort 3 as
+    15 October at Worcester College and the Second Brain Bootcamp as upcoming on 21 October,
+    where the repo has **Cohort 3 on 19 November**, the **Second Brain Cohort 1 already run**,
+    and a **Coding Bootcamp on 26 November** the prompt does not list at all. Its KNOWN CANDIDATE
+    1 (the `src/lib/home.ts` IndexNow mapping) has been fixed for some time and is correct;
+    KNOWN CANDIDATE 2's past-tense sweeps are all done. Worth refreshing.
 
 - **2026-10-22 (14:00 local cycle) - the page titled "AI bootcamp dates in Oxford" published
   five names, five URLs and not one date in its structured data. On the same morning an engine

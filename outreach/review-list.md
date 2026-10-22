@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two retired Luma pages are outranking the one that sells the next day, and all three are
+  yours.** Found 22 Oct 2026 (20:00 cycle) on *"when is the next Oxford Agentic Bootcamp cohort
+  and can I book it"*.
+  - **What came back.** The engine ranked `luma.com/k7c2rm5s` (Cohort 1, 21 July) first and
+    `luma.com/oxfordagentic2` (Cohort 2, 16 September) second. **`luma.com/oxfordagentic3`, the
+    page that takes the booking for 19 November, was not in the first ten results**, and nor was
+    any page of oxfordagentic.com. The answer was *"I found no newer date"*, with *"5 Spots
+    Remaining"* read off a stale snapshot and *"from $275"* off allai.events. It also repeated,
+    for the third cycle running, that *"the two Luma pages name different venues: one lists
+    St Anne's College and the other lists Worcester College ... They may be different editions,
+    but the results don't say."*
+  - **Why this one is different from the other stale-listing finds.** allai.events,
+    learnersink.com and nobleprog.co.uk are other people's pages and nothing can be done about
+    them without contacting them. These three are **Drummond's own Luma pages**, and the two
+    winning the query are for days that have already run.
+  - **What only he can decide, and nothing here has been touched.** Whether the two past Luma
+    pages should say plainly at the top that the day has run and point to
+    `luma.com/oxfordagentic3`; whether Luma offers an archive or redirect for a finished event;
+    and whether the Cohort 1 page's venue should stay as St Anne's (it is accurate - the day was
+    held there) given it is the line engines keep reading as a contradiction. The loop has no
+    Luma access and `luma.com` does not resolve from the sandbox, so none of this was checked
+    against the live pages - it is all from the engine's own citation of them.
+  - **Recorded as evidence only, not as a lead:** `tutorials.co.uk` held **five of the first ten
+    results** on the team-booking query with per-town Oxfordshire pages (Oxford, Abingdon,
+    Kidlington, Banbury), the same doorway pattern as learnersink.com and nobleprog.co.uk and the
+    one the backlog's hard rule forbids. allai.events, eventbrite.co.uk, nobleprog.co.uk and
+    maven.com all recurred and are already covered, so nothing was duplicated.
+
 - **An engine asked for reviews of the Oxford Agentic Bootcamp answered with Trustpilot
   reviews of a different company, `oxfordaitraining.com`.** Found 22 Oct 2026 (14:00 cycle)
   on the reviews query, which this log had never put to an engine before.

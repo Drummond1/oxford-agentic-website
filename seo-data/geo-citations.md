@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-22 (20:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions, rotated: the booking question asked by name, the Coding
+Bootcamp axis re-probed now that 22 Oct's internal-linking fix has had a day, and two that have
+never been asked - a team-sized booking, and the objection that decides whether a one-day
+format is worth booking at all.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| when is the next Oxford Agentic Bootcamp cohort and can I book it | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, help.datasciencedojo.com (x2), allai.events, sbs.ox.ac.uk (x2), nobleprog.co.uk, learnersink.com, maven.com |
+| agentic coding bootcamp UK one day in person Claude Code non-developer | **No** | eventbrite.co.uk (Build with Claude Code, London), nobledesktop.com, mindstudio.ai (x3), digitalresearchservices.ed.ac.uk (x2), adventureppc.com, claude101.every.to |
+| book a one day AI training day in Oxford for my team of 10 hands-on | **No** | tutorials.co.uk (x5, per-town Oxfordshire pages), `luma.com/k7c2rm5s`, allai.events, eventbrite.com, nobleprog.co.uk (x2) |
+| is a one-day agentic AI course enough to actually build a working workflow | **No** | sp.edu.sg, maven.com (x2), odsc.ai, pragmaticinstitute.com, meetup.com, designlab.com, spc.edu.mirantis.com, udemy.com |
+
+**Reading.**
+
+- **Fourteenth consecutive reading of the stale-listing harm, and the first that is squarely
+  about which of Drummond's own Luma pages wins.** Asked the booking question with the bootcamp
+  named, the engine returned **no page of oxfordagentic.com at all** and ranked
+  `luma.com/k7c2rm5s` (Cohort 1, 21 July) first and `luma.com/oxfordagentic2` (Cohort 2,
+  16 September) second. `luma.com/oxfordagentic3`, the page that actually sells the 19 November
+  day, **did not appear in the first ten results**. The answer was *"An allai.events listing
+  shows the event on 21 Jul 2026 ... I found no newer date"*, with *"5 Spots Remaining"* read off
+  a stale snapshot, *"from $275"*, and the St Anne's-versus-Worcester venue contradiction for the
+  third cycle running. On the review list, because every surface in that answer is a third party's.
+- **The Coding Bootcamp axis is unchanged a day after the linking fix, which is the expected
+  result rather than a disappointment.** The engine again found no current UK, in-person,
+  one-day, non-developer Claude Code day and named a **past** London Eventbrite as its best
+  match. The site publishes exactly that day on 26 November. One day is not a recrawl; re-probe
+  in a week, not in a cycle.
+- **The team-sized booking question is new and the miss is discovery, not content.** The engine
+  recommended an on-site provider quoting *"from £1,049 + VAT per day for the whole group"* and
+  dismissed our day as *"a fixed-size group, so it may not suit a team booking"* - a guess made
+  from a stale third-party listing, since it never reached a page of ours. The site answers this
+  already: *"Can I bring my team, or book for several people?"* on the Agentic and Coding
+  programme pages, *"Can I bring my team?"* on the Coding Bootcamp's booking page, and the third
+  `assurances` line under the booking form on Cohort 3 - *"Bringing a colleague or two? Email
+  hello@oxfordagentic.com and we will arrange it."* **Nothing was written on the strength of
+  this**, and specifically nothing was reinstated into Cohort 3's FAQ: the file's own comment
+  records that this answer was moved out of the accordion into `assurances` on 17 Aug precisely
+  because it sits better under the form, and says not to reinstate it without checking the page
+  does not already answer it. It does.
+- **The one-day-enough question is declined on WINNABLE.** Every one of the ten results is a
+  course provider describing its own course, which is the vendor-writing-about-their-own-product
+  case the topic rule excludes, and the engine said as much itself: *"Every source here is course
+  marketing, so treat their claims as the providers' own descriptions, not independent
+  evaluations"*, closing *"I found no independent research on outcomes from these courses"*. The
+  site already publishes the editorial answer - `what-you-can-build-in-one-day-with-ai`, and the
+  follow-up worries the engine listed (connecting real tools, handling errors, human review) are
+  `how-to-run-an-ai-pilot-that-survives`, `how-to-notice-when-an-ai-workflow-is-wrong` and
+  `where-the-human-goes-in-an-agentic-workflow`. Writing a fifth would be writing the page we
+  have again. Do not re-probe this phrasing.
+- **All four probes read the same way: discovery, not content.** Third consecutive cycle. The
+  pages exist and say the right thing; engines are not reaching them. That is backlog 2b's
+  territory and Drummond's, and it is why this cycle spent itself on the one discovery lever the
+  loop does own - the IndexNow mapping, which was telling the engines about three pages when
+  sixty-one had changed.
+
 ## 2026-10-22 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
