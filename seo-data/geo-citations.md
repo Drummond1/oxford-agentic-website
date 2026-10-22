@@ -5,6 +5,85 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-22 (02:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions: two finish the legal probe backlog 38 asked for, two
+open the Coding Bootcamp axis, which has never been probed and is one of only two bookable
+days, and one re-tests the Oxford-anchored commercial query that has come back empty for
+eight consecutive cycles.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day agentic AI workshop for law firms UK hands-on build your own workflow no coding | **No** | marketplace.microsoft.com, tessgroup.co.uk, scottytechnologies.com, iankhan.com, inagentic.ai, brainstation.io, insidepractice.com, theoxfordaischool.com, learningtree.com, harness.institute |
+| agentic AI training for solicitors law firm staff hands-on in-person day UK bring your own matter workflow | **No** | astranti.com, **lawsociety.org.uk (x2)**, legalsolutions.thomsonreuters.co.uk, quiss.co.uk, learn-ai.io, relativity.com, nbi-sems.com, advanceagility.com |
+| learn Claude Code in person one day UK non-developer agentic coding bootcamp | **No** | anthropic.com, claude.com, every.to, maven.com, adventuremedia.ai (x2), agentaccelerator.ai, buildwithclaude.co.uk, effectiveclaudecode.com, claudeworkshop.com |
+| hands-on agentic AI workshop Oxford business leaders build a working workflow one day | **Yes: named first** - *"The closest match is Oxford Agentic"* | sbs.ox.ac.uk, createwith.com (x2), theoxfordaischool.com, inagentic.ai, scottytechnologies.com, gogradia.com, iternal.ai |
+| what is an agentic workflow for business and how do you build your first one | **No** | tinycommand.com, moxo.com, mastra.ai, diatomenterprises.com, gumloop.com, getdynamiq.ai, chatbase.co, octavius.ai, justinmckelvey.com |
+
+**Reading.**
+
+- **The Oxford-anchored commercial query cites us first again, and the citation is wrong
+  about the one fact a buyer acts on.** This axis returned nothing of ours on the 21 Oct
+  07:00 cycle and on seven before it, so being named first - *"The closest match is Oxford
+  Agentic, which runs one-day, in-person hands-on workshops in Oxford for business
+  leaders"* - is the first reversal on it this month. But the same answer says *"The next
+  listed cohort is on 21 October 2026 at the Pitt Rivers Museum, and a later one is on
+  19 November 2026 at Worcester College."* The 19 November date is right. The 21 October
+  one is the **Second Brain Bootcamp**, which ran yesterday, offered to the reader as the
+  next cohort of the Agentic Bootcamp. The engine is reading a crawl from before the 20:00
+  cycle's past-tense sweep, which is exactly the fix for it; nothing further is available
+  from the repo. **Record it as the ninth consecutive cycle of the stale-listing harm, and
+  the first where the harm is a wrong fact rather than an absence.** Caveat as all month:
+  web search, not the Perplexity probes that had this query at #2, #3 and #5 on
+  13 September, so it is not a like-for-like comparison with those.
+
+- **Legal is DECLINED, and the second phrasing is what decided it.** Backlog 38 asked for
+  one before anything was written, on the strength of a first probe that said *"I found no
+  UK one-day hands-on course that is clearly labelled agentic AI for law firms"*. The first
+  probe tonight repeats that almost word for word - *"I found no one-day agentic AI workshop
+  aimed specifically at UK law firms"* - so the product gap is real. The second phrasing
+  breaks it on both halves of the topic-probe rule:
+  - **Not winnable.** The field is not the providers-only field finance was. The **Law
+    Society** holds two of the first ten results on its own subject, with "The future of
+    agentic AI in legal practice" and "Building your legal team's AI skill set", and
+    Thomson Reuters sits beside it with "Agentic AI 101: what UK legal professionals need
+    to know". That is the rule's own named "no" case - an institutional publisher
+    editorially owning the question - and it is the shape that correctly killed charities
+    on 16 Oct, where DSC held nine of ten.
+  - **Converting is weaker than it looks.** The law-specific training that does exist is
+    bought differently from a cohort seat: Astranti sells in-house half and full days to
+    firms, learn-ai.io sells a half-day for up to 20 fee-earners framed on SRA and UK GDPR
+    duties. The buyer there is a firm procuring for its fee-earners, not an individual
+    booking a seat in Oxford.
+  - **And the honest answer is one we cannot write.** The site's published confidentiality
+    test - bring a task you would be comfortable describing to an external supplier - is a
+    real answer for a finance extract and a thinner one for privileged material, and
+    nothing on this site can speak to privilege or SRA duties without inventing. **Do not
+    re-pitch legal without new evidence.** The operations axis was already closed on
+    21 Oct; the vertical seam that finance opened is now worked out.
+
+- **The Coding Bootcamp axis is a real gap, and the probe says so plainly.** *"learn Claude
+  Code in person one day UK non-developer"* returned no page of ours, and the engine's best
+  UK in-person one-day answer was Build With Claude in Richmond, whose listed date
+  (10 April 2026) *"has already passed"*. Everything else it found is online (Effective
+  Claude Code, two half-days on Zoom; Every, on US hours; Advance Agility, two days online)
+  or an at-your-office team engagement (Agent Accelerator). **The day we sell on
+  26 November is the thing the engine could not find**, and the field is entirely providers
+  writing about their own product, so it is winnable, and a non-developer typing that
+  phrase is the buyer. **No content was written on it this cycle**, because the
+  Coding Bootcamp programme page already joins every one of those words - one day, in
+  person, Oxford, Claude Code and Codex, "Do I need to be able to code? No" - so the
+  finance diagnosis (the words sat on no page) does not apply here. What the line did lack
+  was discovery, which is what this cycle shipped. Re-probe after the fix has been crawled
+  before writing anything.
+
+- **The generic definitional query is declined again, and this is the second time.** The
+  21 Oct 07:00 cycle closed "agentic workflow definitions" because the field was Salesforce,
+  NetSuite, Slack and GPTBots. The phrasing tonight is the buyer-shaped version of it and
+  the field is the same kind: nine platform and agency blogs. It is the topic-probe rule's
+  own worked example. Do not probe this axis a third time.
+
 ## 2026-10-21 (20:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

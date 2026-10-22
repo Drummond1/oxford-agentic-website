@@ -11,6 +11,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`gogradia.com` - a course aggregator already carrying an Oxford AI programme, and
+  `iternal.ai` - an executive-education roundup we are not in. Both found 22 Oct 2026
+  (02:00 cycle) on the Oxford-anchored commercial query.** Gradia returned a listing page
+  for Saïd Business School's "Generative and Agentic AI Programme" with its own indexed
+  URL, duration and price; Iternal returned "AI Executive Education and AI Training for
+  Executives (2026)", a roundup of the field.
+  - Why it matters: both appeared on the one query where this site is now named first, so
+    they rank alongside us rather than instead of us - and the Organization node still has
+    no third-party `sameAs` at all (backlog 2b). Gradia is the better of the two: it is
+    carrying a direct Oxford competitor on the same subject, which is the clearest evidence
+    that the listing shape fits.
+  - **The thing to check first:** whether Gradia takes submissions from providers or
+    compiles its listings itself. If it compiles them, it belongs with the editorial
+    roundups below and needs a pitch, not a form. Both will probably want a price, and
+    prices live on Luma by standing decision - the same open question as `cademy.io` and
+    Eventbrite, and it wants the same answer from Drummond first.
+  - **Not checked:** neither page was loaded - the sandbox egress policy blocks outbound
+    fetches, so this is from the search result alone. Nothing contacted, nothing submitted,
+    no account made.
+
 - **`cademy.io` - a UK course-booking directory that providers list themselves on. Found
   21 Oct 2026 (20:00 cycle) on a Second Brain probe.** It surfaced carrying a third party's
   "1 Day Intro Training in Milton Keynes", which is the shape of listing we would place: a

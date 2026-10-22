@@ -467,7 +467,22 @@ Status: `todo` · `blocked` (why) · `doing`
     the precedent and the pace - it was cut from seven questions to three on 23 Sept, a week
     after the day ran, once there was something true to say about what happened. Do the same
     here in about a week, and only with outcomes in hand. Do not invent any.
-38. `todo` - **the legal vertical is the strongest untried content candidate in the log.**
+38. `killed` 22 Oct 2026 (02:00 cycle), by the second phrasing it asked for - **do not
+    re-pitch the legal vertical without new evidence.** The product gap is real and repeated:
+    *"I found no one-day agentic AI workshop aimed specifically at UK law firms"*. But the
+    **field is not winnable** - the Law Society holds two of the first ten results on its own
+    subject ("The future of agentic AI in legal practice", "Building your legal team's AI
+    skill set") with Thomson Reuters beside it, which is the rule's own institutional-publisher
+    case and the shape that killed charities on 16 Oct. **Converting is weaker than it looks**:
+    the law-specific training that exists is in-house and sold to firms (Astranti's half and
+    full days, learn-ai.io's half-day for up to 20 fee-earners framed on SRA and UK GDPR), not
+    cohort seats. **And the honest answer is one this site cannot write**: the published
+    confidentiality test - a task you would be comfortable describing to an external supplier -
+    is a real answer for a finance extract and a thin one for privileged material, and nothing
+    here can speak to privilege or SRA duties without inventing. With operations already closed
+    on 21 Oct, the vertical seam finance opened is worked out. Original diagnosis kept below.
+
+38a. (the original item, kept for the record) **the legal vertical is the strongest untried content candidate in the log.**
     Probed 21 Oct (20:00 cycle): *"agentic AI training for law firms UK hands-on one day
     workshop"* returned no page of ours and the engine said *"I found no UK one-day hands-on
     course that is clearly labelled agentic AI for law firms"*, naming its own near misses -
@@ -486,6 +501,119 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-22 (02:00 local cycle) - the guide for the product that is on sale was offered
+  in one "More guides" block out of 32, against a fair share of four. The clause written on
+  15 October to stop exactly that bought it one slot and then switched itself off. It is now
+  a floor, and the worst-served guide on the site went from 1 slot to 3, and from 3 inbound
+  internal links to 5.**
+  - **The measurement, taken on the built site before anything was changed.** Counting how
+    many of the 32 guide pages offer each guide in its four-link "More guides" block: every
+    guide is offered **3 to 7 times except one**. `why-the-code-an-agent-wrote-is-not-live`
+    was offered **once**, by `claude-cowork-claude-code-or-codex` and nothing else. Counting
+    unique inbound internal links across all 63 built pages instead, it scored **3** - the
+    index, one sibling block and one body link - the lowest of any guide, against a median
+    of 6. It is the editorial page for the **Coding Bootcamp**, which is one of only two
+    bookable days (Cohort 1, 26 November), and it is the newest product line, with 4 tagged
+    guides against the flagship's 24.
+  - **Why the existing clause could not fix it, which is the whole of the diagnosis.** The
+    15 October pass picks the four siblings for the whole corpus in one deterministic
+    sweep, scoring shared programme 2 and shared category 1, and it carries one clause above
+    score: a guide *"offered nowhere at all"* jumps the queue. That clause was written for
+    this exact guide, and the comment says so. But it stops applying the moment a guide is
+    offered once - and the moment it stops, the guide loses every subsequent contest for the
+    identical reason it lost the first: it is the only guide tied to the Coding Bootcamp
+    alone, so it scores 2 for exactly three sources and 1 for same-category sources, against
+    24 guides that score 3 for any flagship source. One slot was the ceiling the clause could
+    ever buy it, not a floor.
+  - **The change is one word and a constant.** `=== 0` becomes `< FLOOR`, with `FLOOR = 3`.
+    Three is not a round number picked for effect: 32 sources x 4 slots is **128 slots over
+    32 guides**, so the fair share is exactly 4, and 3 is one below it - nobody falls more
+    than a single slot short, and the clause goes quiet for everyone else, which is what
+    keeps it from reshuffling the corpus on every build.
+  - **Four values were simulated against the real corpus before one was written into the
+    file, because a greedy pass is not monotonic in its own threshold.** FLOOR 2 leaves two
+    guides under 3. FLOOR **4 and 5 are worse than 3, not better** - they drop the stranded
+    guide back to 2 and 1 respectively, because raising the bar makes the clause fire for
+    almost everyone and the priority cancels out. FLOOR 3 is the only value tested that
+    clears the floor for all 32. The simulation reproduced the built baseline exactly
+    (min 1, the same histogram), which is why its reading of the other values is worth
+    anything.
+  - **Subject relevance does not pay for it, which was the thing to check.** The 15 October
+    design exists to keep the clusters cohesive - the second-brain guides surfacing each
+    other was the fault that prompted it. After the change, **125 of the 128 picks share a
+    programme with their source, against 124 before**, and **no pick shares neither
+    programme nor category**. The second-brain block is still four second-brain guides. The
+    stranded guide's three new sources are `what-you-can-build-in-one-day-with-ai` (shares
+    the Coding Bootcamp outright) and two same-category `in-practice` guides.
+  - **Result, measured on the rebuilt site.** Slot distribution went from `1, 3x6, 4x18,
+    5x6, 7` to `3x8, 4x18, 5x4, 6x2`: the minimum rises from 1 to 3, the maximum falls from
+    7 to 6, and the total is unchanged at 128. Unique inbound internal links: the stranded
+    guide **3 to 5**, and the least-linked guide on the whole site is now 5 rather than 3.
+    24 of the 32 guide pages change which four siblings they offer; nothing else on any page
+    moves.
+  - **No content file was touched.** No copy was written, no fact asserted, no event detail
+    restated, no `updatedDate` moved, so no canonical, no sitemap `lastmod` and no `llms.txt`
+    line changes. The diff is one constant and one comparison in
+    `src/pages/guides/[...slug].astro`, plus the comment above them.
+  - **Checks:** `npm ci` then `npm run build` clean before and after. 63 pages, **3,094**
+    internal links resolve - **unchanged**, because the number of sibling slots is fixed at
+    four per page and only their targets moved - schema valid, 5 Event and 9 FAQPage nodes,
+    titles and descriptions still unique, no SEO warnings. The 11 outbound warnings are the
+    sandbox egress policy blocking `luma.com`, `linkedin.com`, `arxiv.org`, `elevenlabs.io`,
+    `novaria.ai` and `ico.org.uk`, unchanged.
+  - **Inspected in headless Chromium on all 32 guide pages at 375px and 1280px - 64
+    configurations.** 0px of horizontal overflow in every one, one h1 each, no heading-level
+    skip, no image without alt text, no page errors. The stranded guide was screenshotted at
+    both widths with the block scrolled into view and renders as it did before, with four
+    different links in it.
+  - **GEO: five probes, and the Oxford-anchored commercial query names us first for the
+    first time in nine cycles - while getting the date wrong.** *"hands-on agentic AI
+    workshop Oxford business leaders build a working workflow one day"* opened *"The closest
+    match is Oxford Agentic"*, then told the reader *"the next listed cohort is on 21 October
+    2026 at the Pitt Rivers Museum"*. That is the **Second Brain Bootcamp**, which ran
+    yesterday, offered as the Agentic Bootcamp's next cohort; the 19 November date it gives
+    after it is right. The engine is reading a crawl from before last night's past-tense
+    sweep, so the fix is already shipped and waiting to be recrawled. **Ninth consecutive
+    cycle of the stale-listing harm, and the first where it is a wrong fact rather than an
+    absence.** Full table in `seo-data/geo-citations.md`.
+  - **Legal is killed, by the second phrasing backlog 38 asked for.** The product gap
+    repeats - *"I found no one-day agentic AI workshop aimed specifically at UK law firms"* -
+    but the field is the Law Society editorially on its own subject, two of the first ten
+    results, with Thomson Reuters beside it; the law-specific training that exists is
+    in-house and sold to firms rather than as cohort seats; and this site cannot speak to
+    privilege or SRA duties without inventing. See backlog 38. The definitional query was
+    declined for the second time and should not be probed again.
+  - **The Coding Bootcamp axis was probed for the first time and is a real gap - but not a
+    content gap.** *"learn Claude Code in person one day UK non-developer"* returned no page
+    of ours and the engine's best UK in-person one-day answer was a London workshop whose
+    date *"has already passed"*; everything else was online or at-your-office. Unlike
+    finance, the words already sit together on our own page - the Coding Bootcamp programme
+    page says one day, in person, Oxford, Claude Code and Codex, and "Do I need to be able
+    to code? No" - so nothing was written. What the line lacked was discovery, which is what
+    this cycle shipped. **Re-probe once the fix has been crawled.**
+  - **Off-page: two new leads.** `gogradia.com`, a course aggregator already carrying Saïd
+    Business School's own agentic AI programme on its own indexed page, and `iternal.ai`, an
+    executive-education roundup. Both surfaced on the one query that now names us first, so
+    they rank beside us. Price is the same open question as `cademy.io` and Eventbrite.
+    Nothing contacted, nothing submitted, no account made.
+  - **Production state came from the Actions API, as all week.** `oxfordagentic.com` answers
+    **403 on CONNECT** from the sandbox, so `build.txt` could not be read. Deploy run **274
+    success** on `6ba0448`, the `origin/main` HEAD, finished 19:12 UTC; CI run 264 success on
+    the same SHA; nothing queued or in progress. Working tree clean and local `main` level
+    with `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (no browser session, no API credentials,
+    and no export in `seo-data/` newer than the 13 September reading).
+  - **Allowances:** no new guide - **2 of 3** this week and today's unspent. Not a Q&A
+    refresh either: no question was added anywhere. This is an internal-linking fix, which
+    neither allowance governs.
+  - **Known candidates, checked.** Candidate 1 (the `src/lib/home.ts` IndexNow mapping) is
+    already fixed. Candidate 2 is **fully discharged**: Cohort 2 (16 Sept) and the Second
+    Brain Bootcamp (21 Oct) are both in the past tense, and the Agentic Bootcamp's next
+    cohort is **19 November**, not the 15 October the standing prompt still names - the repo
+    is the newer source and `luma.com` answers 403 on CONNECT, so nothing could be
+    re-verified against Luma. There is also a **Coding Bootcamp on 26 November** that the
+    prompt does not list. Worth Drummond refreshing the prompt's event facts.
 
 - **2026-10-21 (20:00 local cycle) - the Second Brain Bootcamp ended at 17:00 today, and
   six published strings across four files still said it was coming. They now say it ran.
