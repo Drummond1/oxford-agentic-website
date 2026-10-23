@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import EmailAddress from '../components/EmailAddress.astro';
 import config from '../../site.config';
 import { createRhythm, getPhotos, paths } from '../lib/site';
 import { personSchema } from '../lib/schema';
@@ -203,7 +204,7 @@ const bands = {
         <h2 class="contact__title">Questions before you book?</h2>
         <p class="contact__copy">Ask directly. Someone who has run the day will answer.</p>
       </div>
-      <a href={`mailto:${config.brand.email}`} class="btn btn--onGold">{config.brand.email}</a>
+      <a href={`mailto:${config.brand.email}`} class="btn btn--onGold"><EmailAddress /></a>
     </div>
   </section>
 </Base>

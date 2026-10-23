@@ -1,0 +1,28 @@
+---
+import config from '../../site.config';
+
+/*
+ * The contact address, printed as text, with a break opportunity after the `@`.
+ *
+ * `a[href^='mailto:'] { overflow-wrap: anywhere }` in global.css stops the
+ * 23-character address setting a page's minimum width (20 Oct 2026). The cost
+ * of `anywhere` is that where the address is wider than its container it breaks
+ * at the last character that fits, wherever that falls. In the footer's
+ * Elsewhere column that is after `.co`, so every page printed its own contact
+ * address as `hello@oxfordagentic.co` with a lone `m` on the line beneath, at
+ * every viewport from 1,100px up; at a 24px browser default the newsletter
+ * fallback broke after `.c`.
+ *
+ * `<wbr>` is a real soft-wrap opportunity, and a browser takes one of those in
+ * preference to an arbitrary position, so the address breaks after the `@` and
+ * both halves read as themselves. Where it already fits on one line nothing
+ * changes - `<wbr>` renders nothing, adds no width, contributes no character to
+ * the accessible name and none to the clipboard.
+ *
+ * Use it anywhere the address is shown to a reader. The `mailto:` href stays at
+ * the call site, because the subject line and the link's styling differ.
+ */
+const [local, domain] = config.brand.email.split('@');
+---
+
+<Fragment>{local}@<wbr />{domain}</Fragment>

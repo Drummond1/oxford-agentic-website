@@ -1,5 +1,6 @@
 ---
 import config from '../../site.config';
+import EmailAddress from './EmailAddress.astro';
 
 /**
  * Provider-agnostic email capture — PRD §15. The POST endpoint lives in
@@ -49,7 +50,7 @@ const configured = endpoint.length > 0;
     <div class:list={['signup', compact && 'signup--compact']}>
       <p class="signup__label">{label}</p>
       <p class="signup__fallback">
-        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}>{config.brand.email}</a> and we will add
+        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}><EmailAddress /></a> and we will add
         you to the list for the next cohort.
       </p>
     </div>

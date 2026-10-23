@@ -558,9 +558,99 @@ Status: `todo` · `blocked` (why) · `doing`
     not a cycle's. The cheapest version is the homepage FAQ's answer, reused verbatim, as one
     more entry in the event and programme FAQ blocks. One line from him either way.
 
+43. `todo` (loop-actionable, found 23 Oct 2026 in the 09:00 cycle) - **the footer grows an empty
+    fifth column at every desktop width, and it is what squeezed the contact address into two
+    lines in the first place.** `.site-footer__grid` is
+    `minmax(min(100%, 15rem), 1.6fr) repeat(auto-fit, minmax(min(100%, 9rem), 1fr))`, and
+    `.site-footer__signup` sits in the same grid with `grid-column: 1 / -1`. `auto-fit` collapses
+    a track only when nothing is placed in or spanning it, and the signup spans every one, so at
+    1,100px and up the grid generates **five** tracks for **four** blocks. Measured: the three
+    link columns are **176px at 1024px and 159px at 1440px** - wider viewport, narrower columns -
+    and the fifth track plus its gap leaves 207px of dead space to the right of "Elsewhere" on
+    all 63 pages. Prototyped in the browser this cycle: moving the signup out of the grid
+    collapses the empty track and takes the columns to 204-206px, with the footer's height and
+    every track below 1,100px **unchanged**. That is a DOM move in a component on every page
+    rather than a declaration, so it was logged rather than folded into a cycle that was already
+    changing the same file. The address defect it caused is fixed independently and does not wait
+    on this.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-23 (09:00 local cycle) - every page printed the one contact address the site has as
+  `hello@oxfordagentic.co` with a lone `m` on the line beneath it, at every desktop width.**
+  - **The fault, measured on all 55 indexable pages at eight viewport-and-text-size
+    combinations.** The footer's "Elsewhere" column is 159-161px wide from 1,100px up and the
+    address renders 172px, so it wraps. `a[href^='mailto:'] { overflow-wrap: anywhere }` - added
+    on 20 Oct to stop the same 23-character word setting a page's minimum width - then breaks it
+    at the last character that fits, wherever that falls. At **1280 and 1440 with normal text,
+    all 55 pages** split it as `hello@oxfordagentic.co` + `m`; at 1100px as `hello@oxfordagentic.`
+    + `com`; at 900px as `.c` + `om`. At a 24px browser default the newsletter fallback split it
+    on **32 pages** and the About contact button on one. Every one of those breaks lands inside
+    the domain, and `.co` is itself a real top-level domain, so the first line reads as a
+    complete and wrong address.
+  - **Why it had not been caught.** The loop's standing sweep reads 375, 768 and 1280 and asks
+    whether a page overflows. This never overflows - the text wraps inside its column, and the
+    page measures 0px either way - so it is invisible to the overflow check and only shows up if
+    you read the words. It is also absent at 375 and 768, where the column is wide enough.
+  - **The change: one shared component, five call sites, one `<wbr>`.**
+    `src/components/EmailAddress.astro` prints the address with a break opportunity after the
+    `@`. A browser prefers a real soft-wrap opportunity to an arbitrary one, so the address now
+    breaks as `hello@` + `oxfordagentic.com` and both halves read as themselves. It replaces the
+    bare `{config.brand.email}` in `Footer.astro`, `NewsletterForm.astro`, `about.astro` and
+    `privacy.astro` (twice) - every place the address is shown to a reader. The `mailto:` href
+    stays at each call site, because the subject line and the styling differ. The
+    `overflow-wrap: anywhere` rule is untouched and still catches the case where even the domain
+    will not fit.
+  - **Result, same eight combinations.** Addresses broken inside the domain: **55 -> 0** at
+    1280/16, **55 -> 0** at 1440/16 and 1280/20, **33 -> 0** at 375/24, **37 -> 3** at 320/24.
+    The three left are a pre-existing prose break (`hello@oxfordagentic.` + `com`) on one page at
+    320px with 24px text, unchanged by this and the least-bad arbitrary split there is. At 320,
+    375, 768 and 1024 with normal text **no address wraps at all, before or after** - the
+    default experience of the site is unchanged except in the footer.
+  - **The trade, stated rather than buried.** At a 20px or 24px browser default the address now
+    breaks after the `@` in places where it previously sat whole on a line of its own: 33 -> 92
+    wrapped instances at 375/24. That is greedy line-filling taking the new opportunity, it
+    costs the paragraph no extra lines (the footer signup block measures 315x269.77px before and
+    after), and the worst reading it can produce is `hello@` + `oxfordagentic.com`. At 16px it
+    costs nothing: 0 wrapped addresses before and after on all four phone and tablet widths.
+  - **Measured whole-site.** Exactly **61** built files differ and every one differs **only** by
+    inserted `<wbr>` tags - verified by stripping them and comparing bytes, which makes all 61
+    identical to the baseline build. No stylesheet, script, sitemap, `llms.txt`, `llms-full.txt`,
+    canonical or JSON-LD node changed. No content entry was touched, so no `updatedDate` moved.
+  - **The link itself is untouched where it counts.** `textContent`, `innerText`, the accessible
+    name and the text a visitor gets when they select and copy it are all exactly
+    `hello@oxfordagentic.com` - `<wbr>` contributes no character. `href` unchanged. The About
+    contact button still measures **265x52**, the figure recorded when that button was last
+    changed on 20 Oct.
+  - **Checks.** `npm ci`, then `npm run build` clean - 61 pages built, 63 checked, 3,094 internal
+    links resolve, schema valid, 5 Event and 9 FAQPage nodes, titles and descriptions unique. The
+    11 outbound warnings are the sandbox egress policy. `npm run check:flags` passes both the
+    all-on and all-off builds. `astro check`: **79 errors, 0 warnings, 4 hints - identical to the
+    figure recorded on 20 Oct**, so this adds none; they are the pre-existing implicit-`any`
+    reports. Whole-site sweep in headless Chromium across all 55 sitemap pages at 320, 375, 768
+    and 1280: no horizontal overflow anywhere, no missing alt text, no unlabelled form control,
+    one `h1` per page, no heading-level skip, no duplicate id, no `target="_blank"` without
+    `rel`, no page errors - identical to the same sweep run against HEAD before the change.
+    Keyboard: Tab reaches the footer address (23 presses at 375px, 28 at 1280px), it matches
+    `:focus-visible`, and the ring is the gold 2px outline at 3px offset. Footer screenshots read
+    before and after at 375, 768, 1280 and 1280/20, plus the signup block and the About contact
+    band at 375/24.
+  - **Production state from the Actions API.** CI and Deploy to GitHub Pages both success on
+    `5559936`, the current `main` HEAD, nothing queued or in progress. `oxfordagentic.com` answers
+    403 on CONNECT from this sandbox (`connect_rejected`, policy denial), so production could not
+    be fetched or re-screenshotted and **no event fact was read or changed**. The change was
+    inspected against a local `astro preview` of a build from that commit, and the before-state
+    against a static server over the pre-change `dist`.
+  - **One new backlog item (43), loop-actionable**: the footer grows an empty fifth grid column
+    at 1,100px and up, which is why the Elsewhere column is narrower at 1440px than at 1024px.
+    Prototyped and measured, logged rather than shipped - it is a DOM move, and this cycle was
+    already changing the same file.
+  - **Nothing else re-pitched.** PR #1 and `feat/ceo-roundtable-demand-page` were read as
+    known-stale per backlog 20, which is the reading every cycle since 26 September has taken.
+  - **No guide**, and no GEO probe: the cycle spent its time on a defect it could measure from
+    inside the sandbox.
 
 - **2026-10-23 (08:00 local cycle) - the entity node that 60 of 63 pages carry said nothing
   about who this organisation is not, while the engines kept confusing it with a similarly
