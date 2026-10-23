@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-23 (08:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions. Four are new to this log, and the fifth is the sharpest
+diagnostic this log has run: the site's own domain name typed into the query.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need to know how to code to build an AI agent workflow | **No** | skillcrush.com, fastgpt.cn / fastgpt.io (x4), reddit, discuss.huggingface.co (x2) |
+| which Oxford AI course is hands-on building rather than lectures | **No** | trustpilot.com/review/**oxfordaitraining.com** (x2), lifelong-learning.ox.ac.uk (x2), oxford-royale.com (x3), eventbrite.com, nobleprog.co.uk |
+| hands-on AI course Oxford for working adults build your own workflow not lectures | **No** (the bootcamp is named and described, but from Luma and allai.events) | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, trustpilot.com/review/**oxfordaitraining.com** (x2), oerc.ox.ac.uk, lifelong-learning.ox.ac.uk, oxford-royale.com, eventbrite.com, academy.ebu.ch |
+| one day agentic AI workshop UK December 2026 in person | **No** | digitalresearchservices.ed.ac.uk (x2), columbusglobal.com (x2), odsc.ai, ucl.ac.uk, essex.ac.uk, createwith.com (x2), members.brandonchamber.ca |
+| **oxfordagentic.com Oxford Agentic Bootcamp hands-on** (brand- and domain-anchored) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, sbs.ox.ac.uk (x2), nobleprog.co.uk, learnersink.com, coursereport.com, continuinged.unm.edu, valencia.unm.edu |
+
+**Reading.**
+
+- **The domain-anchored probe settles what five consecutive "discovery, not content" sweeps
+  could only infer.** The query contained the string `oxfordagentic.com`, and the engine
+  answered *"The search didn't return oxfordagentic.com itself."* It then described the
+  bootcamp accurately - one day, hands-on, no coding, small groups, the Claude/Cowork/Code/
+  Codex agenda - entirely from `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and
+  allai.events, and closed on the venue contradiction (*"One Luma page gives Worcester
+  College, while another Luma page gives St Anne's College"*), the 21 July 2026 date and
+  *"tickets from $275"*. **This is not selection and it is not a content gap: on this engine
+  the site is not retrievable even by its own name.** Seventeenth consecutive reading of the
+  stale-listing harm, and the first that isolates index presence from ranking. It is the
+  strongest evidence yet that the binding constraint is the off-page and indexing work on
+  Drummond's side (backlog 2 - submit the sitemap and request indexing; backlog 2b - the
+  Organization has no third-party identity), not anything more that can be written here.
+  **Recorded on the review list.**
+
+- **Entity confusion is now measured from the third side, and it is what this cycle acted on.**
+  Asked which Oxford AI course is hands-on rather than lectures, the engine put a competitor
+  forward as *"a private provider that is not part of the University of Oxford"* - that
+  company's independence is legible to it - and on the next phrasing named **this** bootcamp
+  as the best match while describing it only as *"hosted by Drummond Gilbert, who tutors at
+  Saïd Business School"*, which a reader can fairly take as a University connection. Both
+  probes also returned `trustpilot.com/review/oxfordaitraining.com` on this entity's own
+  subject, which is the 22 Oct finding from the other side. The site answers the affiliation
+  question outright on the homepage, About and privacy - 3 of 63 built pages, and none that
+  takes a booking or ranks for an Oxford AI course - and the `Organization` node, carried by
+  60 of the 63, said nothing. **Acted on this cycle**, in the node rather than in copy.
+
+- **Three declines, each on the topic rule rather than on effort.**
+  - *Do I need to code* is **not converting**. skillcrush, fastgpt's FAQ, Hugging Face's forum
+    and Reddit are a DIY builder field choosing a no-code platform, not a senior buyer booking
+    a day in Oxford. The objection is already answered on every programme page.
+  - *Which Oxford AI course is hands-on* is **winnable and converting, and still not a guide**.
+    Writing it honestly means comparing named local providers on format and price, which this
+    sandbox cannot verify and which goes stale, and a page shaped as "AI courses in Oxford" is
+    the location-page pattern the hard rule forbids. `what-hands-on-ai-training-actually-means`
+    already ranks #1 on the hands-on axis (14 Sept). The miss is the Oxford anchor on a page
+    the engine does not hold at all, which the probe above explains.
+  - *December 2026* is a **fair miss**: the cohorts are 19 and 26 November, so there is no
+    December day to find. The engine said *"I found no one-day, in-person agentic AI workshop
+    in the UK scheduled for December 2026"* and returned no page of ours for November either.
+
+- **One probe was mis-phrased and is logged as such.** *"How do I keep an AI workflow running
+  after the training day ends"* was read as a machine-learning training job - checkpoints,
+  Temporal, SageMaker, OVHcloud billing - rather than as a buyer's question about what happens
+  after a workshop. No reading can be drawn from it. A buyer would phrase it differently;
+  `after-the-ai-executive-programme` is the page for the question that was meant, and it was
+  cited #1 for it on 14 Sept.
+
 ## 2026-10-23 (02:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

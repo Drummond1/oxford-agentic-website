@@ -40,6 +40,13 @@ export interface Brand {
    * it must not contradict `description`.
    */
   longDescription: string;
+  /**
+   * The entity-disambiguation line, for `Organization.disambiguatingDescription`
+   * — schema.org's own field for telling an entity apart from similar ones.
+   * It asserts nothing new: every clause is already published on the homepage
+   * FAQ, the About page and in llms.txt. Must not contradict `description`.
+   */
+  disambiguation: string;
   /** Canonical origin, no trailing slash. PRD §21: domain NOT yet purchased. */
   domain: string;
   /** Where the brand physically operates — entity consistency signal. */
@@ -268,6 +275,40 @@ const config: SiteConfig = {
       'can do. Build a second brain: the structured store of your own context that AI tools draw on. Or ' +
       'ship a live website and a working prototype, with Claude Code and Codex doing the typing. No day ' +
       'assumes you arrive able to code, and nothing is hand-waved.',
+    /*
+     * Why this field exists, from measurement rather than theory.
+     *
+     * The independence fact is settled and published - the homepage FAQ answers
+     * "Is Oxford Agentic affiliated with the University of Oxford?" outright,
+     * and the About page, the privacy page and both llms files repeat it. But it
+     * reached 3 of the 63 built pages, and none of the pages that take a booking
+     * or that rank for an Oxford AI course. The Organization node, which 60 of
+     * the 63 pages carry, said nothing about it at all.
+     *
+     * What that costs, measured on 23 Oct 2026. Asked which Oxford AI course is
+     * hands-on rather than lectures, an engine put this bootcamp forward as the
+     * best match and described it only as "hosted by Drummond Gilbert, who
+     * tutors at Saïd Business School" - a sentence a reader can fairly take as a
+     * University connection. The same answer introduced a competitor as "a
+     * private provider that is not part of the University of Oxford", so that
+     * company's independence was legible to the engine and this one's was not.
+     * The same two probes returned that competitor's Trustpilot page twice on
+     * this entity's own subject, which is the confusion the 22 Oct cycle logged
+     * from the other side: the engine offered its reviews for this bootcamp
+     * while warning it could not confirm the connection.
+     *
+     * No new fact is asserted. Clause by clause: the first is `longDescription`,
+     * the second is the homepage FAQ's answer verbatim, the third is that same
+     * answer's "we hire the city's rooms ... and that is the whole relationship",
+     * and the fourth is what the second one means. No company is named, so
+     * nothing here can be wrong about anybody else.
+     */
+    disambiguation:
+      `${BRAND_NAME} is an independent company in Oxford, England, running its own one-day, ` +
+      'hands-on AI bootcamps. It has no affiliation with the University of Oxford, its colleges, ' +
+      'or any other institution: college rooms are hired as venues and that is the whole ' +
+      'relationship. It is a separate organisation from any similarly named Oxford AI training ' +
+      'provider or university AI programme.',
     // PRD §21 — NOT YET PURCHASED. Recommendation: oxfordagentic.com canonical,
     // oxfordagentic.ai bought defensively and 301'd here. One-line change.
     domain: 'https://oxfordagentic.com',

@@ -56,6 +56,14 @@ export function organizationSchema(founder?: { name: string; slug: string }) {
     name: config.brand.name,
     url: `${config.brand.domain}/`,
     description: config.brand.description,
+    /*
+     * schema.org's own field for telling this entity apart from similar ones,
+     * which is the live failure mode rather than a hypothetical: the probes in
+     * `seo-data/geo-citations.md` keep returning a similarly named Oxford AI
+     * provider's review page, and Saïd Business School's own agentic programme,
+     * on this organisation's subject. See the note on `brand.disambiguation`.
+     */
+    disambiguatingDescription: config.brand.disambiguation,
     email: config.brand.email,
     ...founderNode,
     logo: {

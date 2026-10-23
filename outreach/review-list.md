@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The site is not in this engine's index at all, which changes what every other item on this
+  list is worth.** Found 23 Oct 2026 (08:00 cycle). Nothing to contact; this is the diagnosis
+  the rest of the list sits under.
+  - **The test.** Previous cycles recorded "no page of ours" on buyer questions, which cannot
+    tell a ranking problem from an indexing one. So the query was made brand- and
+    domain-anchored: *"oxfordagentic.com Oxford Agentic Bootcamp hands-on"*, with the domain
+    itself in the query string. The engine answered **"The search didn't return
+    oxfordagentic.com itself"**, and then described the bootcamp accurately - one day,
+    hands-on, no coding, small groups, the full agenda - **entirely from `luma.com/
+    oxfordagentic2`, `luma.com/k7c2rm5s` and allai.events**, closing on the Worcester-versus-
+    St Anne's contradiction, the 21 July 2026 date and "tickets from $275".
+  - **What it means.** On this engine the site is not retrievable by its own name. Seventeen
+    consecutive readings of the stale-listing harm have been treated as "discovery, not
+    content"; this one isolates index presence from ranking and confirms it. No further
+    on-page writing will change these answers, and the two items that would are both open on
+    Drummond's side and have been for a while:
+    - **Search Console (backlog 2, two minutes in the UI):** submit `sitemap-index.xml`, then
+      URL-Inspect and Request indexing for the homepage, `/events/` and the Cohort 3 page.
+      The property has been DNS-verified since 23 July and the sitemap has never been
+      submitted. This is now the highest-value thing on this list.
+    - **A third-party identity (backlog 2b/5):** the `Organization` node still claims no
+      `sameAs` at all. A LinkedIn Company Page URL or a live Luma calendar URL is a one-line
+      change here once it exists.
+  - **Caveat, stated plainly.** One engine, on one day, through a sandboxed web search. It is
+    evidence about that engine's index, not about Google's, and Search Console is the
+    instrument that would answer it for Google - which is the item above. Worth re-running on
+    a different engine before anything is spent on the strength of it.
+
 - **Two retired Luma pages are outranking the one that sells the next day, and all three are
   yours.** Found 22 Oct 2026 (20:00 cycle) on *"when is the next Oxford Agentic Bootcamp cohort
   and can I book it"*.

@@ -544,9 +544,108 @@ Status: `todo` · `blocked` (why) · `doing`
     the three by a wide margin - the pages that miss the hint are siblings whose only change is
     four words of link text.
 
+42. `todo` **(needs Drummond, a copy call on the booking path)** - **should the booking pages say
+    in words that this is not a University of Oxford course?** The 08:00 cycle on 23 Oct put the
+    independence fact into `Organization.disambiguatingDescription`, so all 60 pages that carry
+    the entity node now assert it machine-readably. In **visible copy** it is still on 3 pages of
+    63 - the homepage FAQ, About and privacy - and on none of the five event pages, the four
+    programme pages, `/events/`, `/bootcamps/` or any of the 32 guides. The same cycle's probes
+    are the argument for closing that gap: a competitor was introduced to a buyer as *"a private
+    provider that is not part of the University of Oxford"* while this bootcamp was described
+    only by its host's Saïd Business School role. **The loop will not do it**: the event template
+    carries his own 4 Aug instruction that "the programme page's one job is the booking path",
+    and a line about what this is *not* on the page that takes the booking is a positioning call,
+    not a cycle's. The cheapest version is the homepage FAQ's answer, reused verbatim, as one
+    more entry in the event and programme FAQ blocks. One line from him either way.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-23 (08:00 local cycle) - the entity node that 60 of 63 pages carry said nothing
+  about who this organisation is not, while the engines kept confusing it with a similarly
+  named Oxford provider and with the University.**
+  - **The fault.** "Is Oxford Agentic affiliated with the University of Oxford?" is a settled,
+    published question: the homepage FAQ answers it outright, and the About page, the privacy
+    page and both llms files repeat it. It reached **3 of the 63 built pages**, and none of the
+    pages that take a booking or that rank for an Oxford AI course. The `Organization` node,
+    which **60 of the 63** pages carry, had `description`, `email`, `founder`, `logo` and
+    `address`, no `sameAs`, and nothing at all on the point.
+  - **Why it was worth the cycle, measured today rather than assumed.** Asked *"which Oxford AI
+    course is hands-on building rather than lectures"*, the engine introduced a competitor as
+    *"a private provider that is not part of the University of Oxford"* - that company's
+    independence is legible to it. Asked the same thing one phrasing over, it named **this**
+    bootcamp as the best match and described it only as *"hosted by Drummond Gilbert, who
+    tutors at Saïd Business School"*, which a reader can fairly take as a University
+    connection. Both probes returned `trustpilot.com/review/oxfordaitraining.com` on this
+    entity's own subject, which is the 22 Oct finding from the other side: that cycle logged
+    the engine offering **that company's** Trustpilot reviews for **this** bootcamp while
+    warning it could not confirm the connection. Saïd's own agentic programme ranks on the
+    brand-anchored query. Entity confusion is the live failure mode, from three sides now.
+  - **The change.** `Organization.disambiguatingDescription` - schema.org's own field for
+    telling an entity apart from similar ones - fed by a new `brand.disambiguation` string in
+    `site.config.ts`: *"Oxford Agentic is an independent company in Oxford, England, running
+    its own one-day, hands-on AI bootcamps. It has no affiliation with the University of
+    Oxford, its colleges, or any other institution: college rooms are hired as venues and that
+    is the whole relationship. It is a separate organisation from any similarly named Oxford
+    AI training provider or university AI programme."* (382 characters.)
+  - **No new fact is asserted, clause by clause.** The first is `brand.longDescription`; the
+    second is the homepage FAQ's answer verbatim; the third is that same answer's *"we hire the
+    city's rooms ... and that is the whole relationship"*; the fourth is what the second one
+    means. **No company is named**, so nothing here can be wrong about anybody else.
+  - **Why the node and not the copy.** Putting the sentence on the event and programme pages
+    would be a copy change on the conversion path, and the event template carries Drummond's
+    own 4 Aug instruction that "the programme page's one job is the booking path". The
+    machine-readable route reaches 60 pages, changes nothing a visitor sees, and carries no
+    ranking risk - it is not a title, a meta description or visible text. **Whether the
+    booking pages should also say it in words is on the backlog for him (42).**
+  - **Measured whole-site.** Exactly **60** files in `dist` differ, and every one of them
+    differs **only** by that single inserted field - verified by stripping it and comparing
+    bytes, which makes all 60 identical to the baseline build. The visible HTML is
+    byte-identical on all 63 pages, as are the sitemap, `llms.txt`, `llms-full.txt` and every
+    canonical. No content file touched, no copy written, no `updatedDate` moved.
+  - **Checks.** `npm ci` then `npm run build` clean before and after - 61 pages built, 63
+    checked, 3,094 internal links resolve, schema valid, 5 Event and 9 FAQPage nodes, titles
+    and descriptions unique, no SEO warnings. `check:flags` passes both the all-on and all-off
+    builds. All 63 pages' JSON-LD re-parsed from the built output: **0 parse failures, 60
+    Organization nodes carrying the field.** `indexnow-ping.mjs --dry-run` on the two changed
+    files submits **55 URLs**, which is correct - the change moves 60 built pages, 55 of them
+    sitemap URLs. The 11 outbound warnings are the sandbox egress policy. Headless Chromium at
+    375px and 1280px on the homepage, both bookable event pages, `/about/` and the flagship
+    programme page: **0px overflow in all 10 configurations**, one `h1` each, every JSON-LD
+    block parses, correct canonicals, zero page errors, and the affiliation sentence still
+    visible on `/about/` only - the visible site is unchanged.
+  - **GEO: five probes, none cited, and the fifth is the sharpest diagnostic this log has
+    run.** The query was made domain-anchored - *"oxfordagentic.com Oxford Agentic Bootcamp
+    hands-on"*, with the domain in the query string - and the engine answered **"The search
+    didn't return oxfordagentic.com itself"**, then described the bootcamp accurately and
+    entirely from two past Luma pages and allai.events, closing on the Worcester-versus-St
+    Anne's contradiction, 21 July 2026 and "$275". **Seventeenth consecutive reading of the
+    stale-listing harm, and the first that isolates index presence from ranking.** Five
+    consecutive sweeps had concluded "discovery, not content"; this one shows why. Three
+    declines on the topic rule (do-I-need-to-code is not converting; which-Oxford-course-is-
+    hands-on is winnable and converting but needs unverifiable facts about named local
+    providers and is the location-page pattern the hard rule forbids; December 2026 is a fair
+    miss, since the cohorts are 19 and 26 November). One probe was mis-phrased - "keep an AI
+    workflow running after the training day ends" was read as an ML training job - and is
+    logged as such rather than read.
+  - **Off-page.** One new entry, and it is a diagnosis rather than a lead: the retrievability
+    finding above, with what follows from it - **backlog 2 (submit the sitemap in Search
+    Console and request indexing) is now the highest-value open item on the whole list**, and
+    backlog 2b (a third-party `sameAs`) behind it. Nothing contacted, nothing submitted, no
+    account made. The Luma, allai.events and oxfordaitraining.com findings were already open
+    and were not duplicated.
+  - **Backlog 40 stays open and untaken**, for the second cycle running and for the same
+    reason: its own test is a re-probe after `/events/` is recrawled, and today's probes
+    returned no page of ours at all, which measures the engine's index rather than the fix.
+    Adding the same structured data to the homepage would be writing into an index that does
+    not hold the site.
+  - **Production state from the Actions API:** run 281 success on `dd553a7`, nothing queued.
+    `oxfordagentic.com` answers 403 on CONNECT and does not resolve from the sandbox. Search
+    Console unavailable from the cloud; no export newer than the 24 Aug baseline in `seo-data/`.
+  - **No guide:** 2 of 3 this week, and today's allowance unspent deliberately - the two
+    candidates this cycle surfaced were both declined on the topic rule. Not a Q&A refresh
+    either.
 
 - **2026-10-23 (02:00 local cycle) - the page titled "AI bootcamp dates in Oxford" had no
   date in its description. The one field a searcher reads before clicking, and the one an
