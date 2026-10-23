@@ -8,10 +8,19 @@ import siteConfig from './site.config.ts';
 /**
  * Truthful `lastmod` for the sitemap.
  *
- * Built from each content file's own `updatedDate`, falling back to the file's
- * modification time. Pages with no content file behind them get no lastmod at
- * all — stamping every URL with the build date would tell crawlers the whole
- * site changed on every deploy, which is both false and a wasted signal.
+ * Built from each content file's own `updatedDate`. Pages with no content file
+ * behind them get no lastmod at all — stamping every URL with the build date
+ * would tell crawlers the whole site changed on every deploy, which is both
+ * false and a wasted signal.
+ *
+ * A file with no readable `updatedDate` is skipped for the same reason, rather
+ * than falling back to its mtime as this did until 23 Oct 2026. git does not
+ * record mtimes, so in CI — which clones fresh on every run — the mtime IS the
+ * build time. All five event files had no `updatedDate`, so the fallback gave
+ * those five URLs a `lastmod` seconds old on every push and on the daily
+ * scheduled redeploy, with nothing changed. All three collections now require
+ * the field, so the skip is a guard rather than a path: a missing lastmod is
+ * merely absent, a build-time one is untrue.
  */
 function contentLastmod() {
   const map = new Map();
@@ -32,9 +41,9 @@ function contentLastmod() {
       if (!slug) continue;
 
       const updated = raw.match(/^updatedDate:\s*"?([^"\n]+)"?\s*$/m)?.[1]?.trim();
-      const date = updated && !Number.isNaN(Date.parse(updated)) ? new Date(updated) : fs.statSync(full).mtime;
+      if (!updated || Number.isNaN(Date.parse(updated))) continue;
 
-      map.set(`${urlPrefix}/${slug}/`, date);
+      map.set(`${urlPrefix}/${slug}/`, new Date(updated));
     }
   }
 

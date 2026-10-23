@@ -5,6 +5,76 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-23 (20:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four open buyer questions, then the **coverage measurement** the 14:00
+cycle left behind as a repeatable instrument: restrict the search to `oxfordagentic.com`, ask
+three unrelated things, count the distinct URLs returned.
+
+### The four open questions
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what is an agentic workflow for business and how is it different from automation | **No** | elevenlabs.io, mindstudio.ai, netsuite.com, dataiku.com, online.iitkgp.ac.in, patoliyainfotech.com (x2), customerthink.com, thinktoshare.com |
+| can I bring my own real work task to a one day AI training day UK | **No** | revolutionlearning.co.uk, designforonline.com, shortcourses.lsbu.ac.uk, aiawareness.ai, stcg.ac.uk, sotsiot.ac.uk, digitalpeninsula.org, lilachbullock.com (x2) |
+| how to build a second brain for AI tools to draw on | **No** | vitally.io, eventbrite.ca, superlore.ai, mindstudio.ai (x2), nexasphere.io, levelup.gitconnected.com, hackernoon.com, axios.com |
+| Oxford Agentic Bootcamp November 2026 Worcester College book a place | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, nobleprog.co.uk (x4), sbs.ox.ac.uk (x2), jbs.cam.ac.uk (x2), learnersink.com, intlaffairs.hku.hk |
+
+### The coverage measurement, repeated
+
+| Query (restricted to the domain) | Distinct URLs returned |
+|---|---|
+| bring your own task hands-on agentic AI workflow one day | `/`, `/guides/after-the-ai-executive-programme/`, `/guides/claude-cowork-claude-code-or-codex/` |
+| second brain bootcamp what goes in a second brain | the same three |
+| is the bootcamp affiliated with the University of Oxford invoice payment | the same three |
+
+**Still exactly 3 of 55 indexable URLs, the same three, in the same order.** Six hours is far
+too short to expect movement, so this is a baseline reading rather than a result: the number to
+watch is whether it moves after backlog 2 is done, and now there is a second reading of it.
+
+**Reading.**
+
+- **The brand-and-date query is the most commercially harmful result this log has recorded, and
+  it is the eighteenth consecutive reading of the stale-listing harm.** A buyer who knows the
+  product name, the month and the venue - about as warm as search intent gets - was told *"I
+  couldn't confirm a November 2026 date or a Worcester College booking for the Oxford Agentic
+  Bootcamp"* and, at the end, *"If it doesn't show November 2026, the event may not have one."*
+  Everything it did say came off `luma.com/oxfordagentic2` (Cohort 2, which **ran** on 16
+  September), `luma.com/k7c2rm5s` (Cohort 1, St Anne's, **July**) and allai.events (21 July, "$275").
+  `luma.com/oxfordagentic3` - the page that actually sells 19 November - was not among the
+  results at all. The engine then volunteered the venue contradiction between the two stale
+  pages, and attributed November dates to **Cambridge Judge** and an **online** Saïd programme
+  instead. The site publishes 19 November at Worcester College on `/events/`, on the Cohort 3
+  page, on `/bootcamps/oxford-agentic-bootcamp/` and in the homepage's JSON-LD. None of it was
+  reachable. **Nothing more can be written here to fix this**; it is backlog 2 and 2b.
+- **The engine now reads Cohort 3 correctly off the homepage, which is the 14:00 change working
+  as intended - and the cached copy is about four days old.** The first restricted probe
+  answered *"Cohort 3 on Thursday, 19 November 2026 at Worcester College"*, where this
+  morning's equivalent put the next cohort at "21 October 2026 at the Pitt Rivers Museum". The
+  same answer still added *"A Cohort 1 date of 21 October 2026 at the Pitt Rivers Museum also
+  appears, though that is only two days away"* - 21 October was two days away on **19 October**,
+  so part of what it holds predates the 21 Oct past-tense sweep. Worth recording as a rough
+  measure of recrawl latency on the one page it keeps.
+- **The crawl frontier was checked rather than assumed, and it is not the constraint.** The
+  hypothesis was that the three held pages are the engine's only route into the other 52, so
+  what they link to decides what gets found. Measured on the built output: all three link to
+  `/events/`, **both** upcoming event pages, `/bootcamps/` and all three programme pages. The
+  links are already there. Discovery is not being starved by internal linking, which rules out
+  the cheapest remaining on-site explanation and leaves the sitemap and off-page work.
+- **Four declines on the topic rule, no guide written.** *Agentic workflow vs automation* is
+  **not winnable and not converting** - ElevenLabs, MindStudio, NetSuite, Dataiku and an IIT
+  blog, every one a platform vendor on its own subject, which is the rule's own exclusion, and
+  the searcher is defining a term rather than booking a day. *Bring your own task* is
+  **winnable but already answered** - the results are providers describing their own format,
+  and the restricted probe proves the site answers it well when it is reachable (the homepage
+  FAQ's "Who is it not for?", the capsule, and `what-hands-on-ai-training-actually-means`), so
+  a guide would restate ranking pages. *Second brain for AI* falls to the standing decision
+  that Second Brain's constraint is demand, not ranking. The brand-and-date query is a coverage
+  problem, not a content one. **2 of 3 guides this week; today's allowance deliberately
+  unspent for the second cycle running.** Not a Q&A refresh either - no probe showed a question
+  the site fails to answer on a page it holds.
+
 ## 2026-10-23 (14:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

@@ -6,6 +6,7 @@ cohort: Cohort 1
 status: past
 startDate: "2026-07-21T09:00:00+01:00"
 endDate: "2026-07-21T17:00:00+01:00"
+updatedDate: "2026-10-18T08:23:27+00:00"
 venue:
   name: St Anne’s College
   street: 56 Woodstock Road

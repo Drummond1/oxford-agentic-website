@@ -6,6 +6,7 @@ cohort: Cohort 3
 status: upcoming
 startDate: "2026-11-19T09:00:00+00:00"
 endDate: "2026-11-19T17:00:00+00:00"
+updatedDate: "2026-10-18T13:12:03+00:00"
 venue:
   name: Worcester College
   street: Walton Street

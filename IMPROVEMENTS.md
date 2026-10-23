@@ -579,9 +579,138 @@ Status: `todo` · `blocked` (why) · `doing`
     changing the same file. The address defect it caused is fixed independently and does not wait
     on this.
 
+44. `todo` (loop-actionable, found 23 Oct 2026 in the 20:00 cycle) - **the homepage is the one
+    page an engine is demonstrably re-reading, and it is one of 15 URLs in the sitemap with no
+    `lastmod` at all.** The 20:00 cycle fixed the opposite fault - five event URLs claiming the
+    build time - and left this deliberately, because the config's reason for the omission is
+    sound as far as it goes: `lastmod` is derived from a single content file's `updatedDate`,
+    and `/`, `/about/`, `/bootcamps/`, `/events/`, `/guides/`, `/privacy/`, `/testimonials/` and
+    the 8 team pages have no single file behind them. But the homepage is a special case on
+    today's evidence: it is 1 of the 3 URLs this engine holds, everything the engine knows about
+    the November cohorts it reads off that page, and its cached copy was measured at roughly four
+    days old ("21 October ... only two days away" on 23 October). A truthful date is derivable -
+    the homepage is composed from `src/lib/home.ts`, `HomeSections.astro` and the events
+    collection, so the newest of (the two source files' last content change, the `updatedDate`s
+    of the events it lists) is a real answer, and the same shape works for `/events/`,
+    `/bootcamps/`, `/guides/` and `/team/`. **Weigh before doing it**: it means teaching
+    `contentLastmod()` about composed pages, which is a genuinely new mechanism rather than a
+    declaration, and getting it wrong reintroduces the fault just fixed - a derived date that
+    moves when nothing a reader sees has moved is the same lie in a smarter costume. Do it only
+    with the whole-site `dist` diff as the test, exactly as the 20:00 cycle measured, and never
+    from a file mtime.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-23 (20:00 local cycle) - the sitemap told crawlers the five event pages had just
+  changed, on every build, including the daily rebuild that changes nothing.**
+  - **The defect.** `contentLastmod()` in `astro.config.mjs` builds each URL's `lastmod` from
+    its content file's own `updatedDate`, **falling back to the file's mtime**. The five files
+    in `src/content/events/` are the only content files on the site with no `updatedDate` - all
+    32 guides and all 3 programmes have one - so all five fell through to the fallback. **git
+    does not record mtimes.** CI clones fresh on every run, so in CI the mtime *is* the checkout
+    time. Measured on this cycle's first build: all five event URLs carried
+    `lastmod 2026-10-23T18:58:58.002Z`, the build's own timestamp, on a build that changed
+    nothing. Touching the five files and rebuilding moved them to `19:05:37` - seven minutes
+    later, same content. The fallback was written for a long-lived working copy and is worthless
+    in the only place it runs.
+  - **Why it is worth a cycle, and worth this one.** `lastmod` is one of the few crawl-priority
+    signals a static site actually controls, and an engine that finds it unreliable discards it
+    for the **whole** sitemap, not just the offending URLs. A URL that claims it changed seconds
+    ago, every time, on a redeploy that also fires on a **schedule** with no commit behind it
+    (run 283 today was `event: schedule`), is exactly that pattern. And the five URLs it was
+    happening to are the five event pages - the pages carrying the dates buyers search for. The
+    timing is the rest of the argument: **backlog 2** is the highest-value open item on the
+    whole list and consists of handing `sitemap-index.xml` to Search Console. Better to fix the
+    artefact before it is submitted than to submit it and spend the signal.
+  - **It was also the code failing its own documented intent**, which is why it reads as a bug
+    rather than a judgement call. The function's header already says pages with no content file
+    behind them get no `lastmod` because "stamping every URL with the build date would tell
+    crawlers the whole site changed on every deploy, which is both false and a wasted signal".
+    The fallback did that to five of them.
+  - **The change, in two parts.**
+    - `src/content.config.ts`: the events collection now **requires** `updatedDate`, exactly as
+      guides and programmes do, and each of the five files carries its own - read from git, the
+      committer date of the last commit that touched that file: 18 Oct for Cohorts 1, 2 and the
+      Coding Bootcamp, 18 Oct 13:12 for Cohort 3, 21 Oct 19:11 for Second Brain Cohort 1. No
+      template reads `updatedDate` for an event (`schema.ts` and `llms.ts` read it by name, for
+      guides and programmes only), so nothing visible moved.
+    - `astro.config.mjs`: the mtime fallback is gone. A file with no readable `updatedDate` is
+      **skipped**, so a missing `lastmod` is merely absent rather than untrue. With all three
+      collections now requiring the field the skip is a guard, not a path - verified by deleting
+      the line from the Cohort 3 file, which fails the build with `updatedDate: Required`.
+  - **Not stamped with today, deliberately, because that is the same lie.** Nothing a crawler
+    cares about changed on these five pages today: the rendered HTML is byte-identical. The
+    loop's standing rule to bump `updatedDate` on content you touch is about content; adding a
+    sitemap-only field is not content. Setting all five to 23 October would have re-committed
+    the defect by hand.
+  - **Measured whole-site.** Exactly **two** files in `dist` differ from the pre-change build:
+    `sitemap-0.xml` and `sitemap-index.xml`. All **63** built pages are byte-identical, as are
+    `llms.txt`, `llms-full.txt`, `rss.xml`, `robots.txt` and every stylesheet and script. Inside
+    the sitemap, exactly **5** of 55 entries changed, each from the build timestamp to its true
+    date; no URL added or removed; the 15 URLs with no `lastmod` (`/`, `/about/`, `/bootcamps/`,
+    `/events/`, `/guides/`, `/privacy/`, `/testimonials/` and the 8 team pages) are unchanged,
+    which is the documented and correct behaviour for a page with no single content file behind
+    it. 40 of 55 URLs now carry a `lastmod`, **0** of them the build's.
+  - **And it is now deterministic, which is the actual fix.** `touch`ing all five event files -
+    precisely what a fresh CI clone does - and rebuilding produces a **byte-identical**
+    `sitemap-0.xml`. Before, the same touch moved all five.
+  - **Checks.** `npm ci`, then `npm run build` clean before and after - 61 pages built, 63
+    checked, 3,094 internal links resolve, titles and descriptions unique, no SEO warnings,
+    schema valid at 7 Event and 9 FAQPage nodes. `npm run check:flags` passes both the all-on
+    and all-off builds. Both sitemaps re-parsed with a real XML parser: both well-formed, **0**
+    malformed `lastmod` values, **0** future-dated ones. `astro check` could not run
+    (`@astrojs/check` is not installed and `npx` wanted to fetch it, as on 23 Oct 14:00), so
+    `tsc --noEmit -p tsconfig.json` ran on both states: **1 error before, 1 after**, the same
+    pre-existing one, none on a changed line. `indexnow-ping.mjs --dry-run` on the changed set
+    submits 55 URLs, correctly: `astro.config.mjs` and `src/content.config.ts` are template-wide
+    and an event file is whole-site by design. The 11 outbound warnings are the sandbox egress
+    policy.
+  - **Inspected in headless Chromium** at 375px and 1280px on `/`, `/events/` and all five event
+    pages - 14 configurations: **0px horizontal overflow everywhere**, one `h1` each, every
+    JSON-LD block parses, correct canonicals, no `robots` meta on any of them, zero page errors.
+    Screenshot comparison was unnecessary and is not claimed as evidence: the built HTML for all
+    63 pages is byte-identical to the baseline, which is a stronger statement than two images
+    matching.
+  - **No event fact was read or changed.** `luma.com` answers 403 on CONNECT from this sandbox,
+    so the three Luma pages could not be checked; no date, venue, price, capacity or availability
+    was touched anywhere.
+  - **Production state from the Actions API.** CI run 273 and Deploy run 285 both success on all
+    jobs for `a1402f0`, the current `main` HEAD, finished 13:17 UTC, nothing queued or in
+    progress. `oxfordagentic.com` answers 403 on CONNECT from here, so `build.txt` could not be
+    read; production state is taken from the runner instead, as on the last three cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 Aug baseline.
+  - **GEO: four open buyer questions, none cited, plus the coverage measurement repeated - still
+    3 of 55 URLs, the same three.** The sharpest result is the brand-and-date query: asked for
+    this bootcamp by name, in November, at Worcester College, the engine said it *"couldn't
+    confirm a November 2026 date"* and *"the event may not have one"*, answering from Cohort 2's
+    and Cohort 1's expired Luma pages and allai.events' July listing, while
+    `luma.com/oxfordagentic3` - the page that sells 19 November - did not appear at all. It
+    attributed the November dates it found to Cambridge Judge and to Saïd's online programme.
+    Eighteenth consecutive reading of the stale-listing harm and the most commercially expensive.
+    **Recorded on the review list.** Better news: the engine now reads *"Cohort 3 on Thursday, 19
+    November 2026 at Worcester College"* correctly off the homepage, where this morning it put
+    the next cohort at 21 October - the 14:00 change working - though the same answer still calls
+    21 October "only two days away", which dates part of its cached copy to about 19 October.
+  - **One on-site hypothesis tested and ruled out, which is why this cycle shipped a sitemap fix
+    and not a linking one.** If the engine holds three pages, those three are its only route into
+    the other 52, so what they link to would decide what gets found. Measured on the built
+    output: all three link to `/events/`, **both** upcoming event pages, `/bootcamps/` and all
+    three programme pages. The links are already there; internal linking is not starving
+    discovery.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the second cycle
+    running.** Four declines. *Agentic workflow vs automation* fails both tests - ElevenLabs,
+    MindStudio, NetSuite, Dataiku, every result a platform vendor on its own product, and the
+    searcher is defining a term, not booking a day. *Bring your own task* is winnable but
+    **already answered**: the restricted probe shows the site answers it well when reachable, so
+    a guide would restate ranking pages. *Second brain for AI* falls to the standing decision
+    that Second Brain's constraint is demand, not ranking. The brand-and-date query is coverage,
+    not content. Not a Q&A refresh either - no probe found a question the site fails to answer on
+    a page the engine holds.
+  - **One new backlog item (44)**, loop-actionable but deliberately not folded in: the homepage
+    is the one page an engine demonstrably re-reads and it carries no `lastmod` at all.
 
 - **2026-10-23 (14:00 local cycle) - the engine holds three of this site's 55 pages, one of them
   is the homepage, and the homepage published nothing a machine could read about what it sells.**

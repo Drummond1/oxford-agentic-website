@@ -8,6 +8,7 @@ status: upcoming
 # 26 November is GMT, hence +00:00.
 startDate: "2026-11-26T09:00:00+00:00"
 endDate: "2026-11-26T17:00:00+00:00"
+updatedDate: "2026-10-18T08:23:27+00:00"
 venue:
   name: Worcester College
   street: Walton Street

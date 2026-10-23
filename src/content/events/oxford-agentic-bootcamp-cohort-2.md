@@ -10,6 +10,7 @@ cohort: Cohort 2
 status: past
 startDate: "2026-09-16T09:00:00+01:00"
 endDate: "2026-09-16T17:00:00+01:00"
+updatedDate: "2026-10-18T08:23:27+00:00"
 venue:
   name: Worcester College
   street: Walton Street

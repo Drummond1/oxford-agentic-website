@@ -11,6 +11,7 @@ cohort: Cohort 1
 status: past
 startDate: "2026-10-21T09:00:00+01:00"
 endDate: "2026-10-21T17:00:00+01:00"
+updatedDate: "2026-10-21T19:11:17+00:00"
 venue:
   name: Pitt Rivers Museum
   street: South Parks Road

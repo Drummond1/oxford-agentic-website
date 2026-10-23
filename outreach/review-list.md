@@ -11,6 +11,36 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The clearest commercial cost of the stale Luma listings yet, from a buyer who already knows
+  the product name.** Found 23 Oct 2026 (20:00 cycle). Nothing to contact - this is evidence for
+  two items already on the list, not a new lead.
+  - **The query was "Oxford Agentic Bootcamp November 2026 Worcester College book a place".**
+    That is a buyer with the brand, the month and the venue in hand. The engine answered *"I
+    couldn't confirm a November 2026 date or a Worcester College booking for the Oxford Agentic
+    Bootcamp"* and closed on *"If it doesn't show November 2026, the event may not have one."*
+  - **What it answered from.** `luma.com/oxfordagentic2` (Cohort 2, which **ran** on 16
+    September), `luma.com/k7c2rm5s` (Cohort 1, St Anne's, **July**) and allai.events (21 July
+    2026, "tickets from $275"). It then volunteered the venue contradiction between the two
+    stale pages, and attributed the November dates it did find to **Cambridge Judge Business
+    School** and to Saïd's **online** programme.
+  - **`luma.com/oxfordagentic3` - the page that actually sells 19 November - did not appear at
+    all.** So this is not only a site-coverage problem: the engine holds two of this brand's
+    three Luma pages and neither is the live one. Worth one minute of Drummond's time on Luma to
+    check whether the Cohort 1 and Cohort 2 pages can point at the current event, or at the
+    calendar, now that both days have run. That is on Luma, not on the site, and the loop will
+    not touch anyone's event pages.
+  - **It sharpens the two open items rather than adding a third.** Backlog 2 (submit
+    `sitemap-index.xml` and request indexing) stays the highest-value thing on this list. Backlog
+    2b/5 (a third-party identity, LinkedIn Company Page) is what would let an engine corroborate
+    the entity from somewhere other than two expired Luma pages.
+  - **One on-site hypothesis was tested and ruled out this cycle**, which is why nothing was
+    written: the three indexed pages were checked for whether they link onward to the pages the
+    engine could not produce. All three link to `/events/`, both upcoming event pages,
+    `/bootcamps/` and all three programme pages. The internal links are already there.
+  - **Caveat.** One engine, one day, through a sandboxed web search. `luma.com` is unreachable
+    from the sandbox (403 on CONNECT), so the Luma pages' current state was not read - only what
+    the engine reported of them.
+
 - **Correction to the entry below, and a sharper version of it: the site IS in this engine's
   index. Three of its 55 URLs are.** Found 23 Oct 2026 (14:00 cycle). Nothing to contact; this
   refines the diagnosis the rest of the list sits under.

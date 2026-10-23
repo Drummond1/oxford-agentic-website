@@ -91,6 +91,24 @@ const events = defineCollection({
       status: z.enum(['upcoming', 'soldout', 'past', 'cancelled']),
       startDate: isoDateTime,
       endDate: isoDateTime,
+      /**
+       * When this file's content last changed - the sitemap's `lastmod` for
+       * this page, and nothing else. No template reads it, so moving it
+       * changes no visible copy.
+       *
+       * Required, as it is on guides and programmes, because the fallback it
+       * replaces was silently false. `contentLastmod()` in `astro.config.mjs`
+       * used to fall back to the file's mtime, and git does not record mtimes:
+       * CI clones fresh, so every build stamped all five event pages with the
+       * build time. Measured 23 Oct 2026 - the five event URLs claimed
+       * `lastmod` seconds old on a build that changed nothing, on every push
+       * AND on the daily scheduled redeploy. A `lastmod` that is always now is
+       * the pattern that gets the signal discarded for a whole sitemap, and
+       * these are the five URLs carrying the dates buyers search for.
+       *
+       * Bump it whenever you edit this file, exactly as on a guide.
+       */
+      updatedDate: isoDateTime,
       venue,
       /**
        * Luma's internal event id (evt-…), used by the embed iframe.
