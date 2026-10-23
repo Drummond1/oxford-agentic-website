@@ -1143,3 +1143,20 @@ roughly 13 October.
 `seo-data/` contains no CSV or TSV export at all, so nothing newer than the 13 October
 reading exists. Nothing estimated. The 12:50 reading on 15 October stands as the latest
 data, still through roughly 13 October.
+
+## Update - 23 October 2026, 01:05 BST
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud` reports
+"No credentialed accounts", there is no Google credential anywhere in the environment, and
+`seo-data/` holds no CSV or TSV export at all, so nothing newer than the 13 October reading
+exists. Nothing estimated. The 12:50 reading on 15 October stands as the latest data, still
+through roughly 13 October.
+
+Worth recording against that reading, because this cycle acted on the page it describes:
+`/events/` sat at **168 impressions, 1.2% CTR, position 9.7**, and the 13 October verdict
+table closed it as "hub, title already burnt once". **This cycle did not re-open it on CTR**,
+which that standing instruction fences off until the named query share or the impression
+volume moves. It changed the page's **meta description**, which is a different field from the
+title, on GEO evidence gathered the same night: the page is titled "AI bootcamp dates in
+Oxford" and its description named no date, while the sixteenth consecutive probe watched an
+engine answer our own date question off a third party's July listing.

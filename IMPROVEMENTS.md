@@ -548,6 +548,88 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-23 (02:00 local cycle) - the page titled "AI bootcamp dates in Oxford" had no
+  date in its description. The one field a searcher reads before clicking, and the one an
+  answer engine quotes most readily, said only that dates exist somewhere inside.**
+  - **The fault.** `/events/` is the page built to answer "when is the next cohort?". Its meta
+    description read *"AI bootcamps and events in Oxford from Oxford Agentic - upcoming cohorts
+    open for registration, and past cohorts with their outcomes."* That is true and it names no
+    date, on the one page of the site whose entire content is dates. The same string fed
+    `og:description`, `twitter:description` and the `WebPage` node's `description`, so four
+    surfaces promised dates and gave none.
+  - **Why it was worth the cycle.** The date question was re-run verbatim tonight, as backlog
+    40's own test asks, 36 hours after the `/events/` structured-data fix. It came back
+    **unchanged**: *"I couldn't find a November 2026 date for the Oxford Agentic Bootcamp
+    itself"*, allai.events's 21 July 2026, both Luma pages with *"Neither snippet shows a
+    date"*, and the St Anne's-versus-Worcester contradiction again. **Sixteenth consecutive
+    reading of the stale-listing harm.** The site publishes 19 and 26 November 2026 in the
+    header and footer of all 63 pages, on five cards on this very page and, since yesterday, in
+    this page's `ItemList`. The field most often lifted into a snippet or an answer was the one
+    place it did not.
+  - **Not a CTR re-opening, and the distinction matters.** The 13 October verdict table closed
+    `/events/` as "hub, title already burnt once" at 168 impressions, 1.2% CTR, position 9.7,
+    under a standing instruction not to re-open a page on CTR until the named query share or
+    the volume moves. Neither has, Search Console is unavailable, and **the title was not
+    touched**. The description is a different field, carries no ranking risk, and the reason
+    for changing it is tonight's GEO evidence rather than that table.
+  - **The change, one file, and derived rather than written.** `src/pages/events/index.astro`
+    builds the description from `upcoming`, which it already had in scope. It now reads *"The
+    next AI bootcamps in Oxford are on 19 November 2026 and 26 November 2026. Every Oxford
+    Agentic cohort, upcoming and past, with its date and venue."* (150 characters.) A cohort
+    leaves that sentence when its day passes and joins it when one is added, so it cannot go
+    stale the way a typed date does - the same reason the header CTA and the footer are derived.
+    Singular and plural are both handled, three dates is the cap, the closing sentence is
+    dropped if the pair would pass 160, and an empty upcoming list falls back to a dateless
+    line. **No new fact is asserted:** both dates are already published on this page, in its
+    JSON-LD and on every other page of the site.
+  - **Measured, whole-site, before against after.** Exactly **one** file in `dist/` differs
+    across all 63 pages, and inside it exactly four fields: `description`, `og:description`,
+    `twitter:description` and `WebPage.description`. **The visible page is byte-identical**, as
+    are the sitemap (so no `lastmod` churn), `llms.txt`, `llms-full.txt`, every canonical and
+    every other page. No content file was touched, no copy written, no `updatedDate` moved.
+  - **Checks:** `npm ci` then `npm run build` clean before and after - 63 pages, **3,094**
+    internal links resolve, schema valid, **5 Event and 9 FAQPage nodes**, titles and
+    descriptions unique, no SEO warnings (the new string is 150 against the 160 limit).
+    `check:flags` passes both the all-on and all-off builds. `indexnow-ping.mjs --dry-run` on
+    the changed file submits **1 URL**, `/events/`, which is exactly the one page whose output
+    moved - the static-page branch doing what the 20:00 cycle rebuilt it to do.
+  - **Inspected in headless Chromium at 375 and 1280px** on `/events/`, the homepage and the
+    Cohort 3 page - 6 configurations: 0px horizontal overflow in every one, one h1 each, every
+    JSON-LD block parses, correct canonical, no image without alt text, zero page errors, and
+    `/events/` renders all five cards at both widths. Screenshot read at 375px.
+  - **GEO: five probes, none cited** - four new questions and the date re-run. Three were
+    declined on the topic rule and the reasons are in `seo-data/geo-citations.md`: small
+    business owners is **not converting** (chambers of commerce and funded sessions, one at
+    £44); measuring time saved is **not winnable** (Salesforce, Microsoft and a vendor hold the
+    page on their own subject); and in-house-versus-cohort is **selection, not absence** - every
+    cited source is a training vendor selling one of the two answers, the engine said so itself,
+    and `in-house-ai-day-or-send-people-to-a-cohort` is already the balanced page for it. Fifth
+    consecutive clean sweep whose misses are discovery rather than content.
+  - **Backlog 40 stays open and untaken.** Its test was to re-probe once `/events/` had been
+    recrawled. The re-probe returned no page of ours at all, which measures the engine's index
+    rather than the fix, and 36 hours is a recrawl interval rather than a verdict. Ask again in
+    a few days.
+  - **Off-page: no new lead.** Everything recurring tonight - allai.events, learnersink.com, the
+    two retired Luma pages - is already open on `outreach/review-list.md`, so nothing was
+    duplicated. `createwith.com` was looked at and **not added**: it published one Belfast event
+    under Belfast, Derby and generic city URLs, which is the doorway pattern the rules forbid.
+    Nothing contacted, nothing submitted, no account made.
+  - **Production state came from the Actions API:** run **280 success** on `218ea1e` at 19:13
+    UTC on 22 Oct, nothing queued or in progress. `oxfordagentic.com` answers **403 on CONNECT**
+    from the sandbox and does not resolve through the fetch tool either, so `build.txt` could
+    not be read, as on every cycle since late September. Working tree clean and local `main`
+    level with `origin/main` before any edit.
+  - **Search Console: unavailable from the cloud** (`gcloud` reports no credentialed accounts,
+    no export in `seo-data/` newer than the 13 October reading).
+  - **Allowances:** no new guide - **2 of 3** this week (19 and 20 October) and today's unspent.
+    Not a Q&A refresh: no question was added anywhere, and the one candidate the probes raised
+    was declined because the page that answers it already does, in prose, in a balanced way.
+  - **The standing prompt's event facts are stale, fifth cycle running.** It names Cohort 3 as
+    15 October and the Second Brain Bootcamp as upcoming on 21 October, where the repo has
+    **Cohort 3 on 19 November**, the **Second Brain Cohort 1 already run**, and a **Coding
+    Bootcamp on 26 November** it does not list at all. Both of its KNOWN CANDIDATES are closed:
+    the `src/lib/home.ts` IndexNow mapping is correct, and the past-tense sweeps are done.
+
 - **2026-10-22 (20:00 local cycle) - the loop's own indexing lever was telling the engines
   about three pages when sixty-one had changed. Every cohort date, venue and past-tense sweep
   this month went out with fifty-eight changed pages unannounced.**

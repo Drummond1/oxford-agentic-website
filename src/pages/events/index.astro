@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import EventCard from '../../components/EventCard.astro';
 import config from '../../../site.config';
-import { absoluteUrl, createRhythm, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
+import { absoluteUrl, createRhythm, formatDate, getEventsForIndex, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 import { collectionPageSchema, eventListingItem } from '../../lib/schema';
 
@@ -13,11 +13,41 @@ const byId = new Map(programmes.map((p) => [p.id, p]));
 
 const rhythm = createRhythm('cream');
 const bands = { upcoming: rhythm.next(), past: past.length > 0 ? rhythm.next() : null };
+
+/*
+ * The meta description names the upcoming dates, and derives them rather than
+ * stating them.
+ *
+ * This is the page titled "AI bootcamp dates in Oxford". Its description named
+ * no date - "upcoming cohorts open for registration, and past cohorts with
+ * their outcomes" - so a searcher who asked for dates was shown a snippet
+ * promising that dates exist somewhere inside. The same field is the one an
+ * answer engine quotes most readily, and the dates are already published in the
+ * header and footer of every page on the site, so nothing new is asserted here.
+ *
+ * Derived from `upcoming`, which is why it cannot go stale the way a written
+ * date does: a cohort leaves the sentence when its day passes and joins it when
+ * one is added. Capped at three dates, and the second sentence is dropped if
+ * the pair would pass the 160 characters a meta description gets.
+ */
+const nextDates = upcoming
+  .slice(0, 3)
+  .map((event) => formatDate(event.data.startDate, { weekday: undefined }));
+const indexLine = `Every ${config.brand.name} cohort, upcoming and past, with its date and venue.`;
+
+let description = `AI bootcamps and events in Oxford. ${indexLine}`;
+if (nextDates.length > 0) {
+  const dateLine =
+    nextDates.length === 1
+      ? `The next AI bootcamp in Oxford is on ${nextDates[0]}.`
+      : `The next AI bootcamps in Oxford are on ${new Intl.ListFormat('en-GB', { type: 'conjunction' }).format(nextDates)}.`;
+  description = `${dateLine} ${indexLine}`.length <= 160 ? `${dateLine} ${indexLine}` : dateLine;
+}
 ---
 
 <Base
   pageTitle="AI bootcamp dates in Oxford"
-  description={`AI bootcamps and events in Oxford from ${config.brand.name} - upcoming cohorts open for registration, and past cohorts with their outcomes.`}
+  description={description}
   path={paths.events()}
   ogImage={ogPathFor(paths.events())}
   schemaNodes={[

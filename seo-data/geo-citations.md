@@ -5,6 +5,56 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-23 (02:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions. Four are new to this log - a buyer segment never asked
+about, and three decision-stage questions taken from guides the site already publishes - and
+the fifth is the date question re-run verbatim, as backlog 40's own test asks, now that the
+`/events/` structured-data fix has been live for 36 hours.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on one day AI bootcamp for small business owners UK | **No** | nibusinessinfo.co.uk, northernirelandchamber.com, createwith.com (x3, same event under three city URLs), redcarcleveland.co.uk, `luma.com/1swa5ccx`, ws.tusculum.edu |
+| how do I know if my AI agent workflow is actually saving time rather than just feeling faster | **No** | salesforce.com (x3), microsoft.github.io, gaas.it.com (x2), asianefficiency.com, glean.com, agents.siddhantkhare.com |
+| should I run an in-house AI training day or send my team to a cohort course | **No** | disco.co, aitraining2u.com, ivee.jobs, metana.io, bigmachine.io, revou.co, guvi.in, pertamapartners.com, qwasar.io |
+| what do you actually leave with after a one day hands-on agentic AI workshop | **No** | marketplace.microsoft.com, ajiet.edu.in, `luma.com/5lvovkgl`, mits.ac.in (x2), datasciencedojo.com (x2), `luma.com/NU-SV-AI_ProductTeams`, manus.im (x2) |
+| when is the next Oxford Agentic Bootcamp cohort date November 2026 (re-run) | **No** | sbs.ox.ac.uk (x2), `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, learnersink.com (x2), allai.events, groups.google.com (x2), maven.com |
+
+**Reading.**
+
+- **The date re-run is unchanged, word for word in substance, 36 hours after the `/events/`
+  fix.** *"I couldn't find a November 2026 date for the Oxford Agentic Bootcamp itself"*,
+  allai.events's **21 Jul 2026**, the two Luma pages with *"Neither snippet shows a date"* and
+  *"5 Spots Remaining"*, the same St Anne's-versus-Worcester venue contradiction, and
+  *"check the Luma pages or the organisers' listings directly"*. The only November 2026 date
+  it found was Saïd Business School's online programme. **Sixteenth consecutive reading of the
+  stale-listing harm.** This does not yet answer backlog 40's question: 36 hours is a recrawl
+  interval, not a verdict, and the engine returned no page of ours at all, which measures its
+  index rather than the fix. **Backlog 40 stays open and untaken.**
+- **What it did settle is where this cycle went.** The page built to answer that exact question
+  is titled "AI bootcamp dates in Oxford" and its meta description - the field an engine quotes
+  most readily, and the snippet a searcher reads - **named no date**. Acted on this cycle.
+- **Three declines, each on the topic rule rather than on effort.**
+  - *Small business owners* is **not converting**. The field is chambers of commerce, a council
+    scheme and publicly funded sessions, one of them priced at £44. That is a different buyer
+    from the one who books a day in an Oxford college.
+  - *Measuring time saved* is **not winnable**. Salesforce, Microsoft and a managed-service
+    vendor hold the first page on their own subject, which is the institutional-publisher case
+    the rule names. The site publishes `is-your-ai-workflow-saving-time-or-just-effort` and the
+    engine's own answer reaches the same conclusions, so there is nothing to write.
+  - *In-house versus a cohort* is the interesting miss and still **not a content gap**. Every
+    cited source is a training vendor selling one of the two answers - the engine said so itself,
+    *"most come from training vendors with a stake in the answer"* - and most are not UK.
+    `in-house-ai-day-or-send-people-to-a-cohort` is the page for this question, it is balanced,
+    and it names the test that settles it. Selection, not absence. **Nothing was written.**
+- **"What do you leave with" is the buyer-stage question this site answers best and was not
+  asked to.** The engine's own bottom line was *"check the listing for a deliverable"*, and the
+  two things it could cite were a university badge and a vendor's platform practice. Both
+  bookable days publish exactly that on the page - a live website and a working prototype, or a
+  workflow running against your own task. Again discovery rather than content, which is now the
+  **fifth consecutive clean sweep** of probes saying so.
+
 ## 2026-10-22 (20:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
