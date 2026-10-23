@@ -13,7 +13,7 @@ import EventCard from './EventCard.astro';
 import Faq from './Faq.astro';
 import GoldDivider from './GoldDivider.astro';
 import NewsletterForm from './NewsletterForm.astro';
-import { createRhythm, getEventsForIndex, getPhotos, getProgrammes, getTestimonials, paths, showSection } from '../lib/site';
+import { createRhythm, getHomeUpcoming, getPhotos, getProgrammes, getTestimonials, paths, showSection } from '../lib/site';
 import { homeFaqs } from '../lib/home';
 
 interface Props {
@@ -23,7 +23,6 @@ interface Props {
 
 const { withPhotos = true } = Astro.props;
 
-const { upcoming } = await getEventsForIndex();
 const programmes = await getProgrammes();
 const testimonials = await getTestimonials();
 
@@ -37,7 +36,7 @@ const roomPhotos = ['cohort-1-room-and-cohort', 'cohort-1-flipchart-group', 'coh
   .filter((p) => p !== undefined);
 const byId = new Map(programmes.map((p) => [p.id, p]));
 
-const nextThree = upcoming.slice(0, 3);
+const nextThree = await getHomeUpcoming();
 
 // Backgrounds are assigned by position among the sections that actually render,
 // so switching any of them off can never leave two same-coloured bands touching.

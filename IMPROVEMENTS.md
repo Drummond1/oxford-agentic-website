@@ -512,8 +512,13 @@ Status: `todo` · `blocked` (why) · `doing`
     is no `ItemList` at all and a line in this ledger saying so, which is why it is a backlog
     item rather than a cycle.
 
-40. `todo` (loop-actionable, found 22 Oct 2026 in the 14:00 cycle) - **the homepage publishes
-    no machine-readable event data.** Its JSON-LD is `Organization`, `WebSite`, `WebPage`,
+40. `done` 23 Oct 2026 (14:00 cycle) - **the homepage publishes no machine-readable event
+    data.** Its own test - re-probe once `/events/` has been recrawled - was answered from the
+    other direction. A search restricted to the domain returns the same three URLs whatever is
+    asked (`/` and two guides), so `/events/` is not in the index to be re-read, which is why
+    its 21 Oct fix moved nothing, and the homepage is the only page the engine holds that could
+    answer a date question. It now carries an `EducationEvent` per upcoming cohort under the
+    `@id` that cohort's own page publishes. Original diagnosis kept below. Its JSON-LD is `Organization`, `WebSite`, `WebPage`,
     `Person`, `FAQPage` and nothing else, while the page itself - and the header and footer of
     all 63 pages - names the next cohort and its date ("Next Bootcamp - 19 Nov 2026"). It is
     the highest-ranking page the site has, and on the two probes of 22 Oct an engine asked for
@@ -577,6 +582,112 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-23 (14:00 local cycle) - the engine holds three of this site's 55 pages, one of them
+  is the homepage, and the homepage published nothing a machine could read about what it sells.**
+  - **The measurement, which is the point of the cycle.** Five consecutive sweeps had logged
+    "discovery, not content", and the 08:00 cycle concluded from a domain-anchored query that
+    "on this engine the site is not retrievable even by its own name". That was the right
+    instrument pointed slightly wrong. This cycle **restricted** the search to
+    `oxfordagentic.com` and asked three unrelated things - the bootcamp's proposition, November
+    dates at Worcester College, and the Coding Bootcamp for non-developers. **All three returned
+    the same three URLs**: `/`, `/guides/after-the-ai-executive-programme/` and
+    `/guides/claude-cowork-claude-code-or-codex/`. Never an event page, a programme page,
+    `/events/`, `/bootcamps/` or any of the other 30 guides, even when the query named
+    registering and the venue outright. The site is **in** the index. **Three of 55 URLs are.**
+  - **What that settles.** It is coverage, not absence, and it explains the five sweeps: an open
+    buyer question can only be answered from a page the engine holds, and the only one it holds
+    that could answer most of them is the homepage. It also closes **backlog 40** from the
+    direction the item did not anticipate. Its own test was "re-probe once `/events/` has been
+    recrawled - if the index fix moves anything, that is the evidence". `/events/` is not in the
+    index, so its 21 Oct `ItemList` could never have moved anything, and waiting another cycle
+    for it would have measured nothing again. The homepage is held. That is where the data goes.
+  - **And the homepage is being read imperfectly, which is the second half of the argument.**
+    Restricted to the domain and asked about the bootcamp, the engine answered *"The next listed
+    cohort is on 21 October 2026 at the Pitt Rivers Museum"* and attributed that day to the
+    Agentic Bootcamp. The 21 October day is the **Second Brain** Bootcamp and it has run; the
+    homepage has listed 19 and 26 November since the 21 Oct past-tense sweep. A stale copy of
+    the one page it holds, with no dates or statuses on it a machine could prefer to the prose.
+  - **The change, in three parts.**
+    - `src/pages/index.astro` now emits an `EducationEvent` node per upcoming cohort into the
+      homepage graph - two today, 19 and 26 November - each from `eventListingItem` under the
+      `@id` its own event page publishes, so a consumer holding both describes one event rather
+      than two. The graph goes from `Organization, WebSite, WebPage, FAQPage` to that plus two
+      events, and the events are tied in by `organizer: {@id: #organization}` rather than
+      sitting loose.
+    - `getHomeUpcoming()` in `src/lib/site.ts` is the single source of the capped set. The
+      homepage now publishes it twice - as the "Next in Oxford" cards and as the JSON-LD - and
+      structured data has to describe what the page shows, so a second hand-written
+      `slice(0, 3)` was exactly how the two would have come to disagree. `HomeSections.astro`
+      takes its `nextThree` from it.
+    - `eventListingItem` gains `image` and `offers`, from a new shared `eventOffer` helper that
+      `eventSchema` now uses too. **This is a latent defect found by the change rather than
+      looked for:** the project's schema checker requires Google's nine Event fields, the
+      listing node carried seven, and it passed every build since 22 Oct because the checker
+      reads top-level `@graph` nodes and the node was nested inside `/events/`'s `ItemList`.
+      Emitting it top-level made the rule fire. Honouring it beat nesting the homepage's copy
+      to evade it: an Event without `image` and `offers` is not eligible for an event rich
+      result anyway, and both are derived, not new - the image is the cohort's own OG card, the
+      Offer is the price-free one its page already publishes. `/events/`'s five nested items
+      gained the same two fields, which is the same defect fixed where it was written.
+  - **No new fact, checked rather than asserted.** Every field of both homepage nodes was
+    compared against the canonical node on the matching event page: **0 disagreements** across
+    13 fields each. The five fields the summary omits (`inLanguage`, `performer`, `sameAs`,
+    `subEvent`, `superEvent`) are omissions, not contradictions. Past cohorts' offers carry **no
+    `availability`** - the 22 Oct rule that a day which has simply run is not "sold out" moved
+    into `eventOffer` unchanged and still holds, verified on all five.
+  - **Measured whole-site.** Exactly **two** files in `dist` differ across all 63 pages, `/` and
+    `/events/`, and in both the HTML outside the JSON-LD block is **byte-identical** - 48,807
+    and 31,581 bytes before and after. No content file touched, no copy written, no
+    `updatedDate` moved, so the sitemap carries no new `lastmod`. `llms.txt`, `llms-full.txt`
+    and every canonical are unchanged. No page anywhere has a duplicate `@id`.
+  - **Checks.** `npm ci` then `npm run build` clean before and after - 61 pages built, 63
+    checked, 3,094 internal links resolve, titles and descriptions unique, no SEO warnings,
+    schema valid at **7 Event nodes** (5 + the homepage's 2) and 9 FAQPage nodes. `check:flags`
+    passes both the all-on and all-off builds. `astro check` could not run - `@astrojs/check` is
+    not installed and `npx` wanted to fetch it - so `tsc --noEmit --strict` ran on both changed
+    lib files: **17 errors before, 17 after**, the same pre-existing implicit-`any` callbacks,
+    none on a changed line. `indexnow-ping.mjs --dry-run` submits 55 URLs, which **over-submits
+    by design**: `schema.ts` and `site.ts` are template-wide in the script's map where this
+    change moves two pages. Known, cheap, and not worth a second change in the same cycle.
+  - **Inspected in headless Chromium** at 375px and 1280px on `/`, `/events/` and both bookable
+    event pages, served from a local static server over the built output: **0px horizontal
+    overflow in all 8 configurations**, one `h1` each, every JSON-LD block parses, correct
+    canonicals, no `robots` meta on any of them, both November dates visible on `/` and
+    `/events/` at both widths, and the homepage reporting **2** top-level event nodes where the
+    baseline reported 0. The only failing requests are Google Tag Manager and the two Luma
+    embeds, blocked by the sandbox egress policy, and identical in the baseline run.
+    Screenshots were byte-identical before and after at both widths on all four pages - once
+    animations were disabled. Worth recording why: the first comparison showed 7 of 8 differing,
+    and two runs of the **same** build then differed the same way, which is the reveal and
+    micro-interaction animations, not the change. With `reducedMotion` and animations off the
+    run is deterministic, and then before and after match exactly.
+  - **Production state from the Actions API.** Run 284 (`c83bde0`, the current `main` HEAD)
+    success on all three jobs, nothing queued or in progress. The IndexNow job's own log
+    confirms what this sandbox cannot see: it fetched `https://oxfordagentic.com/build.txt`,
+    matched the pushed SHA, and reported `submitted 55 URL(s), status 200`. So **production is
+    live and current at `c83bde0`**, verified from the runner rather than from here -
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not resolve.
+  - **Off-page.** One new entry, correcting the one below it: the coverage measurement above,
+    with what follows from it. Backlog 2 stays the highest-value open item and now has a target
+    rather than a hope - submitting `sitemap-index.xml` offers 55 URLs to a crawler that has
+    found 3, and the three to Request-index by name are `/events/`, the Cohort 3 page and the
+    Coding Bootcamp page, because those are the three the engine was asked for and could not
+    produce. It also leaves a repeatable measurement: restrict a search to the domain, ask three
+    unrelated things, count distinct URLs. Today that is 3. Nothing contacted, nothing
+    submitted, no account made.
+  - **One product gap recorded, not written.** Asked for a UK one-day in-person Claude Code
+    course for non-developers, the engine answered *"Nothing I found lists a future UK
+    in-person, one-day Claude Code course for non-developers"*. The Coding Bootcamp on 26
+    November is exactly that. Not a content gap - the page exists - which is the coverage
+    finding again, on the newest product line.
+  - **No guide: 2 of 3 this week, and today's allowance deliberately unspent.** Two declines on
+    the topic rule. *Choosing the first task to automate* is **not winnable** - Salesforce's
+    Trailhead holds four of the first ten results on its own subject, with G2, Bardeen and Sista
+    around it, and `how-to-choose-your-first-agentic-task` is already the site's page for it.
+    *Hands-on AI for marketing teams* is **winnable but weakly converting** - every result is a
+    provider selling the same day, so the searcher is comparing vendors on price and format, not
+    looking for a question nobody answers. Not a Q&A refresh either.
 
 - **2026-10-23 (09:00 local cycle) - every page printed the one contact address the site has as
   `hello@oxfordagentic.co` with a lone `m` on the line beneath it, at every desktop width.**

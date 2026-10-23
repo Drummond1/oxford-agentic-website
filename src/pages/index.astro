@@ -3,8 +3,49 @@ import Base from '../layouts/Base.astro';
 import HomeSections from '../components/HomeSections.astro';
 import config from '../../site.config';
 import { homeFaqs } from '../lib/home';
-import { faqSchema } from '../lib/schema';
+import { eventListingItem, faqSchema } from '../lib/schema';
+import { absoluteUrl, getHomeUpcoming, paths } from '../lib/site';
 import { ogPathFor } from '../lib/og';
+
+/*
+ * The homepage publishes the cohorts it shows, machine-readably.
+ *
+ * Its graph was Organization, WebSite, WebPage and FAQPage - no event data at
+ * all - while the second section of the page, directly under the hero, is the
+ * dated "Next in Oxford" list, the hero's own button reads "Book the next
+ * cohort", and the header and footer of all 63 pages name the next date. The
+ * one page carrying the booking promise said nothing a machine could read
+ * about what is being booked.
+ *
+ * This was backlog 40, and it waited two cycles for its own test: re-probe
+ * once `/events/` had been recrawled, because if the same structured data did
+ * nothing there it would do nothing here. Today's probes answered it from the
+ * other direction. Restricting a search to this domain returns the SAME three
+ * URLs whatever is asked - `/`, `/guides/claude-cowork-claude-code-or-codex/`
+ * and `/guides/after-the-ai-executive-programme/` - and every event fact the
+ * engine quoted, for both November cohorts and for the Coding Bootcamp, it
+ * took off the homepage. `/events/` is not in that index, which is why its fix
+ * could not move anything. The homepage is. So the structured data belongs
+ * where a page is actually held.
+ *
+ * It is also where the reading went wrong: asked for the bootcamp, the engine
+ * called the passed 21 October Second Brain day at the Pitt Rivers Museum "the
+ * next listed cohort" and attributed it to the Agentic Bootcamp. A dated
+ * `EducationEvent` per cohort, with its own `eventStatus`, is the thing that
+ * contradicts that; prose alone could not.
+ *
+ * Nothing new is asserted. Each node is `eventListingItem`, under the same
+ * `@id` the cohort's own page publishes, so a consumer holding both describes
+ * one event rather than two, and it is the same set the cards below render -
+ * from the same helper, so the markup cannot come to describe a cohort the
+ * page does not show. `/home-photos/` deliberately does not get these: it is
+ * noindex, and a page not offered to crawlers as an entity should not publish
+ * entities.
+ */
+const upcoming = await getHomeUpcoming();
+const eventNodes = upcoming.map((event) =>
+  eventListingItem(event, absoluteUrl(ogPathFor(paths.event(event.data.slug)))),
+);
 ---
 
 <Base
@@ -13,7 +54,7 @@ import { ogPathFor } from '../lib/og';
   description={config.brand.description}
   path="/"
   ogImage={ogPathFor('/')}
-  schemaNodes={[faqSchema(homeFaqs)]}
+  schemaNodes={[faqSchema(homeFaqs), ...eventNodes]}
 >
   {/* Drummond's call (28 Jul): the homepage is the typographic design — ink,
       motif and micro-interactions. The photo variant lives at /home-photos/;

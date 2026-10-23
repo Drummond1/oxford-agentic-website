@@ -61,6 +61,20 @@ export async function getEventsForIndex(now = new Date()) {
   return { upcoming, past };
 }
 
+/**
+ * The upcoming cohorts the homepage shows, capped at three.
+ *
+ * Shared because the homepage now publishes the same set twice: once as the
+ * "Next in Oxford" cards in `HomeSections.astro`, and once as the
+ * `EducationEvent` nodes in its JSON-LD. Structured data has to describe what
+ * the page actually shows, so the two cannot be allowed to drift - a second
+ * hard-coded `slice(0, 3)` is exactly how they would.
+ */
+export async function getHomeUpcoming(now = new Date()) {
+  const { upcoming } = await getEventsForIndex(now);
+  return upcoming.slice(0, 3);
+}
+
 /** The single soonest upcoming event — powers the header CTA. */
 export async function getNextEvent(now = new Date()): Promise<EventEntry | undefined> {
   const { upcoming } = await getEventsForIndex(now);

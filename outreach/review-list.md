@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Correction to the entry below, and a sharper version of it: the site IS in this engine's
+  index. Three of its 55 URLs are.** Found 23 Oct 2026 (14:00 cycle). Nothing to contact; this
+  refines the diagnosis the rest of the list sits under.
+  - **The test.** The 08:00 probe put the domain inside an open query and got "The search didn't
+    return oxfordagentic.com itself", which was read as absence. This cycle **restricted** the
+    search to `oxfordagentic.com` and asked three different things: the bootcamp's proposition,
+    November dates at Worcester College, and the Coding Bootcamp. All three returned **the same
+    three URLs**: `/`, `/guides/after-the-ai-executive-programme/` and
+    `/guides/claude-cowork-claude-code-or-codex/`. No event page, no programme page, no
+    `/events/`, no `/bootcamps/`, none of the other 30 guides - including when the query named
+    registering and the venue outright.
+  - **What it means, and why it is better news than the entry below.** This is coverage, not
+    absence. The engine can retrieve the site; it holds three pages of it. That reframes what
+    the two open items on Drummond's side are actually worth:
+    - **Search Console (backlog 2, two minutes in the UI)** stays the highest-value thing on
+      this list, and now has a measurable target rather than a hope. Submitting
+      `sitemap-index.xml` offers 55 URLs to a crawler that has found 3 of them. Request
+      indexing for `/events/`, the Cohort 3 page and the Coding Bootcamp page specifically -
+      those are the three the engine was asked for by name and could not produce.
+    - **A third-party identity (backlog 2b/5)** is unchanged in value: the `Organization` node
+      still claims no `sameAs`, and the pages that do rank for this entity are other people's.
+  - **It also sets a measurement anyone can repeat.** Restrict a search to the domain, ask three
+    unrelated things, count distinct URLs returned. Today that is 3. If the Search Console
+    submission works, it goes up, and the loop will be able to say so rather than infer it.
+  - **Same caveat as below.** One engine, one day, through a sandboxed web search, and a
+    restricted search is not a crawl report. Google's answer comes from Search Console, which is
+    the item above.
+
 - **The site is not in this engine's index at all, which changes what every other item on this
   list is worth.** Found 23 Oct 2026 (08:00 cycle). Nothing to contact; this is the diagnosis
   the rest of the list sits under.

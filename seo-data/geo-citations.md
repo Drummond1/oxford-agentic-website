@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-23 (14:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four open buyer questions, then **three domain-restricted probes**, which
+are new to this log and which overturn the reading the last five cycles have been working from.
+
+### The four open questions
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day in-person AI bootcamp Oxford November 2026 | **No** | learnersink.com (x2), happeningnext.com, enspire.ox.ac.uk, groups.google.com (x3, OxML), oxford-royale.com (x2), ouess.web.ox.ac.uk |
+| agentic coding bootcamp for non-developers Claude Code UK one day in person | **No** | eventbrite.co.uk, nobledesktop.com, mindstudio.ai (x2), `luma.com/ccmb-11`, `luma.com/pd6uzmef`, `luma.com/b2zl7dnz`, claude101.every.to, tickettailor.com |
+| how do I choose which task to automate first with an AI agent at work | **No** | trailhead.salesforce.com (x4), learn.g2.com, bardeen.ai, sista.ai (x2), dev.to |
+| hands-on AI workflow training for marketing teams UK one day in person | **No** | anicca.co.uk (x3), cademy.io, tikkio.com, brainstation.io, aiawareness.ai (x2), generalassemb.ly |
+
+### The three domain-restricted probes - the finding
+
+The same three queries' subject matter was put again with the search restricted to
+`oxfordagentic.com`. **All three returned the same three URLs, in the same order, whatever was
+asked:**
+
+| Query (restricted to the domain) | URLs returned |
+|---|---|
+| Oxford Agentic Bootcamp hands-on one day agentic AI workflow | `/`, `/guides/after-the-ai-executive-programme/`, `/guides/claude-cowork-claude-code-or-codex/` |
+| next bootcamp dates cohort November 2026 Worcester College register | the same three |
+| agentic coding bootcamp Claude Code non developers | the same three |
+
+**Reading.**
+
+- **The site is in this engine's index. Three of its 55 indexable URLs are.** This corrects,
+  and sharpens, the 08:00 cycle's conclusion that "on this engine the site is not retrievable
+  even by its own name". It is retrievable; the index holds the homepage and two guides, and
+  nothing else. Asked explicitly about registering, about November dates and about Worcester
+  College, the engine never returned `/events/`, `/bootcamps/`, any of the five event pages,
+  any programme page or any of the other 30 guides. It is a **crawl-coverage** problem, not an
+  absence, and it is a better-specified one: the earlier reading pointed only at Search Console
+  and off-page identity, which remain the fix, but it could not say what was missing.
+- **It also explains every "discovery, not content" sweep since 12 Oct.** An open buyer question
+  can only be answered from a page the engine holds, and the only page it holds that could
+  answer most of them is the homepage, which competes badly on a long-tail question. The
+  `/events/` structured-data fix of 21 Oct could not move the date answers because `/events/`
+  is not in the index to be re-read. **Backlog 40's own test is therefore answered, from the
+  other direction, and this cycle acted on it.**
+- **Everything the engine knows about both November cohorts, it reads off the homepage - and it
+  reads it imperfectly.** Restricted to the domain and asked about the bootcamp, it reported
+  *"The next listed cohort is on 21 October 2026 at the Pitt Rivers Museum"* and attributed
+  that day to the Agentic Bootcamp. The 21 October day is the **Second Brain** Bootcamp and it
+  has run; the homepage lists 19 and 26 November and has done since the 21 Oct past-tense
+  sweep. So the engine is holding a stale copy of the one page it has, with no machine-readable
+  dates or statuses on it to settle the question. The second probe, asked directly about
+  November, got both cohorts right off the same page. **Acted on this cycle**: the homepage now
+  carries an `EducationEvent` node per upcoming cohort, with `startDate` and `eventStatus`,
+  under the `@id` its own event page publishes.
+- **Two declines on the topic rule.** *Choosing the first task to automate* is **not winnable**:
+  Salesforce's Trailhead holds four of the first ten results on its own subject, with G2,
+  Bardeen and Sista around it, which is the institutional-and-vendor shape that killed charities
+  on 16 Oct and legal on 22 Oct. The site's `how-to-choose-your-first-agentic-task` is already
+  the page for it. *Marketing teams* is **winnable but crowded and weakly converting**: every
+  result is a provider selling the same day - Anicca, Mangates at 1,195-1,295 pounds, AI
+  Awareness at 1,795-1,995, BrainStation, General Assembly - so it is a price-and-format
+  comparison between vendors rather than a question nobody answers. No vertical page written.
+- **One product gap recorded rather than acted on.** Asked for a UK one-day in-person Claude
+  Code course for non-developers, the engine answered *"Nothing I found lists a future UK
+  in-person, one-day Claude Code course for non-developers"*, having found only a Greenford
+  Saturday that has passed, an Amsterdam day that has passed, and online or self-paced courses.
+  The Coding Bootcamp on 26 November is exactly that day. This is not a content gap - the site
+  publishes the page - it is the coverage finding above, measured on the newest product line.
+
 ## 2026-10-23 (08:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

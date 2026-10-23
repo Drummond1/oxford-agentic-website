@@ -57,7 +57,7 @@ if (nextDates.length > 0) {
       [...upcoming, ...past].map((event) => ({
         name: event.data.title,
         path: paths.event(event.data.slug),
-        item: eventListingItem(event),
+        item: eventListingItem(event, absoluteUrl(ogPathFor(paths.event(event.data.slug)))),
       })),
     ),
   ]}

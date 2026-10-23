@@ -213,6 +213,52 @@ function eventStatusOf(event: EventEntry) {
 }
 
 /**
+ * The price-free Offer every page that describes a cohort publishes.
+ *
+ * `availability` is only ever asserted from a fact somebody authored.
+ *
+ * It used to fall through to SoldOut for every other case, which meant every
+ * past day published a machine-readable "sold out" claim. Two of the three
+ * never made that claim anywhere: nothing on the site says Cohort 1 filled up,
+ * and the Second Brain Cohort 1 file records that nothing about the day is
+ * confirmed. A day that has simply happened is not sold out - schema.org has
+ * no term for "this has run", and SoldOut reads as "it filled up".
+ *
+ * Cohort 2 did sell out, and that fact is not lost: it is published in the
+ * summary and the capsule, so it is inside the node's `description`, in the
+ * words the author chose. What goes is the inference, not the evidence.
+ *
+ * The Offer stays valid without it - `availability` is recommended rather than
+ * required, as `price` is, which is already omitted deliberately (PRD §18).
+ *
+ * No `validFrom`. It used to be `new Date()`, which stamped every build time
+ * into the offer and told search engines tickets had just gone on sale. Luma
+ * publishes no on-sale date for these passes (`valid_start_at` is null), so
+ * they are not date-restricted offers, which is the only case Google asks for
+ * validFrom. Add it back only from a real Luma `valid_start_at`.
+ *
+ * Shared, so the cohort's own page and every page that lists it cannot come to
+ * disagree about whether a day is open - the same reason `eventPlace` and
+ * `eventStatusOf` above are shared.
+ */
+function eventOffer(event: EventEntry, url: string) {
+  const status = effectiveStatus(event);
+  const availability =
+    status === 'soldout'
+      ? 'https://schema.org/SoldOut'
+      : status === 'upcoming'
+        ? 'https://schema.org/InStock'
+        : undefined;
+
+  return {
+    '@type': 'Offer',
+    url,
+    ...(availability ? { availability } : {}),
+    category: 'Paid',
+  };
+}
+
+/**
  * One cohort as the events index lists it: when it is, where it is, and which
  * page is the whole of it.
  *
@@ -226,10 +272,19 @@ function eventStatusOf(event: EventEntry) {
  *
  * The `@id` is the one the cohort's own page already publishes, so a consumer
  * holding both describes one event rather than two. Nothing here is a new fact:
- * every field is on the detail page and on the card. The agenda, the photos, the
- * series and the offer stay on the detail page, which is what the `url` is for.
+ * every field is on the detail page and on the card. The agenda, the photos and
+ * the series stay on the detail page, which is what the `url` is for.
+ *
+ * `image` and `offers` are here because Google requires them on an Event, and
+ * because this node is now also emitted at the top level of the homepage's
+ * graph. Nested inside an `ItemList`, as `/events/` emits it, the project's own
+ * schema checker never reached it - it reads top-level `@graph` nodes - so a
+ * node missing two required fields passed every build since it was written. An
+ * Event without them is not eligible for an event rich result, and both are
+ * derived rather than new: the image is the cohort's own OG card, and the Offer
+ * is the price-free one its page already publishes, from the same helper.
  */
-export function eventListingItem(event: EventEntry) {
+export function eventListingItem(event: EventEntry, ogImage: string) {
   const url = absoluteUrl(paths.event(event.data.slug));
 
   return {
@@ -241,8 +296,10 @@ export function eventListingItem(event: EventEntry) {
     endDate: event.data.endDate.toISOString(),
     eventStatus: eventStatusOf(event),
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    image: [ogImage],
     location: eventPlace(event),
     organizer: { '@id': ORG_ID },
+    offers: eventOffer(event, url),
     url,
   };
 }
@@ -253,33 +310,7 @@ export function eventSchema(
   ogImage: string,
   photos: Array<{ url: string; caption: string }> = [],
 ) {
-  const status = effectiveStatus(event);
   const url = absoluteUrl(paths.event(event.data.slug));
-
-  /*
-   * `availability` is only ever asserted from a fact somebody authored.
-   *
-   * It used to fall through to SoldOut for every other case, which meant every
-   * past day published a machine-readable "sold out" claim. Two of the three
-   * never made that claim anywhere: nothing on the site says Cohort 1 filled up,
-   * and the Second Brain Cohort 1 file records that nothing about the day is
-   * confirmed. A day that has simply happened is not sold out - schema.org has
-   * no term for "this has run", and SoldOut reads as "it filled up".
-   *
-   * Cohort 2 did sell out, and that fact is not lost: it is published in the
-   * summary and the capsule, so it is inside this very node's `description`, in
-   * the words the author chose. What goes is the inference, not the evidence.
-   *
-   * The Offer stays valid without it - `availability` is recommended rather than
-   * required, as `price` is, which is already omitted deliberately (PRD §18).
-   */
-  const availability =
-    status === 'soldout'
-      ? 'https://schema.org/SoldOut'
-      : status === 'upcoming'
-        ? 'https://schema.org/InStock'
-        : undefined;
-
   const eventStatus = eventStatusOf(event);
 
   /*
@@ -374,18 +405,8 @@ export function eventSchema(
     ...(subEvents.length > 0 ? { subEvent: subEvents } : {}),
     ...(event.data.capacity ? { maximumAttendeeCapacity: event.data.capacity } : {}),
     // Price lives on Luma and is deliberately not published here — PRD §18.
-    //
-    // No `validFrom`. It used to be `new Date()`, which stamped every build time
-    // into the offer and told search engines tickets had just gone on sale. Luma
-    // publishes no on-sale date for these passes (`valid_start_at` is null), so
-    // they are not date-restricted offers, which is the only case Google asks
-    // for validFrom. Add it back only from a real Luma `valid_start_at`.
-    offers: {
-      '@type': 'Offer',
-      url,
-      ...(availability ? { availability } : {}),
-      category: 'Paid',
-    },
+    // `eventOffer` above holds the availability and validFrom reasoning.
+    offers: eventOffer(event, url),
   };
 }
 
