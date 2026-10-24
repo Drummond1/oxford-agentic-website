@@ -12,11 +12,10 @@ import {
   getEventsForProgramme,
   getProgrammes,
   getTestimonials,
-  isoDuration,
   paths,
   showSection,
 } from '../../lib/site';
-import { faqSchema } from '../../lib/schema';
+import { courseSchema, faqSchema } from '../../lib/schema';
 import { ogPathFor } from '../../lib/og';
 
 /**
@@ -60,33 +59,6 @@ const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data
  */
 const showNotify = upcoming.length === 0 && showSection('newsletter');
 
-/*
- * Google's course rich result reads the dates, workload and mode off each
- * instance. Built here rather than inline so the property can be omitted
- * entirely when a programme has no scheduled run: `hasCourseInstance: []`
- * claims the course has instances and then supplies none, which is malformed,
- * and the node is still a valid Course without it.
- */
-const courseInstances = upcoming.map((event) => ({
-  '@type': 'CourseInstance',
-  name: event.data.title,
-  url: `${config.brand.domain}${paths.event(event.data.slug)}`,
-  courseMode: 'onsite',
-  // Computed from the published start and end times, never asserted.
-  courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
-  startDate: event.data.startDate.toISOString(),
-  endDate: event.data.endDate.toISOString(),
-  location: {
-    '@type': 'Place',
-    name: event.data.venue.name,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: event.data.venue.city,
-      addressCountry: config.brand.country,
-    },
-  },
-}));
-
 const rhythm = createRhythm('cream');
 const bands = {
   capsule: rhythm.next(),
@@ -106,21 +78,9 @@ const bands = {
   description={data.shortPitch}
   path={path}
   ogImage={ogPathFor(path)}
-  schemaNodes={[
-    {
-      '@type': 'Course',
-      '@id': `${config.brand.domain}${path}#course`,
-      name: data.name,
-      description: data.capsule,
-      url: `${config.brand.domain}${path}`,
-      provider: { '@id': `${config.brand.domain}/#organization` },
-      inLanguage: 'en-GB',
-      teaches: data.outcomes,
-      courseMode: 'onsite',
-      ...(courseInstances.length > 0 ? { hasCourseInstance: courseInstances } : {}),
-    },
-    showFaq ? faqSchema(data.faqs) : null,
-  ]}
+  {/* The Course node is built by the shared helper, because the homepage
+      publishes it too under this same `@id`. */}
+  schemaNodes={[courseSchema(programme, upcoming), showFaq ? faqSchema(data.faqs) : null]}
   breadcrumbs={[
     { name: 'Bootcamps', path: paths.programmes() },
     { name: data.name, path },

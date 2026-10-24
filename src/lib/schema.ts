@@ -1,5 +1,12 @@
 import config from '../../site.config';
-import { absoluteUrl, effectiveStatus, paths, type EventEntry, type ProgrammeEntry } from './site';
+import {
+  absoluteUrl,
+  effectiveStatus,
+  isoDuration,
+  paths,
+  type EventEntry,
+  type ProgrammeEntry,
+} from './site';
 
 /**
  * Structured data — PRD §12.
@@ -407,6 +414,73 @@ export function eventSchema(
     // Price lives on Luma and is deliberately not published here — PRD §18.
     // `eventOffer` above holds the availability and validFrom reasoning.
     offers: eventOffer(event, url),
+  };
+}
+
+/**
+ * A programme as a `Course`, with a `CourseInstance` per scheduled cohort.
+ *
+ * Shared because the homepage publishes this node too, from 24 October 2026.
+ * Restricted to this domain, the engine holds `/` and two guides and nothing
+ * else, so every fact it quotes about these bootcamps it reads off the
+ * homepage - while the three rich `Course` nodes sat only on
+ * `/bootcamps/<slug>/`, a page it has never returned. The cost is measured:
+ * asked for a November cohort of this bootcamp it offered Oxford Saïd's
+ * four-week online programme instead, and earlier probes closed on not being able to
+ * confirm "its length, format, or whether attendees build their own workflow"
+ * and on not finding "the course's prerequisites". `courseMode`,
+ * `courseWorkload` and a dated instance at a named Oxford venue are the first
+ * three of those, machine-readably, on the page that gets read.
+ *
+ * The `@id` is the one the programme's own page already publishes, so a
+ * consumer holding both describes one course rather than two. That is also why
+ * both pages emit the identical node from this one function rather than each
+ * page's own view of it: two descriptions under one `@id` that disagree are
+ * worse than one of them not existing. Nothing here is a new fact - `teaches`
+ * is the published `outcomes` list, `description` the published capsule, and
+ * the instances are the published cohorts.
+ *
+ * `hasCourseInstance` is omitted rather than empty when a programme has no
+ * scheduled run: `hasCourseInstance: []` claims the course has instances and
+ * then supplies none, which is malformed, and the node is still a valid
+ * `Course` without it.
+ */
+export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) {
+  const url = absoluteUrl(paths.programme(programme.data.slug));
+
+  /* Google's course rich result reads the dates, workload and mode off each
+     instance. */
+  const instances = upcoming.map((event) => ({
+    '@type': 'CourseInstance',
+    name: event.data.title,
+    url: absoluteUrl(paths.event(event.data.slug)),
+    courseMode: 'onsite',
+    // Computed from the published start and end times, never asserted.
+    courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
+    startDate: event.data.startDate.toISOString(),
+    endDate: event.data.endDate.toISOString(),
+    location: {
+      '@type': 'Place',
+      name: event.data.venue.name,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: event.data.venue.city,
+        addressCountry: config.brand.country,
+      },
+    },
+  }));
+
+  return {
+    '@type': 'Course',
+    '@id': `${url}#course`,
+    name: programme.data.name,
+    description: programme.data.capsule,
+    url,
+    provider: { '@id': ORG_ID },
+    inLanguage: 'en-GB',
+    teaches: programme.data.outcomes,
+    courseMode: 'onsite',
+    ...(instances.length > 0 ? { hasCourseInstance: instances } : {}),
   };
 }
 

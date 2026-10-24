@@ -3,8 +3,8 @@ import Base from '../layouts/Base.astro';
 import HomeSections from '../components/HomeSections.astro';
 import config from '../../site.config';
 import { homeFaqs } from '../lib/home';
-import { eventListingItem, faqSchema } from '../lib/schema';
-import { absoluteUrl, getHomeUpcoming, paths } from '../lib/site';
+import { courseSchema, eventListingItem, faqSchema } from '../lib/schema';
+import { absoluteUrl, getEventsForProgramme, getHomeUpcoming, getProgrammes, paths } from '../lib/site';
 import { ogPathFor } from '../lib/og';
 
 /*
@@ -46,6 +46,31 @@ const upcoming = await getHomeUpcoming();
 const eventNodes = upcoming.map((event) =>
   eventListingItem(event, absoluteUrl(ogPathFor(paths.event(event.data.slug)))),
 );
+
+/*
+ * And the programmes it shows, for the same reason one cycle on.
+ *
+ * "What we run" renders a card per programme - name, pitch and a link - and
+ * the graph said nothing about any of them, while three rich `Course` nodes
+ * sat on `/bootcamps/<slug>/`, which no probe has ever returned. Today's
+ * brand-and-month query is what makes this worth a cycle: asked for a
+ * November cohort of this bootcamp, the engine answered off two expired Luma
+ * pages, found no November date, and offered Oxford Saïd's four-week online
+ * programme as a "possible mix-up". One day, in person, in Oxford, on a dated
+ * instance is precisely what separates the two, and `courseMode`,
+ * `courseWorkload` and `hasCourseInstance` say it in the form an engine reads.
+ *
+ * Every programme, not the three cohorts: the section shows all of them, and a
+ * programme between cohorts is still a real course - it just publishes no
+ * instance, which is honest about there being nothing to book. Each node comes
+ * from the same helper the programme page uses, under that page's own `@id`,
+ * so the two cannot come to disagree.
+ */
+const courseNodes = await Promise.all(
+  (await getProgrammes()).map(async (programme) =>
+    courseSchema(programme, (await getEventsForProgramme(programme.id)).upcoming),
+  ),
+);
 ---
 
 <Base
@@ -54,7 +79,7 @@ const eventNodes = upcoming.map((event) =>
   description={config.brand.description}
   path="/"
   ogImage={ogPathFor('/')}
-  schemaNodes={[faqSchema(homeFaqs), ...eventNodes]}
+  schemaNodes={[faqSchema(homeFaqs), ...eventNodes, ...courseNodes]}
 >
   {/* Drummond's call (28 Jul): the homepage is the typographic design — ink,
       motif and micro-interactions. The photo variant lives at /home-photos/;

@@ -622,9 +622,107 @@ Status: `todo` · `blocked` (why) · `doing`
     Only `/` was taken; `/events/`, `/bootcamps/`, `/guides/` and `/team/` are the same shape
     and stay unclaimed, because the homepage is the one with evidence behind it.
 
+45. `todo` (loop-actionable, found 24 Oct 2026 in the 19:00 cycle) - **`coursePrerequisites`
+    and `audience` are the two `Course` properties the probes keep asking for and the site
+    still does not publish.** The 01:00 cycle drafted both from published copy and declined to
+    ship them, correctly, on the grounds that they would land on programme pages no engine has
+    ever returned. **That objection is now half answered**: as of this cycle the three `Course`
+    nodes are also on `/`, which this engine does hold, so a property added to `courseSchema()`
+    reaches the indexed page as well as the unindexed ones. The evidence for the properties
+    themselves is unchanged and strong - *"I didn't find the course's prerequisites or a note
+    on whether beginners are welcome"* (17 Oct), and the Coding Bootcamp probe on 24 Oct that
+    inferred the opposite of what the site publishes. **Weigh before doing it**: unlike this
+    cycle's change, it asserts something. Both strings have to come verbatim from published
+    copy - the programme pages' own "Do I need to be able to code?" answer and `whoFor` - and
+    the Coding Bootcamp's prerequisite is the one place the site is thinnest (backlog 25 is
+    open on whether it needs a paid plan, which is his call). Do the Agentic and Second Brain
+    lines from published copy if the Coding one has to wait.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-24 (19:00 local cycle) - the three `Course` nodes that say this is a one-day,
+  in-person, Oxford course sat only on the programme pages, which no probe has ever returned.
+  They are now on the homepage too, the one page this engine demonstrably holds.**
+  - **The evidence, from this cycle's fourth probe.** The query carried the domain itself:
+    *"oxfordagentic.com Oxford Agentic Bootcamp November 2026 next cohort"*. The engine
+    answered *"I didn't find a November 2026 cohort ... and the search didn't surface
+    oxfordagentic.com itself"*, off `luma.com/oxfordagentic2` (ran 16 September),
+    `luma.com/k7c2rm5s` (July) and allai.events (*"21 Jul 2026, which is already past"*),
+    with the venue contradiction between the two stale pages volunteered again. **Then it
+    offered a competitor as the substitute, unprompted**: a *"possible mix-up"* with Oxford
+    Saïd's **online** Generative and Agentic AI Programme, *"11 November 2026 ... £1,500 ...
+    4-week format"*. A buyer holding this brand name is being handed a four-week online
+    programme. Twenty-second consecutive reading of the stale-listing harm.
+  - **Why the homepage and why schema.** Restricted to this domain, the index holds `/` and
+    two guides and nothing else, so every fact an engine quotes about these bootcamps it
+    reads off `/`. Its graph was Organization, WebSite, WebPage, FAQPage and (since 23 Oct)
+    two `EducationEvent`s. **No `Course` node anywhere on it**, while
+    `/bootcamps/<slug>/` carried a rich one each. `courseMode: onsite`, `courseWorkload:
+    PT8H` and a dated `CourseInstance` at a named Oxford venue are precisely the three facts
+    that separate this from a four-week online programme, and precisely the three earlier
+    probes said they could not confirm (*"its length, format, or whether attendees build
+    their own workflow"*).
+  - **Nothing new is asserted, and the two pages cannot drift.** The node was moved out of
+    `src/pages/bootcamps/[slug].astro` into a shared `courseSchema()` in `src/lib/schema.ts`,
+    and both pages now emit the **identical** node under the `@id` the programme's own page
+    publishes. Verified as data, not as text: each homepage `Course` is byte-identical to its
+    programme page's, so a consumer holding both describes one course rather than two.
+    `teaches` is the published `outcomes` list and `description` the published capsule.
+  - **The Second Brain Bootcamp correctly publishes no instance.** It has no cohort on sale,
+    and `hasCourseInstance` is omitted rather than empty - an empty array claims instances
+    and supplies none. So the homepage now says, machine-readably, that two of the three
+    bootcamps have a dated November run and one does not.
+  - **Measured whole-site.** Exactly **one** file in `dist` differs: `index.html`. All 62
+    other pages are byte-identical, **including the three programme pages**, which is the
+    proof that the refactor changed nothing where the node already lived. No sitemap,
+    `llms.txt`, `llms-full.txt`, `rss.xml` or `robots.txt` change. On `/` itself, the HTML
+    **outside** the JSON-LD block is byte-identical, so nothing a reader sees moved: the
+    graph goes from 6 nodes to 9.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` passes on both the all-on and all-off
+    builds. All 55 indexable titles re-measured at 60 characters or fewer and all 55
+    descriptions between 70 and 160, unchanged. The 11 outbound warnings are the sandbox
+    egress policy. `astro check` is not installed in this sandbox and the repo has no
+    `tsconfig.json`, so neither could run.
+  - **Inspected in headless Chromium** at 375px and 1280px on `/` and all three programme
+    pages - 8 configurations: 0px horizontal overflow, one `h1` each, every JSON-LD block
+    parses, 3 `Course` nodes on `/` and 1 on each programme page, no `robots` meta. The 2
+    console errors per page are `www.googletagmanager.com` blocked by the sandbox.
+  - **Recorded, not fixed: IndexNow over-submits this one too.** `--dry-run` on the real
+    change set maps to all 55 sitemap URLs, because `src/lib/schema.ts` and a `[slug]`
+    template usually do rebuild every page. Here they provably rebuilt one. Same call as the
+    13:00 cycle: the conservative mapping is right in general, and a file-name exception
+    would be worse than 55 hints nobody is harmed by. (`src/pages/index.astro` alone maps to
+    `/` exactly, which is the true blast radius.)
+  - **No content, copy, claim, link or event-fact change.** Structured data only.
+  - **Also measured and found clean, so no later cycle re-spends it.** Inbound internal links
+    per sitemap URL across all 63 built pages: **no orphans**, minimum 3 outside the seven
+    team pages, which sit at 1 and are backlog 24 (his call). Every `Event` node re-audited
+    for `eventStatus` and `offers`: the three passed cohorts publish no offer, the two
+    upcoming ones publish `InStock`, which is correct. `llms.txt` carries all 33 guides and
+    both November cohorts.
+  - **GEO: four probes, none cited.** The three open buyer questions are all unwinnable
+    fields and two of them this site already answers - the human-in-the-loop question is
+    arxiv, Oracle's product docs and Airtable against a guide published 11 September, and the
+    time-saving question is a content farm (itechguides, geekchamp and macmyths returned the
+    same title three times) against a guide published 13 October. Neither was returned, which
+    is coverage, not content. Full table in `seo-data/geo-citations.md`.
+  - **Production state from the Actions API.** CI run 278 and Deploy run 291 both success on
+    `3052fc4`, the current `main` HEAD, finished 13:11Z, nothing queued or in progress.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so `build.txt` could not be
+    read and production state is taken from the runner, as on the last eight cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **Off-page: nothing new recorded.** Today's hosts - the two expired Luma pages,
+    allai.events and Saïd's online programme - are already on the review list as evidence for
+    backlog 2 and 2b rather than as leads. The Saïd substitution sharpens them; it does not
+    add a third item.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the sixth cycle
+    running.** None of the four axes probed passed WINNABLE, and two of them this site already
+    answers on pages no engine has indexed.
 
 - **2026-10-24 (13:00 local cycle) - the homepage, the one page an engine demonstrably holds,
   was 1 of 15 URLs in the sitemap with no `lastmod` at all. It has one now, and it survives

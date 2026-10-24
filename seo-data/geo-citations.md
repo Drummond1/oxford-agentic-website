@@ -5,6 +5,53 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-24 (19:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions, rotated off the budget, delegation and Coding Bootcamp
+clusters the last four cycles probed.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what is an agentic workflow for business and how is it different from automation | **No** | elevenlabs.io, mindstudio.ai, IIT Kharagpur, NetSuite, Dataiku, customerthink, patoliyainfotech (x2), thinktoshare |
+| where should a human stay in the loop in an agentic AI workflow | **No** | arxiv, Oracle docs, Taskade, Spiralscout, iMerit, fast.io, Airtable, Medium, Analytics Vidhya |
+| how do I know if an AI workflow is actually saving time or just moving the effort | **No** | gaas.it.com, therundown.ai, itechguides, geekchamp, macmyths (three near-identical titles), larridin (x2), firstaimovers (x2) |
+| oxfordagentic.com Oxford Agentic Bootcamp November 2026 next cohort | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, allai.events, sbs.ox.ac.uk (x2), learnersink, OxML, createwith, datasciencedojo |
+
+**Reading.**
+
+- **The twenty-second consecutive reading of the stale-listing harm, and the first with the
+  domain itself inside the query.** Asked for this brand, this month and the next cohort,
+  with `oxfordagentic.com` typed into the query, the engine answered *"I didn't find a
+  November 2026 cohort for the Oxford Agentic Bootcamp, and the search didn't surface
+  oxfordagentic.com itself"*. It answered from `luma.com/oxfordagentic2` (Cohort 2, which ran
+  on 16 September) and `luma.com/k7c2rm5s` (Cohort 1, July), volunteered the venue
+  contradiction between them again (*"Worcester College as the location on one listing and
+  St Anne's College on another"*), read allai.events as *"21 Jul 2026, which is already
+  past"*, and closed on *"To confirm a November cohort, check oxfordagentic.com directly"*.
+  `luma.com/oxfordagentic3`, the page that sells 19 November, again did not appear.
+- **The new finding, and what this cycle acted on: the engine now offers a competitor as the
+  substitute.** Having found no November cohort, it raised a *"possible mix-up"* of its own
+  accord - Oxford Saïd's **online** Generative and Agentic AI Programme, *"start date of 11
+  November 2026, with a cost of £1,500 and a 4-week format"* - and told the buyer to check
+  which one they meant. That is a buyer with this brand name in hand being handed a four-week
+  online programme instead. One day, in person, in Oxford, on a dated instance is exactly
+  what separates the two, and the three `Course` nodes that say so machine-readably sat only
+  on `/bootcamps/<slug>/`, which no probe has ever returned. They are now on `/` as well,
+  which is the one page this engine demonstrably holds. See the ledger entry for this cycle.
+- **The three open buyer questions are all unwinnable fields, and two of them this site
+  already answers.** The human-in-the-loop question is arxiv, Oracle's own product docs and
+  Airtable; `where-the-human-goes-in-an-agentic-workflow` has been published since 11
+  September and was not returned. The time-saving question is a content farm - itechguides,
+  geekchamp and macmyths returned the same title three times - against
+  `is-your-ai-workflow-saving-time-or-just-effort`, published 13 October and not returned.
+  The agentic-versus-automation question is wall-to-wall vendor blogs. **Nothing to write on
+  any of the three**: the pages exist, the fields are not winnable by a thirty-fourth guide,
+  and what they lack is coverage.
+- **Caveat.** One engine, one day, through a sandboxed web search. `luma.com` is unreachable
+  from the sandbox (403 on CONNECT), so the Luma pages' current state was not read, only what
+  the engine reported of them.
+
 ## 2026-10-24 (13:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
