@@ -5,6 +5,67 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-24 (07:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Six questions: four open buyer questions and two repeats of the
+**coverage measurement**.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one-day hands-on agentic AI workshop UK November 2026 build your own workflow in person | **No** (not in top 10) | science.ai.cam.ac.uk, createwith.com x3, digitalresearchservices.ed.ac.uk x2, odsc.ai, brainstation.io, columbusglobal.com x2 |
+| site-restricted (`site:` operator): how do I book a place on the bootcamp | **No** - *"The search didn't return anything from oxfordagentic.com"* | datasciencedojo x2, generation.org, uresstaging, nnu.edu, learn.nes.nhs.scot, thebusinessmagazine, enspire.ox.ac.uk, circuitstream |
+| domain-anchored: Oxford Agentic Bootcamp November cohort Worcester College register | **No** | sbs.ox.ac.uk x2, allai.events, learnersink.com, nobleprog.co.uk x4, datasciencedojo |
+| how to check what an AI coding agent wrote before you ship it, non-developer | **No** (not in top 9) | expo.dev, freecodecamp, realpython, levelup.gitconnected, maxicontieri substack, medium, hackernoon, willowvoice, tenki.cloud |
+| domain-anchored: Oxford Agentic **Coding** Bootcamp, what does the day cover | **No** | luma.com/oxfordagentic2, luma.com/k7c2rm5s, allai.events, nobleprog.co.uk x4, algo.monster, learnersink.com |
+| I can't read code, how do I know if what Claude Code built actually works before launching | **No** (not in top 9) | smithery.ai, lowcode.agency, skills.cat, towardsdatascience, growwstacks, pub.towardsai, claudeissues.com, codex.danielvaughan.com |
+
+**Reading.**
+
+- **The two products are now being conflated, and that is the new finding.** Asked
+  specifically what the **Coding** Bootcamp covers, the engine answered with the **Agentic**
+  Bootcamp's agenda off two expired Luma pages - *"No coding is needed"*, prompting to agentic
+  systems, designing skills, multi-agent workflow - and presented it as the Coding Bootcamp's
+  day. It was plainly trying to disambiguate, because it correctly ruled out an unrelated
+  two-day online course (*"a separate 'Agentic Coding Bootcamp' from algo.monster is a
+  different two-day online course and is not the Oxford event"*) - and then picked the wrong
+  day out of our own family. It closed on the stale-listing contradiction yet again:
+  *"One listing names Worcester College and another names St Anne's College"*, with 21 Jul 2026
+  as the date. The day it is describing wrongly is bookable and **33 days out**.
+- **Coverage read 0 today, against 4 yesterday.** Three domain-anchored probes (the `site:`
+  operator, the brand-and-date query and the Coding Bootcamp query) returned **no page of
+  ours at all**. Yesterday's 01:00 cycle measured 4 of 55. One of these engines is not the
+  other's, and the honest reading is that coverage at this size is volatile rather than that
+  it fell: the number is 3-4 URLs on a good reading and 0 on a bad one, which is the same
+  diagnosis either way.
+- **The brand-and-date query got worse, not better.** It now closes by suggesting the buyer
+  *"contact the organiser directly to confirm whether oxfordagentic.com exists"*, having
+  attributed the November dates it found to Saïd Business School's online programme and the
+  bootcamp itself to allai.events' 21 July listing at *"$275"*. **Twentieth consecutive
+  reading of the stale-listing harm.** Nothing on-site fixes it; backlog 2 is the lever.
+- **The national November query is the most expensive miss on this page.** Asked for a
+  one-day, in-person UK workshop in November 2026 where you build your own workflow, the
+  engine answered *"I found no one-day, in-person UK workshop in November 2026 that clearly
+  fits all your criteria"*. **There are two, 19 and 26 November, both in the sitemap.** Its
+  near-misses tell you what it could not establish about its own candidate: *"The snippet cuts
+  off before the agenda, so I couldn't confirm its length, format, or whether attendees build
+  their own workflow."* All three of those are published and machine-readable on our event
+  pages - `EducationEvent` with `eventAttendanceMode: OfflineEventAttendanceMode`, same-day
+  start and end, and `Course.teaches` - and none of it was reachable, because the pages are
+  not in the index. Checked this cycle rather than assumed: the schema is already correct, so
+  there is no on-page fix here and no cycle was spent inventing one.
+- **The acted-on result is the verification axis, and it came back clean on both phrasings.**
+  Neither returned a page of ours, and on both the engine said outright that the field does
+  not answer the question for a non-developer: *"Most of these sources assume you can read code
+  or a diff"*, and *"The search didn't turn up Anthropic's official guidance, so these points
+  come from third-party blogs and community write-ups"* - closing with its best advice flagged
+  as *"My own suggestion, not from the search"*. WINNABLE (vendor blogs and developer-audience
+  publishers, no institutional publisher on the subject) and CONVERTING (someone using a coding
+  agent who cannot read code is the Coding Bootcamp's published audience, verbatim).
+  **Shipped as a Q&A refresh, not a guide**: `why-the-code-an-agent-wrote-is-not-live` already
+  raises the question in the sixth item of its own list and never answers it, so a new page
+  would have been the near-duplicate the hard rule forbids.
+
 ## 2026-10-24 (01:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

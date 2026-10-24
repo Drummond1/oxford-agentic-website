@@ -12,7 +12,7 @@ capsule: >-
   something live.
 author: drummond-gilbert
 publishDate: "2026-09-25T19:00:00+01:00"
-updatedDate: "2026-09-25T19:00:00+01:00"
+updatedDate: "2026-10-24T07:40:00+01:00"
 relatedProgrammes:
   - agentic-coding-bootcamp
 ---
@@ -53,6 +53,24 @@ If you do decide to own it, the order matters more than the tools:
 5. **Put the check in before you invite anyone.**
 
 Most people do this in exactly the opposite order, build something elaborate locally, and then meet all six problems at once on the day they wanted to launch.
+
+## How do I check what the agent wrote if I cannot read code?
+
+You check the outcome rather than the code, and three habits cover most of it. Use the thing the way a real person would, including the inputs you expect to go wrong, because a screen that looks right proves only that something rendered. Look at what changed and how much: if you asked for one thing and fifty files moved, that is worth a question before it goes out, and you do not need to read a file to count them. Then put a test in, so the check runs itself next time rather than depending on you remembering.
+
+None of those three require reading a line of code. All three are habits rather than skills, which is why the sixth item on the list above is learnable in a day, and why it is still the one people skip.
+
+## Does a passing test mean it works?
+
+It means the test passed, which is a smaller claim. A test only checks what somebody told it to check, so a suite can be entirely green while the thing you actually care about never happens, and an agent asked to make the tests pass can write tests that pass. It is worth knowing what yours exercises before you trust the colour of it.
+
+The practical version: keep at least one check that goes through the whole path the way a person would, end to end, and treat the rest as a safety net for the parts you have stopped watching.
+
+## Can I ask the agent to check its own work?
+
+Yes, and it is worth doing. An agent that can run what it built will catch mechanical faults faster than you will, and asking it to explain what it changed is a reasonable way to find out what it assumed.
+
+What it cannot do is know what you meant. That is the one check that does not hand over: whether this does the thing you actually wanted, for the person who is going to use it. Keep that part and delegate the rest.
 
 ## Where this gets practical
 

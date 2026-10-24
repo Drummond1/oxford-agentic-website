@@ -598,10 +598,104 @@ Status: `todo` · `blocked` (why) · `doing`
     moves when nothing a reader sees has moved is the same lie in a smarter costume. Do it only
     with the whole-site `dist` diff as the test, exactly as the 20:00 cycle measured, and never
     from a file mtime.
+    **Taken up and put back down on 24 Oct (07:00 cycle), with a finding that narrows it.**
+    The obvious derivation - the newest `updatedDate` among the upcoming cohorts the homepage
+    lists - **can move backwards on exactly the change that matters**. On 24 Oct the set is
+    Cohort 3 (`updatedDate` 18 Oct 13:12) and Coding Cohort 1 (18 Oct 08:23), so `/` would
+    read 13:12. After 19 November, Cohort 3 leaves `isUpcoming` on the **daily scheduled
+    rebuild with no commit behind it** (`cron: '17 3 * * *'`), the homepage visibly loses a
+    card, and the derived date falls to 08:23 - earlier than the day before. A `lastmod` that
+    goes backwards on a page that just changed is worse than no `lastmod`, and it is the
+    23 Oct fault in the other direction. Whatever ships here has to survive a **time-triggered**
+    change with no file edit behind it, which a max over frontmatter dates cannot. That is the
+    hard part of this item and it was not visible when the item was written.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-24 (07:00 local cycle) - the one buyer question in the Coding Bootcamp's own
+  cluster that nothing in the field answers for a non-developer, added as three Q&As to the
+  guide that raises it and never answers it.**
+  - **The measurement, on two phrasings.** *"How to check what an AI coding agent wrote before
+    you ship it, non-developer"* and *"I can't read code, how do I know if what Claude Code
+    built actually works before launching"* both returned **no page of ours**, and on both the
+    engine named the gap itself: *"Most of these sources assume you can read code or a diff"*,
+    and *"The search didn't turn up Anthropic's official guidance, so these points come from
+    third-party blogs and community write-ups"* - then offered its most useful advice flagged
+    as *"My own suggestion, not from the search"*. The field is vendor blogs (expo.dev,
+    tenki.cloud, growwstacks, willowvoice, lowcode.agency) and developer-audience publishers
+    (freeCodeCamp, RealPython, Towards Data Science). **WINNABLE**: no institutional publisher
+    on the subject, and the non-developer framing is explicitly unoccupied. **CONVERTING**:
+    someone using a coding agent who cannot read code is the Coding Bootcamp's published
+    audience word for word - *"Anyone who has watched a coding agent work and wants to know
+    what to do around it"*.
+  - **A Q&A refresh and deliberately not a guide.** `why-the-code-an-agent-wrote-is-not-live`
+    already puts this question in the sixth item of its own list - *"A way to know it works.
+    Not a feeling."* - and then never answers it. A new page on the same axis, in the same
+    cluster, on the same day the 01:00 cycle edited the sibling guide, is the near-duplicate
+    the hard rule forbids. The guide had no Q&A section; about 3 of 32 do (known candidate 3).
+  - **The change: three question-shaped `##` sections, inserted before "Where this gets
+    practical".** *How do I check what the agent wrote if I cannot read code?* (check the
+    outcome, not the code: use it as a real person would including the inputs you expect to go
+    wrong, look at what changed and how much, then put a test in). *Does a passing test mean it
+    works?* (a test checks only what it was told to check, and an agent asked to make tests
+    pass can write tests that pass). *Can I ask the agent to check its own work?* (yes for
+    mechanical faults, no for whether it does what you meant). `updatedDate` bumped to 24 Oct.
+  - **No new fact, no statistic, no quotation, no event fact.** Every claim is either the
+    guide's own position stated at greater length, or a general property of tests and agents
+    that the page already asserts in brief. No number, no attribution to a source this cycle
+    could not read in full, nothing about price, capacity, availability, venue or date.
+  - **Measured whole-site.** Exactly **5** files in `dist` differ: the guide, `/guides/` (one
+    eyebrow, "September 2026" to "October 2026"), `llms-full.txt` and the two sitemaps. On the
+    guide, the JSON-LD was re-parsed and diffed as data: exactly **2** lines move, both
+    `dateModified`. Outside it, `article:modified_time`, the byline, and the new block. All
+    other **62** pages are byte-identical, as are `llms.txt`, `rss.xml` and `robots.txt`. The
+    sitemap `lastmod` for the guide moves 25 Sept to 24 Oct, which is true.
+  - **Checks.** `npm ci`, then `npm run build` clean before and after - 63 pages checked, 3,094
+    internal links resolve, titles and descriptions unique, no SEO warnings, schema valid at
+    7 Event and 9 FAQPage nodes. Voice check on the new copy: no banned word, no em dash, no
+    exclamation mark, British spelling, spaced hyphens. The 11 outbound warnings are the
+    sandbox egress policy.
+  - **Inspected in headless Chromium** at 375px and 1280px on the guide and `/guides/` - 4
+    configurations: **0px horizontal overflow everywhere**, one `h1` each, JSON-LD parses,
+    correct canonicals, no `robots` meta, **no duplicate heading ids** from the three new
+    anchors, and all three new headings present at both widths. The 2 console errors are
+    `www.googletagmanager.com` blocked by the sandbox egress policy - **confirmed identical on
+    the baseline build**, so not this change's.
+  - **Backlog 44 was taken up and put back down, with a finding that changes it.** The obvious
+    derivation for a homepage `lastmod` - the newest `updatedDate` among the upcoming cohorts
+    the page lists - **can move backwards on exactly the change that matters**. Today the set
+    is Cohort 3 (`updatedDate` 18 Oct 13:12) and Coding Cohort 1 (18 Oct 08:23), so `/` would
+    read 13:12. After 19 November, Cohort 3 drops out of `isUpcoming` on the **daily scheduled
+    rebuild, with no commit behind it**, the homepage visibly loses a card, and the derived
+    `lastmod` would fall to 08:23 - *earlier than the day before*. A `lastmod` that goes
+    backwards on a page that just changed is worse than none, which is the fault the 23 Oct
+    cycle fixed wearing the other mask. Recorded on the item; it needs a mechanism that
+    survives a time-triggered change, not a max over frontmatter dates.
+  - **Checked and ruled out, so no later cycle re-spends it: the national November miss is not
+    an on-page defect.** The engine answered *"I found no one-day, in-person UK workshop in
+    November 2026 that clearly fits all your criteria"* while two sit in the sitemap, and said
+    of its own candidate that it could not confirm *"its length, format, or whether attendees
+    build their own workflow"*. All three are already published machine-readably -
+    `eventAttendanceMode: OfflineEventAttendanceMode`, same-day `startDate`/`endDate`, and
+    `Course.teaches` with `hasCourseInstance` on every programme page. The schema is correct
+    and unread, so the gap is coverage. Likewise `Course.coursePrerequisites` and
+    `Course.audience` were drafted from published `whoFor` and FAQ copy and **not shipped**:
+    they would add signal to programme pages, which are the pages no probe has ever returned.
+  - **Production state from the Actions API.** Deploy run 287 success on all jobs for
+    `7c065ca`, the current `main` HEAD, finished 01:07 UTC, nothing queued or in progress.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not resolve for
+    WebFetch, so `build.txt` could not be read; production state is taken from the runner, as
+    on the last five cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 Aug baseline, and no API credentials exist in the repo.
+  - **Off-page: nothing new recorded, deliberately.** The only third-party hosts today's probes
+    returned - allai.events, learnersink.com, nobleprog.co.uk, algo.monster - are already on
+    the review list as evidence rather than leads. Adding them again would be duplication.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the fourth cycle
+    running.** The verification axis was the one topic that passed both tests and it needed
+    reach on an existing page, not a 33rd URL in an index that holds 3 or 4 of 55.
 
 - **2026-10-24 (01:00 local cycle) - an engine told a buyer the Coding Bootcamp "may still
   expect some technical comfort", reasoning from the one page of ours it holds on the subject.**
