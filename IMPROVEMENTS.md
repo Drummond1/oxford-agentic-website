@@ -583,7 +583,7 @@ Status: `todo` · `blocked` (why) · `doing`
     columns measure 191 / 206 / 204px at 1,100 / 1,280 / 1,440px, the footer's height is
     unchanged at every width, and the rendering is byte-identical at 1,024px and below.
 
-44. `todo` (loop-actionable, found 23 Oct 2026 in the 20:00 cycle) - **the homepage is the one
+44. `done` 24 Oct 2026 (13:00 cycle) - **the homepage is the one
     page an engine is demonstrably re-reading, and it is one of 15 URLs in the sitemap with no
     `lastmod` at all.** The 20:00 cycle fixed the opposite fault - five event URLs claiming the
     build time - and left this deliberately, because the config's reason for the omission is
@@ -613,10 +613,95 @@ Status: `todo` · `blocked` (why) · `doing`
     23 Oct fault in the other direction. Whatever ships here has to survive a **time-triggered**
     change with no file edit behind it, which a max over frontmatter dates cannot. That is the
     hard part of this item and it was not visible when the item was written.
+    **Shipped 24 Oct 2026 (13:00 cycle).** The hard part is answered by giving a passed event
+    its `endDate` rather than an `updatedDate` nobody wrote: that is the moment its card left
+    the page, it is true, and because `endDate` only ever joins the set the maximum cannot
+    fall. `/` now reads 2026-10-23T13:14:11Z, the day its own markup last changed. Simulated
+    forward: 18 Nov unchanged, 20 Nov moves to 19 Nov 17:00 (Cohort 3 passing, on the cron
+    with no commit), 27 Nov to 26 Nov 17:00, March 2027 holds. Never earlier, never future.
+    Only `/` was taken; `/events/`, `/bootcamps/`, `/guides/` and `/team/` are the same shape
+    and stay unclaimed, because the homepage is the one with evidence behind it.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-24 (13:00 local cycle) - the homepage, the one page an engine demonstrably holds,
+  was 1 of 15 URLs in the sitemap with no `lastmod` at all. It has one now, and it survives
+  the change that has no commit behind it. Backlog 44, the top loop-actionable item, closed.**
+  - **Why this page and not the other fourteen.** Every probe that returns anything of ours
+    returns `/`; everything an engine knows about the November cohorts it reads off that page;
+    its cached copy was measured roughly four days stale on 23 Oct. The 20 Oct cycle made this
+    sitemap's `lastmod` trustworthy by removing five false ones, which is what makes adding a
+    true one worth anything.
+  - **The problem that blocked it at 07:00 today, and the answer.** The homepage changes with
+    **no commit behind it**: a cohort whose `endDate` passes leaves `isUpcoming` on the daily
+    03:17 cron and the page visibly loses a card. The obvious derivation - newest `updatedDate`
+    among the cohorts listed - therefore moves **backwards** on exactly that change (today
+    13:12 on 18 Oct, after 19 November falling to 08:23 on 18 Oct). The answer is that a passed
+    event contributes **`endDate`**, the moment its card left the page, rather than a file edit
+    nobody made. True, and monotonic: `endDate` only ever joins the set, so the maximum cannot
+    fall.
+  - **What `/` now takes the maximum of.** The three files that are its own copy
+    (`index.astro`, `HomeSections.astro`, `home.ts`, recorded by hand as
+    `HOMEPAGE_COPY_LASTMOD` because CI clones at depth 1 and git cannot supply a per-file
+    date); every programme's `updatedDate`, since "What we run" renders a card each; each
+    **upcoming** event's `updatedDate`; and each **passed** event's `endDate`. An event's
+    `updatedDate` counts only while it is upcoming, which is why Cohort 2's past-tense rewrite
+    on 24 October does not touch this page's date. Shared components (Hero, EventCard, Faq,
+    the layout) are deliberately excluded: a change to those moves 63 pages, and claiming it
+    moved one would be the same lie in the other direction.
+  - **Simulated forward, which is the test this item asked for.** 24 Oct 2026-10-23T13:14:11Z;
+    18 Nov unchanged; 20 Nov (after Cohort 3) 2026-11-19T17:00Z; 27 Nov (after the Coding
+    cohort) 2026-11-26T17:00Z; 1 Mar 2027 unchanged. **Never earlier than the reading before
+    it, never ahead of the clock.**
+  - **Measured whole-site.** Exactly **one** file in `dist` differs: `sitemap-0.xml`. All 63
+    built pages are byte-identical, as are `sitemap-index.xml`, `llms.txt`, `llms-full.txt`,
+    `rss.xml` and `robots.txt`, and no JSON-LD changes anywhere. Inside the sitemap exactly
+    **1 of 55** entries changed, `/` gaining a lastmod; no URL added or removed; 40 entries
+    carried one before, 41 now; 0 future-dated. Touching nothing and rebuilding produces a
+    byte-identical sitemap.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` passes. Both sitemaps re-parsed with a real
+    XML parser: well-formed, 0 malformed and 0 future-dated values. The date function was
+    extracted and run directly against the live content files at five simulated clock
+    positions for the monotonicity table above. `astro check` is not installed in this sandbox
+    and the repo has no `tsconfig.json`, so neither could run; `astro.config.mjs` is
+    `// @ts-check`ed and the build parses it. The 11 outbound warnings are the sandbox egress
+    policy.
+  - **Inspected in headless Chromium** at 375px and 1280px on `/` and `/events/` - 4
+    configurations: 0px horizontal overflow, one `h1` each, JSON-LD parses, correct canonicals,
+    no `robots` meta, both cohort cards present. The 2 console errors are
+    `www.googletagmanager.com` blocked by the sandbox; the rendered HTML is byte-identical to
+    the baseline build, so nothing visual could have moved.
+  - **Recorded, not fixed: IndexNow over-submits this one.** `--dry-run` on
+    `astro.config.mjs` maps to all 55 sitemap URLs, because a config change usually does
+    rebuild every page. Here it provably rebuilt none. Not special-cased - the conservative
+    mapping is right in general, and a one-off exception for a file name would be worse than
+    55 hints nobody is harmed by.
+  - **No content, copy, claim, schema or link change.** One build-config file.
+  - **GEO: four probes, none cited, and the sharpest stale-listing reading yet.** On the core
+    Oxford commercial query - #2, #3 and #5 for this site in September - oxfordagentic.com did
+    not appear at all; the engine answered from two of Drummond's own expired Luma pages plus
+    allai.events, reported conflicting venues, gave the date as 21 July *"which has already
+    passed"*, and closed on *"I couldn't find a confirmed upcoming date"* while two cohorts sit
+    26 and 33 days out. It did quote this site's own words back, so the copy reaches it and the
+    URL does not. Twenty-first consecutive reading; already the open item for Drummond on the
+    review list, so nothing new was added there. The 19 and 20 October guides are still
+    unindexed and both their fields are still empty, which is coverage, not content. Full table
+    in `seo-data/geo-citations.md`.
+  - **Production state from the Actions API.** CI run 277 and Deploy run 290 both success on
+    `eb44d38`, the current `main` HEAD, finished 08:20Z, nothing queued or in progress.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so `build.txt` could not be
+    read and production state is taken from the runner, as on the last seven cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the fifth cycle
+    running.** The two axes probed today are already answered by guides four and five days old
+    that no engine has indexed yet. A third page on the same axes would be the near-duplicate
+    the hard rule forbids. Not a Q&A refresh either: no probe showed a gap an existing page
+    raises and leaves open.
 
 - **2026-10-24 (08:00 local cycle) - the footer built five columns for four blocks at every
   desktop width, so its three link columns were narrower at 1,280px than at 1,024px. Backlog

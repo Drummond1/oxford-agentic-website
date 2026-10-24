@@ -5,6 +5,47 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-24 (13:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four open buyer questions, rotated away from the Coding Bootcamp
+cluster the last three cycles probed.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to get your manager to approve a one-day AI training course budget | **No** | learnsignal.com, RMIT Online, pragmaticworks.com (eight near-identical vendor templates), go1.com |
+| should I attend the AI workshop myself or send someone from my team | **No** | learnit.com, ALX Africa, RIT, eventfrog.ch, University of Georgia |
+| hands-on agentic AI course Oxford business leaders one day | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, allai.events, onereach.ai, GM Chamber, createwith.com, Jellyfish, sbs.ox.ac.uk |
+| one-day in-person workshop UK build a second brain for your AI tools | **No** | brainstation.io, Maven (Human AI Studio), Tulane IT, three Luma "AI Unlocked" listings, jennaredfield.substack.com |
+
+**Reading.**
+
+- **The two guides published on 19 and 20 October are not indexed yet, and both fields are
+  still empty.** On the delegation question the engine said *"The search didn't turn up
+  general guidance on whether a manager should attend or send a team member"* and then
+  reasoned from course listings; on the budget question every result was generic
+  professional-development advice, with the engine noting *"none of these sources is
+  specific to AI training"*. Those are the exact gaps `who-should-take-the-seat` and
+  `getting-an-ai-bootcamp-approved` were published into, four and five days ago. Nothing to
+  write: the pages exist and need coverage, not more words. Re-probe in a fortnight.
+- **The sharpest result, and the twenty-first consecutive reading of the stale-listing harm.**
+  On the core Oxford commercial query - the one this site ranked #2, #3 and #5 on in
+  September - **oxfordagentic.com did not appear at all**. The engine answered entirely from
+  two of Drummond's own expired Luma pages plus allai.events, reported *"conflicting venues"*
+  (St Anne's against Worcester), gave the date as *"21 Jul 2026 ... which has already passed"*,
+  and closed on *"I couldn't find a confirmed upcoming date, so check the Luma page for future
+  sessions"*. Two cohorts are bookable, 26 and 33 days out. It did repeat this site's own
+  copy back - *"The organisers say it doesn't assume you can code"* - so the words are
+  reaching it while the URL is not.
+- **Second Brain: the field is still empty and still not worth content.** The engine answered
+  *"I didn't find an exact match: no one-day, in-person, UK workshop focused on building a
+  second brain for AI tools"*, with the nearest being a Maven online cohort and a Marbella
+  one-day held in Massachusetts. That is the query this site ranked #1 on in September. It
+  changes nothing: the standing decision is that Second Brain's constraint is demand, not
+  ranking, so this is recorded and not acted on.
+- **No new off-page lead.** Every third-party host returned today is already on the review
+  list, the Luma pages as the open item for Drummond.
+
 ## 2026-10-24 (07:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
