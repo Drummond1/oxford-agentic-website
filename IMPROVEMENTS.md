@@ -563,7 +563,7 @@ Status: `todo` · `blocked` (why) · `doing`
     not a cycle's. The cheapest version is the homepage FAQ's answer, reused verbatim, as one
     more entry in the event and programme FAQ blocks. One line from him either way.
 
-43. `todo` (loop-actionable, found 23 Oct 2026 in the 09:00 cycle) - **the footer grows an empty
+43. `done` 24 Oct 2026 (08:00 cycle) - **the footer grows an empty
     fifth column at every desktop width, and it is what squeezed the contact address into two
     lines in the first place.** `.site-footer__grid` is
     `minmax(min(100%, 15rem), 1.6fr) repeat(auto-fit, minmax(min(100%, 9rem), 1fr))`, and
@@ -578,6 +578,10 @@ Status: `todo` · `blocked` (why) · `doing`
     rather than a declaration, so it was logged rather than folded into a cycle that was already
     changing the same file. The address defect it caused is fixed independently and does not wait
     on this.
+    **Shipped 24 Oct 2026**: the band moved out of the grid, nested one level inside its own
+    `.wrap` so the hairline stays on the content box rather than running into the gutter. The
+    columns measure 191 / 206 / 204px at 1,100 / 1,280 / 1,440px, the footer's height is
+    unchanged at every width, and the rendering is byte-identical at 1,024px and below.
 
 44. `todo` (loop-actionable, found 23 Oct 2026 in the 20:00 cycle) - **the homepage is the one
     page an engine is demonstrably re-reading, and it is one of 15 URLs in the sitemap with no
@@ -613,6 +617,60 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-24 (08:00 local cycle) - the footer built five columns for four blocks at every
+  desktop width, so its three link columns were narrower at 1,280px than at 1,024px. Backlog
+  43, measured, prototyped and now shipped.**
+  - **The cause, confirmed in the browser.** `.site-footer__grid` is
+    `minmax(min(100%, 15rem), 1.6fr) repeat(auto-fit, minmax(min(100%, 9rem), 1fr))`, and the
+    newsletter band sat inside it with `grid-column: 1 / -1`. `auto-fit` collapses a track only
+    when nothing is placed in or spanning it, and the band spanned every one, so from 1,100px
+    up the grid generated a fifth track that no block could ever occupy.
+  - **What it cost, measured on the built site.** The three link columns ran **147px at
+    1,100px, 161px at 1,280px and 159px at 1,440px**, against **176px at 1,024px** - a wider
+    viewport giving narrower columns - with **235 to 256px of dead space** to the right of
+    "Elsewhere" on all 63 pages. The wrapping that caused: `hello@oxfordagentic.com` broken
+    across two lines, "The Oxford Agentic Coding Bootcamp - Cohort 1" over three, the entity
+    paragraph over five.
+  - **The change.** The signup band moves out of the grid and sits after it, in its own
+    `.wrap`, with `margin-block-start` set to the grid's own gap so it lands exactly where it
+    did. The empty track then collapses. Nested one level inside the wrap on purpose: the band
+    carries the hairline rule, and as a direct `.wrap` the rule ran out into the gutter
+    (50 to 1,230px at 1,280px) instead of starting and ending with the wordmark above it
+    (94 to 1,186px). Measured both ways; the rule is where it was at all seven widths.
+  - **After.** Columns at **191px / 206px / 204px** at 1,100 / 1,280 / 1,440px, up 28 to 30 per
+    cent, dead space gone, the address back on one line and the Coding title down from three
+    lines to two. **Footer height is identical at every width** (1,207 / 754 / 608 / 613 / 613
+    at 375 / 768 / 1,024 / 1,280 / 1,440px), so nothing below it moves and there is no shift.
+  - **Measured whole-site.** `dist` differs in exactly **61 HTML files plus the one CSS
+    bundle**, and nothing else: no sitemap, `llms.txt`, `llms-full.txt`, `rss.xml` or
+    `robots.txt` change, and no JSON-LD change on any page. Per page the diff is **two added
+    markup lines** and the stylesheet hash; in the CSS, one declaration swapped.
+  - **Screenshots, six pages at seven widths, before and after.** `/`, the Agentic programme
+    page, the Cohort 3 event page, `/guides/`, `/team/` and `/privacy/` at 320, 375, 768,
+    1,024, 1,100, 1,280 and 1,440px. **Byte-identical at 320, 375, 768 and 1,024px on all
+    six**, differing only at 1,100, 1,280 and 1,440px, which is precisely where the empty
+    track existed.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique.
+    `npm run check:flags` passes on both the all-on and all-off builds, which is what covers
+    the band being absent. `astro check` reports **79 errors before and after, identical** -
+    pre-existing implicit-`any` noise in other files, none in `Footer.astro`. Whole-site
+    headless audit at 375, 768 and 1,280px over all 55 indexable pages: **0 horizontal
+    overflow, 0 missing alt, 0 unlabelled controls, 0 links without an accessible name, one
+    `h1` each**, clean before and after. Keyboard: tab order through the footer is unchanged
+    in sequence, and all 12 focusables take the gold 2px `:focus-visible` ring.
+  - **No content, copy, token, schema or link change.** Markup and one declaration only.
+  - **Production state from the Actions API.** CI and Deploy to GitHub Pages both success on
+    `a14aaf28`, the current `main` HEAD, at 07:11Z, nothing queued or in progress.
+    `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io` all answer
+    `connect_rejected` on CONNECT from this sandbox, so production could not be fetched or
+    screenshotted and its state is taken from the runner, as on the last six cycles. The
+    comparison above is local preview against local preview of the same commit.
+  - **PR #1 and `feat/ceo-roundtable-demand-page` read as known-stale, not work in flight**
+    (backlog 20), on the same reading as the last several cycles.
+  - **No guide.** Today's allowance is deliberately unspent; this cycle worked a layout defect
+    already measured and waiting.
 
 - **2026-10-24 (07:00 local cycle) - the one buyer question in the Coding Bootcamp's own
   cluster that nothing in the field answers for a non-developer, added as three Q&As to the
