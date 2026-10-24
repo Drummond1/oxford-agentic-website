@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-24 (01:00 BST cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions: four open buyer questions and the repeat of the
+**coverage measurement**.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day hands-on agentic AI bootcamp Oxford November 2026 book a place business leaders | **Yes**: homepage #4, `after-the-ai-executive-programme` #8 | Data Science Dojo, Oxford Lifelong Learning (two courses), Saïd (three listings), getsmarter, PropertyWire, gogradia |
+| learn to use Claude Code or Codex without being a developer one day in-person course UK | **No** (not in top 9) | ccforeveryone, Udemy, Scrimba, Maven, Every/claude101, adventuremedia.ai, agentaccelerator.ai, recalcacademy |
+| site-restricted: Coding Bootcamp, Claude Code, Codex, non-developers, November | **Yes**: `claude-cowork-claude-code-or-codex` #1, homepage #2, `after-the-ai-executive-programme` #4 | Wikipedia x2, four Substacks, anthropic.com |
+| how do I get my team to actually use AI after the training day ends | **No** (not in top 9) | Udemy Business, Shift eLearning, JGSullivan, Bizzuka, BusinessBuildersClub, Marius Manolachi, Acceleris Labs, AI Smart Ventures, MindStudio |
+| do I need to know how to code to take an AI coding agent workshop, prerequisites, beginners welcome | **No** (not in top 9) | Composio/Fifth Elephant, two GitHub workshop repos, Hugging Face, Kaggle/Google, Codecademy, Luma, unpromptedcon, Antisyphon |
+
+**Reading, and it is the sharpest result this log has had on the Coding Bootcamp.**
+
+- **The November dates are now being read correctly off the site.** Asked for a one-day Oxford
+  bootcamp in November, the engine returned the homepage and answered *"Cohort 3, Thursday,
+  19 November 2026 at Worcester College"*, naming the Coding Bootcamp on **26 November** as a
+  separate day and correctly noting that *"the 21 October cohort has already passed"*. On
+  23 October the same class of query put the next cohort at 21 October. **The 23 Oct homepage
+  `EducationEvent` change is working**, nineteen consecutive stale-date readings ended.
+- **Coverage is up from 3 URLs to 4, and the fourth is the one that mattered today.** The
+  site-restricted probe returned `claude-cowork-claude-code-or-codex` **first** - a page that
+  on 23 Oct was held but never surfaced on a tool question.
+- **And that page was answering the prerequisite question wrongly, which is what this cycle
+  shipped.** Restricted to the domain and asked whether the Coding Bootcamp suits
+  non-developers, the engine said: *"the results don't say outright that it's aimed at
+  non-developers"*, then *"A separate guide notes that Claude Code assumes you are comfortable
+  working in a codebase, **which suggests the course may still expect some technical
+  comfort**"*, and closed on *"I didn't find the course's prerequisites or a note on whether
+  beginners are welcome, so check the course page or email hello@oxfordagentic.com before
+  booking."* The site publishes the opposite - *"the day does not assume you can code"* - on
+  the programme page and the event page, and **neither is in the index**. The quoted sentence
+  is this guide's own, about Claude Code the tool, and the guide carried no counterweight for
+  the day: the paragraph above it ends *"No coding required."* for the Agentic Bootcamp, and
+  the Coding paragraph ended with no prerequisite line at all. An asymmetry in the copy, not
+  only an engine misreading.
+- **The national Coding query returns nothing of ours, on a field the engine says is empty.**
+  Asked for a one-day in-person UK course on Claude Code or Codex for a non-developer, it
+  returned Udemy, Maven, Zoom workshops and US sessions, and concluded: *"**none of the results
+  covers Codex in a one-day, in-person UK course for individuals.**"* That is the Oxford Agentic
+  Coding Bootcamp, bookable, 33 days out, at Worcester College. A product gap stated by the
+  engine itself, against a page it cannot retrieve.
+- **The prerequisite probe says where buyers check.** Across nine results the engine read the
+  requirement straight off each listing and closed with *"Check the listing's prerequisites or
+  ask the organizer."* The site does publish it on the listing; the listing is not indexed.
+  This is the 17 Oct finding repeated, and the reason the answer was moved onto a page the
+  engine holds rather than left on two it does not.
+- **Two topics probed and declined, so no guide.** *Making AI stick after training* is nine
+  consultant blogs deep and the site already ranks #1 on its near-neighbour with
+  `after-the-ai-executive-programme`, so a guide would restate a ranking page. *Coding-agent
+  prerequisites* is answered by the programme and event pages already - it needed reach, not a
+  new page, which is what this cycle gave it.
+- **Caveat.** One engine, one day, through a sandboxed web search. `luma.com` and
+  `oxfordagentic.com` both answer 403 on CONNECT here, so nothing was verified against the live
+  site or the live Luma pages.
+
 ## 2026-10-23 (20:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

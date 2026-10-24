@@ -603,6 +603,82 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-24 (01:00 local cycle) - an engine told a buyer the Coding Bootcamp "may still
+  expect some technical comfort", reasoning from the one page of ours it holds on the subject.**
+  - **The measurement.** The site-restricted coverage probe is up from **3 URLs to 4**, and the
+    new one is `/guides/claude-cowork-claude-code-or-codex/`, returned **first** when the domain
+    is asked about the Coding Bootcamp. Asked whether that day suits non-developers, the engine
+    answered: *"the results don't say outright that it's aimed at non-developers"*, then *"A
+    separate guide notes that Claude Code assumes you are comfortable working in a codebase,
+    which suggests the course may still expect some technical comfort"*, and closed on *"I didn't
+    find the course's prerequisites or a note on whether beginners are welcome, so check the
+    course page or email hello@oxfordagentic.com before booking."*
+  - **The site publishes the opposite, on two pages the engine has never returned.** Both the
+    programme page and the Cohort 1 event page answer "Do I need to be able to code?" with *"The
+    agents do the typing, so the day does not assume you can code."* Neither is in the index.
+  - **And the quoted sentence is this guide's own, which makes it a copy defect rather than only
+    a misreading.** "It assumes you are comfortable working in a codebase" is true and correct
+    about **Claude Code the tool**, and should stay. But the guide's closing section carried the
+    Agentic Bootcamp's prerequisite line (*"No coding required."*) and gave the Coding Bootcamp
+    none - so a reader, or an engine, holding only this page gets a stated prerequisite for one
+    day and silence plus a warning for the other. The asymmetry was in the copy.
+  - **The change: two sentences, on the page the engine holds.** The Coding Bootcamp paragraph
+    in `src/content/guides/claude-cowork-claude-code-or-codex.md` now reads *"It does not assume
+    you can code. What it teaches is everything around the code - the terminal, version control,
+    deployment, databases and tests - and how to check what the AI wrote rather than trusting
+    it."* **No new fact**: it is the published event-page and programme-page answer, reworded only
+    to fit prose. `updatedDate` bumped to 24 Oct.
+  - **Why this and not a backlog item.** 41, 43 and 44 are all loop-actionable and all stayed
+    open. This is on 1 of the 4 URLs an engine demonstrably holds, about a day that is bookable
+    and **33 days out**, answering the exact question the engine said it could not find. The
+    national query on the same subject returned nothing of ours and the engine stated the gap
+    itself: *"none of the results covers Codex in a one-day, in-person UK course for
+    individuals."* Highest value, highest confidence, smallest change of the four.
+  - **The 23 Oct homepage change is working, and the stale-date run has ended.** Asked for a
+    one-day Oxford bootcamp in November, the engine answered *"Cohort 3, Thursday, 19 November
+    2026 at Worcester College"*, named the Coding Bootcamp on 26 November as a separate day, and
+    noted that *"the 21 October cohort has already passed"*. Nineteen consecutive cycles had read
+    a stale date; this one did not.
+  - **Measured whole-site.** Exactly **5** files in `dist` differ: the guide, `/guides/` (one
+    eyebrow, "September 2026" to "October 2026"), `llms-full.txt` and the two sitemaps. On the
+    guide itself exactly **4** lines move - `article:modified_time`, the two `dateModified`
+    fields, the byline and the paragraph. All other **62** pages are byte-identical, as are
+    `llms.txt`, `rss.xml` and `robots.txt`. The sitemap `lastmod` for the guide moves from
+    25 Sept to 24 Oct, which is true.
+  - **IndexNow maps this one exactly**, which is worth recording against backlog 41: `--dry-run`
+    submits 2 URLs and the measured blast radius is 2 sitemap pages. 41's four-page
+    under-submission is caused by a **title** change moving sibling "More guides" link text; a
+    body change does not touch the siblings. The item is unchanged, and milder than it reads.
+  - **Checks.** `npm ci`, then `npm run build` clean before and after - 63 pages checked, 3,094
+    internal links resolve, titles and descriptions unique, no SEO warnings, schema valid at
+    7 Event and 9 FAQPage nodes. Voice check on the new sentences: no banned word, no em dash,
+    no exclamation mark, British spelling, spaced hyphens. The 11 outbound warnings are the
+    sandbox egress policy.
+  - **Inspected in headless Chromium** at 375px and 1280px on the guide, `/guides/`, the Coding
+    programme page and the Coding event page - 8 configurations: **0px horizontal overflow
+    everywhere**, one `h1` each, every JSON-LD block parses, correct canonicals, no `robots`
+    meta, zero page errors, and the new sentence present on the guide at both widths.
+  - **No event fact was read or changed.** `luma.com` answers 403 on CONNECT from this sandbox,
+    so the three Luma pages could not be checked; no date, venue, price, capacity or
+    availability was touched. The sentence added is a prerequisite, already published twice.
+  - **Production state from the Actions API.** CI run 274 and Deploy run 286 both success on all
+    jobs for `4f7d4a1`, the current `main` HEAD, finished 19:14 UTC, nothing queued or in
+    progress. `oxfordagentic.com` answers 403 on CONNECT from here, so `build.txt` could not be
+    read; production state is taken from the runner instead, as on the last four cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 Aug baseline.
+  - **Stale-date sweep: nothing left to do.** All three passed dates (16 Sept, 21 Oct, and the
+    former 15 Oct Cohort 3 slot, now 19 Nov) read in the past tense across content and copy;
+    checked by grep over `src/`. Known candidate 2 is closed.
+  - **Known candidate 1 was already fixed** and needs no cycle: `scripts/indexnow-ping.mjs`
+    carries a `SINGLE_PAGE_SOURCES` map with `src/lib/home.ts -> /`.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the third cycle
+    running.** Two declines. *Making AI stick after the training day* is nine consultant blogs
+    deep and the site already ranks #1 on its near-neighbour with
+    `after-the-ai-executive-programme`, so a guide would restate a ranking page. *Coding-agent
+    prerequisites* is already answered on the programme and event pages - it needed reach, not a
+    new page, and reach is what this cycle gave it.
+
 - **2026-10-23 (20:00 local cycle) - the sitemap told crawlers the five event pages had just
   changed, on every build, including the daily rebuild that changes nothing.**
   - **The defect.** `contentLastmod()` in `astro.config.mjs` builds each URL's `lastmod` from

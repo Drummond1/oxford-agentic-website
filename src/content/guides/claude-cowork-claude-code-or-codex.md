@@ -12,7 +12,7 @@ capsule: >-
   workflow, not learning the app.
 author: drummond-gilbert
 publishDate: "2026-09-11T18:10:00+01:00"
-updatedDate: "2026-09-25T19:15:00+01:00"
+updatedDate: "2026-10-24T01:30:00+01:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - agentic-coding-bootcamp
@@ -58,4 +58,4 @@ The tools will look different by next spring. What carries across all four is th
 
 The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) covers where each of these tools fits as part of the day, and then spends most of it building: you bring one real task and leave with a working agentic workflow running against it. Cohort 3 runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
 
-If the thing you want is software rather than a workflow, the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is the one for that: Claude Code and Codex do the typing, and the day is spent on the workbench around them. It runs on 26 November, also at Worcester College.
+If the thing you want is software rather than a workflow, the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is the one for that: Claude Code and Codex do the typing, and the day is spent on the workbench around them. It does not assume you can code. What it teaches is everything around the code - the terminal, version control, deployment, databases and tests - and how to check what the AI wrote rather than trusting it. It runs on 26 November, also at Worcester College.

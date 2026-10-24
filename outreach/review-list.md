@@ -11,6 +11,31 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **An answer engine states the gap the Coding Bootcamp fills, and cannot retrieve the page
+  that fills it.** Found 24 Oct 2026 (01:00 cycle). Evidence for the two items already on this
+  list, not a new lead - nothing to contact.
+  - **The query was "learn to use Claude Code or Codex without being a developer one day
+    in-person course UK".** No page of ours was returned. The engine's own closing line:
+    *"none of the results covers Codex in a one-day, in-person UK course for individuals."*
+    The Oxford Agentic Coding Bootcamp is exactly that, bookable, on 26 November at Worcester
+    College, 33 days out.
+  - **What it answered from instead:** Udemy, Scrimba, Maven, Every's Zoom workshop (US times),
+    agentaccelerator.ai (UK, but sold as in-house team training), adventuremedia.ai and
+    recalcacademy. Several are online or US; the one UK in-person option is not sold to
+    individuals.
+  - **Why this is a coverage problem and not a copy one.** Restricted to the domain, the engine
+    does hold `claude-cowork-claude-code-or-codex` and reads the 26 November date correctly off
+    it. It is the **programme page and the event page** - the two pages that answer "do I need
+    to be able to code?" - that it has never returned. Backlog 2 (submit `sitemap-index.xml`,
+    request indexing) stays the highest-value item on this list and now has a second,
+    dated target: a bookable day whose prerequisite answer is on two unindexed pages.
+  - **One thing a person could do that the loop cannot:** `agentaccelerator.ai` runs the same
+    subject in the UK and sells it to teams rather than individuals, so it is a possible
+    partner or referral route rather than a directory. Unchecked - the host does not resolve
+    from this sandbox. Needs someone with an unblocked browser to decide whether it is worth
+    an email. Nothing contacted, nothing submitted, no account made.
+  - **Caveat.** One engine, one day, through a sandboxed web search.
+
 - **The clearest commercial cost of the stale Luma listings yet, from a buyer who already knows
   the product name.** Found 23 Oct 2026 (20:00 cycle). Nothing to contact - this is evidence for
   two items already on the list, not a new lead.
