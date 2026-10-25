@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-10-25T01:00:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -29,6 +29,15 @@ whoFor:
   - People who understand the concepts but have not yet built and shipped something of their own
   - Founders and operators who want to prototype an idea without waiting on a developer
   - Anyone who has watched a coding agent work and wants to know what to do around it
+# Schema only, for `Course.coursePrerequisites` - no template renders it.
+# Both sentences restate this page's own FAQ answers, "Do I need to be able to
+# code?" and "What should I bring?". Edit those and edit this.
+prerequisites: >-
+  The day does not assume you can code: the agents do the typing, and what it
+  teaches is everything around the code. Bring a laptop you can install software
+  on, because the day involves setting up a code editor, a terminal and a GitHub
+  account on your own machine, and corporate or government devices often block
+  that.
 faqs:
   - q: What is the Oxford Agentic Coding Bootcamp?
     a: >-

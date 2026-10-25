@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-10-21T20:30:00+01:00"
+updatedDate: "2026-10-25T01:00:00+00:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -26,6 +26,14 @@ whoFor:
   - Business leaders, founders, partners and senior operators who already use AI most days
   - People who have hit the ceiling of what prompting alone can do
   - Anyone tired of re-explaining their business to a chatbot that forgets by Tuesday
+# Schema only, for `Course.coursePrerequisites` - no template renders it.
+# Both sentences restate this page's own FAQ answers, "Do I need to be
+# technical?" and "What do I need to bring?". Edit those and edit this.
+prerequisites: >-
+  Nothing technical: if you use AI tools most days you have everything the day
+  requires, and the work is thinking clearly about your own business rather than
+  writing code. Bring a laptop, and your own material - the documents, notes and
+  examples that carry how you work and what you know.
 faqs:
   - q: What is the Oxford Second Brain Bootcamp?
     a: >-

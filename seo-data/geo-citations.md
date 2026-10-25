@@ -5,6 +5,45 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-25 (01:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions, rotated onto the prerequisites and audience axis - what
+a buyer asks last, before booking: am I the right person for this, and do I need to be able
+to code.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need to be able to code for a one-day AI coding bootcamp prerequisites non-developer UK | **No** | createwith.com (x3), shortcourses.lsbu.ac.uk, coding-bootcamps.ed.ac.uk, maven.com (x3), careertraining.csusm.edu |
+| one-day in-person AI bootcamp Oxford November 2026 who is it for prerequisites beginners welcome | **No** | happeningnext (Louisville KY), enspire.ox.ac.uk, OxML (x3 via Google Groups), learnersink (x2), oxford-royale (x2) |
+| how to build a second brain for AI tools one day course who should attend | **No** | maven.com (x2), gumroad, eventbrite.ca, buildingasecondbrain.com, decodingml, infoxchange, techsoup.net.nz (x2), tally.so |
+| hands-on agentic AI course Oxford business leaders do I need to be technical | **No** | sbs.ox.ac.uk (x2), createwith.com, coursera (x3), `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, onereach.ai, iimcal.ac.in |
+
+**Reading.**
+
+- **All four probes asked the same question of the field and all four said the field does not
+  answer it.** Verbatim: *"I can't say who it's for or what the prerequisites are"*; *"the
+  results don't say how much technical background it assumes"*; *"The results don't say
+  explicitly whether either course requires programming"*; *"few one-day courses list an
+  explicit audience"*. That is the evidence this cycle shipped against - backlog 45,
+  `Course.coursePrerequisites` and `Course.audience`, which this site answers in prose on
+  three programme pages and published in no structured data.
+- **The competitors that were returned publish exactly those two things.** Saïd's online
+  programme came back with its audience stated (*"technology directors and CIO-level leaders
+  plus senior consultants"*) and its certificate; LSBU with *"no formal entry requirements"*;
+  a Brighton day with *"bring your laptop and curiosity"* and a note that a subscription is
+  recommended. Ours says all of this on the page and said none of it to a machine.
+- **Twenty-third consecutive reading of the stale-listing harm, and the fourth time the
+  Agentic Bootcamp has been described to a buyer off the two expired Luma pages.** On the
+  Oxford agentic query the engine answered from `luma.com/k7c2rm5s` and
+  `luma.com/oxfordagentic2`, described the day as *"a community event, not a formal course"*,
+  gave the venue as *"St Anne's or Worcester College"*, and closed with *"the results don't
+  say how much technical background it assumes"* - while the live page answers that in a
+  named FAQ. Already the open item for Drummond on the review list; nothing new added there
+  beyond a fourth dated corroboration on EnSpire Oxford.
+- **The Oxford November query again found nothing of ours** while Cohort 3 is 25 days out,
+  and offered a one-day bootcamp in Louisville, Kentucky as its closest match.
+
 ## 2026-10-24 (19:00 BST cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

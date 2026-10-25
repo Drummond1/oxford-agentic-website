@@ -199,6 +199,26 @@ const programmes = defineCollection({
       description: z.string(),
       outcomes: z.array(z.string()).default([]),
       whoFor: z.array(z.string()).default([]),
+      /**
+       * What someone needs before the day, for `Course.coursePrerequisites`.
+       * Schema only: no template renders it, so it adds no visible copy.
+       *
+       * It therefore has one hard rule - every clause must restate what this
+       * programme's own page already publishes, in the FAQ answers to "Do I
+       * need to be technical?" (or "Do I need to be able to code?") and "What
+       * do I need to bring?". Structured data has to reflect the page a reader
+       * sees, and a prerequisite nobody could read on the page would be a claim
+       * invented for machines. Edit those answers and edit this with them.
+       *
+       * Why it exists: four probes on 25 Oct 2026 asked this question of this
+       * field and were told nobody answers it - "I can't say who it's for or
+       * what the prerequisites are", "the results don't say how much technical
+       * background it assumes", "The results don't say explicitly whether
+       * either course requires programming" - while Saïd's online programme was
+       * returned with its audience stated. The answer is on three pages of this
+       * site in prose and was in none of its structured data.
+       */
+      prerequisites: z.string().optional(),
       faqs: z.array(faq).default([]),
       order: z.number().int().default(0),
       updatedDate: isoDateTime,

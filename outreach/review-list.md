@@ -512,6 +512,13 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     about the next Oxford AI bootcamp cohort". Neither carried a month or a year, so this is a
     second query shape, not a repeat of the 16 Oct one. Same page, same competitor, still no
     page of ours. Three retrievals across three distinct query shapes now.
+  - **Corroborated a third time, 25 Oct 2026.** The prerequisites-axis probe - *"one-day
+    in-person AI bootcamp Oxford November 2026 who is it for prerequisites beginners
+    welcome"* - returned the same `enspire.ox.ac.uk/event/ai-product-management-bootcamp`
+    page, and the engine answered *"I didn't find a one-day, in-person AI bootcamp in Oxford
+    for November 2026"* while Cohort 3 sits 25 days out. Four retrievals, four query shapes,
+    still no page of ours. Nothing new to add about the route itself - the open question is
+    unchanged and it is his.
   - **Not checked:** whether it accepts third-party listings, any cost, or editorial policy.
     Only the "What's On" index was loaded, on 11 Oct; the event page above was seen in search
     results only.

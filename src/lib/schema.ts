@@ -480,6 +480,14 @@ export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) 
     inLanguage: 'en-GB',
     teaches: programme.data.outcomes,
     courseMode: 'onsite',
+    /* Both come straight off the programme's own published copy - `whoFor` is
+       the "Who is this for?" list a reader sees, and `prerequisites` restates
+       that page's own FAQ answers (see the note on the field). Nothing is
+       asserted here that the page does not say in prose. */
+    ...(programme.data.whoFor.length > 0
+      ? { audience: { '@type': 'Audience', audienceType: programme.data.whoFor } }
+      : {}),
+    ...(programme.data.prerequisites ? { coursePrerequisites: programme.data.prerequisites } : {}),
     ...(instances.length > 0 ? { hasCourseInstance: instances } : {}),
   };
 }

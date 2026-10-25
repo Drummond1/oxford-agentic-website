@@ -622,7 +622,7 @@ Status: `todo` · `blocked` (why) · `doing`
     Only `/` was taken; `/events/`, `/bootcamps/`, `/guides/` and `/team/` are the same shape
     and stay unclaimed, because the homepage is the one with evidence behind it.
 
-45. `todo` (loop-actionable, found 24 Oct 2026 in the 19:00 cycle) - **`coursePrerequisites`
+45. `done` 25 Oct 2026 (01:00 cycle) - **`coursePrerequisites`
     and `audience` are the two `Course` properties the probes keep asking for and the site
     still does not publish.** The 01:00 cycle drafted both from published copy and declined to
     ship them, correctly, on the grounds that they would land on programme pages no engine has
@@ -637,10 +637,102 @@ Status: `todo` · `blocked` (why) · `doing`
     the Coding Bootcamp's prerequisite is the one place the site is thinnest (backlog 25 is
     open on whether it needs a paid plan, which is his call). Do the Agentic and Second Brain
     lines from published copy if the Coding one has to wait.
+    **Shipped 25 Oct 2026 (01:00 cycle), all three lines including the Coding one.** The paid-plan
+    question did not have to be answered to ship it: the Coding Bootcamp's published prerequisite
+    is a laptop you can install software on, and backlog 25 is about a subscription, which the
+    string does not mention. `audience` is the published `whoFor` list, unchanged and verbatim.
+    `coursePrerequisites` is a new `prerequisites` field on the programme collection, schema-only,
+    carrying one rule: every clause must restate that page's own "Do I need to be technical?" and
+    "What do I need to bring?" answers. Checked clause by clause against the rendered page - 11 of
+    11 found in visible text - because structured data a reader cannot verify on the page is a
+    claim invented for machines.
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-25 (01:00 local cycle) - four probes asked this field what a one-day AI bootcamp
+  expects of you and who it is for, and all four said nobody answers it. This site answers both
+  in prose on three pages and published neither as data. `Course.coursePrerequisites` and
+  `Course.audience` now ship on all three bootcamps. Backlog 45 closed.**
+  - **The evidence, and it is unusually direct.** Four questions on the prerequisites and
+    audience axis, none citing this site, each one naming the same gap in its own words: *"I
+    can't say who it's for or what the prerequisites are"* (Oxford, November, one-day); *"the
+    results don't say how much technical background it assumes"* and *"The results don't say
+    explicitly whether either course requires programming"* (the Agentic Bootcamp specifically,
+    answered off the two expired Luma pages); *"few one-day courses list an explicit audience"*
+    (Second Brain). The 17 Oct reading this item was opened on - *"I didn't find the course's
+    prerequisites or a note on whether beginners are welcome"* - is now four readings.
+  - **The competitors returned beside us publish exactly these two things.** Saïd's online
+    programme came back with its audience stated and its certificate; LSBU with *"no formal
+    entry requirements"*; a Brighton day with *"bring your laptop and curiosity"*. The answer
+    is on our pages in a named FAQ and was in none of our structured data.
+  - **Nothing is asserted that the page does not already say.** `audience` is the published
+    `whoFor` list verbatim, as a single `Audience` node carrying 5 / 3 / 3 `audienceType`
+    strings - the same shape as `teaches`, which is the published `outcomes` list.
+    `coursePrerequisites` is a new schema-only `prerequisites` field on the programme
+    collection, each one restating that programme's own "Do I need to be technical?" (or "Do I
+    need to be able to code?") and "What do I need to bring?" answers. **Verified clause by
+    clause against the rendered page with the JSON-LD stripped out: 11 of 11 clauses found in
+    visible text.** That check is the point of the field's comment - structured data a reader
+    cannot verify on the page would be a claim invented for machines.
+  - **The Coding Bootcamp shipped too, and did not need backlog 25 answered.** Its published
+    prerequisite is a laptop you can install software on, with the code editor, terminal and
+    GitHub account the day sets up on it. The open question there is a paid *subscription*,
+    which the string does not mention either way.
+  - **Measured whole-site.** Exactly **7** files in `dist` differ: the three programme pages,
+    `index.html`, `llms-full.txt` and the two sitemaps. All 59 other pages are byte-identical,
+    as are `llms.txt`, `rss.xml` and `robots.txt`. The JSON-LD was diffed **as data**: on all
+    four changed pages the only change is `audience` and `coursePrerequisites` added to the
+    three `Course` nodes - no node added, removed or otherwise altered. Each homepage `Course`
+    is still byte-identical to its programme page's, so the two pages cannot drift. On the
+    programme pages the HTML outside the JSON-LD differs by **two characters each**, the "Last
+    updated" day. `llms-full.txt` differs by exactly 3 lines, the same date.
+  - **The sitemap moves 4 of 55 `lastmod` values, all true**: the three programme pages, whose
+    files changed, and `/`, whose derivation takes the newest programme `updatedDate` and whose
+    `Course` nodes did change. No URL added or removed, 41 carried a `lastmod` before and after,
+    **0 future-dated, 0 malformed**. The first draft of this change *was* future-dated by 17
+    minutes and was caught by that check: British Summer Time ended at 02:00 this morning, so a
+    `+01:00` timestamp written at what the shell had just stopped calling 02:15 was ahead of the
+    clock. Timestamps are `+00:00` from today until March.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique,
+    no SEO warnings. `npm run check:flags` passes on both the all-on and all-off builds. Voice
+    check on the three new strings: British spelling, no banned word, no em dash, no exclamation
+    mark, spaced hyphens. The 11 outbound warnings are the sandbox egress policy. `astro check`
+    is not installed in this sandbox and the repo has no `tsconfig.json`, so neither could run.
+  - **Inspected in headless Chromium** at 375px and 1280px on `/` and all three programme pages
+    - 8 configurations: 0px horizontal overflow, one `h1` each, JSON-LD parses, **3 `Course`
+    nodes on `/` and 1 on each programme page, every one of them carrying both new properties**,
+    correct canonicals, no `robots` meta, no duplicate ids, no missing alt. The 2 console errors
+    per page are `www.googletagmanager.com` blocked by the sandbox.
+  - **Recorded, not fixed: IndexNow over-submits this one too.** `src/lib/schema.ts` and
+    `src/content.config.ts` both map to the whole site, so 55 URLs are hinted where 4 changed.
+    Same call as the last three cycles: the conservative mapping is right in general. The ping
+    script itself could not be run even with `--dry-run` this cycle - the sandbox classifier
+    declined it - so the mapping above is read from the script rather than executed. The deploy
+    workflow runs it, as always, and it was not run by hand.
+  - **No copy, claim, link or event fact changed.** Three programme `updatedDate`s moved to
+    today, which is true and is the only thing a reader sees.
+  - **GEO: four probes, none cited.** Full table in `seo-data/geo-citations.md`. Twenty-third
+    consecutive reading of the stale-listing harm, including the Agentic Bootcamp described to a
+    buyer off `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2` as *"a community event, not a
+    formal course"* at *"St Anne's or Worcester College"*.
+  - **Production state from the Actions API.** CI run 279 and Deploy run 292 both success on
+    `2f94072`, the current `main` HEAD, finished 19:12Z yesterday, nothing queued or in progress.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so `build.txt` could not be
+    read and production state is taken from the runner, as on the last nine cycles.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **Off-page: one dated corroboration, no new lead.** EnSpire Oxford's competitor bootcamp page
+    was returned a fourth time, on a fourth distinct query shape; the route and the open question
+    are unchanged, so the existing entry gained a line rather than the list gaining an entry. The
+    other hosts today - createwith, maven, happeningnext, eventbrite, allai.events - are all
+    already recorded.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the seventh cycle
+    running.** The axis probed is a prerequisites-and-audience question the three programme pages
+    already answer in their own FAQs; the gap was machine-readability, not a 33rd page. The week
+    resets tomorrow.
 
 - **2026-10-24 (19:00 local cycle) - the three `Course` nodes that say this is a one-day,
   in-person, Oxford course sat only on the programme pages, which no probe has ever returned.

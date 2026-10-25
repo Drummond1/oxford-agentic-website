@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-18T14:10:00+01:00"
+updatedDate: "2026-10-25T01:00:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -27,6 +27,14 @@ whoFor:
   - Consultants and senior public-sector, NHS and university staff
   - Anyone comfortable with AI who has never orchestrated several steps into a single workflow
   - Engineers and people building AI for a living, who come for the pattern and the room
+# Schema only, for `Course.coursePrerequisites` - no template renders it.
+# Both sentences restate this page's own FAQ answers, "Do I need to be
+# technical?" and "What do I need to bring?". Edit those and edit this.
+prerequisites: >-
+  No coding, and nothing technical: if you can use a spreadsheet and have used a
+  chatbot you have enough, and everything is facilitated in the room. Bring a
+  laptop and one real task from your own work that currently costs you meaningful
+  time.
 faqs:
   - q: What is the Oxford Agentic Bootcamp?
     a: >-
