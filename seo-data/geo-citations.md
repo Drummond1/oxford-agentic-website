@@ -5,6 +5,55 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-25 (13:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions, all rotated off the deliverable/duration/vertical axes
+the 07:00 cycle worked: two onto the **Coding Bootcamp**, which has never been probed on its
+own subject, and three onto a guide-candidate axis each.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need a paid ChatGPT or Claude subscription to attend an AI workshop | **No** | eventbrite.ca, allai.events (x2), two Luma listings, wichita.edu (x3), selar.com, the-virtual-savvy |
+| one day AI coding bootcamp for non-developers UK learn to build with Claude Code | **No** | claude101.every.to, every.to, event.checkin.no (Oslo), nobledesktop.com, eventbrite.co.uk (West London), vibeindex.ai, kill-the-newsletter (x3) |
+| learn to code with AI one day in-person course Oxford November 2026 no experience | **No** | oerc.ox.ac.uk, sbs.ox.ac.uk, lifelong-learning.ox.ac.uk (x4), ouess.web.ox.ac.uk (x2), oxford-royale, weteachme |
+| difference between an AI agent and an agentic workflow for a business team | **No** | workday.com (x4), gnani.ai, retool.com, virtasant, nexos.ai, c-sharpcorner |
+| which task should I automate with AI first at work how to choose | **No** | itechguides, g2.com, therundown.ai, sista.ai, ddiy.co (x2), datanorth.ai, 4spotconsulting, jestor.com |
+
+**Reading.**
+
+- **The Coding Bootcamp was probed on its own subject for the first time, twice, and the field
+  twice said it does not exist.** Verbatim: *"The closest UK match is a one-day event in West
+  London. I found no other UK one-day course for non-developers in these results"*, and
+  *"I didn't find a one-day, in-person, beginner-friendly AI coding course in Oxford for
+  November 2026."* The Oxford Agentic Coding Bootcamp is exactly that - one day, in person,
+  Worcester College, 26 November, agents do the typing - and is bookable now. The second probe
+  then offered Oxford's own Lifelong Learning and the Saïd summer school as the substitutes,
+  the same shape of harm as the Saïd swap recorded on 24 Oct. **Twenty-fifth consecutive
+  reading that the product reaches the buyer and the page does not.** This is the second and
+  third independent corroboration of the 24 Oct review-list entry, which gained two dated
+  lines rather than the list gaining a lead.
+- **The paid-subscription axis was probed and DECLINED as a guide, on accuracy rather than
+  winnability.** The field does answer it, and answers it per listing rather than in general:
+  one workshop requires a paid plan, one says the free tier covers most of it, one asks for a
+  free ChatGPT and the cheapest Claude. A guide here would have to state **our** answer for the
+  Coding Bootcamp, and that is backlog 25, a fact only Drummond has. The programme page's
+  published prerequisite is a laptop you can install software on and says nothing either way
+  about a subscription, which is correct and is as far as the loop can honestly go. Do not
+  re-pitch until backlog 25 is answered.
+- **Agent versus agentic workflow: NOT WINNABLE, and declined.** Nine of nine results are
+  vendors writing about their own product - Workday four times, plus Retool, nexos.ai,
+  gnani.ai, Virtasant and C# Corner. Worth recording that they contradict each other flatly
+  (Workday: agentic AI is the planner above the agents; C# Corner: an agentic workflow is the
+  *predictable* option the agent is not), so the field is noisy as well as owned.
+  `agentic-ai-glossary` and `scout-drafter-reviewer-pattern` already carry our definitions.
+- **"Which task should I automate first": NOT WINNABLE, and already covered.** The field is
+  thoroughly worked by content marketers with checklists and thresholds, and
+  `how-to-choose-your-first-agentic-task` is this site's answer and is written to the day
+  rather than to the genre. No gap.
+- **No guide this cycle.** Three axes probed as guide candidates, three declined: one on
+  accuracy, two on WINNABLE. Week resets tomorrow.
+
 ## 2026-10-25 (07:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

@@ -34,6 +34,16 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     partner or referral route rather than a directory. Unchecked - the host does not resolve
     from this sandbox. Needs someone with an unblocked browser to decide whether it is worth
     an email. Nothing contacted, nothing submitted, no account made.
+  - **Corroborated twice more, 25 Oct 2026 (13:00 cycle), on two fresh phrasings.** Neither
+    returned a page of ours. *"one day AI coding bootcamp for non-developers UK learn to build
+    with Claude Code"* closed on **"The closest UK match is a one-day event in West London. I
+    found no other UK one-day course for non-developers in these results"** - the West London
+    one being a 10-seat Eventbrite day that has already passed. *"learn to code with AI one day
+    in-person course Oxford November 2026 no experience"* closed on **"I didn't find a one-day,
+    in-person, beginner-friendly AI coding course in Oxford for November 2026"**, then offered
+    Oxford's own Lifelong Learning short courses and the Saïd summer school as the substitutes.
+    Three readings on three phrasings now say the field has no such thing while we sell one,
+    32 days out. Still a coverage problem, still backlog 2, still nothing to contact.
   - **Caveat.** One engine, one day, through a sandboxed web search.
 
 - **The clearest commercial cost of the stale Luma listings yet, from a buyer who already knows

@@ -80,7 +80,7 @@ const bands = {
   ogImage={ogPathFor(path)}
   {/* The Course node is built by the shared helper, because the homepage
       publishes it too under this same `@id`. */}
-  schemaNodes={[courseSchema(programme, upcoming), showFaq ? faqSchema(data.faqs) : null]}
+  schemaNodes={[courseSchema(programme, upcoming), showFaq ? faqSchema(data.faqs, path) : null]}
   breadcrumbs={[
     { name: 'Bootcamps', path: paths.programmes() },
     { name: data.name, path },

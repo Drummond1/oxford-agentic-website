@@ -141,10 +141,35 @@ export function breadcrumbSchema(trail: Array<{ name: string; path: string }>) {
   };
 }
 
-export function faqSchema(faqs: Array<{ q: string; a: string }>) {
+/**
+ * The FAQ node, and the one thing it has never said: whose it is.
+ *
+ * Measured on the built site, 25 Oct 2026. Of the ten top-level node types
+ * this site emits, FAQPage was the only one that named no URL at all. Article
+ * is bound to its page by `mainEntityOfPage`, CollectionPage by `url` and
+ * `isPartOf`, every identified node by its `@id`, and BreadcrumbList carries
+ * absolute URLs inside its own items. The FAQ node carried `@type` and
+ * `mainEntity` and nothing else: 91 questions across 9 pages, with nothing in
+ * them naming the page, the site or the organisation.
+ *
+ * It is the node holding this site's highest-stakes sentences - that we are not
+ * part of the University of Oxford, that the day assumes no code, which venue
+ * each cohort is in - and those are the facts answer engines keep getting wrong
+ * off third-party listings. A consumer that lifts this node out of the graph
+ * should be able to say which page said it.
+ *
+ * Nothing is asserted. Both values derive from the page's own canonical path,
+ * and `#webpage` is the `@id` that page's own WebPage node already publishes.
+ * The page itself stays a WebPage: adding FAQPage to its `@type` would claim
+ * the FAQ is the page's main content, which on none of these nine pages it is.
+ */
+export function faqSchema(faqs: Array<{ q: string; a: string }>, path: string) {
   if (faqs.length === 0) return null;
+  const url = absoluteUrl(path);
   return {
     '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    isPartOf: { '@id': `${url}#webpage` },
     mainEntity: faqs.map((faq) => ({
       '@type': 'Question',
       name: faq.q,

@@ -84,7 +84,7 @@ const courseNodes = await Promise.all(
   description={config.brand.description}
   path="/"
   ogImage={ogPathFor('/')}
-  schemaNodes={[faqSchema(homeFaqs), ...eventNodes, ...courseNodes]}
+  schemaNodes={[faqSchema(homeFaqs, '/'), ...eventNodes, ...courseNodes]}
   footerSignup={false}
 >
   {/* Drummond's call (28 Jul): the homepage is the typographic design — ink,

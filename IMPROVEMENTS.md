@@ -663,6 +663,100 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-25 (13:00 local cycle) - 91 questions and answers across 9 pages, carrying this
+  site's highest-stakes sentences, and the node holding them named no URL at all. The FAQ
+  node now says which page it belongs to.**
+  - **The defect, measured across all 63 built pages.** This site emits ten top-level node
+    types. Nine of them say where they belong: `Organization`, `WebSite`, `WebPage`, `Person`,
+    `Course` and `EducationEvent` by their `@id`; `Article` (32 of them) by `mainEntityOfPage`;
+    `CollectionPage` (4) by `url` plus `isPartOf`; `BreadcrumbList` (55) by the absolute URLs
+    inside its own `itemListElement`. **`FAQPage` was the exception, on all 9 pages that carry
+    one.** Its entire key set was `@type` and `mainEntity`. No `@id`, no `url`, no `isPartOf`,
+    no `mainEntityOfPage`, and no URL anywhere inside it.
+  - **Why this node and not the others.** The FAQ answers are where this site states the facts
+    answer engines keep getting wrong off third-party listings: that Oxford Agentic is not part
+    of the University of Oxford, that the day assumes no code, which venue each cohort is in.
+    Twenty-five consecutive GEO readings have an engine reciting a passed date, two colleges
+    and a price in the wrong currency off two expired Luma pages. The site's own machine-
+    readable answer to all of that travelled with nothing to say whose it was: lift the node
+    out of the graph and it is 91 unattributed Q&A pairs.
+  - **The fix is identity only, the same class as the `@id` and `url` every other node already
+    carries.** `faqSchema()` takes the page's `path` and emits `@id: <url>#faq` and
+    `isPartOf: { @id: <url>#webpage }`. Both values derive from the page's own canonical URL,
+    and `#webpage` is the `@id` that page's own `WebPage` node already publishes, so the
+    reference resolves inside the same graph. Three call sites pass the `path` they already
+    hold (`index.astro`, `bootcamps/[slug].astro`, `events/[slug].astro`).
+  - **The page deliberately stays a `WebPage`.** Adding `FAQPage` to the `WebPage` node's own
+    `@type` and hanging the questions off it is the other canonical shape, and it is the wrong
+    one here: it would claim the FAQ is the page's main content, which on none of these nine
+    pages it is - the homepage's main content is the proposition, an event page's is the booking.
+    A separate, identified node says what is true, which is that the page has an FAQ.
+  - **Measured whole-site.** Exactly **9** files in `dist` differ, and they are exactly the 9
+    that emit an `FAQPage`. All 54 other pages are byte-identical, as are both sitemaps,
+    `llms.txt`, `llms-full.txt`, `rss.xml` and `robots.txt` - correctly, since no content file
+    changed. On every one of the 9 the HTML **outside** the JSON-LD block is byte-identical, so
+    nothing a reader sees moved. The JSON-LD diffed as data: node counts unchanged (9 on `/`,
+    6 on each of the other eight), **exactly 18 properties added - two per page - with no node
+    added, removed or otherwise altered and no other property changed anywhere.**
+  - **Verified as data across all 63 pages.** Every `@id` equals that page's own `<link
+    rel="canonical">` plus `#faq`; every `isPartOf` target resolves to a node present in the
+    same graph and is that page's `#webpage`; all 9 `@id`s unique site-wide; no duplicate `@id`
+    within any graph; all 91 questions preserved, each with its `acceptedAnswer`.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes (unchanged), titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` passes on both the all-on and
+    all-off builds. The 11 outbound warnings are the sandbox egress policy and are identical on
+    the baseline build. `astro check` is still not installed here and the repo has no
+    `tsconfig.json`. The checker matches `node['@type'] === 'FAQPage'` as a string, which is
+    the other reason the type was left alone.
+  - **Inspected in headless Chromium** at 375px and 1280px on all 9 changed pages - **18
+    configurations, all clean**: 0px horizontal overflow, exactly one `h1`, JSON-LD parses, the
+    `FAQPage` carries its `@id` and its `isPartOf` resolves, **every one of the 91 questions
+    found in the page's own rendered text**, correct canonical, no `robots` meta, no duplicate
+    element id, no image without alt. The only 2 console errors per page are
+    `googletagmanager.com/gtag/js` and `/gtm.js`, blocked by the sandbox proxy - read off the
+    failed requests this time rather than assumed. Full-page screenshots kept at both widths.
+  - **Checked and clean, so it is not re-derived: the Coding Bootcamp's internal links.** This
+    cycle's two sharpest probes were about that product, so the guide corpus was measured
+    against it. In-prose links from the 32 guides: Agentic Bootcamp 23, Second Brain 10,
+    **Coding Bootcamp 4** (`relatedProgrammes`: 24 / 10 / 4). That looked like the 13 Oct orphan
+    shape and is not. The four are exactly the four coding-adjacent guides
+    (`why-the-code-an-agent-wrote-is-not-live`, `what-you-can-build-in-one-day-with-ai`,
+    `claude-cowork-claude-code-or-codex`, `agentic-ai-glossary`); the other 28 are about
+    agentic workflows and second brains. The nearest candidate,
+    `ai-bootcamp-vs-course-vs-exec-education`, was read in full and **declined**: it compares
+    exec education, online courses, bootcamps and doing it yourself, not our three bootcamps,
+    and its closing line correctly names one as "our version of the third". The ratio reflects
+    the corpus's subject matter, not a defect. Do not re-open it without a guide whose own
+    subject calls for the link.
+  - **Recorded and not fixed.** IndexNow maps `src/lib/schema.ts` to the whole site, so 55 URLs
+    are hinted where 9 changed. Same call as the last five cycles: a change to `schema.ts`
+    usually does rebuild every page, and a one-off exception for a file name would be worse
+    than 55 hints nobody is harmed by. The ping script was not run by hand; the deploy workflow
+    runs it, as always.
+  - **GEO: five probes, none cited.** Full table in `seo-data/geo-citations.md`. The Coding
+    Bootcamp was probed on its own subject for the first time, twice, and the field twice said
+    it does not exist - *"I found no other UK one-day course for non-developers"* and *"I
+    didn't find a one-day, in-person, beginner-friendly AI coding course in Oxford for November
+    2026"* - while it is bookable for 26 November, 32 days out. Twenty-fifth consecutive
+    reading of the stale-listing harm.
+  - **Production state from the Actions API:** Deploy run 296 success on `1e03fdc`, the current
+    HEAD, nothing queued or in progress; CI run 282 green on the same commit.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so `build.txt` could not be
+    read and production state is taken from the runner, as on every cycle since 15 October.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **Off-page: no new lead.** The standing Coding Bootcamp coverage entry on the review list
+    gained two dated lines, the second and third corroborations of the 24 Oct finding.
+  - **No guide: 2 of 3 this week (19-25 Oct), today's allowance deliberately unspent for the
+    ninth cycle running.** Three axes probed as candidates and three declined. The
+    paid-subscription axis fails on **accuracy**, not winnability: the field answers it per
+    listing, and our own answer for the Coding Bootcamp is backlog 25, a fact only Drummond
+    has. Agent-versus-agentic-workflow is **not winnable** - nine of nine results are vendors
+    on their own product, Workday four times, and they contradict each other. "Which task to
+    automate first" is not winnable and `how-to-choose-your-first-agentic-task` already answers
+    it. The week resets tomorrow.
+
 - **2026-10-25 (09:00 local cycle) - the homepage asked for the same email address twice in
   the same words, once in its own band and again in the footer directly below it. The
   footer's copy of the ask now stands down on the page that already makes it.**

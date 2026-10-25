@@ -240,7 +240,7 @@ const registerLabel = !registrationOpen
   description={data.summary}
   path={path}
   ogImage={ogImage}
-  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos), showFaq ? faqSchema(data.faqs) : null]}
+  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos), showFaq ? faqSchema(data.faqs, path) : null]}
   breadcrumbs={[
     { name: 'Events', path: paths.events() },
     { name: data.title, path },
