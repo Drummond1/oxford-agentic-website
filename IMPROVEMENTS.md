@@ -647,9 +647,75 @@ Status: `todo` · `blocked` (why) · `doing`
     11 found in visible text - because structured data a reader cannot verify on the page is a
     claim invented for machines.
 
+46. `todo` (loop-actionable, found 25 Oct 2026 in the 09:00 cycle) - **the footer puts
+    "Elsewhere" alone on a second row between 700 and 820px.** Measured across fourteen
+    widths on the built site: `.site-footer__grid` resolves to one column up to 480px, a
+    tidy 2x2 at 600-640px, **three tracks with the fourth block wrapping underneath at
+    700-820px**, and four across from 900px up. The 700-820 band is the only untidy one -
+    "Elsewhere" sits under the entity block with the width of two columns of dead space
+    beside it, which is the same shape of fault the 24 Oct cycle fixed at the other end of
+    the range. It is cosmetic rather than broken, and the honest fix is probably a narrower
+    `minmax` floor on the link tracks (9rem today) so four fit sooner, measured the same
+    way. Not folded into this cycle, which was already changing the footer's conditions.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-25 (09:00 local cycle) - the homepage asked for the same email address twice in
+  the same words, once in its own band and again in the footer directly below it. The
+  footer's copy of the ask now stands down on the page that already makes it.**
+  - **The defect.** `NewsletterForm` is rendered twice on `/`: once inside the gold
+    "Not ready to book?" band at the end of `HomeSections`, and again in the footer
+    directly below it. Both are passed the same label, **"Hear about the next cohort
+    first"**, and because `newsletter.endpoint` is still empty (backlog 1) both fall back to
+    the same hardcoded sentence - *"Email hello@oxfordagentic.com and we will add you to the
+    list for the next cohort."* Measured in the browser on the deployed build: the two
+    labels sat **624px apart at 1280px, 729px at 768px and 1,033px at 375px**, with nothing
+    between them but the end of the gold band and the footer's own columns. Two identical
+    asks that close together read as a template fault rather than a second chance.
+  - **It is the homepage only.** Every other page carries exactly one email capture, in the
+    footer, which is what the footer's compact signup is for. `/` and its unindexed mirror
+    `/home-photos/` are the two pages that render `HomeSections`, and therefore the only two
+    that already have a dedicated capture band of their own.
+  - **The fix is a condition, not a deletion.** `Footer.astro` takes a new `signup` prop
+    (default `true`), `Base.astro` threads it through as `footerSignup`, and the two
+    `HomeSections` pages pass `false`. Nothing is removed from the component and no other
+    page changes. The invariant holds in both directions: the band in `HomeSections` renders
+    on the same `showSection('newsletter')` flag the footer's does, so when the flag is on
+    the homepage always keeps one ask, and when it is off both were already gone.
+  - **Measured whole-site.** Exactly **2** files in `dist` differ, `index.html` and
+    `home-photos/index.html`. All 61 other pages are byte-identical, as are both sitemaps,
+    `llms.txt`, `llms-full.txt`, `rss.xml` and `robots.txt`. The homepage diff is a single
+    changed line, and read as markup it is exactly the eight removed elements of the
+    duplicate block; no JSON-LD node, attribute or other element moved. 59 of
+    63 built pages still carry `site-footer__signup`, the four without it being `/`,
+    `/home-photos/` and the two redirect stubs that have no footer at all.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 61 pages built, 3,094
+    internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and
+    descriptions unique. `npm run check:flags` passes on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy and are identical on the baseline
+    build. `astro check` is still not installed here and the repo has no `tsconfig.json`, so
+    it was skipped rather than installed into the diff. Headless Chromium over all **55**
+    indexable pages at **375, 768 and 1280px**: no horizontal overflow, no image without
+    alt, no unlabelled form control, no link or button without an accessible name, exactly
+    one `h1` per page and no heading-level jump - clean before and after. Keyboard: 47 tab
+    stops on `/` (was 48, the one removed being the duplicate mailto), every one with the
+    gold `:focus-visible` ring. Full-page screenshots at all three widths on `/events/`,
+    `/bootcamps/`, `/testimonials/`, `/team/` and the Cohort 3 booking page are
+    **byte-identical** before and after; only `/` moves, losing 143px of height at 375px,
+    150px at 768px and 159px at 1280px.
+  - **Production state from the Actions API:** Deploy run 294 success on `93d55b4`, the
+    current HEAD, nothing queued. `oxfordagentic.com` answers 403 on CONNECT from this
+    sandbox and does not resolve through `WebFetch` either, so production could not be read
+    directly; the deploy is green on HEAD and the local build of that same commit was used
+    as the before-state. PR #1 and `feat/ceo-roundtable-demand-page` are the known-stale
+    leftovers already recorded in backlog 20, not work in flight.
+  - **Recorded and not fixed.** Four team headshots are `loading="lazy"` while sitting just
+    inside the first viewport at 1280px (tops at 740-746px) and one at 375px (603px), so
+    they are fetched later than they are needed on `/team/`. Small, and a separate concern
+    from this cycle's file. The footer's 700-820px wrap found in the same sweep is backlog 46.
 
 - **2026-10-25 (07:00 local cycle) - the engine now describes this bootcamp well, off the wrong
   page. `Event.sameAs` was on the cohort detail pages and missing from the condensed node that

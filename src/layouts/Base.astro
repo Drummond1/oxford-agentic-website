@@ -25,6 +25,8 @@ interface Props {
   noindex?: boolean;
   /** Ad-only page: noindex, nofollow, no schema. See BaseHead. */
   hidden?: boolean;
+  /** Set false by a page that already asks for the email in its own band. */
+  footerSignup?: boolean;
   bodyClass?: string;
 }
 
@@ -39,6 +41,7 @@ const {
   article,
   noindex = false,
   hidden = false,
+  footerSignup = true,
   bodyClass = '',
 } = Astro.props;
 
@@ -84,7 +87,7 @@ const nodes = hidden ? [] : [...schemaNodes, trail.length > 1 ? breadcrumbSchema
       {trail.length > 1 && <Breadcrumbs trail={trail} />}
       <slot />
     </main>
-    <Footer />
+    <Footer signup={footerSignup} />
     <BackToTop />
     {config.features.assistant && config.assistant.agentId && <Assistant />}
     {config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && <ConsentBanner />}

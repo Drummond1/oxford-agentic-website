@@ -73,6 +73,11 @@ const courseNodes = await Promise.all(
 );
 ---
 
+{/* HomeSections already ends on the gold "Not ready to book?" band, which
+    renders the same NewsletterForm with the same label and, with no
+    newsletter endpoint set, the same fallback sentence. Two identical asks a
+    screen apart read as a template fault rather than a second chance, so the
+    footer's copy stands down here (footerSignup={false}). */}
 <Base
   pageTitle={config.brand.tagline}
   titleOverride={`${config.brand.name} - ${config.brand.tagline}`}
@@ -80,6 +85,7 @@ const courseNodes = await Promise.all(
   path="/"
   ogImage={ogPathFor('/')}
   schemaNodes={[faqSchema(homeFaqs), ...eventNodes, ...courseNodes]}
+  footerSignup={false}
 >
   {/* Drummond's call (28 Jul): the homepage is the typographic design — ink,
       motif and micro-interactions. The photo variant lives at /home-photos/;

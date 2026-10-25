@@ -5,10 +5,22 @@ import EmailAddress from './EmailAddress.astro';
 import { getNav, getEventsForIndex, paths, formatShortDate, showSection } from '../lib/site';
 import config from '../../site.config';
 
+interface Props {
+  /**
+   * Set false by a page that already carries its own email capture, so the
+   * same ask is not made twice on one page. The homepage's gold
+   * "Not ready to book?" band and this one render the identical label and,
+   * with no endpoint configured, the identical fallback sentence.
+   */
+  signup?: boolean;
+}
+
+const { signup = true } = Astro.props;
+
 const nav = await getNav('footer');
 const { upcoming } = await getEventsForIndex();
 const year = new Date().getFullYear();
-const showNewsletter = showSection('newsletter');
+const showNewsletter = signup && showSection('newsletter');
 
 const socials = Object.entries(config.brand.social).filter(([, url]) => Boolean(url)) as Array<[string, string]>;
 const socialLabels: Record<string, string> = { luma: 'Luma', linkedin: 'LinkedIn', x: 'X' };
