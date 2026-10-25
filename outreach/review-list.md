@@ -65,6 +65,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Caveat.** One engine, one day, through a sandboxed web search. `luma.com` is unreachable
     from the sandbox (403 on CONNECT), so the Luma pages' current state was not read - only what
     the engine reported of them.
+  - **25 Oct 2026 (07:00 cycle), a fourth dated corroboration and the first that shows the
+    product being described well off the wrong page.** Asked what a one-day agentic bootcamp
+    actually produces, the engine answered with our own proposition almost verbatim - *"build
+    and run a working agentic workflow that does a real job... designing skills, then a
+    multi-agent workflow, and where to keep a human in the loop, plus security and stakeholder
+    questions"* - and read every word of it off `luma.com/oxfordagentic2` and
+    `luma.com/k7c2rm5s`. A second query carrying the domain itself returned no page of ours and
+    told the buyer *"one listing shows 21 Jul 2026... with tickets from $275. The venue differs
+    between listings: one names St Anne's College and another names Worcester College."* So the
+    pitch is landing and the date, the venue and the price attached to it are all wrong. This
+    does not change the ask - one minute on Luma to point the two passed pages at the live one
+    or at the calendar - it raises what it is worth.
 
 - **Correction to the entry below, and a sharper version of it: the site IS in this engine's
   index. Three of its 55 URLs are.** Found 23 Oct 2026 (14:00 cycle). Nothing to contact; this

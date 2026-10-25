@@ -290,6 +290,29 @@ function eventOffer(event: EventEntry, url: string) {
  * Event without them is not eligible for an event rich result, and both are
  * derived rather than new: the image is the cohort's own OG card, and the Offer
  * is the price-free one its page already publishes, from the same helper.
+ *
+ * `sameAs` was added 25 Oct 2026, and it is the one identity fact this node was
+ * missing. The detail page has carried it since 15 Oct for a documented reason:
+ * it names the Luma listing of this same event, so an engine holding both knows
+ * they are one thing and which of them is ours. That reason applies here more
+ * strongly than it does there, because the detail pages are not what gets read.
+ * A search carrying the domain itself on 25 Oct returned no page of
+ * oxfordagentic.com and answered off `luma.com/k7c2rm5s` (Cohort 1, July)
+ * and `luma.com/oxfordagentic2` (Cohort 2, September) - both passed - giving a
+ * buyer a July date, two different colleges as the venue, and "tickets from
+ * $275", a price in the wrong currency for a day that has run. That is the
+ * twenty-fourth consecutive probe to read this bootcamp off an expired listing,
+ * and `luma.com/oxfordagentic3`, the page that sells 19 November, has never
+ * appeared in one. The homepage is the page every probe that returns anything
+ * of ours returns, and it was the page saying nothing about which listing is
+ * live. It is an identity statement, not agenda, photos or series, so it does
+ * not reopen the reduction above; and it asserts nothing new, because the URL
+ * is already the visible booking link on the cohort's page and already in that
+ * page's own Event node under this same `@id`.
+ *
+ * On a passed cohort it does the same work in the other direction: it binds
+ * `luma.com/oxfordagentic2` to a page whose `eventStatus`, dates and prose all
+ * say the day ran in September, which is the correction those probes need.
  */
 export function eventListingItem(event: EventEntry, ogImage: string) {
   const url = absoluteUrl(paths.event(event.data.slug));
@@ -308,6 +331,7 @@ export function eventListingItem(event: EventEntry, ogImage: string) {
     organizer: { '@id': ORG_ID },
     offers: eventOffer(event, url),
     url,
+    ...(event.data.lumaUrl ? { sameAs: [event.data.lumaUrl] } : {}),
   };
 }
 

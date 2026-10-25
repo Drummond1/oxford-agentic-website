@@ -651,6 +651,82 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-25 (07:00 local cycle) - the engine now describes this bootcamp well, off the wrong
+  page. `Event.sameAs` was on the cohort detail pages and missing from the condensed node that
+  `/` and `/events/` emit, which is the only one that gets read.**
+  - **The evidence, and it is the first of its kind in twenty-four readings.** Asked what a
+    one-day agentic bootcamp actually produces, the engine answered with our proposition almost
+    word for word: *"Small groups build and run a working agentic workflow that does a real
+    job... designing skills, then a multi-agent workflow, and where to keep a human in the loop,
+    plus security and stakeholder questions."* It read all of it off `luma.com/oxfordagentic2`
+    (Cohort 2, which **ran** on 16 September) and `luma.com/k7c2rm5s` (Cohort 1, **July**). A
+    second probe carrying the domain itself returned no page of ours and closed with *"One
+    listing shows 21 Jul 2026... with tickets from $275. The venue differs between listings: one
+    names St Anne's College and another names Worcester College."* The pitch is reaching buyers.
+    The date, the venue and the price attached to it are a passed day, two colleges and a figure
+    in the wrong currency - and this site publishes no price at all, by decision.
+  - **What was missing, and it was missing by omission rather than by decision.**
+    `eventSchema()` has carried `sameAs` since 15 Oct with a documented reason: it names the
+    Luma listing of this same event, so a consumer holding both knows they are one thing and
+    which is ours. `eventListingItem()` - the condensed node emitted on `/` and inside the
+    `/events/` `ItemList` - never gained it, because it was written before 15 Oct and went onto
+    the homepage on 23 Oct. Its own comment names the three things it deliberately leaves on the
+    detail page: the agenda, the photos and the series. `sameAs` is none of them. It is an
+    identity statement, the same class as the `@id` and the `url` the node already carries, and
+    identity is what a listing node is for.
+  - **It reaches the page that is read.** `/bootcamps/<slug>/` and `/events/<slug>/` have never
+    been returned by a probe; `/` is returned by every probe that returns anything of ours. The
+    live listing's URL was on the pages an engine does not hold and absent from the one it does.
+  - **On a passed cohort it corrects in the other direction.** `/events/` lists all five, so
+    `luma.com/oxfordagentic2` is now bound to a page whose `eventStatus`, dates and prose all say
+    the day ran in September. That is exactly what these probes keep getting wrong.
+  - **Nothing is asserted.** Each value is `event.data.lumaUrl`, already the visible booking link
+    on that cohort's page and already in that page's own `Event` node under the same `@id`.
+    Checked as data: all five listing nodes' `sameAs` are identical to their detail page's, and
+    both homepage nodes match theirs, so the two cannot drift. No Luma page was read: `luma.com`
+    answers 403 on CONNECT from this sandbox, and no event fact was read or changed.
+  - **Measured whole-site.** Exactly **2** files in `dist` differ, `index.html` and
+    `events/index.html`. All 61 other pages are byte-identical, as are both sitemaps,
+    `llms.txt`, `llms-full.txt`, `rss.xml` and `robots.txt` - the sitemap correctly does not move,
+    because no content file changed and `/`'s derivation does not read `schema.ts`. On both
+    changed pages the HTML **outside** the JSON-LD block is byte-identical, so nothing a reader
+    sees moved. The JSON-LD diffed as data: node counts unchanged (9 on `/`, 5 on `/events/`),
+    exactly 7 `sameAs` properties added across the two pages, **no node added, removed or
+    otherwise altered, and no other property changed anywhere**.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal links
+    resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique, no SEO
+    warnings. `npm run check:flags` passes on both the all-on and all-off builds. The 11 outbound
+    warnings are the sandbox egress policy and are identical on the baseline build. `astro check`
+    is not installed here and the repo has no `tsconfig.json`. Headless Chromium at 375 and
+    1280px on `/` and `/events/`: **0px overflow in all 4 configurations**, one `h1` each, the
+    JSON-LD block parses, 2 Event nodes on `/` and 5 on `/events/` each carrying its `sameAs`,
+    correct canonicals, no robots meta, no duplicate ids, no missing alt. The 2 console errors
+    per page are googletagmanager blocked by the sandbox.
+  - **Recorded and not fixed.** IndexNow maps `src/lib/schema.ts` to the whole site, so 55 URLs
+    are hinted where 2 changed. Same call as the last four cycles: a change to `schema.ts`
+    usually does rebuild every page, and a one-off exception for a file name would be worse than
+    55 hints nobody is harmed by. The ping script was not run by hand; the deploy workflow runs
+    it, as always.
+  - **GEO: five probes, none cited.** Two axes were probed and both correctly produced no page.
+    *"Is one day enough"* is a real hole in the field - the engine's own *"The results don't
+    include independent evidence on how much behavior change a one-day course produces"*, with a
+    provider saying a boot camp *"simply isn't enough"* as the only direct answer - and
+    `what-you-can-build-in-one-day-with-ai` has carried a named "Is one day enough?" section
+    since 20 October, so the gap is coverage and not a thirty-third page. **Marketing as a
+    vertical was probed and declined**: unlike finance, the field has live UK competition rather
+    than a hole (Anicca, LXA's London day, aiawareness.ai at £1,795 to £1,995) and the searcher
+    is largely the content marketer the 12 Aug rule names as vanity traffic. Do not re-pitch
+    without new evidence.
+  - **Production state from the Actions API:** Deploy run 293 success on `520560b`, the current
+    HEAD, nothing queued. `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so
+    `build.txt` could not be read. Search Console unavailable from the cloud; no export newer
+    than the 24 August baseline and no API credentials in the repo. Off-page: no new lead - the
+    standing stale-Luma entry gained a fourth dated line, the first showing the product described
+    *well* off the wrong page.
+  - **No guide: 2 of 3 this week, today's allowance deliberately unspent for the eighth cycle
+    running.** Of the two axes that passed WINNABLE, one is already answered on a page published
+    thirteen days ago and the other fails CONVERTING.
+
 - **2026-10-25 (01:00 local cycle) - four probes asked this field what a one-day AI bootcamp
   expects of you and who it is for, and all four said nobody answers it. This site answers both
   in prose on three pages and published neither as data. `Course.coursePrerequisites` and

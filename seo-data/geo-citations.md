@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-25 (07:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Five questions. Four rotated right off the prerequisites and audience
+axis the 01:00 cycle worked, onto deliverable, duration, a December date and a vertical; the
+fifth carried the domain itself.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what do you actually build in a one-day agentic AI bootcamp take home workflow | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, sp.edu.sg, happeningnext (Atlanta), maven.com, outsystems, meetup (x2), two other Luma listings |
+| is one day of AI training enough to change how you work or do you need a longer course | **No** | organisator.ch, itbrief.co.uk, stcg.ac.uk, heraldcorp (Seoul), sp.edu.sg, carroll.org, cegos-integrata.de, sotsiot.ac.uk, boti.co.za |
+| in person AI workshop UK December 2026 one day hands on agentic | **No** | digitalresearchservices.ed.ac.uk (x2), brainstation.io (x2), science.ai.cam.ac.uk, odsc.ai, columbusglobal, ucl.ac.uk, createwith, brandonchamber.ca |
+| agentic AI training for marketing teams UK one day hands-on workshop | **No** | anicca.co.uk (x2), lxahub.com, comprend.com, aiawareness.ai (x2), targetinternet.com, ukft.org, aventislearning |
+| oxfordagentic.com one day bootcamp what you can build | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, allai.events, maven.com (x4), enspire.ox.ac.uk, two other Luma listings |
+
+**Reading.**
+
+- **The sharpest result, and what this cycle shipped against.** The first probe asked what a
+  one-day agentic bootcamp actually produces, and the engine answered for us, accurately and
+  at length: *"Small groups build and run a working agentic workflow that does a real job...
+  designing skills, then a multi-agent workflow, and where to keep a human in the loop, plus
+  security and stakeholder questions."* Every word of that is ours. It read all of it off
+  `luma.com/oxfordagentic2` (Cohort 2, which **ran** on 16 September) and `luma.com/k7c2rm5s`
+  (Cohort 1, **July**). The fifth probe, with the domain in the query, did the same and added
+  the damage: *"One listing shows 21 Jul 2026... with tickets from $275. The venue differs
+  between listings: one names St Anne's College and another names Worcester College, so check
+  the official page before you go."* A buyer holding this brand name is being given a passed
+  date, two colleges, and a price in the wrong currency for a day that has run.
+- **Twenty-fourth consecutive reading of the stale-listing harm, and `luma.com/oxfordagentic3`
+  has still never appeared in one.** The proposition reaches the buyer; the live listing and
+  the website do not. Already the open item for Drummond on the review list, which gained one
+  dated line rather than a new entry.
+- **What the site could do about it, and did.** The `sameAs` that says "this Luma listing and
+  this page are the same event, and which of them is ours" has been on the cohort detail pages
+  since 15 Oct. It was missing from `eventListingItem`, the condensed node that `/` and
+  `/events/` emit - and `/` is the one page every probe that returns anything of ours returns.
+  Shipped this cycle. It does not fix retrieval and is not claimed to.
+- **"Is one day enough" is a real gap in the field and this site already answers it.** The
+  engine closed on *"The results don't include independent evidence on how much behavior
+  change a one-day course produces"*, and the only direct answer it found was a Swiss provider
+  saying a boot camp *"simply isn't enough"*. `what-you-can-build-in-one-day-with-ai` carries a
+  named "Is one day enough?" section answering three versions of the question, published 12
+  October and updated 20 October. **Nothing to write**: the page exists and the gap is coverage.
+  No guide and no Q&A refresh on this axis.
+- **No December cohort, so nothing to write for the December query.** The engine found no UK
+  one-day in-person agentic day in December 2026 at all. Ours are 19 and 26 November.
+- **Marketing as a vertical: DECLINED, and weaker than finance was.** It fails the field test
+  less clearly than charities or legal did, but it fails the converting test the way the ledger
+  warns about. The field has live UK competition rather than a hole - Anicca's half and full
+  days, LXA's one-day agentic marketing workshop in London (23 Oct, just passed), aiawareness.ai
+  at £1,795 to £1,995 on-site - and the searcher behind "AI for marketing teams" is largely the
+  content marketer the 12 Aug rule names as vanity traffic. Do not re-pitch without new evidence.
+- **Caveat.** One engine, one day, through a sandboxed web search. `luma.com` is unreachable
+  from the sandbox (403 on CONNECT), so no Luma page's current state was read, only what the
+  engine reported of it. The `site:` operator in the fifth query was not honoured by the tool -
+  the results span other hosts - so read it as a domain-anchored query, not a site-restricted one.
+
 ## 2026-10-25 (01:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
