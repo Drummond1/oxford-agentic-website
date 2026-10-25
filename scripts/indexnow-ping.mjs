@@ -12,7 +12,7 @@
  *                                   date on every page
  *   src/content/programmes/x.md  -> /bootcamps/<slug>/, /bootcamps/, / and every
  *                                   guide naming it in `relatedProgrammes`
- *   src/content/team/x.md        -> /team/
+ *   src/content/team/x.md        -> /team/<slug>/ and /team/
  *   src/pages/a/b.astro (static) -> /a/b/, if it is in the sitemap
  *   any template/config/style change -> every URL in the sitemap, since every
  *   page was rebuilt
@@ -155,6 +155,16 @@ for (const file of changed) {
     urls.add(`https://${HOST}/`);
     if (slug) for (const guide of guidesForProgramme(slug)) urls.add(`https://${HOST}/guides/${guide}/`);
   } else if (kind === 'team') {
+    // The person's own profile page, which is the page that actually changed and
+    // was the one URL this branch omitted. Measured 25 Oct 2026 on
+    // nicolai-thomson.md: editing the body prose moves exactly one file in dist,
+    // `team/<slug>/index.html`, and `/team/` is byte-identical, so the branch
+    // submitted one URL and it was the wrong one. Editing frontmatter moves two
+    // sitemap pages, the profile and `/team/` (plus llms.txt, llms-full.txt and
+    // the OG image, which are not sitemap URLs). `/team/` stays in the set for
+    // that second case: telling frontmatter from body means parsing the file,
+    // and a hint for a page that did not move costs nothing.
+    if (slug) urls.add(`https://${HOST}/team/${slug}/`);
     urls.add(`https://${HOST}/team/`);
   }
 }

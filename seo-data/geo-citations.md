@@ -5,6 +5,49 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-25 (19:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions. One is a deliberate repeat of the **brand-and-domain**
+axis, because the point of it is whether a query carrying our own domain name can reach us;
+the other three rotate onto the field's own verdict on a one-day format and onto first-task
+choice.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one-day hands-on agentic AI bootcamp Oxford November 2026 bring your own task no coding | **No** | `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both past), sbs.ox.ac.uk twice, **allai.events** (21 Jul 2026), createwith.com, OxML 2026 (three Google Groups posts) |
+| what does a one-day AI bootcamp actually cover and is it worth it for a business leader UK | **No** | bilginc.com twice, shortcourses.lsbu.ac.uk (£360), Exeter business school twice, trainingcamp.com, createwith.com (Brighton), happeningnext.com (Cambridge, Leeds) |
+| how do I pick which task to automate with an AI agent first in my business | **No** | indiehackers.com, learn.g2.com, dev.to, **Salesforce Trailhead in five locales**, sista.ai |
+| oxfordagentic.com Oxford Agentic Bootcamp next cohort date venue | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, **allai.events**, help.datasciencedojo.com twice, learnersink.com, **nobleprog.co.uk three times**, codecademy twice, outsystems, sbs.ox.ac.uk |
+
+**Reading.**
+- **Twenty-sixth and twenty-seventh consecutive readings of the stale-listing harm.** Both
+  dated probes answered off `luma.com/oxfordagentic2` (16 September, passed),
+  `luma.com/k7c2rm5s` (21 July, passed) and `allai.events` (21 July). The Worcester versus
+  St Anne's contradiction, **"5 Spots Remaining"** read as live availability, **"from $275"**
+  in the wrong currency, and the Nicolai Thomson / Josh Lawman roster contradiction all
+  recurred. Nothing on this site can fix any of it; it is backlog 2 and the review list.
+- **The sharpest reading yet, and it is an indexing reading, not a copy one.** The fourth
+  probe carried **our own domain name and our own programme name** and returned no page of
+  ours, closing with *"To confirm the next date and venue, check the oxfordagentic.com site
+  directly."* The engine named the site as the authority and could not retrieve it. Every
+  earlier corroboration left room for "the query was too generic"; this one does not. It is
+  evidence for submitting `sitemap-index.xml` and requesting indexing (backlog 2), which only
+  Drummond can do, and it is **not** evidence for another page.
+- **The field's verdict on our own format is the opposite of our proposition, and it is not
+  winnable as written.** Asked what a one-day AI bootcamp covers, the engine concluded that
+  one *"is most useful as a literacy and decision-making primer"* and *"will not make you
+  capable of building or implementing AI"*, and advised being *"wary of 'AI strategy' in a
+  single day"*. That is a direct contradiction of what this site publishes, and
+  `what-you-can-build-in-one-day-with-ai` already answers it in a named section since
+  20 October. The field here is providers on their own courses plus two universities, which is
+  the institutional-publisher shape the probe rule names, so **no guide**: the gap is
+  retrieval of the page we already have.
+- **First-task choice: not winnable, and already answered.** Salesforce Trailhead holds five
+  of the first ten results in five locales on its own product's subject, with G2 and vendor
+  blogs beside it. `how-to-choose-your-first-agentic-task` covers the question. Declined as a
+  guide candidate for the second cycle running; do not re-pitch it without new evidence.
+
 ## 2026-10-25 (13:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

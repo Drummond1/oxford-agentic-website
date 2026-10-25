@@ -663,6 +663,83 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-25 (19:00 local cycle) - a team edit told the Bing family that `/team/` had
+  changed, which it had not, and never named the profile page, which had. The fourth IndexNow
+  under-submission, and the first where the hint went to the wrong URL entirely.**
+  - **The defect.** `scripts/indexnow-ping.mjs` mapped `src/content/team/x.md` to `/team/`
+    and nothing else - the script's own header comment said so in one line. All seven
+    `/team/<slug>/` pages are in the sitemap, and each is the page that an edit to that
+    person's file actually rebuilds.
+  - **Measured on the built site, twice, on `nicolai-thomson.md`.** Editing the **body prose**
+    moves **exactly one** file in `dist` - `team/nicolai-thomson/index.html` - and `/team/` is
+    byte-identical, because the listing page renders the frontmatter `bio` and not the body. So
+    the branch submitted one URL and it was **the wrong one**. Editing **frontmatter** (`role`)
+    moves five files: the profile page and `/team/` (two sitemap URLs), plus `llms.txt`,
+    `llms-full.txt` and `og/team--nicolai-thomson.png`, which are not sitemap URLs. In both
+    cases the profile page moved and in neither was it hinted.
+  - **Why it is worth a cycle.** These are the pages carrying the `Person` nodes that all 32
+    guides point at as `author` and that the `Organization` node names as `founder`. The ledger
+    calls entity triangulation the weakest part of this site's GEO position (backlog 2b, 19,
+    24), so the one class of page whose edits were never hinted is the class where corroboration
+    matters most. Bing feeds ChatGPT's web answers, which is why this script exists at all.
+  - **The fix is one line plus its measurement.** The `team` branch now adds
+    `https://<host>/team/<slug>/` when the file still has a `slug`, and keeps `/team/` for the
+    frontmatter case. Telling a frontmatter change from a body change means parsing the file,
+    and a hint for a page that did not move costs nothing - the script already submits the whole
+    sitemap routinely. The header comment was corrected to match.
+  - **Verified by `--dry-run`, which submits nothing** (it `process.exit(0)`s before the
+    `fetch`). A team file now yields both URLs; a **deleted** team file yields `/team/` alone,
+    with no crash and no invented URL, because `slugOf()` returns null for a file that is gone;
+    a guide file is unchanged at two URLs; an `IMPROVEMENTS.md`-only push still correctly
+    submits nothing. All seven team slugs were then resolved against `dist/sitemap-0.xml`:
+    **7 of 7 present**, so the branch cannot emit a URL that is not in the sitemap.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique,
+    no SEO warnings. `npm run check:flags` passes on both the all-on and all-off builds. The 11
+    outbound warnings are the sandbox egress policy (`luma.com`, `linkedin.com`, `arxiv.org`,
+    `ico.org.uk`) and are identical on the baseline build. `astro check` is still not installed
+    here and the repo has no `tsconfig.json`.
+  - **`dist` is byte-identical to the baseline build - 0 files differ.** Correct, and the point:
+    this is a CI script, so no page, sitemap, `llms.txt`, `llms-full.txt`, `rss.xml` or
+    `robots.txt` can move. **Inspected in headless Chromium anyway** at 375px and 1280px on
+    `/team/` and two profile pages - 6 configurations, all clean: 0px overflow, one `h1`, JSON-LD
+    parses, each profile carries its `Person` node, correct canonical, no `robots` meta, no
+    duplicate element id, no image without alt. The only 2 console errors per page are
+    `googletagmanager.com/gtag/js` and `/gtm.js`, blocked by the sandbox proxy, read off the
+    failed requests. The ping script was **not** run other than `--dry-run`; the deploy workflow
+    runs the real thing, as always.
+  - **Still recorded and not fixed:** IndexNow maps `src/lib/schema.ts` and `content.config.ts`
+    to the whole site, and a guide edit under-submits by four siblings (backlog 41). Same call
+    as previous cycles.
+  - **GEO: four probes, none cited.** Full table in `seo-data/geo-citations.md`. The sharpest
+    reading the loop has logged, and it is an **indexing** reading: a probe carrying **our own
+    domain name and programme name** returned no page of ours and closed *"To confirm the next
+    date and venue, check the oxfordagentic.com site directly."* The engine named this site as
+    the authority and could not retrieve it. Twenty-sixth and twenty-seventh consecutive
+    readings of the stale-listing harm beside it - 21 July and 16 September dates, the
+    Worcester / St Anne's contradiction, "5 Spots Remaining" as live availability, "$275" in the
+    wrong currency, and the Thomson / Lawman roster contradiction. **This strengthens backlog 2
+    (submit `sitemap-index.xml`, URL-Inspect, request indexing) and argues against another
+    page.**
+  - **Production state from the Actions API:** Deploy run 297 success on `5874676`, the current
+    HEAD, nothing queued or in progress; it finished at 13:10 UTC, nearly six hours before this
+    cycle began. `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not
+    resolve for `WebFetch` either, so `build.txt` could not be read and production state is
+    taken from the runner, as on every cycle since 15 October.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **Off-page: no new lead to contact.** The standing `allai.events` stale-listing entry gained
+    a dated corroboration, the strongest one on the list: the domain-carrying probe above.
+  - **No guide: 2 of 3 this week (19-25 Oct), today's allowance deliberately unspent for the
+    tenth cycle running.** Two axes probed and both declined. "What does a one-day AI bootcamp
+    cover, is it worth it" is **not winnable** - providers on their own courses plus LSBU and
+    Exeter, the institutional-publisher shape - and the engine's verdict (*"will not make you
+    capable of building or implementing AI"*) is already answered in a named section of
+    `what-you-can-build-in-one-day-with-ai` since 20 October, so the gap is retrieval, not
+    coverage. First-task choice is **not winnable** either - Salesforce Trailhead holds five of
+    ten results in five locales - and `how-to-choose-your-first-agentic-task` answers it. Second
+    cycle running for that one; do not re-pitch without new evidence. The week resets tomorrow.
+
 - **2026-10-25 (13:00 local cycle) - 91 questions and answers across 9 pages, carrying this
   site's highest-stakes sentences, and the node holding them named no URL at all. The FAQ
   node now says which page it belongs to.**

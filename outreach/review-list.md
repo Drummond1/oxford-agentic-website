@@ -491,6 +491,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     both bootcamp lines, on queries with no date in them, so it is not a Cohort 3 freshness
     artefact. **Caveat, unchanged:** web search, not the Perplexity probes that logged those
     September positions, so this is not a like-for-like ranking reading.
+  - **The domain was put in the query itself, 25 Oct 2026 (19:00 cycle), and the engine told
+    the user to go to our site because it could not read it.** The probe was
+    *"oxfordagentic.com Oxford Agentic Bootcamp next cohort date venue"* - our own domain
+    name, our own programme name. **No page of ours came back.** The engine's own closing
+    line: *"To confirm the next date and venue, check the oxfordagentic.com site directly."*
+    It then named this listing as its only dated source - *"The only dated listing is on
+    allai.events, which shows 21 Jul 2026 ... That date has already passed as of today
+    (October 25, 2026), so it's not an upcoming cohort"* - repeated the Worcester / St Anne's
+    contradiction, and read **"5 Spots Remaining"** off the past Cohort 1 listing once more.
+    Every previous corroboration left room for the reading that the query was too generic to
+    reach us. This one carries the domain and still does not, which makes it the sharpest
+    evidence yet for backlog 2 (submit `sitemap-index.xml`, request indexing) rather than for
+    any on-page change. A second probe the same cycle - *"one-day hands-on agentic AI bootcamp
+    Oxford November 2026 bring your own task no coding"* - returned this listing beside the two
+    Luma pages, no page of ours, the same **21 Jul 2026** date, the same venue contradiction,
+    **"from $275"** again, and the host-roster contradiction (Nicolai Thomson on one listing,
+    Josh Lawman on the other) for the second time.
   - Needs: Drummond's decision - ask for an update to 19 Nov or ask for removal. Nothing
     contacted.
 
