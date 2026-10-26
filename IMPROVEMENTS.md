@@ -110,6 +110,19 @@ Status: `todo` · `blocked` (why) · `doing`
    everything else. Caveat on the new numbers: one engine, search results rather than
    cited AI answers, and IndexNow has been pinging hard since cycle 53, so some of
    the lift may be freshness. Re-probe on a different engine before relying on it.
+   **RE-RAISED 26 Oct 2026 (13:00 cycle) - this is the top ask again, and the 10 Aug
+   downgrade rested on the instrument this cycle retired.** That downgrade was argued from
+   *search-result positions* read through a web-search tool. This cycle showed that tool
+   returning a query-invariant set of three URLs for our domain, failing an exact-phrase
+   retrieval of a page that carries the phrase, and **ignoring its own domain restriction**
+   on the next call. Positions read that way cannot carry a conclusion about what is
+   indexed or reachable. Meanwhile the 24 August Search Console baseline - the only real
+   index measurement in this repo, never overturned - reads **23 indexed, 16 not indexed**
+   and diagnoses **crawl budget on a domain with zero external links**, with
+   `/bootcamps/oxford-agentic-bootcamp/` on **257 inbound internal links and never crawled**.
+   One external link is still the named remedy, `Organization.sameAs` is still empty, and no
+   amount of on-page work substitutes. A LinkedIn Company Page or a real Luma calendar URL
+   in `brand.social` is the cheapest version.
 3. `blocked` (needs Bing account) — Bing Webmaster verification + sitemap.
 4. `blocked` (needs Plausible account + site id) — wire analytics in site.config.
 5. `blocked` (needs a LinkedIn Company Page URL) — add it to `brand.social` so it flows
@@ -552,6 +565,17 @@ Status: `todo` · `blocked` (why) · `doing`
     moved 7 sitemap pages and `--dry-run` submitted 3, so the four siblings printing the retitled
     guide got no hint - exactly the predicted shape, now measured on a change that actually
     shipped rather than on a test edit.
+    **DOWNGRADED to `wontfix-for-now` on 26 Oct 2026 (13:00 cycle), on its own numbers.**
+    Picked up as this cycle's candidate, scoped, and put back down. What the fix buys is an
+    IndexNow hint for four pages whose **only** change is four words of link text in a "More
+    guides" block - the item says so itself, "the mildest of the three by a wide margin". What
+    it costs is a new build output plus plumbing to get it to the ping job, which runs
+    `actions/checkout` with `fetch-depth: 2` and **no `npm ci` and no build**, so the map has
+    to travel either as a public file at the site root (a URL with no visitor purpose, to hint
+    link-text changes) or as a workflow artifact between jobs. Neither is wrong; both are
+    mechanism bought for approximately no SEO value, on a site whose measured constraint is
+    crawl budget and external links (2b). Leave it. Revisit only if a cycle ever has evidence
+    that a sibling's link text failing to be recrawled cost something.
 
 42. `todo` **(needs Drummond, a copy call on the booking path)** - **should the booking pages say
     in words that this is not a University of Oxford course?** The 08:00 cycle on 23 Oct put the
@@ -671,6 +695,72 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-26 (13:00 cycle) - NO SITE CHANGE. The loop has been reasoning from a diagnosis
+  its own instrument cannot produce, and this cycle proves it and stops it.** Not one file
+  under `src/`, `public/` or `scripts/` moved; `dist` is byte-identical to the baseline build.
+  What shipped is the correction, in `seo-data/geo-citations.md` and in backlog 2b and 41
+  below, because a fresh cloud checkout has no memory and an uncommitted finding is a finding
+  the next cycle re-derives or, worse, does not.
+  - **The claim that was retired.** Since 22 October this log has carried, as its "standing
+    reading", that *a domain-restricted search returns the same three URLs whatever is asked,
+    so the engine holds only three pages of this site*. Three probes written to test it:
+    an **exact-phrase** query for a string that exists on exactly one page of ours
+    (`"Whose morning does the task eat"`, on `/guides/who-should-take-the-seat/`) returned
+    **the same three URLs and not that page**, with the engine saying it found no direct
+    match; a second exact-phrase query had its **domain restriction ignored outright**, coming
+    back with USPTO patents and arxiv; and a privacy query returned **one** URL, not three.
+    A result set that does not move for an exact phrase it contains, from a tool that drops
+    its own domain filter on the next call, is an artefact. It is not an index reading.
+  - **The probe was made fair before it was believed.** The phrase is present in
+    `dist/guides/who-should-take-the-seat/index.html`, the URL is in `sitemap-0.xml`, the page
+    serves 200 with a correct self-canonical and no robots meta at 375 and 1280px, and it has
+    been live since 19 October.
+  - **What the loop actually owns on index coverage says the opposite.** The 24 August Search
+    Console baseline in this repo reads **23 indexed, 16 not indexed, 35 discovered**, and its
+    diagnosis is **crawl budget on a domain with zero external links**, "not fixable on-page",
+    evidenced by `/bootcamps/oxford-agentic-bootcamp/` sitting on **257 inbound internal links
+    and never once crawled**. Twenty-three pages and an off-page constraint, not three pages
+    and an on-page one. Nothing has ever overturned that reading.
+  - **What it cost.** Cycles 40, 44, 45 and the structured-data cycles of 25-26 October each
+    leaned on the three-URL premise in their own justification ("the homepage is the only page
+    the engine holds"; "`/events/` is not in the index to be re-read"). None of those changes
+    is harmful and each stands on its own merits - correct `EducationEvent` and `Course` data
+    is right whoever reads it - but they were **prioritised** against a premise that was not
+    measured. Checking the instrument instead of adding to the pile is the whole of this cycle.
+  - **Checks, on an unchanged tree.** `npm ci` and `npm run build` clean: 63 pages, 3,094
+    internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and
+    descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress
+    policy, unchanged. A whole-site audit found **no on-page defect to fix**: 0 titles over 60
+    characters, 0 missing or over-long descriptions, 0 missing canonicals, 0 noindex URLs in
+    the sitemap across all 55 sitemap pages. The only pages at or below two inbound internal
+    links are the **seven team profiles at one each**, which is backlog 24 and his call.
+    Headless Chromium confirmed working and used on `/`, `/guides/who-should-take-the-seat/`
+    and `/privacy/` at 375 and 1280px - 6 configurations, all clean: 200, 0px overflow, one
+    `h1`, correct canonical.
+  - **Homepage verified accurate against an engine that misreported it.** The cohort probe was
+    answered correctly off our homepage (19 November Worcester College, Coding on 26 November)
+    but added "Cohort 1 as 21 October". The rendered homepage says **St Anne's College, 21
+    July 2026** for Cohort 1, and its JSON-LD carries only **upcoming** `hasCourseInstance`
+    entries under the right `Course` `@id`s, with the Second Brain course correctly carrying
+    none. The engine conflated two product lines. Nothing to fix on-site.
+  - **Production state from the Actions API.** Deploy run **302 succeeded on `df621e8`**, the
+    `main` HEAD this cycle started from, with CI run 287 green and nothing queued; it finished
+    over four hours before this cycle began. `oxfordagentic.com` answers **403 on CONNECT**
+    from this sandbox, so `build.txt` could not be read and the Actions API stood in for it,
+    as on every cycle since 22 October. **No Luma page was read and no event fact was read or
+    changed.** Search Console unavailable from the cloud: no export newer than the 24 August
+    baseline, and no credentials in the repo.
+  - **Off-page: no new contactable lead.** Every domain this cycle returned is a competitor or
+    a vendor blog, and `createwith.com`, `allai.events`, `getclear.ca`, `nobleprog.co.uk` and
+    `learnersink.com` are already on the review list. New competitor of note, recorded not
+    acted on: **`innovationvisual.com`**, which holds six of nine on the away-day query with
+    one page per city. **The ask that matters is unchanged and now better evidenced: one
+    external link** (backlog 2b).
+  - **No guide. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance deliberately unspent
+    for the fourteenth cycle running. Away day declined on winnability and converting
+    together; executive assistants declined on converting, against an engine admitting the
+    product gap is real.
 
 - **2026-10-26 (08:00 cycle) - the footer dropped "Elsewhere" onto a row of its own, with
   two columns of dead space beside it, right across tablet widths.** `.site-footer__grid`

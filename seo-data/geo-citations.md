@@ -5,6 +5,106 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-26 (13:00 GMT cycle) - THE "THREE URLS" READING IS AN INSTRUMENT ARTEFACT. READ THIS BEFORE CITING IT AGAIN.
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four rotating buyer questions, then **three probes written to test the
+log's own standing diagnosis** rather than to find a topic.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on agentic AI course Oxford one day business leaders next cohort (domain-restricted) | **Yes**, forced: `/`, `after-the-ai-executive-programme`, `claude-cowork-claude-code-or-codex` | n/a, restricted to our own domain |
+| AI away day for a leadership team UK one day hands-on build something in person | **No** | **innovationvisual.com six of nine** (per-city pages: Nottingham, Manchester, Birmingham, London, Edinburgh, plus custom and leaders), ivee.jobs, createwith.com (Leeds, Sept 2026) |
+| agentic AI training for executive assistants and office managers UK hands-on course | **No** | cegos.com, **pitman-training-london** (one-day, GBP 479, Holborn), euromatech.com (5-day, Dubai/Paris), infosectrain.com, mediatraining.ltd.uk, esami-africa.org, emploilr.com |
+| which tool should a non-developer build their first AI agent in n8n Zapier or ChatGPT | **No** | clickittech.com (x2), **mindstudio.ai (x2)**, datacamp.com (x3 locales), upwork.com, codeconductor.ai |
+
+### The three instrument probes, and what they overturn
+
+| Probe | Result |
+|---|---|
+| `"Whose morning does the task eat"` (exact phrase, domain-restricted) - a string that exists on `/guides/who-should-take-the-seat/` and nowhere else | Returned **the same three URLs** as the unrelated buyer question above, and the engine said *"The search didn't return any direct match"* |
+| `"Peer level matters more in a small room than the syllabus"` (exact phrase, domain-restricted) - a string on `questions-to-ask-before-booking-ai-training` | **The domain restriction was ignored outright.** Nine results, all USPTO patents, arxiv and NCBI. Not one from our domain |
+| `cookie policy data retention privacy` (domain-restricted) | **One** URL, `/`, and the answer was quoted off the consent banner that appears on all 63 pages. `/privacy/` was not returned |
+
+**Reading. The standing line in this log - "a domain-restricted search returns the same three
+URLs whatever is asked, so the engine holds only three pages of this site" - is not a
+measurement of anybody's index, and no cycle should prioritise work on the strength of it.**
+
+- Verified first that the target string is live and indexable, so the probe was fair: the
+  phrase is present in `dist/guides/who-should-take-the-seat/index.html`, that URL is in
+  `sitemap-0.xml`, the page returns 200 with a correct self-canonical and no robots meta, and
+  it shipped on 19 October, a week before this probe.
+- An exact-phrase query is the sharpest retrieval test available from here, and it returned a
+  set that **does not contain the page containing the phrase** while containing three pages
+  that do not. A query-invariant result set is a property of the tool, not of a corpus.
+- The second probe settles it: **the same tool, on the same cycle, ignored `allowed_domains`
+  completely.** An instrument that silently drops its own filter cannot be used to enumerate
+  what a domain has in an index.
+- The third shows the result count is not fixed at three either - it was one - so the triple
+  is not a stable "what the engine holds" set in any sense.
+
+**What the loop actually has on index coverage, and it says something different.** The
+Search Console baseline of 24 August 2026, the only real index measurement in this repo,
+reads **23 indexed and 16 not indexed, 35 discovered, sitemap status Success**. Its diagnosis
+was **crawl budget on a domain registered 22 July with zero external links** - "not a
+technical fault, not fixable on-page" - with the measured counter-evidence that
+`/bootcamps/oxford-agentic-bootcamp/` had **257 inbound internal links and had never been
+crawled once**. So the one hard reading the loop owns is 23 pages indexed two months ago and
+an off-page constraint, not three pages indexed and an on-page one.
+
+**What this costs, concretely.** Cycles 40, 44, 45 and the structured-data cycles of 25-26
+October each reasoned from the three-URL premise - "the homepage is the only page the engine
+holds", "a property added to `courseSchema()` reaches the indexed page as well as the
+unindexed ones", "`/events/` is not in the index to be re-read, which is why its 21 Oct fix
+moved nothing". None of those changes was harmful and each is defensible on its own terms,
+but the premise under them was produced by this instrument and is not supported. **Stop
+inferring index coverage from a web-search tool.** The only things that can answer it are the
+Search Console Pages report (backlog 2, Drummond, two minutes) and a fresh crawl reading.
+
+**And it re-points the loop at what was always the measured constraint: external links.**
+Backlog 2b was downgraded on 10 August from "binding" on the strength of *search-result*
+positions read through this same class of instrument. The 24 August crawl data was never
+overturned by anything, and it names one external link as the thing that moves crawl budget.
+`Organization.sameAs` is still empty. That is Drummond's call and it is now the top ask.
+
+### The four buyer questions, briefly
+
+- **Away day: NOT WINNABLE, and not converting either. Do not re-pitch it.**
+  `innovationvisual.com` holds **six of nine** results with one page per city - Nottingham,
+  Manchester, Birmingham, London, Edinburgh - which is exactly the doorway pattern this site
+  has a hard rule against, so the field is won by a tactic the loop will not copy. Converting
+  fails independently: a leadership away day is a private team booking, and this site sells
+  individual seats in a mixed cohort where you bring your own task.
+- **Executive assistants and office managers: a real product gap, and still a decline on
+  converting.** The engine was explicit - *"I found no UK course that specifically teaches
+  agentic AI to executive assistants or office managers"* - and the field is training
+  providers rather than institutional publishers, so winnable is arguably satisfied. But the
+  programme's published `whoFor` is senior people who have hit the ceiling of the chat window,
+  and an EA or office manager is not that buyer. Writing for a persona the day is not built
+  for would be traffic we cannot convert and a promise the page does not keep. Recorded, not
+  written. (Field note: Pitman's own listing shows "next date 21st October 2026" on one copy
+  and 7 October 2025 on another, so stale dating is endemic here, not just on our listings.)
+- **Tool choice for a non-developer: vendor and comparison blogs, and we already hold the
+  ground that matters.** clickittech, mindstudio, datacamp, upwork and codeconductor take all
+  nine. `claude-cowork-claude-code-or-codex` is one of the two guides this tool returns for
+  our domain at all, so the site's tool-comparison position is the strongest it has, and a
+  second page on n8n-versus-Zapier would compete with it while chasing searchers picking a
+  free tool rather than booking a day.
+- **No stale-listing reading this cycle, and one engine misreport that is NOT ours to fix.**
+  The domain-restricted cohort question was answered correctly off our own homepage - *"Cohort
+  3 on 19 November 2026 at Worcester College"* and the Coding Bootcamp *"on 26 November"*,
+  both right - but it added *"The results list Cohort 1 as 21 October"*. The homepage says no
+  such thing: checked in the rendered text, it names Cohort 1 of the Agentic Bootcamp at
+  **St Anne's College on 21 July 2026**, and 21 October is the Second Brain line's own day.
+  The engine conflated two product lines. The homepage's JSON-LD was checked the same way and
+  is unambiguous - two `EducationEvent` nodes for the two upcoming cohorts, and
+  `hasCourseInstance` carrying **only upcoming instances**, each attached to its own `Course`
+  `@id`, with the Second Brain course correctly carrying none. There is nothing to fix on-site.
+
+**No guide. 0 of 3 for the week of 26 Oct - 1 Nov, and the allowance is deliberately unspent
+for the fourteenth cycle running.** Two axes probed and both declined, one on winnability and
+converting together, one on converting alone.
+
 ## 2026-10-26 (07:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
