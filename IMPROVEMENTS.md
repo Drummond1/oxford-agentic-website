@@ -651,8 +651,13 @@ Status: `todo` · `blocked` (why) · `doing`
     11 found in visible text - because structured data a reader cannot verify on the page is a
     claim invented for machines.
 
-46. `todo` (loop-actionable, found 25 Oct 2026 in the 09:00 cycle) - **the footer puts
-    "Elsewhere" alone on a second row between 700 and 820px.** Measured across fourteen
+46. `done` 26 Oct 2026 (08:00 cycle) - **the footer puts
+    "Elsewhere" alone on a second row between 700 and 820px.** Shipped: the band is
+    657-865px measured to the pixel, not 700-820, and the fix is not the narrower floor
+    this item guessed at - that would have squeezed the link columns to about 91px and
+    made the cohort titles wrap five deep. Holding the two-column form through the band
+    instead costs 42px of footer height and leaves both rows full. Detail in the Shipped
+    entry for this cycle. Original diagnosis kept below. Measured across fourteen
     widths on the built site: `.site-footer__grid` resolves to one column up to 480px, a
     tidy 2x2 at 600-640px, **three tracks with the fourth block wrapping underneath at
     700-820px**, and four across from 900px up. The 700-820 band is the only untidy one -
@@ -666,6 +671,76 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-26 (08:00 cycle) - the footer dropped "Elsewhere" onto a row of its own, with
+  two columns of dead space beside it, right across tablet widths.** `.site-footer__grid`
+  is one wide track plus `repeat(auto-fit, minmax(min(100%, 9rem), 1fr))`, and `auto-fit`
+  takes on link tracks one at a time as the window grows. Between **657px and 865px** it
+  fits exactly three for the footer's four blocks, so the fourth wrapped underneath and the
+  two tracks beside it stood empty. 768px - a tablet in portrait, and one of this loop's own
+  review widths - sits in the middle of that band, on all 63 pages. Backlog 46 found it on
+  25 Oct and left it; this closes it.
+  - **Measured to the pixel before anything was written.** Stepping the built site 1px at a
+    time from 470px to 960px: one column to 480, a tidy 2x2 from **481**, three tracks with
+    one block wrapped from **657**, four across from **866**. The ledger's "700-820" was the
+    sampled band, not the real one.
+  - **The fix this item proposed was tried first and rejected on its numbers.** A narrower
+    `minmax` floor so four tracks fit sooner needs about **5.25rem** to reach 657px, which
+    leaves the link columns at **91px** - narrow enough to wrap "The Oxford Agentic Coding
+    Bootcamp - Cohort 1" five or six lines deep and make the footer *taller* than the fault
+    it fixes. What shipped instead holds the two-column form - the same 2x2 that already runs
+    from 481px - through to the width where all four fit. One `@media` block, one
+    declaration, no token touched.
+  - **Both bounds in the query are the measured flip points** (30.0625rem = 481px,
+    54.0625rem = 865px), because neither can be read off the declarations above them: they
+    fall out of the 15rem and 9rem floors, the `vw` gap and the `.wrap` padding together.
+    Below 657px the rule writes out exactly what `auto-fit` already resolves to, so it changes
+    nothing there, and at 866px it stops applying.
+  - **`:has(> :nth-child(4))` guards it, and that is not decoration.** "Upcoming" is only
+    rendered while a cohort is still to come (backlog 36 is the live case of that running
+    out). With three blocks the three tracks are exactly right, and an unguarded rule would
+    have made the same fault one block smaller. Simulated by removing that column in the
+    browser: with three blocks the footer renders the old three-across at 700, 768 and 820px,
+    unchanged. `:has()` was already in this file, on the "Upcoming" link rule.
+  - **Measured whole-site: no page's markup moved.** All 61 HTML files differ from the
+    baseline build by exactly one string, the stylesheet's hashed filename; with that
+    substituted they are byte-identical. Every other file in `dist` - both sitemaps,
+    `llms.txt`, `llms-full.txt`, `rss.xml`, `robots.txt`, every image and font - is
+    byte-identical, correctly, since no content file changed and no `updatedDate` moved. The
+    CSS bundle gains **195 bytes**, one rule, and nothing else in it changed.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` passes both the all-on and all-off builds.
+    `astro check` reports the same **79** pre-existing implicit-`any` errors on the baseline
+    and on this change, so none of them is new; the change is inside a `<style>` block and
+    cannot reach TypeScript. The 11 outbound warnings are the sandbox egress policy and are
+    identical on the baseline build.
+  - **Inspected in headless Chromium, before against after.** 60 pages x 6 widths (320, 375,
+    700, 768, 820, 1280) = **360 configurations, all clean**: 0px horizontal overflow, one
+    `h1`, no missing `alt`, no unlabelled form control, no link or button without an
+    accessible name, no duplicate element id, no skipped heading level, every page 200. The
+    footer was screenshotted at 14 widths on both builds: identical at 320, 375, 480, 560,
+    640, 866, 900, 1024, 1280 and 1440 (the handful of differing bytes at some of those are
+    antialiasing jitter, confirmed by shooting the same build twice), and changed only at
+    700, 768, 820 and 865, where it grows 41-42px and both rows fill. Footer state was also
+    mapped every 4px from 320 to 1440 at three root font sizes; the whole diff against the
+    baseline is **one line removed**, the three-column band. The enlarged-text overflow in
+    that sweep is the wordmark (backlog 32), unchanged: 149 overflowing widths before, 149
+    after.
+  - **Keyboard.** All 13 footer tab stops at 768px take a visible focus ring and are scrolled
+    into view. The back-to-top button appeared to cover "Apply for a place" in a screenshot;
+    at the real page bottom it does not overlap it at 375, 700, 768 or 1280px, so there is
+    nothing to log.
+  - **Production could not be read and the Actions API stood in for it.** `oxfordagentic.com`,
+    `www.` and `drummond1.github.io` all answer **403 on CONNECT** from this sandbox (the
+    proxy's own failure log names the policy denial), so no page of the live site, no
+    `build.txt` and no Luma page was fetched. Deploy run **300 succeeded on `90ac6af`**, the
+    `main` HEAD this cycle started from, with CI run 286 green beside it and nothing queued.
+    **No event fact was read or changed.** PR #1 and `feat/ceo-roundtable-demand-page` are the
+    known-stale leftovers already on this ledger (backlog 20), not work in flight.
+  - **No GEO probe and no guide this cycle.** The change is a layout fix in a shared
+    component, with nothing to probe; today's guide allowance is deliberately unspent for the
+    thirteenth cycle running.
 
 - **2026-10-26 (07:00 cycle) - every guide said what it was about and gave the engine no way
   to know it meant the course.** `Article.about` named the programme as an anonymous `Thing`

@@ -150,6 +150,29 @@ const entityLine = `${config.brand.longDescription.split('. ')[0]}.`;
     }
   }
 
+  /* Hold two columns from 481px to 865px, while there are four blocks.
+
+     `auto-fit` fits as many link tracks as the width allows, one at a time,
+     and between 657px and 865px it fits exactly three - so with four blocks
+     "Elsewhere" dropped onto a second row with two columns of dead space
+     beside it, right across tablet widths. Below 657px auto-fit already
+     resolves to these same two tracks, so writing them out changes nothing
+     there; at 866px, where all four fit across, the query stops applying and
+     auto-fit takes over again. Both bounds are measured flip points, so
+     neither can be read off the declarations above.
+
+     The `:has()` guard is what keeps this honest: "Upcoming" is only rendered
+     when a cohort is still to come, and with three blocks the three tracks
+     are exactly right, so the rule has to stand down rather than make the
+     same fault one block smaller. */
+  @media (min-width: 30.0625rem) and (max-width: 54.0625rem) {
+    .site-footer__grid:has(> :nth-child(4)) {
+      grid-template-columns:
+        minmax(min(100%, 15rem), 1.6fr)
+        minmax(min(100%, 9rem), 1fr);
+    }
+  }
+
   .site-footer__desc {
     margin-block-start: 1.1rem;
     max-width: 34ch;
