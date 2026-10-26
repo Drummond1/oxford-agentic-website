@@ -586,10 +586,32 @@ export function articleSchema(guide: {
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: { '@id': `${absoluteUrl(paths.guide(guide.slug))}#webpage` },
     inLanguage: 'en-GB',
+    /*
+     * `about` names the programme the guide supports, and until now it named it
+     * as an anonymous `Thing`: a type that says nothing, with no `@id`. So every
+     * guide published the string "The Oxford Agentic Bootcamp" and a URL, and
+     * nothing tied either to the `Course` node that `/bootcamps/<slug>/` and the
+     * homepage already publish under `<url>#course`.
+     *
+     * That is the one join worth making on this corpus today. The GEO log records
+     * an engine holding three URLs of this site - the homepage and two guides -
+     * and answering date questions off third-party listings that have expired.
+     * The homepage carries all three `Course` nodes with their `hasCourseInstance`
+     * dates and venues; the guides carried a blank node pointing at a page the
+     * engine does not hold. Giving `about` the identifier the Course already
+     * publishes lets a consumer holding a guide and the homepage resolve them to
+     * one course rather than two unrelated things.
+     *
+     * Identity only, the same class as the `@id` on `FAQPage` and the `sameAs` on
+     * the event listing. `name` and `url` are unchanged and the `@id` is derived
+     * from the same path, so nothing is asserted here that the site does not
+     * already publish on the programme's own page.
+     */
     ...(guide.about && guide.about.length > 0
       ? {
           about: guide.about.map((item) => ({
-            '@type': 'Thing',
+            '@type': 'Course',
+            '@id': `${absoluteUrl(item.path)}#course`,
             name: item.name,
             url: absoluteUrl(item.path),
           })),

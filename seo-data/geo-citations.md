@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-26 (07:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions on two axes never probed before - **preparing for the
+day** and the **marketing vertical** - each put twice, because the topic-probe rule asks for
+a second phrasing before anything is written.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to prepare for a one day AI bootcamp what should I do beforehand to get the most out of it | **No** | quickstart.com, comp.utm.my, pertamapartners.com, help.datasciencedojo.com, mindstudio.ai, precisionaiacademy.com, newline.co twice, hackinghrlab.io |
+| what should I bring to an AI workshop and how do I choose the task to work on | **No** | **columbusglobal.com** (its own what-to-bring list), contra.com, zeo.org, **three luma.com event pages**, payhip.com, maven.com, air.nuilab.org, **academy.openai.com** |
+| agentic AI workshop for marketing teams UK one day hands-on in person | **No** | anicca.co.uk twice, **lxahub.com** (one-day agentic AI marketing workshop, London, held 23 Oct), comprend.com twice, aventislearning.com, ukft.org twice, createwith.com twice |
+| can a marketing team build an AI agent in a day training course UK not coding | **No** | **cim.co.uk twice** (one-day "AI Agents and Automation", GBP 525 non-member, and a 3.5-hour marketing-productivity course), anicca.co.uk five times, odsc.ai |
+
+**Reading.**
+
+- **Preparation: the field cannot answer it, and the one thing it could not source is our
+  whole proposition - but it is a post-booking query, so it is NOT a guide.** The engine's
+  own list of how to prepare was laptops, Python 3.11, Git, an IDE and platform accounts,
+  drawn almost entirely from developer bootcamps' own joining instructions, and when it got
+  to the thing that actually decides the day it flagged the advice as unsourced: *"Bring a
+  real problem. **This is my suggestion rather than a sourced one**"*, adding that the
+  sources it had were "training providers' own marketing or help pages". The field is
+  winnable - no institutional publisher holds it - but the searcher has already booked
+  somebody's day, which fails the converting half of the rule. Recorded, not written.
+- **And the second phrasing shows the substance is already ours, twice over.** Asked what to
+  bring and how to choose the task, the field answered with a vendor's bring-list, a
+  confidentiality instruction almost word for word the test this site publishes (*"do not
+  bring or upload confidential company, customer, or employee information"*), and advice to
+  pick something repetitive, specific and checkable. That is `how-to-choose-your-first-agentic-task`
+  - five tests, the first three of which are repeated work, text-shaped work and output you
+  can check at a glance - plus question 6 of `questions-to-ask-before-booking-ai-training`.
+  Nothing is missing to write.
+- **The marketing vertical is NOT WINNABLE. Do not re-pitch it without new evidence.** It was
+  the strongest untried vertical left after finance shipped, legal was killed on 22 Oct and
+  operations was declined. Both phrasings kill it on the rule's own institutional-publisher
+  clause: **the Chartered Institute of Marketing holds two of nine results on its own
+  subject**, with a one-day no-code "AI Agents and Automation" course and a 3.5-hour agents
+  course for marketers, and Anicca holds five more of the same nine with courses built for
+  marketers specifically. Converting is weaker than it looks too - CIM's is virtual and sold
+  on a professional-body footing, and the one UK one-day in-person agentic marketing workshop
+  the engine found, LXA's, ran three days ago, so the gap is a scheduling gap rather than a
+  product one. Finance was the exception, not the template.
+- **Nothing of ours returned on any of the four.** None of these queries carried a date, a
+  place or our name, so this is not a reading of the stale-listing harm either way; it is the
+  generic national field, which is where this site has never ranked.
+- **No guide. 0 of 3 for the week of 26 Oct - 1 Nov, and the allowance is deliberately unspent
+  for the twelfth cycle running.** Two axes probed on four phrasings, two declines: one on
+  converting, one on winnability. The cycle shipped structured data on the pages an engine
+  does hold instead.
+
 ## 2026-10-26 (01:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

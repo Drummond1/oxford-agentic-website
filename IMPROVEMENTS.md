@@ -667,6 +667,68 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-26 (07:00 cycle) - every guide said what it was about and gave the engine no way
+  to know it meant the course.** `Article.about` named the programme as an anonymous `Thing`
+  with a name and a URL and no `@id`, so all 32 guides pointed at `/bootcamps/<slug>/` as a
+  string rather than at the `Course` node that page - and the homepage - already publish under
+  `<url>#course`. It now emits `@type: Course` with that `@id`.
+  - **Why this join and not another.** The GEO log's standing reading is an indexing one: a
+    domain-restricted search returns the same three URLs whatever is asked - `/` and two guides
+    - and dated questions get answered off third parties' expired Luma pages. The homepage
+    carries all three `Course` nodes with their `hasCourseInstance` dates and venues (shipped
+    25 Oct) and the `EducationEvent` per upcoming cohort (23 Oct). The guides carried a blank
+    node pointing at a page the engine does not hold. A consumer holding a guide and the
+    homepage - which is to say the only combination an engine actually has of this site - can
+    now resolve the two to one course instead of two unrelated things, and read the next
+    cohort's date off the join.
+  - **Identity only.** Same class as the `@id` on `FAQPage` (25 Oct) and the `sameAs` on the
+    event listing item (25 Oct). `name` and `url` are untouched and the `@id` is derived from
+    the same path the node already carried, so nothing is asserted that the programme's own page
+    does not already publish. Deliberately not done: adding the programme's `Course` or the
+    cohort's `EducationEvent` as a full top-level node on every guide. The event is a card at
+    the foot of an article, not the page's subject, and marking up 32 articles as event pages to
+    chase a rich result is the kind of thing this ledger has declined before.
+  - **Measured whole-site: exactly 32 files in `dist` differ, and they are exactly the 32
+    guides.** All 31 other pages are byte-identical, as are both sitemaps, `llms.txt`,
+    `llms-full.txt`, `rss.xml` and `robots.txt` - correctly, since no content file changed and
+    no `updatedDate` moved. On all 32, the HTML outside the JSON-LD block is byte-identical, so
+    nothing a reader sees moved. The JSON-LD diffed as data: node counts unchanged, no node
+    added, removed or retyped, and the only changed property anywhere is `about` - 38 entries
+    across 32 Article nodes, each gaining exactly one key. Every `@id` emitted equals that
+    entry's own `url` plus `#course`, and the three distinct values are exactly the three the
+    programme pages and the homepage publish.
+  - **Checks.** `npm ci` then `npm run build` clean before and after - 63 pages, 3,094 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique,
+    no SEO warnings. The 11 outbound warnings are the sandbox egress policy and are identical on
+    the baseline build. Inspected in headless Chromium at 375 and 1280px on five guides,
+    including the three an engine has been recorded citing and one per programme line - 10
+    configurations, all clean: 0px overflow, one `h1`, JSON-LD parses with the new `about`
+    present and its `url` matching a link visible on the page, correct canonical, no robots
+    meta, no duplicate `@id` in the graph, no duplicate element id, no missing alt. The only 2
+    console errors per page are googletagmanager `gtag.js` and `gtm.js`, blocked by the sandbox
+    proxy, confirmed against the proxy's own failure log.
+  - **IndexNow:** `--dry-run` submits all 55 sitemap URLs, because `src/lib/schema.ts` maps
+    whole-site, where 32 pages moved. Over-submission, not under - the same call as the last
+    seven cycles, and the opposite fault to backlog 41. The ping script was not run other than
+    `--dry-run`; the deploy workflow runs the real thing, as always.
+  - **GEO: four probes on two new axes, eight phrasings between them and the previous cycles,
+    none cited, two declines.** *Preparing for the day* is winnable and the engine admitted the
+    one thing it could not source is our whole proposition (*"Bring a real problem. This is my
+    suggestion rather than a sourced one"*), but the searcher has already booked somebody's day,
+    so it fails converting. *The marketing vertical* - the strongest untried one left - is dead
+    on the institutional-publisher clause: **CIM holds two of nine on its own subject** with a
+    one-day no-code agents course, and Anicca five more. Do not re-pitch either without new
+    evidence. Production state from the Actions API: Deploy run 299 success on `2bd0bbc`, the
+    current HEAD, nothing queued; it finished nearly six hours before this cycle began.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not resolve for
+    WebFetch, so `build.txt` could not be read and no Luma page was read; no event fact was read
+    or changed. Search Console unavailable from the cloud; no export newer than the 24 August
+    baseline and no API credentials in the repo. Off-page: **no new lead** - the four probes
+    returned competitors and providers' own pages, and every aggregator in them is already on
+    the review list or in `off-page-listings.md`.
+  - **No guide: 0 of 3 for the week of 26 Oct - 1 Nov**, today's allowance deliberately unspent
+    for the twelfth cycle running.
+
 - **2026-10-26 (01:00 cycle) - the site's own buyer checklist asked nine questions about
   before and during the day, and none about after it. It now asks ten.**
   - **The evidence is a probe this cycle, and it is unusually direct.** *"what happens after a
