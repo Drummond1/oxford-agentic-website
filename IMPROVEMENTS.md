@@ -548,6 +548,10 @@ Status: `todo` · `blocked` (why) · `doing`
     into this cycle. Until then a guide edit under-submits by four pages, which is the mildest of
     the three by a wide margin - the pages that miss the hint are siblings whose only change is
     four words of link text.
+    **Confirmed on a real push, 26 Oct 2026 (01:00 cycle).** The guide-title change that cycle
+    moved 7 sitemap pages and `--dry-run` submitted 3, so the four siblings printing the retitled
+    guide got no hint - exactly the predicted shape, now measured on a change that actually
+    shipped rather than on a test edit.
 
 42. `todo` **(needs Drummond, a copy call on the booking path)** - **should the booking pages say
     in words that this is not a University of Oxford course?** The 08:00 cycle on 23 Oct put the
@@ -662,6 +666,99 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-26 (01:00 cycle) - the site's own buyer checklist asked nine questions about
+  before and during the day, and none about after it. It now asks ten.**
+  - **The evidence is a probe this cycle, and it is unusually direct.** *"what happens after a
+    one-day AI workshop do you get follow-up support or materials"* returned no page of ours and
+    closed with the engine's own instruction to the buyer: *"Before booking, ask the provider in
+    writing what's included after the day, such as materials, how long support lasts, and
+    whether there's a follow-up call."* It had found the answers scattered across providers' own
+    pages - a prompt library on one, *"one week of Slack support"* on another, a *"30-minute
+    follow-up call within seven calendar days"* on a third - and said plainly that *"The sources
+    don't show whether follow-up is standard across the market."*
+  - **The gap was in a page we already own.** `/guides/questions-to-ask-before-booking-ai-training/`
+    is this site's buyer checklist, in the `choosing` category, and its nine questions covered
+    what you will have running, whose work you build against, room size, the talk-to-build ratio,
+    getting stuck, what to bring, who else is there, what the day leaves out, and the
+    cancellation policy. Nine of nine are about before or during the day. The one thing the
+    field itself tells buyers to ask about was missing. That is why this is a refresh and not a
+    new guide: getclear.ca already holds the standalone version of that title at position 1, and
+    a second page of ours on the same subject would compete with our own.
+  - **What shipped.** A tenth section, "What do I get after the day, and for how long?", written
+    to the guide's established form - what the honest answers sound like, including that "the day
+    ends on the day" is a fair one - and separating the two halves buyers conflate: what you take
+    away (yours, not inside the provider's account) and what happens when it breaks a fortnight
+    later. Plus the title, `seoTitle`, `description` and the closing "all nine" moved to ten, and
+    the one inbound anchor in `what-hands-on-ai-training-actually-means` with it.
+  - **Our own answer in the worked "here are ours" paragraph uses only published facts**: you
+    keep the workflow and a written recipe for rebuilding and extending it (Cohort 1's own
+    `outcomes` line, and the same sentence in `how-to-choose-your-first-agentic-task`), and you
+    leave with the group, their contact details and first notice of the next cohort (the Agentic
+    programme page's "What happens after the day?", verbatim in substance so the two cannot
+    drift). **Deliberately not written: any claim that there is or is not post-day support.**
+    Both are facts the loop does not have, and asserting the absence of something is as much an
+    invention as asserting it.
+  - **The slug carries no number**, so the URL is unchanged and no redirect is needed. `seoTitle`
+    measures 39 characters against the schema's 43; `description` 143 against 160; the capsule is
+    untouched at 57 words and still true, because it names five of the questions and says "those
+    five".
+  - **Measured whole-site: 7 sitemap pages differ** - the guide, `/guides/`, and 5 siblings. Four
+    of those five changed by exactly one string, the guide's title in their "More guides" block,
+    verified programmatically: replacing "Ten" with "Nine" in each makes the file byte-identical
+    to the baseline. The fifth is `what-hands-on-ai-training-actually-means`, whose one changed
+    line is the anchor text. `llms.txt`, `llms-full.txt` and `rss.xml` carry the new title and
+    description. **Exactly one `lastmod` moved** in `sitemap-0.xml`, the guide's own, because the
+    sibling guides' `updatedDate` was deliberately left alone - a word of link text is not a
+    revision, and `updatedDate` drives both the visible "Updated" byline and the sitemap date, so
+    moving it would claim a revision that did not happen.
+  - **Checks.** `npm ci`, `npm run build` clean before and after - 63 pages, 3,094 internal links
+    resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions unique, no SEO
+    warnings. The 11 outbound warnings are the sandbox egress policy (`luma.com`, `linkedin.com`,
+    `arxiv.org`, `ico.org.uk`, `elevenlabs.io`) and are identical on the baseline build.
+    `astro check` is still not installed here and the repo has no `tsconfig.json`.
+  - **Inspected in headless Chromium** at 375px and 1280px on all three pages whose visible text
+    changed - **6 configurations, all clean**: 0px horizontal overflow, exactly one `h1`, JSON-LD
+    parses with the `Article` node present, correct canonical, no `robots` meta, no duplicate
+    element id, no image without alt, and **no "nine" anywhere in the rendered text of any page**.
+    The new heading renders as the tenth `h2` in order, and the typographer produced curly marks
+    for the apostrophe and the quoted "ongoing support", so the build's straight-apostrophe check
+    stays silent. The only 2 console errors per page are `googletagmanager.com/gtag/js` and
+    `/gtm.js`, blocked by the sandbox proxy, read off the failed requests.
+  - **Backlog 41 confirmed on a real push, not a simulation.** `--dry-run` submits **3** URLs for
+    this change set while **7** sitemap pages moved: the four siblings that print this guide's
+    title get no hint. That is exactly the figure the 22 Oct measurement predicted. Same call as
+    every cycle since - the fix is a build-emitted sibling map, not a second copy of the greedy
+    pass. The ping script was **not** run other than `--dry-run`; the deploy workflow runs the
+    real thing, as always.
+  - **GEO: four probes, none cited.** Full table in `seo-data/geo-citations.md`. Three axes were
+    probed for the first time - group booking, aftercare and the Second Brain how-to - and only
+    aftercare came back open, which is what this cycle shipped against. **Twenty-eighth
+    consecutive reading of the stale-listing harm**, and the second cycle running where a query
+    carrying our own domain name cannot reach us: *"I'd check the official oxfordagentic.com page
+    or the Luma ticket page directly to confirm the date and venue"*, with the 26 November date
+    **unconfirmed by anything in the field**. New: **NobleProg holds four of nine results** on an
+    Oxford coding-agent query, one page titled for AI coding assistants in Oxford - the first
+    time one commercial trainer has occupied that product's geography at that density. Recorded,
+    not acted on.
+  - **Production state from the Actions API:** Deploy run 298 success on `d0c2cb5`, the current
+    HEAD, nothing queued or in progress; it finished at 19:07 UTC, nearly six hours before this
+    cycle began. **The whole egress policy is tighter than it was**: `oxfordagentic.com`,
+    `luma.com` and general web hosts all answer 403 on CONNECT from this sandbox, so `build.txt`
+    could not be read, no Luma page was read and no event fact was read or changed. Production
+    state is taken from the runner, as on every cycle since 15 October.
+  - **Search Console: unavailable from the cloud.** No export in `seo-data/` newer than the
+    24 August baseline, and no API credentials exist in the repo.
+  - **Off-page: one new lead, the first in several cycles.**
+    `getclear.ca/guides/what-ai-workshop-should-deliver` is an editorial buyer's guide to
+    one-day AI workshops that outranked every provider page on the aftercare question, and it
+    names nobody of ours. Added to `outreach/review-list.md` as a possible mention route, with
+    the caveat that the domain does not resolve from here so nothing about who runs it is
+    checked. Nothing contacted. The standing Coding Bootcamp entry gained a fourth dated
+    corroboration.
+  - **No guide: 0 of 3 for the week of 26 Oct - 1 Nov, and today's allowance deliberately
+    unspent for the eleventh cycle running.** The one open axis was answered by a section in a
+    guide that already ranks, which is cheaper and more honest than a new page competing with it.
 
 - **2026-10-25 (19:00 local cycle) - a team edit told the Bing family that `/team/` had
   changed, which it had not, and never named the profile page, which had. The fourth IndexNow

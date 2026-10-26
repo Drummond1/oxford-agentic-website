@@ -11,6 +11,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A third-party buyer's guide to one-day AI workshops, ranking first on the aftercare
+  question, and it names no providers of ours.** Found 26 Oct 2026 (01:00 cycle). This is a
+  possible mention route rather than a directory, and **nothing has been contacted**.
+  - **What it is.** `getclear.ca/guides/what-ai-workshop-should-deliver` - "What should a
+    one-day AI workshop actually deliver?" - came back as the top result for *"what happens
+    after a one-day AI workshop do you get follow-up support or materials"*, ahead of every
+    provider page in the set. It is editorial, written to the buyer, and it sets out a
+    benchmark an honest provider can meet: written instructions the team can follow without
+    the facilitator, safe-use rules, a ranked list of next opportunities, and a dated
+    follow-up.
+  - **Why it is worth a look.** It is the only non-provider voice the loop has found on this
+    subject, it is the shape of page that answer engines quote rather than a listing, and the
+    Oxford Agentic format meets most of its benchmark already. A guest contribution, an
+    example, or simply being named in it would be a citable third-party mention of the entity -
+    which is still the one thing the `Organization` node lacks (backlog 2b).
+  - **Unverified from here.** The domain does not resolve from this sandbox, so who runs it,
+    where they are based, whether they take contributions and whether the site is any good are
+    all unchecked. Needs someone with an unblocked browser before anyone writes to them.
+    Nothing contacted, nothing submitted, no account made.
+
 - **An answer engine states the gap the Coding Bootcamp fills, and cannot retrieve the page
   that fills it.** Found 24 Oct 2026 (01:00 cycle). Evidence for the two items already on this
   list, not a new lead - nothing to contact.
@@ -44,6 +64,13 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     Oxford's own Lifelong Learning short courses and the Saïd summer school as the substitutes.
     Three readings on three phrasings now say the field has no such thing while we sell one,
     32 days out. Still a coverage problem, still backlog 2, still nothing to contact.
+  - **Corroborated again, 26 Oct 2026 (01:00 cycle), on a fourth phrasing.** *"oxfordagentic.com Oxford
+    Agentic Coding Bootcamp 26 November Worcester College one day"* - the domain, the programme,
+    the date and the venue all in the query - returned no page of ours and did not confirm the
+    date: *"I'd check the official oxfordagentic.com page or the Luma ticket page directly."*
+    New in that reading: **NobleProg holds four of the nine results**, one of them titled for AI
+    coding assistants in Oxford, so a single commercial trainer now occupies this product's own
+    geography. Still nothing to contact; still backlog 2.
   - **Caveat.** One engine, one day, through a sandboxed web search.
 
 - **The clearest commercial cost of the stale Luma listings yet, from a buyer who already knows

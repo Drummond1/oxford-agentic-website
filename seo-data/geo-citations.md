@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-26 (01:00 GMT cycle)
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every
+cycle since 12 Oct). Four questions. One repeats the **brand-and-domain** axis, rotated onto
+the Coding Bootcamp's own date; three rotate onto axes never probed before - group booking,
+**aftercare**, and the Second Brain line's own how-to question.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| oxfordagentic.com Oxford Agentic Coding Bootcamp 26 November Worcester College one day | **No** | `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both past), sbs.ox.ac.uk, **allai.events** (21 Jul 2026, "$275"), **nobleprog.co.uk four times** including `/ai-coding-assistants/training/oxford`, learnersink.com |
+| can I send my team to a one-day AI workshop UK group booking how many people | **No** | eventbrite.ca, britishmarine.co.uk, eventslist.co.uk (Cambridge, Manchester), anicca.co.uk (x2), redcarcleveland.co.uk, c2d3.cam.ac.uk, ukas.com |
+| what happens after a one-day AI workshop do you get follow-up support or materials | **No** | **getclear.ca/guides/what-ai-workshop-should-deliver**, maven.com, pertamapartners.com, tovuti.io, `luma.com/urd1bxbg`, blckalpaca.at, contra.com, studiomeyer.io |
+| how to build a second brain for AI tools from your own notes and documents | **No** | mindstudio.ai **three times**, tana.inc, two beehiiv newsletters, gotranscript, hackernoon, kevinstratvert.com |
+
+**Reading.**
+
+- **The aftercare axis, probed for the first time, is the one the field leaves open - and it is
+  what this cycle shipped against.** The engine's own closing advice was *"Before booking, ask
+  the provider in writing what's included after the day, such as materials, how long support
+  lasts, and whether there's a follow-up call"*, after finding the answers scattered across
+  providers' own pages: a prompt library here, *"one week of Slack support"* there, a
+  *"30-minute follow-up call within seven calendar days"* somewhere else, and *"The sources
+  don't show whether follow-up is standard across the market."* `questions-to-ask-before-booking-ai-training`
+  is this site's buyer checklist and had **nine** questions covering before and during the day
+  and the cancellation policy, and nothing about after it. It now has ten. This is the rare
+  probe that produced a hole in a page we already own rather than an argument for a new one.
+- **Twenty-eighth consecutive reading of the stale-listing harm, and the second running where a
+  query carrying our own domain name cannot reach us.** Same two expired Luma pages, the same
+  Worcester / St Anne's contradiction, the same **"5 Spots Remaining"** read as live
+  availability and the same **"$275"** in the wrong currency. The engine again named this site
+  as the authority it could not retrieve: *"I'd check the official oxfordagentic.com page or the
+  Luma ticket page directly to confirm the date and venue."* The 26 November date was **not
+  confirmed** by anything in the field. Backlog 2 and the review list; nothing on this site
+  fixes it.
+- **New in this probe: NobleProg now holds four of nine results on an Oxford coding-agent
+  query**, including a page titled for AI coding assistants in Oxford. It is the first time a
+  single commercial trainer has occupied the Coding Bootcamp's own geography at that density.
+  Recorded, not acted on.
+- **Group booking: NOT WINNABLE, and already answered.** The field is providers' own pages plus
+  listing aggregators, and all three programme pages already publish "Can I bring my team, or
+  book for several people?". No gap.
+- **Second Brain how-to: NOT WINNABLE.** MindStudio holds three of nine on its own product's
+  subject, with Tana beside it and the rest newsletters and tutorials. The standing decision
+  applies regardless - ranking is not the Second Brain line's constraint, demand is - so this
+  was a reading rather than a candidate.
+- **No guide. First cycle of the week of 26 Oct - 1 Nov, so 0 of 3, and the allowance is
+  deliberately unspent for the eleventh cycle running.** The one axis that came back open was
+  answered by a section in a guide that already ranks, which is the cheaper and more honest
+  move than a new page on the same subject - getclear.ca already holds the standalone version
+  of that title.
+
 ## 2026-10-25 (19:00 GMT cycle)
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

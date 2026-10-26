@@ -1,9 +1,9 @@
 ---
-title: "Nine questions to ask before booking AI training"
+title: "Ten questions to ask before booking AI training"
 slug: questions-to-ask-before-booking-ai-training
 category: choosing
-seoTitle: "9 questions before booking AI training"
-description: A buyer’s checklist for AI courses and bootcamps - nine questions worth asking any provider, and what a straight answer to each one sounds like.
+seoTitle: "10 questions before booking AI training"
+description: A buyer’s checklist for AI courses and bootcamps - ten questions worth asking any provider, and what a straight answer to each one sounds like.
 capsule: >-
   Ask what you will personally have running at the end, whose work you build against,
   how many people are in the room, what happens when you get stuck, and what the day
@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-10-21T02:20:00+01:00"
+updatedDate: "2026-10-26T01:10:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -66,10 +66,18 @@ Diaries move, and this is the question most buyers only think to ask afterwards.
 
 Ask for the answers in writing before you pay rather than after. If someone else is approving the spend, [they will ask the same thing](/guides/getting-an-ai-bootcamp-approved/), and a clear answer removes the easiest reason to say not yet. It is a small question that tells you how a provider treats the people who have already paid.
 
+## 10. What do I get after the day, and for how long?
+
+The question almost nobody asks until the following week. One-day formats differ more here than anywhere else on this list, and the difference is rarely on the booking page. Some end at 17:00, and that is the whole offer. Others send a written pack afterwards, keep a channel open for a week or two, or book a short call once you have tried the thing on your own work. Those are different products at a similar price.
+
+Two halves of the answer are worth separating. The first is what you take away: the thing you built, in your own hands rather than inside the provider's account, plus whatever is written down so you can rebuild it. The second is what happens when it breaks a fortnight later, which is usually when people actually need the help. Ask for both in writing, because "ongoing support" covers everything from a mailing list to a named person who answers.
+
+A provider who says the day ends on the day has given you a fair answer, and an easier one to plan around than a vague promise. What you want to avoid is finding the boundary at the moment you have crossed it.
+
 ## Using the checklist
 
-You do not need perfect answers to all nine. You need answers that are consistent with each other: a room capped small enough for the help promised, a build ratio consistent with the result claimed, a scope narrow enough to be delivered in the time. Most mismatches show up when you put two answers side by side.
+You do not need perfect answers to all ten. You need answers that are consistent with each other: a room capped small enough for the help promised, a build ratio consistent with the result claimed, a scope narrow enough to be delivered in the time. Most mismatches show up when you put two answers side by side.
 
-For the record, here are ours. The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge: let us know and we will move you.
+For the record, here are ours. The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge: let us know and we will move you. After the day you keep the workflow and a written recipe for rebuilding and extending it, and you leave with the group: everyone in the room has built the same thing, you go away with their contact details, and you hear first when the next one is on.
 
 What it deliberately does not cover: the AI landscape, model comparisons, and governance policy. One pattern, applied properly to one real task, is what fits in a day.

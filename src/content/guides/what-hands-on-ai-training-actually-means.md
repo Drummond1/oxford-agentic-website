@@ -51,7 +51,7 @@ Two signals replace them, and both can be checked before you pay.
 
 **Whether anyone has mentioned your laptop.** Building means installing or signing into something, and corporate and government devices often block tool sign-ups. A provider who expects you to build has usually hit this before and will warn you; a provider who has not raised it is not planning on you installing anything.
 
-For the rest - how many people are in the room, the ratio of talking to building, what happens when you get stuck - there is a fuller list in [nine questions to ask before booking AI training](/guides/questions-to-ask-before-booking-ai-training/).
+For the rest - how many people are in the room, the ratio of talking to building, what happens when you get stuck - there is a fuller list in [ten questions to ask before booking AI training](/guides/questions-to-ask-before-booking-ai-training/).
 
 ## Why this matters more for senior people
 
