@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-26 (19:00 GMT cycle) - THE AFFILIATION QUESTION IS ANSWERED ENTIRELY OFF STALE LUMA PAGES, AND THE HOMEPAGE STOPPED ANSWERING IT TODAY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, then **two phrasings of the affiliation question**,
+run after a commit three hours earlier changed how the site answers it.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need a paid ChatGPT or Claude subscription for a hands-on AI workshop UK | **No** | botnation.ai, gmelius.com, wise.com, zemith.com, morphllm.com, tactiq.io, bleap.finance (x3 locales) - all tool-pricing blogs, no workshop page of any provider |
+| what do you actually leave with at the end of a one-day hands-on AI workshop for business leaders | **No** | **innovationvisual.com five of ten** (again), stonybrook.edu, dpi.uillinois.edu, ssw.com.au, ai.gov.au, blogs.oracle.com |
+| will AI training be out of date in six months, is it worth booking a course now | **No** | salesforce.com, deeplearning.ai, mit xpro, sutd.edu.sg, the-virtual-savvy (a provider's own help doc), two personal Substacks |
+| how many people should a company send to an AI bootcamp, one person or a group | **No** | techtarget.com (Levi Strauss), cacm.acm.org, baylor, case.edu, smu.edu, bootcampdigital.com, precisionaiacademy.com |
+
+### The affiliation probes
+
+| Phrasing | Result |
+|---|---|
+| `Is Oxford Agentic affiliated with the University of Oxford bootcamp` | **No page of ours returned.** Answered off `luma.com/oxfordagentic2` (the **passed** 16 September day), `luma.com/k7c2rm5s`, `allai.events` and `nobleprog.co.uk`. The engine would say only *"The search doesn't show that the Oxford Agentic Bootcamp is an official University of Oxford event"* - absence of evidence, not our statement. It then described Saïd Business School's own four-week online programme, **£1,500, with "an official University of Oxford Certificate of Completion"**, directly after ours |
+| `oxfordagentic.com independent not part of University of Oxford who runs the Oxford Agentic Bootcamp` | **No page of ours returned, with our own domain in the query.** *"The search didn't surface oxfordagentic.com itself, so I couldn't confirm the site's ownership or whether it describes the bootcamp as independent of the University."* And, plainly: *"The listings also don't describe it as independent. **That remains an inference.**"* It closed by telling the reader to go and check our footer or About page, or ask the hosts |
+
+**What the stale Luma pages taught it along the way**, all read off listings rather than this
+site: a 21 July 2026 date, **"tickets from $275"** (a price, in dollars), two venues it could not
+reconcile (*"Worcester College in one version and St Anne's College in another"*), **Josh Lawman**
+on the roster - removed from the team on 17 August - and a co-host placed at "the AI Centre for
+Business", which this site does not publish. This is the clearest reading yet of the standing
+review-list item that our own retired Luma pages outrank the live one.
+
+**Reading. The affiliation question is the highest-stakes entity question this brand has, because
+the name invites exactly the confusion the engine then resolves by putting a certificated
+University programme next to ours. Two phrasings, consistently: our answer is not reachable, and
+the engine says so in its own words both times.** This is the crawl-budget-and-external-links
+constraint of backlog 2b showing up on the one question where being absent is actively expensive.
+
+**And today it got one notch harder.** Commit `ff3726f`, pushed at 15:56 GMT by the content and
+design loop, rewrote the homepage FAQ entry that carried this answer:
+
+- **Was:** *"Is Oxford Agentic affiliated with the University of Oxford?"* / *"No. Oxford Agentic
+  is independent - no affiliation with the University of Oxford, its colleges, or any other
+  institution. We hire the city's rooms because they are good rooms, and that is the whole
+  relationship. ..."*
+- **Now:** *"Which organisations is Oxford Agentic affiliated to?"* / *"Oxford Agentic currently
+  operates as an independent organisation."*
+
+Nothing in the new wording is untrue, and it is not this loop's copy to revert. What it costs is
+measurable, and measured in a browser this cycle at 375 and 1280px: **the rendered homepage now
+contains the string "University of Oxford" zero times.** Before, it was in the FAQ answer. The one
+remaining occurrence anywhere in `dist/index.html` is inside
+`Organization.disambiguatingDescription` in the JSON-LD, which a reader never sees. The question
+string moved away from the shape a buyer types, and the `FAQPage` node - the one node an engine
+lifts verbatim, on the page engines actually land on - no longer names the institution the
+disambiguation exists to separate us from. `site.config.ts` still cites that FAQ as the source of
+two of the four clauses in `disambiguation`, and names it as the place the site "answers the
+question outright". It no longer does.
+
+Visible copy carrying the phrase went from 3 pages of 63 to 2: `/about/` and `/privacy/`. Neither
+is a page a buyer weighing a £450 day opens, and neither was returned by either probe.
+
+**Logged, not acted on.** Backlog 47 below. Whether the homepage FAQ should name the University
+again is Drummond's call, and so is whether the stale Luma pages get retired.
+
 ## 2026-10-26 (13:00 GMT cycle) - THE "THREE URLS" READING IS AN INSTRUMENT ARTEFACT. READ THIS BEFORE CITING IT AGAIN.
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every

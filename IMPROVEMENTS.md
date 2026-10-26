@@ -692,9 +692,130 @@ Status: `todo` · `blocked` (why) · `doing`
     way. Not folded into this cycle, which was already changing the footer's conditions.
 
 
+47. `todo` **(needs Drummond, a copy call on the homepage, and a second thing only he can do)** -
+    **the homepage stopped answering the affiliation question today, and two probes the same
+    evening show it is the one question the site cannot afford to be silent on.** Commit
+    `ff3726f`, pushed 15:56 GMT on 26 Oct by the content and design loop, replaced the homepage
+    FAQ entry *"Is Oxford Agentic affiliated with the University of Oxford?"* / *"No. Oxford
+    Agentic is independent - no affiliation with the University of Oxford, its colleges, or any
+    other institution. We hire the city's rooms ... and that is the whole relationship."* with
+    *"Which organisations is Oxford Agentic affiliated to?"* / *"Oxford Agentic currently
+    operates as an independent organisation."*
+    - **Nothing in the new wording is untrue, and this loop did not revert it.** Rewriting
+      another loop's three-hour-old copy is not a cycle's call, and the item is here rather than
+      in a commit for that reason.
+    - **What it costs, measured in a browser at 375 and 1280px.** The rendered homepage now
+      contains the string "University of Oxford" **zero** times. The single occurrence left in
+      `dist/index.html` is inside `Organization.disambiguatingDescription` in the JSON-LD, which
+      no reader sees. The `FAQPage` node - the one node an engine lifts verbatim, on the page
+      engines actually land on - no longer names the institution the disambiguation exists to
+      separate this company from, and the question string no longer matches the shape a buyer
+      types. Visible copy carrying the phrase went from 3 pages of 63 to 2, `/about/` and
+      `/privacy/`, neither of which a buyer weighing a day opens.
+    - **`site.config.ts` now cites a source that no longer says it.** The comment above
+      `disambiguation` names the homepage FAQ as the place the site "answers the question
+      outright" and takes two of its four clauses from that answer verbatim, including "we hire
+      the city's rooms ... and that is the whole relationship". Whatever is decided, those two
+      should end up agreeing again.
+    - **The probes are in `seo-data/geo-citations.md` under 26 Oct 19:00.** Two phrasings, neither
+      returning a page of ours, the second with our own domain in the query: *"The search didn't
+      surface oxfordagentic.com itself, so I couldn't confirm ... whether it describes the
+      bootcamp as independent of the University"*, and *"The listings also don't describe it as
+      independent. That remains an inference."* Both answered off two Luma pages, `allai.events`
+      and `nobleprog.co.uk`, and the first then set out Saïd Business School's own four-week
+      online programme at £1,500 with "an official University of Oxford Certificate of
+      Completion" directly after ours.
+    - **The second thing, and it may matter more: the stale Luma pages.** Those same two answers
+      took from them a 21 July date, **"tickets from $275"**, two venues the engine could not
+      reconcile, **Josh Lawman** on the roster (removed 17 August) and a co-host placed at "the
+      AI Centre for Business", which this site does not publish. Retiring or updating the retired
+      Luma listings is his account and his call, and it is the standing review-list item now with
+      its sharpest evidence.
+    - **What would settle the first half in one line from him:** whether the homepage FAQ should
+      name the University of Oxford again. If yes, the loop restores a question and answer that
+      do, in his wording or the old one. If no, it leaves it and stops re-measuring this.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-26 (19:00 cycle) - NO SITE CHANGE. The cycle went looking for an on-page improvement,
+  found none, and found something else: the affiliation question is answered entirely off stale
+  third-party Luma pages, and the homepage stopped answering it three hours earlier.** Nothing
+  under `src/`, `public/` or `scripts/` moved and `dist` is byte-identical to the baseline build.
+  What ships is the evidence, in `seo-data/geo-citations.md` and backlog 47, because a fresh cloud
+  checkout has no memory of a diff it did not make.
+  - **The finding.** Two phrasings of the affiliation question, run as GEO probes. Neither
+    returned a page of this site; the second had `oxfordagentic.com` in the query and the engine
+    still said *"The search didn't surface oxfordagentic.com itself, so I couldn't confirm ...
+    whether it describes the bootcamp as independent of the University"*, and *"The listings also
+    don't describe it as independent. That remains an inference."* Both were answered off
+    `luma.com/oxfordagentic2` (the **passed** 16 September day), `luma.com/k7c2rm5s`,
+    `allai.events` and `nobleprog.co.uk`. The first then described Saïd Business School's own
+    four-week online programme, **£1,500, with "an official University of Oxford Certificate of
+    Completion"**, directly after ours. That is the adjacency `disambiguation` was written for,
+    landing on the one question where this brand's own name does the damage.
+  - **What those stale listings are teaching an engine**, none of it from this site: a 21 July
+    date, **"tickets from $275"**, two venues it could not reconcile, **Josh Lawman** on the
+    roster (removed 17 August) and a co-host at "the AI Centre for Business". The standing
+    review-list item about our retired Luma pages outranking the live one now has its sharpest
+    evidence, and it is his account to fix.
+  - **And the homepage got quieter on it today.** Commit `ff3726f`, 15:56 GMT, from the content
+    and design loop, replaced *"Is Oxford Agentic affiliated with the University of Oxford?"* and
+    its four-sentence answer with *"Which organisations is Oxford Agentic affiliated to?"* /
+    *"Oxford Agentic currently operates as an independent organisation."* Nothing in it is untrue
+    and **this loop did not revert it** - three-hour-old copy from another loop is not a cycle's
+    to rewrite. Measured in a browser at 375 and 1280px: the rendered homepage now contains
+    "University of Oxford" **zero** times, the one occurrence left in `dist/index.html` being
+    inside the JSON-LD `disambiguatingDescription`. Visible copy carrying the phrase went from 3
+    pages of 63 to 2. `site.config.ts` still names that FAQ as the place the site answers the
+    question outright and quotes two of its clauses verbatim, so the two now disagree. Backlog 47.
+  - **What was checked and found clean, before concluding there was nothing to ship.** The two
+    named candidates in the standing brief are both already closed: `scripts/indexnow-ping.mjs`
+    maps `src/lib/home.ts` to `/` alone (line 109), and every sentence naming a passed cohort as
+    upcoming is already in the past tense across guides, event files and programme pages. A whole
+    built-site audit added nothing: **0** of 55 sitemap pages missing `og:image` or
+    `twitter:card`, **0** `<img>` without width and height, 2 external links without `rel` and
+    both are arXiv citations that should be followed. Past events' `Offer` nodes correctly omit
+    `availability` - checked against the reasoning in `src/lib/schema.ts`, which retired a
+    SoldOut inference on purpose. Cohort 2's `assurances` still read as booking copy, but the
+    event template renders them only in the not-past branch, so they reach no page and no feed:
+    dead data, not a defect. Extending `lastmod` to `/events/`, `/guides/`, `/bootcamps/` and
+    `/team/` (left unclaimed by backlog 44) was scoped and declined: each needs its own
+    hand-maintained copy constant, four more things to forget, to help hub pages that are already
+    the best-crawled on the site.
+  - **A measurement worth keeping: `/testimonials/` has zero inbound internal links from any
+    page's `<main>`.** It is in the primary nav, so discovery and link flow are fine, but no
+    page's body ever points a reader at the proof. Backlog 35 has the page's missing way out;
+    this is the same page's missing way in. Not acted on - a body link into the proof page from
+    conversion copy is the kind of call backlog 35 already puts with him.
+  - **Checks, on an unchanged tree.** `npm ci` and `npm run build` clean: 61 pages built, 63
+    checked, 3,094 internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and
+    descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy,
+    unchanged. Headless Chromium confirmed working and used on `/` at 375 and 1280px: 200, 0px
+    horizontal overflow, one `h1`, correct self-canonical, no robots meta, and the
+    "University of Oxford" count taken from `document.body.innerText` at both widths.
+  - **Production state from the Actions API.** Deploy run **304 succeeded on `ff3726f`**, the
+    `main` HEAD this cycle started from, with CI run 289 green beside it and nothing queued; it
+    finished at 15:58 GMT, three hours before this cycle began. `oxfordagentic.com` answers **403
+    on CONNECT** from this sandbox and does not resolve for WebFetch, so `build.txt` could not be
+    read and the Actions API stood in for it, as on every cycle since 22 October. **No Luma page
+    was read and no event fact was read or changed** - `luma.com` is blocked by the same policy,
+    which is also why the stale-listing finding above is reported rather than acted on.
+  - **Search Console: unavailable from the cloud.** No export newer than the 24 August baseline in
+    `seo-data/`, and no API credentials in the repo.
+  - **Off-page: no new contactable lead.** Six probes returned tool-pricing blogs, US universities
+    and competitors; `innovationvisual.com` held five of ten on the takeaways question, as it did
+    on the away-day question at 13:00. Everything citable was already on the review list, so
+    nothing was added to it.
+  - **No guide. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance deliberately unspent for
+    the fifteenth cycle running. Four buyer questions were probed for a topic and none passed:
+    paid-plan prerequisites is a Coding Bootcamp fact only Drummond has (backlog 25); takeaways,
+    group-size and the six-month-obsolescence objection are all already answered on this site -
+    the last one in a three-question block in `scout-drafter-reviewer-pattern`, which is thorough
+    and well linked. No Q&A block either, for the same reason: a refresh needs a gap, and there
+    was not one.
 
 - **2026-10-26 (13:00 cycle) - NO SITE CHANGE. The loop has been reasoning from a diagnosis
   its own instrument cannot produce, and this cycle proves it and stops it.** Not one file
