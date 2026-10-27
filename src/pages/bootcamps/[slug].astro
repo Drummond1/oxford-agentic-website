@@ -129,7 +129,11 @@ const bands = {
         {
           data.whoFor.length > 0 && (
             <aside class="card who">
-              <span class="eyebrow">Who it is for</span>
+              {/* The label is the card's heading, not a kicker above one, so it
+                  is marked as the heading it already reads as. It sits under
+                  "The format" beside the h3 "What you leave with", and keeps the
+                  eyebrow's look. */}
+              <h3 class="eyebrow">Who it is for</h3>
               <ul class="squares">
                 {data.whoFor.map((item) => (
                   <li>{item}</li>

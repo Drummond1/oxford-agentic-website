@@ -735,10 +735,59 @@ Status: `todo` · `blocked` (why) · `doing`
       name the University of Oxford again. If yes, the loop restores a question and answer that
       do, in his wording or the old one. If no, it leaves it and stops re-measuring this.
 
+48. `todo` (loop-actionable, found 27 Oct 2026 in the 08:30 cycle) - **the `#` beside every
+    guide heading is an invisible tap target on a phone.** `.heading-anchor` is `opacity: 0`
+    until the heading is hovered or the anchor is focused, and an element at zero opacity still
+    takes a tap: measured at 375px it is a 17 by 34 box sitting immediately after the last word
+    of every `h2` and `h3`, 154 of them across the 32 guides. A thumb that lands there copies
+    the section URL and flashes "copied" with nothing visible to explain it. Touch has no
+    hover, so the affordance can never be used on a phone either - it is cost with no benefit
+    there. The fix is `pointer-events: none` on the hidden state, returned to `auto` on the
+    `:hover` and `:focus-visible` rules that already reveal it, which leaves the keyboard and
+    screen-reader paths exactly as they are. Not shipped this cycle because one change ships
+    per cycle and the heading markup above was the larger of the two.
+
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-27 (08:30 cycle) - two cards carried the label of a section that had no heading,
+  so the audience list and the one commercial block in every guide were missing from the
+  document outline.** On the three programme pages the audience card reads "Who it is for" and
+  the block beside it reads "What you leave with" - the second is an `h3`, the first was a
+  `span`. In all 32 guides the card that names which bootcamp the guide leads to reads "Where
+  this gets practical", also a `span`, sitting directly above the `h2` "More guides". Both are
+  now the headings they already read as: `h3` on the programme pages, `h2` in the guides.
+  - **Why it matters and to whom.** Skimming by heading is how a screen-reader user reads a
+    long page. Before this, that skim on a guide ran title, four article headings, "More
+    guides" - and never reached the block that says which day the guide is about, which is the
+    only place a guide turns into a booking. On a programme page it never reached the
+    qualification list, the block a buyer reads to decide the day is not for them. Both were
+    reachable only by reading the page straight through.
+  - **It is a markup change, not a design change.** `.eyebrow` already sets the typeface, size,
+    weight, letter-spacing, line height and spacing, and its class selector outranks the bare
+    `h2`/`h3` rule on every one of them. The single property the heading rule would have added
+    is `text-wrap: balance`, which can move where a two-line label breaks, so one rule in
+    `global.css` returns `text-wrap` to the inherited value for an eyebrow that is a heading.
+    A probe span inserted next to the new heading at 320px with a 24px root font measures the
+    same box to the pixel (191 by 82) with the same computed font, colour and letter-spacing.
+  - **Checked.** `npm run build` green (3096 links, 63 pages, schema valid); `npm run
+    check:flags` green on both the all-on and all-off builds; `astro check` reports the same 79
+    pre-existing type errors before and after, none in the edited files. Whole-page pixel diff
+    of the build against a build of `48da25b`, ten pages at 375, 768 and 1280px with motion
+    reduced so both are deterministic: **zero differing pixels** on every one of the thirty,
+    with page heights identical. The two cards clipped on their own are byte-identical at all
+    three widths. Heading outlines re-read on all 63 pages: no skipped level, one `h1` each.
+    No horizontal overflow at 375, 768, 1280, or at 320px with a 24px root font. Tab order on
+    a guide is the same 44 stops before and after, every one with a visible focus ring.
+  - **Nothing else moved.** No copy, no fact, no `updatedDate`: the two labels keep their exact
+    words and the content collections were not touched, so no page claims to have changed. The
+    other eyebrows on the site are kickers printed above a real heading ("The day" above "You
+    build, we facilitate") or a visually-hidden `h2` already labels the section, as on the event
+    pages' Register block - those stay spans, and the sweep that found these two found no third.
+  - **Found and not shipped:** the invisible `#` tap target on every guide heading, now backlog
+    48. One change per cycle, and this was the larger one.
 
 - **2026-10-27 (08:00 cycle) - the one guide that argues a room beats a screen reached two of
   the three in-person days this site sells, and not the one whose whole field is online.**

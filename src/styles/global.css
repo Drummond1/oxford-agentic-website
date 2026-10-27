@@ -418,6 +418,15 @@ a[href^='mailto:'] {
   display: block;
 }
 
+/* Some eyebrows label a card that has no other heading, and are marked up as
+   one so the block reaches the document outline. The element changes, not the
+   look: .eyebrow already overrides the heading's typeface, size, weight,
+   spacing and line height, and text-wrap goes back to the inherited value so a
+   label that wraps breaks exactly where it did as a span. */
+:is(h2, h3).eyebrow {
+  text-wrap: inherit;
+}
+
 /* Eyebrows are amber on ink, rust on paper, ink on amber. */
 .band--dark .eyebrow {
   color: var(--gold);

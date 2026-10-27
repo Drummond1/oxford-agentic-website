@@ -183,7 +183,11 @@ const showCapture = showSection('newsletter');
           {/* Every guide links to at least one programme - PRD §12. */}
           {related.length > 0 && (
             <aside class="card related">
-              <span class="eyebrow">Where this gets practical</span>
+              {/* Same as the audience card on a programme page: the label is
+                  this card's heading, so a reader skimming by heading reaches
+                  the one block that says which bootcamp the guide leads to.
+                  h2 puts it alongside "More guides" below it. */}
+              <h2 class="eyebrow">Where this gets practical</h2>
               <ul class="squares">
                 {related.map((programme) => (
                   <li>
