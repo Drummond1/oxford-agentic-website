@@ -11,6 +11,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`digitalhuboxford.com` - an Oxford site publishing AI event listings, ranking beside us on
+  our own Oxford-dated query.** Found 27 Oct 2026 (08:00 cycle). **Nothing has been contacted.**
+  - **What it is, as far as can be seen from here.** It returned
+    `digitalhuboxford.com/event/ai-innovation-and-entrepreneurship-forum-2026` in the result set
+    for *"agentic AI bootcamp Oxford 19 November 2026 one day book a place"* - the same query that
+    returned our homepage. The URL shape (`/event/<slug>`) suggests an events calendar rather than
+    a single organisation's own page.
+  - **Why it is worth a look.** It is Oxford-anchored, which is the scarce kind: the review list
+    already carries national directories and roundups, and the `Organization` node still has no
+    `sameAs` at all (backlog 2b). A local hub that publishes other people's AI events is the
+    cheapest credible route to one external link, and it sits in the same result set a buyer
+    searching for the November cohort already sees.
+  - **Unverified from here.** The domain does not resolve from this sandbox, so who runs it,
+    whether it accepts third-party listings and whether there is a submission route are all
+    unchecked. Needs someone with an unblocked browser before anyone writes to them. Nothing
+    contacted, nothing submitted, no account made.
+
 - **A third-party buyer's guide to one-day AI workshops, ranking first on the aftercare
   question, and it names no providers of ours.** Found 26 Oct 2026 (01:00 cycle). This is a
   possible mention route rather than a directory, and **nothing has been contacted**.

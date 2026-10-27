@@ -10,10 +10,16 @@ capsule: >-
   stuck on setup with no one to unstick them, and a facilitated small room removes that.
 author: drummond-gilbert
 publishDate: "2026-07-23T09:00:00+01:00"
-updatedDate: "2026-09-14T06:45:00+01:00"
+updatedDate: "2026-10-27T08:00:00+00:00"
+# The Coding Bootcamp was linked from here on 27 Oct 2026. This guide predates that line, so
+# the one argument it makes - a room removes the setup tax - reached two of the three
+# in-person days the site sells and not the third, where the tax is highest. Two
+# probes, 26 and 27 Oct, returned an agentic-coding field that is almost entirely
+# online: Udemy, Coursera, CBT Nuggets, a $1,500 day on Zoom. See seo-data/geo-citations.md.
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
+  - agentic-coding-bootcamp
 ---
 
 There is no shortage of ways to learn about AI online, and many of them are excellent. But most people who have taken them will admit the same thing: they understand more than before, and they have still not built anything. That gap is worth taking seriously, because it is not about the content.
@@ -46,4 +52,8 @@ The honest test of any AI training is not whether the slides were good. It is wh
 
 That is the whole design of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/): a small cohort, a facilitated day in Oxford, and one working agentic workflow built against a task you actually brought. No coding, and nothing to watch later, because you built it in the room.
 
-The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is built on the same principle and points it at a different problem. You spend the day populating a second brain with your own documents and notes rather than a worked example, and leave with it organised and running. None of the argument above is really about agentic workflows. It is about the difference between being told how something works and having it working by the time you go home.
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is built on the same principle and points it at a different problem. You spend the day populating a second brain with your own documents and notes rather than a worked example, and leave with it organised and running.
+
+The [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is the sharpest case of the setup tax this page opened with. What it asks you to bring is a laptop you can install software on, because the day involves setting up a code editor, a terminal and a GitHub account on your own machine, and corporate or government devices often block that. Most of what exists for agentic coding is online - recorded courses, platform listings, live sessions over video - and Claude Code and Codex do the typing in any of them. What a room adds is a senior engineer sitting next to you at the point where the machine says no.
+
+None of the argument above is really about agentic workflows. It is about the difference between being told how something works and having it working by the time you go home.

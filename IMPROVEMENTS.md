@@ -740,6 +740,89 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-27 (08:00 cycle) - the one guide that argues a room beats a screen reached two of
+  the three in-person days this site sells, and not the one whose whole field is online.**
+  `why-in-person-beats-online-for-learning-ai` (23 July) closes by naming the Agentic and Second
+  Brain bootcamps. It predates the Coding line, so it never named it, and its `<main>` carried
+  **zero** links to `/bootcamps/agentic-coding-bootcamp/` - the two on the built page were the
+  desktop and mobile nav. It now carries a third paragraph and a third `relatedProgrammes` entry.
+  - **Why this guide and why now.** Three probes this cycle, full table in
+    `seo-data/geo-citations.md` under 27 Oct 08:00. The second phrasing of the level-confusion
+    axis - the one the 01:00 cycle asked a future cycle to run before pitching a guide - returned
+    **nine results, every one a course selling itself, and all but one online**: Udemy x3,
+    Coursera, CBT Nuggets, `aifundamentals.dev`, `agenticengineer.com`, `agenticjumpstart.com`.
+    Added to yesterday's `every.to` ($1,500, one-day, live on Zoom) and Maven, the agentic-coding
+    field an engine returns is almost entirely a screen. The site owns a guide whose single
+    argument is that a screen is where people stall, and it did not apply it to the one day that
+    answers that field.
+  - **It also happens to be the day where the argument is strongest**, and the paragraph says so
+    using the programme page's own published words: what it asks you to bring is *"a laptop you
+    can install software on, because the day involves setting up a code editor, a terminal and a
+    GitHub account on your own machine, and corporate or government devices often block that"* -
+    verbatim from `prerequisites` and the "What should I bring?" answer - and *"Claude Code and
+    Codex do the typing"*, verbatim from `shortPitch` and the FAQ. The one new sentence is the
+    guide's own analysis: a room adds a senior engineer next to you at the point where the machine
+    says no, which restates the programme description's *"sitting next to a senior engineer who
+    does the typing"*. **Nothing is claimed about a day that has not run** - Coding Cohort 1 is
+    26 November - and nothing is asserted that the programme page does not publish.
+  - **No guide was written, deliberately.** The level-confusion axis has now passed two phrasings
+    and is genuinely winnable (no editorial page exists; the engine's own advice is *"check the
+    'who is this for' and prerequisites sections ... these labels vary widely"*). Rule 5 still
+    prefers an existing page when the value is comparable, and here it is better: the answer
+    belongs on a page published 23 July that already ranks, not on a new one with no history.
+    **0 of 3 for the week of 26 Oct - 1 Nov**, the allowance unspent for the seventeenth cycle.
+  - **Measured whole-site: exactly 7 of 196 files in `dist` differ**, and they are the predicted
+    set - the guide, `/guides/` (its dateline moves September to October), **2** sibling guides
+    whose "More guides" block reshuffles, `llms-full.txt` and both sitemaps. Every other file is
+    byte-identical; `llms.txt` did not move. Node-level JSON-LD diff on the guide: **3** changes -
+    `Article.about` gains the third `Course` `@id`, and the two `dateModified`s. Node types
+    unchanged. Internal links 3,094 to 3,096.
+  - **The link flow, counted before and after across all 63 built pages.** Guide `<main>` inbound
+    to `/bootcamps/agentic-coding-bootcamp/`: **4 to 5**; the other two programmes unchanged at 25
+    and 10. Guide-to-guide inbound: `why-in-person...` 6 to 7, `claude-cowork...` 7 to 6,
+    `getting-an-ai-workflow-past-it-and-legal` 7 to 6 - the two best-connected guides each lose
+    one and the distribution gets slightly flatter. **Minimum inbound is 5 before and after and no
+    guide is stranded at 0**, which was the thing worth checking: `relatedProgrammes` feeds the
+    sibling-ranking score, so adding one can move pages that were not edited. The two that moved
+    both improved - the coding guide now offers the in-person argument instead of the IT-and-legal
+    one, and the second-brain guide now offers a second-brain sibling instead of the coding one.
+  - **IndexNow under-submits by two, as designed.** `--dry-run` on the changed file maps to
+    `/guides/<slug>/` and `/guides/`; the two siblings whose only change is four words of link
+    text get no hint. That is backlog 41 exactly, measured again, and it stays `wontfix-for-now`
+    on the reasoning already recorded there. The script was **not** run: the deploy workflow owns
+    the ping.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 63 pages checked, 3,096
+    internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and descriptions
+    unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy and are
+    identical on the baseline build.
+  - **Inspected in headless Chromium at 375 and 1280px** on all four pages whose output moved:
+    8 configurations, all clean - 200, 0px horizontal overflow, one `h1`, no missing `alt`, no
+    robots meta, correct self-canonical, zero em dashes in `main`, and the new paragraph and the
+    guide's closing sentence both present in `innerText`. The three programme cards render in
+    `order` at 375px with the correct pitches, the Coding one carrying the line shipped at 01:00.
+  - **Production state from the Actions API.** Deploy run **306 succeeded on `100b27f`**, the
+    `main` HEAD this cycle started from, with CI run 291 green beside it and nothing queued; it
+    finished at 01:09 GMT. `oxfordagentic.com` answers **403 on CONNECT** from this sandbox, so
+    `build.txt` could not be read and the Actions API stood in for it, as on every cycle since
+    22 October. **No Luma page was read and no event fact was read or changed** - `luma.com` is
+    blocked by the same policy.
+  - **A standing reading is overturned, and it is good news.** Asked *"agentic AI bootcamp Oxford
+    19 November 2026 one day book a place"*, an engine returned **our homepage** and answered the
+    whole question off it - one-day, Oxford, built against a task from your own work, **Thursday
+    19 November 2026, Worcester College** - and separated the Coding Bootcamp on 26 November
+    correctly. No 21 July, no "$275", no Josh Lawman, no Luma listing in the answer. The 24 Oct
+    homepage `EducationEvent` work and yesterday's Coding `shortPitch` are both visible in it.
+    The stale-Luma problem is real on the affiliation and coding queries and remains his to fix;
+    it is not universal.
+  - **Search Console: unavailable from the cloud.** No export newer than the 24 August baseline
+    in `seo-data/`, and no API credentials in the repo.
+  - **Off-page: one new lead, unverified.** `digitalhuboxford.com`, an Oxford site publishing a
+    2026 AI forum under an `/event/<slug>` path, ranking in the same result set as our homepage on
+    the Oxford-dated query. Added to `outreach/review-list.md`; the domain does not resolve from
+    here, so whether it takes third-party listings is unchecked. Oxford-anchored routes are the
+    scarce kind, which is why this one was worth recording when six probes last cycle produced
+    none.
+
 - **2026-10-27 (01:00 cycle) - the Coding Bootcamp's one-line pitch never said who the day is
   for, on the one line an engine and a searcher read first.** Its `shortPitch` - the meta,
   `og:` and `twitter:` description, the hero subline, the homepage and `/bootcamps/` cards, the

@@ -5,6 +5,54 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-27 (08:00 GMT cycle) - THE SITE IS CITED FOR ITS OWN DATED COHORT, AND INVISIBLE ON THE QUESTION THE WHOLE AGENTIC-CODING FIELD IS ONLINE FOR
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Three rotating buyer questions, one of them the **second phrasing of the
+level-confusion axis** the 01:00 cycle asked a future cycle to test before pitching anything.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is an agentic coding course for developers or for people who have never shipped software | **No** | `cbtnuggets.com`, `udemy.com` x3, `coursera.org`, `aifundamentals.dev`, `agenticengineer.com`, `agenticjumpstart.com`, a GitHub Pages site - **every result a course product page, none of them editorial, and all but one online** |
+| agentic AI bootcamp Oxford 19 November 2026 one day book a place | **Yes**: the homepage, and the engine answered the whole question off it | `udemy.com`, `lifelong-learning.ox.ac.uk` x2, `sbs.ox.ac.uk` x2, `getsmarter.com`, `gogradia.com`, `digitalhuboxford.com`, Wikipedia |
+| AI workshop UK where you bring your own real work task and build a workflow on the day | **No** | `practical-ai-for-business.co.uk` (**£3,500 half day, £6,500 full day**, groups of up to 5), `craftingyourintelligence.com`, `designforonline.com` (**from £850**, up to 12), `blast47.com` (**£325 + VAT**, two hours, up to 4), `hartzai.com` x2, `experiencepoint.com`, `aiworkshop.info` |
+
+**The good reading first, because it overturns a standing one.** Asked for the Oxford day by
+date, the engine returned **our homepage** and answered off it: *"a one-day AI bootcamp in
+Oxford, and you leave having built and run a working agentic AI workflow on a real task from
+your own work ... Thursday, 19 November 2026 at Worcester College, Oxford"*, and it correctly
+separated *"The Oxford Agentic Coding Bootcamp is a separate cohort, on 26 Nov 2026."* Date,
+venue, promise and the two-product distinction, all from this site, none from a Luma listing.
+No stale 21 July, no $275, no Josh Lawman. The 24 Oct `EducationEvent`-on-the-homepage work and
+the 27 Oct Coding `shortPitch` are both visible in that answer. It also said the results *"did
+not show the price or whether seats remain"*, which is the standing decision working as
+intended, not a defect.
+
+**The level-confusion axis, second phrasing, as asked for.** Every one of nine results is a
+course selling itself; not one is an editorial answer, and the engine closed by telling the
+reader to go and check each page: *"Check the 'who is this for' and prerequisites sections
+before enrolling, since these labels vary widely."* It then had to quote the field's own
+contradictions - one course *"for experienced software engineers"*, another telling beginners
+to start elsewhere, a third *"for complete beginners ... who have no coding background and do
+not want to learn one"*. Two phrasings now agree with the 01:00 cycle's: the field screens hard
+on level and answers it only inside its own product pages. **It did not become a guide this
+cycle.** Rule 5 prefers an existing page when the value is comparable, and the page that already
+makes this argument - that a room removes the friction you cannot get past alone - reached two of
+the three in-person days and not the coding one. That is what this cycle fixed.
+
+**The "bring your own task" field is on-site corporate training, and it is not our shape.** Every
+provider returned sells into one company's office, priced per workshop from £325 for two hours to
+£6,500 for a day, and several publish those prices. None sells an open seat. This site has
+`in-house-ai-day-or-send-people-to-a-cohort` for exactly that buyer and it was not cited, but that
+is the standing index-coverage problem (backlog 2b), not a content gap: the guide exists, is
+linked and is good. Recorded, not acted on.
+
+**Off-page: one new lead, unverified.** `digitalhuboxford.com` - an Oxford site publishing a 2026
+AI forum, ranking beside us on the Oxford-dated query. Added to `outreach/review-list.md`. The
+domain does not resolve from this sandbox, so whether it takes third-party listings is unchecked.
+Everything else returned is a competitor, a university, a course platform or a vendor blog, and
+all of those routes are already on the list.
+
 ## 2026-10-27 (01:00 GMT cycle) - THE CODING LINE IS INVISIBLE ON ITS OWN BUYER QUERIES, AND THE FIELD'S OWN CONFUSION IS ABOUT LEVEL
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
