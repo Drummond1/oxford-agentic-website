@@ -3,11 +3,19 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-25T01:00:00+00:00"
+updatedDate: "2026-10-27T01:00:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
-shortPitch: A one-day bootcamp in Oxford. Learn how software actually gets built and shipped, with Claude Code and Codex doing the typing.
+# Names the level, because the field does not and buyers screen on it. Two probes on
+# 27 Oct 2026 asked for a one-day in-person agentic coding day "for non-developers" and
+# "without being a developer"; neither returned this site, and one competing listing
+# read "You already know how to code. Skip it if you're new to programming." Both
+# clauses restate this page's own copy - `whoFor`, `prerequisites` and the FAQ answer
+# to "Do I need to be able to code?". Edit those and edit this.
+shortPitch: >-
+  A one-day bootcamp in Oxford for people who have not yet shipped software. It does
+  not assume you can code: Claude Code and Codex do the typing.
 capsule: >-
   The Oxford Agentic Coding Bootcamp is a one-day, in-person course in Oxford for
   people who understand the concepts but have not yet built and shipped something of

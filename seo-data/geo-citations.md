@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-27 (01:00 GMT cycle) - THE CODING LINE IS INVISIBLE ON ITS OWN BUYER QUERIES, AND THE FIELD'S OWN CONFUSION IS ABOUT LEVEL
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, two of them aimed at the Coding Bootcamp line -
+the newest product, bookable on **26 November**, and the least probed of the three.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day agentic AI coding bootcamp UK for non-developers hands-on | **No** | `digitalresearchservices.ed.ac.uk` (Edinburgh, 25 June, **passed**), `createwith.com` (Brighton, 23 May, **passed**), **`luma.com/oxfordagentic2`**, **`luma.com/k7c2rm5s`**, `allai.events`, `shortcourses.lsbu.ac.uk`, `maven.com` x2 |
+| learn to ship software with Claude Code without being a developer in person training | **No** | `maven.com` x2, `claude101.every.to` and `every.to/events` (**$1,500 a seat**, one-day **live Zoom**, 19 November), `fiverr.com`, `upwork.com`, `eventbrite.co.uk` (London, 22 Aug, **passed**), `luma.com/waqqm662` (Berlin, **2 hours**) |
+| what is an agentic workflow for business and how do I build one | **No** | `moxo.com`, `airtable.com`, `biz4group.com`, `box.com`, `mastra.ai`, `kore1.com`, `tinycommand.com`, a Substack - the engine itself closed with *"these sources are mostly vendor blogs with commercial interests"* |
+| how to build a second brain for AI tools one day course | **No** | `udemy.com`, `luma.com/3ogtt6pg` (free, 45 min), `maven.com`, `gumroad`, `elevenreader.io`, `decodingml`, TechSoup/Infoxchange (13 Aug, **passed**), `eventbrite.ca` (3.5 hours) |
+
+**The engine's own verdict on the coding field, twice.** *"I found one search and no upcoming UK
+one-day agentic coding bootcamps for non-developers. The closest matches have already taken
+place."* And: *"It turned up several training options aimed at non-developers, but only a few are
+truly in person."* Every in-person option it found had **passed** (London 22 Aug, Brighton 23 May,
+Edinburgh 25 June) or was **two hours** (Berlin). Our 26 November day, in person, in Oxford, for
+exactly that reader, was not among them.
+
+**The stale Luma pages again, now costing the newest line.** Asked for a coding bootcamp, the
+engine described **the Agentic Bootcamp** off `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` -
+*"scheduled for 21 July 2026, so it has passed"* - and repeated the two-venue confusion
+(*"Worcester College and St Anne's College"*). `luma.com/agenticcoding`, the page that actually
+sells 26 November, did not appear. This is the fourth cycle to read the same failure and it is
+the standing review-list item, not a new one.
+
+**The finding this cycle acted on: the field's confusion is about LEVEL, and our snippet did not
+resolve it.** One competing listing in probe 4 reads, verbatim, *"You already know how to code.
+Skip it if you're new to programming."* Another *"requires a paid AI coding subscription, set up
+before you arrive. Claude Pro or Max is what we'll be teaching on."* Both queries screened on
+level - *"for non-developers"*, *"without being a developer"* - and the Coding Bootcamp's meta
+description, hero subline and llms.txt line all read *"A one-day bootcamp in Oxford. Learn how
+software actually gets built and shipped, with Claude Code and Codex doing the typing."* It never
+said who the day is for or that it does not assume you can code, though the page says both twice
+in prose and once in `coursePrerequisites`. **Changed this cycle** to *"A one-day bootcamp in
+Oxford for people who have not yet shipped software. It does not assume you can code: Claude Code
+and Codex do the typing."* Same lever as the 25 Oct `prerequisites` cycle, one surface out: the
+answer was on the page and not in the line an engine or a searcher reads first.
+
+**Second Brain: absent, and correctly not acted on.** It ranked #1 on this question on 13 Sept and
+is cited nowhere now. It also has no bookable date (backlog 36), and the standing decision is that
+its constraint is demand rather than ranking. Recorded, not chased.
+
+**No new contactable lead.** `allai.events`, `createwith.com` and Eventbrite are already on the
+review list; the rest are vendor blogs, gig listings, universities and direct competitors.
+**New competitor of note, recorded not acted on: `every.to` / `claude101.every.to`**, selling the
+one-day Claude Code day for non-developers at **$1,500 a seat, live on Zoom**, dated 19 November -
+the nearest thing in the field to the Coding Bootcamp's proposition, and online rather than in a
+room.
+
 ## 2026-10-26 (19:00 GMT cycle) - THE AFFILIATION QUESTION IS ANSWERED ENTIRELY OFF STALE LUMA PAGES, AND THE HOMEPAGE STOPPED ANSWERING IT TODAY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

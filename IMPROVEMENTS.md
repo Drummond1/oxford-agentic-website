@@ -740,6 +740,84 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-27 (01:00 cycle) - the Coding Bootcamp's one-line pitch never said who the day is
+  for, on the one line an engine and a searcher read first.** Its `shortPitch` - the meta,
+  `og:` and `twitter:` description, the hero subline, the homepage and `/bootcamps/` cards, the
+  404 list, the card at the foot of four guides and the `llms.txt` entry - read *"A one-day
+  bootcamp in Oxford. Learn how software actually gets built and shipped, with Claude Code and
+  Codex doing the typing."* It is true and it is silent on level. It now reads *"A one-day
+  bootcamp in Oxford for people who have not yet shipped software. It does not assume you can
+  code: Claude Code and Codex do the typing."*
+  - **Why level, and why now.** Two probes this cycle put the Coding Bootcamp's own buyer
+    questions to an engine - *"one day agentic AI coding bootcamp UK for non-developers"* and
+    *"learn to ship software with Claude Code without being a developer in person training"*.
+    Neither returned a page of this site, and both came back screening on level. The field's own
+    confusion is the evidence: one competing listing reads, verbatim, **"You already know how to
+    code. Skip it if you're new to programming."** A searcher scanning for the other product
+    could not tell from our line which of the two ours was. Full probe table in
+    `seo-data/geo-citations.md` under 27 Oct.
+  - **Nothing is asserted that the page did not already publish, twice in prose.** "have not yet
+    shipped software" is `whoFor[0]` and the capsule (*"have not yet built and shipped something
+    of their own"*); "does not assume you can code" is verbatim from `coursePrerequisites` and
+    from the FAQ answer to "Do I need to be able to code?". The message house's rule that **"no
+    coding" never stands on its own** is kept: the clause is paired with the mechanism in the
+    same sentence, as the FAQ pairs it. 144 characters, inside the schema's 160 and inside a meta
+    description. A comment above the field records the probes and the rule that it restates the
+    page's own copy, so the next cycle edits them together.
+  - **This is the 25 Oct `prerequisites` cycle one surface out.** That cycle put the audience and
+    the level into `Course.coursePrerequisites` after four probes were told *"the results don't
+    say how much technical background it assumes"*. The answer reached the structured data and
+    never reached the snippet.
+  - **Measured whole-site: exactly 13 of 196 files in `dist` differ, and they are exactly the
+    predicted set** - the programme page, `/`, `/bootcamps/`, `/404.html`, `/home-photos/`, the
+    **4** guides carrying the programme in `relatedProgrammes`, both `llms` files and both
+    sitemaps. Every other file is byte-identical. Node-level JSON-LD diff on the programme page:
+    **one** field changed, `WebPage.description`. The `Course` node is untouched, correctly - it
+    is built from `capsule`, not `shortPitch`. The only other text changes anywhere are the
+    derived "Last updated 27 October 2026" line and two `lastmod` values; the sitemap still
+    carries 41 URLs.
+  - **IndexNow needs nothing.** The programmes branch of `scripts/indexnow-ping.mjs` maps this
+    file to `/bootcamps/<slug>/`, `/bootcamps/`, `/` and every guide naming it - the 7
+    sitemap-eligible pages this change actually moved, exactly. That branch was built on a
+    measurement of `second-brain-bootcamp`'s `shortPitch`, which is this same field. The script
+    was **not** run: the deploy workflow owns the ping.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 61 pages built, 63 checked,
+    3,094 internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and
+    descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy
+    and are identical on the baseline build. The first attempt **failed the build and was not
+    shipped**: an unquoted YAML scalar cannot carry `": "`, so the value moved to the folded
+    block form the file already uses for `capsule` and `description`.
+  - **Inspected in headless Chromium at 375 and 1280px**, on all five pages whose visible copy
+    moved: 10 configurations, all clean - 200, 0px horizontal overflow, one `h1`, no missing
+    `alt`, correct self-canonical, and the new sentence present in `innerText` on every one. At
+    375px the subline sets to four lines inside the hero; `/bootcamps/` stacks its cards
+    full-width, so the longer pitch stays at two lines there.
+  - **Production state from the Actions API.** Deploy run **305 succeeded on `62e22f4`**, the
+    `main` HEAD this cycle started from, with CI run 290 green beside it and nothing queued; it
+    finished at 19:11 GMT, six hours before this cycle began. `oxfordagentic.com` answers **403
+    on CONNECT** from this sandbox, so `build.txt` could not be read and the Actions API stood in
+    for it, as on every cycle since 22 October. **No Luma page was read and no event fact was
+    read or changed** - `luma.com` is blocked by the same policy.
+  - **Search Console: unavailable from the cloud.** No export newer than the 24 August baseline
+    in `seo-data/`, and no API credentials in the repo.
+  - **Off-page: no new contactable lead**, so nothing was added to the review list. The stale
+    Luma reading now has a fourth and sharper instance - asked for a *coding* bootcamp, the engine
+    described the *Agentic* one off two expired Luma pages and called it passed, while
+    `luma.com/agenticcoding` did not appear at all - but it is the same standing item, not a new
+    one. New competitor recorded in the GEO log, not acted on: **`every.to`**, selling a one-day
+    Claude Code day for non-developers at **$1,500 a seat, live on Zoom**.
+  - **No guide. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance deliberately unspent for
+    the sixteenth cycle running. The coding-line gap the probes found is real and the field is
+    winnable, but the answer is a sentence on a page that already exists, which rule 5 prefers to
+    a new one. **Recorded for a future cycle, not pitched now:** the level-confusion axis
+    ("is this agentic coding course for developers or for people who have never shipped?") is the
+    first coding-line topic to pass both probe tests, and it needs a second phrasing first.
+  - **Standing weighting note, corrected.** The ledger says weight new guides toward Second Brain.
+    That line predates both the Coding launch and backlog 36: Second Brain has **no bookable
+    date** and its constraint is demand, not ranking. The under-served line that can actually take
+    a booking is **Coding** - 4 related guides to the Agentic line's 25, two of those four
+    cross-programme.
+
 - **2026-10-26 (19:00 cycle) - NO SITE CHANGE. The cycle went looking for an on-page improvement,
   found none, and found something else: the affiliation question is answered entirely off stale
   third-party Luma pages, and the homepage stopped answering it three hours earlier.** Nothing
