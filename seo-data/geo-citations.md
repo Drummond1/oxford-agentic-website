@@ -5,6 +5,55 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-27 (13:00 GMT cycle) - THE ENGINE SAYS NOBODY HAS WRITTEN THE ANSWER THIS SITE PUBLISHED EIGHT DAYS AGO
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, deliberately none of them the coding-level axis the
+last two cycles worked - three drawn from guides this site already owns, one from the guide
+candidate standing in backlog 9.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how to get an agentic AI workflow approved by IT and legal at a UK company | **No** | `ashfords.co.uk`, `legartis.ai`, `techuk.org`, `kennedyslaw.com`, `troutman.com`, `activepieces.com`, `legal.thomsonreuters.com`, `acceldata.io`, `legaltechnology.com` - law firms and governance vendors, every one |
+| difference between an AI agent and an agentic workflow for business | **No** | `workday.com` x4, `retool.com`, `gnani.ai`, `nexos.ai`, `virtasant.com`, `c-sharpcorner.com` - platform vendors defining the terms around their own products |
+| do I need a paid ChatGPT or Claude subscription to build agentic AI workflows at work | **No** | `mindstudio.ai`, `club.ministryoftesting.com`, `freepressjournal.in`, `herdl.com` x2, a Reddit mirror, `aol.com`, `emse.engineering.gwu.edu`, `getmonetizely.com` |
+| should a manager or a team member attend the AI training course who gets the seat | **No** | `memphis.edu`, `cprime.com`, `newhorizons.com`, `aihero.dev`, `boti.co.za`, `ptc.edu`, `bsigroup.com` x2, `academy.nvidia.com` - nine results, every one a course product page |
+
+**The finding, and it is the sharpest version of a standing one.** On the fourth question the
+engine opened with *"The search didn't turn up guidance on choosing between a manager and a team
+member for a seat. The results were mostly vendor course pages"*, then had to supply its own
+recommendation: *"My own suggestion, not from these sources: send the manager if the course covers
+strategy and policy, send the team member if it covers daily tool use."* This site published
+`/guides/who-should-take-the-seat/` on **19 October**, eight days before that answer, and it is
+exactly the editorial page the engine said does not exist - with a better answer than the one the
+engine improvised, because it sorts by who owns the task rather than by what the course covers.
+The page is in the sitemap, carries a self-canonical, has no robots meta and sits on **6** inbound
+internal links from other pages' `<main>`. There is nothing left to fix on the page. This is a
+retrieval problem, not a content problem, and it is **backlog 2b** with its clearest evidence yet:
+one external link is the named remedy and `Organization.sameAs` is still empty.
+
+**Three fields re-confirmed as not winnable, which is the probe rule working.** The IT-and-legal
+question is owned by law firms and governance vendors writing their own subject (the same
+institutional-publisher shape that killed the legal vertical on 22 Oct, backlog 38). The
+agent-versus-workflow question is owned by platform vendors defining the terms around their own
+products, and the engine said so itself: *"they use 'agentic workflow' and 'agentic AI'
+inconsistently, so the terms are not standardized"*, and *"it's worth checking how a given vendor
+defines each term"*. The site has `/guides/agentic-ai-glossary/` and
+`/guides/getting-an-ai-workflow-past-it-and-legal/` on both subjects already, so nothing was
+missing to write in either case.
+
+**Backlog 9's "do I need a paid AI subscription?" candidate is weaker than the backlog records,
+and this probe is the reason.** Every source the engine answered from was news or forum
+commentary on pricing that had moved inside the last six months, and the engine's own caveat was
+*"the pricing and plan details are changing quickly. Confirm current plan limits"*. A guide of
+ours on that question would be a page this loop has to re-verify every time a vendor changes a
+tier, on a subject where the honest answer is already one line on the event pages. **Not killed**
+- a cycle with a second phrasing may still find a durable angle - but it should not be picked up
+as the next guide on the strength of the backlog line alone.
+
+**No guide was written. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance unspent for the
+eighteenth cycle running.
+
 ## 2026-10-27 (08:00 GMT cycle) - THE SITE IS CITED FOR ITS OWN DATED COHORT, AND INVISIBLE ON THE QUESTION THE WHOLE AGENTIC-CODING FIELD IS ONLINE FOR
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

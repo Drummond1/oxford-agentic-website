@@ -735,8 +735,16 @@ Status: `todo` · `blocked` (why) · `doing`
       name the University of Oxford again. If yes, the loop restores a question and answer that
       do, in his wording or the old one. If no, it leaves it and stops re-measuring this.
 
-48. `todo` (loop-actionable, found 27 Oct 2026 in the 08:30 cycle) - **the `#` beside every
-    guide heading is an invisible tap target on a phone.** `.heading-anchor` is `opacity: 0`
+48. `done` 27 Oct 2026 (13:00 cycle) - **the `#` beside every guide heading was an invisible
+    tap target on a phone.** Shipped: `pointer-events: none` on the hidden state, `auto` on the
+    two rules that reveal it and on the brief `[data-copied]` state. Confirmed before the change
+    in a touch context at 375px (17 by 34 box, `elementFromPoint` returning the anchor on 7 of 7
+    and 15 of 15 headings on two guides) and after it (0 of 32 across three guides, the pointer
+    landing on the heading instead). Desktop hover, click-to-copy, the clipboard write, the hash
+    update, the 50 tab stops and Enter on a focused anchor all exercised and unchanged; 30 of 30
+    full-page screenshots byte-identical. Detail in the Shipped entry for this cycle. Original
+    diagnosis kept below. **The `#` beside every guide heading is an invisible tap target on a
+    phone.** `.heading-anchor` is `opacity: 0`
     until the heading is hovered or the anchor is focused, and an element at zero opacity still
     takes a tap: measured at 375px it is a 17 by 34 box sitting immediately after the last word
     of every `h2` and `h3`, 154 of them across the 32 guides. A thumb that lands there copies
@@ -744,13 +752,101 @@ Status: `todo` · `blocked` (why) · `doing`
     hover, so the affordance can never be used on a phone either - it is cost with no benefit
     there. The fix is `pointer-events: none` on the hidden state, returned to `auto` on the
     `:hover` and `:focus-visible` rules that already reveal it, which leaves the keyboard and
-    screen-reader paths exactly as they are. Not shipped this cycle because one change ships
-    per cycle and the heading markup above was the larger of the two.
+    screen-reader paths exactly as they are. (Not shipped in the cycle that found it, because
+    one change ships per cycle and the heading markup above was the larger of the two.)
 
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-27 (13:00 cycle) - the `#` beside every guide heading took a tap on a phone while
+  being invisible, on the 154 headings across 32 guides.** `.heading-anchor` is `opacity: 0`
+  until its heading is hovered or the anchor is focused, and a transparent element still answers
+  a hit test. Measured in a touch context at 375px before the change: a **17 by 34** box sitting
+  immediately after the last word of every `h2` and `h3`, `pointer-events: auto`, and
+  `elementFromPoint` at its centre returning the anchor on **7 of 7** headings on
+  `/guides/who-should-take-the-seat/` and **15 of 15** on `/guides/agentic-ai-glossary/`. A thumb
+  landing there copied the section URL and flashed "copied" with nothing on screen to explain it.
+  The hidden state is now `pointer-events: none`, returned to `auto` on the two rules that
+  already reveal it and on the brief `[data-copied]` state, so the invariant is simply that a
+  visible anchor is pressable and an invisible one is not. This is **backlog 48**, found in this
+  morning's 08:30 cycle and left for a later one because one change ships per cycle.
+  - **Touch could never have used the affordance anyway**, which is why removing the target
+    costs nothing. There is no hover on a touch screen, so the only way the anchor ever became
+    visible on a phone was by being tapped, and the tap is the thing that confused. With the
+    pointer passing through, the hit test now lands on the `h2` or `h3` itself on every one of
+    the 32 anchors measured across three guides, which is inert.
+  - **The desktop and keyboard paths are intact, and both were exercised rather than reasoned
+    about.** At 1280px with a mouse: hovering a heading gives the anchor `opacity: 1` and
+    `pointer-events: auto`, `elementFromPoint` returns the anchor, a click sets `data-copied`,
+    writes the section URL to the clipboard and sets `location.hash` - all four confirmed on
+    three guides. Tabbing a guide reaches the first heading anchor at **stop 13 of 50** with a
+    visible ring, identical to the baseline, and Enter navigates to the section. `pointer-events`
+    does not take part in focus or in Enter, which is why the keyboard path could not move.
+  - **Nothing visible changed, and that was measured rather than asserted.** Full-page
+    screenshots of ten pages at 375, 768 and 1280px with motion reduced, against a build of
+    `b8f0a87`: **30 of 30 byte-identical**. One pair, `/about/` at 768px, differed on the first
+    pass and was a lazy-image race rather than the change - baseline against baseline differs the
+    same way at that one width, and with images forced to settle the two builds are identical
+    again. The built stylesheet is **60 bytes** larger and the whole of it outside the four
+    `.heading-anchor` rules is byte-identical.
+  - **Whole-site: 61 of 196 files in `dist` differ and the diff signature of every one is a
+    single line, the hashed stylesheet URL.** No page's markup, text, JSON-LD, title or
+    description moved; `llms.txt`, `llms-full.txt` and both sitemaps are byte-identical, and the
+    sitemap still carries the same URLs with unchanged `lastmod` values. No content collection
+    was touched, so no page claims to have been updated.
+  - **IndexNow submits the whole sitemap, 55 URLs, and that is correct here rather than a
+    defect.** `scripts/indexnow-ping.mjs` maps any style, template or config change to every
+    sitemap URL, and on this change every page's HTML genuinely did change, even though nothing a
+    reader sees did. Worth knowing for the next cycle that touches `global.css`: the hint is
+    honest about the bytes and says more than the change deserves, and it is not the
+    under-submission of backlog 41. The script was **not** run: the deploy workflow owns the ping.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 61 pages built, 63 checked,
+    3,096 internal links resolve, schema valid at 7 Event and 9 FAQPage nodes, titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` green on both the all-on and
+    all-off builds. The 11 outbound warnings are the sandbox egress policy and are identical on
+    the baseline build. Inspected in headless Chromium at 375 (touch) and 1280px (mouse) on three
+    guides, 6 configurations: 200, 0px horizontal overflow, one `h1`, correct self-canonical, no
+    robots meta, zero em dashes in `main`.
+  - **Production state from the Actions API.** Deploy run **309 succeeded on `b8f0a87`**, the
+    `main` HEAD this cycle started from, finishing at 08:56 GMT, four hours before this cycle
+    began, with nothing queued or in progress. `oxfordagentic.com` answers **403 on CONNECT**
+    from this sandbox, so `build.txt` could not be read and the Actions API stood in for it, as
+    on every cycle since 22 October. **No Luma page was read and no event fact was read or
+    changed** - `luma.com` is blocked by the same policy.
+  - **Four GEO probes, zero citations, and one of them is the clearest evidence backlog 2b has
+    had.** Full table in `seo-data/geo-citations.md` under 27 Oct 13:00. Asked *"should a manager
+    or a team member attend the AI training course who gets the seat"*, the engine opened with
+    *"The search didn't turn up guidance on choosing between a manager and a team member for a
+    seat. The results were mostly vendor course pages"* and then improvised its own
+    recommendation. This site published `/guides/who-should-take-the-seat/` on **19 October**,
+    eight days earlier, answering exactly that question and sorting by who owns the task rather
+    than by what the course covers. The page is in the sitemap, self-canonical, has no robots
+    meta and carries 6 inbound internal links from other pages' `<main>`: there is nothing left
+    to fix on it. **This is a retrieval problem, not a content problem.** One external link is
+    still the named remedy and `Organization.sameAs` is still empty.
+  - **Two fields re-confirmed as not winnable, and one guide candidate downgraded.** The
+    IT-and-legal question is held by law firms and governance vendors, the agent-versus-workflow
+    question by platform vendors defining the terms around their own products, and the site
+    already owns a guide on each subject. Backlog 9's "do I need a paid AI subscription?"
+    candidate came back weaker than the backlog records it: every source was pricing commentary
+    from the last six months and the engine's own caveat was that plan details are changing
+    quickly, so a guide of ours there would need re-verifying each time a vendor moves a tier.
+    Recorded in the GEO log, not killed.
+  - **Search Console: unavailable from the cloud.** No export newer than the 24 August baseline
+    in `seo-data/`, and no API credentials in the repo.
+  - **Off-page: no new contactable lead, so nothing was added to the review list.** The four
+    probes returned law firms, platform vendors, US course providers and news commentary rather
+    than listing routes. The one host among them that is a real off-page route, `techuk.org`, is
+    already on the review list from 15 October, recorded there as a speaking programme rather
+    than a listing route.
+  - **No guide. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance unspent for the eighteenth
+    cycle running.
+  - **Found and not shipped:** nothing new. The link distribution across the 32 guides was
+    measured while looking for a stronger candidate and is healthy - minimum **5** inbound
+    `<main>` links, no guide stranded - so the retrieval gap the probes found has no internal
+    linking fix left to make.
 
 - **2026-10-27 (08:30 cycle) - two cards carried the label of a section that had no heading,
   so the audience list and the one commercial block in every guide were missing from the

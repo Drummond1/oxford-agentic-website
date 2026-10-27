@@ -733,24 +733,36 @@ a.card:hover [aria-hidden='true'],
    even when that was past the right edge. At a 320px viewport with the
    browser's default text raised to 24px that carried two guides 21px and 1px
    sideways. An atomic inline can be moved to the next line, and only is when
-   it will not otherwise fit, so at ordinary text sizes nothing moves. */
+   it will not otherwise fit, so at ordinary text sizes nothing moves.
+
+   `pointer-events` keeps the rule that an invisible thing cannot be pressed.
+   At zero opacity the anchor still took a tap - a 17 by 34 box immediately
+   after the last word of every heading - so a thumb landing there copied the
+   section URL and flashed "copied" with nothing on screen to explain it. Touch
+   has no hover, so the handle could never be used on a phone in any case. The
+   pointer now passes through to the heading, whose own `:hover` reveals the
+   anchor and hands the pointer back on a device that has one. The keyboard path
+   is untouched: `:focus-visible` reveals it, and Enter is not a pointer. */
 .heading-anchor {
   display: inline-block;
   margin-inline-start: 0.4em;
   color: var(--rust);
   text-decoration: none;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 180ms var(--ease);
 }
 
 :is(h2, h3):hover > .heading-anchor,
 .heading-anchor:focus-visible {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Brief confirmation that the section link is on the clipboard. */
 .heading-anchor[data-copied] {
   opacity: 1;
+  pointer-events: auto;
   color: var(--gold);
 }
 
