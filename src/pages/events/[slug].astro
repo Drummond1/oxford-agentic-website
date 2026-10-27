@@ -328,6 +328,13 @@ const registerLabel = !registrationOpen
                     All events
                   </a>
                 </div>
+                {isPast && programme.id === 'second-brain-bootcamp' && !successor && (
+                  <div class="btn-row">
+                    <a href="/second-brain-interest/" class="btn btn--primary" data-analytics-event="sb_interest_link_click">
+                      Register your interest in the next one <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                )}
                 {showNotify && (
                   <div class="ran__notify">
                     <NewsletterForm label="Tell me when the next dates are set" />

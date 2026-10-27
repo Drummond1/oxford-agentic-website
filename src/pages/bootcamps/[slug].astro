@@ -165,6 +165,13 @@ const bands = {
         ) : (
           <Fragment>
             <p class="empty">Dates for the next cohort are being confirmed.</p>
+            {programme.id === 'second-brain-bootcamp' && (
+              <p class="btn-row">
+                <a href="/second-brain-interest/" class="btn btn--primary" data-analytics-event="sb_interest_link_click">
+                  Register your interest <span aria-hidden="true">→</span>
+                </a>
+              </p>
+            )}
             {showNotify && (
               <div class="empty-notify">
                 <NewsletterForm label="Tell me when the next dates are set" />

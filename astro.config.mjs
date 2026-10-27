@@ -169,6 +169,8 @@ const flaggedOffPrefixes = [
   '/office-hours',
   // The CEO roundtable demand page is ad-only: noindex, nofollow, no sitemap entry.
   '/ceo-roundtable',
+  // The Second Brain register-interest page is noindex, linked from the programme page (27 Oct 2026).
+  '/second-brain-interest',
 ].filter(Boolean);
 
 /**

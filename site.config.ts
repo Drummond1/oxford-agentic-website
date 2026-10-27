@@ -16,6 +16,7 @@ export interface SiteConfig {
   analytics: Analytics;
   newsletter: Newsletter;
   applications: Applications;
+  secondBrainInterest: SecondBrainInterest;
   ceoRoundtable: CeoRoundtable;
   assistant: Assistant;
 }
@@ -154,6 +155,15 @@ export interface Applications {
    * Empty string is an honest fallback, not a dead form: the answers are
    * written into an email to `brand.email` in the visitor's own mail app, and
    * the page tells them to press send rather than claiming it went.
+   */
+  endpoint: string;
+}
+
+export interface SecondBrainInterest {
+  /**
+   * n8n production webhook behind /second-brain-interest/. One row per email in
+   * the Google Sheet "Second Brain Bootcamp - Interest Register", and an email
+   * to the owner on every stage. Empty = the form shows its email fallback.
    */
   endpoint: string;
 }
@@ -425,6 +435,12 @@ const config: SiteConfig = {
   applications: {
     // 23 Sept 2026: no provider chosen yet, so applications arrive by email.
     endpoint: '',
+  },
+
+  // 27 Oct 2026: register-interest page for the next Second Brain Bootcamp (noindex).
+  // n8n workflow "Second Brain Bootcamp - Register Interest" (L7nyyL4vnCC5TW5b).
+  secondBrainInterest: {
+    endpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/second-brain-register-interest',
   },
 
   // 13 Oct 2026: ad-only demand-validation page at /ceo-roundtable/ (noindex, not linked).

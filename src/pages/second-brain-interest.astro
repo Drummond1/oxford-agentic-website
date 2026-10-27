@@ -1,0 +1,1030 @@
+---
+/**
+ * Second Brain Bootcamp: register interest.
+ *
+ * Added 27 Oct 2026 at Drummond's request, the week after Cohort 1 ran (21 Oct).
+ * No next date, venue or format is set, so this is a demand page, not a booking
+ * page: it collects the people who want the next one, and asks the few questions
+ * that decide how it is shaped.
+ *
+ * QUIET, LIKE /apply/ AND /ceo-roundtable/
+ *  - robots noindex and out of the sitemap (astro.config.mjs). The programme page
+ *    owns the organic ranking; this one is the page you send people to.
+ *  - Linked from the Second Brain programme page and the Cohort 1 "ran" band,
+ *    where the old "tell me when dates are set" box lived.
+ *
+ * COPY RULES (standing decisions, do not re-litigate)
+ *  - No price, no discount code, no seat count, no scarcity claim.
+ *  - No testimonial or attendee quote unless it is in the testimonials collection
+ *    with consentGiven. None for this programme yet: the proof band renders only
+ *    when one exists, and until then states only what is already published.
+ *  - No next date or format is promised. "You hear first" is the one commitment,
+ *    and Drummond owns it.
+ *
+ * THE FORM
+ *  Two stages, one row per email. Stage 1 (name and email) posts the moment it is
+ *  submitted, so a visitor who stops there is still captured. Stage 2 (optional
+ *  questions) posts again with the same email and fills in the same row. The
+ *  endpoint is the n8n workflow "Second Brain Bootcamp - Register Interest": it
+ *  writes the Google Sheet "Second Brain Bootcamp - Interest Register" and emails
+ *  drummondgilbert@gmail.com on every stage. Endpoint lives in site.config.ts.
+ */
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import config from '../../site.config';
+import { createRhythm } from '../lib/site';
+
+const endpoint = config.secondBrainInterest.endpoint;
+const email = config.brand.email;
+
+const rhythm = createRhythm('cream');
+const bands = {
+  problem: rhythm.next(),
+  what: rhythm.next(),
+  day: rhythm.next(),
+  fit: rhythm.next(),
+  how: rhythm.next(),
+  form: rhythm.next(),
+};
+
+const facts = [
+  { label: 'What', value: 'Build a second brain from your own material, in one hands-on day' },
+  { label: 'For', value: 'Leaders who use AI most days and have hit the ceiling of prompting' },
+  { label: 'Level', value: 'No coding. A laptop and your own documents' },
+  { label: 'Next', value: 'Dates and format being planned. Interest list hears first' },
+];
+
+const gives = [
+  {
+    title: 'Answers that sound like you',
+    body: 'Your AI tools finally know how you write, what good looks like and which clients matter, so the first draft is close instead of generic.',
+  },
+  {
+    title: 'No more re-explaining',
+    body: 'Stop pasting the same background into every conversation. The context is written down once, in one place, and your tools read it.',
+  },
+  {
+    title: 'The thing you know you wrote',
+    body: 'You capture plenty and retrieve almost nothing. A second brain is organised so you, and your AI, can actually find it.',
+  },
+  {
+    title: 'A system that improves with use',
+    body: 'Most notes decay. You leave with a routine for keeping yours current, so it gets better the longer you use it.',
+  },
+];
+
+const leave = [
+  'A working second brain, populated with your own material rather than a template',
+  'An architecture for your context, so it stays findable as it grows',
+  'A maintenance routine, so the system improves with use instead of decaying',
+  'The connections that let your AI tools draw on it, across tools',
+];
+
+const day = [
+  { when: 'Morning', title: 'Why context beats prompting', body: 'What a second brain is, how it is put together, and how to design yours.' },
+  { when: 'Midday', title: 'The build', body: 'Populating it with your own material, in formats that stay sustainable.' },
+  { when: 'Afternoon', title: 'Making it last', body: 'Maintenance, memory management, and connecting it to the tools you work in.' },
+  { when: 'Close', title: 'What it makes possible', body: 'Where this goes next, and time with the room.' },
+];
+
+const forYou = [
+  'Business leaders, founders, partners and senior operators who use AI most days',
+  'People who have hit the ceiling of what prompting alone can do',
+  'Anyone tired of re-explaining their business to a tool that forgets by Tuesday',
+];
+
+const notForYou = [
+  'You want a conceptual overview of AI. This is a build day, not a briefing',
+  'You cannot bring your own material. Without it you leave with a template, not a second brain',
+  'You expect a vendor pitch. No tool is being sold',
+  'Your work laptop blocks new sign-ups. Worth checking first, and we will help you sort it before the day',
+];
+
+const steps = [
+  { title: 'Register', body: 'Your name and email. Two minutes, no payment, no commitment.' },
+  { title: 'Tell us what you want it to hold', body: 'A few optional questions. Your answers decide what we teach and how the day is shaped.' },
+  { title: 'Hear first', body: 'When dates and format are set, you are told before they go anywhere public.' },
+];
+
+const roles = [
+  'Founder or business owner',
+  'C-suite or director',
+  'Senior manager or head of function',
+  'Consultant or adviser',
+  'Something else',
+];
+
+const aiUse = ['Not yet', 'Now and then', 'Most days', 'I build with it'];
+
+const holds = [
+  'My writing voice and standards',
+  'Client and project knowledge',
+  'Decisions and the reasoning behind them',
+  'Processes and playbooks',
+  'Research and reading',
+  'My team’s shared knowledge',
+];
+
+const formats = ['A full day in Oxford', 'A half day or evening in Oxford', 'Live online', 'Not sure yet'];
+const bring = ['Just me', 'One or two colleagues', 'A team of three or more'];
+const payers = ['I would pay myself', 'My organisation would pay', 'Not sure yet'];
+const previous = ['Oxford Agentic Bootcamp', 'Second Brain Bootcamp', 'Both', 'Neither'];
+---
+
+<Base
+  pageTitle="Register your interest in the next Second Brain Bootcamp"
+  description={`Register your interest in the next ${config.brand.name} Second Brain Bootcamp: a hands-on day building a second brain from your own material. You hear first.`}
+  path="/second-brain-interest/"
+  breadcrumbs={[{ name: 'Second Brain Bootcamp', path: '/bootcamps/second-brain-bootcamp/' }, { name: 'Register interest', path: '/second-brain-interest/' }]}
+  noindex
+  footerSignup={false}
+>
+  <Hero
+    eyebrow="Second Brain Bootcamp - register interest"
+    title="Stop re-explaining your business to your AI."
+    subline="Every conversation starts from zero because your tools know nothing about how you work. The Oxford Second Brain Bootcamp is a hands-on day where you fix that: you build a second brain from your own material and leave with it working. The next one is being planned now. Register your interest and you hear first."
+    motif
+  >
+    <p class="hero-cta">
+      <a class="btn btn--primary" href="#register" data-sb-cta="hero">Register my interest <span aria-hidden="true">→</span></a>
+    </p>
+    <p class="hero-note">About two minutes. No payment, no commitment.</p>
+  </Hero>
+
+  <section class:list={['band', `band--${bands.problem}`]} aria-labelledby="problem-title">
+    <div class="wrap">
+      <dl class="facts" aria-label="At a glance">
+        {
+          facts.map((f) => (
+            <div class="fact" data-reveal>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="section-head section-head--spaced" data-reveal>
+        <hr class="dash" />
+        <h2 id="problem-title">You have got good at AI. The answers still come back generic.</h2>
+      </div>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          The tool does not know how you write, what good looks like, which clients matter and why, or what you
+          decided last quarter. That judgement lives in your head and your old files, so you explain it again, and
+          by Tuesday it has gone.
+        </p>
+        <p>
+          It is not a better prompt you need. It is somewhere your AI can read the things only you know.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.what}`]} aria-labelledby="what-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="what-title">What a second brain is, plainly</h2>
+        <p class="lede">
+          A structured, maintained store of your own context - how you write, what good looks like, what your
+          business knows - that your AI tools can read. With it, answers get specific. Without it, every
+          conversation starts from zero. It is your own material, organised so a model can use it, and it does not
+          belong to any one app.
+        </p>
+      </div>
+
+      <h3 class="subhead" data-reveal>What changes when you have one</h3>
+      <ul class="pillars" role="list">
+        {
+          gives.map((g, i) => (
+            <li class="pillar" data-reveal>
+              <span class="pillar__num">0{i + 1}</span>
+              <h3 class="pillar__title">{g.title}</h3>
+              <p>{g.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h3 class="subhead" data-reveal>What you leave with</h3>
+      <ul class="ticks" role="list" data-reveal>
+        {leave.map((l) => <li>{l}</li>)}
+      </ul>
+
+      <p class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#register" data-sb-cta="what">Register my interest <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.day}`]} aria-labelledby="day-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="day-title">How Cohort 1 ran</h2>
+        <p class="lede">
+          Cohort 1 was a full day at the Pitt Rivers Museum on 21 October 2026. People who had already been to an
+          Oxford Agentic Bootcamp came back for it. The next one may be shaped differently, and your answers below
+          help decide how.
+        </p>
+      </div>
+      <ol class="day" role="list">
+        {
+          day.map((d) => (
+            <li class="day__item" data-reveal>
+              <span class="day__when">{d.when}</span>
+              <div>
+                <h3 class="day__title">{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.fit}`]} aria-labelledby="fit-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="fit-title">Is it for you</h2>
+        <p class="lede">The room works because everyone is building, so it is worth being honest about who this suits.</p>
+      </div>
+      <div class="fit">
+        <div class="fit__col" data-reveal>
+          <h3 class="fit__head">It is for you if</h3>
+          <ul class="ticks" role="list">
+            {forYou.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="fit__col" data-reveal>
+          <h3 class="fit__head">It is not for you if</h3>
+          <ul class="crosses" role="list">
+            {notForYou.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.how}`]} aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="how-title">Why register now</h2>
+        <p class="lede">
+          We keep each room small, so we would rather ask than guess. The interest list is how we decide when to run
+          the next one, in what format, and who we write to first.
+        </p>
+      </div>
+      <ol class="steps" role="list">
+        {
+          steps.map((s, i) => (
+            <li class="step" data-reveal>
+              <span class="step__num">{i + 1}</span>
+              <div>
+                <h3 class="step__title">{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#register" data-sb-cta="how">Register my interest <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.form}`]} aria-labelledby="register-title" id="register">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="register-title">Register your interest</h2>
+        <p class="lede">Name and email is all we need. You can tell us more afterwards, or not.</p>
+      </div>
+
+      <form class="sb" data-endpoint={endpoint} data-email={email} novalidate>
+        {/* Spam trap. Humans never see or fill it. */}
+        <div class="sb__trap" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="li_fat_id" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="page_url" />
+
+        <div class="sb__panel" data-panel="1">
+          <div class="sb__grid">
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input class="field__input" type="text" name="name" required autocomplete="name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Email</span>
+              <input class="field__input" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+            </label>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required />
+            <span>
+              {config.brand.name} may email me about the Second Brain Bootcamp. I can stop at any time. More in the{' '}
+              <a href="/privacy/#interest">privacy note</a>.
+            </span>
+          </label>
+          <button type="submit" class="btn btn--primary sb__submit" data-submit="1">Register my interest <span aria-hidden="true">→</span></button>
+          <p class="sb__reassure">No payment and no commitment. You hear first when dates are set.</p>
+        </div>
+
+        <div class="sb__panel" data-panel="2" hidden>
+          <p class="eyebrow">You are on the list</p>
+          <h3 class="sb__done-title" data-done-title>Thank you.</h3>
+          <p class="sb__lede">
+            Five optional questions help us shape the next one around the people in it. Skip any you like.
+          </p>
+
+          <fieldset class="sb__group">
+            <legend class="sb__legend">What would you most want your second brain to hold?</legend>
+            <div class="chips">
+              {
+                holds.map((h) => (
+                  <label class="chip">
+                    <input type="checkbox" name="wants_to_hold" value={h} />
+                    <span>{h}</span>
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span class="field__label">The one thing you are tired of re-explaining</span>
+            <textarea class="field__input" name="one_thing" rows="3" maxlength="1500"></textarea>
+          </label>
+
+          <fieldset class="sb__group">
+            <legend class="sb__legend">Which format would you come to?</legend>
+            <div class="chips">
+              {
+                formats.map((f) => (
+                  <label class="chip">
+                    <input type="checkbox" name="formats" value={f} />
+                    <span>{f}</span>
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <fieldset class="sb__group">
+            <legend class="sb__legend">How do you use AI today?</legend>
+            <div class="chips">
+              {
+                aiUse.map((a) => (
+                  <label class="chip">
+                    <input type="radio" name="ai_use" value={a} />
+                    <span>{a}</span>
+                  </label>
+                ))
+              }
+            </div>
+          </fieldset>
+
+          <div class="sb__grid">
+            <label class="field">
+              <span class="field__label">Your role</span>
+              <select class="field__input" name="role">
+                <option value="">Choose one</option>
+                {roles.map((r) => <option value={r}>{r}</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Organisation</span>
+              <input class="field__input" type="text" name="organisation" autocomplete="organization" />
+            </label>
+            <label class="field">
+              <span class="field__label">Would you bring anyone?</span>
+              <select class="field__input" name="bring_others">
+                <option value="">Choose one</option>
+                {bring.map((b) => <option value={b}>{b}</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Who would pay?</span>
+              <select class="field__input" name="who_pays">
+                <option value="">Choose one</option>
+                {payers.map((p) => <option value={p}>{p}</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">Been to one of our bootcamps?</span>
+              <select class="field__input" name="previous_bootcamp">
+                <option value="">Choose one</option>
+                {previous.map((p) => <option value={p}>{p}</option>)}
+              </select>
+            </label>
+            <label class="field">
+              <span class="field__label">LinkedIn</span>
+              <input class="field__input" type="text" inputmode="url" name="linkedin_url" autocomplete="url" placeholder="linkedin.com/in/your-name" />
+            </label>
+          </div>
+
+          <div class="sb__nav">
+            <button type="submit" class="btn btn--primary" data-submit="2">Send my answers <span aria-hidden="true">→</span></button>
+            <button type="button" class="btn btn--ghost" data-skip>Skip for now</button>
+          </div>
+        </div>
+
+        <p class="sb__status" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <div class="sb__done" tabindex="-1" hidden>
+        <p class="eyebrow">All done</p>
+        <h3 class="sb__done-title" data-final-title>Thank you.</h3>
+        <p>
+          You are on the list. We will write to you first when dates and format are set. In the meantime, if there
+          is anything you would like us to know, write to{' '}
+          <a href={`mailto:${email}`}>{email}</a>.
+        </p>
+        <p class="btn-row">
+          <a class="btn btn--ghost" href="/bootcamps/second-brain-bootcamp/">Read about the Second Brain Bootcamp <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+
+      <noscript>
+        <p class="sb__noscript">
+          This form needs JavaScript. To register your interest, email <a href={`mailto:${email}?subject=Second%20Brain%20Bootcamp%20interest`}>{email}</a> with your name.
+        </p>
+      </noscript>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-cta {
+    margin-block-start: 1.75rem;
+  }
+
+  .hero-note {
+    margin-block-start: 0.85rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.1em;
+    color: var(--muted-on-dark);
+  }
+
+  .facts {
+    display: grid;
+    gap: 1.25rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    margin: 0;
+  }
+
+  .fact {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 0.85rem;
+  }
+
+  .fact dt {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  :global(.band--dark) .fact dt {
+    color: var(--gold);
+  }
+
+  .fact dd {
+    margin: 0.35rem 0 0;
+    font-size: var(--step-sm);
+    line-height: 1.5;
+  }
+
+  .section-head--spaced {
+    margin-block-start: clamp(2.5rem, 2rem + 3vw, 4rem);
+  }
+
+  .prose--wide p {
+    max-width: 62ch;
+    font-size: var(--step-lg);
+    line-height: 1.55;
+  }
+
+  .prose--wide p + p {
+    margin-block-start: 1rem;
+  }
+
+  .subhead {
+    font-size: var(--step-xl);
+    margin-block: clamp(2rem, 1.5rem + 2vw, 3rem) 1.25rem;
+  }
+
+  .pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .pillar {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 1.1rem;
+  }
+
+  .pillar__num {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    color: var(--gold);
+  }
+
+  .pillar__title {
+    font-size: var(--step-lg);
+    margin-block: 0.4rem 0.6rem;
+  }
+
+  .pillar p {
+    font-size: var(--step-sm);
+    line-height: 1.6;
+    color: var(--muted-on-dark);
+  }
+
+  .ticks,
+  .crosses {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .ticks li,
+  .crosses li {
+    position: relative;
+    padding-inline-start: 1.6rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+
+  .ticks li::before,
+  .crosses li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.7em;
+    width: 0.8rem;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .crosses li::before {
+    background: var(--muted-on-dark-dim);
+  }
+
+  .btn-row {
+    margin-block-start: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  .day {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+
+  .day__item {
+    display: grid;
+    gap: 0.5rem 2rem;
+    grid-template-columns: minmax(6rem, 9rem) 1fr;
+    padding-block: 1.25rem;
+    border-block-start: 1px solid var(--ink-hairline);
+  }
+
+  .day__item:last-child {
+    border-block-end: 1px solid var(--ink-hairline);
+  }
+
+  .day__when {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rust);
+    padding-block-start: 0.35rem;
+  }
+
+  .day__title {
+    font-size: var(--step-xl);
+    margin-block-end: 0.35rem;
+  }
+
+  .day__item p {
+    color: var(--muted-on-cream);
+    max-width: 56ch;
+  }
+
+  .fit {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .fit__head {
+    font-size: var(--step-xl);
+    margin-block-end: 1rem;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .step__num {
+    font-family: var(--font-label);
+    font-size: var(--step-sm);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--rust);
+    color: var(--rust);
+  }
+
+  .step__title {
+    font-size: var(--step-lg);
+    margin-block-end: 0.25rem;
+  }
+
+  .step p {
+    color: var(--muted-on-cream);
+    max-width: 56ch;
+  }
+
+  /* ---- Form (sits on the dark band) ---- */
+
+  .sb,
+  .sb__done {
+    border: 1px solid var(--gold-hairline);
+    background: var(--deep-card);
+    padding: clamp(1.25rem, 0.8rem + 2.5vw, 2.5rem);
+  }
+
+  .sb__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .sb__panel[hidden],
+  .sb__status[hidden],
+  .sb__done[hidden] {
+    display: none;
+  }
+
+  .sb__panel > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  .sb__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .field__label {
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .field__input {
+    width: 100%;
+    background: var(--ink-dark);
+    border: 1px solid var(--gold-hairline);
+    color: var(--cream);
+    padding: 0.8rem 0.9rem;
+    min-height: 3rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+
+  .field__input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .field__input.is-invalid {
+    border-color: #e08a6b;
+  }
+
+  .consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+    line-height: 1.5;
+  }
+
+  .consent input {
+    margin-block-start: 0.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .consent a {
+    color: var(--gold);
+  }
+
+  .sb__submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sb__reassure {
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark-dim);
+    text-align: center;
+  }
+
+  .sb__done-title {
+    font-size: var(--step-2xl);
+    margin-block: 0.35rem 0.75rem;
+  }
+
+  .sb__lede {
+    color: var(--muted-on-dark);
+  }
+
+  .sb__group {
+    border: 0;
+    padding: 0;
+    margin-inline: 0;
+    min-width: 0;
+  }
+
+  .sb__legend {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    margin-block-end: 0.75rem;
+    padding: 0;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .chip {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .chip input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+
+  .chip span {
+    display: inline-block;
+    padding: 0.6rem 0.95rem;
+    min-height: 2.75rem;
+    line-height: 1.4;
+    border: 1px solid var(--gold-hairline);
+    font-size: var(--step-sm);
+    transition: background 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease);
+  }
+
+  .chip:hover span {
+    border-color: var(--gold);
+  }
+
+  .chip input:checked + span {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+  }
+
+  .chip input:focus-visible + span {
+    outline: 2px solid var(--cream);
+    outline-offset: 2px;
+  }
+
+  .sb__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .sb__status {
+    margin-block-start: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid #e08a6b;
+    font-size: var(--step-sm);
+  }
+
+  .sb__status a,
+  .sb__done a:not(.btn) {
+    color: var(--gold);
+  }
+
+  .sb__noscript {
+    margin-block-start: 1rem;
+    color: var(--muted-on-dark);
+  }
+
+  @media (max-width: 560px) {
+    .day__item {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { track } from '../lib/track';
+
+  const form = document.querySelector<HTMLFormElement>('form.sb');
+  const done = document.querySelector<HTMLElement>('.sb__done');
+
+  if (form && done) {
+    const endpoint = form.dataset.endpoint ?? '';
+    const contact = form.dataset.email ?? '';
+    const status = form.querySelector<HTMLElement>('.sb__status')!;
+    const panel1 = form.querySelector<HTMLElement>('[data-panel="1"]')!;
+    const panel2 = form.querySelector<HTMLElement>('[data-panel="2"]')!;
+
+    // ---- Campaign context from the URL, so ad and post traffic is attributable ----
+    const query = new URLSearchParams(window.location.search);
+    const setHidden = (name: string, value: string) => {
+      const el = form.elements.namedItem(name);
+      if (el instanceof HTMLInputElement) el.value = value;
+    };
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'li_fat_id']) {
+      setHidden(key, query.get(key) ?? '');
+    }
+    setHidden('referrer', document.referrer ?? '');
+    setHidden('page_url', window.location.href);
+
+    // ---- Analytics ----
+    document.querySelectorAll<HTMLElement>('[data-sb-cta]').forEach((el) =>
+      el.addEventListener('click', () => track('sb_interest_cta_click', { where: el.dataset.sbCta ?? '' })),
+    );
+    let started = false;
+    form.addEventListener('focusin', () => {
+      if (started) return;
+      started = true;
+      track('sb_interest_start');
+    });
+
+    const text = (name: string) => {
+      const el = form.elements.namedItem(name);
+      return el && 'value' in el ? String((el as HTMLInputElement).value).trim() : '';
+    };
+    const values = (name: string) =>
+      Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((i) => i.value);
+
+    const showStatus = (html: string) => {
+      status.hidden = false;
+      status.innerHTML = html;
+    };
+
+    const post = async (payload: Record<string, unknown>) => {
+      if (!endpoint) throw new Error('no endpoint');
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+    };
+
+    const failMessage = () =>
+      `That did not go through, and nothing you typed has been lost. Please try again, or email <a href="mailto:${contact}">${contact}</a>.`;
+
+    const finish = () => {
+      form.hidden = true;
+      done.hidden = false;
+      const first = text('name').split(/\s+/)[0];
+      const title = done.querySelector('[data-final-title]');
+      if (title) title.textContent = first ? `Thank you, ${first}.` : 'Thank you.';
+      done.focus();
+      done.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    };
+
+    let stage: 1 | 2 = 1;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.hidden = true;
+
+      const button = form.querySelector<HTMLButtonElement>(`[data-submit="${stage}"]`)!;
+      const label = button.innerHTML;
+
+      if (stage === 1) {
+        if (!form.checkValidity()) {
+          form.querySelector<HTMLElement>(':invalid')?.classList.add('is-invalid');
+          form.reportValidity();
+          return;
+        }
+        button.disabled = true;
+        button.textContent = 'Sending';
+        try {
+          await post({
+            stage: 1,
+            _gotcha: text('_gotcha'),
+            name: text('name'),
+            email: text('email'),
+            consent: true,
+            utm_source: text('utm_source'),
+            utm_medium: text('utm_medium'),
+            utm_campaign: text('utm_campaign'),
+            utm_content: text('utm_content'),
+            utm_term: text('utm_term'),
+            li_fat_id: text('li_fat_id'),
+            referrer: text('referrer'),
+            page_url: text('page_url'),
+          });
+        } catch {
+          button.disabled = false;
+          button.innerHTML = label;
+          showStatus(failMessage());
+          return;
+        }
+        track('sb_interest_submit', { source: text('utm_source') || 'direct' });
+        stage = 2;
+        panel1.hidden = true;
+        panel2.hidden = false;
+        const first = text('name').split(/\s+/)[0];
+        const title = panel2.querySelector('[data-done-title]');
+        if (title) title.textContent = first ? `Thank you, ${first}.` : 'Thank you.';
+        panel2.scrollIntoView({ block: 'start', behavior: 'smooth' });
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Sending';
+      try {
+        await post({
+          stage: 2,
+          email: text('email'),
+          role: text('role'),
+          organisation: text('organisation'),
+          linkedin_url: text('linkedin_url'),
+          ai_use: values('ai_use')[0] ?? '',
+          wants_to_hold: values('wants_to_hold'),
+          formats: values('formats'),
+          bring_others: text('bring_others'),
+          who_pays: text('who_pays'),
+          previous_bootcamp: text('previous_bootcamp'),
+          one_thing: text('one_thing'),
+        });
+      } catch {
+        button.disabled = false;
+        button.innerHTML = label;
+        showStatus(failMessage());
+        return;
+      }
+      track('sb_interest_answers');
+      finish();
+    });
+
+    form.querySelector('[data-skip]')?.addEventListener('click', () => {
+      track('sb_interest_skip');
+      finish();
+    });
+
+    form.addEventListener('input', (e) => (e.target as HTMLElement).classList.remove('is-invalid'));
+  }
+</script>
