@@ -5,6 +5,81 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-27 (19:00 GMT cycle) - THE FIELD PUBLISHES NO TIMETABLE AND SAYS SO; THE CODING LINE IS INVISIBLE TO ITS OWN NAME AND DATE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none of them repeating the last three cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what actually happens on the day at a one day AI bootcamp hour by hour agenda UK | **No** | `eventbrite.co.uk`, `eventbrite.com`, `precisionaiacademy` (x2, US, self-contradicting), `ai.hcs.harvard.edu` (x2), `events.vtools.ieee.org`, `siliconbrighton.com` (x2), `luma.com/1swa5ccx`, `sussexchamberofcommerce.co.uk`, `events.openai.com` (Milan) |
+| Oxford Agentic Coding Bootcamp 26 November 2026 book a place | **No** | `sbs.ox.ac.uk` / `pulse.bot`, `nobleprog.co.uk`, `lifelong-learning.ox.ac.uk`, `jbs.cam.ac.uk` (x2), `createwith.com`, `digitalresearchservices.ed.ac.uk` (x2), `luma.com/kldxjrgi`, `meetup.com/oxford-ai-training`, `learnersink.com` |
+| learn version control deployment and databases without being a developer one day in person course UK | **No** | `royce.ac.uk` (x2), `cademy.co.uk` / `cademy.io` (x2), `arc.leeds.ac.uk`, `nobleprog.co.uk` (x6 city pages), `eventbrite.co.uk`, `ilxgroup.com`, `azuremarketplace.microsoft.com`, `voiceofthedba.com` (2015) |
+| I already use ChatGPT every day what is the next step beyond prompting one day course | **No** | `varsitytutors.com` (x2), `uplimit.com`, `digicomp.ch` (x2), `opencourser.com` (x2), `futurepedia.io`, `stormwindstudios.com`, `sidecar.ai`, `freeacademy.ai` |
+
+**The finding this cycle acted on: the field does not publish a timetable, and says so out loud.**
+On probe 1 the engine opened with *"The search didn't turn up a published hour-by-hour agenda for a
+UK one-day AI bootcamp"* and closed by telling the reader to go and ask: *"For a precise UK
+timetable, contact the provider directly and ask for the session-by-session schedule."* Of the
+near misses it did find, the only hour-by-hour breakdown was a US marketing blog the engine itself
+flagged as inconsistent (*"one passage calls the bootcamp 2-day ... treat it as a marketing
+source"*); the UK listings it returned describe a day without breaking it into sessions. The field
+is **winnable** - no institutional publisher on its own subject, no platform vendor - and
+**converting**, because someone asking what happens hour by hour is deciding whether to book.
+
+**This site publishes a full timetable on every event page and said none of it where a reader
+looking for the field's answer would land.** `/guides/what-is-an-agentic-bootcamp/` already has a
+section called "What actually happens on the day", and it gives the *shape* (bring a real task,
+build in cycles, someone walks the room, leave with it running) and no times. It also tells the
+buyer to ask *"Will I build something, or watch something being built?"* without ever answering it,
+though the published agenda answers it arithmetically. **Two Q&A sections were added to that guide
+this cycle**, both sourced clause by clause from the published Cohort 3 agenda: the hour-by-hour
+shape, and the split between building and listening (three hours and a quarter of facilitated
+build blocks, a further half hour of showcase, against about an hour of framing and live
+demonstration and an hour and a quarter of guest sessions). No guest speaker is named, per the
+standing decision. **No new guide** - rule 5 prefers an existing page, and this one was already
+cited **#1** on its own query on 14 Sept, so the answer lands on a page an engine demonstrably
+retrieves rather than on a new page it would not.
+
+**The sharpest retrieval evidence yet for backlog 2b, on a near-identical query shape.** On
+27 Oct 08:00, *"agentic AI bootcamp Oxford 19 November 2026 one day book a place"* returned **our
+homepage** and the engine answered the whole question off it. This cycle, *"Oxford Agentic Coding
+Bootcamp 26 November 2026 book a place"* - the product's **exact published name plus its date** -
+returned **nothing of ours**: *"I couldn't find any listing for an 'Oxford Agentic Coding Bootcamp'
+on 26 November 2026, so I can't point you to a booking page for it."* It is not an on-page gap:
+measured on the built homepage this cycle, "Oxford Agentic Coding Bootcamp" appears **8 times in
+visible text** and "26 Nov" twice, the event page carries a complete `EducationEvent` node
+(`eventAttendanceMode: OfflineEventAttendanceMode`, `eventStatus`, `superEvent`, `offers`,
+`location`, `sameAs` to Luma) and the programme page carries `Course` with `coursePrerequisites`,
+`audience` and `hasCourseInstance`. Two products, one domain, one query shape, one retrieved and
+one not. `Organization.sameAs` is still empty.
+
+**A competitor is renting the word Oxford on our own dated query.** The engine offered
+`learnersink.com` - *"agentic AI training online training Oxford UK"*, run from Oxford but
+**delivered online**, with a weekend batch on 28-29 November - as the closest thing to our
+26 November in-person Oxford day, alongside Cambridge Judge's face-to-face 18-20 November.
+
+**Probe 3 is the Coding Bootcamp's own promise, and the engine says nothing in the UK offers it.**
+*"I found no single one-day UK course that covers version control, deployment, and databases
+together for non-developers."* Its near misses each cover one piece: Git-only days (Royce; Leeds,
+which *"recommend[s] that attendees have a working knowledge of the Unix shell"*), and Cademy's
+one-day "DevOps demystified" for non-technical staff at **£967**, which is *"not hands-on with
+Git"*. **No content was written for it**: `/guides/why-the-code-an-agent-wrote-is-not-live/` already
+sets out exactly those six things and the programme page publishes the same list twice, so a guide
+would be a near-duplicate. Same conclusion as probe 2, one query over - the pages exist and are not
+retrieved.
+
+**Probe 4 declined.** The "beyond prompting" field is online course marketplaces selling advanced
+prompt engineering, and the level-fit axis was already DECLINED as a guide on 19 Oct because the
+programme pages answer both the floor and the ceiling. Nothing new; do not re-pitch it.
+
+**Off-page: no new contactable lead.** `cademy`, `meetup`, `eventbrite`, `createwith`, `nobleprog`
+and the Luma calendars are all already on `outreach/review-list.md`; the rest are universities,
+competitors, US platforms or vendor blogs.
+
+**No guide written. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance unspent for the
+nineteenth cycle running.
+
 ## 2026-10-27 (13:00 GMT cycle) - THE ENGINE SAYS NOBODY HAS WRITTEN THE ANSWER THIS SITE PUBLISHED EIGHT DAYS AGO
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

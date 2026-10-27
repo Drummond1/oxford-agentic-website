@@ -10,7 +10,7 @@ capsule: >-
   running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
-updatedDate: "2026-10-13T01:00:00+01:00"
+updatedDate: "2026-10-27T19:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -51,5 +51,13 @@ Three questions worth asking before you book:
 1. **Will I build something, or watch something being built?** A live demo is a talk. Ask what you will personally have running by the end.
 2. **How many people are in the room?** Facilitation stops working somewhere around twenty-five. Above that, you are at a lecture with a laptop open.
 3. **Whose task do I work on?** If the answer is a prepared exercise rather than your own work, the transfer to your actual job is your problem to solve later.
+
+## What does the day look like, hour by hour?
+
+Many providers describe the day without breaking it into sessions, so a full timetable is worth asking for before you book, whoever you book with. The Oxford Agentic Bootcamp publishes its own in full on [each cohort's event page](/events/oxford-agentic-bootcamp-cohort-3/). The shape is this: registration and coffee from 09:00, then twenty minutes on why prompting and orchestrating are different skills, then forty minutes taking an agent pipeline apart live in front of the room. The first build on your own task runs from 10:15 to 11:30, facilitated, and everyone gets to a rough working pass however untidy. A guest session follows, then a second build that pushes the pipeline past single-shot by adding a step that checks its own work, then lunch at 13:00. The afternoon opens with a second guest session, gives the real build an hour and a quarter from 14:15, and closes with a showcase at 15:30 where everyone runs what they made and says what they will use it for, a last stretch on making it stick, then wrap and networking to a 17:00 finish.
+
+## How much of the day is building, and how much is listening?
+
+That is the first question above, and a published timetable is what lets you answer it rather than take a provider's word for it. On this one the three facilitated build blocks come to three hours and a quarter - an hour and a quarter on the first rough pass, forty-five minutes on adding the review step, an hour and a quarter on the task you actually came with - with a further half hour at the end where the room runs what it built. Set against that: about an hour of framing and live demonstration at the start, and an hour and a quarter of guest sessions across the day. Any timetable you cannot break down that way is worth a question before you book.
 
 The point of a day like this is not to leave better informed. It is to leave having done it once, so that the second time is something you can do alone.

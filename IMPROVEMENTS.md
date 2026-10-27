@@ -760,6 +760,105 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-27 (19:00 cycle) - the field publishes no timetable and says so, and the guide that
+  is already cited #1 on its own query had a section called "What actually happens on the day"
+  with no times in it.** Probe 1 of four this cycle asked what happens hour by hour at a UK
+  one-day AI bootcamp. The engine opened *"The search didn't turn up a published hour-by-hour
+  agenda for a UK one-day AI bootcamp"* and closed by telling the reader to go and ask the
+  provider for the session-by-session schedule. The only hour-by-hour breakdown it found was a US
+  marketing blog it flagged itself as self-contradicting; the UK listings describe a day without
+  breaking it into sessions. **Winnable** (no institutional publisher, no platform vendor) and
+  **converting** (the reader is deciding whether to book).
+  - **This site has published a full timetable on every event page the whole time.**
+    `/guides/what-is-an-agentic-bootcamp/` gives the shape of the day - bring a real task, build
+    in cycles, someone walks the room, leave with it running - and no times. It also tells the
+    buyer to ask *"Will I build something, or watch something being built?"* and never answers
+    it, though the published agenda answers it arithmetically.
+  - **Shipped: two Q&A sections on that guide, not a new guide.** Rule 5 prefers an existing page
+    when the value is comparable, and here it is better: the page was cited **#1** for *"what is
+    an agentic AI bootcamp"* on 14 Sept, so the answer lands where an engine demonstrably
+    retrieves rather than on a new page it would not. This is **known candidate 3** (a short Q&A
+    block added to an existing guide, only where an answer-engine check shows a real gap), 1 of 1
+    permitted this cycle and 1 of 2 for the day.
+  - **Every clause checked against the published Cohort 3 agenda, which is where it came from.**
+    09:00 registration and coffee; 20 minutes on *"why prompting and orchestrating are different
+    skills"*; 40 minutes on an agent pipeline *"built live in front of the room"*; build one
+    10:15-11:30, *"facilitated"*, *"a rough working pass, however untidy"*; a guest session; build
+    two *"past single-shot"* with *"something that checks its own work"*; lunch 13:00; a second
+    guest session; the real build an hour and a quarter from 14:15; showcase 15:30 where everyone
+    *"runs what they built, and says what they will use it for"*; making it stick; wrap and
+    networking to the 17:00 finish the programme FAQ and `endDate` both publish. **No guest
+    speaker named**, per the standing decision. Arithmetic re-derived from the same table: build
+    blocks 75 + 45 + 75 = **three hours and a quarter**, showcase 30, framing and demonstration
+    20 + 40 = about an hour, guest sessions 45 + 30 = an hour and a quarter. No fraction-of-the-day
+    claim was made, because that answer moves depending on whether lunch and registration count.
+  - **Measured whole-site: exactly 4 of 197 files in `dist` differ**, and they are the predicted
+    set - the guide, `llms-full.txt` and both sitemaps. `llms.txt` did not move (title and
+    description unchanged), and **no sibling guide moved**, because the title did not change and
+    the "More guides" link text is therefore identical - so backlog 41's under-submission does not
+    apply to this push. Internal links 3,149 -> **3,150**: exactly one new link, the guide's first
+    to `/events/oxford-agentic-bootcamp-cohort-3/`, which also takes that booking page from 12 to
+    13 inbound `<main>` links. No new dated string was written into the prose: the timetable cites
+    *"each cohort's event page"* and links it, so nothing here goes stale on 19 November beyond the
+    link target, which the usual cohort sweep already handles.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,150 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, all titles and descriptions
+    unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy, identical on
+    the baseline. Headless Chromium at 375 and 1280px on all three affected pages, 6
+    configurations, all clean: 200, **0px overflow**, one `h1`, correct canonical, no robots meta,
+    zero em dashes in `<main>`, both new headings present, heading order unbroken (the two sit
+    after "How to tell a good one from a bad one", so *"the first question above"* resolves
+    correctly). Full-page screenshots read at both widths. IndexNow maps a guide edit to the guide
+    and `/guides/`; `/guides/` did not actually change, so it over-submits by one, which costs
+    nothing. The script was not run.
+  - **The sharpest retrieval evidence yet for backlog 2b, and it is a controlled comparison.** On
+    27 Oct 08:00, *"agentic AI bootcamp Oxford 19 November 2026 one day book a place"* returned
+    **our homepage** and the engine answered the whole question off it. This cycle, *"Oxford
+    Agentic Coding Bootcamp 26 November 2026 book a place"* - the exact published product name
+    plus its date - returned **nothing of ours**: *"I couldn't find any listing for an 'Oxford
+    Agentic Coding Bootcamp' on 26 November 2026."* It is not an on-page gap, measured this cycle:
+    the built homepage names the Coding Bootcamp **8 times in visible text** and "26 Nov" twice,
+    the event page carries a complete `EducationEvent` (`OfflineEventAttendanceMode`,
+    `eventStatus`, `superEvent`, `offers`, `location`, `sameAs` to Luma) and the programme page a
+    `Course` with `coursePrerequisites`, `audience` and `hasCourseInstance`. Two products, one
+    domain, one query shape, one retrieved and one not. **One external link is still the named
+    remedy and `Organization.sameAs` is still empty.** A competitor, `learnersink.com`, was offered
+    in our place: *"agentic AI training online training Oxford UK"*, run from Oxford, delivered
+    online, weekend batch 28-29 November.
+  - **Two other probes correctly produced nothing.** Probe 3 is the Coding Bootcamp's own promise
+    and the engine said *"I found no single one-day UK course that covers version control,
+    deployment, and databases together for non-developers"* - but
+    `/guides/why-the-code-an-agent-wrote-is-not-live/` already sets out those six things and the
+    programme page publishes the list twice, so a guide would be a near-duplicate. Probe 4's
+    "beyond prompting" field is online course marketplaces, and the level-fit axis was already
+    declined on 19 Oct. **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.**
+  - **Two candidates from the standing prompt were checked and need nothing.** Known candidate 1
+    (`src/lib/home.ts` pinging all 44 sitemap URLs) is **already fixed** - `SINGLE_PAGE_SOURCES` in
+    `scripts/indexnow-ping.mjs` maps it to `/` alone. Known candidate 2 (stale upcoming-tense
+    sentences after a cohort passes) is **clean**: every mention of 16 September, 21 October and
+    the Cohort 2 / Second Brain days across `src/content/`, `src/lib/` and `src/pages/` is already
+    past tense, including `when-ai-executive-cohorts-run`. The content and design loop's new
+    `/second-brain-interest/` page (pushed 15:26 today) was also checked and is correctly
+    configured: `noindex, follow`, self-canonical, out of both sitemaps and out of `llms.txt` and
+    `llms-full.txt`.
+  - **One candidate was found and deliberately not taken, because it reverses a decision.** The two
+    **upcoming** cohorts' meta descriptions name no date, venue or city, while all three **past**
+    cohorts' do. But `summary` doubles as the meta description, and the comment in
+    `oxford-agentic-bootcamp-cohort-3.md` records that the date and venue were removed from it on
+    **12 Oct** on purpose, because the visible card prints them on the line directly above and the
+    date reaches the SERP through the `Event` node. The counter-argument is real - a meta
+    description is not the visible card - but one probe is not enough to overturn a reasoned
+    15-day-old decision. Logged here rather than shipped. **If a cycle ever gets Search Console
+    CTR for the two upcoming event pages, that is the evidence that settles it.**
+  - **Off-page: no new contactable lead.** `cademy`, `meetup`, `eventbrite`, `createwith`,
+    `nobleprog` and the Luma calendars are already on `outreach/review-list.md`; everything else
+    returned was a university, a competitor, a US platform or a vendor blog.
+  - **Production before this cycle:** deploy run **311** success on `f310f84`, the HEAD this cycle
+    started from, finished 15:27 GMT with nothing queued. `oxfordagentic.com` answers **403 on
+    CONNECT** from this sandbox, so `build.txt` could not be read and no Luma page was read; **no
+    event fact was read or changed**. Search Console unavailable from the cloud, and no export
+    newer than the 24 August baseline exists in `seo-data/`.
+
 - **2026-10-27 (13:00 cycle) - the `#` beside every guide heading took a tap on a phone while
   being invisible, on the 154 headings across 32 guides.** `.heading-anchor` is `opacity: 0`
   until its heading is hovered or the anchor is focused, and a transparent element still answers
