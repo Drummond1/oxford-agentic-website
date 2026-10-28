@@ -214,11 +214,14 @@ Status: `todo` · `blocked` (why) · `doing`
     Check it on the next launch. `brand.description` and `brand.tagline` still wait for
     Drummond (the decision note in STATE.md, and backlog 17).
     **A sixth surface, added 28 Oct 2026 (13:00 cycle): guides that enumerate our dates.**
-    `/guides/when-ai-executive-cohorts-run/` named the Agentic and Second Brain days and omitted
+    **Found twice in one day.** `/guides/when-ai-executive-cohorts-run/` named the Agentic and Second Brain days and omitted
     the Coding Bootcamp's first cohort, from the 25 September launch until it was fixed that
     cycle. The general form is any guide whose body lists our in-person days rather than linking
     `/events/`; grep the guides for event links on the next launch, not just the five shared
-    surfaces above.
+    surfaces above. The 19:00 cycle found the second instance six hours later:
+    `/guides/questions-to-ask-before-booking-ai-training/` closed with "For the record, here are
+    ours" and described one bootcamp of three. So the fault is not only guides that print dates - it
+    is any guide whose body describes what we run. Grep for `/bootcamps/` and for "ours" as well.
 15. `done` 13 Sept 2026 — Second Brain group size. **Drummond: "small group", no number.**
     The Second Brain programme FAQ now answers "Small, and capped". Do not publish a number.
 16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
@@ -784,6 +787,68 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-28 (19:00 cycle) - the guide that exists to help a buyer compare providers answered its
+  own ten questions for one bootcamp of three.** `/guides/questions-to-ask-before-booking-ai-training/`
+  closes with **"For the record, here are ours"**, and what followed was the Oxford Agentic Bootcamp
+  alone: capped small, build cycles rather than talks, one real task and a laptop, no coding, a paid
+  plan helps but is not essential, not recorded, transfers if the date stops working, what you keep
+  afterwards. The **Second Brain Bootcamp** and the **Coding Bootcamp** were not mentioned, and the
+  Coding day takes bookings for **26 November**. A buyer who ran the checklist against us got our
+  answers for a third of what we run.
+  - **This is backlog 14's sixth surface, added at 13:00 today, found again six hours later on a
+    different page.** The general form is a guide that describes what we run rather than linking
+    `/events/`; this is the second instance in a day. The checklist in backlog 14 now has the shape
+    of the fault, not just the list of five shared surfaces.
+  - **Nothing new was asserted, checked clause by clause against the two programme files.** Second
+    Brain: "Small, and capped" is its own "How big is the group?" answer; "already use AI most days"
+    and "hit the ceiling of what prompting alone can do" are its `whoFor`; the laptop and own material
+    are "What do I need to bring?"; "populated, organised and set up to maintain" is its `capsule`;
+    "thinking clearly about your own business rather than writing code" is "Do I need to be
+    technical?"; the conceptual overview, the vendor pitch and the one-app tutorial are "Who is it not
+    for?". Coding: `whoFor`, "Do I need to be able to code?", the two `outcomes` lines and "What should
+    I bring?" verbatim in substance. **No number for the Second Brain group** (standing decision), **no
+    paid-plan claim for the Coding day** (backlog 25, unverifiable from here), no price, no venue, no
+    availability, no certificate, no access or travel claim, no guest speaker. 09:00 to 17:00 and the
+    non-refundable transfer are published on all three programme pages.
+  - **`relatedProgrammes` now lists all three, which is the house pattern rather than an extra.**
+    `agentic-ai-glossary` and `why-in-person-beats-online-for-learning-ai` already carry all three;
+    this is the third. It renders the second and third programme cards under "Where this gets
+    practical", which is what a `choosing` guide naming three days should offer.
+  - **Measured whole-site: exactly 14 of 199 files in `dist` differ.** The guide, `llms-full.txt`, both
+    sitemaps, and **ten sibling guides whose only change is the order and link text of their "More
+    guides" block** - a wider blast radius than usual because `relatedProgrammes` feeds the sibling
+    pass. That is backlog 41's under-submission, rated "approximately no SEO value"; those ten get no
+    IndexNow hint and nothing else about them moved. `llms.txt` did not move and `/guides/` did not
+    move, because the title and description did not change. Internal links 3,154 to 3,158: two body
+    links and two programme cards. Exactly one `lastmod` moved in `sitemap-0.xml`. Inbound links inside
+    `<main>`: `/bootcamps/agentic-coding-bootcamp/` 11 to 12 and `/bootcamps/second-brain-bootcamp/`
+    17 to 18.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal links
+    resolve, schema valid at 7 Event and 9 FAQPage nodes, all titles and descriptions unique, no SEO
+    warnings. `npm run check:flags` green on both the all-on and all-off builds. The 11 outbound
+    warnings are the sandbox egress policy, identical on the baseline. Headless Chromium over the
+    changed guide and an unchanged control at 375 and 1280px, 8 configurations: **200, 0px horizontal
+    overflow, one `h1`, correct self-canonical, no robots meta, no missing alt text, no skipped heading
+    level, zero em dashes, zero straight apostrophes and zero exclamation marks in `main`.** The three
+    new paragraphs and the three-card block were screenshotted at both widths and read; the copy was
+    tightened after reading it rendered. The ping script was not run.
+  - **Five GEO probes, zero citations, all five declined on content.** Table and reasoning in
+    `seo-data/geo-citations.md` under 28 Oct 19:00. The one that looked winnable - *what if I cannot
+    attend the day I booked* - produced the field-wide admission *"I couldn't find terms for a specific
+    AI training provider"*, and is question 9 of the very guide this cycle edited. Retrieval, not
+    content, and the sixth such result in four days. The preparation probe re-surfaced **backlog 25**
+    from the other side: the engine told the reader to go and check whether a paid plan is needed, and
+    the Coding Bootcamp is the one line of the three that answers it nowhere. **No new guide. 0 of 3
+    for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so the one spent at 07:00 is still the only one
+    today.**
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to CONNECT
+    for `oxfordagentic.com`, so `build.txt` could not be read and the Actions API stood in: deploy run
+    **317 success on `d5b2a85`**, the HEAD this cycle started from, nothing queued or in progress.
+    `luma.com` does not resolve either, so no event fact was read or changed. Search Console
+    unavailable from the cloud, and no export newer than the 24 August baseline exists in `seo-data/`.
+    Off-page: no new contactable lead - every route the probes returned is already recorded, a
+    competitor, or a content farm.
 
 - **2026-10-28 (13:00 cycle) - the guide whose whole subject is when our days run did not
   mention one of the two days that are on sale.** `/guides/when-ai-executive-cohorts-run/` listed

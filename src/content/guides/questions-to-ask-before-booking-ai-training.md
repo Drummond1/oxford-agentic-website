@@ -11,9 +11,11 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-10-26T01:10:00+00:00"
+updatedDate: "2026-10-28T19:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+  - second-brain-bootcamp
+  - agentic-coding-bootcamp
 ---
 
 Most AI training now describes itself in the same words: practical, hands-on, applied, built for leaders. The descriptions have converged, so they no longer help you choose. The questions below do, because the answers still differ enormously between providers.
@@ -78,6 +80,14 @@ A provider who says the day ends on the day has given you a fair answer, and an 
 
 You do not need perfect answers to all ten. You need answers that are consistent with each other: a room capped small enough for the help promised, a build ratio consistent with the result claimed, a scope narrow enough to be delivered in the time. Most mismatches show up when you put two answers side by side.
 
-For the record, here are ours. The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge: let us know and we will move you. After the day you keep the workflow and a written recipe for rebuilding and extending it, and you leave with the group: everyone in the room has built the same thing, you go away with their contact details, and you hear first when the next one is on.
+For the record, here are ours. We run three one-day bootcamps in Oxford, and several of the ten answers differ between them.
 
-What it deliberately does not cover: the AI landscape, model comparisons, and governance policy. One pattern, applied properly to one real task, is what fits in a day.
+The [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is one day in Oxford, capped at a small room, built around build cycles rather than talks, with no block longer than twenty-five minutes of anyone talking at you. You bring one real task from your own work and a laptop, and you leave with a working agentic workflow running against that task, plus the pattern behind it. No coding is required. A paid AI plan helps but is not essential. The day is not recorded, because the value is in the room. If you cannot make the date, your place transfers to a future cohort at no charge: let us know and we will move you. After the day you keep the workflow and a written recipe for rebuilding and extending it, and you leave with the group: everyone in the room has built the same thing, you go away with their contact details, and you hear first when the next one is on.
+
+What that day deliberately does not cover: the AI landscape, model comparisons, and governance policy. One pattern, applied properly to one real task, is what fits in a day.
+
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) runs in a small, capped group for people who already use AI most days and have hit the ceiling of what prompting alone can do. You bring a laptop and your own material - the documents, notes and examples that carry how you work and what you know - and build a second brain out of that rather than from a template, so you leave with it populated, organised and set up to maintain. Nothing technical is required: the work is thinking clearly about your own business rather than writing code. What it is not is a conceptual overview of AI, a vendor pitch or a tutorial in one app.
+
+The [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is for people who understand the concepts but have not yet built and shipped something of their own. It does not assume you can code - Claude Code and Codex do the typing - and what it teaches is everything around the code: the brief the agent reads first, the terminal, version control, deployment, databases and testing, and how to check what the agent wrote rather than trusting it. You leave with a personal website live on the internet and a working prototype that saves real data, both in your own GitHub repository. Question 6 is the one that matters most here: bring a laptop you can install software on, because it involves setting up a code editor, a terminal and a GitHub account on your own machine, and corporate or government devices often block that. If yours is locked down, email hello@oxfordagentic.com before you book and we will work out what you need.
+
+All three run 09:00 to 17:00, in person in Oxford, and all three answer question 9 the same way: places are not refundable, but if the date stops working your place transfers to a future cohort at no charge.

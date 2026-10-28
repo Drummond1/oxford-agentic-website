@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-28 (19:00 GMT cycle) - FIVE PROBES, FIVE DECLINES, AND THE BUYER'S CHECKLIST ANSWERED FOR ONE BOOTCAMP OF THREE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Five rotating buyer questions, none repeating the last five cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what should I prepare before attending a hands-on AI workshop, what to bring | **No** | `chicago.medicine.uic.edu`, `app.glueup.com`, `iamuinformer.org`, `ai-workshop.compgenlab.org`, `klassconcepts.com`, `aiworkshop.info`, `shopstartup.co.uk`, `ai-beavers.com`, `answeringagent.com` |
+| difference between an AI agent and a Zapier or n8n automation for a small business | **No** | `growwstacks.com`, `dev.to`, `hatchworks.com`, `digitalapplied.com`, `metodoviral.com`, `jahanzaib.ai`, `ivconsulting.in`, `ayautomate.com`, `mindstudio.ai` |
+| what if I cannot attend the day I booked, transfer my place to another date, UK training | **No** | `greenbusinesscentre.org.uk`, `the-training-centre.com`, `londontfe.com`, `respect.org.uk`, `skylinetraining.co.uk`, `uknml.com`, `crtraining.co.uk`, `aws.uktraining.com`, `sestrainingsolutions.co.uk`, `actiontraining.co.uk` |
+| how do I know if my business is ready for agentic AI before investing in training | **No** | `techtarget.com`, `fullstack.com`, `m16marketing.com`, `acceldata.io`, `xebia.com`, `mimica.ai`, `lsbuk.co.uk`, `orange-its.ch`, `agenticrisks.com` |
+| do I need to know git and GitHub to publish an app Claude Code built for me, non-developer | **No** | `chrislema.com`, `github.com/gaitco/mobile-publish`, `chamith.medium.com`, `note.com`, `jessem.fr`, `pagelive.io`, `opsily.com`, `littlehakr.substack.com`, `medium.com` |
+
+**All five declined. Recording why, so no later cycle re-pitches any of them.**
+
+**Probe 1 is answered by the field, and the half it cannot answer is backlog 25.** The engine gave
+a straight, correct answer - laptop, one real task from your own job, source material, accounts set
+up beforehand, most say no coding needed - which is the same answer this site publishes. The one
+thing it told the reader to go and check is *"whether a paid plan is needed"*, quoting a competing
+listing that warns turning up without a paid Claude or ChatGPT account is not grounds for a refund.
+The Agentic Bootcamp answers that on two pages; **the Coding Bootcamp answers it nowhere**, which is
+backlog 25 and needs one line from Drummond. Nothing written.
+
+**Probe 2 fails both tests.** Every result is a platform vendor or an affiliate comparison blog
+writing about products it sells or earns on (`mindstudio.ai`, `growwstacks.com`, `jahanzaib.ai`,
+`ivconsulting.in`), which is the rule's own not-winnable clause, and the searcher phrasing it this
+way is choosing a tool subscription, not booking a day in Oxford. Not pitched.
+
+**Probe 3 looked like the one, and it is retrieval rather than content - the sixth such result in
+four days.** The engine opened *"I couldn't find terms for a specific AI training provider"* and
+answered off ten unrelated UK training companies' booking T&Cs, with transfer windows counted in
+working days and percentage charges. That is a field-wide admission on a question a buyer asks
+before paying. But **question 9 of `/guides/questions-to-ask-before-booking-ai-training/` is exactly
+this question**, published since July and refreshed on 26 Oct, and
+`/guides/getting-an-ai-bootcamp-approved/` carries the same answer for the person approving the
+spend. Nothing to write.
+
+**Probe 4 is enterprise readiness, and it is not ours.** TechTarget, Xebia, Fullstack, Acceldata
+and Mimica hold it with assessment frameworks, and the advice they give - audit your data, document
+governance, six to twelve weeks before you train anyone - routes the reader to a consultancy. That
+is the query cluster Drummond has ruled out, and the searcher is not booking a seat. Not pitched.
+
+**Probe 5 is covered by the field and does not convert.** Chris Lema, `jessem.fr`, `opsily.com`,
+`pagelive.io` and two Substack starter packs answer it fully, and the reader who finds the answer
+in a blog post has solved their problem without a room in Oxford. Not pitched. Worth noting for the
+coding line: the field's published answers all assume a personal machine, while this site's answer
+leads with the corporate-laptop problem, which is the thing that actually stops a buyer.
+
+**What shipped instead, found while checking probe 3.** Probe 3 sent the loop to
+`/guides/questions-to-ask-before-booking-ai-training/` to confirm question 9 was answered. It is -
+and the section that closes the guide, **"For the record, here are ours"**, answered all ten
+questions for **one** of the three bootcamps. The Second Brain and Coding days were not mentioned,
+on the one page whose job is to let a buyer compare providers, and the Coding day is bookable on
+26 November. That is backlog 14's sixth surface, the one added at 13:00 today: a guide that
+describes what we run rather than linking `/events/`. Both days are now answered from their own
+published copy, and `relatedProgrammes` lists all three, which is the house pattern.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.** Not a Q&A refresh either, so the one spent
+at 07:00 is still the only one today.
+
+**No new contactable lead.** `allai.events`, `createwith.com`, Eventbrite and `maven.com` are
+already on the review list; everything else returned was a UK training company's terms page, a
+vendor blog, an enterprise consultancy or a content farm.
+
 ## 2026-10-28 (13:00 GMT cycle) - THE FIELD ANSWERS ALL FOUR, AND THE ONE REAL GAP WAS OUR OWN DATE LIST
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
