@@ -779,6 +779,59 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-28 (08:00 cycle) - the Second Brain pages asked the same visitor for the same thing
+  twice, and gave the weaker route the last word.** `/second-brain-interest/` shipped on 27 October
+  and was added beside the notify form rather than in place of it. So the "Runs" band on
+  `/bootcamps/second-brain-bootcamp/` read: *"Dates for the next cohort are being confirmed"*, a gold
+  **Register your interest** button, and then, directly under it, **"Tell me when the next dates are
+  set"** and *"Email hello@oxfordagentic.com and we will add you to the list."* A visitor offered a one-click
+  form was immediately told to compose an email instead, and the email is the degraded route: the form
+  posts to the n8n webhook, while the notify block is the mailto fallback `NewsletterForm` renders
+  because `newsletter.endpoint` is still unset (the standing blocker in `STATE.md`).
+  - **The past Cohort 1 event page was the worse of the two: two gold primaries, with the weaker
+    one first.** `/events/oxford-second-brain-bootcamp-cohort-1/` closed with **All events**
+    (`btn--primary`), then **Register your interest in the next one** (`btn--primary`) in a second
+    `btn-row`, then the notify form - three next steps, no hierarchy, and the one that routes a
+    visitor who missed the day to the next one ranked below a list of other bootcamps. **The same
+    component already solves this one branch above**: where a successor cohort exists it renders the
+    forward action as `btn--primary` and `All events` as `btn--ghost`, in one row. The no-successor
+    branch now does the same, so the page follows the pattern it already publishes.
+  - **Nothing was removed that is not still on the page.** The identical `NewsletterForm` -
+    *"Hear about the next cohort first"*, same mailto, same wording - is in the footer of all 64
+    pages, which is where the component's own comment says it reads as site furniture. Checked in
+    `dist` on both changed pages: the signup label and the `mailto:hello@oxfordagentic.com` are each
+    present exactly once after the change. The `sb_interest_link_click` analytics attribute, both
+    hrefs and the Luma links are untouched.
+  - **One place decides, and both templates read it.** `interestPath()` in `src/lib/site.ts` maps a
+    programme id to its register-interest page; `src/pages/bootcamps/[slug].astro` and
+    `src/pages/events/[slug].astro` each use it for both the button and the `showNotify` condition,
+    replacing a hard-coded `programme.id === 'second-brain-bootcamp'` in each file. A programme
+    without such a page still gets the notify form, unchanged - that branch is the general case and
+    is the reason the form stays imported in both templates.
+  - **Measured whole-site: exactly 2 of 197 files in `dist` differ**, and they are the two predicted
+    pages. Neither sitemap moved, `llms.txt` and `llms-full.txt` did not move, and no other page
+    moved - no title, description or content entry changed, so no `updatedDate` was touched.
+  - **Checks.** `npm run build` clean - 64 pages, internal links resolve, schema valid at 7 Event and
+    9 FAQPage nodes, all titles and descriptions unique. `npm run check:flags` green on both the
+    all-on and all-off builds. `npx astro check` run before and after on the same tree: **80 errors,
+    0 warnings, 3 hints both times** - all pre-existing `ts(7006)` implicit-any on `.map` callbacks
+    across 37 files, none in the three files this cycle touched. The 11 outbound warnings are the
+    sandbox egress policy, identical on the baseline. Headless Chromium over all 55 sitemap pages at
+    375, 768 and 1280px after the change: **0px horizontal overflow, one `h1` per page, no missing
+    alt text, no unlabelled form control, no link or button without an accessible name, no skipped
+    heading level.** Both changed bands screenshotted at 375 and 1280px and read. Keyboard: each link
+    in the row takes focus and shows the gold 2px `:focus-visible` ring at 3px offset at both widths,
+    the boxes are 52-72px tall, and the primary navigates to `/second-brain-interest/`. No form was
+    submitted.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    CONNECT for `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`, so the
+    before state is the local baseline build rather than the live page, and the post-deploy check is
+    the Actions API plus the `dist` diff. Deploy state before this cycle: run 314 success on
+    `32ae56e`, the HEAD this cycle started from, nothing queued. PR #1 and
+    `feat/ceo-roundtable-demand-page` are the known-stale leftovers already recorded in backlog 20;
+    both now have histories disjoint from `main`, so neither can merge and neither is work in flight.
+    No event fact was read or changed, and no Luma page was read.
+
 - **2026-10-28 (07:00 cycle) - the question that decides whether a buyer can bring their own work
   was answered only on the pages engines do not read.** The day’s premise is "bring one real task
   from your own work", and the obvious objection to it is that the work is confidential. This site

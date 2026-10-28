@@ -27,6 +27,30 @@ export const paths = {
   about: () => '/about/',
 };
 
+/**
+ * Programmes with their own register-interest page, by id.
+ *
+ * A programme between cohorts has nothing to book, so the pages that would
+ * carry a booking form offer the notify route instead — the footer's mailto,
+ * repeated in the band so it answers the line above it rather than reading as
+ * site furniture. Where a programme has a real form of its own that reasoning
+ * stops holding: the band would then ask the same visitor for the same thing
+ * twice, the second time by the weaker route, immediately under the button.
+ *
+ * So this is the one place that decides, and both the programme page and the
+ * past event page read it: where there is a page, it is the band's single next
+ * step; where there is not, the notify form still is. Keep the path in step
+ * with the page itself and with `applications`/`interest` in `site.config.ts`.
+ */
+const interestPages: Record<string, string> = {
+  'second-brain-bootcamp': '/second-brain-interest/',
+};
+
+/** The register-interest page for a programme, if it has one. */
+export function interestPath(programmeId: string): string | undefined {
+  return interestPages[programmeId];
+}
+
 /* ------------------------------------------------------------------ *
  * Events
  * ------------------------------------------------------------------ */

@@ -12,6 +12,7 @@ import {
   getEventsForProgramme,
   getProgrammes,
   getTestimonials,
+  interestPath,
   paths,
   showSection,
 } from '../../lib/site';
@@ -56,8 +57,13 @@ const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data
  *
  * Reachable for the first time on 21 October 2026, when the Second Brain
  * Bootcamp's only cohort runs and that programme has no further date set.
+ *
+ * Unless the programme has a register-interest page, which does the same job
+ * properly: then that button is the band's one next step and the form below it
+ * would be the same ask a second time, by the weaker route.
  */
-const showNotify = upcoming.length === 0 && showSection('newsletter');
+const interest = interestPath(programme.id);
+const showNotify = upcoming.length === 0 && !interest && showSection('newsletter');
 
 const rhythm = createRhythm('cream');
 const bands = {
@@ -165,9 +171,9 @@ const bands = {
         ) : (
           <Fragment>
             <p class="empty">Dates for the next cohort are being confirmed.</p>
-            {programme.id === 'second-brain-bootcamp' && (
+            {interest && (
               <p class="btn-row">
-                <a href="/second-brain-interest/" class="btn btn--primary" data-analytics-event="sb_interest_link_click">
+                <a href={interest} class="btn btn--primary" data-analytics-event="sb_interest_link_click">
                   Register your interest <span aria-hidden="true">→</span>
                 </a>
               </p>

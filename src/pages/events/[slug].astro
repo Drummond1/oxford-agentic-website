@@ -18,6 +18,7 @@ import {
   getProgrammes,
   getSuccessorEvent,
   getTestimonials,
+  interestPath,
   lumaBookingUrl,
   paths,
   showSection,
@@ -154,8 +155,13 @@ const showPhotos = showSection('photos', { hidden: data.hideSections, hasContent
  *
  * Reachable for the first time on 21 October 2026, when the Second Brain
  * Bootcamp's only cohort has run and that programme has no further date set.
+ *
+ * Unless the programme has a register-interest page, which is the better answer
+ * to the same sentence and is offered here instead. The band then makes one ask
+ * rather than two, and the mailto stays where it reads as furniture: the footer.
  */
-const showNotify = isPast && !successor && showSection('newsletter');
+const interest = isPast && !successor ? interestPath(programme.id) : undefined;
+const showNotify = isPast && !successor && !interest && showSection('newsletter');
 
 /*
  * Band order, reworked 17 Aug for conversion.
@@ -323,18 +329,18 @@ const registerLabel = !registrationOpen
               </div>
             ) : (
               <Fragment>
+                {/* One primary, as in the successor branch above: the forward
+                    step leads and "All events" is the way out beside it. */}
                 <div class="btn-row">
-                  <a href={paths.events()} class="btn btn--primary">
+                  {interest && (
+                    <a href={interest} class="btn btn--primary" data-analytics-event="sb_interest_link_click">
+                      Register your interest in the next one <span aria-hidden="true">→</span>
+                    </a>
+                  )}
+                  <a href={paths.events()} class:list={['btn', interest ? 'btn--ghost' : 'btn--primary']}>
                     All events
                   </a>
                 </div>
-                {isPast && programme.id === 'second-brain-bootcamp' && !successor && (
-                  <div class="btn-row">
-                    <a href="/second-brain-interest/" class="btn btn--primary" data-analytics-event="sb_interest_link_click">
-                      Register your interest in the next one <span aria-hidden="true">→</span>
-                    </a>
-                  </div>
-                )}
                 {showNotify && (
                   <div class="ran__notify">
                     <NewsletterForm label="Tell me when the next dates are set" />
