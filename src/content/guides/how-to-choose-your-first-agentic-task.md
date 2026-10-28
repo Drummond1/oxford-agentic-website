@@ -11,7 +11,7 @@ capsule: >-
   thinking, and anything a person has to stand behind.
 author: drummond-gilbert
 publishDate: "2026-08-04T09:00:00+01:00"
-updatedDate: "2026-10-13T01:00:00+01:00"
+updatedDate: "2026-10-28T07:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -57,6 +57,16 @@ Three kinds are worth protecting.
 **The ones where a person has to stand behind the output.** Not because a workflow could not produce it, but because when someone asks "why does it say this", the answer has to be a person who decided, not a process that ran.
 
 None of this is squeamishness about the technology. It is the same judgement that decides what you delegate to people, applied consistently - and the reason the reclaimed hours are worth having is that they go back into exactly this kind of work.
+
+## Can I bring confidential work to a build day?
+
+The advice the rest of the field gives is to bring sample or public data and clear the tool with your employer first. That is sound, and it also leaves you with nothing of your own to build against, which is most of the point of the day. The test worth applying is about the task rather than the data: would you be comfortable describing this task to an external supplier? If you would, bring it. If you would not, pick another one, and most people have several that qualify. Credentials, keys and other people’s personal data do not belong in an agentic workflow in any form, whoever is running the day.
+
+Two things decide the rest, and they are worth asking any provider before you book: whose machine you build on, and whether the day is recorded. At the Oxford Agentic Bootcamp you build on your own laptop and the day is not recorded. What your own side will ask once the workflow exists is a separate conversation, and [getting an AI workflow past IT and legal](/guides/getting-an-ai-workflow-past-it-and-legal/) sets out the questions each of them tends to bring.
+
+## What if the task is fine but the data is sensitive?
+
+You bring a task, not a data set, and that distinction does most of the work. A workflow can be built against a redacted or representative extract and pointed at the real source afterwards, once it is back inside your own controls, because what you are building on the day is the pipeline rather than any one output. It also keeps the build easy to check while you are still learning, which is test 3 above. If what is sensitive is a body of documents rather than a process, [is it safe to put company documents in a second brain](/guides/is-it-safe-to-put-company-documents-in-a-second-brain/) answers the same question for the storage side.
 
 ## What this looks like in practice
 

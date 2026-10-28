@@ -779,6 +779,66 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-28 (07:00 cycle) - the question that decides whether a buyer can bring their own work
+  was answered only on the pages engines do not read.** The day’s premise is "bring one real task
+  from your own work", and the obvious objection to it is that the work is confidential. This site
+  answers that: the external-supplier test is published in the `What if my task is confidential?`
+  FAQ on `/bootcamps/oxford-agentic-bootcamp/` and on the Cohort 3 event page, and in one vertical
+  guide, `agentic-ai-for-finance-teams`. **Two Q&A sections now put it on
+  `/guides/how-to-choose-your-first-agentic-task/`**, which is the guide about choosing the task you
+  bring and was cited **#4** on its own query on 14 Sept.
+  - **The evidence is probe 3, in `seo-data/geo-citations.md` under 28 Oct 07:00.** Asked whether
+    confidential company data can be brought to a hands-on AI workshop, the engine opened *"The
+    search results don’t cover hands-on workshops specifically"* and answered off a Polish IT
+    consultancy’s blog, a payments academy page, a password manager’s blog, Tom’s Guide, a security
+    vendor and several content farms. Its advice was to bring sample or public data and ask your
+    employer, which is sound and leaves the reader with nothing of their own to build against.
+    **Winnable** (no institutional publisher on its own subject, no platform vendor) and
+    **converting** (the reader is deciding whether they can book at all).
+  - **Why placement rather than a new guide.** Rule 5 prefers improving a page whose value is
+    comparable, and the two surfaces that already carry this answer are the two an engine does not
+    return: FAQ answers render as escaped plain text with no links (backlog 30), and programme and
+    event pages are what the 24 August Search Console baseline shows uncrawled. The finance guide
+    carries the answer in a finance framing only. **No new guide. 0 of 3 for the week of
+    26 Oct - 1 Nov.** This is the one Q&A refresh for this cycle and the first of the day.
+  - **Nothing new was asserted, checked clause by clause.** The external-supplier test, the rule
+    that credentials, keys and other people’s personal data never belong in an agentic workflow in
+    any form, building on your own laptop, and the day not being recorded are the programme FAQ’s
+    own wording. "You bring a task, not a data set" and the redacted-or-representative extract
+    pointed at the real source afterwards are `agentic-ai-for-finance-teams`, generalised off
+    finance. No price, no venue, no availability, no certificate, no accessibility claim, and no
+    guest speaker named.
+  - **Measured whole-site: exactly 4 of 199 files in `dist` differ, the predicted set** - the guide,
+    `llms-full.txt` and both sitemaps. `llms.txt` did not move and no sibling guide moved, because
+    the title and description did not change, so backlog 41’s under-submission does not apply.
+    Internal links 3,150 to 3,152: two new links, to
+    `getting-an-ai-workflow-past-it-and-legal` and `is-it-safe-to-put-company-documents-in-a-second-brain`.
+    **No second programme link was added** - the guide already links the Oxford Agentic Bootcamp
+    once at the end, and the new copy names it without linking it again rather than putting another
+    off-ramp above the one that closes the page. In the sitemap exactly one `lastmod` moved.
+  - **Checks:** `npm ci` and `npm run build` clean before and after - 64 pages, 3,152 internal links
+    resolve, schema valid at 7 Event and 9 FAQPage nodes (guide question headings are prose, not an
+    `FAQPage` node), all titles and descriptions unique, no SEO warnings. The 11 outbound warnings
+    are the sandbox egress policy, identical on the baseline. Headless Chromium at 375 and 1280px:
+    200, 0px overflow, one `h1`, correct self-canonical, no robots meta, heading order unbroken with
+    the two new `h2`s in place, zero em dashes and zero straight apostrophes in `main`, both new
+    links present. The ping script was not run.
+  - **Probe 4 was declined as retrieval, not content, and it is the sharpest version of the
+    objection this product faces.** Asked whether one day is enough or a multi-week programme is
+    needed, the engine concluded one day buys a conceptual overview and building takes weeks -
+    answering off two `blogspot.com` content farms, Intellipaat, NIIT and a course aggregator, with
+    its own caveat that they are vendor marketing. `/guides/what-you-can-build-in-one-day-with-ai/`
+    has had a section headed **"Is one day enough?"** since August. Nothing written.
+  - **Probe 1 did not open the marketing vertical.** Unlike finance and legal, the field has real
+    hands-on incumbents (LXA, Comprend, Agile Brand Guide, Anicca), so what the engine reports
+    missing is published dates rather than the thing itself. Not winnable, not pitched.
+  - **Production:** deploy run 313 success on `683c7e2`, the HEAD this cycle started from, nothing
+    queued. `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not resolve
+    through the fetch tool, so `build.txt` could not be read and the Actions API stood in; no Luma
+    page was read and no event fact was read or changed. Search Console unavailable from the cloud,
+    no export newer than the 24 August baseline. Off-page: no new contactable lead - `createwith.com`
+    is already on the review list and the rest were competitors, universities or content farms.
+
 - **2026-10-28 (01:00 cycle) - a page for a day that ran a week ago was still answering booking
   objections, in its `FAQPage` markup as well as on screen.** The Second Brain Cohort 1 page
   (21 October, Pitt Rivers Museum) carried **13** questions. Ten of them were written for someone

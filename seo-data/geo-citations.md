@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-28 (07:00 GMT cycle) - THE FIELD CANNOT SAY WHAT YOU MAY BRING TO A WORKSHOP, AND THIS SITE’S ANSWER SAT ONLY ON PAGES NO ENGINE RETURNS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none of them repeating the last four cycles’ axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI workshop for marketing teams UK one day hands-on in person | **No** | `anicca.co.uk` (x2), `lxahub.com`, `comprend.com` (x2), `aventislearning.com`, `eventbrite.co.uk`, `ukft.org` (x2), `createwith.com` (x4), `agilebrandguide.com` (x2), `brainstation.io`, `spicyadvisory.pages.dev`, `fiverr.com` |
+| what should I prepare before attending a hands-on AI workshop pre-work UK | **No** | `airf.aims.ac.za` (x3), `docs.isambard.ac.uk`, `learning.sap.com` (x4), `ibm.github.io`, `profiletree.com` (x2), `science.ai.cam.ac.uk` (x2), `aapc.com`, `oh-scipe.github.io`, `studiomeyer.io`, `tally.so`, `workshop-grounding.pages.dev`, `dayseven.lovable.app` |
+| can I bring confidential company data to a hands-on AI workshop what is safe to use | **No** | `sysadvisors.pl`, `jeton.pl`, `ciso.inc` (x2), `varenyaz.com`, `payhip.com`, `workable.com`, `stickypassword.com`, `webnic.cc`, `respell.ai`, `tomsguide.com`, `cornerstone-ai-partners.pages.dev`, `csuinc.com`, `preferred-office.com`, `eliteaiadvantage.com`, `buildaiq.com`, `freeacademy.ai`, `rossweb.bus.umich.edu` |
+| is one day enough to learn agentic AI or do I need a multi week programme | **No** | `agenticaitesting.blogspot.com` (x2), `agenticaitraining.blogspot.com`, `intellipaat.com`, `gaas.it.com`, `newsbytesapp.com`, `niit.com`, `executive.mit.edu` (x2), `perfectiongeeks.com`, `gocodeo.com`, `dcc.kfupm.edu.sa`, `ascendientlearning.com`, `projectpro.io`, `nva.nielit.gov.in`, `alliance-micro.com`, `ces.lums.edu.pk`, `skillsetcourse.com` |
+
+**The finding this cycle acted on is probe 3, and it is the same shape as yesterday’s laptop
+result one question over.** The engine opened *"The search results don’t cover hands-on workshops
+specifically"* and answered from a Polish IT consultancy’s blog, a payments company’s academy
+page, a password manager’s blog, Tom’s Guide, a security vendor and several content farms. Its
+advice came to: bring sample or public data, and ask your employer first. That is sound and it
+leaves the reader with no task of their own to build against, which is the whole premise of a
+day where you bring real work. **Winnable** - not one institutional publisher on its own subject,
+not one platform vendor writing about its own product - and **converting**, because someone
+asking whether their work can come through the door is deciding whether to book.
+
+**This site answers it, and until this cycle only where an engine does not look.** The
+external-supplier test is published in the `What if my task is confidential?` FAQ on
+`/bootcamps/oxford-agentic-bootcamp/` and the Cohort 3 event page, and in one vertical guide,
+`agentic-ai-for-finance-teams`. FAQ answers render as escaped plain text with no links
+(backlog 30), and programme and event pages are the ones the 24 August Search Console baseline
+shows uncrawled. **Two Q&A sections were added to `/guides/how-to-choose-your-first-agentic-task/`
+instead** - the guide about the task you bring, cited **#4** on its own query on 14 Sept, so the
+answer now sits on a page an engine demonstrably retrieves. Every clause is published copy: the
+external-supplier test, the rule that credentials, keys and other people’s personal data never
+belong in a workflow, your own laptop, the day not being recorded, and the finance guide’s point
+that you bring a task rather than a data set and can build against a redacted or representative
+extract. **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.**
+
+**Probe 4 is retrieval, not content, and the page it needs already exists.** The engine’s verdict -
+*"one day is enough for a conceptual overview of agentic AI, but building working agents usually
+takes several weeks"* - is the central objection to the one-day format, and
+`/guides/what-you-can-build-in-one-day-with-ai/` has carried a section headed exactly **"Is one day
+enough?"** since August. Nothing was written for it. Worth noting what the engine answered off:
+two `blogspot.com` content farms, Intellipaat, NIIT, `gaas.it.com`, `perfectiongeeks.com` and a
+course aggregator, with its own caveat that *"most of these sources are course vendors’ marketing
+pages"*. The one substantive point against us is about prerequisites - *"a basic understanding of
+machine learning concepts and Python programming"* - which is a claim about a different product.
+
+**Probe 2 found no UK answer and the field’s own answer is this site’s format.** *"The search
+didn’t turn up a single UK-specific checklist"*, and what it assembled came from an African
+research-foundation onboarding page, SAP’s learning journey, an IBM workshop and a Bristol
+academic session. The common thread it extracted - *"bring a work challenge"*, pick two or three
+tasks in advance, confirm the tools and data you need - is what this site publishes as the day’s
+premise. Not taken as a separate change: it is the same axis probe 3 opens, and the choose-a-task
+guide is the page for both.
+
+**Probe 1 does not open the marketing vertical.** Unlike finance and legal, the field here has real
+hands-on incumbents - LXA’s one-day agentic marketing workshop in London, Comprend’s hands-on
+agentic marketing session, Greg Kihlström’s full-day "from prompting to autonomous AI agents" for
+teams, and Anicca’s half- and full-day workshops - so the gap the engine reports is one of
+*published dates*, not of the thing existing. Not winnable on the rule’s own terms, and not
+pitched.
+
+**Off-page: no new contactable lead.** Every listing route returned is already recorded -
+`createwith.com` (review list, 680), `eventbrite.co.uk` and `cademy`-style directories
+(`off-page-listings.md`). The rest were competitors, agency sites, universities or content farms.
+
 ## 2026-10-28 (01:00 GMT cycle) - THE LAPTOP QUESTION THE FIELD CANNOT ANSWER WAS PUBLISHED HERE TWICE, AND ONE COPY SAT ON A DAY THAT HAD ALREADY RUN
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
