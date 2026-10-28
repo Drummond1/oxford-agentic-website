@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-10-25T01:00:00+00:00"
+updatedDate: "2026-10-28T01:30:00+00:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -106,6 +106,14 @@ faqs:
       Yes. Teams are welcome, and bringing a colleague means the same approach goes
       back to work with two of you rather than one. Email hello@oxfordagentic.com and
       we will arrange it.
+  # The procurement question. Its only commercially-placed answer was on the past
+  # Cohort 1 event page, which stopped selling on 21 Oct; this is the live page for
+  # this bootcamp while no cohort is on sale. Wording is that page's own, so no new
+  # term is offered here, and the Agentic and Coding event pages carry the same answer.
+  - q: Can my organisation pay by invoice?
+    a: >-
+      Yes. If your organisation would rather pay by invoice than book on a card form,
+      email hello@oxfordagentic.com and we will arrange it.
   - q: How big is the group?
     a: >-
       Small, and capped. The exact number of places left is on the booking page.

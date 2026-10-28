@@ -5,6 +5,59 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-28 (01:00 GMT cycle) - THE LAPTOP QUESTION THE FIELD CANNOT ANSWER WAS PUBLISHED HERE TWICE, AND ONE COPY SAT ON A DAY THAT HAD ALREADY RUN
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none of them repeating the last four cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| who maintains an AI agent workflow after it is built small business handover when the person who built it leaves | **No** | `lilachbullock.com` (x3), `stackone.com`, `landbot.io`, `missionrhw-ai.pages.dev`, `operator-stack.pages.dev`, `iamstackwell-com.pages.dev` (x2), `kingy.ai` (x2), `aismartventures.com`, `duet.so`, `buzzsprout.com`, `contra.com`, a Reddit snapshot |
+| can I use my locked down work laptop at a hands-on AI workshop no admin rights IT restrictions UK | **No** | three Reddit snapshots, `developers.openai.com`, `docs.merge.dev`, `beyondtrust.com`, `1password.community`, `yomotherboard.com`, `biomedicalai.inf.ed.ac.uk`, `jw-sthlm.github.io`, `medium.com`, `assistouest.fr`, `digitalpeninsula.org` |
+| how many people should be in the room at a hands-on AI workshop class size cohort too big to build anything | **No** | `medbox.org`, Software Carpentry list archives (x3), `karie-westermann.squarespace.com`, `adactio.com`, `helpdesk.training.fortinet.com`, `uua.org`, `branded.ticketfairy.com`, `reskill.work` |
+| one day hands-on AI workshop UK January 2027 in person book a place agentic | **No** | `eventbrite.co.uk` (x5), `cademy.io`, `brainstation.io`, `happeningnext.com`, `science.ai.cam.ac.uk`, `training.cam.ac.uk` (x2), `c2d3.cam.ac.uk`, `luma.com/ybkai00a`, `allai.events`, `mkfm.com` |
+
+**The finding this cycle acted on is probe 2, and it is about placement rather than writing.** The
+engine opened *"I didn't find any UK-specific guidance on this, so these results are general and
+mostly anecdotal"* and answered off Reddit threads, a password manager's community forum and a
+privileged-access vendor's blog. Its practical advice was to ask the organiser whether there is a
+path that needs nothing from your IT team. **This site publishes exactly that answer**, in the
+organiser's own words, and until this cycle one of its two copies sat on the Second Brain Cohort 1
+page - a day that ran on 21 October - opening *"Worth checking before you book"* and carried in
+that page's `FAQPage` markup. An engine quoting it would have handed a buyer a booking instruction
+attached to a date that has gone. The copy on `/bootcamps/second-brain-bootcamp/`, which is the
+live page for that bootcamp while no cohort is on sale, is unchanged and is now the only one.
+
+**Probe 3 is the third retrieval-not-content result in two days.** Asked how many people should be
+in the room, the engine said it *"didn't turn up anything specific to AI workshops"* and answered
+from a medical training manual, a folk-festival guide and the Software Carpentry mailing list.
+Question 3 of `/guides/questions-to-ask-before-booking-ai-training/` is *"How many people are in
+the room, and who is helping them?"*, published 26 July, in the sitemap and self-canonical. Nothing
+on that page needs fixing. Note also what this site must **not** write here: the Second Brain group
+size is "small group" and never a number (standing decision, 13 Sept), so the obvious answer to
+this query is one the loop is not free to publish.
+
+**Probe 1 is the one genuinely unanswered axis the four turned up, and it was not taken.** The
+engine found no authoritative answer on who keeps an agentic workflow running after it is built,
+and said so: *"most of the sources are blogs from AI agencies with a stake in the outcome"*, with
+maintenance retainers priced in them. The field is winnable on that reading. Against it: this site
+already answers the sharp half in `/guides/getting-an-ai-workflow-past-it-and-legal/` - *"Who owns
+it, and what happens when they are away? A workflow only one person understands is a single point
+of failure with a nicer interface"* - and the rest of the axis is about work an agency built,
+which is the cluster Drummond has ruled out targeting. Logged as a guide candidate with that
+caveat rather than written. **No guide. 0 of 3 for the week of 26 Oct - 1 Nov.**
+
+**Probe 4 returned nothing of ours and that is correct, not a gap.** No January 2027 cohort is
+published on this site, so there was nothing to retrieve. What it does show is who holds a
+forward-dated availability query when no provider has published a date: `eventbrite.co.uk` five
+times, then `cademy.io`, `happeningnext.com` and `allai.events`, all four already on
+`outreach/review-list.md`, and the two Cambridge institutional calendars. The engine's own summary
+was that it *"couldn't find a one-day, in-person UK AI workshop with a January 2027 date"*.
+
+**Off-page: no new contactable lead.** Every listing route returned is already on the review list;
+the rest were competitors (`brainstation.io`, `nobleprog`-style providers), university calendars,
+agency blogs or forums.
+
 ## 2026-10-27 (19:00 GMT cycle) - THE FIELD PUBLISHES NO TIMETABLE AND SAYS SO; THE CODING LINE IS INVISIBLE TO ITS OWN NAME AND DATE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

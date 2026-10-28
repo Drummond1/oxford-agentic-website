@@ -471,7 +471,7 @@ Status: `todo` · `blocked` (why) · `doing`
     a date exists to publish, and - if one does not for a while - whether that line should
     keep saying "being confirmed". Four Second Brain guides and the programme page now end
     on a cohort nobody can book.
-37. `todo` - **the Second Brain Cohort 1 FAQ block still answers a buyer, not a reader of a
+37. `half done` 28 Oct 2026 (01:00 cycle) - the trim shipped, the outcomes answer did not - **the Second Brain Cohort 1 FAQ block still answers a buyer, not a reader of a
     past page.** The 20:00 cycle on 21 Oct fixed only what had become false: the capsule and
     summary tense, "Registration is open", "Book directly on this page", and the invoice
     answer's pointer to a booking form. Left standing, because they are odd rather than
@@ -480,6 +480,11 @@ Status: `todo` · `blocked` (why) · `doing`
     the precedent and the pace - it was cut from seven questions to three on 23 Sept, a week
     after the day ran, once there was something true to say about what happened. Do the same
     here in about a week, and only with outcomes in hand. Do not invent any.
+    **Done on 28 Oct, the trim half only:** thirteen questions cut to three, every deleted answer
+    verified as published on `/bootcamps/second-brain-bootcamp/` first, and the invoice answer moved
+    there because this page was its only commercially-placed home. **Still open:** Cohort 2 kept a
+    third answer about what people actually built. No Second Brain outcome has been confirmed, so
+    none was written. One sourced sentence about what the room built would close this.
 38. `killed` 22 Oct 2026 (02:00 cycle), by the second phrasing it asked for - **do not
     re-pitch the legal vertical without new evidence.** The product gap is real and repeated:
     *"I found no one-day agentic AI workshop aimed specifically at UK law firms"*. But the
@@ -756,9 +761,93 @@ Status: `todo` · `blocked` (why) · `doing`
     one change ships per cycle and the heading markup above was the larger of the two.)
 
 
+49. `todo` (loop-actionable, found 28 Oct 2026 in the 01:00 cycle) - **`/` takes a `lastmod` from
+    any programme edit, including edits the homepage does not render.** `homepageLastmod` in
+    `astro.config.mjs` folds in every programme's `updatedDate` on the stated grounds that "What we
+    run" renders a card per programme. The card prints `shortPitch` and nothing else from that file,
+    so an edit to a programme's FAQ block - this cycle's, for one - moves `/`'s `lastmod` without
+    changing a pixel of `/`. That is the overstating direction, which the same file elsewhere
+    deliberately avoids ("understating is the safe direction"). **The fix is small:** count a
+    programme only through the fields the homepage actually prints, which means reading `shortPitch`
+    (and `name`, `slug`, `accent`, `order`) rather than `updatedDate` alone, and recording a copy
+    date by hand for those as `HOMEPAGE_COPY_LASTMOD` already does for the homepage's own three
+    files. **Weigh before doing it:** a hand-recorded date per programme is a third thing to
+    remember to bump, and the cost of the current behaviour is one slightly early recrawl hint on
+    the one page that is already crawled most. Not urgent.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-28 (01:00 cycle) - a page for a day that ran a week ago was still answering booking
+  objections, in its `FAQPage` markup as well as on screen.** The Second Brain Cohort 1 page
+  (21 October, Pitt Rivers Museum) carried **13** questions. Ten of them were written for someone
+  about to book: what to bring, team bookings, confidential material, the transfer if you cannot
+  make the date, and a laptop answer opening *"Worth checking before you book"*. The page itself
+  has read as past since 21 October - the band says "This event has run", the capsule and the
+  summary are past tense - so the FAQ block was the last part of it still selling a date that has
+  gone. It is now **3**: when and where it was, whether you can still join, and what a second brain
+  is. This is **backlog 37**, which asked for exactly this about a week after the day, and it is
+  the same edit Cohort 2 of the Agentic Bootcamp had on 23 September, a week after it ran.
+  - **Nothing was deleted that is not published elsewhere, checked question by question.** Every
+    one of the ten is on `/bootcamps/second-brain-bootcamp/` - what to bring, the work-laptop
+    answer, confidential material, team bookings, the date-change transfer, how technical you need
+    to be, which tools it works with, who it is not for, how it differs from the Agentic Bootcamp -
+    which is the live page for this bootcamp while no cohort is on sale. Cohort 2's version of this
+    edit relied on Cohort 3 carrying the booking answers; here the programme page does.
+  - **The one exception moved rather than went.** *"Can my organisation pay by invoice?"* had no
+    copy on the Second Brain programme page: its only commercially-placed home was the page that
+    stopped selling on 21 October, and after that the homepage FAQ, which is not where an
+    organisation that cannot put a card through ends up. The answer is now on the programme page in
+    the wording it already had, so no new term is offered. The Agentic and Coding event pages carry
+    the same answer unchanged. Invoice is a published route (13 Sept); **VAT is not confirmed and
+    is not mentioned anywhere.**
+  - **What Cohort 2 had and this does not: an outcome.** Its third kept answer was what people
+    actually built, sourced from the room. No Second Brain outcome has been confirmed, so none was
+    written, and **backlog 37 stays open for that half**. The page says what the day was about and
+    not how it went, which is the honest version until Drummond supplies the facts.
+  - **Measured whole-site: exactly 5 of 197 files in `dist` differ**, and they are the predicted
+    set - the two pages, `llms-full.txt` and both sitemaps. `llms.txt` did not move (no title or
+    description changed), no other page moved, and internal links stay at **3,150**, because the
+    deleted answers carried no links and the moved one carries only the `hello@` address. The
+    `FAQPage` node on the event page goes 13 -> 3 and on the programme page 13 -> 14.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,150 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, all titles and descriptions unique,
+    no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds. The 11
+    outbound warnings are the sandbox egress policy, identical on the baseline. Headless Chromium
+    at 375 and 1280px on both pages, 4 configurations, all clean: 200, **0px overflow**, one `h1`,
+    correct self-canonical, no robots meta, zero em dashes in `<main>`, heading order unbroken, the
+    three kept questions present and *"before you book"* gone from the past page, the invoice answer
+    present on the programme page between team bookings and group size. Full-page screenshots read
+    at both widths. IndexNow maps the two content files to their own pages.
+  - **One thing found while measuring, not fixed: `/` now claims a `lastmod` it did not earn.**
+    `homepageLastmod` in `astro.config.mjs` folds in every programme's `updatedDate`, because the
+    homepage renders a card per programme - but the card prints `shortPitch`, which this edit did
+    not touch, so `/` moved from 27 to 28 October on a change invisible there. It is the
+    convention the file already states and it overstates rather than understates, which is the
+    direction that file otherwise avoids. Logged as **backlog 49**, not widened into this cycle.
+  - **Four GEO probes, zero citations, full table in `seo-data/geo-citations.md` under 28 Oct
+    01:00.** The one that bears on this change: asked whether a locked-down work laptop can be used
+    at a hands-on AI workshop, the engine said it *"didn't find any UK-specific guidance"* and
+    answered from Reddit, a password manager's forum and a privileged-access vendor's blog, advising
+    the reader to ask the organiser. This site publishes that answer, and one of its two copies was
+    the "before you book" one on a past page. Probe 3 found the field has nothing AI-specific on
+    cohort size while question 3 of `questions-to-ask-before-booking-ai-training` answers it: the
+    third retrieval-not-content result in two days. Probe 1 (who maintains a workflow after it is
+    built) is the one unanswered axis and was **not** taken - the sharp half is already in
+    `getting-an-ai-workflow-past-it-and-legal` and the rest sits in the agency cluster Drummond has
+    ruled out. **No guide. 0 of 3 for the week of 26 Oct - 1 Nov**, the allowance unspent for the
+    twentieth cycle running.
+  - **Off-page: no new contactable lead.** `eventbrite`, `cademy`, `happeningnext` and
+    `allai.events` are all already on `outreach/review-list.md`; the rest were competitors,
+    university calendars, agency blogs or forums.
+  - **Search Console: unavailable from the cloud.** No export newer than the 24 August baseline in
+    `seo-data/`, and no API credentials in the repo.
+  - **Production before this cycle:** deploy run **312** success on `6c3f406`, the HEAD this cycle
+    started from, finished 19:13 GMT on 27 October with nothing queued or in progress.
+    `oxfordagentic.com` answers **403 on CONNECT** from this sandbox, so `build.txt` could not be
+    read and the Actions API stood in for it, as on every cycle since 22 October. **No Luma page
+    was read and no event fact was read or changed** - `luma.com` is blocked by the same policy.
 
 - **2026-10-27 (19:00 cycle) - the field publishes no timetable and says so, and the guide that
   is already cited #1 on its own query had a section called "What actually happens on the day"

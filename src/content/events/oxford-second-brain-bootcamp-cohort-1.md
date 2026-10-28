@@ -11,7 +11,7 @@ cohort: Cohort 1
 status: past
 startDate: "2026-10-21T09:00:00+01:00"
 endDate: "2026-10-21T17:00:00+01:00"
-updatedDate: "2026-10-21T19:11:17+00:00"
+updatedDate: "2026-10-28T01:30:00+00:00"
 venue:
   name: Pitt Rivers Museum
   street: South Parks Road
@@ -50,77 +50,33 @@ agenda:
     title: What it makes possible
     detail: Where this goes next, and time with the room.
 faqs:
+  # Rewritten on 28 Oct 2026, a week after the day ran, on Cohort 2 of the Agentic
+  # Bootcamp's precedent (23 Sept 2026). Ten of the thirteen questions here were
+  # written to answer a booking objection - what to bring, whether a work laptop can
+  # install anything "before you book", team bookings, the transfer if you cannot make
+  # the date - and a page for a day that has already happened cannot honestly ask
+  # anyone to act on them. Every one of them is published on
+  # `/bootcamps/second-brain-bootcamp/`, which is the live page for this bootcamp now
+  # that no cohort is on sale, so nothing is lost by dropping the copies here. The
+  # invoice answer moved to that page in the same commit, because this was its only
+  # commercially-placed home. What stays is what a reader of a past page needs:
+  # whether it ran, what to do now, and what the day was actually about.
+  #
+  # Cohort 2 kept a third answer, what people built, sourced from the room. There is
+  # no equivalent here: no Second Brain outcome has been confirmed, and none is
+  # invented. Backlog 37 stays open for it.
   - q: When and where was it?
     a: >-
       Wednesday 21 October 2026, 09:00 to 17:00, at the Pitt Rivers Museum on South
       Parks Road in central Oxford. That date has passed and dates for the next cohort
       are being confirmed.
+  - q: Can I still join this cohort?
+    a: >-
+      No - this date has passed and registration for it has closed. Dates for the next
+      cohort are being confirmed.
   - q: What is a second brain?
     a: >-
       A structured, maintained store of your own context - how you write, what good
       looks like, what your business knows - that your AI assistants can draw on. With
       it, answers stop being generic; without it, every conversation starts from zero.
-  - q: Do I need to be technical?
-    a: >-
-      No. Nothing on the day requires code. The work is deciding what your context is
-      and structuring it, which is thinking about your business, not programming.
-  - q: How is this different from the Oxford Agentic Bootcamp?
-    a: >-
-      The Agentic Bootcamp builds workflows - AI pipelines that do a task. This day
-      builds the context those tools draw on. They compound, and neither assumes the
-      other.
-  - q: Which AI tools does this work with?
-    a: >-
-      The ones you already use. What you build is your own material, structured so a
-      model can read it, rather than a setup inside one particular app. The day ends
-      with connecting it to the tools you work in, so it survives you changing them.
-  - q: Who is it not for?
-    a: >-
-      People who want a conceptual overview of AI - this is a build day, not a briefing.
-      Anyone who cannot bring their own material, because the day is spent populating a
-      second brain with real documents and notes, and without them you leave with a
-      template rather than a second brain. Anyone expecting a vendor or platform pitch:
-      no tool is being sold. And anyone whose work laptop blocks new sign-ups, which is
-      worth checking first.
-  - q: What should I bring?
-    a: >-
-      A laptop, and access to your own material - the documents, notes and examples
-      that carry how you work. The day is built around populating your second brain
-      with real content, not placeholders.
-  - q: Can I still join this cohort?
-    a: >-
-      No - this date has passed and registration for it has closed. Dates for the next
-      cohort are being confirmed.
-  - q: Can I install software on my work laptop?
-    a: >-
-      Worth checking before you book. Corporate and government devices often block new
-      tool sign-ups, and the day ends with connecting your second brain to the tools you
-      work in. This caught people out at the first Oxford Agentic Bootcamp, so it is
-      better found now than at 09:30 on the day. If your laptop is locked down, email
-      hello@oxfordagentic.com and we will work out what you need beforehand.
-  - q: What if some of my material is confidential?
-    a: >-
-      Bring what you would be comfortable putting in an email to an external supplier.
-      Credentials, keys and other people’s personal data stay out of a second brain in
-      any form. That still leaves most of what makes AI answers specific to you: how
-      you write, what good looks like, and the decisions you have already made.
-  - q: Can I bring my team?
-    a: >-
-      Yes. Teams are welcome, and bringing a colleague means the same approach goes
-      back to work with two of you rather than one. Email hello@oxfordagentic.com and
-      we will arrange it.
-  - q: What if I cannot make the date?
-    a: >-
-      Tickets are not refundable, but your place transfers to a future cohort at no
-      charge. Just let us know and we will move you.
-  # The procurement question, and the only published answer to it was on the
-  # homepage FAQ. Nobody books a bootcamp from the homepage: an organisation that
-  # cannot put a card through reaches this page, sees a card form and stops. The
-  # wording is `src/lib/home.ts`'s own, so no new term is offered here. Trimmed on
-  # 21 Oct 2026, the evening the day ran: there is no booking form on a past page, so
-  # the sentence pointing at one went. The invoice route itself is unchanged.
-  - q: Can my organisation pay by invoice?
-    a: >-
-      Yes. If your organisation would rather pay by invoice than book on a card form,
-      email hello@oxfordagentic.com and we will arrange it.
 ---
