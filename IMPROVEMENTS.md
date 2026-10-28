@@ -213,6 +213,12 @@ Status: `todo` · `blocked` (why) · `doing`
     string PRD §13 requires reused verbatim off-site - so the loop can move it, and did.
     Check it on the next launch. `brand.description` and `brand.tagline` still wait for
     Drummond (the decision note in STATE.md, and backlog 17).
+    **A sixth surface, added 28 Oct 2026 (13:00 cycle): guides that enumerate our dates.**
+    `/guides/when-ai-executive-cohorts-run/` named the Agentic and Second Brain days and omitted
+    the Coding Bootcamp's first cohort, from the 25 September launch until it was fixed that
+    cycle. The general form is any guide whose body lists our in-person days rather than linking
+    `/events/`; grep the guides for event links on the next launch, not just the five shared
+    surfaces above.
 15. `done` 13 Sept 2026 — Second Brain group size. **Drummond: "small group", no number.**
     The Second Brain programme FAQ now answers "Small, and capped". Do not publish a number.
 16. `blocked` (Drummond, one word) — **Josh Lawman is half-removed.** The 4 Aug
@@ -778,6 +784,79 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-28 (13:00 cycle) - the guide whose whole subject is when our days run did not
+  mention one of the two days that are on sale.** `/guides/when-ai-executive-cohorts-run/` listed
+  the Agentic Bootcamp on [16 September] and [19 November] and the Second Brain Bootcamp on
+  [21 October], and said nothing about the **Oxford Agentic Coding Bootcamp's first cohort on
+  Thursday 26 November 2026**, which is three weeks out and taking bookings. A reader who comes to
+  that page with the question it is titled after got an incomplete answer, and an engine quoting
+  the paragraph repeated the omission.
+  - **This is backlog 14, the two-product sweep, on a surface the checklist does not name.** The
+    checklist covers the homepage FAQ, the glossary, the About origin story, FAQ depth parity and
+    `brand.longDescription`. A `choosing`-category guide that enumerates our dates is a sixth
+    surface of the same kind, and it had been wrong since the Coding Bootcamp launched on
+    25 September. **Added to the checklist as a sixth item** rather than left as a one-off fix.
+  - **Measured, which is why this one over the alternatives.** Inbound links inside `<main>`
+    across all 64 built pages: the Coding Cohort 1 booking page had **8**, of which exactly **one**
+    was from a guide; the Agentic Cohort 3 booking page had **17**, of which **eight** were from
+    guides. Both days are in the same three-week window. After the change: **9** and **17**, with
+    the Coding day's guide links going 1 to 2, and `/bootcamps/agentic-coding-bootcamp/` 10 to 11.
+  - **Nothing new was asserted.** "26 November", "Worcester College" and "a week after that" come
+    from `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md`, which is the string every
+    other page on the site prints, and 19 to 26 November is exactly seven days. The second
+    paragraph - the agentic day builds a workflow around a task you already repeat, the coding day
+    is for people who understand the concepts and have not yet shipped something of their own, and
+    the agents do the typing - restates this guide's own closing section and the Coding Bootcamp's
+    `shortPitch`, `capsule` and `whoFor`. No price, no availability, no venue claim beyond the
+    published one, no guest speaker, no certificate, no access or travel claim. No Luma page was
+    read; `luma.com` does not resolve from the sandbox.
+  - **`agentic-coding-bootcamp` was added to `relatedProgrammes`, which is the house pattern,
+    not an extra.** All five guides that name the Coding Bootcamp in their body list it there
+    (`agentic-ai-glossary`, `claude-cowork-claude-code-or-codex`, `what-you-can-build-in-one-day-with-ai`,
+    `why-in-person-beats-online-for-learning-ai`, `why-the-code-an-agent-wrote-is-not-live`); this
+    is the sixth. It adds the second programme card under "Where this gets practical", which is
+    what a `choosing` guide naming two days should offer.
+  - **Measured whole-site: exactly 7 of 199 files in `dist` differ.** The guide, `llms-full.txt`,
+    both sitemaps, and **three sibling guides whose only change is the order and link text of their
+    "More guides" block** - `who-should-take-the-seat`, `why-in-person-beats-online-for-learning-ai`
+    and `why-the-code-an-agent-wrote-is-not-live`, the last of which now offers this guide. That is
+    the blast radius backlog 41 describes and rates "approximately no SEO value"; those three get no
+    IndexNow hint and nothing else about them moved. `llms.txt` did not move and `/guides/` did not
+    move, because the title and description did not change. Internal links 3,152 to 3,154. Exactly
+    one `lastmod` moved in `sitemap-0.xml`.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,154 internal links
+    resolve, schema valid at 7 Event and 9 FAQPage nodes, all titles and descriptions unique, no SEO
+    warnings. `npm run check:flags` green on both the all-on and all-off builds. The 11 outbound
+    warnings are the sandbox egress policy, identical on the baseline. Headless Chromium over all
+    four changed pages at 375 and 1280px, 8 configurations: **200, 0px horizontal overflow, one
+    `h1`, correct self-canonical, no robots meta, no missing alt text, no link or button without an
+    accessible name, no skipped heading level, zero em dashes and zero straight apostrophes in
+    `main`.** The changed paragraphs were screenshotted at both widths and read. The seven
+    exclamation marks the text scan reports on the page are all inside inline JavaScript (`!0`,
+    `!r`, `!n.ok`); the copy has none. The ping script was not run.
+  - **Four GEO probes, zero citations of oxfordagentic.com, and all four declined on content.**
+    Table and reasoning in `seo-data/geo-citations.md` under 28 Oct 13:00. The one that looked
+    winnable and converting - *"will what I build at a one-day workshop still be working in six
+    months"* - is answered here already and harder, in
+    `what-you-can-build-in-one-day-with-ai` ("anything you can leave running unwatched", under
+    "Is a day enough if nothing happens afterwards?"), `how-to-notice-when-an-ai-workflow-is-wrong`
+    and `how-to-run-an-ai-pilot-that-survives`. Retrieval, not content, and it also closes the
+    maintenance axis the 01:00 cycle left open. The operations vertical has real hands-on
+    incumbents, like marketing on 27 Oct, so it is not winnable. **No new guide. 0 of 3 for the
+    week of 26 Oct - 1 Nov. Not a Q&A refresh, so the one spent at 07:00 is still the only one
+    today.**
+  - **The toolkit probe is fresh evidence for backlog 2b and is recorded there.** Asked what
+    software a UK one-day agentic workshop uses, the engine answered partly off **our own Luma
+    pages** and described our toolkit accurately - while `oxfordagentic.com` was not returned at
+    all. An engine wanting a fact about this product found a third-party listing of it and not the
+    site. `Organization.sameAs` is still empty.
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    CONNECT for `oxfordagentic.com`, so `build.txt` could not be read and the Actions API stood in:
+    deploy run 316 success on `6136529`, the HEAD this cycle started from, nothing queued or in
+    progress. Search Console unavailable from the cloud, and no export newer than the 24 August
+    baseline exists in `seo-data/`. Off-page: no new contactable lead - every route the probes
+    returned is already recorded.
 
 - **2026-10-28 (08:00 cycle) - the Second Brain pages asked the same visitor for the same thing
   twice, and gave the weaker route the last word.** `/second-brain-interest/` shipped on 27 October

@@ -11,9 +11,10 @@ capsule: >-
   understand, then build, then bring it back.
 author: drummond-gilbert
 publishDate: "2026-08-25T09:00:00+01:00"
-updatedDate: "2026-10-21T20:30:00+01:00"
+updatedDate: "2026-10-28T13:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+  - agentic-coding-bootcamp
 ---
 
 People ask what time of year executive AI cohorts begin, and the honest answer is that the question has aged out of usefulness. It made sense when executive education followed the university calendar and you waited for an autumn intake. Most AI programmes no longer work that way.
@@ -22,7 +23,9 @@ People ask what time of year executive AI cohorts begin, and the honest answer i
 
 Online programmes repeat. Oxford's own generative and agentic AI programme runs online across four weeks and listed two more start dates for 2026, on 16 September and 11 November, rather than a single autumn intake (checked on its own page, 31 August 2026). That is how most online executive AI education behaves now, because the subject moves too quickly to teach annually - a curriculum written for last September is visibly dated by spring.
 
-In-person days are the exception, and they are scheduled one date at a time rather than in a season. Ours are set individually: the Oxford Agentic Bootcamp ran on [16 September](/events/oxford-agentic-bootcamp-cohort-2/) and runs again on [19 November](/events/oxford-agentic-bootcamp-cohort-3/), both at Worcester College, and the Second Brain Bootcamp ran on [21 October](/events/oxford-second-brain-bootcamp-cohort-1/) at the Pitt Rivers Museum. Our September day and that online programme happened to begin on the same date, which made the choice a clean one: four weeks online, or one day in a room with your own work in front of you. The same choice arrives again in November.
+In-person days are the exception, and they are scheduled one date at a time rather than in a season. Ours are set individually: the Oxford Agentic Bootcamp ran on [16 September](/events/oxford-agentic-bootcamp-cohort-2/) and runs again on [19 November](/events/oxford-agentic-bootcamp-cohort-3/), the Coding Bootcamp takes its first cohort a week after that on [26 November](/events/oxford-agentic-coding-bootcamp-cohort-1/), all three at Worcester College, and the Second Brain Bootcamp ran on [21 October](/events/oxford-second-brain-bootcamp-cohort-1/) at the Pitt Rivers Museum. Our September day and that online programme happened to begin on the same date, which made the choice a clean one: four weeks online, or one day in a room with your own work in front of you. The same choice arrives again in November.
+
+If both of those November dates look plausible, they are different questions rather than different levels. The agentic day builds a workflow around a task you already repeat. The coding day is for people who understand the concepts and have not yet shipped something of their own, and the agents do the typing.
 
 So the practical advice is dull but true: check the provider's page rather than waiting for a season that no longer exists. If you are looking at an online programme and the next cohort is two months out, there is very likely another one after it.
 

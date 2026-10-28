@@ -5,6 +5,72 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-28 (13:00 GMT cycle) - THE FIELD ANSWERS ALL FOUR, AND THE ONE REAL GAP WAS OUR OWN DATE LIST
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last four cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| will an AI agent workflow I build today still work when the model updates, breaking changes, small business | **No** | `apxml.com`, `mindstudio.ai` (x2), `datasciencedojo.com`, `github.com/google/adk-python`, `playbooks.com`, `community.moveworks.com`, `cognigy.com`, `docs.mezmo.com`, `agentgateway.dev`, `markaicode.com`, `workato.com`, `pydantic.dev`, `glama.ai`, `plushcap.com`, a Reddit snapshot |
+| what tools do you actually use at a hands-on agentic AI workshop, one day, UK | **No - but both our Luma pages were** | `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (**ours**), `brainstation.io`, `digitalresearchservices.ed.ac.uk` (x2), `rse.sheffield.ac.uk` (x2), `sheffield.ac.uk` (x2), `odsc.ai`, `essex.ac.uk`, `createwith.com`, `eventbrite.co.uk`, `science.ai.cam.ac.uk`, `generalassemb.ly`, two other `luma.com` listings |
+| agentic AI workshop for operations teams UK one day in person hands-on | **No** | `columbusglobal.com` (x2), `brainstation.io`, `odsc.ai`, `maven.com`, `anicca.co.uk`, `invite.salesforce.com`, `eventbrite.co.uk`, `createwith.com` (x2), `essex.ac.uk`, `appsource.microsoft.com`, four `luma.com` listings (HR and product, not ours) |
+| will what I build at a one-day AI workshop still be working six months later | **No** | `academy-97l.pages.dev`, `aceart.de`, `zackproser.com`, `madesmarter.uk`, `moshi-studio.pages.dev`, `journalism-ai-library.pages.dev`, `zevro-landing-page.pages.dev`, `hr.mcleanco.com`, `resources.rework.com`, `artandlogic.com`, `workos.com`, `contra.com`, `allai.events` |
+
+**All four were declined on content, and the cycle shipped an accuracy fix found while checking
+them.** Recording why, so no later cycle re-pitches any of the four.
+
+**Probe 1 fails the converting test.** The field here is real and it is entirely developers'
+ground - version pinning, eval sets before upgrading, model gateways, LangChain and Pydantic
+changelogs, `promptfoo`. Half the sources are platform vendors writing about their own product
+(`mindstudio.ai`, `workato.com`, `cognigy.com`, `agentgateway.dev`), which is the rule's own
+not-winnable clause, and the searcher who phrases it this way is building agents for a living,
+not booking a day in Oxford. Not pitched.
+
+**Probe 4 is the same axis in buyer language, and it is the one that looked promising: winnable,
+converting, and already answered here.** The field is content farms and `pages.dev` agency blogs
+with no institutional publisher among them, and the engine's verdict - *"probably not on its own.
+A one-day build is often a demo"* - is the sharpest objection to a one-day format there is. But
+`/guides/what-you-can-build-in-one-day-with-ai/` says it first and says it harder, in its own
+capsule: what you will not have is *"anything you can leave running unwatched"*, under a section
+headed **"Is a day enough if nothing happens afterwards?"**. The decay half - re-run a known
+input, something upstream has changed, a model update - is the second of the four checks in
+`/guides/how-to-notice-when-an-ai-workflow-is-wrong/`, and the team half is
+`/guides/how-to-run-an-ai-pilot-that-survives/`. Retrieval, not content, and the fourth such
+result in three days. **Nothing written.** This also closes the adjacent maintenance axis the
+01:00 cycle left open.
+
+**Probe 3 does not open the operations vertical, for the same reason marketing did not on
+27 Oct.** The field has real hands-on incumbents - BrainStation's full day in London, Maven's
+"AI for Operations Teams", Microsoft's "Agent in a Day" through Columbus Global, Anicca's
+bespoke days - so what the engine reports missing is published dates, not the thing itself. Not
+winnable on the rule's own terms. Not pitched.
+
+**Probe 2 is the most useful datum of the four, and it is evidence for backlog 2b rather than a
+content gap.** Asked what software a UK one-day agentic workshop actually uses, the engine
+answered partly **off our own Luma pages** and got us right: *"The Oxford Agentic Bootcamp is a
+one-day event that lists Claude, Cowork, Claude Code, Codex, and where each one fits among its
+tools, and it is pitched at people who don't code."* That is accurate and it is ours - but it
+came from `luma.com`, not from `oxfordagentic.com`, which was not returned at all. The programme
+and event pages carry the same toolkit. This is the controlled pair the 27 Oct cycle asked for,
+one step further on: when an engine wants a fact about this product it can find a third-party
+listing of it and not the site. `Organization.sameAs` is still empty.
+
+**What shipped instead, found while checking probe 3's dates.**
+`/guides/when-ai-executive-cohorts-run/` - the guide whose entire subject is when our in-person
+days run - listed the Agentic Bootcamp's 16 September and 19 November and the Second Brain
+Bootcamp's 21 October, and **omitted the Oxford Agentic Coding Bootcamp's first cohort on
+26 November**, which is on sale now. Measured on the built site: that booking page had **8**
+inbound links inside `<main>` against Cohort 3's **17**, and **one** of the 8 came from a guide
+against Cohort 3's eight. The sentence now names it and links it, and a second paragraph says
+what the two November days differ on, in the words `shortPitch` and `whoFor` already publish.
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.** Not a Q&A refresh either, so the one
+spent at 07:00 remains the only one today.
+
+**Off-page: no new contactable lead.** Every route the four probes returned is already recorded -
+`allai.events`, `eventbrite.co.uk`, `createwith.com`, `cademy`-style directories - and the rest
+were competitors, universities, vendors or content farms.
+
 ## 2026-10-28 (07:00 GMT cycle) - THE FIELD CANNOT SAY WHAT YOU MAY BRING TO A WORKSHOP, AND THIS SITE’S ANSWER SAT ONLY ON PAGES NO ENGINE RETURNS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
