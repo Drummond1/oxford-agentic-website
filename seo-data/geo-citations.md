@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-29 (13:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR DECLINED ON CONTENT - ONE OF THEM BECAUSE WE ALREADY ANSWER IT BETTER THAN THE FIELD DOES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last six cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on agentic AI workshop for HR and people teams UK one day build a workflow | **No** | `luma.com` x4 (none ours), `cipd.org`, `createwith.com` (x4), `eventbrite.co.uk` (x2), `columbusglobal.com`, `zapier.com`, `appsource.microsoft.com` (x2), `rsvp.servicenow.com` |
+| should a business leader learn n8n or Claude agents first, which agentic AI tool to start with 2026 | **No** | `peerspot.com`, `growwstacks.com`, `mindstudio.ai`, `lowcode.agency`, `dev.to` (x2), `aakashg.com`, `createwith.com` (x2), `skool.com`, `fenxi.fr`, `contextstudios.ai`, `aiagentrank.io`, `findskill.ai`, two `.pages.dev`/`.vercel.app` mirrors, a Reddit snapshot |
+| agentic AI training for HR directors UK where can people teams learn to build AI agents in person | **No** | `agile-academy.com`, `agenticai-associates.pages.dev`, `createwith.com` (x2), `pointacademy-co-uk.pages.dev`, `theknowledgeacademy.com`, `aiawareness.ai`, `wearehyper-ai.pages.dev`, `hr.mydigitalpublication.co.uk` (x2), `eventbrite.co.uk` (x2), `ecc.ac.uk`, `luma.com` |
+| what do you actually take home from a one-day AI workshop, does the workflow still work the week after | **No** | `sfailabs.com`, `alicelabs.ai`, `aismartventures.com`, `pulse.bot` (x2), `pertamapartners.com`, `zackproser.com`, `personneltoday.com`, `amitkoth.pages.dev`, `tessgroup-website.pages.dev` |
+
+**Probe 4 is the finding, and it is the first time in weeks a probe has closed itself.** The
+engine's own verdict was *"The search results don't include independent studies on whether a
+one-day AI workshop's workflow survives a week later. Most of what's available is vendor
+marketing, and several of its statistics are unsourced or doubtful"*, and it closed *"I didn't
+find any independent evidence measuring this directly"*. It flagged the learning-pyramid numbers
+(10% for lectures, 75% for practice) as repeated across the field on weak sources, and a 67%
+retention claim attributed to a 2025 ATD study it could not verify. **Winnable** - no
+institutional publisher anywhere in the set, two `.pages.dev` mirrors and `pulse.bot` instead -
+and **converting**, since it is the last objection before booking. **Declined anyway, because
+`/guides/what-you-can-build-in-one-day-with-ai/` already answers it, and more honestly than
+anything returned.** That guide's section *"Is a day enough if nothing happens afterwards?"*
+opens *"No, and that is worth saying plainly rather than waiting to be asked"*, says a draft
+nobody opens again stops being worth the day inside a fortnight, and puts the recipe above the
+workflow it produced; *"What you should expect to leave with"* names the three things. It links
+`how-to-run-an-ai-pilot-that-survives` for the team case and
+`is-your-ai-workflow-saving-time-or-just-effort` for the measurement. Writing a second page on
+this would be the near-duplicate the rules forbid, and the site has no retention figure of its
+own to add - no Cohort has published one, and inventing one is the error class the outcome rules
+exist to prevent. **Nothing to do but be found.**
+
+**Probes 1 and 3 are the HR vertical, probed twice as the finance precedent requires, and the
+vertical is declined.** Probe 1 produced a real-looking product gap - *"I found no single
+one-day, UK-based, hands-on workshop for HR teams that is clearly upcoming"* - which is the
+shape that justified `agentic-ai-for-finance-teams`. The second phrasing dissolved it. There
+**are** one-day in-person UK AI-for-HR courses: Point Academy's at £695 plus VAT in London,
+Knowledge Academy and AI Awareness both selling UK on-site delivery, Agile Academy running a
+half-day agentic course for HR with an agent-building workshop after it, and Agentic AI
+Associates offering in-person UK workshops. So the field is **neither clearly winnable** - CIPD,
+the profession's own body, holds its subject, with HR Magazine and Personnel Today beside it,
+which is the institutional-publisher clause that killed charities on 16 Oct and legal on 22 Oct
+- **nor a gap we could honestly fill**: what the engine could not find is an HR-specific agentic
+day, and we do not run one. A guide implying otherwise would be writing the product we wish we
+sold. Do not re-pitch HR without new evidence.
+
+**Probe 2 fails the converting test.** The field is winnable in the narrow sense - the engine
+itself said *"Nearly all of these sources are vendor, affiliate, or creator content with
+commercial stakes, and the search did not return independent evaluations"* - but the searcher it
+serves is an automation builder choosing a stack, not a leader booking a day in a room. That is
+the same vanity-traffic failure as "AI bootcamp vs course" (career changers) and "why does AI
+sound generic" (content marketers). `claude-cowork-claude-code-or-codex` already answers the
+tool-choice question for someone whose work ends in documents, which is the half of this axis
+that does convert.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. The change this cycle is a meta
+description, not a Q&A refresh, so both of today's refreshes are unspent.**
+
+**No new contactable lead.** `createwith.com` and `allai.events` are already recorded as doorway
+patterns or standing items; everything else returned was a competitor, a course seller, a
+professional body, a trade publisher, a vendor blog or a content farm.
+
 ## 2026-10-29 (07:00 GMT cycle) - FOUR PROBES, AND A QUERY CARRYING OUR OWN DATE AND OUR OWN VENUE STILL RETURNED NO PAGE OF THIS SITE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

@@ -238,12 +238,42 @@ const registerLabel = !registrationOpen
 // calendar" button, along with the click-feedback script at the bottom of this
 // file. Luma sends a calendar invite when someone books, which is the moment the
 // invite is actually worth having.
+
+/*
+ * The meta description is NOT `summary` on a page that can still be booked.
+ *
+ * `summary` has a second job, and the two pull opposite ways. It is the line
+ * under the heading on every event card - on `/events/`, `/bootcamps/` and the
+ * homepage - where the date and the venue are printed directly above it. Both
+ * upcoming events had their summary rewritten on 12 Oct to stop repeating that
+ * line, which is right for the card and quietly wrong for the one place the date
+ * is not already on screen. A search result has no line above it, so
+ * `/events/oxford-agentic-bootcamp-cohort-3/` - the page that takes the booking
+ * for the next cohort - described the day in 93 characters and named no date, no
+ * venue and no city, while the three past events all name theirs in prose.
+ *
+ * So a bookable page composes its own, from the same `formatDate` and
+ * `venueLine` the hero prints a few lines down. Nothing is asserted that the
+ * page does not already say in visible copy, and it is derived, so it cannot go
+ * stale: once the date passes the prefix drops of its own accord and the summary
+ * stands alone again. The weekday is the first thing dropped if a longer venue
+ * or summary would pass 160 characters, and the summary stands alone if that is
+ * still not enough.
+ */
+const metaDescription = (() => {
+  if (isPast) return data.summary;
+  const venue = venueLine(data.venue);
+  const withWeekday = `${formatDate(data.startDate)} at ${venue}. ${data.summary}`;
+  if (withWeekday.length <= 160) return withWeekday;
+  const noWeekday = `${formatDate(data.startDate, { weekday: undefined })} at ${venue}. ${data.summary}`;
+  return noWeekday.length <= 160 ? noWeekday : data.summary;
+})();
 ---
 
 <Base
   pageTitle={data.title}
   titleOverride={title}
-  description={data.summary}
+  description={metaDescription}
   path={path}
   ogImage={ogImage}
   schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos), showFaq ? faqSchema(data.faqs, path) : null]}

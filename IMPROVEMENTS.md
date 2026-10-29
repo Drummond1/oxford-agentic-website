@@ -824,6 +824,96 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-29 (13:00 cycle) - the two pages that take the bookings were the only event pages
+  whose search snippet named no date, no venue and no city.** `summary` is doing two jobs that
+  pull opposite ways. It is the line under the heading on every event **card**, where the date
+  and venue are printed directly above it - so on 12 Oct both upcoming events had their summary
+  rewritten to stop repeating that line, with a comment in each file saying it "says the part
+  the meta line cannot". It **is** the meta line. A search result has no line above it, so
+  `/events/oxford-agentic-bootcamp-cohort-3/` described the next cohort in **93 characters** -
+  *"Bring one real task from your own work and leave with an agentic workflow running against
+  it."* - and the Coding Cohort 1 page in 99, while all three **past** event pages name their
+  venue in prose. A bookable event page now composes its own description: **"Thursday, 19
+  November 2026 at Worcester College, Oxford. Bring one real task from your own work and leave
+  with an agentic workflow running against it."** (150 characters) and **"Thursday, 26 November
+  2026 at Worcester College, Oxford. Build and ship a live website and a working prototype, with
+  Claude Code and Codex doing the typing."** (156).
+  - **This is the fourth and sharpest page in the same sequence.** `/events/` (21 Oct),
+    `/bootcamps/` (29 Oct 01:00) and `/` (29 Oct 07:00) each had a description that named no
+    date; this is the page the date is *about*, and the only one of the four a buyer can book
+    from. The evidence is probe 3 under 29 Oct 07:00 in `seo-data/geo-citations.md`: a query
+    carrying **our exact date and our exact venue** - *"AI bootcamp Oxford 19 November 2026
+    agentic workflow one day Worcester College"* - returned `luma.com/oxfordagentic2` and
+    `luma.com/k7c2rm5s`, both **ours and both past**, took *"21 Jul 2026"* off `allai.events`,
+    and closed *"I couldn't confirm a 19 November 2026 date"*. The retrieval half of that is
+    backlog 2b and nothing on-page reaches it. The half that is reachable is that the page
+    describing exactly what the query asked for did not contain the answer in the field an
+    engine quotes.
+  - **Derived, so it cannot go stale, and it drops itself.** The prefix is built from the same
+    `formatDate(data.startDate)` and `venueLine(data.venue)` the hero prints a few lines down -
+    verified identical in the rendered page, *"THURSDAY, 19 NOVEMBER 2026 ... WORCESTER COLLEGE,
+    OXFORD"*. It is applied only while `isPast` is false, so on 19 November, on the daily cron
+    with no commit behind it, Cohort 3's description reverts to the summary alone, which is what
+    the three past pages already read like. The weekday is dropped first if a longer venue or
+    summary would pass 160 (140 and 146 characters that way), and the summary stands alone if
+    that is still not enough.
+  - **`summary` was deliberately left alone**, which is the point of fixing it here rather than
+    in the two content files. The card keeps the line the 12 Oct cycle wrote for it, `llms.txt`
+    and `llms-full.txt` keep theirs, and the two jobs stop fighting over one string. The
+    comments in both event files that explain the 12 Oct rewrite are still true of the card and
+    are left as they are; the new comment in the template says why the meta line now diverges.
+  - **Nothing new is asserted.** The date and the venue are in the hero of the page itself, in
+    the header and footer of all 64 pages, in the `EducationEvent` node on the same page, in
+    `/events/`, `/bootcamps/` and `/`'s own descriptions, and in `llms.txt`. No price, no
+    availability, no certificate, no guest speaker, no access or travel claim.
+  - **Measured whole-site: exactly 2 of 199 files in `dist` differ**, the two upcoming event
+    pages. Inside each, the `<body>` is **byte-identical** (38,222 and 30,438 characters before
+    and after) and exactly four fields moved: `meta[name=description]`, `og:description`,
+    `twitter:description` and `description` on the `WebPage` node. Compared node by node in the
+    JSON-LD: 6 nodes each, and `Organization`, `WebSite`, `EducationEvent`, `FAQPage` and
+    `BreadcrumbList` are all unchanged - the event node takes its description from
+    `eventSchema()`, not from this string. **Neither sitemap moved**, no `lastmod` changed, no
+    `updatedDate` was touched, `llms.txt` and `llms-full.txt` did not move, the three past event
+    pages did not move, and internal links stay at 3,158.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 9 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline. Headless
+    Chromium over both changed pages and Cohort 1 as an unchanged past control, at 375 and
+    1280px, 6 configurations: **200, 0px horizontal overflow, one `h1`, correct self-canonical,
+    no robots meta, no missing alt text, no skipped heading level, zero em dashes and zero
+    straight apostrophes in `main`**, the new description correct on all three meta fields, and
+    the control still carrying its own unchanged one. Both widths screenshotted and read; the
+    rendering is unchanged, as a byte-identical body requires. The ping script was not run.
+  - **IndexNow, measured with `--dry-run`: this maps to the whole sitemap, not to the two pages
+    that moved.** `src/pages/events/[slug].astro` does not match the static-page regex (the
+    `[slug]` brackets), so it falls through to `wholeSite`. That is the correct default for a
+    dynamic template in general - a guide-template change really can move 32 pages - and it is
+    the over-submitting direction. Recorded, not fixed; it is a narrower case than backlog 41
+    and not worth a map entry of its own.
+  - **Four GEO probes, zero citations, all four declined on content**; table in
+    `seo-data/geo-citations.md` under 29 Oct 13:00. The one that looked strongest -
+    *"what do you actually take home from a one-day AI workshop, does the workflow still work
+    the week after"* - is **winnable** (no institutional publisher, two `.pages.dev` mirrors and
+    `pulse.bot` in the set) and **converting**, and was declined because
+    `/guides/what-you-can-build-in-one-day-with-ai/` already answers it, under its own heading
+    *"Is a day enough if nothing happens afterwards?"*, more honestly than anything the engine
+    returned - which itself closed *"I didn't find any independent evidence measuring this
+    directly"*. **The HR vertical was probed twice, as the finance precedent requires, and is
+    declined:** the second phrasing found one-day in-person UK AI-for-HR courses already selling
+    (Point Academy at £695 plus VAT, Knowledge Academy, AI Awareness, Agile Academy's agentic
+    half-day), with CIPD, HR Magazine and Personnel Today holding the subject, and what the
+    engine could not find is an HR-specific agentic day, which we do not run. **No new guide.
+    0 of 3 for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both of today's are unspent.**
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and it does not resolve through WebFetch either, so `build.txt` could not be read and the
+    Actions API stood in: deploy run **322 success on `6115cf9`** (the scheduled rebuild at
+    09:55, after run 321 on the same SHA at 08:22), which is both `origin/main` and the HEAD
+    this cycle started from, nothing queued or in progress. `luma.com` does not resolve, so no
+    event fact was read or changed. Search Console unavailable from the cloud, and no export
+    newer than the 24 August baseline exists in `seo-data/`. Off-page: no new contactable lead,
+    nothing contacted.
+
 - **2026-10-29 (08:00 cycle) - the form a visitor actually fills in was the one place on the
   site still wearing the browser's default tick box.** `/apply/` is the six-step application
   form and the only conversion path on the site that is not a Luma iframe. All **26** of its
