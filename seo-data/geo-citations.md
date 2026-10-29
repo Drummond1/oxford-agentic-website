@@ -5,6 +5,72 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-29 (07:00 GMT cycle) - FOUR PROBES, AND A QUERY CARRYING OUR OWN DATE AND OUR OWN VENUE STILL RETURNED NO PAGE OF THIS SITE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last five cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| what does a non-developer actually ship in one day using Claude Code or Codex, hands-on workshop | **No** | `every.to` (x3), `claude101.every.to`, `adventuremedia.ai` (x2), `maven.com`, `udcourse.com`, `luma.com/aj4qmjz3`, `luma.com/3kb7dh3v`, `luma.com/abqs3lxo` (none ours), `dev.to`, `adventureppc.com`, `christopheralarcon.com`, two `.pages.dev` mirrors |
+| how do I justify the cost of an AI training day to my finance director, measuring return on AI upskilling UK | **No** | `uk.newsroom.ibm.com`, `cambridgespark.com`, `cfodive.com`, `ciodive.com`, `itbrief.co.uk`, `digit.fyi` (x2), `disco.co`, `botsandpeople.com` (x3), `ohiocpa.com`, `ivee.jobs`, `spicyadvisory.com` (x2) |
+| AI bootcamp Oxford 19 November 2026 agentic workflow one day Worcester College | **No - but two of our own past Luma pages were** | `luma.com/oxfordagentic2` (**ours, past**), `luma.com/k7c2rm5s` (**ours, past**), `allai.events` (**ours, stale**), `sbs.ox.ac.uk` (x2), `conted.ox.ac.uk`, `nobleprog.co.uk`, `learnersink.com`, `createwith.com`, `meetup.com` (x2), `pulse.bot`, `science.ai.cam.ac.uk`, four `groups.google.com` OxML threads |
+| how many people should be in the room at a hands-on AI workshop, is a small cohort better than a large one | **No** | `wikihow` mirror, `cultureplusconsulting.com`, `trainingzone.co.uk`, `scribd.com`, `peerspectives.premier.charite.de`, `emile.space` (x2), two auto-generated `redraw`/`imagemakers` pages |
+
+**Probe 3 is the finding of the cycle, and it narrows the 01:00 one rather than repeating it.**
+That probe used no brand term and no date anchor and was answered off our stale `allai.events`
+listing. **This one carried our exact date and our exact venue** - 19 November 2026, Worcester
+College - and still returned **no page of oxfordagentic.com**. It returned
+`luma.com/oxfordagentic2` (Cohort 2, 16 September, past) and `luma.com/k7c2rm5s` (Cohort 1,
+21 July, past) instead, took *"21 Jul 2026"* off `allai.events`, closed *"I couldn't confirm a
+19 November 2026 date"*, and observed of the Worcester College page that *"the page snippet
+doesn't show a date"*. `luma.com/oxfordagentic3`, which takes the booking, was not returned.
+- **What this rules out.** The 01:00 reading could be explained by the query being too cold.
+  This one could not be colder-tested: it names the day and the room. So the site is not being
+  passed over for a lack of matching terms on the query side - it is not being returned at all.
+  That is backlog 2b, and no on-page change reaches it.
+- **What it leaves the loop.** The one page an engine demonstrably holds is `/`, and everything
+  a probe has quoted about the November cohorts it took off that page. Its meta description -
+  the field an engine quotes most readily - carried no date. That is what shipped. Recorded
+  against the standing Luma item in `outreach/review-list.md` as one dated line; nothing
+  contacted.
+
+**The other three were declined on content. Recording why, so no later cycle re-pitches them.**
+
+**Probe 1 is the Coding Bootcamp's own axis and the engine's closing caveat is the one thing
+this site cannot supply yet.** The field is winnable - Every, AdVenture Media, Maven, Udemy
+resellers and three Luma workshops, no institutional publisher - and converting, since the
+searcher is weighing whether a day produces anything. But the engine's own gap was explicit:
+*"I found no systematic data on completion rates or on how many workshop participants deploy
+something working on the same day ... check whether a workshop publishes its completion data or
+includes a sample project from a past cohort."* **Coding Cohort 1 has not run**, so there is no
+past cohort and no sample project to publish, and inventing either is the error class the
+outcome rules exist to prevent. `/guides/what-you-can-build-in-one-day-with-ai/` and
+`/guides/why-the-code-an-agent-wrote-is-not-live/` already answer the editorial half. Re-probe
+after 26 November, when there will be something true to say.
+
+**Probe 2 is not winnable and is covered twice over.** IBM's own UK newsroom, CIO Dive, CFO
+Dive, Cambridge Spark and ICAEW-adjacent trade press hold it - the institutional-publisher
+clause - and the rest is vendor ROI calculators citing vendor-commissioned studies.
+`/guides/getting-an-ai-bootcamp-approved/` answers the approval request and
+`/guides/is-your-ai-workflow-saving-time-or-just-effort/` answers the measurement half, more
+honestly than the field does. Not pitched.
+
+**Probe 4 fails the converting test and the field is not worth entering.** The results are
+generic workshop-facilitation guidance - a wikiHow mirror, a DEI-training consultancy, two
+auto-generated arithmetic pages - with nothing about AI workshops at all. A reader asking it is
+designing a workshop, not booking a seat at one. The site already publishes what it can say
+truthfully (*"Small, and capped"*, and no number for the Second Brain group by standing
+decision), so there is nothing to add either. Not pitched.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. The change this cycle is a meta
+description, not a Q&A refresh, so both of today's refreshes are unspent.**
+
+**No new contactable lead.** `allai.events`, `createwith.com`, `maven.com`, `nobleprog.co.uk`
+and `learnersink.com` are already on the review list or recorded as doorway patterns; everything
+else returned was a competitor, a course seller, an exec-ed institution, a trade publisher or a
+content farm.
+
 ## 2026-10-29 (01:00 GMT cycle) - FOUR PROBES, AND THE ONE THAT ASKED FOR OUR OWN MONTH RULED US OUT ON A THIRD PARTY'S JULY DATE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

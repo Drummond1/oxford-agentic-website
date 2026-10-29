@@ -4,7 +4,7 @@ import HomeSections from '../components/HomeSections.astro';
 import config from '../../site.config';
 import { homeFaqs } from '../lib/home';
 import { courseSchema, eventListingItem, faqSchema } from '../lib/schema';
-import { absoluteUrl, getEventsForProgramme, getHomeUpcoming, getProgrammes, paths } from '../lib/site';
+import { absoluteUrl, formatShortDate, getEventsForProgramme, getHomeUpcoming, getProgrammes, paths } from '../lib/site';
 import { ogPathFor } from '../lib/og';
 
 /*
@@ -71,6 +71,42 @@ const courseNodes = await Promise.all(
     courseSchema(programme, (await getEventsForProgramme(programme.id)).upcoming),
   ),
 );
+
+/*
+ * The meta description names the next cohort's date, and derives it.
+ *
+ * This page used `config.brand.description` verbatim, which carries no date.
+ * That string still describes the entity - it is the Organization and WebSite
+ * description, the llms.txt entity line and the RSS channel - and an entity
+ * description should not carry a cohort date. A page description should, and
+ * this is the one page an engine demonstrably holds: a search restricted to
+ * this domain returns `/` and two guides whatever is asked, and every event
+ * fact a probe has quoted it took off this page.
+ *
+ * The evidence is the same shape as the two descriptions before it, `/events/`
+ * on 21 Oct and `/bootcamps/` on 29 Oct, and it is backlog 2b at its plainest.
+ * Asked on 29 Oct for a one-day hands-on AI bootcamp in Oxford in November 2026
+ * for business leaders, an engine answered off a third party's stale July
+ * listing of ours and closed "I found no one-day, hands-on AI bootcamp in
+ * Oxford for November 2026". A second probe that same day naming our date and
+ * our venue outright still returned no page of this site. The description is
+ * the field an engine quotes most readily, and on the page it actually reads
+ * the date was the one thing missing from it.
+ *
+ * Derived from the same `upcoming` set the "Next in Oxford" cards render and
+ * the header CTA reads, so it cannot come to name a cohort the page does not
+ * show, and it empties itself between cohorts rather than going stale. The
+ * date sits in the second sentence rather than the last, so a SERP that
+ * truncates still shows it. Nothing new is asserted: the lead sentence is
+ * `brand.description`'s own, the date is already in the header and footer of
+ * every page, and the promise is that string's second sentence trimmed.
+ */
+const HOME_LEAD = 'Hands-on agentic AI training in Oxford for business leaders.';
+const HOME_PROMISE = 'In one day you build and run an agentic AI workflow on your own task.';
+const nextCohort = upcoming[0];
+const dateLine = nextCohort ? ` Next cohort ${formatShortDate(nextCohort.data.startDate)}.` : '';
+const dated = `${HOME_LEAD}${dateLine} ${HOME_PROMISE}`;
+const description = dated.length <= 160 ? dated : `${HOME_LEAD} ${HOME_PROMISE}`;
 ---
 
 {/* HomeSections already ends on the gold "Not ready to book?" band, which
@@ -81,7 +117,7 @@ const courseNodes = await Promise.all(
 <Base
   pageTitle={config.brand.tagline}
   titleOverride={`${config.brand.name} - ${config.brand.tagline}`}
-  description={config.brand.description}
+  description={description}
   path="/"
   ogImage={ogPathFor('/')}
   schemaNodes={[faqSchema(homeFaqs, '/'), ...eventNodes, ...courseNodes]}

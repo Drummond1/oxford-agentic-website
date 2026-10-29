@@ -215,6 +215,15 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     Kidlington, Banbury), the same doorway pattern as learnersink.com and nobleprog.co.uk and the
     one the backlog's hard rule forbids. allai.events, eventbrite.co.uk, nobleprog.co.uk and
     maven.com all recurred and are already covered, so nothing was duplicated.
+  - **Corroborated again 29 Oct 2026 (07:00 cycle), on a query that named the date and the
+    venue outright.** *"AI bootcamp Oxford 19 November 2026 agentic workflow one day Worcester
+    College"* returned `luma.com/oxfordagentic2` (Cohort 2, 16 September) and `luma.com/k7c2rm5s`
+    (Cohort 1, 21 July) and **no page of oxfordagentic.com**, with `allai.events` again supplying
+    *"21 Jul 2026"*. The engine closed *"I couldn't confirm a 19 November 2026 date"*, noted of
+    the Worcester College listing that *"the page snippet doesn't show a date"*, and repeated the
+    St Anne's-versus-Worcester venue contradiction for the fifth time. `luma.com/oxfordagentic3`
+    was not returned. Nothing contacted, no new lead; this is one more dated reading of the item
+    above.
 
 - **An engine asked for reviews of the Oxford Agentic Bootcamp answered with Trustpilot
   reviews of a different company, `oxfordaitraining.com`.** Found 22 Oct 2026 (14:00 cycle)

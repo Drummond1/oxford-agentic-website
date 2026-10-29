@@ -806,6 +806,92 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-29 (07:00 cycle) - the one page an engine demonstrably holds described the day and
+  never said when it runs.** `/` used `config.brand.description` verbatim as its meta
+  description: *"Hands-on agentic AI training in Oxford for business leaders. In one day, you
+  build and run a working agentic AI workflow on a real task from your own work."* No date, on
+  the page that every probe's event facts have been read off. It now reads **"Hands-on agentic
+  AI training in Oxford for business leaders. Next cohort 19 Nov 2026. In one day you build and
+  run an agentic AI workflow on your own task."** (155 characters.)
+  - **The evidence is probe 3 in `seo-data/geo-citations.md` under 29 Oct 07:00, and it narrows
+    the 01:00 finding rather than repeating it.** That probe named no brand term and no date and
+    was answered off our stale `allai.events` listing. This one named **our exact date and our
+    exact venue** - *"AI bootcamp Oxford 19 November 2026 agentic workflow one day Worcester
+    College"* - and still returned **no page of this site**: `luma.com/oxfordagentic2` (Cohort 2,
+    past), `luma.com/k7c2rm5s` (Cohort 1, past), `allai.events` supplying *"21 Jul 2026"*, and the
+    closing line *"I couldn't confirm a 19 November 2026 date"*. So the site is not being passed
+    over for want of matching terms; it is not being returned. That is backlog 2b and nothing
+    on-page reaches it. What the loop can reach is the page an engine **does** hold, and the field
+    it quotes most readily.
+  - **Why this page and not another.** The 24 Oct cycle established, and nothing since has
+    overturned, that a search restricted to this domain returns the same three URLs whatever is
+    asked - `/` and two guides - and that every event fact a probe has quoted about the November
+    cohorts it took off `/`. `/events/` (21 Oct) and `/bootcamps/` (29 Oct 01:00) had the same
+    fault fixed in the same field; this is the third and the only one of the three that is
+    demonstrably read.
+  - **`brand.description` was deliberately left alone.** It is the `Organization` and `WebSite`
+    node description, the `llms.txt` entity line and the RSS channel, and an entity description
+    should not carry a cohort date - it would be a static string that cannot be derived and would
+    go stale on 19 November. The homepage now composes its own from that string's lead sentence
+    plus a derived date, and the comment in `site.config.ts` was updated to say so rather than
+    keep citing a role it no longer has. That citation-drift is the fault backlog 47 names.
+  - **Derived, so it cannot go stale.** The date comes from `upcoming[0]`, the same
+    `getHomeUpcoming()` set the "Next in Oxford" cards render and the same soonest event the
+    header CTA prints (verified identical in the rendered page: *"Next Bootcamp - 19 Nov 2026"*).
+    Between cohorts the clause empties itself and the description falls back to the two sentences
+    alone; if a longer rendering ever pushed it past 160 it falls back the same way. The date sits
+    in the **second** sentence, at characters 61-85, so a SERP that truncates still shows it -
+    which putting it last would not have survived.
+  - **Nothing new is asserted.** The lead sentence is `brand.description`'s own, unchanged. The
+    date is already in the header and footer of all 64 pages, in the homepage's own cards and in
+    the `EducationEvent` node that page has carried since 23 Oct. The promise is that string's
+    second sentence trimmed - *"a working agentic AI workflow on a real task from your own work"*
+    to *"an agentic AI workflow on your own task"* - which is what cost the 25 characters the date
+    needed. No price, no availability, no venue, no certificate, no guest speaker.
+  - **Measured whole-site: exactly 3 of 199 files in `dist` differ** - `index.html`,
+    `sitemap-0.xml` and `sitemap-index.xml`. Inside `index.html` the body is **byte-identical**
+    (36,006 characters before and after) and exactly four fields moved:
+    `meta[name=description]`, `og:description`, `twitter:description` and `description` on the
+    `WebPage` node. The `Organization` and `WebSite` nodes still carry the old string, which is
+    the point. `llms.txt` and `llms-full.txt` did not move. Exactly one `lastmod` changed, `/`'s,
+    from 2026-10-28T01:30 to 2026-10-29T07:07:49 - forward, as `homepageLastmod` requires.
+    Internal links stay at 3,158.
+  - **`HOMEPAGE_COPY_LASTMOD` was bumped in the same commit**, which is what the note above it in
+    `astro.config.mjs` asks for whenever `index.astro` changes. This is the first change since
+    that mechanism shipped on 24 Oct that actually exercises it.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 9 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline. Headless
+    Chromium over `/` and `/events/` as an unchanged control at 375 and 1280px, 4 configurations:
+    **200, 0px horizontal overflow, one `h1`, correct self-canonical, no robots meta, no missing
+    alt text, zero em dashes and zero straight apostrophes in `main`**, the new description
+    present and correct on all three meta fields, and the header CTA reading the same date. Both
+    widths screenshotted and read; the rendering is unchanged, as a byte-identical body requires.
+    The ping script was not run.
+  - **IndexNow, measured with `--dry-run`: this change maps to the whole sitemap, not to `/`.**
+    The true blast radius is one page, but `astro.config.mjs` and `site.config.ts` both fall
+    through to `wholeSite` in `scripts/indexnow-ping.mjs`, and correctly so in general - both
+    genuinely are site-wide files. This is the over-submitting direction rather than the
+    under-submitting one the three backlog-41 cases describe, it is a one-off, and no static map
+    would be right here. Recorded, not fixed.
+  - **Three further probes, all declined on content**, reasons in the GEO log so no later cycle
+    re-pitches them: what a non-developer ships in a day with Claude Code or Codex (winnable and
+    converting, but the engine's own gap is a past cohort's sample project and Coding Cohort 1
+    has not run - **re-probe after 26 November**), justifying the cost to a finance director (IBM,
+    CIO Dive, CFO Dive and Cambridge Spark hold it, and two guides answer it already), and
+    workshop group size (generic facilitation guidance, a searcher designing a workshop rather
+    than booking one, and the Second Brain number is a standing decision). **No new guide. 0 of 3
+    for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both of today's are unspent.**
+  - **Production.** The sandbox egress policy answers 403 to CONNECT for `oxfordagentic.com` and
+    `oxfordagentic.com` does not resolve through WebFetch either, so `build.txt` could not be read
+    and the Actions API stood in: deploy run **319 success on `693a5f1`**, which is both
+    `origin/main` and the HEAD this cycle started from, nothing queued or in progress. `luma.com`
+    does not resolve, so no event fact was read or changed. Search Console unavailable from the
+    cloud, and no export newer than the 24 August baseline exists in `seo-data/`. Off-page: no new
+    contactable lead; one dated line added under the standing stale-Luma item in
+    `outreach/review-list.md`, nothing contacted.
+
 - **2026-10-29 (01:00 cycle) - the page that lists every bootcamp we run told a searcher no date
   and described one line of the three.** `/bootcamps/` is the hub in the primary nav of all 64
   pages, it renders a card per programme with that programme's next cohort date on it, and its

@@ -233,8 +233,13 @@ const config: SiteConfig = {
     name: BRAND_NAME,
     tagline: 'Practical agentic AI training in Oxford',
     /*
-     * Shown as the homepage meta description, and reused by the Organization and
-     * WebSite schema nodes, llms.txt and the RSS channel.
+     * The entity description: the Organization and WebSite schema nodes, the
+     * llms.txt entity line and the RSS channel.
+     *
+     * It was the homepage meta description too until 29 Oct 2026, when that page
+     * started composing its own from this string's lead sentence plus the next
+     * cohort's derived date. An entity description should not carry a cohort
+     * date; a page description should. See the note in `src/pages/index.astro`.
      *
      * It ended "No coding." until 12 Oct 2026. Two problems, one edit. The message
      * house is explicit that this framing is never left standing alone - the same
