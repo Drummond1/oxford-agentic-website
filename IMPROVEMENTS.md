@@ -802,9 +802,98 @@ Status: `todo` · `blocked` (why) · `doing`
     the confidentiality FAQ on the Agentic programme page, which is where the question lands -
     closes it for a buyer whose legal or procurement team asks before approving the spend.
 
+51. `todo` (loop-actionable, found 29 Oct 2026 in the 08:00 cycle) - **three words on
+    `/apply/` are the only text on the site sized below the type scale.**
+    `.field__label small` computes to **10.83px**. `.field__label` is `--step-xs` (13px),
+    which is correct and deliberate - the token is commented "label 13" - but the `small`
+    inside it takes the browser's 0.8333em shrink on top, landing at a size no token names.
+    The rule at `apply.astro:561` resets `text-transform`, `letter-spacing`, `font-weight`
+    and `color` on that `small` and stops short of `font-size`. It renders the three
+    "(optional)" markers beside JOB TITLE, the hand-off task and ORGANISATION. Measured
+    across all 63 built pages at 320, 375, 768 and 1280px, it is the **only** element in
+    `main` anywhere on the site under 12px; the sibling `.option__text small` lands on 15px
+    (`--step-sm`) by the same shrink, because its parent is 18px. **The fix is one
+    declaration**: `font-size: var(--step-xs)` on `.field__label small`, which pins it to
+    the bottom of the scale rather than below it. **Weigh before doing it:** at `--step-xs`
+    the marker is the same size as the label it sits beside, and the four properties already
+    reset there (lower case, no tracking, normal weight, muted colour) are what has to carry
+    the distinction. Check it at 375px before shipping; if it reads heavy, the honest answer
+    is that the scale has no step between 13px and nothing, and that is worth recording too.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-29 (08:00 cycle) - the form a visitor actually fills in was the one place on the
+  site still wearing the browser's default tick box.** `/apply/` is the six-step application
+  form and the only conversion path on the site that is not a Luma iframe. All **26** of its
+  controls - 20 radios and 6 checkboxes - rendered at Chrome's unstyled **13x13px**, while
+  every other form on the site had already declared `1.1rem` for itself. One rule in
+  `src/styles/global.css` now sets that size for `input[type='checkbox']` and
+  `input[type='radio']` site-wide, and `/apply/` stops being the odd one out.
+  - **The evidence is a measurement, not a judgement.** Headless Chromium over all 63 built
+    pages at 320, 375, 768 and 1280px: `/apply/` reported radios and checkboxes at `13x13` at
+    every width, `/second-brain-interest/` reported `17.59x17.59` at every width. Only **three
+    pages in the whole site carry a checkbox or radio at all** - `/apply/`,
+    `/second-brain-interest/` and `/ceo-roundtable/` - and the other two already declared
+    `1.1rem` in their own scoped styles (`second-brain-interest.astro:760`,
+    `ceo-roundtable.astro:864` and `:943`). So the fault was one page wide and the fix is one
+    declaration.
+  - **Why global.css and not a patch on `apply.astro`.** The same value was written out by hand
+    in three places and missing from the fourth, which is how it went missing in the first
+    place. The rule sits directly under the `accent-color: var(--gold)` block whose own comment
+    says it "removes the last default-browser colour on the site"; this is its companion, and
+    the comment says so. Measured after the change: `/apply/` 26 controls at `17.59x17.59`,
+    `/second-brain-interest/` **unchanged** at `17.59x17.59` on all 15 of its controls (the
+    scoped rules declare the same value, so there is nothing for the tie to decide).
+    `/ceo-roundtable/` renders no control even with every `hidden` and `display:none` removed,
+    and its CSS already names `1.1rem`, so it cannot move either.
+  - **The cost, measured and accepted.** At **375px only**, the wider control takes about 4.6px
+    off the option row, which tips the venue line of the two dated options on step 1 from one
+    line to two: those rows go 115px to 139px. At 320px they already wrapped before the change;
+    at 768 and 1280px nothing moves at all. The tidy fix would be shaving the row's gap or
+    padding, and the loop is **not** doing that: "19 Nov 2026 - Worcester College" is composed
+    from event data and the next cohort's venue is not this one's, so tuning a layout to the
+    width of today's string would break on the next cohort. One wrapped secondary line on the
+    narrowest phones is the honest price of 26 controls that match the rest of the site.
+  - **Measured whole-site: 64 of 199 files in `dist` differ, and the change inside 62 of them is
+    one character string.** The stylesheet is content-hashed, so `Base.B-kcsi8V.css` becomes
+    `Base.B5BDDBxs.css` and every page's `<link rel="stylesheet">` follows it. Diffed byte for
+    byte: the **only** difference in each HTML file is that href, and the only difference in the
+    CSS is the 31 bytes added. **Neither sitemap moved**, no `lastmod` changed, no
+    `updatedDate` was touched, `llms.txt` and `llms-full.txt` did not move, and internal links
+    stay at 3,158. No content entry was edited, so nothing needed an `updatedDate` bump.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 9 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline.
+    **`npm run check` is not a runnable check in this repo**: `@astrojs/check` is not a
+    dependency and the script prompts to install it. Installed with `--no-save` and run both
+    ways regardless: **80 errors, 0 warnings, 3 hints, identical before and after**, all of them
+    pre-existing `ts(7006)` implicit-any errors in `.astro` files that a CSS-only change cannot
+    reach. Recorded, not fixed.
+  - **Visual and keyboard.** Headless Chromium over all 63 pages at 320, 375, 768 and 1280px
+    after the change: **0px horizontal overflow on every page at every width**, one `h1` per
+    page, no missing alt text, no link or form control without an accessible name, no skipped
+    heading level, no image without intrinsic dimensions. Steps 1, 2 and 4 of `/apply/`
+    screenshotted at 375, 768 and 1280px before and after and read side by side. Keyboard:
+    6 tabs to the first radio, the gold `2px` focus ring still lands on the whole `.option`
+    row at `2px` offset, arrow keys still move within the group, and the single-group
+    auto-advance still fires.
+  - **Found and not shipped, because one change is one change.** `.field__label small` on
+    `/apply/` computes to **10.83px**, below `--step-xs` (13px), the smallest size in the type
+    scale. The rule resets `text-transform`, `letter-spacing`, `font-weight` and `colour` on
+    that `small` but never `font-size`, so the three "(optional)" markers fall off the bottom
+    of the scale. It is the **only** sub-token font size in `main` on the whole site, measured
+    across all 63 pages. Filed as **backlog 51**.
+  - **Production could not be read directly again this cycle.** The sandbox egress policy
+    answers **403** to `https://oxfordagentic.com`, so the live pages could not be fetched or
+    screenshotted and the local build of the exact `main` HEAD stood in. The Actions API was
+    reachable without authentication: deploy run **40834114266 success on `0e3e9fb`**, which is
+    both `origin/main` and the HEAD this cycle started from, with nothing queued or in progress.
+    PR #1 and `feat/ceo-roundtable-demand-page` are the known-stale leftovers already recorded
+    in backlog 20, read as such and not as work in flight. No event fact was read or changed;
+    `luma.com` is unreachable from here. No probes run and no guide written this cycle.
 
 - **2026-10-29 (07:00 cycle) - the one page an engine demonstrably holds described the day and
   never said when it runs.** `/` used `config.brand.description` verbatim as its meta

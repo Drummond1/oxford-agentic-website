@@ -173,6 +173,17 @@ select {
   color: inherit;
 }
 
+/* The companion to `accent-color` above: the brand sets the size as well as the
+   colour, so a tick box is never left at the browser's 13px default. Every form
+   on the site had already declared 1.1rem on its own except the application
+   form, which is the one a visitor fills in most. Declared once here, the two
+   that repeat it are unchanged and the third stops being the odd one out. */
+input[type='checkbox'],
+input[type='radio'] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 /* ---- Typography ---- */
 h1,
 h2,
