@@ -9,6 +9,7 @@ import config from '../../../site.config';
 import {
   createRhythm,
   formatDate,
+  formatShortDate,
   getEventsForProgramme,
   getProgrammes,
   getTestimonials,
@@ -65,6 +66,33 @@ const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data
 const interest = interestPath(programme.id);
 const showNotify = upcoming.length === 0 && !interest && showSection('newsletter');
 
+/*
+ * `shortPitch` is doing two jobs, the way `summary` was on the event pages until
+ * 29 October. It is the hero subline and the line under the heading on every
+ * programme card on `/bootcamps/`, where the next cohort's date is printed
+ * directly above it - and it is this page's meta description, where there is no
+ * line above it. So the flagship programme page, which Search Console had at 192
+ * impressions and position 9.5 on 11 October, described a repeating one-day
+ * bootcamp in a search result and never said when the next one runs.
+ *
+ * The page composes its own instead, and `shortPitch` is left alone so the card
+ * and `llms.txt` keep the string written for them. The date comes from the same
+ * `upcoming[0]` the "Runs" band below renders a card for, so it is derived and
+ * cannot go stale: between cohorts the clause is simply absent, which is what
+ * `/bootcamps/second-brain-bootcamp/` reads like today. The month is shortened if
+ * the full form would pass 160 characters, and the pitch stands alone if that is
+ * still not enough - which is where the Coding Bootcamp lands, its own pitch
+ * being 141 characters.
+ */
+const metaDescription = (() => {
+  const next = upcoming[0];
+  if (!next) return data.shortPitch;
+  const long = `Next cohort ${formatDate(next.data.startDate, { weekday: undefined })}. ${data.shortPitch}`;
+  if (long.length <= 160) return long;
+  const short = `Next cohort ${formatShortDate(next.data.startDate)}. ${data.shortPitch}`;
+  return short.length <= 160 ? short : data.shortPitch;
+})();
+
 const rhythm = createRhythm('cream');
 const bands = {
   capsule: rhythm.next(),
@@ -81,7 +109,7 @@ const bands = {
       Oxford, and the repetition took the Second Brain title to 64 characters,
       past what a search result shows. The city is still in the title, once. */}
   titleOverride={`${data.name} | One-day AI bootcamp`}
-  description={data.shortPitch}
+  description={metaDescription}
   path={path}
   ogImage={ogPathFor(path)}
   {/* The Course node is built by the shared helper, because the homepage

@@ -5,6 +5,56 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-29 (19:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE FIELD FOR OUR FORMAT IS EVENT AGGREGATORS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last seven cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| can I bring my own work task to an AI training day and build something I keep | **No** | `maven.com` (x2), `luma.com` (x3, none ours), `events.humanitix.com`, `meetup.com` (x2), `iondistrict.com`, `eventbrite.com`, `innovation-day-86f.pages.dev`, `rit.edu`, `happeningnext.com`, `mthightech.org`, `sessionize.com`, `polyrhythm.regfox.com` |
+| hands-on AI day for small business owners UK one day in person not a webinar | **No** | `eventbrite.co.uk` (x9), `eventbrite.com`/`.com.au` (x2), `createwith.com` (x2), `wenta.co.uk`, `gmchamber.co.uk`, `quickbooksevents.intuit.com`, `heliocentrix.co.uk`, `scotlandis.com`, `mosbdc.com` |
+| is a one-day AI bootcamp enough or do I need a longer programme to actually change how I work | **No** | `aicerts.ai` (x2), `amitkoth.pages.dev`, `lilachbullock.com`, `crashthatcourse.pages.dev`, `softhouse.se`, `pulse.bot`, `dev.to`, `spicyadvisory.com`, `phosailabs.com` |
+| what is the difference between an AI workshop that teaches tools and one that builds a workflow you take away | **No** | `business.lehigh.edu`, `ecornell.cornell.edu` (x2), `acceleratelearning.stanford.edu`, `brainstation.io` (x3), `lewagon.com` (x2), `designlab.com`, `newhorizons.com`, `luma.com`, `eventbrite.com`, `xray.tech`, `studiomeyer.io`, `github.com`, `meetup.com`, `sessionize.com` |
+
+**Probe 2 is the finding, and it is backlog 2b measured rather than argued.** Asked for our
+format in our country - one day, in person, for owners, explicitly not a webinar - **11 of the
+19 results were Eventbrite listings**, and the rest were a chamber of commerce, a business
+support charity, Intuit's and Google's own roadshows and two local IT firms. Not one editorial
+page, not one provider's own site, and nothing of ours. Probe 1 has the same shape one step
+further on: a query describing our exact differentiator - bring one real task from your own
+work and leave with the thing you built - returned Maven, three Luma pages that are not ours,
+Humanitix, Meetup, Eventbrite and a university calendar, and closed *"I didn't find the
+specific event you're considering"*. **The field an engine reads for "one-day in-person AI
+event" is event aggregators, and we are on none of them.** That is not a content gap and no
+on-page change reaches it; it is the standing Eventbrite ask in `outreach/off-page-listings.md`,
+now with a count behind it. One dated line added to `outreach/review-list.md`, nothing
+contacted.
+
+**Probe 3 is winnable and converting, and is declined because we already answer it.** *"Is a
+one-day AI bootcamp enough or do I need a longer programme"* is the last objection before
+booking, and the field answers it against us: the engine's summary was that one day *"rarely
+changes how people work on its own"*, built from `aicerts.ai`, two `.pages.dev` mirrors, a
+vendor FAQ and four consultancy blogs - which it flagged itself as *"mostly from consultancies
+and training vendors selling longer programmes, so treat them as opinion rather than rigorous
+evidence"*, and whose 21-30 day and 3.5x figures it could not verify. **No institutional
+publisher anywhere in the set, so WINNABLE; the searcher is weighing a booking, so CONVERTING.**
+Declined anyway: `/guides/what-you-can-build-in-one-day-with-ai/` answers it under its own
+heading *"Would a longer course not give me more?"* - *"It would give you more time, and time is
+not usually what is missing"* - and again under *"Is a day enough if nothing happens
+afterwards?"*, and `ai-bootcamp-vs-course-vs-exec-education` carries the format comparison. A
+second page would be the near-duplicate the rules forbid. **This is the second cycle running
+that the strongest probe closed on our own published answer being better than the field's.**
+
+**Probe 4 is declined on winnability, under rule (a).** The tool-versus-workflow distinction is
+held by institutional publishers writing about their own programmes - Lehigh's executive
+education, two Cornell eCornell pages, Stanford's accelerator, BrainStation in three cities -
+which is the shape that killed charities on 16 Oct and legal on 22 Oct. Our positioning says
+the same thing better, but the query belongs to them.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both of today's
+are unspent.**
+
 ## 2026-10-29 (13:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR DECLINED ON CONTENT - ONE OF THEM BECAUSE WE ALREADY ANSWER IT BETTER THAN THE FIELD DOES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

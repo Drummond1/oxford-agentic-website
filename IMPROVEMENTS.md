@@ -824,6 +824,99 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-29 (19:00 cycle) - the flagship programme page is the fifth and last page in the
+  booking funnel whose search snippet never said when the day runs.** `shortPitch` is doing the
+  same two jobs `summary` was doing on the event pages until this morning. It is the hero subline
+  and the line under the heading on every programme card on `/bootcamps/`, where the next cohort's
+  date is printed directly above it - and it is the page's own meta description, where there is no
+  line above it. So `/bootcamps/oxford-agentic-bootcamp/` described a **repeating** one-day
+  bootcamp in **128 characters** that named no date: *"A one-day AI bootcamp in Oxford. You leave
+  having built and run a working agentic AI workflow on a real task from your own work."* It now
+  reads **"Next cohort 19 November 2026. A one-day AI bootcamp in Oxford. You leave having built
+  and run a working agentic AI workflow on a real task from your own work."** (158 characters.)
+  - **This is the one page in the sequence with Search Console behind it as well as GEO evidence.**
+    `/events/` (21 Oct), `/bootcamps/` (29 Oct 01:00), `/` (29 Oct 07:00) and the two bookable
+    event pages (29 Oct 13:00) were each argued from probes. This page is the flagship programme
+    page, and the 13 October reading has it at **192 impressions, 7 clicks, position 9.5** - the
+    most of any non-homepage page on the site bar `/team/` and Cohort 2, and the page `/guides/`,
+    `/events/` and every guide link into. **The CTR fence was respected.** The 12-13 Oct verdict
+    table closed this page as "90% anonymised" and fenced it against re-opening on CTR; that
+    instruction is about the **title**, and this changes the description, which is the same
+    distinction the 23 Oct cycle drew when it changed `/events/`'s description with that page
+    closed as "title already burnt once". The title is untouched.
+  - **Derived, so it cannot go stale, and it drops itself.** The date comes from `upcoming[0]` -
+    the same soonest-first set the "Runs" band below renders a card for - formatted with the same
+    `formatDate` the page already uses. Checked in the rendered page: the date is already printed
+    on it **five times** (twice as "19 Nov 2026", twice as "19 November 2026", once as "Thursday,
+    19 November 2026"), so nothing new is asserted. After 19 November, on the daily cron with no
+    commit behind it, the clause is simply absent and the page reverts to the pitch alone, which
+    is what `/bootcamps/second-brain-bootcamp/` reads like today.
+  - **It applies to all three programme pages and only one of them gains it, which is the rule
+    working rather than failing.** Second Brain has no upcoming cohort, so the clause is empty.
+    The Coding Bootcamp's own `shortPitch` is **141 characters**, so the full form lands at 171
+    and the short-month fallback at 166 - both past 160 - and it falls through to the pitch alone.
+    Its date is on its own event page (fixed at 13:00 today) and on `/bootcamps/`. If that pitch is
+    ever shortened the date appears on its own. `shortPitch` was deliberately **not** touched on
+    any of the three: it is the card line, the hero subline and the `llms.txt` line, and the point
+    of fixing this in the template is that the two jobs stop fighting over one string.
+  - **Measured whole-site: exactly 1 of 199 files in `dist` differs.** Inside it the `<body>` is
+    **byte-identical** (38,977 characters before and after) and exactly four fields moved:
+    `meta[name=description]`, `og:description`, `twitter:description` and `description` on the
+    `WebPage` node. Compared node by node in the JSON-LD: 6 nodes each, and `Organization`,
+    `WebSite`, **`Course`**, `FAQPage` and `BreadcrumbList` are all unchanged - the `Course` node
+    keeps its own longer description and its `hasCourseInstance` for Cohort 3, which was checked
+    and is well formed. **Neither sitemap moved**, no `lastmod` changed, no `updatedDate` was
+    touched, `llms.txt` and `llms-full.txt` did not move, and internal links stay at 3,158.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 9 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline. Headless
+    Chromium over the changed page and **both** other programme pages as controls, at 375 and
+    1280px, 6 configurations: **200, 0px horizontal overflow, one `h1`, correct self-canonical, no
+    robots meta, no missing alt text, no skipped heading level, zero em dashes and zero straight
+    apostrophes in `main`**, the new description correct on all three meta fields, and both
+    controls still carrying their own unchanged ones. Both widths screenshotted and read; the
+    rendering is unchanged, as a byte-identical body requires.
+  - **A whole-site audit was run first and found no defect to prefer over this.** All 199 built
+    files were measured for description length, title length, canonical, robots and sitemap
+    membership. Two pages carry an empty description (`/team/josh-lawman/` and `/home-original/`)
+    and both are **redirect stubs** with `noindex` - correct, not a fault. Every one of the 55
+    indexable pages is in the sitemap and no `noindex` page is, with the six excluded pages
+    (`/apply/`, `/ceo-roundtable/`, `/second-brain-interest/`, `/home-photos/`,
+    `/find-your-bootcamp/`, `/office-hours/`) all correctly carrying `noindex, follow` (or
+    `noindex, nofollow`). No description is over 160. **One title is over 60 characters** -
+    `/second-brain-interest/` at 73 - and it is `noindex`, so it never appears in a result;
+    recorded, not fixed.
+  - **IndexNow, measured with `--dry-run`: this maps to the whole sitemap, not to the one page
+    that moved.** `src/pages/bootcamps/[slug].astro` does not match the static-page regex (the
+    `[slug]` brackets), so it falls through to `wholeSite` - the identical finding the 13:00 cycle
+    recorded for `src/pages/events/[slug].astro`, and the correct default for a dynamic template
+    in general. Over-submitting direction. Recorded, not fixed. The ping script was not run.
+  - **Four GEO probes, zero citations; table in `seo-data/geo-citations.md` under 29 Oct 19:00.**
+    **Probe 2 is backlog 2b measured rather than argued**: asked for our format in our country -
+    one day, in person, for owners, explicitly not a webinar - **11 of 19 results were Eventbrite
+    listings**, the rest a chamber of commerce, a business support charity, Intuit's and Google's
+    own roadshows and two local IT firms. No editorial page, no provider's own site, nothing of
+    ours. Probe 1, on our exact differentiator, returned Maven, three Luma pages that are not
+    ours, Humanitix, Meetup and Eventbrite. The field an engine reads for "one-day in-person AI
+    event" is aggregators, and no on-page change reaches it. One dated line under the standing
+    Eventbrite ask in `outreach/review-list.md`; nothing contacted. **Probe 3 is winnable and
+    converting and was declined because we already answer it better**: *"is a one-day AI bootcamp
+    enough or do I need a longer programme"* is held by vendor blogs the engine itself discounted,
+    and `/guides/what-you-can-build-in-one-day-with-ai/` answers it under *"Would a longer course
+    not give me more?"* and *"Is a day enough if nothing happens afterwards?"*. **Probe 4 declined
+    on winnability**: Lehigh, Cornell, Stanford and BrainStation hold the tool-versus-workflow
+    distinction. **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both
+    of today's are unspent.**
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and it does not resolve through WebFetch either, so `build.txt` could not be read and the
+    Actions API stood in: deploy run **323 success on `55b6e67`**, which is both `origin/main` and
+    the HEAD this cycle started from, nothing queued or in progress. `luma.com` does not resolve,
+    so no event fact was read or changed. **Search Console unavailable from the cloud** - one
+    attempt, `gcloud` reports "No credentialed accounts", no Google credential anywhere in the
+    environment, and `seo-data/` holds no export newer than the 13 October reading. Nothing
+    estimated.
+
 - **2026-10-29 (13:00 cycle) - the two pages that take the bookings were the only event pages
   whose search snippet named no date, no venue and no city.** `summary` is doing two jobs that
   pull opposite ways. It is the line under the heading on every event **card**, where the date

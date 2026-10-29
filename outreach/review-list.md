@@ -11,6 +11,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The Eventbrite ask, now with a count behind it. No new target - evidence for the standing
+  one in `outreach/off-page-listings.md`.** Found 29 Oct 2026 (19:00 cycle). **Nothing has been
+  contacted.** A probe written as our format in our country - *"hands-on AI day for small
+  business owners UK one day in person not a webinar"* - returned **11 Eventbrite listings in 19
+  results**, with the remainder a chamber of commerce, a business support charity, Intuit's and
+  Google's own roadshows and two local IT firms. No editorial page, no provider's own site, and
+  nothing of ours. A second probe on our exact differentiator (bring one real task, keep what you
+  build) returned Maven, three Luma pages that are not ours, Humanitix, Meetup and Eventbrite,
+  and closed *"I didn't find the specific event you're considering"*. The reading is that for
+  "one-day in-person AI event" an engine reads aggregators, not provider sites, so no amount of
+  on-page work reaches that result set. The open question is unchanged and is Drummond's: an
+  Eventbrite listing probably wants a price, and prices live on Luma by standing decision -
+  whether a listing can carry a description and a link to oxfordagentic.com without being the
+  ticketing surface is what decides it. Table in `seo-data/geo-citations.md` under 29 Oct 19:00.
+
 - **`digitalhuboxford.com` - an Oxford site publishing AI event listings, ranking beside us on
   our own Oxford-dated query.** Found 27 Oct 2026 (08:00 cycle). **Nothing has been contacted.**
   - **What it is, as far as can be seen from here.** It returned
