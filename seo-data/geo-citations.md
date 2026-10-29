@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-29 (01:00 GMT cycle) - FOUR PROBES, AND THE ONE THAT ASKED FOR OUR OWN MONTH RULED US OUT ON A THIRD PARTY'S JULY DATE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last five cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| who owns the workflow you build at an AI training workshop, does the provider keep your material, IP | **No** | `gordonsllp.com`, `gadens.com`, `sprintlaw.co.uk`, `sprintlaw.com.au`, `natlawreview.com`, `mondaq.com`, `conferences.law.stanford.edu`, `edstellar.com`, `aixblock.io`, `ai-consulting.geekyants.com`, `dev.to`, `siue.edu`, `trainingzone.co.uk`, an Eventbrite talk |
+| is a paid one-day AI workshop worth it when there are free YouTube courses, UK business owner | **No** | `marcillyaiplaybook.it.com` (x2), `claudelog.com`, `guvi.in`, `refontelearning.com`, `tinkerllm.com`, `aibusiness.vc`, `successknocks.com` (x2), `sairupak.blogspot.com`, `inflearn.com`, `mctaba.com`, two Reddit snapshots |
+| should I learn prompting properly first or go straight to AI agents, business leader | **No** | `cfl.dk`, `goizueta.emory.edu`, `executiveeducation.wharton.upenn.edu`, `tesseract.academy`, `chelseaai.it.com`, `udemy.com`, `execxai.substack.com`, `pub.towardsai.net`, `everworker.ai`, `precisionaiacademy.pages.dev`, `luma.com/5lvossrl` (not ours), `inkl.com` |
+| one day hands-on AI bootcamp Oxford November 2026 business leaders in person | **No - but our allai.events listing was** | `allai.events/event/the-oxford-agentic-bootcamp` (**ours, stale**), `oxford-aiethics.ox.ac.uk`, `sbs.ox.ac.uk`, `ouess.web.ox.ac.uk`, `oxford-management.com` (x3), `oxford-royale.com`, `eventbrite.co.uk` (x2), `happeningnext.com`, `luma.com/ek5gq6fz` (not ours), `createwith.com`, `pulse.bot` (x2) |
+
+**Probe 4 is the finding of the cycle, and it is the plainest version of backlog 2b yet recorded.**
+The query names our product, our city, our format and the month two of our three days run in, with
+**no brand term and no date anchor in it** - the cold query a buyer actually types. The engine
+returned **our own allai.events listing** and no page of `oxfordagentic.com`, read the date off it
+as *"its listed date is 21 July 2026, outside your window"*, and closed: **"I found no one-day,
+hands-on AI bootcamp in Oxford for November 2026 aimed at business leaders."** Two bookable days,
+19 and 26 November, both at Worcester College, both three and four weeks out. It then offered the
+Oxford Executive Programme in Ethical AI Leadership (10-12 November, three days, residential) and
+a Queen Mary day in London instead.
+- Every earlier corroboration of the stale allai.events listing used a brand term or a date anchor
+  (15, 18, 20 Oct). This one used neither, so the cost is not confined to buyers who already know
+  the name: a cold month-scoped query is answered off a dead July listing of ours. Added as one
+  dated line under the standing entry in `outreach/review-list.md`; it is not a new lead and
+  nothing was contacted.
+- **What shipped is the half of this the loop can reach.** Nothing on this site can make an
+  engine recrawl, and allai.events is not ours to edit. What is ours is the description field on
+  the page that lists every programme, and it named no date at all. See below.
+
+**The other three were declined on content. Recording why, so no later cycle re-pitches them.**
+
+**Probe 1 looked like the strongest content gap in a week, and question 10 of our own checklist
+answers the half that is answerable.** The engine opened *"The results don't cover any specific
+workshop's terms, so the answer depends on that provider's contract"* - a field-wide admission on
+a question a buyer with a legal team has to ask, and the second-order objection to "bring one real
+task from your own work" after confidentiality (shipped 28 Oct). But
+`/guides/questions-to-ask-before-booking-ai-training/` question 10 already publishes the half this
+site can speak to: *"what you take away: the thing you built, in your own hands rather than inside
+the provider's account"*, and the Coding Bootcamp publishes *"two things you own outright ... in
+your own GitHub repository"*. **Not winnable** on the rest either: Gordons, Gadens, Sprintlaw,
+`natlawreview` and Stanford Law hold it, which is the institutional-publisher clause. **The part
+that is genuinely unanswered - whether anything a visitor brings is retained, reused or deleted
+afterwards - is a terms claim and the loop will not write one.** Logged as backlog 50.
+
+**Probe 2 fails the converting test and is covered twice over.** The field is course sellers and
+affiliate blogs (`guvi.in`, `refontelearning.com`, `claudelog.com`, two `.blogspot`/`successknocks`
+farms) with no institutional publisher, so it is winnable - but the engine's own framing is
+self-study: *"If you're self-disciplined, free YouTube and vendor documentation will likely do"*,
+and the searcher phrasing it this way is choosing between free videos and a subscription, not
+booking a day in Oxford. `/guides/why-in-person-beats-online-for-learning-ai/` and
+`/guides/what-you-can-build-in-one-day-with-ai/` answer the paid-day case already. Not pitched.
+
+**Probe 3 is the level-fit axis the 19 Oct cycle declined, approached from the floor rather than
+the ceiling.** That cycle's reason holds: the programme pages publish both ends, and `whoFor` says
+it in the buyer's own words - people who *"already use AI most days"* and have *"hit the ceiling of
+what prompting alone can do"*. The engine's verdict - prompting first, then agents - agrees with
+what this site publishes, so there is nothing to correct. **Not winnable** either: Wharton,
+Emory Goizueta and `cfl.dk` are exec-ed institutions on their own subject, and the rest is
+course marketing. Not pitched.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. No Q&A refresh - the change this cycle is a
+meta description, so both of today's refreshes are unspent.**
+
+**No new contactable lead.** `allai.events`, `createwith.com`, `eventbrite.co.uk` and `maven.com`
+are already on the review list; everything else returned was a law firm, a course seller, a
+competitor, an exec-ed institution or a content farm.
+
 ## 2026-10-28 (19:00 GMT cycle) - FIVE PROBES, FIVE DECLINES, AND THE BUYER'S CHECKLIST ANSWERED FOR ONE BOOTCAMP OF THREE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

@@ -14,11 +14,53 @@ const rows = await Promise.all(
     ...(await getEventsForProgramme(programme.id)),
   })),
 );
+
+/*
+ * The meta description says what the three days are and when the next ones run,
+ * and derives the dates rather than stating them.
+ *
+ * This is the hub that lists every programme, and its description did neither. It
+ * read "repeating, in-person, hands-on formats for building with agentic AI",
+ * which names no date and describes one line of the three: the Second Brain
+ * Bootcamp is not agentic-workflow building, and it is on this page. That is
+ * backlog 14's fault class on a seventh surface. The dates belong here for the
+ * reason they were added to /events/ - the description is the field an answer
+ * engine quotes most readily, and the next cohort's date is already published in
+ * the header and footer of every page, so nothing new is asserted. The 29 Oct
+ * probe is the evidence: an engine asked for a one-day hands-on AI bootcamp in
+ * Oxford in November 2026 answered off a third party's July listing of ours and
+ * concluded there was none.
+ *
+ * `formatsLine` is the one hand-written part, so it is guarded by the programme
+ * count: a fourth line falls back to the generic sentence rather than silently
+ * describing three of four. The dates are capped at the next two and dropped one
+ * at a time if the pair would pass the 160 characters a description gets.
+ */
+const nextDates = rows
+  .flatMap(({ upcoming }) => upcoming)
+  .sort((a, b) => a.data.startDate.getTime() - b.data.startDate.getTime())
+  .slice(0, 2)
+  .map((event) => formatShortDate(event.data.startDate));
+
+const formatsLine =
+  programmes.length === 3
+    ? 'Three one-day bootcamps in Oxford, hands-on and in person: build an agentic workflow, a second brain, or ship software.'
+    : `Every one-day bootcamp ${config.brand.name} runs in Oxford, hands-on and in person, with what each day covers.`;
+
+let description = formatsLine;
+for (let count = nextDates.length; count > 0; count -= 1) {
+  const dates = nextDates.slice(0, count);
+  const candidate = `${formatsLine} Next cohort${dates.length > 1 ? 's' : ''}: ${dates.join(', ')}.`;
+  if (candidate.length <= 160) {
+    description = candidate;
+    break;
+  }
+}
 ---
 
 <Base
   pageTitle="Bootcamps"
-  description={`The programmes ${config.brand.name} runs in Oxford - repeating, in-person, hands-on formats for building with agentic AI.`}
+  description={description}
   path={paths.programmes()}
   ogImage={ogPathFor(paths.programmes())}
   schemaNodes={[

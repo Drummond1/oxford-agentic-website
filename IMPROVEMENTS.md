@@ -784,9 +784,102 @@ Status: `todo` · `blocked` (why) · `doing`
     remember to bump, and the cost of the current behaviour is one slightly early recrawl hint on
     the one page that is already crawled most. Not urgent.
 
+50. `todo` **(needs Drummond, one line about our own practice)** - **does Oxford Agentic retain,
+    reuse or delete anything a visitor brings to the day?** The 29 Oct probe put the second-order
+    objection to "bring one real task from your own work" to an answer engine - who owns what you
+    build at a workshop, and does the provider keep your material - and it opened *"The results
+    don't cover any specific workshop's terms, so the answer depends on that provider's
+    contract"*, then listed what a buyer should ask for: who owns the materials, whether the
+    provider retains or reuses your inputs for any purpose, and the deletion timeline.
+    **Half of it is already published and in the right place**: question 10 of
+    `/guides/questions-to-ask-before-booking-ai-training/` says what you take away is *"the thing
+    you built, in your own hands rather than inside the provider's account"*, the Coding Bootcamp
+    promises *"two things you own outright ... in your own GitHub repository"*, and the Agentic
+    confidentiality answer says you build on your own machine and the day is not recorded. **The
+    other half is a terms claim and the loop will not write one**: "we keep nothing" and "we keep
+    a copy" are both statements about how this business actually operates, and inventing either is
+    the error class the consent and price rules exist to prevent. One line from him - closest to
+    the confidentiality FAQ on the Agentic programme page, which is where the question lands -
+    closes it for a buyer whose legal or procurement team asks before approving the spend.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-29 (01:00 cycle) - the page that lists every bootcamp we run told a searcher no date
+  and described one line of the three.** `/bootcamps/` is the hub in the primary nav of all 64
+  pages, it renders a card per programme with that programme's next cohort date on it, and its
+  meta description read **"The programmes Oxford Agentic runs in Oxford - repeating, in-person,
+  hands-on formats for building with agentic AI."** Two faults in one sentence: it names **no
+  date**, on a site whose buyers choose by whether they can make the day, and *"building with
+  agentic AI"* describes one of the three programmes listed on the page - the Second Brain
+  Bootcamp is not agentic-workflow building. It now reads **"Three one-day bootcamps in Oxford,
+  hands-on and in person: build an agentic workflow, a second brain, or ship software. Next
+  cohorts: 19 Nov 2026, 26 Nov 2026."** (159 characters.)
+  - **The evidence is probe 4, in `seo-data/geo-citations.md` under 29 Oct 01:00, and it is the
+    plainest reading of backlog 2b this ledger holds.** Asked *"one day hands-on AI bootcamp
+    Oxford November 2026 business leaders in person"* - our product, our city, our format, the
+    month two of our three days run, **no brand term and no date anchor** - the engine returned
+    **our own stale allai.events listing** and no page of `oxfordagentic.com`, read the date off
+    it as *"its listed date is 21 July 2026, outside your window"*, and closed **"I found no
+    one-day, hands-on AI bootcamp in Oxford for November 2026 aimed at business leaders"**. It
+    then offered the Oxford Executive Programme in Ethical AI Leadership and a Queen Mary day in
+    London. Two bookable days, 19 and 26 November, three and four weeks out.
+  - **What the loop can and cannot reach from that.** It cannot make an engine recrawl, and
+    allai.events is not ours to edit - that is one dated line under the standing entry in
+    `outreach/review-list.md`, nothing contacted. What is ours is the description field, which
+    `/events/` had fixed on 21 Oct for exactly this reason (the field an engine quotes most
+    readily, and the dates already published in the header and footer of every page, so nothing
+    new is asserted). The same mechanism, one page over, on the hub that is linked 64 times.
+  - **Derived, so it cannot go stale the way a written date does.** The dates come from the same
+    `upcoming` events the page's own rows print - verified identical in the rendered page: the
+    rows read "Next cohort 19 Nov 2026", "Next dates being confirmed" and "Next cohort 26 Nov
+    2026". A cohort leaves the sentence when its day passes and joins it when one is added, and
+    the list is capped at the next two and dropped one at a time if the pair would pass 160
+    characters. **`formatsLine` is the one hand-written part and is guarded by the programme
+    count**: a fourth line falls back to a generic sentence rather than silently describing three
+    of four, which is backlog 14's fault class and the reason that guard is there at all. This is
+    the seventh surface of that class, after the guide that enumerated our dates and the guide
+    that answered a buyer's checklist for one bootcamp of three.
+  - **Nothing new is asserted, clause by clause.** "Three" is `programmes.length`. "one-day
+    bootcamps in Oxford" is in all three `shortPitch` strings. "hands-on and in person" is the
+    page's own hero subline ("always in person, always in Oxford") and `brand.longDescription`.
+    "build an agentic workflow" is the Agentic `shortPitch`; "a second brain" is the Second Brain
+    `shortPitch` ("Build a second brain"); "ship software" is the Coding `shortPitch` ("people who
+    have not yet shipped software"). The two dates are the two upcoming events' own `startDate`s.
+    No price, no availability, no venue claim, no certificate, no guest speaker.
+  - **Measured whole-site: exactly 1 of 199 files in `dist` differs**, `bootcamps/index.html`, and
+    the only change inside it is the four places that string appears - `meta[name=description]`,
+    `og:description`, `twitter:description` and `description` on the `WebPage` node. Neither
+    sitemap moved, `llms.txt` and `llms-full.txt` did not move (the `/bootcamps/` line in
+    `llms.txt` is written separately), no `updatedDate` was touched and no visible pixel changed.
+    Internal links stay at 3,158.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 Event and 9 FAQPage nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline. Headless
+    Chromium over the changed page and `/events/` as an unchanged control at 375 and 1280px, 4
+    configurations: **200, 0px horizontal overflow, one `h1`, correct self-canonical, no robots
+    meta, no missing alt text, no skipped heading level, zero em dashes, zero straight apostrophes
+    and zero exclamation marks in `main`**, and the new description present and correct on the
+    changed page. Both widths screenshotted and read. The three links reported without an
+    accessible name at 1280px are present identically on the unchanged control page, so they are
+    pre-existing and not this change's. The ping script was not run.
+  - **Three further probes, all declined on content**, with the reasons recorded so no later cycle
+    re-pitches them: workshop IP and material retention (answered by question 10 of our own
+    checklist guide for the half this site can speak to; the other half is a terms claim and is
+    now **backlog 50**), paid day versus free YouTube (does not convert - the searcher is choosing
+    between free videos and a subscription - and `why-in-person-beats-online-for-learning-ai`
+    answers the paid-day case), and prompting-first versus agents (the level-fit axis the 19 Oct
+    cycle already declined, from the floor rather than the ceiling, with Wharton and Emory on it).
+    **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both of today's
+    are unspent.**
+  - **Production could not be read again this cycle.** The sandbox egress policy answers 403 to
+    CONNECT for `oxfordagentic.com`, so `build.txt` could not be read and the Actions API stood
+    in: deploy run **318 success on `141dd1d`**, the HEAD this cycle started from, nothing queued
+    or in progress. `luma.com` does not resolve either, so no event fact was read or changed.
+    Search Console unavailable from the cloud, and no export newer than the 24 August baseline
+    exists in `seo-data/`.
 
 - **2026-10-28 (19:00 cycle) - the guide that exists to help a buyer compare providers answered its
   own ten questions for one bootcamp of three.** `/guides/questions-to-ask-before-booking-ai-training/`

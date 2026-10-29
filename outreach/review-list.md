@@ -493,6 +493,17 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     buyer checking who runs the day is given a roster that has not been current since 4 Aug.
     That makes this a named-real-person accuracy problem off-site as well as a dead-date one,
     and it is the same ten minutes of Drummond's time either way.
+  - **Corroborated again on a cold query, 29 Oct 2026 (01:00 cycle), and this is the version that
+    matters most.** Every probe above used a brand term or a date anchor. This one used neither -
+    *"one day hands-on AI bootcamp Oxford November 2026 business leaders in person"*, the query a
+    buyer who has never heard of us would type in the month two of our three days run. The engine
+    returned this listing and **no page of oxfordagentic.com**, read the date off it as *"its
+    listed date is 21 July 2026, outside your window"*, and concluded **"I found no one-day,
+    hands-on AI bootcamp in Oxford for November 2026 aimed at business leaders"** - then offered
+    the Oxford Executive Programme in Ethical AI Leadership and a Queen Mary day in London. So the
+    stale listing does not only mislead buyers who already know the name; it is the reason a cold
+    buyer is told our days do not exist. Still nothing contacted, and the page still not loaded
+    from here.
   - **Corroborated a fourth time, on a different programme, 20 Oct 2026 (08:00 cycle).** The
     date anchor was rotated to the **Agentic Coding Bootcamp on 26 November 2026** - a
     different day, a different format and a different Luma page - and the same two stale
