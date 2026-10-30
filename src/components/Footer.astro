@@ -242,7 +242,12 @@ const entityLine = `${config.brand.longDescription.split('. ')[0]}.`;
   .site-footer__date {
     display: block;
     font-family: var(--font-label);
-    font-size: 0.72rem;
+    /* The bottom of the type scale, not below it. 0.72rem resolved to 11.52px,
+       the one hard-coded size in a footer that is otherwise all tokens, and the
+       smallest text on any page. Uppercase mono at 0.1em tracking is the hardest
+       combination to read small, and this line carries the date of the next
+       cohort. The dim colour and the case still separate it from the link above. */
+    font-size: var(--step-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--muted-on-dark-dim);

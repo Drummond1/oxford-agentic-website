@@ -563,6 +563,10 @@ const totalSteps = 6;
     letter-spacing: 0;
     font-weight: 400;
     color: var(--muted-on-cream);
+    /* Without this the browser's 0.8333em shrink took the 13px label down to
+       10.83px, a size no token names. The four resets above are what mark these
+       three "(optional)" markers as subordinate; the size does not need to. */
+    font-size: var(--step-xs);
   }
 
   .field__input {

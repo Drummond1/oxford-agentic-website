@@ -802,7 +802,12 @@ Status: `todo` · `blocked` (why) · `doing`
     the confidentiality FAQ on the Agentic programme page, which is where the question lands -
     closes it for a buyer whose legal or procurement team asks before approving the spend.
 
-51. `todo` (loop-actionable, found 29 Oct 2026 in the 08:00 cycle) - **three words on
+51. `done` 30 Oct 2026 (09:00 cycle), and it was not three words on one page - **the same
+    fault rendered on every page of the site, in the footer.** Shipped with the `/apply/`
+    half, measured and screenshotted; see the Shipped entry. The marker does not read heavy
+    at `--step-xs`: lower case, normal weight and the muted colour carry the distinction, as
+    the item guessed they would. Original diagnosis kept below.
+    `todo` (loop-actionable, found 29 Oct 2026 in the 08:00 cycle) - **three words on
     `/apply/` are the only text on the site sized below the type scale.**
     `.field__label small` computes to **10.83px**. `.field__label` is `--step-xs` (13px),
     which is correct and deliberate - the token is commented "label 13" - but the `small`
@@ -823,6 +828,67 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-30 (09:00 cycle) - two text sizes rendered below the bottom of the type scale.
+  Both are now pinned to it, and the one that mattered was in the footer of all 59 pages.**
+  - **Found by measuring, and the backlog item that pointed here was wrong about its own
+    scope.** Item 51 said `.field__label small` on `/apply/` at **10.83px** was "the only
+    element in `main` anywhere on the site under 12px". Walking every text node on all 55
+    sitemap pages plus `/apply/`, `/second-brain-interest/`, `/ceo-roundtable/` and `/404/`
+    at 375px found sub-12px text on **59 of 59 pages**, because `.site-footer__date` is
+    `0.72rem` - **11.52px** - and the footer is on every page. The item measured `main` and
+    the footer sits outside it.
+  - **It is the one hard-coded size in a component that is otherwise all tokens.**
+    `Footer.astro` sets six font sizes: `--step-sm` for the body and the links, `--step-xs`
+    for the three eyebrow labels, the location line and the base row, and `0.72rem` for the
+    date. So the footer carried two small-type sizes 1.5px apart where one was intended.
+  - **What the line says matters.** It is the date of the next two cohorts - 19 NOV 2026 and
+    26 NOV 2026 - under the links that reach their event pages, set in uppercase mono at
+    0.1em tracking, which is the hardest combination to read small, in `--muted-on-dark-dim`.
+    Contrast was never the problem and was not changed: it measures **6.2:1** on `--ink-dark`.
+  - **The change is two declarations**, both `font-size: var(--step-xs)` - the bottom of the
+    scale rather than below it. The four resets already on the `/apply/` `small`
+    (lower case, no tracking, normal weight, muted colour) are what mark it as subordinate,
+    and in the footer the dim colour, the case and the mono face still separate the date from
+    the 15px link above it. **Read at 375px before shipping, as item 51 asked**: it does not
+    read heavy at either place.
+  - **Measured whole-site: no HTML changed at all.** Normalising the asset-hash rename, exactly
+    **two files differ in `dist` - `Base.css` and `apply.css`**, by +33 bytes between them. Every
+    one of the 64 built pages is otherwise byte-identical, both sitemaps are unmoved, no
+    `lastmod` changed, `llms.txt` and `llms-full.txt` did not move, no `updatedDate` was touched
+    (no content entry was), and internal links stay at 3,158. The footer grows **5px** at 375 and
+    768px and **0px** at 1280px, where the date already shared a row.
+  - **Sub-12px text: 59 pages before, 4 after.** What is left is `.quote__monogram` at 11.2px -
+    the two initials inside a 2.1rem bordered circle on `/testimonials/` and the event pages.
+    **Deliberately not changed**: it is a graphic device rather than text a reader reads, and
+    13px inside that circle would crowd it. `.event-card__tbc` at 0.68rem is the other
+    off-scale size below 12px and renders on no page today, because no event date is TBC - it
+    could not be inspected, so it was not touched. Both recorded here rather than swept.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 62 pages built, 64 checked,
+    3,158 internal links resolve, schema valid at 7 `Event` and 10 `FAQPage` nodes, all titles
+    and descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress
+    policy, identical on the baseline. `npm run check:flags` passes on both the all-on and
+    all-off builds. `astro check` is not installed in this sandbox and the repo has no
+    `@astrojs/check`; it prompts to install one, and a new dependency was not added for it.
+    Headless Chromium over all 55 sitemap pages at **375, 768 and 1280px**, before and after:
+    **zero horizontal overflow, zero missing alt text, zero unlabelled form controls, zero links
+    or buttons without an accessible name, zero skipped heading levels, one `h1` per page, zero
+    em dashes and zero straight apostrophes in `main`** - unchanged either side. Footer and the
+    `/apply/` field screenshotted at both states and read. Keyboard: the footer link that carries
+    a date still takes the gold 2px `:focus-visible` ring at 3px offset, the date still turns gold
+    with its link on hover, and the deliberate `:not(:has(.site-footer__date))` exclusion still
+    keeps the hairline underline off it.
+  - **Production could not be read this cycle.** The sandbox egress policy answers **403** to
+    CONNECT for `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`, and the
+    domain does not resolve through WebFetch either, so the Actions API stood in: Deploy and CI
+    both **success on `f93fd7a`**, which is `origin/main` and the HEAD this cycle started from,
+    nothing queued or in progress. No production-versus-preview comparison was possible, which
+    is survivable here only because the built HTML is byte-identical. `luma.com` is unreachable
+    from here, so no event fact was read or changed.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20), which this cycle
+    again read as the known-stale leftover the ledger records rather than work in flight, along
+    with the `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's
+    outcomes (22); and the rest of the needs-Drummond list.
 
 - **2026-10-30 (08:00 cycle) - nine guides are written as questions and answers and not one of
   them said so in its schema. The ten-question checklist now does, read off its own rendered
