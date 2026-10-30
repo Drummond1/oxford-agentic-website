@@ -5,6 +5,38 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-30 (05:08 GMT cycle)
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| hands-on AI bootcamp in Oxford November 2026 | **Yes - 6 of 10**: `/bootcamps/`, `/events/`, `/apply/`, the OAB programme page, the Cohort 3 event page, the Coding Bootcamp programme page | aieventlist.ai x4 (topic, city, country, workshops indexes), all carrying Cohort 3 |
+| one day course to build and ship your first app with AI coding agents, no coding background | **No** | ShipAcademy, **two Luma listings of a rival one-day executive vibe-coding workshop**, SyncSkills, Agent Accelerator, Maven, Shipping Skool, Udemy, Lovable affiliates |
+| second brain bootcamp vs agentic AI bootcamp, which first | **Yes - 6 of 10**: homepage #1, SB programme page #2, `/events/` #3, `/bootcamps/` #4, `/apply/` #5, `when-ai-executive-cohorts-run` #7 | **enspire.ox.ac.uk #6 (our own Second Brain listing)**, palomasacademy x2, pickbits |
+
+**Reading.**
+- **The November gap is closed, and it is attributable.** On 16, 19 and 25 October a
+  date-anchored probe returned no page of ours and an engine said plainly it could not find
+  a one-day in-person AI bootcamp in Oxford for November 2026. The same question now returns
+  **six of our pages in the top ten**. In between, the content loop shipped a run of changes
+  putting the cohort date into descriptions, snippets, hub rows and the pages engines read.
+  **This is the clearest case in this log of a shipped change moving an answer-engine
+  result**, and it is worth remembering the shape of it: the fix was putting a date where a
+  machine reads, not writing anything new.
+- **The pairing position has strengthened, measured properly this time.** On 11 October we
+  held three of the top five. The 15 October attempt at a regression check mis-fired because
+  I re-phrased the question; run in the original wording it now returns **six of ten**, with
+  the Second Brain programme page's "How is this different from the Oxford Agentic
+  Bootcamp?" answer quoted back verbatim. The niche identified a fortnight ago is not only
+  real, it is deepening.
+- **EnSpire Oxford is live and carrying us**, at #6, with a full Second Brain Bootcamp
+  listing including the optional museum tour. That closes a review-list item opened on
+  11 October and corroborated three times since.
+- The Coding Bootcamp's buyer question remains owned, and now by direct competitors rather
+  than only by tooling: **two Luma listings for "Ship Your First App in a Day: Executive Vibe
+  Coding with AI"**, pitched at senior leaders with zero coding background using Claude Code
+  and Codex. That is the Coding Bootcamp's proposition, running as a repeating format
+  elsewhere. Intelligence for Drummond with the first cohort 27 days out.
+
 ## 2026-10-30 (01:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ONE REAL ENGINE ADMISSION CLOSED ON OUR OWN PUBLISHED Q&A
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

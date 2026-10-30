@@ -10,6 +10,27 @@ import { glob, file } from 'astro/loaders';
  */
 
 /**
+ * Every markdown collection globs with this instead of a bare recursive
+ * markdown pattern.
+ *
+ * Finder names a duplicated file "thing 2.md", and the glob loader happily
+ * loads it as a second entry with the same `id`, warning that "later items
+ * with the same id will overwrite earlier ones" and then silently picking a
+ * winner. On 30 Oct 2026 this checkout had three such copies in team/, all
+ * untracked, and `adam-martin 2.md` was stale: it still had the straight
+ * apostrophe that commit 8eeab28 replaced. The local build rendered
+ * "master's", production rendered "master’s" - so every local inspection in
+ * this working tree was checking a page that differed from the live one.
+ *
+ * Excluding them is deliberately not the same as deleting them: the files stay
+ * for Drummond to decide on. In CI they do not exist, so this is a no-op on the
+ * deployed site and purely protects local verification. A real slug never has a
+ * space before a digit - the schemas below enforce hyphenated slugs - so this
+ * only ever catches a duplication artefact.
+ */
+const MARKDOWN = ['**/*.md', '!**/* [0-9].md'];
+
+/**
  * ISO 8601 with an explicit timezone offset — never a bare local datetime.
  *
  * Dates MUST be quoted in frontmatter. Unquoted, YAML parses them into a Date
@@ -71,7 +92,7 @@ const sectionKey = z.enum([
 ]);
 
 const events = defineCollection({
-  loader: glob({ base: './src/content/events', pattern: '**/*.md' }),
+  loader: glob({ base: './src/content/events', pattern: MARKDOWN }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -181,7 +202,7 @@ const events = defineCollection({
 });
 
 const programmes = defineCollection({
-  loader: glob({ base: './src/content/programmes', pattern: '**/*.md' }),
+  loader: glob({ base: './src/content/programmes', pattern: MARKDOWN }),
   schema: () =>
     z.object({
       name: z.string(),
@@ -227,7 +248,7 @@ const programmes = defineCollection({
 });
 
 const team = defineCollection({
-  loader: glob({ base: './src/content/team', pattern: '**/*.md' }),
+  loader: glob({ base: './src/content/team', pattern: MARKDOWN }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -253,7 +274,7 @@ const team = defineCollection({
 });
 
 const testimonials = defineCollection({
-  loader: glob({ base: './src/content/testimonials', pattern: '**/*.md' }),
+  loader: glob({ base: './src/content/testimonials', pattern: MARKDOWN }),
   schema: () =>
     z.object({
       quote: z.string(),
@@ -289,7 +310,7 @@ export const GUIDE_CATEGORIES = [
 ] as const;
 
 const guides = defineCollection({
-  loader: glob({ base: './src/content/guides', pattern: '**/*.md' }),
+  loader: glob({ base: './src/content/guides', pattern: MARKDOWN }),
   schema: () =>
     z.object({
       title: z.string(),

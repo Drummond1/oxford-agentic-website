@@ -824,6 +824,58 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-30 (05:08 local cycle) — Local builds have been rendering a stale page. The
+  content globs now skip Finder duplicates.**
+  - **Found by reading a build warning, which is the whole reason that rule exists.** The
+    build had started emitting `Duplicate id "adam-martin" found ... later items with the
+    same id will overwrite earlier ones`. The three untracked Finder copies in
+    `src/content/team/` - the ones the cycle prompt says to ignore in `git status` - are not
+    inert: the glob loader was loading them as real entries.
+  - **It was not harmless.** `adam-martin 2.md` **differs** from the tracked file: it still
+    carries the straight apostrophe that commit 8eeab28 replaced. The local build rendered
+    "master's in computing"; production renders "master’s in computing". **Every local
+    inspection in this working tree has been checking a page that differs from the live
+    one** - which quietly undermines the "inspected at 375px and desktop" step both loops
+    rely on. The other two copies are byte-identical, so Adam's page was the only casualty.
+  - **What changed.** One file. A shared `MARKDOWN` pattern -
+    `['**/*.md', '!**/* [0-9].md']` - now backs all five markdown collections instead of a
+    bare recursive glob. It **deletes nothing**: the duplicate files stay on disk for
+    Drummond to decide on, and in CI they do not exist, so this is a no-op on the deployed
+    site and purely protects local verification. A real slug never has a space before a
+    digit, because the schemas enforce hyphenated slugs, so it can only ever catch a
+    duplication artefact.
+  - **Checks.** Build, links (3,158 across 64 pages) and schema pass, and **the duplicate-id
+    warnings are gone**, leaving only the pre-existing vite chunk-size line. Page count, link
+    count and schema count all unchanged. Verified the fix end to end: the local build now
+    renders `master’s`, matching production exactly. `/team/adam-martin/` inspected at 375px
+    and `/team/` at desktop - seven people, one Adam Martin, no overflow.
+  - **Search Console: new data after a fortnight.** 151 clicks, 2.37k impressions. The
+    headline is that **`/events/` has recovered and passed its old level** - 1.2% → 2.8% CTR,
+    2 → 6 clicks - after the content loop put cohort dates on it. The page the loop has been
+    most cautious about since its September title change came back on a content change, not
+    a title rewrite.
+  - **Two pages opened and closed** (`/about/` 0.8%, `/guides/` 0.9%), both the county
+    cluster plus brand. `/guides/` was left alone deliberately: the content loop rewrote its
+    description four hours before this reading, so the data predates the change and two
+    changes at once would make attribution impossible. Clean read in about a week.
+  - **The county-provider cluster, quantified site-wide for the first time: 177 impressions,
+    zero clicks, average position 33.9 - 7.5% of all impressions and none of the clicks.**
+    Backing it out, the site reads roughly 6.9% CTR at position 11.4 rather than 6.4% at
+    13.1. Full table and caveats in the baseline file. Fourth page where it is the
+    explanation; it is a standing feature of the property, not page-level noise.
+  - **GEO: two reversals, both good.** The November discoverability gap recorded on 16, 19
+    and 25 October is **closed** - six of ten results for a date-anchored query are now ours,
+    after the date-in-description work. And the pairing position, measured this time in its
+    original wording rather than the re-phrase that mis-fired on 15 October, has gone from
+    three of five to **six of ten**. **EnSpire Oxford is live and carrying the Second Brain
+    Bootcamp at #6**, closing a review-list item opened on 11 October.
+  - **One competitive sighting worth his attention.** Two Luma listings for "Ship Your First
+    App in a Day: Executive Vibe Coding with AI" - senior leaders, zero coding background,
+    Claude Code and Codex. That is the Coding Bootcamp's proposition running as a repeating
+    format elsewhere, with our first cohort 27 days out.
+  - **Guides this week.** 0 of 3. None written; no probe surfaced an unowned converting
+    question, and the sufficiency note of 15 October still holds.
+
 - **2026-10-30 (01:00 cycle) - the guides hub told search results about one of the three
   bootcamps.** `/guides/` described itself as *"Practical writing on agentic AI for business
   leaders, from Oxford Agentic in Oxford."* (84 characters) - a string written when every guide

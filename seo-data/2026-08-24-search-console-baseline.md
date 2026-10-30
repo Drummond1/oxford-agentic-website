@@ -1177,3 +1177,56 @@ way `/events/` ("title already burnt once") and `/bootcamps/oxford-agentic-bootc
 anonymised") are fenced. This cycle changed the page's **meta description** and left its title
 and `h1` alone, on the evidence that a third of the index is about second brains or shipping
 software and the snippet named neither.
+
+## Update — 30 October 2026, 05:10 GMT
+
+First reading in a fortnight, and the site has grown. **151 clicks · 2.37k impressions ·
+6.4% CTR · average position 13.1**, through roughly 28 October. Against the 15 October
+reading (134 / 1.91k): **+17 clicks and +460 impressions**.
+
+Movers worth naming. **`/events/` 168 → 212 impressions, 2 → 6 clicks, CTR 1.2% → 2.8%,
+position 9.4 → 8.3** - the page whose title change in September made things worse has
+recovered and passed its old level, after the content loop put the cohort dates on it. That
+is the first page on this site to recover from a CTR fall, and it did so on a **content**
+change rather than a title rewrite. Cohort 3's event page 38 → 68 impressions at position
+3.6. The homepage 1,032 → 1,253. `/team/` 212 → 267.
+
+**Two more pages opened and closed.**
+
+`/about/` - 120 impressions, 1 click, **0.8% CTR**, position 11.7. Seven named queries,
+19 impressions visible (16%), **zero clicks among them**: 13 are brand (`oxford agentic ai`,
+`oxford agentic ai course`, `oxford agentic`, `agentic ai oxford`) which the homepage wins,
+and 6 are the county-provider cluster at positions 46 to 96. Excluded cluster plus brand.
+No change.
+
+`/guides/` - 229 impressions, 2 clicks, **0.9% CTR**, position 13.1, the lowest CTR on the
+site. Nine named queries, 61 impressions visible (27%), zero clicks. **Two thirds of what is
+visible is the county-provider cluster** - `agentic ai providers oxfordshire` alone is 17
+impressions at position 18.4. The rest is brand. **No change made, and deliberately so: the
+content loop rewrote this hub's description at 01:11 today**, so the data above predates
+that change and a clean read needs about a week. Two changes at once would make attribution
+impossible.
+
+**The county-provider cluster, quantified site-wide for the first time.**
+
+A regex query filter across the whole property, `oxfordshire|hertfordshire|buckinghamshire|
+berkshire|salford|wiltshire|gloucestershire`:
+
+| | impressions | clicks | CTR | position |
+|---|---|---|---|---|
+| County-provider cluster | **177** | **0** | **0%** | **33.9** |
+| Whole site | 2,370 | 151 | 6.4% | 13.1 |
+
+So the cluster is **7.5% of all impressions and none of the clicks**, sitting roughly twenty
+places below the site average. Backing it out of the headline figures - arithmetic on
+Google's rounded aggregates, so approximate - the site reads about **6.9% CTR at position
+11.4** rather than 6.4% at 13.1.
+
+Two caveats. The regex covers the counties seen so far, so 177 is a floor. And this cluster
+is unusually *visible*: 11 named queries account for all 177 impressions, where most of the
+site's query mix is 80-90% anonymised.
+
+**This is now the fourth page where the cluster is the explanation** - `/team/`, `/about/`,
+`/bootcamps/` and `/guides/`. It is not page-level noise; it is a standing feature of the
+property that depresses both headline numbers. Whether it stays noise or becomes a target
+is the consultancy decision, and it is Drummond's.

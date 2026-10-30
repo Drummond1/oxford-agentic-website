@@ -637,6 +637,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     for November 2026"* while Cohort 3 sits 25 days out. Four retrievals, four query shapes,
     still no page of ours. Nothing new to add about the route itself - the open question is
     unchanged and it is his.
+  - **RESOLVED, 30 Oct 2026 - both halves of this item, and in opposite directions.**
+    First, **we are on EnSpire**: the pairing probe returned
+    `enspire.ox.ac.uk/events/second-brain-bootcamp-oxford-agentic` at #6, a full listing of
+    the Second Brain Bootcamp with date, times and the optional museum tour. So the route
+    does accept our events, and the "not checked" line above is answered by the listing
+    existing. Second, **the discoverability problem it was raised against has gone**: the
+    same date-anchored probe that found nothing of ours on 16, 19 and 25 October now returns
+    **six oxfordagentic.com pages in the top ten**, plus four aieventlist.ai pages carrying
+    Cohort 3. That was fixed by our own date-in-description work, not by a listing.
+    What is left is a smaller and ordinary question: whether to get Cohort 3 and the Coding
+    Bootcamp listed there too, now that the route is proven. Still Drummond's call, and no
+    longer urgent. Nothing contacted by the loop.
   - **Not checked:** whether it accepts third-party listings, any cost, or editorial policy.
     Only the "What's On" index was loaded, on 11 Oct; the event page above was seen in search
     results only.
