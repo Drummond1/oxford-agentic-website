@@ -824,6 +824,95 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-30 (08:00 cycle) - nine guides are written as questions and answers and not one of
+  them said so in its schema. The ten-question checklist now does, read off its own rendered
+  page.**
+  - **Found by measuring the built site, not by theory.** Every page in the sitemap was scanned
+    for `h2`/`h3` headings that end in a question mark. **Nine guide pages carry two or more, and
+    none of them emits a `FAQPage` node** - all nine of this site's FAQ nodes sit on event and
+    programme pages, which have an explicit `faqs` field in frontmatter that guides have never
+    had. `/guides/questions-to-ask-before-booking-ai-training/` is the extreme case and the
+    obvious first one: **ten question headings**, numbered 1 to 10, with a non-question section at
+    the end. The page is not an essay with questions in it; it is a list of questions.
+  - **It is also a page that already wins.** The 13 September GEO log has it cited **#1** for
+    *"what questions to ask before booking AI training"*, one of the handful of queries this site
+    is cited first for. The node is on the side of the ledger that defends a position rather than
+    chases one.
+  - **Derived from the rendered HTML, so it can only ever say what the page says.** A new
+    `src/lib/faq.ts` splits the guide's own rendered body at `h2`, keeps the headings that end in
+    a question mark, strips the checklist number off the front, and takes everything under each
+    one - `h3` subsections included - as the answer. **Rendered rather than markdown on purpose:**
+    the source of this guide writes *provider's* with a straight apostrophe and the page prints
+    *provider’s*, so an answer built from the markdown would have differed from the visible
+    sentence in exactly the way the duplicate-file bug found at 05:08 this morning did. Reading
+    the HTML means the two cannot diverge, and it avoids reimplementing smart punctuation.
+  - **Opt-in, and loud when it breaks.** `faqFromHeadings` on the guides collection, default
+    false: a few question headings scattered through an essay are not an FAQ, and the other eight
+    pages are weaker candidates that can be judged one at a time on their own evidence. If an
+    opted-in guide ever stops having two question headings the build **throws** rather than
+    quietly dropping the node, which is the only way a derived node tells you it has gone.
+  - **Verified verbatim against the page, which is the check that matters for this kind of
+    markup.** All ten questions and all ten answers - 4,605 characters of answer text - appear
+    **word for word in the rendered `<main>`**, zero mismatches, measured on the built file.
+    Nothing is asserted that a reader cannot see.
+  - **Measured whole-site: exactly 1 of 199 files in `dist` differs**, the guide itself. Inside
+    it the `<body>` is **byte-identical** (29,990 characters, same SHA-256 prefix before and
+    after) and the only change is one new node in the graph. Compared node by node: `Organization`,
+    `WebSite`, `WebPage`, `Article` and `BreadcrumbList` all unchanged, with `FAQPage` added
+    between `Article` and `BreadcrumbList`. **Neither sitemap moved**, no `lastmod` changed, no
+    `updatedDate` was touched, `llms.txt` and `llms-full.txt` did not move, no other guide moved,
+    and internal links stay at 3,158. The page stays a `WebPage`: `faqSchema` deliberately does
+    not add `FAQPage` to the page's own `@type`, and that reasoning holds here - the FAQ is most
+    of this page but the page is still an article.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and **10 `FAQPage`** nodes (was 9), all titles and
+    descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy,
+    identical on the baseline. Headless Chromium over the changed page plus
+    `what-is-an-agentic-bootcamp` and `/guides/` as unchanged controls, at 375 and 1280px, 6
+    configurations: **200, 0px horizontal overflow, one `h1`, correct self-canonical, no robots
+    meta, no missing alt text, no skipped heading level, zero em dashes and zero straight
+    apostrophes in `main`**, ten question headings and exactly one `FAQPage` node on the changed
+    page, zero on both controls. Both widths screenshotted and read; the rendering is unchanged,
+    as a byte-identical body requires.
+  - **IndexNow, measured with `--dry-run`: this maps to the whole sitemap, 55 URLs**, because a
+    library, the content config and a page template all correctly fall through to `wholeSite`.
+    The guide file on its own maps to 2. Over-submitting, which is the safe direction; recorded,
+    not fixed. The ping script was not run.
+  - **Honest about the upside.** Google has not shown FAQ rich results for a site like this since
+    August 2023, so this is not a CTR play and should not be read back as one. It is a GEO one:
+    `FAQPage` is the node an engine lifts verbatim, this site publishes nine of them already, and
+    ten of its sharpest buyer questions were sitting outside the graph. **Judge it on citations,
+    not on clicks**, and the honest test is whether the checklist page keeps being cited first.
+  - **The other eight are recorded, not shipped.** `scout-drafter-reviewer-pattern` (4),
+    `what-you-can-build-in-one-day-with-ai` (4), `agentic-ai-for-finance-teams` (3),
+    `ai-bootcamp-vs-course-vs-exec-education` (3),
+    `is-it-safe-to-put-company-documents-in-a-second-brain` (3),
+    `why-the-code-an-agent-wrote-is-not-live` (3), `how-to-choose-your-first-agentic-task` (2)
+    and `what-is-an-agentic-bootcamp` (2). Each is an essay with some question headings rather
+    than a list of questions, so each needs its own judgement; the mechanism is there and costs
+    one line of frontmatter. **Do not sweep all eight in one cycle** - that is how markup stops
+    matching what a page actually is.
+  - **Four GEO probes, zero citations; table in `seo-data/geo-citations.md` under 30 Oct 08:00.**
+    The away-day query is the in-house format we deliberately do not sell and already write up;
+    professional services is Thomson Reuters and vendor blogs, declined on winnability like every
+    vertical since 16 October; workflow ownership is winnable and does not convert; and *"what is
+    an agentic workflow for business"* is six locale copies of one Slack post plus glossaries. **No
+    new guide. 0 of 3 for the week of 26 Oct - 1 Nov. Not a Q&A refresh, so both of today's are
+    unspent.** No new contactable lead - every name returned is a competitor, a vendor or a
+    publisher, and Eventbrite, Maven and Meetup are standing items. Nothing contacted.
+  - **Search Console: unavailable from this checkout, and used anyway.** One attempt, `gcloud`
+    reports "No credentialed accounts", no Google credential in the environment, no export in
+    `seo-data/`. But the **05:10 reading three hours earlier** - 151 clicks, 2.37k impressions
+    through roughly 28 October - is the freshest data a cloud cycle here has had, and nothing in
+    it reopens a page: `/events/` recovered, `/about/` and `/guides/` were opened and closed, and
+    `/guides/` is fenced for about a week so this morning's description change gets a clean read.
+    So this cycle worked rule 5, on a page that reading does not mention. Nothing estimated.
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and it does not resolve through WebFetch either, so `build.txt` could not be read and the
+    Actions API stood in: deploy run **326 success on `337e91b`**, which is both `origin/main` and
+    the HEAD this cycle started from, nothing queued or in progress. `luma.com` does not resolve,
+    so no event fact was read or changed.
+
 - **2026-10-30 (05:08 local cycle) — Local builds have been rendering a stale page. The
   content globs now skip Finder duplicates.**
   - **Found by reading a build warning, which is the whole reason that rule exists.** The

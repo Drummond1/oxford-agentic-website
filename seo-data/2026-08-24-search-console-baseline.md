@@ -1230,3 +1230,19 @@ site's query mix is 80-90% anonymised.
 `/bootcamps/` and `/guides/`. It is not page-level noise; it is a standing feature of the
 property that depresses both headline numbers. Whether it stays noise or becomes a target
 is the consultancy decision, and it is Drummond's.
+
+## Update - 30 October 2026, 08:00 GMT
+
+**Unavailable from this cloud checkout, and for once that is not the whole story.** One
+attempt, as the rules ask: `gcloud` reports "No credentialed accounts", there is no Google
+credential anywhere in the environment, and `seo-data/` holds no CSV or TSV export at all.
+Nothing estimated.
+
+**The 05:10 reading three hours earlier is the freshest data this repo has ever carried into a
+cloud cycle** - 151 clicks, 2.37k impressions, through roughly 28 October - and it was read
+and used rather than re-derived. Nothing in it reopens a page: `/events/` has recovered,
+`/about/` and `/guides/` were opened and closed in that reading, `/guides/` is deliberately
+fenced for about a week while the 01:11 description change gets a clean read, and the
+county-provider cluster accounts for 7.5% of impressions and none of the clicks. So this cycle
+worked rule 5 rather than rule 4, and the change it shipped is structured data on a page the
+reading does not mention.

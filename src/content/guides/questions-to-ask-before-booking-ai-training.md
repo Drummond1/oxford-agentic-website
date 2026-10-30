@@ -16,6 +16,9 @@ relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
   - agentic-coding-bootcamp
+# The ten headings below are the ten questions, so they go out as an FAQPage
+# node too, read off the rendered page rather than copied into frontmatter.
+faqFromHeadings: true
 ---
 
 Most AI training now describes itself in the same words: practical, hands-on, applied, built for leaders. The descriptions have converged, so they no longer help you choose. The questions below do, because the answers still differ enormously between providers.

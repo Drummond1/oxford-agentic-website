@@ -6,7 +6,8 @@ import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
 import NewsletterForm from '../../components/NewsletterForm.astro';
 import { formatDate, getProgrammes, paths, showSection } from '../../lib/site';
-import { articleSchema, collectionPageSchema } from '../../lib/schema';
+import { articleSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+import { faqsFromQuestionHeadings } from '../../lib/faq';
 import { absoluteUrl } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 
@@ -151,6 +152,29 @@ const showCapture = showSection('newsletter');
  * header, the footer, `/bootcamps/` and the group blurbs on this page.
  */
 const GUIDES_INDEX_DESCRIPTION = `Practical writing for business leaders on agentic AI workflows, second brains for AI and shipping software with coding agents. From ${config.brand.name} in Oxford.`;
+
+/*
+ * A guide that is a list of questions says so in its schema.
+ *
+ * Read off the guide's own rendered HTML, so the node carries the page's
+ * sentences as the page prints them and cannot drift from them; the guide opts
+ * in with `faqFromHeadings`. The FAQ node sits beside the Article node rather
+ * than replacing it - the page is still an article, and `faqSchema`
+ * deliberately leaves `FAQPage` off the WebPage's own `@type` for that reason.
+ *
+ * An opted-in guide whose headings stop being questions fails the build rather
+ * than quietly losing its node, which is the only way a derived node tells you
+ * it has gone.
+ */
+const guideFaqs = guide?.data.faqFromHeadings
+  ? faqsFromQuestionHeadings(guide.rendered?.html ?? '')
+  : [];
+if (guide?.data.faqFromHeadings && guideFaqs.length === 0) {
+  throw new Error(
+    `${guide.data.slug}: faqFromHeadings is set but the page has fewer than two question headings`,
+  );
+}
+const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) : null;
 ---
 
 {
@@ -172,6 +196,7 @@ const GUIDES_INDEX_DESCRIPTION = `Practical writing for business leaders on agen
           ogImage: absoluteUrl(ogPathFor(paths.guide(guide.data.slug))),
           about: related.map((p) => ({ name: p.data.name, path: paths.programme(p.data.slug) })),
         }),
+        ...(guideFaqNode ? [guideFaqNode] : []),
       ]}
       breadcrumbs={[
         { name: 'Guides', path: paths.guides() },

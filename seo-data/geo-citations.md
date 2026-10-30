@@ -5,6 +5,52 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-30 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE AUDIT FOUND THE CYCLE'S WORK INSTEAD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the axes of the last nine cycles.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day AI workshop for a leadership team away day UK in person | **No** | `innovationvisual.com` (x4, including two PDFs), `brainstation.io` (x2), `pointacademy-co-uk.pages.dev` (x2), `wearehyper-ai.pages.dev` (x2), `alexgoryachev.com`, `createwith.com`, `maven.com`, `eventbrite.ca`, `happeningnext.com`, `uhr.ac.uk`, `tutorials.co.uk` |
+| agentic AI workflow examples for professional services firms UK | **No** | `thomsonreuters.com` (x2), `spotdev.co.uk`, `infinitygroup.co.uk` (PDF), `bcn.co.uk`, `infotech.com`, `journeyteam.com`, `velosio.com`, `stackai.com`, `ampcome.com`, `softomatesolutions.com` (x2), `agenticai-associates.pages.dev`, `gamut.so`, `pickl.ai`, `designveloper.com`, `aws.amazon.com`, `dev.to` |
+| who should own agentic AI workflows in a small company | **No** | `smallbiztrends.com` (x3), `jesscoburn.com` (x2), `dev.to` (x2) |
+| what is an agentic workflow for business | **No** | `slack.com` (x6 locale copies of one post), `bookipi.com`, `tech.co`, `chatbotkit.com`, `giancarlomori.substack.com`, `monkeyvision.nl` (x2), `myndsolution.com` |
+
+**All four declined, and three of them on the clause that has killed every vertical since
+16 October.**
+
+- **Probe 1 is the away-day buyer, and the field is selling the thing we do not sell.** Every
+  close fit is a *private* session run at the client's own office - Innovation Visual's custom
+  workshop, Point Academy's team training from £3,000, Alex Goryachev's five-figure executive
+  AI Day. That is the in-house format, and
+  `/guides/in-house-ai-day-or-send-people-to-a-cohort/` already writes up the comparison the
+  field does not. Nothing to add, and the standing decision not to build services content is
+  the other half of the answer.
+- **Probe 2 is the professional-services vertical, probed once and declined on winnability.**
+  Thomson Reuters holds it with white papers on its own customers, and the rest is Microsoft
+  partners, AWS Marketplace and vendor blogs with unverified percentages - the same shape that
+  closed finance, legal, HR and charities. The engine said so itself: *"mostly vendor blogs and
+  white papers, not independent case studies"*. Not re-pitched without a second probe, per the
+  finance precedent.
+- **Probe 3 is winnable and does not convert.** The field is thin - three `smallbiztrends`
+  posts, two `jesscoburn` posts and two `dev.to` articles - but the searcher is drawing an org
+  chart, not booking a day, and `/guides/who-should-take-the-seat/` (19 Oct) already answers the
+  version of it that converts.
+- **Probe 4 is the definitional query from the loop's own example list, and it is owned.** Six
+  of the thirteen results are the same Slack blog post in six locales, and the rest are
+  glossary pages. `/guides/agentic-ai-glossary/` and `/guides/what-is-an-agentic-bootcamp/`
+  cover it on our terms; a definition page would be the near-duplicate the rules forbid.
+
+**No new contactable lead.** Innovation Visual, Brainstation, Point Academy, HYPER, Alex
+Goryachev and Tutorials.co.uk are competitors; Thomson Reuters, StackAI, Journey Team and the
+rest are vendors; `smallbiztrends`, `tech.co` and `dev.to` publish their own writing. Eventbrite,
+Maven and Meetup are already standing items in `outreach/off-page-listings.md`. Nothing
+contacted.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. The change this cycle is structured
+data, not a Q&A refresh, so both of today's refreshes are unspent.**
+
 ## 2026-10-30 (05:08 GMT cycle)
 
 | Question | oxfordagentic.com cited? | What else ranks |

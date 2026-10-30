@@ -347,6 +347,14 @@ const guides = defineCollection({
       updatedDate: isoDateTime,
       /** Every guide links to ≥1 programme page — PRD §12 internal linking. */
       relatedProgrammes: z.array(reference('programmes')).min(1),
+      /*
+       * Publish this guide's question headings as a `FAQPage` node, read off
+       * the rendered page by `faqsFromQuestionHeadings` so the markup can only
+       * say what the page says. Opt-in: a few question headings in an essay are not an
+       * FAQ, and the node should only appear on a guide that genuinely is a
+       * list of questions and answers.
+       */
+      faqFromHeadings: z.boolean().default(false),
       draft: z.boolean().default(false),
     }),
 });
