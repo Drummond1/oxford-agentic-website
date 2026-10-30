@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-30 (01:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ONE REAL ENGINE ADMISSION CLOSED ON OUR OWN PUBLISHED Q&A
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, none repeating the last eight cycles' axes.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| Claude Code training UK in person one day course for non-developers | **No** | `claude-code-course-c1w.pages.dev` (x2), `claude101.every.to`, `every.to` (x2), `eventbrite.co.uk` (x2), `eventbrite.com`, `onlc.com`, `nobleprog.co.uk`, `marq-ai-wiki.pages.dev`, `markham.learnformula.com`, `luma.com` (x2, neither ours), `accentient.com`, `accentient-com.pages.dev`, `mediatraining.ltd.uk`, `adventuremedia.ai` |
+| what does an agentic AI bootcamp day actually look like hour by hour agenda | **No** - but `luma.com/oxfordagentic2`, our own past Cohort 2 page, was returned | `amrita.edu`, `ask.datasciencedojo.com`, `help.datasciencedojo.com`, `hhl.de`, `outsystems.com`, `precisionaiacademy.pages.dev`, `southernct.edu`, `lu.ma`/`luma.com` (x2, not ours), `maven.com`, `eventbrite.co.uk`, `oreilly.com`, `aixplain.com`, `baa.mindlash.com`, `bluecallom.com`, `gdg.community.dev` |
+| do I need to know how to code to build AI agents for my business non-technical owner | **No** | `fastgpt.io` / `fastgpt.cn` (x8 mirrors of one FAQ), `ciela.ai` (x2), `mikareyes.com`, `tinycommand.com`, `acefone.com`, `openclaw-launchpad.pages.dev`, `reddit.sentinel-team.org` (x2), `redlib.hbubli.cc` (x2) |
+| what should I prepare before an AI workshop to get the most out of the day | **No** | `learning.sap.com` (x9 course pages), `fau.edu` (PDF), `academy.openai.com`, `ventionteams.com` (x2), `payhip.com`, `careerservices.cwu.edu`, `gathershot-marketing.pages.dev`, `chatprd.ai` |
+
+**Probe 2 is the only genuine engine admission, and it closes on a Q&A we already publish.**
+The engine's own verdict was *"The results lack a detailed hour-by-hour breakdown for a typical
+single-day agentic AI bootcamp"*, and the closest things it found were a 5-day university
+programme, a 2-hour online session and a 2-day vendor course. It also returned
+`luma.com/oxfordagentic2` - our own Cohort 2 page, and past - while returning no page of this
+site. **Declined on two separate grounds.** On winnability, the field is institutional
+publishers and platform vendors publishing agendas for their own programmes (Amrita, Southern
+Connecticut, HHL, Outsystems, O'Reilly, Maven), which is the clause that killed charities on
+16 Oct, legal on 22 Oct, HR on 29 Oct and the tool-versus-workflow distinction the same day. On
+duplication, `/guides/what-is-an-agentic-bootcamp/` already carries the heading **"What does the
+day look like, hour by hour?"** and **"How much of the day is building, and how much is
+listening?"**, and both upcoming event pages print a twelve-slot agenda. A new guide would be
+the near-duplicate the rules forbid. **This is the third cycle running that the strongest probe
+closed on our own published answer.**
+
+**Probe 1 is the newest product's exact commercial query, and it is retrieval, not content.**
+Asked for a one-day, in-person, UK, non-developer Claude Code course - which is the Coding
+Bootcamp on 26 November, to the word - the engine recommended Ballpoint in Clerkenwell on dates
+in **May and June 2026**, both already past, and said *"you'd need to check for newer
+sessions"*. Our page for that exact thing was not returned. Checked rather than assumed: the
+programme page's own title and description already name Claude Code, Codex, one day, Oxford and
+*"people who have not yet shipped software... It does not assume you can code"*, and the event
+page's description names the date and the venue (fixed 29 Oct 13:00). **The terms are on the
+page; the page is not in the index.** That is backlog 2b and no on-page change reaches it. No new
+contactable lead: Ballpoint, NobleProg, ONLC, Media Training Ltd, Every and Adventure Media are
+competitors or course sellers, the `.pages.dev` results are doorway mirrors, and Eventbrite and
+Luma are already standing items in `outreach/off-page-listings.md`.
+
+**Probe 3 fails the converting test and brushes a standing rule.** The field is one FAQ mirrored
+across eight `fastgpt` domains, two `ciela.ai` posts, a `.pages.dev` farm and Reddit snapshots -
+winnable in the narrow sense - but the searcher is someone deciding whether to build an agent
+themselves with a no-code tool, not a leader booking a day in a room. The same vanity-traffic
+shape as "AI bootcamp vs course" and "n8n or Claude agents first". It also sits on the message
+house's rule that "no coding" is never left standing on its own, which is an argument against
+writing a page whose whole premise is that clause.
+
+**Probe 4 is declined on converting, and on the field being written for the wrong reader.** Every
+result is written for the person *running* a workshop - nine SAP learning-journey pages, an FAU
+facilitator PDF, an OpenAI Academy playbook, two agency pages - and the engine said so itself:
+*"Most of it applies to a team workshop, and the user may be attending rather than running one."*
+A real gap, but the searcher who asks it has almost always already booked, so a page answering it
+converts nobody; and `/guides/how-to-choose-your-first-agentic-task/` plus both event pages'
+"bring one real task" copy already tell an attendee what to bring.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. The change this cycle is a meta
+description, not a Q&A refresh, so both of today's refreshes are unspent.**
+
 ## 2026-10-29 (19:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE FIELD FOR OUR FORMAT IS EVENT AGGREGATORS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

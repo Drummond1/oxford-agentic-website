@@ -130,6 +130,27 @@ const grouped = GUIDE_CATEGORIES.map((category) => ({
 })).filter((group) => group.entries.length > 0);
 
 const showCapture = showSection('newsletter');
+
+/*
+ * The index's own snippet names all three subjects it holds, not one of three.
+ *
+ * This description was written when every guide was about agentic workflows. The
+ * mix has moved twice since: of 32 guides, 24 are tagged to the Agentic
+ * Bootcamp, 11 to the Second Brain Bootcamp and 7 to the Coding Bootcamp, and 7
+ * are tagged to Second Brain alone - so roughly a third of the index is about
+ * subjects its own snippet did not mention. The group blurbs in
+ * GUIDE_CATEGORIES were swept when the second-brain guides landed (the comment
+ * above them records it); this string was missed, and so was the matching line
+ * in `llms.ts`, which is changed in the same commit.
+ *
+ * The `h1` ("Writing on agentic AI") and the subline are deliberately
+ * untouched. This is the field a search result quotes, which is the same
+ * title-versus-description distinction the `/events/` description was changed
+ * under on 21 October and `/bootcamps/` on 29 October. Nothing new is asserted:
+ * the three subjects are each a programme the site already sells, named in the
+ * header, the footer, `/bootcamps/` and the group blurbs on this page.
+ */
+const GUIDES_INDEX_DESCRIPTION = `Practical writing for business leaders on agentic AI workflows, second brains for AI and shipping software with coding agents. From ${config.brand.name} in Oxford.`;
 ---
 
 {
@@ -228,7 +249,7 @@ const showCapture = showSection('newsletter');
   ) : (
     <Base
       pageTitle="Guides"
-      description={`Practical writing on agentic AI for business leaders, from ${config.brand.name} in Oxford.`}
+      description={GUIDES_INDEX_DESCRIPTION}
       path={paths.guides()}
       ogImage={ogPathFor(paths.guides())}
       schemaNodes={[

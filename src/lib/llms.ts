@@ -69,7 +69,14 @@ export async function publicPages(): Promise<PageRef[]> {
 
   if (showSection('guides')) {
     const guides = await getCollection('guides', ({ data }) => !data.draft);
-    pages.push({ title: 'Guides', path: paths.guides(), description: 'Writing on agentic AI for business leaders.' });
+    // Kept in step with the page's own meta description, for the same reason:
+    // a third of the index is about second brains or shipping software, and
+    // this line named neither.
+    pages.push({
+      title: 'Guides',
+      path: paths.guides(),
+      description: 'Writing on agentic AI workflows, second brains for AI and shipping software with coding agents.',
+    });
     for (const guide of guides) {
       pages.push({ title: guide.data.title, path: paths.guide(guide.data.slug), description: guide.data.description });
     }

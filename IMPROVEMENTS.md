@@ -824,6 +824,97 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-30 (01:00 cycle) - the guides hub told search results about one of the three
+  bootcamps.** `/guides/` described itself as *"Practical writing on agentic AI for business
+  leaders, from Oxford Agentic in Oxford."* (84 characters) - a string written when every guide
+  on the site was about agentic workflows. The mix has moved twice since. Of the **32** guides,
+  24 are tagged to the Agentic Bootcamp, **11 to the Second Brain Bootcamp** and **7 to the
+  Coding Bootcamp**, and **7 are tagged to Second Brain alone**, so roughly a third of the index
+  is about subjects its own snippet did not mention. It now reads **"Practical writing for
+  business leaders on agentic AI workflows, second brains for AI and shipping software with
+  coding agents. From Oxford Agentic in Oxford."** (157 characters.)
+  - **This is the sixth and last page with real impressions whose snippet misdescribed the page,
+    and the first where the missing thing is the subject rather than the date.** `/events/`
+    (21 Oct), `/bootcamps/` (29 Oct 01:00), `/` (29 Oct 07:00), the two bookable event pages
+    (29 Oct 13:00) and `/bootcamps/oxford-agentic-bootcamp/` (29 Oct 19:00) each named no date.
+    This one names no second brain and no software.
+  - **The evidence is the 13 October reading plus a comment already in the repo.** `/guides/` is
+    the third-biggest page on the site at **181 impressions** and carries **the lowest CTR of any
+    page with volume, 1.7%**; the verdict table closed it as *"hub, position 14.5"*, which
+    explains the CTR by position and **does not fence the page** the way `/events/` and
+    `/bootcamps/oxford-agentic-bootcamp/` are fenced on their titles. The title is untouched
+    here, which is the same field distinction the 23 and 29 October cycles drew. The second
+    witness is `GUIDE_CATEGORIES` in `src/content.config.ts`, whose own comment reads *"Blurbs
+    describe what is actually in each group, so they move when the mix does. This one was
+    agentic-only until the second-brain guides landed in it."* - the group blurbs were swept when
+    the mix moved and **this string was missed**, as was the matching `/guides/` line in
+    `src/lib/llms.ts` (*"Writing on agentic AI for business leaders."*), changed in the same
+    commit so the page and the file written for language models cannot disagree.
+  - **Nothing new is asserted, and the phrasing is the house's own.** The three subjects are the
+    three programmes the site sells, named in the header, the footer, `/bootcamps/` and the group
+    blurbs on this page; `/bootcamps/`'s own description already reads *"build an agentic
+    workflow, a second brain, or ship software"*. "Shipping software with coding agents" rather
+    than any form of "no coding", because the message house forbids leaving that clause standing
+    on its own - the Coding Bootcamp's own page says *"Claude Code and Codex do the typing"*.
+  - **The `h1` and subline were deliberately left alone.** The heading still reads *"Writing on
+    agentic AI"* and the subline *"Short, practical pieces for people who intend to build
+    something rather than form a view."* Those are visible copy on a hub, the description is the
+    field a result quotes, and changing one is the focused change. Recorded here so a later cycle
+    can pick the heading up on its own evidence rather than re-deriving this.
+  - **Measured whole-site: exactly 2 of 199 files in `dist` differ** - `guides/index.html` and
+    `llms.txt`. Inside the page the `<body>` is **byte-identical** (37,820 characters, same
+    SHA-256 prefix before and after) and exactly four fields moved: `meta[name=description]`,
+    `og:description`, `twitter:description` and `description` on the `WebPage` node. Compared
+    node by node in the JSON-LD: 5 nodes each, with `Organization`, `WebSite`, `CollectionPage`
+    (all 32 `ListItem`s) and `BreadcrumbList` unchanged. **Neither sitemap moved**, no `lastmod`
+    changed, no `updatedDate` was touched, `llms-full.txt` did not move, no guide file was
+    edited, and internal links stay at 3,158.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 9 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on both the all-on and all-off builds.
+    The 11 outbound warnings are the sandbox egress policy, identical on the baseline. Headless
+    Chromium over the changed page plus a second-brain guide and `/bootcamps/` as unchanged
+    controls, at 375 and 1280px, 6 configurations: **200, 0px horizontal overflow, one `h1`,
+    correct self-canonical, no robots meta, no missing alt text, no skipped heading level, zero
+    em dashes and zero straight apostrophes in `main`**, the new description correct on all three
+    meta fields at 157 characters, and both controls carrying their own unchanged ones. Both
+    widths screenshotted and read; the rendering is unchanged, as a byte-identical body requires.
+  - **IndexNow, measured with `--dry-run`: this maps to the whole sitemap, 55 URLs.**
+    `src/lib/llms.ts` is a shared library, which correctly falls through to `wholeSite`, and
+    `src/pages/guides/[...slug].astro` does not match the static-page regex - the same recorded
+    finding as `events/[slug].astro` and `bootcamps/[slug].astro` on 29 Oct, and the
+    over-submitting direction. Recorded, not fixed. The ping script was not run.
+  - **An internal-linking candidate was scoped and dropped on the ledger's own measurement, which
+    is the more useful half of this cycle.** A whole-site inbound-link count found the **seven
+    team profile pages on exactly one inbound internal link each** (`/team/`), against 3 or more
+    for all 48 other indexable pages - 13% of the site hanging off a single link, on a domain
+    whose diagnosed constraint is crawl budget, with three of those seven named in the 24 August
+    baseline's "never fetched" list. It looks like the cycle's change until you read the next
+    paragraph of that baseline: `/bootcamps/oxford-agentic-bootcamp/` had **257** inbound
+    internal links and had never been crawled once, which is why the baseline records *"Internal
+    linking is not the constraint"*. Adding links would have been re-pitching a hypothesis this
+    repo has already killed with numbers. **Do not re-pitch team-profile internal links**; the
+    remedy for those seven pages is the same external link as everything else (backlog 2b).
+  - **Four GEO probes, zero citations; table in `seo-data/geo-citations.md` under 30 Oct 01:00.**
+    The only genuine engine admission - *"The results lack a detailed hour-by-hour breakdown for a
+    typical single-day agentic AI bootcamp"* - was declined twice over: the field is universities
+    and platform vendors publishing their own agendas, and
+    `/guides/what-is-an-agentic-bootcamp/` already carries the heading *"What does the day look
+    like, hour by hour?"*. **Probe 1 is worth Drummond's attention**: asked for a one-day,
+    in-person, UK, non-developer Claude Code course, which is the Coding Bootcamp on 26 November
+    to the word, the engine recommended a London course whose listed dates were **May and June
+    2026, both past**, and returned no page of ours. The terms are all on our page already, so
+    that is retrieval, not copy. **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. Not a
+    Q&A refresh, so both of today's are unspent.**
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and it does not resolve through WebFetch either, so `build.txt` could not be read and the
+    Actions API stood in: deploy run **324 success on `8eec3d2`**, which is both `origin/main` and
+    the HEAD this cycle started from, nothing queued or in progress. `luma.com` does not resolve,
+    so no event fact was read or changed. **Search Console unavailable from the cloud** - one
+    attempt, `gcloud` reports "No credentialed accounts", no Google credential anywhere in the
+    environment, and `seo-data/` holds no export newer than the 13 October reading. Nothing
+    estimated.
+
 - **2026-10-29 (19:00 cycle) - the flagship programme page is the fifth and last page in the
   booking funnel whose search snippet never said when the day runs.** `shortPitch` is doing the
   same two jobs `summary` was doing on the event pages until this morning. It is the hero subline

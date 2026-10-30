@@ -1160,3 +1160,20 @@ volume moves. It changed the page's **meta description**, which is a different f
 title, on GEO evidence gathered the same night: the page is titled "AI bootcamp dates in
 Oxford" and its description named no date, while the sixteenth consecutive probe watched an
 engine answer our own date question off a third party's July listing.
+
+## Update - 30 October 2026, 01:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud` reports
+"No credentialed accounts", there is no Google credential anywhere in the environment, and
+`seo-data/` holds no CSV or TSV export at all, so nothing newer than the 13 October reading
+exists. Nothing estimated. The 12:50 reading on 15 October stands as the latest data, still
+through roughly 13 October.
+
+Worth recording against that reading, because this cycle acted on the page it describes:
+`/guides/` sat at **181 impressions, 1.7% CTR, position 14.5** - the third-biggest page on the
+site and the lowest CTR of any page with volume - and the 13 October verdict table closed it as
+*"hub, position 14.5"*. That is an explanation by position, **not a fence on the snippet** the
+way `/events/` ("title already burnt once") and `/bootcamps/oxford-agentic-bootcamp/` ("90%
+anonymised") are fenced. This cycle changed the page's **meta description** and left its title
+and `h1` alone, on the evidence that a third of the index is about second brains or shipping
+software and the snippet named neither.
