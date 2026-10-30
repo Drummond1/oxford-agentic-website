@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-30 (20:00 GMT cycle) - FOUR PROBES ON FOUR UNTRIED AXES, ZERO CITATIONS, FOUR DECLINES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions, chosen by first listing every question this log has
+ever put to an engine (about 230 of them) and picking four axes that appear nowhere in it.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should I hire someone for AI or train the team I already have, small business UK | **No** | `profiletree.com` (x3, incl. "in house vs outsourced ai training for your sme"), `lilachbullock.com` (x3), `tessgroup-website.pages.dev`, `spicyadvisory.pages.dev`, `itbrief.co.uk`, `itjobboard.co.uk`, `adriasolutions.co.uk`, `employmenthero.com` (x2), `whitehat-seo.co.uk`, `expertsure.com` |
+| what is the second AI workflow to build after the first agentic workflow works | **No** | `tinycommand.com` (x2), `blog.promptlayer.com`, `airtable.com`, `apiko.com`, `kore1.com`, `thefocusgrouponline.substack.com` |
+| I am the only person in my company who cares about AI how do I get started on my own | **No** | `producthunt.com` (x3), `employmenthero.com`, `hr.tcu.edu`, `mindpal.space`, `learning.linkedin.com`, five `.pages.dev` / `.lovable.app` content farms, `mikareyes.com` (x2), three Substacks |
+| do we need an AI policy before letting staff build their own AI agents, small company UK | **No** | `sprintlaw.co.uk` (x3), `spotdev.co.uk`, `natwestmentor.co.uk` + `rbsmentor.co.uk`, `comparethecloud.net`, `activedigital.co.uk`, `hrreview.co.uk`, `research.gold.ac.uk`, `expre.co.uk`, `fiverr.com` |
+
+**All four declined, each for a different reason, and only one of them on winnability alone.**
+
+- **Probe 1 - hire or train - fails on winnability in the now-familiar shape.** ProfileTree takes
+  three of the first ten with a page titled *"in house vs outsourced ai training for your sme"*,
+  which is our question one word over, and Lilach Bullock takes three more. That is the same
+  field that declined professional services (30 Oct 08:00) and the marketing-provider probe
+  (30 Oct 14:00). It also **cannot be answered honestly from here**: the engine's own summary is
+  built on a £45-75k salary band, a £2,000-5,000 per-head upskilling figure it says it could not
+  verify, and an apprenticeship levy route. Every one of those is a cost claim, and this site
+  publishes no prices. There is no version of this page that is both useful and within the rules.
+- **Probe 2 - what to build second - is the one real content gap of the four, and it does not
+  convert.** The engine says so outright: *"The search didn't turn up a standard answer for what
+  to build second. The results mostly describe what an agentic workflow is and how to build the
+  first one."* The field is six platform vendors writing about their own product (Airtable,
+  PromptLayer, TinyCommand, Apiko, Kore1), which is the topic-probe rule's winnable case. **But
+  the searcher is the one buyer who has already proved they do not need us**: they got a first
+  workflow running on their own. We sell the first one -
+  `how-to-choose-your-first-agentic-task` is the guide and the bootcamp is the day. Winnable and
+  not converting is a decline, and this is the clearest instance of that half of the rule the log
+  has recorded.
+- **Probe 3 - the lone champion - sits below our floor.** The field is beginner "how to use AI at
+  work" content, and the advice returned is to use a chat assistant on your own tasks and learn
+  prompting. Our published floor is people who have **hit the ceiling of prompting**; the
+  level-fit axis was already declined on 19 Oct for restating pages that rank. A person with no
+  budget, no mandate and no prompting practice yet is not someone who books a paid day in Oxford.
+  Declined on converting and on level fit.
+- **Probe 4 - AI policy before agents - is institutional publishers on their own subject, and
+  legal advice this site must not give.** SprintLaw takes three results, with SpotDev, NatWest
+  Mentor, HR Review and a Goldsmiths research PDF beside them. The honest answer turns on UK
+  GDPR, controller liability and what counts as proportionate for a small firm, none of which
+  this site can assert. Same class as the legal vertical killed on 22 Oct and charities on
+  16 Oct. **Do not re-pitch any of the four without new evidence.**
+
+**No new contactable lead.** ProfileTree, TESS Group, Spicy Advisory, Lilach Bullock, Precision
+AI, Adria, Whitehat and Aurora are competitors or agencies; IT Brief, ITPro-adjacent trade press,
+HR Review, NatWest/RBS Mentor, Employment Hero, TechTarget-adjacent and the Substacks publish
+their own writing; SprintLaw and SpotDev are a law firm and an agency; Goldsmiths, TCU and the
+`.pages.dev` content farms are institutions or spam. Eventbrite, Maven and Meetup remain standing
+items in `outreach/off-page-listings.md`. Nothing added, nothing duplicated, nothing contacted.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.** The change this cycle is a meta-description
+truncation fix on the seven team profiles, not a Q&A refresh, so both of today's refreshes are
+unspent and the day ends 0 of 2.
+
 ## 2026-10-30 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR ALREADY ANSWERED ON PAGES WE HOLD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

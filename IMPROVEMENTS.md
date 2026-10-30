@@ -829,6 +829,140 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-30 (20:00 cycle) - this site's search snippet for seven named real people was a
+  sentence broken off mid-word. All seven are now whole sentences, or a clean word with an
+  ellipsis.**
+  - **Found by measuring every title and description on the built site, which is a sweep this
+    log had not recorded.** `src/pages/team/[...slug].astro:85` built the page description as
+    `` `${name} - ${role}, ${company}. ${bio.slice(0, 100)}` ``. A hard character cut lands
+    wherever it lands: **all seven profiles ended mid-sentence and six of them mid-word** -
+    *"...FX market-making at UBS and Barclays t"*, *"...the former Chief Product Officer at
+    Lig"*, *"...a master's in computing from Cambridge. He b"*, *"...the University of Oxford's
+    Sa"*, *"...the Second Brain Bootcamp teac"*, *"...runs the AI Centre for Business. She de"*.
+    The seventh, Nicolai's, ended *"...accounting practices. He "* - a trailing space inside
+    the attribute.
+  - **It was the only text in the codebase cut that way.** Every other `.slice(0, n)` in `src/`
+    is on an array (three testimonials, four guides, two cohorts). This was one expression, in
+    one file, and nothing else shares the fault - so the fix is small by nature rather than by
+    restraint.
+  - **Scoped precisely, because the blast radius looked worse than it is.** That one string is
+    the `<meta name="description">`, the `og:description`, the `twitter:description` **and** the
+    `WebPage.description` node - 4 strings x 7 pages = **28 broken strings**. It is *not* the
+    `Person` node: `personSchema` takes `speaker.bio` whole (186-315 characters per person,
+    verified unchanged on all seven), and `llms.ts:331` does the same, so `llms.txt` and
+    `llms-full.txt` were never affected. **This is the snippet layer only**, and saying so
+    precisely is what keeps the entry honest - an earlier pass through this measurement read
+    "Person.description contains the broken tail" and was wrong, because the full bio of course
+    contains its own first 100 characters.
+  - **Why this cluster and not another.** `/team/` is the **second-highest page on the site by
+    impressions** in the 30 Oct 05:10 reading - **267**, above `/guides/` at 229 and `/events/`
+    at 212 - and the 15 Oct diagnosis has `drummond gilbert` resolving to `/team/` at position
+    7.4. The profiles under it are also the entity layer the ledger calls this site's weakest
+    (backlog 2b, 19, 24): all 30 guides declare `author` as `.../team/drummond-gilbert/#person`
+    and the Organization node names the same `@id` as `founder`.
+  - **The rule, copied from this codebase rather than invented.** `events/[slug].astro` already
+    solves the same class of problem for titles: a named limit, candidate strings in preference
+    order, `.find()` the first that fits. `SERP_DESCRIPTION_LIMIT = 160`, candidates are runs of
+    **whole sentences** longest-first, and the fallback - used only where no whole sentence fits
+    - is a word-boundary cut closed with an ellipsis, with a trailing-punctuation trim because
+    Adrian's otherwise landed just after a spaced hyphen and read *"teaches -..."*.
+  - **Whole sentences are preferred even when they come in short, and that costs something worth
+    naming.** Drummond's goes from 153 characters to **103**, losing the *"teaches on AI at the
+    University of Oxford's Saïd Business School"* clause that was previously present-but-broken
+    (*"...Oxford's Sa"*). That is a deliberate trade: a complete summary is what the field is
+    for, and a snippet padded to the budget with a severed clause is the kind Google rewrites.
+    Recorded rather than hidden, so a later cycle can reverse the preference on evidence.
+  - **Results, all seven, measured on the built site:** Adam 123, Adrian 154, Drummond 103,
+    Emine 145, Glenn 154, Jonathan 148, Nicolai 135. **Five end on a full stop, two on an
+    ellipsis after a whole word, none exceeds 160, none ends mid-word, none has a trailing
+    space.** Every bio clause was checked to be a **verbatim prefix of the published `bio`
+    field** - nothing is reworded, nothing is new text.
+  - **Measured whole-site: exactly 7 of 199 files in `dist` differ**, the seven profiles.
+    Inside each, the four description strings were blanked out of both builds and the remainder
+    compared byte for byte: **identical**. `<main>` is byte-identical on every one. Neither
+    sitemap moved, no `lastmod` changed, no `updatedDate` was touched (no content file was),
+    `llms.txt` and `llms-full.txt` did not move, internal links stay at 3,158, and
+    `/team/josh-lawman/` - a redirect stub with no description, not a profile - is untouched.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 10 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy, identical
+    on the baseline. Headless Chromium over all seven profiles plus `/team/` and `/` as controls,
+    at 375 and 1280px, 18 configurations: **200, 0px horizontal overflow, one `h1`, correct
+    self-canonical, no robots meta, no missing alt text, no unnamed link or button, no skipped
+    heading level, zero em dashes and zero straight apostrophes in `main`**, and on each profile
+    `description === og:description === twitter:description`, length <= 160, a clean ending, the
+    clause a prefix of the published bio, and the `Person` node still carrying the whole bio.
+    All 18 passed. Screenshots read at both widths; the rendering is unchanged, as a
+    byte-identical `<main>` requires.
+  - **One assertion failed first and the fault was the assertion, again.** The first pass
+    asserted the description's bio clause appears verbatim in the rendered `<main>` - the
+    standard `faq.ts` established on 30 Oct at 08:00. It failed on all seven at both widths.
+    The reason is a real fact about this codebase worth recording: **the `bio` frontmatter field
+    is never rendered as visible text anywhere on the site.** The profile page renders the
+    markdown body, which is different prose; `bio` exists only to feed the meta description, the
+    `Person` node and `llms-full.txt`. So the right source of truth for this field is the
+    frontmatter, not the page, and the re-run asserts a prefix of that instead. The `faq.ts`
+    standard was right for a node derived from rendered HTML and does not transfer to a
+    machine-facing field.
+  - **IndexNow, measured with `--dry-run`: 55 URLs**, the whole sitemap, because a page template
+    under `src/pages/` correctly falls through to `wholeSite` - against **7** that actually
+    changed. Over-submitting, the safe direction; recorded, not fixed, consistent with the
+    26 Oct decision on item 41. The ping script was not run.
+  - **Honest about the upside.** Google rewrites meta descriptions it does not like and may have
+    been rewriting these already, in which case the visible gain is nil. The defensible claims
+    are narrower and both true: the site no longer publishes a severed fragment of a named real
+    person's biography as its own description of them, and the four strings an engine or a social
+    card lifts are now complete sentences. **Judge it on whether these pages' snippets read as
+    finished prose, not on clicks**, and give it longer than a fortnight.
+  - **The next candidate on these pages is recorded, not taken.** The prefix repeats the name the
+    bio then repeats again: *"Drummond Gilbert - Founder and host, Oxford Agentic. Drummond
+    Gilbert runs the Oxford Agentic Bootcamp."* says his name twice and the brand twice, on all
+    seven pages, and dropping the redundant opening would buy back roughly 20-50 characters of
+    snippet budget each - which is exactly what would let Drummond's keep the Saïd clause. **Not
+    done this cycle**: it is a copy change to how seven real people are described rather than a
+    truncation bug, the repeated name is also a ranking-relevant string, and one change ships per
+    cycle. Measured and left for a cycle that takes it deliberately.
+  - **Four GEO probes, zero citations; table in `seo-data/geo-citations.md` under 30 Oct 20:00.**
+    The four axes were chosen by listing all ~230 questions this log has ever asked and picking
+    four that appear nowhere in it: hire-or-train, what-to-build-second, the lone champion, and
+    whether an AI policy must precede agent-building. **All four declined, each on a different
+    limb of the rule** - probe 1 is ProfileTree's field and cannot be answered without cost
+    claims this site does not publish; probe 2 is a genuine gap the engine admits to
+    (*"didn't turn up a standard answer for what to build second"*) and the searcher has already
+    proved they do not need us, which is the cleanest winnable-but-not-converting case the log
+    holds; probe 3 sits below our published floor; probe 4 is law firms on their own subject and
+    legal advice this site must not give. **No new guide, 0 of 3 for the week of 26 Oct - 1 Nov;
+    not a Q&A refresh, so the day ends with both of its two unspent.** No new contactable lead -
+    every name is a competitor, an agency, a publisher, a law firm, an institution or a content
+    farm - and Eventbrite, Maven and Meetup are standing items. Nothing contacted.
+  - **Candidates scoped and put down this cycle, recorded so they are not re-found.** (1) **The
+    seven `/team/<person>/` URLs carry no `lastmod`**, and unlike `/about/` or `/guides/` each
+    *is* backed by exactly one content file - the case `contentLastmod()` exists for. It was not
+    taken because the `team` collection has **no `updatedDate` field at all**, so shipping it
+    means adding seven hand-recorded dates plus the standing discipline of bumping them, to hint
+    recrawls on the least-changing pages on the site. The config's own stance applies: a missing
+    `lastmod` is merely absent, an untrue one is worse. (2) **`/events/` appeared to publish no
+    `Event` nodes** - it does, nested inside the `ItemList` as `item`, which a top-level `@graph`
+    walk misses. Recorded because that is exactly how the node spent months missing `image` and
+    `offers` before 25 Oct: **any audit of this site's structured data has to recurse**. (3)
+    Inbound internal links were re-measured across all 55 indexable pages: **no page is starved**
+    (54 for everything in nav or footer, 5-12 for guides, 1 for the team profiles, which is
+    backlog 24 and Drummond's call) and **zero pages have no inbound link**.
+  - **Search Console: unavailable from this checkout.** One attempt, `gcloud` reports "No
+    credentialed accounts", no Google credential in the environment, no export anywhere in the
+    repo. The **05:10 reading** stands and was read in full rather than taken from the two later
+    cycles' summaries of it; it agrees with them. Nothing estimated.
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`,
+    so `build.txt` could not be read and the Actions API stood in: Deploy run **330 success on
+    `ec93160`**, which is both `origin/main` and the HEAD this cycle started from, nothing queued
+    or in progress. `luma.com` is unreachable from here, so **no event fact was read or changed**
+    - and note the cycle prompt's own event facts are stale against the repo (it gives Cohort 3 as
+    15 Oct; the repo and the footer say **19 November**, and Cohort 3's file was last confirmed
+    18 Oct). The repo was treated as the authority and nothing date-related was touched.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20) and the
+    `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's outcomes
+    (22); the retention line (50); and the rest of the needs-Drummond list.
+
 - **2026-10-30 (14:00 cycle) - the file an answer engine holds always in view could not tell a
   cohort that has run from one you can still book. Three of its five cohorts were past and it
   said so about none of them.**

@@ -1261,3 +1261,27 @@ fenced for about a week while the 01:11 description change gets a clean read, an
 county-provider cluster is still 7.5% of impressions and none of the clicks. So this cycle
 worked rule 5, and the file it changed - `llms.txt` - is not a page Search Console measures at
 all, so no page in that reading is touched or re-opened by it.
+
+## Update - 30 October 2026, 20:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud` reports "No
+credentialed accounts", there is no Google credential anywhere in the environment, and
+`seo-data/` holds no CSV, TSV or spreadsheet export at all (checked across the whole repo, not
+just `seo-data/`). Nothing estimated.
+
+**The 05:10 reading this morning still stands as the freshest data** - 151 clicks, 2.37k
+impressions, 6.4% CTR, average position 13.1, through roughly 28 October - and it was read
+in full rather than taken from the two later cycles' summaries of it. Agreeing with them:
+`/events/` has recovered to 212 impressions at position 8.3, `/about/` and `/guides/` were
+opened and closed in that reading, `/guides/` stays fenced for about a week while the 01:11
+description change gets a clean read, and the county-provider cluster is still 7.5% of
+impressions and none of the clicks. So this cycle worked rule 5.
+
+**One thing in that reading did point at this cycle's change, though it is not a CTR gap.**
+`/team/` is the site's **second-highest page by impressions** (267, up from 212 a fortnight
+earlier) and the 15 October diagnosis has `drummond gilbert` resolving to `/team/` at position
+7.4. The seven `/team/<person>/` profiles under it were found this cycle to be serving meta
+descriptions cut mid-word. That is a snippet-quality defect on a cluster with real impressions,
+not an impressions-versus-position gap, so it was taken under rule 5 and not dressed up as
+rule 4. No page named in the 05:10 reading is re-opened by it.
+

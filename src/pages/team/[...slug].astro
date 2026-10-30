@@ -76,13 +76,66 @@ const profileLinks = speaker
       ] as const
     ).flatMap(({ label, href }) => (href ? [{ label, href }] : []))
   : [];
+
+/*
+ * The profile's search snippet: who the person is, then as much of their own
+ * bio as a search result will show.
+ *
+ * It was `bio.slice(0, 100)`, a hard character cut, and it landed mid-sentence
+ * on all seven profiles - six of them mid-word. Measured on the built site:
+ * "...FX market-making at UBS and Barclays t", "...former Chief Product Officer
+ * at Lig", "...a master's in computing from Cambridge. He b". That one string
+ * is the `<meta name="description">`, the `og:` and `twitter:` description and
+ * the `WebPage.description` node on each of these pages, so a fragment broken
+ * mid-word was this site's snippet for seven named real people. (The `Person`
+ * node, `llms.txt` and `llms-full.txt` all carry the full bio and were never
+ * affected - this is the snippet layer only.)
+ *
+ * Same shape as the event title rule in `events/[slug].astro`: a named limit,
+ * candidates in preference order, take the first that fits. Whole sentences are
+ * preferred even when they come in shorter than the limit, because a complete
+ * summary is what the field is for - a snippet filled to the character budget
+ * with a broken clause is the thing Google rewrites.
+ *
+ * Adrian's and Glenn's opening sentences are 136 and 169 characters, so for
+ * those two no whole sentence fits and the last candidate is a word-boundary
+ * cut closed with an ellipsis: still their own words, visibly unfinished rather
+ * than silently broken. The trailing-punctuation trim is there because Adrian's
+ * cut otherwise lands just after a spaced hyphen and reads "teaches -...".
+ *
+ * Nothing here is new text. Every candidate is a prefix of the bio the profile
+ * already prints in full further down the same page.
+ */
+const SERP_DESCRIPTION_LIMIT = 160;
+
+function profileDescription(name: string, role: string, company: string | undefined, bio: string) {
+  const prefix = `${name} - ${role}${company ? `, ${company}` : ''}. `;
+  const sentences = (bio.replace(/\s+/g, ' ').trim().match(/[^.]+\.(?=\s|$)/g) ?? [bio]).map((s) =>
+    s.trim(),
+  );
+
+  // Longest run of whole sentences that fits, tried longest first.
+  const runs = sentences.map((_, i) => sentences.slice(0, i + 1).join(' ')).reverse();
+  const whole = runs.find((run) => (prefix + run).length <= SERP_DESCRIPTION_LIMIT);
+  if (whole) return prefix + whole;
+
+  const room = SERP_DESCRIPTION_LIMIT - prefix.length - 1; // the ellipsis
+  const cut = sentences[0].slice(0, room);
+  const atWord = cut.slice(0, cut.lastIndexOf(' '));
+  return `${prefix}${atWord.replace(/[\s,;:-]+$/, '')}…`;
+}
 ---
 
 {
   speaker ? (
     <Base
       pageTitle={speaker.data.name}
-      description={`${speaker.data.name} - ${speaker.data.role}${speaker.data.company ? `, ${speaker.data.company}` : ''}. ${speaker.data.bio.slice(0, 100)}`}
+      description={profileDescription(
+        speaker.data.name,
+        speaker.data.role,
+        speaker.data.company,
+        speaker.data.bio,
+      )}
       path={paths.teamMember(speaker.data.slug)}
       ogImage={ogPathFor(paths.teamMember(speaker.data.slug))}
       schemaNodes={[
