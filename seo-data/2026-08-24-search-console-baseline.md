@@ -1246,3 +1246,18 @@ fenced for about a week while the 01:11 description change gets a clean read, an
 county-provider cluster accounts for 7.5% of impressions and none of the clicks. So this cycle
 worked rule 5 rather than rule 4, and the change it shipped is structured data on a page the
 reading does not mention.
+
+## Update - 30 October 2026, 14:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud` reports "No
+credentialed accounts", there is no Google credential anywhere in the environment, and
+`seo-data/` holds no CSV or TSV export at all. Nothing estimated.
+
+**The 05:10 reading this morning stands as the freshest data** - 151 clicks, 2.37k impressions,
+6.4% CTR, average position 13.1, through roughly 28 October - and it was read rather than
+re-derived. Nothing in it reopens a page: `/events/` has recovered to 212 impressions at
+position 8.3, `/about/` and `/guides/` were opened and closed in that reading, `/guides/` stays
+fenced for about a week while the 01:11 description change gets a clean read, and the
+county-provider cluster is still 7.5% of impressions and none of the clicks. So this cycle
+worked rule 5, and the file it changed - `llms.txt` - is not a page Search Console measures at
+all, so no page in that reading is touched or re-opened by it.

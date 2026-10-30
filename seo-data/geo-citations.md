@@ -5,6 +5,55 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-30 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR ALREADY ANSWERED ON PAGES WE HOLD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions on the objection axis - the things a buyer asks
+*against* the format - none repeating the axes of the last ten cycles.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is a one-day AI bootcamp enough or do I need a longer AI programme for my team | **No** | `aihr.com`, `precisionaiacademy.pages.dev` (x3), `tessgroup-website.pages.dev`, `pertamapartners.com` (x2), `itpro.com`, `aicerts.ai`, `crashthatcourse.pages.dev`, `spicyadvisory.pages.dev`, `newline.co`, `croz.net`, `pulse.bot` |
+| what do you actually take away from a hands-on AI workshop | **No** | `deepstation.ai`, `anicca.co.uk` (x2), `asianefficiency.com`, `amitkoth.pages.dev`, `business.pitt.edu`, `ssw.com.au`, `clonmeldigital.notion.site` (x2), `ailab.world`, `convert.com`, `luma.com` |
+| AI training for senior leaders who have already done an executive education AI course, what next | **No** | `emeritus.org` (x4), `cap.csail.mit.edu` (x2), `online.iitkgp.ac.in` (x2), `techtarget.com`, `lebow.drexel.edu`, `digitaldefynd.com`, `leadwithai.co`, `mahindrauniversity.edu.in` |
+| how to pick an AI training provider that is not just slides and vendor demos UK | **No** | `profiletree.com` (x7), `lilachbullock.com` (x2), `spicyadvisory.com` (x2), `humanedgeai.com`, `tessgroup-website.pages.dev`, `aicerts.ai`, `readynez.com`, `teamland.com` |
+
+**All four declined, and for once not one of them on winnability alone. Three are questions
+this site already answers on a page that has been cited first for them before.**
+
+- **Probe 1 is the sharpest objection to the whole product and the field answers it against
+  us.** The engine's own bottom line: a one day session is "reasonable for awareness", and if
+  you need people to "change workflows, build their own use cases" you should "plan for a
+  follow-up". That is our promise being contradicted. But the site already argues it in three
+  places - `what-you-can-build-in-one-day-with-ai` has the heading **"Is one day enough?"**,
+  `how-long-to-build-a-second-brain` and `questions-to-ask-before-booking-ai-training` carry
+  the rest - so there is nothing to write, and the field is training vendors selling the
+  longer format they recommend. Retrieval, not a content gap.
+- **Probe 2 is the hands-on claim, and we own the question-shaped version of it.** On 14 Sept
+  `what-hands-on-ai-training-actually-means` was cited **#1** for *"what does hands-on AI
+  training actually mean"*. This phrasing surfaces workshop sellers' own marketing pages
+  instead, including `deepstation.ai`'s "AI Workshops: How Hands-On Learning Beats Online
+  Courses" - our angle, written by a competitor. Same page, different phrasing, no new page
+  warranted.
+- **Probe 3 is institutional and not winnable.** Emeritus (x4), MIT CSAIL, IIT Kharagpur,
+  Drexel and Cambridge Judge hold it with six-month executive programmes. The question-shaped
+  version is ours - `after-the-ai-executive-programme` was cited **#1** on 14 Sept for *"what
+  to do after finishing an executive AI programme"* - and that is the version that converts.
+- **Probe 4 is the one we are cited first for, asked in a phrasing the field owns.**
+  `questions-to-ask-before-booking-ai-training` was **#1** on 13 Sept. Here ProfileTree alone
+  takes seven of the results. A second page on the same question is the near-duplicate the
+  rules forbid; the FAQPage node shipped onto that page at 08:00 today is the move that was
+  already made for it.
+
+**No new contactable lead.** Precision AI Academy, TESS Group, Pertama Partners, AI CERTs,
+Anicca, Deepstation, LeadWithAI, ProfileTree and Spicy Advisory are competitors; AIHR, ITPro,
+TechTarget, Emeritus and DigitalDefynd publish their own writing; MIT, Drexel, Pitt, IIT and
+Mahindra are institutions. Eventbrite, Maven and Meetup are standing items in
+`outreach/off-page-listings.md`. Nothing added, nothing duplicated, nothing contacted.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov. The change this cycle is a correctness
+fix to `llms.txt`, not a Q&A refresh, so both of today's refreshes are unspent.**
+
 ## 2026-10-30 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE AUDIT FOUND THE CYCLE'S WORK INSTEAD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

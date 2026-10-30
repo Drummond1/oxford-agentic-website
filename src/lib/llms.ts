@@ -56,10 +56,29 @@ export async function publicPages(): Promise<PageRef[]> {
   }
 
   for (const event of [...upcoming, ...past]) {
+    // Say which cohorts have already run. `llms-full.txt` below prints a
+    // `Status:` line per event and switches its labels to the past tense, but
+    // this list - the one in llms.txt, which is the file held always in view
+    // rather than searched - rendered all five cohorts as `date, venue.` and
+    // left the date to carry the distinction on its own. A reader that does
+    // not know today's date, or holds a copy taken weeks ago, cannot tell a
+    // bookable day from one that has gone, and three of the five are past.
+    // The wording is the event page's own ("took place on X at Y"), from the
+    // same two helpers, so the file cannot word it differently from the page.
+    const status = effectiveStatus(event);
+    const when =
+      status === 'past'
+        ? `Took place on ${formatDate(event.data.startDate)} at ${venueLine(event.data.venue)}.`
+        : status === 'cancelled'
+          ? // No event is cancelled today, so this never renders. It exists
+            // because the alternative branches both state something false of a
+            // cancelled day: that it ran, or that it is still to come.
+            `Cancelled. Was to run on ${formatDate(event.data.startDate)} at ${venueLine(event.data.venue)}.`
+          : `${formatDate(event.data.startDate)}, ${venueLine(event.data.venue)}.`;
     pages.push({
       title: event.data.title,
       path: paths.event(event.data.slug),
-      description: `${formatDate(event.data.startDate)}, ${venueLine(event.data.venue)}. ${event.data.summary}`,
+      description: `${when} ${event.data.summary}`,
     });
   }
 

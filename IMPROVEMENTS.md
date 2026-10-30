@@ -829,6 +829,118 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-30 (14:00 cycle) - the file an answer engine holds always in view could not tell a
+  cohort that has run from one you can still book. Three of its five cohorts were past and it
+  said so about none of them.**
+  - **Found by reading the two machine files against each other, which is the comparison nobody
+    had made.** `llms-full.txt` gets this right and has all along: every event block prints an
+    explicit `Status:` line and switches its labels to the past tense, with a comment saying so
+    - *"once the day has run, these two labels stop promising it"*. `llms.txt` does not.
+    `publicPages()` concatenates `[...upcoming, ...past]` into one list and renders every cohort
+    as `date, venue. summary`, so **5 event entries, 3 of them past, with nothing to separate
+    them but the date itself**.
+  - **It is the wrong file to lose the distinction in.** STATE.md records the split: `/llms.txt`
+    is the file the voice agents hold **always in view**, `/llms-full.txt` is only **searched**.
+    So the shorter file - the one guaranteed to be read, and the one an answer engine is most
+    likely to cache whole - is the one that dropped the status, and the detailed file nobody is
+    guaranteed to reach is the one that kept it.
+  - **The date cannot carry it on its own, and this log says why.** A reader has to know today's
+    date to decode `Wednesday, 21 October 2026`, and a cached copy read in December has no such
+    thing. The GEO log is a catalogue of exactly this failure from the other side: Perplexity
+    serving a 21 July copy of `/events/`, an engine answering our own date question off a third
+    party's July listing, and the 26 Oct probes reading **"tickets from $275"** and a July date
+    off retired Luma pages. We have been fixing other people's stale copies of our dates while
+    publishing an undated one of our own.
+  - **The worst of the three is the most recent one.** Cohort 1 and Cohort 2 at least carry past
+    tense in their prose summaries - *"Sixteen leaders spent a day"*, *"A sold-out day"*. The
+    Second Brain Bootcamp's is tense-neutral: *"The first Oxford Second Brain Bootcamp. A day at
+    the Pitt Rivers Museum building a second brain from each attendee's own material."* That
+    reads as an offer. It ran **nine days ago**, and Second Brain is the one programme with **no
+    upcoming cohort**, so an engine asked when the Oxford Second Brain Bootcamp runs had that
+    line and nothing else to answer from.
+  - **The wording is the page's own, not a new one.** `events/[slug].astro:341` already prints
+    *"{title} took place on {date} at {venue}."* under a heading that reads **"This event has
+    run"**. The new branch uses that clause and the same two helpers (`formatDate`, `venueLine`),
+    so the machine file cannot word it differently from the page a reader sees. Derived from
+    `effectiveStatus`, which was already imported in this file and used 150 lines below, so
+    **after 19 November Cohort 3 flips itself** on the daily cron with no commit behind it.
+  - **A third branch for `cancelled`, which renders on nothing today.** Deliberate, and recorded
+    rather than quietly added: both other branches state something false of a cancelled day -
+    that it ran, or that it is still to come. One ternary is the price of the file never being
+    able to lie in either direction.
+  - **Measured whole-site: exactly 1 of 199 files in `dist` differs, and 3 lines inside it.**
+    `llms.txt`, the three past cohorts. The two upcoming entries are **byte-identical**, the
+    `## Next events` section is untouched and still lists exactly 2, **`llms-full.txt` did not
+    move**, **no HTML changed at all**, neither sitemap moved, no `lastmod` changed, no
+    `updatedDate` was touched (no content entry was), and internal links stay at 3,158.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 10 `FAQPage` nodes, all titles and descriptions
+    unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy, identical
+    on the baseline. `npm run check:flags` green on both the all-on and all-off builds. Headless
+    Chromium over the three past cohort pages plus the Cohort 3 page as an upcoming control, at
+    375 and 1280px: 200, 0px horizontal overflow, one `h1`, correct self-canonical, no robots
+    meta, no missing alt text, no skipped heading level, zero em dashes and zero straight
+    apostrophes in `main`; "took place on" present on all three past pages and absent from the
+    control. `llms.txt` served over HTTP carries "Took place on" exactly 3 times and the `##
+    Next events` block carries it zero times. Screenshots read at both widths: the past page
+    heads its booking band **"This event has run"**, the control still says **"Book your place"**.
+  - **One assertion failed and the fault was the assertion.** An unnamed-link check counted 3
+    links at 1280px - on the unchanged control as well, and identically on the baseline build.
+    They are the three programme links in the desktop nav submenu, and they have text; `innerText`
+    returns empty for a collapsed subtree where `textContent` does not. Re-measured with
+    `textContent`: **0 unnamed links**. Recorded so a later cycle does not re-find it as a defect.
+  - **IndexNow, measured with `--dry-run`: 55 URLs**, the whole sitemap, because `src/lib/llms.ts`
+    is a shared library. `llms.txt` is not a sitemap URL, so IndexNow cannot hint the file that
+    actually changed. Over-submitting, the safe direction; recorded, not fixed, consistent with
+    the 26 Oct decision on item 41. The ping script was not run.
+  - **Honest about the upside.** This is not a clicks change and no Search Console page is
+    touched by it - `llms.txt` is not a page Google measures. It is a correctness fix on the
+    surface built for machines to read, and the only honest test is whether an engine asked when
+    the Second Brain Bootcamp runs stops answering **21 October 2026**. Worth probing in a few
+    weeks; do not read it back as a ranking move.
+  - **Four GEO probes, zero citations; table in `seo-data/geo-citations.md` under 30 Oct 14:00.**
+    Probed on the objection axis for the first time. All four declined, and unusually not on
+    winnability alone: three are questions this site has been cited **#1** for in a different
+    phrasing (`what-hands-on-ai-training-actually-means`, `after-the-ai-executive-programme`,
+    `questions-to-ask-before-booking-ai-training`), and the fourth - *is one day enough* - is
+    answered by the heading **"Is one day enough?"** on
+    `what-you-can-build-in-one-day-with-ai`. Retrieval, not content gaps. **No new guide, 0 of 3
+    for the week of 26 Oct - 1 Nov; not a Q&A refresh, so both of today's are unspent.** No new
+    contactable lead: every name is a competitor, a vendor, a publisher or a university, and
+    Eventbrite, Maven and Meetup are standing items. Nothing contacted.
+  - **Two candidates were scoped and put down, both recorded so they are not re-pitched.**
+    (1) The Coding Bootcamp programme page's meta description still names no date, measured at
+    **144 characters** against the Agentic page's dated 158. The 29 Oct cycle recorded it and the
+    reason holds: its `shortPitch` is 141 characters, so the derived clause cannot fit, and
+    `shortPitch` is also the card line, the hero subline and the `llms.txt` line. **What is new
+    is that it matters less than it looked:** that page's `Course` node already carries
+    `hasCourseInstance` with `startDate` 26 November, so the date is machine-readable there
+    already. A second string on the programme schema is mechanism bought for a snippet, on a
+    page whose structured data is already correct. Left. (2) The seven other guides with two or
+    more question headings were re-read against `faqFromHeadings`. **None of them qualifies under
+    the contract as written** - the config says the node "should only appear on a guide that
+    genuinely is a list of questions and answers", and every one of the seven is an essay with a
+    two- or three-question block at the end. Four of them (`agentic-ai-for-finance-teams`,
+    `why-the-code-an-agent-wrote-is-not-live`, `how-to-choose-your-first-agentic-task`,
+    `what-is-an-agentic-bootcamp`) have the useful property that **every question heading sits in
+    one contiguous closing block**, which is a measurable criterion rather than a judgement - but
+    adopting it widens a contract written six hours earlier by the cycle that built the
+    mechanism, and that is a decision to take deliberately, not in passing. Recorded as the shape
+    of the question for whichever cycle takes it up.
+  - **Search Console: unavailable from this checkout.** One attempt, `gcloud` reports "No
+    credentialed accounts", no Google credential in the environment, no export in `seo-data/`.
+    The **05:10 reading** stands - 151 clicks, 2.37k impressions, 6.4% CTR, position 13.1,
+    through roughly 28 October - and nothing in it reopens a page. Nothing estimated.
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and the domain does not resolve through WebFetch either, so `build.txt` could not be read and
+    the Actions API stood in: Deploy run **329 success on `b723a5a`**, which is both `origin/main`
+    and the HEAD this cycle started from, nothing queued or in progress. `luma.com` is unreachable
+    from here, so no event fact was read or changed - every date in this entry comes from the
+    repo's own event files.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20) and the
+    `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's outcomes
+    (22); the retention line (50); and the rest of the needs-Drummond list.
+
 - **2026-10-30 (09:00 cycle) - two text sizes rendered below the bottom of the type scale.
   Both are now pinned to it, and the one that mattered was in the footer of all 59 pages.**
   - **Found by measuring, and the backlog item that pointed here was wrong about its own
