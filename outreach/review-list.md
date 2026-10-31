@@ -239,6 +239,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     St Anne's-versus-Worcester venue contradiction for the fifth time. `luma.com/oxfordagentic3`
     was not returned. Nothing contacted, no new lead; this is one more dated reading of the item
     above.
+  - **Corroborated a third time, 31 Oct 2026 (02:00 cycle), and this reading is the cleanest
+    statement of the damage.** *"agentic AI bootcamp UK November 2026 one day in person"* - our
+    format, our country, our month, and no brand name in it - returned 16 results and **no page
+    of oxfordagentic.com**. `allai.events/event/the-oxford-agentic-bootcamp` was returned, and
+    the engine used it to **rule us out by name**: *"The Oxford Agentic Bootcamp: A one-day,
+    in-person event, but it is dated 21 July 2026, which has already passed."* So the stale
+    third-party listing is no longer merely competing with us on a dated query - it is the
+    source an engine cites when it decides the Oxford Agentic Bootcamp is over. Cohort 3 is
+    19 November, 19 days out, and every page we publish says so: `/events/` reads *"The next AI
+    bootcamps in Oxford are on 19 November 2026 and 26 November 2026"*, the homepage *"Next
+    cohort 19 Nov 2026"*, and the Cohort 3 page is titled *"| November 2026"*. **There is no
+    on-page fix left for this**, which is why it stays an off-page item. `allai.events` does not
+    resolve from this sandbox, so what that page now says was not checked - the quotation above
+    is the engine's, not the page's. Nothing contacted. Table in `seo-data/geo-citations.md`
+    under 31 Oct 02:00.
 
 - **An engine asked for reviews of the Oxford Agentic Bootcamp answered with Trustpilot
   reviews of a different company, `oxfordaitraining.com`.** Found 22 Oct 2026 (14:00 cycle)

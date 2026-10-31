@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-25T01:00:00+00:00"
+updatedDate: "2026-10-31T02:05:15+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -137,6 +137,19 @@ faqs:
       Yes. Teams get more out of it than individuals do, and if two of you come, bring
       the same task so the same workflow goes back to work with both of you. Email
       hello@oxfordagentic.com and we will arrange it.
+  # The procurement answer. Published on this bootcamp's event page, on the
+  # Second Brain programme page and on the homepage FAQ, and on neither of the
+  # two programme pages on this line - the pages that rank for the queries with
+  # no date in them, and the ones a buyer reads before any cohort page. The team
+  # answer directly above says yes to several people and then leaves an
+  # organisation that cannot put a card through with nowhere to go. Wording is
+  # the Second Brain programme page's own, so the three programme pages cannot
+  # drift and no new term is offered here. Nothing is said about VAT, which is
+  # not confirmed.
+  - q: Can my organisation pay by invoice?
+    a: >-
+      Yes. If your organisation would rather pay by invoice than book on a card form,
+      email hello@oxfordagentic.com and we will arrange it.
   - q: What if I book but cannot make the date?
     a: >-
       Tickets are not refundable, but your place transfers to a future cohort at no

@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-10-31 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, ONE OF THEM ACTED ON
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions on axes this log has not put to an engine: a
+month-dated commercial query, the own-work differentiator, the pre-arrival question, and group
+booking.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI bootcamp UK November 2026 one day in person | **No** (16 results) | `allai.events` (**our own event, dated 21 July 2026**), `eventbrite.co.uk` (x2), `learnersink.com` (x8, per-town doorway pages), `waimakers.com`, `luma.com` (x2, not ours), `frontpage-3p5.pages.dev` |
+| AI training day where you build on your own real work task instead of generic examples UK | **No** | `profiletree.com` (x6), `lilachbullock.com` (x2), `designforonline.com` (x2), `tutorials.co.uk`, `tessgroup-website.pages.dev`, `practicalaitraining.pages.dev`, `pointacademy-co-uk.pages.dev`, `brainstation.io`, `dayseven.lovable.app`, `northernirelandchamber.com` |
+| what should I prepare before a hands-on AI workshop, what to bring | **No** | `ajai-live.pages.dev` (a dedicated "what to bring to an AI workshop" FAQ page), `indico.kit.edu` (x2), `fau.edu`, `learn.aisingapore.org`, `codedthinking.github.io`, `halbritter-lab.github.io`, `luma.com` (x2), `eventbrite.co.uk`, `sap.com` (x2) |
+| can my small team book a few places on a one day AI course in Oxford, group booking | **No** | `lifelong-learning.ox.ac.uk` (x3), `tutorials.co.uk` (x2), `meetup.com` (x2, oxford-ai-training), `theknowledgeacademy.com`, `nobleprog.co.uk`, `cademy.io`, `oxford-royale.com`, `oxford-management.com`, `shortcourses.lsbu.ac.uk`, `onlinestore.ntu.ac.uk` |
+
+**Probe 1 is the finding of the cycle, and it is not a content gap.** The query names our format,
+our country and our month, with no brand word in it. Sixteen results, none of them ours - and
+`allai.events/event/the-oxford-agentic-bootcamp`, a third-party listing of **our own event**
+carrying Cohort 1's July date, was the page the engine used to **rule us out by name**: *"The
+Oxford Agentic Bootcamp: A one-day, in-person event, but it is dated 21 July 2026, which has
+already passed."* Every page we publish carries the November dates - `/events/` in its own meta
+description, the homepage, the Cohort 3 title - so there is nothing left to write. This is the
+third dated corroboration of the stale-listing item in `outreach/review-list.md`, and the first
+where the stale listing is the stated reason for the exclusion rather than just a competitor
+for the slot. Logged there as a corroboration, not as a new lead. `allai.events` does not
+resolve from this sandbox, so the quotation is the engine's and not the page's.
+
+**Probe 2 declines on winnability, in the shape this log keeps recording.** ProfileTree takes
+six of the results and Lilach Bullock two more - the same field that declined hire-or-train
+(30 Oct 20:00), professional services (30 Oct 08:00) and marketing providers (30 Oct 14:00). The
+engine's summary is also built on published day rates and price ranges, which this site does not
+publish. Nothing to add.
+
+**Probe 3 is winnable and does not convert.** No institutional publisher owns it: the field is
+one-off event pages, university setup guides and a single competitor FAQ (`ajai-live`) that has
+the query to itself. But a person asking what to bring to an AI workshop has already booked one,
+and usually not ours. It is an attendee question, not a buyer question. Worth noting that our own
+answer is already published for our attendees - the Agentic programme page answers the laptop,
+the subscription, the hours and the lunch - so there is no gap for a booked attendee either.
+Declined on converting.
+
+**Probe 4 is the one this cycle acted on, and the action is one sentence, not a page.** The
+engine's entire answer was other providers' *booking terms*, and it closed *"I couldn't confirm
+booking terms for group places on any of these"* - it reported Tutorials' per-day group pricing,
+OLTEP's group-booking route and its 10% discount at ten places, and Oxford AI Training's £149
+per person. Booking terms are what gets lifted for this query. Our flagship programme page,
+`/bootcamps/oxford-agentic-bootcamp/`, answers *"Can I bring my team, or book for several
+people?"* and then had **no answer at all** to how an organisation that cannot put a card through
+actually pays - that answer lived on the event page, the Second Brain programme page and the
+homepage FAQ, and on neither programme page of the Agentic line. Shipped this cycle, in the
+site's own published wording. **Not a new guide and not a new claim**: no price, no discount, no
+VAT, which is not confirmed.
+
+**No new contactable lead.** ProfileTree, Lilach Bullock, TESS Group, Design for Online, Day
+Seven, BrainStation, Point Academy, Practical AI Training, Tutorials, NobleProg, Learners Ink,
+The Knowledge Academy, Oxford Royale and Oxford Management are competitors or agencies; LSBU,
+NTU, Oxford Lifelong Learning, KIT, FAU, AI Singapore and the university setup guides are
+institutions; `allai.events`, Eventbrite, Luma, Meetup, Cademy and Maven are aggregators already
+standing in `outreach/off-page-listings.md` or `outreach/review-list.md`. Nothing added as a new
+entry, nothing duplicated, nothing contacted.
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov.** The change this cycle is a single
+published FAQ answer added to two existing programme pages, which counts as the day's one Q&A
+refresh: the day ends 1 of 2.
+
 ## 2026-10-30 (20:00 GMT cycle) - FOUR PROBES ON FOUR UNTRIED AXES, ZERO CITATIONS, FOUR DECLINES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

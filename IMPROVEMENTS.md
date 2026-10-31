@@ -829,6 +829,130 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-10-31 (02:00 cycle) - the page that sells the flagship day said yes to booking several
+  people and then had no answer to how an organisation pays. The invoice route was published on
+  four other surfaces and on neither programme page of the Agentic line.**
+  - **Found by auditing one published answer across every page that could carry it**, which is a
+    sweep this log had not recorded for this answer. `grep -c "pay by invoice"` over all eight
+    programme and event files: the Cohort 3 event page has it, the Coding Cohort 1 event page has
+    it, the Second Brain *programme* page has it, `src/lib/home.ts` has it - and
+    `oxford-agentic-bootcamp.md` and `agentic-coding-bootcamp.md`, the two live programme pages of
+    the Agentic line, had **zero**.
+  - **The gap is worse than absence, because of what sits directly above it.** Both pages answer
+    *"Can I bring my team, or book for several people?"* with *"Yes... Email hello@oxfordagentic.com
+    and we will arrange it."* So the page says yes to the organisational buyer and then leaves the
+    next question - the one that actually stops a procurement-bound booking - unanswered on the
+    page the buyer is reading. The Second Brain programme page puts the invoice answer in exactly
+    that slot, one item after the team answer, and that is where both new copies go.
+  - **Why the programme pages and not the event pages.** The event pages already carry it. The
+    programme pages are **the ones that rank for the queries with no date in them** - this page's
+    own frontmatter comment says so, in the note a previous cycle left when it moved the 09:00-17:00
+    hours onto these same two pages for the same reason. A buyer reads the programme page before
+    any cohort page, and an engine answering an undated question reads it too.
+  - **The evidence is this cycle's own fourth GEO probe, not a hunch.** *"can my small team book a
+    few places on a one day AI course in Oxford, group booking"* returned no page of ours, and the
+    engine's entire answer was **other providers' booking terms**: Tutorials' per-day group price,
+    OLTEP's group-booking route and its 10% discount at ten places, Oxford AI Training's £149 per
+    person. It closed *"I couldn't confirm booking terms for group places on any of these."*
+    Booking terms are the unit this query is answered in, and ours were missing from the page that
+    competes for it. Table in `seo-data/geo-citations.md` under 31 Oct 02:00.
+  - **Nothing here is new text or a new term.** The answer is the Second Brain programme page's
+    own, verbatim and character for character: *"Yes. If your organisation would rather pay by
+    invoice than book on a card form, email hello@oxfordagentic.com and we will arrange it."* The
+    event-page variant was deliberately **not** used, because it opens *"Pricing and the booking
+    form are on this page"*, which is true on an event page and false on a programme page. Invoice
+    payment is a published standing decision (13 Sept). **VAT is not mentioned**, because it is not
+    confirmed; no price, no discount, no threshold, no number of seats.
+  - **Measured whole-site: exactly 2 of 199 files in `dist` differ, and three edits inside each.**
+    A character-level diff of both pages against the baseline build returns exactly three opcodes
+    per page: the new `Question` in the `FAQPage` node, the new `<details>` in the visible
+    accordion, and the *day* of the "Last updated" line (25 -> 31, 27 -> 31). **Nothing else in
+    either page moved.** `llms-full.txt` gains the same answer twice and two "Last updated" lines;
+    **`llms.txt` did not move**; no other HTML changed; internal links stay at 3,158;
+    `/bootcamps/second-brain-bootcamp/` still carries exactly one copy and the homepage none.
+  - **One side effect, recorded rather than fixed.** The sitemap's `lastmod` for `/` moved too, by
+    design - `homepageLastmod()` in `astro.config.mjs` takes the newest programme `updatedDate`
+    because *"'What we run' renders a card per programme, so every programme edit moves it"*. This
+    edit did **not** change the homepage: `index.html` is byte-identical. So that `lastmod` now
+    overstates by one build. It is the existing design's chosen granularity and not something this
+    change introduced - any programme edit does it - but the config's own doctrine is that an
+    untrue `lastmod` is worse than a missing one, so it is written down. Fixing it means deriving
+    the homepage's date from rendered output, which is a different cycle's change.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at **7 `Event` and 10 `FAQPage` nodes, unchanged** (the node
+    already existed on both pages; it gains a question, 19 -> 20 and 9 -> 10), all titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` green on both the all-on and
+    all-off builds. The 11 outbound warnings are the sandbox egress policy, identical on the
+    baseline. Headless Chromium over both changed pages plus `/bootcamps/second-brain-bootcamp/`
+    and `/` as controls, at 375 and 1280px, 8 configurations, **116 assertions, all passed**: 200,
+    0px horizontal overflow, one `h1`, correct self-canonical, no robots meta, no missing alt
+    text, no unnamed link or button, no skipped heading level, zero em dashes and zero straight
+    apostrophes in `main`; and on each changed page the question appears exactly once in the
+    visible accordion, the visible answer is the published string character for character, the
+    `FAQPage` node's answer **equals the visible answer**, the answer text is present in rendered
+    `main`, the item sits immediately after the team question, and the accordion starts closed.
+    The control keeps its single copy and the homepage has none. Both widths screenshotted with
+    the new item open and read: it renders in the house style, in the right slot, at both sizes.
+  - **IndexNow, measured with `--dry-run`: 29 URLs** - the two programme pages, `/bootcamps/` and
+    `/`, plus the 25 guides that name these programmes in `relatedProgrammes` and so render their
+    card. Only **2** files actually changed; a guide's programme card prints the title and summary,
+    not the FAQs, so those 25 did not move. Over-submitting, the safe direction; recorded, not
+    fixed, consistent with the 26 Oct decision on item 41. The ping script was not run.
+  - **Honest about the upside.** Google has not shown FAQ rich results for a site like this since
+    August 2023, so this is not a CTR play and should not be judged as one. It is two things: a
+    procurement-bound buyer reading the programme page now finds the payment route without opening
+    a cohort page, and an engine answering a group-booking or team-training question has our terms
+    to lift instead of only our competitors'. Neither is measurable in Search Console. **The
+    honest test is whether a group-booking probe ever quotes our invoice line**, and that could
+    take months or never happen.
+  - **Two prompt candidates were checked and both are already done - recorded so no later cycle
+    re-finds them.** (1) `scripts/indexnow-ping.mjs:109` already maps `src/lib/home.ts` to `/`
+    alone via `SINGLE_PAGE_SOURCES`; it is not template-wide. (2) Every stale "Cohort 2 is
+    upcoming" sentence is already past tense - `when-ai-executive-cohorts-run.md` reads *"ran on
+    16 September and runs again on 19 November"*, the Cohort 1 event FAQ reads *"Cohort 2 ran on
+    Wednesday 16 September 2026"*, and both 21 October Second Brain references read *"ran on
+    21 October"*. **Also note the cycle prompt's own event facts are stale against the repo**: it
+    gives Cohort 3 as 15 Oct and the Second Brain day as upcoming, where the repo has Cohort 3 on
+    **19 November** and all three past cohorts marked `status: past`. The repo was treated as the
+    authority and no date was touched.
+  - **A whole-site metadata sweep was run and found nothing worth shipping**, which is worth
+    recording so it is not repeated blind. All 64 built pages checked for title, description,
+    `og:`/`twitter:` pairs, `og:image`, canonical, robots, `lang`, `h1` count and JSON-LD validity:
+    **16 anomalies, all explained and none a defect** - `/home-original/` and `/team/josh-lawman/`
+    are `noindex` redirect stubs with no head furniture by design, `/ceo-roundtable/` is
+    `noindex, nofollow` and carries no JSON-LD on purpose, and `/second-brain-interest/`'s 73-
+    character title is on a `noindex` page. Noted in passing: `/testimonials/` publishes no
+    `Review` or `AggregateRating` node, which is **correct** - Google disallows self-serving review
+    markup about the publishing organisation. Do not "fix" it.
+  - **Search Console: unavailable from this checkout.** One attempt; the `gcloud` credential check
+    was refused by this session's own permission policy before it ran, and a whole-repo search
+    found no CSV, TSV or spreadsheet export anywhere. Nothing estimated. The **30 Oct 05:10
+    reading** stands and was read in full. The 20:00 cycle's recorded next candidate on the seven
+    `/team/` pages was **deliberately not taken**: reversing its own stated whole-sentence
+    preference needs evidence this cycle does not have, and a second change to those seven pages
+    hours later would make the first unreadable.
+  - **Production.** The sandbox egress policy answers **403** to CONNECT for `oxfordagentic.com`
+    and `luma.com`, so `build.txt` could not be read and the Actions API stood in: Deploy run
+    **331 success on `371033c`**, which is both `origin/main` and the HEAD this cycle started
+    from, nothing queued or in progress. `luma.com` is unreachable, so **no event fact was read
+    or changed**.
+  - **Four GEO probes, zero citations, one acted on; table in `seo-data/geo-citations.md` under
+    31 Oct 02:00.** The month-dated commercial probe is the finding of the cycle and has no
+    on-page fix: `allai.events`, a third-party listing of **our own event** still dated 21 July
+    2026, is the page an engine cited to **rule us out by name** of a November query - *"it is
+    dated 21 July 2026, which has already passed"* - while every page we publish carries the
+    November dates. Logged as a third corroboration of the standing stale-listing item in
+    `outreach/review-list.md`, not as a new lead. The own-work differentiator probe is ProfileTree
+    and Lilach Bullock again, declined on winnability; the what-to-bring probe is winnable and
+    does not convert, because that searcher has already booked. **No new guide, 0 of 3 for the
+    week of 26 Oct - 1 Nov**; this is the day's one Q&A refresh, so the day ends 1 of 2. No new
+    contactable lead - every name is a competitor, an agency, an institution or an aggregator
+    already standing in `outreach/`. Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20) and the
+    `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's outcomes
+    (22); the retention line (50); the Search Console CSV export (2); and the rest of the
+    needs-Drummond list.
+
 - **2026-10-30 (20:00 cycle) - this site's search snippet for seven named real people was a
   sentence broken off mid-word. All seven are now whole sentences, or a clean word with an
   ellipsis.**

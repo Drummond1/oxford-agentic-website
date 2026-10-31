@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-27T01:00:00+00:00"
+updatedDate: "2026-10-31T02:05:15+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -90,6 +90,19 @@ faqs:
       Yes. Bringing a colleague means two of you go back able to build rather than one,
       and it helps if you arrive with the same idea in mind. Email
       hello@oxfordagentic.com and we will arrange it.
+  # The procurement answer. Published on this bootcamp's event page, on the
+  # Second Brain programme page and on the homepage FAQ, and on neither of the
+  # two programme pages on this line - the pages that rank for the queries with
+  # no date in them, and the ones a buyer reads before any cohort page. The team
+  # answer directly above says yes to several people and then leaves an
+  # organisation that cannot put a card through with nowhere to go. Wording is
+  # the Second Brain programme page's own, so the three programme pages cannot
+  # drift and no new term is offered here. Nothing is said about VAT, which is
+  # not confirmed.
+  - q: Can my organisation pay by invoice?
+    a: >-
+      Yes. If your organisation would rather pay by invoice than book on a card form,
+      email hello@oxfordagentic.com and we will arrange it.
   - q: What if I book but cannot make the date?
     a: >-
       Tickets are not refundable, but your place transfers to a future cohort at no

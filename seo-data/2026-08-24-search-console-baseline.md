@@ -1285,3 +1285,27 @@ descriptions cut mid-word. That is a snippet-quality defect on a cluster with re
 not an impressions-versus-position gap, so it was taken under rule 5 and not dressed up as
 rule 4. No page named in the 05:10 reading is re-opened by it.
 
+
+## Update - 31 October 2026, 02:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask. A `gcloud` credential
+check was refused by this session's own permission policy before it ran, so the usual "No
+credentialed accounts" line could not even be produced; separately, a whole-repo search for a
+CSV, TSV or spreadsheet export found none, in `seo-data/` or anywhere else. Either way there is
+no route to the property from here and nothing was estimated.
+
+**The 30 October 05:10 reading still stands as the freshest data** - 151 clicks, 2.37k
+impressions, 6.4% CTR, average position 13.1, through roughly 28 October - and it was read in
+full rather than taken from the three later cycles' summaries of it. Nothing in it reopens a
+page: `/events/` has recovered to 212 impressions at position 8.3, `/about/` and `/guides/` were
+opened and closed in that reading, `/guides/` stays fenced while the 29 Oct description change
+gets a clean read, and the county-provider cluster is still 7.5% of impressions and none of the
+clicks. So this cycle worked rule 5.
+
+**The pages it changed are not in that reading, deliberately.** `/bootcamps/oxford-agentic-
+bootcamp/` and `/bootcamps/agentic-coding-bootcamp/` are not named in the 05:10 figures, and
+`/team/` - the cluster the 30 Oct 20:00 cycle changed - was left alone so that change gets a
+clean read too. The 30 Oct 20:00 cycle recorded a further candidate on those seven team pages
+(the name and brand repeated between the prefix and the bio); it was **not taken**, both because
+reversing its own stated preference needs evidence this cycle does not have, and because a second
+change to the same seven pages a few hours later would make the first one unreadable.
