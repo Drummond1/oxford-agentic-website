@@ -825,9 +825,96 @@ Status: `todo` · `blocked` (why) · `doing`
     the distinction. Check it at 375px before shipping; if it reads heavy, the honest answer
     is that the scale has no step between 13px and nothing, and that is worth recording too.
 
+52. `todo` (loop-actionable, found 31 Oct 2026 in the 09:00 cycle) - **every indexable page
+    scrolls sideways by 57px at a 600px viewport once the browser's text is set to 150%.**
+    Measured across 55 pages x 8 widths (320, 375, 414, 600, 768, 1024, 1280, 1440) at a 16px
+    and a 24px root: **0 overflow everywhere except 600px/24px, where all 55 pages overflow by
+    the same 57px.** Same number on every page means shared chrome, and it is the footer:
+    `.site-footer__grid` floors its tracks at `minmax(min(100%, 9rem), 1fr)` with the entity
+    column at `15rem`, and at a 24px root those are 216px and 360px, so four tracks plus gaps
+    need 657px in a 600px window. `min(100%, 9rem)` does not save it, because `100%` there
+    resolves against the grid container rather than the track. This is the same class as
+    backlog 31, 32, 33 and 34 - a rem-based floor that stops scaling down when the reader
+    enlarges their text - and it is the widest of them, hitting every page rather than two
+    guides. **The fix is probably a `min()` against a viewport unit on the track floors**, but
+    it is the footer on all 64 pages, it was changed twice in the last fortnight (43 and 46),
+    and it wants its own cycle with the fourteen-width measurement those two used. The
+    pre-change build of this cycle overflows identically, so nothing recent caused it; the
+    600px/24px corner had simply never been swept - item 34's clean sweep covered 320 and
+    375px only.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-10-31 (09:00 cycle) - the gold square that separates the date from the venue was
+  never between them on a card. It sat stranded at the end of the date on a phone, and alone
+  on a line of its own at desktop widths.**
+  - **Found by reading a screenshot, then measured.** The square is described in the
+    component's own comment as "the small coloured-square separator from the deck". It was
+    built as its own flex item between two text parts, so when `.event-card__meta` wrapped,
+    the square wrapped with the line above rather than staying at the join. Measured on the
+    built site across 8 widths: the square trailed the date at 320-414px, and at 1024-1440px
+    it sat **alone on a middle line of its own**, because the venue did not fit beside it.
+    `/bootcamps/oxford-agentic-bootcamp/` at 1280px was the first screenshot that showed it.
+  - **The same fault, same square, on the event hero.** `.event-hero__meta` holds three parts
+    and two squares. At 768px and up the line fits and both squares work; below that it wraps
+    and left a square at the end of the date and another at the end of the time, each
+    separating nothing. So this was one defect in two components rather than a card quirk.
+  - **Scale: 12 of 64 built pages.** The card renders on `/`, `/events/`, the three programme
+    pages, `/404.html` and `/home-photos/`; the hero on all five event pages. On a phone -
+    where the line always wraps - every one of them showed at least one stray mark.
+  - **The fix is the standard one and it is six declarations.** The square becomes an
+    absolutely-positioned `::before` on each part after the first, drawn into the column gap,
+    and the container gets `overflow: hidden; overflow: clip`. A part that starts a line puts
+    its square outside the content box, where the clip takes it; a part that follows another
+    on the same line keeps it. No media query, no breakpoint, nothing that depends on how
+    long a venue name is. `overflow: hidden` first means a browser without `clip` falls back
+    to today's rendering rather than to something worse.
+  - **The spacing is carried over exactly, not re-judged.** As its own item the square had the
+    gap on both sides, so the column gap now holds `0.5 + 0.4 + 0.5` on the card and
+    `0.75 + 0.42 + 0.75` on the hero, and the row gap is untouched so a stacked line keeps its
+    rhythm. A first attempt without this had the square touching both words at 600px; it was
+    caught in a screenshot before anything was committed.
+  - **Measured, not assumed.** Element screenshots of a card and the hero at 375, 600, 768,
+    1024 and 1280px, pixel-diffed against the same elements in the pre-change build served
+    side by side: **the box is identical at every width except 1024px, where the card is
+    14.4px shorter** - exactly the stranded square's row and gap - and the differing pixels
+    are **144 of 451,000 at 2x** on the card and **52 of 2.9m** on the hero, which is the
+    square itself and sub-pixel anti-aliasing around its new position. The hero's text
+    geometry is byte-for-byte identical at all five widths including the wrapped ones.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid at 7 `Event` and 10 `FAQPage` nodes, all titles and
+    descriptions unique. `npm run check:flags` green on the all-on and all-off builds.
+    `astro check` (installed with `--no-save`, it is not a project dependency) reports the
+    **same 80 pre-existing `ts(7006)` implicit-any errors before and after**, none of them in
+    the two edited files' changed lines. Exactly **12 HTML files plus one CSS chunk** differ
+    in `dist`; `llms.txt`, `llms-full.txt` and the sitemap did **not** move, and the visible
+    text of every changed page is identical. The whole-site accessibility sweep over all 55
+    indexable pages at 375 and 1280px: no horizontal overflow, no missing alt, no unlabelled control, no
+    unnamed link or button, no skipped heading level, no duplicate id, no dangling `aria-*`
+    reference - identical to the pre-change run. Keyboard: the card keeps its 2px gold focus
+    ring and its href, and the clip reaches nothing focusable. Motion: the staggered reveal is
+    unchanged, verified by reading the computed `transform` of the square on an unrevealed and
+    a revealed card in both builds (`scale(0)` then identity in each).
+  - **The 11 outbound warnings are the sandbox egress policy**, identical on the baseline.
+  - **Production could not be read this cycle.** `oxfordagentic.com` does not resolve from
+    this session and `curl` is answered **403** at CONNECT, so `build.txt` was unreachable and
+    the Actions API stood in, as on 31 Oct 02:00: Deploy **success on `7aaf614`**, which is
+    both `origin/main` and the HEAD this cycle started from, with nothing queued or in
+    progress. `luma.com` is unreachable too, so **no event fact was read or changed**. No date,
+    venue, capacity, price or quote moved, and no copy was written: the rendered words on
+    all 12 changed pages are the words that were there before.
+  - **A second finding, measured and left for a later cycle (backlog 52):** sweeping
+    horizontal overflow at a 24px browser default across 8 widths found **all 55 indexable
+    pages overflowing by exactly 57px at a 600px viewport**, caused by the footer grid's
+    `9rem` track floors. It is pre-existing and **identical in the pre-change build**, so this
+    cycle neither caused nor fixed it. One change ships per cycle; it is written up with its
+    numbers rather than folded in.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20) and the
+    `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's
+    outcomes (22); the retention line (50); the Search Console CSV export (2); and the rest of
+    the needs-Drummond list.
 
 - **2026-10-31 (02:00 cycle) - the page that sells the flagship day said yes to booking several
   people and then had no answer to how an organisation pays. The invoice route was published on

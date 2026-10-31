@@ -294,9 +294,7 @@ const metaDescription = (() => {
 
       <p class="event-hero__meta">
         <span>{formatDate(data.startDate)}</span>
-        <span class="sq" aria-hidden="true"></span>
         <span>{formatTimeRange(data.startDate, data.endDate)}</span>
-        <span class="sq" aria-hidden="true"></span>
         <span>{venueLine(data.venue)}</span>
       </p>
 
@@ -736,7 +734,9 @@ const metaDescription = (() => {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
+    /* The column gap holds the square and the 0.75rem that used to sit on each
+       side of it: 0.75 + 0.42 + 0.75. The row gap is untouched. */
+    gap: 0.75rem 1.92rem;
     margin-block-start: 1.6rem;
     font-family: var(--font-label);
     font-weight: 700;
@@ -744,13 +744,32 @@ const metaDescription = (() => {
     letter-spacing: 0.12em;
     font-size: var(--step-xs);
     color: var(--muted-on-dark);
+    /* Clips the separator below when a part starts a line. See EventCard,
+       which carries the same square and had the same fault: this line holds
+       three parts and wrapped under about 768px, leaving a square at the end
+       of the date and another at the end of the time, separating nothing. */
+    overflow: hidden;
+    overflow: clip;
   }
 
-  .sq {
+  /* The deck's square, drawn into the gap before each part after the first
+     rather than set between them as an item of its own. Above 768px the line
+     fits and the rendering is unchanged. */
+  .event-hero__meta > span {
+    position: relative;
+  }
+
+  .event-hero__meta > span + span::before {
+    content: '';
+    position: absolute;
+    /* Centred in the 1.92rem column gap: half the gap plus half the square. */
+    inset-inline-start: -1.17rem;
+    /* The centre of the part's first line box (13px at line-height 1.6). */
+    inset-block-start: 0.8em;
+    translate: 0 -50%;
     width: 0.42rem;
     height: 0.42rem;
     background: var(--gold);
-    flex: none;
   }
 
   /* ---- Key facts ---- */

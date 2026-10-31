@@ -22,18 +22,14 @@ const statusLabel: Record<string, string> = {
   <h3 class="event-card__title">{event.data.cohort ?? event.data.edition ?? event.data.title}</h3>
 
   <p class="event-card__meta">
-    {formatDate(event.data.startDate)}
-    <span class="sep" aria-hidden="true"></span>
-    {venueLine(event.data.venue)}
+    <span class="event-card__part">{formatDate(event.data.startDate)}</span>
+    <span class="event-card__part">{venueLine(event.data.venue)}</span>
     {!event.data.venue.confirmed && <span class="event-card__tbc">venue to confirm</span>}
     {
       /* The cap is the honest scarcity signal — a real number from the event
          file, shown only while booking is open. */
       event.data.capacity && status === 'upcoming' && (
-        <>
-          <span class="sep" aria-hidden="true" />
-          {`Capped at ${event.data.capacity}`}
-        </>
+        <span class="event-card__part">{`Capped at ${event.data.capacity}`}</span>
       )
     }
   </p>
@@ -65,7 +61,10 @@ const statusLabel: Record<string, string> = {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    /* The column gap holds the square and the 0.5rem that used to sit on each
+       side of it when it was an item of its own: 0.5 + 0.4 + 0.5. The row gap
+       is untouched, so a stacked line keeps its rhythm. */
+    gap: 0.5rem 1.4rem;
     margin-block-start: 0.85rem;
     font-family: var(--font-label);
     font-weight: 700;
@@ -73,14 +72,42 @@ const statusLabel: Record<string, string> = {
     letter-spacing: 0.1em;
     font-size: var(--step-xs);
     line-height: 1.5;
+    /* Clips the separator below when a part starts a line. */
+    overflow: hidden;
+    overflow: clip;
   }
 
-  /* The small coloured-square separator from the deck. */
-  .sep {
+  .event-card__part {
+    position: relative;
+  }
+
+  /* The small coloured-square separator from the deck — drawn into the gap
+     before each part after the first, not set between them as a flex item of
+     its own.
+
+     As its own item it wrapped with the line, and this line wraps on every
+     card: measured on the built site, the square sat stranded after the date
+     at 320-414px and alone on a line of its own at 1024-1440px, where the
+     venue did not fit beside it. A separator that is not between anything is
+     read as a stray mark. Drawn in the gap and clipped at the container's
+     edge, it shows only where it is actually separating two parts on one line
+     and disappears when they stack — the rendering at widths where the line
+     already fits is unchanged. */
+  .event-card__part ~ .event-card__part::before {
+    content: '';
+    position: absolute;
+    /* Centred in the 1.4rem column gap: half the gap plus half the square. A
+       part that starts a line puts this outside the content box, where the
+       clip above takes it. */
+    inset-inline-start: -0.9rem;
+    /* The centre of the part's first line box (13px at line-height 1.5), so a
+       part that wraps keeps its square beside its first line rather than
+       between its two. */
+    inset-block-start: 0.75em;
+    translate: 0 -50%;
     width: 0.4rem;
     height: 0.4rem;
     background: var(--gold);
-    flex: none;
     /* The squares grow in one after the other as the card reveals, the same
        rhythm the bullet squares keep. Without a revealing ancestor they are
        simply there. */
@@ -88,16 +115,15 @@ const statusLabel: Record<string, string> = {
     transition: transform 300ms var(--ease) 260ms;
   }
 
-  .sep + * + .sep,
-  .sep ~ .sep {
+  .event-card__part ~ .event-card__part ~ .event-card__part::before {
     transition-delay: 340ms;
   }
 
-  :global(.js-motion [data-reveal]:not(.is-revealed)) .sep {
+  :global(.js-motion [data-reveal]:not(.is-revealed)) .event-card__part ~ .event-card__part::before {
     transform: scale(0);
   }
 
-  :global(.band--cream) .sep {
+  :global(.band--cream) .event-card__part ~ .event-card__part::before {
     background: var(--rust);
   }
 
