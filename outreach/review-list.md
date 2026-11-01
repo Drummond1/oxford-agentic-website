@@ -263,6 +263,21 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     St Anne's-versus-Worcester venue contradiction for the fifth time. `luma.com/oxfordagentic3`
     was not returned. Nothing contacted, no new lead; this is one more dated reading of the item
     above.
+  - **Corroborated a fourth time, 1 Nov 2026 (08:00 cycle), on the plainest commercial phrasing
+    yet.** *"one day hands-on AI bootcamp Oxford November 2026 build your own workflow"* - our
+    format, our city, our month - returned **no page of oxfordagentic.com**. What represented the
+    entity was `luma.com/oxfordagentic2` (Cohort 2, 16 September), `luma.com/k7c2rm5s` (Cohort 1,
+    21 July) and `allai.events`, and the engine concluded: *"The best match is The Oxford Agentic
+    Bootcamp, but I found no November 2026 date for it"* and *"A separate Allai listing puts the
+    event on 21 July 2026 in Oxford, not November. I couldn't confirm a November 2026 session."*
+    Eighteen days before Cohort 3. `luma.com/oxfordagentic3` was not returned.
+    **The on-page side was re-checked this cycle and is already as strong as copy can make it** -
+    `/events/` title, Cohort 3 title and description, programme page, homepage and `llms.txt` all
+    carry the November dates, and every cohort's `Event` node binds its Luma listing through
+    `sameAs` both ways. Nothing on-page is left to do, which is the point. `allai.events` does not
+    resolve from this sandbox, so the quotation is the engine's, not the page's. Nothing
+    contacted. Table in `seo-data/geo-citations.md` under 1 Nov 08:00.
+
   - **Corroborated a third time, 31 Oct 2026 (02:00 cycle), and this reading is the cleanest
     statement of the damage.** *"agentic AI bootcamp UK November 2026 one day in person"* - our
     format, our country, our month, and no brand name in it - returned 16 results and **no page

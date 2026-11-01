@@ -45,6 +45,24 @@ function plainText(html: string): string {
       return ENTITIES[ref.toLowerCase()] ?? match;
     })
     .replace(/\s+/g, ' ')
+    /*
+     * Every tag became a space above, so a run that ended at a closing tag now
+     * has one before whatever followed it. Where that is closing punctuation,
+     * the extracted sentence reads "...on each cohort's event page ." - the
+     * source is an inline link and the full stop sat directly after `</a>`.
+     *
+     * Measured on the built site, 1 Nov 2026: 3 occurrences across 96 items in
+     * 11 `FAQPage` nodes, all three an inline link followed by `.` or `,`. The
+     * visible page is unaffected, because it keeps its tags; only the
+     * `acceptedAnswer.text` an engine quotes carries the gap.
+     *
+     * Closing punctuation only. A space is CORRECT before an opening bracket,
+     * an opening quote and the house spaced hyphen, and the same survey found
+     * 37 legitimate ` - `, 10 ` (` and 8 ` \u201c` that must not be touched.
+     * `)`, `]` and `\u201d` have no occurrences today and are included because
+     * they are the same defect and a space is never right before them either.
+     */
+    .replace(/ +([.,;:?!)\]\u201d])/g, '$1')
     .trim();
 }
 

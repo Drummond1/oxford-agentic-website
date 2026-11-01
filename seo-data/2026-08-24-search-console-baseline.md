@@ -1330,3 +1330,24 @@ So this cycle worked rule 5.
 node derived from two question headings it already prints, and its visible text is identical to
 the character apart from the "Updated" date. `/team/` and `/guides/` were both left alone so the
 30 Oct and 29 Oct changes to them still get a clean read.
+
+## Update - 1 November 2026, 08:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud auth list`
+reports "No credentialed accounts", there is no Google credential anywhere in the environment,
+and a whole-repo search for a CSV, TSV or spreadsheet export found none, in `seo-data/` or
+anywhere else. Nothing estimated.
+
+**The 30 October 05:10 reading still stands as the freshest data** - 151 clicks, 2.37k
+impressions, 6.4% CTR, average position 13.1, through roughly 28 October - and it was read in
+full rather than taken from the five later cycles' summaries of it. Nothing in it reopens a page:
+`/events/` has recovered to 212 impressions at position 8.3, `/about/` and `/guides/` were opened
+and closed in that reading, `/guides/` stays fenced while the 29 Oct description change gets a
+clean read, and the county-provider cluster is still 7.5% of impressions and none of the clicks.
+So this cycle worked rule 5.
+
+**This cycle changes no page's visible text and no page's metadata, so it cannot disturb any
+read in progress.** The fix is in `src/lib/faq.ts`, and its whole effect is three spaces removed
+from inside the JSON-LD of two guides. `<main>` is byte-identical on both, no `updatedDate` was
+bumped, and neither sitemap moved - so `/team/` (30 Oct), `/guides/` (29 Oct) and the two
+programme pages (31 Oct) all keep their clean reads.

@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-01 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, ALL FOUR CONTENT AXES DECLINED, AND A FOURTH READING OF THE STALE-LISTING DAMAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Five rotating buyer questions. Four are content axes this log has not put to an
+engine; the fifth is the dated commercial query, repeated deliberately to read the stale-listing
+item again.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is it safe to put company documents into an AI assistant like Claude or ChatGPT UK business confidentiality | **No** | `reedsmith.com`, `dacbeachcroft.com` (x2), `minterellison.com`, `keoghs.co.uk`, `mondaq.com`, `barristermagazine.com`, `sprintlaw.co.uk` (x2), `informationsecuritybuzz.com` (x2), `hrreview.co.uk`, `varciti.co.uk` |
+| why does the code an AI agent wrote not actually work in production | **No** | `codeconductor.ai` (x2, **"How CodeConductor Fixes It"**), `bito.ai` (**"with Bito's AI Architect"**), `pulse.bot`, `managed-code.com`, `spd.tech`, `dev.to` (x2), `mentorship.fsmk.org`, `luma.com` (not ours) |
+| what should I do in the first week after an AI training day to make it stick at work | **No** | `govloop.com` (x2), `ccc.bc.edu` (x2, HR PDFs), `demo2.parks.ca.gov` (x4, PDFs), `tepou.co.nz`, `lewissilkin.com` (x2), `hrzone.com`, `nova.edu`, `californiampas.org` |
+| one day hands-on AI bootcamp Oxford November 2026 build your own workflow | **No page of ours** | `luma.com/oxfordagentic2` (**Cohort 2, 16 September**), `luma.com/k7c2rm5s` (**Cohort 1, 21 July**), `allai.events` (**21 July**), `createwith.com` (x7), `happeningnext.com`, `oreilly.com`, `maven.com`, `precisionaiacademy.pages.dev`, `oxford-royale.com` |
+
+**Probe 4 is the finding of the cycle, and it has no on-page fix - this is the fourth dated
+reading of that.** The query names our format, our city and our month. The engine's own words:
+*"The best match is The Oxford Agentic Bootcamp, but I found no November 2026 date for it"*, and
+*"A separate Allai listing puts the event on 21 July 2026 in Oxford, not November. I couldn't
+confirm a November 2026 session."* So on that engine, eighteen days before Cohort 3, the entity is
+represented by **a past cohort's booking page and a stale third-party listing**, and our own site
+is absent. `luma.com/oxfordagentic3` was not returned.
+
+**The on-page side of this was checked again before concluding there is nothing to do, and it is
+already as strong as copy can make it.** `/events/` is titled *"AI bootcamp dates in Oxford"* and
+described *"The next AI bootcamps in Oxford are on 19 November 2026 and 26 November 2026"*; the
+Cohort 3 page is titled *"| November 2026"* with *"Thursday, 19 November 2026 at Worcester
+College, Oxford"* as its description; the programme page opens *"Next cohort 19 November 2026"*;
+the homepage says *"Next cohort 19 Nov 2026"*; `llms.txt` lists both November dates under "Next
+events" and marks all three past cohorts "Took place on"; and every cohort's `Event` node binds
+its Luma listing through `sameAs` in both directions. The gap is retrieval and off-page, exactly
+as backlog 2b says. Logged as a fourth corroboration in `outreach/review-list.md`, not as a new
+lead.
+
+**Probe 1 declines on winnability, and it is the clearest example of the rule yet.** The field is
+Reed Smith, DAC Beachcroft, MinterEllison, Keoghs, Mondaq, Barrister Magazine and SprintLaw -
+law firms and legal publishers writing about legal privilege and confidentiality, their own
+subject - and the engine assembled a complete answer from a 2026 UK Upper Tribunal decision
+without any provider page. Same shape as the 30 Oct AI-policy decline. We publish
+`/guides/is-it-safe-to-put-company-documents-in-a-second-brain/` on the practical half of this,
+and it stays as it is.
+
+**Probe 2 declines on winnability too, in the other half of the rule's sentence.** CodeConductor,
+Bito, pulse.bot and managed-code are platform vendors writing about their own product, each
+offering its product as the fix; the rest is community posts. `/guides/why-the-code-an-agent-
+wrote-is-not-live/` already publishes our answer, and its three question headings
+(*"Does a passing test mean it works?"* among them) line up almost exactly with the engine's
+happy-path-testing explanation. **Noting that explicitly so a later cycle is not tempted**: the
+heading overlap is a reason the page is good, not evidence the query is winnable, and backlog 54
+asks for the latter before that guide is opted into `faqFromHeadings`. It also does not convert -
+the searcher is an engineer mid-debug, not a buyer.
+
+**Probe 3 is the one with a genuine admitted gap, and it declines on converting.** The engine said
+*"The search didn't turn up anything specific to AI training"*, and the whole field is generic
+training-transfer material: GovLoop, Boston College HR PDFs, California parks service PDFs, a New
+Zealand workforce body. Nothing institutional owns the AI-specific version, so it is winnable. But
+the searcher has **already attended a training day**; they are not choosing a provider. Same
+decline as the 1 Nov 02:00 cycle's "what if my task does not suit AI". The pre-booking version of
+this objection is already answered on
+`/guides/questions-to-ask-before-booking-ai-training/`, `/guides/getting-an-ai-bootcamp-approved/`
+and the Agentic programme page, and "making it stick" is a published agenda block on every cohort.
+
+**No new contactable lead.** Everything in these five result sets is a competitor
+(`createwith.com`, Precision AI Academy, Maven, O'Reilly, CodeConductor, Bito), an institution or
+publisher (Reed Smith, DAC Beachcroft, MinterEllison, Mondaq, GovLoop, Boston College, Lewis
+Silkin, Oxford Royale), or an aggregator already standing in `outreach/review-list.md` or
+`outreach/off-page-listings.md` (`allai.events`, `happeningnext.com`, `createwith.com`,
+Eventbrite). Nothing contacted.
+
 ## 2026-11-01 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE TWO WITH A REAL GAP ARE ALREADY ANSWERED ON PAGES WE PUBLISH
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

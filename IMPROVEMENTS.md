@@ -860,7 +860,7 @@ Status: `todo` · `blocked` (why) · `doing`
     600px/24px corner had simply never been swept - item 34's clean sweep covered 320 and
     375px only.
 
-53. `todo` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle) - **an extracted FAQ answer
+53. `done` 1 Nov 2026 (08:00 cycle) - shipped exactly as scoped, three spaces, two files. - **an extracted FAQ answer
     containing an inline link gets a space before the next punctuation mark.** `plainText` in
     `src/lib/faq.ts` replaces every tag with a space, so "...on [each cohort's event page](...)."
     comes out of the extractor as "...on each cohort's event page ." in
@@ -890,6 +890,88 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-01 (08:00 cycle) - the machine-readable FAQ answers published a space before the
+  full stop wherever the sentence ended in a link. Backlog 53, shipped as its own cycle because
+  it changes two nodes that already exist.**
+  - **The defect, measured before the fix.** `plainText` in `src/lib/faq.ts` replaces every tag
+    with a space, so a sentence whose source is `...on [each cohort's event page](/events/...).`
+    came out of the extractor as **"...on each cohort's event page ."**. Across the whole built
+    site: **3 occurrences in 96 items across 11 `FAQPage` nodes**, on two pages - two commas on
+    `/guides/questions-to-ask-before-booking-ai-training/` (*"different formats , and"*,
+    *"the same thing , and"*) and one full stop on `/guides/what-is-an-agentic-bootcamp/`
+    (*"event page . The shape is this"*). All three are an inline link followed immediately by
+    punctuation; confirmed against the three source lines in the markdown. A reader never sees
+    it, because the visible page keeps its tags. An engine quoting `acceptedAnswer.text` does.
+  - **The fix is one `.replace`, and the character class is the whole of the care in it.** A
+    survey of every space-before-a-non-word-character in all 96 answers returned five classes:
+    37 ` - ` (the house spaced hyphen), 10 ` (`, 8 ` “`, 2 ` ,` and 1 ` .`. **The first three are
+    correct and must survive** - a space before an opening bracket, an opening quote or a spaced
+    hyphen is right. So the rule collapses a space only before **closing** punctuation. `)`, `]`
+    and `”` have no occurrences today and are included because they are the same defect and a
+    space is never right before them either; `’` was deliberately left out, because it is the same
+    codepoint as the apostrophe and the rule should not be ambiguous about a character that
+    appears mid-word in "cohort's".
+  - **Measured whole-site: exactly 2 of 199 files in `dist` differ, and the character-level diff
+    is 3 opcodes, all three a single deleted space.** `questions-to-ask` 51,171 to 51,169 bytes
+    (2 opcodes), `what-is-an-agentic-bootcamp` 42,033 to 42,032 (1 opcode). Nothing else moved:
+    no other HTML, **neither sitemap, no `lastmod`, no `updatedDate`, `llms.txt` and
+    `llms-full.txt` unchanged**, internal links still 3,158.
+  - **No `updatedDate` was bumped, on purpose, and that is the reason nothing else moved.** The
+    loop's step 4 says to bump `updatedDate` on any content touched - **no content file was
+    touched**, only `src/lib/faq.ts`, and `<main>` is byte-identical on both pages. Bumping a
+    byline to advertise a change a reader cannot see would be the overstating direction the
+    config's own doctrine rejects ("an untrue lastmod is worse than a missing one"). The side
+    effect is a good one: the 30 Oct `/team/` change, the 29 Oct `/guides/` description and the
+    31 Oct programme-page changes all keep their clean reads.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid, 7 `Event` and 11 `FAQPage` nodes unchanged, all titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` green on both the all-on and
+    all-off builds. The 11 outbound warnings are the sandbox egress policy, identical on the
+    baseline. Re-measured after the fix: **0 offending occurrences** across the same 96 items,
+    and the 37 ` - `, 10 ` (` and 8 ` “` all still present and untouched.
+  - **Headless Chromium over both changed guides, plus `/guides/`, `/` and
+    `/bootcamps/oxford-agentic-bootcamp/` (a hand-written `faqs` node, to prove the extractor
+    change cannot reach frontmatter FAQs) at 375 and 1280px - 10 configurations, 102 assertions,
+    all passed** on the first run: 200, 0px horizontal overflow, one `h1`, correct self-canonical,
+    no robots meta, zero em dashes and zero straight apostrophes in `main`; zero
+    space-before-closing-punctuation in every question and answer; every answer's opening clause
+    present in rendered `main`; the ten-item node still ten items; both repaired commas and the
+    repaired full stop present in their fixed form; and the house spaced hyphen still present.
+    Both widths screenshotted and read.
+  - **Honest about the upside.** Google has not shown FAQ rich results for a site like this since
+    August 2023, so this is not a CTR play and should not be judged as one, and three spaces is a
+    small thing. The defensible claim is narrow: an engine lifting one of our answers now lifts a
+    correctly punctuated sentence rather than one with a gap before its full stop. It is worth
+    doing because the extractor is the mechanism four more guides are queued to use (backlog 54),
+    so fixing it before they opt in is cheaper than fixing three nodes later.
+  - **Five GEO probes, zero citations, all four content axes declined.** Company documents in an
+    AI assistant is Reed Smith, DAC Beachcroft, MinterEllison, Mondaq and Barrister Magazine on
+    legal privilege, their own subject. Why agent-written code fails in production is
+    CodeConductor, Bito, pulse.bot and managed-code each selling the fix - the other half of the
+    winnability rule, and it does not convert either. The post-training first week has a genuine
+    admitted gap (*"The search didn't turn up anything specific to AI training"*) and declines on
+    converting: the searcher has already attended. **No new guide, 0 of 3 for the week of 26 Oct -
+    1 Nov; this is not a Q&A refresh, so both of today's are still unspent.**
+  - **The fifth probe is the finding and it has no on-page fix - fourth dated reading.** *"one day
+    hands-on AI bootcamp Oxford November 2026 build your own workflow"* returned **no page of
+    ours**; the entity was represented by `luma.com/oxfordagentic2` (September),
+    `luma.com/k7c2rm5s` (July) and `allai.events` (21 July), and the engine closed *"I couldn't
+    confirm a November 2026 session"* - eighteen days before Cohort 3. The on-page side was
+    re-checked this cycle and is already as strong as copy can make it: `/events/` title and
+    description, the Cohort 3 title *"| November 2026"*, the programme page, the homepage and
+    `llms.txt` all carry both November dates, and every cohort's `Event` node binds its Luma
+    listing through `sameAs` both ways. This is backlog 2b, and it needs Drummond. Logged as a
+    fourth corroboration in `outreach/review-list.md`; no new contactable lead, nothing contacted.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands and was read in full. **Production:** deploy run 335 success on
+    80ac943, which is both `origin/main` and the HEAD this cycle started from, nothing queued.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox, so `build.txt` stood in by the
+    Actions API; `luma.com` is unreachable the same way, so no event fact was read or changed. The
+    prompt's own event facts remain stale against the repo (it gives Cohort 3 as 15 Oct and Second
+    Brain as a future date, where the repo has 19 November and 21 October past), so the repo was
+    treated as the authority, as on the three previous cycles.
 
 - **2026-11-01 (02:00 cycle) - a guide answers "what does the day look like, hour by hour?"
   under that exact heading, and published it as prose rather than as an answer. This cycle's own
