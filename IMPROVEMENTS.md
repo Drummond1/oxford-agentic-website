@@ -898,8 +898,22 @@ Status: `todo` · `blocked` (why) · `doing`
     loop's own rules put on him. One line from him picks one. (The 09:00 cycle measured all of
     the above and shipped only the wrapping fix, which is independent of it.)
 
-54. `todo` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle) - **four more guides qualify
-    for `faqFromHeadings` and emit no `FAQPage` node.** Measured on the built site, counting
+54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
+    14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
+    `FAQPage` node.**
+    **Taken 1 Nov 2026 (14:00 cycle): `agentic-ai-for-finance-teams`**, on a probe in which the
+    engine said outright that no UK one-day agentic course for finance teams exists, which is the
+    question that guide prints as an `h2`. **Declined the same cycle, each on its own probe and
+    each to be re-probed rather than batched: `why-the-code-an-agent-wrote-is-not-live`** (the
+    verification field is written for developers and the searcher has already built something)
+    **and `how-to-choose-your-first-agentic-task`** (the confidential-work field is the SRA, the
+    Law Society, LexisNexis and a security vendor - the owned half of the winnability rule).
+    **`is-it-safe-to-put-company-documents-in-a-second-brain` is the weakest of the four on the
+    flag's own contract and was not probed**: its three question headings read *"Question one:
+    which account is it going into?"*, so the extracted `name` would carry the reader's
+    place-in-a-list prefix into the node. The numbered-prefix strip in `faq.ts` handles `1. ` and
+    not `Question one: `. Decide that before opting it in, and prefer changing nothing to
+    publishing a question nobody types. Measured on the built site, counting
     `h2`s ending in a question mark: `agentic-ai-for-finance-teams` (3),
     `how-to-choose-your-first-agentic-task` (2),
     `is-it-safe-to-put-company-documents-in-a-second-brain` (3) and
@@ -915,6 +929,122 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-01 (14:00 cycle) - an engine said no UK one-day agentic course for finance teams
+  exists. We publish the answer to that exact question, as an `h2`, and it was not marked as an
+  answer. One frontmatter line, backlog 54, second of five.**
+  - **The probe first, because it is what chose the page.** *"is there a one-day hands-on agentic
+    AI course for finance teams in the UK"* returned fourteen results, no page of ours, and the
+    engine closed **"I found no UK one-day hands-on course that is clearly both agentic-focused
+    and aimed at finance teams"** and **"I couldn't confirm one"**, then suggested the buyer
+    email two providers to ask. It named why each near-miss misses: `aiawareness.ai` is one day
+    in the UK but generative AI and prompting (£1,795 + VAT); the London AI Lab is **two** days;
+    `ctp.uk.com` is one day but FCA compliance, not building; ZHAW is **Zurich**; and the Surgent
+    lab, which held **five** of the fourteen results across four US CPE societies, is online and
+    **two hours**. **WINNABLE** on the rule's own terms - not one institutional publisher on its
+    own subject. **CONVERTING** - a finance director typing a course-shaped, one-day, UK-anchored
+    query is a buyer.
+  - **It does not contradict the 14 September decline, and the distinction is the useful part.**
+    That cycle probed *"agentic AI for finance teams, practical use cases for a finance
+    director"*, found ICAEW, CFI, the CFA Institute and BCG owning it, and declined. That is the
+    **use-case** query; this is the **course** query. Different field, different searcher, and
+    the decline on the first does not bind the second. Both readings are in
+    `seo-data/geo-citations.md`.
+  - **We already publish what it could not find, in the page's own words.**
+    `/guides/agentic-ai-for-finance-teams/` has carried the `h2` *"Is there a one-day, hands-on
+    agentic AI course for finance teams in the UK?"* since 21 October, and answers it by naming
+    the Oxford Agentic Bootcamp and then being straight about the limit: *"It is not a
+    finance-only course, and no part of the day is pitched at the finance function in
+    particular."* **No guide was written and no sentence was reworded.**
+  - **The change is the markup, and the mechanism already existed.** `faqsFromQuestionHeadings`
+    reads a guide's own rendered HTML, so the node can only say what the page says; a guide opts
+    in with `faqFromHeadings`. Two guides had the flag; this is the third. **One frontmatter line
+    and its `updatedDate`. Zero new copy, zero new claims.**
+  - **Every clause was checked against published copy before it was made machine-readable,**
+    because structured data raises the cost of a wrong sentence. *"Cohorts are capped small"* is
+    the programme page's own `capsule` ("Cohorts are capped small and hands-on"); *"you build on
+    your own machine, and the day is not recorded"* is its confidentiality answer verbatim; *"No
+    coding is required"* is in its `prerequisites` and two of its FAQ answers; *"mixed by
+    function"* restates the five-line `whoFor` (founders and C-suite, exec-ed graduates,
+    consultants, public-sector, NHS and university staff, engineers) and carries no number.
+    Nothing in the three answers asserts a price, a count, a date or a name.
+  - **The trailing essay section is correctly excluded.** Unlike the guide opted in at 02:00,
+    this one has an `h2` *after* its question tail (*"Where this gets practical"*), so the
+    contract's split-at-`h2` rule is doing real work: the third answer ends at *"both go better
+    once it does"* and none of the three carries the closing section's copy. Asserted in the
+    browser run.
+  - **Measured whole-site: exactly 5 of 199 files in `dist` differ, and four of them differ only
+    in a date.** `guides/index.html` (the card's "21 Oct" to "1 November", 55,898 to 55,899
+    bytes), `llms-full.txt` (one line, "Updated: 21 October 2026" to "1 November 2026"),
+    `sitemap-0.xml` (one `lastmod`) and `sitemap-index.xml` (its roll-up). **`llms.txt` did not
+    move, no other HTML changed, internal links stay at 3,158.** On the guide itself the rendered
+    `main` is identical character for character apart from the byline date; the only other change
+    is the new `FAQPage` node.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings. **`FAQPage`
+    nodes 11 to 12, `Event` nodes unchanged at 7.** `npm run check:flags` green on both the
+    all-on and all-off builds. The 11 outbound warnings are the sandbox egress policy, identical
+    on the baseline.
+  - **Headless Chromium over the changed guide, the two already-opted-in guides, `/guides/` and
+    `/bootcamps/oxford-agentic-bootcamp/` (a hand-written frontmatter `faqs` node, to prove the
+    extractor cannot reach it) at 375 and 1280px - 10 configurations, 102 assertions, all
+    passed**: 200, 0px horizontal overflow, one `h1`, correct self-canonical, no robots meta,
+    zero em dashes and zero straight apostrophes in `main`; on the changed page the node has
+    exactly three items, each question appears exactly once as a visible `h2`, each answer's
+    opening clause is present in rendered `main`, the byline reads 1 November, and the trailing
+    essay section appears in no answer. The controls keep their 2 and 10 items and `/guides/`
+    gains none. Both widths screenshotted and read. **Two assertions failed first and the fault
+    was the assertion**: CSS uppercases the byline, so `innerText` reports "1 NOVEMBER 2026" -
+    the DOM text is what an engine and a copy-paste get, and reading that passes. (The 02:00
+    cycle hit the same class of false failure for a different reason; `innerText` is the wrong
+    instrument for an assertion about published text.)
+  - **Honest about the upside.** Google has not shown FAQ rich results for a site like this since
+    August 2023, so this is not a CTR play and should not be judged as one. The defensible claim
+    is narrow: an engine that holds this guide now has the UK-one-day-finance-course answer
+    marked as the answer to the question the page asks, rather than as the fifth section of an
+    essay - on the one axis this month where an engine has said out loud that it could not find
+    the thing we sell. Whether that converts depends on the page being retrievable at all, which
+    is backlog 2b and not ours.
+  - **Four probes, zero citations, two more axes declined.** Verifying agent-written code without
+    reading code is O'Reilly, a research-group pattern site and dev.to, all written for
+    developers - thin enough to be winnable, but the searcher has already built something.
+    Confidential client work at a workshop is the owned half of the rule outright: the SRA, the
+    Law Society via mlex, LexisNexis and a data-security vendor, all on their own subject. **Both
+    are guides on backlog 54's list and neither gets its node on this evidence.** No new guide,
+    **0 of 3 for the week of 26 Oct - 1 Nov**; a schema flag is not a Q&A refresh, so both of
+    today's are still unspent.
+  - **A fifth dated reading of the discovery problem, this time on the Coding Bootcamp, 25 days
+    out.** *"one day AI coding bootcamp for non-developers UK in person ship a working app"*
+    returned no page of ours, and the engine closed *"I did not find a current, upcoming UK
+    in-person event that matches all of your criteria"* and then pointed the buyer at two
+    competitors *"for future dates, since these organisers are the most likely to run the format
+    again"*. Every dated result it found had already happened. New in this reading: **the engine
+    recommends the competitor rather than failing to answer**. No on-page fix exists - the
+    programme page, the event page, `/bootcamps/`, the homepage and `llms.txt` all carry 26
+    November. Backlog 2b. Logged as a corroboration in `outreach/review-list.md`; no new
+    contactable lead, nothing contacted.
+  - **The prompt's stale-cohort candidate was checked and is already done.** Every reference to
+    the 16 September and 21 October days reads in the past tense - `when-ai-executive-cohorts-run`
+    ("ran on 16 September and runs again on 19 November"), both Second Brain guides ("Cohort 1 ran
+    on 21 October") and the programme file. The IndexNow candidate is also already fixed:
+    `scripts/indexnow-ping.mjs` maps `src/lib/home.ts` to `/` alone. Nothing to do on either.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands. **Production:** deploy run 338 success on `ec7a7cc`, which is
+    both `origin/main` and the HEAD this cycle started from, nothing queued or in progress.
+    `oxfordagentic.com` answers 403 on CONNECT from this sandbox and does not resolve through
+    WebFetch either, so the Actions API stood in for `build.txt`, as on every cycle since 30 Oct.
+    `luma.com` is unreachable the same way, so **no event fact was read or changed**; the prompt's
+    own event facts remain stale against the repo (it gives Cohort 3 as 15 Oct where the repo has
+    19 November), so the repo was treated as the authority, as on the four previous cycles.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20); the bronze contrast
+    token (21); Cohort 2's outcomes (22); the quote headings (23); the team-profile links (24);
+    the Coding paid-plan question (25); the event hero's doubled heading (26); lunch and travel
+    (27); the two voice pages' apostrophes (28); Jonathan Waddingham's former employer (29); links
+    in FAQ answers (30); the cookie banner at large text (31); the wordmark at 200% (32); the
+    Outcomes page's missing call to action (35); a second Second Brain cohort (36); a Second Brain
+    outcome (37); the homepage affiliation answer and the stale Luma listings (47); what we retain
+    of a visitor's material (50); and the programme card's arrow at 200% text (55).
 
 - **2026-11-01 (09:00 cycle) - every card on `/bootcamps/` broke a date across two lines on a
   phone. Three spans and one media query, and the 16px-root grid is now clean at every width.**

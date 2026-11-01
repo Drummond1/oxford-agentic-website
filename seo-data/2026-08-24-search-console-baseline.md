@@ -1351,3 +1351,20 @@ read in progress.** The fix is in `src/lib/faq.ts`, and its whole effect is thre
 from inside the JSON-LD of two guides. `<main>` is byte-identical on both, no `updatedDate` was
 bumped, and neither sitemap moved - so `/team/` (30 Oct), `/guides/` (29 Oct) and the two
 programme pages (31 Oct) all keep their clean reads.
+
+## Update - 1 November 2026, 14:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud auth list`
+reports "No credentialed accounts", and a whole-repo search for a CSV, TSV or spreadsheet export
+found none, in `seo-data/` or anywhere else. Nothing estimated, nothing inferred.
+
+**The 30 October 05:10 reading still stands as the freshest data** - 151 clicks, 2.37k
+impressions, 6.4% CTR, average position 13.1, through roughly 28 October. This cycle worked
+rule 5 (no fresh data, highest-value unblocked improvement) and chose a GEO one.
+
+**The page it changed is not named in that reading, and the change adds no page and moves no
+copy.** `/guides/agentic-ai-for-finance-teams/` gains a `FAQPage` node derived from the three
+question headings it already prints; its visible text is identical to the character apart from
+the "Updated" date in the byline. `/team/` (30 Oct), `/guides/` (29 Oct) and the two programme
+pages (31 Oct) were all left alone, so their changes keep clean reads. `/events/`, which had
+recovered to 212 impressions at position 8.3, is untouched.

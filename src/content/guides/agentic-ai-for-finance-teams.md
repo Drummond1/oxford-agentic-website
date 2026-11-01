@@ -12,9 +12,10 @@ capsule: >-
   not the accountability.
 author: drummond-gilbert
 publishDate: "2026-07-23T09:00:00+01:00"
-updatedDate: "2026-10-21T14:30:00+01:00"
+updatedDate: "2026-11-01T14:05:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+faqFromHeadings: true
 ---
 
 Finance is one of the better places to apply agentic workflows, and one of the easier places to apply them badly. The distinction is worth getting right before you build anything.

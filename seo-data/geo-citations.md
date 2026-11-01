@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-01 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ONE ADMITTED GAP THAT MATCHES A HEADING WE ALREADY PUBLISH
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, none of them put to an engine before. Three are the
+question headings of guides that carry no `FAQPage` node (backlog 54); the fourth is the Coding
+Bootcamp's own commercial query, 25 days out.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is there a one-day hands-on agentic AI course for finance teams in the UK | **No** | `aiawareness.ai` (one-day UK, but generative AI and prompting, **£1,795 + VAT**), `luma.com/72a92ede` (The AI Lab, London, **two** days), `ctp.uk.com` (one-day UK, FCA compliance not building), `zhaw.ch` (x3, **Zurich**), `ctcpas.org` (x4) / `orcpa.org` / `mecpa.org` / `lcvista.com` / `info.lcvista.com` (all the same **US, online, 2-hour** Surgent lab), `ipsofacto.uk.com` |
+| how do I check what an AI coding agent wrote if I cannot read code | **No** | `oreilly.com` (x2), `se-ml.github.io`, `codex.danielvaughan.com`, `dev.to`, `pypi.org` (a tool), `graph-of-plan.pages.dev` |
+| can I bring confidential client work to a hands-on AI workshop UK | **No** | `legalfutures.co.uk` (SRA warning), `mlex.com` (x2), `lexisnexis.co.uk`, `kiteworks.com`, `datalawonline.co.uk`, `legaltechnology.com`, `digitaladaption.co.uk` (x2), `bluewiremedia.com.au`, `intelligencebyintent.com`, `luma.com/37ejrwae` (not ours) |
+| one day AI coding bootcamp for non-developers UK in person ship a working app | **No page of ours** | `createwith.com` (x3, **Brighton, 23 May and 24 June, both past**), `claude-code-course-c1w.pages.dev` (Ballpoint, Clerkenwell, **£600**, 22 May / 5 June, past), `luma.com/5xyia8en` (**August**, past), `eventbrite.co.uk` (x5), `shortcourses.lsbu.ac.uk` (x2), `luma.com/b2zl7dnz` (2-day, engineers), `meetup.com`, `oppworks.live.baluu.co.uk` |
+
+**Probe 1 is the finding of the cycle, and it is the first probe in this log that admits a gap we
+already answer under that exact heading.** The engine's own words: *"I found no UK one-day
+hands-on course that is clearly both agentic-focused and aimed at finance teams"*, and it closed
+*"I'd suggest contacting AI Awareness Training or WAIMAKERS to ask whether they run a one-day
+agentic-focused version for finance teams, since I couldn't confirm one."* It then listed exactly
+why each near-miss misses: generative rather than agentic, two days rather than one, compliance
+rather than building, Switzerland, or a two-hour US webinar.
+
+- **WINNABLE.** Not one institutional publisher on its own subject. The field is four copies of a
+  single US CPE lab, a Swiss business school, and three UK providers whose own listings say they
+  teach something else. That is the thin half of the winnability rule, not the owned half.
+- **CONVERTING.** A finance director typing a course-shaped, UK-anchored, one-day query is a
+  buyer, not a researcher.
+- **And it does not contradict 14 Sept.** That cycle probed *"agentic AI for finance teams,
+  practical use cases for a finance director"* and found ICAEW, CFI, the CFA Institute and BCG
+  owning it, and declined - correctly. **That is the use-case query; this is the course query**,
+  and the two have different fields and different searchers. The decline stands for the first and
+  does not bind the second.
+- **Acted on this cycle**, not by writing anything: `/guides/agentic-ai-for-finance-teams/`
+  already prints that question as an `h2` and answers it in the page's own words, including the
+  honest *"It is not a finance-only course"*. It now carries a `FAQPage` node derived from its
+  three question headings. No new copy, no new claim.
+
+**Probes 2 and 3 declined, and both are guides on backlog 54's list.** Verifying agent-written
+code is O'Reilly, a research-group pattern site and dev.to, all addressed to developers, and the
+one page written for non-developers is a single-assumption page on a `pages.dev` host - thin
+enough to be winnable, but the searcher is someone who has already built something, not someone
+choosing a day. Confidential client work is the owned half of the rule outright: the SRA, the Law
+Society via mlex, LexisNexis and a data-security vendor, all on their own subject, and the engine
+still opened *"I didn't find a source that directly answers whether you can bring live client
+files to a UK AI workshop."* Both guides keep their place in the queue; neither gets its node on
+this evidence.
+
+**Probe 4 is a fifth dated reading of the discovery problem, now on the Coding Bootcamp.** The
+engine closed *"I did not find a current, upcoming UK in-person event that matches all of your
+criteria"* and recommended checking two competitors' sites *"for future dates, since these
+organisers are the most likely to run the format again"* - while we sell exactly that format, in
+Oxford, on 26 November, 25 days out. Every dated thing it did find had already happened. There is
+no on-page fix: the programme page, the event page, `/bootcamps/`, the homepage and `llms.txt` all
+carry the date. This is backlog 2b and it needs Drummond. Logged as a corroboration in
+`outreach/review-list.md`; no new contactable lead, nothing contacted.
+
+**Caveat, unchanged.** One engine, one day, US-resident, search results rather than cited AI
+answers. These are snapshots, not rankings.
+
 ## 2026-11-01 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, ALL FOUR CONTENT AXES DECLINED, AND A FOURTH READING OF THE STALE-LISTING DAMAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

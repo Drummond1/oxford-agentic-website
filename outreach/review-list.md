@@ -127,7 +127,16 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     New in that reading: **NobleProg holds four of the nine results**, one of them titled for AI
     coding assistants in Oxford, so a single commercial trainer now occupies this product's own
     geography. Still nothing to contact; still backlog 2.
-  - **Caveat.** One engine, one day, through a sandboxed web search.
+  - **Corroborated a fifth time, 1 Nov 2026 (14:00 cycle), on a fifth phrasing, 25 days out.**
+    *"one day AI coding bootcamp for non-developers UK in person ship a working app"* returned no
+    page of ours and the engine closed **"I did not find a current, upcoming UK in-person event
+    that matches all of your criteria"**, then pointed the buyer at two competitors' sites
+    *"for future dates, since these organisers are the most likely to run the format again"*.
+    Every dated result it did find had already happened: `createwith.com` in Brighton on 23 May
+    and 24 June, a £600 Clerkenwell day on 22 May and 5 June, a Luma day in August. **New in this
+    reading: the engine now recommends the competitor rather than failing to answer** - the cost
+    of being unfindable has changed shape. Still a coverage problem, still backlog 2 and 2b,
+    still nothing to contact.
 
 - **The clearest commercial cost of the stale Luma listings yet, from a buyer who already knows
   the product name.** Found 23 Oct 2026 (20:00 cycle). Nothing to contact - this is evidence for
