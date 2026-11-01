@@ -873,6 +873,31 @@ Status: `todo` · `blocked` (why) · `doing`
     rather than being folded into a cycle that is already turning a node on. Low value, low risk,
     genuinely small.
 
+55. `todo` **(needs Drummond, a card-layout call on the homepage and `/bootcamps/`)** - **the
+    decorative arrow takes a fifth of each programme card's text width on a phone, and at 200%
+    text it pushes two pages sideways.** `.programme-row` on `/` and `.row` on `/bootcamps/` are
+    the same component in two files: a flex row of text column, a 1.5rem gap and a `flex: none`
+    arrow. Measured on the built site: at 320px the card is 280px, its padding takes 45 and the
+    **gap plus arrow take 48 more**, leaving the text 185px - 20% of the usable width - and at
+    375px 48 of 287. That is what makes every heading wrap to two lines, the pitch run to four
+    or five, and the counts line break at all (the 09:00 cycle on 1 Nov fixed the breaking; this
+    is why it was close in the first place - *"Next cohort 19 Nov 2026"* measures 245px against
+    a 237px column at 375px, 8px short). **The arrow is `aria-hidden` and its only behaviour is
+    a hover nudge, which a touch device can never fire**, so on a phone it is 48px bought for an
+    effect that cannot happen.
+    **The harder half, and it is a real overflow.** Swept at a 32px root (200% text) with
+    `Page.setFontSizes`: every page overflows by 58px at 320px and 3px at 375px on
+    `.wordmark__text`, which is backlog 32 and already his. But `/` and `/bootcamps/` go further
+    - **97-100px at 320px and 42-45px at 375px** - and the widest element past the edge is the
+    card itself (`.card programme-row`, `.card row`), because the row cannot shrink below its
+    text column plus the gap plus the arrow. So these two pages are the only ones where the
+    overflow at 200% is not the wordmark.
+    **The loop will not do it**: the remedy is a layout decision about the card - let the row
+    wrap so the arrow drops under the text, drop the arrow below a width, or shrink the gap -
+    and it changes the first thing a visitor sees in the homepage's programme chooser, which the
+    loop's own rules put on him. One line from him picks one. (The 09:00 cycle measured all of
+    the above and shipped only the wrapping fix, which is independent of it.)
+
 54. `todo` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle) - **four more guides qualify
     for `faqFromHeadings` and emit no `FAQPage` node.** Measured on the built site, counting
     `h2`s ending in a question mark: `agentic-ai-for-finance-teams` (3),
@@ -890,6 +915,89 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-01 (09:00 cycle) - every card on `/bootcamps/` broke a date across two lines on a
+  phone. Three spans and one media query, and the 16px-root grid is now clean at every width.**
+  - **The defect, measured before the fix.** `.row__counts` is the one line on each programme
+    card that answers "can I make it?" - *"Next cohort 19 Nov 2026 - 2 already run"*. Reading
+    the rendered line boxes character by character across 4 browser text sizes x 10 widths:
+    at a 16px root it breaks **"Next cohort 19 / Nov 2026 - 2 / already run"** at 320px,
+    **"Next cohort 19 Nov / 2026 - 2 already run"** at 375px and **"Next cohort 26 / Nov 2026"**
+    on the Coding card at both. At 414px the separator ends a line with nothing after it, and at
+    480px the count splits from its number (*"confirmed - 1 / already run"*). **5 of the 10
+    16px-root widths failed**, and the three most common phone widths all split a date, which is
+    one fact, on the page where someone picks a programme.
+  - **The column is the constraint and it is small.** The card is a flex row: text column, a
+    1.5rem gap, then the arrow. At 320px the card is 280px, its padding takes 45, and the gap
+    plus arrow take **48 more**, leaving the text 185px. The longest clause that has to arrive
+    whole measures a constant **7.69em of the row's font size at every root** - 138px at 16px,
+    173px at 20px, 208px at 24px, 277px at 32px - and the column first reaches it at 320, 360,
+    414 and 600px respectively.
+  - **The fix is three spans and one rule.** The date and the count each sit in a `.row__nb`
+    span, and `white-space: nowrap` is held behind `@media (min-width: 19rem)`, which is at or
+    below the crossover in every one of the four root sizes measured. A **rem** media query is
+    the one that scales with the reader's own text preference where a px one would not (the
+    correction recorded as backlog 52), so below the threshold the line keeps exactly the word
+    wrapping it has today rather than overflowing. The naive version was tried first and
+    measured: plain `nowrap` **overflowed the page by 60px** at a 24px root and 320px, and
+    `nowrap` plus `overflow-wrap: anywhere` cured the overflow by breaking mid-numeral
+    (*"19 Nov 2 / 026"*). Neither shipped.
+  - **The separator travels inside the second span, not in front of it**, so the break falls
+    before it: it can lead a continuation line but can never end one with nothing after it,
+    which is the stray-mark fault the event card and the event hero were corrected for on
+    31 October. (The stricter version - drop the separator entirely when its clause starts a
+    line, as those two components do - was costed and declined this cycle: it needs the
+    paragraph restructured as a flex container and it takes the "-" out of the DOM text, where
+    this change leaves the text byte-identical.)
+  - **Measured whole-site: exactly 1 of 199 files in `dist` differs, and the diff is 9
+    insertions and nothing else.** One CSS rule and four `<span>` tags on
+    `/bootcamps/index.html`, 29,670 to 29,958 bytes. **Visible text byte-identical.** Nothing
+    else moved: no other HTML, neither sitemap, no `lastmod`, no `updatedDate`, `llms.txt` and
+    `llms-full.txt` unchanged, internal links still 3,158. No `updatedDate` was bumped on
+    purpose - no content file was touched, only the page component, and the words a reader sees
+    are the same ones.
+  - **Results, same instrument as the diagnosis.** 4 roots x 10 widths, scored on four faults
+    (split date, split count, stranded separator, overflow): **11/40 clean before, 27/40 after**,
+    and **all 10 of the 16px-root widths are now clean**, 320px to 1440px. The 13 that remain
+    are the configurations where the media query deliberately declines and today's rendering is
+    preserved. Whole-site overflow sweep with `Page.setFontSizes`, 55 pages x 8 widths x 16px
+    and 24px roots: **880/880 at 0px**, unchanged.
+  - **Pixel-diffed against the previous build**, element screenshots of `.rows` at nine widths:
+    **byte-identical at 768px and 1440px**; 1024px and 1280px differ by 315 of 678,300 and 149
+    of 803,712 pixels, max channel delta 48, confined to the rows of the one line and with the
+    line content and line-start positions identical - anti-aliasing from the new inline-box
+    boundary, not a reflow. 320, 414, 480 and 600px differ where intended. Only 375px changes
+    height, by 24px: the Agentic card gains the third line that keeps its date and its count
+    whole.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid, 7 `Event` and 11 `FAQPage` nodes unchanged, all titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` green on both the all-on and
+    all-off builds. `astro check` (installed `--no-save`) reports the same **80** pre-existing
+    implicit-`any` errors on the baseline tree and on this one, none in the changed file. The 11
+    outbound warnings are the sandbox egress policy, identical on the baseline. Keyboard: 20 tab
+    stops before and after, the three cards still one stop each with the same hrefs and the same
+    focus ring.
+  - **Honest about the upside.** This is a typographic fault, not a broken journey - nobody fails
+    to book because a date wrapped. The defensible claim is narrow: on the page where a buyer
+    picks between three programmes, the one line that carries the date now arrives whole on a
+    phone. The root cause is bigger than the fix and is logged as backlog 55, because it is a
+    layout call on the homepage's programme chooser and not a cycle's.
+  - **Production could not be read this cycle**, as on every cycle since 30 Oct: the sandbox
+    egress policy answers 403 to CONNECT for `oxfordagentic.com` and the domain does not resolve
+    through WebFetch either, so the Actions API stood in - Deploy and CI both `success` on
+    `3c3a2b6`, the HEAD this cycle started from, nothing queued or in progress. `luma.com` is
+    unreachable the same way, so **no event fact was read or changed**. PR #1 and
+    `feat/ceo-roundtable-demand-page` are the known-stale leftovers already recorded in backlog
+    20, read as such rather than as work in flight.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20); the bronze contrast
+    token (21), which this cycle re-measured at **3.83:1 on 16 distinct elements across 34
+    pages** and left alone; Cohort 2's outcomes (22); the quote headings (23); the team-profile
+    links (24); the Coding paid-plan question (25); the event hero's doubled heading (26); lunch
+    and travel (27); the two voice pages' apostrophes (28); Jonathan Waddingham's former
+    employer (29); links in FAQ answers (30); the cookie banner at large text (31); the wordmark
+    at 200% (32); the Outcomes page's missing call to action (35); a second Second Brain cohort
+    (36); a Second Brain outcome (37); the homepage affiliation answer and the stale Luma
+    listings (47); and what we retain of a visitor's material (50).
 
 - **2026-11-01 (08:00 cycle) - the machine-readable FAQ answers published a space before the
   full stop wherever the sentence ended in a link. Backlog 53, shipped as its own cycle because

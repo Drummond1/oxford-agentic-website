@@ -96,10 +96,15 @@ for (let count = nextDates.length; count > 0; count -= 1) {
                     click further for the one fact they came for. */}
                 <p class="row__counts">
                   {upcoming.length === 0 && 'Next dates being confirmed'}
-                  {upcoming.length === 1 && `Next cohort ${formatShortDate(upcoming[0].data.startDate)}`}
-                  {upcoming.length > 1 &&
-                    `${upcoming.length} upcoming, next ${formatShortDate(upcoming[0].data.startDate)}`}
-                  {past.length > 0 && ` · ${past.length} already run`}
+                  {upcoming.length === 1 && (
+                    <Fragment>Next cohort <span class="row__nb">{formatShortDate(upcoming[0].data.startDate)}</span></Fragment>
+                  )}
+                  {upcoming.length > 1 && (
+                    <Fragment>{upcoming.length} upcoming, next <span class="row__nb">{formatShortDate(upcoming[0].data.startDate)}</span></Fragment>
+                  )}
+                  {past.length > 0 && (
+                    <Fragment> <span class="row__nb">{`· ${past.length} already run`}</span></Fragment>
+                  )}
                 </p>
               </div>
               <span class="row__arrow" aria-hidden="true">
@@ -145,6 +150,31 @@ for (let count = nextDates.length; count > 0; count -= 1) {
     letter-spacing: 0.11em;
     font-size: var(--step-xs);
     color: var(--rust);
+  }
+
+  /* The date and the count each read as one fact, so a line break inside either
+     one ("NEXT COHORT 19 / NOV 2026", "CONFIRMED - 1 / ALREADY RUN") splits
+     something that should arrive whole. Both now sit in their own span.
+
+     `nowrap` is only safe while the clause fits the column, which is the card
+     minus its padding, the 1.5rem gap and the arrow. Measured across 4 browser
+     text sizes x 10 widths on the built site: the longest clause is a constant
+     7.69em of this row's font size at every one of them (138px at a 16px root,
+     173px at 20px, 208px at 24px, 277px at 32px), and the column first reaches
+     it at 320px, 360px, 414px and 600px respectively - at or above 19rem in
+     every case. So the rule is held behind a rem media query, which is the one
+     that scales with the reader's own text preference where a px one would not
+     (see the correction recorded as backlog 52). Below it the line keeps the
+     word wrapping it has today rather than overflowing the page.
+
+     The separator travels inside the second span rather than before it, so the
+     break falls in front of it: it can lead a continuation line but it can
+     never end one with nothing after it, which is the stray-mark fault the
+     event card and the event hero were corrected for on 31 October. */
+  @media (min-width: 19rem) {
+    .row__nb {
+      white-space: nowrap;
+    }
   }
 
   .row__arrow {
