@@ -898,6 +898,91 @@ Status: `todo` · `blocked` (why) · `doing`
     loop's own rules put on him. One line from him picks one. (The 09:00 cycle measured all of
     the above and shipped only the wrapping fix, which is independent of it.)
 
+56. `todo` **(needs Drummond, and it is the most consequential thing on this list: a published
+    claim the site's own timetable contradicts)** - **"no block longer than twenty-five minutes
+    of anyone talking at you" is false against the agenda we publish, on five surfaces including
+    the homepage, and the voice agents repeat it.** Found 1 Nov 2026 in the 20:00 cycle while
+    checking, clause by clause, whether a guide's question tail was safe to make machine-readable.
+    It was not, and the check is the only reason this surfaced.
+    **The measurement, from `oxford-agentic-bootcamp-cohort-3.md`'s own `agenda` block.** Three
+    blocks in which someone is talking to the room run longer than twenty-five minutes:
+    **"Anatomy of an agent pipeline" 09:35-10:15 = 40 minutes** (`detail`: "Built live in front
+    of the room"), **"Guest session" 11:30-12:15 = 45 minutes** (`detail`: "A working
+    practitioner on how they use this daily") and **"Guest session" 13:45-14:15 = 30 minutes**.
+    Only "Welcome and framing" (20) and "Making it stick" (20) are inside the claim. The
+    45-minute guest talk admits no reading under which it is twenty-five minutes of anyone
+    talking at you, and the homepage's wording - *"No stretch of talk runs past twenty-five
+    minutes"* - is unqualified. **Cohort 2's agenda is identical and Cohort 1's was further out
+    still** ("The main block" 10:00-14:30, "Adoption and governance" 14:30-16:00), so this has
+    never matched a published timetable; the copy did not drift under a changed agenda.
+    **The site already publishes the accurate version, which is why this is a contradiction and
+    not merely an unverified claim.** `what-is-an-agentic-bootcamp` breaks the same day down as
+    *"about an hour of framing and live demonstration at the start, and an hour and a quarter of
+    guest sessions across the day"* against *"three facilitated build blocks come to three hours
+    and a quarter"*. Checked against the frontmatter this cycle and **all three numbers are
+    exactly right**: 20 + 40 = 60 minutes of framing and demo, 45 + 30 = 75 minutes of guest
+    sessions, 75 + 45 + 75 = 195 minutes of builds. So one guide counts the guest sessions as
+    listening time while four other surfaces claim no listening block passes 25 minutes.
+    **The five sources**, all the same claim in slightly different words:
+    `src/components/HomeSections.astro:153` (renders on `/` and `/home-photos/`),
+    `src/content/programmes/oxford-agentic-bootcamp.md:201`,
+    `src/content/guides/what-you-can-build-in-one-day-with-ai.md:60`,
+    `src/content/guides/what-hands-on-ai-training-actually-means.md:60` and
+    `src/content/guides/questions-to-ask-before-booking-ai-training.md:88`. Measured on the built
+    site: it renders on **6 pages**, appears **3 times in `llms-full.txt`** - so "Ask Drummond",
+    the finder and office hours will all repeat it to a prospect - and, the one piece of luck,
+    **0 times in any `FAQPage` node**, because every occurrence sits in a non-question section.
+    **Why the loop will not fix it, though accuracy rule 7 would license qualifying it.** Two
+    remedies are legitimate and they are not the loop's to choose: correct the copy, or change
+    the day (splitting the 45-minute guest session would make the claim true). More binding, this
+    is a positioning line on the homepage and the message house of 13 August sets that copy and
+    lives in Drummond's Google Docs, where this checkout cannot read it - so the loop cannot tell
+    whether this sentence is a drafting slip or a decided message, and the autonomy section's own
+    post-launch rule is propose-and-approve for anything touching claims. **Shipping a rewrite of
+    a core positioning claim across the homepage and a programme page on the loop's own judgment
+    is the one thing it should not do here.**
+    **If he wants the copy fixed, the cheapest accurate wording already exists on the site** and
+    needs no new fact: the programme page's own *"the day is built around three build cycles
+    rather than three talks"*, optionally with `what-is-an-agentic-bootcamp`'s verified
+    three-hours-and-a-quarter of building. **Do not opt
+    `what-you-can-build-in-one-day-with-ai` into `faqFromHeadings` until this is settled** - its
+    "Will I build something, or watch someone else build it?" answer is where the claim sits, and
+    backlog 57 would otherwise publish it as an `acceptedAnswer`.
+
+57. `todo` (loop-actionable, found 1 Nov 2026 in the 20:00 cycle; **blocked behind 56 for the one
+    guide whose evidence exists**) - **`faqsFromQuestionHeadings` reads `h2` only, so three
+    guides whose question tail is `h3` can never emit a node, and backlog 54's census missed
+    them because it counted `h2`s.** Backlog 54 measured "`h2`s ending in a question mark" and
+    concluded four guides qualified. Re-measured this cycle across both levels on the built site:
+    **`what-you-can-build-in-one-day-with-ai` (1 `h2`q + 3 `h3`q), `scout-drafter-reviewer-pattern`
+    (1 + 3) and `ai-bootcamp-vs-course-vs-exec-education` (0 + 3)**. All three are invisible to
+    the extractor today, and the `faqs.length >= 2` guard means the flag alone would emit nothing
+    for the first two and the third has no question `h2` at all.
+    **The blast radius of teaching it `h3` is provably zero.** The three opted-in guides -
+    `agentic-ai-for-finance-teams`, `questions-to-ask-before-booking-ai-training` and
+    `what-is-an-agentic-bootcamp` - contain **no `h3` of any kind**, question or not, so no live
+    node can move. That was checked by listing every `h2` and `h3` in each of the three, not by
+    counting questions.
+    **The design, and the part that matters is not the `h3` support.** The naive rule - split at
+    every question heading - is wrong here, and the target guide shows why: `## Is one day
+    enough?` is a **grouping** heading whose own prose is one signpost sentence, *"Three versions
+    of this question arrive, and they want different answers."* Published as an `acceptedAnswer`
+    for "Is one day enough?" that is worse than publishing nothing. The right contract is
+    **leaf question headings**: emit a Q&A for every question heading that contains no question
+    sub-heading, so the signpost parent is skipped and its three children stand on their own. It
+    also keeps the existing contract exactly where it applies - a non-question `h3` must stay
+    inside its parent's answer, never start a section - which is what guarantees the zero blast
+    radius above.
+    **Each of the three still needs its own probe before it is opted in**, on backlog 54's terms,
+    and the evidence for one of them already exists: this cycle's probe *"is a one day AI workshop
+    long enough to actually learn anything"* returned no page of ours against vendor pages selling
+    ongoing enablement instead, with the engine closing *"Research on this specific question is
+    thin"* - and the three `h3`s of `what-you-can-build-in-one-day-with-ai` are that exact
+    objection, three ways. **That guide is nonetheless blocked by backlog 56**, whose false claim
+    sits in one of the three answers. `scout-drafter-reviewer-pattern`'s tail (tool churn) and
+    `ai-bootcamp-vs-course-vs-exec-education`'s (doing it yourself for nothing) are unprobed; do
+    not batch them.
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -929,6 +1014,84 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-01 (20:00 cycle) - NO SITE CHANGE SHIPPED. A GEO probe pointed at a guide, the
+  clause-by-clause check before making it machine-readable found a claim our own published
+  timetable contradicts, on five surfaces including the homepage, and the right move was to stop.
+  This commit is ledger only: zero bytes of `dist` change and IndexNow submits nothing.**
+  - **What the cycle was going to ship, and why it did not.** This cycle's first probe - *"is a
+    one day AI workshop long enough to actually learn anything"* - returned no page of ours
+    against vendor pages arguing one-off workshops do not work, with the engine closing
+    *"Research on this specific question is thin"*. Winnable and strongly converting: it is the
+    central objection to a one-day format. We answer it in
+    `what-you-can-build-in-one-day-with-ai` under `## Is one day enough?` with three `h3`
+    sub-questions, so the candidate was a `faqFromHeadings` opt-in. **Checking the three answers
+    clause by clause first - the step the 14:00 cycle insisted on because structured data raises
+    the cost of a wrong sentence - found that one of them is false.** See backlog 56.
+  - **The defect, measured against the frontmatter.** *"No block longer than twenty-five minutes
+    of anyone talking at you"* is contradicted by three blocks in Cohort 3's own `agenda`:
+    **"Anatomy of an agent pipeline" 40 minutes**, **"Guest session" 45 minutes** and a second
+    **"Guest session" 30 minutes**. Cohort 2's agenda is identical and Cohort 1's was further out
+    still, so the copy never matched a published timetable. Meanwhile
+    `what-is-an-agentic-bootcamp` publishes the accurate breakdown and **every one of its numbers
+    checks out** (60 minutes of framing and demo, 75 of guest sessions, 195 of building), so the
+    site contradicts itself. The claim renders on **6 pages** including `/`, sits **3 times in
+    `llms-full.txt`** so all three voice agents will repeat it, and - the one piece of luck -
+    **0 times in any `FAQPage` node**.
+  - **Why nothing was shipped, and this is the whole judgment of the cycle.** Accuracy rule 7
+    would license qualifying an unverifiable claim, but two remedies are legitimate here and
+    neither is the loop's to pick: correct the copy, or change the day so the claim is true.
+    More binding, it is a positioning line on the homepage, the message house of 13 August owns
+    that copy and lives in a Google Doc this checkout cannot read, so the loop cannot tell a
+    drafting slip from a decided message - and the autonomy section's own post-launch rule is
+    propose-and-approve for anything touching claims. **Rewriting a core positioning claim across
+    the homepage and a programme page on the loop's own judgment is the one thing it should not
+    do here.** Drummond notified.
+  - **A second finding, from the same check.** Backlog 54's census counted `h2`s and so missed
+    three guides whose question tail is `h3`: `what-you-can-build-in-one-day-with-ai` (1+3),
+    `scout-drafter-reviewer-pattern` (1+3) and `ai-bootcamp-vs-course-vs-exec-education` (0+3).
+    Teaching the extractor `h3` has **provably zero blast radius** - the three opted-in guides
+    contain no `h3` of any kind - but the right contract is **leaf question headings**, not "split
+    at every question", because the target guide's parent `h2` is a signpost whose own prose is
+    one sentence that would publish as its answer. Written up as backlog 57 and **blocked behind
+    56** for the one guide whose probe evidence exists.
+  - **Two corrections to this cycle's own working, both caught before they reached the ledger.**
+    (1) A first pass reported Cohort 3's `Event` node as missing `offers` while the Coding
+    Bootcamp had one; that was a 2,600-character truncation in the inspection script, and
+    re-measured, **all 7 `Event` nodes carry `offers`**, the two upcoming ones `InStock`. (2) A
+    dry run appeared to show an `IMPROVEMENTS.md`-only push pinging all 55 URLs; the script takes
+    positional paths and had been passed `--files`, so the catch-all fired. Invoked correctly it
+    prints *"no page URLs affected by this push"*. **`scripts/indexnow-ping.mjs` already excludes
+    the docs, `seo-data/`, `outreach/` and `.github/`, and is correct.** Neither was a defect.
+  - **Checks.** `npm ci` and `npm run build` clean - 62 pages built, **3,158 internal links
+    resolve, schema valid on 64 pages, 7 `Event` and 12 `FAQPage` nodes, all titles and
+    descriptions unique, no SEO warnings**. The 11 outbound warnings are the sandbox egress
+    policy. Sitemap, robots and canonicals audited whole-site: **55 sitemap URLs, no page both in
+    the sitemap and `noindex`, none missing from it, and the only two non-self canonicals are the
+    deliberate `/home-original/` to `/home-photos/` redirect and the retired
+    `/team/josh-lawman/` stub.** No headless-browser run and none needed: **no file that reaches
+    `dist` was touched**, so there is no rendered change to inspect, and the no-ship rule for a
+    missing browser does not apply to a commit that cannot alter a page.
+  - **Guides: none published. 0 of 3 for the week of 26 Oct - 1 Nov.** Both of today's Q&A
+    refreshes are unspent: the one this cycle probed for was disqualified, not deferred.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands. **Production:** deploy run 339 success on `71c4dd6`, which is
+    both `origin/main` and the HEAD this cycle started from, nothing queued or in progress.
+    `oxfordagentic.com` is refused on CONNECT from this sandbox, so the Actions API stood in for
+    `build.txt`, as on every cycle since 30 Oct. `luma.com` is unreachable the same way, so **no
+    event fact was read or changed**; the prompt's event facts remain stale against the repo (it
+    gives Cohort 3 as 15 Oct where the repo has 19 November, and does not know the Coding
+    Bootcamp), so the repo was treated as the authority, as on the five previous cycles.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20); the bronze contrast
+    token (21); Cohort 2's outcomes (22); the quote headings (23); the team-profile links (24);
+    the Coding paid-plan question (25); the event hero's doubled heading (26); lunch and travel
+    (27); the two voice pages' apostrophes (28); Jonathan Waddingham's former employer (29); links
+    in FAQ answers (30); the cookie banner at large text (31); the wordmark at 200% (32); the
+    Outcomes page's missing call to action (35); a second Second Brain cohort (36); a Second Brain
+    outcome (37); the homepage affiliation answer and the stale Luma listings (47); what we retain
+    of a visitor's material (50); the programme card's arrow at 200% text (55); **and new this
+    cycle, the twenty-five-minute claim (56), which is the most consequential of them.**
 
 - **2026-11-01 (14:00 cycle) - an engine said no UK one-day agentic course for finance teams
   exists. We publish the answer to that exact question, as an `h2`, and it was not marked as an

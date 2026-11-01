@@ -5,6 +5,61 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-01 (20:00 GMT cycle) - FOUR PROBES, ONE CITATION (THE FIRST IN DAYS), AND A PROBE THAT FOUND A FALSE CLAIM ON OUR OWN HOMEPAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, none put to an engine before.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is a one day AI workshop long enough to actually learn anything | **No** | `arxiv.org` (x2, AI literacy in schools and higher ed - a different subject), `ncbi.nlm.nih.gov`, `sprad.io`, `theaie.net` (selling ongoing enablement *instead of* workshops), `digismart.io`, `betterpeople.com.au` |
+| hands-on AI away day for a leadership team UK build a real workflow | **No** | `practical-ai-for-business.co.uk` (£3,500/£6,500 + VAT), `theproposition.co`, `eliotprince.com`, `generalpurpose.com`, `anywayventures.com` (from £5k), `elansio.com` (£980 + VAT), `dayseven.ai`, `tessgroup.co.uk`, `appliedai.club`, `workflowy.ai` |
+| how many people from one company should we send to an AI bootcamp | **No** | `worklife.news`, `jennakutcherblog.com`, `wikipedia.org` (x2), `hackceleration.com`, `alicelabs.ai`, `bizzuka.com`, `codeleap.ai`, `aiadvisoryboard.me` |
+| one day hands-on agentic AI bootcamp Oxford 19 November 2026 | **Yes**: homepage and `after-the-ai-executive-programme` | `sbs.ox.ac.uk`, `nobleprog.co.uk`, `lifelong-learning.ox.ac.uk` (x2), `getsmarter.com`, `gogradia.com`, `events.vtools.ieee.org` |
+
+**Reading.**
+
+- **The fourth probe is the first citation in several cycles, and it is worth being precise about
+  what it does and does not prove.** The engine named the event, the date and the venue correctly
+  - *"the official site lists it for Thursday, 19 November 2026 at Worcester College, Oxford"* -
+  described the bring-one-real-task format, and named the **scout, drafter, reviewer** pattern off
+  our own guide. But **the date was in the query**. This is a confirmation-shaped question, not a
+  discovery one, so it corrects the recent pessimistic readings on one axis only: when an engine
+  reaches our pages, what it then says about us is accurate and on-message. The four dated
+  readings of 30 Oct - 1 Nov stand unchanged on the discovery half, where the same entity asked
+  the *undated* version of this question ("Oxford November 2026") got competitors and a July Luma
+  listing. **The gap is discovery, not what we publish.** Backlog 2b.
+- **The first probe chose this cycle's work, and then disqualified the page it pointed at.** The
+  field is vendor pages, several arguing explicitly that one-off workshops do not work (`theaie.net`
+  sells ongoing enablement), against academic papers on AI literacy in education - a different
+  subject, so **winnable** on the rule's terms - and the engine closed *"Research on this specific
+  question is thin, and most sources here have a commercial stake"*. **Converting**: it is the
+  central objection to a one-day format. We already answer it, in
+  `what-you-can-build-in-one-day-with-ai`, which carries `## Is one day enough?` and three `h3`
+  sub-questions. So the cycle's candidate was to publish those as answers - and the clause-by-clause
+  check before making them machine-readable found that one of the three answers **contradicts our
+  own published agenda**. That is backlog 56, it is on five surfaces including the homepage, and
+  **nothing was opted in.** The probe was worth running for the defect it found, not the node it
+  did not get.
+- **The second probe is the owned half of the winnability rule, outright.** Ten results and every
+  one is a provider selling its own away day, six with prices on the page. No independent source,
+  no publisher, nothing to displace - and our answer to that query is a public cohort rather than
+  an away day, which `in-house-ai-day-or-send-people-to-a-cohort` already argues. **Declined.**
+  Recorded because it is a fifth commercial query on which the entity is absent, not because there
+  is a page to write.
+- **The third probe is already answered on pages that rank, so it declines on the 19 Oct
+  level-fit precedent.** The field admits it has no answer (*"The search doesn't give a universal
+  number, and most of the sources are vendor marketing"*) and it is a strongly converting
+  group-seat question - but the Agentic programme page's FAQ answers *"Can I bring my team, or book
+  for several people?"* and `who-should-take-the-seat` carries *"Two of you, and what to do when
+  there is only one seat"*. A guide would restate two pages that already rank, which is what the
+  level-fit axis was declined for. **Declined, and it is a near-duplicate of
+  `who-should-take-the-seat` besides.**
+- **No new contactable lead.** Every name the four probes returned is either a direct competitor,
+  a US CPE body or an academic preprint. Nothing was added to `outreach/review-list.md` and nothing
+  was contacted.
+
 ## 2026-11-01 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ONE ADMITTED GAP THAT MATCHES A HEADING WE ALREADY PUBLISH
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
