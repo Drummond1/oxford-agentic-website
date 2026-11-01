@@ -11,6 +11,30 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Local news and radio, a category this list has never carried, found by a probe that
+  returned the same local station twice.** Found 1 Nov 2026 (02:00 cycle). **Nothing has been
+  contacted.**
+  - **The evidence.** The probe *"who else will be in the room at a one day hands-on AI bootcamp
+    UK, what sort of people attend"* returned seventeen results, and two of them were
+    `mkfm.com` - a Milton Keynes radio station's news site - covering a hands-on AI training day
+    in its own town, once on the announcement and again when it came back ("Milton Keynes to Host
+    Hands-On AI Training Day", "Milton Keynes welcomes back successful AI workshop this October").
+    A chamber of commerce (`sussexchamberofcommerce.co.uk`) and a local tech community
+    (`siliconbrighton.com`) were in the same result set, both on their own listings of someone
+    else's AI day.
+  - **Why it is a new category rather than a new name.** `outreach/off-page-listings.md` already
+    orders Eventbrite, LinkedIn, course-roundup sites, national aggregators and Oxfordshire
+    business and chamber listings. Local news is in none of them, and it is the only one of these
+    where the page is editorial rather than a directory row, which is what makes it citable.
+    The entity still has no `sameAs` at all (backlog 2b), and a local paper naming the business is
+    the kind of mention an engine triangulates on.
+  - **The Oxford equivalents, unverified from here and listed as names to check rather than
+    targets to approach:** the Oxford Mail, Daily Info, Jack FM and Heart Oxfordshire, and
+    Oxfordshire Live. None has been looked at, contacted or confirmed to take event news.
+  - **What it needs from Drummond:** whether a local-news approach is wanted at all before any
+    cycle spends time drafting one. It is a different ask from a listing - it is a story, and the
+    story would have to be about the cohort rather than about the business.
+
 - **The Eventbrite ask, now with a count behind it. No new target - evidence for the standing
   one in `outreach/off-page-listings.md`.** Found 29 Oct 2026 (19:00 cycle). **Nothing has been
   contacted.** A probe written as our format in our country - *"hands-on AI day for small

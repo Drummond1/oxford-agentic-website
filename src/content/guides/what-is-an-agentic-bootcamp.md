@@ -10,9 +10,14 @@ capsule: >-
   running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
-updatedDate: "2026-10-27T19:30:00+00:00"
+updatedDate: "2026-11-01T02:14:18+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+# The last two headings are a question-and-answer pair each, so they go out as an
+# FAQPage node too, read off the rendered page rather than copied into frontmatter.
+# The four headings above them are not questions and are skipped, which is the
+# contract: only the question-shaped parts of the page become Q&A pairs.
+faqFromHeadings: true
 ---
 
 The word "bootcamp" has been attached to almost every kind of AI training by now, so it is worth being precise about what makes one agentic.

@@ -825,7 +825,24 @@ Status: `todo` · `blocked` (why) · `doing`
     the distinction. Check it at 375px before shipping; if it reads heavy, the honest answer
     is that the scale has no step between 13px and nothing, and that is worth recording too.
 
-52. `todo` (loop-actionable, found 31 Oct 2026 in the 09:00 cycle) - **every indexable page
+52. `retired - not a defect` 1 Nov 2026 (02:00 cycle), on a re-measurement of its own number.
+    **The 57px was an artefact of how the root font size was emulated, and the correction
+    generalises.** Setting the root size in CSS (`html{font-size:24px}`, or the same inline) gives
+    a 24px root while rem **media queries** still resolve against 16px, so at a 600px viewport the
+    footer's 481-865px two-column band applies and needs 360 + 216 + 48 = 624px in a 600px window:
+    57px, to the pixel. Emulating the reader's actual preference instead, with CDP
+    `Page.setFontSizes`, gives a 24px root **and** rem media queries at 24px, so `(max-width:
+    30rem)` is 720px, the footer is single-column at 600px, and the overflow is 0. The CSS spec
+    puts `rem` in a media query against the initial font size - the user's preference - so the
+    second measurement is the one a real browser performs. **Swept with the correct emulation: 55
+    pages x 8 widths x 16px and 24px roots = 880 configurations, 0 overflow in all 880.** No CSS
+    was changed and none should be: the track-floor change this item proposed is the one item 46
+    measured as harmful at real widths (link columns squeezed to about 91px, cohort titles
+    wrapping five deep). **The rule this leaves behind: any finding that turns on a rem-based
+    media query and was measured by setting `font-size` on `html` is not measured until it has
+    been re-measured with `Page.setFontSizes`.** Items 33 and 34 shipped fixes that are sound
+    either way, and 31 and 32 do not turn on a media query. Original diagnosis kept below.
+    `todo` (loop-actionable, found 31 Oct 2026 in the 09:00 cycle) - **every indexable page
     scrolls sideways by 57px at a 600px viewport once the browser's text is set to 150%.**
     Measured across 55 pages x 8 widths (320, 375, 414, 600, 768, 1024, 1280, 1440) at a 16px
     and a 24px root: **0 overflow everywhere except 600px/24px, where all 55 pages overflow by
@@ -843,9 +860,161 @@ Status: `todo` · `blocked` (why) · `doing`
     600px/24px corner had simply never been swept - item 34's clean sweep covered 320 and
     375px only.
 
+53. `todo` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle) - **an extracted FAQ answer
+    containing an inline link gets a space before the next punctuation mark.** `plainText` in
+    `src/lib/faq.ts` replaces every tag with a space, so "...on [each cohort's event page](...)."
+    comes out of the extractor as "...on each cohort's event page ." in
+    `acceptedAnswer.text`. Measured today: **2 of the 10 items** on
+    `/guides/questions-to-ask-before-booking-ai-training/`, which has carried the node since it
+    opted in, and 1 of the 2 on `/guides/what-is-an-agentic-bootcamp/`, which opted in this
+    cycle. A reader never sees it, because the visible page is unaffected; an engine quoting the
+    sentence does. **The fix is one line** - collapse a space before `.,;:?!` after the tag strip
+    - and it changes both existing nodes, so it wants its own cycle and its own `dist` diff
+    rather than being folded into a cycle that is already turning a node on. Low value, low risk,
+    genuinely small.
+
+54. `todo` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle) - **four more guides qualify
+    for `faqFromHeadings` and emit no `FAQPage` node.** Measured on the built site, counting
+    `h2`s ending in a question mark: `agentic-ai-for-finance-teams` (3),
+    `how-to-choose-your-first-agentic-task` (2),
+    `is-it-safe-to-put-company-documents-in-a-second-brain` (3) and
+    `why-the-code-an-agent-wrote-is-not-live` (3). (This corrects the 30 Oct 14:00 note that
+    "none of the seven qualifies as its contract is written"; five did, and
+    `what-is-an-agentic-bootcamp` was taken this cycle.) **Do not opt the rest in as a batch.**
+    The flag's own contract says it is for pages that genuinely are a list of questions, and the
+    reason this cycle could take one was a probe pointing at that guide's question. Each of the
+    four wants its own evidence that the question it answers is one the field does not, and its
+    own clause-by-clause check that what it publishes is true before it is made
+    machine-readable. One per cycle at most.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-01 (02:00 cycle) - a guide answers "what does the day look like, hour by hour?"
+  under that exact heading, and published it as prose rather than as an answer. This cycle's own
+  probe found that question is one nothing in the field answers.**
+  - **The probe first, because it is what chose the page.** *"what does the agenda of a one day
+    hands-on AI bootcamp look like hour by hour UK"* returned sixteen results and no page of
+    ours, and the engine closed *"The search didn't turn up a complete hour-by-hour agenda for a
+    one-day UK AI bootcamp"* and *"For exact timings, the best next step is to ask individual UK
+    providers for their syllabus or agenda."* The field is event listings - Eventbrite,
+    `createwith.com`, Silicon Brighton, Luma. **The single editorial hour-by-hour page in the
+    result set, `precisionaiacademy.pages.dev`, describes a US two-day programme**, and the
+    engine said so itself. WINNABLE on the rule's own terms: no institutional publisher owns it.
+    CONVERTING: someone asking how the day runs is deciding whether to book one.
+  - **And we already publish what it could not find.** A timed agenda on all five event pages,
+    as `subEvent` in the JSON-LD since August, and a prose walk-through of the whole day in
+    `/guides/what-is-an-agentic-bootcamp/` under the heading *"What does the day look like, hour
+    by hour?"*, followed by *"How much of the day is building, and how much is listening?"*. So
+    **no guide was written** - the question has a published answer, on a guide that was cited
+    **first** for its own query on 14 Sept and is one of the three URLs an engine has been
+    measured holding of this site.
+  - **What was actually missing was the markup, and the mechanism for it already existed.**
+    `faqsFromQuestionHeadings` reads a guide's own rendered HTML and emits a `FAQPage` node, so
+    the node can only ever say what the page says; a guide opts in with `faqFromHeadings`. One
+    guide had the flag. This one now does, and that is the whole change: **one frontmatter line
+    and its `updatedDate`.** Zero new copy, zero new claims.
+  - **The 30 Oct 14:00 cycle's note that "none of the seven qualifies under `faqFromHeadings` as
+    its contract is written" is wrong as a mechanical statement, and this is the correction.**
+    Measured on the built site today, counting `h2`s that end in a question mark: **five guides
+    qualify** (two or more) and emit no `FAQPage` - `agentic-ai-for-finance-teams` (3),
+    `how-to-choose-your-first-agentic-task` (2),
+    `is-it-safe-to-put-company-documents-in-a-second-brain` (3), `what-is-an-agentic-bootcamp`
+    (2) and `why-the-code-an-agent-wrote-is-not-live` (3). Four guides have question headings at
+    `h3` only, or one at `h2`, and genuinely do not qualify. **The other four are left for later
+    cycles on purpose**: the evidence this cycle has is a probe about the shape of the day, and
+    it points at one of them. Do not opt the rest in as a batch; each wants its own reason.
+  - **The contract handles an essay with a question-and-answer tail correctly, which is why this
+    is not a stretch of it.** Sections split at `h2`, non-question headings are skipped, so the
+    node carries exactly the two question headings and nothing from the four essay headings above
+    them. Verified in the built JSON-LD: 2 items, each question identical to a visible `h2`, each
+    answer the page's own sentences.
+  - **The answers were checked clause by clause against the published agenda before shipping**,
+    because structured data raises the cost of a wrong number. Cohort 3's `agenda` gives 09:00
+    registration, 09:15-09:35 framing, 09:35-10:15 the pipeline taken apart live, 10:15-11:30
+    build one, 11:30 guest, 12:15-13:00 build two, 13:00 lunch, 13:45 guest, 14:15-15:30 build
+    three, 15:30-16:00 showcase, 16:00 making it stick, 16:20 wrap to 17:00. The guide's
+    "twenty minutes", "forty minutes", "an hour and a quarter from 14:15", "three hours and a
+    quarter" of build blocks, "a further half hour", "about an hour of framing" and "an hour and
+    a quarter of guest sessions" **all check out**. Nothing was reworded; the check was whether
+    the published prose is true before making it machine-readable.
+  - **Measured whole-site: exactly 5 of 199 files in `dist` differ, and every one of the other
+    four differs only in a date.** `guides/index.html` - two opcodes, "27 Oct" to "1 November".
+    `llms-full.txt` - one line, the same date. `sitemap-0.xml` - one `lastmod`. `sitemap-index.xml`
+    - its roll-up of that. `llms.txt` did **not** move, no other HTML changed, internal links stay
+    at **3,158**. On the guide itself the rendered `<main>` text is identical character for
+    character apart from the byline date; the only other change is the new `FAQPage` node.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - 64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings. `FAQPage`
+    nodes **10 to 11**, `Event` nodes unchanged at 7. `npm run check:flags` green on both the
+    all-on and all-off builds. The 11 outbound warnings are the sandbox egress policy, identical
+    on the baseline. Headless Chromium over the changed guide, the already-opted-in guide,
+    `/guides/` and `/` as controls, at 375 and 1280px, **76 assertions, all passed**: 200, 0px
+    horizontal overflow, one `h1`, correct self-canonical, no robots meta, zero em dashes and
+    zero straight apostrophes in `main`; and on the changed page the node has exactly two items,
+    each question appears exactly once as a visible `h2`, each answer's opening is present in
+    rendered `main`, and the byline reads 1 November. The control keeps its ten items and
+    `/guides/` gains none. Both widths screenshotted and read.
+  - **Two assertions failed first and the fault was the assertions, both times.** The heading
+    comparison used `textContent`, which includes the `#` anchor the client script appends, so a
+    heading never equalled its question; and the byline check used `innerText`, which does not
+    report text inside the unrevealed reveal subtree. Re-measured with the anchor stripped and
+    with `textContent`: all 76 pass. Same class as the 30 Oct unnamed-link miscount.
+  - **Honest about the upside.** Google has not shown FAQ rich results for a site like this since
+    August 2023, so this is not a CTR play and should not be judged as one. The defensible claim
+    is narrower: an engine holding this guide now has the hour-by-hour answer marked as the
+    answer to the question the page asks, rather than as the fifth section of an essay. **The
+    honest test is whether an agenda or timetable probe ever quotes our timings**, and it may
+    never happen.
+  - **Backlog 52 is retired, and it was never a defect. The instrument was wrong, and this
+    matters beyond this item.** The 31 Oct 09:00 cycle measured all 55 indexable pages
+    overflowing by exactly 57px at a 600px viewport "at a 24px browser default". Reproduced and
+    taken apart this cycle, on the same build: setting the root font size **in CSS**
+    (`html{font-size:24px}`, or the same inline) gives a 24px root while the **rem media queries
+    still resolve against 16px**, so at 600px the footer's 481-865px two-column band applies and
+    needs 360 + 216 + 48 = 624px in a 600px window - **57px, to the pixel**. Emulating the
+    reader's actual preference instead, with CDP `Page.setFontSizes`, gives a 24px root **and**
+    rem media queries at 24px, so `(max-width: 30rem)` is 720px, the footer is a single column at
+    600px, and the overflow is **0**. Per the CSS spec, `rem` in a media query resolves against
+    the initial font size, which is the user's preference - so the browser agrees with the second
+    measurement and not the first. **Full sweep with the correct emulation: 55 pages x 8 widths
+    (320-1440) x 16px and 24px roots = 880 configurations, 0 overflow in every one.** No CSS was
+    changed, and none should be: the fix item 52 proposes would lower the track floors that item
+    46 measured as harmful at real widths. **Any past or future finding that depends on a
+    rem-based media query and was measured by setting `font-size` on `html` needs re-measuring
+    this way.** Items 33 and 34 shipped fixes that are sound regardless, and 31 and 32 do not turn
+    on a media query.
+  - **One pre-existing artefact of the FAQ extractor, recorded and not folded in.** `plainText`
+    replaces every tag with a space, so an answer containing an inline link renders as "each
+    cohort's event page ." with a space before the full stop. It is on **2 of the 10 items** of
+    the guide that already opted in, so it predates this change and is not caused by it. A reader
+    never sees it; an engine quoting the sentence does. One line in `src/lib/faq.ts` closes it,
+    and it would change the existing node too, so it is a later cycle's change. Added as backlog 53.
+  - **IndexNow:** a guide edit maps to the guide, `/guides/` and the siblings that print it, and
+    the script submits the first two. The four-sibling under-submission is item 41, downgraded to
+    `wontfix-for-now` on 26 Oct on its own numbers, and nothing here reopens it. The ping script
+    was not run; the deploy workflow does it after `build.txt` serves this commit.
+  - **Production could not be read directly.** `oxfordagentic.com` answers **403 at CONNECT** from
+    this sandbox, as on every cycle since 30 Oct, so `build.txt` was unreachable and the Actions
+    API stood in: Deploy **success on `08e7c06`**, which is both `origin/main` and the HEAD this
+    cycle started from, with nothing queued or in progress. `luma.com` is unreachable too, so **no
+    event fact was read or changed** - the Cohort 3 agenda above is the repo's, not Luma's. The
+    cycle prompt's own event facts are stale against the repo again (it gives Cohort 3 as 15 Oct
+    where the repo has 19 November), so the repo was treated as the authority, as on 31 Oct.
+  - **Search Console unavailable from this checkout**, one attempt: `gcloud` reports no
+    credentialed accounts and there is no export anywhere in the repo. The 30 Oct 05:10 reading
+    stands and was read in full. Nothing estimated.
+  - **No new guide. 0 of 3 for the week of 26 Oct - 1 Nov, and the week ends today.** A schema
+    flag on an existing guide is not a Q&A refresh either, so both of today's are unspent.
+  - **One new contactable lead, a category this list has never carried:** local news and radio,
+    found by the room-composition probe returning `mkfm.com` twice on the same local AI training
+    day. In `outreach/review-list.md` with the Oxford equivalents named as things to check.
+    Nothing contacted.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20) and the
+    `feat/ceo-roundtable-demand-page` branch; the bronze contrast token (21); Cohort 2's outcomes
+    (22); the retention line (50); the Search Console CSV export (2); and the rest of the
+    needs-Drummond list.
 
 - **2026-10-31 (09:00 cycle) - the gold square that separates the date from the venue was
   never between them on a card. It sat stranded at the end of the date on a phone, and alone

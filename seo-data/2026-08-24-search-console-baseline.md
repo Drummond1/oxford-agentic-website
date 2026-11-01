@@ -1309,3 +1309,24 @@ clean read too. The 30 Oct 20:00 cycle recorded a further candidate on those sev
 (the name and brand repeated between the prefix and the bio); it was **not taken**, both because
 reversing its own stated preference needs evidence this cycle does not have, and because a second
 change to the same seven pages a few hours later would make the first one unreadable.
+
+## Update - 1 November 2026, 02:00 GMT
+
+**Unavailable from this cloud checkout.** One attempt, as the rules ask: `gcloud auth list`
+reports "No credentialed accounts", there is no Google credential anywhere in the environment,
+and a whole-repo search for a CSV, TSV or spreadsheet export found none, in `seo-data/` or
+anywhere else. Nothing estimated.
+
+**The 30 October 05:10 reading still stands as the freshest data** - 151 clicks, 2.37k
+impressions, 6.4% CTR, average position 13.1, through roughly 28 October - and it was read in
+full rather than taken from the four later cycles' summaries of it. Nothing in it reopens a page:
+`/events/` has recovered to 212 impressions at position 8.3, `/about/` and `/guides/` were opened
+and closed in that reading, `/guides/` stays fenced while the 29 Oct description change gets a
+clean read, and the county-provider cluster is still 7.5% of impressions and none of the clicks.
+So this cycle worked rule 5.
+
+**The page it changed is not in that reading, and the change adds no page and moves no copy.**
+`/guides/what-is-an-agentic-bootcamp/` is not named in the 05:10 figures; it gains a `FAQPage`
+node derived from two question headings it already prints, and its visible text is identical to
+the character apart from the "Updated" date. `/team/` and `/guides/` were both left alone so the
+30 Oct and 29 Oct changes to them still get a clean read.

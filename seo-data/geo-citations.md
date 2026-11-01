@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-01 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE TWO WITH A REAL GAP ARE ALREADY ANSWERED ON PAGES WE PUBLISH
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Four rotating buyer questions on axes this log has not put to an engine: who else
+is in the room, what happens when the task you bring does not suit AI, agentic bootcamp against
+prompt engineering, and the hour-by-hour shape of the day.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| who else will be in the room at a one day hands-on AI bootcamp UK, what sort of people attend | **No** (17 results) | `createwith.com` (x5, Brighton grant-funded days), `eventbrite.co.uk` (x3), `mkfm.com` (x2, **local radio news covering a local AI training day**), `siliconbrighton.com` (x2), `aber.ac.uk`, `sussexchamberofcommerce.co.uk`, `eventsinlondon.app` |
+| what if the real work task I bring to an AI workshop turns out to be one AI cannot do | **No** | `cris.utoronto.ca` (x2), `celt.tulane.edu` (x2), `phil.nycu.edu.tw`, `miro.com`, `groups.google.com` (x2), `rit.edu`, `teaching.csse.uwa.edu.au`, `durhamtech.edu`, `luma.com` (not ours), `allai.events` |
+| agentic AI bootcamp versus prompt engineering course which should a business leader take | **No** | `academy.xebia.com` (x2), `maven.com` (x2), `udemy.com` (x2), `cvn.columbia.edu` + `plus.columbia.edu`, `coursera.org` (Vanderbilt), `online.iitkgp.ac.in`, `datasciencedojo` help pages, `debutify.com`, `springest.co.uk` |
+| what does the agenda of a one day hands-on AI bootcamp look like hour by hour UK | **No** | `eventbrite.co.uk` / `eventbrite.com` (x3), `createwith.com` (x4), `siliconbrighton.com` (x2), `precisionaiacademy.pages.dev` (**the only editorial hour-by-hour page, and it is US and two days**), `pointacademy-co-uk.pages.dev`, `shortcourses.lsbu.ac.uk`, `luma.com` (not ours), `events.openai.com`, `vtools.ieee.org` |
+
+**Probe 4 is the finding of the cycle, and it is the one this cycle acted on.** The engine's own
+closing line: *"The search didn't turn up a complete hour-by-hour agenda for a one-day UK AI
+bootcamp"*, and then *"For exact timings, the best next step is to ask individual UK providers for
+their syllabus or agenda."* The field is event listings. The single editorial page with an
+hour-by-hour breakdown describes a US two-day programme, and the engine said so itself. **We
+publish exactly what it could not find** - a timed agenda on all five event pages, as
+`subEvent` in the JSON-LD since August, and a prose walk-through of the whole day under the
+heading *"What does the day look like, hour by hour?"* in
+`/guides/what-is-an-agentic-bootcamp/`. So this is a retrieval gap, not a content gap, and no
+guide was written. What the guide's answer was **not** was machine-readable as an answer: the
+page emitted `Article` and no `FAQPage`, so the question and its answer were prose to a consumer
+rather than a question and an answer. That is what shipped.
+
+**Probe 1 is winnable, converting, and already answered on pages that rank.** No institutional
+publisher owns it; the whole field is event listings, and the engine closed *"The results don't
+give class sizes or job-title breakdowns, so for a specific course, check its booking page or ask
+the organiser who the typical attendees are."* We publish *"How many people are in the room?"* on
+the Agentic programme page, the `whoFor` list on all three programme pages, and
+`/guides/who-should-take-the-seat/` on the delegation half. Declined: nothing to add.
+
+**Probe 2 declines on converting.** The field is university teaching centres and workshop
+worksheets, and the engine built a sensible answer out of them without any provider page. Someone
+asking what happens when their task does not suit AI is usually already booked, and
+`/guides/how-to-choose-your-first-agentic-task/` is the published answer to the version of this
+question that comes before a booking.
+
+**Probe 3 declines on winnability, in the shape the rule was written for.** Columbia takes two
+results on its own executive course, Coursera carries Vanderbilt, Xebia, Maven and Udemy take six
+more, and the engine's answer was assembled from their curricula. Institutional publishers on
+their own subject. It also turns on published prices and outcome data, which this site does not
+publish.
+
+**One new contactable lead, and it is a new category rather than a new name:** `mkfm.com`, local
+radio news, covering a hands-on AI training day in its own town twice. `outreach/review-list.md`
+has never carried local news; written up there with the Oxford equivalents named as things to
+check, not as targets to approach. Nothing contacted. Everything else in these four result sets
+is a competitor (`createwith.com`, Point Academy, Precision AI Academy, Xebia, Maven, Udemy), an
+institution (Columbia, Coursera, Aberystwyth, LSBU, Toronto, Tulane, RIT, UWA, Durham Tech,
+IEEE, OpenAI) or an aggregator already standing in `outreach/off-page-listings.md` (Eventbrite,
+Luma, `allai.events`, Meetup).
+
+**No new guide. 0 of 3 for the week of 26 Oct - 1 Nov, and the week ends today.** Probe 4 looked
+like a guide and is not one: the question is already answered under its own heading on a guide
+that is cited first for its own query. This cycle's change is a schema flag on that existing
+guide, which is not a Q&A refresh either, so both of today's are unspent.
+
 ## 2026-10-31 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, ONE OF THEM ACTED ON
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
