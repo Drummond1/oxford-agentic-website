@@ -81,16 +81,28 @@ const showNotify = upcoming.length === 0 && !interest && showSection('newsletter
  * cannot go stale: between cohorts the clause is simply absent, which is what
  * `/bootcamps/second-brain-bootcamp/` reads like today. The month is shortened if
  * the full form would pass 160 characters, and the pitch stands alone if that is
- * still not enough - which is where the Coding Bootcamp lands, its own pitch
- * being 141 characters.
+ * still not enough.
+ *
+ * That last fallback is the one this composed around, and it drops the date
+ * rather than any copy. Re-measured 2 Nov 2026: the Agentic pitch fits the full
+ * form with 2 characters to spare (158 of 160), the Coding pitch overflows both
+ * forms (174 and 169) and so published no date at all on the page for a cohort
+ * 24 days out, and the Second Brain pitch would overflow by 1 the day a cohort
+ * is scheduled. So a programme may now carry `metaPitch`, a shorter form of its
+ * own sentence used here and nowhere else; the logic below is unchanged, it just
+ * composes from that where one is set. The fallback stays as the last resort it
+ * was, because a missing date is still better than a truncated one.
  */
 const metaDescription = (() => {
   const next = upcoming[0];
+  /* Between cohorts there is no date to make room for, so the full written
+     sentence stands and `metaPitch` is not used. */
   if (!next) return data.shortPitch;
-  const long = `Next cohort ${formatDate(next.data.startDate, { weekday: undefined })}. ${data.shortPitch}`;
+  const pitch = data.metaPitch ?? data.shortPitch;
+  const long = `Next cohort ${formatDate(next.data.startDate, { weekday: undefined })}. ${pitch}`;
   if (long.length <= 160) return long;
-  const short = `Next cohort ${formatShortDate(next.data.startDate)}. ${data.shortPitch}`;
-  return short.length <= 160 ? short : data.shortPitch;
+  const short = `Next cohort ${formatShortDate(next.data.startDate)}. ${pitch}`;
+  return short.length <= 160 ? short : pitch;
 })();
 
 const rhythm = createRhythm('cream');

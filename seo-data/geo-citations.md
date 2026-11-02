@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-02 (15:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, FOUR DECLINES, AND THE ONE ADMITTED GAP IS A NUMBER WE DO NOT HAVE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, none of them asked in the 150-odd probes this log
+already holds, checked against the full question list before they were put.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| should we pay a consultant to build our AI workflows or train our own team to build them | **No** | `lilachbullock.com`, `perceptive-analytics.com`, `infinitysky.ai`, `thinking.inc`, `technolynx.com`, `holmesconsultants.com`, `theaihq.net`, `d-factor.pro`, `neuralchainai.com`, `aismartventures.com` |
+| how do I stop everyone on my team using a different AI tool and their own prompts, standardise AI across a small company | **No** | `atlan.com`, `texys.substack.com`, `microsoft.com`, `mainms.org`, `cybershifttech.com`, `thewolfofai.co`, `elementsai.net`, `mccarygroup.com`, `aipolicydesk.com` (x2) |
+| can an AI agent handle work that needs judgement or only repetitive tasks | **No** | `hbr.org`, `arxiv.org`, `image-ppubs.uspto.gov` (a patent PDF), `straive.com`, `blog.sethmattison.com`, `williamspurlock.com`, `edukatesg.com`, `davesaben.com`, `mindstudio.ai` |
+| how many hours a week does it take to maintain an AI agent workflow once it is built small business | **No** | `jejo.ai`, `75way.com`, `openclawskillpacks.com`, `cloudnsite.com`, `myvirtualmate.com`, `prajapatitechnologies.com`, `justinmckelvey.com`, `mindstudio.ai`, `augmentwork.substack.com`, `g2.com` |
+
+**Reading.**
+
+- **Probe 1 fails the winnability rule on its owned half, and it is the cluster Drummond ruled
+  out anyway.** Ten results, every one a consultancy or an AI vendor writing about whether to
+  hire a consultancy, and the engine said so without being asked: *"Most of them are written by
+  consultancies or AI vendors, so treat their cost and performance figures with caution"* and
+  *"The sources don't include independent cost data"*. A field where every page is a seller on
+  its own subject is the NHS-and-gov.uk case in commercial dress. It is also the
+  consultants-and-services cluster the 13 Sept standing decisions put out of scope. Not pitched.
+- **Probe 2 is winnable and does not convert.** The field is AI-policy templates - Microsoft's
+  own guidance, four template sites, two MSPs - and what the searcher wants is a document they
+  can adopt this afternoon, not a day in Oxford. The adjacent question (*"do we need an AI policy
+  before letting staff build their own AI agents"*) was probed on an earlier cycle and declined
+  on the same reasoning; nothing has moved. Not pitched.
+- **Probe 3 is the owned half again, with HBR on it.** *"How Do Workers Develop Good Judgment in
+  the AI Era?"* is HBR on its own subject, with arXiv and a USPTO patent either side, and the
+  engine's own verdict on the rest was *"mostly opinion pieces and vendor blogs"*. The searcher
+  is reading, not buying. `/guides/where-the-human-goes-in-an-agentic-workflow/` already answers
+  the half that is ours - where oversight belongs and where it is theatre. Not pitched.
+- **Probe 4 is the one genuine admitted gap of the four, and it is still a decline - because what
+  the field is missing is a measured number, and this site does not have one either.** The engine
+  opened ***"No search result gives a reliable, measured figure for ongoing maintenance"*** and
+  closed by marking its own estimate as ***"my inference from the sources, not a number any of
+  them states"***. Winnable on the rule's terms: ten results, not one institutional publisher,
+  mostly vendor marketing counting hours saved rather than hours spent. Converting, too - whoever
+  types it is weighing the cost of owning the thing before they build it. **It is declined on two
+  counts.** The upkeep axis was closed on 28 Oct, when the same question in buyer language was
+  found already answered across three guides - `what-you-can-build-in-one-day-with-ai` on what
+  you will *not* leave with (*"anything you can leave running unwatched"*),
+  `how-to-notice-when-an-ai-workflow-is-wrong` on decay, and `how-to-run-an-ai-pilot-that-survives`
+  on who owns it afterwards. And the only thing the field actually lacks is the figure, which
+  this site has never measured. Publishing one would be inventing a statistic, which is the first
+  of the accuracy rules. **A guide that answered this honestly would say what the three existing
+  guides already say.** Nothing written.
+
+**Guides: none published. 0 of 3 for the week of 2-8 Nov.** No Q&A refresh either: none of the
+four probes pointed at a page with an answerable gap.
+
+**Off-page: no new contactable lead, and nothing to add to the review list.** None of the four
+fields returned an event directory, an aggregator, a UK listing route or a partner - they
+returned consultancies, policy-template sites, one business-school publisher and a patent. Every
+route already known is in `outreach/off-page-listings.md`. Nothing was contacted.
+
 ## 2026-11-02 (02:00 GMT cycle) - SIX PROBES, ZERO CITATIONS, AND TWO ENGINE ADMISSIONS ON THE DELAY OBJECTION
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

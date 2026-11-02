@@ -992,6 +992,32 @@ Status: `todo` · `blocked` (why) · `doing`
     `ai-bootcamp-vs-course-vs-exec-education`'s (doing it yourself for nothing) are unprobed; do
     not batch them.
 
+58. `todo` (loop-actionable, found 2 Nov 2026 in the 15:00 cycle; **do it at the same time as
+    backlog 36, not before**) - **`/bootcamps/second-brain-bootcamp/` will silently drop the date
+    from its meta description the day a Second Brain cohort is scheduled.** Its `shortPitch` is
+    136 characters, so `Next cohort <full month>. <pitch>` measures 163 and the short-month form
+    161, both past the composer's 160-character budget, and the fallback publishes the pitch alone
+    with no date - the same fault this cycle fixed on the Coding Bootcamp. The remedy is already
+    in place and takes one frontmatter line: set `metaPitch` (max 129 characters) on that
+    programme. **It was deliberately not set this cycle**, because with no upcoming cohort the
+    branch that uses it is never taken, so the composed string could not be built, measured or
+    inspected in the browser - and shipping an unexercised string is shipping something unverified.
+    The schema comment on `metaPitch` in `src/content.config.ts` names this page, so whoever adds
+    the cohort will find it there. A subset of the published sentence works: dropping the single
+    word "structured" brings it to 125.
+
+59. `todo` (loop-actionable, found 2 Nov 2026 in the 15:00 cycle; **low value, recorded so it is
+    not re-derived**) - **the homepage's sitemap `lastmod` moves whenever any programme's
+    `updatedDate` moves, even when no byte of `/` changes.** Measured this cycle: bumping only
+    `agentic-coding-bootcamp.md` moved two `lastmod` entries, its own and `https://oxfordagentic.com/`,
+    while the whole-`dist` diff showed `/` byte-identical. `/`'s `lastmod` is the newest programme
+    `updatedDate`, which is defensible - the homepage does render programme content - and it
+    over-reports rather than under-reports, so the cost is a crawl of a page that is crawled
+    anyway. The 31 Oct bump did the same, so this is not new and nothing this cycle caused it.
+    **Worth fixing only if a cycle ever needs `/`'s `lastmod` to be trustworthy**, for instance to
+    tell Search Console that the homepage genuinely changed; the honest fix is to derive it from
+    the newest `updatedDate` among the content that actually renders on `/`.
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -1023,6 +1049,112 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-02 (15:00 cycle) - the programme page for a cohort 24 days out published a meta
+  description that never said when it runs, because the date clause and the pitch share a
+  160-character budget and the composer drops the date when they do not both fit. A programme may
+  now carry `metaPitch`, a shorter form of its own sentence used for that one string and nowhere
+  else. Four GEO probes, four declines, no guide.**
+  - **The defect, measured rather than noticed.** The 29 Oct cycle taught
+    `bootcamps/[slug].astro` to compose its own meta description, `Next cohort <date>. <pitch>`,
+    with the month shortened if the full form passes 160 characters and the pitch standing alone
+    if that is still not enough. Re-running that composer over all three programmes today:
+    **Agentic 158 of 160 (fits, by 2 characters), Coding 174 and 169 (both over, date dropped),
+    Second Brain 163 and 161 the day a cohort is scheduled (over, date would be dropped).** So the
+    last fallback is not a corner case - it already fires on the Coding Bootcamp, whose Cohort 1
+    is 24 days out and on sale, and it will fire on the Second Brain the moment backlog 36 is
+    answered. **Two of the three product lines, and the one that works does so by two characters.**
+  - **Why it is worth a cycle, and the GEO log is the evidence.** This is the line the probes keep
+    failing to find by its own date: *"the coding line is invisible to its own name and date"*
+    (27 Oct) and, 25 days out, *"I did not find a current, upcoming UK in-person event that
+    matches all of your criteria"* with every dated result it found already in the past (1 Nov).
+    The page's `<meta name="description">` is also its `og:description`, its `twitter:description`
+    and its `WebPage.description` in the JSON-LD graph - so an engine reading the entity got a
+    description of a repeating bootcamp with no date in it. It now reads *"Next cohort 26 November
+    2026."* first.
+  - **The change, and what it deliberately is not.** The composer's logic is untouched: it still
+    tries the full month, then the short month, then falls back, and still omits the clause
+    entirely between cohorts, which is correct and is what `/bootcamps/second-brain-bootcamp/`
+    reads like today. The only change is what it composes *from*: `data.metaPitch ?? data.shortPitch`.
+    `metaPitch` is capped at **129 characters, derived not guessed** - the longest clause the page
+    can build is `Next cohort 29 September 2026. ` at 31 - so a programme that sets one can never
+    push the full-month form over 160. **Truncating the pitch was rejected**: a missing date is
+    better than a sentence cut mid-clause, so the old fallback stays as the last resort it was.
+  - **The one `metaPitch` written is a strict subset of the sentence already published.** Every
+    word of *"A one-day bootcamp in Oxford for people who have not yet shipped software. Claude
+    Code and Codex do the typing."* appears in the Coding Bootcamp's own `shortPitch`; one clause
+    (*"It does not assume you can code:"*) is dropped and nothing is added. **No new copy was
+    written and no claim was made.** The level signal survives twice over - *"have not yet shipped
+    software"* is in the description itself, and the page's `Course.coursePrerequisites` still
+    carries *"The day does not assume you can code"* verbatim - and the message house rule that
+    "no coding" never stands on its own cannot be breached by a sentence that does not contain it.
+  - **Blast radius, measured whole-site.** **Exactly 4 of 199 files in `dist` differ**, and three
+    of them differ only in a date: `llms-full.txt` (one "Last updated" line), `sitemap-0.xml` and
+    its roll-up. **`llms.txt` did not move, `/bootcamps/` did not move, `/` did not move** - the
+    hero subline, the programme cards, the 404 page and the llms files all still carry the full
+    `shortPitch`, asserted in the browser. On the changed page itself the only visible difference
+    is the byline, *"Last updated 31 October 2026"* becoming *"2 November 2026"*; the `Course`,
+    `FAQPage` and `BreadcrumbList` nodes are byte-identical.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - **64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings**. `Event`
+    nodes unchanged at 7 and `FAQPage` at 13: this cycle adds no node. `npm run check:flags` green
+    on the all-on and all-off builds. All three programme descriptions re-measured in the built
+    HTML at **141, 158 and 136 characters**. The 11 outbound warnings are the sandbox egress
+    policy, identical on the baseline. Headless Chromium over the three programme pages,
+    `/bootcamps/` and `/` at 375 and 1280px - **10 configurations, 64 assertions, all passed**,
+    including no horizontal overflow, no page errors, every description inside 160 with no stray
+    space before punctuation, the exact composed string, the hero keeping the full `shortPitch`
+    and the cards keeping both their pitch and their date. Both widths screenshotted full-page and
+    read.
+  - **Two assertion failures, and both times the fault was the assertion - the third cycle running
+    that this has been the answer.** The first read `main.innerText` and found no date: 7 of the
+    8 `[data-reveal]` blocks sit at `opacity: 0` in a headless run that never scrolls into them.
+    The second tried to force the reveal and still failed. **Measured against the pre-change build
+    on the same two widths: 7 of 8 unrevealed there too, identically** - so it is the harness, not
+    the page, and not this change. The rendered full-page captures show every band, the date and
+    the venue among them. Content assertions moved to `textContent`; the visual check is the
+    screenshot, read by hand.
+  - **One thing recorded and deliberately not fixed.** Bumping the Coding Bootcamp's `updatedDate`
+    moves **two** `lastmod` entries, its own and the homepage's, because `/`'s `lastmod` is the
+    newest programme `updatedDate` - but `/`'s bytes did not change this cycle. That is
+    pre-existing behaviour (the 31 Oct bump did the same) and it over-reports rather than
+    under-reports, so it costs a crawl of a page that is crawled anyway. Not worth a change on its
+    own; written up as backlog 59 in case it recurs with a bigger blast radius.
+  - **Four GEO probes, zero citations, four declines, and the only admitted gap is a number we do
+    not have.** Full table and reasoning in `seo-data/geo-citations.md`. Consultant-versus-train
+    is ten consultancies on their own subject and the cluster Drummond ruled out. Standardising
+    AI across a team is winnable and does not convert: the field is policy templates and the
+    searcher wants a document. Judgement-versus-repetitive work has HBR on it and the searcher is
+    reading, not buying. The fourth - how many hours a week an agent workflow costs to keep
+    running - is the real find: the engine opened ***"No search result gives a reliable, measured
+    figure for ongoing maintenance"*** and marked its own estimate as *"my inference from the
+    sources, not a number any of them states"*. Winnable, converting, and **still declined**: the
+    upkeep axis was closed on 28 Oct across three existing guides, and the only thing the field
+    lacks is a figure this site has never measured. Publishing one would be inventing a statistic.
+  - **Guides: none published. 0 of 3 for the week of 2-8 Nov**, and no Q&A refresh: none of the
+    four probes pointed at a page with an answerable gap, so both of today's refreshes are unspent.
+  - **Off-page: no new contactable lead and nothing added to the review list.** The four fields
+    returned consultancies, policy-template sites, a business-school publisher and a patent - no
+    directory, aggregator or UK listing route. Nothing contacted.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands. **Production:** deploy run 342 success on `f90550d`, which is
+    both `origin/main` and the HEAD this cycle started from, nothing queued or in progress.
+    `oxfordagentic.com` is refused on CONNECT from this sandbox, so the Actions API stood in for
+    `build.txt`, as on every cycle since 30 Oct. `luma.com` is unreachable the same way, so **no
+    event fact was read or changed**; the prompt's event facts remain stale against the repo (it
+    gives Cohort 3 as 15 Oct where the repo has 19 November, and does not know the Coding
+    Bootcamp), so the repo was treated as the authority, as on the seven previous cycles.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20); the bronze contrast
+    token (21); Cohort 2's outcomes (22); the quote headings (23); the team-profile links (24);
+    the Coding paid-plan question (25); the event hero's doubled heading (26); lunch and travel
+    (27); the two voice pages' apostrophes (28); Jonathan Waddingham's former employer (29);
+    links in FAQ answers (30); the cookie banner at large text (31); the wordmark at 200% (32);
+    the Outcomes page's missing call to action (35); a second Second Brain cohort (36, which now
+    also wants a `metaPitch` - see backlog 58); a Second Brain outcome (37); the homepage
+    affiliation answer and the stale Luma listings (47); what we retain of a visitor's material
+    (50); the programme card's arrow at 200% text (55); **and the twenty-five-minute claim (56),
+    still the most consequential of them.**
 
 - **2026-11-02 (02:00 cycle) - two re-probes found an engine admitting it cannot answer the delay
   objection, and we have answered it since August in headings the extractor could not see. Backlog

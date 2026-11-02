@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-10-31T02:05:15+00:00"
+updatedDate: "2026-11-02T15:30:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -16,6 +16,17 @@ updatedDate: "2026-10-31T02:05:15+00:00"
 shortPitch: >-
   A one-day bootcamp in Oxford for people who have not yet shipped software. It does
   not assume you can code: Claude Code and Codex do the typing.
+# Meta description only - no visible copy changes, and `shortPitch` above still
+# runs on the hero, the programme cards and in llms.txt. `shortPitch` is 144
+# characters, so once the page prepends "Next cohort 26 November 2026. " it passes
+# 160 and the composer drops the date, on the page for a cohort 24 days out. This
+# is the same sentence with one clause removed - every word below is published
+# above - which leaves the date, the format, the city, the level and the tools in
+# a search result. The level still reads off "have not yet shipped software", and
+# "no coding" is not left standing on its own anywhere here.
+metaPitch: >-
+  A one-day bootcamp in Oxford for people who have not yet shipped software.
+  Claude Code and Codex do the typing.
 capsule: >-
   The Oxford Agentic Coding Bootcamp is a one-day, in-person course in Oxford for
   people who understand the concepts but have not yet built and shipped something of

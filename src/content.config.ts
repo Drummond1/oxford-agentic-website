@@ -210,6 +210,25 @@ const programmes = defineCollection({
       /** Optional accent override — must be a token name from the palette, not a hex. */
       accent: z.enum(['gold', 'rust']).default('gold'),
       shortPitch: z.string().max(160),
+      /**
+       * A shorter form of `shortPitch`, used only where the programme page
+       * composes its meta description (`bootcamps/[slug].astro`). It changes no
+       * visible copy: the hero subline, the programme cards, `llms.txt` and the
+       * 404 page all keep `shortPitch`.
+       *
+       * It exists because the date clause and the pitch share a 160-character
+       * budget, and when they do not both fit it is the date that gets dropped —
+       * silently, on the page for a cohort that is actually on sale. Measured
+       * 2 Nov 2026: the Agentic pitch (128) fits with 2 characters to spare, the
+       * Coding pitch (144) overflows by 14 and publishes no date, and the Second
+       * Brain pitch (136) will overflow by 1 the day a cohort is scheduled — so
+       * set one here at the same time as that date.
+       *
+       * The cap is derived, not guessed: the longest date clause the page can
+       * build is `Next cohort 29 September 2026. ` at 31 characters, so 129
+       * leaves the full-month form always able to fit.
+       */
+      metaPitch: z.string().max(129).optional(),
       /** Answer capsule for the programme — PRD §13. */
       capsule: z
         .string()
