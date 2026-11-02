@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A sixth corroboration of the discovery problem, and the first on the flagship cohort, 17
+  days out. No new target - evidence for the standing Eventbrite and aggregator ask in
+  `outreach/off-page-listings.md`.** Found 2 Nov 2026 (02:00 cycle). **Nothing has been
+  contacted.** The probe *"in person agentic AI bootcamp UK still available places November
+  2026"* - in person, UK, agentic, November, which is the Oxford Agentic Bootcamp on 19 November
+  described in the buyer's own words - returned no page of ours. The engine closed *"nothing I
+  found confirms a place is still open for a November 2026 start"* and told the buyer to
+  **contact Waimakers directly**.
+  - **The one new thing in it, and the reason it is written down rather than folded into the
+    29 Oct entry.** The five earlier readings were on the Coding Bootcamp or on undated generic
+    queries. This one is the flagship, with an availability-shaped query, inside the booking
+    window - and the engine named a competitor as the closest match rather than failing to
+    answer. **`waimakers.com`**, London, three evening sessions (7 and 21 October, 4 November),
+    £1,995, cohort capped at 25. It is a different format from ours, which is the point: it is
+    reachable and we are not.
+  - **The rest of the field is what the standing ask already describes.** Three Eventbrite
+    listings, a Luma page that is not ours, a Google Developer Group page - and eight
+    `learnersink.com` pages, one per city (London, Bath, Edinburgh, Manchester, Nottingham,
+    Cambridge, Bristol, Wolverhampton), every one of them "Live Online Virtual Classroom". An
+    engine asked for an in-person UK course reads aggregators and spun location pages, not
+    provider sites.
+  - **What it needs from Drummond:** nothing new. It is the same decision as the 29 Oct entry -
+    whether an Eventbrite listing can carry a description and a link without being the ticketing
+    surface, given prices live on Luma. This only raises its urgency. Table in
+    `seo-data/geo-citations.md` under 2 Nov 02:00.
+
 - **Local news and radio, a category this list has never carried, found by a probe that
   returned the same local station twice.** Found 1 Nov 2026 (02:00 cycle). **Nothing has been
   contacted.**

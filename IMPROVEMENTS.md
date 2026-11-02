@@ -949,7 +949,16 @@ Status: `todo` · `blocked` (why) · `doing`
     "Will I build something, or watch someone else build it?" answer is where the claim sits, and
     backlog 57 would otherwise publish it as an `acceptedAnswer`.
 
-57. `todo` (loop-actionable, found 1 Nov 2026 in the 20:00 cycle; **blocked behind 56 for the one
+57. `done` 2 Nov 2026 (02:00 cycle) - **the extractor change shipped and one of the three guides
+    was opted in: `scout-drafter-reviewer-pattern`, on two re-probes in which the engine said
+    outright that the field does not answer the delay objection. The other two are unchanged:
+    `what-you-can-build-in-one-day-with-ai` stays blocked behind 56, and
+    `ai-bootcamp-vs-course-vs-exec-education` was probed this cycle and declined (the
+    free-learning field is career content for would-be AI engineers, not our buyer), so it stays
+    unprobed on its own terms. The leaf-question contract shipped exactly as designed below, and
+    the predicted zero blast radius was confirmed empirically: with the extractor change alone and
+    no opt-in, all 199 files in `dist` were byte-identical to the baseline.** (Original entry:)
+    (loop-actionable, found 1 Nov 2026 in the 20:00 cycle; **was blocked behind 56 for the one
     guide whose evidence exists**) - **`faqsFromQuestionHeadings` reads `h2` only, so three
     guides whose question tail is `h3` can never emit a node, and backlog 54's census missed
     them because it counted `h2`s.** Backlog 54 measured "`h2`s ending in a question mark" and
@@ -1014,6 +1023,119 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-02 (02:00 cycle) - two re-probes found an engine admitting it cannot answer the delay
+  objection, and we have answered it since August in headings the extractor could not see. Backlog
+  57 shipped: `faqsFromQuestionHeadings` now splits at leaf question headings across `h2` and `h3`,
+  and `scout-drafter-reviewer-pattern` is opted in. One function, one frontmatter line. No new copy,
+  no sentence reworded, no new guide.**
+  - **The probes, and the re-phrasing is the finding.** Four rotating questions, none asked before,
+    zero citations. Two of the four had been written in engineer language and pulled a field the
+    guide they were testing does not write for: *"will the AI agent workflow I build today still
+    work when the tools and models change"* returned adapters, MCP and regression suites from two
+    portability vendors. **Re-asked as the buyer asks it** - *"should I wait until AI tools settle
+    down before training my team"* - the field is L&D trade press, one TechRepublic survey
+    syndicated three times, a chamber-of-commerce newsletter and a training vendor, and the engine
+    opened ***"The search results don't directly answer whether to wait for AI tools to
+    stabilize"***. The second re-probe, *"will the AI skills I learn now be out of date in six
+    months"*, closed *"none measures a six-month window directly"* over four beehiiv newsletters
+    and three content-farm pages. **Winnable**: not one institutional publisher on its own subject.
+    **Converting**: whoever types either is holding off on a purchase. Full table in
+    `seo-data/geo-citations.md`.
+  - **What we already publish, and why it emitted nothing.** The guide has carried `## Will this
+    still be true when the tools change?` with three `h3` children since August: *"Does what I
+    learn go out of date in six months?"*, *"If the models keep getting better, will one prompt not
+    just do it?"* and *"Should I wait until the tools settle down?"* - the two probed questions,
+    nearly verbatim. The extractor read `h2` only, so the page could emit at most one Q&A and the
+    `faqs.length >= 2` guard then emitted none.
+  - **The contract, and the `h3` support is not the part that matters.** Splitting at every question
+    heading would publish the parent as a question whose `acceptedAnswer` is its one signpost
+    sentence, *"The tools move every few months, so the question is a fair one"* - worse than
+    publishing nothing. So the rule is **leaf question headings**: a question heading emits only if
+    it contains no question sub-heading, and a section still runs to the next heading at its own
+    level or shallower, so a non-question `h3` stays inside its parent's answer and never starts
+    one. Asserted in the browser: the signpost parent and the closing `## Where this gets
+    practical` appear in no answer, and each of the three emitted questions is a visible heading.
+  - **Every clause checked against published copy before the markup went on, because structured
+    data raises the cost of a wrong sentence - the step that caught backlog 56 yesterday.** The only
+    claim about us in the three answers is *"no tool is being sold on the day itself"*, which is
+    published verbatim on the homepage (`src/lib/home.ts`), the Agentic and Second Brain programme
+    pages, the Cohort 3 event page and `getting-an-ai-bootcamp-approved`. **The three answers assert
+    no price, no date, no count, no capacity, no name and no agenda timing** - so nothing in them
+    touches backlog 56, and the two internal links they carry both resolve.
+  - **Blast radius, measured rather than predicted.** Built with the extractor change and no opt-in:
+    **199 of 199 files in `dist` byte-identical to the baseline.** The three already-opted-in guides
+    contain no `h3` of any kind, confirmed independently by listing every `h2` and `h3` in each.
+    With the opt-in: **exactly 5 of 199 files differ** - the guide, `/guides/` (the eyebrow date on
+    one of twenty-six cards; the card set and its order are identical), `llms-full.txt` (one date),
+    `sitemap-0.xml` and its roll-up (dates). `llms.txt` did not move. On the guide itself, rendered
+    `main` is identical character for character apart from "20 October" becoming "2 November" in the
+    byline, and the page keeps a single JSON-LD block, the `FAQPage` joining the existing `@graph`.
+  - **Checks.** `npm ci` and `npm run build` clean on the baseline, on the extractor change alone and
+    on the final tree - **64 pages, 3,158 internal links resolve, schema valid, all titles and
+    descriptions unique, no SEO warnings**. `FAQPage` nodes **12 to 13**, `Event` nodes unchanged at
+    7. `npm run check:flags` green on both the all-on and all-off builds. The 11 outbound warnings
+    are the sandbox egress policy, identical on the baseline. Headless Chromium over the changed
+    guide, the three already-opted-in guides, `/guides/` and the Agentic programme page (a
+    hand-written frontmatter `faqs` node, to prove the extractor cannot reach it) at 375 and 1280px
+    - **12 configurations, 106 assertions, all passed**, including no horizontal overflow, no page
+    errors, no markup or stray space-before-punctuation in any answer, and every answer's opening
+    words present in the visible copy. Both widths screenshotted and read, hero and question tail.
+    Six assertions failed first and the fault was the assertion: a client-side script appends a "#"
+    anchor inside each heading, so the DOM text carries it where the rendered HTML the extractor
+    reads does not.
+  - **One thing recorded and deliberately not fixed.** `src/lib/faq.ts` is not a content file, a page
+    or an excluded doc, so it hits `indexnow-ping.mjs`'s catch-all and this push submits all 55
+    sitemap URLs where only 2 HTML files moved. That over-approximation is correct rather than lazy:
+    the extractor can move any opted-in guide, and narrowing it to one slug would be wrong the next
+    time a second guide is opted in. A hint for a page that did not move costs nothing.
+  - **Honest about the upside, as the 1 Nov entry was.** Google has not shown FAQ rich results for a
+    site like this since August 2023, so this is not a CTR play. The defensible claim is narrower:
+    an engine that reaches this guide now has the delay objection marked as the answer to the
+    question the page asks, on the two axes this cycle where an engine said out loud that the field
+    does not answer it.
+  - **Two more axes declined, each on its own probe.** *"What should I bring to a hands-on AI
+    workshop"* is a thin, winnable field - one provider's own FAQ page, BrainStation, scattered
+    event listings - and the engine's synthesis lands on our own positioning while citing other
+    providers for it. But we already answer it, as a hand-written `faqs` entry inside the Cohort 3
+    event page's `FAQPage` node, and better than the engine's assembly. No on-page fix exists; that
+    is discovery, backlog 2b. *"Can I learn agentic AI on my own for free"* returns career content
+    for would-be AI engineers - Python, LangGraph, "become an Agentic AI Engineer" roadmaps - and
+    the engine answers *"yes, you can"*. Different searcher, different outcome.
+    `ai-bootcamp-vs-course-vs-exec-education` keeps its place in the queue and gets no node on this.
+  - **Guides: none published. 0 of 3 for the week of 2-8 Nov** (and 0 for the week of 26 Oct - 1 Nov
+    that just closed). A schema flag is not a Q&A refresh, so both of today's refreshes are unspent.
+  - **A sixth dated reading of the discovery problem, and the first on the flagship, 17 days out.**
+    *"In person agentic AI bootcamp UK still available places November 2026"* - our format, our
+    country, our month, in the buyer's words - returned no page of ours, closed *"nothing I found
+    confirms a place is still open for a November 2026 start"*, and recommended **contacting
+    Waimakers** (London, three evenings, £1,995) as the closest match. Eight of its results were
+    `learnersink.com` pages spun one per city and all "Live Online". Logged as a corroboration in
+    `outreach/review-list.md`; no new contactable lead, nothing contacted. Backlog 2b.
+  - **The prompt's three standing candidates, all checked.** (1) `indexnow-ping.mjs` already maps
+    `src/lib/home.ts` to `/` alone, via `SINGLE_PAGE_SOURCES`. (2) The past-tense sweep is complete:
+    Cohort 2 and the Second Brain day are `status: past` and every reference to 16 September and
+    21 October reads in the past tense, `when-ai-executive-cohorts-run` included. (3) This cycle's
+    change is the Q&A-on-an-existing-guide candidate, done as markup over copy that was already
+    there rather than as new Q&As.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands. **Production:** deploy run 340 success on `ebdc009`, which is
+    both `origin/main` and the HEAD this cycle started from, nothing queued or in progress.
+    `oxfordagentic.com` is refused on CONNECT from this sandbox, so the Actions API stood in for
+    `build.txt`, as on every cycle since 30 Oct. `luma.com` is unreachable the same way, so **no
+    event fact was read or changed**; the prompt's event facts remain stale against the repo (it
+    gives Cohort 3 as 15 Oct where the repo has 19 November, and does not know the Coding
+    Bootcamp), so the repo was treated as the authority, as on the six previous cycles.
+  - **Still waiting on Drummond**, unchanged and not re-pitched: PR #1 (20); the bronze contrast
+    token (21); Cohort 2's outcomes (22); the quote headings (23); the team-profile links (24); the
+    Coding paid-plan question (25); the event hero's doubled heading (26); lunch and travel (27);
+    the two voice pages' apostrophes (28); Jonathan Waddingham's former employer (29); links in FAQ
+    answers (30); the cookie banner at large text (31); the wordmark at 200% (32); the Outcomes
+    page's missing call to action (35); a second Second Brain cohort (36); a Second Brain outcome
+    (37); the homepage affiliation answer and the stale Luma listings (47); what we retain of a
+    visitor's material (50); the programme card's arrow at 200% text (55); **and the
+    twenty-five-minute claim (56), still the most consequential of them.**
 
 - **2026-11-01 (20:00 cycle) - NO SITE CHANGE SHIPPED. A GEO probe pointed at a guide, the
   clause-by-clause check before making it machine-readable found a claim our own published

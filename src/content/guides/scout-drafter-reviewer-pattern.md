@@ -12,9 +12,10 @@ capsule: >-
   any repeated knowledge task.
 author: drummond-gilbert
 publishDate: "2026-08-05T09:00:00+01:00"
-updatedDate: "2026-10-20T14:30:00+01:00"
+updatedDate: "2026-11-02T02:05:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+faqFromHeadings: true
 ---
 
 Ask one AI prompt to research, write and polish a report and you get something plausible, mediocre and unaccountable. Ask three narrow steps to do it - one gathering, one drafting, one checking - and you get something you can actually use, improve and trust. That three-step shape is the pattern we teach first, because it fits an enormous amount of knowledge work. It is worth understanding properly.

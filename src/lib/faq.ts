@@ -19,8 +19,11 @@
  * headings scattered through an essay is not an FAQ - the flag is for the
  * pages that genuinely are one.
  *
- * Sections are split at `h2` only. Anything below a question heading,
- * including its `h3` subsections, belongs to that answer.
+ * Sections are split at `h2` and `h3`, at leaf question headings only: a
+ * question heading that groups further question headings is a signpost rather
+ * than a question, and the three guides whose question tail is `h3` could
+ * otherwise never emit a node at all. A non-question `h3` still belongs to its
+ * parent's answer and never starts a section of its own.
  */
 
 const ENTITIES: Record<string, string> = {
@@ -73,21 +76,42 @@ function plainText(html: string): string {
  */
 export function faqsFromQuestionHeadings(html: string): Array<{ q: string; a: string }> {
   const faqs: Array<{ q: string; a: string }> = [];
-  const headings = [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)];
+  const headings = [...html.matchAll(/<h([23])\b[^>]*>([\s\S]*?)<\/h\1>/gi)].map((match) => ({
+    level: Number(match[1]),
+    start: match.index,
+    end: match.index + match[0].length,
+    // "1. What will I have running at the end?" is numbered for the reader's
+    // place in a checklist; the question is the part an engine quotes.
+    text: plainText(match[2]).replace(/^\d+\.\s*/, ''),
+  }));
 
   for (const [index, heading] of headings.entries()) {
-    const question = plainText(heading[1])
-      // "1. What will I have running at the end?" is numbered for the reader's
-      // place in a checklist; the question is the part an engine quotes.
-      .replace(/^\d+\.\s*/, '');
-    if (!question.endsWith('?')) continue;
+    if (!heading.text.endsWith('?')) continue;
 
-    const from = heading.index + heading[0].length;
-    const next = headings[index + 1];
-    const answer = plainText(html.slice(from, next ? next.index : undefined));
+    // The section a heading owns runs to the next heading at its own level or
+    // shallower, so a non-question `h3` stays inside its parent's answer and
+    // never starts one of its own. That is the rule as it has always been.
+    let boundary = headings.length;
+    for (let i = index + 1; i < headings.length; i += 1) {
+      if (headings[i].level <= heading.level) {
+        boundary = i;
+        break;
+      }
+    }
+
+    // Leaf question headings only. A question heading that groups further
+    // question headings is a signpost, and its own prose is not an answer to
+    // it: `## Will this still be true when the tools change?` is followed by
+    // one sentence saying the question is a fair one, then three `h3`s that
+    // each answer a different version of it. Publishing the signpost as the
+    // `acceptedAnswer` is worse than publishing nothing, so the parent is
+    // skipped and its children stand on their own.
+    if (headings.slice(index + 1, boundary).some((sub) => sub.text.endsWith('?'))) continue;
+
+    const answer = plainText(html.slice(heading.end, headings[boundary]?.start));
     if (answer.length === 0) continue;
 
-    faqs.push({ q: question, a: answer });
+    faqs.push({ q: heading.text, a: answer });
   }
 
   return faqs.length >= 2 ? faqs : [];

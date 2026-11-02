@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-02 (02:00 GMT cycle) - SIX PROBES, ZERO CITATIONS, AND TWO ENGINE ADMISSIONS ON THE DELAY OBJECTION
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, none put to an engine before, then **two re-probes**
+after the first round showed that two of the four had been phrased in engineer language and had
+pulled a field the guide they were testing does not write for. The re-phrasing is recorded here
+because it changed the verdict.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| will the AI agent workflow I build today still work when the tools and models change | **No** | `mindstudio.ai` (x2), `mintmcp.com` + `plushcap.com` (its syndication), `paulund.co.uk`, `dzone.com`, `concepts.dsebastien.net` |
+| can I learn agentic AI on my own for free instead of paying for a bootcamp | **No** | `kdnuggets.com`, `simplilearn.com`, `github.com/artnitolog`, `dev.to`, `turingpost.com`, `gaas.it.com` (x2), three LinkedIn posts, `agentic-ai-roadmap` and `agents-assemble` (both `pages.dev`) |
+| in person agentic AI bootcamp UK still available places November 2026 | **No** | `waimakers.com` (London, three evenings 7/21 Oct + 4 Nov, **£1,995**, max 25), `eventbrite.co.uk` (x3), `learnersink.com` (x8, all "Live Online" pages spun per city), `gdg.community.dev`, `luma.com/nvqgzyor` |
+| what should I bring to a hands-on AI workshop to get something useful out of the day | **No** | `ajai-live.pages.dev` (a provider's own "what to bring" FAQ), `brainstation.io` (x4), `eventbrite.co.uk` (x2), `luma.com` (x3), `air.nuilab.org`, `halbritter-lab.github.io`, `polyrhythm.regfox.com` |
+| **re-probe:** should I wait until AI tools settle down before training my team | **No** | `techrepublic.com` (x3, the same survey in three languages), `qz.com`, `techradar.com`, `analyticsinsight.net`, `intranetfromthetrenches.substack.com`, `dev.to`, `techclass.com`, `startups.co.uk`, `bendchamber.org` |
+| **re-probe:** will the AI skills I learn now be out of date in six months | **No** | four beehiiv newsletters, `financebuzz.com`, `startuphub.ai`, `whatjobs.com`, `ibtimes.co.uk`, `gulfnews.com`, `contra.com`, `mariopeshev.com`, three `pages.dev`/`github.io` content pages |
+
+**Reading.**
+
+- **The two re-probes chose this cycle's work, and the re-phrasing is the point.** Probe 1 was
+  written the way an engineer would write it and returned an engineering field - adapters, MCP,
+  config-driven model choice, regression suites - from two platform vendors selling portability
+  (`mindstudio`, `mintmcp`) and three practitioner blogs. On that field the question is not ours
+  and the searcher is not our buyer. Re-asked the way the buyer asks it, *"should I wait until AI
+  tools settle down before training my team"*, the field changes completely: L&D trade press, a
+  TechRepublic survey syndicated three times, a chamber-of-commerce newsletter, a training
+  vendor. The engine's own words: ***"The search results don't directly answer whether to wait
+  for AI tools to stabilize"***, and *"they're mostly opinion pieces and vendor-adjacent
+  articles"*. The second re-probe closes the same way - *"none measures a six-month window
+  directly"*. **Two admitted gaps on the delay objection, which is the objection that stops a
+  booking.**
+- **WINNABLE and CONVERTING, on the rule's own terms.** Not one institutional publisher on its
+  own subject: TechRepublic and Qz are reporting a survey about a *training gap*, not answering
+  whether to wait, and the six-month field is newsletters and content farms. A decision-maker
+  typing either of these is holding off on a purchase, not researching a topic.
+- **Acted on this cycle, and nothing was written.** `scout-drafter-reviewer-pattern` has carried
+  *"### Should I wait until the tools settle down?"* and *"### Does what I learn go out of date
+  in six months?"* since August - as `h3`s, which the extractor could not see. Backlog 57, which
+  this cycle also fixed. No new copy, no new claim, no sentence reworded.
+- **Probe 2 declined, and the re-phrasing did not rescue it.** The free-learning field is career
+  content for would-be AI engineers - Python, LangGraph, roadmaps to "become an Agentic AI
+  Engineer" - and the engine's answer is *"yes, you can"*. That searcher is looking for the free
+  route to a different outcome. `ai-bootcamp-vs-course-vs-exec-education`'s three `h3`s answer the
+  business version of the question, but this is not evidence that an engine is failing to answer
+  it. **Still unprobed on its own terms; do not batch it in behind this cycle's extractor change.**
+- **Probe 4 declined because we already publish it, and already in machine-readable form.** The
+  field is thin and winnable - one provider's own FAQ page on a `pages.dev` host, BrainStation,
+  and a scatter of individual event listings - and the engine's synthesis lands on our own
+  positioning, *"the thing that makes the day worthwhile is a real task of your own"*, while
+  citing other providers for it. But *"What should I bring?"* is already a hand-written `faqs`
+  entry on the Cohort 3 event page and inside its `FAQPage` node, and the answer ("A laptop, and
+  one real task from your own work... A paid plan such as ChatGPT Plus or Claude Pro gets you more
+  out of it, but it is not essential") is better than the one the engine assembled. **There is no
+  on-page fix. This is discovery again, which is backlog 2b.**
+- **Probe 3 is the sixth dated reading of the discovery problem, and the first on the flagship,
+  17 days out.** An availability-shaped query for exactly what we sell - in person, UK, agentic,
+  November 2026 - returned nothing of ours. The engine closed *"nothing I found confirms a place
+  is still open for a November 2026 start"* and recommended **contacting Waimakers directly**: a
+  London course, three evening sessions rather than a day, £1,995, which it called the closest
+  match. Eight of its results were `learnersink.com` pages spun one per city and all of them
+  "Live Online". Logged as a corroboration in `outreach/review-list.md`; no new contactable lead,
+  nothing contacted.
+
+**Caveat, unchanged.** One engine, one day, US-resident, search results rather than cited AI
+answers. Six probes is a snapshot, not a ranking.
+
 ## 2026-11-01 (20:00 GMT cycle) - FOUR PROBES, ONE CITATION (THE FIRST IN DAYS), AND A PROBE THAT FOUND A FALSE CLAIM ON OUR OWN HOMEPAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
