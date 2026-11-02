@@ -508,15 +508,13 @@ export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) 
     courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
     startDate: event.data.startDate.toISOString(),
     endDate: event.data.endDate.toISOString(),
-    location: {
-      '@type': 'Place',
-      name: event.data.venue.name,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: event.data.venue.city,
-        addressCountry: config.brand.country,
-      },
-    },
+    /* The same Place the event page and the events index publish, from the same
+       frontmatter, rather than a second reduced copy of it. This node used to
+       drop the street and the postcode, which are published on the event page
+       and in its `EducationEvent`, so one venue was described two ways and the
+       weaker description sat on the page engines actually return. Nothing new is
+       asserted: `eventPlace` reads the same `venue` fields. */
+    location: eventPlace(event),
   }));
 
   return {

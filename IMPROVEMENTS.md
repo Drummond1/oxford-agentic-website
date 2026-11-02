@@ -1018,6 +1018,31 @@ Status: `todo` · `blocked` (why) · `doing`
     tell Search Console that the homepage genuinely changed; the honest fix is to derive it from
     the newest `updatedDate` among the content that actually renders on `/`.
 
+60. `todo` **(needs Drummond, a timetable he holds and the loop must not invent; found 2 Nov 2026
+    in the 20:00 cycle)** - **the Oxford Agentic Coding Bootcamp is the only one of five events
+    whose `EducationEvent` node carries no `subEvent`, because its agenda has no times - and it
+    is on sale, 24 days out.** Its `agenda` entries put `Session 1` ... `Session 7` in the `time`
+    field, so `src/lib/schema.ts` cannot parse a start time, and the builder correctly emits
+    nothing rather than a `subEvent` with no `startDate`. **The code is right; the content is
+    thin.** Measured on the built site: Cohort 3 publishes **12** `subEvent`s, Cohort 2 twelve,
+    Cohort 1 five, Second Brain Cohort 1 its own set - and the Coding Bootcamp **0**. The page
+    renders the same way, *"What happens on the day: Session 1, Session 2..."*, where every other
+    event page prints a clock.
+    - **What it costs, stated honestly and not inflated.** `subEvent` is not a Google rich-result
+      field, and the seven sessions do render in the page's HTML, so an engine that reaches the
+      page can read them. The loss is narrower: the day's shape is not machine-readable on the
+      one line the GEO probes keep failing to find by its own name and date, and a visitor
+      deciding whether to take a day off cannot see when the day actually breaks. The parent
+      node does publish 09:00-17:00, so the overall hours are not missing.
+    - **Why the loop stopped here.** The remedy is seven start times. They are a fact about how
+      the day runs, nobody has published them, and inventing a timetable is the first of the
+      accuracy rules. The alternatives were weighed and rejected: emitting `subEvent`s without
+      `startDate` is malformed schema, and reaching for `Course.syllabusSections` to carry
+      untimed sessions buys a pending-schema type for a page that already prints the list.
+    - **If the sessions genuinely have no fixed times** - plausible, since a build day can run
+      long - then nothing here is a defect and the right answer is to say so, and the item
+      closes. Either answer from Drummond resolves it; the loop cannot pick between them.
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -1049,6 +1074,99 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-02 (20:00 cycle) - the dated Oxford venue on the one node engines actually read was
+  missing its street and its postcode, because the `CourseInstance` hand-rolled a second, poorer
+  copy of an address the same module already builds in full. One line, three files in `dist`, no
+  visible change, no new fact. Five GEO probes, five declines, no guide.**
+  - **The defect, found by reading the node rather than the page.** `courseSchema` built its
+    instance location inline - `name`, `addressLocality`, `addressCountry` and nothing else -
+    while `eventPlace`, forty lines up in the same file, already composes the full `PostalAddress`
+    from the same `venue` frontmatter and is described in its own comment as *"Shared so the event
+    page and the events index describe one address rather than two that have to be kept in step by
+    hand"*. So one venue was published two ways: **Worcester College, Walton Street, Oxford,
+    Oxfordshire, OX1 2HB, GB** on the event page, and **Worcester College, Oxford, GB** on the
+    `CourseInstance`.
+  - **Why that is the wrong way round, and the file says so itself.** The comment above
+    `courseSchema` records why the homepage started emitting this node on 24 October: restricted
+    to this domain an engine *"holds `/` and two guides and nothing else"*, while the rich `Course`
+    nodes *"sat only on `/bootcamps/<slug>/`, a page it has never returned"*, and it names the
+    remedy as *"a dated instance at a named Oxford venue"*. The weaker of the two addresses was
+    the one on the page that gets read. A postcode is the strongest geographic token in a UK local
+    query, and the standing failure in `seo-data/geo-citations.md` is UK-anchored, in-person,
+    dated queries that do not reach us - six dated readings since 27 Oct.
+  - **The change is one line and asserts nothing new.** `location: eventPlace(event)` in place of
+    the inline object. Same frontmatter fields, same `config.brand.region` and `country`, same
+    optional-field handling, and the second copy of the address builder is gone, so the two can no
+    longer drift. **Asserted, not assumed:** each `CourseInstance.location` is now byte-identical
+    to the `EducationEvent.location` on that cohort's own event page, checked by comparing the
+    serialised JSON of both, and the shared-`@id` invariant still holds - the homepage's `Course`
+    node is byte-identical to the programme page's, for all three programmes.
+  - **Blast radius, measured whole-site.** **Exactly 3 of 199 files in `dist` differ**: `/`,
+    `/bootcamps/oxford-agentic-bootcamp/` and `/bootcamps/agentic-coding-bootcamp/`.
+    `/bootcamps/second-brain-bootcamp/` did not move - it has no scheduled cohort, so it has no
+    instance - and **no sitemap, no `llms.txt`, no `llms-full.txt` and no event page moved**,
+    because this is a template change and no `updatedDate` was bumped. On the three pages that did
+    move, **the HTML outside the JSON-LD block is byte-identical** to the baseline (48,542 /
+    53,956 / 42,581 characters, unchanged), and inside it exactly two nodes changed, both `Course`,
+    both by +85 bytes - the street and the postcode. No node added, removed or retyped.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - **64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings**. `Event`
+    nodes unchanged at 7 and `FAQPage` at 13: this cycle adds no node. `npm run check:flags` green
+    on the all-on and all-off builds. The 11 outbound warnings are the sandbox egress policy,
+    identical on the baseline. Headless Chromium over `/` and all three programme pages at 375 and
+    1280px - **8 configurations, 68 assertions, all passed**, including HTTP 200, no page errors,
+    no failed local requests, no horizontal overflow, JSON-LD parsing in the browser, every
+    `CourseInstance` carrying the full postal address with the postcode, no `CourseInstance` on
+    the unscheduled programme, and both cohort dates present in the rendered copy.
+  - **The reveal-block harness problem is solved, and it is worth the three lines it takes to say
+    so.** Three cycles running have logged `[data-reveal]` blocks sitting at `opacity: 0` in
+    headless runs and worked around it by asserting on `textContent` and reading full-page
+    captures that showed blank bands. The cause is `.js-motion [data-reveal]:not(.is-revealed)` in
+    `global.css`: `Base.astro` adds `js-motion` only when `IntersectionObserver` exists and the
+    visitor has **not** asked for reduced motion, and the observer does not fire for a headless
+    page that is never really scrolled. Scrolling the page programmatically did not help (1 of 15
+    blocks), and a `!important` opacity override did not either. **Launching the context with
+    `reducedMotion: "reduce"` does**: `js-motion` is never added, and 15/15, 8/8 and 20/20 blocks
+    render. Both widths were then screenshotted full-page and read - hero, capsule, format,
+    "Upcoming runs" with Cohort 3 on 19 November and Coding Cohort 1 on 26 November, testimonials,
+    the questions accordion and the footer all correct, no overflow at 375px. Future cycles should
+    use the flag rather than re-deriving this.
+  - **Recorded and deliberately not fixed.** `src/lib/schema.ts` hits `indexnow-ping`'s
+    template-change catch-all, so this push submits all 55 sitemap URLs where 3 HTML files moved.
+    The over-approximation is correct - a change to the schema module can move the JSON-LD on any
+    page - and it is the same behaviour the 1 and 2 Nov cycles recorded. The ping script was not
+    run, not even with `--dry-run`; its mapping rules were read instead.
+  - **One finding recorded and not shipped, as backlog 60.** The Oxford Agentic Coding Bootcamp -
+    on sale, 24 days out - is the only one of five events whose `EducationEvent` carries **no**
+    `subEvent`, because its agenda puts `Session 1` ... `Session 7` in the `time` field and the
+    builder cannot parse a start time from that. The code is right and the content is thin; the
+    remedy is seven start times, which are Drummond's to give and not the loop's to invent.
+    Cohort 3 publishes 12 `subEvent`s against the Coding Bootcamp's 0.
+  - **Five GEO probes, zero citations, five declines.** Full table and reasoning in
+    `seo-data/geo-citations.md`. The sales-pitch question produced a real engine admission
+    (*"none is verified as free of a sales pitch"*) but the field is free webinars, and in paid
+    buyer language it becomes Gartner and emerj on SaaS vendor evaluation; we also already publish
+    the answer inside three `FAQPage` nodes, so it is discovery, not an on-page gap. The non-tech
+    business question is providers on their own subject and the engine answered it. The
+    IT-and-data-protection question is **the sharpest admitted gap of the five** - *"The search
+    didn't turn up any official ICO or government guidance"*, with the engine supplying the answer
+    *"from general knowledge (not from these results)"* - and **declined on accuracy**: the honest
+    answer is UK compliance guidance this site has no standing to give, and the half that is ours
+    is backlog 50, which Drummond has still not answered. The solo-consultant question is winnable
+    and converting and declines as a near-duplicate: it is the worth-it axis with a segment
+    qualifier, sitting between two guides we already publish.
+  - **Guides: none published. 0 of 3 for the week of 2-8 Nov**, and no Q&A refresh: the only probe
+    that pointed at a page pointed at *"Ten questions to ask before booking AI training"*, whose
+    title fixes its question count and which already emits all ten as an `FAQPage` node. Both of
+    today's refreshes are unspent.
+  - **Off-page: no new contactable lead and nothing added to the review list.** Two probes
+    returned event aggregators already named in `outreach/off-page-listings.md`; the rest were
+    content farms, a public agency running its own free days, and a competing training company.
+    Nothing contacted.
+  - **Search Console unavailable from this checkout:** `gcloud auth list` reports "No credentialed
+    accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing estimated.
+    The 30 Oct 05:10 reading stands.
 
 - **2026-11-02 (15:00 cycle) - the programme page for a cohort 24 days out published a meta
   description that never said when it runs, because the date clause and the pitch share a

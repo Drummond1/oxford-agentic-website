@@ -5,6 +5,93 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-02 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, FIVE DECLINES, AND THE CYCLE'S WORK CAME FROM AN AUDIT INSTEAD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, each checked against the 386 already in this log
+before it was put, then **one re-probe** after the first round showed probe 1 had pulled a field
+of free webinars rather than our buyer.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is there an AI training day that does not end in a sales pitch for a software platform | **No** | `eventbrite.co.uk`/`.com`/`.ca` (x5), `info.microsoft.com` (its own Azure training day), `babelquest.co.uk` (HubSpot), `southofscotlandenterprise.com`, `meetup.com`, `luma.com`, `denveraitraining.pages.dev`, `louisville-gray.vercel.app`, `cc-hub-one.vercel.app` |
+| will a general AI bootcamp be useful if my business is not a tech business | **No** | `trustpilot.com` (x2, the provider's own page), `help.datasciencedojo.com` (x4), `academy.xebia.com` (x4), `udemy.com`, `tonex.com`, `trainingcamp.com`, `jbsagolf.com`, `meetup.com` |
+| do I need IT or data protection approval before connecting an AI agent to our CRM or inbox UK | **No** | `everworker.ai` (x2), `spotdev.co.uk`, `vegavid.com`, `agentmail.to` (x2), `agi-automations-website.pages.dev` (x2), `consentleads.pages.dev`, `jconn5803.github.io`, `my-ambitionai-site.nb-e51.workers.dev`, `humanorai.blogspot.com` |
+| is a one day AI bootcamp worth it for a solo consultant or one person business | **No** | `precisionaiacademy.pages.dev` (x4), `nobledesktop.com` (x2), `buildyouraicareer.pages.dev`, `adventuremedia.ai`, `dev.to`, `mindstudio.ai`, `fi.co` (x2), `luma.com`, `happeningnext.com`, `syncni.com`, `bootcampdigital.com` |
+| **re-probe:** how to tell if paid AI training for business is independent or a vendor funnel selling their own software | **No** | `gartner.com` (peer community), `emerj.com`, `invoca.com`, `adexchanger.com`, `resources.rework.com`, `profiletree.com` (x2), `techclass.com`, `degreed.com`, `williamalexander.co`, `melioraonline.pages.dev`, `shiftmate.co.za` |
+
+**Reading.**
+
+- **Probe 1 found an admitted gap and the re-probe showed it is not our searcher.** The engine
+  was candid - ***"none is verified as free of a sales pitch"*** and ***"Most 'no pitch' claims
+  come from the organizers' own marketing"*** - and closed by telling the reader to go and check
+  the registration page for an upsell step. That is a real, unanswered, trust-shaped question.
+  But the field it pulled is **free** events: Eventbrite freebies, a Microsoft Azure training
+  day, a HubSpot session, three content-farm hosts. Someone searching that way is choosing
+  between free webinars, not booking a paid day in Oxford. Re-asked in paid-buyer language the
+  field changes to SaaS vendor-evaluation advice - **Gartner's peer community, emerj, Invoca,
+  AdExchanger** - which fails the winnability rule on its owned half. **Declined on both
+  phrasings, and the second reason is the stronger one: we already publish the answer, and
+  already machine-readably.** *"Anyone expecting a vendor or platform pitch, because no tool is
+  being sold"* is inside the `FAQPage` node on the Cohort 3 event page, on both relevant
+  programme pages and on the homepage, as the answer to *"Who is it not for?"*. An engine
+  holding any of those pages has it. **This is discovery, not an on-page gap: backlog 2b.**
+  **Recorded so it is not re-pitched as a Q&A refresh:** the natural home would be
+  `questions-to-ask-before-booking-ai-training`, which already emits all ten of its question
+  headings as an `FAQPage` node - and it is titled *"Ten questions"*, so an eleventh cannot be
+  added without retitling the guide and its `seoTitle`. Not worth it for a question the site
+  answers elsewhere.
+- **Probe 2 is the owned half outright, and the engine answered it.** Every result is a provider
+  writing about its own bootcamp - Xebia (x4), Data Science Dojo's own help centre (x4), Udemy,
+  Tonex, Training Camp - plus the provider's own Trustpilot page, which the engine flagged
+  itself: *"the positive testimonials I found came from the provider's own Trustpilot page, so
+  they're promotional rather than independent"*. It then answered confidently, *"Yes, a general
+  AI bootcamp can be useful for a non-tech business"*. No admitted gap, and our answer would
+  restate `whoFor` and the `Course.audience` node. Not pitched.
+- **Probe 3 is the sharpest admitted gap of the five and the clearest decline.** ***"The search
+  didn't turn up any official ICO or government guidance. Almost everything it returned is
+  vendor marketing or blog content"***, and the engine had to supply the substantive answer
+  ***"from general knowledge (not from these results)"***. Winnable on the rule's terms: not one
+  institutional publisher, no ICO, no gov.uk. **Declined on accuracy, which outranks
+  winnability.** The honest answer is UK data-protection guidance - lawful basis, a DPA with the
+  vendor, a DPIA where processing is high risk - and this site is not a source on that; writing
+  it would be publishing compliance guidance we have no standing to give. The half that *is*
+  ours is what we tell attendees about connecting an agent to real company systems, and that is
+  **backlog 50**, still unanswered by Drummond. Logged as a second corroboration for it.
+  `getting-an-ai-workflow-past-it-and-legal` covers the stakeholder conversation and stops short
+  of the law, correctly.
+- **Probe 4 is winnable, converting, and still a decline - because it is the near-duplicate the
+  rules name.** The field is content farms and career-changer bootcamp marketing, with
+  `precisionaiacademy.pages.dev` taking four of the first fifteen and not one institutional
+  publisher, and the engine's own caveat was *"mostly vendor marketing, so treat the 'yes'
+  answers with caution"*. Its conditional verdict is our positioning read back to us: worth it
+  *"if it's built around the specific tasks you want to automate... and you'll apply it the next
+  day"*, cited to other providers. It also surfaced the genuine objection - *"a high-ticket AI
+  bootcamp may not map well to how solo operators actually work"*. **But a guide here sits
+  between two we already publish**: `agentic-ai-for-consultants` is the segment, and
+  `what-you-can-build-in-one-day-with-ai` is the one-day worth-it case, and "is it worth it"
+  with a segment qualifier bolted on is a query variation, which rule 6 bans. The solo buyer is
+  also already named in the `Course.audience` node, which lists consultants explicitly. Not
+  pitched. **Do not re-pitch without evidence that the solo case differs from the consultant
+  case in substance, not in phrasing.**
+
+**Guides: none published. 0 of 3 for the week of 2-8 Nov.** No Q&A refresh either: of the five
+probes, the one that pointed at a page (probe 1) pointed at a guide whose title fixes its
+question count, and the question is answered in three other `FAQPage` nodes already. Both of
+today's refreshes are unspent.
+
+**Off-page: no new contactable lead, and nothing added to the review list.** Probes 1 and 4 both
+returned event aggregators - Eventbrite, Luma, Meetup, Happeningnext, Ticket Tailor - and
+course-roundup pages, which is exactly the standing ask in `outreach/off-page-listings.md`
+rather than a new route; `syncni.com` is Northern Ireland and `southofscotlandenterprise.com` is
+a public agency running its own free days, neither a listing route for us. `nobledesktop.com`
+ranks twice on probe 4 with an "Are AI Bootcamps Worth It?" roundup, but it is a training
+company, so a competitor rather than a partner. Nothing was contacted.
+
+**Caveat, unchanged.** One engine, one day, US-resident, search results rather than cited AI
+answers. Five probes is a snapshot, not a ranking.
+
 ## 2026-11-02 (15:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, FOUR DECLINES, AND THE ONE ADMITTED GAP IS A NUMBER WE DO NOT HAVE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
