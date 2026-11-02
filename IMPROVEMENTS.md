@@ -770,7 +770,35 @@ Status: `todo` · `blocked` (why) · `doing`
     one change ships per cycle and the heading markup above was the larger of the two.)
 
 
-49. `todo` (loop-actionable, found 28 Oct 2026 in the 01:00 cycle) - **`/` takes a `lastmod` from
+49. `retired - the defect is real, narrower than written, and the fix it proposes is refuted by
+    measurement` 2 Nov 2026 (08:00 cycle). **Taken up as this cycle's candidate, measured both
+    ways, and put back down.** The item was written on 28 October on the premise that "the card
+    prints `shortPitch` and nothing else from that file". That premise was already false when it
+    was written: the 25 October cycle (backlog 45) put a `Course` node per programme on `/`, and
+    `courseSchema()` reads **`name`, `slug`, `capsule` (as `description`), `outcomes` (as
+    `teaches`), `whoFor` (as `audience`) and `prerequisites`** straight off the programme file. So
+    six published programme fields reach `/`, not one.
+    **Measured on the built site today, by rebuilding and diffing all 199 files in `dist` against
+    a baseline, with no `updatedDate` bump in either test.** Editing an **FAQ answer** on
+    `oxford-agentic-bootcamp` moves exactly **2** files - the programme page and `llms-full.txt` -
+    and `dist/index.html` is **byte-identical**, so the overstating the item describes is real.
+    Editing its **`capsule`** moves **3** files and `dist/index.html` **differs**, through the
+    `Course` node's `description`. **That second measurement is what retires the item**: the fix it
+    proposes - count a programme only through `shortPitch`, `name`, `slug`, `accent` and `order`,
+    with a hand-recorded date for those - would stop counting `capsule`, `outcomes`, `whoFor` and
+    `prerequisites`, all four of which genuinely do change `/`. It would trade a hint that is
+    slightly early for one that is silently late.
+    **And late is the harmful direction here, which is the argument against fixing it at all.**
+    The only honest alternative is a hand-maintained copy date covering six fields across three
+    programme files on top of the three the homepage already has, and the failure mode of a
+    forgotten bump is an understated `lastmod` on `/` - the one page an engine is demonstrably
+    re-reading, whose cached copy has been measured days stale, on a domain whose only real index
+    measurement (24 Aug Search Console: 23 indexed, 16 not) diagnoses **crawl budget**. Erring
+    early on that page is the right direction for an under-crawled site; erring late is not. The
+    item's own closing words were "Not urgent", and the measurement says the cost of acting is
+    higher than the cost of leaving it. **Do not re-pitch without evidence that an early recrawl
+    hint on `/` has cost something.** Original diagnosis kept below.
+    `todo` (loop-actionable, found 28 Oct 2026 in the 01:00 cycle) - **`/` takes a `lastmod` from
     any programme edit, including edits the homepage does not render.** `homepageLastmod` in
     `astro.config.mjs` folds in every programme's `updatedDate` on the stated grounds that "What we
     run" renders a card per programme. The card prints `shortPitch` and nothing else from that file,
@@ -1024,6 +1052,79 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-02 (08:00 cycle) - no site change. Four fresh probes, zero citations, and the strongest
+  field of the four declines as a near-duplicate; backlog 49 taken up, measured and retired because
+  the fix it proposes is refuted by its own measurement. Ledger and GEO log only: all 199 files in
+  `dist` are byte-identical to the pre-change baseline, and `IMPROVEMENTS.md` and `seo-data/` are
+  both on `indexnow-ping`'s exclusion list, so this push submits nothing.**
+  - **The probes.** Four rotating buyer questions, none asked before, no page of ours in any of
+    them. Full table and fields in `seo-data/geo-citations.md`. **Probe 3 was the find and it still
+    declined**: *"do I need to build an AI agent or can I just use ChatGPT for this task"* returned
+    **seven results, every one a vendor selling an agent builder**, with the engine's own caveat
+    *"mostly vendor blogs, so treat the advice as marketing-leaning"*. Winnable on the rule's terms
+    and strongly converting - it is the ceiling-of-prompting decision in the buyer's own words. But
+    `how-to-choose-your-first-agentic-task` answers it in its first three tests, the glossary's
+    `Prompt` entry carries the one-line version, and `agentic-ai-for-business-leaders-where-to-start`
+    opens on "Start with a task, not a tool". **A fourth page on the inverse phrasing of a question
+    three pages answer is the near-duplicate rule 6 forbids**, and the 19 Oct level-fit decline
+    already settled this shape.
+  - **The opt-in was checked before the guide was declined, and the evidence does not reach it.**
+    `how-to-choose-your-first-agentic-task` has exactly two question headings and **both are on the
+    confidentiality axis** - the axis probed on 1 Nov and declined because the SRA, the Law Society
+    and LexisNexis own it. Its five tests sit under non-question headings, where the extractor
+    cannot reach them and should not. The probe matches the guide's subject and not its headings, so
+    there was no node to turn on. **A census confirms the seam is worked out pending new evidence**:
+    of the five un-opted-in guides with two or more question headings,
+    `what-you-can-build-in-one-day-with-ai` is blocked behind backlog 56,
+    `why-the-code-an-agent-wrote-is-not-live` and `how-to-choose-your-first-agentic-task` were
+    declined on 1 Nov, `ai-bootcamp-vs-course-vs-exec-education` on 2 Nov at 02:00, and
+    `is-it-safe-to-put-company-documents-in-a-second-brain` still carries the `Question one: ` prefix
+    the strip in `faq.ts` does not handle. None of today's four probes matches any of their headings.
+  - **Probe 1 is winnable and its answer is on the one guide that is blocked.** Agencies and content
+    farms quoting two to four weeks against one vendor's 48 hours, with the engine closing *"Most of
+    these figures come from vendors who sell builds"*. Our answer is the one-day build, which is
+    `what-you-can-build-in-one-day-with-ai`, **blocked behind backlog 56**. Converting is weak
+    besides: that searcher is scoping a build to buy and their next click is an agency.
+  - **Probe 4 corroborates the 16 October charities kill, one buyer over.** The small-business-owner
+    field is five Trustpilot mirrors, three content-farm posts, a college, a US catalogue and
+    **free funded provision** - a Small Business Britain and BT six-week course and a Belfast
+    programme, both free - beside a £329 day listed free until August 2026. Same shape that killed
+    charities. **Do not re-pitch the small-business-owner vertical without new evidence.** Probe 2
+    is the governance axis and declines on the NHS and public-sector precedent.
+  - **Backlog 49, retired on a measurement that refutes its own fix.** It was written on the premise
+    that a programme card prints `shortPitch` and nothing else, so a programme edit moves `/`'s
+    `lastmod` without changing `/`. That premise was already false: the 25 Oct `Course` nodes read
+    **six** published programme fields onto `/`. Measured by rebuilding and diffing all 199 `dist`
+    files against a baseline, with no `updatedDate` bump in either test - an **FAQ-answer** edit
+    moves 2 files and leaves `dist/index.html` **byte-identical** (so the defect is real), while a
+    **`capsule`** edit moves 3 and `dist/index.html` **differs** (so the proposed fix would stop
+    counting four fields that genuinely do change `/`). It would trade a slightly early hint for a
+    silently late one, and late is the harmful direction on the one page an engine is demonstrably
+    re-reading, on a domain whose only real index measurement diagnoses crawl budget. Detail in the
+    backlog item.
+  - **Checks.** `npm ci` and `npm run build` clean - 62 pages built, 64 pages checked, 3,158
+    internal links resolve, schema valid, 7 `Event` and 13 `FAQPage` nodes, all titles and
+    descriptions unique, no SEO warnings. A clean rebuild of the working tree is **byte-identical
+    across all 199 `dist` files** to the baseline taken before this cycle's measurements, so there
+    is no rendered change to inspect; headless Chromium was confirmed available rather than assumed,
+    so the standing do-not-ship-if-you-cannot-inspect condition is not what stopped a change here.
+    Both test edits were reverted with `git checkout` and the tree verified clean before the rebuild.
+    The 11 outbound warnings are the sandbox egress policy.
+  - **Freshness audited and clean.** All five event files carry the right status and dates - Cohort 1
+    (21 Jul), Cohort 2 (16 Sept) and Second Brain Cohort 1 (21 Oct) `past`; Cohort 3 (19 Nov) and
+    Coding Cohort 1 (26 Nov) `upcoming` - and `when-ai-executive-cohorts-run`, the guide that has
+    produced two date defects, names all three lines in the correct tense with both November dates
+    and both venues right. The prompt's three standing candidates remain done: `indexnow-ping.mjs`
+    already maps `src/lib/home.ts` to `/` alone, and the past-tense sweep is complete.
+  - **No new guide.** 0 of 3 for the week of 2-8 Nov, 0 for the day. Both of today's Q&A refreshes
+    are unspent. **No new contactable lead**; nothing contacted.
+  - **Search Console unavailable from this checkout**: `gcloud` reports no credentialed accounts and
+    a whole-repo search found no export newer than the 24 Aug baseline. Nothing estimated or
+    fabricated. **Production**: deploy run 341 success on `f90550d`, which is both `origin/main` and
+    the HEAD this cycle started from, nothing queued. `oxfordagentic.com` is refused on CONNECT from
+    this sandbox and does not resolve through `WebFetch`, so the Actions API stood in for
+    `build.txt`; `luma.com` is unreachable the same way, so **no event fact was read or changed** and
+    the repo was treated as the authority over the prompt's stale event facts.
 - **2026-11-02 (02:00 cycle) - two re-probes found an engine admitting it cannot answer the delay
   objection, and we have answered it since August in headings the extractor could not see. Backlog
   57 shipped: `faqsFromQuestionHeadings` now splits at leaf question headings across `h2` and `h3`,

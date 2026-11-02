@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-02 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE STRONGEST FIELD OF THE FOUR DECLINES AS A NEAR-DUPLICATE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, none put to an engine before.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how long does it take to build a working AI agent for one business task | **No** | `lowcode.agency`, `slashdev.io`, `sectionai.com`, `lilachbullock.com` (x5), `isometrik.ai`, `orbilontech.com`, `team400.ai` (x2), `differ.blog`, `botpool.ai` (x2), `punku.ai`, `lumeor.studio`, `ovamind.pages.dev`, `linkaiagency.pages.dev`, `simonthesalesbooster.github.io` |
+| my team all use AI differently with no standard way of working, how do I fix that | **No** | `ai.wsiworld.com` (x3), `dev.to`, `workast.com`, `markaicode.com`, `decided.beehiiv.com`, `jonoherrington.com` (x2), a Reddit snapshot mirror |
+| do I need to build an AI agent or can I just use ChatGPT for this task | **No** | `altamira.ai` (x2), `jotform.com`, `clickup.com` (x2), `creolestudios.com`, `ema.ai` - seven results, every one a vendor |
+| AI training for a small business owner with no IT department UK hands-on | **No** | `trustpilot.com` review pages (x5), `naijatechguide.com` (x2), `lilachbullock.com` (x3), `profiletree.com`, `businesswest.co.uk`, `tynemet.ac.uk`, `tutorials.co.uk` (x2), `ibl.ai` (x2, US), `staffordshire-live.co.uk` |
+
+**Reading.**
+
+- **Probe 3 is the strongest field of the four and it still declines, on rule 6 rather than on
+  winnability.** Seven results, **every one a vendor selling an agent builder**, and the engine
+  said so itself: *"The search turned up mostly vendor blogs, so treat the advice as
+  marketing-leaning."* Not one institutional publisher on its own subject, so **winnable**; and
+  someone asking whether their specific task needs an agent or whether prompting will do is
+  standing exactly at the ceiling-of-prompting decision the bootcamp sells into, so
+  **converting**. The field's rule of thumb - build when the task repeats and needs to reach
+  other systems - is our own argument, reached from the other side.
+  **But we already publish the answer, and a guide would restate it.**
+  `how-to-choose-your-first-agentic-task` is five tests for whether a task suits a workflow, and
+  test 1 (*"You do it repeatedly"*), test 2 (*"It runs on words and documents"*) and test 3
+  (*"You can check the output at a glance"*) are the agent-or-prompt decision in full. The
+  glossary's `Prompt` entry carries the one-line version - *"a single-step skill; the shift that
+  changes your working week is going from writing one good prompt to orchestrating several narrow
+  ones"* - and `agentic-ai-for-business-leaders-where-to-start` opens on *"Start with a task, not
+  a tool"* and *"Break it into narrow steps"*. **A fourth page on the inverse phrasing of a
+  question three pages answer is a near-duplicate query variation, which rule 6 forbids and the
+  19 Oct level-fit decline already settled.** Declined.
+- **And it does not license a `faqFromHeadings` opt-in either, which was checked before it was
+  declined.** `how-to-choose-your-first-agentic-task` has exactly two question headings and
+  **both are on the confidentiality axis** - *"Can I bring confidential work to a build day?"* and
+  *"What if the task is fine but the data is sensitive?"* - which is the axis probed on 1 Nov and
+  declined because the SRA, the Law Society and LexisNexis own it. The five tests sit under
+  non-question headings, where the extractor cannot reach them and should not. **The probe matches
+  the guide's subject and not its headings, so there is no node to turn on.**
+- **Probe 1 is winnable and its answer lives on the one guide that is blocked.** The field is
+  agencies and content farms quoting two to four weeks for a single-task agent, and the engine
+  closed *"Most of these figures come from vendors who sell builds, so treat them as
+  directional"* - no institutional publisher, and one vendor's *"48 hours"* against another's
+  *"2-8 weeks"*. Our answer is a working workflow built in a day on your own task, which is
+  `what-you-can-build-in-one-day-with-ai`, and that guide is **blocked behind backlog 56** because
+  one of its answers contradicts our own published agenda. Nothing was opted in. Converting is
+  weaker than it looks besides: the searcher is scoping a build to buy, and their next click is an
+  agency.
+- **Probe 2 is the governance axis again, and it declines on the standing precedent.** Vendor
+  blogs, a DEV post, a Reddit mirror and two consultant pages, with the engine's own caveat
+  *"Most sources are vendor blogs or consultants selling services"*. Winnable, but what the
+  searcher wants is a policy, an approved-use list and a review rule - the shape declined for the
+  NHS and public-sector cluster and answered, as far as we honestly can, by
+  `getting-an-ai-workflow-past-it-and-legal` and `scout-drafter-reviewer-pattern`. **Declined.**
+- **Probe 4 corroborates the 16 October charities kill, one buyer over, and is the clearest
+  not-converting field in weeks.** The SMB-owner query returns **five Trustpilot review pages**,
+  three `lilachbullock.com` content-farm posts, a further-education college, a US catalogue - and,
+  decisively, **free funded provision**: a Small Business Britain and BT six-week course and a
+  Belfast programme, both free, beside a £329 day listed as free until August 2026 and a
+  £500-£1,500 half-day quote. That is the charities shape exactly (*"a £200-£289 online day and a
+  free funded TechSoup/Google.org course"*), and the field's own survey line is that **51% of
+  owners say they need hands-on support**, which is demand for free help rather than for a paid
+  day in Oxford. **Declined, and do not re-pitch the small-business-owner vertical without new
+  evidence.**
+- **No new contactable lead.** Every name across the four probes is a direct competitor, an agent
+  vendor, a content farm, a Trustpilot mirror, a US catalogue or a free funded programme. Nothing
+  was added to `outreach/review-list.md` and nothing was contacted. The sixth corroboration of the
+  discovery problem, logged there at 02:00 today, stands as the open ask.
+
+**Caveat, unchanged.** One engine, one day, US-resident, search results rather than cited AI
+answers. Four probes is a snapshot, not a ranking.
+
 ## 2026-11-02 (02:00 GMT cycle) - SIX PROBES, ZERO CITATIONS, AND TWO ENGINE ADMISSIONS ON THE DELAY OBJECTION
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
