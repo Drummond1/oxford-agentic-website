@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The seventh dated reading, and the first that cited us - which narrows the standing ask
+  rather than closing it. No new target; nothing contacted.** Found 3 Nov 2026 (08:00 cycle).
+  The probe *"one day in person agentic AI bootcamp Oxford November 2026 book a place still
+  available"* returned **oxfordagentic.com first**, with the engine opening *"The best match is
+  the Oxford Agentic Bootcamp"* and both cohort dates, the venue and the format correct. Sixteen
+  days out, that is the right answer.
+  - **Why it is not evidence that the problem is solved.** The six readings that failed, 27
+    October to 2 November, did not name the city. The 2 Nov probe is this one **minus
+    "Oxford"** and it returned no page of ours and sent the buyer to a competitor. So the two
+    together say we are reachable when the buyer already knows to look in Oxford, and not when
+    they are searching the UK. That is the same split the 10 August Perplexity reading found,
+    and it is what an entity with no external links looks like. **The Eventbrite, aggregator and
+    LinkedIn Company Page asks in `outreach/off-page-listings.md` are what close the second
+    half**, and they are unchanged.
+  - **Nothing in the field is a new target.** Saïd's two online programmes and GetSmarter (the
+    competitor set, already known), `coderfaculty.com` and `oxfordaitraining.com` (competing
+    providers, not listings), `maven.com` and `createwith.com` (both already recorded here).
+  - Full table in `seo-data/geo-citations.md` under 3 Nov 08:00.
+
 - **A sixth corroboration of the discovery problem, and the first on the flagship cohort, 17
   days out. No new target - evidence for the standing Eventbrite and aggregator ask in
   `outreach/off-page-listings.md`.** Found 2 Nov 2026 (02:00 cycle). **Nothing has been

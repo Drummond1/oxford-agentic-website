@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-11-03T02:20:00+00:00"
+updatedDate: "2026-11-03T08:40:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -101,6 +101,32 @@ faqs:
       One real task from your own work that currently costs you meaningful time, plus a
       laptop. The task is what you build against all day, so bringing a genuine one
       matters more than any preparation.
+  # Which task, as its own question. The page has always said to bring "one real
+  # task from your own work that currently costs you meaningful time" and never
+  # said how to pick one, and of 65 distinct FAQ questions across the whole site
+  # the only task-shaped one was the confidential answer directly below - a
+  # sub-question whose parent was never asked. A probe on 3 Nov 2026 asked which
+  # tasks are too small to be worth building an agent for and returned agency
+  # blogs, Maven course pages, dev.to and two ROI "calculators", with the engine's
+  # own caveat that "the sources give conflicting numbers ... treat those
+  # thresholds as rough, not established". Every clause restates published copy:
+  # "a workflow pays back every time it runs", the words-and-documents and
+  # at-a-glance tests, "a correction, not a client" and the three kinds to leave
+  # alone are all how-to-choose-your-first-agentic-task's, and "the thing that
+  # currently eats a morning every week" is this page's own `description`. No link
+  # to that guide, per the 4 Aug decision that programme pages do not link guides.
+  # No price, date, count, capacity, name or agenda timing, so nothing here
+  # touches backlog 56.
+  - q: How do I choose which task to bring?
+    a: >-
+      Pick something you repeat rather than something big: a workflow pays back every
+      time it runs, so the thing that currently eats a morning every week beats the
+      hardest problem in your business. The raw material should be words and documents
+      rather than a system only you can reach, you should be able to look at the output
+      and know at a glance whether it is right, and getting it wrong should cost you a
+      correction rather than a client. Some work is worth leaving alone: the writing
+      where doing it is the thinking, anything you only do twice a year, and anything a
+      person has to stand behind.
   # The day's whole premise is that you bring a real task from your own work, and
   # the page never said what to do if that work is confidential. Its Second Brain
   # sibling answers the same question on both its pages; the wording and the

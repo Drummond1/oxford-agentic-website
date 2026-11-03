@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-03 (08:00 GMT cycle) - FOUR PROBES, AND THE ONE CITATION IN SEVEN DATED READINGS CAME WITH THE CITY IN THE QUERY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, each checked against the 387 already asked - 383 on
+`main` plus the 4 still parked on PR #3's branch, read directly off the branch, since that PR is
+open and invisible to a cycle reading `main`. None collides.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| which tasks are too small to be worth building an AI agent for and which are worth it | **No** | `ombulabs.ai`, `alejandrorioja.com`, `maven.com` (x3), `dev.to` (x2), `open-exam-prep.com`, `p0stman.com` (x2) |
+| I already write code, what does a one day agentic AI coding course teach that the documentation does not | **No** | `maven.com` (x2), `protechtraining.com`, `sp.edu.sg`, `accentient-com.pages.dev`, `opencourser.com`, `academy.ebu.ch`, `aihero.dev` (x2), `codegen.com`, `agentcoursesit.pages.dev`, `meetup.com`, `kdnuggets.com`, `umbctraining.com`, `alliance-micro.com` |
+| how do I explain what an AI agent is to a non-technical team without the jargon | **No** | `gaas.it.com` (x2), `aiagentexplained.pages.dev` (x3), `kissmyskills.com` (x3, same page in three languages), `chicagonosnow.pages.dev`, `ainativecircle.pages.dev`, `merge-society.vercel.app`, `dev.to` (x2), `simplilearn.com`, `phoebezhang.substack.com`, `topicintelligence.ai`, `mcpmarket.com`, `vegavid.com`, `freeacademy.ai`, `agentstatus.dev` |
+| one day in person agentic AI bootcamp Oxford November 2026 book a place still available | **YES - `/` and `/guides/after-the-ai-executive-programme/`** | `sbs.ox.ac.uk` (x2, both online), `getsmarter.com`, `maven.com`, `coderfaculty.com`, `oxfordaitraining.com`, `createwith.com` |
+
+**Reading.**
+
+- **The dated probe is the finding, and the honest version of it is narrower than it first
+  looks.** The engine opened ***"The best match is the Oxford Agentic Bootcamp"***, gave the
+  date, venue and format correctly for both lines (19 November and 26 November, Worcester
+  College), distinguished Saïd's two programmes as online and the local evening classes as
+  multi-week, and closed by telling the buyer to go to oxfordagentic.com and look for the 19
+  November cohort. That is the first citation in **seven** dated readings of this shape since 27
+  October. **But the query names Oxford and the six that failed did not.** The 2 Nov 02:00
+  probe - *"in person agentic AI bootcamp UK still available places November 2026"* - is this
+  question minus the city, and it returned no page of ours and sent the buyer to a competitor.
+  So this does not overturn the standing failure; it locates it. **We are reachable when the
+  city is in the query and not when it is not**, which is exactly what the 10 Aug Perplexity
+  reading said (Oxford-anchored query #1, #2, #3 and #5) and exactly what backlog 2b diagnoses:
+  an entity with no external links is found by people who already know where to look. Nothing
+  on the page fixes that.
+- **What the engine could not do, and must not be fixed.** ***"I couldn't confirm whether seats
+  are still open, so you'll need to check the booking page directly"*** and ***"the results
+  don't say how many remain"***. Availability is a Luma fact that moves daily, the message house
+  bans scarcity claims outright, and the 17 Aug Second Brain incident is the argument. Correctly
+  unanswerable from this site, by decision. It did read *"a small cohort"* off the site and
+  qualified it properly as "that suggests places may be limited".
+- **Probe 1 is what this cycle shipped against.** Winnable: nine sources, not one institutional
+  publisher and not one platform vendor on its own product - two agencies, three Maven course
+  pages, two `dev.to` posts, an exam-prep site and two ROI "calculators". Converting: whoever
+  types it is deciding whether a task is worth automating, which is the pre-purchase moment for a
+  day whose whole premise is "bring one real task from your own work". The engine's own caveats
+  are the quality gap: ***"The sources give conflicting numbers ... treat those thresholds as
+  rough, not established"*** and ***"Several sources are vendor or course marketing, and the
+  dollar figures in the ROI guides are illustrative"*** - two of them disagreeing on the cutoff
+  by a factor of three (100 vs 300 interactions a month).
+- **And the site answers it, on a page no engine reaches, under a heading that is not the
+  question.** `how-to-choose-your-first-agentic-task` carries the five tests and "The tasks to
+  leave alone, permanently", and it is linked only from other guides and `/guides/`, by the 4
+  August decision. Meanwhile, of the **65 distinct FAQ questions across every `FAQPage` node on
+  the site**, the only task-shaped one was *"What if my task is confidential?"* - a sub-question
+  whose parent was never asked - and *"What do I need to bring?"*, which says to bring one real
+  task and not how to pick it. That is the same defect class as 1, 2 and 3 November: the answer
+  exists, but not as the answer to the question people type. Shipped as one FAQ entry on the
+  Agentic programme page, no link to the guide.
+- **Two probes declined.** The jargon question is winnable and **does not convert**: the field is
+  content farms - `kissmyskills.com` serving one page in English, Polish and Romanian, three
+  `pages.dev` sites, a `vercel.app` - and the engine answered it completely, with a script to
+  read out in a meeting. Whoever types it wants a sentence, not a day in Oxford, and we already
+  publish a glossary. The developer question returned the engine's admission ***"The search
+  didn't turn up a single syllabus that matches your exact question"***, which is a real gap, and
+  **it is a gap in someone else's product**: our Coding Bootcamp is for people who *"have not yet
+  shipped software"*, published five times over on that page, so the honest answer to a working
+  engineer is that this is not their day. Recorded as backlog 61 rather than written, because the
+  page has no *"Who is it not for?"* answer while the homepage and the Agentic page both do.
+
+---
+
 ## 2026-11-03 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND TWO OF THEM POINTED AT THE SAME MISSING ANSWER
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

@@ -1043,6 +1043,32 @@ Status: `todo` · `blocked` (why) · `doing`
       long - then nothing here is a defect and the right answer is to say so, and the item
       closes. Either answer from Drummond resolves it; the loop cannot pick between them.
 
+61. `todo` (loop-actionable, found 3 Nov 2026 in the 08:00 cycle; **declined this cycle on the
+    converting half of the rule, recorded so it is not re-derived**) - **the Coding Bootcamp is
+    the only one of the three product lines with no "Who is it not for?" answer, and it is the
+    one whose level is easiest to get wrong.** The homepage FAQ has one and the Agentic
+    programme page has one; `agentic-coding-bootcamp.md` has nine FAQ entries and none of them.
+    The level itself is published five times over on that page - `shortPitch`, `metaPitch`,
+    `capsule`, `whoFor` and `prerequisites` all say the day is for people who *"have not yet
+    shipped software"*, and `description` adds *"not a course that turns you into a junior
+    one"* - so nothing is hidden. It is simply never asked.
+    **The probe that raised it, and why it was not shipped.** *"I already write code, what does
+    a one day agentic AI coding course teach that the documentation does not"* produced a real
+    engine admission - *"The search didn't turn up a single syllabus that matches your exact
+    question"* - over a field of fifteen course vendors with no institutional publisher in it,
+    and closed by telling the buyer *"Check the syllabus before paying, since a course aimed at
+    beginners won't add much if you already build with these tools"*. **Winnable, and it does
+    not convert**: the honest answer to that searcher is that this is not their day, so the
+    entry would turn a reader away rather than book them, and the one competing listing the 27
+    Oct cycle found takes the opposite level (*"You already know how to code. Skip it if you're
+    new to programming"*).
+    **What makes it worth keeping on the list anyway**, and it is a trust argument rather than
+    an SEO one: **tickets are not refundable** (that page's own answer), so an engineer who
+    books on a misread of the level has no way out but a transfer, and the page that takes the
+    booking is the right place to say so plainly. Any entry must restate the five published
+    level statements and add no new fact. One cycle, if a later probe shows the level being
+    misread rather than merely unasked.
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -1074,6 +1100,123 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-03 (08:00 cycle) - the day's whole premise is "bring one real task from your own
+  work" and no page of the site ever asked which task, so the one place the answer is written is
+  a guide engines do not reach. One FAQ entry, one file, one page in `dist`. Four GEO probes, one
+  citation, two declines, no guide.**
+  - **The defect, measured across every `FAQPage` node on the site.** 65 distinct FAQ questions
+    are published. The only task-shaped ones are *"What if my task is confidential?"* - a
+    sub-question whose parent is never asked - and *"What do I need to bring?"*, whose answer is
+    *"One real task from your own work that currently costs you meaningful time, plus a laptop"*
+    and which says nothing about how to pick one. The page's `description`, `capsule`,
+    `shortPitch`, `prerequisites` and `outcomes` all turn on that task. **Choosing it was never a
+    question anywhere.**
+  - **Where the answer actually lives, and why that is not enough.**
+    `how-to-choose-your-first-agentic-task` is a thousand words on exactly this - five tests and
+    *"The tasks to leave alone, permanently"* - and by the **4 August decision** it is reachable
+    only from other guides and `/guides/`, never from a programme page. Measured on the built
+    site: it is linked from ten guides and the index, and from no commercial page. So the site's
+    best answer sits on the page class the 24 August Search Console baseline says Google is not
+    crawling, while the page an engine does reach never asks the question.
+  - **The probe.** *"which tasks are too small to be worth building an AI agent for and which are
+    worth it"*, checked against the 387 questions already asked (383 on `main`, 4 read off PR
+    #3's branch). Nine sources: two agencies, three Maven course pages, two `dev.to` posts, an
+    exam-prep site and two ROI "calculators". **Winnable** - not one institutional publisher and
+    not one platform vendor on its own product. **Converting** - whoever types it is deciding
+    whether a task is worth automating, which is the moment before booking a day built around
+    one. The engine's own two caveats are the quality gap: *"The sources give conflicting numbers
+    ... treat those thresholds as rough, not established"* and *"Several sources are vendor or
+    course marketing"*, with two of them three times apart on the cutoff (100 vs 300 interactions
+    a month).
+  - **Every clause was checked against published copy before it went on.** *"A workflow pays back
+    every time it runs"*, the words-and-documents test, *"know at a glance whether it is right"*,
+    *"a correction rather than a client"* and the three kinds to leave alone (*"the writing where
+    doing it is the thinking"*, *"anything you only do twice a year"*, *"anything a person has to
+    stand behind"*) are all `how-to-choose-your-first-agentic-task`'s own, several verbatim; *"the
+    thing that currently eats a morning every week"* is this page's own `description`; *"the
+    hardest problem in your business"* is the guide's opening. **No link to that guide**, per the
+    4 August decision. **The answer asserts no price, date, count, capacity, name or agenda
+    timing** - asserted in the browser, zero digits in it - so it touches nothing in backlog 56.
+  - **Blast radius, measured whole-site.** **Exactly 4 of 199 files in `dist` differ** and three
+    of them only in a date: the programme page, `llms-full.txt` (the new Q&A and nothing else -
+    one added block, no other line moved), `sitemap-0.xml` and its roll-up. `/` is
+    **byte-identical**, `/bootcamps/` did not move, `llms.txt` did not move, no guide and no event
+    page moved. On the changed page **exactly one JSON-LD node changed** - `FAQPage`, 21
+    `mainEntity` to 22, the new entry eighth of 22 - and `Course`, `WebPage`, `Organization`,
+    `WebSite` and `BreadcrumbList` are byte-identical. The shared-`@id` invariant was re-asserted
+    for **all three** programmes: each homepage `Course` node is byte-identical to its programme
+    page's, and every node on `/` is byte-identical to the baseline.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - **64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings**. `Event`
+    nodes unchanged at 7 and `FAQPage` **pages** unchanged at 13: this cycle adds an entry, not a
+    node. `npm run check:flags` green on the all-on and all-off builds. The 11 outbound warnings
+    are the sandbox egress policy, identical on the baseline. Headless Chromium over the changed
+    page, `/`, `/bootcamps/` and the Cohort 3 event page at 375 and 1280px - **8 configurations,
+    72 assertions, all passed**, including HTTP 200, no page errors, no failed local requests, no
+    horizontal overflow, JSON-LD parsing in the browser, 22 unique accordion summaries, the
+    question present exactly once, the answer text rendering, no em dash, no exclamation mark, no
+    figure and no price in it, **no `/guides/` link in it**, and the three unchanged pages not
+    carrying the new question. `reducedMotion: "reduce"` from the start, per the 2 Nov finding -
+    0 `[data-reveal]` blocks at `opacity: 0` on any of the eight runs. The entry was screenshotted
+    open at both widths and read: it sits between *"What do I need to bring?"* and *"What if my
+    task is confidential?"*, which is the order a buyer asks them in.
+  - **Recorded honestly: 1 HTML file moved and IndexNow will submit 27 URLs.** A programme edit
+    maps to `/bootcamps/<slug>/`, `/bootcamps/`, `/` and the **24** guides naming it in
+    `relatedProgrammes`. Same over-approximation as the 02:00 cycle on the same file, documented
+    behaviour, correct in principle, not worth narrowing. **The ping script was not run, not even
+    with `--dry-run`** - the sandbox refused to execute it - so its mapping rules were read
+    instead and the 24 counted from the guide frontmatter.
+  - **The dated probe cited us, and the honest reading is narrower than the result looks.** *"One
+    day in person agentic AI bootcamp Oxford November 2026 book a place still available"* returned
+    `/` and one guide, with *"The best match is the Oxford Agentic Bootcamp"*, both cohort dates,
+    the venue and the format correct, Saïd's two programmes correctly set aside as online. **First
+    citation in seven dated readings since 27 October - and the six that failed did not name the
+    city.** The 2 Nov probe is this one minus "Oxford" and it sent the buyer to a competitor. So
+    the standing failure is not overturned, it is located: reachable when the buyer already knows
+    to look in Oxford, not when they are searching the UK. That is backlog 2b, and no on-page work
+    touches it. The engine also could not tell the buyer whether seats remain - correctly
+    unanswerable here, by decision, and not a gap to close.
+  - **Two probes declined.** The jargon question is winnable and does not convert: the field is
+    content farms (one page served in three languages, three `pages.dev` sites, a `vercel.app`),
+    the engine answered it completely with a script to read out in a meeting, and we publish a
+    glossary. The developer question produced the sharpest admission of the four - *"The search
+    didn't turn up a single syllabus that matches your exact question"* - and declines because the
+    honest answer to a working engineer is that the Coding Bootcamp is not their day: it is for
+    people who *"have not yet shipped software"*, published five times on that page. **Recorded as
+    backlog 61**, because that page is the only one of the three lines with no *"Who is it not
+    for?"* answer and tickets are not refundable.
+  - **Guides: none published. 0 of 3 for the week of 2-8 Nov.** A guide on the task-size axis
+    would be a near-duplicate of `how-to-choose-your-first-agentic-task`, which already answers it
+    better than a new page could. The `faqFromHeadings` route was considered and does not apply:
+    that guide's only two question headings are the confidential-work pair the 1 Nov cycle
+    declined, and the heading that answers this probe is *"The tasks to leave alone, permanently"*,
+    a statement - rewriting it into a question to force a node is what the flag's contract
+    forbids. Backlog 54 unchanged at three left.
+  - **Off-page: no new contactable lead and nothing contacted.** Every domain this cycle's probes
+    returned that could be a target is already recorded (`createwith.com`, `maven.com`,
+    `oxfordaitraining.com`, Eventbrite); the rest are competing providers and content farms. The
+    seventh dated reading is logged in `outreach/review-list.md` as evidence for the standing ask,
+    not as a new one.
+  - **PR #3 is still open, five cycles on, and it is still costing the loop its memory.** The 2
+    Nov 08:00 cycle's ledger entry and four GEO probes sit on
+    `seo-loop/2026-11-02-0800-ledger` and are invisible to any cycle reading `main`. This cycle
+    read the branch by hand to get its dedup set to 387; the next one may not. **PR #1**
+    (breadcrumb mobile overflow, 26 Sept) is also still open. Both need one click from Drummond.
+  - **The push was refused once, and the cause is a stale local ref rather than another
+    session - which is very probably what parked PR #3 on a branch.** A cloud checkout arrives
+    with **`HEAD` detached** and a local `main` ref left where the clone found it: today, 11
+    commits behind. `git push -u origin main` therefore pushes *that* ref, not the work, and
+    GitHub rejects it with *"a pushed branch tip is behind its remote counterpart"* - which
+    reads exactly like a collision with another session and is not one. **Check before
+    concluding a push was refused:** `git branch --show-current` prints nothing when detached,
+    and `git merge-base --is-ancestor origin/main HEAD` says whether the work is a clean
+    fast-forward. It was, so this cycle pushed `HEAD:main`, which is a fast-forward and not a
+    force-push. **If `--is-ancestor` fails, that is a real collision and the rule stands: stop
+    and report, never force.**
+  - **Search Console unavailable from this checkout:** one attempt, `gcloud auth list` reports
+    "No credentialed accounts" and a whole-repo search found no CSV, TSV, XLSX or ZIP export.
+    Nothing estimated. The 30 Oct 05:10 reading stands.
 
 - **2026-11-03 (02:00 cycle) - the programme page that sells the Agentic day carried twenty FAQ
   entries and not one of them asked whether the day covers checking what the agent produces, so
