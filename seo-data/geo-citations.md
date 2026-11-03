@@ -5,6 +5,62 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-03 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE THINNEST FIELD THIS LOG HAS RECORDED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, each checked against the 401 distinct questions
+already in this log on `main`, plus the 4 still parked on PR #3's branch. None collides.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| our business information is scattered across email spreadsheets and shared drives can an AI agent still help | **No** | `theregister.com`, `mightybot.ai` (and its `pages.dev` mirror), `cloud.google.com`, `microsoft.com`, `metacto.com`, `fivetran.com`, `lyzr.ai`, `sparkco.ai`, `devrev.ai`, `taskade.com`, `fast.io`, `ttecdigital.com`, `pulse.bot` |
+| how do I introduce an AI agent to my team without them thinking it will replace their jobs | **No** | `startuphub.ai` (x2), `blog.staffino.com` (x2), `auralis.ai`, `leadbyai-website-aqa.pages.dev`, `answers.refer.io`, `ainnovate.associationtrends.com`, `spicyadvisory.com`, `pulse.bot` |
+| do I need a written down process before I automate a task with an AI agent | **No** | `help.webex.com` (x2, one article), `trupeer.ai` (x3, the same page in French, Chinese and Polish), `consultevo.com` (x2) |
+| where can I learn to build AI agents in person one day course England not online December 2026 | **No** | `globalknowledge.com` (x10, reselling Microsoft and AWS courses), `cademy.io` (x2, Mangates), `london.theaisummit.com` |
+
+**Reading.**
+
+- **Probe 3 is the finding, and it is the thinnest field recorded here.** Seven results for a
+  question a buyer plausibly types the week before booking, and the whole field is one vendor
+  help article about configuring its own agent builder, one page served three times in three
+  languages, and one consultancy post. Not one institutional publisher. **Winnable.** And
+  **converting**: whoever types it is working out what they have to do before they can automate
+  anything, which is the moment before booking a day whose premise is "bring one real task from
+  your own work". The engine's own hedges are the quality gap: ***"no law or platform requires a
+  formal written process"*** and ***"Most of the advice comes from automation consultancies and
+  vendors, so treat it as practitioner opinion rather than settled standards"***.
+- **And the site does not answer it.** `how-to-choose-your-first-agentic-task` publishes five
+  tests for picking a task - you do it repeatedly, it runs on words and documents, you can check
+  the output at a glance, it is annoying enough to care about, getting it wrong is affordable -
+  and **not one of them is "can you write the steps down"**. Nothing in the 65 published FAQ
+  questions asks it either. So this is a content gap rather than a discovery problem, which is
+  the opposite of what 1, 2 and 3 November found.
+- **It was not written this cycle, deliberately, and the reason is a ceiling rather than a
+  doubt.** The right home is the Agentic programme page's FAQ block, because that is a page
+  engines reach and the guide is not - the 4 August decision keeps guides unlinked from
+  commercial pages, and the August Search Console baseline says the guide class is not being
+  crawled. **Two FAQ entries have already shipped today**, at 02:00 and at 08:00, which is the
+  stated daily ceiling for that class of change. Recorded as **backlog 64** with the probe
+  attached, so the next cycle can take it without re-deriving the evidence.
+- **Probe 4 is correctly a miss and must not be chased.** The engine said outright ***"I found no
+  in-person, one-day agent-building course in England for December 2026"***, and the one December
+  date it found is in Belgium. **We do not run a December date** - Cohort 3 is 19 November and the
+  Coding Bootcamp 26 November - so being absent from a December query is the true answer, not a
+  defect, and inventing a reason to appear there would mean inventing a date. What it does
+  corroborate, for the eighth dated reading since 27 October, is the standing split: this query
+  names England rather than Oxford, and we were not reachable. Nothing on the page fixes that
+  (backlog 2b).
+- **Two probes declined.** The scattered-information question is **not winnable**: Google Cloud
+  and Microsoft are both in the field on their own products, which is the rule's
+  platform-vendor case, and the honest answer to that searcher is the Second Brain day, where the
+  standing decision is that ranking is not its constraint and demand is. The team-fear question
+  is winnable and **does not convert**: the field is change-management consultancies and content
+  farms, the engine answered it completely with eight pieces of advice, and whoever types it
+  wants a script for a meeting rather than a day in Oxford building a workflow.
+
+---
+
 ## 2026-11-03 (08:00 GMT cycle) - FOUR PROBES, AND THE ONE CITATION IN SEVEN DATED READINGS CAME WITH THE CITY IN THE QUERY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

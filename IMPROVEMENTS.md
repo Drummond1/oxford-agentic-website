@@ -1082,6 +1082,58 @@ Status: `todo` · `blocked` (why) · `doing`
     remedy either changes that destination or removes a nav link. One line from him picks one.
     (Found 3 Nov 2026 in the 09:00 cycle, while sweeping nav and keyboard order.)
 
+63. `todo` (loop-actionable, found 3 Nov 2026 in the 14:00 cycle; **the three derivable ones
+    shipped that cycle, eleven left**) - **eleven sitemap URLs still carry no `lastmod`, and
+    closing them needs something `astro.config.mjs` does not currently have.** After that cycle 44
+    of 55 URLs carry one. The eleven bare ones split cleanly into two different problems:
+    - **`/team/` and the seven profile pages.** They are as content-backed as the 40 guides,
+      events and programmes, except that the `team` collection in `src/content.config.ts` has **no
+      `updatedDate` field at all**, and not one of the seven files carries one. So
+      `contentLastmod()` has nothing to read, and this is not an oversight that closes in a line:
+      it means adding the field to the schema, writing a defensible date into all seven files, and
+      bumping it by hand on every future team edit. **Worth doing** for the reason backlog 2b, 19
+      and 24 all circle: those seven are the `Person` entities all 32 guides declare as `author`
+      and the Organization node names as `founder`, they have **one inbound internal link each**,
+      and they are therefore the pages on this site least likely to be recrawled. Note git cannot
+      supply the dates - CI clones at depth 1, as the `HOMEPAGE_COPY_LASTMOD` comment already
+      records - so the seven dates have to be recorded by hand in the commit that adds the field.
+    - **`/about/`, `/privacy/` and `/testimonials/`.** Template copy with no content file behind
+      them, so each wants a hand-recorded constant, exactly as the homepage has. That is three
+      more things to remember to bump, which is the cost `HOMEPAGE_COPY_LASTMOD` already pays
+      once. **Lowest value of the eleven**: all three change rarely, and a page that genuinely has
+      not changed is the one a missing `lastmod` misrepresents least.
+
+64. `todo` (loop-actionable, found 3 Nov 2026 in the 14:00 cycle; **declined that cycle on the
+    daily FAQ ceiling and not on the evidence - take it next**) - **nothing on the site answers
+    whether you need the task written down before you automate it, and the field that answers it
+    is the thinnest this loop has probed.**
+    - **The probe.** *"do I need a written down process before I automate a task with an AI
+      agent"* returned **seven** results: `help.webex.com` twice (one article, about configuring
+      its own agent builder), `trupeer.ai` three times (the same page in French, Chinese and
+      Polish) and `consultevo.com` twice. Not one institutional publisher and not one platform
+      vendor on its own subject. **Winnable.** **Converting**: the searcher is working out what
+      they must do before they can automate anything, which is the moment before booking a day
+      built on "bring one real task from your own work". The engine hedged its own field twice -
+      *"no law or platform requires a formal written process"* and *"Most of the advice comes from
+      automation consultancies and vendors, so treat it as practitioner opinion rather than
+      settled standards"*.
+    - **The gap is real, and it is a content gap rather than a discovery gap** - the opposite of
+      what 1, 2 and 3 November found. `how-to-choose-your-first-agentic-task` publishes five tests
+      for picking a task and **not one of them is "can you write the steps down"**, and none of
+      the 65 published FAQ questions asks it either.
+    - **The answer is already published, which is why this is one cycle and not a question for
+      Drummond.** The programme page's own body says the day is "built around three build cycles
+      rather than three talks" and that "You get to a rough working pass before the first break",
+      so the honest answer is that you do not need a documented process - you arrive with the task
+      and the shape comes out of the first build cycle. What does get written down is narrower and
+      is also published, in the "Do I need to be technical?" and reviewer answers: "a reviewer
+      that checks against a standard you write down". Any entry must restate those and add no new
+      fact.
+    - **Where it goes:** the Agentic programme page's FAQ block, because the guide is unlinked
+      from commercial pages by the 4 August decision and the guide class is the one the August
+      Search Console baseline says is not being crawled. Full table in
+      `seo-data/geo-citations.md` under 3 Nov 14:00.
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -1113,6 +1165,76 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-03 (14:00 cycle) - three of the site's four listing hubs were telling crawlers nothing
+  about when they last changed, on a domain whose one real index measurement diagnoses crawl
+  budget. One function in `astro.config.mjs`, one file in `dist`. Four GEO probes, zero citations,
+  one real gap recorded rather than written.**
+  - **The defect, measured.** 14 of the 55 URLs in `sitemap-0.xml` carried **no `lastmod` at
+    all**: `/about/`, `/privacy/`, `/testimonials/`, `/team/` and its seven profiles, and the
+    three listing hubs `/events/`, `/guides/` and `/bootcamps/`. `contentLastmod()` builds the map
+    from the guides, programmes and events collections, so every page backed by one content file
+    gets a date and every composed page gets silence. The homepage was carved out of exactly this
+    gap on 24 October, and its own comment records the count at the time - "1 of the 15 URLs in
+    this sitemap with no lastmod at all". The other 14 were left.
+  - **Why three of the fourteen and not all of them.** `lastmod` is the one sitemap field Google
+    states it acts on, and only where it is verifiably accurate, so a value has to be derived from
+    something real rather than stamped from the build. Three of the fourteen can be, because they
+    list content files this file already reads. The other eleven cannot without either a new
+    hand-maintained constant (`/about/`, `/privacy/`, `/testimonials/`) or an `updatedDate` field
+    the `team` collection does not have (`/team/` and the seven profiles). Recorded as **backlog
+    63** rather than guessed.
+  - **What each one now says, checkable by hand against the content files.** `/guides/` takes the
+    newest guide `updatedDate`, **2026-11-02T02:05:00Z**, which is
+    `scout-drafter-reviewer-pattern`. `/bootcamps/` renders the same programme cards as `/`, so it
+    takes the same set and reads **2026-11-03T08:40:00Z**, this morning's 08:00 cycle on
+    `oxford-agentic-bootcamp.md`. `/events/` lists every cohort, past as well as upcoming, so
+    every event's `updatedDate` counts - unlike on the other two, a past-tense rewrite does change
+    this page - and it reads **2026-10-28T01:30:00Z**, the Second Brain Cohort 1 trim. That it is
+    the oldest of the three is the point rather than a problem: nothing about any cohort has
+    changed since.
+  - **The trap, and it was tested rather than reasoned about.** These pages change with no commit
+    behind them - a cohort whose `endDate` passes moves band on the next 03:17 build - so the
+    obvious derivation moves BACKWARDS on exactly the change that moved the page. The homepage
+    already solved that by letting a passed cohort contribute its `endDate`, and rather than copy
+    the awkward half it was extracted into one `programmeCardDates()` that both callers share.
+    Run at four simulated build dates - 3 Nov, 20 Nov, 27 Nov and 1 Mar 2027 - all four URLs move
+    **forward only**: `/events/` reads 28 Oct, then 19 Nov 17:00 once Cohort 3 passes, then 26 Nov
+    17:00 once the Coding Bootcamp does, then holds. `/guides/` holds at 2 Nov throughout, which
+    is right, because a guide does not expire.
+  - **Blast radius measured whole-site: exactly 1 of 199 files in `dist` differs**, and it is
+    `sitemap-0.xml`. Every HTML page, both `llms` files and every OG image is byte-identical. The
+    URL count is unchanged at 55, exactly 3 `lastmod` values changed, all 3 from absent to
+    present, and **`/`'s own value is byte-identical to the baseline** - the assertion that the
+    extraction changed no behaviour.
+  - **Checks.** `npm run build` green before and after: 62 pages built, 64 checked, 3,158 internal
+    links resolve, schema valid, 7 `Event` and 13 `FAQPage` nodes unchanged, all titles and
+    descriptions unique, no SEO warnings. `npm run check:flags` green on the all-on and all-off
+    builds. Headless Chromium over `/events/`, `/guides/` and `/bootcamps/` at **375 and 1280px** -
+    6 configurations, 46 assertions, all passed: HTTP 200, no page errors, no failed local
+    requests, no horizontal overflow, exactly one `h1`, every JSON-LD block parsing in the browser,
+    0 `[data-reveal]` blocks at opacity 0, and the served sitemap carrying 55 URLs and 44 `lastmod`
+    values, every one parseable and none in the future. `reducedMotion: reduce` from the start,
+    per the 2 Nov finding. All six screenshots were read. The 11 outbound warnings are the sandbox
+    egress policy, identical on the baseline.
+  - **A whole-site technical audit ran first and found nothing else to fix.** All 64 built pages:
+    0 canonical mismatches, 0 missing canonicals, 0 noindex pages in the sitemap, 0 indexable
+    pages outside it, 0 titles over 60 characters and 0 descriptions over 160 among the 55
+    indexable pages, every page carrying an `og:image`, and inbound internal links per URL showing
+    no orphan and no thin commercial page - the two on-sale event pages sit at 62 each, with the
+    guides between 5 and 12. That audit is why this cycle's change is a sitemap field: it was the
+    only measurable gap left.
+  - **Honest about the upside.** `lastmod` is a recrawl hint, not a ranking factor, and on a page
+    that rarely changes its main effect is to tell a crawler not to bother - which on a
+    crawl-budget-constrained domain is itself the useful answer. The defensible claim is narrow:
+    three hub pages that carry the site's `CollectionPage` nodes, that are the only route into 32
+    of 55 indexable pages, and one of which is the dated list an engine is asked for by name, now
+    tell a crawler something true instead of nothing. It does not touch backlog 2b, which remains
+    the top ask.
+  - **Nothing else re-pitched.** PR #1 and PR #3 are both still open and both read as the
+    known-stale leftovers already recorded (backlog 20, and the 2 November SEO-loop branch), not
+    as work in flight. PR #3's measurement that a programme edit genuinely does move `/` is what
+    makes this cycle's `/bootcamps/` derivation defensible, so it was used rather than ignored.
 
 - **2026-11-03 (09:00 cycle) - the Back to top button was drawn, announced and unreachable on the
   two pages that take a booking: the sticky booking bar covered it whole on a phone and a tablet.

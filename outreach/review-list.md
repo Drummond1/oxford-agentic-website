@@ -11,6 +11,28 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The eighth dated reading, and the first where the engine named the country we are in and
+  still could not find us. No new target; nothing contacted.** Found 3 Nov 2026 (14:00 cycle).
+  The probe *"where can I learn to build AI agents in person one day course England not online
+  December 2026"* returned no page of ours, and the engine opened ***"I found no in-person,
+  one-day agent-building course in England for December 2026"***, offering a Belgian date as the
+  closest match.
+  - **Read it carefully before treating it as a failure.** **We do not run a December date** -
+    Cohort 3 is 19 November and the Coding Bootcamp 26 November - so being absent from a December
+    query is the true answer, and nothing on the site should change to appear there. What it does
+    corroborate is the split the 3 Nov 08:00 entry located: that probe named **Oxford** and
+    returned us first; this one names **England** and does not. Eight dated readings since 27
+    October now say the same thing, and the only ones that find us are the ones that already know
+    which city to look in.
+  - **Nothing in the field is a new target.** `globalknowledge.com` took ten of the result slots
+    reselling Microsoft and AWS curricula, `london.theaisummit.com` and `cademy.io` are both
+    already recorded here, and Mangates is a competing provider rather than a listing.
+  - **What it needs from Drummond:** nothing new, and that is the point of writing it down. The
+    Eventbrite, UK aggregator and LinkedIn Company Page asks in `outreach/off-page-listings.md`
+    are unchanged and are what close this. A third-party `sameAs` on the Organization node is
+    still the one thing the entity graph lacks. Table in `seo-data/geo-citations.md` under 3 Nov
+    14:00.
+
 - **The seventh dated reading, and the first that cited us - which narrows the standing ask
   rather than closing it. No new target; nothing contacted.** Found 3 Nov 2026 (08:00 cycle).
   The probe *"one day in person agentic AI bootcamp Oxford November 2026 book a place still

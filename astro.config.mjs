@@ -53,18 +53,18 @@ function toDate(value) {
 }
 
 /**
- * `lastmod` for `/`, the one composed page that earns one.
+ * The dates that move a page showing programme cards with each one's next cohort.
  *
- * It is the page every engine probe lands on, everything an engine knows about
- * the November cohorts it reads off that page, and its cached copy has been
- * measured days stale. It was also 1 of the 15 URLs in this sitemap with no
- * lastmod at all, because no single content file backs it.
+ * Shared by `/` and `/bootcamps/`, which both render exactly that: a card per
+ * programme, carrying the next cohort's date. Extracted on 3 Nov 2026 rather
+ * than copied, because the awkward half below is easy to get subtly wrong and
+ * two copies of it would drift.
  *
- * The hard part, found on 24 Oct before this shipped: the homepage changes
- * **without a commit behind it**. A cohort whose `endDate` passes drops out of
- * `isUpcoming` on the next build — the daily 03:17 cron — and the page visibly
- * loses a card. So the obvious derivation, the newest `updatedDate` among the
- * cohorts the page lists, moves BACKWARDS on exactly that change: today it
+ * The hard part, found on 24 Oct: these pages change **without a commit behind
+ * them**. A cohort whose `endDate` passes drops out of `isUpcoming` on the next
+ * build — the daily 03:17 cron — and the page visibly loses a card, or prints a
+ * different next date. So the obvious derivation, the newest `updatedDate`
+ * among the cohorts listed, moves BACKWARDS on exactly that change: today it
  * would read Cohort 3's 18 Oct, and after 19 November it would fall to the
  * Coding cohort's earlier 18 Oct. A lastmod that goes backwards on a page that
  * just changed is worse than none.
@@ -75,15 +75,14 @@ function toDate(value) {
  * cannot fall. Cohort 3 passing on 19 November moves this to 19 November.
  *
  * An event's `updatedDate` counts only while it is upcoming, because that is
- * the only time its card is on the page: Cohort 2's past-tense rewrite on
- * 24 October changed its own page and not this one. The one case this
+ * the only time its card is on these pages: Cohort 2's past-tense rewrite on
+ * 24 October changed its own page and neither of these. The one case this
  * understates is a future cohort being cancelled, which takes a card off the
  * page on a date no input here carries. Understating is the safe direction.
  */
-function homepageLastmod(events, programmes, now = new Date()) {
-  const dates = [new Date(HOMEPAGE_COPY_LASTMOD)];
+function programmeCardDates(events, programmes, now) {
+  const dates = [];
 
-  // "What we run" renders a card per programme, so every programme edit moves it.
   for (const p of programmes) {
     const d = toDate(p.updated);
     if (d) dates.push(d);
@@ -101,7 +100,76 @@ function homepageLastmod(events, programmes, now = new Date()) {
     }
   }
 
-  return new Date(Math.max(...dates.map((d) => d.getTime())));
+  return dates;
+}
+
+const newest = (dates) => new Date(Math.max(...dates.map((d) => d.getTime())));
+
+/**
+ * `lastmod` for `/`, the first composed page to earn one.
+ *
+ * It is the page every engine probe lands on, everything an engine knows about
+ * the November cohorts it reads off that page, and its cached copy has been
+ * measured days stale. It was also 1 of the 15 URLs in this sitemap with no
+ * lastmod at all, because no single content file backs it.
+ */
+function homepageLastmod(events, programmes, now = new Date()) {
+  return newest([
+    new Date(HOMEPAGE_COPY_LASTMOD),
+    // "What we run" renders a card per programme, so every programme edit moves it.
+    ...programmeCardDates(events, programmes, now),
+  ]);
+}
+
+/**
+ * `lastmod` for the three listing hubs, added 3 Nov 2026.
+ *
+ * They were 3 of the 14 URLs left with no lastmod at all, and they are the
+ * three worst to leave silent: `/events/` is the dated list an engine is asked
+ * for by name, `/guides/` is the only route into 32 of the site's 55 indexable
+ * pages, and `/bootcamps/` carries the `CollectionPage` and the only cards that
+ * print each programme's next date. The measured constraint on this domain is
+ * crawl budget (Search Console, 24 Aug: 23 indexed, 16 not), and `lastmod` is
+ * the one sitemap field Google says it acts on — but only where it is
+ * verifiably accurate, which is why each of these is derived from the files the
+ * page actually lists rather than stamped with the build date.
+ *
+ * Each is the newest date among what that page renders, and each is monotonic:
+ *
+ *  - `/guides/` lists every guide, so it is the newest guide `updatedDate`.
+ *  - `/bootcamps/` renders the same programme cards as `/`, so it takes the
+ *    same set, minus the homepage's own copy date.
+ *  - `/events/` lists every cohort, past as well as upcoming, so every event's
+ *    `updatedDate` counts — unlike on the two pages above, a past-tense rewrite
+ *    does change this page. A passed cohort also moves between the two bands,
+ *    on a date no file edit carries, so `endDate` joins the set the same way.
+ *
+ * All three understate rather than overstate: the standfirsts and headings live
+ * in templates, and a template edit moves 55 pages, so claiming it moved only
+ * these would be the same lie in the other direction (same stance as
+ * HOMEPAGE_COPY_LASTMOD above, and the reason `/about/`, `/privacy/`,
+ * `/testimonials/`, `/team/` and the seven profiles are still bare).
+ */
+function listingLastmods(guides, events, programmes, now = new Date()) {
+  const map = new Map();
+
+  const guideDates = guides.filter((g) => !g.draft).map((g) => toDate(g.updated)).filter(Boolean);
+  if (guideDates.length > 0) map.set('/guides/', newest(guideDates));
+
+  const programmeDates = programmeCardDates(events, programmes, now);
+  if (programmeDates.length > 0) map.set('/bootcamps/', newest(programmeDates));
+
+  const eventDates = [];
+  for (const e of events) {
+    if (e.draft) continue;
+    const updated = toDate(e.updated);
+    if (updated) eventDates.push(updated);
+    const end = toDate(e.endDate);
+    if (end && end < now) eventDates.push(end);
+  }
+  if (eventDates.length > 0) map.set('/events/', newest(eventDates));
+
+  return map;
 }
 
 /**
@@ -125,8 +193,9 @@ function contentLastmod() {
   const map = new Map();
   const events = readRecords('src/content/events');
   const programmes = readRecords('src/content/programmes');
+  const guides = readRecords('src/content/guides');
   const collections = [
-    [readRecords('src/content/guides'), '/guides'],
+    [guides, '/guides'],
     [programmes, '/bootcamps'],
     [events, '/events'],
   ];
@@ -141,6 +210,7 @@ function contentLastmod() {
   }
 
   map.set('/', homepageLastmod(events, programmes));
+  for (const [url, date] of listingLastmods(guides, events, programmes)) map.set(url, date);
 
   return map;
 }
