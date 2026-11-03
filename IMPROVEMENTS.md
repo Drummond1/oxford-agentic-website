@@ -1075,6 +1075,105 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-03 (02:00 cycle) - the programme page that sells the Agentic day carried twenty FAQ
+  entries and not one of them asked whether the day covers checking what the agent produces, so
+  our answer to that question was published inside the answer to "Do I need to be technical?".
+  One FAQ entry, one file, one page in `dist`. Four GEO probes, two of them the evidence for
+  this change, two declines, no guide.**
+  - **The defect, and the two probes that found it.** Probe 4 - *"AI training that teaches you
+    to check and review what AI produces not just prompt writing UK in person"* - returned no page
+    of ours and the engine opened ***"The search didn't turn up a clearly named UK in-person course
+    on checking AI output"***, then told the buyer to search by city or ask local colleges. Probe 2
+    - *"who should review work an AI agent produced before it goes to a client"* - returned agency
+    and vendor blogs, two pages served off a `trycloudflare.com` tunnel and a `pages.dev` content
+    farm, with the engine's own caveat ***"mostly vendor and consultant blogs ... practitioner
+    opinion rather than a formal standard"***. **Winnable**: not one institutional publisher on its
+    own subject in either field. **Converting**: one is course-shaped, the other is a consultant
+    deciding a review process. Full tables in `seo-data/geo-citations.md`.
+  - **We already published the answer, in the wrong place.** `oxford-agentic-bootcamp.md` names
+    *"a reviewer that checks"* in its body and in its **"What does 'agentic' actually mean here?"**
+    answer, and the sentence about where workflows break sits inside the answer to **"Do I need to
+    be technical?"**. An engine extracting Q&A pairs therefore attached our answer about checking
+    to a question about whether you need to be technical. This is the class of defect the 1 and 2
+    November cycles shipped against twice: the answer exists, but not as the answer to the question
+    people type.
+  - **Every clause was checked against published copy before it went on**, because an `FAQPage`
+    node raises the cost of a wrong sentence. The three steps are this page's own body and its
+    "agentic" answer; *"where these workflows break, how you would notice and what you constrain so
+    a bad run cannot do damage"* is the technicality answer **verbatim**, so the two cannot drift;
+    *"a clear sense of where the human judgement stays, and where the grunt work goes"* is the third
+    `outcomes` line **verbatim**. *"A standard you write down"* is the site's own published position
+    in two guides - `scout-drafter-reviewer-pattern` ("check against a standard, in writing") and
+    `where-the-human-goes-in-an-agentic-workflow` ("writing down what good looks like ... it is
+    yours to write"). **The answer asserts no price, date, count, capacity, name or agenda timing**,
+    so it touches nothing in backlog 56, and it does not claim the day is a course in reviewing AI
+    output, which it is not - the reviewer is one of three steps.
+  - **Blast radius, measured whole-site.** **Exactly 4 of 199 files in `dist` differ** and two of
+    them only in a date: the programme page, `llms-full.txt` (the new Q&A plus that page's "Last
+    updated" line, nothing else), `sitemap-0.xml` and its roll-up. `/` did **not** move, `/bootcamps/`
+    did not move, `llms.txt` did not move, no guide and no event page moved. On the changed page,
+    **exactly one JSON-LD node changed** - `FAQPage`, from 20 `mainEntity` to 21 - and `Course`,
+    `WebPage`, `Organization`, `WebSite` and `BreadcrumbList` are byte-identical. The shared-`@id`
+    invariant holds: the homepage's `Course` node is still byte-identical to this page's, and the
+    homepage's nodes are byte-identical to the baseline in full.
+  - **Checks.** `npm ci` and `npm run build` clean before and after - **64 pages, 3,158 internal
+    links resolve, schema valid, all titles and descriptions unique, no SEO warnings**. `Event` nodes
+    unchanged at 7 and `FAQPage` **pages** unchanged at 13: this cycle adds an entry, not a node.
+    `npm run check:flags` green on the all-on and all-off builds. The 11 outbound warnings are the
+    sandbox egress policy, identical on the baseline. Headless Chromium over the changed page, `/`,
+    `/bootcamps/` and the Cohort 3 event page at 375 and 1280px - **8 configurations, 78 assertions,
+    all passed**, including HTTP 200, no page errors, no failed local requests, no horizontal
+    overflow, JSON-LD parsing in the browser, 21 visible accordion summaries with no duplicates, the
+    answer text rendering, no em dash and no exclamation mark in it, no figure or price in it, and
+    the three unchanged pages **not** carrying the new question. The FAQ block was screenshotted open
+    at both widths and read. One assertion failed first and the fault was the assertion:
+    `.faq__q span` matches the icon span as well as the question, so it counted 42 where the page has
+    21. **`reducedMotion: "reduce"` on the context was used from the start**, per the 2 Nov finding,
+    and 0 `[data-reveal]` blocks sat at `opacity: 0` on any of the eight runs.
+  - **Recorded honestly: 1 HTML file moved and IndexNow will submit 27 URLs.** A programme edit maps
+    to `/bootcamps/<slug>/`, `/bootcamps/`, `/` and every guide naming it in `relatedProgrammes`,
+    which is 24 of them. The over-approximation is the script's documented behaviour and is correct
+    in principle - a programme's copy does reach its guides' cards - but on this change only the
+    programme page moved. Not a defect and not worth narrowing; recorded so it is not re-derived.
+    `IMPROVEMENTS.md` and `seo-data/` contributed nothing to the mapping, as intended. Verified with
+    `--dry-run` and positional paths; the ping script was not run for real.
+  - **Two probes declined.** The silent-failure question is the right subject in the wrong language:
+    asked the way an engineer asks it, the field is an arXiv paper, AWS Bedrock AgentCore, Telerik's
+    observability SDK and Laminar's trace model - a reader running an agent fleet, not ours. Same
+    failure mode as the 2 Nov portability probe. The client-disclosure question is the Law Society,
+    the Law Gazette, mlex, ICAEW and LexisNexis on their own subject, **and** it is UK regulatory
+    guidance this site has no standing to give - the same reasoning as the 1 Nov
+    confidential-client-work and 2 Nov ICO declines.
+  - **Guides: none published. 0 of 3 for the week of 2-8 Nov.** A new guide on either winning axis
+    would have been a near-duplicate of three we already publish - `where-the-human-goes-in-an-agentic-workflow`,
+    `how-to-notice-when-an-ai-workflow-is-wrong` and `scout-drafter-reviewer-pattern`. **And the
+    `faqFromHeadings` route was considered and rejected on the flag's own contract**: the natural
+    target, `where-the-human-goes-in-an-agentic-workflow`, is an essay whose five headings are
+    statements, and rewriting them into questions to force a node is exactly what *"a few question
+    headings in an essay are not an FAQ"* forbids. Backlog 54 is unchanged at three left.
+  - **A whole-site structural audit ran first and found nothing to fix**, which is why the cycle's
+    work came from the probes. 63 built pages: every page has exactly one `h1` except the two
+    deliberate stubs, **0 images without `alt`, 0 without width and height**, no page deeper than
+    two clicks from `/`, and the only orphans are the five deliberate unlisted pages
+    (`/find-your-bootcamp/`, `/office-hours/`, `/ceo-roundtable/`, `/home-photos/`, `/home-original/`)
+    plus the retired `/team/josh-lawman/` stub - all `noindex`, none in the sitemap, none in either
+    `llms` file, checked individually. Guide inbound prose links run 1 to 8, median 3, with the
+    three segment guides and the glossary at the floor, which is what a leaf segment page should be.
+  - **Off-page: no new contactable lead and nothing added to the review list.** The four probes
+    returned institutional legal and accountancy publishers, vendor blogs, two content farms served
+    off a Cloudflare tunnel, job boards and trainer profiles. None is a credible backlink,
+    partnership or listing target. Nothing contacted.
+  - **A loose end that needs Drummond, and it is costing the loop its memory.** **PR #3**
+    (`seo-loop/2026-11-02-0800-ledger`, opened 2 Nov 08:17) is still open: that cycle's push to
+    `main` was refused, so it parked its ledger entry and its four GEO probes on a branch and
+    reported, correctly. Until it merges, **those four questions are invisible to every later cycle**,
+    which reads `main` - this cycle's dedup set was 346 questions where it should have been 350.
+    No collision this time, checked against the branch by hand, but the next cycle may not be so
+    lucky. **PR #1** (breadcrumb mobile overflow, 26 Sept) is also still open.
+  - **Search Console unavailable from this checkout:** one attempt, `gcloud auth list` reports "No
+    credentialed accounts" and a whole-repo search found no CSV, TSV or spreadsheet export. Nothing
+    estimated. The 30 Oct 05:10 reading stands.
+
 - **2026-11-02 (20:00 cycle) - the dated Oxford venue on the one node engines actually read was
   missing its street and its postcode, because the `CourseInstance` hand-rolled a second, poorer
   copy of an address the same module already builds in full. One line, three files in `dist`, no

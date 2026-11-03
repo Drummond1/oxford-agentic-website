@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-10-31T02:05:15+00:00"
+updatedDate: "2026-11-03T02:20:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -72,6 +72,30 @@ faqs:
       several narrow AI steps handed off to each other in a pipeline: a scout that
       gathers, a drafter that produces, a reviewer that checks. The shift is from
       prompting to orchestrating.
+  # The review half of the pattern this page is built on, published as its own
+  # answer. The page names "a reviewer that checks" in its body and in the
+  # "agentic" answer above, and says where workflows break inside the answer to
+  # "Do I need to be technical?" - a different question, so an engine extracting
+  # Q&A pairs attached our answer about checking to a question about whether you
+  # need to be technical. Two probes on 3 Nov 2026 asked for it directly: an
+  # engine looking for a UK in-person course on checking AI output closed "The
+  # search didn't turn up a clearly named UK in-person course", and one asked who
+  # should review an agent's work before a client sees it returned only vendor and
+  # consultant blogs. Every clause restates copy already on this page: the three
+  # steps are its body and its "agentic" answer, the second sentence is the
+  # technicality answer verbatim so the two cannot drift, and the last is the
+  # third `outcomes` line. "A standard you write down" is the site's own published
+  # position in scout-drafter-reviewer-pattern ("check against a standard, in
+  # writing") and where-the-human-goes-in-an-agentic-workflow. No new claim, and
+  # no price, date, count, capacity, name or agenda timing.
+  - q: Does the day cover checking the work an agent produces?
+    a: >-
+      Yes. The reviewer is one of the three steps you build - a scout that gathers, a
+      drafter that produces, a reviewer that checks against a standard you write down -
+      so the checking is built into the workflow rather than left until the end. Part of
+      the day goes on where these workflows break, how you would notice and what you
+      constrain so a bad run cannot do damage. You leave with a clear sense of where the
+      human judgement stays, and where the grunt work goes.
   - q: What do I need to bring?
     a: >-
       One real task from your own work that currently costs you meaningful time, plus a

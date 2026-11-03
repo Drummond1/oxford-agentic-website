@@ -5,6 +5,56 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-03 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND TWO OF THEM POINTED AT THE SAME MISSING ANSWER
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, each checked against the 346 already in this log on
+`main` before it was put. **Note the dedup set is incomplete**: PR #3 carries the 2 Nov 08:00
+cycle's four questions and has not been merged, so they are invisible from here. None of this
+cycle's four collides with them, checked against the branch by hand.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how do you catch an AI agent quietly getting things wrong when there is no error message | **No** | `arxiv.org`, `aihub.hkuspace.hku.hk` (x2), `aws-news.com`, `telerik.com`, `kaizo.com`, `latitude.so`, `promptzone.com` (x2), `sessionize.com` |
+| who should review work an AI agent produced before it goes to a client | **No** | `automattic.com`, `enterprisedna.co`, `designrush.com`, `agiled.app`, `superthread.com`, `viktor.com`, `justinharris.ai`, `consultevo.com` (x2), `createos-final.pages.dev`, a `trycloudflare.com` tunnel (x2), `theaicareerlab.com`, `theneuralbase.com` |
+| do I need to tell my clients I am using AI on their work UK professional services | **No** | `lawgazette.co.uk` (x2), `mlex.com`, `legalfutures.co.uk`, `icaew.com`, `legalsupportnetwork.co.uk` (LexisNexis), `procopywriters.co.uk` (x3), `eve.legal` (x2), `sterling-law.co.uk`, `financialaccountant.co.uk`, `bcllegal.com`, `9am.works` |
+| AI training that teaches you to check and review what AI produces not just prompt writing UK in person | **No** | `ahaslides.com`, `pictory.ai` (x2), `ico.org.uk`, `spicyadvisory.pages.dev`, `open.edu` (x3), `velt.dev`, `mangoapps.com`, `devlinpeck.com`, `jobteaser.com` (x2, job ads), `opentrain.ai` (x3, profiles) |
+
+**Reading.**
+
+- **Probes 2 and 4 are the same gap from two sides, and they are what this cycle shipped against.**
+  Probe 4's engine opened ***"The search didn't turn up a clearly named UK in-person course on
+  checking AI output"*** and closed by telling the buyer to search by city or ask local colleges
+  and business support services - the same shape as the 1 Nov finance probe that produced a shipped
+  improvement. Probe 2 returned no institutional publisher at all: agency and vendor blogs, two
+  pages served off a `trycloudflare.com` tunnel, a `pages.dev` content farm, and the engine's own
+  caveat, ***"mostly vendor and consultant blogs, so treat them as practitioner opinion rather than
+  a formal standard"***. **Winnable** on the rule's terms in both cases. **Converting** in both: one
+  is a course-shaped query, the other is a consultant working out a process before a client sees
+  agent output.
+- **What the site had, and where it was.** The Agentic programme page names *"a reviewer that
+  checks"* in its body and in its "agentic" answer, and it answers the checking question inside the
+  answer to **"Do I need to be technical?"** - a different question, so a Q&A extractor attached our
+  answer about checking to a question about whether you need to be technical. Twenty FAQ entries on
+  that page and none of them asked it. That is the defect, and it is the same class the 1 and 2 Nov
+  cycles shipped against: the answer was published, but not as the answer to the question people type.
+- **No guide was written and no sentence was reworded.** The new entry restates copy already on that
+  page; see the ledger for the clause-by-clause check.
+- **Probe 1 is the right subject in the wrong language, and it declines.** Written the way an
+  engineer writes it, "silent failures" returns an engineering field - an arXiv paper, AWS Bedrock
+  AgentCore, Telerik's observability SDK, Laminar's trace model, spans and validation layers. That
+  is a reader running an agent fleet in production, not a business leader with one workflow. The same
+  failure mode the 2 Nov 10:00 cycle recorded on the portability question, and the same remedy:
+  re-ask it in buyer language before concluding anything. Our own guide on this
+  (`how-to-notice-when-an-ai-workflow-is-wrong`) is written for the second reader, correctly.
+- **Probe 3 declines on the owned half of the winnability rule, and on standing.** The Law Society,
+  the Law Gazette, mlex, ICAEW and LexisNexis are institutional publishers on their own subject, and
+  the honest answer is UK regulatory guidance this site has no standing to give. Same reasoning as
+  the 1 Nov confidential-client-work decline and the 2 Nov ICO decline. Note for the record: the
+  engine reports Law Society guidance published **October 2026** advising firms to disclose AI use
+  to clients. Not used anywhere on the site, and not verified against the primary source from here.
+
 ## 2026-11-02 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, FIVE DECLINES, AND THE CYCLE'S WORK CAME FROM AN AUDIT INSTEAD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
