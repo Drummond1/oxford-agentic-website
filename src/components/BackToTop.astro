@@ -13,6 +13,14 @@
  * is dismissed once and this is permanent, so the overlap is brief and the
  * alternative — reserving space for a banner most visitors have already
  * dismissed — would leave a gap on every page forever.
+ *
+ * The booking bar is the other way round. It is permanent on the two pages
+ * that take a booking, it lives in the same corner, and at z-index 60 against
+ * this button's 50 it covered the button whole: measured at 375px and 768px on
+ * both on-sale event pages, the arrow sat at 680-724 inside a bar occupying
+ * 673-740, and a press at its centre landed on "Book". So on a phone this
+ * control was drawn, announced and unreachable. It now clears the bar by the
+ * same offset the assistant panel uses.
  */
 ---
 
@@ -157,6 +165,16 @@
      use, pointing the way it will actually travel. */
   .to-top:hover .to-top__arrow {
     transform: translateY(-2px);
+  }
+
+  /* Event pages that are still selling carry a booking bar across the bottom
+     of a phone screen, in this corner and above this button in the stack.
+     Lift clear of it rather than sitting under it. Raising the z-index instead
+     would put a 44px button on top of the Book button, which is worse. */
+  @media (max-width: 48rem) {
+    :global(body.has-sticky-bar) .to-top {
+      inset-block-end: calc(4.25rem + env(safe-area-inset-bottom, 0px) + 0.5rem);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

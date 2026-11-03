@@ -1069,6 +1069,19 @@ Status: `todo` · `blocked` (why) · `doing`
     level statements and add no new fact. One cycle, if a later probe shows the level being
     misread rather than merely unasked.
 
+62. `todo` **(needs Drummond, a nav call that belongs with the one already reserved for him)** -
+    **the mobile menu prints two adjacent links to the same URL.** `getNav` gives the "Bootcamps"
+    parent `href` the flagship programme page in the header (the index only in the footer), and the
+    mobile panel renders the parent and then its three children, so **"Bootcamps"** and **"The
+    Oxford Agentic Bootcamp"** sit one above the other pointing at
+    `/bootcamps/oxford-agentic-bootcamp/`. The desktop dropdown repeats it. A visitor tapping the
+    group label lands on one product rather than the chooser, and `/bootcamps/` - which carries the
+    `CollectionPage`, the `ItemList` and the only cards that print each programme's next date - is
+    reachable from the footer alone. **The loop will not touch it**: the comment on that line says
+    in terms that where "Bootcamps" lands in the header is a funnel decision and his, and the
+    remedy either changes that destination or removes a nav link. One line from him picks one.
+    (Found 3 Nov 2026 in the 09:00 cycle, while sweeping nav and keyboard order.)
+
 54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
     14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
     `FAQPage` node.**
@@ -1100,6 +1113,54 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-03 (09:00 cycle) - the Back to top button was drawn, announced and unreachable on the
+  two pages that take a booking: the sticky booking bar covered it whole on a phone and a tablet.
+  One CSS rule, one component, two pages in `dist`.**
+  - **The defect, measured.** `.to-top` is fixed in the bottom-right corner at `z-index: 50`.
+    `.sticky-bar`, which only the two on-sale event pages carry (`body.has-sticky-bar`, shown at
+    `max-width: 48rem`), is fixed across the bottom at `z-index: 60`. Measured in headless
+    Chromium on both pages at **375px and 768px**: the button occupied **680-724** inside a bar
+    occupying **673-740**, and `document.elementFromPoint` at the button's own centre returned
+    **`a.btn.btn--primary.sticky-bar__cta`** - the Book button - not the arrow. So the control was
+    invisible behind an opaque bar, and a press where it sits landed on "Book". At **1280px** the
+    bar is `display: none` and the button was always fine, which is why eighty-odd cycles of
+    desktop reading never saw it.
+  - **Who it cost.** Both affected pages are the ones selling: Cohort 3 (19 Nov, 16 days out) and
+    the Coding Bootcamp (26 Nov, 23 days out). Both are long - 8,646px and 6,457px at 375px - so
+    the button appears early and stays for most of the scroll. A keyboard user reached it at tab
+    stop 36 and got a focus ring they could not see.
+  - **The fix, and why this one.** `BackToTop.astro` now lifts the button clear of the bar under
+    `48rem`, using the offset `Assistant.astro` already uses for the same collision
+    (`calc(4.25rem + env(safe-area-inset-bottom, 0px) + 0.5rem)`), so the two bottom-corner
+    controls now dodge the bar the same way rather than two ways. Raising `z-index` instead was
+    rejected: it would put a 44px button on top of the Book button.
+  - **Verified before and after on the same pages and widths.** After: the button sits at
+    **620-664** against a bar at **673**, `elementFromPoint` returns `span.to-top__arrow`, and a
+    real Tab press gives `2px solid rgb(212, 175, 55)` at `3px` offset, visible and unobscured.
+    Unchanged where there is no bar: `/` and the programme pages still place it at **680** at
+    375px, and all three pages are byte-identical at 1280px.
+  - **Checks.** `npm run build` green - 3,158 internal links across 64 pages resolve, schema valid,
+    7 `Event` and 13 `FAQPage` nodes unchanged, all titles and descriptions unique. `npm run
+    check:flags` green on the all-on and all-off builds. `astro check` (installed `--no-save`)
+    reports the same **80** pre-existing implicit-`any` errors as the baseline, none in the changed
+    file. The 11 outbound warnings are the sandbox egress policy, identical on the baseline. The
+    whole-site sweep at **320, 375, 768 and 1280px** - horizontal overflow, heading order, single
+    `h1`, duplicate ids, missing alt text, unlabelled controls, nameless links - returns the same
+    zero findings as before the change, and the contrast sweep returns the same single token
+    (backlog 21, bronze `#9A7B23` at 3.83:1, Drummond's call).
+  - **Production could not be read.** The sandbox egress policy answers **403** to CONNECT for
+    `oxfordagentic.com`, as on every cycle since 30 Oct, so the Actions API stood in: Deploy run
+    **success on `9a76c37`**, which is both `origin/main` and the HEAD this cycle started from,
+    nothing queued or in progress. `luma.com` is unreachable the same way, so **no event fact was
+    read or changed**. Before-and-after screenshots are therefore local preview against local
+    preview, at 375, 768 and 1280px.
+  - **Nothing else re-pitched.** PR #1 and PR #3 both read as the known-stale leftovers already
+    recorded (backlog 20, and the 2 Nov SEO-loop branch), not as work in flight.
+  - **Honest about the upside.** Back to top is a convenience, not a booking step; nobody fails to
+    book because of this. The defensible claim is narrow: on the two pages that take money, a
+    control the site publishes now works on the devices most visitors use, and a keyboard user can
+    see where their focus went.
 
 - **2026-11-03 (08:00 cycle) - the day's whole premise is "bring one real task from your own
   work" and no page of the site ever asked which task, so the one place the answer is written is
