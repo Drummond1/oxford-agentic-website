@@ -1082,26 +1082,53 @@ Status: `todo` · `blocked` (why) · `doing`
     remedy either changes that destination or removes a nav link. One line from him picks one.
     (Found 3 Nov 2026 in the 09:00 cycle, while sweeping nav and keyboard order.)
 
-63. `todo` (loop-actionable, found 3 Nov 2026 in the 14:00 cycle; **the three derivable ones
-    shipped that cycle, eleven left**) - **eleven sitemap URLs still carry no `lastmod`, and
-    closing them needs something `astro.config.mjs` does not currently have.** After that cycle 44
-    of 55 URLs carry one. The eleven bare ones split cleanly into two different problems:
-    - **`/team/` and the seven profile pages.** They are as content-backed as the 40 guides,
-      events and programmes, except that the `team` collection in `src/content.config.ts` has **no
-      `updatedDate` field at all**, and not one of the seven files carries one. So
-      `contentLastmod()` has nothing to read, and this is not an oversight that closes in a line:
-      it means adding the field to the schema, writing a defensible date into all seven files, and
-      bumping it by hand on every future team edit. **Worth doing** for the reason backlog 2b, 19
-      and 24 all circle: those seven are the `Person` entities all 32 guides declare as `author`
-      and the Organization node names as `founder`, they have **one inbound internal link each**,
-      and they are therefore the pages on this site least likely to be recrawled. Note git cannot
-      supply the dates - CI clones at depth 1, as the `HOMEPAGE_COPY_LASTMOD` comment already
-      records - so the seven dates have to be recorded by hand in the commit that adds the field.
-    - **`/about/`, `/privacy/` and `/testimonials/`.** Template copy with no content file behind
-      them, so each wants a hand-recorded constant, exactly as the homepage has. That is three
-      more things to remember to bump, which is the cost `HOMEPAGE_COPY_LASTMOD` already pays
-      once. **Lowest value of the eleven**: all three change rarely, and a page that genuinely has
-      not changed is the one a missing `lastmod` misrepresents least.
+63. `half done` 3 Nov 2026 (20:00 cycle) - **the team half shipped, three left.** Found in the
+    14:00 cycle, when eleven sitemap URLs still carried no `lastmod`. 52 of 55 now do. The eleven
+    split into two different problems and only the first is closed:
+    - **`/team/` and the seven profile pages. DONE 3 Nov 2026 (20:00 cycle).** The `team`
+      collection gained a required `updatedDate`, the seven files carry hand-recorded dates read
+      off full git history (`8eeab28`, 18 Oct, for `adam-martin` and `drummond-gilbert`;
+      `53883fa`, 1 Oct, for the other five), and `contentLastmod()` reads the collection. Exactly
+      1 of 199 files in `dist` differs and it is `sitemap-0.xml`; 8 values added, none changed.
+      The warning in this item held and then some: **this cloud checkout arrives shallow too**, at
+      50 commits, where all seven files falsely report the same boundary commit, so the dates had
+      to be read after `git fetch --unshallow`. Original reasoning, kept: those seven are the
+      `Person` entities all 32 guides declare as `author` and the Organization node names as
+      `founder`, they have **one inbound internal link each**, and they are therefore the pages on
+      this site least likely to be recrawled.
+    - **`/about/`, `/privacy/` and `/testimonials/`. STILL OPEN.** Template copy with no content
+      file behind them, so each wants a hand-recorded constant, exactly as the homepage has. That
+      is three more things to remember to bump, which is the cost `HOMEPAGE_COPY_LASTMOD` already
+      pays once. **Lowest value of the eleven**: all three change rarely, and a page that genuinely
+      has not changed is the one a missing `lastmod` misrepresents least. Note that
+      `/testimonials/` has a second thing wrong with it already on this list (backlog 35), so if a
+      cycle opens that file for him, this is cheap to do in the same commit.
+
+65. `todo` (loop-actionable, found 3 Nov 2026 in the 20:00 cycle; **queued behind backlog 64 on
+    the same daily FAQ ceiling - take 64 first, then this**) - **buyers vet the person teaching
+    before they pay, the field that answers them is content farms, and nothing on a commercial
+    page of ours answers it.**
+    - **The probe.** *"what should I check about the person teaching an AI course before I pay for
+      it"* returned sixteen sources and **not one institutional publisher**: two copies of an
+      Analytics Insight listicle, a certification vendor, a dev.to post, a YouTube-transcript
+      scraper, a blogspot checklist, a `pages.dev` safety page, a Reddit snapshot. **Winnable.**
+      **Converting**, and more directly than most - whoever types it has a course in front of them
+      and is deciding whether to pay for it. The engine hedged its own field: ***"Most of these
+      sources are blogs or marketing content, and several are generic"***, and it could not verify
+      two of the statistics it surfaced.
+    - **The field's own first three checks are things we already publish**: is the instructor
+      actively working in the field now, do they use what they teach, can you see their own work.
+      `/team/` publishes exactly that for seven people - *"Seven practitioners who build with these
+      tools daily, rather than commentators on them"* is the page's own standfirst - and `/about/`
+      does it for one. So this is a placement problem, not a content gap: the answer exists on
+      pages an engine barely reaches, and the pages that take the booking never ask the question.
+    - **Any entry must restate what `/team/` and `/about/` already publish and add no new fact.**
+      In particular it must not claim a credential, an accreditation or a University of Oxford
+      affiliation, and it must not name a figure. Note backlog 10 (his bio is unreviewed for
+      `speakers`) and backlog 29 (Jonathan Waddingham has two published former employers) both sit
+      on this surface, so the answer should point at the team page rather than restate anyone's
+      career - which runs into backlog 30, that no FAQ answer can carry a link. Worth weighing
+      whether this one is the argument that finally settles 30.
 
 64. `todo` (loop-actionable, found 3 Nov 2026 in the 14:00 cycle; **declined that cycle on the
     daily FAQ ceiling and not on the evidence - take it next**) - **nothing on the site answers
@@ -1165,6 +1192,111 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-03 (20:00 cycle) - the seven `Person` pages every guide names as its author were the
+  least recrawlable pages on the site and told a crawler nothing about when they last changed.
+  Backlog 63's first half, closed: one schema field, seven content files, one function. Four GEO
+  probes, zero citations, one winnable field recorded rather than written.**
+  - **The defect, measured.** After the 14:00 cycle, 44 of the 55 URLs in `sitemap-0.xml` carried
+    a `lastmod` and **11 did not**. Eight of the eleven were `/team/` and the seven profile pages.
+    They are as content-backed as the 40 guides, events and programmes, except that the `team`
+    collection in `src/content.config.ts` had **no `updatedDate` field at all**, so
+    `contentLastmod()` had nothing to read.
+  - **Why these eight and not the other three.** These are the pages this ledger has three
+    separate times called the weakest part of the site's position: all 32 guides declare `author`
+    as `.../team/drummond-gilbert/#person`, the Organization node names the same `@id` as
+    `founder`, and the 16 Oct census put every profile on **one inbound internal link** against
+    58-59 for every nav page (backlog 24). One route in, on a domain whose only real index
+    measurement diagnoses crawl budget, makes them the pages least likely to be recrawled - and
+    they were the ones saying nothing. `/about/`, `/privacy/` and `/testimonials/` are left,
+    because each needs a hand-recorded constant and all three change rarely, which is the case a
+    missing `lastmod` misrepresents least. Backlog 63 now reads three left, not eleven.
+  - **Where the seven dates came from, and why that is not a guess.** The item warned that git
+    could not supply them because CI clones at depth 1 - and this checkout arrives shallow too, at
+    50 commits, where all seven files falsely report the same boundary commit. Unshallowed to 326
+    commits, each file's real history is legible and each date is **the commit that last changed
+    that file's published copy**: `8eeab28` (18 Oct, curly apostrophes in the bio) for
+    `adam-martin` and `drummond-gilbert`, `53883fa` (1 Oct, the Second Brain team and the approved
+    headshots, which added `programmes`, `photo` and `photoAlt` to the five existing files) for
+    the other five. Both diffs were read before the dates were written down. They are now
+    hand-recorded in the frontmatter, exactly as `HOMEPAGE_COPY_LASTMOD` is, and have to be bumped
+    by hand from here.
+  - **Required, not optional, and the contract was tested.** The field is `isoDateTime` like the
+    other three collections, so a new profile cannot ship silently absent from the signal.
+    Verified by deleting it from `glenn-smith.md`: the build fails with
+    `[InvalidContentEntryDataError] team → glenn-smith ... updatedDate ... Required`.
+  - **What the sitemap now says, checkable by hand against the files.** `/team/adam-martin/` and
+    `/team/drummond-gilbert/` read **2026-10-18T08:23:27Z**; the other five read
+    **2026-10-01T05:54:03Z**; `/team/` prints a card per person carrying their name, role and the
+    opening of their bio, so it is the newest of the seven and reads **2026-10-18T08:23:27Z**.
+  - **Monotonicity, which is what sank the first draft of the 14:00 cycle.** `/team/` is the
+    simplest of the four hubs and the only one with no time-based term: nobody drops off this page
+    on a date, so unlike `/events/` and `/bootcamps/` the set cannot change on a build with no
+    commit behind it, and the trap those two had to be written around does not exist here. The one
+    way it can still fall is **someone leaving the team**, since deleting the newest file lowers
+    the maximum - but that is a commit, whoever makes it can bump another date in it, and
+    `/guides/` has carried the same property since it was added. The code comment says exactly
+    this rather than claiming it cannot fall.
+  - **One hardening, one line.** `readRecords()` now applies the same `* [0-9].md` exclusion as
+    `MARKDOWN` in `src/content.config.ts`. That guard exists because this checkout has carried
+    three such duplicates before now (STATE.md, 30 Oct) and a stale one would have supplied a date
+    for a file that is not in the collection. Tested by planting
+    `drummond-gilbert 2.md` dated 1 Jan 2027 and rebuilding: the sitemap came back
+    **byte-identical**. The file was removed and `git status` re-checked.
+  - **Blast radius measured whole-site: exactly 1 of 199 files in `dist` differs**, and it is
+    `sitemap-0.xml`. Every HTML page - the eight team pages included - both `llms` files, every OG
+    image and `sitemap-index.xml` are byte-identical. The URL count is unchanged at 55, exactly
+    **8 `lastmod` values changed, all 8 from absent to present**, and **not one existing value
+    moved**. 44 becomes 52. Worth recording against the comment in `indexnow-ping.mjs`, which says
+    editing team frontmatter moves the profile page and `/team/`: it does not when the field is
+    one nothing renders, which is the evidence that this date stays invisible to readers.
+  - **Checks.** `npm run build` green before and after: 64 pages checked, 3,158 internal links
+    resolve, schema valid, 7 `Event` and 13 `FAQPage` nodes unchanged, all titles and descriptions
+    unique, no SEO warnings. `npm run check:flags` green on the all-on and all-off builds - the
+    eight URLs are flag-gated, so with `features.team` off they leave the sitemap and the new map
+    entries are simply never read. Headless Chromium over `/team/` and three profiles at **375 and
+    1280px** - 8 configurations, **75 assertions, all passed**: HTTP 200, no page errors, no failed
+    local requests, no horizontal overflow, exactly one `h1`, every JSON-LD block parsing in the
+    browser with its `Person` node present, 0 `[data-reveal]` blocks at opacity 0, and an explicit
+    assertion that **no page prints an "Updated" line**, since this date must never reach a reader.
+    The served sitemap was re-read over HTTP: 55 URLs, 52 `lastmod`, none in the future, `/team/`
+    carrying the expected value. `reducedMotion: reduce` from the start, per the 2 Nov finding.
+    Four of the eight screenshots were read; the other four are covered by the stronger assertion
+    that every team page's HTML is byte-identical to the baseline.
+  - **Recorded honestly.** `astro.config.mjs` and `src/content.config.ts` both hit
+    `indexnow-ping.mjs`'s template-change catch-all, so this push submits all 55 sitemap URLs where
+    1 `dist` file moved. The over-approximation is correct in principle and unusually defensible
+    here, since the change is to the sitemap itself. The ping script was not run.
+  - **Honest about the upside.** `lastmod` is a recrawl hint, not a ranking factor, and on a page
+    that rarely changes its main effect is to tell a crawler not to bother - which on a
+    crawl-budget-constrained domain is itself the useful answer. The defensible claim is narrow:
+    eight URLs that are the `Person` entities this site's own JSON-LD leans on, and the pages with
+    the fewest routes in, now tell a crawler something true instead of nothing. It does not touch
+    backlog 2b, which remains the top ask.
+  - **Four GEO probes, zero citations.** *"What should I check about the person teaching an AI
+    course before I pay for it"* is the finding and it points straight at the pages this cycle
+    changed: sixteen sources, not one institutional publisher, and the field's own first three
+    checks - is the instructor working in the field now, do they use what they teach, can you see
+    their own work - are what `/team/` publishes for seven people. Winnable and converting, and
+    **not written**, because two FAQ entries shipped today already and backlog 64 is queued ahead
+    of it on the same ceiling. Recorded as **backlog 65**. Three declines, each on its own
+    evidence: the broken-agent question is a technical support query answered by Cursor, Replit
+    and n8n forums; the build-not-demos question is General Assembly at £2,500 for people with
+    Python plus two universities on their own subject; the vendor lock-in question is winnable
+    over vendor blogs and does not convert, because the honest answer is adapter layers and
+    regression evals, an engineering brief this site has no standing to give. Full table in
+    `seo-data/geo-citations.md` under 3 Nov 20:00.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.** Backlog 54 unchanged at three left. No new
+    off-page target; nothing contacted. The ninth dated reading in a row corroborates the standing
+    split and is recorded in `outreach/review-list.md`.
+  - **Search Console unavailable from this checkout**, as on every cycle: no export newer than the
+    24 August baseline exists anywhere in `seo-data/`. Nothing estimated. **Production:** deploy
+    run **349 success on `491b577`**, which is both `origin/main` and the HEAD this cycle started
+    from, nothing queued or in progress. `oxfordagentic.com` is refused on CONNECT from this
+    sandbox, so the Actions API stood in for `build.txt`; `luma.com` is unreachable the same way,
+    so **no event fact was read or changed** and the repo was treated as the authority over the
+    prompt's stale event facts. PR #1 and PR #3 are both still open and both read as the
+    known-stale leftovers already recorded.
 
 - **2026-11-03 (14:00 cycle) - three of the site's four listing hubs were telling crawlers nothing
   about when they last changed, on a domain whose one real index measurement diagnoses crawl

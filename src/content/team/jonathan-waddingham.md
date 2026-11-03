@@ -1,6 +1,7 @@
 ---
 name: Jonathan Waddingham
 slug: jonathan-waddingham
+updatedDate: "2026-10-01T06:54:03+01:00"
 role: Product consultant
 order: 4
 programmes: ['oxford-agentic-bootcamp']

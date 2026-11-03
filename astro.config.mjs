@@ -31,7 +31,12 @@ function readRecords(dir) {
 
   return fs
     .readdirSync(abs)
-    .filter((f) => f.endsWith('.md'))
+    // The same exclusion as `MARKDOWN` in `src/content.config.ts`: a local
+    // duplicate such as "adam-martin 2.md" is not in the collection, so it must
+    // not supply a date here either. In CI those files do not exist, so this
+    // only ever protects local verification — the reason it is there at all is
+    // that this checkout has carried three of them before now.
+    .filter((f) => f.endsWith('.md') && !/ [0-9]\.md$/.test(f))
     .map((file) => {
       const raw = fs.readFileSync(path.join(abs, file), 'utf8');
       const field = (name) =>
@@ -122,10 +127,11 @@ function homepageLastmod(events, programmes, now = new Date()) {
 }
 
 /**
- * `lastmod` for the three listing hubs, added 3 Nov 2026.
+ * `lastmod` for the four listing hubs. Three added 3 Nov 2026, `/team/` later
+ * the same day.
  *
- * They were 3 of the 14 URLs left with no lastmod at all, and they are the
- * three worst to leave silent: `/events/` is the dated list an engine is asked
+ * The first three were 3 of the 14 URLs left with no lastmod at all, and they
+ * are the three worst to leave silent: `/events/` is the dated list an engine is asked
  * for by name, `/guides/` is the only route into 32 of the site's 55 indexable
  * pages, and `/bootcamps/` carries the `CollectionPage` and the only cards that
  * print each programme's next date. The measured constraint on this domain is
@@ -143,14 +149,24 @@ function homepageLastmod(events, programmes, now = new Date()) {
  *    `updatedDate` counts — unlike on the two pages above, a past-tense rewrite
  *    does change this page. A passed cohort also moves between the two bands,
  *    on a date no file edit carries, so `endDate` joins the set the same way.
+ *  - `/team/` prints a card per person carrying their name, role and the
+ *    opening of their bio, so it is the newest `updatedDate` among the seven.
+ *    It is the simplest of the four and the only one with no time-based term:
+ *    nobody drops off this page on a date, so unlike `/events/` and
+ *    `/bootcamps/` this set cannot change on a build with no commit behind it,
+ *    which is the whole of the trap those two had to be written around. The one
+ *    way it can still fall is someone **leaving** the team, since deleting the
+ *    newest file lowers the maximum — but that is a commit, so whoever makes it
+ *    can bump another date in it, and `/guides/` has carried the same property
+ *    since it was added.
  *
- * All three understate rather than overstate: the standfirsts and headings live
+ * All four understate rather than overstate: the standfirsts and headings live
  * in templates, and a template edit moves 55 pages, so claiming it moved only
  * these would be the same lie in the other direction (same stance as
- * HOMEPAGE_COPY_LASTMOD above, and the reason `/about/`, `/privacy/`,
- * `/testimonials/`, `/team/` and the seven profiles are still bare).
+ * HOMEPAGE_COPY_LASTMOD above, and the reason `/about/`, `/privacy/` and
+ * `/testimonials/` are still bare).
  */
-function listingLastmods(guides, events, programmes, now = new Date()) {
+function listingLastmods(guides, events, programmes, team, now = new Date()) {
   const map = new Map();
 
   const guideDates = guides.filter((g) => !g.draft).map((g) => toDate(g.updated)).filter(Boolean);
@@ -168,6 +184,9 @@ function listingLastmods(guides, events, programmes, now = new Date()) {
     if (end && end < now) eventDates.push(end);
   }
   if (eventDates.length > 0) map.set('/events/', newest(eventDates));
+
+  const teamDates = team.map((m) => toDate(m.updated)).filter(Boolean);
+  if (teamDates.length > 0) map.set('/team/', newest(teamDates));
 
   return map;
 }
@@ -194,10 +213,15 @@ function contentLastmod() {
   const events = readRecords('src/content/events');
   const programmes = readRecords('src/content/programmes');
   const guides = readRecords('src/content/guides');
+  const team = readRecords('src/content/team');
   const collections = [
     [guides, '/guides'],
     [programmes, '/bootcamps'],
     [events, '/events'],
+    // The `team` collection gained `updatedDate` on 3 Nov 2026 for exactly
+    // this. These eight URLs are flag-gated, so when `features.team` is off
+    // they are not in the sitemap and these entries are simply never read.
+    [team, '/team'],
   ];
 
   for (const [records, urlPrefix] of collections) {
@@ -210,7 +234,7 @@ function contentLastmod() {
   }
 
   map.set('/', homepageLastmod(events, programmes));
-  for (const [url, date] of listingLastmods(guides, events, programmes)) map.set(url, date);
+  for (const [url, date] of listingLastmods(guides, events, programmes, team)) map.set(url, date);
 
   return map;
 }

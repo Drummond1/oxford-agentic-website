@@ -1,6 +1,7 @@
 ---
 name: Nicolai Thomson
 slug: nicolai-thomson
+updatedDate: "2026-10-01T06:54:03+01:00"
 role: Founder
 company: Jenesys AI
 order: 2

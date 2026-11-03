@@ -289,6 +289,27 @@ const team = defineCollection({
       /** Set true for the canonical host, which drives Person schema on /about/. */
       isHost: z.boolean().default(false),
       order: z.number().int().default(0),
+      /**
+       * Hand-recorded, and **bumped in the same commit whenever this file's
+       * published copy changes.** Added 3 Nov 2026.
+       *
+       * Unlike the other three collections, this date is never shown to a
+       * reader: the profile pages carry no byline. It exists for the sitemap.
+       * `/team/` and the seven profiles were 8 of the 11 URLs still carrying no
+       * `lastmod` at all, and they are the pages here least likely to be
+       * recrawled — one inbound internal link each, on a domain whose only real
+       * index measurement diagnoses crawl budget — while being the `Person`
+       * entities all 32 guides declare as `author` and the Organization node
+       * names as `founder`.
+       *
+       * Required rather than optional, like the other three, so a new profile
+       * cannot ship silently absent from that signal. git cannot supply the
+       * date instead: CI clones at depth 1, as `HOMEPAGE_COPY_LASTMOD` in
+       * `astro.config.mjs` already records. The seven initial values are each
+       * the commit that last changed that file's published copy, read from full
+       * history and written down here.
+       */
+      updatedDate: isoDateTime,
     }),
 });
 

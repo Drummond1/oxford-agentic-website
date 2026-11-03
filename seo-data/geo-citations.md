@@ -5,6 +5,61 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-03 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ONE WINNABLE FIELD THAT POINTS AT THE PAGES THIS CYCLE FIXED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four rotating buyer questions, checked against the 517 rows already in this log on
+`main`. None collides: the nearest misses were checked by hand and are different questions -
+"how many hours a week does it take to maintain an AI agent workflow once it is built",
+"who maintains an AI agent workflow after it is built ... when the person who built it leaves",
+"how many people should be in the room at a hands-on AI workshop" and
+"difference between an AI agent and a Zapier or n8n automation".
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| the AI agent I built stopped working on my own computer after the workshop how do I fix it | **No** | `community.vercel.com`, `replit.discourse.group`, `forum.cursor.com` (x4), `community.n8n.io`, `servicenow.com` (x3), `discuss.ai.google.dev` (x2), `ipcamtalk.com` (x2), `dev.to`, `febooti.com` (x2), `itch.io` |
+| what should I check about the person teaching an AI course before I pay for it | **No** | `analyticsinsight.net` (x2), `aicerts.ai`, `dev.to`, `glasp.co`, `gptprompts.ai`, `totalreviewcomparision.blogspot.com`, `marketingeye.com.au`, `bootcampdigital.com`, `orhanergun.net`, `institutepm.com`, `umatechnology.org`, `learnaifast.io`, `promptquorum.com`, `wilmerhurtado.com`, a `pages.dev` safety site, a Reddit snapshot |
+| is there an AI course in the UK where you build something instead of watching demos | **No** | `generalassemb.ly` (x3), `shu.ac.uk` (x3), `edoxi.com` (x2), `learndirect.com` (x2), `chi.ac.uk`, `sprintzeal.com`, `digitalregenesys.com`, a `vercel.app` course site |
+| if my company changes AI provider will the agent workflow I built still work lock-in | **No** | `gravitee.io` (x3, plus a `geosurge.ai` mirror of one), `mindstudio.ai`, `mintmcp.com`, `masterofcode.com` |
+
+**Reading.**
+
+- **Probe 2 is the finding, and it lands on the pages this cycle changed.** Sixteen sources and
+  not one institutional publisher: two copies of an Analytics Insight listicle, a certification
+  vendor, a dev.to post, a YouTube-transcript scraper, a blogspot checklist, a `pages.dev` safety
+  page and a Reddit snapshot. **Winnable.** And **converting** - whoever types it has a course in
+  front of them and is deciding whether to pay. The field's own answer is a checklist whose first
+  three items are *is the instructor actively working in the field now*, *do they use what they
+  teach*, and *can you see their own work* - which is what `/team/` publishes for seven people and
+  what `/about/` publishes for one. The engine's own caveat is the quality gap: ***"Most of these
+  sources are blogs or marketing content, and several are generic"***, and it could not verify two
+  of the statistics it found. **Not written this cycle**: the right home is an FAQ answer, two FAQ
+  entries already shipped today at 02:00 and 08:00, and **backlog 64 is already queued ahead of
+  it** on the same ceiling. Recorded as **backlog 65**.
+- **It is also the clearest buyer-side argument yet for backlog 24 and 63.** Those seven profile
+  pages are the pages a vetting buyer wants, they carry one inbound internal link each, and until
+  this cycle they told a crawler nothing about when they last changed. That is why this cycle's
+  change is the one it is.
+- **Probe 1 is a miss and correctly so - it is not our buyer.** The field read it as a technical
+  support question and answered with Cursor, Replit, n8n and ServiceNow forum threads about
+  agent builders breaking after an update. Whoever types that sentence has a stack trace, not a
+  seat to book. **Neither winnable in that form nor converting.** Declined.
+- **Probe 3 is winnable only by someone selling a different day.** The field is General Assembly
+  at £2,500 for people with *"solid Python skills"*, two universities on their own subject
+  (Sheffield Hallam's MSc, Chichester), and three training resellers. Institutional publishers on
+  their own subject is the rule's own case, and the engine answered with project lists built of
+  sentiment analysers and computer-vision classifiers - a career-changer, not a leader bringing
+  one real task. **Declined on both halves.** Worth noting for the ninth dated reading in a row:
+  the query named **the UK** and not Oxford, and we were not reachable. Same split, backlog 2b.
+- **Probe 4 is winnable and does not convert.** The whole field is vendor blogs on their own
+  products - Gravitee three times plus a mirror, MindStudio, MintMCP, Master of Code - and the
+  engine flagged them itself: ***"mostly vendor blogs that promote their own products, so treat
+  their specific claims as opinion"***. But the honest answer is adapter layers, versioned prompts
+  and regression evals across providers, which is an engineering brief this site has no standing
+  to give and which the searcher - an architect, not a buyer - would be right to want from someone
+  who does. **Declined.**
+
 ## 2026-11-03 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE THINNEST FIELD THIS LOG HAS RECORDED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

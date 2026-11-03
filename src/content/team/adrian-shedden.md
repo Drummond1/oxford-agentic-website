@@ -1,6 +1,7 @@
 ---
 name: Adrian Shedden
 slug: adrian-shedden
+updatedDate: "2026-10-01T06:54:03+01:00"
 role: Founder
 company: Accelerated Impact Ops
 order: 5

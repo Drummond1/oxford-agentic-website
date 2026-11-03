@@ -1,6 +1,7 @@
 ---
 name: Adam Martin
 slug: adam-martin
+updatedDate: "2026-10-18T08:23:27+00:00"
 role: Founding CTO
 order: 7
 programmes: ['second-brain-bootcamp']

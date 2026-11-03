@@ -1,6 +1,7 @@
 ---
 name: Drummond Gilbert
 slug: drummond-gilbert
+updatedDate: "2026-10-18T08:23:27+00:00"
 role: Founder and host
 company: Oxford Agentic
 isHost: true

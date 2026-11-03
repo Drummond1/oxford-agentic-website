@@ -1,6 +1,7 @@
 ---
 name: Glenn Smith
 slug: glenn-smith
+updatedDate: "2026-10-01T06:54:03+01:00"
 role: Founder
 company: GenieOS
 order: 6

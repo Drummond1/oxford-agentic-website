@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The ninth dated reading in a row, and a second kind of corroboration for the LinkedIn
+  Company Page. No new target; nothing contacted.** Found 3 Nov 2026 (20:00 cycle).
+  - **The split held again.** *"is there an AI course in the UK where you build something instead
+    of watching demos"* named **the UK** and not Oxford, returned no page of ours, and was
+    answered with General Assembly's London course at £2,500 for people with *"solid Python
+    skills"*, Sheffield Hallam's MSc, Chichester, and three training resellers. Nine dated
+    readings since 27 October now say the same thing: the probes that find us are the ones that
+    already know to look in Oxford. Nothing on the page fixes that.
+  - **The new part is why it matters commercially.** A second probe the same cycle - *"what should
+    I check about the person teaching an AI course before I pay for it"* - returned a field of
+    content farms whose first three checks are whether the instructor is working in the field now,
+    whether they use what they teach, and whether you can see their own work. A buyer who runs
+    that checklist against us finds `/team/` and `/about/` and then has **nowhere external to
+    corroborate the organisation**, because `Organization.sameAs` is still empty. Five of the seven
+    people each corroborate to a real external profile; the company does not. That is the existing
+    LinkedIn Company Page target in `off-page-listings.md`, now with a buyer-behaviour argument
+    behind it rather than only a schema one. **No new target is proposed and nothing was
+    contacted.**
+
 - **The eighth dated reading, and the first where the engine named the country we are in and
   still could not find us. No new target; nothing contacted.** Found 3 Nov 2026 (14:00 cycle).
   The probe *"where can I learn to build AI agents in person one day course England not online
