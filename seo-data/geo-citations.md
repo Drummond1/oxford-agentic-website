@@ -5,6 +5,67 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-04 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. THE BACKLOG 65 RE-PROBE HELD, AND POINTED AT A BETTER PAGE THAN THE ONE IT NAMED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions: one deliberate re-probe of backlog 65, two new ones, and one
+dated off-page reading on the product line that has had the fewest.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **re-probe (backlog 65):** what should I check about the person teaching an AI course before I pay for it | **No** | `analyticsinsight.net`, `academygems.com` (x2), `aiadvisoryboard.me`, `bizzuka.com`, `takeaicourse.com`, `aicerts.ai`, `palife.co.uk`, `ineswrites.substack.com` |
+| will the AI tools taught on a course still be the right ones in six months, how do you avoid learning a tool that gets replaced | **No** | `digitalcloud.training`, `jarroba.com`, `fastcompany.com`, `eff.org`, `theaienterprise.io`, `ai-seals.com`, `dev.to` (x2), `aiunpacked.substack.com` |
+| I booked an AI workshop, what should I do in the week after so the workflow I built does not get abandoned | **No** | `netrixglobal.com`, `aisfy.ai`, `wecallshotgun.com`, `ai-beavers.com`, `sfailabs.com`, `pertamapartners.com`, `aismartventures.com` (x3), `bbehmermedia.com` |
+| one day course for non-developers to build software with AI coding tools UK November 2026 in person | **No** | `learningtree.com`, `nobleprog.co.uk` (x2), `nobleprog.com`, `mediatraining.ltd.uk`, `thecodersguild.org.uk`, `theknowledgeacademy.com`, `iact.ie`, `edifai.co.uk`, `maven.com` |
+
+**Reading.**
+
+- **Probe 1 held on a second day, and the field is the same one backlog 65 recorded.** Nine
+  sources, **not one institutional publisher**: a listicle, a vetting-checklist blog served twice,
+  a certification vendor, a consultancy, a Substack essay, a UK office-life magazine. **Winnable.**
+  **Converting**, and directly - whoever types it has a course in front of them and is deciding
+  whether to pay. The engine hedged its own field: ***"Most guidance on this comes from
+  marketing-adjacent blogs, so treat it as a checklist rather than authoritative advice"***. The
+  field's own first checks are **does the instructor actually work in the field**, **can you
+  verify their background independently** and **are they current** - and the one answer it would
+  not let us give is the fourth, *"check whether the provider has ties to recognized certification
+  bodies"*, which on this site is silence by standing decision (no certificate either way, no
+  accreditation, no University of Oxford affiliation).
+- **Probe 1 pointed at a different page from the one backlog 65 named, and that is what shipped.**
+  The item proposed an entry on the Agentic programme page. Measured this cycle, that page and the
+  Coding page each already publish a **"Who runs it?"** answer naming people and roles, and the
+  **Second Brain** programme page and its Cohort 1 event page **name nobody at all** in visible
+  copy - "Drummond Gilbert" reaches both only inside the Organization JSON-LD, which is word for
+  word the fault the Agentic line carried before its own answer was written. So the highest-value
+  version of backlog 65 was not a 24th entry four places from an existing one, but the first
+  naming of anybody on the one line that had none. Shipped as that page's 15th FAQ entry.
+- **Probe 2 was read by the engine as a different question and is recorded as off-target, not as
+  a field.** It was aimed at the tool-churn tail of `scout-drafter-reviewer-pattern` (backlog 57).
+  What came back is career advice about **not being replaced by AI** - Fast Company, the EFF's
+  opt-out page, two dev.to posts - with the engine saying outright that it ***"didn't turn up
+  anything that predicts which specific AI tools will still be around in six months"***. That
+  guide is in any case **already opted into `faqFromHeadings` and already emits its three leaf
+  `h3`s as a node**, verified on the built site this cycle, so there is nothing to opt in.
+  Re-phrase before treating this as evidence either way.
+- **Probe 3 declined on the converting half of the rule.** The field is entirely vendor and
+  consultancy blogs with no institutional publisher, so winnable, and the engine flagged its own
+  sources (***"most of these sources are vendor blogs with commercial interests, and the specific
+  adoption percentages they cite are self-reported and unverified"***). But the searcher **has
+  already booked**: this is post-purchase, and the site already publishes
+  `after-the-ai-executive-programme` on exactly it. Nothing to add.
+- **Probe 4 is the eleventh dated reading since 27 October and the first on the Coding line.** It
+  describes that bootcamp in a buyer's words - one day, non-developers, AI coding tools, UK, in
+  person, November 2026 - and **Cohort 1 on 26 November at Worcester College sits inside every
+  term of it**. No page of ours appeared. What differs from the 02:00 reading is the **shape of
+  the field**: that one was filled by aggregators, this one by **course vendors' own listing
+  pages** (Learning Tree, NobleProg twice, The Knowledge Academy, IACT, Media Training, Maven),
+  several of which publish a date and a venue exactly as our event page does. The engine could not
+  confirm a November date for any of them and closed by telling the buyer to ***"contact the
+  providers directly"***. A provider whose own listing is not retrieved cannot be contacted, which
+  is backlog 2b in its plainest form: no external links, crawl budget, and `Organization.sameAs`
+  still empty. No new target, nothing contacted; recorded in `outreach/review-list.md`.
+
 ## 2026-11-04 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. THE RE-PROBE HELD AND SHIPPED; THE DATED ONE IS THE SHARPEST MISS YET
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

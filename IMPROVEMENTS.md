@@ -1104,8 +1104,19 @@ Status: `todo` · `blocked` (why) · `doing`
       `/testimonials/` has a second thing wrong with it already on this list (backlog 35), so if a
       cycle opens that file for him, this is cheap to do in the same commit.
 
-65. `todo` (loop-actionable, found 3 Nov 2026 in the 20:00 cycle; **backlog 64 shipped on 4 Nov
-    at 02:00, so this is now first in the queue - it is next, subject to its own re-probe**) - **buyers vet the person teaching
+65. `done 4 Nov 2026 (08:00 cycle), on a different page from the one this item named.` The
+    re-probe held - same thin field, no institutional publisher, engine hedging its own sources -
+    and then the measurement moved the placement. This item proposed an entry on the **Agentic**
+    programme page. That page and the Coding page each already publish a **"Who runs it?"** answer
+    naming people and roles; the **Second Brain** programme page and its Cohort 1 event page named
+    **nobody at all** in visible copy, with "Drummond Gilbert" reaching both only inside the
+    Organization JSON-LD - word for word the fault the Agentic line carried before its own answer
+    was written. So the highest-value version of this item was not a 24th entry four places from
+    an existing one, but the first naming of anybody on the one line that had none. Shipped as
+    that page's 15th FAQ entry, restating the four `src/content/team/` files tagged to the
+    programme and `/team/`'s own subline, adding no new fact, naming no credential or
+    accreditation and carrying no number. (Original entry:)
+    (loop-actionable, found 3 Nov 2026 in the 20:00 cycle) - **buyers vet the person teaching
     before they pay, the field that answers them is content farms, and nothing on a commercial
     page of ours answers it.**
     - **The probe.** *"what should I check about the person teaching an AI course before I pay for
@@ -1196,6 +1207,116 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-04 (08:00 cycle) - two of the three product lines tell a buyer who runs the day. The
+  third named nobody at all, on the page that sells it and on its event page. Backlog 65 closed,
+  on a different page from the one it named: one FAQ entry, one content file. Four GEO probes,
+  zero citations, and the eleventh dated miss, this one on the Coding line.**
+  - **The defect, measured on the built site rather than read off the files.** Counting visible
+    occurrences in `dist`, `/bootcamps/second-brain-bootcamp/` and
+    `/events/oxford-second-brain-bootcamp-cohort-1/` contain **zero** instances of Adam Martin,
+    Adrian Shedden or Glenn Smith, and the single occurrence of "Drummond Gilbert" on each is
+    inside the Organization JSON-LD's `founder` property, not in any copy a reader sees. The
+    Agentic programme page and the Coding programme page each carry a **"Who runs it?"** FAQ
+    answer; the Second Brain page's 14 entries did not include one. **It is word for word the
+    fault the ledger recorded when that answer was added to the Agentic line** - "whose pages
+    named nobody in visible copy at all - 'Drummond Gilbert' reached this page only inside the
+    Organization JSON-LD" - and the same fix.
+  - **Why it is a defect rather than a missing nicety.** This cycle's re-probe of backlog 65
+    (*"what should I check about the person teaching an AI course before I pay for it"*) returned
+    nine sources and **not one institutional publisher**, with the engine hedging its own field
+    (***"Most guidance on this comes from marketing-adjacent blogs, so treat it as a checklist
+    rather than authoritative advice"***). Its first three checks are **does the instructor
+    actually work in the field**, **can you verify their background independently** and **are they
+    current**. `/team/` publishes exactly that, for seven people. The Second Brain line's
+    commercial pages published none of it, and `/team/` is the page the 16 Oct census put on one
+    inbound internal link per profile.
+  - **Backlog 65 named the wrong page, and saying so is the finding.** It proposed the Agentic
+    programme page, which already has the answer and which took an FAQ entry six hours earlier at
+    02:00. A 24th entry four places from an existing "Who runs it?" would have been a
+    near-duplicate on the page with the most entries on the site. The measurement above moved it
+    to the page with none.
+  - **Every clause restates something already published, and the drift is designed out.** The
+    opening clause is the Agentic answer's wording **verbatim**, so the three lines cannot drift.
+    The role format follows it: Adrian Shedden (founder, Accelerated Impact Ops) and Glenn Smith
+    (founder, GenieOS) are their files' `role` and `company`; **Adam Martin carries no company
+    because his file publishes none**. The closing clause is `/team/`'s own subline
+    ("practitioners who build with these tools daily, rather than commentators on them. Each runs
+    part of a day") and this page's own "Who is it not for?" answer ("this is a build day, not a
+    briefing"). **No count**, because the group size on this line is "small" and never a number
+    (Drummond, 13 Sept) - and a facilitator count would read as one. **Nothing about certificates,
+    accreditation or any University of Oxford affiliation**, which this cycle's field asked for as
+    its fourth check and which is silence by standing decision. Asserted in the browser: **zero
+    digits in the entry**, no em dash, no straight apostrophe, no exclamation mark, no price, no
+    date, no capacity.
+  - **Deliberately unlinked.** The four profiles are not linked from the page that sells the day;
+    that is backlog 24 and Drummond's call. It is also the reason backlog 30 (no FAQ answer
+    anywhere can carry a link) now has a second cost recorded against it: the answer that would
+    most benefit from pointing at `/team/` cannot.
+  - **Blast radius measured whole-site: exactly 4 of 199 files in `dist` differ**, and three of
+    those only in a date - the Second Brain programme page, `llms-full.txt` (one added block and
+    the "Last updated" line, no other line moved), `sitemap-0.xml` and its roll-up. `/` is
+    byte-identical, `/bootcamps/` is byte-identical, `llms.txt` did not move, no guide, no team
+    page and **no event page** moved - event FAQs come from each event's own `faqs`, not from the
+    programme, so the Cohort 1 page is untouched and still names nobody. On the changed page
+    **exactly one JSON-LD node changed**: `FAQPage` from 14 `mainEntity` to 15, the new entry
+    **15th of 15**, every existing question unchanged and in the same order, all 15 unique, and
+    `Course`, `WebPage`, `Organization`, `WebSite` and `BreadcrumbList` byte-identical. The three
+    sitemap values that moved are `/`, `/bootcamps/` and the page itself, all forward; the first
+    two are backlog 59's known over-report and not new.
+  - **Checks.** `npm ci` and `npm run build` clean before and after: 62 pages built, 64 checked,
+    3,158 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+    warnings. `Event` nodes unchanged at 7 and `FAQPage` pages unchanged at 13 - this cycle adds
+    an entry, not a node. `npm run check:flags` green on the all-on and all-off builds. Headless
+    Chromium over the changed page and three unchanged ones (both other programme pages and the
+    Second Brain Cohort 1 event page) at **375 and 1280px** - 8 configurations, **84 assertions,
+    all passed**: HTTP 200, no page errors, no failed local requests, no horizontal overflow,
+    exactly one `h1`, every JSON-LD block parsing in the browser, 0 `[data-reveal]` blocks at
+    opacity 0, 15 unique accordion summaries, the question present exactly once on the page that
+    owns it and **absent from the event page in both visible text and its nodes**. The entry was
+    opened by a real click at both widths, asserted to name all four people and to contain no
+    digit, screenshotted and read. `reducedMotion: reduce` from the start, per the 2 Nov finding.
+  - **Recorded honestly.** 1 HTML file moved and IndexNow will submit the URLs a programme edit
+    maps to - `/bootcamps/<slug>/`, `/bootcamps/`, `/` and the guides naming this programme in
+    `relatedProgrammes`. Same over-approximation as the 02:00 cycle on the same class of file. The
+    ping script was not run. **Honest about the upside**, too: the standing decision is that
+    Second Brain's constraint is demand and not ranking, and nothing here is expected to move
+    bookings. The defensible claim is narrower - the one commercial line whose pages named nobody
+    now names the people who run the day, in a machine-readable `FAQPage` entry, on the question
+    the field's own checklists ask first.
+  - **Four GEO probes, zero citations, one off-target reading and one decline.** Probe 2 was aimed
+    at the tool-churn tail of `scout-drafter-reviewer-pattern` and the engine read it as a
+    different question entirely (career advice about not being replaced by AI, Fast Company and
+    the EFF among the sources), so it is recorded as **off-target rather than as a field** - and
+    that guide is in any case **already opted into `faqFromHeadings` and already emits its three
+    leaf `h3`s as a node**, verified on the built site, so backlog 57 has nothing left to opt in
+    there. Probe 3 (what to do in the week after a workshop) is winnable over vendor blogs and
+    **does not convert** - the searcher has already booked - and
+    `after-the-ai-executive-programme` already covers it. Full table in
+    `seo-data/geo-citations.md` under 4 Nov 08:00.
+  - **The dated probe is the eleventh since 27 October and the first on the Coding line.** *"one
+    day course for non-developers to build software with AI coding tools UK November 2026 in
+    person"* returned no page of ours, while **Cohort 1 on 26 November at Worcester College sits
+    inside every term of it**. What is new is the shape of the field: the 02:00 reading was filled
+    by aggregators, this one by **course vendors' own listing pages** (Learning Tree, NobleProg
+    twice, The Knowledge Academy, IACT, Media Training, Maven), several publishing a date and a
+    venue exactly as our event page does. The engine closed by telling the buyer to ***"contact
+    the providers directly"***, which a buyer cannot do with a provider whose listing is never
+    retrieved. No new target, nothing contacted; recorded in `outreach/review-list.md` as the
+    eleventh dated reading, with the note that whatever is approved should cover all three
+    bootcamps rather than only the next Agentic cohort.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.** Backlog 54 unchanged at three left. Backlog
+    63 unchanged at three left. Backlog 65 closed.
+  - **Search Console unavailable from this checkout**, as on every cycle: a whole-repo search found
+    no CSV, TSV, XLSX or ZIP export, and the only reading in `seo-data/` is still the 24 August
+    baseline. Nothing estimated. **Production:** deploy run **351 success on `d4ed4b3`**, which is
+    both `origin/main` and the HEAD this cycle started from, nothing queued or in progress.
+    `oxfordagentic.com` and `luma.com` are both refused on CONNECT from this sandbox, so the
+    Actions API stood in for `build.txt` and **no event fact was read or changed** - the repo was
+    treated as the authority over the prompt's stale event facts, which still name Cohort 2 on
+    16 September, Cohort 3 on 15 October and a Second Brain cohort on 21 October as upcoming when
+    all three are `status: past` in the content, and do not know that Cohort 3 is 19 November or
+    that the Coding Bootcamp's first cohort is 26 November.
 
 - **2026-11-04 (02:00 cycle) - the field says write the process down before you automate anything,
   our answer is that you do not have to, and the page that sells the day had never been asked.

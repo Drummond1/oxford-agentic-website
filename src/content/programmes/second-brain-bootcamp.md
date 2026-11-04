@@ -3,7 +3,7 @@ name: The Oxford Second Brain Bootcamp
 slug: second-brain-bootcamp
 accent: rust
 order: 2
-updatedDate: "2026-10-28T01:30:00+00:00"
+updatedDate: "2026-11-04T08:20:00+00:00"
 shortPitch: A one-day bootcamp in Oxford. Build a second brain - the structured context that turns generic AI answers into ones that sound like you.
 capsule: >-
   The Oxford Second Brain Bootcamp is a one-day, in-person course in Oxford for
@@ -122,6 +122,26 @@ faqs:
       Tickets are not refundable, but your place transfers to a future cohort at no
       charge. A date that no longer works should not mean a lost seat - just let us
       know and we will move you.
+  # The credibility answer, and this was the last of the three product lines whose
+  # pages named nobody who runs the day in visible copy: "Drummond Gilbert" reached
+  # this page and the Cohort 1 event page only inside the Organization JSON-LD. Same
+  # fault the Agentic line carried before its own "Who runs it?" answer, and the same
+  # fix. The opening clause is that answer's wording verbatim and the role format
+  # follows it, so the three cannot drift; the names and roles are what
+  # `src/content/team/` publishes for this programme, and Adam Martin carries no
+  # company because his file publishes none. The closing clause restates `/team/`'s
+  # own subline and this page's "Who is it not for?" answer. No count, because the
+  # group size on this line is "small" and never a number. Deliberately unlinked:
+  # linking the profiles from the page that sells the day is backlog 24 and
+  # Drummond's call.
+  - q: Who runs it?
+    a: >-
+      Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
+      Oxford’s Practical AI meetup, with Adrian Shedden (founder, Accelerated Impact
+      Ops), Glenn Smith (founder, GenieOS) and Adam Martin (founding CTO). Each runs
+      part of the day, and all are practitioners who build with these tools daily rather
+      than commentators on them, so it is a build day with people in the room rather
+      than a briefing.
 ---
 
 The limit on what AI can do for you is rarely the model. It is that the model has

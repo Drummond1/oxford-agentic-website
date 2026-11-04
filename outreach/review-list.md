@@ -11,6 +11,30 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The eleventh dated reading, and the first on the Coding line. The field that answered was not
+  aggregators this time: it was other providers' own course listings. No new target; nothing
+  contacted.** Found 4 Nov 2026 (08:00 cycle).
+  - **The probe.** *"one day course for non-developers to build software with AI coding tools UK
+    November 2026 in person"*. No page of ours returned. **The Oxford Agentic Coding Bootcamp
+    Cohort 1, on 26 November 2026 at Worcester College, sits inside every term of that query** -
+    one day, non-developers, AI coding tools, UK, in person, November 2026 - and its event page
+    publishes the date, the venue and the postcode.
+  - **Why it is worth recording separately from the tenth.** The 02:00 reading was filled by
+    **aggregators**. This one is filled by **course vendors' own pages**: Learning Tree's
+    one-day "AI Vibe Coding for Non-Developers", NobleProg twice, The Knowledge Academy, IACT,
+    Media Training, Maven, The Coders' Guild, edifai. Several publish a date and a location in
+    exactly the way our event page does, so this is not a reading where we lack the page or the
+    facts - it is one where ours was not retrieved and theirs were. The engine could not confirm
+    a November date for any of them either, and closed by telling the buyer to ***"contact the
+    providers directly"***. A provider whose own listing an engine never retrieves is a provider
+    the buyer cannot contact.
+  - **What it needs from Drummond:** nothing new. It is the same ask as the ten before it - the
+    Eventbrite, UK aggregator and LinkedIn Company Page items already in
+    `outreach/off-page-listings.md`, and `Organization.sameAs` is still empty. What this reading
+    adds is that the Coding line, the newest and least externally visible of the three, fails the
+    same way the Agentic line does, so whatever is approved should cover all three bootcamps and
+    not only the next Agentic cohort.
+
 - **The tenth dated reading, and the first where the engine described our exact product, named a
   window both our cohorts fall inside, and still could not find us. No new target; nothing
   contacted.** Found 4 Nov 2026 (02:00 cycle).
