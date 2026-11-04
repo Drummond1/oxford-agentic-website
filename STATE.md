@@ -385,7 +385,7 @@ length and the positioning is the same edit, done once, in three places.
 | 1 | Set `newsletter.endpoint` in `site.config.ts` | Needs a provider (Luma subscribe link, Buttondown, Mailchimp). Until then the guide lead-capture cards degrade to a mailto | 5 min |
 | 2 | ~~Set `analytics.provider`~~ **Done 12 Aug — do not wire Plausible on top** | Google Tag Manager (`GTM-WQJLXFRN`) is live with the Google Ads tag `AW-18382942196` inside it, gated behind Consent Mode v2 and a cookie banner. Remaining: confirm in Google Ads → Audience manager that the tag reads *Active*, and note the list needs 1,000 users before it can serve | 2 min |
 | 3 | **Check the Cohort 2 ticket limit on Luma** | Registered + remaining comes to 10 on the only ticket type, while the site says 25. If the limit is real, sales stop at ten. See the red note above. The agenda half of this task is resolved - it was never a contradiction | 2 min |
-| 4 | Export Search Console Performance CSV → `seo-data/` | Needs data (property verified 23 Jul; reports after ~3–7 days) | 2 min, weekly |
+| 4 | **Switch on the Search Console export — one time, then it runs itself** | Replaces the weekly manual CSV drop. `.github/workflows/search-console-export.yml` reads the API daily and commits `seo-data/search-console-latest.{json,md}`, so a cycle with no browser can still do rule 4. Three steps, and only Drummond can do them because they involve a credential: **(a)** in Google Cloud, create a service account, enable the **Google Search Console API** for its project, and create a JSON key; **(b)** in Search Console for oxfordagentic.com → Settings → Users and permissions, add the service account's `client_email` as a user (Restricted is enough to read); **(c)** paste the key JSON into the repo secret **`GSC_SERVICE_ACCOUNT_KEY`** (Settings → Secrets and variables → Actions). Until then the job runs green and exports nothing. | 10 min, once |
 | 5 | Bing Webmaster Tools: verify + submit sitemap | Needs an account. Bing feeds ChatGPT's web results, so this is GEO not just Bing traffic | 5 min |
 | 6 | Create a LinkedIn Company Page, add the URL to `brand.social` | Needs the page. Flows into `Organization.sameAs` for entity triangulation | 1 min once created |
 | 7 | 🔴 **Four Cohort 1 quotes are LIVE. Two of the four people do not know** | **Shipped 17–18 Aug (cycles 81–82) on Drummond's explicit instruction, caveats accepted.** Live: Fei Gan, Kirsten Samuel, Dr Zeynep Hizir, Shrestha Mullick. **Zeynep and Kirsten are the safe two** — Drummond already published both, with these exact words and attributions, in the 13–14 Aug email campaign, and Zeynep's began as a post she wrote and published herself. **Fei and Shre are the two to square:** neither has seen the page, and Fei's `role` reads "Cohort 1 attendee" because the vault has never held her job title. One email each. `consentGiven: false` removes any of them cleanly | 2 emails |
@@ -504,6 +504,23 @@ length and the positioning is the same edit, done once, in three places.
     **not** that they lack hands-on content. Site copy must not imply otherwise.
   - New local competitor: **The Oxford AI School** (Witney), prices from £149.
   - Full detail in `IMPROVEMENTS.md` under the 30 Jul re-probe. Re-probed 31 Aug 2026. Re-probe ~30 Sept.
+- **Search Console data now arrives in the repo, not through a browser (4 Nov 2026).**
+  `.github/workflows/search-console-export.yml` runs `scripts/fetch-search-console.mjs` daily
+  and commits two files: `seo-data/search-console-latest.md` (the summary to read) and
+  `seo-data/search-console-latest.json` (full rows). **Read the markdown before reaching for
+  Claude in Chrome** - it is the same data, it needs no session, and it carries the per-page
+  query mix that rule 4 needs to tell a fixable low CTR from an unfixable one. The browser
+  route still works and is the fallback when the file is stale or absent.
+  - **Why this was built:** fourteen consecutive cycles reported "Search Console unavailable
+    from this checkout" once the loop moved to the cloud, so rule 4 was dead on every cycle
+    and everything fell through to rule 5. The shipped work narrowed to re-publishing existing
+    prose as FAQ nodes - 853 lines of site change against 4,366 lines of ledger prose over five
+    days - because that was the only move left that required no evidence.
+  - **It needs a secret that did not exist when it shipped.** Until task 4 above is done the
+    workflow succeeds and writes nothing, and the files will not be in the tree. A cycle that
+    does not find them should say so plainly and carry on under rule 5, exactly as before.
+  - The markdown says "do not edit" and means it: the next run overwrites it. Judgement about
+    what a number *means* belongs in `IMPROVEMENTS.md`, not in the export.
 - **Search Console access restored 11 Sept 2026** after being refused 9-11 Sept (cause
   never established; the DNS verification record was present throughout). Latest
   reading, data through 8 Sept: **68 clicks, 942 impressions, average position 19.3.**

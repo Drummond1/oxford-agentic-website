@@ -1,0 +1,88 @@
+name: Search Console export
+
+# Puts the search data in the repository, so improving the site does not depend
+# on a human being signed into a browser.
+#
+# The improvement loop has two modes: with Search Console data it fixes the
+# valuable page whose CTR is unusually low (rule 4), and without it it ships the
+# best unblocked technical or on-page change (rule 5). Once the loop started
+# running in the cloud it had no browser and no Google credentials, so rule 4
+# was unavailable on every single cycle and everything fell to rule 5. Fourteen
+# consecutive cycles recorded "Search Console unavailable from this checkout",
+# and the shipped work narrowed towards re-publishing existing prose as FAQ
+# schema, because that was the only move left that needed no evidence.
+#
+# This job removes the browser from the path: it reads the API with a service
+# account and commits the numbers, so any cycle - cloud or local - gets its
+# evidence from `git pull`.
+#
+# Needs the GSC_SERVICE_ACCOUNT_KEY secret. Without it the script explains the
+# set-up and exits 0, so this workflow stays green and harmless until the key
+# exists. With a key that is present but rejected it exits non-zero, because a
+# scheduled export that quietly stops producing data is the failure that caused
+# all this in the first place.
+on:
+  schedule:
+    # 05:35 UTC daily. Off the hour because scheduled runs queued on the hour
+    # are the ones GitHub delays, and clear of the 03:17 deploy cron so the two
+    # never queue together. GitHub still delays scheduled runs by hours, which
+    # does not matter here: Search Console's own data lags two to three days, so
+    # a report that lands mid-morning is no staler than one that lands at dawn.
+    - cron: '35 5 * * *'
+  workflow_dispatch:
+
+# The job commits its own output, so it needs write access to the repository.
+# It does not touch Pages and deliberately claims nothing else.
+permissions:
+  contents: write
+
+# Never let two exports race to commit the same two files.
+concurrency:
+  group: search-console-export
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          # No `cache: npm` and no `npm ci`: the script uses only node builtins
+          # and global fetch, so installing the site's dependencies would add a
+          # minute and a failure mode for nothing.
+
+      - name: Fetch Search Console data
+        env:
+          GSC_SERVICE_ACCOUNT_KEY: ${{ secrets.GSC_SERVICE_ACCOUNT_KEY }}
+        run: node scripts/fetch-search-console.mjs
+
+      - name: Commit the export if it changed
+        run: |
+          set -euo pipefail
+
+          # Staged by explicit path. The checkout holds nothing else this job
+          # could have touched, but naming the files keeps that true if it ever
+          # does.
+          git add seo-data/search-console-latest.json seo-data/search-console-latest.md
+
+          if git diff --cached --quiet; then
+            echo "No change in the export - nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          # The window label makes `git log --oneline` on these files a readable
+          # history of what each report covered.
+          WINDOW=$(node -e 'const d=require("./seo-data/search-console-latest.json");process.stdout.write(`${d.window.startDate} to ${d.window.endDate}`)')
+          git commit -m "Search Console export: ${WINDOW}"
+
+          # Pushes made with the default GITHUB_TOKEN do not re-trigger
+          # workflows, so this commit cannot set off the deploy. That is what we
+          # want: seo-data/ is evidence for the loop and changes no page, and
+          # scripts/indexnow-ping.mjs already maps seo-data/ paths to no URLs.
+          git push

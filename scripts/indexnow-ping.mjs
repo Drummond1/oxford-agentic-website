@@ -123,9 +123,13 @@ for (const file of changed) {
   }
   const content = file.match(/^src\/content\/(guides|events|programmes|team)\/([^/]+)\.md$/);
   if (!content) {
-    // Docs, outreach, CI and the check/ping scripts never change a page;
-    // anything else rebuilt the site.
-    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping)\.mjs$/.test(file)) wholeSite = true;
+    // Docs, outreach, CI and the scripts that only read or check things never
+    // change a page; anything else rebuilt the site. `fetch-search-console` is
+    // in this list for the same reason as the check scripts: it writes into
+    // seo-data/ and is never imported by the build, so a change to it cannot
+    // move a single byte of dist. Left out, it fell to the branch below and
+    // would have submitted all 55 sitemap URLs on a commit that changed no page.
+    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping|fetch-search-console)\.mjs$/.test(file)) wholeSite = true;
     continue;
   }
   const [, kind] = content;

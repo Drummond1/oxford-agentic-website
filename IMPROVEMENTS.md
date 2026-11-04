@@ -1272,6 +1272,83 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-04 (Drummond's request, not a cycle) - the loop had been blind to Search Console for
+  fourteen consecutive cycles, so rule 4 was unavailable every time and everything fell to rule 5.
+  Built a scheduled export that puts the numbers in the repository. No new dependency, no browser,
+  and it cannot turn a build red. Needs one secret that only Drummond can create.**
+  - **The diagnosis this comes from, with the numbers rather than the impression.** The loop had
+    not stopped committing - 24 commits in five days, 23 of them touching `src/` - but it had
+    stopped changing much: **853 lines of site change against 4,366 lines of ledger prose**, median
+    site change about 26 lines, and **seven commits repeating the same move**, publishing existing
+    prose as an FAQ node. FAQPage nodes went 9 to 14 in five days. The cause was not judgement
+    drifting; it was evidence disappearing. Once the loop ran in the cloud it had no Chrome and
+    `gcloud auth list` reported no credentialed accounts, so every cycle recorded "Search Console
+    unavailable from this checkout" and took the only branch left. **Publishing prose as schema was
+    the rational move for a cycle with no data.** The fix is to give it data, not to tell it to try
+    harder.
+  - **What shipped.** `scripts/fetch-search-console.mjs` plus
+    `.github/workflows/search-console-export.yml`. Daily cron and `workflow_dispatch`; it writes
+    `seo-data/search-console-latest.md` (the summary a cycle reads) and
+    `seo-data/search-console-latest.json` (full rows), and commits them only when they change.
+  - **Zero new dependencies, deliberately.** Service-account auth is an RS256-signed JWT exchanged
+    for a token, and node's built-in `crypto` signs it, so `googleapis` stays out of a repository
+    whose runtime dependencies are six packages. The workflow therefore skips `npm ci` entirely:
+    builtins and global `fetch` only.
+  - **Verified against the documentation, then against a working signature - not from memory.**
+    Endpoint, `sc-domain:` site form, scope, request body and response shape read off
+    `developers.google.com/webmaster-tools/v1/searchanalytics/query` and the service-account OAuth
+    page. Then tested for real: a throwaway RSA keypair generated locally, the API stubbed, and the
+    assertion the script produces **verified against the matching public key** - correct
+    `grant_type`, `aud`, a 3600-second `exp`, and the `sc-domain%3A` path encoding. Seven queries
+    fire per run (totals and pages for both windows, queries, page+query, dates). The commit step
+    was run in a throwaway repository to confirm both branches: silent exit when nothing changed, a
+    labelled commit when something did. `require()` inside `node -e` was checked under this
+    package's `"type": "module"` rather than assumed to work.
+  - **A missing key is a configuration state, not a failure.** With no secret the script prints the
+    three set-up steps and **exits 0**, so the workflow is green and inert until the key exists. A
+    key that is present but *rejected* exits non-zero on purpose: a scheduled export that silently
+    stops producing data is precisely how the loop went blind, and that must be loud. A 403 is
+    special-cased to name the actual cause - authenticated but not added as a user on the property.
+  - **The design choice that matters most: the per-page query mix is in the export.** Every
+    low-CTR page the loop has ever investigated turned out to be explained by its queries -
+    anonymised rows, brand queries the homepage already wins, or the excluded Oxfordshire
+    county-provider cluster - and **none of that is visible in a page total**. A headless cycle
+    reading only totals would see a 1.6% CTR and rewrite a title for no reason. So the summary
+    carries each candidate page's top queries and states how many of its impressions are
+    anonymised. On the test fixture the `/events/` section renders exactly the case rule 4 says to
+    leave alone: 1.6% CTR, 83.5% of impressions anonymised, and the only named query the Danish IBM
+    cluster.
+  - **The page table carries the previous 28 days beside the current 28.** That comparison is where
+    the standing decision not to rewrite a hub title on a hunch came from - `/events/` fell from 2%
+    to 1.3% after its 13 Sept title change and it took weeks to see. A delta column makes it
+    visible on day one.
+  - **One overwritten pair of files, not a dated file per run.** Git already stores every previous
+    version, so `git log -p seo-data/search-console-latest.md` *is* the trend history and the tree
+    does not grow unbounded. Row caps are constants at the top of the script for the same reason.
+  - **Caught before pushing, not after: this commit would have pinged IndexNow with the entire
+    site.** `scripts/indexnow-ping.mjs` treats any path it does not recognise as evidence that the
+    whole site rebuilt, and its exclusion list names the check scripts individually, so the new
+    `scripts/fetch-search-console.mjs` fell through to whole-site. Confirmed with `--dry-run`
+    before fixing: **55 URLs** on a commit whose `dist/` is byte-identical. Added to the exclusion
+    list for the same reason the check scripts are in it - it writes into `seo-data/` and the build
+    never imports it. Re-tested after: the real change set submits nothing, a team-file edit still
+    maps to its two URLs, and a layout edit is still whole-site. This file's own header records
+    that its mappings were wrong for weeks because verifying them meant pinging production; the
+    `--dry-run` flag that exists for that reason is what caught this.
+  - **Corrected while here:** `seo-data/README.md` claimed "This folder is git-ignored - the data
+    stays on your machine and never reaches the public repo." Only `seo-data/*.csv` is ignored; the
+    markdown in that folder has been tracked and public all along. Left uncorrected, that line
+    invites someone to put confidential data in a tracked file. The README now says which files are
+    published and which are not, and both claims were checked with `git check-ignore`.
+  - **Still blocked on Drummond, and cannot be otherwise.** The export produces nothing until a
+    service account exists, is added as a user on the `sc-domain:oxfordagentic.com` property, and
+    its key is in the `GSC_SERVICE_ACCOUNT_KEY` repository secret. **I must not create or handle
+    that credential**, so those three steps are his; they are written out in `STATE.md` task 4.
+  - **One thing to change outside this repository:** the standing cycle prompt still tells a cycle
+    to reach Search Console "via Claude in Chrome using `read_page`". That should now read the
+    export file first and treat the browser as the fallback, or cloud cycles will keep reporting
+    the data unavailable while it sits in the checkout.
+
 - **2026-11-04 (20:00 cycle) - a guide that has answered the pre-booking confidentiality
   objection since August was not machine-readable, and the probe that reopened it is the first in
   three weeks in which the engine wrote down that its field does not answer the question. One
