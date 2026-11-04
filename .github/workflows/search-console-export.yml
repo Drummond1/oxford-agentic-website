@@ -63,6 +63,18 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Until the secret exists the previous step exports nothing, and
+          # `git add` on a path that is not there exits 128 under `set -e`. So
+          # the absent-file case is handled before staging rather than being
+          # left to fail: no export written is the expected state before
+          # set-up, not an error. Found by dispatching this workflow on the
+          # commit that added it.
+          if [ ! -f seo-data/search-console-latest.json ] || [ ! -f seo-data/search-console-latest.md ]; then
+            echo "No export was written - the GSC_SERVICE_ACCOUNT_KEY secret is not set up yet."
+            echo "See the previous step's output for the three steps, or STATE.md task 4."
+            exit 0
+          fi
+
           # Staged by explicit path. The checkout holds nothing else this job
           # could have touched, but naming the files keeps that true if it ever
           # does.

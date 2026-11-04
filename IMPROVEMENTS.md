@@ -1325,6 +1325,15 @@ _(dated, newest first — filled by the loop)_
   - **One overwritten pair of files, not a dated file per run.** Git already stores every previous
     version, so `git log -p seo-data/search-console-latest.md` *is* the trend history and the tree
     does not grow unbounded. Row caps are constants at the top of the script for the same reason.
+  - **The first dispatch failed, and that is why it was dispatched.** Run 41911204882 exited 128 on
+    the commit step: `git add` on a path that does not exist is fatal under `set -e`, and before
+    the secret exists the export writes no files. The export step itself was correct - it printed
+    the three set-up steps and exited 0 - so the fault was entirely in the step after it. The
+    absent-file case is now handled before staging, with the message pointing at `STATE.md` task 4,
+    and all three states were then run locally: files absent exits 0 with the notice, files new
+    commits, files unchanged exits 0 silently. Verified green in CI afterwards. **A workflow that
+    had only ever been reasoned about would have sat broken until the first cron fired, and its
+    first real run would have been the one that was supposed to deliver the data.**
   - **Caught before pushing, not after: this commit would have pinged IndexNow with the entire
     site.** `scripts/indexnow-ping.mjs` treats any path it does not recognise as evidence that the
     whole site rebuilt, and its exclusion list names the check scripts individually, so the new
