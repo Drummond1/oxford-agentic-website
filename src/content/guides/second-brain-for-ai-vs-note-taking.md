@@ -5,13 +5,13 @@ category: start-here
 seoTitle: "Second brain for AI vs note-taking"
 description: The term comes from personal note-taking, but a second brain your AI can use is built differently. What changes, and whether you need both.
 capsule: >-
-  "Second brain" usually means a personal note system, with a human doing the reading.
+  “Second brain” usually means a personal note system, with a human doing the reading.
   A second brain for AI serves a different reader: a model with no memory of you and no
   way to ask a follow-up. Notes made for yourself rarely work unedited, because they
   assume context the model does not have.
 author: drummond-gilbert
 publishDate: "2026-08-10T06:00:00+01:00"
-updatedDate: "2026-08-10T06:00:00+01:00"
+updatedDate: "2026-11-04T09:30:00+00:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---

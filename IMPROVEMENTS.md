@@ -1204,9 +1204,73 @@ Status: `todo` · `blocked` (why) · `doing`
     own clause-by-clause check that what it publishes is true before it is made
     machine-readable. One per cycle at most.
 
+66. `todo` (loop-actionable, found 4 Nov 2026 in the 09:00 cycle; **recorded so the fix does not have
+    to be re-found**) - **nothing stops a typewriter quote reaching a published page again.** The three
+    fixed this cycle were all frontmatter strings, which bypass the Markdown typographer, and the only
+    reason they were found is that a cycle swept `dist` for `"` by hand. The shape of the guard is a
+    non-blocking warning in `scripts/check-schema.mjs`, which already walks every built page and already
+    prints the over-length `brand.description` as a warning rather than failing the deploy: flag a
+    straight `"` or a lone `'` between word characters in visible text, excluding attributes and JSON-LD,
+    exactly as the sweep did. **Weigh before doing it:** a straight quote is legitimate in a code span or
+    an inch measurement, so it must warn and never fail, and today the count is zero, so the guard buys
+    nothing until the next frontmatter string is written. Cheap to add in the same cycle as any other
+    `check-schema.mjs` change.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-04 (09:00 cycle) - three strings on three pages were still set in typewriter quotes, and
+  one of them sat directly under a heading that used real ones. Three content files, one punctuation
+  mark each, no factual change and no new claim. Production unreadable from this sandbox, as on every
+  cycle since 30 Oct.**
+  - **The defect, measured on the built site rather than read off the files.** A sweep of all 64 built
+    pages for a straight `"` in visible text - tags stripped, entities unescaped, so attributes and
+    JSON-LD are excluded - returned exactly **three** pages: `/guides/what-hands-on-ai-training-actually-means/`,
+    `/guides/second-brain-for-ai-vs-note-taking/` and `/bootcamps/oxford-agentic-bootcamp/`. Everywhere
+    else the site sets curly quotes, because prose that goes through Markdown is typeset by the
+    typographer on the way out. These three strings do not: two are guide `capsule` fields and the third
+    is a programme FAQ `q`, all frontmatter, all rendered raw.
+  - **Why it is a defect rather than a nicety.** On the hands-on guide the two forms are stacked. The `h1`
+    reads *What does 'hands-on' actually mean in AI training?* with proper curly single quotes, in
+    Newsreader at hero size; the capsule immediately beneath it - the first line of body copy, same
+    serif, 20px - read `"Hands-on"` in straight ASCII. The same page's own `h2`, *The four things
+    "hands-on" can mean*, is written identically in the Markdown body and renders curly, so the page was
+    already typesetting the same phrase two different ways within one screen. Checked in the browser at
+    375px before and after: the before shot is legibly mismatched.
+  - **The fix.** Three characters pairs, `"` to `“ ”`, in `what-hands-on-ai-training-actually-means.md`,
+    `second-brain-for-ai-vs-note-taking.md` and `oxford-agentic-bootcamp.md`, each matching how Markdown
+    already renders that phrase elsewhere on the same page. No wording moved, no fact moved, and the
+    single-versus-double choice the hands-on title made was deliberately left alone. `updatedDate` bumped
+    on all three, per the standing rule and the 1 Nov precedent ("one frontmatter line and its
+    updatedDate").
+  - **Blast radius, measured by building both trees.** Exactly **8** files in `dist` differ: the three
+    pages themselves, `/guides/` (the two cards' month eyebrows move to November 2026, which is the
+    overstating direction and is the known cost of the `updatedDate` rule), `llms-full.txt`, `rss.xml`
+    and the two sitemap files. The guides index order is byte-for-byte unchanged, so no card moved.
+  - **Checks.** `npm run build` green - 3,158 internal links across 64 pages resolve, schema valid, 7
+    `Event` and 13 `FAQPage` nodes, all titles and descriptions unique. The FAQ JSON-LD still parses and
+    carries the curly question. `npm run check:flags` green on the all-on and all-off builds. `astro
+    check` (installed `--no-save`) reports the same **80** pre-existing implicit-`any` errors as the
+    baseline, none in a changed file - note it prompts interactively when the package is absent and will
+    hang a cycle that pipes it. The whole-site sweep at **320, 375, 414, 768 and 1280px** - horizontal
+    overflow, heading order, single `h1`, missing alt text, missing image dimensions, unlabelled
+    controls, nameless links - returns zero findings, unchanged. Keyboard pass on the Cohort 3 event page
+    at 375 and 1280px: 22 stops, every one with a visible focus ring except the Luma iframe, which is
+    third-party. The re-sweep for straight quotes now returns **0 pages**. The 11 outbound warnings are
+    the sandbox egress policy, identical on the baseline.
+  - **Production could not be read.** The sandbox egress policy answers **403** to CONNECT for
+    `oxfordagentic.com` and `drummond1.github.io`, so the Actions API stood in: Deploy and CI both
+    **success on `e27e71d`**, which is `origin/main` and the HEAD this cycle started from, nothing queued
+    or in progress. Before-and-after screenshots are therefore local preview against local preview.
+    **No event fact was read or changed.**
+  - **Nothing else re-pitched.** PR #1 (breadcrumb, 26 Sept) and PR #3 (the 2 Nov SEO-loop ledger branch)
+    both read as the known-stale leftovers already recorded, not as work in flight; both are
+    documentation-only against `main` apart from a breadcrumb line that shipped independently in
+    `384564e`.
+  - **Honest about the upside.** Nobody fails to book over a quotation mark. The defensible claim is
+    narrow: on a site whose typography is the brand, the first line of two guides and one FAQ question no
+    longer look like a typo, and the site now sets quotes one way everywhere a visitor can see them.
 
 - **2026-11-04 (08:00 cycle) - two of the three product lines tell a buyer who runs the day. The
   third named nobody at all, on the page that sells it and on its event page. Backlog 65 closed,

@@ -5,13 +5,13 @@ category: choosing
 seoTitle: "What ‘hands-on’ means in AI training"
 description: Almost every AI course calls itself hands-on. A practical test for what the word actually covers, from watching demos to building against your own work.
 capsule: >-
-  "Hands-on" in AI training covers four different things: watching a live demo, following
+  “Hands-on” in AI training covers four different things: watching a live demo, following
   a guided exercise, building against a set brief, and building against your own real
   task. Only the last one reliably changes how you work afterwards. The test is simple -
   ask what you will personally have running at the end.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-11-04T09:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
