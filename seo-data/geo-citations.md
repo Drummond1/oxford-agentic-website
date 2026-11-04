@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-04 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. THE RE-PROBE HELD AND SHIPPED; THE DATED ONE IS THE SHARPEST MISS YET
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions: one deliberate re-probe of the query backlog 64 was built on,
+and three new ones checked against the 409 distinct questions already in this log. The nearest
+misses on the three new ones were read by hand and are different questions -
+"how do you catch an AI agent quietly getting things wrong when there is no error message",
+"difference between an AI agent and an agentic workflow for a business team", and
+"where can I learn to build AI agents in person one day course England not online December 2026".
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **re-probe:** do I need a written down process before I automate a task with an AI agent | **No** | `help.webex.com` (x2), `trupeer.ai` (x2, the same page in French and Polish), `consultevo.com` (x2), `cohorte.co` |
+| how do you stop an AI agent sending something to a client without a human checking it first | **No** | `helix.nylas.com`, `academy.creatio.com` (x3), `arahi.ai`, `pushary.com` (x2, the same page in English and French) |
+| should one AI agent do the whole job or should I split the work into several agents | **No** | `gaas.it.com`, `dev.to`, `diggrowth.com`, `managed-code.com` (x2), `fenji.verdent.ai`, a LinkedIn profile |
+| where can a non-technical director build an AI workflow in a single day in England before Christmas 2026 | **No** | `createwith.com` (x4 plus a cities index), `pointacademy-co-uk.pages.dev` (x4), `happeningnext.com` (x2), `cademy.io`, `internshala.com` (x2), `londontfe.com` (x2), `meetup.com`, `events.icaew.com`, `ipsofacto.uk.com`, `vale-life.co.uk` |
+
+**Reading.**
+
+- **Probe 1 held on a second day and a second reading, and it is what shipped.** The field is the
+  same seven-ish results the 3 Nov 14:00 cycle found, with one addition (`cohorte.co`, a
+  newsletter essay): a vendor help article about configuring its own agent builder, one marketing
+  page served in three languages, a consultancy post. **No institutional publisher, and no
+  platform vendor writing about anything but its own product. Winnable.** **Converting** - whoever
+  types it is working out what they must do before they can automate anything, which is the moment
+  before booking a day built on bringing one real task. The engine hedged its own field in both
+  readings: today's closes ***"the strictest 'no exceptions' framing comes from a single opinion
+  piece, and the other sources are vendor documentation or marketing blogs, so treat the bar as a
+  sensible practice rather than a formal requirement"***. The field's consensus is **document it
+  first**; our published answer is that you do not need to, because the day is built around three
+  build cycles rather than three talks and the shape comes out of the building. That is a real
+  difference of position, published rather than invented, and **it shipped this cycle** as the
+  23rd FAQ entry on the Agentic programme page. Backlog 64 closed.
+- **Probe 4 is the finding, and it is the sharpest version of backlog 2b this log has recorded.**
+  Nine dated readings since 27 October have failed on queries that either named the wrong country,
+  named a month we do not run, or named a city and found us. **This one names England, describes
+  a non-technical director, asks for one day, asks for a workflow actually built, and sets a
+  window - before Christmas 2026 - that both our cohorts fall inside** (19 and 26 November). It is
+  our product in the buyer's own words with no city in it, and the engine closed
+  ***"it didn't turn up a confirmed one-day, in-England course that clearly teaches a
+  non-technical director to build a working AI workflow, with a date before Christmas 2026"***.
+  Its own closing advice to the buyer - ***"ask providers whether participants build a working
+  workflow by the end of the day"*** - is the promise this site leads with. Nothing on the page
+  fixes this: the field that answered instead is **aggregators** (`createwith.com` took five
+  slots, `happeningnext.com` two, plus `cademy.io` and `meetup.com`), and all three of the named
+  aggregators are **already recorded in `outreach/off-page-listings.md` awaiting approval**. No
+  new target; nothing contacted. Recorded in `outreach/review-list.md` as the tenth dated reading.
+- **Probe 2 declined, and it is the same decline as the 3 Nov vendor-lock-in one.** The field is
+  five vendors documenting their own human-in-the-loop features, so it is winnable in principle,
+  but the honest answer is approval queues, send-credential scoping and fail-closed timeouts - an
+  implementation brief. This site publishes the posture, not the plumbing ("what you constrain so
+  a bad run cannot do damage"), and an entry that went further would be a new claim about what the
+  day covers. **Does not convert**: whoever types it has an agent already running.
+- **Probe 3 declined on converting, and the interesting part is why.** The field is practitioner
+  and vendor blogs with no institutional publisher, so it is winnable - but this site **already
+  publishes on it**, in `scout-drafter-reviewer-pattern`, and the searcher is making an
+  architecture decision rather than deciding whether to spend a day in Oxford. It is a discovery
+  problem on the guide class the August Search Console baseline says is not being crawled, which
+  is backlog 2b again and not a new FAQ entry. Worth noting the field's own answer - start with
+  one agent and split only when the work separates, with "research, writing, review" named as the
+  canonical split - is the pattern this site teaches under its own name.
+
 ## 2026-11-03 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ONE WINNABLE FIELD THAT POINTS AT THE PAGES THIS CYCLE FIXED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

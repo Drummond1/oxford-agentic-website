@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-11-03T08:40:00+00:00"
+updatedDate: "2026-11-04T02:30:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -127,6 +127,35 @@ faqs:
       correction rather than a client. Some work is worth leaving alone: the writing
       where doing it is the thinking, anything you only do twice a year, and anything a
       person has to stand behind.
+  # The step before the task: whether it has to be written up as a process first.
+  # Probed 3 Nov 2026 (14:00 cycle) and re-probed 4 Nov 2026 (02:00 cycle) on "do I
+  # need a written down process before I automate a task with an AI agent". Both
+  # readings return the same thin field - a vendor help article about configuring its
+  # own agent builder, one marketing page served in three languages, a consultancy
+  # post, a newsletter essay - with no institutional publisher and no platform vendor
+  # writing about anything but its own product, and the engine hedging twice ("no law
+  # or platform requires a formal written process", "treat it as practitioner opinion
+  # rather than settled standards"). The field's consensus is document it first;
+  # converting, because the searcher is working out what they must do before they can
+  # automate anything. Of the 66 distinct FAQ questions across this site, none asks
+  # it, and the five tests in how-to-choose-your-first-agentic-task do not include
+  # "can you write the steps down" - so this is a content gap, not a placement one.
+  # Every clause restates published copy: "three build cycles rather than three
+  # talks" is this page's body (and the wording backlog 56 names as the accurate
+  # one), "bringing a genuine one matters more than any preparation" is the "What do
+  # I need to bring?" answer, "a reviewer that checks against a standard you write
+  # down" is the checking answer above, and "everything is facilitated in the room"
+  # is the technicality answer. No agenda timing, no price, date, count, capacity or
+  # name, and no claim about block length, so nothing here touches backlog 56.
+  - q: Do I need a written-down process before I can automate a task?
+    a: >-
+      No. The day is built around three build cycles rather than three talks, so you
+      arrive with the task and the shape of the workflow comes out of building it.
+      Bringing a genuine task matters more than any preparation. One thing does get
+      written down, and it is narrower than a process: the reviewer you build checks
+      against a standard you write down, so that standard is part of what you make on
+      the day. Everything is facilitated in the room, so nobody is left working out
+      the steps on their own.
   # The day's whole premise is that you bring a real task from your own work, and
   # the page never said what to do if that work is confidential. Its Second Brain
   # sibling answers the same question on both its pages; the wording and the

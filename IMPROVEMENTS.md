@@ -1104,8 +1104,8 @@ Status: `todo` · `blocked` (why) · `doing`
       `/testimonials/` has a second thing wrong with it already on this list (backlog 35), so if a
       cycle opens that file for him, this is cheap to do in the same commit.
 
-65. `todo` (loop-actionable, found 3 Nov 2026 in the 20:00 cycle; **queued behind backlog 64 on
-    the same daily FAQ ceiling - take 64 first, then this**) - **buyers vet the person teaching
+65. `todo` (loop-actionable, found 3 Nov 2026 in the 20:00 cycle; **backlog 64 shipped on 4 Nov
+    at 02:00, so this is now first in the queue - it is next, subject to its own re-probe**) - **buyers vet the person teaching
     before they pay, the field that answers them is content farms, and nothing on a commercial
     page of ours answers it.**
     - **The probe.** *"what should I check about the person teaching an AI course before I pay for
@@ -1130,8 +1130,12 @@ Status: `todo` · `blocked` (why) · `doing`
       career - which runs into backlog 30, that no FAQ answer can carry a link. Worth weighing
       whether this one is the argument that finally settles 30.
 
-64. `todo` (loop-actionable, found 3 Nov 2026 in the 14:00 cycle; **declined that cycle on the
-    daily FAQ ceiling and not on the evidence - take it next**) - **nothing on the site answers
+64. `done` 4 Nov 2026 (02:00 cycle) - shipped as the 23rd FAQ entry on the Agentic programme
+    page, "Do I need a written-down process before I can automate a task?", after the query was
+    re-probed that cycle and the field came back the same (one vendor help article on its own
+    agent builder, one marketing page in three languages, a consultancy post, a newsletter essay,
+    no institutional publisher) with the engine again hedging it as "practitioner opinion rather
+    than settled standards". Found 3 Nov 2026 in the 14:00 cycle - **nothing on the site answers
     whether you need the task written down before you automate it, and the field that answers it
     is the thinnest this loop has probed.**
     - **The probe.** *"do I need a written down process before I automate a task with an AI
@@ -1192,6 +1196,111 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-04 (02:00 cycle) - the field says write the process down before you automate anything,
+  our answer is that you do not have to, and the page that sells the day had never been asked.
+  Backlog 64 closed: one FAQ entry, one content file. Four GEO probes, zero citations, and the
+  sharpest dated miss this loop has recorded.**
+  - **The gap, measured.** Across every `FAQPage` node on the site there are **66 distinct
+    questions** and not one of them is about documentation or preparation - checked by parsing
+    every JSON-LD block in `dist` rather than by reading the files. The nearest things are "What
+    do I need to bring?" (names the task, not the state it has to be in) and "How do I choose
+    which task to bring?", which shipped yesterday. The guide that covers task selection,
+    `how-to-choose-your-first-agentic-task`, publishes **five tests for picking a task and not one
+    of them is "can you write the steps down"**. So this is a content gap rather than the
+    placement gap 1, 2 and 3 November kept finding.
+  - **The probe, run twice on two days.** *"do I need a written down process before I automate a
+    task with an AI agent"*, first on 3 Nov (14:00) and deliberately re-run this cycle before
+    shipping anything. Both readings return the same thin field: `help.webex.com` twice (a vendor
+    documenting its own agent builder), `trupeer.ai` (one marketing page served in French and
+    Polish), `consultevo.com` twice, and today one addition, `cohorte.co`, a newsletter essay.
+    **No institutional publisher. No platform vendor writing about anything but its own product.
+    Winnable.** **Converting**: the searcher is working out what they must do before they can
+    automate anything, which is the moment before booking a day built on bringing one real task.
+    The engine hedged its own field in both readings, today closing ***"the strictest 'no
+    exceptions' framing comes from a single opinion piece, and the other sources are vendor
+    documentation or marketing blogs, so treat the bar as a sensible practice rather than a formal
+    requirement"***.
+  - **Why it is worth answering rather than echoing.** The field's consensus is **document it
+    first** - one widely-shared essay sets the bar at "if you cannot write it down you are not
+    ready to automate it". Our published position is the opposite and it is not a rhetorical one:
+    the day is built around three build cycles rather than three talks, so you arrive with the
+    task and the shape comes out of the building. A buyer who has read the field and concluded
+    they are not ready is a buyer we lose to a false prerequisite.
+  - **Every clause restates copy already on this page**, which is why this needed no decision from
+    Drummond. "Three build cycles rather than three talks" is the page body, and is the wording
+    backlog 56 names as the accurate description of the day. "Bringing a genuine task matters more
+    than any preparation" is the "What do I need to bring?" answer. "A reviewer that checks
+    against a standard you write down" is the checking answer four entries above, verbatim, so the
+    two cannot drift. "Everything is facilitated in the room" is the technicality answer.
+    **Deliberately no agenda timing**: the page body says "before the first break" and "before
+    lunch" and the entry restates neither, because backlog 56 is open on exactly that surface.
+    Asserted in the browser: **zero digits in the entry**, no em dash, no exclamation mark, no
+    price, date, count, capacity or name.
+  - **Blast radius measured whole-site: exactly 4 of 199 files in `dist` differ**, and three of
+    those only in a date - the programme page, `llms-full.txt` (one added block and the "Last
+    updated" line, no other line moved), `sitemap-0.xml` and its roll-up. `/` is byte-identical,
+    `/bootcamps/` is byte-identical, `llms.txt` did not move, no guide and no event page moved. On
+    the changed page **exactly one JSON-LD node changed**: `FAQPage` from 22 `mainEntity` to 23,
+    the new entry **9th of 23**, every existing question unchanged and in the same order, and
+    `Course`, `WebPage`, `Organization`, `WebSite` and `BreadcrumbList` byte-identical. The three
+    sitemap values that moved are `/`, `/bootcamps/` and the page itself, all forward, from
+    2026-11-03T08:40 to 2026-11-04T02:30 - the first two are backlog 59's known over-report and
+    not new.
+  - **Checks.** `npm ci` and `npm run build` clean before and after: 62 pages built, 64 checked,
+    3,158 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+    warnings. `Event` nodes unchanged at 7 and `FAQPage` pages unchanged at 13 - this cycle adds
+    an entry, not a node. Headless Chromium over the changed page, `/`, `/bootcamps/` and the
+    Cohort 3 event page at **375 and 1280px** - 8 configurations, **88 assertions, all passed**:
+    HTTP 200, no page errors, no failed local requests, no horizontal overflow, exactly one `h1`,
+    every JSON-LD block parsing in the browser, 0 `[data-reveal]` blocks at opacity 0, 23 unique
+    accordion summaries, the question present exactly once on the page that owns it and **absent
+    from all three unchanged pages, in visible text and in their nodes**. The entry was opened by
+    a real click at both widths, screenshotted and read, and re-shot at 375px with the cookie
+    banner dismissed to read the whole answer. `reducedMotion: reduce` from the start, per the
+    2 Nov finding.
+  - **Recorded honestly.** 1 HTML file moved and IndexNow will submit 27 URLs, because a programme
+    edit maps to `/bootcamps/<slug>/`, `/bootcamps/`, `/` and the 24 guides naming it in
+    `relatedProgrammes`. Same over-approximation as the 3 Nov 08:00 cycle on the same file. The
+    ping script was not run.
+  - **The dated probe is the finding, and it is the sharpest version of backlog 2b yet.** *"where
+    can a non-technical director build an AI workflow in a single day in England before Christmas
+    2026"* returned no page of ours. The nine dated failures since 27 October each had an excuse -
+    wrong country, a month we do not run, or a city named and us duly found. **This one has none:
+    England, one day, non-technical director, a workflow actually built, and a window that Cohort
+    3 on 19 November and the Coding Bootcamp on 26 November both sit inside.** The engine closed
+    ***"it didn't turn up a confirmed one-day, in-England course that clearly teaches a
+    non-technical director to build a working AI workflow, with a date before Christmas 2026"***
+    and told the buyer to ***"ask providers whether participants build a working workflow by the
+    end of the day"***, which is this site's own leading promise. What filled the gap was
+    **aggregators** - `createwith.com` five slots, `happeningnext.com` two, `cademy.io`,
+    `meetup.com` - and **all three named aggregators are already in `outreach/off-page-listings.md`
+    awaiting approval**. No new target, nothing contacted; recorded in `outreach/review-list.md`
+    as the tenth dated reading.
+  - **Two declines, each on its own evidence.** The human-approval question (*"how do you stop an
+    AI agent sending something to a client without a human checking it first"*) is five vendors
+    documenting their own human-in-the-loop features, so winnable in principle, but the honest
+    answer is approval queues, send-credential scoping and fail-closed timeouts - an
+    implementation brief this site has no standing to give, and the searcher already has an agent
+    running. Same decline as 3 November's vendor lock-in probe. The architecture question
+    (*"should one AI agent do the whole job or should I split the work into several agents"*) is
+    winnable over practitioner blogs and **we already publish on it**, in
+    `scout-drafter-reviewer-pattern`; the searcher is making an architecture decision, not
+    deciding whether to spend a day in Oxford. That it is a discovery problem on the guide class
+    is backlog 2b again, not a new entry.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.** Backlog 54 unchanged at three left. Backlog
+    65 (what to check about the person teaching a course) is now first in the queue. Backlog 63
+    unchanged at three left.
+  - **Search Console unavailable from this checkout**, as on every cycle: a whole-repo search
+    found no CSV, TSV, XLSX or ZIP export, and the only reading in `seo-data/` is still the 24
+    August baseline. Nothing estimated. **Production:** deploy run **350 success on `02dee0a`**,
+    which is both `origin/main` and the HEAD this cycle started from, nothing queued or in
+    progress. `oxfordagentic.com` and `luma.com` are both refused on CONNECT from this sandbox, so
+    the Actions API stood in for `build.txt` and **no event fact was read or changed** - the repo
+    was treated as the authority over the prompt's stale event facts, which still name Cohort 2 on
+    16 September and a Second Brain cohort on 21 October as upcoming when both are `status: past`
+    in the content, and do not know about Cohort 3 on 19 November or the Coding Bootcamp on
+    26 November.
 
 - **2026-11-03 (20:00 cycle) - the seven `Person` pages every guide names as its author were the
   least recrawlable pages on the site and told a crawler nothing about when they last changed.

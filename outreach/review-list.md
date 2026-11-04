@@ -11,6 +11,35 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The tenth dated reading, and the first where the engine described our exact product, named a
+  window both our cohorts fall inside, and still could not find us. No new target; nothing
+  contacted.** Found 4 Nov 2026 (02:00 cycle).
+  - **The probe.** *"where can a non-technical director build an AI workflow in a single day in
+    England before Christmas 2026"*. No page of ours returned. The engine closed ***"it didn't
+    turn up a confirmed one-day, in-England course that clearly teaches a non-technical director
+    to build a working AI workflow, with a date before Christmas 2026"***, and offered Point
+    Academy's London day (a confidence-and-tools course, not a build), a Cambridge Labs workshop
+    whose listed date has passed, and a Manchester general listing.
+  - **Why this one is sharper than the nine before it.** The eight failures since 27 October each
+    had an excuse available: the query named the wrong country, or named December when we run
+    November, or named a city and duly found us. **This one has none.** It names England. It says
+    one day. It says non-technical director. It asks for a workflow actually built rather than
+    demonstrated. And "before Christmas 2026" is a window that **Cohort 3 on 19 November and the
+    Coding Bootcamp on 26 November both sit inside.** It is this business described in a buyer's
+    own words with the city left out, and we are absent. The engine's own closing advice -
+    ***"ask providers whether participants build a working workflow by the end of the day"*** -
+    is the sentence this site leads with.
+  - **What filled the gap was aggregators, and they are already on the list.** `createwith.com`
+    took five of the twenty slots, `happeningnext.com` two, plus `cademy.io` and `meetup.com`.
+    All three named aggregators are **already recorded in `outreach/off-page-listings.md`**, so
+    this adds no new target - it adds the clearest evidence yet of what approving them would buy.
+    `pointacademy-co-uk.pages.dev` (four slots), `londontfe.com`, `internshala.com`,
+    `ipsofacto.uk.com` and `vale-life.co.uk` are competing providers, not listings.
+  - **What it needs from Drummond:** nothing new, which is the point of writing it down again.
+    The Eventbrite, UK aggregator and LinkedIn Company Page asks in
+    `outreach/off-page-listings.md` are unchanged and are what close this, and
+    `Organization.sameAs` is still empty. Table in `seo-data/geo-citations.md` under 4 Nov 02:00.
+
 - **The ninth dated reading in a row, and a second kind of corroboration for the LinkedIn
   Company Page. No new target; nothing contacted.** Found 3 Nov 2026 (20:00 cycle).
   - **The split held again.** *"is there an AI course in the UK where you build something instead
