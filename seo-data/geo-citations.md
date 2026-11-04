@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-04 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, AND THE FIRST READING IN WHICH THE ENGINE HELD OUR POSITIONING AND STILL COULD NOT DATE THE DAY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions: one dated reading on the Agentic line, and three buyer
+objections checked against the questions already in this log.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| agentic AI bootcamp Oxford November 2026 one day in person for business leaders | **No** - but two of our own `luma.com` pages and `allai.events` were, and the answer about us was written off them | `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both ours), `allai.events` (ours), `sbs.ox.ac.uk` (x2), `eventbrite.co.uk` (x2), `createwith.com` (x2), `esmt.berlin` (x2), `oxford-aiethics.ox.ac.uk`, `ibm.com`, `academy.xebia.com`, `maven.com`, `analyticsindiamag.com`, `tecnico.ulisboa.pt`, `pulse.bot` |
+| how many people should be in an AI workshop to actually get help with your own work | **No** | `learning.sap.com` (x2), `nngroup.com`, `datanorth.ai`, `intentful.ai` (x2), `innovationspark-ost.ch`, `i-med.ac.at`, `storytellingwithdata.com`, `beginnersinai.org`, `aismartventures.com`, `studiomeyer.io`, `lu.ma` |
+| do I need to give an AI agent access to my email or CRM for it to be useful | **No** | `folk.app` (x4, the same article in four languages), `macmyths.com` (x2), `snapaddy.com`, `conversionsystem.com`, `cli.nylas.com`, `clickup.com`, `vtiger.com`, `growwstacks.com`, `marcodemeireles.substack.com`, `yomotherboard.com` |
+| what do you actually leave an AI training day with, a working thing or just notes and slides | **No** | `agilisys.co.uk`, `maven.com`, `freshvanroot.com`, `glomacs.com`, `umage.ai`, `hackculture.io`, `ctrlaltgo.com`, `johnturek.github.io`, four `pages.dev` vendor blogs, two LinkedIn posts, `aicerts.ai` |
+
+**Reading.**
+
+- **Probe 1 is the twelfth dated reading since 27 October and it fails differently from the
+  eleven before it.** Those readings did not find us at all. This one **found us, and found us
+  stale.** The engine named *"The Oxford Agentic Bootcamp"* as the closest match and then
+  described it in our own published words - *"a practical, hands-on day"*, *"it assumes you
+  already use AI day to day"*, *"It doesn't assume you can code"*, *"The venue is Worcester
+  College, Oxford"* - none of which it read from this site. The three sources it held for us are
+  **`luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events`**. So the positioning has
+  travelled and the calendar has not.
+- **What it then told the buyer.** *"A separate listing shows the event on 21 Jul 2026, 09:00 -
+  17:00, which doesn't match November"*, then *"If you need a one-day, in-person session in
+  November, I didn't find one in these results"*, and it closed with *"Confirm the Oxford Agentic
+  Bootcamp's dates directly with the organiser."* Meanwhile
+  `/events/oxford-agentic-bootcamp-cohort-3/` publishes **Thursday 19 November 2026 at Worcester
+  College, OX1 2HB** in its `<title>` (which ends "| November 2026"), its meta description, its
+  `h1` and an `EducationEvent` node carrying `startDate`, `endDate`, the `PostalAddress` and 12
+  `subEvent`s. Fifteen days out, and a buyer asking for exactly this day in exactly this month
+  was sent away to ask us.
+- **Why that is evidence for a different half of backlog 2b than the ten before it.** The
+  standing reading has been "no external links, so nothing retrieves us". This reading says the
+  external presence that does exist - retired Luma listings and one aggregator - **is what the
+  engine answers from**, and it is wrong about the date. That is the sharpest evidence yet for
+  the second half of backlog 47, which is his account and his call: a stale listing is not
+  neutral, it actively answers in our place. Recorded in `outreach/review-list.md` as the twelfth
+  dated reading. Nothing contacted.
+- **The alternative the engine offered in our place** was Saïd Business School's own four-week
+  online Oxford Generative and Agentic AI Programme, starting 11 November 2026 at £1,500, plus a
+  three-day residential Oxford Ethical AI Leadership programme on 10-12 November. Both are
+  institutional, both carry a date the engine could confirm.
+- **Probe 2 declined: the site already answers it, twice, and the field's own conclusion no
+  longer bites us.** The field clusters on 5 to 12 and closes *"Groups of 20 to 30 suit
+  awareness-level sessions rather than hands-on help with specific tasks"*, which would have been
+  an argument against the old published "capped at roughly twenty-five" - and is not one now,
+  because `capacity: 25` is commented out on the Cohort 3 file and the site says "small cohort"
+  instead. The question itself is published in two places already: **"How many people are in the
+  room?"** on the Agentic programme page and **"How big is the cohort?"** on the Cohort 3 event
+  page (*"Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than
+  lectured, which stops working in a large room."*). Nothing to add. Note the field is also only
+  half winnable - NN/g and SAP's learning site are publishers on their own subject.
+- **Probe 3 is winnable and converting, and was declined on placement rather than on the rule.**
+  Every source is a vendor writing about its own product - `folk.app` served four times in four
+  languages, a CRM, a clipboard tool, an email API - with no institutional publisher anywhere in
+  it, and the engine flagged its own field (*"Most of these sources are vendor blogs with a
+  commercial stake, so treat their claims as perspectives rather than independent evidence"*).
+  The searcher is weighing whether an agent is worth it before building one, which is
+  pre-purchase. **But the only place it belongs is the Agentic programme page's FAQ block, which
+  took its 23rd entry at 02:00 today and which the 08:00 cycle explicitly declined to give a
+  24th**, and the honest answer touches what access the day's builds actually need, which is
+  closer to an event fact than to published copy. Recorded as backlog 67 with its evidence rather
+  than shipped today.
+- **Probe 4 declined because we already answer it on every commercial page.** Winnable (vendor
+  marketing and two LinkedIn posts, with the engine saying it *"found no independent, controlled
+  studies comparing outcomes across these formats"*) and converting. But its own practical
+  takeaway - *"Ask the provider what participants walk out with. A good answer names a specific
+  artifact ... and says whether it's built on your real work"* - is this site's leading promise,
+  published in `whatYoullBuild`, in `assurances`, in the capsule of every commercial page and in
+  `what-you-can-build-in-one-day-with-ai`. Nothing to add.
+
 ## 2026-11-04 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. THE BACKLOG 65 RE-PROBE HELD, AND POINTED AT A BETTER PAGE THAN THE ONE IT NAMED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

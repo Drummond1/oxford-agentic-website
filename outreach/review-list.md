@@ -11,6 +11,35 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The twelfth dated reading, and the first that fails the other way round: the engine found us,
+  described us in our own words, and could not tell the buyer when the day is. No new target;
+  nothing contacted.** Found 4 Nov 2026 (14:00 cycle).
+  - **The probe.** *"agentic AI bootcamp Oxford November 2026 one day in person for business
+    leaders"*. **No page of oxfordagentic.com was returned.** What was returned for us is
+    `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events`, and the engine's whole
+    description of the bootcamp was written off them: *"a practical, hands-on day"*, *"it assumes
+    you already use AI day to day"*, *"It doesn't assume you can code"*, *"The venue is Worcester
+    College, Oxford"*. That is our positioning, reaching a buyer, from somewhere other than here.
+  - **And then the date.** *"A separate listing shows the event on 21 Jul 2026, 09:00 - 17:00,
+    which doesn't match November"*, *"If you need a one-day, in-person session in November, I
+    didn't find one in these results"*, and finally *"Confirm the Oxford Agentic Bootcamp's dates
+    directly with the organiser."* Cohort 3 is **Thursday 19 November 2026 at Worcester College,
+    OX1 2HB**, fifteen days from this reading, and our own event page publishes that date in its
+    title, its meta description, its `h1` and its `EducationEvent` node.
+  - **Why this one is worth separating from the eleven before it.** Those readings are all "no
+    external presence, so nothing retrieves us". This one shows the external presence we **do**
+    have answering in our place and getting it wrong. A retired Luma listing is not neutral: it is
+    the thing the engine quotes. That makes this the sharpest evidence yet for the second half of
+    backlog 47 - the stale Luma pages - which is Drummond's account and his call, and it does not
+    wait on the Eventbrite, aggregator or LinkedIn Company Page items.
+  - **What it needs from Drummond:** (a) retire or update the old Luma listings so the pages an
+    engine already retrieves carry the right date, and (b) the standing ask, unchanged - a first
+    `Organization.sameAs`, which is still empty. (a) is new work on an asset that already ranks;
+    (b) is the item already in `outreach/off-page-listings.md`.
+  - **Who was offered in our place**, both with dates the engine could confirm: Saïd Business
+    School's four-week online Oxford Generative and Agentic AI Programme (starts 11 Nov 2026,
+    £1,500) and the three-day residential Oxford Ethical AI Leadership programme (10-12 Nov 2026).
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).

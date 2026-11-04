@@ -117,13 +117,33 @@ for (const file of files) {
    * page. Warn rather than fail: the deploy is not worth stopping over a
    * glyph, and a quoted terminal command could legitimately carry one.
    */
+  /*
+   * The same fault with the other mark, and it reached the live site: on
+   * 4 November three frontmatter strings were still set in typewriter double
+   * quotes - two guide capsules and a programme FAQ question - and one of them
+   * sat directly beneath an h1 that used real ones. They were found only
+   * because a cycle swept every built page for a `"` by hand, which is a check
+   * that has to be remembered rather than one that runs. The guard above was
+   * written for the apostrophe alone, so the double-quote half of exactly the
+   * same defect class stayed unguarded. Both marks are now read off the same
+   * stripped prose, on the same warn-never-fail terms: a straight double quote
+   * is legitimate in an inch measurement or a quoted command, so this must not
+   * gate a deploy. The count today is zero, which is what makes it a guard
+   * against the next frontmatter string rather than a to-do list.
+   */
   if (!noindex) {
     const prose = html
       .replace(/<(script|style|code|pre)[\s\S]*?<\/\1>/g, ' ')
       .replace(/<[^>]+>/g, ' ');
-    const straight = prose.match(/\S{0,24}(?:&#(?:39|x27);|')\S{0,16}/);
-    if (straight) {
-      warnings.push(`${page}: straight apostrophe in rendered copy — ${straight[0].trim()}`);
+    const marks = [
+      ['apostrophe', /\S{0,24}(?:&#(?:39|x27);|')\S{0,16}/],
+      ['double quote', /\S{0,24}(?:&(?:quot|#34|#x22);|")\S{0,16}/],
+    ];
+    for (const [name, pattern] of marks) {
+      const straight = prose.match(pattern);
+      if (straight) {
+        warnings.push(`${page}: straight ${name} in rendered copy — ${straight[0].trim()}`);
+      }
     }
   }
 

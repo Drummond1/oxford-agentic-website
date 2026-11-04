@@ -1204,7 +1204,38 @@ Status: `todo` · `blocked` (why) · `doing`
     own clause-by-clause check that what it publishes is true before it is made
     machine-readable. One per cycle at most.
 
-66. `todo` (loop-actionable, found 4 Nov 2026 in the 09:00 cycle; **recorded so the fix does not have
+67. `todo` (loop-actionable, found 4 Nov 2026 in the 14:00 cycle; **declined on placement this cycle,
+    recorded with its evidence so it is not re-derived**) - **nothing on the site says whether an
+    agentic workflow has to be given access to your email or CRM, and the field that answers it is
+    every vendor writing about its own product.** The probe *"do I need to give an AI agent access to
+    my email or CRM for it to be useful"* returned `folk.app` four times (the same article in four
+    languages), `macmyths.com` twice, a CRM, a clipboard tool, an email API and two Substack posts,
+    with **no institutional publisher anywhere in it**, and the engine flagged its own sources
+    (***"Most of these sources are vendor blogs with a commercial stake, so treat their claims as
+    perspectives rather than independent evidence"***). **Winnable.** **Converting**: the searcher is
+    deciding whether an agent is worth building before they build one, which is the moment before
+    booking a day built on bringing one real task. The adjacent published answers are the
+    confidentiality one ("a task you would be comfortable describing to an external supplier", and
+    you build on your own machine) and "Can I install software on my work laptop?", and neither
+    addresses system access. **Two reasons it was not shipped today.** (1) The only sensible home is
+    the Agentic programme page's FAQ block, which took its 23rd entry at 02:00 today and which the
+    08:00 cycle explicitly declined to give a 24th; three entries on one surface in one day is
+    quota-filling, which rule 6 bans. (2) The honest answer turns on what access the day's builds
+    actually need, which is closer to an event fact than to published copy - and `luma.com` does not
+    resolve from this sandbox. Re-probe before taking it, and if the answer cannot be written out of
+    published copy alone, it belongs with Drummond rather than in a cycle.
+
+66. `done` 4 Nov 2026 (14:00 cycle) - **shipped as the second half of a guard whose first half
+    already existed.** The apostrophe check was in `scripts/check-schema.mjs` already; the
+    double-quote half of exactly the same defect class was not, which is why three frontmatter
+    strings survived until a cycle swept `dist` by hand five hours earlier. Both marks now read off
+    the same stripped prose in one loop, warn-only. **Proved rather than asserted:** the three
+    pre-fix strings were restored from `e27e71d`, the site rebuilt, and the check named exactly
+    those three pages and no others, still exiting 0. Restored, rebuilt, zero warnings. Blast
+    radius measured by building a pristine worktree of `HEAD`: **0 of 199 files in `dist` differ**,
+    and the IndexNow `--dry-run` submits nothing, both of which follow from a check script being
+    the only thing that moved. (Original entry:)
+    (loop-actionable, found 4 Nov 2026 in the 09:00 cycle; **recorded so the fix does not have
     to be re-found**) - **nothing stops a typewriter quote reaching a published page again.** The three
     fixed this cycle were all frontmatter strings, which bypass the Markdown typographer, and the only
     reason they were found is that a cycle swept `dist` for `"` by hand. The shape of the guard is a
@@ -1219,6 +1250,96 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-04 (14:00 cycle) - the typography guard added five hours ago only watched one of the two
+  marks. The double-quote half of the same defect class, which is the half that actually reached the
+  live site, went unguarded. Backlog 66 closed: one check script, zero published bytes moved. Four
+  GEO probes, zero citations of our own domain, and the twelfth dated reading is the first that
+  found us and found us stale.**
+  - **The gap, and it is in one function.** `scripts/check-schema.mjs` already walks every built
+    page and already warns on a **straight apostrophe** in rendered copy, on explicit warn-never-fail
+    terms. It did not look for a **straight double quote**. That is the mark the 09:00 cycle had just
+    spent a cycle removing from three frontmatter strings - two guide `capsule`s and a programme FAQ
+    `q` - which it found only by sweeping `dist` for `"` by hand. So the site had a guard against the
+    mark that had not escaped and none against the mark that had.
+  - **The fix.** Both marks are now read off the same stripped prose (`script`, `style`, `code` and
+    `pre` removed, then all tags, so attributes and JSON-LD are excluded) in one loop over a small
+    table, and each reports the first hit per page with its surrounding words. The double-quote
+    pattern covers the raw character and the three entity forms Astro can emit, `&quot;`, `&#34;` and
+    `&#x22;` - necessary, not defensive: Astro escapes a double quote in a text node, so the plain
+    character alone would have matched nothing. **Warn, never fail**, for the reason the item gave: a
+    straight double quote is legitimate in an inch measurement or a quoted command, and the deploy is
+    not worth stopping over a glyph.
+  - **Proved against the defect it was written for, rather than asserted.** The three pre-fix content
+    files were restored from `e27e71d`, the site rebuilt, and the check named **exactly those three
+    pages and no others** - `/bootcamps/oxford-agentic-bootcamp/` (`&quot;agentic&quot;`),
+    `/guides/second-brain-for-ai-vs-note-taking/` and
+    `/guides/what-hands-on-ai-training-actually-means/` (`&quot;Hands-on&quot;`) - and still exited
+    **0**, which is the warn-not-fail contract. The files were then restored and the tree rebuilt:
+    **zero warnings**, which is the state the item predicted and the reason this is a guard against
+    the next frontmatter string rather than a to-do list.
+  - **Blast radius, measured by building both trees.** A pristine worktree of `HEAD` was built and
+    diffed against this build: **0 of 199 files in `dist` differ.** No page moved, no sitemap value
+    moved, no `lastmod` moved, `llms.txt` and `llms-full.txt` did not move. `scripts/indexnow-ping.mjs
+    --dry-run` over this cycle's four changed paths prints *"no page URLs affected by this push"*,
+    because `scripts/check-*.mjs`, `IMPROVEMENTS.md`, `seo-data/` and `outreach/` are all already in
+    its exclusion list - correct, since nothing a crawler can fetch changed.
+  - **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked, 3,158
+    internal links resolve, schema valid, 7 `Event` and 13 `FAQPage` nodes, all titles and
+    descriptions unique, no SEO warnings. Headless Chromium over the three pages the guard protects
+    plus the Cohort 3 event page at **375 and 1280px** - 8 configurations, **56 assertions, all
+    passed**: HTTP 200, no page errors, no failed local requests, no horizontal overflow, exactly one
+    `h1`, every JSON-LD block parsing in the browser, and a DOM walk over every visible text node
+    (`script`, `style`, `code`, `pre`, `noscript`, `template` and `iframe` excluded) returning **zero**
+    straight quotes or apostrophes - the browser-side confirmation of the build-side guard.
+    `reducedMotion: reduce` from the start. The 375px shot of the hands-on guide was read: the `h1`
+    and the capsule beneath it both set the phrase in curly quotes, which is what the 09:00 cycle
+    shipped and what this now holds in place. The 11 outbound warnings are the sandbox egress policy,
+    identical on the baseline.
+  - **Honest about the upside.** Nothing a visitor sees changed today, and nothing will rank better
+    tomorrow for it. The defensible claim is narrow: two sweeps that each cost a cycle to run by hand
+    - the 18 Oct apostrophe sweep and the 4 Nov quote sweep - are now one check that runs on every
+    build, so no future cycle has to remember to look.
+  - **Four GEO probes, zero citations of our own domain, three declines and the sharpest dated
+    reading yet.** Probe 2 (how big a workshop should be) is **already answered twice** - "How many
+    people are in the room?" on the Agentic programme page and "How big is the cohort?" on the
+    Cohort 3 event page - and the field's own closing line, that groups of 20 to 30 suit
+    awareness-level sessions, would have been an argument against the old published "capped at
+    roughly twenty-five" and is not one now that `capacity: 25` is commented out and the site says
+    "small cohort". Probe 4 (what you leave with) is this site's leading promise, published on every
+    commercial page. Probe 3 (does an agent need access to your email or CRM) is **winnable and
+    converting** and was declined on placement: its only home is the Agentic programme page's FAQ
+    block, which took its 23rd entry at 02:00 today and was explicitly refused a 24th at 08:00, and
+    its honest answer edges onto an event fact. Logged as **backlog 67** with its evidence. Full
+    table in `seo-data/geo-citations.md` under 4 Nov 14:00.
+  - **The twelfth dated reading is the first that found us.** *"agentic AI bootcamp Oxford November
+    2026 one day in person for business leaders"* returned **no page of oxfordagentic.com** - and
+    returned **`luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events`**, off which the
+    engine wrote our positioning back almost verbatim (*"a practical, hands-on day"*, *"it assumes
+    you already use AI day to day"*, *"It doesn't assume you can code"*, *"The venue is Worcester
+    College, Oxford"*). It then said *"A separate listing shows the event on 21 Jul 2026 ... which
+    doesn't match November"*, *"If you need a one-day, in-person session in November, I didn't find
+    one in these results"*, and closed *"Confirm the Oxford Agentic Bootcamp's dates directly with
+    the organiser."* Cohort 3 is **19 November, fifteen days out**, and our event page publishes that
+    date in its title, its description, its `h1` and its `EducationEvent` node. **The eleven readings
+    before this one say "nothing retrieves us"; this one says the pages that do retrieve are out of
+    date and answer in our place.** That is the second half of backlog 47 - the retired Luma listings
+    - with its best evidence so far, and it is Drummond's account and his call. Saïd Business
+    School's own £1,500 four-week online programme (starting 11 Nov) was offered in our place.
+    Recorded in `outreach/review-list.md`; nothing contacted.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.** Backlog 54 unchanged at three left. Backlog 63
+    unchanged at three left. Backlog 66 closed, 67 opened.
+  - **Search Console unavailable from this checkout**, as on every cycle: a whole-repo search found
+    no CSV, TSV, XLSX or ZIP export, and the only reading in `seo-data/` is still the 24 August
+    baseline. Nothing estimated. **Production:** `oxfordagentic.com` is refused on CONNECT by the
+    sandbox egress policy (403), as on every cycle since 30 Oct, so `build.txt` could not be read and
+    the Actions API stood in: Deploy run **354 success on `7e35095`** (the 10:51 scheduled rebuild),
+    which is both `origin/main` and the HEAD this cycle started from, with nothing queued or in
+    progress. `luma.com` is refused the same way, so **no event fact was read or changed** - the repo
+    was treated as the authority over the prompt's stale event facts, which still call Cohort 2
+    (16 Sept), Cohort 3 (15 Oct) and the Second Brain cohort (21 Oct) upcoming when all three are
+    `status: past` in the content, and do not know that Cohort 3 is 19 November or that the Coding
+    Bootcamp's first cohort is 26 November.
 
 - **2026-11-04 (09:00 cycle) - three strings on three pages were still set in typewriter quotes, and
   one of them sat directly under a heading that used real ones. Three content files, one punctuation
