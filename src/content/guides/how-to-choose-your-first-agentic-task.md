@@ -11,9 +11,20 @@ capsule: >-
   thinking, and anything a person has to stand behind.
 author: drummond-gilbert
 publishDate: "2026-08-04T09:00:00+01:00"
-updatedDate: "2026-10-28T07:30:00+00:00"
+updatedDate: "2026-11-04T20:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+# The two question headings below are the two objections a buyer raises before
+# booking, and they are already written as a question and its answer, so they go
+# out as an FAQPage node too, read off the rendered page rather than copied into
+# frontmatter. Opted in 4 Nov 2026 on a probe, not on theory: asked the way a
+# buyer types it - "can I bring confidential client work to an AI training
+# workshop" - the engine answered "The search did not turn up any rule that
+# answers this directly. Most results are vendor marketing pages for AI
+# workshops, and none address whether an attendee may bring live client files",
+# and closed by telling the buyer to ask the organiser. The five numbered tests
+# above are not questions and are correctly left out.
+faqFromHeadings: true
 ---
 
 "Bring one real task from your own work" is easy to say and quietly difficult to do. Asked cold, most people either reach for the hardest problem in their business - too big to build in a day - or something so trivial that automating it proves nothing. The task you choose decides what you walk away with, so it is worth choosing deliberately.

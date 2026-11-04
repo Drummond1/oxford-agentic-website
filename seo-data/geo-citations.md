@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-04 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, AND ONE ENGINE ADMISSION SHARP ENOUGH TO SHIP ON
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Five buyer questions, all drawn from questions this site already answers in prose:
+four on the Agentic line and one on the Coding line.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| is a one day AI bootcamp enough to learn agentic AI or do I need a longer course | **No** - but `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` (both ours) and `allai.events` (ours) were, and the engine wrote *"The Oxford course doesn't assume you can code"* off them | `ibm.com`, `sp.edu.sg`, `outsystems.com`, `maven.com`, `oreilly.com`, `codecademy.com`, `bootcampdigital.com`, `education.transfer-solutions.com`, `docs.hypermode.com`, `precisionaiacademy.pages.dev` (x2), four more `luma.com` listings |
+| should I send my team to an external AI course or run an in-house AI training day | **No** | `ivee.jobs`, `pwskills.com` (x2), `haufe-akademie.de` (x3), `profiletree.com` (x3), `academy.nebius.com`, `mentorcruise.com`, `lilachbullock.com`, `aitraining2u.com` (x2), `pertamapartners.com` (x2), `aicerts.ai` |
+| who should attend AI training, the manager or the person actually doing the work | **No** | `imperial.ac.uk` (a manager-guidance PDF), `gartner.com` (peer community post), `learnit.com`, `catalystconnection.org`, `lilachbullock.com` (x2), `ahaslides.com`, `ttms.com` (x2), `it.ufl.edu`, `cegos.com`, `hiig.de`, `team400.ai`, `tommasomariaricci.com` |
+| how do I check code an AI agent wrote if I cannot read code myself | **No** | `braingrid.ai`, `verdent.ai` (x3, the same guide in three languages), `dev.to` (x3, the same post three times) |
+| **can I bring confidential client work to an AI training workshop** | **No** | `americanbar.org`, `bannerwitcoff.com` (x2), `skilliga.com` (x2), `bluewiremedia.com.au`, `webucator.com`, `solveintelligence.com`, `enterprisedna.co` (x2), `falconitservices.com`, `purposelegal.io`, `theartofservice.com`, `coda.io`, `lilachbullock.com`, `tfw.squarespace.com`, `fog.zeo.org`, `aiworkshop-ch-benchmark.pages.dev` |
+
+**Reading.**
+
+- **Probe 5 is the finding, and it is the first probe in three weeks whose field admitted in
+  writing that it does not answer the question.** The engine opened: ***"The search didn't turn up
+  any rule that answers this directly. Most results are vendor marketing pages for AI workshops,
+  and none address whether an attendee may bring live client files."*** The one institutional
+  source in the field, an American Bar Association magazine piece, is about **training a model on
+  client confidential information**, which is a different question from whether you may bring a
+  real task to a day someone else is running. It closed: ***"ask the workshop organiser where any
+  data entered will be processed and stored"*** and ***"If you need a firm answer for a specific
+  workshop, ask the organiser or your compliance team directly."***
+  **Winnable** - no institutional publisher owns it and no platform vendor is writing about its
+  own product. **Converting** - the searcher is a consultant, lawyer or public-sector manager one
+  step from booking, and every commercial page on this site asks them to bring one real task.
+  And we **already publish the answer**, under two question headings on
+  `/guides/how-to-choose-your-first-agentic-task/`. Shipped this cycle as the `faqFromHeadings`
+  opt-in for that guide: the answers were already visible prose, and are now a `FAQPage` node
+  read off the rendered page.
+- **Probe 1 is the thirteenth dated-adjacent reading and the second in a row that found us
+  through Luma rather than through this site.** Three of its sources are ours -
+  `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events` - and the engine wrote our
+  own positioning back from them (*"The Oxford course doesn't assume you can code"*), while no
+  page of `oxfordagentic.com` was cited. Same shape as the 14:00 reading, same conclusion: the
+  positioning has travelled, the calendar has not, and it is backlog 47 with its evidence
+  doubled. Its substantive answer (one day is a reasonable start for building a workflow for
+  your own work without coding; plan days or weeks if you want to build in code) is close to what
+  `ai-bootcamp-vs-course-vs-exec-education` and `what-you-can-build-in-one-day-with-ai` already
+  publish. Nothing to add.
+- **Probe 2 declined: already published, and the field is not owned.** The whole field is
+  training vendors, so it is winnable, and the question converts on the group-seat path - but
+  `in-house-ai-day-or-send-people-to-a-cohort` is a guide about exactly this, and the engine's
+  own conclusion (external below about eight people, in-house at ten or more) is not something
+  this site can restate without publishing a number it does not hold. Note the engine quoted
+  third-party **price ranges** for UK group workshops; prices stay on Luma and nothing here
+  changes that.
+- **Probe 3 declined: `who-should-take-the-seat` already answers it, and the field has an
+  institutional owner.** Imperial College's own manager-guidance PDF and a Gartner peer-community
+  post both rank, which fails the owned half of the winnability rule. The engine's reading -
+  both, for different reasons, with managers the ones usually left out - is the guide's reading
+  too.
+- **Probe 4 declined on placement, not on merit.** It is the first question under
+  `why-the-code-an-agent-wrote-is-not-live`'s question tail, the field is three vendor blogs and
+  three copies of one `dev.to` draft the engine itself called *"unedited drafts with little
+  substance"*, and it converts for the Coding Bootcamp, whose published audience have not yet
+  shipped software. It stays as the next candidate under backlog 54, which allows **one opt-in
+  per cycle** and took its one today. Re-probe before taking it.
+- **Nothing contacted.** Probe 1's Luma and aggregator citations are recorded in
+  `outreach/review-list.md` as before.
+
 ## 2026-11-04 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, AND THE FIRST READING IN WHICH THE ENGINE HELD OUR POSITIONING AND STILL COULD NOT DATE THE DAY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

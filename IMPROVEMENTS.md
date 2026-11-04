@@ -1176,9 +1176,30 @@ Status: `todo` · `blocked` (why) · `doing`
       Search Console baseline says is not being crawled. Full table in
       `seo-data/geo-citations.md` under 3 Nov 14:00.
 
-54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one of the four taken in the
-    14:00 cycle, three left**) - **four more guides qualify for `faqFromHeadings` and emit no
-    `FAQPage` node.**
+54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one taken in the 1 Nov 14:00
+    cycle and a second on 4 Nov at 20:00, two left**) - **four more guides qualify for
+    `faqFromHeadings` and emit no `FAQPage` node.**
+    **Taken 4 Nov 2026 (20:00 cycle): `how-to-choose-your-first-agentic-task`**, reversing the
+    1 Nov decline on a probe phrased the way a buyer types it rather than the way the field
+    indexes it. The 1 Nov decline read the confidential-work field as owned by the SRA, the Law
+    Society, LexisNexis and a security vendor. Asked instead as *"can I bring confidential client
+    work to an AI training workshop"* - a workshop, not a law firm's own tooling - the engine
+    answered ***"The search didn't turn up any rule that answers this directly. Most results are
+    vendor marketing pages for AI workshops, and none address whether an attendee may bring live
+    client files"***, and closed by telling the buyer to ask the organiser. The only institutional
+    source in that field, an ABA magazine piece, is about training a model on client confidential
+    information, which is a different question. The two headings now published as a node are
+    *"Can I bring confidential work to a build day?"* and *"What if the task is fine but the data
+    is sensitive?"*; the five numbered tests are not questions and are correctly left out.
+    **Next candidate, re-probe before taking:** `why-the-code-an-agent-wrote-is-not-live`. The
+    20:00 cycle probed the first of its three question headings - *"how do I check code an AI
+    agent wrote if I cannot read code myself"* - and the field is three vendor blogs plus three
+    copies of one `dev.to` post the engine itself called *"unedited drafts with little
+    substance"*. Winnable, and it converts for the **Coding Bootcamp**, whose published audience
+    have not yet shipped software - which is a different and better reading than the 1 Nov
+    decline ("written for developers, and the searcher has already built something"), because
+    the heading is written for the reader who **cannot** read code. Declined 4 Nov only because
+    this item allows one opt-in per cycle and it had taken its one.
     **Taken 1 Nov 2026 (14:00 cycle): `agentic-ai-for-finance-teams`**, on a probe in which the
     engine said outright that no UK one-day agentic course for finance teams exists, which is the
     question that guide prints as an `h2`. **Declined the same cycle, each on its own probe and
@@ -1250,6 +1271,115 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-04 (20:00 cycle) - a guide that has answered the pre-booking confidentiality
+  objection since August was not machine-readable, and the probe that reopened it is the first in
+  three weeks in which the engine wrote down that its field does not answer the question. One
+  frontmatter flag, one content file, zero words of visible copy moved. Backlog 54 down to two.**
+  - **The probe, and why it reverses a decline rather than ignoring it.** Backlog 54 declined
+    `how-to-choose-your-first-agentic-task` on 1 November because the confidential-work field
+    looked owned - the SRA, the Law Society, LexisNexis and a security vendor - which fails the
+    winnability rule. Asked this cycle the way a buyer types it rather than the way the field
+    indexes it, ***"can I bring confidential client work to an AI training workshop"***, the
+    engine opened: ***"The search didn't turn up any rule that answers this directly. Most results
+    are vendor marketing pages for AI workshops, and none address whether an attendee may bring
+    live client files."*** The one institutional source it did surface, an American Bar
+    Association magazine piece, is about **training a model on client confidential information** -
+    a different question from whether you may bring a real task to a day someone else runs. It
+    closed by telling the buyer to ***"ask the workshop organiser"***. **Winnable** on that
+    reading; **converting** without argument, because every commercial page on this site asks the
+    buyer to bring one real task and this is the objection that stops them.
+  - **The change, stated precisely: nothing new was published.** `faqFromHeadings: true` on one
+    guide. The flag reads the guide's own **rendered** HTML, so the node can only ever say what
+    the page already says, and what it now emits is two entries - *"Can I bring confidential work
+    to a build day?"* and *"What if the task is fine but the data is sensitive?"* - both of which
+    have been visible `h2`s on that page since August. The five numbered tests above them
+    (*"1. You do it repeatedly"*) do not end in a question mark and are correctly left out, which
+    is the flag's contract and was asserted on the built node rather than assumed.
+  - **Both event-adjacent claims in the extracted text are corroborated elsewhere on the site, and
+    that was checked before shipping rather than after.** *"you build on your own laptop"* is also
+    published on the Coding Bootcamp Cohort 1 event page and in `src/lib/home.ts`; *"the day is
+    not recorded"* is also published on the Agentic programme page, the Cohort 3 event page and
+    four other guides. Nothing here is a lone claim being promoted into schema, and **no event
+    fact was read, invented or changed** - `luma.com` does not resolve from this sandbox.
+  - **One honest wart, recorded rather than papered over.** The second answer contains the clause
+    *"which is test 3 above"*, which refers to a heading the node does not carry, so an engine
+    quoting that entry gets a dangling reference. The alternative was to rewrite published prose
+    to suit a schema node, which is the tail wagging the dog, so the wording was left alone. The
+    answer stands without the clause.
+  - **Blast radius, measured by building both trees: exactly 5 of 199 files in `dist` differ.**
+    The guide page, `/guides/`, `llms-full.txt`, `sitemap-0.xml` and its roll-up. A word-level
+    diff of the guide's visible text returns **two words**: *"28 October"* becomes
+    *"4 November"*. On that page exactly one node is **added** (`FAQPage`, 2 `mainEntity`) and two
+    change, each in one field only (`WebPage.dateModified` and `Article.dateModified`);
+    `Organization`, `WebSite` and `BreadcrumbList` are byte-identical. `/guides/` moves one card
+    eyebrow from October to November, `llms-full.txt` moves one *"Updated:"* line, and three
+    sitemap values move forward. `/`, `/bootcamps/`, every event page, every other guide and
+    `llms.txt` are untouched. `scripts/indexnow-ping.mjs --dry-run` over this cycle's four paths
+    submits **2 URLs**, `/guides/` and the guide itself, which is exact here - backlog 41's
+    four-sibling under-submission does not apply, because no title moved and no sibling's
+    "More guides" link text changed. The ping script was not run.
+  - **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+    3,158 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+    warnings. `FAQPage` pages **13 to 14**, `Event` nodes unchanged at 7. `npm run check:flags`
+    green on the all-on and all-off builds. Headless Chromium over the changed guide and three
+    unchanged pages (`/guides/`, the other opted-in question guide, and the Agentic programme
+    page) at **375 and 1280px** - 8 configurations, **70 assertions, all passed**: HTTP 200, no
+    page errors, no failed local requests, no horizontal overflow, exactly one `h1`, every JSON-LD
+    block parsing in the browser, 0 `[data-reveal]` blocks at opacity 0, the node carrying exactly
+    two entries in the expected order, **each question matched against a visible heading in the
+    DOM**, and the byline reading 4 November. `reducedMotion: reduce` from the start. Both
+    screenshots were read: the page renders correctly at both widths and the question headings set
+    in the house serif. Two assertions failed on the first run and **both were the harness, not
+    the page** - the heading anchor appends a `#` to `textContent`, and the byline is
+    `text-transform: uppercase`, so `innerText` returns *"UPDATED 4 NOVEMBER 2026"*. Recorded
+    because the next cycle that writes a browser check will hit both.
+  - **An inbound-link census was run over the built site and found nothing new**, which is worth
+    recording so it is not re-run. 63 built pages: the only pages with zero inbound internal links
+    are `/ceo-roundtable/`, `/find-your-bootcamp/`, `/office-hours/` (deliberately unlisted),
+    `/home-original/` (a redirect) and `/team/josh-lawman/` (a `noindex` redirect stub, already
+    explained four times in this ledger). The seven team profiles still sit at one inbound link
+    each, which is backlog 24 and Drummond's call.
+  - **One dormant staleness found and deliberately not touched.** The Cohort 2 event file still
+    carries three `assurances` written for a live booking - *"If 16 September stops working, your
+    place transfers to a future cohort at no charge"* among them - seven weeks after the day ran.
+    Measured on the built site: `src/pages/events/[slug].astro` renders `assurances` only beneath
+    the booking form, so **none of the three reaches any past event page**, and a grep of `dist`
+    confirms the strings appear on the Cohort 3 page only. Frontmatter that no visitor and no
+    engine can see is not a defect, and editing it would move a `lastmod` for nothing.
+  - **Five GEO probes, zero citations of our own domain, three declines.** Probe 2 (external
+    course versus in-house day) is winnable over a field that is entirely training vendors and
+    converts on the group-seat path, but `in-house-ai-day-or-send-people-to-a-cohort` already
+    covers it and the engine's own answer turns on headcount thresholds and price ranges this
+    site does not hold. Probe 3 (manager or the person doing the work) is answered by
+    `who-should-take-the-seat` and its field has an institutional owner - Imperial College's own
+    manager-guidance PDF, plus Gartner. Probe 4 is the next backlog-54 candidate and was declined
+    on the one-per-cycle rule, with its evidence recorded. Full table in
+    `seo-data/geo-citations.md` under 4 Nov 20:00.
+  - **Probe 1 corroborates the 14:00 finding on a question with no date and no place in it.**
+    *"Is a one day AI bootcamp enough to learn agentic AI or do I need a longer course"* returned
+    `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events` - all ours, none published
+    by us - **no page of `oxfordagentic.com`**, and the engine wrote our positioning back off them
+    (*"The Oxford course doesn't assume you can code"*). So the 14:00 reading was not an artefact
+    of a date-shaped query. Added as a corroboration to the existing entry in
+    `outreach/review-list.md` rather than as a new one. Nothing contacted.
+  - **Honest about the upside.** No visitor sees anything new, and a two-entry `FAQPage` node on
+    one guide will not by itself get that guide retrieved - the probes keep saying this site is
+    not reached at all, which is backlog 2b and off-page. The defensible claim is narrow: the
+    objection the field has publicly failed to answer is now machine-readable on the page that
+    answers it, in a form an engine can quote without visiting.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.** Backlog 54 down to two left; 63 unchanged
+    at three left; 67 unchanged, still waiting on a re-probe and a placement.
+  - **Search Console unavailable from this checkout**, as on every cycle: a whole-repo search
+    found no CSV, TSV, XLSX or ZIP export, and the only reading in `seo-data/` is still the
+    24 August baseline. Nothing estimated. **Production:** `oxfordagentic.com`,
+    `drummond1.github.io` and `luma.com` are all refused on CONNECT by the sandbox egress policy,
+    as on every cycle since 30 Oct, so `build.txt` could not be read and the Actions API stood in:
+    Deploy run **355 success on `fcca444`**, which is both `origin/main` and the HEAD this cycle
+    started from, with nothing queued or in progress. The repo was treated as the authority over
+    the prompt's stale event facts, which still call Cohort 2 (16 Sept), Cohort 3 (15 Oct) and the
+    Second Brain cohort (21 Oct) upcoming when all three are `status: past`, and do not know that
+    Cohort 3 is 19 November or that the Coding Bootcamp's first cohort is 26 November.
 
 - **2026-11-04 (14:00 cycle) - the typography guard added five hours ago only watched one of the two
   marks. The double-quote half of the same defect class, which is the half that actually reached the

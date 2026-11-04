@@ -32,6 +32,14 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the thing the engine quotes. That makes this the sharpest evidence yet for the second half of
     backlog 47 - the stale Luma pages - which is Drummond's account and his call, and it does not
     wait on the Eventbrite, aggregator or LinkedIn Company Page items.
+  - **Corroborated six hours later on a different question, 4 Nov 2026 (20:00 cycle). Not a new
+    target and nothing contacted - the same three URLs, reached without naming Oxford or a
+    month.** The probe *"is a one day AI bootcamp enough to learn agentic AI or do I need a longer
+    course"* returned `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events` among its
+    sources, no page of `oxfordagentic.com`, and the engine again wrote our positioning off them
+    (*"The Oxford course doesn't assume you can code"*). So the 14:00 reading was not an artefact
+    of a date-shaped query: on a generic format question with no place in it, the pages that carry
+    this brand to a buyer are still three we do not publish and one of which is dated July.
   - **What it needs from Drummond:** (a) retire or update the old Luma listings so the pages an
     engine already retrieves carry the right date, and (b) the standing ask, unchanged - a first
     `Organization.sameAs`, which is still empty. (a) is new work on an asset that already ranks;
