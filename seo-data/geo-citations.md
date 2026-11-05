@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-05 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FIVE DECLINES, AND THE FIFTEENTH DATED READING - THE FIRST WHERE THE QUERY CARRIED THE DATE AND THE VENUE AND THE ENGINE STILL COULD NOT CONFIRM THEM
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Five buyer questions, none of them probed before: two on handing a workflow on and
+keeping it alive, one on what happens when an agent is wrong, one dated and commercial, one on the
+positioning this site leads with.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how do I hand an agentic AI workflow over to a colleague so it does not break | **No** | `collab365.com`, `fast.io` (x2), `community.uipath.com` (x3, the same event listed in three cities), `awesome.ecosyste.ms` |
+| what happens when an AI agent gets something wrong in front of a client | **No** | `enterprisedna.co` (x4), `cliffordchance.com`, `law.stanford.edu`, `hcamag.com`, `harperjames.co.uk`, `okoone.com`, `gravitee.io`, `twig.so`, `trillet.ai`, `asisteclick.com`, `sinch.com`, `rapidflowautomation.beehiiv.com`, `alexgoryachev.com`, `aismartventures.com` |
+| how do I make sure an AI workflow I built keeps being used after the training day | **No** | `phosailabs.com` (x4), `spicyadvisory.com` (x2), `reworked.co`, `vktr.com`, `coderhouse.com`, `honehq.com`, `lilachbullock.com`, `metacto.com`, `ai.wsiworld.com`, `rapidevelopers.com`, `claudiaplusai.substack.com` |
+| **agentic AI bootcamp Oxford Worcester College 19 November 2026 how to book a place** | **No** - but `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both ours) took the top two results and `allai.events` (ours) the third | `sbs.ox.ac.uk` (x2), `nobleprog.co.uk` (x2), `conted.ox.ac.uk`, `meetup.com`, `help.datasciencedojo.com` (x6), `outsystems.com`, `cyfronet.pl`, `learnersink.com`, `pulse.bot` |
+| do I need to be technical to build an AI agent for my own job no coding | **No** | `udemy.com` (x2), `dev.to` (x4), `luma.com/cyadegdy` (someone else's event), `clutch.co`, `getodin.ai`, `cassidyai.com`, `joget.com`, `gptbots.ai`, `momen.app`, `ampcome.com`, `tinycommand.com`, `speechactors.com`, `puppyone.ai`, `gptcentral.substack.com` |
+
+**Reading.**
+
+- **Probe 4 is the fifteenth dated reading, and it is sharper than the fourteen before it for one
+  reason: the query already contained the answer.** The three readings on 4 and 5 November asked
+  for a November bootcamp in Oxford and were told the date could not be confirmed. This one
+  **named the date and the venue in the question** - *"Worcester College 19 November 2026"* - and
+  the engine still opened ***"I couldn't confirm a 19 November 2026 date"*** and ***"The results
+  point to a booking page at Luma, but they don't show a date for this event."*** It then offered
+  the buyer a booking route off `luma.com/oxfordagentic2`, which is **Cohort 2, 16 September,
+  past**, and closed ***"Check the Luma page directly for the current date and venue before
+  booking."***
+  **The new half, and it is worse than a missing date.** Holding two of our Luma listings with the
+  same title and different venues, the engine reached for the explanation that our details are
+  unreliable: ***"Another Luma listing with the same title gives St Anne's College as the
+  location. So there may be several editions, or the details may have changed."*** St Anne's is
+  Cohort 1, July. So a buyer who searches the exact date and venue we publish is now told that the
+  date is unverified, that the venue may have moved, and to go and check. Cohort 3 is **fourteen
+  days out**.
+  **What this does not change.** The remedy is unchanged and is not the loop's: the pages carrying
+  this brand to buyers are three we do not publish, one of which is a retired cohort and one of
+  which is dated July. Recorded as a fourth corroboration on the existing review-list entry, not
+  as a new target. Nothing contacted.
+- **Probe 1 declined on duplication, and the field was the most winnable of the five.** Nine
+  sources, every one a vendor blog, a community event listing or a GitHub repository, and the
+  engine said so itself: ***"the sources are mostly vendor blogs and event pages, and I did not
+  find a single authoritative standard."*** But this site publishes the argument in two places and
+  publishes it better. `where-the-human-goes-in-an-agentic-workflow`: *"A workflow you trust in
+  stages is one you can hand over in stages, which is far easier than handing over all of it at
+  once."* `scout-drafter-reviewer-pattern`, which has the most inbound internal links of any guide
+  here: *"The pattern lets you hand over the parts you are ready to hand over and keep the rest"*
+  and *"From the moment someone else relies on the output, you will want to know which step
+  produced the sentence you are being asked about."* The engine's own synthesis is a procedural
+  checklist on top of that argument, and a guide restating it is the near-duplicate rule 6
+  forbids. It also converts weakly: the searcher has already built the workflow.
+- **Probe 2 declined on winnability, and on a second ground that matters more.** Clifford Chance's
+  own briefing on the agentic AI liability gap and a Stanford Law piece both rank, which fails the
+  owned half of the rule outright. The second ground stands even if the field were open: the
+  honest answer to that question is about who is liable when an agent is wrong in front of a
+  client, and this site does not hold a view on that it could publish without inventing one. The
+  adjacent published answers - `how-to-notice-when-an-ai-workflow-is-wrong` and
+  `where-the-human-goes-in-an-agentic-workflow` - are about catching the error, which is a
+  different question from carrying it.
+- **Probe 3 declined on duplication, and it is the one decline worth recording in full, because
+  the field was open and the question converts.** Nineteen sources, every one a consultancy or
+  vendor blog, no institutional publisher anywhere in it, and the engine flagged its own evidence:
+  ***"none of them is a rigorous study"*** and ***"the specific numbers ... are self-reported and
+  unverified."*** The question also converts about as hard as any on this list, because *"we did
+  AI training before and nothing changed"* is the objection a budget-holder raises first. It is
+  declined because this site already answers it twice and in the right places:
+  `how-to-run-an-ai-pilot-that-survives` is exactly this argument (*"They fail because nobody
+  owned the task, success was never defined, and week two was never planned for"*), and
+  `after-the-ai-executive-programme` is the other half. `is-your-ai-workflow-saving-time-or-just-effort`
+  carries the measurement half with two arXiv citations, which none of the nineteen has.
+- **Probe 5 declined: it is this site's leading sentence, published on every commercial page.**
+  The field is Udemy, four `dev.to` posts and ten no-code platform blogs, so it is winnable, and
+  the engine's answer (*"no, you don't need to be technical"*, pick a narrow job) is ours. But
+  *"No coding is required"* and *"It doesn't assume you can code"* already appear on the homepage,
+  all three programme pages, both on-sale event pages and `llms.txt`, and the standing rule is
+  that the claim is never left standing on its own. There is nothing here to add.
+- **Nothing contacted.** No new target: every citable third party in these five fields is already
+  on the review list, a competitor's own listing, or someone else's event.
+
 ## 2026-11-05 (02:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FIVE DECLINES, AND THE FOURTEENTH DATED READING ON A SECOND PHRASING
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

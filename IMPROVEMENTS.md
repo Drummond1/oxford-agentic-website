@@ -1315,6 +1315,95 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-05 (08:00 cycle) - nothing shipped to the site, deliberately, for the second cycle
+  running. Five GEO probes, five declines, two new audits closed out, and the fifteenth dated
+  reading, which is the first where the query already carried the answer. The commit is three
+  records; `dist` is byte-for-byte the build of `32103e6`.**
+  - **Why no page changed, said plainly.** The 02:00 cycle today closed out internal linking,
+    every `EducationEvent` and `Course` node, and the title and description budgets, and found
+    both standing candidates in the cycle prompt already done. This cycle went looking in the two
+    places that audit had not reached - the **anchor text** of the links it had only counted, and
+    an **indexability sweep** of all 63 built pages - and found nothing to fix in either. Of the
+    five probes, three were declined because this site already answers the question, one because
+    the field has institutional owners, and one because the answer is this site's leading
+    sentence. The remaining loop-actionable backlog items are 39 (whose own entry argues the
+    honest answer is to do nothing), 49 and 59 (both recorded as not urgent) and 61 (declined on
+    the converting half of the rule). **Opting another guide into `faqFromHeadings` was available
+    again and was declined again**, on Drummond's diagnosis of 4 November: seven commits in five
+    days had repeated it, and he named it as the shape a loop takes with no evidence.
+  - **Audit one: the anchor text of every inbound link to the two on-sale pages, read rather than
+    counted.** The 02:00 cycle measured 17 and 9 inbound body links and concluded internal linking
+    is not this site's constraint. It did not read what those links **say**, which is the half
+    that carries a ranking signal, and the GEO failure is specifically that the on-sale pages are
+    not retrieved for their own date. Measured over `<main>` on all 63 built pages:
+    - `/events/oxford-agentic-bootcamp-cohort-3/` takes **16** body anchors, and **13 of them
+      carry the date**: *"19 November at Worcester College"* (5), the full event card (4),
+      *"Cohort 3 - 19 November 2026"* (2), *"Thursday 19 November at Worcester College"* (1),
+      *"19 November"* (1). Only three are generic (*"Everything about this day"*, *"Full
+      details"*, *"each cohort's event page"*).
+    - `/events/oxford-agentic-coding-bootcamp-cohort-1/` takes **8**, of which **6** carry the
+      date and venue.
+    - **Nothing to fix, and that is the finding.** Dated, venue-carrying anchor text is what this
+      would have been changed to. It is already there, which closes the last on-site explanation
+      for the retrieval failure and leaves backlog 2b and 47 - external links, which are
+      Drummond's - as the only one standing.
+  - **Audit two: an indexability sweep of all 63 built pages against the sitemap.** Checked per
+    page: `robots` meta, canonical path against the page's own path, `html lang`, `og:type`, and
+    sitemap membership. **No `noindex` page is in the sitemap and no indexable page is missing
+    from it** (55 URLs, 8 flag-gated or deliberately unlisted pages correctly out). Every
+    canonical is self-referential except two that are correctly not: `/home-original/` (a redirect
+    page) and `/team/josh-lawman/` (the `noindex` stub). `og:type` is already right - `article` on
+    all 32 guides, `website` on the rest - so the one thing this sweep was written to catch was
+    not there to catch. `robots.txt` allows every crawler by name, including sixteen AI crawlers,
+    and points at the sitemap and both `llms` files. `rss.xml` is valid and carries all 32 guides.
+    **Nothing to fix.**
+  - **Five GEO probes, zero citations of our own domain, five declines.** Full table and reasoning
+    in `seo-data/geo-citations.md`. Two are worth carrying here:
+    - **The fifteenth dated reading, and the first where the question already contained the
+      answer.** *"agentic AI bootcamp Oxford Worcester College 19 November 2026 how to book a
+      place"* named the date **and** the venue, and the engine still opened ***"I couldn't confirm
+      a 19 November 2026 date"*** and ***"the results ... don't show a date for this event"***. It
+      returned `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` as the top two results,
+      `allai.events` third, no page of `oxfordagentic.com`, and sent the buyer to book through
+      `luma.com/oxfordagentic2` - **Cohort 2, 16 September, past**. The new part is worse than a
+      missing date: holding two listings with the same title and different venues, the engine
+      concluded our details were unreliable - ***"there may be several editions, or the details
+      may have changed. Check the Luma page directly for the current date and venue before
+      booking."*** St Anne's is Cohort 1, July. **Cohort 3 is fourteen days out.** Recorded as a
+      fourth corroboration on the existing review-list entry. Nothing contacted.
+    - **The decline worth recording in full, because the field was open and the question
+      converts.** *"how do I make sure an AI workflow I built keeps being used after the training
+      day"* returned nineteen sources, every one a consultancy or vendor blog, no institutional
+      publisher anywhere, and the engine flagged its own evidence (***"none of them is a rigorous
+      study"***, the numbers ***"self-reported and unverified"***). It converts about as hard as
+      any question on this list, because *"we did AI training before and nothing changed"* is the
+      first objection a budget-holder raises. **Declined because it is already answered twice and
+      in the right places**: `how-to-run-an-ai-pilot-that-survives` is this exact argument, and
+      `after-the-ai-executive-programme` is the other half.
+  - **Checks, on an unchanged tree.** `npm ci` and `npm run build` green: 62 pages built, 64
+    checked, 3,158 internal links resolve, schema valid, 7 `Event` and 14 `FAQPage` nodes, all
+    titles and descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox
+    egress policy, unchanged. Headless Chromium over the two on-sale event pages and the homepage
+    at **375 and 1280px**: 6 configurations, **54 assertions, all passed** - 200, no page errors,
+    no failed local requests, no horizontal overflow, exactly one `h1`, every JSON-LD block
+    parsing in the browser, 0 `[data-reveal]` blocks at opacity 0, each page's own date read off
+    the rendered DOM, and a DOM walk over `main` returning zero straight quotes or apostrophes.
+    `reducedMotion: reduce` from the start. The mobile Cohort 3 screenshot was read: date, time,
+    venue and the booking button all render correctly.
+  - **Search Console: unavailable, sixteenth consecutive cycle.** `seo-data/search-console-latest.md`
+    is still absent, which is the documented pre-setup state: `GSC_SERVICE_ACCOUNT_KEY` does not
+    exist, the variable is not in the environment, and no CSV, TSV or XLSX export exists anywhere
+    in the repository. Nothing estimated. Rule 5 applied. **`STATE.md` task 4 remains the highest-value
+    item on the whole list**, and sixteen cycles is now the measure of what it costs.
+  - **Production.** `oxfordagentic.com`, `www.oxfordagentic.com`, `drummond1.github.io`,
+    `luma.com` and `allai.events` are all refused on CONNECT by the sandbox egress policy, as on
+    every cycle since 30 October, so `build.txt` could not be read and the Actions API stood in:
+    **deploy run 359 succeeded on `32103e6`**, which is both `origin/main` and the HEAD this cycle
+    started from, with nothing queued or in progress. **No Luma page was read, so no event fact
+    was read, invented or changed.**
+  - **No new guide. 0 of 3 for the week of 2-8 Nov.** Two probes reached the topic probe and both
+    were declined on duplication rather than on demand.
+
 - **2026-11-05 (02:00 cycle) - nothing shipped to the site, deliberately. Five GEO probes, five
   declines, and four audits closed out so they are not re-derived. The commit is three records and
   two backlog corrections; `dist` is byte-for-byte the build of `3796407`.**

@@ -60,6 +60,24 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     correct from this repository. Cohort 3 is fourteen days out. **Nothing here changes the ask in
     (a) above; it dates it.**
 
+  - **A fourth corroboration six hours later, and the first where the question already carried the
+    answer, 5 Nov 2026 (08:00 cycle). Not a new target and nothing contacted.** The probe
+    *"agentic AI bootcamp Oxford Worcester College 19 November 2026 how to book a place"* named
+    the date and the venue, and the engine still opened ***"I couldn't confirm a 19 November 2026
+    date"*** and ***"The results point to a booking page at Luma, but they don't show a date for
+    this event."*** `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` were the top two results and
+    `allai.events` the third; no page of `oxfordagentic.com` was returned. It then sent the buyer
+    to book through `luma.com/oxfordagentic2`, which is **Cohort 2, 16 September, past**.
+    **The part that is new, and it is worse than a missing date.** Holding two listings with the
+    same title and different venues, the engine reached for the explanation that our own details
+    are unreliable: ***"Another Luma listing with the same title gives St Anne's College as the
+    location. So there may be several editions, or the details may have changed. Check the Luma
+    page directly for the current date and venue before booking."*** St Anne's is Cohort 1, July.
+    So a buyer searching the exact date and venue this site publishes is told the date is
+    unverified, that the venue may have moved, and to go and check. Cohort 3 is **fourteen days
+    out**. This does not change ask (a) above; it is the clearest statement yet of what (a) costs
+    while it is open.
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).
