@@ -341,6 +341,16 @@ Status: `todo` · `blocked` (why) · `doing`
     from here with `luma.com` blocked by the sandbox egress policy, and getting it wrong either
     strands someone at 09:30 on the day or invents a cost. One line from him closes it on the
     programme page and the event page together.
+    **Corroborated 5 Nov 2026 (02:00 cycle), and now in the engine's words rather than
+    competitors'.** Probed *"what do I need to set up on my laptop before an AI coding bootcamp
+    using Claude Code"*: the field is `code.claude.com` six times over, so the topic itself fails
+    the winnability rule and the loop declined writing anything. But the answer a buyer gets is
+    the point. The engine stated flatly that ***"Claude Code isn't free"***, that it
+    ***"requires a paid Claude plan, such as Pro, Max, Team, or Enterprise"***, that the free
+    claude.ai plan does not include it, and closed ***"confirm the required plan and Node version
+    with the bootcamp organizers."*** So a buyer twenty-one days out from Cohort 1 is being quoted
+    the vendor's pricing page on a cost question this site does not answer, and is being told to
+    come and ask. That raises the item's urgency and changes nothing about who can close it.
 
 26. `todo` **(needs Drummond, a hero-layout call)** - **every event page prints its own
     heading twice.** The hero eyebrow is built as `programme name - cohort` and the `h1` is
@@ -1025,7 +1035,14 @@ Status: `todo` · `blocked` (why) · `doing`
     field, so `src/lib/schema.ts` cannot parse a start time, and the builder correctly emits
     nothing rather than a `subEvent` with no `startDate`. **The code is right; the content is
     thin.** Measured on the built site: Cohort 3 publishes **12** `subEvent`s, Cohort 2 twelve,
-    Cohort 1 five, Second Brain Cohort 1 its own set - and the Coding Bootcamp **0**. The page
+    Cohort 1 five - and the Coding Bootcamp **0**. **Correction, 5 Nov 2026 (02:00 cycle):** this
+    sentence also said "Second Brain Cohort 1 its own set", and that was wrong. Re-measured on the
+    built site, Second Brain Cohort 1 publishes **0** as well, for the same reason and with no code
+    fault: its `agenda` labels are `Morning`, `Midday`, `Afternoon` and `Close`, which
+    `src/lib/schema.ts` can no more parse into a `startDate` than it can parse `Session 1`. The
+    builder was checked before the ledger was corrected, and it is right in both cases. It changes
+    nothing about this item - that event is past and its timetable is nobody's booking decision
+    now - but **two** of five event pages carry no `subEvent`, and only one of them is on sale. The page
     renders the same way, *"What happens on the day: Session 1, Session 2..."*, where every other
     event page prints a clock.
     - **What it costs, stated honestly and not inflated.** `subEvent` is not a Google rich-result
@@ -1268,9 +1285,133 @@ Status: `todo` · `blocked` (why) · `doing`
     nothing until the next frontmatter string is written. Cheap to add in the same cycle as any other
     `check-schema.mjs` change.
 
+68. `todo` **(needs Drummond, one line about what an attendee is entitled to; found 5 Nov 2026 in
+    the 02:00 cycle)** - **the Coding Bootcamp says you own what you build; no Agentic page says
+    anything about ownership at all.** `oxford-agentic-coding-bootcamp-cohort-1` publishes
+    *"Leave having shipped two things you own outright"* and *"in your own repository"*. The
+    Agentic line publishes *"you leave with the workflow"*, *"you keep the workflow and a written
+    recipe"* and *"the day is not recorded"* - all of which describe **possession**, and none of
+    which answers ownership. `questions-to-ask-before-booking-ai-training` gets closest, with
+    *"the thing you built, in your own hands rather than inside the provider's account"*, and that
+    is a guide rather than a page that takes a booking.
+    - **The evidence this comes from.** Probed *"can I keep and use what I build during an AI
+      training day afterwards"* on 5 Nov. The engine opened *"The search didn't find a general
+      policy on who owns what you build at an AI training day"*, and of the one competitor whose
+      cohort listings filled the whole field it noted *"Neither page says explicitly who owns the
+      built project."* No institutional publisher and no platform vendor writing about its own
+      product: winnable, and it converts, because the searcher is a consultant or an in-house
+      manager one step from booking and this is the question their employer will ask them.
+    - **Why the loop stopped here.** "You own what you build" is an entitlement, not a
+      description. Carrying the Coding line's sentence across to the Agentic line would assert
+      something about what a buyer may keep and reuse commercially that nobody has published, and
+      that is the first of the accuracy rules. **One line from him covers both product lines at
+      once**, and the cheapest version is the Coding Bootcamp's own wording, if it is in fact true
+      of both.
+    - **If the answer is simply "the same as the Coding Bootcamp"**, the natural homes are the
+      Agentic programme page's FAQ block and the Cohort 3 event page, and the loop can place it in
+      one cycle without writing a new claim.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-05 (02:00 cycle) - nothing shipped to the site, deliberately. Five GEO probes, five
+  declines, and four audits closed out so they are not re-derived. The commit is three records and
+  two backlog corrections; `dist` is byte-for-byte the build of `3796407`.**
+  - **Why no page changed, said plainly.** Every candidate this cycle found was already answered
+    on the site, already reasoned about in this ledger, or needs a fact only Drummond holds. The
+    one move that was available - opting another guide into `faqFromHeadings` - was declined on
+    Drummond's own diagnosis from yesterday: seven commits in five days had repeated it, `FAQPage`
+    nodes went 9 to 14, and he named it as the shape a loop takes when it has no evidence rather
+    than a shape worth continuing. Its best remaining candidate is moot in any case, because the
+    guide that answers this cycle's strongest probe has carried the flag since 28 October.
+  - **Four audits, measured on the built site and recorded so no later cycle repeats them.**
+    - **Inbound internal links, counted twice: once over whole pages and once over `<main>` only.**
+      The two on-sale pages are not under-linked. `/events/oxford-agentic-bootcamp-cohort-3/` has
+      **17** body links in from 62 pages and `/events/oxford-agentic-coding-bootcamp-cohort-1/`
+      has **9**; `/bootcamps/oxford-agentic-bootcamp/` has 33 and `/guides/` 33. The guide tail
+      sits at 5 to 12 with none at zero. The only pages with no body link in are the deliberately
+      unlisted ones (`/find-your-bootcamp/`, `/office-hours/`, `/ceo-roundtable/`,
+      `/home-photos/`, `/home-original/`), the `josh-lawman` noindex stub, and `/testimonials/` -
+      which the 1 Nov cycle already measured and put with backlog 35, so it was left alone rather
+      than re-opened. **Internal linking is not this site's constraint, and that is now measured
+      rather than assumed.**
+    - **Every `EducationEvent` node on all five event pages.** Complete and correct: `location` is
+      a `Place` with a full `PostalAddress` including postcode, plus `organizer` and `performer`
+      by `@id`, `superEvent` as an `EventSeries`, `image`, `inLanguage`, `sameAs` carrying the
+      Luma URL, `description`, `startDate` and `endDate`. The two upcoming cohorts carry
+      `offers.availability: InStock`; the three past ones correctly carry no `availability`,
+      matching the reasoning in `src/lib/schema.ts` that retired a SoldOut inference on purpose.
+      Nothing to fix.
+    - **Every `Course` node on the three programme pages.** Each carries `hasCourseInstance` with
+      `courseWorkload: PT8H`, `courseMode`, a dated instance and the same `Place`, plus `teaches`,
+      `audience` and `coursePrerequisites`. Google's Course eligibility fields are all present.
+      Nothing to fix.
+    - **Titles and meta descriptions on the eight commercial pages**, measured in characters:
+      136 to 159, all inside the 160 budget, with the date surviving the composer on every page
+      that has one. Both upcoming dates were checked against the calendar rather than copied:
+      19 and 26 November 2026 are Thursdays, which is what both pages print.
+  - **The two standing candidates in the cycle prompt are both already done, and that is worth
+    recording because the prompt still lists them.** `scripts/indexnow-ping.mjs` maps
+    `src/lib/home.ts` to `/` alone at line 109, so a homepage FAQ edit no longer pings 44 URLs.
+    And the past-tense sweep is complete: a grep for every passed cohort date across `src/` found
+    no sentence naming one as upcoming. Cohort 2's three `assurances` still read as booking copy,
+    which is the dead data the 1 Nov cycle recorded - the event template renders assurances only
+    in the not-past branch, so none of them reaches a page.
+  - **Five GEO probes, zero citations of our own domain, five declines.** Full table and reasoning
+    in `seo-data/geo-citations.md`. Two are worth carrying here:
+    - **The strongest engine admission in three weeks, and still a decline.** On *"can I keep and
+      use what I build during an AI training day afterwards"* the engine wrote *"The search didn't
+      find a general policy on who owns what you build at an AI training day"*, over a field of
+      one competitor's cohort listings with no institutional publisher in it. Winnable and
+      converting. Declined because `questions-to-ask-before-booking-ai-training` already answers
+      it in prose **and** as a `FAQPage` entry (*"What do I get after the day, and for how
+      long?"*), and `what-you-can-build-in-one-day-with-ai` answers the other half. A guide on top
+      of those is the near-duplicate the new-guide rule forbids.
+      **The part that is a genuine gap is not the loop's to write.** The Coding Bootcamp event
+      page says *"two things you own outright"* and *"in your own repository"*. No Agentic page
+      says anything equivalent. Extending an ownership statement from one product line to another
+      invents an entitlement, so it is logged for Drummond as the new backlog item below.
+    - **The fourteenth dated reading, and the third phrasing in twelve hours to find our Luma
+      pages and not this site.** *"one day agentic AI bootcamp Oxford November 2026 for business
+      leaders"* returned `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` as the **top two
+      results**, `allai.events` fifth, and no page of `oxfordagentic.com`. Verdict:
+      *"I found one Oxford event that fits the format, but no confirmed November 2026 date for
+      it"* and *"the November 2026 date is unverified."* It dated Saïd's 11 November programme in
+      the same answer off `sbs.ox.ac.uk`. Cohort 3 is fourteen days out. Added as a corroboration
+      on the existing review-list entry, not as a new target. Nothing contacted.
+  - **Two backlog corrections made from measurement, not from re-reading.** Backlog 60 claimed
+    Second Brain Cohort 1 published its own set of `subEvent`s; it publishes **0**, because its
+    agenda labels are `Morning`, `Midday`, `Afternoon` and `Close`. The builder is right in both
+    cases and was checked before the ledger was corrected. Backlog 25 gains the engine's own words
+    on the paid-plan question, which is sharper than the competitor listings it was raised on.
+  - **Checks, on an unchanged tree.** `npm ci` and `npm run build` green: 62 pages built, 64
+    checked, 3,158 internal links resolve, schema valid, 7 `Event` and 14 `FAQPage` nodes, all
+    titles and descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox
+    egress policy, unchanged. Headless Chromium over the two on-sale event pages at **375 and
+    1280px**: 4 configurations, **32 assertions, all passed** - 200, no page errors, no failed
+    local requests, no horizontal overflow, exactly one `h1`, every JSON-LD block parsing in the
+    browser, 0 `[data-reveal]` blocks at opacity 0, and each page's own date read off the rendered
+    DOM. `reducedMotion: reduce` from the start. Two of the four screenshots were read, the mobile
+    Cohort 3 and the desktop Coding Bootcamp: both render correctly, with the date, the venue and
+    the booking button in place and the headings set in the house serif. `indexnow-ping --dry-run` over this cycle's four paths prints
+    *"no page URLs affected by this push; nothing to submit"*, which is correct: nothing fetchable
+    changed.
+  - **Search Console: unavailable, fifteenth consecutive cycle, and for the first time with the
+    fix already in the repository.** `seo-data/search-console-latest.md` is absent, which is the
+    documented pre-setup state rather than a failure - export dispatch run 2 succeeded at 20:56 on
+    4 November and wrote nothing because `GSC_SERVICE_ACCOUNT_KEY` does not exist yet. Also
+    checked here: `gcloud auth list` reports no credentialed accounts, the variable is not in the
+    environment, and no CSV, TSV or XLSX export exists anywhere in the repository. Nothing
+    estimated. Rule 5 worked. **`STATE.md` task 4 is the highest-value item on the whole list.**
+  - **Production.** `oxfordagentic.com`, `drummond1.github.io` and `luma.com` are all refused on
+    CONNECT by the sandbox egress policy, as on every cycle since 30 October, so `build.txt` could
+    not be read and the Actions API stood in: **deploy run 358 succeeded on `3796407`**, which is
+    both `origin/main` and the HEAD this cycle started from, with CI run 335 green beside it and
+    nothing queued or in progress. **No Luma page was read, so no event fact was read, invented or
+    changed.**
+  - **No new guide. 0 of 3 for the week of 2-8 Nov**, and the two candidates that reached the
+    topic probe were declined on duplication rather than on demand.
 
 - **2026-11-04 (Drummond's request, not a cycle) - the loop had been blind to Search Console for
   fourteen consecutive cycles, so rule 4 was unavailable every time and everything fell to rule 5.

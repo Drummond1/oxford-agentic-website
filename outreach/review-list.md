@@ -47,6 +47,18 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Who was offered in our place**, both with dates the engine could confirm: Saïd Business
     School's four-week online Oxford Generative and Agentic AI Programme (starts 11 Nov 2026,
     £1,500) and the three-day residential Oxford Ethical AI Leadership programme (10-12 Nov 2026).
+  - **Corroborated again twelve hours later, on a third phrasing, 5 Nov 2026 (02:00 cycle). Not a
+    new target and nothing contacted.** The probe *"one day agentic AI bootcamp Oxford November
+    2026 for business leaders"* - the 14:00 question with "in person" dropped - returned
+    `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` as its **top two results** and
+    `allai.events` fifth, and **no page of oxfordagentic.com**. The engine's verdict is the same
+    and a little plainer: *"I found one Oxford event that fits the format, but no confirmed
+    November 2026 date for it"*, *"the listing I saw doesn't show a date"*, *"A separate listing
+    (allai.events) shows 21 Jul 2026 ... so the user should confirm the date on the Luma page"*,
+    and *"the November 2026 date is unverified."* It dated Saïd's 11 November programme in the
+    same answer. Three phrasings in twelve hours, the same three URLs, none of them ours to
+    correct from this repository. Cohort 3 is fourteen days out. **Nothing here changes the ask in
+    (a) above; it dates it.**
 
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing

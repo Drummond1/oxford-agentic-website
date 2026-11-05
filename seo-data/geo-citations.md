@@ -5,6 +5,87 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-05 (02:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FIVE DECLINES, AND THE FOURTEENTH DATED READING ON A SECOND PHRASING
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Five buyer questions: three on the Agentic line, one on the Coding line, one dated
+and commercial.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| can I keep and use what I build during an AI training day afterwards | **No** | `team400.ai` (x7, one competitor's cohort listings), `luma.com` (x2, a third party's half-day), `images.appsumo.com` (x2, off-topic), `assets-002.noviams.com`, `zackproser.com`, `proximl-customer-documentation-prod.pages.dev` |
+| will the AI workflow I build still work when the tools change in six months | **No** | `petronellatech.com` (x2, the same post on two hosts), `consultevo.com` (x2), `dev.to` (x2), `mindstudio.ai` |
+| how do I know if an AI workflow is actually saving time or just feels faster | **No** | `worklytics.co`, `app.therundown.ai`, `gaas.it.com`, `itechguides.com`, `okoone.com`, `digitaltoday.co.kr`, `thehrdirector.com`, `12thwonder.com`, `dev.to`, `addictedtoai-help.pages.dev` |
+| what do I need to set up on my laptop before an AI coding bootcamp using Claude Code | **No** | `code.claude.com` (x6, the vendor's own docs), `claudelog.com` (x2), `atlas.utdallas.edu` (x2), `zilliz.com`, `getorchestra.io`, `creative-tim.com`, `technicallycurious.substack.com`, `macmyths.com`, `data.poverty-action.org`, four more |
+| **one day agentic AI bootcamp Oxford November 2026 for business leaders** | **No** - but `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both ours) took the top two results, and `allai.events` (ours) the fifth | `sbs.ox.ac.uk`, `eventbrite.co.uk` (x2), `ibm.com`, `cvn.columbia.edu`, `maven.com`, `academy.xebia.com` (x2), `happeningnext.com`, `analyticsindiamag.com`, `tecnico.ulisboa.pt`, `createwith.com`, `esmt.berlin`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 5 is the fourteenth dated reading, and it repeats yesterday's 14:00 finding on a
+  different phrasing, one day later, with the competitor's date retrievable and ours not.** Asked
+  without the words "in person" that the 4 Nov probe carried, the engine still returned **no page
+  of oxfordagentic.com**, still described the bootcamp off our Luma pages (*"a practical,
+  hands-on day"*, *"It doesn't assume you can code"*, *"The host is a tutor in AI in Management at
+  Saïd Business School"*), and still could not date it: ***"I found one Oxford event that fits the
+  format, but no confirmed November 2026 date for it"***, ***"the listing I saw doesn't show a
+  date"***, ***"A separate listing (allai.events) shows 21 Jul 2026 ... That is July, not
+  November, so the user should confirm the date on the Luma page"***, closing
+  ***"the November 2026 date is unverified. Checking that page directly is the next step."***
+  **What this adds, stated without inflating it.** The 14:00 reading on 4 November already
+  recorded the competitor comparison, so the Saïd detail here is a repeat rather than a find: the
+  engine again dated Saïd's online generative and agentic AI programme without hesitation off
+  `sbs.ox.ac.uk`, *"a November start on 11 November 2026 and a cost of £1,500"*. What is new is
+  only that this is the **third phrasing in twelve hours** to return the same three URLs of ours
+  and no page of this site, one of them carrying no date and one carrying July. So the failure is
+  not a date-shaped query, and it is not that the engine will not state a date for a UK AI
+  programme in November. It is that the pages carrying ours are a past cohort's listing and a
+  July listing, while the page that publishes **Thursday 19 November 2026 at Worcester College**
+  in its title, meta description, `h1`, `EducationEvent` node and `llms.txt` is not retrieved at
+  all. Cohort 3 is fourteen days from this reading. Recorded as a corroboration on the existing
+  review-list entry, not as a new target. Nothing contacted.
+- **Probe 1 is the strongest engine admission of the five, and it was still declined - on
+  duplication, not on merit.** The engine opened: ***"The search didn't find a general policy on
+  who owns what you build at an AI training day"***, and of the one competitor whose listings
+  filled the field it noted ***"Neither page says explicitly who owns the built project."***
+  Winnable: no institutional publisher, no platform vendor writing about its own product.
+  Converting: the searcher is one step from booking and this is a pre-purchase objection.
+  **Declined because this site already answers it, twice, in prose a new guide would restate.**
+  `questions-to-ask-before-booking-ai-training` separates the two halves explicitly - *"what you
+  take away: the thing you built, in your own hands rather than inside the provider's account,
+  plus whatever is written down so you can rebuild it"* - and `what-you-can-build-in-one-day-with-ai`
+  closes on *"a written recipe so you can rebuild and extend it on Monday"*. A guide on top of
+  those is the near-duplicate the new-guide rule forbids. The first of those two guides has
+  carried `faqFromHeadings` since 28 October, so the answer is already a `FAQPage` node as well
+  as prose, and there is no schema move left here either.
+  **The one thing in this probe that is not already published, and the loop must not write it:
+  ownership in the legal sense.** The Coding Bootcamp event page says *"two things you own
+  outright"* and *"in your own repository"*. No Agentic page says anything equivalent, and
+  extending the Coding line's ownership statement to the Agentic line would be inventing a fact
+  about what a buyer is entitled to. Logged for Drummond rather than written.
+- **Probe 2 declined: already answered, in the better place.** `scout-drafter-reviewer-pattern`
+  carries *"## Will this still be true when the tools change?"* and *"### Does what I learn go out
+  of date in six months?"* as visible headings, and that guide has the most inbound internal links
+  of any guide on the site (12). The field is five vendor posts and two `dev.to` drafts, so it is
+  winnable, but the 1 Nov reading declined this same objection for the same reason and nothing has
+  changed.
+- **Probe 3 declined: `is-your-ai-workflow-saving-time-or-just-effort` is this question.** The
+  engine's own answer is that guide's argument - baseline first, count the supervision overhead,
+  measure the whole job rather than the step that impressed you - and the guide cites two arXiv
+  papers for it, which none of the ten ranking sources does. Winnable, converting, and already
+  published, which is a decline rather than a gap.
+- **Probe 4 declined on winnability, and it corroborates a question only Drummond can close.**
+  The field is `code.claude.com` six times: the vendor documenting its own product, which is the
+  clearest possible fail of the winnability rule. But the engine's answer is worth recording
+  against **backlog 25**: it told the buyer ***"Claude Code isn't free"*** and that it
+  ***"requires a paid Claude plan, such as Pro, Max, Team, or Enterprise"***, then closed
+  ***"confirm the required plan and Node version with the bootcamp organizers."*** The Agentic
+  programme publishes *"A paid AI plan helps but is not essential"*; the Coding Bootcamp, which
+  runs on Claude Code and Codex and is twenty-one days out, publishes nothing either way. That is
+  a pre-booking cost question a buyer is now being answered on by the vendor's pricing page.
+- **Nothing contacted.** No new target: every citable third party in these five fields is either
+  already on the review list or a competitor's own event listing.
+
 ## 2026-11-04 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, AND ONE ENGINE ADMISSION SHARP ENOUGH TO SHIP ON
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

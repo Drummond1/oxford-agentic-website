@@ -1385,3 +1385,30 @@ rule 5 (no fresh data, highest-value unblocked improvement) and chose a GEO one.
 date in the byline. `/team/` (30 Oct), `/guides/` (29 Oct) and the two programme pages (31 Oct)
 keep clean reads - `/guides/` moves only in the eyebrow date on one of its twenty-six cards.
 `/events/`, which had recovered to 212 impressions at position 8.3, is untouched.
+
+## Update - 5 November 2026, 02:00 GMT
+
+**Unavailable from this cloud checkout, and for the first time the reason has a fix in flight.**
+One attempt, as the rules ask. The daily exporter Drummond asked for shipped yesterday
+(`scripts/fetch-search-console.mjs`, `.github/workflows/search-console-export.yml`), and
+`seo-data/search-console-latest.md` is **not in the tree**, which is the documented
+pre-setup state rather than a failure: dispatch run 2 of the export workflow succeeded at
+20:56 on 4 November and wrote nothing, because the `GSC_SERVICE_ACCOUNT_KEY` secret does not
+exist yet. Checked here as well: `gcloud auth list` reports "No credentialed accounts",
+`GSC_SERVICE_ACCOUNT_KEY` is not in the environment, and a whole-repo search found no CSV, TSV
+or XLSX export in `seo-data/` or anywhere else. Nothing estimated, nothing inferred.
+
+**So the freshest data is still the 30 October 05:10 reading** - 151 clicks, 2.37k impressions,
+6.4% CTR, average position 13.1, through roughly 28 October - and this cycle worked rule 5.
+
+**This cycle changed no page.** `dist` is a clean build of `3796407` with no source edit, so every
+read in progress keeps its clean window: `/team/` (30 Oct), `/guides/` (29 Oct), the two programme
+pages (31 Oct) and the five guides carrying `faqFromHeadings`, four of which opted in between 1
+and 4 November, are all untouched, and `/events/`, recovered to 212 impressions at position 8.3, is untouched. The three
+files this cycle commits are records, not pages, and `indexnow-ping --dry-run` over them submits
+nothing.
+
+**The three steps that unblock rule 4 are still Drummond's, and they are the highest-value item
+on this list.** `STATE.md` task 4 has them: create the service account, add it as a user on the
+`sc-domain:oxfordagentic.com` property, put its key in the `GSC_SERVICE_ACCOUNT_KEY` repository
+secret. Fifteen consecutive cycles have now recorded this reading as unavailable.
