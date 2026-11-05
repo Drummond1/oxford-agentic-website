@@ -13,6 +13,7 @@ import EventCard from './EventCard.astro';
 import Faq from './Faq.astro';
 import GoldDivider from './GoldDivider.astro';
 import NewsletterForm from './NewsletterForm.astro';
+import Quote from './Quote.astro';
 import { createRhythm, getHomeUpcoming, getPhotos, getProgrammes, getTestimonials, paths, showSection } from '../lib/site';
 import { homeFaqs } from '../lib/home';
 
@@ -234,15 +235,7 @@ const bands = {
         </div>
         <div class="grid grid--2">
           {testimonials.slice(0, 3).map((t, i) => (
-            <blockquote class="card quote" data-reveal data-reveal-delay={i * 90}>
-              <p>“{t.data.quote}”</p>
-              <footer>
-                <cite>
-                  {t.data.name} - {t.data.role}
-                  {t.data.company && `, ${t.data.company}`}
-                </cite>
-              </footer>
-            </blockquote>
+            <Quote testimonial={t} revealDelay={i * 90} />
           ))}
         </div>
       </div>
@@ -414,33 +407,6 @@ const bands = {
     .why__card:hover .squares li::before {
       transform: scale(1.4);
     }
-  }
-
-  .quote p {
-    font-family: var(--font-title);
-    font-size: var(--step-lg);
-    line-height: 1.4;
-  }
-
-  /* The attribution follows the words in, a beat behind: the quote lands
-     first and the name arrives to sign it. Keys off the sitewide reveal. */
-  .quote footer {
-    margin-block-start: 1.2rem;
-    transition: opacity 360ms var(--ease) 260ms, transform 360ms var(--ease) 260ms;
-  }
-
-  :global(.js-motion) .quote[data-reveal]:not(.is-revealed) footer {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-
-  .quote cite {
-    font-family: var(--font-label);
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: var(--step-xs);
   }
 
   .programme-rows {

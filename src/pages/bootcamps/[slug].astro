@@ -5,6 +5,7 @@ import Hero from '../../components/Hero.astro';
 import EventCard from '../../components/EventCard.astro';
 import Faq from '../../components/Faq.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
+import Quote from '../../components/Quote.astro';
 import config from '../../../site.config';
 import {
   createRhythm,
@@ -254,15 +255,7 @@ const bands = {
           </div>
           <div class="grid grid--2">
             {testimonials.slice(0, 4).map((t, i) => (
-              <blockquote class="card quote" data-reveal data-reveal-delay={i * 80}>
-                <p>“{t.data.quote}”</p>
-                <footer>
-                  <cite>
-                    {t.data.name} - {t.data.role}
-                    {t.data.company && `, ${t.data.company}`}
-                  </cite>
-                </footer>
-              </blockquote>
+              <Quote testimonial={t} revealDelay={i * 80} />
             ))}
           </div>
         </div>
@@ -368,22 +361,5 @@ const bands = {
 
   .empty-notify {
     margin-block-start: 1.5rem;
-  }
-
-  .quote p {
-    font-family: var(--font-title);
-    font-size: var(--step-lg);
-    line-height: 1.4;
-  }
-
-  .quote cite {
-    display: block;
-    margin-block-start: 1.2rem;
-    font-family: var(--font-label);
-    font-style: normal;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: var(--step-xs);
   }
 </style>

@@ -1315,6 +1315,68 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-05 (09:00 cycle) - the homepage and the three `/bootcamps/` pages were still
+  rendering attendee quotes with their own markup, eleven weeks after `Quote.astro` was
+  written so that "a quote looks like itself wherever it appears". All four now use the
+  component. No testimonial word, attribution or consent flag changed.**
+  - **The defect, seen rather than inferred.** `/bootcamps/oxford-agentic-bootcamp/` and
+    `/events/oxford-agentic-bootcamp-cohort-3/` both carry a section headed **"From the room"**
+    showing the **same four people**, and they did not look the same. The event page (and
+    `/testimonials/`, and `/ceo-roundtable/`) used `Quote.astro`: a monogram square, the name
+    alone in label caps, the role and company under it in sentence-case body text, and the
+    attribution pinned to the card's bottom edge. The four programme and home pages used a
+    hand-rolled `<blockquote class="card quote">` that ran name, role and company together in
+    one uppercase letter-spaced mono line - *"FEI GAN - COHORT 1 ATTENDEE, SERAMBI ALAM"* - with
+    no monogram and nothing pinning the attribution, so in a two-column grid Kirsten Samuel's
+    name floated two lines above Fei Gan's. Screenshots of both sections at 1280px are the
+    before-state evidence.
+  - **This is not a new design call.** The component's own entry (18 Aug 2026, cycle 83: "New
+    `src/components/Quote.astro`, shared with `/testimonials/`, so a quote looks like itself
+    wherever it appears") already decided the treatment, named the flex-column baseline as the
+    reason for `card`, and argued the monogram case. The homepage and `bootcamps/[slug].astro`
+    were simply never migrated. Shipping this converges on a settled decision rather than
+    opening one.
+  - **The change.** Two files. `HomeSections.astro` and `src/pages/bootcamps/[slug].astro` each
+    import `Quote` and render `<Quote testimonial={t} revealDelay={...} />` in place of eleven
+    lines of markup; the duplicated `.quote p` / `.quote cite` / `.quote footer` CSS is deleted
+    from both. **62 lines removed, 4 added.** Quote counts are untouched (3 on home, 4 on each
+    programme page) and the `grid--2` layout is untouched - this was a component swap, not a
+    layout change.
+  - **Five built pages changed and no others:** `/`, `/home-photos/` (the noindex photo variant
+    that shares `HomeSections`), and the three `/bootcamps/` pages. HTML diff confined to the
+    quote blocks plus one stylesheet link: the homepage's `HomeSections` CSS is now small enough
+    for Astro to inline, so `/` and `/home-photos/` each make **one fewer stylesheet request**
+    and the site-wide internal-link count reads 3,158 -> 3,156 for that reason alone. Anchor
+    counts per page are identical, confirmed by a diff of both `dist` trees.
+  - **Honest about the one cost.** The monogram is bronze `#9A7B23` at 11.2px on cream, which is
+    the **4.01:1** already recorded under backlog 21 and as the site's remaining sub-12px text.
+    This puts 15 more instances of it on 4 more pages. It is `aria-hidden="true"` decorative -
+    the full name sits beside it - and backlog 21 stays Drummond's call, not re-pitched here.
+    A before/after contrast sweep of all 64 pages at 375 and 1280px shows **that group as the
+    only change**: 905 -> 920 instances, no new colour pair, and `.quote__role` passes AA on
+    both the cream and the dark band.
+  - **Checks.** `npm run build` clean - 62 pages, 3,156 internal links resolve, schema valid,
+    7 Event and 14 FAQPage nodes, titles and descriptions unique. `npm run check:flags` green on
+    the all-on and all-off builds. `astro check` (installed `--no-save`) reports **80 errors
+    before and 80 after**, all pre-existing implicit-`any` noise in `.map()` callbacks, none in
+    the changed lines. Headless Chromium over all 64 pages at 375, 768 and 1280px: **no
+    horizontal overflow, no missing alt, no unlabelled control, no link without an accessible
+    name**. Keyboard: 45 tab stops on `/` and the programme page at both widths, every one with
+    a visible focus ring; the change adds no tab stop, because a `<blockquote>` takes no focus.
+    Reveal verified with motion on - all seven cards reach `is-revealed`, monograms at opacity 1,
+    and every rendered name, role and company matches its content file exactly.
+  - **No content entry was touched**, so no `updatedDate` and no sitemap `lastmod` moved.
+  - **Production could not be read**, as on every cycle since 30 Oct: the sandbox egress policy
+    answers **403** to CONNECT for `oxfordagentic.com`, `www.oxfordagentic.com` and
+    `drummond1.github.io`, so the Actions API stood in - Deploy and CI both **success on
+    `14cf297`**, which is `origin/main` and the HEAD this cycle started from, nothing queued or
+    in progress. Before-and-after screenshots are therefore local preview against local preview.
+    `luma.com` is unreachable the same way, so **no event fact was read or changed**.
+  - **Nothing else re-pitched.** PR #1 (breadcrumb, 26 Sept) and PR #3 (the 2 Nov SEO-loop ledger
+    branch) both read as the known-stale leftovers already recorded in backlog 20, not as work in
+    flight. The bronze token (21), the doubled event hero heading (26) and the past-cohort quote
+    heading (23) were all seen again this cycle and left alone.
+
 - **2026-11-05 (08:00 cycle) - nothing shipped to the site, deliberately, for the second cycle
   running. Five GEO probes, five declines, two new audits closed out, and the fifteenth dated
   reading, which is the first where the query already carried the answer. The commit is three
