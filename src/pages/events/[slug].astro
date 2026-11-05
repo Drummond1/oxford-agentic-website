@@ -255,14 +255,45 @@ const registerLabel = !registrationOpen
  * So a bookable page composes its own, from the same `formatDate` and
  * `venueLine` the hero prints a few lines down. Nothing is asserted that the
  * page does not already say in visible copy, and it is derived, so it cannot go
- * stale: once the date passes the prefix drops of its own accord and the summary
- * stands alone again. The weekday is the first thing dropped if a longer venue
- * or summary would pass 160 characters, and the summary stands alone if that is
- * still not enough.
+ * stale. The weekday is the first thing dropped if a longer venue or summary
+ * would pass 160 characters, and the summary stands alone if that is still not
+ * enough.
+ *
+ * A PAST page composes its own too, and the sentence above used to say the
+ * prefix "drops of its own accord" once the date passes - which was the bug.
+ * What dropped with it was any sign the day has gone. The claim this branch
+ * replaced, that "the three past events all name theirs in prose", is false:
+ * all three name the venue and none names the date, and the Second Brain
+ * cohort's summary carried no past-tense verb at all, so a search snippet for
+ * a day that has run read exactly like one on offer. Measured on 5 Nov 2026,
+ * when an answer engine holding this site named that cohort's passed 21 October
+ * date as "the next listed in-person date".
+ *
+ * It matters most for the two cohorts still on sale: both summaries are
+ * present-tense imperatives ("Bring one real task...", "Build and ship...")
+ * that become wrong the morning after each day runs, on 19 and 26 November.
+ * The wording is `llms.ts`'s and the hero's own - "took place on X at Y" - from
+ * the same two helpers, so the three surfaces cannot word it differently. The
+ * rungs drop the weekday, then the venue, then the summary; the last rung is
+ * date and venue alone, which is short but never wrong. `cancelled` is not
+ * `past` here: it took no place, so it keeps the summary.
  */
 const metaDescription = (() => {
-  if (isPast) return data.summary;
   const venue = venueLine(data.venue);
+
+  if (status === 'past') {
+    const ran = (opts: Intl.DateTimeFormatOptions = {}) =>
+      `Took place on ${formatDate(data.startDate, opts)}`;
+    const rungs = [
+      `${ran()} at ${venue}. ${data.summary}`,
+      `${ran({ weekday: undefined })} at ${venue}. ${data.summary}`,
+      `${ran({ weekday: undefined })}. ${data.summary}`,
+      `${ran()} at ${venue}.`,
+    ];
+    return rungs.find((rung) => rung.length <= 160) ?? rungs[rungs.length - 1];
+  }
+
+  if (isPast) return data.summary;
   const withWeekday = `${formatDate(data.startDate)} at ${venue}. ${data.summary}`;
   if (withWeekday.length <= 160) return withWeekday;
   const noWeekday = `${formatDate(data.startDate, { weekday: undefined })} at ${venue}. ${data.summary}`;

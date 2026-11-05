@@ -11,7 +11,7 @@ cohort: Cohort 1
 status: past
 startDate: "2026-10-21T09:00:00+01:00"
 endDate: "2026-10-21T17:00:00+01:00"
-updatedDate: "2026-10-28T01:30:00+00:00"
+updatedDate: "2026-11-05T20:00:00+00:00"
 venue:
   name: Pitt Rivers Museum
   street: South Parks Road
@@ -20,7 +20,10 @@ venue:
   confirmed: true
 lumaEventId: evt-uIVsPanZjsQkHn1
 lumaUrl: https://luma.com/secondbrain
-summary: The first Oxford Second Brain Bootcamp. A day at the Pitt Rivers Museum building a second brain from each attendee’s own material, not a template.
+# Past tense, and the venue left to the card and the composed prefix above it, so the
+# line cannot read as a day still on offer - the fault measured on 5 Nov 2026. "Small
+# group" is the standing wording for this programme; no number is published.
+summary: The first Oxford Second Brain Bootcamp. A small group built a second brain from their own material, not a template.
 capsule: >-
   Cohort 1 of the Oxford Second Brain Bootcamp ran on Wednesday 21 October 2026 at
   the Pitt Rivers Museum, Oxford. It was a one-day, in-person course for business

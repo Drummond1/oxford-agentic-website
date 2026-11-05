@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-05 (20:00 GMT cycle) - FOUR PROBES, TWO CITATIONS OF OUR OWN DOMAIN - THE FIRST POSITIVE READING IN EIGHTEEN - AND A SITE DEFECT FOUND BY THE SECOND PROBE AND FIXED THE SAME CYCLE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, three never probed before: one dated and commercial, one on
+what to bring to a hands-on day, one on how to book, and one on the Coding line.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **agentic AI bootcamp Oxford Worcester College November 2026 how to book a place** | **YES - `oxfordagentic.com/` first result**, and the engine read 19 November, Worcester College, the Coding Bootcamp's 26 November and "bring one real task" off it. No Luma or allai.events page returned at all | `sbs.ox.ac.uk` (x2), `createwith.com`, `lifelong-learning.ox.ac.uk`, `getsmarter.com`, `research.com`, `oxfordaitraining.com`, `cloud.google.com` |
+| what should I bring to a hands-on AI workshop to get the most out of the day | **No** | `members.iamu.org`, `airmeet.com`, `mos.org`, `iamuinformer.org`, `ai-workshop.compgenlab.org`, `klassconcepts.com`, `aiworkshop.info`, `shopstartup.co.uk`, `ai-beavers.com`, `answeringagent.com` |
+| **how do I book a place on a one day AI bootcamp in Oxford UK** | **YES - second result**, and our booking answer was quoted verbatim - but the engine then named the **passed 21 October** Second Brain day as "its next listed in-person date" | `oxfordcollegeofmarketing.com`, `oxc.ai`, `allevents.in`, `lifelong-learning.ox.ac.uk`, `oxford-management.com`, `oxford-royale.com`, `oxfordaitraining.com`, `events.vtools.ieee.org` |
+| I cannot code but want to ship a real website using AI coding agents - one day course UK | **No** | `udemy.com` (x4), `iact.ie`, `boot.dev`, `aihero.dev`, `theaischool.co`, `codecademy.com` |
+
+**Reading.**
+
+- **Probe 1 is the eighteenth dated reading and the first that goes our way.** Seventeen readings
+  since 26 October have ended in some form of *"I couldn't confirm"*, and the 14:00 cycle today
+  recorded the worst of them, in which the engine handed a buyer Cohort 1's **21 July** date for
+  the next cohort. Six hours later, on a near-identical question with "19 November 2026"
+  generalised to "November 2026", the engine returned **`oxfordagentic.com/` as its first
+  result** and answered off it correctly: *"listed for Thursday, 19 November 2026 at Worcester
+  College, Oxford"*, *"Participants are asked to bring one real task from their work"*, plus the
+  Coding Bootcamp's 26 November. **No Luma page and no `allai.events` page appeared at all.** It
+  also held Saïd's online 11 November programme apart from ours rather than confusing the two.
+  The honest reading of the pair is that retrieval of this site is **intermittent**, not absent -
+  which is a different diagnosis from the one the last five readings were building, and it was
+  recorded as a sixth, reversing entry on the standing review-list item rather than as a new one.
+- **What did not reverse, and it is the commercial half.** Probe 1 closed *"The search results
+  don't say how to register for the November bootcamps."* Probe 3, whose entire intent is
+  booking, cited us second and quoted our own booking answer back verbatim - *"Open the event you
+  are interested in and the booking form sits on that page"* - so that copy is reachable and
+  extractable. In both, **the page that takes the booking was never returned**. The engine can
+  find the brand and read the dates; it cannot get a buyer to `/events/oxford-agentic-bootcamp-cohort-3/`.
+- **Probe 3 also found a defect on this site, and this cycle shipped the fix.** Asked for the
+  next bookable Oxford day, the engine answered *"Its next listed in-person date is a Pitt Rivers
+  Museum session on 21 October 2026"* - a cohort that ran a fortnight ago. `llms.txt` is not the
+  cause: it files that day under "Took place on Wednesday, 21 October 2026" and lists only 19 and
+  26 November under "Next events". The cause was the **meta description**, the one surface that
+  had no past marker on it. The event page's composer prefixed the date and venue for a bookable
+  day and fell through to the raw card summary for a past one, on a comment asserting that "the
+  three past events all name theirs in prose" - which was false: all three named the venue, none
+  named the date, and the Second Brain cohort's summary carried **no past-tense verb at all**
+  (*"A day at the Pitt Rivers Museum building a second brain..."*), so its search snippet read
+  exactly like an offer. Fixed by giving the past branch its own composed description. See the
+  ledger entry for the measurements.
+- **Probe 2 declined, on the converting half of the rule.** The field is winnable - ten results,
+  every one a workshop provider's own event page or a vendor blog, no institutional publisher -
+  but the searcher has already booked something and is packing for it, which is post-purchase
+  intent, and both programme pages already answer "What do I need to bring?" in their FAQ blocks.
+  Notable only for this: the engine's own composite answer is largely our proposition in other
+  people's words - *"a real task from your own work"*, *"a laptop, fully charged"*, and a paid
+  account warning.
+- **Probe 4 declined as a content target, recorded as competitive intelligence.** No page of ours
+  was returned for the Coding Bootcamp's exact proposition twenty-one days before its first
+  cohort, and the field is nine self-paced online courses plus **`iact.ie`**, an Irish provider
+  running a one-day "AI Coding for Non-Programmers" course on ChatGPT Codex and Claude Code,
+  *"from first idea to a working, shareable product in a single day"* - which the engine named
+  *"the best fit on paper"*. That is our Coding Bootcamp's proposition, one country over, being
+  recommended in our place. It is not a guide gap and not a backlink target, so nothing was added
+  to the review list beyond the corroboration above; it is the clearest competitor the Coding
+  line has yet turned up and is recorded here so a later cycle does not re-find it.
+
 ## 2026-11-05 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FOUR DECLINES, AND THE SEVENTEENTH DATED READING - THE FIRST WHERE THE ENGINE ANSWERED A BRANDED "NEXT COHORT" QUESTION WITH A WRONG DATE RATHER THAN WITH NO DATE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

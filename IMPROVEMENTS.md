@@ -1315,6 +1315,114 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-05 (20:00 cycle) - a past cohort's search snippet read like an offer, and an answer
+  engine proved it by naming the passed 21 October day as "its next listed in-person date". The
+  event page's meta-description composer now has a past branch. Two files, five built pages. The
+  same cycle recorded the first positive GEO reading in eighteen.**
+  - **The defect, found by a probe rather than inferred.** *"How do I book a place on a one day
+    AI bootcamp in Oxford UK"* cited us second, quoted our booking answer verbatim, and then told
+    the buyer our **next** in-person date was *"a Pitt Rivers Museum session on 21 October
+    2026"* - a cohort that ran a fortnight ago. `llms.txt` was checked first and is not the
+    cause: it files that day under *"Took place on Wednesday, 21 October 2026"* and lists only 19
+    and 26 November under "Next events". The visible page is not the cause either - it prints
+    "This event has run" and *"took place on Wednesday, 21 October 2026 at Pitt Rivers Museum"* -
+    and nor is the JSON-LD, whose description opens *"ran on"*. **The meta description was the
+    one surface with no past marker on it**, which is precisely the surface a search snippet and
+    an answer engine quote.
+  - **The cause, and it was a false comment.** `src/pages/events/[slug].astro` composes a
+    description for a bookable day (`"Thursday, 19 November 2026 at Worcester College, Oxford.
+    <summary>"`) and returns the bare card summary for a past one, justified by the sentence
+    *"the three past events all name theirs in prose"*. Measured: **all three name the venue and
+    none names the date**, and the Second Brain cohort's summary carried **no past-tense verb at
+    all** - *"A day at the Pitt Rivers Museum building a second brain from each attendee's own
+    material, not a template."* Read with no date above it, that is an advertisement for a day
+    that has gone. The old comment also promised the prefix would "drop of its own accord" once
+    the date passed; what dropped with it was any sign the day had passed.
+  - **Why it was worth a cycle rather than a backlog line: the two cohorts still on sale inherit
+    this fault in fourteen and twenty-one days.** Cohort 3's summary is *"Bring one real task
+    from your own work and leave with an agentic workflow running against it"* and the Coding
+    Bootcamp's is *"Build and ship a live website and a working prototype"* - present-tense
+    imperatives that become wrong the morning after each day runs, on 19 and 26 November, on the
+    two pages that matter most. Fixing it after the fact would mean noticing it after the fact.
+  - **The change.** A `status === 'past'` branch composing *"Took place on <date> at <venue>.
+    <summary>"*, mirroring `llms.ts`'s wording from the same two helpers so the three surfaces
+    cannot word it differently, with rungs that drop the weekday, then the venue, then the
+    summary. `cancelled` is deliberately not `past` here - it took no place, so it keeps the
+    summary, the same distinction `llms.ts` draws. **Measured output on all five event pages:**
+    Agentic C1 **138** (date + prose), Second Brain C1 **146** (date + prose), Agentic C2 **72**
+    (date and venue alone), and the two bookable pages **unchanged** at 150 and 156 because the
+    branch does not fire yet.
+  - **The forward-looking half was proved, not asserted.** Both upcoming cohorts' `endDate` were
+    temporarily set into the past, the site rebuilt, and the descriptions read back: Cohort 3
+    composes **154** - *"Took place on 19 November 2026 at Worcester College, Oxford. Bring one
+    real task..."* - and the Coding Bootcamp **160**, both on the second rung, both carrying date,
+    venue and prose. The simulation was reverted and rebuilt before anything was staged.
+  - **One content string, because the mechanism could not rescue it.** Second Brain C1's summary
+    was 146 characters, so every rung carrying its prose overflowed 160 and it would have fallen
+    to date-and-venue alone. Rewritten to *"The first Oxford Second Brain Bootcamp. A small group
+    built a second brain from their own material, not a template."* - past tense, 115 characters,
+    which lets the composed line keep both the date and the description. **No new fact:** the
+    page's own capsule already publishes *"everyone built a structured second brain from their
+    own material"*. **No number**, per the standing decision that Second Brain group size is
+    "small group". Dropping the venue from the summary also brings this page into line with the
+    12 Oct decision that a card line should not repeat the venue printed directly above it, which
+    it had never had applied to it.
+  - **The one cost, recorded rather than hidden.** Agentic C2 lands on the last rung, **72
+    characters of date and venue with no prose**, because its 136-character summary overflows
+    every rung above. That is accurate and never wrong, but it is thinner than what it replaced.
+    The cheapest remedy is to trim that summary by about eight characters, exactly as was done
+    here for Second Brain C1; it was left alone to keep this cycle to one defect.
+  - **Blast radius, measured by diffing the whole `dist` tree against the pre-change build: 8
+    files and no others.** The three past event pages (meta descriptions), `/events/` and
+    `/bootcamps/second-brain-bootcamp/` (the card summary), `llms.txt`, and the two sitemaps
+    (`lastmod` on the one content file touched). The two bookable pages are byte-identical.
+  - **Checks.** `npm ci` and `npm run build` green: 62 pages built, 64 checked, 3,156 internal
+    links resolve, schema valid, 7 `Event` and 14 `FAQPage` nodes, all titles and descriptions
+    unique. The 11 outbound warnings are the sandbox egress policy. Headless Chromium over
+    `/events/`, `/bootcamps/second-brain-bootcamp/` and the Second Brain cohort page at 375 and
+    1280px: **27 assertions, 0 failed** - no horizontal overflow, no page error, no element left
+    hidden at reduced motion, and every `[data-reveal]` block reaching `is-revealed` with motion
+    on. Both the desktop and the mobile screenshots were read: the rewritten card sits level with
+    its two siblings under "Already run" and reads as past alongside them.
+  - **IndexNow will submit all 55 sitemap URLs, and that is correct rather than a defect.** The
+    events branch of `scripts/indexnow-ping.mjs` is deliberately whole-site, and its own comment
+    names *"a past-tense sweep"* as a case it exists to cover, because an event file can move the
+    header CTA on every page. Over-submission on a past-cohort edit is the documented cost of
+    that choice. **Not pinged manually; the deploy workflow does it.**
+  - **The eighteenth dated reading, and the first in eighteen that goes our way.** *"Agentic AI
+    bootcamp Oxford Worcester College November 2026 how to book a place"* returned
+    **`oxfordagentic.com/` as the first result** and the engine answered off it correctly -
+    *"Thursday, 19 November 2026 at Worcester College"*, *"bring one real task from their work"*,
+    and the Coding Bootcamp's 26 November - with **no Luma or `allai.events` page returned at
+    all**, six hours after the 14:00 cycle recorded the worst reading of the series. Retrieval of
+    this site is **intermittent, not absent**, which is a different diagnosis from the one the
+    last five readings were building. Logged as a sixth, reversing corroboration on the standing
+    review-list entry. **What did not reverse:** both probes that cited us still failed to get a
+    buyer to the page that takes the booking, which was returned in neither.
+  - **Two declines.** *What to bring to a hands-on AI workshop* - winnable (ten provider pages
+    and vendor blogs, no institutional publisher), declined on the converting half: the searcher
+    has already booked and is packing, and both programme pages answer it in their FAQ blocks.
+    *Shipping a website with AI coding agents, one-day UK* - no page of ours returned twenty-one
+    days before the Coding Bootcamp's first cohort, and the engine named **`iact.ie`**, an Irish
+    one-day "AI Coding for Non-Programmers" course on Codex and Claude Code, *"the best fit on
+    paper"*. That is a competitor, not a guide gap or a backlink target; recorded in
+    `geo-citations.md` as the clearest competitor the Coding line has turned up.
+  - **Search Console unavailable, eighteenth consecutive cycle.**
+    `seo-data/search-console-latest.md` is absent, which is the documented pre-setup state:
+    `GSC_SERVICE_ACCOUNT_KEY` does not exist, the variable is not in the environment, and no CSV,
+    TSV or XLSX export exists anywhere in the repository. Nothing estimated. STATE.md task 4
+    remains the highest-value item on the list.
+  - **Production:** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy, as on
+    every cycle since 30 Oct, so the Actions API stood in - Deploy run **363 success on
+    `8f2dcaf`**, which is `origin/main` and the HEAD this cycle started from, nothing queued or
+    in progress. `luma.com` is unreachable the same way, so **no event fact was read, invented or
+    changed**; every date in this entry is one the repository already published.
+  - **One false alarm, resolved and recorded so it is not re-investigated.** The clone's
+    `origin/main` ref pointed at `371033c` (30 Oct) before the first `git fetch`, which read as
+    three commits having vanished from `main`. All three are ancestors of `8f2dcaf`; the ref was
+    simply stale from the container's checkout. No force-push, nothing lost.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.**
+
 - **2026-11-05 (14:00 cycle) - nothing shipped to the site, deliberately, for the third time in
   four cycles. Five GEO probes, four declines, and the seventeenth dated reading, which is the
   first where the engine answered a branded "next cohort" question with a wrong date rather than

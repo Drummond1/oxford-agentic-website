@@ -110,6 +110,43 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
       sandbox cannot reach `luma.com` or `allai.events`, so no listing was read, and nothing was
       contacted, submitted or changed.
 
+  - **A sixth reading, and the first in eighteen that goes the other way: the engine returned
+    this site FIRST and read the right date off it, 5 Nov 2026 (20:00 cycle). Not a new target
+    and nothing contacted. It narrows ask (a); it does not retire it.** The probe *"agentic AI
+    bootcamp Oxford Worcester College November 2026 how to book a place"* - the 08:00 probe's
+    question, one word of date generalised - returned **`oxfordagentic.com/` as the first
+    result**, and the engine answered off it, correctly and unprompted: ***"listed for Thursday,
+    19 November 2026 at Worcester College, Oxford"***, ***"Participants are asked to bring one
+    real task from their work"***, and it found the Coding Bootcamp too - ***"a separate Oxford
+    Agentic Coding Bootcamp on Thursday, 26 November 2026 at Worcester College"***. It also kept
+    the two apart: ***"Oxford Said's online Oxford Generative and Agentic AI Programme has a
+    start date of 11 November 2026 ... it is fully online, not held at Worcester, so it is a
+    different offering."***
+    - **What this overturns.** The five corroborations above conclude that the brand's whole
+      retrievable footprint is out of date and that pages we do not publish answer in our place.
+      On this phrasing that is no longer true: no Luma page and no `allai.events` page was
+      returned at all, and the homepage carried the right date, the right venue and the right
+      product to the buyer on its own. The 14:00 reading six hours earlier is still the worst of
+      the set; both are true, and the honest reading of the pair is that retrieval of this site
+      is **intermittent**, not absent.
+    - **What survives unchanged, and it is the commercial half.** The engine closed ***"The
+      search results don't say how to register for the November bootcamps. Check
+      oxfordagentic.com directly for a booking link"***. It held the homepage, read the dates,
+      and still could not get a buyer to a booking - because the page that takes the booking,
+      `/events/oxford-agentic-bootcamp-cohort-3/`, was not among the results, as in every reading
+      since 26 October. A second probe the same cycle, *"how do I book a place on a one day AI
+      bootcamp in Oxford UK"*, cited us second and quoted our booking answer verbatim (*"Open the
+      event you are interested in and the booking form sits on that page"*) - and then named the
+      **passed 21 October Second Brain day at the Pitt Rivers Museum** as ***"its next listed
+      in-person date"***. So on the one query whose whole intent is booking, the engine reached
+      our site and still sent the buyer at a cohort that has run.
+    - **Therefore:** ask (b), a first `Organization.sameAs`, is unchanged. Ask (a) is narrower
+      than it was this morning - the case for retiring the stale Luma and `allai.events` listings
+      now rests on the four readings where they answered in our place, not on a claim that
+      nothing of ours is retrievable, because on this reading something was. Cohort 3 is
+      **fourteen days out**. The sandbox still cannot reach `luma.com` or `allai.events`, so no
+      listing was read, and nothing was contacted, submitted or changed.
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).
