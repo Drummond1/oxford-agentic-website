@@ -5,6 +5,83 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-05 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FOUR DECLINES, AND THE SEVENTEENTH DATED READING - THE FIRST WHERE THE ENGINE ANSWERED A BRANDED "NEXT COHORT" QUESTION WITH A WRONG DATE RATHER THAN WITH NO DATE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Five buyer questions, four of them never probed before: one dated and commercial, one
+on who owns a workflow after it exists, one on in-house agent builds failing, one on the Second
+Brain demand axis, and one branded entity probe run to corroborate the first.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **agentic AI bootcamp Oxford 19 November 2026 is it still available to book** | **No** - `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (both ours) took the top two results and `allai.events` (ours) the eighth | `sbs.ox.ac.uk` (x2), `eventbrite.co.uk`, `nobleprog.co.uk`-class vendors, `learnersink.com`, `coursereport.com`, `cyfronet.pl`, `maven.com`, `help.datasciencedojo.com`, `groups.google.com` (x3, OxML), `createwith.com`, `springest.co.uk`, `pulse.bot`, `amrita.edu` |
+| who in a small business should own the AI workflows once they are built | **No** | `sagnikbhattacharya.com`, `metacto.com`, `techradar.com`, `publicissapient.com`, `routine.co`, `coopsys.com`, `cloudtango.net`, `excaltech.com`, `attentus.tech`, `buttondown.com`, plus four `pages.dev` content farms |
+| what goes wrong when a business tries to build AI agents in house | **No** | `venturebeat.com`, `fastcompany.com`, `cio.com`, `builtin.com`, `reworked.co`, `fin.ai`, `outsail.co`, `searchunify.com`, `ability.ai`, `tomorrowtoday.com`, `metacto.com`, `elvex.com`, `getcoai.com` (x2), `neubird.ai`, `entagl.com`, `ai2.work`, `stmicro.net` |
+| how do I keep thousands of notes useful instead of just collecting them | **No** | `eleanorkonik.com`, `macmost.com` (x2), `mem.ai`, `evchapman.com` (x2), `recapio.com` (x2), `janmeppe.com`, `notion.site`, `uxcel.com`, `gettingthingsdone.com`, `theunstoppablecreator.substack.com`, `storagecafe.com`, `podbean.com`, two `pages.dev` farms, a Reddit mirror |
+| **Oxford Agentic Bootcamp next cohort date venue how to book** (branded, run to corroborate probe 1) | **No** - `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events` returned, all ours, all past cohorts | `help.datasciencedojo.com` (x4), `nobleprog.co.uk` (x4), `sbs.ox.ac.uk` (x2), `learnersink.com`, `ask.datasciencedojo.com`, `datasciencedojo.com`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 5 is the seventeenth dated reading and it is the worst of the seventeen, for one reason:
+  the engine stopped saying it could not find a date and started giving the buyer the wrong one.**
+  Every reading from 4 November onwards has ended in some form of *"I couldn't confirm"*. This one
+  was asked the brand by name - *"Oxford Agentic Bootcamp next cohort date venue how to book"* -
+  and answered: ***"A separate event directory lists a 21 July 2026 session from 09:00 to 17:00
+  (London time) in Oxford, United Kingdom"***, with ***"I found no specific venue name or
+  address"***, closing ***"I'd recommend checking the Luma page for the venue and whether 21 July
+  2026 is the next cohort, since the listing may be the only source for that date."***
+  **21 July 2026 is Cohort 1.** It ran, at St Anne's College, three and a half months ago. A buyer
+  who types this company's name fourteen days before Cohort 3 is now told the next cohort is a day
+  in July, in an unnamed venue, and is sent to a Luma page to check.
+- **Probe 1 is the same failure reached from the other direction, and it dates the asset that
+  causes it.** Asked whether the 19 November date is still bookable, the engine opened ***"I
+  couldn't confirm that a 19 November 2026 date exists or that tickets are still available"***,
+  then said of the two Luma listings that one ***"lists the venue as Worcester College, Oxford and
+  has a 'Get Tickets' button, but the snippet shows no date or ticket availability"***, and of the
+  third page ***"The other, on allai.events, shows a date of 21 July 2026, not 19 November"***. It
+  closed ***"If that page doesn't show 19 November, the event may be a different one, or the date
+  may be wrong."***
+- **What the two probes together establish, which is new.** Across seventeen readings the finding
+  has been *absence*: nothing of ours is retrieved, so three pages we do not publish answer in our
+  place. These two readings show that **all three of those pages describe cohorts that have
+  already run** - `luma.com/oxfordagentic2` (16 September), `luma.com/k7c2rm5s` (21 July, and our
+  own `/events/` schema is what identifies it as Cohort 1), and `allai.events` (21 July, and the
+  only one of the three that hands an engine a parseable date). **`luma.com/oxfordagentic3`, the
+  page that takes the Cohort 3 booking, appeared in neither probe**, as in every reading since 26
+  October. So the brand's entire retrievable footprint is now out of date, and the one dated item
+  in it is dated July. Recorded as a fifth corroboration on the existing review-list entry, not as
+  a new target. Nothing contacted.
+- **Probe 2 declined on duplication.** The field is winnable - vendor blogs, four `pages.dev`
+  content farms, one TechRadar column, and the engine's own verdict ***"None of the results gave a
+  single definitive standard"*** - but `/guides/who-should-take-the-seat/` already answers the
+  delegation question for this buyer, and the remainder of what the engine synthesised is an
+  operating-model checklist for a workflow that already exists. The searcher has built the thing;
+  they are organising it, not booking a day to build one. Winnable, converts weakly, and a guide
+  would restate a page that already stands. One line of it is worth noting for backlog 68: a
+  single opinion piece argued *"the business, not the vendor, should hold the workflow
+  documentation, prompts, and access"*, and the engine flagged it as ***"a single opinion piece,
+  so treat it as a recommendation rather than an industry standard"***. That is corroboration that
+  nobody has published the ownership answer, not permission for this loop to publish one.
+- **Probe 3 declined on winnability, firmly.** VentureBeat, Fast Company, CIO.com and Built In all
+  rank on it, which fails the owned half of the rule outright. It fails the converting half too,
+  and in the direction that matters: the whole field is build-versus-buy, nine of its sources sell
+  the buy side, and the Forrester three-quarters-will-fail projection the engine led with argues a
+  reader out of building anything themselves. A hands-on day where you build your own workflow is
+  the opposite recommendation. Do not re-pitch this axis.
+- **Probe 4 declined, and the decline is the standing decision rather than this cycle's
+  judgement.** The field is open - personal-productivity blogs, two note-app vendors, no
+  institutional publisher - and the engine named the trap in our own terms (*"the collector's
+  fallacy"*, *"you're not just storing information; you're actively processing it"*). Three things
+  stop it. `/guides/second-brain-vs-note-taking/` is this argument. Second Brain ranking is not
+  the line's constraint, demand is, and the standing decision is not to pile on Second Brain SEO
+  content expecting bookings. And the searcher is a person with a notes problem, not a business
+  leader booking a day in Oxford. Winnable, does not convert here.
+
+**Nothing on-site follows from any of the five.** No probe pointed at a page of ours that is
+missing, thin or wrongly titled. Four were declined on the topic-probe rule and the fifth is an
+off-page reading whose remedy is Drummond's account, not this repository.
+
 ## 2026-11-05 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS OF OUR OWN DOMAIN, FIVE DECLINES, AND THE FIFTEENTH DATED READING - THE FIRST WHERE THE QUERY CARRIED THE DATE AND THE VENUE AND THE ENGINE STILL COULD NOT CONFIRM THEM
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

@@ -1315,6 +1315,79 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-05 (14:00 cycle) - nothing shipped to the site, deliberately, for the third time in
+  four cycles. Five GEO probes, four declines, and the seventeenth dated reading, which is the
+  first where the engine answered a branded "next cohort" question with a wrong date rather than
+  with no date. The commit is three records; `dist` is byte-for-byte the build of `9b75b58`.**
+  - **Why no page changed, said plainly.** The three cycles before this one closed out internal
+    linking, anchor text, every `EducationEvent` and `Course` node, the title and description
+    budgets, and an indexability sweep of all 63 built pages, and found both standing candidates
+    in the cycle prompt already done. What is left that is loop-actionable is 39 (whose own entry
+    argues the honest answer is to publish no `ItemList` at all), 49 and 59 (the same homepage
+    `lastmod` over-report, both recorded as not urgent and low value), 61 (declined on the
+    converting half of the rule) and 68 (needs one line from Drummond). **No probe this cycle
+    pointed at a page of ours that is missing, thin or wrongly titled**, and four of the five were
+    declined on the topic-probe rule. Opting another guide into `faqFromHeadings` was available
+    again and was declined again, on Drummond's diagnosis of 4 November.
+  - **The seventeenth dated reading, and it is the worst of the seventeen.** Every reading from 4
+    November on has ended in some form of *"I couldn't confirm"*. Asked the brand by name -
+    *"Oxford Agentic Bootcamp next cohort date venue how to book"* - the engine instead answered
+    ***"A separate event directory lists a 21 July 2026 session from 09:00 to 17:00 (London time)
+    in Oxford, United Kingdom"***, with ***"I found no specific venue name or address"***, and
+    closed ***"check ... whether 21 July 2026 is the next cohort, since the listing may be the
+    only source for that date."*** **21 July 2026 is Cohort 1**, at St Anne's, three and a half
+    months ago. A second probe asking whether 19 November is still bookable returned ***"I
+    couldn't confirm that a 19 November 2026 date exists"*** and ***"The other, on allai.events,
+    shows a date of 21 July 2026, not 19 November."***
+  - **What the two readings establish that the sixteen before them did not.** The earlier readings
+    are findings of *absence*. These show that **all three third-party pages that carry this brand
+    into an answer engine describe cohorts that have already run** - `luma.com/oxfordagentic2` (16
+    September), `luma.com/k7c2rm5s` (21 July; this site's own `/events/` schema is what identifies
+    it as Cohort 1) and `allai.events` (21 July, and the only one of the three that hands an engine
+    a parseable date). **`luma.com/oxfordagentic3`, the page that takes the Cohort 3 booking,
+    appeared in neither probe**, as in every reading since 26 October. The brand's whole
+    retrievable footprint is out of date fourteen days before Cohort 3, and the failure has moved
+    from "cannot confirm the date" to "states the wrong one". Recorded as a fifth corroboration on
+    the existing review-list entry, not as a new target. It also names the cheapest item inside
+    ask (a): `allai.events` is one directory listing carrying one wrong date, and it is the source
+    the engine quotes the date from. Nothing contacted, submitted or changed.
+  - **Four declines, each on a named half of the rule.** *Who should own AI workflows once they are
+    built* - winnable (vendor blogs, four `pages.dev` farms, one TechRadar column, and the engine's
+    own *"None of the results gave a single definitive standard"*), declined because
+    `/guides/who-should-take-the-seat/` answers the delegation question and the rest is an
+    operating-model checklist for a workflow that already exists. *What goes wrong when a business
+    builds AI agents in house* - declined on winnability (VentureBeat, Fast Company, CIO.com, Built
+    In) and on intent, which is build-versus-buy with nine sources selling the buy side; a day
+    where you build your own workflow is the opposite recommendation, so do not re-pitch this axis.
+    *How to keep thousands of notes useful* - open field and the engine named the trap in our own
+    terms, declined on the standing decision that Second Brain ranking is not the line's
+    constraint, that `/guides/second-brain-vs-note-taking/` is this argument, and that the searcher
+    has a notes problem rather than a day to book. One line is logged against backlog 68: a single
+    opinion piece argued *"the business, not the vendor, should hold the workflow documentation,
+    prompts, and access"*, which the engine itself flagged as *"a single opinion piece"*. That
+    corroborates that nobody has published the ownership answer; it is not permission to publish
+    one here.
+  - **Checks on an unchanged tree.** `npm ci` and `npm run build` green: 62 pages built, 64
+    checked, internal links resolve, schema valid, **7 `Event` and 14 `FAQPage` nodes**, all titles
+    and descriptions unique, no SEO warnings. The 11 outbound warnings are the sandbox egress
+    policy. Headless Chromium over the two on-sale event pages, `/events/` and the homepage at 375
+    and 1280px. `indexnow-ping --dry-run` prints nothing to submit, which is correct because no
+    fetchable file changed.
+  - **One thing verified in passing and recorded so it is not re-queried.** Cohort 3's
+    `startDate` is `2026-11-19T09:00:00Z` where Cohort 2's was `2026-09-16T08:00:00Z`. Both are
+    09:00 local: November is GMT and September was BST. The hour is right, not inconsistent.
+  - **Search Console unavailable, seventeenth consecutive cycle.**
+    `seo-data/search-console-latest.md` is absent, which is the documented pre-setup state:
+    `GSC_SERVICE_ACCOUNT_KEY` does not exist, the variable is not in the environment, and no CSV,
+    TSV or XLSX export exists anywhere in the repository. Nothing estimated. STATE.md task 4
+    remains the highest-value item on the list.
+  - **Production:** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and
+    does not resolve through the fetch tool either, as on every cycle since 30 Oct, so the Actions
+    API stood in - Deploy run **362 success on `9b75b58`**, which is `origin/main` and the HEAD
+    this cycle started from, nothing queued or in progress. `luma.com` and `allai.events` are
+    unreachable the same way, so **no event fact was read, invented or changed**.
+  - **No new guide, 0 of 3 for the week of 2-8 Nov.**
+
 - **2026-11-05 (09:00 cycle) - the homepage and the three `/bootcamps/` pages were still
   rendering attendee quotes with their own markup, eleven weeks after `Quote.astro` was
   written so that "a quote looks like itself wherever it appears". All four now use the

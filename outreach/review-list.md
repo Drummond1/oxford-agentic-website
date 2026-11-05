@@ -78,6 +78,38 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     out**. This does not change ask (a) above; it is the clearest statement yet of what (a) costs
     while it is open.
 
+  - **A fifth corroboration, and the first where the engine answered a branded "next cohort"
+    question with a wrong date instead of with no date, 5 Nov 2026 (14:00 cycle). Not a new target
+    and nothing contacted.** Two probes, six hours after the fourth corroboration.
+    - **Asked the brand by name.** *"Oxford Agentic Bootcamp next cohort date venue how to book"*
+      returned `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `allai.events`, no page of
+      `oxfordagentic.com`, and answered: ***"A separate event directory lists a 21 July 2026
+      session from 09:00 to 17:00 (London time) in Oxford, United Kingdom"***, ***"I found no
+      specific venue name or address"***, and ***"I'd recommend checking the Luma page for the
+      venue and whether 21 July 2026 is the next cohort, since the listing may be the only source
+      for that date."*** **21 July 2026 is Cohort 1**, at St Anne's, three and a half months ago.
+    - **Asked whether 19 November is bookable.** *"agentic AI bootcamp Oxford 19 November 2026 is
+      it still available to book"* put the same two Luma pages in the top two results and
+      `allai.events` eighth, and said of them ***"one lists the venue as Worcester College, Oxford
+      and has a 'Get Tickets' button, but the snippet shows no date or ticket availability"*** and
+      ***"The other, on allai.events, shows a date of 21 July 2026, not 19 November."***
+    - **What is new here, and it sharpens ask (a) rather than adding to it.** The previous four
+      corroborations are readings of *absence*: nothing of ours is retrieved, so pages we do not
+      publish answer in our place. These two establish that **every one of those three pages
+      describes a cohort that has already run**, and that the only one of the three handing an
+      engine a parseable date is `allai.events`, which is dated July. `luma.com/oxfordagentic3`,
+      the page that takes the Cohort 3 booking, appeared in neither probe, as in every reading
+      since 26 October. The brand's whole retrievable footprint is out of date fourteen days
+      before Cohort 3, and the failure has moved from "the engine cannot confirm a date" to "the
+      engine states the wrong one".
+    - **It also names the cheapest fix inside ask (a).** `allai.events/event/the-oxford-agentic-bootcamp`
+      is a single directory listing carrying one wrong date, and it is the source the engine
+      quotes the date from. Updating or retiring that one listing is smaller than anything else on
+      this list and is the item with a date attached to it. The two stale Luma listings are the
+      rest of (a). Ask (b), a first `Organization.sameAs`, is unchanged and still empty. The
+      sandbox cannot reach `luma.com` or `allai.events`, so no listing was read, and nothing was
+      contacted, submitted or changed.
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).
