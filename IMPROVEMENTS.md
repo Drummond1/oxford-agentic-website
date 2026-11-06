@@ -351,6 +351,11 @@ Status: `todo` · `blocked` (why) · `doing`
     with the bootcamp organizers."*** So a buyer twenty-one days out from Cohort 1 is being quoted
     the vendor's pricing page on a cost question this site does not answer, and is being told to
     come and ask. That raises the item's urgency and changes nothing about who can close it.
+    **Reached a third time from the other direction, 6 Nov 2026 (08:00 cycle).** The cycle set out
+    to close the FAQ-depth gap on the Coding programme page (10 answers against the Agentic page's
+    23) and found this the single highest-value question of the thirteen missing - and the one
+    question it could not write. Twenty days out. The gap is now the reason a cycle stopped at one
+    FAQ rather than two.
 
 26. `todo` **(needs Drummond, a hero-layout call)** - **every event page prints its own
     heading twice.** The hero eyebrow is built as `programme name - cohort` and the `h1` is
@@ -1337,6 +1342,101 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-06 (08:00 cycle) - the page selling the Coding Bootcamp answered who the day is for
+  and not who it is not for, twenty days before its first cohort. It was the only one of the three
+  programme pages missing that answer. One file, one new FAQ, one page of `dist`.**
+  **The measurement, and it reopens a backlog item that was recorded as closed.** Backlog 14 names
+  FAQ depth parity as one of the surfaces that silently rots after a product line launches, and
+  logs it as *"closed at 14:05"* on 16 Oct for the Coding Bootcamp launch. Counted this cycle:
+  the Agentic programme page publishes **23** FAQ answers, Second Brain **15**, and the Coding
+  Bootcamp **10**. Whatever bar was cleared on 16 Oct, the Agentic page has grown past it since.
+  **The specific gap chosen, and why it rather than the other twelve.** Of the thirteen questions
+  the Agentic page answers and this one does not, exactly one can be answered without publishing a
+  fact nobody has authored: **"Who is it not for?"**, which both sibling programme pages carry and
+  this one did not. The others were each declined for a named reason and are recorded here so they
+  are not re-pitched as easy wins: *Is lunch included?* and *How many people are in the room?* are
+  catering and capacity facts for a day that has not run; *Is the day recorded?* and *What happens
+  after the day?* are policy and cohort experience, and the Agentic answer to the latter describes
+  what past rooms did, which this line has not had yet; *Do I need a paid AI subscription?* is the
+  one a Coding buyer most needs and the Agentic answer - *"not essential - we make sure everyone
+  can take part either way"* - cannot be copied onto a day built around Claude Code and Codex
+  without asserting something unpublished. **That last one is already backlog 25**, raised on
+  17 Oct and corroborated twice since; this cycle corroborates it a third time rather than
+  guessing at it. Lunch and capacity are backlog 27 and the Second Brain capacity decision.
+  **Why the level screen in particular, on this page.** The note at the top of this file records
+  two probes on 27 Oct 2026 asking for a one-day in-person agentic coding day *"for
+  non-developers"* and *"without being a developer"*, neither of which returned this site, and a
+  competing listing screening the opposite way: *"You already know how to code. Skip it if you're
+  new to programming."* The page answers the positive half of that screen in four places -
+  `whoFor`, `shortPitch`, `metaPitch` and *"Do I need to be able to code?"* - and had no answer at
+  all to the negative half, which is the half that stops the wrong booking and the half an answer
+  engine quotes when a buyer asks whether a day is for them.
+  **The answer adds no fact.** All three clauses restate copy already on the page: *"not a course
+  that turns you into a junior one"* (the `description`), *"If your problem is a recurring task,
+  start with the Agentic Bootcamp"* (the difference answer directly below it), and the laptop and
+  install constraint from *"What should I bring?"*. It deliberately says nothing about who would
+  find the day **too basic**, because the page publishes nothing on that and it would be an
+  inference about a cohort that has not run. Placed third, where the Agentic page puts the same
+  question, so it sits with the other level answers rather than among the logistics.
+  **FAQ answers are plain text, which shaped the change.** `Faq.astro` renders `{faq.a}` into a
+  `<p>`, so markdown in an answer renders literally. A second candidate - *How do I justify this to
+  my manager?*, which would have linked `/guides/getting-an-ai-bootcamp-approved/` from a
+  programme page for the first time - was dropped once that was checked: without the link it is a
+  restatement with no new value, and a filler answer is worse than a missing one. Checked rather
+  than assumed, and recorded so the next cycle does not rediscover it.
+  **Blast radius, measured by diffing a pristine `dist` of `6ef05b0` against this build: 4 files
+  and no others** - `/bootcamps/agentic-coding-bootcamp/`, `llms-full.txt` and the two sitemaps
+  (`lastmod`). `llms.txt` is byte-identical. The whole `llms-full.txt` diff is the new Q&A and the
+  `Last updated` line.
+  **Four things were measured before this change was chosen, and all four came back clean**, which
+  is why the cycle did not chase the Coding line's retrieval problem instead. Counting unique
+  inbound internal links per sitemap URL across all 62 built pages, both Coding-line pages score
+  **61**, level with the homepage and with Cohort 3; the homepage graph carries both upcoming
+  `EducationEvent` nodes, 19 and 26 November, and prints both dates in visible copy; the `Course`
+  node carries a full `hasCourseInstance`; the cohort's `EducationEvent` carries `offers` with
+  `availability: InStock`, `sameAs`, `organizer` and a postal address. Two further candidates were
+  opened and closed the same way: every page with zero inbound internal links
+  (`/ceo-roundtable/`, `/find-your-bootcamp/`, `/office-hours/`, `/home-photos/`,
+  `/home-original/`, `/second-brain-interest/`, `/team/josh-lawman/`) is `noindex` **and** out of
+  the sitemap, so there are no orphans; and the past events' price-free `Offer` with no
+  `availability` was re-examined as a possible "a passed day still reads as bookable" defect in the
+  same family as the last two cycles' fixes, and is a **settled decision** with its reasoning
+  written into `eventOffer` in `src/lib/schema.ts`. Do not re-pitch either.
+  **Checks.** `npm ci` and `npm run build` green: 62 pages built, 64 checked, 3,156 internal links
+  resolve, schema valid, 7 `Event` and 14 `FAQPage` nodes, all titles and descriptions unique, no
+  SEO warnings. The 11 outbound warnings are the sandbox egress policy. Headless Chromium over the
+  Coding programme page at 375 and 1280px: **18 assertions, 16 passed**, and the two failures are
+  `www.googletagmanager.com` refused at CONNECT by that same policy, not a site fault. No
+  horizontal overflow before or after opening the item, no stray markdown in the rendered answer,
+  and both screenshots were read at `deviceScaleFactor: 2`: the question takes the gold accent when
+  open and the answer wraps inside the measure at both widths.
+  **IndexNow.** The `programmes` branch of `scripts/indexnow-ping.mjs` will submit 10 URLs for this
+  commit - the programme page, `/bootcamps/`, `/` and the 7 guides tagging this programme - where
+  exactly **1** sitemap page moved. That is the branch's documented and deliberate conservatism
+  (its own comment: *"a hint for a page that did not move costs nothing"*), measured for the
+  `shortPitch` case where 13 pages really do move; an FAQ-only edit moves one. Not worth
+  distinguishing, because telling which frontmatter field changed means parsing the file. **Not
+  pinged manually; the deploy workflow does it.** The `src/lib/home.ts` mapping named as a known
+  candidate in the loop's own brief is **already fixed** - `SINGLE_PAGE_SOURCES` maps it to `/`.
+  **Search Console unavailable, nineteenth consecutive cycle.** `seo-data/search-console-latest.md`
+  is absent, which is the documented pre-setup state: `GSC_SERVICE_ACCOUNT_KEY` does not exist, the
+  variable is not in the environment, and no CSV, TSV or XLSX export exists anywhere in the
+  repository. Nothing estimated. STATE.md task 4 remains the highest-value item on the list.
+  **Four GEO probes, zero citations, and the split is between the two product lines rather than
+  between good and bad days** - see `seo-data/geo-citations.md`. The Coding Bootcamp is absent from
+  its own dated query twenty days out, with the engine saying so outright, while the Agentic line
+  was first result on both of the previous two cycles. Recorded on the review list as the first
+  reading that says **which** cohort to list externally first. One guide candidate probed: the
+  field is nearly empty and the engine admitted nothing in it answers the question, which passes
+  winnability cleanly - and it was still declined, because we published that answer on 4 Aug as
+  `/guides/how-to-choose-your-first-agentic-task/`, the second best-linked guide on the site.
+  **No new guide, 0 of 3 for the week of 2-8 Nov.**
+  **Production:** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and does
+  not resolve through the fetch tool either, as on every cycle since 30 Oct, so the Actions API
+  stood in - deploy run **365 success on `6ef05b0`**, which is both `origin/main` and the HEAD this
+  cycle started from, nothing queued or in progress. `luma.com` is unreachable the same way, so
+  **no event fact was read, invented or changed**.
 
 - **2026-11-06 (02:00 cycle) - the past-tense fix shipped yesterday left one page publishing a
   72-character snippet with no prose in it, and this cycle finished the job it named.** The

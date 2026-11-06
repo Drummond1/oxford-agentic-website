@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The Coding Bootcamp is the line that needs an external listing first, and this is the first
+  reading that isolates it. No new target; nothing contacted.** Found 6 Nov 2026 (08:00 cycle).
+  - **The probe.** *"one day AI coding bootcamp Oxford 26 November 2026 build a website in a
+    day"* - city, date, format and outcome, the way a buyer would ask it twenty days out. The
+    engine answered *"I couldn't find a one-day AI coding bootcamp in Oxford on 26 November
+    2026"* and closed with *"check Eventbrite, Luma, or Oxford venues' event pages directly,
+    since the search index didn't surface one."* It returned two other organisers' `luma.com`
+    pages and an `eventbrite.co.uk` listing for unrelated events, so those surfaces were reachable
+    in that very answer - ours was not among them.
+  - **Why this is worth separating from the open entry above.** That entry is about the Agentic
+    line, where stale Luma listings answer in our place. This is the opposite failure on the other
+    line: **nothing answers at all**, ours or anyone's. The two readings before this one
+    (5 Nov 20:00, 6 Nov 02:00) both returned `oxfordagentic.com/` as the first result on Agentic
+    dated queries, and both Coding-line probes since the Coding line was first probed have come
+    back empty - `iact.ie`, an Irish one-day course, on 5 Nov, and nothing on 6 Nov.
+  - **It is not an on-page fault.** Measured this cycle on the built site: the Coding cohort page
+    and the Coding programme page each carry **61** inbound internal links, level with the
+    homepage; the homepage graph carries the 26 November `EducationEvent`; the `Course` node has a
+    full `hasCourseInstance`; the event node has `offers`, `sameAs` and a postal address. There is
+    nothing left to fix here that the loop can fix.
+  - **What this changes about the existing listing targets.** `outreach/off-page-listings.md` lists
+    Eventbrite, the LinkedIn Company Page and the UK AI-event aggregators as general targets. This
+    reading says which cohort to list **first** if only one gets done: the Coding Bootcamp's
+    Cohort 1 on 26 November, because the Agentic line is currently being retrieved off this site
+    and the Coding line is not. The window closes on 26 November. Still Drummond's call and
+    nothing has been submitted.
+
 - **The twelfth dated reading, and the first that fails the other way round: the engine found us,
   described us in our own words, and could not tell the buyer when the day is. No new target;
   nothing contacted.** Found 4 Nov 2026 (14:00 cycle).

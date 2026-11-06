@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-02T15:30:00+00:00"
+updatedDate: "2026-11-06T08:30:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -71,6 +71,28 @@ faqs:
       terminal, repositories, version control, deployment, databases and tests - and
       how to check what the AI wrote rather than trusting it. Expect to leave
       understanding how the pieces fit, not just having watched them.
+  # The other half of the level screen. This page answers who the day is for -
+  # `whoFor`, `shortPitch` and "Do I need to be able to code?" directly above -
+  # and was the only one of the three programme pages with no answer to who it is
+  # not for, which both siblings publish. The note at the top of this file records
+  # why that half matters on this line in particular: two probes on 27 Oct 2026
+  # asked for a one-day in-person agentic coding day "for non-developers" and
+  # "without being a developer", and a competing listing screens on exactly this
+  # axis in the opposite direction. Every clause below restates copy already on
+  # this page - the `description` ("not a course that turns you into a junior
+  # one"), the difference answer below ("If your problem is a recurring task,
+  # start with the Agentic Bootcamp") and "What should I bring?" - so no new claim
+  # is made about a day that has not yet run. Nothing is said about who would find
+  # it too basic, which is not published anywhere and would be an inference.
+  - q: Who is it not for?
+    a: >-
+      Anyone who wants to come out of the day a working developer: the agents do the
+      typing, and what the day teaches is the workflow around the code rather than how
+      to write it. Anyone whose problem is a recurring task they already do by hand,
+      because the Oxford Agentic Bootcamp is the day for that one. And anyone who
+      cannot bring a laptop they can install software on, since the day sets up a code
+      editor, a terminal and a GitHub account on your own machine, which is worth
+      checking before you book.
   - q: How is this different from the Oxford Agentic Bootcamp?
     a: >-
       The Agentic Bootcamp builds workflows: pipelines of AI steps that do a task you

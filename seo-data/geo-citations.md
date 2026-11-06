@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-06 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE SPLIT IS BETWEEN THE TWO LINES, NOT BETWEEN GOOD AND BAD DAYS: THE CODING BOOTCAMP IS ABSENT FROM ITS OWN DATED QUERY TWENTY DAYS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, all four never probed in these words before: one dated and
+commercial on the Coding line, one on group booking, one on what a day actually delivers, and one
+guide-candidate probe.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **one day AI coding bootcamp Oxford 26 November 2026 build a website in a day** | **No** - and the engine said so outright: *"I couldn't find a one-day AI coding bootcamp in Oxford on 26 November 2026"* and *"check Eventbrite, Luma, or Oxford venues' event pages directly, since the search index didn't surface one"* | `codecademy.com` (x3), `lifelong-learning.lu` (x2), `nobledesktop.com`, `nobleprog.co.uk`, `maven.com`, `createwith.com`, `veda.ng`, `oxford-royale.com`, `oxfordscholastica.com` (x2), `luma.com` (two other organisers' pages), `eventbrite.co.uk` |
+| group booking one day AI training day UK send three people from my team | **No** | `pointacademy-co-uk.pages.dev` (x4), `tutorials.co.uk`, `aiawareness.ai`, `shortcourses.lsbu.ac.uk` (x3), `theknowledgeacademy.com`, `wiseowl.co.uk` (x2), `informaconnect.com`, `ntu.ac.uk` |
+| what will I actually have working by the end of a one day agentic AI course | **No** | `prowareness.com` (x3), `sp.edu.sg`, `alta3.com` (x2), `maven.com` (x2), `themultiverse.school` (x2), `udemy.com` (x2), `dair-ai.thinkific.com`, `toittraining.com` |
+| how do I pick which of my weekly tasks an AI agent should do first | **No** | `verdent.ai` only, the same page in seven languages |
+
+**Reading.**
+
+- **The two positive cycles did not generalise, and the line that breaks is the Coding one.**
+  5 Nov 20:00 and 6 Nov 02:00 each returned `oxfordagentic.com/` as the **first** result on an
+  Agentic-line dated query. This cycle put the same shape of question to the **Coding** line -
+  city, date, format, the thing you leave with - and got an explicit absence. Read together with
+  the 5 Nov 20:00 reading, where a one-day UK coding query returned `iact.ie` and no page of ours,
+  that is **two consecutive misses on the Coding line against two consecutive hits on the Agentic
+  line**, on the same domain, the same template and the same schema. So "retrieval is
+  intermittent" is too coarse: the Agentic line is being retrieved and the Coding line, whose
+  first cohort is twenty days away, is not.
+- **Four things were measured before concluding that, and all four came back clean**, so the
+  absence is not an on-page fault this loop can fix. (a) **Internal links:** counting unique
+  inbound internal links per sitemap URL across all 62 built pages,
+  `/events/oxford-agentic-coding-bootcamp-cohort-1/` and `/bootcamps/agentic-coding-bootcamp/`
+  score **61** each, level with the homepage and every nav page, and with Cohort 3's **61**. The
+  Coding line is not under-linked. (b) **The homepage graph**, which is the only page the engine
+  has held in every recent reading, carries **both** upcoming `EducationEvent` nodes - 19 November
+  *and* 26 November - and the visible homepage prints both dates. (c) **The `Course` node** on the
+  Coding programme page carries a full `hasCourseInstance` with `startDate`, `endDate`,
+  `courseMode`, `courseWorkload` and the venue address. (d) **The `EducationEvent` node** on the
+  cohort page carries `offers` with `availability: InStock`, `sameAs` to its Luma listing,
+  `organizer`, `performer` and the postal address. Nothing in the machine-readable surface is
+  missing. This is backlog 2b again - crawl budget on a domain with no external links - and it is
+  Drummond's to close, not the loop's.
+- **Probe 2 is a miss with no on-page remedy either, and that was checked rather than assumed.**
+  *Can I bring my team, or book for several people?* is published on **all three** programme pages
+  and answered with the invoice route beside it. Every competitor the engine returned instead
+  publishes a group route with a price next to it - Point Academy's *"10% discount for groups of
+  2-5"*, Tutorials.co.uk's day rate, AI Awareness's per-course figure - and we publish no price by
+  standing decision. So the field answers this query with a number and we answer it with an email
+  address. Recorded as a positioning observation, not as a change: prices live on Luma.
+- **Probe 3 is the one that stings, because the page exists.**
+  `/guides/what-you-can-build-in-one-day-with-ai/` was written for this exact question and was not
+  returned. What was returned is a wall of training providers describing their own courses. Same
+  diagnosis as probe 1.
+- **Probe 4 found an almost empty field and still produced no guide.** One page, `verdent.ai`,
+  repeated across seven language versions, and the engine volunteered that it *"is about
+  coordinating multiple AI coding agents, not choosing personal weekly tasks"* - an admission that
+  nothing in the field answers the question asked. That is the winnable half passing cleanly. It
+  fails for a different reason: **we already published the answer**, as
+  `/guides/how-to-choose-your-first-agentic-task/` on 4 Aug 2026, which at **10** inbound internal
+  links is the second best-linked guide on the site. A second guide on the same question is a
+  near-duplicate, which is the hard rule. **No new guide, 0 of 3 for the week of 2-8 Nov.**
+
+**One question this cycle could not answer and did not fake.** The Coding page has no answer to
+*"Do I need a paid AI subscription?"*, which the Agentic programme page does answer. On a day
+built around Claude Code and Codex that is a sharper question than it is on the Agentic day, and
+the Agentic answer (*"not essential - we make sure everyone can take part either way"*) cannot be
+copied across, because whether it holds for paid coding agents is a fact nobody has published.
+Raised for Drummond rather than guessed at.
+
 ## 2026-11-06 (02:00 GMT cycle) - FOUR PROBES, TWO CITATIONS, BOTH FIRST RESULT - THE POSITIVE READING HOLDS A SECOND CYCLE - AND BOTH COMMERCIAL PROBES NAME THE SAME GAP: THE BOOKING STEP
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
