@@ -8,7 +8,7 @@ status: upcoming
 # 26 November is GMT, hence +00:00.
 startDate: "2026-11-26T09:00:00+00:00"
 endDate: "2026-11-26T17:00:00+00:00"
-updatedDate: "2026-10-18T08:23:27+00:00"
+updatedDate: "2026-11-06T09:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -29,6 +29,15 @@ capsule: >-
   repository.
 # Capacity deliberately unset, as on every other event: Luma is the source of
 # truth for how many places are left.
+# Each line restates an answer this page already gives further down, moved to
+# where it is actually needed: under the form, where someone hesitating over a
+# card field will see it. Nothing new is offered here. There is no line about
+# lunch, because whether food is laid on for this day is not published anywhere
+# and this field may not be the place it first appears.
+assurances:
+  - If 26 November stops working, your place transfers to a future cohort at no charge.
+  - A laptop you can install software on is essential, so it is worth checking yours before you book.
+  - Bringing a colleague or two? Email hello@oxfordagentic.com and we will arrange it.
 whoFor:
   - People who understand the concepts but have not yet built and shipped something of their own
   - Founders and operators who want to prototype an idea without waiting on a developer

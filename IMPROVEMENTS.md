@@ -1339,9 +1339,104 @@ Status: `todo` · `blocked` (why) · `doing`
       to reach the booking, which would be the first evidence that the markup rather than the
       retrieval is the constraint.
 
+70. `todo` (loop-actionable, found 6 Nov 2026 in the 09:00 cycle; **weigh the cost before doing
+    it**) - **`npm run check` cannot run in a clean checkout.** `package.json` wires `"check":
+    "astro check"` but lists no `devDependencies` at all, so `astro check` stops on an interactive
+    "npm i @astrojs/check typescript - Continue?" prompt and a cycle that runs it non-interactively
+    gets nothing. Run once this cycle with `npm i --no-save @astrojs/check typescript`: **80 errors,
+    every one `ts(7006)` "parameter implicitly has an 'any' type"** in `.astro` templates -
+    17 in `guides/[...slug].astro`, 17 in `events/[slug].astro`, 14 in `team/[...slug].astro`,
+    10 in `HomeSections.astro` and the rest spread over ten more files. **None is a bug**: they are
+    untyped callback parameters in `.map` and `.filter` over content collections, which Astro types
+    correctly at build time, and `npm run build` is green. **The honest fix is two dependencies and
+    about eighty annotations**, which is a repo-wide change rather than one cycle's improvement, and
+    it buys type errors on code that already builds and ships. **Do not take it as a cycle's one
+    change.** What a cycle *should* do is stop reporting `npm run check` as a check it ran: it
+    cannot, and this item is why.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-06 (09:00 cycle) - the only bookable page on the site with nothing under its booking
+  form was the Coding Bootcamp's, twenty days out. It now carries three of its own, in the slot the
+  Agentic cohorts have had filled since 17 August. One file, three lines, one page of `dist`.**
+  **The measurement.** `assurances` renders directly beneath the Luma embed and only on a page
+  whose status is `upcoming`, so past events never show it. Counted across the five event files:
+  Cohort 2 and Cohort 3 carry three lines each; Agentic Cohort 1 and Second Brain Cohort 1 carry
+  none and are past, so the field is dead data on them; **`oxford-agentic-coding-bootcamp-cohort-1`
+  is on sale and carried none**. That is backlog 14's two-product rot exactly - a surface built for
+  the first product line and never applied to the third - and the field's own schema comment names
+  the cost: these are "the answers that decide a paid booking", and they were reachable only by
+  opening the sixth of eight items in an accordion *below* the form. Someone hesitating over a card
+  field does not go looking.
+  **Each line restates an answer already on the page, which is the field's contract.** *"If 26
+  November stops working, your place transfers to a future cohort at no charge"* is the first half
+  of **What if I cannot make the date?**, worded exactly as Cohort 3's equivalent line is worded, so
+  the three bookable pages say it the same way. *"Bringing a colleague or two? Email
+  hello@oxfordagentic.com and we will arrange it"* is **Can I bring my team?**, again Cohort 3's own
+  wording. The middle line is the one that differs from the Agentic pattern and does so deliberately:
+  *"A laptop you can install software on is essential, so it is worth checking yours before you
+  book"* restates **What should I bring?**, whose own answer tells the reader to email *before you
+  book*. On a day built on setting up an editor, a terminal and a GitHub account on your own machine,
+  with tickets that are not refundable, a locked-down work laptop is the one thing that can make a
+  booking wrong, and it was sitting below the form rather than beside it.
+  **No new fact, and one line deliberately absent.** The Agentic pages' middle line is *"Lunch and
+  refreshments are included"*; whether food is laid on at Worcester College on 26 November is
+  published nowhere on this site, so no lunch line was written. That is **backlog 27**, which needs
+  Drummond, and the frontmatter comment now says so where the next author will look, rather than
+  leaving an inviting gap. No price, no capacity, no new commercial term: the transfer promise is
+  one this page had already made.
+  **Blast radius, measured by diffing a pristine `dist` of `958f756` against this build: 3 files and
+  no others** - the Coding event page and the two sitemaps (`lastmod`). A whole-page text diff of the
+  event page shows exactly three lines added, directly after "Register on Luma", and nothing else
+  changed. `llms.txt` and `llms-full.txt` are byte-identical, which is correct and not an oversight:
+  neither file has ever carried `assurances`, for any event.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked, 3,156
+  internal links resolve, schema valid, 7 `Event` and 14 `FAQPage` nodes, all titles and descriptions
+  unique, no SEO warnings. The 11 outbound warnings are the sandbox egress policy. `npm run
+  check:flags` passes on the all-on and all-off builds. Headless Chromium over the changed page at
+  **375, 768 and 1280px**: no horizontal overflow at any width (`scrollWidth` equals `innerWidth`),
+  one `h1`, no missing alt text, no unnamed link, no unlabelled control, no duplicate id, no heading
+  jump and no page errors; the same nine assertions re-run clean on Cohort 3 and `/events/`. All
+  three screenshots read at `deviceScaleFactor: 2`: the gold square bullets, the measure and the
+  muted-on-dark colour match Cohort 3's block exactly, and at 375px the longest line wraps to three
+  lines inside a 332px list with no overflow.
+  **A whole-site sweep came first and found nothing to fix**, which is why this was the candidate.
+  All 55 sitemap URLs plus the nine unlisted pages were loaded at 375, 768 and 1280px - 192
+  configurations - and checked for horizontal overflow, missing alt text, links and buttons with no
+  accessible name, form controls with no label, duplicate ids, `h1` count and heading-level jumps:
+  **zero findings**. Keyboard focus was tabbed through six pages (370 focusable elements) and every
+  one takes a visible outline or shadow; the only two without are the Luma `iframe`s, which are
+  third-party. The mobile menu sets `aria-expanded`, closes on Escape and does not overflow.
+  **`npm run check` cannot run in a clean checkout and did not run here.** `astro check` is wired as
+  a script but `@astrojs/check` and `typescript` are in no dependency list, so the command stops on
+  an interactive install prompt. Installed with `--no-save` to run it once: **80 errors, all
+  `ts(7006)` implicit-any in `.astro` templates this change does not touch**, so they are the repo's
+  standing state rather than anything this cycle did. Recorded as backlog 70.
+  **Search Console unavailable, twentieth consecutive cycle.** `seo-data/search-console-latest.md` is
+  absent, which is the documented pre-setup state: `GSC_SERVICE_ACCOUNT_KEY` does not exist and no
+  CSV, TSV or XLSX export exists anywhere in the repository. Nothing estimated. STATE.md task 4
+  remains the highest-value item on the list.
+  **Two GEO probes, zero citations, and the second of them is the evidence for this change.** Asked
+  *"one day agentic AI coding bootcamp Oxford November 2026 for non-developers"*, the engine returned
+  `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` - **both past Agentic cohorts** - plus an
+  `allai.events` listing of the Agentic day, and concluded *"the search returned no one-day Oxford
+  course in November 2026"*, having read 21 July off a stale listing. No page of this site and no
+  page about the Coding Bootcamp appeared at all. That is the 08:00 cycle's reading holding on another
+  phrasing, and it is backlog **2b**, not a page fault: the one third-party listing in the
+  field is of the wrong product. Asked *"what happens if I can't attend an AI bootcamp I booked -
+  refund or transfer policy UK"*, the field was eighteen providers' own terms pages, almost none UK,
+  and the engine closed by telling the buyer to *"read the terms before you pay"* - with deadline
+  refunds, one-time-only transfers and forfeited tokens as the norms it found. **Our answer is
+  better than the field's and was below the form on the one page that had not been given it.** Not
+  written up as a guide: our version is one sentence of policy, not a page. **0 of 3 guides for the
+  week of 2-8 Nov.**
+  **Production:** `oxfordagentic.com` answers 403 at the proxy and `luma.com` the same, as on every
+  cycle since 30 Oct, so the Actions API stood in - deploy run **366 success on `958f756`**, which is
+  both `origin/main` and the HEAD this cycle started from, nothing queued or in progress. **No event
+  fact was read, invented or changed.** PR #1 and PR #3, and the `feat/ceo-roundtable-demand-page`
+  branch, are the known-stale leftovers already recorded in backlog 20.
 
 - **2026-11-06 (08:00 cycle) - the page selling the Coding Bootcamp answered who the day is for
   and not who it is not for, twenty days before its first cohort. It was the only one of the three
