@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-06 (02:00 GMT cycle) - FOUR PROBES, TWO CITATIONS, BOTH FIRST RESULT - THE POSITIVE READING HOLDS A SECOND CYCLE - AND BOTH COMMERCIAL PROBES NAME THE SAME GAP: THE BOOKING STEP
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions: two dated and commercial, one the national format question,
+one the national concept question.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **one day agentic AI bootcamp Oxford 19 November 2026 how to book** | **YES - `oxfordagentic.com/` first result.** Engine gave *"Thursday 19 November 2026 at Worcester College, Oxford"*, named it cohort 3, and separated us from Said's online programme. But: *"The search didn't return any booking steps, price, or ticket page"* | `sbs.ox.ac.uk` (x2), `createwith.com`, `getsmarter.com`, `gogradia.com`, `lifelong-learning.ox.ac.uk`, `digitalhuboxford.com`, `coursera.org` |
+| **how do I register for the Oxford Agentic Bootcamp Cohort 3 tickets booking page** | **YES - `oxfordagentic.com/` first result**, and the engine quoted our own published policy back accurately: invoice by email to `hello@oxfordagentic.com`, and *"tickets are not refundable, but your place transfers to a future cohort at no charge"*. But: *"I didn't find a direct booking URL in the results"* | `x.com/IABTechLab`, `datasciencedojo.com`, `maven.com`, `dreamando.org`, `getsmarter.com`, `gogradia.com`, `sbs.ox.ac.uk`, `createwith.com` |
+| hands-on agentic AI workshop UK bring your own task build a workflow in a day | **No** | `tessgroup.co.uk` (x2), `columbusglobal.com`, `brainstation.io`, `essex.ac.uk`, `maven.com`, `nobleprog.co.uk`, `inagentic.ai`, `learn.microsoft.com`, `scottytechnologies.com` |
+| what is an agentic workflow for business and how do I build my first one | **No** | `caylent.com`, `airtable.com`, `gumloop.com`, `moxo.com`, `thoughtspot.com`, `monday.com`, `removatech.com`, `jadasquad.com`, `revanthquicklearn.com` |
+
+**Reading.**
+
+- **The positive reading of the 5 Nov 20:00 cycle holds, six hours later, on two fresh
+  phrasings.** Both commercial probes returned `oxfordagentic.com/` as the **first** result, and
+  neither returned a Luma page or `allai.events` at all. After seventeen consecutive readings of
+  absence or of a wrong date, two cycles in a row have now gone our way. The honest reading
+  recorded yesterday stands: retrieval of this site is **intermittent**, not absent, and the
+  recovery is not a one-off artefact of a single phrasing.
+- **Probe 2 is the first time the engine has quoted our published *policy* answers.** Not the
+  positioning copy the stale Luma listings carry, but the invoice route and the
+  no-refund-but-transfer terms, both of which exist only on this site. That is our own page being
+  read and relied on, and it is the clearest evidence in the log that the site's own copy is
+  reaching a buyer at the decision point.
+- **The engine also did backlog 42's job without backlog 42.** Unprompted, probe 1 wrote
+  *"Don't confuse this with the Oxford Generative and Agentic AI Programme run by Said Business
+  School. That is a separate online course ... and it doesn't match the in-person bootcamp on
+  19 November."* The independence distinction that item reserves for Drummond's decision is being
+  drawn correctly by the engine off what is already published. It does not close the item - that
+  is about visible copy on the booking path - but it lowers its urgency.
+- **BOTH commercial probes then failed at the same step, and it is the step that earns money.**
+  *"The search didn't return any booking steps, price, or ticket page"* and *"I didn't find a
+  direct booking URL in the results, so the homepage link is the most reliable route."* The
+  engine reaches the site, reads the date and the terms correctly, and cannot hand the buyer a
+  ticket URL. In both probes it held **only the homepage**: the page that takes the booking,
+  `/events/oxford-agentic-bootcamp-cohort-3/`, was not among the results, as in every reading
+  since 26 October. Investigated this cycle and deliberately not shipped - see below.
+- **The national format question (probe 3) is still a miss, and the field has moved onto our
+  ground.** TESS Group now sells an *"AI Automation Taster Day - bring a process, leave with an
+  automation"*, and the engine recommended it first as the *"best match for 'bring your own
+  task'"*. That is this bootcamp's own positioning in different words, from a provider the
+  13 Sept log already recorded in this field. Worth knowing: the distinctive promise is no longer
+  distinctive on the national query. Two of the ten results returned were past listings
+  (Columbus Global, 14 July; Essex, 1-2 October), so stale event pages are not only our problem.
+- **Probe 4 fails the winnability half of the topic-probe rule outright, and no guide was
+  written.** Nine of nine results are platform vendors writing about their own product - Airtable,
+  monday.com, Gumloop, Moxo, ThoughtSpot, Caylent - which is the exact pattern the rule names. The
+  site already answers this question in `/guides/what-is-an-agentic-bootcamp/` and the glossary.
+
+**On the booking gap, and why nothing shipped for it.** `offers.url` on all five `EducationEvent`
+nodes points at our own event page rather than at the Luma listing, which `sameAs` already
+carries. Changing it was considered this cycle and **declined**. Our event page does provide the
+ability to buy - the Luma booking form is embedded in it - so the published value is not wrong,
+and pointing the ticket offer off-site would move it away from the one page we control and are
+indexed on, to a page an engine already has in `sameAs`. More to the point, the engine's
+complaint is about what its **search results** contain, not about our structured data: it never
+retrieved the event page, so no field on that page could have been read either way. That is the
+crawl-budget-and-external-links diagnosis of backlog 2b once more, and it is Drummond's to close.
+Recorded so it is not re-derived.
+
 ## 2026-11-05 (20:00 GMT cycle) - FOUR PROBES, TWO CITATIONS OF OUR OWN DOMAIN - THE FIRST POSITIVE READING IN EIGHTEEN - AND A SITE DEFECT FOUND BY THE SECOND PROBE AND FIXED THE SAME CYCLE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

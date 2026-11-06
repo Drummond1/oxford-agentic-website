@@ -10,7 +10,7 @@ cohort: Cohort 2
 status: past
 startDate: "2026-09-16T09:00:00+01:00"
 endDate: "2026-09-16T17:00:00+01:00"
-updatedDate: "2026-10-18T08:23:27+00:00"
+updatedDate: "2026-11-06T02:30:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -19,7 +19,11 @@ venue:
   confirmed: true
 lumaEventId: evt-kcWdRFwqcgBbNcn
 lumaUrl: https://luma.com/oxfordagentic2
-summary: The second Oxford Agentic Bootcamp. A sold-out day at Worcester College, run on the same build-against-your-own-task format as Cohort 1.
+# 122 chars. A past event's meta description is "Took place on <date>. <summary>",
+# a 33-character prefix, so the real budget here is 127 and not the schema's 160.
+# At 136 this fell past it and the page published date and venue alone, with no
+# prose at all - 72 characters where every other event page carries a sentence.
+summary: The second Oxford Agentic Bootcamp. A sold-out day at Worcester College, in Cohort 1’s build-against-your-own-task format.
 # The programme's shortPitch would do, but it opens "A one-day AI bootcamp in
 # Oxford" and the date and venue render on the very next line. This says the
 # part the meta line cannot. Substance is the capsule's, front-loaded.

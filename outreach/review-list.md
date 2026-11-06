@@ -147,6 +147,39 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
       **fourteen days out**. The sandbox still cannot reach `luma.com` or `allai.events`, so no
       listing was read, and nothing was contacted, submitted or changed.
 
+  - **A seventh reading, and the recovery holds a second cycle: two probes, two first-place
+    citations of this site, no Luma or `allai.events` page returned at all, 6 Nov 2026 (02:00
+    cycle). Not a new target and nothing contacted. It narrows ask (a) further; ask (b) is
+    unchanged.** The probes were *"one day agentic AI bootcamp Oxford 19 November 2026 how to
+    book"* and *"how do I register for the Oxford Agentic Bootcamp Cohort 3 tickets booking
+    page"*. Both returned **`oxfordagentic.com/` as the first result**, and the engine answered
+    off it with the right date and venue both times.
+    - **What is new, and it is the strongest single item in this log for the site's own copy.**
+      On the second probe the engine quoted our **published policy**, not our positioning:
+      the invoice route (***"If your organisation prefers to pay by invoice, email
+      hello@oxfordagentic.com"***) and the cancellation terms (***"tickets are not refundable,
+      but your place transfers to a future cohort at no charge"***). Those sentences exist on
+      this site and nowhere else - not on the stale Luma listings, not on `allai.events`. The
+      earlier readings show third-party pages answering in our place; this one shows our own
+      page answering, at the point a buyer decides.
+    - **What survives unchanged, and it is still the commercial half.** Both probes failed at the
+      same step: ***"The search didn't return any booking steps, price, or ticket page"*** and
+      ***"I didn't find a direct booking URL in the results, so the homepage link is the most
+      reliable route."*** In both the engine held **only the homepage** -
+      `/events/oxford-agentic-bootcamp-cohort-3/`, the page that takes the booking, was not
+      returned, as in every reading since 26 October. So the pattern across readings six and
+      seven is consistent: the homepage is retrievable and correct, and the booking page is not
+      retrievable at all. Cohort 3 is **thirteen days out**.
+    - **Therefore:** ask (b), a first `Organization.sameAs`, is unchanged and still the standing
+      item. Ask (a) - retiring or correcting the stale Luma and `allai.events` listings - is now
+      argued only from the four readings where those pages answered in our place; it is not
+      argued from absence any more, because two consecutive cycles retrieved this site first and
+      neither retrieved them. A third ask is **not** being added for the booking page: there is
+      nothing to contact about it, and the on-site surfaces were checked this cycle and are
+      correct (the event page publishes the date, the venue, a crawlable Luma link and an
+      `EducationEvent` node with `InStock`). The sandbox still cannot reach `luma.com` or
+      `allai.events`, so no listing was read, and nothing was contacted, submitted or changed.
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).

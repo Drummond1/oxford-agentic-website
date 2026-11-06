@@ -141,7 +141,15 @@ const events = defineCollection({
         .regex(/^evt-[A-Za-z0-9]+$/, 'Luma event ids look like evt-XXXXXXXXXXXX')
         .optional(),
       lumaUrl: z.string().url().optional(),
-      /** Doubles as the meta description, so it must fit one. */
+      /**
+       * Doubles as the meta description, so it must fit one.
+       *
+       * 160 is the ceiling for an UPCOMING event, whose composer can fall back
+       * to this string alone. A PAST event is always prefixed "Took place on
+       * <date>. ", 33 characters, so its real budget is 127: past that the prose
+       * is dropped whole and the snippet publishes date and venue alone. Cohort 2
+       * sat at 136 and published 72 characters of no prose until 6 Nov 2026.
+       */
       summary: z.string().max(160, 'summary doubles as the meta description — keep it ≤160 chars'),
       /**
        * One line of promise in the hero, under the H1.

@@ -1311,9 +1311,99 @@ Status: `todo` · `blocked` (why) · `doing`
       Agentic programme page's FAQ block and the Cohort 3 event page, and the loop can place it in
       one cycle without writing a new claim.
 
+69. `todo` (loop-actionable but **declined on its merits 6 Nov 2026, 02:00 cycle**; recorded so the
+    next cycle does not re-derive it) - **`offers.url` on all five `EducationEvent` nodes points at
+    our own event page, not at the Luma listing that takes the money.** Raised because both
+    commercial probes that cycle reached this site, read the date and venue correctly off the
+    homepage, and then said they could not produce a ticket URL - *"The search didn't return any
+    booking steps, price, or ticket page"* and *"I didn't find a direct booking URL in the
+    results"*.
+    - **Why it was declined, and this is not a deferral.** Our event page **does** provide the
+      ability to buy: the Luma booking form is embedded in it, which is what `offers.url` is
+      specified to mean, so the published value is correct rather than merely defensible. The
+      Luma URL is already published on the same node as `sameAs`, so the engine is not missing
+      it. And pointing the ticket offer off-site would move it from the one page we control and
+      are indexed on to a page we do not.
+    - **The decisive point.** In both probes the engine held **only the homepage** and never
+      retrieved `/events/oxford-agentic-bootcamp-cohort-3/` at all, so no field on that page -
+      `offers.url` included - could have been read either way. The failure is retrieval, not
+      markup, which is backlog **2b** (crawl budget on a domain with zero external links) and
+      not a schema item. Changing `offers.url` would have been mechanism bought against a
+      diagnosis the evidence does not support.
+    - **Re-open only if** a reading ever shows an engine holding an event page and still unable
+      to reach the booking, which would be the first evidence that the markup rather than the
+      retrieval is the constraint.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-06 (02:00 cycle) - the past-tense fix shipped yesterday left one page publishing a
+  72-character snippet with no prose in it, and this cycle finished the job it named.** The
+  20:00 cycle on 5 Nov gave past event pages a "Took place on <date>" meta description and
+  recorded in its own commit message that Agentic Cohort 2 *"does land on the last rung at 72
+  characters, which is accurate but thinner than what it replaced; the remedy is an
+  eight-character trim to its summary, left for another cycle."* This is that cycle.
+  **The measurement.** A past page composes four rungs and takes the first that fits 160:
+  weekday + venue + summary, then venue + summary, then date + summary, then date + venue alone.
+  Cohort 2's `summary` was **136** characters, and the date-only rung needs **127** (the prefix
+  `Took place on 16 September 2026. ` is 33), so all three prose rungs overflowed and the page
+  fell to the fourth - *"Took place on Wednesday, 16 September 2026 at Worcester College,
+  Oxford."* - **72 characters** where every other event page carries a sentence, on a page whose
+  own Luma listing the engine has repeatedly put top-of-results. Cohort 1, on the same branch,
+  publishes 136 characters of prose. Cohort 2 published none.
+  **The change is a compression, not a rewrite, and adds no fact.** *"run on the same
+  build-against-your-own-task format as Cohort 1"* becomes *"in Cohort 1's
+  build-against-your-own-task format"* - 136 to 122 characters, a 14-character trim where 9 was
+  the minimum, leaving 5 characters of headroom rather than 1. Every element of the original
+  survives: the ordinal, the sold-out fact, the venue and whose format it was. The page now
+  publishes **155** characters - *"Took place on 16 September 2026. The second Oxford Agentic
+  Bootcamp. A sold-out day at Worcester College, in Cohort 1's build-against-your-own-task
+  format."* - the same shape Cohort 1 has carried all along. The venue is not lost by dropping
+  the venue rung, because the summary names Worcester College itself; that duplication is why
+  the venue rung was the right one to lose.
+  **A second file, and it is the reason this does not recur.** The `summary` field's schema
+  comment said only *"Doubles as the meta description, so it must fit one"* and its max is 160,
+  which is true for an upcoming event and wrong by 33 characters for a past one. It now states
+  the 127-character past budget and what overflowing it costs. Both `cohort-3` (19 Nov) and the
+  Coding Bootcamp (26 Nov) cross into the past branch this month; yesterday's cycle measured
+  them at 154 and 160 with both `endDate`s temporarily moved back, so both are safe, and the
+  comment is now where the next author will look rather than in a commit message.
+  **Blast radius, measured rather than asserted**, by diffing a pristine `dist` of `a46bb79`
+  against this build: **6 files differ and no others** - the Cohort 2 event page, `/events/`,
+  `/bootcamps/oxford-agentic-bootcamp/`, `llms.txt` and the two sitemaps. A whole-page text diff
+  of `/events/` shows exactly one sentence changed and every other character identical. The
+  schema-comment file changes no byte of `dist`.
+  **Checks.** `npm ci` and `npm run build` green: 62 pages built, 64 checked, 3,156 internal
+  links resolve, schema valid, 7 Event and 14 FAQPage nodes, all titles and descriptions unique,
+  no SEO warnings. The 11 outbound warnings are the sandbox egress policy. Headless Chromium
+  over the Cohort 2 page, `/events/` and the Agentic programme page at 375 and 1280px: 6
+  configurations, 0 failing, no page-level overflow and no JS errors, and the changed card was
+  screenshotted at both widths at `deviceScaleFactor: 2` and read - the curly apostrophe renders,
+  and the hyphenated phrase wraps cleanly inside the card at 375px. `indexnow-ping --dry-run`
+  with the changed file submits the whole sitemap, which is the **events** branch's deliberate
+  and documented default (the header CTA and footer print the next cohort date on every page),
+  not an over-submission this change introduced; it was checked rather than assumed, because the
+  `content.config.ts` edit was briefly reverted on a misreading that it was the cause.
+  **Search Console unavailable, eighteenth consecutive cycle.** `seo-data/search-console-latest.md`
+  is absent, which is the documented pre-setup state: `GSC_SERVICE_ACCOUNT_KEY` does not exist,
+  the variable is not in the environment, and no CSV, TSV or XLSX export exists anywhere in the
+  repository. Nothing estimated. STATE.md task 4 remains the highest-value item on the list.
+  **Four GEO probes, two citations, both first result** - see `seo-data/geo-citations.md`. The
+  positive reading of the 20:00 cycle **holds a second cycle on two fresh phrasings**, and for
+  the first time the engine quoted our published *policy* (the invoice route and the
+  no-refund-but-transfer terms), which exists on this site and on none of the third-party pages.
+  Both commercial probes then failed at the booking step and in both the engine held only the
+  homepage. **`offers.url` was considered as the remedy and declined**: it points at our own
+  event page, which does carry the booking form, so it is not wrong, and the engine never
+  retrieved that page at all, so no field on it could have been read. Recorded under backlog 2b
+  rather than shipped. One guide candidate probed and declined on winnability (nine of nine
+  platform vendors on their own product). **No new guide, 0 of 3 for the week of 2-8 Nov.**
+  **Production:** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and
+  does not resolve through the fetch tool either, as on every cycle since 30 Oct, so the Actions
+  API stood in - deploy run 364 success on `a46bb79`, which is both `origin/main` and the HEAD
+  this cycle started from, nothing queued or in progress. `luma.com` is unreachable the same
+  way, so no event fact was read, invented or changed.
 
 - **2026-11-05 (20:00 cycle) - a past cohort's search snippet read like an offer, and an answer
   engine proved it by naming the passed 21 October day as "its next listed in-person date". The
