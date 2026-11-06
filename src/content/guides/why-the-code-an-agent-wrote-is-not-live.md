@@ -12,9 +12,27 @@ capsule: >-
   something live.
 author: drummond-gilbert
 publishDate: "2026-09-25T19:00:00+01:00"
-updatedDate: "2026-10-24T07:40:00+01:00"
+updatedDate: "2026-11-06T14:00:00+00:00"
 relatedProgrammes:
   - agentic-coding-bootcamp
+# The three question headings below are what a reader asks once a coding agent
+# has handed them working code, and each is already written as a question and
+# its answer, so they go out as an FAQPage node too, read off the rendered page
+# rather than copied into frontmatter. Opted in 6 Nov 2026 on a probe, not on
+# theory: asked "how do I know if code an AI agent wrote is safe to put live if
+# I cannot read code", the field came back as nine vendor and developer-tool
+# blogs with no institutional publisher anywhere in it, and every one of them
+# answered for somebody who can read code - static analysis, dependency
+# scanning, and the engine's own closing advice to "get a developer or security
+# reviewer to check auth, payments, and data handling". This page answers the
+# reader who cannot, which is the Coding Bootcamp's published audience. The four
+# non-question headings above are not questions and are correctly left out.
+#
+# One wart, left alone on the 4 November precedent: the first answer ends on
+# "the sixth item on the list above", which names a heading the node does not
+# carry. Rewriting published prose to suit a schema node is the tail wagging
+# the dog.
+faqFromHeadings: true
 ---
 
 Something odd happens the first time you build with a coding agent. It works. You describe what you want, the agent writes it, the thing runs on your screen, and you feel about four steps from launching. Then you try to show it to someone and discover the four steps were the easy part.

@@ -1198,9 +1198,23 @@ Status: `todo` · `blocked` (why) · `doing`
       Search Console baseline says is not being crawled. Full table in
       `seo-data/geo-citations.md` under 3 Nov 14:00.
 
-54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **one taken in the 1 Nov 14:00
-    cycle and a second on 4 Nov at 20:00, two left**) - **four more guides qualify for
+54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **three of the four taken - 1 Nov
+    14:00, 4 Nov 20:00 and 6 Nov 14:00 - one left**) - **four more guides qualify for
     `faqFromHeadings` and emit no `FAQPage` node.**
+    **Taken 6 Nov 2026 (14:00 cycle): `why-the-code-an-agent-wrote-is-not-live`**, on the re-probe
+    this item asked for. *"How do I know if code an AI agent wrote is safe to put live if I cannot
+    read code"* returned nine results, every one a vendor or developer-tool blog and not one
+    institutional publisher, so the field is winnable - and every answer in it is written for
+    somebody who **can** read code: static analysis, dependency scanning, *"have a developer check
+    high-risk areas"*, and the engine's own closing advice to *"get a developer or security
+    reviewer to check auth, payments, and data handling."* This page answers the reader who cannot,
+    which is the Coding Bootcamp's published audience, and it has done since 25 September. Three
+    entries published, all three visible `h2`s; the four non-question headings are correctly left
+    out. The first answer's closing clause names "the sixth item on the list above", a heading the
+    node does not carry - the same wart as the 4 November opt-in's "which is test 3 above", and
+    left alone for the same reason, recorded in the guide's frontmatter comment.
+    **The one left is `is-it-safe-to-put-company-documents-in-a-second-brain`**, and the question
+    against it is unchanged from 1 November: decide the `Question one: ` prefix first.
     **Taken 4 Nov 2026 (20:00 cycle): `how-to-choose-your-first-agentic-task`**, reversing the
     1 Nov decline on a probe phrased the way a buyer types it rather than the way the field
     indexes it. The 1 Nov decline read the confidential-work field as owned by the SRA, the Law
@@ -1357,6 +1371,89 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-06 (14:00 cycle) - the guide written for the reader who cannot read code published
+  three answers no engine could quote. One frontmatter flag, no new sentence, and the field this
+  cycle probed routes every other reader to a developer.**
+  **The candidate was named for me and came with a condition.** Backlog 54 has carried
+  `why-the-code-an-agent-wrote-is-not-live` as its next opt-in since 4 November, declined that day
+  only on the one-opt-in-per-cycle rule, with the instruction **re-probe before taking**. Probed
+  *"how do I know if code an AI agent wrote is safe to put live if I cannot read code"*: nine
+  results, every one a vendor or developer-tool blog - `specstory.com`, `vahu.org`,
+  `knowledgegate.ai`, `bug0.com`, `orangebeard.io`, `axonbuild.com`, `maulik.dev`,
+  `lionscripts.com`, `safeguard.sh` - and **no institutional publisher anywhere in it**, which is
+  the winnability half passing cleanly. The converting half is the sharper reading: every answer in
+  that field is written for somebody who can read code. Static analysis, dependency scanning,
+  *"have a developer check high-risk areas"*, and the engine's own closing line, *"get a developer
+  or security reviewer to check auth, payments, and data handling."* The searcher who cannot do
+  any of that is the Coding Bootcamp's published audience, twenty days out from Cohort 1.
+  **Nothing new is published, and that is the whole point of the flag.** `faqFromHeadings: true` on
+  one guide. The flag reads the guide's own rendered HTML, so the node can only ever say what the
+  page says. What it emits is three entries, all three visible `h2`s on that page since 25
+  September: *"How do I check what the agent wrote if I cannot read code?"*, *"Does a passing test
+  mean it works?"* and *"Can I ask the agent to check its own work?"*. The four non-question
+  headings - the six things, the builder comparison, the order that works, and the closing section -
+  do not end in a question mark and are correctly left out, which is the flag's contract and was
+  asserted on the built node rather than assumed. Each of the three was read clause by clause
+  against what the site already publishes before it was made machine-readable; none makes a claim
+  about the day, the room, a price or a person, so no event fact was read, invented or changed.
+  **One honest wart, left alone on the 4 November precedent.** The first answer ends *"which is why
+  the sixth item on the list above is learnable in a day"*, naming a heading the node does not
+  carry - the same shape as *"which is test 3 above"* in the 4 November opt-in, which that cycle
+  left standing on the grounds that rewriting published prose to suit a schema node is the tail
+  wagging the dog. Reworking it was drafted and dropped for consistency with that call. It is
+  recorded in the guide's own frontmatter comment so the next author does not re-find it.
+  **The probe that makes this worth doing is a different one.** Probe 4 this cycle, *"in person one
+  day course learn to ship a website using Claude Code UK non developer"*, carried **no date and no
+  place** and still returned nothing of ours, with the engine writing *"I found no UK in-person,
+  one-day course that is clearly built for non-developers and covers shipping a website with Claude
+  Code."* That is the third consecutive Coding-line miss, and it removes the innocent reading the
+  08:00 cycle left open - a dateless query cannot fail on date-matching. Meanwhile probe 1, an
+  Agentic-line dated query, returned this site and the engine answered off it correctly: *"the
+  Oxford Agentic Bootcamp on Thursday 19 November 2026 at Worcester College"*, the
+  bring-one-real-task format, and - unprompted - *"a private training provider, Oxford Agentic, not
+  the University of Oxford"*, which is the first reading in which the
+  `disambiguatingDescription` assertion demonstrably reached a buyer. Three hits to three misses,
+  split by product line. This node is the one lever available on the Coding line that needs no
+  fact from Drummond; the listing that would actually close it is backlog 2b and his.
+  **Blast radius, measured against a pristine build of `39fa578`: exactly 5 of 198 files in `dist`
+  differ and no others.** The guide page, `/guides/`, `llms-full.txt` and the two sitemaps.
+  `llms.txt` is byte-identical, as are `/`, `/bootcamps/`, every event page and every other guide.
+  On the guide page one node is added (`FAQPage`, 3 `mainEntity`) and two change in one field each
+  (`WebPage.dateModified`, `Article.dateModified`); `Organization`, `WebSite` and `BreadcrumbList`
+  are byte-identical. A word-level diff of the page's visible text returns **two words** out of
+  1,580 - `24 October` becoming `6 November` in the byline. `/guides/` moves one card eyebrow,
+  `llms-full.txt` one Updated line, and three sitemap values move forward. `indexnow-ping
+  --dry-run` on this cycle's changed file set submits exactly 2 URLs, the guide and `/guides/`,
+  which is exact here because the two that moved are the only two; the script was not run for real.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique, no SEO warnings.
+  `FAQPage` nodes 14 to 15, `Event` nodes unchanged at 7. `check:flags` green on the all-on and
+  all-off builds. The 11 outbound warnings are the sandbox egress policy, unchanged from the
+  baseline build. `npm run check` was **not** run and is not claimed: backlog 70 records why it
+  cannot be in a clean checkout. Headless Chromium over the changed guide, `/guides/` and the
+  Coding programme page at 375, 768 and 1280px, scrolling each page to settle its reveal blocks
+  before measuring - 9 configurations, 66 assertions, 0 failing on the page: no horizontal
+  overflow at any width, one `h1`, JSON-LD parsing in the browser, no page errors, no failed local
+  requests, each of the three questions matched against a visible heading in the DOM, and the
+  byline reading 6 November. Both screenshots were read at 2x. Two assertion classes failed first
+  time and both were the harness: the collapsed mobile-nav drawer is `opacity: 0` by design on
+  every page of the site, and so are the seven `#` heading anchors until hover, per backlog 48.
+  **Search Console unavailable, twentieth consecutive cycle, and the one-try rule was honoured
+  against the new route rather than the old.** `seo-data/search-console-latest.md` is absent;
+  `Search Console export` run 4 completed **successfully at 13:09 today** on this exact HEAD and
+  committed nothing, which is the documented pre-setup state - `GSC_SERVICE_ACCOUNT_KEY` still does
+  not exist. No CSV, TSV or XLSX export anywhere in the repository, and the only reading in
+  `seo-data/` is still the 24 August baseline. Nothing estimated.
+  **Production.** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and does
+  not resolve through the fetch tool either, as on every cycle since 30 Oct, so `build.txt` could
+  not be read and the Actions API stood in: deploy run 368 **success** on `39fa578`, which is both
+  `origin/main` and the HEAD this cycle started from, nothing queued or in progress. `luma.com` is
+  unreachable the same way, so no event fact was read, invented or changed.
+  **Backlog 54 is down to one.** `is-it-safe-to-put-company-documents-in-a-second-brain` is the
+  last of the four, and the open question against it is unchanged: its headings read *"Question
+  one: which account is it going into?"*, and the numbered-prefix strip in `faq.ts` handles `1. `
+  and not `Question one: `. Decide that before opting it in.
 
 - **2026-11-06 (09:00 cycle) - the only bookable page on the site with nothing under its booking
   form was the Coding Bootcamp's, twenty days out. It now carries three of its own, in the slot the

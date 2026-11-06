@@ -38,6 +38,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     and the Coding line is not. The window closes on 26 November. Still Drummond's call and
     nothing has been submitted.
 
+  - **Corroborated a third time, 6 Nov 2026 (14:00 cycle), on a probe carrying no date and no
+    place - which removes the one innocent explanation the 08:00 reading left open. Nothing
+    contacted; still no new target.** *"in person one day course learn to ship a website using
+    Claude Code UK non developer"* - format, tool and audience only - returned no page of ours and
+    the engine wrote *"I found no UK in-person, one-day course that is clearly built for
+    non-developers and covers shipping a website with Claude Code."* The 08:00 miss could be read
+    as the index simply having no entry for a date in Oxford; this one cannot. On the same cycle an
+    Agentic-line dated query returned this site and the engine answered correctly off it - date,
+    weekday, venue and format - so the split is between the two product lines, not between good and
+    bad days, and it now stands at three misses to three hits.
+  - **New in that reading, and the reason the window matters more than it did: a real in-person UK
+    competitor on this line.** NobleProg's *"Claude Code for Non-Developers"*, described by the
+    engine as a 7-hour **in-person** course priced in GBP, running in Exeter, Bradford, York and
+    Plymouth, where *"every participant will have built a working project"*. Red Eagle (half day,
+    £150 + VAT, London and across the UK) and Nexus-Human (one day, London, £450) sit beside it.
+    None is in Oxford, and the engine told the buyer to check with each whether deployment is
+    covered and whether non-coders are catered for - which is precisely what the Coding Bootcamp
+    publishes. The buyer is being handed three answers that are not ours, twenty days out, and the
+    only lever left is an external listing. Drummond's call; nothing submitted.
+
 - **The twelfth dated reading, and the first that fails the other way round: the engine found us,
   described us in our own words, and could not tell the buyer when the day is. No new target;
   nothing contacted.** Found 4 Nov 2026 (14:00 cycle).

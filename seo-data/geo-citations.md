@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-06 (14:00 GMT cycle) - FOUR PROBES, ONE CITATION - THE AGENTIC LINE IS RETRIEVED FOR A THIRD CONSECUTIVE CYCLE AND THE CODING LINE MISSES FOR A THIRD, THIS TIME ON A QUERY CARRYING NO DATE AT ALL
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, all four never probed in these words before: one dated and
+commercial on the Agentic line, one re-probe of the backlog-54 candidate, one on who keeps an
+agent running afterwards, and one undated format probe on the Coding line.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **one day agentic AI workshop Oxford 19 November 2026 build a workflow on your own task** | **Yes** - and the engine answered the question outright: *"It's the Oxford Agentic Bootcamp on Thursday 19 November 2026 at Worcester College, Oxford. Participants bring one real task from their own work and leave with an agentic workflow running against it"*, adding unprompted *"This is a private training provider, Oxford Agentic, not the University of Oxford"* | `sbs.ox.ac.uk` (x2), `createwith.com` (x3), `getsmarter.com`, `lifelong-learning.ox.ac.uk`, `digitalhuboxford.com` |
+| how do I know if code an AI agent wrote is safe to put live if I cannot read code | **No** | `specstory.com`, `vahu.org`, `knowledgegate.ai`, `bug0.com`, `orangebeard.io`, `axonbuild.com`, `maulik.dev`, `lionscripts.com`, `safeguard.sh` |
+| who maintains an AI agent after you build it, small business with no IT team | **No** | `ibl.ai`, `siit.io`, `nexos.ai`, `salesforce.com`, `commercepundit.com`, `s9-consulting.com`, `intelligencebriefing.substack.com`, `signalwire.com`, `partners.mindstudio.ai` |
+| **in person one day course learn to ship a website using Claude Code UK non developer** | **No** - and the engine said so outright: *"I found no UK in-person, one-day course that is clearly built for non-developers and covers shipping a website with Claude Code"* | `nobleprog.co.uk`, `every.to`, `udemy.com`, `ccforeveryone.com` (x2), `scrimba.com`, `redeagle.tech`, `nexushuman.co.uk`, `wsodl.com`, `ruben.substack.com` |
+
+**Reading.**
+
+- **Probe 1 is the best single answer an engine has given about this business.** Date, weekday,
+  venue, the bring-one-real-task format and what you leave with, all correct, all off our own
+  page, thirteen days out. It also volunteered the independence line the site asserts
+  machine-readably in `Organization.disambiguatingDescription` and in visible copy on three pages
+  - which is the first reading in which that assertion demonstrably reached a buyer. Third
+  consecutive cycle in which an Agentic-line dated query retrieves this domain.
+- **And it failed at the same step as the last three.** *"The results didn't include pricing or
+  registration details, so check the provider's site."* That is now the fourth consecutive
+  commercial probe that reaches us and then cannot produce a booking route. Backlog 69 examined
+  `offers.url` as the remedy on 6 Nov at 02:00 and declined it on the evidence; this reading does
+  not overturn that, because the engine held our page and still produced no price - and we publish
+  no price anywhere by standing decision. Recorded, not acted on.
+- **Probe 4 is the third consecutive Coding-line miss, and it removes the explanation the last
+  one left open.** The 08:00 probe named a city and a date, so "the engine has no index entry for
+  26 November in Oxford" was a sufficient account of it. This one names **no date and no place** -
+  just the format, the tool and the audience - and still returns nothing of ours, while
+  `/bootcamps/agentic-coding-bootcamp/` and `/guides/why-the-code-an-agent-wrote-is-not-live/`
+  are both written for exactly that reader. So the Coding line is not failing on date-matching; it
+  is not being retrieved. Measured again this cycle and unchanged: 61 inbound internal links on
+  each Coding page, the `Course` node complete, the event node complete. Backlog 2b.
+- **A real in-person UK competitor appeared on probe 4 for the first time.** NobleProg's *"Claude
+  Code for Non-Developers"*, described by the engine as a 7-hour in-person course priced in GBP
+  and running in Exeter, Bradford, York and Plymouth, with *"every participant will have built a
+  working project"*. Red Eagle (half day, £150 + VAT, London and UK) and Nexus-Human (one day,
+  London, £450) sit beside it. None is in Oxford and none is described as covering deployment, but
+  the field this line sells into is no longer only online courses. Recorded as market intelligence;
+  no site change follows from it and no claim about a competitor goes on the site.
+- **Probe 2 was the re-probe backlog 54 asked for before its next opt-in, and it passed.** Nine
+  results, every one a vendor or developer-tool blog, **no institutional publisher anywhere in the
+  field** - so winnable. What matters more is who the field is written for: static analysis,
+  dependency scanning, *"have a developer check high-risk areas"*, and the engine's own closing
+  advice, *"get a developer or security reviewer to check auth, payments, and data handling"*.
+  Every answer in that field routes the reader to somebody who can read code. The page we already
+  publish answers the reader who cannot, in three habits that need no developer, and it has said so
+  since 25 September. **Acted on this cycle**: `faqFromHeadings` on that guide, so the three
+  answers become a `FAQPage` node an engine can quote. No new sentence was written.
+  - Worth recording honestly: our answer and the field's are not in conflict so much as aimed at
+    different readers, and one clause of the field's - *"if the same AI writes both the code and
+    its tests, the tests may just confirm its assumptions"* - is already published on our page, in
+    **"Does a passing test mean it works?"** (*"an agent asked to make the tests pass can write
+    tests that pass"*). That the page anticipated it is part of why the node is safe to publish.
+- **Probe 3 found an empty field and still produced no guide.** The engine volunteered that
+  *"The search didn't turn up a direct answer. Most results are vendor marketing or general how-to
+  guides, and none of them clearly addresses long-term upkeep for a business with no IT staff"* -
+  the winnability half passing cleanly, and converting, because upkeep is a real pre-booking
+  objection for an owner-operator. **It fails on near-duplication, which is the hard rule**: we
+  published that answer on 17 August as `/guides/how-to-notice-when-an-ai-workflow-is-wrong/`,
+  written for the person who has no one to hand the workflow to. A second guide on the same
+  question is the thing rule 6 bans. **No new guide, 0 of 3 for the week of 2-8 Nov.**
+
 ## 2026-11-06 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE SPLIT IS BETWEEN THE TWO LINES, NOT BETWEEN GOOD AND BAD DAYS: THE CODING BOOTCAMP IS ABSENT FROM ITS OWN DATED QUERY TWENTY DAYS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
