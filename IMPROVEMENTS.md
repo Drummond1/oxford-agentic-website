@@ -1453,8 +1453,13 @@ Status: `todo` · `blocked` (why) · `doing`
     heading a reader may be navigating by; the second touches one template and changes a label on
     all 32 guides. Not taken this cycle on the one-change rule.
 
-73. `todo` (loop-actionable, found 7 Nov 2026 in the 08:00 cycle; **same defect class as backlog
-    71, different page, and this one is worth more**) - **`who-should-take-the-seat` answers a
+73. `done` 7 Nov 2026 (14:00 cycle), by the smaller of the two routes it named - **the three
+    bold leads under `## Three questions that settle most cases` were promoted to `h3`, and the
+    node publishes exactly those three.** No `h2` was rewritten into a question, no sentence was
+    moved and the page's visible word count is unchanged at 1,451. Measured against the seven
+    guides that already carry `h3` question headings, the promoted headings render identically -
+    same face, same 19.2px at 375 and 21px at 1280, same 20.8px margin above, same tight gap to
+    the answer - so this set no new pattern. The original finding follows. - **`who-should-take-the-seat` answers a
     question two probes showed the field cannot answer, and it has zero question headings, so no
     `FAQPage` node can ever be derived from it.** Its six `h2`s are statements - *"A build day
     sorts by task ownership, not rank"*, *"Three questions that settle most cases"*, *"When it
@@ -1484,6 +1489,86 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-07 (14:00 cycle) - the guide that answers "one seat or two" had zero question
+  headings, so nothing could quote it, while two probes the same day recorded the field admitting
+  it has no answer. Three bold leads became three `h3`s. Visible word count unchanged at 1,451;
+  5 of 198 files in `dist`.** Backlog 73, found by the 08:00 cycle and explicitly left for a cycle
+  that could take it on its own.
+  **Why this page and not another.** A manager asking whether to send one person or two is
+  deciding **the size of the purchase**, not whether to make it, which is the most commercial
+  question any of the open candidates sits on - twelve days before Cohort 3. Two phrasings probed
+  on 7 November both returned an admitted gap: *"The search didn't turn up anything specific to AI
+  training days, so this is based on general training guidance"* and *"The search didn't surface
+  any controlled comparison of one-person versus two-person training."* Neither field had an
+  institutional publisher in it. This guide has carried the answer since 19 October.
+  **The smaller of the two routes the backlog named, and the reason it is the honest one.** The
+  other route was rewriting several of the guide's statement `h2`s into questions, which is prose
+  bent to fit a schema node and was named as such on 6 November. Instead the three bold paragraph
+  leads under `## Three questions that settle most cases` - *"Whose morning does the task eat?"*,
+  *"Who can change how it is done on Monday?"*, *"Who will build the next one?"* - were promoted
+  to `h3`. They were already questions in everything but markup, and the section's own `h2` calls
+  them three questions. The lead became the heading; the rest of its paragraph became the answer.
+  **No sentence was written, rewritten or moved.**
+  **This is not a new typographic pattern, and that was measured rather than assumed.** The
+  promoted `h3`s were compared in the browser against `what-you-can-build-in-one-day-with-ai`,
+  which has carried `h3` question headings since October: **identical** computed style at both
+  widths - Newsreader, weight 400, 19.2325px at 375 and 21px at 1280 against an 18px body, 20.8px
+  margin above, 0 below so the heading sits tight to its own answer. Seven guides already read
+  this way. The backlog's caution about setting a pattern applied to backlog 71's fourteen
+  headings, not to three.
+  **The node, asserted on the built page rather than predicted: 3 entries.** The parent `h2` is a
+  statement, so the extractor never reads it, and the three `h3`s are leaves. Entry 3 runs to the
+  next `h2` and so carries the section's closing line - *"When all three point at the same person,
+  that is who goes, whatever the org chart says"* - which was read before shipping and is the
+  right ending for it. All three answers are self-contained. **No price, date, venue, person or
+  claim of any kind is new**: every word has been on the page since 19 October. `FAQPage` nodes
+  **17 to 18**; `Event` nodes unchanged at 7.
+  **Blast radius, measured against a pristine build of `14dd951`: exactly 5 of 198 files in `dist`
+  differ.** The guide, `/guides/`, `llms-full.txt` and the two sitemaps. A word-level diff of the
+  guide's visible text is **1,451 words before and after**, differing in two - `19 October`
+  becoming `7 November` in the byline - because promoting a bold lead to a heading changes markup
+  and not words. `/guides/` differs in one word of 1,516. Two sitemap `lastmod` values move and no
+  others. `indexnow-ping --dry-run` over the real change set submits exactly **2** URLs, matching
+  the two HTML files in the diff. The script was not run for real.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique, no SEO warnings.
+  `check:flags` green on the all-on and all-off builds. The 11 outbound warnings are the sandbox
+  egress policy, unchanged from the baseline build. `npm run check` was **not** run and is not
+  claimed; backlog 70 records why. Headless Chromium over the changed guide and `/guides/` at
+  **375, 768 and 1280px**, scrolling each page to settle its reveal blocks: 6 configurations,
+  **69 assertions, 0 failing** - no horizontal overflow at any width, one `h1`, every JSON-LD block
+  parsing in the browser, no image without `alt`, no link without an accessible name, no page
+  errors, no failed local requests, each of the three questions matched to exactly one `h3` with a
+  painted box inside the viewport, each carrying an anchor, **no promoted question left behind as a
+  bold lead**, and the byline asserted on `textContent`. Screenshots of the changed section read at
+  2x at 375 and 1280px.
+  **Worth recording for the next cycle: `indexnow-ping.mjs --dry-run` with no file arguments
+  reports 55 URLs.** That is the script working as written - `changed.length === 0` means whole
+  site - not a mapping defect. Pass the changed paths or the number is meaningless.
+  **Four GEO probes, zero citations, and the sharpest is the easy query.** *"in person AI workshop
+  Oxford for business leaders November 2026"* - a city, a buyer, a month, nothing clever - and the
+  engine answered ***"I didn't find an in-person AI workshop in Oxford for business leaders in
+  November 2026"***, then offered a **Cardiff** session as the closest match. We run two dated days
+  inside that month at Worcester College. Every fact it could not find is published on our own
+  pages in prose and in `Event` schema, so this is retrieval, and it is the 24 August baseline's
+  diagnosis again: crawl budget on a domain with zero external links. **It also found the
+  best-placed listing target yet**, `enspire.ox.ac.uk`, a University of Oxford platform already
+  carrying this category for this buyer, which held four of that probe's results. Recorded on the
+  review list; nothing contacted. Probes 1 (paid subscription) and 2 (agent versus Zapier) were
+  winnable and **declined on converting**; probe 4 re-tested the level-fit axis and the 19 October
+  decline holds.
+  **No new guide, 0 of 3 for the week of 2-8 Nov.** Search Console **unavailable**, twenty-third
+  consecutive cycle; nothing estimated. The `Search Console export` workflow ran at 11:52 today and
+  succeeded **writing nothing**, which is its documented behaviour while `GSC_SERVICE_ACCOUNT_KEY`
+  is unset - `seo-data/search-console-latest.md` is still absent from the tree. STATE.md task 4 is
+  still the blocker and still only Drummond can clear it.
+  **Production.** `oxfordagentic.com` and `luma.com` are both refused on CONNECT by the sandbox
+  egress policy, as on every cycle since 30 Oct, so the Actions API stood in: deploy runs 372
+  (push) and 373 (cron) and CI run 347 all **success on `14dd951`**, which is `origin/main` and the
+  HEAD this cycle started from, nothing queued or in progress. **No event fact was read, invented
+  or changed**; the repo's own dates (Cohort 3 on 19 November, Coding Cohort 1 on 26 November) were
+  used only to judge urgency.
 
 - **2026-11-07 (09:00 cycle) - 15 of the 32 guides printed the heading "Where this gets
   practical" twice, one paragraph apart. One label in one shared template; 32 built pages, one

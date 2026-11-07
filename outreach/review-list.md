@@ -11,6 +11,31 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A new Oxford-institutional listing target: `enspire.ox.ac.uk`. It is a University of Oxford
+  platform, it already carries this exact category of event for this exact buyer, and it held four
+  of one probe's results while we held none. Nothing contacted.** Found 7 Nov 2026 (14:00 cycle).
+  - **The probe, and it is the easy one.** *"in person AI workshop Oxford for business leaders
+    November 2026"* - no date-of-the-month, no jargon, no tooling, just a city, a buyer and a
+    month. The engine answered ***"I didn't find an in-person AI workshop in Oxford for business
+    leaders in November 2026"***, and offered a **5 November session in Cardiff** as "the closest
+    match". We run two dated in-person days inside that month at Worcester College, on **19 and
+    26 November**. Twelve days out.
+  - **What answered in our place.** `enspire.ox.ac.uk` (four results, the BIPC "AI For Business"
+    series at Westgate, listings aimed at SME owners and leaders), `createwith.com` (four, already
+    on the target list in `off-page-listings.md`), `sbs.ox.ac.uk`, two `eventbrite.co.uk` pages,
+    another organiser's `luma.com` listing, and `allai.events` again at its July date.
+  - **Why Enspire is worth adding rather than folding into the standing ask.** The standing targets
+    are national aggregators and a LinkedIn Company Page. This one is local, institutional and
+    already indexed for the query we want: an Oxford University events surface carrying practical
+    AI sessions for Oxfordshire business owners. It is the closest thing to a credible third-party
+    `sameAs` the Organization node could hold, and it is the sort of listing an answer engine
+    treats as a source rather than as marketing.
+  - **The ask is unchanged and still Drummond's:** one external listing, anywhere credible, so the
+    domain stops being a zero-external-link property. This names the best-placed candidate found
+    so far. **Nothing was contacted, submitted, signed up for or paid for**, and the sandbox could
+    not reach `enspire.ox.ac.uk`, `luma.com` or `oxfordagentic.com`, so no listing was read and no
+    event fact was taken from any of them.
+
 - **A competitor now has an Oxford city page for the Coding Bootcamp's exact category, and we do
   not appear on the query it answers. No new target; nothing contacted.** Found 7 Nov 2026
   (02:00 cycle).

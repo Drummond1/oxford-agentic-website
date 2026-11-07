@@ -5,6 +5,50 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-07 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE ONE THAT MATTERS MOST IS THE PLAIN OXFORD QUERY TWELVE DAYS BEFORE COHORT 3
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, none probed in these words before: one on subscription cost,
+one tool-comparison question, one plain dated local query, and one level-fit question.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| do I need a paid ChatGPT or Claude subscription to build AI workflows at work | **No** | `reddit.sentinel-team.org` (x3 snapshots), `gptprompts.ai`, `nisonco.com`, `virtualuncle.com`, `freeacademy.ai` (x2), `stacker.com`, `opper.ai`, `chatai.guide`, `aiproductivity.ai`, `eventbrite.ca` (**another organiser's event, whose listing is read as the rule**) |
+| what is the difference between an AI agent and a Zapier automation for a small business | **No** - the engine flagged its own field: *"these sources are mostly vendor or affiliate blogs... None of them is an independent benchmark"* | `growwstacks.com`, `shortcuts-ai.pages.dev`, `vortexiq.ai`, `g2.com`, `claudemarket.ai`, `getmavrick.com`, `remoteopenclaw.com` |
+| **in person AI workshop Oxford for business leaders November 2026** | **No** - and the engine said so outright: ***"I didn't find an in-person AI workshop in Oxford for business leaders in November 2026"*** | `enspire.ox.ac.uk` (x4), `eventbrite.co.uk` (x2), `sbs.ox.ac.uk`, `createwith.com` (x4), `luma.com/ozre44mg` (another organiser), `connect.informs.org` (x2), `allai.events`, `laidlawscholars.network` |
+| I already use ChatGPT every day but have never built an AI agent, what training is right for me | **No** | `udemy.com` (x8), `inflearn.com` (x2), `turingcollege.com` (x2), `praison.ai` (x2), `algonquincollege.com`, `nyp.edu.sg`, `academy.manus.im`, `futurepedia.io`, `opencourser.com` |
+
+**Reading.**
+
+- **Probe 3 is the sharpest version of backlog 2b yet recorded, because it is the easy query.**
+  No date-of-the-month, no jargon, no tooling: a city, a buyer, a month. We run **two** dated
+  in-person days inside that month at Worcester College, on 19 and 26 November, and the engine
+  concluded none exists. It then pointed the buyer at the BIPC "AI For Business" series on
+  `enspire.ox.ac.uk`, at `createwith.com`, at Saïd's own events, and at a **5 November session in
+  Cardiff** as "the closest match". This is retrieval, not copy: both dates, the city, the venue
+  and the format are published on our own pages, in prose and in `Event` schema. It is the same
+  diagnosis the 24 August Search Console baseline gave - crawl budget on a domain with zero
+  external links - and the remedy is still one external link. **Twelve days out.**
+- **`enspire.ox.ac.uk` is a new target and the best-placed one yet found.** It is an Oxford
+  University platform, it already carries exactly this category of event for exactly this buyer,
+  and it held four of this probe's results. Added to the review list. Nothing was contacted.
+- **Probes 1 and 2 are winnable fields that do not convert, and both were declined.** Probe 1's
+  field is affiliate pricing microsites and Reddit snapshots with no institutional publisher, and
+  the engine's own answer is sound ("you can start on free tiers"). But somebody comparing a $20
+  subscription is not somebody booking a day in Oxford, and the one honest fact we hold here - the
+  Agentic programme page's answer on what an attendee needs - is already published where a buyer
+  meets it. Probe 2's field is vendor and affiliate blogs, flagged as such by the engine, and the
+  glossary already defines the boundary; the intent is tool selection by someone intending to
+  build it themselves. **Winnable but not converting, so neither was written.**
+- **Probe 4 re-tests the level-fit axis declined on 19 October, and the decline holds.** The field
+  is eight Udemy listings and six other online-course platforms - a global e-learning field, not an
+  Oxford day - and the engine's recommendation is a no-code online course. Nothing here is
+  winnable by a guide, and the programme pages already answer both the floor and the ceiling.
+  Do not re-pitch it.
+- **No new guide. 0 of 3 for the week of 2-8 Nov.** Two candidates probed, both declined on
+  converting.
+
 ## 2026-11-07 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS - AND THE ONE THAT OVERTURNED A DECLINE IS THE OBJECTION A BUYER RAISES WITH A PRICE IN FRONT OF THEM
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

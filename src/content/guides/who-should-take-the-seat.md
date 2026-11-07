@@ -11,9 +11,28 @@ capsule: >-
   build the next one. If all three point at you, go yourself.
 author: drummond-gilbert
 publishDate: "2026-10-19T14:15:00+01:00"
-updatedDate: "2026-10-19T14:15:00+01:00"
+updatedDate: "2026-11-07T14:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+# The three bold paragraph leads under `## Three questions that settle most cases` were
+# promoted to `h3` here. They were already questions in everything but markup, the section's
+# own `h2` calls them "three questions", and a reader gets three scannable headings with
+# anchors instead of three bold sentences buried in prose. No sentence was rewritten: the
+# lead became the heading and the rest of its paragraph became the answer under it.
+# That markup is what `faqsFromQuestionHeadings` reads. The parent `h2` is a statement, so
+# the extractor never reaches it; the three `h3`s are leaves and the node publishes exactly
+# those three. Assert that on the built node, do not assume it. The third runs to the next
+# `h2`, so its answer carries the closing line "when all three point at the same person,
+# that is who goes, whatever the org chart says" - checked, and it is the right ending.
+# The evidence is two phrasings probed on 7 November 2026, recorded as backlog 73. "Should I
+# send two people from the same team to an AI training day or just one": "The search didn't
+# turn up anything specific to AI training days, so this is based on general training
+# guidance." "Is it better to train one person or a pair when adopting AI in a small
+# business": "The search didn't surface any controlled comparison of one-person versus
+# two-person training." Neither field had an institutional publisher in it. A manager asking
+# this is deciding how many seats to buy, and this guide has answered it since 19 October
+# without anything being able to quote it.
+faqFromHeadings: true
 ---
 
 You have one seat and two candidates: you, or the person who actually does the work. Most of the material written about choosing AI training answers a different question - whether to bring a day in-house, or which format to pick - and then describes who the day is *for* in job titles. That does not settle it, because the job titles usually fit both of you.
@@ -28,11 +47,17 @@ That single constraint does most of the deciding for you. The seat should go to 
 
 ## Three questions that settle most cases
 
-**Whose morning does the task eat?** Not whose budget, whose morning. The person who personally loses the time pays a different kind of attention to getting it back, and they already know where the task is awkward - the exceptions, the bit that always needs checking, the file that is never where it should be. Someone describing a colleague's workflow from memory finds that out at 11am, in the room, with the day running.
+### Whose morning does the task eat?
 
-**Who can change how it is done on Monday?** If the person who goes has to ask permission to alter the process afterwards, the day produces a recommendation rather than a change. Recommendations go in folders. This is the question that most often sends the seat upwards, and sometimes it genuinely should.
+Not whose budget, whose morning. The person who personally loses the time pays a different kind of attention to getting it back, and they already know where the task is awkward - the exceptions, the bit that always needs checking, the file that is never where it should be. Someone describing a colleague's workflow from memory finds that out at 11am, in the room, with the day running.
 
-**Who will build the next one?** What transfers from the day is not the workflow, it is the pattern behind it - [a step that gathers, a step that produces, a step that checks](/guides/scout-drafter-reviewer-pattern/). The first workflow only ever covers the task you brought. The pattern is what makes the second and third ones happen without help, so the seat is worth more to someone who will keep using it than to someone who wanted to see what this is about.
+### Who can change how it is done on Monday?
+
+If the person who goes has to ask permission to alter the process afterwards, the day produces a recommendation rather than a change. Recommendations go in folders. This is the question that most often sends the seat upwards, and sometimes it genuinely should.
+
+### Who will build the next one?
+
+What transfers from the day is not the workflow, it is the pattern behind it - [a step that gathers, a step that produces, a step that checks](/guides/scout-drafter-reviewer-pattern/). The first workflow only ever covers the task you brought. The pattern is what makes the second and third ones happen without help, so the seat is worth more to someone who will keep using it than to someone who wanted to see what this is about.
 
 When all three point at the same person, that is who goes, whatever the org chart says.
 
