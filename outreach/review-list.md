@@ -11,6 +11,41 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A named competitor is what Eventbrite hands our buyer on our own category query. No new
+  target: this is evidence for the standing Eventbrite ask, which is already target 1.** Found
+  7 Nov 2026 (20:00 cycle). Nothing contacted.
+  - **The probe.** *"one day hands-on AI agent workshop UK for managers who are not technical"* -
+    no city, no date, no brand, just our format and our buyer. The first result was
+    **`eventbrite.co.uk/e/2003714053673`, "Agentic AI Bootcamp Day: Build an AI Agent with Claude",
+    a London day for business leaders and team leads**. No page of oxfordagentic.com appeared.
+  - **Why it is worth a line rather than a new entry.** Eventbrite has been target 1 in
+    `off-page-listings.md` since August, argued from being cited three times in one answer. That
+    was a general argument. This is a specific one: a day that reads almost exactly like ours, on
+    the platform we have not listed on, is the answer a national buyer gets to the question our
+    bootcamp is the answer to. The other organisers retrieved on the same probe were on
+    `luma.com` (`cmm5fg7j`, `s28c02xg`) - the same platform our own booking pages sit on, which
+    suggests the platform is not the barrier.
+  - **Nothing was contacted, submitted, signed up for or paid for**, and the sandbox could not
+    reach `eventbrite.co.uk`, `luma.com` or `oxfordagentic.com`, so no listing was read and no
+    event fact, price or availability was taken from any of them. The competitor's name and date
+    are recorded only as what the probe returned.
+
+- **The stale `allai.events` listing is now demonstrably costing us a fully branded query, which
+  is the strongest version of ask (a) yet. Already on this list; this is the evidence, not a new
+  target.** Found 7 Nov 2026 (20:00 cycle). Nothing contacted.
+  - **The probe was as easy as a branded query gets:** *"Oxford Agentic Bootcamp 19 November 2026
+    Worcester College"* - our event, our date, our venue. The engine returned **no page of
+    oxfordagentic.com** and said ***"The 19 November date and the Worcester College venue may be
+    wrong, or the event may not have been published yet."*** The only listing of ours it found was
+    `allai.events/event/the-oxford-agentic-bootcamp`, **still dated 21 July 2026**, Cohort 1's date.
+  - **So the single reachable third-party record of this company is wrong**, and an engine asked
+    about our next cohort is being told by it that we ran in July. Earlier cycles recorded the
+    same listing being read at its July date; this is the first probe where the stale listing is
+    the *only* thing retrieved on a fully branded query.
+  - **Drummond's call, unchanged and still two asks:** (a) correct or retire the `allai.events`
+    listing, which is the cheapest single fix on this page, and (b) one credible external listing
+    so the domain stops being a zero-external-link property. **Nothing was contacted.**
+
 - **A new Oxford-institutional listing target: `enspire.ox.ac.uk`. It is a University of Oxford
   platform, it already carries this exact category of event for this exact buyer, and it held four
   of one probe's results while we held none. Nothing contacted.** Found 7 Nov 2026 (14:00 cycle).

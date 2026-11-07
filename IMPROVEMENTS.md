@@ -1404,8 +1404,19 @@ Status: `todo` · `blocked` (why) · `doing`
     change.** What a cycle *should* do is stop reporting `npm run check` as a check it ran: it
     cannot, and this item is why.
 
-71. `todo` (loop-actionable, found 7 Nov 2026 in the 02:00 cycle; **a typography change, so weigh
-    it before taking it**) - **`getting-an-ai-workflow-past-it-and-legal` is a list of fourteen
+71. `done` 7 Nov 2026 (20:00 cycle) - **taken as its own cycle, as this item asked, and the
+    typography objection did not survive being measured.** All of them were promoted to `h3`, the
+    guide opted in with `faqFromHeadings`, and the node publishes **thirteen** entries, not
+    fourteen: this item miscounted, and the real count is five IT questions, four legal and four
+    for the manager. At 375px and 1280px the promoted headings are byte-identical in computed
+    style to `what-you-can-build-in-one-day-with-ai`, which has read this way since October -
+    Newsreader, weight 400, 19.2325px and 21px, 20.8px above and 0 below - so each question sits
+    tight to its own answer and the page reads as the question-and-answer list it already was. The
+    density worry was the real one (thirteen headings in 729 words against three or four in the
+    five guides that already carry them) and it is answered by the fact that an `h3` here is a
+    quiet serif line against a sans body rather than a loud rule: screenshots at both widths were
+    read before shipping. **No sentence was written, rewritten or moved**: the word multiset of the
+    body is identical at 729 words before and after. The original finding follows. - **`getting-an-ai-workflow-past-it-and-legal` is a list of fourteen
     questions and not one of them is a heading, so no `FAQPage` node can ever be derived from it.**
     The guide's three `h2`s are *"What IT and security will ask"*, *"What legal and data protection
     will ask"* and *"What your manager will ask"*; under each sit four or five questions set as
@@ -1489,6 +1500,71 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-07 (20:00 cycle) - the guide written for the buyer who has to get IT, legal and a
+  manager to say yes carried thirteen questions and no headings, so nothing could quote it and
+  none of them had an anchor. All thirteen became `h3`s and the guide opted in. Visible prose
+  unchanged at 729 words; 5 of 198 files in `dist`.** Backlog 71, found on 7 Nov in the 02:00
+  cycle and explicitly left for a cycle that could take it alone.
+  **Why this guide, with Search Console unavailable.** A buyer who needs IT and legal sign-off has
+  already decided they want the day and is working out how to be allowed it, which puts the
+  question inside the purchase rather than before it. The field is winnable on its composition
+  rather than on an admitted gap: *"how do I get an AI agent approved by IT and legal at work"*,
+  probed this cycle, returned nineteen results that are vendor and governance-platform marketing
+  almost all the way down - ThreatLocker, Kiteworks, Acceldata, gc.ai, Velt, enkryptai, Corma,
+  Gravitee - with Reddit snapshots and a LexisNexis Hong Kong post making up most of the rest, and
+  **no institutional publisher anywhere in it**. The 02:00 cycle the same day had the engine flag
+  that field itself: *"Vendor docs are biased toward their own products."* What that field
+  recommends - scope one job, name an accountable owner, let it draft and have a person send - is
+  what this guide has published in plainer words since 13 September.
+  **Two changes, and the second is the one that publishes anything.** Promoting the headings was
+  the prerequisite; it emitted no node on its own, because `faqFromHeadings` is an opt-in and the
+  guide did not carry it. Backlog 71 half-saw this (it said `faqFromHeadings` "would throw"). The
+  flag is right here on its own terms: `faq.ts` reserves it for "the pages that genuinely are one",
+  and this page is thirteen questions grouped by who asks them, each answered in two or three
+  sentences. **FAQPage nodes 18 to 19; `Event` nodes unchanged at 7.**
+  **The node, asserted on the built page rather than predicted: 13 entries**, answers from 14 to 52
+  words, every one self-contained. The three parent `h2`s are statements, so the leaf rule skips
+  them correctly. The last entry stops at the `Put it on one page` boundary rather than swallowing
+  it. **No price, date, venue, person or claim of any kind is new**: the word multiset of the body
+  is **identical, 729 words before and after**, and the only visible word that moved anywhere on
+  the site is `September` to `November` in the byline.
+  **The typography call the backlog flagged, measured rather than argued.** The worry was density:
+  thirteen `h3`s in 729 words against three or four in the five guides that already carry question
+  headings. Computed style at 375 and 1280px is identical to
+  `what-you-can-build-in-one-day-with-ai` - Newsreader, weight 400, 19.2325px and 21px against an
+  18px sans body, 20.8px above and 0 below - so an `h3` here is a quiet serif line sitting tight to
+  its own answer, not a rule across the page. Screenshots at 2x at both widths were read before
+  shipping and the page reads as the question-and-answer list it already was.
+  **Blast radius, measured against a pristine build of `56ba083`: exactly 5 of 198 files in `dist`
+  differ** - the guide, `/guides/`, `llms-full.txt` and the two sitemaps. `/guides/` differs in
+  **one word of 1,481**. Exactly **two** sitemap `lastmod` values move. `indexnow-ping --dry-run`
+  over the real change set (guide, ledger, GEO log, review list) submits exactly **2** URLs,
+  matching the two HTML files in the diff; the ledger, the GEO log and the review list map to
+  none. The script was not run for real.
+  **Checks.** `npm ci` and `npm run build` green before and after: 64 pages, 3,156 internal links
+  resolve, schema valid, all titles and descriptions unique. `npm run check` was **not** run and is
+  not claimed; backlog 70 records why. The 11 outbound warnings are the sandbox egress policy,
+  identical to the baseline build. Headless Chromium over the changed guide, `/guides/` and the
+  reference guide at **375, 768 and 1280px**, scrolling each to settle its reveal blocks: 9
+  configurations, **189 assertions, 0 failing** - no horizontal overflow, one `h1`, every JSON-LD
+  block parsing in the browser, no image without `alt`, no link without an accessible name, no page
+  errors, no failed local requests, each of the thirteen questions matched to exactly one painted
+  `h3` carrying an anchor, **no bold question lead left behind**, 13 `h3`s and no duplicate `h2`.
+  **One measurement correction worth keeping.** A first pass reported three "unnamed link" failures
+  at 1280px. They are the desktop nav's bootcamps dropdown, which is `visibility: hidden` until
+  hover, and they appeared on `/about/` too, which this cycle never touched. The links carry real
+  text; `innerText` is empty for hidden elements and the assertion was wrong, not the site. Use
+  `textContent` for accessible-name checks.
+  **Four GEO probes, zero citations, and the branded one is the worst reading in the log.**
+  *"Oxford Agentic Bootcamp 19 November 2026 Worcester College"* - our event, our date, our venue -
+  returned no page of ours and the verdict ***"The 19 November date and the Worcester College venue
+  may be wrong, or the event may not have been published yet."*** The only listing of ours it found
+  was `allai.events`, **still dated 21 July 2026**. So the single reachable third-party record of
+  this company is wrong, twelve days before Cohort 3. Probe 2 found a competitor's **Eventbrite**
+  listing returned first for our own format and buyer. Probe 3 recorded an admitted gap on
+  preparation and was **declined on converting**: it sits after the booking, and our pages already
+  answer it. Both recorded on the review list; nothing contacted.
 
 - **2026-11-07 (14:00 cycle) - the guide that answers "one seat or two" had zero question
   headings, so nothing could quote it, while two probes the same day recorded the field admitting

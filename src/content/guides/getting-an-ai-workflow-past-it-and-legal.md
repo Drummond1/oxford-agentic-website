@@ -11,9 +11,25 @@ capsule: >-
   what it replaces and who owns it. Answer all three on one page before you ask.
 author: drummond-gilbert
 publishDate: "2026-09-13T08:00:00+01:00"
-updatedDate: "2026-09-13T08:00:00+01:00"
+updatedDate: "2026-11-07T20:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+# Opted in 7 November 2026. This guide genuinely is an FAQ and not an essay with a
+# question in it: thirteen questions, grouped by who asks them, each answered in its
+# own two or three sentences. They were set as bold paragraph leads until this date,
+# so nothing could quote them and none of them carried an anchor; promoting them to
+# `h3` changed the markup and not one word of the prose.
+# Why it is worth quoting. "How do I get an AI agent approved by IT and legal at work"
+# was probed on 7 November: nineteen results, and the field is vendor and
+# governance-platform marketing almost all the way down (ThreatLocker, Kiteworks,
+# Acceldata, gc.ai, Velt, enkryptai) with Reddit snapshots making up the rest. No
+# institutional publisher owns it. The 02:00 cycle the same day probed "do I need to
+# give an AI agent access to my email or CRM for it to be useful" and the engine
+# flagged its own sources: "Vendor docs are biased toward their own products." The
+# advice that field does offer - scope one job, name an accountable owner, let it draft
+# and have a person send - is what this guide has said in plainer words since
+# 13 September, under headings nothing could read.
+faqFromHeadings: true
 ---
 
 Building an agentic workflow that works is the part people expect to be hard. Then comes the next conversation: the one where it has to be allowed to run somewhere that is not your laptop.
@@ -22,35 +38,61 @@ Most of what is written about that conversation is written for the person on the
 
 ## What IT and security will ask
 
-**What does it touch?** Every system, folder, inbox and tool the workflow reads from or writes to. Be specific. "Our shared drive" is a worry; "one folder of supplier reports, read only" is an answer.
+### What does it touch?
 
-**Whose access does it use?** A workflow running on your personal login can do everything you can do, which is far more than it needs. Expect to be asked for access scoped to the task alone.
+Every system, folder, inbox and tool the workflow reads from or writes to. Be specific. "Our shared drive" is a worry; "one folder of supplier reports, read only" is an answer.
 
-**What can it do without asking?** Reading and drafting are one conversation. Sending, deleting, paying or changing records are another. If anything irreversible sits behind [a human checkpoint](/guides/where-the-human-goes-in-an-agentic-workflow/), say so up front.
+### Whose access does it use?
 
-**Which tool, and is it approved?** Check your organisation's list before the meeting, not during it. A workflow built in an unapproved tool is a rebuild, however good it is.
+A workflow running on your personal login can do everything you can do, which is far more than it needs. Expect to be asked for access scoped to the task alone.
 
-**How would you stop it?** Who can switch it off, and how quickly. The honest answer "I would turn off this one connection" is more reassuring than any description of how carefully it was built.
+### What can it do without asking?
+
+Reading and drafting are one conversation. Sending, deleting, paying or changing records are another. If anything irreversible sits behind [a human checkpoint](/guides/where-the-human-goes-in-an-agentic-workflow/), say so up front.
+
+### Which tool, and is it approved?
+
+Check your organisation's list before the meeting, not during it. A workflow built in an unapproved tool is a rebuild, however good it is.
+
+### How would you stop it?
+
+Who can switch it off, and how quickly. The honest answer "I would turn off this one connection" is more reassuring than any description of how carefully it was built.
 
 ## What legal and data protection will ask
 
-**Whose information goes through it?** Your own drafts and internal material are one thing. Named customers, staff records or anything about identifiable people is another, and data protection law applies to it however clever the workflow is.
+### Whose information goes through it?
 
-**Which terms govern the tool?** Whether the provider can use your inputs for training and how long material is kept depends on the exact plan your organisation pays for. Read those terms first, and bring the relevant sentences rather than a summary of them. The same questions come up for [anything you store for AI to read](/guides/is-it-safe-to-put-company-documents-in-a-second-brain/).
+Your own drafts and internal material are one thing. Named customers, staff records or anything about identifiable people is another, and data protection law applies to it however clever the workflow is.
 
-**Does a client contract say anything?** Material a client gave you is governed by your agreement with them, not by your AI plan. If it is under a confidentiality clause, that clause decides.
+### Which terms govern the tool?
 
-**Who is accountable for what it produces?** Someone has to own the output. "The workflow" is not an answer anybody in legal will accept.
+Whether the provider can use your inputs for training and how long material is kept depends on the exact plan your organisation pays for. Read those terms first, and bring the relevant sentences rather than a summary of them. The same questions come up for [anything you store for AI to read](/guides/is-it-safe-to-put-company-documents-in-a-second-brain/).
+
+### Does a client contract say anything?
+
+Material a client gave you is governed by your agreement with them, not by your AI plan. If it is under a confidentiality clause, that clause decides.
+
+### Who is accountable for what it produces?
+
+Someone has to own the output. "The workflow" is not an answer anybody in legal will accept.
 
 ## What your manager will ask
 
-**What does it replace?** The task, how long it takes now, and how often. Hours a week is the clearest currency, and it is the same number you need to [judge whether a pilot worked](/guides/how-to-run-an-ai-pilot-that-survives/).
+### What does it replace?
 
-**What counts as better?** Faster, fewer errors, or simply no longer the job nobody wants. Decide before it runs, so the judgement afterwards is not a matter of opinion.
+The task, how long it takes now, and how often. Hours a week is the clearest currency, and it is the same number you need to [judge whether a pilot worked](/guides/how-to-run-an-ai-pilot-that-survives/).
 
-**Who owns it, and what happens when they are away?** A workflow only one person understands is a single point of failure with a nicer interface. Name a second person who could run it, or at least switch it off.
+### What counts as better?
 
-**How would you know it had gone wrong?** Agentic workflows [fail quietly](/guides/how-to-notice-when-an-ai-workflow-is-wrong/), so "I would notice" is not enough. Name the check.
+Faster, fewer errors, or simply no longer the job nobody wants. Decide before it runs, so the judgement afterwards is not a matter of opinion.
+
+### Who owns it, and what happens when they are away?
+
+A workflow only one person understands is a single point of failure with a nicer interface. Name a second person who could run it, or at least switch it off.
+
+### How would you know it had gone wrong?
+
+Agentic workflows [fail quietly](/guides/how-to-notice-when-an-ai-workflow-is-wrong/), so "I would notice" is not enough. Name the check.
 
 ## Put it on one page
 

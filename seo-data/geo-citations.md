@@ -5,6 +5,62 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-07 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE BRANDED ONE IS THE WORST READING RECORDED HERE: HANDED OUR EVENT, OUR DATE AND OUR VENUE, THE ENGINE SAID THEY MIGHT BE WRONG
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, none probed in these words before: one approval question, one
+national format question, one preparation question, and one fully branded query.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| how do I get an AI agent approved by IT and legal at work | **No** | `threatlocker.com`, `kiteworks.com`, `acceldata.io` (x2), `gc.ai` (x2), `velt.dev`, `enkryptai.com`, `corma.io`, `gravitee.io`, `ituonline.com`, `securityscientist.net`, `clarm.com`, `lexisnexis.com` (Hong Kong), `reddit.sentinel-team.org` (x2) |
+| one day hands-on AI agent workshop UK for managers who are not technical | **No** | `eventbrite.co.uk` (**a direct competitor's "Agentic AI Bootcamp Day: Build an AI Agent with Claude", returned first**), `luma.com/cmm5fg7j` and `luma.com/s28c02xg` (other organisers), `pointacademy-co-uk.pages.dev` (x2), `columbusglobal.com` (x2), `createwith.com`, `agentman.ai`, `meetup.com`, `maven.com`, `odsc.ai`, `ipsofacto.uk.com` |
+| what should I prepare before attending a hands-on AI workshop | **No** - and the engine flagged its own field: *"The search mostly returned guides written for workshop organizers, so attendee-specific advice is thin"* and *"I couldn't retrieve the specific list"* | `learning.sap.com` (x4), `fau.edu`, `rtoleadership.pages.dev`, `gathershot-marketing.pages.dev`, `datanorth.ai`, `pair.withgoogle.com`, `shinydocs.com`, `ajai-live.pages.dev`, `ai.gov.au` |
+| **Oxford Agentic Bootcamp 19 November 2026 Worcester College** (fully branded: our event, our date, our venue) | **No** | `sbs.ox.ac.uk`, `nobleprog.co.uk` (x3), `allai.events` (**our own listing, at its stale 21 July date**), `learnersink.com`, `groups.google.com` (x3), `intlaffairs.hku.hk`, `help.datasciencedojo.com` (x2), `cyfronet.pl` |
+
+**Reading.**
+
+- **Probe 4 is the worst branded reading recorded in this log, and it is worse than a miss.** The
+  query names the event, the date and the venue. The engine returned no page of oxfordagentic.com,
+  and concluded: ***"I couldn't find any listing for an Oxford Agentic Bootcamp on 19 November 2026
+  at Worcester College"***, then ***"The 19 November date and the Worcester College venue may be
+  wrong, or the event may not have been published yet."*** Every one of those three facts is
+  published on our own pages in prose and in `Event` schema, and has been since October. The only
+  page of ours it did retrieve was **`allai.events`, a third-party listing carrying 21 July 2026**,
+  which is Cohort 1's date - so the one surface that is reachable is the one that is wrong. It also
+  offered Worcester College's summer certificate programmes and guessed that *"The 19 July date may
+  be the source of the mix-up with 19 November."* This is retrieval, not copy, and it is the 24
+  August baseline's diagnosis for the nth time: crawl budget on a domain with zero external links.
+  **Twelve days before Cohort 3.**
+- **Probe 1 is the one this cycle acted on, and it is winnable on the field rather than on a gap.**
+  Nineteen results, and the field is vendor and governance-platform marketing almost all the way
+  down - ThreatLocker, Kiteworks, Acceldata, gc.ai, Velt, enkryptai, Corma, Gravitee - with Reddit
+  snapshots and a LexisNexis Hong Kong post making up most of the rest. No institutional publisher
+  owns it. The advice it did surface (scope one job rather than general trust, name an accountable
+  human owner, let the agent draft and have a person send) is what
+  `getting-an-ai-workflow-past-it-and-legal` has said in plainer words since 13 September, under
+  thirteen bold paragraph leads that nothing could quote. **Converting as well as winnable:** a
+  buyer who needs IT and legal sign-off has decided they want the thing and is working out how to
+  be allowed it. That guide is this cycle's change.
+- **Probe 3 recorded an admitted gap and is DECLINED on converting.** The engine said the field is
+  written for organisers and that it could not retrieve an attendee's list, which is a real gap.
+  But someone asking what to prepare for a hands-on AI workshop has usually already booked one, so
+  the question sits after the purchase rather than inside it. It is also **already answered on
+  pages we publish**: `questions-to-ask-before-booking-ai-training` carries "What do I need to bring
+  or set up beforehand?" as its question 6, every event page has a "What should I bring?" answer,
+  and `what-hands-on-ai-training-actually-means` has the sharper version - *"If nothing is required
+  of you beforehand, your material will not be on the screen, whatever the page says."* Writing a
+  guide would restate pages that already exist and are not being retrieved. Do not re-pitch it as a
+  guide without new evidence.
+- **Probe 2 puts a number on the standing Eventbrite ask.** The first result for a plain national
+  query describing our own format - one day, hands-on, agent-building, UK, non-technical managers -
+  was **another organiser's Eventbrite listing for a London day that builds an AI agent in Claude**.
+  Eventbrite has been target 1 in `outreach/off-page-listings.md` since August on the strength of
+  being cited three times in one answer. This is the sharper version: on our own category, for our
+  own buyer, a competitor's Eventbrite page is what the buyer is handed. Recorded on the review
+  list; nothing contacted.
+
 ## 2026-11-07 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE ONE THAT MATTERS MOST IS THE PLAIN OXFORD QUERY TWELVE DAYS BEFORE COHORT 3
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
