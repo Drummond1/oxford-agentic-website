@@ -11,9 +11,32 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-10-19T20:30:00+01:00"
+updatedDate: "2026-11-07T08:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
+# The question tail of this guide is a genuine FAQ section inside an essay, which is
+# why the flag belongs here and not on every guide that happens to ask a question.
+# `## The fourth option: doing it yourself, for nothing` is a statement heading, so the
+# extractor never reads it; under it sit three sibling `h3` questions that each answer a
+# different version of the free-material objection. The leaf rule emits those three and
+# nothing else. Assert that on the built node, do not assume it. Nothing new is written
+# and nothing visible changes: the flag reads this page's own rendered HTML, so the node
+# can only ever say what the page has said since 19 October.
+# The evidence for opting in is a probe on 7 November 2026 - "why pay for a one day AI
+# training course when all the material is free online" - whose field was nineteen
+# results of course-vendor marketing, aggregator microsites and two Reddit snapshots,
+# with no institutional publisher anywhere in it. The engine flagged its own field
+# ("Several of the sources are marketing pages from companies that sell courses, so
+# weigh them accordingly") and still closed against the buyer: "If you're self-motivated,
+# the free material is generally enough." These three answers are the honest reply to
+# that, including one that names when not to buy, and none of them was machine-readable.
+# This overturns the 2 November decline recorded under backlog 54, which read the field
+# as career content for would-be AI engineers. On this phrasing it is not: the searcher
+# has a price in front of them.
+# The third answer runs to the end of the article, so it carries the team-choice
+# paragraph and the closing programme sentence with it. Both were read clause by clause
+# against published copy first; neither adds a fact, a price, a date, a venue or a person.
+faqFromHeadings: true
 ---
 
 These labels get used interchangeably, but they describe genuinely different things. The cleanest way to choose is to ask what you want to be holding when it ends.

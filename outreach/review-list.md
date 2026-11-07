@@ -251,6 +251,49 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
       `EducationEvent` node with `InStock`). The sandbox still cannot reach `luma.com` or
       `allai.events`, so no listing was read, and nothing was contacted, submitted or changed.
 
+  - **An eighth reading, 7 Nov 2026 (08:00 cycle), and it is the first where the stale Luma page
+    handed the engine live-looking availability rather than only a wrong date. Not a new target;
+    nothing contacted.** The probe - *"one day hands on agentic AI bootcamp Oxford 19 November
+    2026 bring a real task from your own work"* - named the date and the published "bring a real
+    task" line, and **returned no page of `oxfordagentic.com`**. It opened *"I couldn't find a
+    source confirming a 19 November 2026 date for this bootcamp, so please check the listing
+    before booking"*, then described us accurately off `luma.com/oxfordagentic2` and
+    `luma.com/k7c2rm5s` - *"a practical, hands-on day"*, *"It doesn't assume you can code"*,
+    *"Claude, Cowork, Claude Code, Codex"* - and closed by sending the buyer to
+    `luma.com/oxfordagentic2` as *"the best place to confirm the date, price, and venue"*.
+    **`luma.com/oxfordagentic3`, the page that takes the Cohort 3 booking, did not appear.**
+  - **What is new, and it is a severity change rather than another count.** Every earlier reading
+    of this item is a wrong or missing *date*. This one adds a wrong *availability*: the engine
+    reported ***"A second Luma page for the same event shows 5 Spots Remaining, so it may sell
+    out"*** - scarcity read off a cohort that ran on **16 September**, seven weeks ago, and
+    presented to a buyer asking about November. `allai.events` appeared again at its 21 July
+    date. So the stale listings are no longer only failing to answer; they are manufacturing
+    urgency for a day nobody can attend, twelve days before Cohort 3.
+  - **It also sharpens the ask.** Ask (a) has been argued as "retire or correct the stale
+    listings". The specific, smallest version of it is now visible: the two retired Luma pages
+    still serve a spots-remaining number. Whoever closes them should check that the count goes
+    with them. Drummond's call; `luma.com` does not resolve from this sandbox, so nothing was
+    read, contacted, submitted or changed.
+
+- **`planomato.com` - a third-party listing of the Second Brain Bootcamp nobody here put there,
+  found 7 Nov 2026 (08:00 cycle) by answer-engine probe. Recorded, not recommended.**
+  - Where it came from: the dated Agentic-line probe above returned
+    `planomato.com/en/oxford/p/oxford-agentic-second-brain-bootcamp` alongside our Luma pages,
+    and the engine read a date and a duration off it - *"an Oxford Agentic second brain bootcamp
+    at the Pitt Rivers Museum was on 21 October, an eight-hour session for business leaders"*.
+    That is Cohort 1 and it is in the past tense, which is more than the stale Luma pages manage.
+  - **Why it is here rather than on the action list.** It is a syndicated what's-on aggregator of
+    the same family as `happeningnext.com` further down, it was retrieved once, and the event it
+    carries has already run. The reason to record it is not that it is a route worth taking: it
+    is that **a listing of ours exists on a host nobody in this repo submitted to**, which is
+    worth knowing before the next cohort, because whatever feed put Cohort 1 there will put the
+    next one there too and nothing here controls what it says.
+  - **Not checked at all.** The host does not resolve from this sandbox: who runs it, where the
+    data came from, whether a listing can be corrected or removed, and whether any link is
+    followed are all unknown.
+  - Needs: someone with an unblocked browser to open it and decide. Nothing contacted, nothing
+    submitted, no account made.
+
 - **The eleventh dated reading, and the first on the Coding line. The field that answered was not
   aggregators this time: it was other providers' own course listings. No new target; nothing
   contacted.** Found 4 Nov 2026 (08:00 cycle).

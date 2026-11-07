@@ -1198,9 +1198,26 @@ Status: `todo` · `blocked` (why) · `doing`
       Search Console baseline says is not being crawled. Full table in
       `seo-data/geo-citations.md` under 3 Nov 14:00.
 
-54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **three of the four taken - 1 Nov
-    14:00, 4 Nov 20:00 and 6 Nov 14:00 - one left**) - **four more guides qualify for
-    `faqFromHeadings` and emit no `FAQPage` node.**
+54. `doing` (loop-actionable, found 1 Nov 2026 in the 02:00 cycle; **five of the nine taken - 1 Nov
+    14:00, 4 Nov 20:00, 6 Nov 14:00, 7 Nov 02:00 and 7 Nov 08:00 - one left**) - **more guides
+    qualify for `faqFromHeadings` and emit no `FAQPage` node.**
+    **Taken 7 Nov 2026 (08:00 cycle): `ai-bootcamp-vs-course-vs-exec-education`**, reversing the
+    2 November decline on the same evidence test that reversed the 1 Nov one. That decline read
+    the free-learning field as *"career content for would-be AI engineers, not our buyer"* - a
+    reading of a free-learning query. Asked the way a buyer asks it, *"why pay for a one day AI
+    training course when all the material is free online"*, the field is nineteen results of
+    course-vendor marketing, aggregator microsites and two Reddit snapshots, **no institutional
+    publisher anywhere in it**, with the engine flagging its own field (*"Several of the sources
+    are marketing pages from companies that sell courses, so weigh them accordingly"*) and then
+    closing against the buyer: *"If you're self-motivated, the free material is generally
+    enough."* Three entries published, the three `h3` questions under
+    `## The fourth option: doing it yourself, for nothing`, which is a statement heading the
+    extractor never reads. One of the three is *"When is a paid day not worth it?"* - a provider
+    naming when not to buy, which is the single hardest thing for a vendor-written field to
+    produce. **The remaining candidate is now one**, below.
+    **Count correction, measured again on the built site this cycle.** The 7 Nov 02:00 entry
+    corrected this item from four candidates to nine qualifying guides, three untaken. Two have
+    since been taken, so the census now reads **nine qualifying, eight opted in, one not**.
     **Taken 6 Nov 2026 (14:00 cycle): `why-the-code-an-agent-wrote-is-not-live`**, on the re-probe
     this item asked for. *"How do I know if code an AI agent wrote is safe to put live if I cannot
     read code"* returned nine results, every one a vendor or developer-tool blog and not one
@@ -1215,6 +1232,12 @@ Status: `todo` · `blocked` (why) · `doing`
     left alone for the same reason, recorded in the guide's frontmatter comment.
     **The one left is `is-it-safe-to-put-company-documents-in-a-second-brain`**, and the question
     against it is unchanged from 1 November: decide the `Question one: ` prefix first.
+    **A second reason to leave it, added 7 Nov 2026 (08:00 cycle), and it is commercial rather
+    than mechanical.** Second Brain has no bookable cohort at all (backlog 36), so a `FAQPage`
+    node on a Second Brain guide buys retrieval for a page whose call to action is a notify form.
+    The standing decision of 13 Sept - ranking is not Second Brain's constraint, demand is - says
+    not to spend a cycle here. Take it when there is a date to book, or take it in the same cycle
+    as some other change to that guide, not as a cycle's one improvement.
     **Taken 4 Nov 2026 (20:00 cycle): `how-to-choose-your-first-agentic-task`**, reversing the
     1 Nov decline on a probe phrased the way a buyer types it rather than the way the field
     indexes it. The 1 Nov decline read the confidential-work field as owned by the SRA, the Law
@@ -1426,9 +1449,131 @@ Status: `todo` · `blocked` (why) · `doing`
     heading a reader may be navigating by; the second touches one template and changes a label on
     all 32 guides. Not taken this cycle on the one-change rule.
 
+73. `todo` (loop-actionable, found 7 Nov 2026 in the 08:00 cycle; **same defect class as backlog
+    71, different page, and this one is worth more**) - **`who-should-take-the-seat` answers a
+    question two probes showed the field cannot answer, and it has zero question headings, so no
+    `FAQPage` node can ever be derived from it.** Its six `h2`s are statements - *"A build day
+    sorts by task ownership, not rank"*, *"Three questions that settle most cases"*, *"When it
+    should be you"*, *"When it should be them"*, *"Two of you, and what to do when there is only
+    one seat"*, *"The two ways this goes wrong"* - and the three questions it names are set as
+    **bold paragraph leads**, exactly the shape backlog 71 describes. `faqsFromQuestionHeadings`
+    reads `h2` and `h3` only, so the page is invisible to it.
+    **The evidence that this costs something**, from two phrasings on 7 Nov. *"Should I send two
+    people from the same team to an AI training day or just one"*: ***"The search didn't turn up
+    anything specific to AI training days, so this is based on general training guidance."***
+    *"Is it better to train one person or a pair when adopting AI in a small business"*:
+    ***"The search didn't surface any controlled comparison of one-person versus two-person
+    training."*** Neither field has an institutional publisher answering the question; both are
+    consultant blogs, `pages.dev` microsites and general L&D material.
+    **Why this is worth more than backlog 71.** The searcher is deciding **how many seats to
+    buy**, which is the size of the purchase and not merely whether to make it. And the guide
+    already holds the answer: `## Two of you, and what to do when there is only one seat`.
+    **Why it was not taken this cycle.** Turning that heading into a question is one heading, and
+    the `faqs.length >= 2` guard needs two, so the honest version is a rewrite of several of the
+    guide's `h2`s into questions. That is rewriting published prose to suit a schema node, which
+    the 6 November cycle named as the tail wagging the dog, and it is a visible restructure of a
+    guide rather than one cycle's improvement. **If it is taken, take it as its own cycle**,
+    measure at 375px first, and note that the three bold leads under *"Three questions that
+    settle most cases"* are already questions in everything but markup - promoting those three to
+    `h3` would clear the guard on its own and is the smaller of the two routes.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-07 (08:00 cycle) - the guide that answers "why pay when it is all free online" had
+  three question headings and emitted nothing an engine could quote, and the field answering that
+  question for our buyer is our competitors' marketing. One frontmatter flag, no new sentence,
+  5 of 198 files in `dist`.**
+  **This overturns a decline rather than finding something new, and the difference is the
+  phrasing.** `ai-bootcamp-vs-course-vs-exec-education` was probed on 2 November and declined on
+  the converting half, the field read as *"career content for would-be AI engineers, not our
+  buyer"*. That was a reading of a **free-learning** query. Probe 5 this cycle asked it the way
+  somebody with a price in front of them asks it - *"why pay for a one day AI training course when
+  all the material is free online"* - and the field is nineteen results of **course-vendor
+  marketing, aggregator microsites and two Reddit snapshots, with no institutional publisher
+  anywhere in it**. Winnable cleanly, on the same test as the last four opt-ins. The engine
+  flagged its own field unprompted - *"Several of the sources are marketing pages from companies
+  that sell courses, so weigh them accordingly"* - and then closed **against the buyer**: *"If
+  you're self-motivated, the free material is generally enough."* Converting is not in doubt:
+  that is the last objection before a paid booking, and the answer a prospect gets today is
+  assembled from our competitors with no independent voice in it.
+  **What the flag publishes, asserted on the built node rather than assumed: 3 entries.** The
+  parent `## The fourth option: doing it yourself, for nothing` is a **statement** heading, so
+  the extractor never reads it - this is the first opt-in where the leaf rule is not what does
+  the work; the question-mark test is. Under it sit three sibling `h3` questions: *"Is there
+  anything in the day you could not find for free?"*, *"You are disciplined, so why not just do
+  it yourself?"* and *"When is a paid day not worth it?"*. `FAQPage` nodes on the site go
+  **16 to 17**; `Event` nodes unchanged at 7.
+  **The third of those is the one worth having.** A provider publishing *"When is a paid day not
+  worth it?"* - answered *"When you have nothing real to bring"* - is the single hardest thing
+  for a field of vendor marketing to produce, and it is now the only machine-readable answer to
+  that question we have found in the field.
+  **Every claim in the three answers was checked against published copy first, and none of it is
+  new.** *"The pattern we teach is scout, drafter, reviewer"* is a guide we publish. *"They
+  arrive saying some version of 'I understand it, I have just never built anything'"* is this
+  same page's own executive-education section, in those words, since July. *"The day is built
+  around one task from your own work"* is the Agentic programme page. **No wart**: all three
+  answers are self-contained, with no pointer to a heading the node does not carry - the defect
+  the 4 and 6 November opt-ins both had. The parent heading's *"All three formats above cost
+  money"* never reaches the node, because the parent is not emitted.
+  **One thing predicted and then confirmed on the built node:** the third answer runs to the end
+  of the article, so it carries the team-choice paragraph and the closing programme sentence with
+  it (916 characters against 386 and 621). Both were read clause by clause. The tail reads *"one
+  day in Oxford, a small room of senior people, one real task each, no coding, and a working
+  agentic workflow by the time you leave"* - no price, no date, no venue, no person, and *"no
+  coding"* sits inside a list rather than standing on its own, which is the message house's rule.
+  **Blast radius, measured against a pristine build of `7699cb2`: exactly 5 of 198 files in
+  `dist` differ.** The guide page, `/guides/`, `llms-full.txt` and the two sitemaps. A word-level
+  diff of the guide page's visible text returns **two words of 1,377** - `19 October` becoming
+  `7 November` in the byline - and `/guides/` **one word of 1,516**. `llms-full.txt` changes one
+  `Updated:` line. Two sitemap `lastmod` values move and no others. On the page one node is added
+  (`FAQPage`, 3 `mainEntity`, 2,562 bytes) and two change in one field each
+  (`WebPage.dateModified`, `Article.dateModified`); `Organization`, `WebSite` and
+  `BreadcrumbList` are byte-identical. `indexnow-ping --dry-run` over the staged set submits
+  exactly **2** URLs, which is exact rather than under-counted: the `title` did not move, so no
+  sibling's "More guides" link text changed, and the whole-`dist` diff confirms no sibling page
+  differs. The script was not run for real.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+  warnings. `check:flags` green on the all-on and all-off builds. The 11 outbound warnings are
+  the sandbox egress policy, unchanged from the baseline build. `npm run check` was **not** run
+  and is not claimed; backlog 70 records why it cannot be. Headless Chromium over the changed
+  guide and `/guides/` at **375, 768 and 1280px**, scrolling each page to settle its reveal
+  blocks: 6 configurations, **42 assertions, 0 failing** - no horizontal overflow at any width,
+  one `h1`, every JSON-LD block parsing in the browser, no page errors, no failed local requests,
+  each of the three questions matched against a visible heading in the DOM, and the byline
+  asserted on `textContent` plus a painted box (never `innerText`, per the 02:00 cycle's finding
+  - the assertion passed first time this cycle because of it). Screenshots read at 2x: the
+  question section at 375px wraps cleanly with no overflow and the byline reads *"By Drummond
+  Gilbert · Updated 7 November 2026"*.
+  **Five GEO probes, zero citations, and the off-page miss is a severity change rather than
+  another count.** Probe 1 named the date and the published "bring one real task" line and
+  returned **no page of ours**; what answered was our own retired `luma.com/oxfordagentic2`, and
+  the engine read ***"5 Spots Remaining"*** off it - scarcity for a cohort that **ran on
+  16 September** - before sending the buyer there to *"confirm the date, price, and venue"*.
+  Every earlier reading of this item is a wrong or missing *date*; this is the first wrong
+  *availability*, twelve days before Cohort 3. `planomato.com` also appeared, carrying a listing
+  of Second Brain Cohort 1 that nobody in this repo submitted. Both are **backlog 2b** and
+  Drummond's; recorded on the review list, with the smallest version of the ask named (the
+  retired Luma pages still serve a spots-remaining number). Probes 2 and 3 are two phrasings of
+  "one seat or two", both admitted gaps, both already answered by `who-should-take-the-seat` -
+  so no guide was written, and the real cost is that the answer is **not quotable**, recorded as
+  **backlog 73**. Probe 4 is the fifth consecutive Coding-line miss over a field of `dev.to`
+  posts the engine itself called *"existence proofs rather than benchmarks"*.
+  **No new guide. 0 of 3 for the week of 2-8 Nov**, and two candidates were probed and declined
+  on near-duplication, which is the rule working.
+  **Search Console unavailable, twenty-second consecutive cycle.** `seo-data/` holds the
+  24 August baseline, `README.md` and `geo-citations.md` and nothing else; no CSV, TSV or XLSX
+  export exists anywhere in the repository, and `GSC_SERVICE_ACCOUNT_KEY` does not exist in this
+  environment. Nothing estimated.
+  **Production.** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and does
+  not resolve through the fetch tool either, as on every cycle since 30 Oct, so `build.txt` could
+  not be read and the Actions API stood in: **deploy run 370 success on `7699cb2`**, which is both
+  `origin/main` and the HEAD this cycle started from, nothing queued or in progress. `luma.com` is
+  unreachable the same way, so **no event fact was read, invented or changed** - and note for the
+  next cycle that the cohort dates in the standing prompt are stale: the repo has Cohort 3 on
+  **19 November** and the Coding Bootcamp on **26 November**, with Second Brain Cohort 1 past.
 
 - **2026-11-07 (02:00 cycle) - the guide whose own `h1` asks "What can you actually build in one
   day with AI?" answered the question three times and emitted nothing an engine could quote. One

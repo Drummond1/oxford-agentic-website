@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-07 (08:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS - AND THE ONE THAT OVERTURNED A DECLINE IS THE OBJECTION A BUYER RAISES WITH A PRICE IN FRONT OF THEM
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Five buyer questions, none probed in these words before: one dated Agentic-line
+query, two phrasings of a seat-count question the site already answers, one Coding-line question
+query, and a re-probe of the backlog-54 candidate on the phrasing a buyer actually uses.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **one day hands on agentic AI bootcamp Oxford 19 November 2026 bring a real task from your own work** | **No** - and the engine opened *"I couldn't find a source confirming a 19 November 2026 date for this bootcamp"* | `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` (**our own Cohort 2, which ran 16 Sept**), `sbs.ox.ac.uk` (x2), `eventbrite.co.uk` (x3), `allai.events` (**our Cohort 1, dated 21 Jul**), `planomato.com` (**our Second Brain Cohort 1**), `createwith.com`, `datasciencedojo.com` (x2), `learnersink.com`, `outsystems.com`, `cyfronet.pl` |
+| should I send two people from the same team to an AI training day or just one | **No** - *"The search didn't turn up anything specific to AI training days, so this is based on general training guidance"* | `behaviour-group.com` (x2), `td.org`/ATD (x3), `indeed.com`, `coderefinery.github.io`, `crisisprevention.com`, `frontiersin.org` (x2), `factorialhr.com`, a 1998 MIT list archive, two public-sector PDFs |
+| is it better to train one person or a pair when adopting AI in a small business | **No** - *"The search didn't surface any controlled comparison of one-person versus two-person training"* | `lilachbullock.com` (x3), `digitalagencynetwork.com` (x2), `guidde`-style microsites on `pages.dev` (x4), `workday.com`, `uschamber.com`, `adventuremedia.ai` (x2), `beornsco.github.io`, `mynews13.com` |
+| can someone who has never written code ship a working website in one day using AI coding tools | **No** | `dev.to` (x4), `robcressy.com` (x2), six `pages.dev` microsites, `tinyblocks.kit.com`, `kingy.ai`, `producthunt.com`, `beehiiv`, `fooqux.com`, `techleap.nl` |
+| **why pay for a one day AI training course when all the material is free online** | **No** - **the probe acted on** | `coderhouse.com`, `learnsignal.com`, `colaberry.com`, `guidde.com` (x3), `areganti.notion.site`, `claudelog.com`, `careers360.com`, `guvi.in`, `hackaday.com`, `mctaba.com`, three `pages.dev` microsites, two Reddit snapshots |
+
+**Reading.**
+
+- **Probe 5 is the one acted on, and it overturns a decline rather than finding something new.**
+  `ai-bootcamp-vs-course-vs-exec-education` was probed on 2 November and declined on the
+  converting half: the free-learning field was read as *"career content for would-be AI
+  engineers, not our buyer"*. That reading was of a free-learning query. Asked the way a buyer
+  asks it - with a price in front of them - the field is nineteen results of **course-vendor
+  marketing, aggregator microsites and two Reddit snapshots, with no institutional publisher
+  anywhere in it**. Winnable cleanly. The engine flagged its own field unprompted - *"Several of
+  the sources are marketing pages from companies that sell courses, so weigh them accordingly"* -
+  and then closed **against the buyer**: *"If you're self-motivated, the free material is
+  generally enough."* That is the answer a prospect is being handed today, assembled from our
+  competitors' marketing, with no independent voice in it. This guide has published the honest
+  reply since 19 October, in three question headings, and none of it was machine-readable.
+  Opted in this cycle. Nothing new was written.
+- **Probe 1 is the sharpest miss in the log's off-page series, and it is a severity change.**
+  It named the date and the published "bring one real task" line and still returned **no page of
+  ours**. What answered in our place was our own retired Luma listing, and the engine read
+  ***"5 Spots Remaining"*** off it - scarcity for a cohort that ran on **16 September** - before
+  telling the buyer that `luma.com/oxfordagentic2` is *"the best place to confirm the date, price,
+  and venue"*. `luma.com/oxfordagentic3`, the page that takes the Cohort 3 booking, did not
+  appear. Every earlier reading of this item is a wrong or missing date; this one is a wrong
+  availability. **Backlog 2b**, and Drummond's; recorded on the review list.
+- **Probes 2 and 3 are the same question in two phrasings and both found an admitted gap we
+  already answer.** A manager deciding one seat or two is deciding the size of a purchase, and
+  both engines said outright that the field has nothing specific to AI training days.
+  `who-should-take-the-seat` has carried `## Two of you, and what to do when there is only one
+  seat` since it was published. **No guide was written**: the near-duplication rule applies, and
+  the honest cost here is that the answer exists and is not quotable - that guide has **zero**
+  question headings, so `faqFromHeadings` cannot reach it. Recorded as **backlog 73**, which is
+  the same defect class as backlog 71 on a different page.
+- **Probe 4 is the fifth consecutive Coding-line miss**, and the first whose field is not
+  competitors: it is `dev.to` posts and single-page microsites, every one anecdotal, and the
+  engine said so - *"Most accounts are self-published blog posts, so treat them as existence
+  proofs rather than benchmarks."* It then gave the honest answer we also publish: a simple site
+  in a day is realistic, *"custom functionality, accounts, or payments"* is not. We publish that
+  in `what-you-can-build-in-one-day-with-ai` and `why-the-code-an-agent-wrote-is-not-live`, both
+  of which now carry `FAQPage` nodes. Nothing to write; the miss is retrieval, which is 2b.
+- **No new guide. 0 of 3 for the week of 2-8 Nov.** Two candidates were probed and both declined
+  on near-duplication, which is the rule working rather than a thin cycle.
+
 ## 2026-11-07 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE SHARPEST OF THEM IS THE UNDATED NATIONAL QUERY THAT TWO NOVEMBER COHORTS SHOULD OWN
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
