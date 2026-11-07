@@ -1260,6 +1260,19 @@ Status: `todo` · `blocked` (why) · `doing`
     four wants its own evidence that the question it answers is one the field does not, and its
     own clause-by-clause check that what it publishes is true before it is made
     machine-readable. One per cycle at most.
+    **CORRECTED 7 Nov 2026 (02:00 cycle): the list of four was never the whole list, and two
+    remain rather than one.** Re-measured on the built site, counting `h2`/`h3` headings in the
+    article body that end in a question mark: **nine** guides qualify - which is the 30 Oct
+    survey's own figure - and this item only ever named four of them. The two it never named are
+    **`what-you-can-build-in-one-day-with-ai` (4 question headings, of which one is a signpost
+    parent, so the node publishes 3)**, taken on 7 Nov on a probe that found its exact question
+    owned by nothing but vendor marketing, and **`ai-bootcamp-vs-course-vs-exec-education`
+    (3: *"Is there anything in the day you could not find for free?"*, *"You are disciplined, so
+    why not just do it yourself?"* and *"When is a paid day not worth it?"*, all three `h3`
+    children of `## The fourth option: doing it yourself, for nothing`)**, which is untaken and
+    wants its own probe. So after 7 Nov the remaining candidates are that one and
+    `is-it-safe-to-put-company-documents-in-a-second-brain`, whose `Question one: ` prefix problem
+    above is unchanged. The one-opt-in-per-cycle rule still holds.
 
 67. `todo` (loop-actionable, found 4 Nov 2026 in the 14:00 cycle; **declined on placement this cycle,
     recorded with its evidence so it is not re-derived**) - **nothing on the site says whether an
@@ -1368,9 +1381,156 @@ Status: `todo` · `blocked` (why) · `doing`
     change.** What a cycle *should* do is stop reporting `npm run check` as a check it ran: it
     cannot, and this item is why.
 
+71. `todo` (loop-actionable, found 7 Nov 2026 in the 02:00 cycle; **a typography change, so weigh
+    it before taking it**) - **`getting-an-ai-workflow-past-it-and-legal` is a list of fourteen
+    questions and not one of them is a heading, so no `FAQPage` node can ever be derived from it.**
+    The guide's three `h2`s are *"What IT and security will ask"*, *"What legal and data protection
+    will ask"* and *"What your manager will ask"*; under each sit four or five questions set as
+    **bold paragraph leads** - *"What does it touch?"*, *"Whose access does it use?"*, *"What can
+    it do without asking?"* and so on. `faqsFromQuestionHeadings` reads `h2` and `h3` only, by
+    design, so the page is invisible to it and `faqFromHeadings` would throw rather than publish.
+    **The evidence that this costs something**, from probe 2 on 7 Nov: *"do I need to give an AI
+    agent access to my email or CRM for it to be useful"* returned thirteen results, four of them
+    HubSpot knowledge-base pages and one Gmelius article in three languages, with no institutional
+    publisher anywhere and the engine flagging its own field - *"Vendor docs are biased toward
+    their own products"*. **This guide already publishes the better answer**: *"'Our shared drive'
+    is a worry; 'one folder of supplier reports, read only' is an answer"*, and *"A workflow that
+    only reads and drafts, with a person sending the result, is far easier to approve than one
+    that acts on its own."* It is simply not written as a question anything can quote. This is
+    also the honest resolution of **backlog 67**, which read the same gap as a missing FAQ entry
+    on the Agentic programme page; it is not missing copy, it is unmarked copy.
+    **Why it was not taken this cycle.** Promoting fourteen bold leads to `h3` changes the visible
+    typography of a whole guide, adds fourteen `#` heading anchors, and sets a pattern the other
+    guides do not follow - which is a design call across the guide template's conventions rather
+    than one cycle's improvement, and the design loop shares this surface. If it is taken, take
+    it as its own cycle, measure the page at 375px first, and note that the three parent `h2`s
+    would then become signposts that the leaf rule correctly skips, so the node would publish
+    fourteen entries and not seventeen.
+
+72. `todo` (loop-actionable, found 7 Nov 2026 in the 02:00 cycle; **cosmetic, but it is on nearly
+    half the guides**) - **15 of 32 guide pages print the heading "Where this gets practical"
+    twice, one paragraph apart.** `src/pages/guides/[...slug].astro:236` always renders
+    `<h2 class="eyebrow">Where this gets practical</h2>` above the related-programme card, and
+    fifteen guides also write `## Where this gets practical` as their own closing section in
+    markdown. Measured on the built site: every one of those fifteen pages carries two identical
+    `h2`s, and in reading order it is section heading, one paragraph of CTA prose, then the same
+    words again as the card's eyebrow. The seventeen guides that do not write the heading
+    themselves - this cycle's `what-you-can-build-in-one-day-with-ai` among them - read correctly.
+    **What it does and does not cost.** It is not a ranking fault and it does not affect any
+    `FAQPage` node, because `faqsFromQuestionHeadings` runs on `guide.rendered.html`, the article
+    body alone, and never sees the template's copy. What it costs is a reader seeing the same four
+    words twice in a row, and a duplicated `h2` in the document outline on 47% of the guides.
+    **Two possible fixes, and the choice is a wording call rather than a mechanical one:** drop
+    the markdown heading from the fifteen files and let the template's eyebrow carry it, or give
+    the template's eyebrow different words. The first touches fifteen content files and removes a
+    heading a reader may be navigating by; the second touches one template and changes a label on
+    all 32 guides. Not taken this cycle on the one-change rule.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-07 (02:00 cycle) - the guide whose own `h1` asks "What can you actually build in one
+  day with AI?" answered the question three times and emitted nothing an engine could quote. One
+  frontmatter flag, no new sentence, 5 of 198 files in `dist`.**
+  **The probe came first and the page was found by it, not the other way round.** Probe 3 this
+  cycle - *"what do you actually walk away with from a one day AI workshop, is it worth a day out
+  of the office"* - returned eighteen results: training vendors' own marketing, three Indian
+  college write-ups of workshops they ran, a Trustpilot page, and `sfailabs.com`, a provider
+  guide critical of the format. **No institutional publisher anywhere in the field**, which is the
+  winnability half passing cleanly, and the engine closed by saying so itself: *"The sources here
+  are mostly from training vendors, so I couldn't find independent evidence on how much people
+  retain or apply afterward."* Converting is not in doubt - "is it worth a day out of the office"
+  is the last question before a booking. `/guides/what-you-can-build-in-one-day-with-ai/` answers
+  it in three question headings and carried no `FAQPage` node.
+  **The measurement that found the page also corrects this ledger.** Backlog 54 has carried a
+  list of **four** `faqFromHeadings` candidates since 1 November, of which three were taken and
+  one was said to remain. Re-measured on the built site this cycle, counting `h2`/`h3` headings
+  that end in a question mark inside the article body: **nine** guides qualify, six are opted in,
+  and **three** are not - `is-it-safe-to-put-company-documents-in-a-second-brain` (3, the one the
+  item names), **`what-you-can-build-in-one-day-with-ai` (4)** and
+  **`ai-bootcamp-vs-course-vs-exec-education` (3)**. The last two were never named in the item at
+  all, which matches the 30 Oct survey's own figure of nine and not the item's four. So the
+  "one left" line was wrong: two are left after this cycle, and backlog 54 is corrected below
+  rather than quietly re-derived next time.
+  **What the flag publishes, asserted on the built node rather than assumed: 3 entries, not 4.**
+  The page's question headings are `## Is one day enough?` and three `h3` children of it. The
+  parent is a signpost - its own prose is one sentence, *"Three versions of this question arrive,
+  and they want different answers"* - and the leaf rule in `faqsFromQuestionHeadings` correctly
+  skips it, so the node carries *"Would a longer course not give me more?"*, *"Will I build
+  something, or watch someone else build it?"* and *"Is a day enough if nothing happens
+  afterwards?"*. This is the cleanest fit the flag has had: not question headings scattered
+  through an essay, but three consecutive siblings under an explicit signpost, which is the exact
+  shape the leaf rule was written for. `FAQPage` nodes on the site go 15 to 16.
+  **Every claim in the three answers was checked against what the site already publishes before
+  it was made machine-readable.** *"The day is not recorded"* is the Agentic programme page's own
+  `Is the day recorded?` answer and is repeated on the Cohort 3 event page. *"No block longer
+  than twenty-five minutes of anyone talking at you"* is that page's curriculum paragraph in
+  those words. The three-passes shape is its three build cycles. *"Someone walking the room so
+  the first stuck moment costs you a few minutes rather than an evening"* is the one clause not
+  published verbatim elsewhere; its substance is the programme page's *"the point of the small
+  cohort is that nobody gets left stuck on tooling"*, and the sentence itself has been published
+  on this guide since 12 October. None of the three mentions a price, a date, a venue or a
+  person, and no event fact was read, invented or changed.
+  **No wart this time.** Each of the three answers was read for the defect the last two opt-ins
+  carried - a sentence pointing at something the node does not include, like *"the sixth item on
+  the list above"*. None of them does: all three are self-contained, and the only cross-references
+  are inline links, which flatten to their own words in `acceptedAnswer.text`.
+  **Blast radius, measured against a pristine build of `d2f02bc`: exactly 5 of 198 files in
+  `dist` differ.** The guide page, `/guides/`, `llms-full.txt` and the two sitemaps. A word-level
+  diff of the guide page's visible text returns **two words of 1,575** - `20 October` becoming
+  `7 November` in the byline - and `/guides/` **one word of 1,516**. `llms-full.txt` changes one
+  `Updated:` line. Two sitemap `lastmod` values move and no others. On the page, one node is
+  added (`FAQPage`, 3 `mainEntity`, 2,680 bytes) and two change in one field each
+  (`WebPage.dateModified`, `Article.dateModified`); `Organization`, `WebSite` and
+  `BreadcrumbList` are byte-identical. `indexnow-ping --dry-run` over this cycle's whole staged
+  file set submits exactly **2** URLs, the guide and `/guides/`, which is exact here rather than
+  under-counted: the guide's `title` is unchanged, so no sibling's "More guides" link text moved,
+  and the whole-`dist` diff confirms no sibling page differs. The script was not run for real.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+  warnings. `Event` nodes unchanged at 7. `check:flags` green on the all-on and all-off builds.
+  The 11 outbound warnings are the sandbox egress policy, unchanged from the baseline build.
+  `npm run check` was **not** run and is not claimed: backlog 70 records why it cannot be in a
+  clean checkout. Headless Chromium over the changed guide and `/guides/` at **375, 768 and
+  1280px**, scrolling each page to settle its reveal blocks: 6 configurations, **51 assertions,
+  0 failing** - no horizontal overflow at any width, one `h1`, every JSON-LD block parsing in the
+  browser, no page errors, no failed local requests, each of the three questions matched against
+  a visible heading in the DOM, and the byline asserted on its text, its painted box and its
+  computed style. Screenshots read at 2x: the FAQ section at 375px wraps cleanly with no overflow
+  and the byline element reads *"BY DRUMMOND GILBERT · UPDATED 7 NOVEMBER 2026"*.
+  - Two assertion classes failed first time and both were the harness, not the page, which is
+    worth recording because the next cycle will hit them too. The `#` heading anchor (backlog 48)
+    is inside every heading's `textContent`, so a heading reads `...give me more?#`; and
+    `document.body.innerText` **omits the byline entirely** on this page while `textContent`
+    carries it, the element measuring 692x50 at `opacity: 1` and `visibility: visible` - an
+    ancestor using `content-visibility`. Assert a byline on `textContent` plus a non-zero
+    bounding box, never on `innerText`.
+  **Four GEO probes, zero citations, and two of the misses are sharper than the count.** Probe 1
+  named no city and no date - *"in person AI agent building workshop UK where a manager can go
+  before the end of 2026"* - and the engine answered that *"most of the dated ones have already
+  passed as of today (7 November 2026)"*, then recommended two London providers **whose pages
+  carry no dates at all**. We have two dated in-person cohorts inside that window and were not
+  returned. Probe 4 is the **fourth consecutive Coding-line miss**, this time with the city, the
+  date, the tooling and the outcome all named, and a competitor now holds an Oxford city page for
+  the category (`nobleprog.co.uk/ai-app-builders/training/oxford`) against our cohort nineteen
+  days out. Both are **backlog 2b** and neither is on-page; recorded on the review list.
+  Probe 2 was backlog 67's re-probe and passed winnability cleanly (thirteen results, four
+  HubSpot pages, one Gmelius article in three languages, the rest CRM and inbox vendors, and the
+  engine flagging its own field); it was declined again, on better evidence than placement, and
+  the reason is now **backlog 71**.
+  **No new guide. 0 of 3 for the week of 2-8 Nov**, and no candidate was taken: probe 3's
+  question is answered by a guide we already publish, which is the near-duplication rule working,
+  and probes 1 and 4 are listing queries rather than question queries.
+  **Search Console unavailable, twenty-first consecutive cycle.** `seo-data/` holds the 24 August
+  baseline and `geo-citations.md` and nothing else; `search-console-latest.md` is absent, no CSV,
+  TSV or XLSX export exists anywhere in the repository, and `GSC_SERVICE_ACCOUNT_KEY` does not
+  exist in this environment. Nothing estimated.
+  **Production.** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy and does
+  not resolve through the fetch tool either, as on every cycle since 30 Oct, so `build.txt` could
+  not be read and the Actions API stood in: deploy run **369 success on `d2f02bc`**, which is both
+  `origin/main` and the HEAD this cycle started from, nothing queued or in progress. `luma.com` is
+  unreachable the same way, so no event fact was read, invented or changed.
 
 - **2026-11-06 (14:00 cycle) - the guide written for the reader who cannot read code published
   three answers no engine could quote. One frontmatter flag, no new sentence, and the field this

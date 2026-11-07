@@ -5,6 +5,75 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-07 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE SHARPEST OF THEM IS THE UNDATED NATIONAL QUERY THAT TWO NOVEMBER COHORTS SHOULD OWN
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted and that cuts against us,
+not for us). Four buyer questions, none probed in these words before: one undated national
+format query, one re-probe of the backlog-67 candidate, one on what a day is actually worth, and
+one dated Coding-line query naming the city, the date and the tool.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| **in person AI agent building workshop UK where a manager can go before the end of 2026** | **No** | `createwith.com` (x6 listings), `eventbrite.co.uk` (x2), `essex.ac.uk` (x2), `brainstation.io`, `tray.ai`, `waimakers.com`, `luma.com/tyyaa0xb`, `event.technologyreview.com` |
+| do I need to give an AI agent access to my email or CRM for it to be useful | **No** | `knowledge.hubspot.com` (x4), `gmelius.com` (x3, one article in three languages), `spotdev.co.uk`, `recruitly.io`, `support.lightfield.app`, `conversionsystem.com`, `consultevo.com`, `blast-radius-sim.lovable.app` |
+| **what do you actually walk away with from a one day AI workshop, is it worth a day out of the office** | **No** | `getclear.ca`, `sfailabs.com`, `maven.com` (x2), `tessgroup`, `ssw.com.au`, `xray.tech`, `equinetacademy.com`, `aitraining2u.com`, `startupik.com`, three Indian college workshop PDFs, a Trustpilot page |
+| **learn to build and deploy a web app with AI coding tools one day in person course Oxford 26 November 2026** | **No** - and the engine said so outright: *"I couldn't find a course matching this exact description: a one-day, in-person build-and-deploy course in Oxford on 26 November 2026"* | `luma.com` (x5, another organiser's "Ship Your First App in a Day"), `lifelong-learning.ox.ac.uk` (x2), `nobleprog.co.uk/ai-app-builders/training/oxford`, `citylit.ac.uk`, `oreilly.com`, `creativelive.com`, `eventbrite.co.uk` |
+
+**Reading.**
+
+- **Probe 3 is the one acted on, and the field handed over its own weakness.** Eighteen results,
+  every one a training vendor's own marketing, a college write-up of a workshop it ran, or a
+  review site - **no institutional publisher anywhere in it** - and the engine closed with
+  *"The sources here are mostly from training vendors, so I couldn't find independent evidence on
+  how much people retain or apply afterward."* Winnable, and converting: "is it worth a day out of
+  the office" is the last question before a booking, not an idle one. We publish the answer three
+  times over on `/guides/what-you-can-build-in-one-day-with-ai/`, whose own `h1` is *"What can you
+  actually build in one day with AI?"*, and that page emitted **no node an engine could quote**.
+  **Acted on this cycle**: `faqFromHeadings: true` on that guide. No sentence was written.
+  - Worth recording because it cuts our way: the critical source in that field, `sfailabs.com`,
+    warns that many one-day sessions are *"mostly discussion and sticky-note mapping... since no
+    one types anything"*, and the engine's own checklist asks *"Will you leave with something you
+    actually built on your own real work?"*. That is this page's published answer to its second
+    question, word for word in substance - *"You build. You bring one real task from your own work
+    and a laptop, and the day is spent building rather than watching."* The field is asking the
+    question the page already answers.
+- **Probe 1 is the sharpest miss, and it is not a date-matching failure either.** The query names
+  no city and no date, only the format, the country and the buyer - and asks for something
+  bookable before the end of 2026. The engine's own answer is that *"most of the dated ones have
+  already passed as of today (7 November 2026)"*, and it fell back on recommending two London
+  providers **whose pages carry no dates at all**. We have two dated in-person cohorts inside that
+  window, 19 and 26 November, both published with `EducationEvent` nodes, and neither was
+  returned. There is nothing on-page left to fix for that query: it is **backlog 2b**.
+- **Probe 4 is the fourth consecutive Coding-line miss**, and it tightened rather than loosened.
+  The 6 Nov 08:00 probe named a city and a date; the 14:00 probe named neither; this one names the
+  city, the date, the tooling and the outcome, and still returns nothing of ours while returning
+  five `luma.com` listings of somebody else's one-day app-building workshop. A competitor now has
+  an **Oxford city page for this exact category** - `nobleprog.co.uk/ai-app-builders/training/oxford`
+  - where we have a cohort nineteen days out. Recorded on the review list; it is backlog 2b and
+  Drummond's, and no claim about a competitor goes on the site.
+- **Probe 2 was the re-probe backlog 67 asked for, and it passes the winnability half cleanly.**
+  Thirteen results: four HubSpot knowledge-base pages, the same Gmelius article in three
+  languages, and the rest CRM and inbox vendors writing about their own permission screens. No
+  institutional publisher, and the engine flagged the field itself: *"Vendor docs are biased
+  toward their own products, so check the specifics of any tool you're evaluating."* **Declined
+  again, and this time for a better-evidenced reason than placement.** The site already publishes
+  the field's own best answer, in `/guides/getting-an-ai-workflow-past-it-and-legal/`: *"'Our
+  shared drive' is a worry; 'one folder of supplier reports, read only' is an answer"*, and
+  *"Start with the smallest version that still earns its keep. A workflow that only reads and
+  drafts, with a person sending the result, is far easier to approve than one that acts on its
+  own."* What that guide never does is **ask** the question - its fourteen questions are bold
+  paragraph leads, not headings, so no `FAQPage` node can be derived from it and no engine can
+  quote it as an answer. That is a structural finding, not a copy gap, and it is recorded as
+  **backlog 71** rather than answered with new prose this cycle.
+- **No new guide. 0 of 3 for the week of 2-8 Nov**, and no guide candidate was taken: probe 3's
+  question is answered by a guide we already publish, which is the near-duplication rule working
+  as intended, and probes 1 and 4 are listing queries rather than question queries.
+- **New to the competitive picture, recorded and not acted on:** `brainstation.io` runs an
+  in-person AI-agents workshop in London pitched at corporate teams, and `tray.ai` runs a London
+  build-an-agent evening; `waimakers.com` sells a three-session London course at £1,995 + VAT with
+  its October-November dates now past. None is in Oxford.
+
 ## 2026-11-06 (14:00 GMT cycle) - FOUR PROBES, ONE CITATION - THE AGENTIC LINE IS RETRIEVED FOR A THIRD CONSECUTIVE CYCLE AND THE CODING LINE MISSES FOR A THIRD, THIS TIME ON A QUERY CARRYING NO DATE AT ALL
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

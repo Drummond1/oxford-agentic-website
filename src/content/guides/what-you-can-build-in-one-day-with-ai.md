@@ -12,10 +12,34 @@ capsule: >-
   unwatched.
 author: drummond-gilbert
 publishDate: "2026-10-12T08:00:00+01:00"
-updatedDate: "2026-10-20T08:15:00+01:00"
+updatedDate: "2026-11-07T02:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - agentic-coding-bootcamp
+# This guide is an essay with one genuine FAQ section inside it, which is why the
+# flag belongs here and not on every guide that happens to ask a question. `## Is
+# one day enough?` is a signpost - its own prose is one sentence saying three
+# versions of the question arrive - followed by three sibling `h3` questions that
+# each answer one. That is the shape `faqsFromQuestionHeadings` was written for:
+# the leaf rule skips the parent and the three children stand on their own, so the
+# node publishes 3 entries, not 4. Assert that on the built node, do not assume it.
+# Nothing new is written and nothing visible changes. The flag reads this page's
+# own rendered HTML, so the node can only ever say what the page has said since
+# 12 October.
+# The evidence for opting in is a probe on 7 November 2026 - "what do you actually
+# walk away with from a one day AI workshop, is it worth a day out of the office" -
+# which returned eighteen results, every one a training vendor's own marketing or a
+# college write-up, with no institutional publisher in the field and the engine
+# closing: "The sources here are mostly from training vendors, so I couldn't find
+# independent evidence on how much people retain or apply afterward." This page
+# answers that question three times over and emitted nothing an engine could quote.
+# Every claim in the three answers is corroborated elsewhere on the site before it
+# was made machine-readable: "the day is not recorded" by the Agentic programme
+# page's own `Is the day recorded?` answer, "no block longer than twenty-five
+# minutes of anyone talking at you" by its curriculum paragraph in those words, and
+# the three-passes shape by its three build cycles. None of the three makes a claim
+# about a price, a date, a venue or a person.
+faqFromHeadings: true
 ---
 
 The honest answer to this question is narrower than the marketing and wider than the scepticism. A day is not long enough to build a product. It is more than long enough to get something real running, provided you pick the right thing and accept what "running" means at that stage.

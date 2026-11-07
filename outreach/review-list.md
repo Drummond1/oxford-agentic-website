@@ -11,6 +11,30 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A competitor now has an Oxford city page for the Coding Bootcamp's exact category, and we do
+  not appear on the query it answers. No new target; nothing contacted.** Found 7 Nov 2026
+  (02:00 cycle).
+  - **The probe.** *"learn to build and deploy a web app with AI coding tools one day in person
+    course Oxford 26 November 2026"* - city, date, tooling and outcome. The engine answered
+    *"I couldn't find a course matching this exact description"* and returned, among others,
+    **`nobleprog.co.uk/ai-app-builders/training/oxford`**, a city-targeted landing page for AI app
+    building in Oxford, plus two `lifelong-learning.ox.ac.uk` pages and **five `luma.com` listings
+    of another organiser's one-day "Ship Your First App in a Day" workshop**. Ours was not among
+    them, nineteen days out.
+  - **Why it is worth adding rather than folding into the 6 Nov entry.** That entry established
+    that nothing answers the Coding-line query at all. That is no longer true: somebody else's
+    Luma pages and an Oxford-targeted competitor page now answer it. NobleProg has appeared in
+    these probes before as a national course provider; what is new is the **city page**, which is
+    the surface this cohort would compete for directly. It does not change the ask - list the
+    Coding Bootcamp's Cohort 1 externally first - it raises the cost of not doing it, and the
+    window still closes on **26 November**.
+  - **Also new, as market intelligence only, no action and nothing goes on the site:**
+    `brainstation.io` runs an in-person AI-agents workshop in London aimed at corporate teams and
+    `tray.ai` a London build-an-agent evening - both surfaced on an undated national query where
+    our two dated November cohorts did not. `waimakers.com` sells a three-session London course at
+    £1,995 + VAT whose autumn dates have passed.
+  - Still Drummond's call. Nothing has been contacted, submitted, signed up for or paid for.
+
 - **The Coding Bootcamp is the line that needs an external listing first, and this is the first
   reading that isolates it. No new target; nothing contacted.** Found 6 Nov 2026 (08:00 cycle).
   - **The probe.** *"one day AI coding bootcamp Oxford 26 November 2026 build a website in a
