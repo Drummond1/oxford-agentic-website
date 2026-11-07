@@ -232,8 +232,11 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
               {/* Same as the audience card on a programme page: the label is
                   this card's heading, so a reader skimming by heading reaches
                   the one block that says which bootcamp the guide leads to.
-                  h2 puts it alongside "More guides" below it. */}
-              <h2 class="eyebrow">Where this gets practical</h2>
+                  h2 puts it alongside "More guides" below it. The label names
+                  what the card holds rather than repeating "Where this gets
+                  practical", which 15 of the guides write as their own closing
+                  heading one paragraph above this card. */}
+              <h2 class="eyebrow">Which bootcamp this leads to</h2>
               <ul class="squares">
                 {related.map((programme) => (
                   <li>

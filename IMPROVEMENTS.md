@@ -1430,8 +1430,12 @@ Status: `todo` · `blocked` (why) · `doing`
     would then become signposts that the leaf rule correctly skips, so the node would publish
     fourteen entries and not seventeen.
 
-72. `todo` (loop-actionable, found 7 Nov 2026 in the 02:00 cycle; **cosmetic, but it is on nearly
-    half the guides**) - **15 of 32 guide pages print the heading "Where this gets practical"
+72. `done` 7 Nov 2026 (09:00 cycle), by the second of the two fixes it named - **the template's
+    eyebrow now reads "Which bootcamp this leads to"**, so the words are no longer repeated and the
+    label describes what the card holds. The fifteen markdown headings were left exactly where they
+    are: they are the reader's section heading, they carry the `#` anchor, and dropping them would
+    have touched fifteen content files and moved fifteen `updatedDate` values to fix a label.
+    The original finding follows. - **15 of 32 guide pages print the heading "Where this gets practical"
     twice, one paragraph apart.** `src/pages/guides/[...slug].astro:236` always renders
     `<h2 class="eyebrow">Where this gets practical</h2>` above the related-programme card, and
     fifteen guides also write `## Where this gets practical` as their own closing section in
@@ -1480,6 +1484,58 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-07 (09:00 cycle) - 15 of the 32 guides printed the heading "Where this gets
+  practical" twice, one paragraph apart. One label in one shared template; 32 built pages, one
+  line each.** Backlog 72, found by the 02:00 cycle and left for a cycle that could weigh the
+  wording.
+  **The defect, read on the built pages rather than inferred.** `src/pages/guides/[...slug].astro`
+  always renders `<h2 class="eyebrow">Where this gets practical</h2>` above the related-programme
+  card, and fifteen guides also write `## Where this gets practical` as their own closing section.
+  In reading order a visitor got: the section heading, one paragraph of prose that already names
+  and links the programme, then the same four words again as the card's eyebrow, then the same
+  programme again with its short pitch. Confirmed in the DOM at 375px on
+  `scout-drafter-reviewer-pattern` and `agentic-ai-for-finance-teams`, and in the screenshots.
+  **The fix is the second of the two the backlog named: the template's label, not the fifteen
+  headings.** The eyebrow now reads **"Which bootcamp this leads to"**, which is what the card
+  actually holds and what the template's own comment says the label is for. The other route would
+  have deleted a heading readers navigate by from fifteen content files and moved fifteen
+  `updatedDate` values to fix a repeated label. No content entry was touched, so no `updatedDate`,
+  no sitemap `lastmod` and no `llms-full.txt` line moved.
+  **The wording was measured before it was chosen.** Six candidates were rendered into the live
+  eyebrow at 375px: "Which bootcamp this leads to" holds one line (18px, same as the string it
+  replaces), while "Which bootcamp this guide leads to" wraps to two. It reads correctly on the
+  seventeen guides that never wrote the heading themselves, and on the three guides whose card
+  lists three programmes, where "which" is the honest word. No claim, fact, date, price or call to
+  action changed: this is a label on an existing card.
+  **Blast radius, measured against a pristine build of `b76e53a`: exactly 32 of 198 files in
+  `dist` differ, and every one differs by the same single line.** The 32 guide pages. No sitemap,
+  no `llms.txt` or `llms-full.txt`, no hub, no schema node. `FAQPage` nodes stay at 17 and `Event`
+  nodes at 7, because `faqsFromQuestionHeadings` reads the article body and never sees the
+  template. The phrase now appears once on each of the fifteen pages that write it, and on
+  `llms-full.txt`, which is byte-identical.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique. `check:flags`
+  green on the all-on and all-off builds. The 11 outbound warnings are the sandbox egress policy,
+  unchanged from the baseline build. `npm run check` was **not** run and is not claimed; it still
+  stops on the interactive `npm i @astrojs/check typescript` prompt, which is backlog 70.
+  Headless Chromium over two affected guides, one unaffected guide and `/guides/` at **375, 768
+  and 1280px**, scrolling each page to settle its reveal blocks: 12 configurations, **109
+  assertions, 0 failing**, before and after - no horizontal overflow at any width, one `h1`, every
+  JSON-LD block parsing, no image without `alt`, no unlabelled control, no link without an
+  accessible name, no page errors, no failed local requests. Screenshots read at 2x at 375 and
+  1280px, before and after. Keyboard: the related card's link is the 27th tab stop on
+  `scout-drafter-reviewer-pattern` and takes the gold ring, `rgb(212, 175, 55)` at 2px with a 3px
+  offset. Worth recording for the next cycle: that ring measures **transparent at 9px offset** if
+  it is read at the moment focus lands, because `focus-in` animates it over 240ms. Wait out the
+  animation before asserting on it.
+  **Production.** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy, as on
+  every cycle since 30 Oct, and `drummond1.github.io` with it, so the Actions API stood in:
+  deploy and CI both **success on `b76e53a`**, which is `origin/main` and the HEAD this cycle
+  started from, nothing queued or in progress. `luma.com` is unreachable the same way, so **no
+  event fact was read, invented or changed.** PR #1, PR #3 and the
+  `feat/ceo-roundtable-demand-page` branch are the known-stale leftovers already recorded in
+  backlog 20, not work in flight.
 
 - **2026-11-07 (08:00 cycle) - the guide that answers "why pay when it is all free online" had
   three question headings and emitted nothing an engine could quote, and the field answering that
