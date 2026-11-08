@@ -5,6 +5,67 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-08 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE FOURTH BRANDED MISS IN FOUR CYCLES, THIS ONE ON A BOOKING-INTENT PHRASING THAT SENT THE BUYER TO A PAST COHORT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before: one branded booking
+question and three buyer questions on axes this log has not tested - whether you need to code,
+what to prepare before a day, and how to pick the first task to delegate.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | Oxford Agentic Bootcamp Cohort 3 19 November 2026 how do I book a place | **No** | `luma.com/k7c2rm5s` (Cohort 1) and `luma.com/oxfordagentic2` (Cohort 2), `allai.events` (still 21 Jul 2026), `planomato.com`; then Saïd's online programme (x3), `nobleprog.co.uk`, `learnersink.com`, `pulse.bot`, Codecademy, Maven, Eventbrite, OxML, and four Data Science Dojo help-centre pages about a different bootcamp |
+| 2 | do I need to know how to code to build an AI agent for my own job | **No** | `fastgpt.io` / `fastgpt.cn` (the same FAQ in eight language variants), `skillcrush.com` (x2), `ciela.ai` (x2), `cybernews.com`, `c-sharpcorner.com`, `tinycommand.com`, freeCodeCamp forum, two Reddit snapshots |
+| 3 | what should I prepare before a one day AI workshop so I leave with something working | **No** | `getclear.ca`, SAP Learning (x4, the same course), `insivia.com`, `pertamapartners.com` (x2), FAU (a PDF), `kinetica.com`, two Azure Marketplace consulting listings, `columbusglobal.com`, two `pages.dev` microsites |
+| 4 | how do I decide which of my weekly admin tasks to hand to an AI agent first | **No** | Microsoft Support, `anthropic.com` (AI fluency), Databricks answers, PCWorld (x2), Entrepreneur, `coderhouse.com` (x2), `get-alfred.ai`, `workclaw.com` (x2), `devx.com`, two local-enterprise event listings (`investinangus.com`, `investinhamilton.ca`) |
+
+**Reading.**
+
+- **Probe 1 is the finding, and it is worse in kind than the three branded misses before it.**
+  Those three showed the engine unable to find us. This one shows it finding the *wrong cohort*
+  and recommending it. Asked how to book Cohort 3 on 19 November, it returned no page of ours,
+  said ***"I couldn't confirm a 'Cohort 3' on 19 November 2026 in the search results, so I can't
+  give you its booking details"***, and then named as the ***"most likely booking route"*** the
+  Luma pages for **Cohort 1 (21 July) and Cohort 2 (16 September)**, quoting one of them as
+  showing a ticket button and ***"5 spots remain"***. It did hedge - ***"Neither snippet shows a
+  date, so check that the cohort matches 19 November before registering"*** - but a buyer
+  following that advice lands on a past cohort's booking page eleven days before the live one.
+  The only dated record of us in the whole field was `allai.events`, **still 21 July 2026**.
+  (The "5 spots" line is what the engine reported reading on a Luma page; no Luma page is
+  reachable from this sandbox, so it is recorded as the engine's claim and nothing more.)
+  **Four branded misses in four cycles, four different subjects**, and the cause is unchanged:
+  the 24 August Search Console diagnosis, crawl budget on a domain with zero external links.
+  `/events/oxford-agentic-bootcamp-cohort-3/` publishes the date, the venue and the booking
+  panel, and was not retrieved.
+- **Probe 2 is winnable on the letter of the rule and was declined on the spirit of it.** No
+  institutional publisher anywhere: the top six results are the same `fastgpt` FAQ in eight
+  language variants, and the rest are an edtech blog, an agency, a tech-news site and two Reddit
+  threads. But `fastgpt` is a platform vendor answering "do you need to code" about **its own
+  no-code builder**, which is rule (a)'s named pattern, and the searcher is someone deciding
+  whether to build an agent themselves this afternoon, not whether to spend a day in Oxford.
+  Our own answer to this is published five times over - the programme page, the homepage FAQ and
+  `what-hands-on-ai-training-actually-means` all say the day needs no coding - so there is
+  nothing to write. Declined.
+- **Probe 3 is the most converting of the three and we are already as quotable on it as the site
+  can be, which is why nothing shipped to content.** Every source sells workshops or consulting,
+  and the field's own advice is ours: `getclear.ca` says a one-day workshop should end with
+  ***"one of your real workflows running with AI assistance"***, and another tells the organiser
+  to ask ***"each attendee to bring one live task they want to improve"***. That is the day's
+  published format, not a gap. **Checked rather than assumed:** the Agentic programme page's FAQ
+  block answers what to bring, the 02:00 cycle today moved that answer onto the surface engines
+  actually hold, and `what-you-can-build-in-one-day-with-ai` carries a 3-entry `FAQPage` node.
+  Nothing left to add.
+- **Probe 4 is NOT winnable.** Microsoft Support, Anthropic's own AI-fluency material and
+  Databricks sit at the top - platform vendors writing about their own products - with PCWorld
+  and Entrepreneur behind them. `how-to-choose-your-first-agentic-task` already serves our buyer
+  here and has published a `FAQPage` node since 4 November. Declined.
+
+**What this cycle did with that.** Nothing to content: no probed axis was both winnable and
+converting and unanswered. The cycle spent itself on the one unblocked defect on the list
+(backlog 76, a missing space before a link on `/privacy/`) and recorded probe 1 on the off-page
+review list, where the remedy lives and where it needs Drummond rather than a cycle.
+
 ## 2026-11-08 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE THIRD BRANDED MISS IN THREE CYCLES, THIS TIME WITH THE ENGINE SAYING THE ENTITY FAILURE OUT LOUD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

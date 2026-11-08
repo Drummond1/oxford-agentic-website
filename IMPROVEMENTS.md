@@ -1571,8 +1571,9 @@ Status: `todo` · `blocked` (why) · `doing`
     is the thing not to lose. Consider also whether the better answer is off-page: the field's
     weakness is that no neutral party is in it, and we are not reachable, not unquotable.
 
-76. `todo` (loop-actionable, found 8 Nov 2026 in the 14:00 cycle by reading a screenshot rather
-    than the source; **declined on bundling, not on merit - it is about as small as a fix gets**)
+76. `done` 8 Nov 2026 (20:00 cycle), exactly as scoped - one byte, one file of 198 in `dist`,
+    and the sweep below re-run after and returning zero. (Found 8 Nov 2026 in the 14:00 cycle by
+    reading a screenshot rather than the source, and declined that cycle on bundling, not on merit.)
     - **the privacy page renders `the<a>register interest page</a>` with no space between the
       word and the link.** `src/pages/privacy.astro:219` ends the line on *"using the"* and opens
     the `<a>` on the next line, and Astro drops that newline, so the built HTML reads
@@ -1622,6 +1623,60 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-08 (20:00 cycle) - backlog 76, taken as the cheap win the 14:00 cycle nominated: one
+  byte. `/privacy/` published `using the<a href="/second-brain-interest/">register interest
+  page</a>` with no space, and now does not. One file of 198 in `dist` differs, 34,219 bytes to
+  34,220, and the sweep that found it returns zero.**
+  **What was wrong and what fixed it.** `src/pages/privacy.astro` ended a line on *"using the"*
+  and opened the `<a>` on the next line; Astro drops that newline, so the word and the link ran
+  together in the built HTML. The paragraph directly above it is correct only because its source
+  keeps `the <a href="/apply/">` on one line. The fix is that difference: *"using"* ends the line
+  and *"the <a …"* begins the next. No word of copy changed.
+  **Why this paragraph rather than any other.** It is the `#interest` paragraph that
+  `/second-brain-interest/` deep-links into, so the reader who sees it is one who clicked a
+  privacy link from a form - a form that takes a name and an email address. `/privacy/` has no
+  sitemap `lastmod` by design (`astro.config.mjs` gives one only to pages with a content file
+  behind them), so nothing needed bumping.
+  **Blast radius, asserted rather than argued.** `dist` before and after: 198 files both sides,
+  **exactly one differs**, `privacy/index.html`, by **one byte**. The glued-link sweep over all
+  64 built pages - a word character immediately followed by `<a ` - returned **1 before and 0
+  after**. IndexNow, run with this commit's own file list rather than with none (which is what
+  makes the script submit all 55): **1 URL, `https://oxfordagentic.com/privacy/`**. The other
+  three files in the commit are `IMPROVEMENTS.md`, `seo-data/` and `outreach/`, all of which the
+  script's exclusion list already knows cannot move a page.
+  **Checks, every one read by exit code.** `npm ci` and `npm run build` green: 64 pages, **3,156
+  internal links resolve**, schema valid, **7 `Event` and 19 `FAQPage` nodes**, all identical to
+  the baseline taken before the edit. `npm run check:flags` **exit 0** - read as an exit code,
+  which is the lesson the 14:00 cycle paid for. `npm run check` not run; backlog 70 records why
+  it cannot run in a clean checkout. Headless Chromium over `/privacy/#interest` at 375 and
+  1280px: **14 assertions, 0 failing** - the space is in the rendered text at both widths, the
+  link keeps its name and its box, no horizontal overflow, and the deep link lands on the
+  paragraph. Screenshots read at both widths.
+  **A measurement fault caught before it became a finding.** The first run reported the `#interest`
+  deep link not scrolling into view at either width. It was the probe: the page sets
+  `scroll-behavior: smooth` and the assertion ran at `load`, before the scroll had settled.
+  Measured after it settles, `scrollY` is 3,184 at 375px and 2,654 at 1,280px and the paragraph
+  sits 88px below the viewport top at both. Nothing was wrong with the page.
+  **GEO: four probes, zero citations, and the fourth branded miss in four cycles - this one
+  worse in kind than the three before it.** Asked *"Oxford Agentic Bootcamp Cohort 3
+  19 November 2026 how do I book a place"*, the engine returned no page of ours, said it could
+  not confirm a Cohort 3 on that date, and then recommended **Cohort 1's and Cohort 2's Luma
+  pages** as the booking route. The earlier misses showed an engine unable to find us; this one
+  shows it pointing a buyer at a past cohort, eleven days before the live one, with
+  `allai.events` **still dated 21 July 2026** as the only dated third-party record in the field.
+  Recorded in `seo-data/geo-citations.md` and on the off-page review list. The other three probes
+  - whether you need to code, what to prepare before a day, which task to delegate first - were
+  **declined on the probe rule**: two are platform vendors and institutional publishers on their
+  own ground, the third is a question we already answer on surfaces that already carry `FAQPage`
+  nodes. **No new guide, 0 of 3 for the week of 2-8 Nov.**
+  **Production could not be read directly.** `oxfordagentic.com` and `luma.com` are both refused
+  on CONNECT by this sandbox, so the Actions API stood in: deploy run **381** and CI run **354**
+  both success on `76d62e8`, which is `origin/main` and the HEAD this cycle started from, with no
+  run in progress. **No event fact was read, invented or changed**, and no Luma page was
+  reachable. **Search Console unavailable for the twenty-seventh consecutive cycle**: the export
+  workflow ran 12:06 today and succeeded writing nothing, its documented behaviour while
+  `GSC_SERVICE_ACCOUNT_KEY` is unset, and `seo-data/` holds no reading newer than 24 August.
 
 - **2026-11-08 (14:00 cycle) - SHIPPED, THEN ROLLED BACK THE SAME CYCLE. The link-checker
   change was correct and CI was right to reject it: the new strictness immediately found a real

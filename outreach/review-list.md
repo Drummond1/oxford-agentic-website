@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The branded miss has turned into active misdirection: asked how to book Cohort 3, the engine
+  recommended Cohort 1's and Cohort 2's Luma pages instead.** Found 8 Nov 2026 (20:00 cycle). No
+  new target, no contact, nothing submitted; recorded as evidence for the standing off-page ask
+  this list has carried since July, which it sharpens.
+  - The probe was *"Oxford Agentic Bootcamp Cohort 3 19 November 2026 how do I book a place"* -
+    our event, our date, phrased the way a buyer with a wallet open types it. It returned **no
+    page of oxfordagentic.com**. The engine said ***"I couldn't confirm a 'Cohort 3' on
+    19 November 2026 in the search results, so I can't give you its booking details"***, then
+    offered as the ***"most likely booking route"*** `luma.com/k7c2rm5s` (**Cohort 1, 21 July**)
+    and `luma.com/oxfordagentic2` (**Cohort 2, 16 September**), quoting one of them as showing a
+    ticket button and ***"5 spots remain"***. It added the hedge ***"Neither snippet shows a
+    date, so check that the cohort matches 19 November before registering"***.
+  - **Why this one is worth a line of its own.** The three branded misses before it (Cohort 3 on
+    7 Nov, the Coding Bootcamp on 8 Nov 08:00, the organisation itself on 8 Nov 14:00) showed an
+    engine unable to find us. This one shows an engine **finding the wrong cohort and pointing a
+    buyer at it**, eleven days before the live one. The only dated third-party record of us in
+    the field was `allai.events`, **still 21 July 2026** - the same stale listing this list has
+    carried since 7 Nov, now demonstrably one of the inputs to a wrong recommendation.
+    `planomato.com` appeared again as well.
+  - **The "5 spots remain" line is the engine's claim, not a fact.** No Luma page is reachable
+    from this sandbox, so no availability, price or date was read, verified or published. It is
+    recorded here only because it shows the engine treating a past cohort's page as live.
+  - **No new ask.** It is the standing one, with a sharper reason: one external link, an
+    `Organization.sameAs` that is still empty, the LinkedIn Company Page or a real Luma calendar
+    URL in `brand.social`, and - now urgent rather than tidy - **correcting or retiring the
+    21 July `allai.events` listing**, because an out-of-date third-party record is no longer
+    merely unhelpful, it is being quoted at buyers in place of the current date.
+
 - **A third-party listing nobody here had recorded: `planomato.com` carries the Second Brain
   Bootcamp, and it is the only source in today's field that ties the entity to a bootcamp in
   words.** Found 8 Nov 2026 (14:00 cycle). **Not contacted, not submitted, not signed up for.**
