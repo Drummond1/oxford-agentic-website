@@ -22,7 +22,7 @@ import siteConfig from './site.config.ts';
  * pages, and claiming it moved only this one would be the same lie in the
  * other direction.
  */
-const HOMEPAGE_COPY_LASTMOD = '2026-10-29T07:07:49Z';
+const HOMEPAGE_COPY_LASTMOD = '2026-11-08T02:04:03Z';
 
 /** Frontmatter fields this file needs, read without pulling in a parser. */
 function readRecords(dir) {

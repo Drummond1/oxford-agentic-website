@@ -23,9 +23,10 @@ export const homeFaqs = [
      *
      * It happened a second time with the Coding Bootcamp (launched 25 Sept
      * 2026, swept here 15 Oct): this answer still said "two one-day bootcamps"
-     * three weeks later. Four answers below name the product line explicitly -
-     * this one, who the bootcamps are for, the venues, and what you leave with.
-     * When a fourth line launches, change all four in the same commit.
+     * three weeks later. Five answers below name the product line explicitly -
+     * this one, who the bootcamps are for, what to bring, the venues, and what
+     * you leave with. When a fourth line launches, change all five in the same
+     * commit.
      */
     q: `What is ${config.brand.name}?`,
     a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across three one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. The Oxford Agentic Coding Bootcamp is where you ship software you own outright, with Claude Code and Codex doing the typing. All three are hands-on, and none of them expects you to arrive able to code. Nothing is hand-waved either.`,
@@ -46,6 +47,40 @@ export const homeFaqs = [
   {
     q: 'Who is it not for?',
     a: 'People who want a conceptual overview of AI - this is a build day, not a briefing. Anyone who cannot bring a real task from their own work, because the whole day runs against one and without it you get a demonstration instead of an outcome. Anyone expecting a vendor or platform pitch, because no tool is being sold. And anyone who cannot install software on their own laptop: corporate and government devices often block tool sign-ups, so it is worth checking before you book rather than at 09:30 on the day.',
+  },
+  {
+    /*
+     * Two of this cycle's four GEO probes (8 Nov 2026) found the field unable to
+     * answer the pre-arrival question. "What should I bring to a one day hands-on
+     * AI bootcamp to get value from it" returned Eventbrite, Meetup,
+     * happeningnext and a row of course microsites, and the engine closed "I
+     * didn't find a clear answer on whether you need AI tool accounts
+     * beforehand, so check with your organizer". "Do I need to prepare anything
+     * before an agentic AI build day or can I turn up cold" returned vendor docs
+     * and course marketing with no institutional publisher in it, and closed "I
+     * couldn't find the specific event you're attending, so check its joining
+     * email or event page for prerequisites".
+     *
+     * All three programme pages answer it - "What do I need to bring?" on the
+     * Agentic and Second Brain pages, "What should I bring?" on the Coding page -
+     * and each one is already in that page's FAQPage node. The gap is not the
+     * answer; it is that the homepage never carries it, and the homepage is the
+     * page engines are measured as actually holding (backlog 40). So this is the
+     * same answer on the surface that gets retrieved.
+     *
+     * Every clause restates published copy: "one real task from your own work
+     * that currently costs you meaningful time" and "a paid plan such as ChatGPT
+     * Plus or Claude Pro, but it is not essential" are the Agentic page's; "your
+     * own documents, notes and examples" is the Second Brain page's "the
+     * documents, notes and examples that carry how you work and what you know";
+     * "an idea you want to see running" is the Coding page's own routing answer;
+     * "matters more than any preparation" is both bring answers'; "everything is
+     * facilitated in the room" is the technicality answer above; and the laptop
+     * line is already in "Who is it not for?" directly above. No price, date,
+     * venue, capacity, name or new commercial term.
+     */
+    q: 'What do I need to bring, and do I need to prepare?',
+    a: 'A laptop, and the raw material the day builds on: at the Oxford Agentic Bootcamp one real task from your own work that currently costs you meaningful time; at the Oxford Second Brain Bootcamp your own documents, notes and examples; at the Oxford Agentic Coding Bootcamp an idea you want to see running. Bringing something genuine matters more than any preparation, and everything is facilitated in the room. The one thing worth checking before you book is whether you can install software on your laptop, since corporate and government devices often block new tool sign-ups. At the Agentic Bootcamp you will get the most from the day with a paid plan such as ChatGPT Plus or Claude Pro, but it is not essential.',
   },
   {
     q: 'Where in Oxford are the events held?',

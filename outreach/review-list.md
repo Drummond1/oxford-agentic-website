@@ -11,6 +11,41 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A new target of a kind this list has never carried: `odsc.ai` (ODSC), which runs a London AI
+  conference and held a place in a field otherwise made of course microsites.** Found 8 Nov 2026
+  (02:00 cycle). Nothing contacted.
+  - **How it surfaced.** The probe *"do I need to prepare anything before an agentic AI build day
+    or can I turn up cold"* returned fifteen results. Fourteen were vendor documentation
+    (ServiceNow, Oracle, HCL, GoHighLevel), course marketing (`ivee.jobs`, `inoxoft.com`,
+    `the-ai-corner.com`) or developer blog posts (`hashnode.com`, `dev.to`). The fifteenth was
+    `odsc.ai/london/`.
+  - **Why it is worth a line.** It is the only organisation in that field with a standing
+    in-person AI audience in the UK, and the route is speaking rather than listing - the same
+    shape as the techUK "Speak at an event" entry further down this list. It is not a directory
+    submission and it is not quick.
+  - **Weigh before acting.** ODSC's audience is data scientists and engineers, which is one of
+    the five personas rather than the primary buyer, and the Agentic Bootcamp's published
+    audience is people who have hit the ceiling of a chat window. Worth a look, not a priority
+    against the standing asks above. **Nothing was contacted, submitted, signed up for or paid
+    for**, and `odsc.ai` was not fetched - the name is recorded only as what the probe returned.
+
+- **No institutional publisher owns the pre-arrival question, on two separate probes - the
+  cleanest winnability reading this list has recorded, and it was acted on on-site rather than
+  off.** Found 8 Nov 2026 (02:00 cycle). No target, no contact; recorded as evidence.
+  - *"What should I bring to a one day hands-on AI bootcamp to get value from it"* returned
+    Eventbrite, Meetup, `happeningnext.com`, `allai.events` and a row of course microsites
+    (`precisionaiacademy.pages.dev`, `ajai-live.pages.dev`, `bizaccesshub-ai-deepdive.lovable.app`),
+    with the engine closing ***"I didn't find a clear answer on whether you need AI tool accounts
+    beforehand, so check with your organizer."***
+  - *"Do I need to prepare anything before an agentic AI build day or can I turn up cold"* closed
+    ***"I couldn't find the specific event you're attending, so check its joining email or event
+    page for prerequisites."***
+  - **Both fields are winnable and neither needed a new listing**, because the answer was already
+    published on all three programme pages and already machine-readable there. What it needed was
+    the homepage, which is the page engines are measured as actually holding, and that shipped
+    this cycle. Recorded here so the next off-page cycle does not read these two probes as an
+    off-page gap: they are not.
+
 - **A named competitor is what Eventbrite hands our buyer on our own category query. No new
   target: this is evidence for the standing Eventbrite ask, which is already target 1.** Found
   7 Nov 2026 (20:00 cycle). Nothing contacted.

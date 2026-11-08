@@ -1497,9 +1497,107 @@ Status: `todo` · `blocked` (why) · `doing`
     settle most cases"* are already questions in everything but markup - promoting those three to
     `h3` would clear the guard on its own and is the smaller of the two routes.
 
+74. `todo` (loop-actionable, found 8 Nov 2026 in the 02:00 cycle; **this is Drummond's own
+    candidate 1 arriving by a second door, and his fix is defeated by a contract in another
+    file**) - **every homepage-copy change submits all 55 sitemap URLs to IndexNow, no matter
+    that `src/lib/home.ts` maps to `/` alone.** Candidate 1 was shipped: `SINGLE_PAGE_SOURCES` in
+    `scripts/indexnow-ping.mjs` maps `src/lib/home.ts` and `src/components/HomeSections.astro` to
+    `https://oxfordagentic.com/`. But `HOMEPAGE_COPY_LASTMOD` lives in `astro.config.mjs`, and its
+    own doc comment says **"Bump it in the same commit whenever you change one of those three"** -
+    so a homepage-copy commit *always* carries `astro.config.mjs` too, and that file falls to the
+    `wholeSite = true` branch. **Measured on this cycle's real change set**, not on a test edit:
+    `indexnow-ping --dry-run src/lib/home.ts astro.config.mjs` submits **55 URLs** for a commit
+    whose whole blast radius is 5 of 198 files in `dist` (`/`, `/home-photos/`, `llms-full.txt`
+    and the two sitemaps) and **one** sitemap page. So the two files cancel each other out and the
+    map never gets the chance to work.
+    - **Why it was not fixed in the same cycle.** Rule 8 says keep the change set small and
+      focused, and this cycle's improvement is the homepage FAQ entry. Bundling an unrelated
+      script change into it would be two improvements in one commit.
+    - **Why a map entry for `astro.config.mjs` would be wrong**, and this is the trap: that file
+      really can be site-wide. It holds `homepageLastmod()`, `listingLastmods()`, the sitemap
+      filter and the integration list, and a change to any of those moves far more than `/`.
+      Mapping the filename to `/` would under-submit on a genuine config change, which is the
+      worse direction and the one the events branch was widened to avoid.
+    - **The shape of the right fix, and it is small.** Move the one hand-recorded constant out of
+      `astro.config.mjs` into its own module - say `src/lib/homepage-lastmod.ts`, imported by the
+      config exactly as `site.config.ts` already is - and add that file to `SINGLE_PAGE_SOURCES`
+      alongside the two it sits with. Then a homepage-copy commit touches three files that all map
+      to `/`, and `astro.config.mjs` keeps its whole-site default for the changes that deserve it.
+      No build output, no workflow change and no second copy of an algorithm, which is what
+      sank backlog 41.
+    - **Weigh the value honestly before taking it.** Over-submission is the milder failure: all 55
+      URLs are ours and IndexNow's quota is not the binding constraint. But the measured
+      constraint on this domain *is* crawl budget (Search Console, 24 Aug: 23 indexed, 16 not),
+      and spending a whole-site hint on a commit that moved one page is spending it on the wrong
+      page. One cycle, and smaller than this entry.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-08 (02:00 cycle) - two of four GEO probes found the field unable to answer what a
+  buyer should bring to a one-day build day, and the engine said so in its own words twice. The
+  answer was already published and already machine-readable - on the three programme pages, not
+  on the homepage, which is the one page an engine reliably holds. One homepage FAQ entry, no new
+  fact, 5 of 198 files in `dist`.**
+  **The evidence.** *"What should I bring to a one day hands-on AI bootcamp to get value from
+  it"* returned Eventbrite, Meetup, `happeningnext.com`, `allai.events` and four course
+  microsites, and closed ***"I didn't find a clear answer on whether you need AI tool accounts
+  beforehand, so check with your organizer."*** *"Do I need to prepare anything before an agentic
+  AI build day or can I turn up cold"* returned vendor documentation (ServiceNow, Oracle, HCL)
+  and course marketing with **no institutional publisher in it**, and closed ***"I couldn't find
+  the specific event you're attending, so check its joining email or event page for
+  prerequisites."*** Winnable on both fields; converting because somebody asking whether they can
+  turn up cold is deciding whether the format works for them, and Cohort 3 is eleven days out.
+  **Why the homepage and not a programme page.** All three programme pages already answer it -
+  *"What do I need to bring?"* on the Agentic and Second Brain pages, *"What should I bring?"* on
+  the Coding page - and each is already an entry in that page's `FAQPage` node. So there was no
+  content gap to fill and nothing to write. The gap was placement: backlog 40 measured that a
+  search restricted to this domain returns the same three URLs whatever is asked, and the
+  homepage is the page engines hold. This puts the published answer on the retrieved surface.
+  **Every clause restates published copy, checked one at a time.** *"one real task from your own
+  work that currently costs you meaningful time"* and *"a paid plan such as ChatGPT Plus or Claude
+  Pro, but it is not essential"* are the Agentic page's, verbatim; *"your own documents, notes and
+  examples"* is the Second Brain page's *"the documents, notes and examples that carry how you
+  work and what you know"*; *"an idea you want to see running"* is the Coding page's own routing
+  answer; *"matters more than any preparation"* is in both bring answers; *"everything is
+  facilitated in the room"* is the homepage's own technicality answer; and the laptop sentence is
+  already in *"Who is it not for?"* directly above it. The subscription line is attributed to the
+  Agentic Bootcamp rather than generalised, because it is published on that page alone. No price,
+  date, venue, capacity, person or new commercial term.
+  **Two things declined, with reasons.** Probe 2, *"can my employer pay by invoice for an AI
+  training day UK"*, is winnable and was declined on accuracy: the field turns on VAT, purchase
+  orders and 30-day terms, our invoice route is already published, and VAT treatment is the one
+  thing Drummond's 13 Sept decision says never to state. Probe 4, the agentic-vs-ChatGPT
+  definition, is held twice by McKinsey and is not winnable.
+  **Housekeeping done in the same commit, because a contract required it.**
+  `HOMEPAGE_COPY_LASTMOD` in `astro.config.mjs` says in its own comment to bump it whenever
+  `src/lib/home.ts` changes, so it moved from 29 Oct to 8 Nov. That is the only reason a second
+  file is in this commit, and `/`'s sitemap `lastmod` is the only entry of 56 that moves.
+  **Checks.** `npm ci` and `npm run build` green before and after: 62 pages built, 64 checked,
+  3,156 internal links resolve, schema valid, all titles and descriptions unique, no SEO
+  warnings. `check:flags` green on the all-on and all-off builds. The 11 outbound warnings are
+  the sandbox egress policy, which refuses `luma.com`, `oxfordagentic.com` and LinkedIn on
+  CONNECT. `npm run check` was not run and is not claimed; backlog 70 records why. Headless
+  Chromium over `/` at 375, 768 and 1280px: 33 assertions, 0 failing - the question painted
+  exactly once, the accordion closed on load and opening on click, the answer inside the
+  viewport, no horizontal page scroll, no page or console errors, and the heading byte-identical
+  in computed style to its siblings. Both widths read at 2x.
+  **Blast radius, measured against a pristine build of 6d66d46:** exactly 5 of 198 files in
+  `dist` - `/`, the noindex `/home-photos/` which shares the FAQ, `llms-full.txt` and the two
+  sitemaps. `llms-full.txt` gains exactly four lines and loses none. The homepage `FAQPage` node
+  goes from 12 entries to 13; `FAQPage` nodes site-wide stay at 19 and `Event` nodes at 7.
+  **One finding recorded rather than fixed:** `indexnow-ping --dry-run` over this change set
+  submits **55** URLs, because `astro.config.mjs` is whole-site by default and the lastmod
+  contract forces it into every homepage-copy commit. That defeats Drummond's candidate 1 even
+  though candidate 1 shipped. New backlog **74**, with the fix shape; not bundled here.
+  **No new guide, 0 of 3 for the week of 2-8 Nov. Search Console unavailable, twenty-fourth
+  consecutive cycle; nothing estimated.** The export workflow last ran 7 Nov 11:52 and succeeded
+  writing nothing, its documented behaviour while `GSC_SERVICE_ACCOUNT_KEY` is unset, and
+  `seo-data/` holds no reading newer than 24 August. `oxfordagentic.com` is refused on CONNECT by
+  the sandbox, so the Actions API stood in: deploy run 375 success on 6d66d46, which is both
+  `origin/main` and the HEAD this cycle started from. No event fact was read, invented or changed.
+  Also records this cycle's four GEO probes and two off-page findings for review.
 
 - **2026-11-07 (20:00 cycle) - the guide written for the buyer who has to get IT, legal and a
   manager to say yes carried thirteen questions and no headings, so nothing could quote it and

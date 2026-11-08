@@ -5,6 +5,47 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-08 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND TWO OF THE FOUR LAND ON THE SAME GAP, WHICH IS WHY THIS CYCLE SHIPPED TO THE HOMEPAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four buyer questions, none probed in these words before: two on preparing
+for the day, one on procurement, one on the category itself.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what should I bring to a one day hands-on AI bootcamp to get value from it | **No** | Eventbrite (x3), Meetup, `happeningnext.com`, `allai.events`, course microsites (`precisionaiacademy.pages.dev`, `ajai-live.pages.dev`, `bizaccesshub-ai-deepdive.lovable.app`, `hackinghrlab.io`), and four institutions writing about their own courses (AIMA, UMass Boston, Republic Polytechnic, UTM) |
+| 2 | can my employer pay by invoice for an AI training day UK | **No** | Provider billing pages (`acuitytraining.co.uk`, `tutorials.co.uk`, `opentrain.ai` x5, `firstintuition.co.uk`), `spicyadvisory.com`, and gov.uk on the Flexible AI Upskilling Fund |
+| 3 | do I need to prepare anything before an agentic AI build day or can I turn up cold | **No** | Vendor documentation (ServiceNow, Oracle, HCL, GoHighLevel), course marketing (`ivee.jobs`, `inoxoft.com`, `the-ai-corner.com`, `zilliz.com`), developer blogs (`hashnode.com`, `dev.to`), `happeningnext.com`, `odsc.ai` |
+| 4 | what is an agentic workflow for a business and how is it different from using ChatGPT | **No** | McKinsey (x2), Zapier, `theaireport.ai`, `larridin.com`, `riseuplabs.com`, `yourgpt.ai`, dev.to (x2) and four `pages.dev` vendor microsites |
+
+**Reading.**
+
+- **Probes 1 and 3 are the same gap asked two ways, and both fields are winnable.** Neither has
+  an institutional publisher in it - probe 1 is aggregators and course microsites, probe 3 is
+  vendor documentation and course marketing. More usefully, the engine admitted the gap in its
+  own words both times: on 1, ***"I didn't find a clear answer on whether you need AI tool
+  accounts beforehand, so check with your organizer"***; on 3, ***"I couldn't find the specific
+  event you're attending, so check its joining email or event page for prerequisites."*** It
+  also converts: somebody asking whether they can turn up cold is deciding whether a one-day
+  build day will work for them, and Cohort 3 is eleven days out.
+- **The answer was already published, and already machine-readable, on the wrong pages.** All
+  three programme pages answer it - *"What do I need to bring?"* on the Agentic and Second Brain
+  pages, *"What should I bring?"* on the Coding page - and each is in that page's `FAQPage` node.
+  The homepage, which backlog 40 measured as the only page an engine reliably holds, never
+  carried it. That is what shipped this cycle: one homepage FAQ entry, no new fact.
+- **Probe 2 was winnable and was declined, on accuracy rather than on converting.** The field is
+  providers' own billing pages, and the engine's answer turned on VAT treatment, purchase orders
+  and 30-day terms. Our invoice route is published (*"email hello@oxfordagentic.com"*, on the
+  homepage and all three programme pages) and **VAT treatment is explicitly not confirmed** -
+  Drummond's standing decision of 13 Sept says never to state it. An entry that competes in that
+  field has to say the thing we cannot say, so the honest move is to leave it.
+- **Probe 4 is not winnable and is not ours to win.** McKinsey holds it twice. Declining it is
+  not new; it is recorded so the glossary and `what-is-an-agentic-bootcamp` are not re-pitched
+  at a definitional query owned by a consultancy.
+- **No probe retrieved an event page.** Consistent with every reading since 24 Aug: the
+  constraint is retrieval and external links (backlog 2b), not markup.
+
 ## 2026-11-07 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE BRANDED ONE IS THE WORST READING RECORDED HERE: HANDED OUR EVENT, OUR DATE AND OUR VENUE, THE ENGINE SAID THEY MIGHT BE WRONG
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
