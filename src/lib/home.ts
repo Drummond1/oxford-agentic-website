@@ -1,6 +1,43 @@
 import config from '../../site.config';
 
 /**
+ * The date the homepage's own copy last changed, and the `lastmod` the sitemap
+ * publishes for `/`.
+ *
+ * Read by `homepageLastmod()` in `astro.config.mjs`. It lives here, beside the
+ * copy it timestamps, rather than in the config - a date recorded in the file
+ * you are already editing is one you can see while you edit it.
+ *
+ * It covers the homepage's own three sources: this file, `src/pages/index.astro`
+ * and `src/components/HomeSections.astro`. Those three have no `updatedDate`
+ * because they are code, not content, and CI clones at depth 1 so git cannot
+ * supply a per-file date either. Recorded by hand, exactly as `updatedDate` is
+ * on the 40 content files.
+ *
+ * **Bump it in the same commit whenever you change the copy in one of those
+ * three.** The copy is what it dates, so this constant is not itself copy: moving
+ * it, or rewriting this comment, is not a reason to move the date. If you forget
+ * a real copy change, the homepage's lastmod understates, which is the safe
+ * direction: a crawler is told less recently than the truth, never more.
+ *
+ * Deliberately NOT covering the components the homepage shares with every other
+ * page (Hero, EventCard, Faq, the layout): a change to those moves 63 pages, and
+ * claiming it moved only this one would be the same lie in the other direction.
+ *
+ * Moved here from `astro.config.mjs` on 8 November 2026, and the move is the
+ * whole point of it. `scripts/indexnow-ping.mjs` maps each of the three sources
+ * above to `/` alone, but while the date sat in the config, the contract above
+ * dragged `astro.config.mjs` into every homepage-copy commit - and that file is
+ * whole-site by default, because it also holds the sitemap filter and the
+ * lastmod derivations. So the two files cancelled out and all 55 sitemap URLs
+ * were submitted for a change that moved one page. Measured that day: 55 URLs
+ * for a commit whose blast radius was 5 of 198 files in `dist`. Keep this
+ * constant out of the config, and a homepage-copy commit hints at `/` and
+ * nothing else.
+ */
+export const homepageCopyLastmod = '2026-11-08T02:04:03Z';
+
+/**
  * The homepage FAQ, shared by every homepage variant.
  *
  * It lives here rather than in a page because two things need it at once: the

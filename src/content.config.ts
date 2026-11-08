@@ -312,8 +312,8 @@ const team = defineCollection({
        *
        * Required rather than optional, like the other three, so a new profile
        * cannot ship silently absent from that signal. git cannot supply the
-       * date instead: CI clones at depth 1, as `HOMEPAGE_COPY_LASTMOD` in
-       * `astro.config.mjs` already records. The seven initial values are each
+       * date instead: CI clones at depth 1, as `homepageCopyLastmod` in
+       * `src/lib/home.ts` already records. The seven initial values are each
        * the commit that last changed that file's published copy, read from full
        * history and written down here.
        */

@@ -5,6 +5,62 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-08 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE BRANDED ONE FAILED FOR THE SECOND DAY RUNNING, ON A DIFFERENT EVENT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before: three buyer questions
+drawn from published guides, and one branded retrieval test of the Coding Bootcamp.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | why doesn't the code an AI agent wrote actually work in production what is missing | **No** | Vendor marketing (`codeconductor.ai` x2, `bito.ai`, `managed-code.com`, `pulse.bot`, `spd.tech`), dev.to (x2), `mentorship.fsmk.org`, and one Luma event page |
+| 2 | should we run AI training in house or send people to an external cohort | **No** | Training vendors throughout: `aicerts.ai` (x4), `profiletree.com` (x2), `ivee.jobs`, `academy.nebius.com`, `intuitionlabs.ai`, `guvi.in` |
+| 3 | how to tell if an AI workflow is saving time or just moving effort around | **No** | `getdx.com`, `larridin.com` (x2), `gaas.it.com`, `unite.ai`, dev.to, `articles.firstaimovers.com` |
+| 4 | Oxford Agentic Coding Bootcamp 26 November 2026 Worcester College | **No** | Nothing of ours at all. Saïd/Oxford executive programmes, `luma.com` (other people's Oxford AI events), `nobleprog.co.uk` (x2), `learnersink.com`, OxML 2026, `digitalresearchservices.ed.ac.uk`, `rse.site.ox.ac.uk`, Worcester College's own visiting-student certificate pages, Eventbrite |
+
+**Reading.**
+
+- **Probe 4 is the finding, and it is the second branded failure in two days on two different
+  events.** Our own event name, our own date, our own venue returned no page of ours, and the
+  engine closed ***"I couldn't find any listing for an 'Oxford Agentic Coding Bootcamp' on
+  26 November 2026 at Worcester College"***, then suggested the event ***"may be unannounced or
+  under a different name."*** On 7 November the same shape of probe for Cohort 3
+  (*"Oxford Agentic Bootcamp 19 November 2026 Worcester College"*) returned the same verdict and
+  the one third-party record it did find, `allai.events`, was still dated 21 July 2026. Every
+  fact in probe 4 is published on our own pages in prose and in `Event` schema, and
+  `/events/oxford-agentic-coding-bootcamp-cohort-1/` has carried it since 25 September. Two
+  independent branded misses rule out a copy fault and leave retrieval: the 24 August Search
+  Console baseline's diagnosis, crawl budget on a domain with zero external links. **Eighteen
+  days before that cohort.**
+- **Probe 2 is the most converting of the three buyer questions, and its field is the weakest
+  this log has recorded.** Ten results, and every one is a training vendor writing about whether
+  you should buy training: `aicerts.ai` four times, `profiletree.com` twice, plus `ivee.jobs`,
+  Nebius, Intuitionlabs and `guvi.in`. No institutional publisher, no neutral party, and the
+  engine said so itself - ***"most of the sources are from training vendors with a stake in the
+  outcome"***. A manager choosing between an in-house day and sending two or three people to an
+  open cohort is choosing the shape of the purchase, which is as commercial as this field gets.
+  **We have published the neutral comparison since 11 October**, in
+  `/guides/in-house-ai-day-or-send-people-to-a-cohort/`, and its own standfirst makes exactly
+  the engine's point: *"almost every provider sells the same shape... which means the honest
+  comparison with the alternative rarely gets written."* **Declined on the route, not on the
+  merits**, and recorded as backlog 75: that guide's four `h2`s are statements and its bold
+  leads are statements too, so unlike the 7 November pair there is no question already on the
+  page to promote. Making it quotable means rewriting headings into questions, which the
+  6 November cycle named as prose bent to fit a schema node.
+- **Probe 1 is winnable and was declined on converting.** The field is vendor marketing and
+  developer blogs with no institutional publisher, but the person asking why agent-written code
+  fails in production is an engineer debugging today, not someone booking a day in Oxford, and
+  the Coding Bootcamp's published audience is people shipping something they own without waiting
+  on a developer. The site's own guide on this (`why-the-code-an-agent-wrote-is-not-live`) is
+  written for that buyer rather than for this searcher.
+- **Probe 3 is winnable and marginal on converting.** The field is `getdx.com`, `larridin.com`,
+  `gaas.it.com` and dev.to, with no institutional publisher, and the engine's own summary lands
+  where our 13 October guide already does: measure the whole workflow, count review and rework,
+  and check where the freed time went. But the searcher is measuring a workflow they already
+  have, which sits after the purchase rather than inside it. `is-your-ai-workflow-saving-time-or-just-effort`
+  already carries the answer; no change warranted.
+
 ## 2026-11-08 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND TWO OF THE FOUR LAND ON THE SAME GAP, WHICH IS WHY THIS CYCLE SHIPPED TO THE HOMEPAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

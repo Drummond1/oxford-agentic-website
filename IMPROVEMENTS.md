@@ -1497,9 +1497,17 @@ Status: `todo` · `blocked` (why) · `doing`
     settle most cases"* are already questions in everything but markup - promoting those three to
     `h3` would clear the guard on its own and is the smaller of the two routes.
 
-74. `todo` (loop-actionable, found 8 Nov 2026 in the 02:00 cycle; **this is Drummond's own
-    candidate 1 arriving by a second door, and his fix is defeated by a contract in another
-    file**) - **every homepage-copy change submits all 55 sitemap URLs to IndexNow, no matter
+74. `done` 8 Nov 2026 (08:00 cycle), by moving the constant rather than by touching the script -
+    **`HOMEPAGE_COPY_LASTMOD` now lives in `src/lib/home.ts` as `homepageCopyLastmod`, and
+    `astro.config.mjs` imports it.** The contract that it be bumped alongside a homepage-copy edit
+    is unchanged; what changed is that honouring it no longer drags a whole-site file into the
+    commit. Measured both directions on the real script: a homepage-copy commit now submits
+    **1** URL where it submitted **55**, and a genuine `astro.config.mjs` change still submits
+    **55**. `scripts/indexnow-ping.mjs` was not edited at all - `src/lib/home.ts` was already in
+    `SINGLE_PAGE_SOURCES`, so the fix was to put the date where the map already pointed. `dist` is
+    **byte-identical**, 198 files both sides, and `/`'s sitemap `lastmod` still reads
+    `2026-11-08T02:04:03.000Z` - the date was deliberately not bumped, because the homepage's copy
+    did not change and this constant is not itself copy. The original finding follows. - **every homepage-copy change submits all 55 sitemap URLs to IndexNow, no matter
     that `src/lib/home.ts` maps to `/` alone.** Candidate 1 was shipped: `SINGLE_PAGE_SOURCES` in
     `scripts/indexnow-ping.mjs` maps `src/lib/home.ts` and `src/components/HomeSections.astro` to
     `https://oxfordagentic.com/`. But `HOMEPAGE_COPY_LASTMOD` lives in `astro.config.mjs`, and its
@@ -1531,9 +1539,128 @@ Status: `todo` · `blocked` (why) · `doing`
       and spending a whole-site hint on a commit that moved one page is spending it on the wrong
       page. One cycle, and smaller than this entry.
 
+
+75. `todo` (loop-actionable, found 8 Nov 2026 in the 08:00 cycle; **declined this cycle on its
+    route, not on its merits, and the honest route the last two cycles used does not exist here**)
+    - **`in-house-ai-day-or-send-people-to-a-cohort` answers the single most commercial question
+    in the open field and cannot be quoted, because all four of its `h2`s are statements.** They
+    are *"What an in-house day is good at"*, *"What a cohort is good at"*, *"The question that
+    settles it"* and the template's *"Where this gets practical"*. `faqsFromQuestionHeadings`
+    reads `h2` and `h3` only, so the page publishes no `FAQPage` node, and the guide's own title -
+    *"Should you run an in-house AI day, or send people to a cohort?"* - is a question that lives
+    only in the `<title>` and the `h1`.
+    **The evidence, from 8 Nov.** *"Should we run AI training in house or send people to an
+    external cohort"* returned ten results and **every one was a training vendor writing about
+    whether you should buy training**: `aicerts.ai` x4, `profiletree.com` x2, `ivee.jobs`,
+    `academy.nebius.com`, `intuitionlabs.ai`, `guvi.in`. The engine flagged the field itself -
+    ***"most of the sources are from training vendors with a stake in the outcome"***. No
+    institutional publisher, no neutral party. A manager choosing between an in-house day and
+    sending two or three people to an open cohort is choosing **the shape of the purchase**, which
+    is more commercial than backlog 73's one-seat-or-two and far more so than backlog 71's.
+    **Why it was not taken, and this is the part that matters for whoever picks it up.** Backlog
+    71 and 73 both shipped because each page already carried its questions as **bold paragraph
+    leads**, so promoting them to `h3` published a node without writing a sentence. **This page
+    has no such leads**: its bold leads are statements of benefit (*"Everyone ends up with the
+    same way of working."*, *"Your own systems, in the room."*) inside bullet lists, not questions.
+    So the only route here is rewriting statement `h2`s into questions - *"What is an in-house AI
+    day good at?"* and so on - which is prose bent to fit a schema node, named as the tail wagging
+    the dog by the 6 November cycle and declined again on 7 November for exactly this reason.
+    **If it is taken**, it is a copy call on a published guide rather than a markup change, it
+    needs all four headings considered together (the `faqs.length >= 2` guard needs two), and the
+    standfirst's own framing - *"the honest comparison with the alternative rarely gets written"* -
+    is the thing not to lose. Consider also whether the better answer is off-page: the field's
+    weakness is that no neutral party is in it, and we are not reachable, not unquotable.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-08 (08:00 cycle) - Drummond's candidate 1 was shipped on 23 October and has never
+  once worked, because a doc comment in another file cancelled it on every commit it was meant to
+  cover. Fixed by moving a constant 2 directories, not by touching the script it was about. A
+  homepage-copy commit now hints at 1 URL where it hinted at 55, and `dist` is byte-identical:
+  0 of 198 files differ.** Backlog 74, found by the 02:00 cycle today and explicitly left unbundled.
+  **What was actually wrong.** `SINGLE_PAGE_SOURCES` in `scripts/indexnow-ping.mjs` has mapped
+  `src/lib/home.ts` and `src/components/HomeSections.astro` to `/` since 23 October - the fix
+  Drummond asked for. But `HOMEPAGE_COPY_LASTMOD` sat in `astro.config.mjs`, and its own comment
+  said ***"Bump it in the same commit whenever you change one of those three"***. So every
+  homepage-copy commit necessarily also carried `astro.config.mjs`, which falls to the
+  `wholeSite = true` branch - correctly, because that file also holds the sitemap filter,
+  `homepageLastmod()` and `listingLastmods()`. The two files cancelled each other out and the map
+  never once got the chance to fire.
+  **Measured before, on the real script and the real file names**, not on a test edit:
+  `--dry-run src/lib/home.ts` → **1** URL. `--dry-run astro.config.mjs` → **55**.
+  `--dry-run src/lib/home.ts astro.config.mjs`, which is what every homepage-copy commit looks
+  like, → **55**.
+  **The fix, and why it is not the one the backlog item sketched.** Item 74 warned that mapping
+  `astro.config.mjs` to `/` would be wrong, because that file really can be site-wide, and
+  under-submitting is the worse direction. That warning stands and was not tested around: the
+  script was **not edited at all**. Instead the constant moved to `src/lib/home.ts` and is
+  exported as `homepageCopyLastmod`; `astro.config.mjs` imports it, exactly as it already imports
+  `./site.config.ts`. `src/lib/home.ts` was already in the map, so the date now lives at a path
+  the map already pointed at, and the config file is free to mean what it says again.
+  **Measured after:** `--dry-run src/lib/home.ts` → **1**. All three homepage sources together
+  (`src/lib/home.ts src/pages/index.astro src/components/HomeSections.astro`) → **1**.
+  `--dry-run astro.config.mjs` → still **55**, so the under-submission trap item 74 named was
+  not opened.
+  **Nothing on the site changed, and that is asserted rather than argued.** `dist` after is
+  **byte-identical** to a build of `0c6d713`: `diff -rq` reports no difference across **198 files
+  on both sides**. `/`'s sitemap `lastmod` still reads `2026-11-08T02:04:03.000Z`. The date was
+  deliberately **not** bumped: the homepage's copy did not change, and the constant is not itself
+  copy - its comment now says so in as many words, so the next cycle does not have to re-reason it.
+  **A stale cross-reference went with it, because the move created it.** `src/content.config.ts`
+  cited `HOMEPAGE_COPY_LASTMOD` in `astro.config.mjs` as its precedent for recording a date by
+  hand; that pointer now names `homepageCopyLastmod` in `src/lib/home.ts`. Comment-only, and it
+  cannot move a byte of `dist` - which the byte-identical result above also proves.
+  **The one-off cost, stated plainly.** This commit itself submits **55** URLs, because it really
+  does change `astro.config.mjs` and `src/content.config.ts`. That is the script working as
+  written on a commit that genuinely edits whole-site files, and it is the last time a
+  homepage-copy change will pay it.
+  **Checks.** `npm ci` and `npm run build` green before and after: 64 pages checked, 3,156
+  internal links resolve, schema valid, **19 `FAQPage` nodes and 7 `Event` nodes, both unchanged**,
+  all titles and descriptions unique, no SEO warnings. `check:flags` green on the all-on and
+  all-off builds. The 11 outbound warnings are the sandbox egress policy, identical to the
+  baseline build. **`npm run check` was run and produced nothing, exactly as backlog 70 predicts**:
+  it stops on the interactive `npm i @astrojs/check typescript - Continue?` prompt and exits 0
+  having checked nothing. It is not claimed as a check. The build is the real gate on this change,
+  and it is the one that matters here: the config now imports a `.ts` module at config-load time,
+  and a failure would stop the build rather than degrade quietly.
+  **Headless Chromium over `/`, `/bootcamps/` and `/events/` at 375, 768 and 1280px**, scrolling
+  each page to settle its reveal blocks: 9 configurations, **120 assertions, 0 failing** - HTTP
+  200, exactly one `h1`, no horizontal page scroll at any width, every `img` with `alt`, every
+  link with an accessible name, every JSON-LD block parsing in the browser, canonical present, no
+  `noindex`, no page errors and no failed local requests. On `/`: **13 FAQ questions painted**,
+  *"What do I need to bring, and do I need to prepare?"* - the entry added at 02:00 - painted
+  exactly once, and exactly one FAQ open on load, the first. Screenshots at 375 and 1280px read
+  at 2x. **Two first-pass failures were measurement faults, not site faults, and are worth
+  recording.** Console errors flagged on all three pages including ones this cycle never touched:
+  they are `ERR_TUNNEL_CONNECTION_FAILED` on the fonts, analytics and Luma hosts, which the
+  sandbox egress proxy refuses - filter blocked-host failures out of a console-error assertion.
+  And "every FAQ closed on load" failed because the first FAQ is opened by the page's own script;
+  the `open` attribute is in neither build's HTML, so the correct assertion is one open and it is
+  the first.
+  **Four GEO probes, zero citations, and the branded query failed for a second day running on a
+  second event.** *"Oxford Agentic Coding Bootcamp 26 November 2026 Worcester College"* returned
+  **no page of ours at all** and closed ***"I couldn't find any listing for an 'Oxford Agentic
+  Coding Bootcamp' on 26 November 2026 at Worcester College"***, suggesting the event ***"may be
+  unannounced or under a different name"***. Yesterday the same shape of probe for Cohort 3 found
+  one third-party record, `allai.events`, still dated 21 July. The two bracket the problem: where
+  a listing exists it is wrong, where none exists we are invisible - and the Coding cohort is
+  **eighteen days out**. Probe 2, *"should we run AI training in house or send people to an
+  external cohort"*, returned **ten results, every one a training vendor**, with the engine
+  flagging its own field; we have published the neutral comparison since 11 October and it cannot
+  be quoted, which is new backlog **75** - declined this cycle because, unlike backlog 71 and 73,
+  that guide has no question already on the page to promote. Probes 1 and 3 were winnable and
+  declined on converting, with reasons in the log.
+  **No new guide, 0 of 3 for the week of 2-8 Nov** (newest `publishDate` in the collection is
+  20 October). **Search Console unavailable, twenty-fifth consecutive cycle; nothing estimated.**
+  The export workflow last ran 7 Nov 11:52 and succeeded writing nothing, its documented behaviour
+  while `GSC_SERVICE_ACCOUNT_KEY` is unset, and `seo-data/` holds no reading newer than 24 August.
+  `oxfordagentic.com` is refused on CONNECT by the sandbox, so `build.txt` could not be read and
+  the Actions API stood in: deploy run **376** and CI run **350** both success on `0c6d713`, which
+  is both `origin/main` and the HEAD this cycle started from. **No event fact was read, invented
+  or changed**, and no Luma page was reachable.
+  Also records this cycle's four GEO probes and two off-page findings for review.
 
 - **2026-11-08 (02:00 cycle) - two of four GEO probes found the field unable to answer what a
   buyer should bring to a one-day build day, and the engine said so in its own words twice. The

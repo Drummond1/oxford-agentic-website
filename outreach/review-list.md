@@ -11,6 +11,46 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The branded query now fails for the Coding Bootcamp too, which makes it two events in two
+  days and removes the last reading in which this is a one-off.** Found 8 Nov 2026 (08:00 cycle).
+  No new target, no contact; recorded as evidence for the standing off-page ask above.
+  - *"Oxford Agentic Coding Bootcamp 26 November 2026 Worcester College"* - our event name, our
+    date, our venue - returned **no page of ours at all**, and this time not even a stale
+    third-party listing. The engine closed ***"I couldn't find any listing for an 'Oxford Agentic
+    Coding Bootcamp' on 26 November 2026 at Worcester College"*** and suggested the event
+    ***"may be unannounced or under a different name."***
+  - **Why that matters more than yesterday's.** The 7 November entry below recorded the same
+    failure for Cohort 3 and found exactly one third-party record of us, `allai.events`, still
+    dated 21 July. The Coding Bootcamp has no such record at all, so the two probes bracket the
+    problem: where a third-party listing exists it is wrong, and where none exists we are
+    invisible. Both events are published on our own pages in prose and in `Event` schema - the
+    Coding cohort since 25 September - so neither miss is a copy fault.
+  - **No new ask.** This adds evidence to the two already on this list (correct or retire the
+    `allai.events` listing; the standing listings and LinkedIn Company Page asks in
+    `off-page-listings.md`), and the `enspire.ox.ac.uk` target found on 7 November is still the
+    best-placed one. **Eighteen days to that cohort.**
+  - **Two names in that field were looked at and deliberately not added as targets.**
+    `rse.site.ox.ac.uk/training` is Oxford's Research Software Engineering training, which is
+    internal provision for researchers rather than a listing venue for a commercial bootcamp;
+    `digitalresearchservices.ed.ac.uk/training/agentic-coding` is Edinburgh running its own
+    agentic coding workshop, which is a comparable and not an opportunity. Neither page was
+    fetched - the names are recorded only as what the probe returned. **Nothing was contacted,
+    submitted, signed up for or paid for.**
+
+- **The in-house-versus-cohort field has no neutral party in it at all, and we have published the
+  neutral comparison since 11 October.** Found 8 Nov 2026 (08:00 cycle). No target, no contact;
+  recorded as evidence, and as the commercial case behind backlog 75.
+  - *"Should we run AI training in house or send people to an external cohort"* returned ten
+    results and **every one was a training vendor writing about whether you should buy training**:
+    `aicerts.ai` four times, `profiletree.com` twice, plus `ivee.jobs`, `academy.nebius.com`,
+    `intuitionlabs.ai` and `guvi.in`. The engine flagged its own field - ***"most of the sources
+    are from training vendors with a stake in the outcome"***.
+  - **Why it is on this list rather than only in the GEO log.** It is the clearest instance yet of
+    the pattern the standing ask rests on: a question whose answer we have published neutrally,
+    a field with no institutional publisher, and no route by which an engine reaches us. The
+    on-site half is backlog 75 and was declined this cycle on its route. The off-page half is the
+    same ask as everything above it.
+
 - **A new target of a kind this list has never carried: `odsc.ai` (ODSC), which runs a London AI
   conference and held a place in a field otherwise made of course microsites.** Found 8 Nov 2026
   (02:00 cycle). Nothing contacted.

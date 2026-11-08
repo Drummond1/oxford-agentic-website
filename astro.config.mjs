@@ -4,25 +4,16 @@ import path from 'node:path';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import siteConfig from './site.config.ts';
-
 /**
- * The homepage's own copy: `src/pages/index.astro`,
- * `src/components/HomeSections.astro` and `src/lib/home.ts`.
- *
- * Those three have no `updatedDate` because they are code, not content, and
- * CI clones at depth 1 so git cannot supply a per-file date either. Recorded
- * by hand, exactly as `updatedDate` is on the 40 content files.
- *
- * **Bump it in the same commit whenever you change one of those three.** If
- * you forget, the homepage's lastmod understates, which is the safe direction:
- * a crawler is told less recently than the truth, never more.
- *
- * Deliberately NOT covering the components the homepage shares with every
- * other page (Hero, EventCard, Faq, the layout): a change to those moves 63
- * pages, and claiming it moved only this one would be the same lie in the
- * other direction.
+ * The date the homepage's own copy last changed. It lives in `src/lib/home.ts`,
+ * beside that copy, and NOT in this file: the contract that it be bumped in the
+ * same commit as a homepage-copy edit would otherwise drag this file into every
+ * such commit, and `scripts/indexnow-ping.mjs` treats this file as whole-site -
+ * correctly, because it also holds the sitemap filter and the lastmod
+ * derivations below. Measured on 8 Nov 2026 before the move: 55 sitemap URLs
+ * submitted for a commit that moved one page. See the comment on the constant.
  */
-const HOMEPAGE_COPY_LASTMOD = '2026-11-08T02:04:03Z';
+import { homepageCopyLastmod } from './src/lib/home.ts';
 
 /** Frontmatter fields this file needs, read without pulling in a parser. */
 function readRecords(dir) {
@@ -120,7 +111,7 @@ const newest = (dates) => new Date(Math.max(...dates.map((d) => d.getTime())));
  */
 function homepageLastmod(events, programmes, now = new Date()) {
   return newest([
-    new Date(HOMEPAGE_COPY_LASTMOD),
+    new Date(homepageCopyLastmod),
     // "What we run" renders a card per programme, so every programme edit moves it.
     ...programmeCardDates(events, programmes, now),
   ]);
@@ -163,7 +154,7 @@ function homepageLastmod(events, programmes, now = new Date()) {
  * All four understate rather than overstate: the standfirsts and headings live
  * in templates, and a template edit moves 55 pages, so claiming it moved only
  * these would be the same lie in the other direction (same stance as
- * HOMEPAGE_COPY_LASTMOD above, and the reason `/about/`, `/privacy/` and
+ * `homepageCopyLastmod`, and the reason `/about/`, `/privacy/` and
  * `/testimonials/` are still bare).
  */
 function listingLastmods(guides, events, programmes, team, now = new Date()) {
