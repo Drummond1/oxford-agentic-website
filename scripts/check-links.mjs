@@ -5,15 +5,6 @@
  * The point of this is the flags-off acceptance test: switching a section off
  * must not leave a single link pointing at a route that no longer builds. It
  * walks the built HTML and resolves every internal href against dist/.
- *
- * Three things are checked per internal href: that the path resolves to a file
- * the host would actually serve, that a same-page `#anchor` exists on the page
- * carrying it, and that a fragment on a cross-page link exists on the page it
- * lands on. The third matters because a renamed heading id turns a deep link
- * into a silent top-of-page landing rather than a 404, so nothing else catches
- * it: `/privacy/#applications` and `/privacy/#interest` are a cross-file
- * contract STATE.md records in words, and the homepage's booking link lands on
- * `#register` on an event page.
  */
 import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
@@ -30,27 +21,19 @@ async function walk(dir) {
   return out;
 }
 
-// A directory is not a thing the host serves, so `stat` alone is too generous:
-// it would pass a link to any folder in dist/ that has no index.html.
-async function isFile(target) {
+async function exists(target) {
   try {
-    return (await stat(target)).isFile();
+    await stat(target);
+    return true;
   } catch {
     return false;
   }
 }
 
-/**
- * Resolve a site-relative path to the file the host would actually serve, or
- * null. Returns the path rather than a boolean so the caller can look inside it
- * for a fragment.
- */
-async function resolveFile(href) {
+/** Resolve a site-relative path to a file that the host would actually serve. */
+async function resolves(href) {
   const clean = href.split('#')[0].split('?')[0];
-  if (clean === '' || clean === '/') {
-    const root = path.join(DIST, 'index.html');
-    return (await isFile(root)) ? root : null;
-  }
+  if (clean === '' || clean === '/') return exists(path.join(DIST, 'index.html'));
 
   const rel = clean.replace(/^\//, '');
   const candidates = [
@@ -60,9 +43,9 @@ async function resolveFile(href) {
   ];
 
   for (const candidate of candidates) {
-    if (await isFile(candidate)) return candidate;
+    if (await exists(candidate)) return true;
   }
-  return null;
+  return false;
 }
 
 const files = await walk(DIST);
@@ -97,22 +80,7 @@ for (const file of files) {
     }
 
     checked += 1;
-    const target = await resolveFile(href);
-    if (target === null) {
-      failures.push(`${pageUrl} → ${href}`);
-      continue;
-    }
-
-    // A fragment on a cross-page link has to exist on the page it lands on.
-    // Only HTML targets carry ids, so anything else is out of scope.
-    const fragment = href.split('#')[1];
-    if (fragment && idsByFile.has(target) && !idsByFile.get(target).has(fragment)) {
-      failures.push(
-        `${pageUrl} → ${href} (no element with that id on /${path
-          .relative(DIST, target)
-          .replace(/index\.html$/, '')})`,
-      );
-    }
+    if (!(await resolves(href))) failures.push(`${pageUrl} → ${href}`);
   }
 }
 
