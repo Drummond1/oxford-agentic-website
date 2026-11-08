@@ -1571,9 +1571,99 @@ Status: `todo` · `blocked` (why) · `doing`
     is the thing not to lose. Consider also whether the better answer is off-page: the field's
     weakness is that no neutral party is in it, and we are not reachable, not unquotable.
 
+76. `todo` (loop-actionable, found 8 Nov 2026 in the 14:00 cycle by reading a screenshot rather
+    than the source; **declined on bundling, not on merit - it is about as small as a fix gets**)
+    - **the privacy page renders `the<a>register interest page</a>` with no space between the
+      word and the link.** `src/pages/privacy.astro:219` ends the line on *"using the"* and opens
+    the `<a>` on the next line, and Astro drops that newline, so the built HTML reads
+    `using the<a href="/second-brain-interest/">`. The paragraph directly above it is correct
+    because its source keeps `the <a href="/apply/">` on **one line** - that is the whole
+    difference, and it is the fix: put the word and the opening tag on the same line.
+    **Swept, so the scope is known exactly:** a search of all 64 built pages for a word character
+    immediately followed by `<a ` returns **exactly one** match, this one. It is on an indexed
+    page, in the `#interest` paragraph that `/second-brain-interest/` deep-links into, so it is
+    visible to a reader who followed a privacy link from a form.
+    **Why it was not bundled into this cycle's commit.** The cycle's change is a check script and
+    its whole claim is that `dist` is byte-identical; fixing a space moves `/privacy/`, submits a
+    URL to IndexNow and makes the commit two things. Rule 8 says keep the change set small, and
+    today's 08:00 cycle set the precedent by leaving backlog 74 unbundled for the same reason.
+    **Take it as the next cycle's cheap win**, with the sweep above re-run after to confirm the
+    count goes to zero.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+- **2026-11-08 (14:00 cycle) - the internal link checker has never checked a cross-page
+  fragment. It strips the `#` and asks only whether the page exists, so all five deep links on
+  the site - including the homepage's own booking link into `#register` on the Cohort 3 page -
+  were unguarded, and a renamed id would have landed visitors at the top of the page instead of
+  404ing where something would notice. Proved by breaking three ids and watching the old checker
+  call the result "all resolve". `dist` byte-identical, 198 files both sides; IndexNow submits
+  nothing.**
+  **What was wrong, in the script's own terms.** `scripts/check-links.mjs` already did half the
+  job: a **same-page** `href="#foo"` was checked against the ids on the page carrying it, and it
+  built an `idsByFile` map of every page to do it. But the cross-page branch called
+  `resolves(href)`, whose first line is `href.split('#')[0]` - the fragment was discarded before
+  anything looked at it, and `resolves` returned a boolean, so there was nothing left to look
+  *inside*. The map was already in memory and was never consulted for the links that needed it.
+  **A second hole in the same function, found while fixing the first.** `exists()` was
+  `await stat(target)` and `return true`, and `stat` succeeds on a **directory**. The candidate
+  list tries `dist/<path>` before `dist/<path>/index.html`, so any link to a folder with no
+  `index.html` passed - `dist/og/` is exactly such a folder. Measured before fixing: **0 of 75
+  distinct internal hrefs** rely on that branch today, so nothing is currently broken by it, but
+  it is a hole in the one guard standing between a broken link and production.
+  **What the five unguarded links are**, which is why this is worth a cycle rather than a note.
+  `/` and `/home-photos/` deep-link to `/events/oxford-agentic-bootcamp-cohort-3/#register` -
+  **the booking path, eleven days before that cohort**. `/apply/` and `/ceo-roundtable/` link to
+  `/privacy/#applications`, and `/second-brain-interest/` to `/privacy/#interest`; STATE.md
+  records that pairing in words (*"The privacy page's `#applications` paragraph describes it;
+  change both together"*) and nothing enforced it.
+  **Proved rather than asserted.** On a copy of `dist`, three defects were introduced - `#register`
+  renamed to `#booking` on the Cohort 3 page, `#applications` renamed on `/privacy/`, and a link
+  added to `/og-empty/`, a directory with no `index.html`. **The old checker reported
+  `✓ links: 3157 internal links across 64 pages all resolve` and exited 0** on that tree. The new
+  one exits 1 and names all five broken links with the page each one starts from and the page it
+  lands on. On the real tree it reports **3156 across 64 pages**, identical to the baseline build,
+  so the count stays comparable with every previous cycle.
+  **Blast radius.** `dist` rebuilt from clean is **byte-identical**: `diff -rq` reports no
+  difference across **198 files on both sides**. `indexnow-ping --dry-run scripts/check-links.mjs`
+  prints *"no page URLs affected by this push; nothing to submit"* - correct, and it means this
+  commit spends **zero** crawl budget, which matters on the one domain where crawl budget is the
+  measured constraint.
+  **Checks.** `npm ci` and `npm run build` green: 62 pages built, 64 checked, 3,156 internal links
+  resolve, schema valid, **19 `FAQPage` and 7 `Event` nodes, both unchanged**, all titles and
+  descriptions unique, no SEO warnings. `npm run check:flags` green. `npm run check` **not run and
+  not claimed** - backlog 70 records why it cannot run in a clean checkout. The 11 outbound
+  warnings are the sandbox egress policy, identical to the baseline build. Headless Chromium over
+  the three deep links the guard now protects, at 375 and 1280px: **48 assertions, 0 failing** -
+  HTTP 200, exactly one element with the id, the browser scrolling to it, the target inside the
+  viewport, no horizontal page scroll, no page errors and no failed local requests. Screenshots at
+  both widths read: `#register` lands on the REGISTER heading with the booking panel under it, and
+  `#applications` lands on its paragraph.
+  **A measurement fault worth recording, because it nearly became a finding.** The first sweep
+  reported **all five** cross-page fragments broken. They are not. The probe's own resolver used
+  `stat` without `isFile()`, matched the *directory* `dist/privacy` before `dist/privacy/index.html`,
+  and then found no ids on a directory - the same bug it had been written to look for, reproduced
+  in the instrument. Corrected, the real count is **0 of 5 broken**. The guard is therefore
+  preventive, exactly as backlog 66 was, and no live link is being fixed by this commit. A second
+  fault was caught the same way: six browser assertions failed on "target inside viewport" because
+  Playwright's `boundingBox()` is already viewport-relative and the assertion subtracted `scrollY`
+  on top of it. Both numbers above are post-correction.
+  **One finding recorded rather than fixed**, as new backlog **76**: `/privacy/` renders
+  `the<a>register interest page</a>` with no space, because the source breaks the line between the
+  word and the tag. A sweep of all 64 built pages finds **exactly one** such glued link. Not
+  bundled, because this commit's whole claim is a byte-identical `dist`.
+  **Production could not be read.** `oxfordagentic.com` is refused on CONNECT by the sandbox, so
+  the Actions API stood in: deploy run **379** and CI run **352** both success on `c78c261`, which
+  is `origin/main` and the HEAD this cycle started from, with the last deploy finishing 10:17 and
+  nothing in flight. **No event fact was read, invented or changed**, no Luma page was reachable,
+  and **Search Console is unavailable for the twenty-sixth consecutive cycle** - the export
+  workflow ran 12:06 today and succeeded writing nothing, its documented behaviour while
+  `GSC_SERVICE_ACCOUNT_KEY` is unset, and `seo-data/` still holds no reading newer than 24 August.
+  **No new guide, 0 of 3 for the week of 2-8 Nov.**
+  Also records this cycle's four GEO probes and one new off-page name for review.
 
 - **2026-11-08 (09:00 cycle) - the breadcrumb cut the page's own name on 39 of 54 pages, at
   every width, including 1280px where 950px of the crumb row sat empty beside the ellipsis. All

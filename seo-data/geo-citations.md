@@ -5,6 +5,58 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-08 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE THIRD BRANDED MISS IN THREE CYCLES, THIS TIME WITH THE ENGINE SAYING THE ENTITY FAILURE OUT LOUD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before: three buyer questions on
+axes this log has never tested - hallucination, team roll-out and whether one day is enough for a
+team - and one branded question about who runs the day.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I stop an AI agent making things up in a workflow my team relies on | **No** | Platform vendors on their own products: AWS/Amazon Bedrock (x2 plus an HKU SPACE repost), Oracle Fusion AI docs, `regal.ai` support, `stackai.com`; then `analyticsinsight.net`, dev.to and two Substacks |
+| 2 | how do I roll out an AI workflow to the rest of my team after I build it | **No** | Asana's own forum, `askelephant.ai`, `spacely.ai`, `viktor.com`, Maven course pages (x2), `leadcaller.com` (x2, same piece in two languages), `consultevo.com`, `buildops.com`, `coderhouse.com`, `clickup.com`, `metacto.com`, `aicamp.so`, a `pages.dev` microsite |
+| 3 | is a one-day AI workshop enough to actually change how a small team works | **No** | Workshop sellers throughout: `teamland.com` (x3), Maven (x2), `getclear.ca`, `lilachbullock.com`, `upskilled.edu.au`, `phosailabs.com`, `aismartventures.com` |
+| 4 | Oxford Agentic Bootcamp hands-on agentic AI day Oxford who runs it | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `allai.events`, `planomato.com`; then Saïd's online programme (x3), `createwith.com`, `nobleprog.co.uk`, `learnersink.com`, Eventbrite (x2), IBM, OutSystems, `coursereport.com` |
+
+**Reading.**
+
+- **Probe 4 is the finding, and it is the first time an engine has stated the entity failure in
+  its own words.** It had our Luma pages *and* a third-party page naming Oxford Agentic in front
+  of it, and still closed: ***"no organisation is clearly tied to this event"***, ***"the sources
+  don't name a formal organisation"***, ***"I can't confirm that Oxford Agentic also runs the
+  Oxford Agentic Bootcamp."*** It found the events and could not join them to the organisation,
+  because the page that joins them was not retrieved - ours, which carries `Organization`,
+  `EducationEvent` and an `organizer` edge between the two, verified in the built JSON-LD this
+  cycle. On 7 Nov the branded probe missed on Cohort 3, on 8 Nov at 08:00 it missed on the Coding
+  Bootcamp, and today it missed on the organisation itself. **Three misses, three different
+  subjects, one cause**, and that cause is the 24 August Search Console diagnosis: crawl budget on
+  a domain with zero external links. One new third-party name came out of it, `planomato.com`,
+  which no previous cycle has recorded; it is on the review list, unfetched and uncontacted.
+- **Probe 1 is NOT winnable, and that is the probe rule working rather than failing.** The field's
+  top half is AWS, Oracle and Bedrock documentation - platform vendors writing about their own
+  products, which rule (a) names explicitly - and its bottom half is developer blogs. Converting is
+  weak too: somebody debugging a fabricating agent today is not booking a day in Oxford.
+  `how-to-notice-when-an-ai-workflow-is-wrong` already serves our buyer on this axis. Declined.
+- **Probe 2 is winnable and was declined on converting.** No institutional publisher anywhere -
+  Asana's forum, Maven course pages, ClickUp, BuildOps and a row of consultancies - but the
+  searcher has *already built* the workflow and is now distributing it, which sits after the
+  purchase rather than inside it. `how-to-run-an-ai-pilot-that-survives` is written for exactly
+  this and already carries the answer. No change warranted.
+- **Probe 3 is the most converting question in today's set, the field is as weak as probe 2's,
+  and we are already as quotable on it as the site can be - which is why nothing shipped to
+  content this cycle.** Every source is a company selling workshops, and the engine flagged its
+  own field twice: ***"Most of the material here is written by companies that sell workshops"***
+  and ***"I didn't find an independent study that tracks small teams for months after a one-day
+  workshop."*** Its own conclusion - that a day starts the change only if a real task and a
+  follow-up exist - is what we publish. **Checked rather than assumed:** `/` carries *"Is one day
+  really enough?"* inside its 13-entry `FAQPage` node, and
+  `what-you-can-build-in-one-day-with-ai` has carried `## Is one day enough?` with three `h3`
+  children since 12 October and has published a 3-entry `FAQPage` node since the 7 November
+  cycle opted it in. The question is answered, on the retrieved surface, and machine-readable.
+  **There was nothing left to write**, so the cycle spent itself on a guard instead.
+
 ## 2026-11-08 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE BRANDED ONE FAILED FOR THE SECOND DAY RUNNING, ON A DIFFERENT EVENT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

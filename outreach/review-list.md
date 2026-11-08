@@ -11,6 +11,36 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A third-party listing nobody here had recorded: `planomato.com` carries the Second Brain
+  Bootcamp, and it is the only source in today's field that ties the entity to a bootcamp in
+  words.** Found 8 Nov 2026 (14:00 cycle). **Not contacted, not submitted, not signed up for.**
+  - The probe was *"Oxford Agentic Bootcamp hands-on agentic AI day Oxford who runs it"* - a
+    plain branded question about who runs the day. It returned `luma.com/oxfordagentic2`,
+    `luma.com/k7c2rm5s`, `allai.events`, and
+    `planomato.com/en/oxford/p/oxford-agentic-second-brain-bootcamp`. **No page of
+    oxfordagentic.com.**
+  - **The new name is `planomato.com`**, which is not anywhere else on this list or in
+    `off-page-listings.md`. The engine read it as saying the Second Brain day *"is run by Oxford
+    Agentic"* and *"run by a group of Oxford-based AI practitioners"*. **Nobody here put it
+    there and its contents have not been read** - `planomato.com` was not fetched, and the
+    sandbox could not have fetched it. Worth a look by Drummond for the same reason as
+    `allai.events`: an uncontrolled third-party record of us that an engine will quote, and
+    which may carry a wrong date, a wrong venue or a stale description.
+  - **The finding underneath it is sharper than the listing.** Having read our own Luma pages
+    *and* a third-party page naming Oxford Agentic, the engine still closed: ***"no organisation
+    is clearly tied to this event"***, ***"the sources don't name a formal organisation"*** and
+    ***"I can't confirm that Oxford Agentic also runs the Oxford Agentic Bootcamp."*** It could
+    see the events and could not join them to the organisation, because the one page that joins
+    them - ours, which carries `Organization`, `EducationEvent` and an `organizer` edge between
+    them - was not retrieved. **This is the third branded miss in three cycles** (Cohort 3 on
+    7 Nov, the Coding Bootcamp on 8 Nov, the organisation itself today), and the first in which
+    the engine states the entity failure in its own words.
+  - **No new ask beyond the ones already on this list**, and it is the same ask: one external
+    link, `Organization.sameAs` still empty, the LinkedIn Company Page or a real Luma calendar
+    URL in `brand.social`. Today adds a fourth target to look at - `planomato.com` - and a
+    reason to prefer the asks that put *the organisation* on a third-party page rather than
+    another event listing. **Eleven days to Cohort 3, eighteen to the Coding cohort.**
+
 - **The branded query now fails for the Coding Bootcamp too, which makes it two events in two
   days and removes the last reading in which this is a one-off.** Found 8 Nov 2026 (08:00 cycle).
   No new target, no contact; recorded as evidence for the standing off-page ask above.
