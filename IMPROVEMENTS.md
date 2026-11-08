@@ -1575,6 +1575,63 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+- **2026-11-08 (09:00 cycle) - the breadcrumb cut the page's own name on 39 of 54 pages, at
+  every width, including 1280px where 950px of the crumb row sat empty beside the ellipsis. All
+  five event pages cut their own cohort number. One shared component, two rules, HTML
+  byte-identical on all 64 pages.**
+  **What was wrong.** `.crumbs__item--current span` was capped at `min(100%, 34ch)`. The crumb row
+  sets `letter-spacing: 0.12em`, which the `ch` unit does not count, so a character occupies about
+  1.2ch: **34ch measured 265px against the 318px that 34 uppercase characters actually need**, and
+  the ellipsis fired at about 28 characters. Because the 34ch branch always won, the cut was
+  **identical at 375, 768 and 1280px**. Measured at 1280px: the crumb row is 1092px wide, the
+  other crumbs use 113 to 141px of it, and the page name was still held to 265px.
+  **The commercial edge of it.** The five event pages are the bookable ones and the cohort number
+  is the only thing that tells them apart, so each published "THE OXFORD AGENTIC BOOTCAMP - COH..."
+  on a desktop with room for four more words. `/events/oxford-agentic-coding-bootcamp-cohort-1/`
+  needed 421px and got 265px.
+  **This corrects the record, not just the CSS.** The 11 Oct 06:47 cycle fixed the other half of
+  this bug (`min-width: 0`, the 742px sideways scroll at 375px) and wrote that "desktop still shows
+  the title in full". It did not, and had not since the cap was written. The mobile half of that
+  fix is untouched and still does its job.
+  **The fix, and the two routes rejected on measurement rather than on argument.** The current
+  `<li>` becomes `display: flex; align-items: baseline`, so the "/" it draws in its `::before` and
+  the name are two items on one line and the name is the one that shrinks; the span gets
+  `min-width: 0` and a plain `54ch` cap. 54ch is 421px, the width of the longest
+  programme-or-cohort name on the site. Rejected: (1) `max-width: 100%` alone, which put a
+  77-character guide title on one line at **721px** and let the crumb shout the h1 back at the
+  reader - the cap exists for exactly that; (2) `min(100% - 1.2rem, 54ch)`, built and measured,
+  which still cut **4 of 8** long names, because a percentage inside a shrink-to-fit `<li>`
+  resolves against a width the span itself had just set. The second was in the tree for one build
+  before the measurement caught it.
+  **Measured after, on the built site at four widths.** Long programme and event crumbs
+  truncated: **0 of 8 at 768px and 1280px** (was 8 of 8). Guides: **27 of 33 still truncate**, so
+  long titles are still held back and the `<h1>` below still names the page. Mobile unchanged in
+  kind: 37 of 54 truncate at 375px, the line binds before the cap does, and **no page strands the
+  "/" on a line of its own** - the shape the flex rule was added to avoid. **Horizontal overflow:
+  0 pages at 320, 375, 768 and 1280px.**
+  **A measurement trap worth not repeating.** The first pass measured immediately after `load` and
+  reported 0 truncations where a screenshot plainly showed an ellipsis: the webfont had not
+  swapped, so the metrics were the fallback's. Every number above is taken after
+  `document.fonts.ready`.
+  **Blast radius, asserted rather than argued.** `dist` HTML is **byte-identical on all 64 pages**
+  once the stylesheet hash is normalised; the only other change is the shared CSS bundle, whose
+  delta is **exactly the two rules above and 7 bytes smaller**. No content entry was touched, so no
+  `updatedDate` and no sitemap `lastmod` moved, and the 7 `Event` and 19 `FAQPage` nodes are
+  unchanged. IndexNow `--dry-run` submits **55** URLs, which is correct for a component on 56 pages.
+  **Checks.** `npm ci` and `npm run build` green: 64 pages, 3,156 internal links resolve, schema
+  valid. `npm run check:flags` green. `npm run check` **not run** - backlog 70 records why it
+  cannot run in a clean checkout. Screenshots before and after at 375, 768 and 1280px on an event
+  page, a programme page, a guide and a team page, all read. Keyboard: the two crumb links are
+  still tab stops 4 and 5 on an event page at 375px and keep their gold focus underline; the
+  current crumb is not a link and never was. Full-site audit at 375, 768 and 1280px across 57
+  pages: no horizontal overflow, no image without `alt`, no form control without a label, no link
+  or button without an accessible name. The breadcrumb surfaced from the internal-clipping check,
+  not the overflow one, which is why 130 cycles of overflow sweeps never saw it.
+  **Production could not be read.** `oxfordagentic.com` is refused on CONNECT by the sandbox, so
+  the Actions API stood in: deploy and CI both success on `61da362`, which is `origin/main` and the
+  HEAD this cycle started from. **No event fact was read, invented or changed**, no Luma page was
+  reachable, and Search Console is still unavailable (`GSC_SERVICE_ACCOUNT_KEY` unset, task 4).
+
 - **2026-11-08 (08:00 cycle) - Drummond's candidate 1 was shipped on 23 October and has never
   once worked, because a doc comment in another file cancelled it on every commit it was meant to
   cover. Fixed by moving a constant 2 directories, not by touching the script it was about. A

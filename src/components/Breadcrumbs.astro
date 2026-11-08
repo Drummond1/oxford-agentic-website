@@ -85,15 +85,36 @@ const { trail } = Astro.props;
      item shrink, and the ellipsis then does its job. Found 11 Oct 2026. */
   .crumbs__item--current {
     min-width: 0;
+    /* Flex, so the "/" this item draws and the page name are two items on one
+       line and the name is the one that shrinks. It used to be an inline-block
+       capped at a percentage of this <li>, which cannot work: the <li> is itself
+       sized to its content, so the percentage resolved against a width the span
+       had just decided, and the name lost its last character or two to an
+       ellipsis on every page wide enough to show it in full. Subtracting the
+       separator from that percentage made it worse, not better. Added 8 Nov 2026. */
+    display: flex;
+    align-items: baseline;
   }
 
+  /* The 34ch cap this replaces was meant to let 34 characters through and never
+     did: the row sets letter-spacing: 0.12em, which `ch` does not count, so a
+     character occupies about 1.2ch and 34ch measured 265px against the 318px that
+     34 uppercase characters actually need. The ellipsis therefore fired at about
+     28 characters at every width - including 1280px, where the crumb row is
+     1092px wide and the other crumbs use 141px of it. All five event pages cut
+     their own cohort number ("The Oxford Agentic Bootcamp - Coh..."), which is
+     the one word that tells those pages apart. 54ch is 421px, the width of the
+     longest programme-or-cohort name on the site, so from 768px up those read in
+     full; guide titles run to 77 characters and still truncate, which is what the
+     cap is for - the <h1> directly below names the page in full. On a phone the
+     flex line binds before the cap does, so mobile still ellipses, as the 11 Oct
+     fix intended. Measured 8 Nov 2026. */
   .crumbs__item--current span {
-    display: inline-block;
-    max-width: min(100%, 34ch);
+    min-width: 0;
+    max-width: 54ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    vertical-align: bottom;
     color: var(--gold);
   }
 </style>
