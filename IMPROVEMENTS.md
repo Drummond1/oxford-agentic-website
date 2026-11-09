@@ -1727,9 +1727,38 @@ the right contract — the guard would not have caught a runtime rewrite, and no
 does one.
 
 **No visitor-facing change, by design.** No content entry touched, so no `updatedDate` and no
-sitemap `lastmod` moved. IndexNow maps a commit touching only `astro.config.mjs`,
-`scripts/check-links.mjs` and three documentation files to **nothing public**, so this commit
-spends zero crawl budget — which matters on a domain whose measured constraint is crawl budget.
+sitemap `lastmod` moved.
+
+**CORRECTION, written after the deploy — this commit did NOT spend zero crawl budget, and the
+first version of this entry and the commit message both say it did.** The claim was that IndexNow
+maps this change set to nothing public. It does not. `scripts/indexnow-ping.mjs` treats
+`astro.config.mjs` as **template-wide**, so the deploy's IndexNow job **submitted all 55 sitemap
+URLs** (run 383, *"indexnow: submitted 55 URL(s), status 200"*). Checked properly only afterwards:
+`indexnow-ping --dry-run` over this commit's own five files returns the full 55, and over the
+three documentation files alone returns *"no page URLs affected by this push; nothing to
+submit"*.
+**The behaviour is correct and must not be "fixed".** Backlog 74 settled exactly this: the
+whole-site default for `astro.config.mjs` is deliberate, because that file really can be
+site-wide, and mapping it to a single page would under-submit on a genuine config change. What
+was wrong was the sentence, not the script.
+**The cost, stated plainly rather than minimised:** 55 whole-site hints spent on a commit whose
+`dist` is byte-identical, on a domain whose measured constraint is crawl budget (Search Console,
+24 Aug: 23 indexed, 16 not). Backlog 74's own weighing calls over-submission the milder failure -
+all 55 URLs are ours and the quota is not binding - so nothing is broken and nothing needs
+reverting.
+**The process lesson, which is the part worth keeping.** Previous cycles ran
+`indexnow-ping --dry-run` over the change set *before* committing and reported the number. This
+cycle asserted the number instead of measuring it, which is the same class of error as the 8 Nov
+rollback (a claim read off an assumption rather than off a check). **Any cycle touching
+`astro.config.mjs`, `site.config.ts` or `src/lib/*` must run the dry-run before writing a
+sentence about crawl budget.** The commit message cannot be corrected without rewriting history,
+so this entry is the record.
+
+**Two pushes this cycle, not the one the rules allow.** The second is documentation only - this
+correction - and was verified by dry-run to submit **nothing** to IndexNow before it was pushed,
+so it costs no further crawl budget and cannot touch the site. Taken as a deliberate exception,
+on the 8 Nov precedent, because the alternative is leaving a false claim in the file that every
+future cycle reads first. Recorded here rather than glossed.
 
 **Also recorded this cycle.** Four GEO probes, zero citations, and **the fifth branded miss in
 five cycles** — this one on the *newest* event, the Coding Bootcamp on 26 November, seventeen days
