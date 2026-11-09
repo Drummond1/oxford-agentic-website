@@ -129,7 +129,27 @@ for (const file of changed) {
     // seo-data/ and is never imported by the build, so a change to it cannot
     // move a single byte of dist. Left out, it fell to the branch below and
     // would have submitted all 55 sitemap URLs on a commit that changed no page.
-    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping|fetch-search-console)\.mjs$/.test(file)) wholeSite = true;
+    //
+    // The last two are a different case from the rest, and the distinction is
+    // worth keeping straight. They DO publish real files — /llms.txt,
+    // /llms-full.txt and /rss.xml — but none of those three is in the sitemap,
+    // and IndexNow submits sitemap URLs, so the honest submission for a change
+    // to either is nothing at all. `SINGLE_PAGE_SOURCES` above maps a shared
+    // source to one URL; this is its neighbour, a source that maps to no URL.
+    // `src/lib/llms.ts` is imported by exactly two things, `src/pages/llms.txt.ts`
+    // and `src/pages/llms-full.txt.ts`, and `src/pages/rss.xml.ts` builds only
+    // /rss.xml — the feed's `<link rel="alternate">` in BaseHead.astro is a
+    // static href, so neither file can move a byte of any HTML page. Measured
+    // 9 Nov 2026: before this line each mapped to all 55 sitemap URLs.
+    //
+    // These are named individually on purpose. Do NOT widen this to
+    // `src/pages/*.ts`. Six other route files are the same case and are still
+    // missing from this list on purpose (llms.txt, llms-full.txt, robots.txt,
+    // favicon.svg, logo.svg, apple-touch-icon.png — see backlog 82), but a
+    // pattern loose enough to catch every `.ts` route is one `.astro` typo away
+    // from silently submitting nothing when a real page changes, which is much
+    // worse than the over-submission it would save.
+    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping|fetch-search-console)\.mjs$|^src\/lib\/llms\.ts$|^src\/pages\/rss\.xml\.ts$/.test(file)) wholeSite = true;
     continue;
   }
   const [, kind] = content;

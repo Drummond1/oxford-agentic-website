@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-09 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE MISDIRECTION FOUND ON A BRANDED QUERY LAST NIGHT NOW REPRODUCES ON AN UNBRANDED COMMERCIAL ONE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before. Probe 1 is deliberately
+a **commercial but unbranded** query - it does not contain our name - because the 8 Nov 20:00
+cycle found an engine recommending past cohorts to someone who typed our name, and the open
+question was whether that harm was confined to branded searches. It is not.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | hands-on agentic AI course Oxford one day | **No** | `luma.com/k7c2rm5s` (**Cohort 1, 21 July, past**), `luma.com/oxfordagentic2` (**Cohort 2, 16 September, past**), `allai.events` (**still 21 July 2026**), Said Business School's online programme (x2), `nobleprog.co.uk`, `learnersink.com`, `meetup.com/oxford-ai-training`, `createwith.com`, `pulse.bot`, plus non-UK providers (`umbctraining`, `zhaw.ch`, `auckland.ac.nz`, `lums.edu.pk`) |
+| 2 | how do I know if an AI agent is reliable enough to run unsupervised in my business | **No** | `galileo.ai` (x4, an eval vendor), `tecla.io`, `arthur.ai`, `dev.to`, `producthunt.com`, `softwareseni.com`, `microlaunch.net` |
+| 3 | one day AI workshop for business owners who already use ChatGPT what next | **No** | `emc-dnl.co.uk` (x8, the same chamber event repeated), `luma.com/1oo6t7mk` (an Adelaide workshop), `ws.tusculum.edu` (x2), `welcometochinatown.com`, `ai.gov.au`, `growthhub.eastmidlands-cca.gov.uk`, `ne-derbyshire.gov.uk`, `intrust-it.com`, a Squarespace article |
+| 4 | what is an agentic workflow for a small business example | **No** | `bookipi.com` (x4), `dev.to` (x3), `scriptxeno.github.io` (x2), two `pages.dev` microsites, `medium.com`, `vendasta.com`, `tapclicks.com`, `gptbots.ai`, `ciela.ai`, `mooglelabs.com`, `eventbrite.co.uk` |
+
+**Reading.**
+
+- **Probe 1 is the finding, and it escalates last night's.** The query carries no brand name. It
+  is what somebody types when they want our product and do not know we exist, and it names the
+  city and the format we own. It returned **no page of oxfordagentic.com**. What it returned
+  instead were **three stale records of us**: both past cohorts' Luma pages and the 21 July
+  `allai.events` listing. The engine then read the date off one of them and told the buyer
+  ***"That date has already passed as of today (9 November 2026), so check the Luma page for
+  upcoming sessions."*** **Cohort 3 is ten days away and bookable, and the Coding Bootcamp
+  seventeen; neither appeared anywhere in the field.** So an engine answering the most
+  on-the-nose commercial query we have is using our own out-of-date third-party records to tell
+  a buyer that we are over.
+  **Why this is worth logging separately from the 8 Nov entry.** That one was branded, and a
+  branded miss can be argued away as an index-freshness problem affecting people who will find
+  us anyway. This one shows the same stale inputs reaching a searcher who has never heard of us,
+  which is the entire acquisition case for the query. **No new ask** - it is the standing
+  off-page one, recorded on the review list with this as added evidence.
+- **Probe 2: not winnable and barely converting.** The field is eval-tooling vendors writing
+  about their own product - four of the ten results are one vendor - which is exactly the
+  exclusion in the topic-probe rule. The searcher also wants monitoring software, not a day in
+  Oxford. Declined on both halves of the rule.
+- **Probe 3 is winnable and converting and is NOT already answered, which makes it the one
+  genuine content gap this cycle found.** No institutional publisher is anywhere in the field:
+  it is one chamber-of-commerce event repeated eight times, a workshop in Adelaide, a US
+  university bootcamp and two council listings. And the question is our published audience
+  almost word for word - the Agentic Bootcamp assumes you already use AI day to day. Not acted
+  on, because this cycle has already shipped its one change and the standing rule allows one
+  such improvement per cycle. **Recorded as backlog 81** rather than written in haste.
+- **Probe 4: declined on both halves.** Definitional query, so the searcher is reading rather
+  than booking, and the field is content-farm and vendor chaff. The site also already answers it
+  in `the-workflow-pattern-that-does-real-work`.
+- **No event fact was read, verified or changed.** `luma.com` is not reachable from this sandbox,
+  so the engine's characterisations of those pages are the engine's, not ours, and nothing from
+  them has been published.
+
 ## 2026-11-09 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND FOR THE FIRST TIME IN SEVERAL CYCLES EVERY DECLINE WAS "ALREADY ANSWERED" RATHER THAN "NOT WINNABLE"
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

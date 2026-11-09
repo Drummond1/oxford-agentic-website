@@ -1658,9 +1658,13 @@ Status: `todo` · `blocked` (why) · `doing`
     Q&A block on either, written from Drummond's own observation, would publish a `FAQPage` node
     on this axis without a new guide. Either route needs the same one input from him.
 
-79. `todo` (loop-actionable, found 9 Nov 2026 in the 08:00 cycle by running the dry-run before
-    committing, which is what the 02:00 correction asked for; **small, and it is the same class of
-    fix the script already contains**) - **IndexNow maps `src/lib/llms.ts` and
+79. `done` 9 Nov 2026 (14:00 cycle), exactly as scoped and by the route this item named - the
+    two paths added to the exempt regex by name, with the comment saying why. Measured both
+    sides: 55 URLs each before, "nothing to submit" after, with every other mapping unchanged
+    (`home.ts` 1, `about.astro` 1, a guide 2, an event 55, `Header.astro` / `astro.config.mjs` /
+    `site.config.ts` / `schema.ts` 55). `dist` byte-identical, 203 files both sides. **The
+    warning not to generalise was honoured, and it leaves a known remainder: see backlog 82.**
+    The original finding follows. - **IndexNow maps `src/lib/llms.ts` and
     `src/pages/rss.xml.ts` to all 55 sitemap URLs, and the honest number for both is zero.**
     Measured this cycle: `indexnow-ping --dry-run src/lib/llms.ts src/pages/rss.xml.ts` returns
     **55**. Neither file can move a sitemap page. `src/lib/llms.ts` is imported by exactly two
@@ -1703,10 +1707,125 @@ Status: `todo` · `blocked` (why) · `doing`
     skip anything reached through a `subEvent` key. The reported Event count would then move from
     7 to 12, so say so in the same commit or the next cycle will read the jump as a regression.
 
+81. `todo` (loop-actionable, found 9 Nov 2026 in the 14:00 cycle; **the first probe in several
+    cycles that is winnable AND converting AND not already answered on the site**) - **"I already
+    use ChatGPT - what is the next step?" is an unowned field and it is our published audience
+    almost word for word.**
+    **The evidence, from 9 Nov.** *"one day AI workshop for business owners who already use
+    ChatGPT what next"* returned **no institutional publisher anywhere**: one chamber-of-commerce
+    event (`emc-dnl.co.uk`) repeated **eight times**, a Luma workshop in **Adelaide**, a US
+    university bootcamp (`ws.tusculum.edu`) twice, two council event listings, a Squarespace
+    article and an IT reseller's blog. No page of oxfordagentic.com was cited.
+    **Why it converts.** The searcher has already bought into AI, uses it daily, and is asking
+    what the next rung is - which is the Agentic Bootcamp's own framing, and the message house's
+    three-rung ladder is literally an answer to it. This is a buyer with the problem we sell the
+    solution to, not a definitional reader.
+    **Why it was not taken on the spot.** The cycle had already shipped its one change, and the
+    standing rule allows one Q&A-style improvement per cycle and two per day.
+    **How to take it, and the thing to check first.** Check whether the ladder is already
+    answered in a question shape before writing anything - `how-to-choose-your-first-agentic-task`
+    and the Agentic programme page both circle it, and if one of them already says it, this is a
+    2-3 entry Q&A block on that page rather than a new guide. Re-probe before acting: one
+    snapshot from a US-resident tool is not a field.
+
+82. `todo` (loop-actionable, **the remainder deliberately left by backlog 79**; found 9 Nov 2026
+    in the 14:00 cycle) - **six more route files are the same case as `rss.xml.ts` and still map
+    to all 55 sitemap URLs.** Measured after the 79 fix landed, every one of them rather than
+    inferred from two: `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`,
+    `src/pages/robots.txt.ts`, `src/pages/favicon.svg.ts`, `src/pages/logo.svg.ts` and
+    `src/pages/apple-touch-icon.png.ts` each return **55** on a dry-run, against `rss.xml.ts`'s
+    "nothing to submit" in the same run. Each builds exactly one published file, **none of those
+    files is in the sitemap**, and the three image routes are referenced from every page's head
+    by a static href, so none of the six can move a byte of any HTML page. The honest submission
+    for all six is nothing.
+    **Why they were left out rather than swept in.** Backlog 79 said *"Name the files"* and named
+    two; adding four more would have made this cycle's commit a wider change than the item it
+    closed, and rule 8 asks for a small change set. The cost of leaving them is over-submission,
+    which backlog 74 weighs as the milder failure, so this is tidying.
+    **If it is taken,** add the six paths to the same exempt regex by name - still not a
+    `src/pages/*.ts` pattern, for the reason recorded in the comment there - and re-run the
+    dry-run on a real `.astro` page in the same cycle to prove nothing stopped submitting.
+
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 9 Nov 2026 (14:00 cycle) - two source files were spending all 55 whole-site IndexNow hints on a change that cannot move a single sitemap page. The honest number is zero, and it is now zero. One regex, 203 files in `dist` byte-identical.
+
+**The defect, measured before and after rather than argued.** `scripts/indexnow-ping.mjs` maps
+the files in a push to the page URLs it should hint. Two sources fell through every branch to
+the whole-site default: `src/lib/llms.ts` and `src/pages/rss.xml.ts`. Dry-run before the change,
+**55 URLs each**, which is the entire sitemap. They fall through for two different reasons, both
+mechanical: `llms.ts` is not in `SINGLE_PAGE_SOURCES`, and `rss.xml.ts` does not match the page
+pattern `^src/pages/(...)([a-z0-9-]+)\.astro$` because it is a `.ts` file with a dot in its name.
+
+**Why zero is the honest number, checked rather than assumed.** These two files do publish real
+things - `/llms.txt`, `/llms-full.txt` and `/rss.xml` - but **none of those three is in the
+sitemap** (grepped the built sitemap: 0 matches, 55 `<loc>` entries, none of them these). IndexNow
+hints sitemap URLs, so there is nothing to hint. The blast radius was grepped, not inferred:
+`src/lib/llms.ts` is imported by **exactly two** things, `src/pages/llms.txt.ts` and
+`src/pages/llms-full.txt.ts`, and `src/pages/rss.xml.ts` builds only `/rss.xml` - the feed's
+`<link rel="alternate">` in `BaseHead.astro` is a **static href**, so neither file can move a byte
+of any HTML page.
+
+**The fix, and the generalisation that was deliberately not made.** The two paths are added **by
+name** to the exempt regex that already holds the docs, `outreach/`, `seo-data/`, `.github/` and
+the check scripts, with a comment recording the measurement and the reasoning. Backlog 79's own
+warning was honoured: **not** widened to `src/pages/*.ts`, because a pattern loose enough to
+catch every `.ts` route is one `.astro` typo away from silently submitting **nothing** when a
+real page changes - the far worse failure of the two. 17 lines, 16 of them the comment.
+
+**Measured on both sides, and the regression set is the point.** After: both files report
+*"no page URLs affected by this push; nothing to submit"*. **Every other mapping is unchanged** -
+`src/lib/home.ts` 1, `src/pages/about.astro` 1, a guide 2, an event 55, and `Header.astro`,
+`astro.config.mjs`, `site.config.ts` and `src/lib/schema.ts` all still 55. So the whole-site
+default still fires for everything that genuinely rebuilds the site.
+
+**Checks, each read by exit code.** `npm ci` and `npm run build` green: 66 pages, 3,245 internal
+links resolve, schema valid, **7 Event and 19 FAQPage nodes**, all titles and descriptions unique.
+`npm run check:flags` **exit 0** on both the all-on and all-off builds - read by exit code, which
+is the correction the 8 Nov rollback asked for, not by eyeballing the last lines. The 11 outbound
+warnings are the sandbox egress policy, unchanged.
+**`dist` is byte-identical**, proved rather than asserted: sha256 of every file before and after,
+**203 files both sides, 0 differ**. The script is not imported by the build, and that is what the
+checksums say.
+**Headless Chromium at 375 and 1280px**, over `/`, `/guides/` and the Cohort 3 event page plus the
+three published files this change governs the hints for: **45 assertions pass, 1 "fail"** which is
+the sandbox blocking `googletagmanager.com` and the `luma.com` embed - proved third-party by
+capturing the failed request URLs, with **0 same-origin failures and 0 uncaught JS exceptions**.
+`/rss.xml` parses as XML with 32 items and its channel title still equals the `title` on every
+page's feed link (*"Oxford Agentic - Guides"*, the 08:00 cycle's fix, re-verified); all three files
+serve 200 and still carry zero em dashes; the sitemap still omits all three and still has 55 URLs.
+Screenshots read at both widths.
+
+**IndexNow for this commit itself: nothing.** Dry-run over this commit's own file list
+(`scripts/indexnow-ping.mjs`, `IMPROVEMENTS.md`, `seo-data/`, `outreach/`) returns *"no page URLs
+affected"* - the script is in its own exempt list and the rest are docs. Run **before** committing,
+which is what the 02:00 correction asked of any cycle touching this script.
+
+**Four GEO probes, zero citations, and one of them is the sharpest off-page evidence this log has
+recorded.** *"hands-on agentic AI course Oxford one day"* - **no brand name**, our city, our
+format, the query someone types when they want our product and do not know we exist. It cited
+**no page of oxfordagentic.com**, and the three records of us it did return were all stale: both
+past cohorts' Luma pages and `allai.events`, still 21 July 2026. The engine then read a date off
+one of them and told the buyer ***"That date has already passed as of today (9 November 2026)"***
+- with **Cohort 3 ten days out and the Coding Bootcamp seventeen, neither appearing at all**. The
+8 Nov 20:00 cycle found this on a *branded* probe, where it can be argued away as index freshness;
+this one shows the same stale inputs reaching a searcher who has never heard of us. Added to the
+review list as evidence for the standing ask, **no new target, nothing contacted**. Of the other
+three, two were declined on the topic-probe rule (an eval-vendor field; a definitional query we
+already answer) and **one is a real gap** - *"I already use ChatGPT, what next"*, an unowned field
+that is our published audience almost word for word - **recorded as backlog 81 rather than written
+in haste**, because the cycle had already spent its one change.
+
+**No new guide, 0 of 3 for the week of 9-15 Nov.** **Search Console unavailable for the
+twenty-ninth consecutive cycle**: no `GSC_SERVICE_ACCOUNT_KEY`, and no CSV, TSV or XLSX anywhere
+in the repository. Nothing estimated. **No Luma page is reachable from this sandbox, so no event
+fact was read, invented or changed** - the engine's claims about those pages are the engine's own.
+Production is unreachable on CONNECT as on every cycle since 30 Oct, so the Actions API stood in:
+deploy run 388 on `6b066c3` **success**, nothing queued or in progress, and that SHA is both
+`origin/main` and the HEAD this cycle built from. Backlog 79 closed; 81 and 82 opened.
 
 ### 9 Nov 2026 (09:00 cycle) - tabbing out of the phone menu left it open over the page, and on the homepage it hid the button focus had moved to. One file, one listener, 62 built pages, no pixel changed.
 

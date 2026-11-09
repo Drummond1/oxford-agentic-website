@@ -11,6 +11,27 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The same misdirection now reproduces on an UNBRANDED commercial query, so it is no longer
+  only a problem for people searching our name.** Found 9 Nov 2026 (14:00 cycle). **No new
+  target, nothing contacted or submitted**; this is added evidence for the entry directly below
+  and for the standing ask, not a new one.
+  - The probe was *"hands-on agentic AI course Oxford one day"* - no brand name, our city, our
+    format. It returned **no page of oxfordagentic.com**, and the three records of us it did
+    return were all out of date: `luma.com/k7c2rm5s` (Cohort 1, 21 July), `luma.com/oxfordagentic2`
+    (Cohort 2, 16 September) and `allai.events`, **still 21 July 2026**.
+  - The engine then closed on ***"That date has already passed as of today (9 November 2026), so
+    check the Luma page for upcoming sessions."*** **Cohort 3 is ten days out and the Coding
+    Bootcamp seventeen, and neither appeared in the field at all.**
+  - **Why it sharpens the ask below rather than repeating it.** That entry was a branded probe,
+    which can be argued away as index freshness affecting people who would find us anyway. This
+    one is the acquisition query itself: a buyer who has never heard of us is being told, from
+    our own stale third-party records, that the thing has already happened. The remedy is
+    unchanged and is Drummond's - the LinkedIn Company Page or a real Luma calendar URL in
+    `brand.social`, and **correcting or retiring the 21 July `allai.events` listing**, which is
+    now the second consecutive cycle to catch that listing feeding a wrong answer.
+  - **No event fact was read or published.** `luma.com` is unreachable from this sandbox; the
+    engine's description of those pages is the engine's own.
+
 - **The branded miss has turned into active misdirection: asked how to book Cohort 3, the engine
   recommended Cohort 1's and Cohort 2's Luma pages instead.** Found 8 Nov 2026 (20:00 cycle). No
   new target, no contact, nothing submitted; recorded as evidence for the standing off-page ask
