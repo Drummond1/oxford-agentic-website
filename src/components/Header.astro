@@ -508,4 +508,23 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     setMenu(false);
     toggle.focus();
   });
+
+  // Tabbing past the last link is the other way out of the panel, and it used
+  // to leave the panel open over whatever focus had moved to. The header is
+  // sticky and only part-opaque, so on the homepage the browser scrolled the
+  // hero's own booking button up behind it: measured at 320, 375, 390 and 414
+  // wide, focus landed on "Book the next cohort" with the panel drawn over it.
+  // The panel is a disclosure rather than a dialog, so the fix is to let focus
+  // leave and close behind it, not to hold focus inside a menu the visitor has
+  // chosen to tab out of. A null relatedTarget means focus left the document
+  // altogether - another browser tab, or the address bar - which is not a
+  // reason to close anything, so the menu is still there on the way back.
+  if (header && toggle && panel) {
+    header.addEventListener('focusout', (event) => {
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      const moved = (event as FocusEvent).relatedTarget;
+      if (!(moved instanceof Node) || header.contains(moved)) return;
+      setMenu(false);
+    });
+  }
 </script>

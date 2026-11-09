@@ -13,6 +13,12 @@ re-deriving from scratch. Same pattern as the delight ledger in the vault.
 
 ## How the loop runs (follow this order every cycle)
 
+0. **Check you are on the real `origin/main` before anything else.** A fresh cloud
+   checkout arrives on a detached HEAD at the true tip while the local `main` branch can
+   sit many commits behind it, and `git checkout main` then moves the tree backwards while
+   `git status` reports "up to date with 'origin/main'", because the remote-tracking ref is
+   stale too. `git log -1` must match the Actions API `head_sha`. Cost a full set of
+   measurements on 9 Nov 2026; see that day's 09:00 entry.
 1. **Read** this whole file. Never re-pitch anything under "Decided against". Never
    redo anything under "Shipped".
 2. **Gather signal** (whatever is available):
@@ -1701,6 +1707,81 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 9 Nov 2026 (09:00 cycle) - tabbing out of the phone menu left it open over the page, and on the homepage it hid the button focus had moved to. One file, one listener, 62 built pages, no pixel changed.
+
+**The defect, measured before it was described.** On a phone the navigation is a
+disclosure panel inside a sticky, part-opaque header. Escape already closed it and handed
+focus back to the toggle, with a comment saying why: "so a keyboard user is not stranded
+inside a panel they can no longer see". Tab is the other way out and had no such handling.
+Swept across all 55 sitemap pages at 375px: opening the menu and tabbing past its last link
+(`Next Bootcamp - 19 Nov 2026`) left the panel open on **55 of 55**, with focus already
+moved into the page behind it. On `/` it is worse than untidy, because `/` has no
+breadcrumb and the first focusable element after the header is the hero's own booking
+button, which is below the fold: the browser scrolls it into view, which slides it under
+the open panel. Measured at **320x568, 375x667, 390x844 and 414x896** - in every one,
+`document.elementFromPoint` at the centre of the focused element returned the menu, not the
+button. The thing a keyboard or switch user could not see was **"Book the next cohort"**,
+the primary call to action on the highest-traffic page.
+
+**The fix, and why it is not a focus trap.** A `focusout` listener on the header closes the
+menu when focus leaves the header altogether. Trapping focus inside was considered and
+rejected: this is a disclosure, not a modal dialog - nothing behind it is inert - and a
+visitor who tabs out of a menu has said they want to leave it, so holding them in a loop
+they can only escape with a key they may not know is worse than the fault. A null
+`relatedTarget` (another browser tab, the address bar) is explicitly not a reason to close,
+so the menu is still there on the way back. 19 lines in `src/components/Header.astro`, 13
+of them the comment.
+
+**Checks.** `npm ci` and `npm run build` green: 62 pages built, 64 checked, 3,156 internal
+links resolve, schema valid, 7 Event and 19 FAQPage nodes, all titles and descriptions
+unique. The 11 outbound warnings are the sandbox egress policy. `npm run check:flags` green
+on both the all-on and all-off builds. `npm run check` was run once with
+`npm i --no-save @astrojs/check typescript`, as backlog 70 describes: **80 errors, 0 of them
+in `Header.astro`**, the same 80 that item recorded, so this change adds no type error. The
+temporary dependencies were removed and `package.json` and `package-lock.json` are untouched.
+**Behaviour:** a 22-assertion headless suite over open, close, reopen, Escape and its focus
+return, Tab into the panel, Shift+Tab back to the toggle, Shift+Tab off the top of the
+header, Tab out of the bottom, a programmatic blur to nothing, a menu link still navigating,
+and the desktop nav untouched - **22 pass, 0 fail, no JS errors**. The settled-state sweep
+reruns at **0 of 55** against **55 of 55** before. Accessibility and overflow sweep over all
+55 sitemap pages plus `/apply/`, `/ceo-roundtable/`, `/second-brain-interest/` and `/404/`
+at 375, 768 and 1280px: no horizontal overflow, no missing alt text, no unlabelled control,
+no link or button without an accessible name.
+**Nothing visible changed, and that was proved rather than asserted.** Full-page screenshots
+of `/`, `/events/`, `/bootcamps/oxford-agentic-bootcamp/` and a guide at 375 and 1280px are
+**byte-identical** between a pristine build of `0d9e853` and this one. The whole-`dist` diff
+is **62 HTML files, one inserted expression each, and no other change**: no file added or
+removed, and `sitemap-0.xml`, `llms.txt`, `llms-full.txt` and `rss.xml` byte-identical.
+The before and after of the tab-out state were screenshotted at 375px and read.
+
+**IndexNow will submit all 55 URLs**, which is the documented whole-site branch for a file
+that is not in the docs allowlist. A shared component that renders in every page's head is
+the honest case for it, even though no content changed; the sitemap `lastmod`s are
+unchanged, so nothing is being claimed to have been edited.
+
+**A trap this cycle nearly fell into, recorded because it would have cost a whole cycle.**
+The fresh cloud checkout arrives on a **detached HEAD at the real `origin/main`**, while the
+local `main` branch points 14 commits behind it. `git checkout main` therefore moves the tree
+*backwards*, and `git status` then says **"Your branch is up to date with 'origin/main'"**,
+because the remote-tracking ref is stale too. Everything between 2 and 9 November had
+silently disappeared from the working tree. Caught only when a line number in this ledger did
+not match one read twenty minutes earlier. `git fetch origin main` then `git reset --hard
+origin/main` restored it; the first build, audit and screenshots were discarded and every
+measurement above was retaken on the true HEAD. **Check `git log -1` against the Actions API
+`head_sha` before touching anything, not just `git status`.**
+
+**Search Console unavailable, nineteenth consecutive cycle.** `seo-data/search-console-latest.md`
+is absent, which is the documented pre-setup state: `GSC_SERVICE_ACCOUNT_KEY` does not exist and
+no CSV, TSV or XLSX export exists anywhere in the repository. Nothing estimated. STATE.md task 4
+remains the highest-value item on the list.
+
+**Production:** `oxfordagentic.com` is refused on CONNECT by the sandbox egress policy, as on
+every cycle since 30 Oct, so the Actions API stood in - Deploy run on `0d9e853` success,
+nothing queued or in progress, and that SHA is both `origin/main` and the HEAD this cycle
+built from. `luma.com` is unreachable the same way, so **no event fact was read, invented or
+changed**. PR #1 and PR #3 and the `feat/ceo-roundtable-demand-page` branch are the
+known-stale leftovers already recorded in backlog 20, not work in flight.
 
 ### 9 Nov 2026 (08:00 cycle) - the two files written for machines were the two still publishing em dashes: 36 of them, now none, and the feed finally has one name instead of two
 
