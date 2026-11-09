@@ -266,6 +266,8 @@ const flaggedOffPrefixes = [
   '/ceo-roundtable',
   // The Second Brain register-interest page is noindex, linked from the programme page (27 Oct 2026).
   '/second-brain-interest',
+  // The First Workflow Picker lead-gen pages are ad-only: noindex, unlinked (9 Nov 2026).
+  '/first-workflow-picker',
 ].filter(Boolean);
 
 /**

@@ -1,0 +1,474 @@
+---
+/**
+ * The First Workflow Picker: lead-gen guide page.
+ *
+ * Added 9 Nov 2026 for the Oxford Agentic Bootcamp lead-gen pilot. Cold paid
+ * traffic (LinkedIn, Meta) that the high-intent campaigns do not reach lands
+ * here, asks for a free guide, and is nurtured by email before any date is
+ * pushed. Pack: Digital Brain/Projects/Oxford Agentic Bootcamp/Marketing/
+ * Lead-gen-pilot-2026-11-09/ (copy in 02, tracking in 05).
+ *
+ * QUIET, LIKE /ceo-roundtable/
+ *  - noindex, out of the sitemap (astro.config.mjs), linked from nowhere on the
+ *    site. Ads and the launch post are the only way in. Leave it unlinked.
+ *  - Not under /guides/, which is the SEO content collection.
+ *
+ * COPY RULES (standing decisions, do not re-litigate)
+ *  - One primary call to action: "Send me the guide". No Book button.
+ *  - No price, no seat count, no scarcity, no outcome claim, no named
+ *    testimonial. The cohort line is the aggregate room description already
+ *    cleared for Cohort 1.
+ *
+ * THE FORM
+ *  Posts JSON to config.firstWorkflowPicker.endpoint with consent: "yes" plus
+ *  consent_text and consent_version (the n8n workflow rejects anything else).
+ *  On success it goes to /first-workflow-picker/thanks/ with no personal data
+ *  in the URL, so ad tags on the thank-you page never capture an email.
+ */
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import config from '../../../site.config';
+import { createRhythm } from '../../lib/site';
+
+const fwp = config.firstWorkflowPicker;
+const email = config.brand.email;
+
+const rhythm = createRhythm('cream');
+const bands = {
+  form: rhythm.next(),
+  inside: rhythm.next(),
+  why: rhythm.next(),
+  next: rhythm.next(),
+};
+
+const inside = [
+  { title: 'A four-question scorecard', body: 'Score any task in about ten minutes.' },
+  { title: 'Five worked examples', body: 'From the weekly report to the weekly newsletter, and one to leave alone.' },
+  { title: 'What breaks, and how you would notice', body: 'Written so you can trust the workflow you build.' },
+  { title: 'A one-page brief', body: 'Fill it in and you have a task worth building.' },
+];
+---
+
+<Base
+  pageTitle="The First Workflow Picker - pick the one task worth automating first"
+  description="A short guide and scorecard for people who already use AI daily: choose the one task worth automating first. Free, about 15 minutes to read."
+  path="/first-workflow-picker/"
+  noindex
+  footerSignup={false}
+>
+  <Hero
+    eyebrow="Free guide - The First Workflow Picker"
+    title="Pick the one task worth automating first"
+    subline="A short guide and scorecard for people who already use AI daily and still do the same work by hand next week. Free, about 15 minutes to read."
+    motif
+  >
+    <p class="hero-cta">
+      <a class="btn btn--primary" href="#get-the-guide" data-fwp-cta="hero">Send me the guide <span aria-hidden="true">→</span></a>
+    </p>
+  </Hero>
+
+  <section class:list={['band', `band--${bands.form}`]} aria-labelledby="form-title" id="get-the-guide">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="form-title">Where should we send it?</h2>
+      </div>
+
+      <form class="fwp" data-endpoint={fwp.endpoint} data-email={email} data-consent-version={fwp.consentVersion} novalidate>
+        {/* Spam trap. Humans never see or fill it. */}
+        <div class="fwp__trap" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="li_fat_id" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="page_url" />
+
+        <div class="fwp__grid">
+          <label class="field">
+            <span class="field__label">First name</span>
+            <input class="field__input" type="text" name="first_name" required autocomplete="given-name" maxlength="100" />
+          </label>
+          <label class="field">
+            <span class="field__label">Work email</span>
+            <input class="field__input" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
+          </label>
+        </div>
+        <label class="field">
+          <span class="field__label">The one task you would most like off your plate <span class="field__opt">(optional)</span></span>
+          <input class="field__input" type="text" name="task" maxlength="200" placeholder="e.g. the Monday sales report" />
+        </label>
+        <label class="consent">
+          <input type="checkbox" name="consent" value="yes" required />
+          <span data-consent-text>{fwp.consentText}</span>
+          <span class="consent__link"><a href="/privacy/#first-workflow-picker">Privacy</a></span>
+        </label>
+        <button type="submit" class="btn btn--primary fwp__submit">Send me the guide <span aria-hidden="true">→</span></button>
+        <p class="fwp__reassure">
+          One email with the guide now, a few short notes over about two weeks, then a monthly email with upcoming
+          bootcamp dates. Unsubscribe whenever you like.
+        </p>
+        <p class="fwp__status" role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <noscript>
+        <p class="fwp__noscript">
+          This form needs JavaScript. To get the guide, email <a href={`mailto:${email}?subject=First%20Workflow%20Picker`}>{email}</a>.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.inside}`]} aria-labelledby="inside-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="inside-title">What is inside</h2>
+      </div>
+      <ul class="pillars" role="list">
+        {
+          inside.map((g, i) => (
+            <li class="pillar" data-reveal>
+              <span class="pillar__num">0{i + 1}</span>
+              <h3 class="pillar__title">{g.title}</h3>
+              <p>{g.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.why}`]} aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="why-title">Why a scorecard</h2>
+      </div>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          Most people start with the task that annoys them most. It is rarely the best first one. The scorecard is
+          the quickest way to find the one that is.
+        </p>
+      </div>
+      <h3 class="subhead" data-reveal>Who wrote it</h3>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          Drummond Gilbert runs the {config.brand.name} Bootcamp: a one-day build in Oxford where people bring one real
+          task from their own work and leave with a workflow that runs.
+        </p>
+      </div>
+      <p class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#get-the-guide" data-fwp-cta="why">Send me the guide <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.next}`]} aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="next-title">If you would like to build it with other people</h2>
+      </div>
+      <blockquote class="room" data-reveal>
+        A head of software engineering from a clinical AI company. A partnerships lead from Google. A COO. Three
+        founders. Sixteen people, one day, four to a table.
+      </blockquote>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          That was the first cohort. If the guide is useful, the next step is the bootcamp. You will get a few short
+          notes first.
+        </p>
+        <p>
+          <a class="text-link" href="/bootcamps/oxford-agentic-bootcamp/" data-fwp-cta="next">See the next bootcamp</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-cta {
+    margin-block-start: 1.75rem;
+  }
+
+  .prose--wide p {
+    max-width: 62ch;
+    font-size: var(--step-lg);
+    line-height: 1.55;
+  }
+
+  .prose--wide p + p {
+    margin-block-start: 1rem;
+  }
+
+  .subhead {
+    font-size: var(--step-xl);
+    margin-block: clamp(2rem, 1.5rem + 2vw, 3rem) 1rem;
+  }
+
+  .pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .pillar {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 1.1rem;
+  }
+
+  .pillar__num {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.14em;
+    color: var(--gold);
+  }
+
+  .pillar__title {
+    font-size: var(--step-lg);
+    margin-block: 0.4rem 0.6rem;
+  }
+
+  .pillar p {
+    font-size: var(--step-sm);
+    line-height: 1.6;
+  }
+
+  .btn-row {
+    margin-block-start: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  .room {
+    margin: 0 0 1.5rem;
+    padding-inline-start: 1.25rem;
+    border-inline-start: 2px solid var(--gold);
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    line-height: 1.4;
+    max-width: 50ch;
+  }
+
+  .text-link {
+    color: var(--rust);
+    text-underline-offset: 0.2em;
+  }
+
+  /* ---- Form ---- */
+
+  .fwp {
+    border: 1px solid var(--gold-hairline);
+    background: var(--deep-card);
+    color: var(--cream);
+    padding: clamp(1.25rem, 0.8rem + 2.5vw, 2.5rem);
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .fwp__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .fwp__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .field__label {
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .field__opt {
+    color: var(--muted-on-dark-dim);
+  }
+
+  .field__input {
+    width: 100%;
+    background: var(--ink-dark);
+    border: 1px solid var(--gold-hairline);
+    color: var(--cream);
+    padding: 0.8rem 0.9rem;
+    min-height: 3rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+
+  .field__input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .field__input.is-invalid {
+    border-color: #e08a6b;
+  }
+
+  .consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 0.75rem;
+    align-items: start;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+    line-height: 1.5;
+  }
+
+  .consent input {
+    margin-block-start: 0.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .consent__link {
+    grid-column: 2;
+  }
+
+  .consent a,
+  .fwp__status a,
+  .fwp__noscript a {
+    color: var(--gold);
+  }
+
+  .fwp__submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fwp__reassure {
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark-dim);
+    text-align: center;
+  }
+
+  .fwp__status[hidden] {
+    display: none;
+  }
+
+  .fwp__status {
+    padding: 0.85rem 1rem;
+    border: 1px solid #e08a6b;
+    font-size: var(--step-sm);
+  }
+
+  .fwp__noscript {
+    margin-block-start: 1rem;
+  }
+</style>
+
+<script>
+  import { track } from '../../lib/track';
+
+  const form = document.querySelector<HTMLFormElement>('form.fwp');
+
+  if (form) {
+    const endpoint = form.dataset.endpoint ?? '';
+    const contact = form.dataset.email ?? '';
+    const consentVersion = form.dataset.consentVersion ?? '';
+    const consentText = form.querySelector('[data-consent-text]')?.textContent?.trim() ?? '';
+    const status = form.querySelector<HTMLElement>('.fwp__status')!;
+
+    // Campaign context from the URL, so ad and post traffic is attributable.
+    const query = new URLSearchParams(window.location.search);
+    const setHidden = (name: string, value: string) => {
+      const el = form.elements.namedItem(name);
+      if (el instanceof HTMLInputElement) el.value = value;
+    };
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'li_fat_id']) {
+      setHidden(key, query.get(key) ?? '');
+    }
+    setHidden('referrer', document.referrer ?? '');
+    setHidden('page_url', window.location.href);
+
+    // Keep the campaign source for the thank-you page without putting anything personal in its URL.
+    try {
+      sessionStorage.setItem('fwp_source', query.get('utm_source') ?? 'direct');
+    } catch {
+      /* storage blocked: the thank-you page falls back to "direct" */
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-fwp-cta]').forEach((el) =>
+      el.addEventListener('click', () => track('fwp_cta_click', { where: el.dataset.fwpCta ?? '' })),
+    );
+    let started = false;
+    form.addEventListener('focusin', () => {
+      if (started) return;
+      started = true;
+      track('fwp_form_start');
+    });
+
+    const text = (name: string) => {
+      const el = form.elements.namedItem(name);
+      return el && 'value' in el ? String((el as HTMLInputElement).value).trim() : '';
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      status.hidden = true;
+
+      if (!form.checkValidity()) {
+        form.querySelector<HTMLElement>(':invalid')?.classList.add('is-invalid');
+        form.reportValidity();
+        return;
+      }
+
+      const button = form.querySelector<HTMLButtonElement>('.fwp__submit')!;
+      const label = button.innerHTML;
+      button.disabled = true;
+      button.textContent = 'Sending';
+
+      try {
+        if (!endpoint) throw new Error('no endpoint');
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _gotcha: text('_gotcha'),
+            first_name: text('first_name'),
+            email: text('email'),
+            task: text('task'),
+            consent: 'yes',
+            consent_text: consentText,
+            consent_version: consentVersion,
+            utm_source: text('utm_source'),
+            utm_medium: text('utm_medium'),
+            utm_campaign: text('utm_campaign'),
+            utm_content: text('utm_content'),
+            utm_term: text('utm_term'),
+            li_fat_id: text('li_fat_id'),
+            referrer: text('referrer'),
+            page_url: text('page_url'),
+          }),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+      } catch {
+        button.disabled = false;
+        button.innerHTML = label;
+        status.hidden = false;
+        status.innerHTML = `That did not go through, and nothing you typed has been lost. Please try again, or email <a href="mailto:${contact}">${contact}</a> and we will send the guide.`;
+        return;
+      }
+
+      track('fwp_submit', { source: text('utm_source') || 'direct' });
+      window.location.assign('/first-workflow-picker/thanks/');
+    });
+
+    form.addEventListener('input', (e) => (e.target as HTMLElement).classList.remove('is-invalid'));
+  }
+</script>

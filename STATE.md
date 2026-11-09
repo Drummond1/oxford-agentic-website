@@ -42,6 +42,17 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 📘 First Workflow Picker - ad-only lead-gen pages, since 9 Nov 2026 (branch `leadgen-first-workflow-picker`, not merged)
+
+> **/first-workflow-picker/** and **/first-workflow-picker/thanks/** - noindex, out of the sitemap, linked from nowhere.
+> Only Drummond links or promotes them; the daily loop leaves them unlinked and unchanged.
+> Do not add a Book button, a price, a seat count or a testimonial. Form posts to the n8n workflow
+> `XpGTcMTADbRSRLmt`; consent wording lives in `site.config.ts` and must match the workflow's copy.
+> The guide PDF sits at `public/first-workflow-picker/guide.pdf`. Pack: Digital Brain
+> `Projects/Oxford Agentic Bootcamp/Marketing/Lead-gen-pilot-2026-11-09/`.
+
+---
+
 ## 🎙️ Find your bootcamp - unlisted voice page, since 30 Sept 2026
 
 > **/find-your-bootcamp/** - noindex, out of the sitemap and llms.txt, linked from nowhere.

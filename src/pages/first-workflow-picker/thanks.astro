@@ -1,0 +1,71 @@
+---
+/**
+ * The First Workflow Picker: thank-you page (noindex, unlinked).
+ *
+ * Reached only after a successful submit on /first-workflow-picker/. It never
+ * receives personal data in its URL. It fires the `fwp_lead` event, which the
+ * tracker maps to Meta's standard Lead event (only once cookie consent has
+ * loaded the pixel).
+ *
+ * No booking button here, on purpose: the guide ends with one line about the
+ * bootcamp, and the first email that pushes a date is note 4.
+ */
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import config from '../../../site.config';
+
+const guide = config.firstWorkflowPicker.guidePath;
+---
+
+<Base
+  pageTitle="Check your inbox - The First Workflow Picker"
+  description="The First Workflow Picker is on its way to your inbox."
+  path="/first-workflow-picker/thanks/"
+  noindex
+  footerSignup={false}
+>
+  <Hero
+    eyebrow="The First Workflow Picker"
+    title="Check your inbox"
+    subline="The guide is on its way to your inbox. If it has not arrived in five minutes, check junk, or download it here."
+    motif
+  >
+    <p class="hero-cta">
+      <a class="btn btn--primary" href={guide} data-fwp-download>Download the guide (PDF) <span aria-hidden="true">→</span></a>
+    </p>
+    <p class="hero-note">Start on page 3. Score one task from this week - it takes about ten minutes.</p>
+  </Hero>
+</Base>
+
+<style>
+  .hero-cta {
+    margin-block-start: 1.75rem;
+  }
+
+  .hero-note {
+    margin-block-start: 1rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+    max-width: 52ch;
+  }
+</style>
+
+<script>
+  import { track } from '../../lib/track';
+
+  let source = 'direct';
+  try {
+    source = sessionStorage.getItem('fwp_source') || 'direct';
+  } catch {
+    /* storage blocked */
+  }
+
+  // The pixel may load a moment after the page once consent is read, so give it a beat.
+  window.addEventListener('load', () => {
+    window.setTimeout(() => track('fwp_lead', { source }), 600);
+  });
+
+  document
+    .querySelector('[data-fwp-download]')
+    ?.addEventListener('click', () => track('fwp_guide_download', { where: 'thanks' }));
+</script>

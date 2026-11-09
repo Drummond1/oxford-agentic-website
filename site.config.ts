@@ -17,6 +17,7 @@ export interface SiteConfig {
   newsletter: Newsletter;
   applications: Applications;
   secondBrainInterest: SecondBrainInterest;
+  firstWorkflowPicker: FirstWorkflowPicker;
   ceoRoundtable: CeoRoundtable;
   assistant: Assistant;
 }
@@ -166,6 +167,22 @@ export interface SecondBrainInterest {
    * to the owner on every stage. Empty = the form shows its email fallback.
    */
   endpoint: string;
+}
+
+export interface FirstWorkflowPicker {
+  /**
+   * n8n production webhook behind /first-workflow-picker/ (workflow
+   * "OAB Lead Gen - First Workflow Picker capture", XpGTcMTADbRSRLmt). It
+   * validates consent_version against its own copy of the wording, so change
+   * both together. Empty = the form shows its email fallback.
+   */
+  endpoint: string;
+  /** Must match a key in the n8n workflow's CONSENT table. */
+  consentVersion: string;
+  /** The exact consent wording the visitor ticks. */
+  consentText: string;
+  /** Public path of the guide PDF. The page must not go live until it exists. */
+  guidePath: string;
 }
 
 export interface CeoRoundtable {
@@ -446,6 +463,17 @@ const config: SiteConfig = {
   // n8n workflow "Second Brain Bootcamp - Register Interest" (L7nyyL4vnCC5TW5b).
   secondBrainInterest: {
     endpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/second-brain-register-interest',
+  },
+
+  // 9 Nov 2026: lead-gen pilot, ad-only guide page at /first-workflow-picker/ (noindex, unlinked).
+  // Pack: Digital Brain/Projects/Oxford Agentic Bootcamp/Marketing/Lead-gen-pilot-2026-11-09/.
+  // The n8n workflow is INACTIVE until Drummond publishes it.
+  firstWorkflowPicker: {
+    endpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/first-workflow-picker',
+    consentVersion: 'v1-2026-11-09',
+    consentText:
+      'Yes, email me the guide, a few short notes over about two weeks, and then a monthly email with upcoming bootcamp dates. I can unsubscribe at any time.',
+    guidePath: '/first-workflow-picker/guide.pdf',
   },
 
   // 13 Oct 2026: ad-only demand-validation page at /ceo-roundtable/ (noindex, not linked).
