@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-09 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - THE FIFTH BRANDED MISS IN FIVE CYCLES, AND THE FIRST TIME THE STALE THIRD-PARTY LISTING WAS USED TO RULE US *OUT* OF A QUERY WE HAVE A PRODUCT FOR
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before: one branded question on
+the **newest** event, its commercial query, and two buyer axes this log has never tested -
+demo-to-production reliability, and whether a training day still shows three months later.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | Oxford Agentic Coding Bootcamp 26 November 2026 Oxford how do I book a place | **No** | Cambridge Judge (`jbs.cam.ac.uk`, Agentic AI 18-20 Nov, with booking links), `obviousworks` via tickettailor (x2, online, 18 Nov), Saïd's online programme (x3 incl. `pulse.bot`, `createwith.com`), `learnersink.com`, `meetup.com/oxford-ai-training`, OxML (x3), Eventbrite, Codecademy, Edinburgh, a Miami Ohio python bootcamp |
+| 2 | one day in-person agentic AI coding bootcamp UK for working developers | **No page of ours** - but `allai.events/event/the-oxford-agentic-bootcamp` was cited, **still 21 July 2026** | Edinburgh `digitalresearchservices.ed.ac.uk` (x2), five Luma pages (`nvqgzyor`, `b2zl7dnz`, `s28c02xg`, `yk3zfodr`, `1l7b3j0m`), Eventbrite (x2), `createwith.com` (x2), `academy.xebia.com`, two `pages.dev` microsites, `baluu.co.uk`, CB Insights |
+| 3 | why does my AI agent work in a demo but break on real company data | **No** | `metacto.com`, `blog.gopenai.com`, `upsolve.ai`, `nurix.ai` (x2), `agentx.so`, `pub.towardsai.net`, `dev.to`, ProductHunt, a Supabase-hosted transcript |
+| 4 | three months after an AI training day does anything actually stick for the team | **No** | three `pages.dev` microsites (`amitkoth`, `copilot-academy`, `aiadvisorypractice`), `dev.to/braingemai` (x3, the same author), `retorio.com`, `populer.com`, `hcamag.com`, a LinkedIn showcase page |
+
+**Reading.**
+
+- **Probe 1 is the fifth branded miss in five cycles, and it has moved to the newest event.**
+  The four before it were about Cohort 3. This one asks about the **Oxford Agentic Coding
+  Bootcamp on 26 November**, seventeen days out, and the engine answered ***"The search found no
+  listing for an 'Oxford Agentic Coding Bootcamp' on 26 November 2026, so there's no booking page
+  or booking method to report."*** The field is not hard to be found in: it returned **Cambridge
+  Judge's** face-to-face agentic AI programme on 18-20 November *with its booking links*, and an
+  online developer bootcamp starting 18 November. Competitors running the same shape of thing in
+  the same week are retrievable; we are not. `/events/oxford-agentic-coding-bootcamp-cohort-1/`
+  publishes the date, the venue and the booking panel, and was not retrieved. Cause unchanged:
+  the 24 August Search Console diagnosis, crawl budget on a domain with zero external links.
+- **Probe 2 is the new finding of this cycle, and it is a sharper form of an ask already on the
+  review list.** Previous cycles recorded the stale `allai.events` listing as the only record of
+  us an engine could find. This probe shows it doing something worse than being stale: the engine
+  **used it to exclude us**, closing ***"Not a fit: the Oxford Agentic Bootcamp (21 July 2026)
+  doesn't assume you can code."*** That reasoning is correct about Cohort 1 and wrong about the
+  company, because the Coding Bootcamp exists precisely for that searcher and runs in seventeen
+  days. So the single reachable third-party record of us is now actively mis-positioning a live
+  product, not merely dating us wrongly. Recorded under the existing `allai.events` entry on the
+  review list as evidence, **not as a new target** - the remedy is unchanged and is Drummond's.
+- **Probe 3 is NOT winnable and is the wrong buyer.** The field is agency and platform blogs
+  writing about their own tooling - rule (a)'s named pattern - and the searcher is an engineer
+  debugging a production agent, not someone choosing a day in Oxford. We already publish
+  `why-the-code-an-agent-wrote-is-not-live` and `how-to-notice-when-an-ai-workflow-is-wrong`.
+  Declined on both limbs.
+- **Probe 4 is WINNABLE and CONVERTING, and is the first axis in several cycles that is both and
+  is not already answered.** No institutional publisher is anywhere in it: three `pages.dev`
+  microsites, the same `dev.to` author three times, a vendor "forgetting curve" blog and a
+  LinkedIn showcase page. And the question is the live purchase objection - someone asking
+  whether a day sticks is deciding whether to buy a day at all. **It was still not written this
+  cycle**, for two honest reasons. First, bundling: this cycle's commit is a build-tooling fix
+  whose whole claim is a byte-identical `dist`, and content would make it two things. Second, and
+  the harder one: **the field's numbers are not usable.** The retention figures on offer are a
+  vendor's own marketing model (*"97% retention at 24 months"*), an unsourced *"45% of adoption
+  comes from workflow integration"*, and a TalentLMS *"28%"* that this cycle did not trace to a
+  primary source. Writing this well means our own experience across three cohorts, not borrowed
+  statistics, and that is a copy call with facts only Drummond holds. **Recorded as backlog 78**
+  rather than guessed at.
+
+**What this cycle did with that.** Nothing to content. The cycle spent itself on backlog 77, the
+two-part build-tooling fix the 8 Nov 14:00 cycle shipped half of and rolled back.
+
 ## 2026-11-08 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE FOURTH BRANDED MISS IN FOUR CYCLES, THIS ONE ON A BOOKING-INTENT PHRASING THAT SENT THE BUYER TO A PAST COHORT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

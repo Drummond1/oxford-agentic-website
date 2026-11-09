@@ -233,13 +233,23 @@ function contentLastmod() {
 const lastmodByPath = contentLastmod();
 
 /**
- * Routes that only exist when their feature flag is on (PRD §11). Flagged-off
- * routes are never generated, so they must also be kept out of the sitemap.
+ * Routes that only exist when their feature flag is on (PRD §11). These are not
+ * generated at all when the flag is off, so two things follow: they must stay
+ * out of the sitemap, and nothing may redirect to them. Kept separate from the
+ * noindex-only entries below, which are routes that do build.
  */
-const flaggedOffPrefixes = [
+const flagGatedOffPrefixes = [
   !siteConfig.features.team && '/team',
   !siteConfig.features.testimonials && '/testimonials',
   !siteConfig.features.guides && '/guides',
+].filter(Boolean);
+
+/**
+ * Routes kept out of the sitemap: the flag-gated ones above, which do not
+ * exist, plus the ones below, which do exist but are noindex or reference-only.
+ */
+const flaggedOffPrefixes = [
+  ...flagGatedOffPrefixes,
   // Reference-only design variants. They carry noindex as well, but keeping
   // them out of the sitemap means never inviting a crawler to a second
   // homepage in the first place. '/home-original' stays listed because a
@@ -262,8 +272,18 @@ const flaggedOffPrefixes = [
  * Rename safety net (PRD §4). Slugs change; URLs must not break. Astro emits a
  * redirect page for each entry, which works on any host — no Netlify _redirects
  * or vercel.json to keep in sync. Add pairs to `redirects` in site.config.ts.
+ *
+ * A pair whose target is flagged off is dropped. Astro emits a redirect page for
+ * every pair unconditionally, while the target route is conditional, so a
+ * tombstone kept over a route that no longer builds would send visitors and
+ * crawlers to a 404 by way of a redirect — strictly worse than the 404 the
+ * tombstone exists to avoid, and a link pointing at a route that is not there.
  */
-const redirects = Object.fromEntries(siteConfig.redirects.map(({ from, to }) => [from, to]));
+const redirects = Object.fromEntries(
+  siteConfig.redirects
+    .filter(({ to }) => !flagGatedOffPrefixes.some((prefix) => to.startsWith(`${prefix}/`)))
+    .map(({ from, to }) => [from, to]),
+);
 
 export default defineConfig({
   site: siteConfig.brand.domain,

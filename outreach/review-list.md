@@ -178,6 +178,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Drummond's call, unchanged and still two asks:** (a) correct or retire the `allai.events`
     listing, which is the cheapest single fix on this page, and (b) one credible external listing
     so the domain stops being a zero-external-link property. **Nothing was contacted.**
+  - **Escalation, 9 Nov 2026 (02:00 cycle): the stale listing is no longer only dating us
+    wrongly - an engine has now used it to rule us OUT of a query we have a product for.**
+    The probe was the Coding Bootcamp's own commercial query, *"one day in-person agentic AI
+    coding bootcamp UK for working developers"*. No page of ours was retrieved;
+    `allai.events/event/the-oxford-agentic-bootcamp` was, **still 21 July 2026**, and the engine
+    closed its answer with ***"Not a fit: the Oxford Agentic Bootcamp (21 July 2026) doesn't
+    assume you can code."*** That is a correct reading of Cohort 1 and a wrong conclusion about
+    the company: the **Oxford Agentic Coding Bootcamp runs on 26 November at Worcester College**
+    and exists for exactly that searcher. A separate branded probe the same cycle - *"Oxford
+    Agentic Coding Bootcamp 26 November 2026 Oxford how do I book a place"* - returned
+    ***"The search found no listing ... so there's no booking page or booking method to
+    report"***, while returning Cambridge Judge's 18-20 November face-to-face programme **with
+    its booking links**. So the uncorrected listing is now costing a product that did not exist
+    when the listing was made, which makes ask (a) cheaper and more urgent than when it was
+    written, not less. **Nothing was contacted, submitted, signed up for or paid for**, and
+    neither `allai.events` nor any Luma page resolves from this sandbox, so no listing was read
+    and no event fact, price or availability was taken from any of them.
 
 - **A new Oxford-institutional listing target: `enspire.ox.ac.uk`. It is a University of Oxford
   platform, it already carries this exact category of event for this exact buyer, and it held four

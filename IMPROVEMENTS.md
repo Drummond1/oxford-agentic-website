@@ -1592,8 +1592,11 @@ Status: `todo` · `blocked` (why) · `doing`
     count goes to zero.
 
 
-77. `todo` (loop-actionable, found and proved 8 Nov 2026 in the 14:00 cycle, which shipped half of
-    it and rolled that half back; **take the two halves together, as one cycle**)
+77. `done` 9 Nov 2026 (02:00 cycle), both halves together in one commit, as this item asked.
+    The redirect question it reserved for Drummond was taken on the ground that it has only one
+    non-broken answer (see the Shipped entry); say so if that was wrong and it is one line to
+    change back. (Found and proved 8 Nov 2026 in the 14:00 cycle, which shipped half of it and
+    rolled that half back.)
     - **`/team/josh-lawman/` is a redirect to `/team/`, and `/team/` is behind the `team` feature
       flag, so the flags-off build contains a redirect pointing at a route that does not exist.**
       `site.config.ts` holds the pair `{ from: '/team/josh-lawman/', to: '/team/' }` and
@@ -1620,9 +1623,133 @@ Status: `todo` · `blocked` (why) · `doing`
     success, which is how the 14:00 cycle talked itself into shipping.
 
 
+
+78. `todo` (loop-actionable **on its evidence** but **needs one thing only Drummond holds**; found
+    9 Nov 2026 in the 02:00 cycle) - **"does a one-day AI training day still show three months
+    later?" is the first axis in several cycles that is both winnable and converting and not
+    already answered on the site.**
+    **The evidence, from 9 Nov.** *"three months after an AI training day does anything actually
+    stick for the team"* returned ten results with **no institutional publisher anywhere**: three
+    `pages.dev` microsites (`amitkoth`, `copilot-academy`, `aiadvisorypractice`), the same
+    `dev.to/braingemai` author three times, `retorio.com`'s forgetting-curve blog, `populer.com`,
+    `hcamag.com` and a LinkedIn showcase page. That is the weakest field this log has recorded on
+    a question this commercial, and the question is the live purchase objection: someone asking
+    whether a day sticks has not yet decided to buy a day.
+    **Why it was not written on the spot.** Two reasons, and the second is the real one.
+    (a) Bundling - the 9 Nov commit is a build-tooling fix whose whole claim is a byte-identical
+    `dist`, and content would have made it two things, the same objection the 7 and 8 Nov cycles
+    honoured. (b) **The field's numbers are not usable and we must not borrow them.** What is on
+    offer is a vendor's own marketing model (*"97% retention at 24 months"*), an unsourced
+    *"45% of adoption comes from workflow integration"*, and a TalentLMS *"28% of workers
+    consistently use AI after being trained"* that this cycle did **not** trace to a primary
+    source. The accuracy rule forbids repeating any of them as fact.
+    **So what would make this publishable**, and it is not a markup change: our own experience
+    across Cohorts 1-3 and the Second Brain cohort - what people actually still had running weeks
+    later, said plainly and without a number we cannot stand behind. That is **Drummond's
+    material, not the loop's**, and inventing it is the one thing the rules forbid outright.
+    **The cheap half, if the full guide is not wanted:** the nearest existing pages are
+    `after-the-ai-executive-programme` and `how-to-run-an-ai-pilot-that-survives`. A 2-3 entry
+    Q&A block on either, written from Drummond's own observation, would publish a `FAQPage` node
+    on this axis without a new guide. Either route needs the same one input from him.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 9 Nov 2026 (02:00 cycle) — backlog 77, both halves in one commit: a redirect that pointed at a route which does not build, and the link checker that can see it
+
+**What was wrong.** `site.config.ts` holds the tombstone pair
+`{ from: '/team/josh-lawman/', to: '/team/' }`, and `astro.config.mjs` turned **every** pair into
+a generated redirect page unconditionally — while `/team/` is behind the `team` feature flag and
+is conditional. So the flags-off build shipped a redirect pointing at a route that is not there.
+Nothing had ever caught it, because `dist/team/` still exists as a *directory* in that build (it
+contains `josh-lawman/`) and the link checker's `exists()` used `stat` alone, which succeeds on a
+directory.
+
+**The product call this item reserved for Drummond, and why it was taken rather than deferred.**
+The 8 Nov entry asked for one line from him: *should a tombstone redirect survive its target being
+flagged off, or be emitted only when the target builds?* It was taken on the ground that the
+question has only one non-broken answer. A redirect to a route that does not build sends the
+visitor to a 404 **by way of a redirect** — strictly worse than the plain 404 the tombstone exists
+to prevent, in every configuration, so there is no reading on which keeping it is right. It is
+also a decision with **no production consequence**: `team` is `true`, `/team/` builds, the
+redirect is still emitted, and `dist` is byte-identical. If the preferred answer was the third one
+nobody proposed — point the tombstone at `/` when `/team/` is off — that is a one-line change on
+top of this. Flagged in the cycle report rather than buried here.
+
+**The fix.** The three genuinely flag-gated route prefixes moved out into their own
+`flagGatedOffPrefixes` and a redirect whose target starts with one is dropped. They had to be
+separated from `flaggedOffPrefixes`, which is a *sitemap* list and also holds `/home-photos`,
+`/apply`, `/ceo-roundtable` and three others — routes that **do** build and are merely noindex.
+Filtering redirects on that list would have wrongly dropped `/home-original/` → `/home-photos/`,
+which is a live and correct redirect. The `flaggedOffPrefixes` list now spreads the new constant
+in, so the three flags are still declared exactly once.
+
+**The other half, restored byte-identical to `1243b4e`.** `scripts/check-links.mjs` now (a)
+requires a regular file rather than anything `stat` accepts, and (b) checks the fragment on a
+**cross-page** link against the target page's ids, which it never did — it stripped the `#` in the
+first line of `resolves()`. Five deep links depend on that today and all five are correct: `/` and
+`/home-photos/` into `#register` on the Cohort 3 event page (the booking path, ten days out), and
+`/apply/`, `/ceo-roundtable/` and `/second-brain-interest/` into `#applications` and `#interest` on
+`/privacy/`, a pair STATE.md records in words and nothing enforced.
+
+**Measured, not argued — and re-measured this cycle rather than trusted from the ledger.**
+- **The defect reproduced first.** With the new checker in and the redirect unfixed,
+  `npm run check:flags` exits **1** and names exactly one broken link, `/team/josh-lawman/ → /team/`,
+  in the all-flags-OFF build. All-flags-ON passes in the same run (3,342 links, 64 pages).
+- **After the fix,** `check:flags` exits **0**: flags-on 3,342 links across 64 pages, flags-off
+  767 links across 21 pages, both clean.
+- **The guard was proved on a broken tree, independently of the 8 Nov run.** On a copy of `dist`
+  with `#register` renamed on the Cohort 3 page, `#applications` renamed on `/privacy/`, and a
+  link added to `/og-empty/` (a directory with no `index.html`): the **old** checker reports
+  *"3157 internal links across 64 pages all resolve"* and **exits 0** — blind to all three — while
+  the **new** one **exits 1** and names all five affected links with the page each starts from and
+  the page it lands on.
+- **`dist` is byte-identical to the pre-change baseline**: 198 files on both sides, `diff -rq`
+  silent. `/team/josh-lawman/index.html` is still emitted and still points at `/team/`.
+- **`npm run build` green**: 3,156 internal links across 64 pages, schema valid, 7 Event and 19
+  FAQPage nodes, all titles and descriptions unique. The 11 outbound warnings are the sandbox
+  egress policy, identical in kind to the baseline. Every check above was read **by exit code**,
+  which is the correction the 8 Nov rollback asked for.
+- **Headless Chromium over the five deep links the guard protects, at 375 and 1280px: 64
+  assertions, 0 failing** — HTTP 200, the source page carries the link, exactly one element with
+  the id on the target, the browser scrolls to it, it lands in the viewport, no horizontal page
+  scroll, no page errors, no failed local requests. Screenshots read at both widths.
+
+**One measurement fault, recorded because it nearly became a finding.** Six assertions first
+failed claiming `/ceo-roundtable/` carries no link to `/privacy/#applications`, when the static
+HTML plainly does. The page was not the problem and neither was the markup: `/ceo-roundtable/` is
+the ad-only page and **gates itself** — without a `utm_source`/`li_fat_id` parameter or
+`?preview=1` an inline head script calls `window.location.replace('/')` before paint, so the probe
+had been measuring the homepage. Loading it as `?preview=1` passes. Worth writing down twice over:
+the gate is deliberate and correct, and the checker's contract is the **static** HTML, which is
+the right contract — the guard would not have caught a runtime rewrite, and nothing on the site
+does one.
+
+**No visitor-facing change, by design.** No content entry touched, so no `updatedDate` and no
+sitemap `lastmod` moved. IndexNow maps a commit touching only `astro.config.mjs`,
+`scripts/check-links.mjs` and three documentation files to **nothing public**, so this commit
+spends zero crawl budget — which matters on a domain whose measured constraint is crawl budget.
+
+**Also recorded this cycle.** Four GEO probes, zero citations, and **the fifth branded miss in
+five cycles** — this one on the *newest* event, the Coding Bootcamp on 26 November, seventeen days
+out, where the engine said outright that it found no listing while returning Cambridge Judge's
+18-20 November programme with its booking links. The sharper finding is on the Coding Bootcamp's
+commercial query: the stale `allai.events` listing was used to **rule us out** — *"Not a fit: the
+Oxford Agentic Bootcamp (21 July 2026) doesn't assume you can code"* — of a query the Coding
+Bootcamp exists to serve. Logged in `seo-data/geo-citations.md` and under the existing
+`allai.events` entry on the review list as evidence, not as a new target; the remedy is Drummond's
+and unchanged. One probe was both winnable and converting and is **not** already answered on the
+site — whether a training day still shows three months later — and it is **backlog 78** rather
+than a guess, because every number in that field is unsourced vendor marketing and the honest
+version needs Drummond's own observation across the cohorts.
+
+No new guide: **0 of 3 for the week of 9-15 Nov**, which began today. Search Console unavailable
+for the twenty-seventh consecutive cycle; nothing estimated. `oxfordagentic.com` is refused on
+CONNECT by the sandbox and does not resolve for the fetch tool either, so the Actions API stood in
+for the deployment check: deploy run **382** succeeded on `95df769`, which is `origin/main` and the
+HEAD this cycle started from. No Luma page is reachable from here, so **no event fact was read,
+invented or changed**.
 
 - **2026-11-08 (20:00 cycle) - backlog 76, taken as the cheap win the 14:00 cycle nominated: one
   byte. `/privacy/` published `using the<a href="/second-brain-interest/">register interest
