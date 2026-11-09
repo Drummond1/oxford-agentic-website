@@ -5,6 +5,57 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-09 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE 14:00 CYCLE'S ONE REAL GAP RE-PROBED IN THREE MORE WORDINGS AND CONFIRMED, SO IT WAS ACTED ON
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Backlog 81 asked for exactly this before anything was written: *"Re-probe
+before acting: one snapshot from a US-resident tool is not a field."* Three of the four questions
+below are that re-probe, in wordings the 14:00 cycle did not use, and the fourth is the buyer's
+hesitation stated outright.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | I already use ChatGPT every day - what is the next step for my business? | **No** | `informationweek.com`, `dell.com`, `entrepreneur.com`, `fortune.com`, `marketscale.com` (x3), `medium.com` (x2), `analyticsinsight.net`, `folio3.ai`, `binary-studio.com`, `ttms.com`, `appliplus.com`, `daisie.com`, `hackmd.io` |
+| 2 | how to go from using AI chatbots to building AI workflows that do real work | **No** | `hackernoon.com`, `dev.to` (x2), `petronellatech.com` (x2), `lewagon.com` (**a 60-minute build event**), `boundev.ai`, `cobusgreyling.substack.com`, `taxheal.com` (x2), `arvato-systems.com`, `techradar.com`, `projectmanagement.com`, two Reddit snapshots |
+| 3 | what should I learn after ChatGPT to actually automate my own work | **No** | `udemy.com`, `coursera.org` (x2, Vanderbilt), `oreilly.com`, `inflearn.com` (x2), `class101.net` (x2), `macworld.com` (x2), `bleepingcomputer.com` (x2), `gumroad.com` (x2), `opencourser.com`, `manning.com`, `marketermilk.com`, `substack`, `beehiiv` |
+| 4 | is a one day AI workshop worth it if I already use AI daily | **No** | `getclear.ca`, `tickettailor.com` (x5, one provider's series), `ssw.com.au`, `csusm.edu`, `luma.com/urd1bxbg`, `equinetacademy.com`, `aitraining2u.com` (Malaysia), `humanitix.com`, `ti.to`, two `pages.dev` microsites, `pulse.bot`, `shrm.org`, a Reddit snapshot |
+
+**Reading.**
+
+- **The field is confirmed, and this is the cycle that acted on it.** Backlog 81 was opened at
+  14:00 on one probe. Three more wordings now say the same thing: **no page of oxfordagentic.com
+  in any of the four**, and **no institutional publisher holds any of the four fields**. What
+  holds them instead is 2023-era business-press commentary (probe 1), developer-blog and
+  enterprise-vendor chaff (probe 2), course marketplaces selling ChatGPT-and-Zapier certificates
+  (probe 3) and other providers' own event listings (probe 4). The searcher in every one has
+  already bought into AI and is asking what the next rung is, which is this product's own
+  framing.
+- **Probe 4 is the sharpest, because the engine's own verdict is our published offer and we were
+  not in it.** Asked flat out whether a one-day AI workshop is worth it for someone who already
+  uses AI daily, it closed on: *"worth it mainly if it focuses on advanced or team-specific
+  workflows, **uses your own tasks**, and **gives you something usable afterward**. If the
+  syllabus is introductory, self-directed learning... is probably the better use of your time."*
+  Those two criteria are the Agentic Bootcamp's published promise almost word for word - you
+  bring one real task from your own work and leave with a workflow running against it - and the
+  engine assembled that answer from eleven other providers without us.
+- **The site already held the answer, attached to the wrong question.** The programme page's
+  *"What does 'agentic' actually mean here?"* opens on *"Most people use AI one question at a
+  time - one prompt, one tab"* and closes on *"the shift is from prompting to orchestrating"*.
+  That **is** the answer to all four probes; it was filed under a definitional query, so an
+  engine extracting Q&A pairs never matched it to a buyer's. **The same shape as the 3 Nov
+  finding** on that page, where the answer about checking an agent's work was attached to
+  *"Do I need to be technical?"*. So the change this cycle shipped is a Q&A in the buyer's own
+  words - *"I already use ChatGPT every day. What does the day add?"* - restating copy already on
+  the page, **not a new guide**, which is what backlog 81 asked for after checking whether it was
+  already answered in question shape.
+- **No new off-page target.** Probe 4's field is other providers' listings on platforms already
+  covered in `outreach/off-page-listings.md` (Eventbrite-class aggregators and ticketing
+  platforms); nothing here is a target the review list does not hold, so nothing was added and
+  nothing was contacted.
+- **No event fact was read, verified or changed.** `luma.com` is not reachable from this sandbox.
+  The engine's characterisation of any Luma page above is the engine's, not ours.
+
 ## 2026-11-09 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE MISDIRECTION FOUND ON A BRANDED QUERY LAST NIGHT NOW REPRODUCES ON AN UNBRANDED COMMERCIAL ONE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

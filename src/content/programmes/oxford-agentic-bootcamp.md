@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-11-04T09:30:00+00:00"
+updatedDate: "2026-11-09T20:30:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -49,6 +49,36 @@ faqs:
       hand-waved either: part of the day goes on where these workflows break, how you
       would notice and what you constrain so a bad run cannot do damage. Engineers are
       welcome - several people who build AI for a living came to the first cohort.
+  # The buyer's own question shape for an answer this page already gives in a
+  # definitional one. "What does “agentic” actually mean here?" below opens on
+  # "Most people use AI one question at a time" and closes on "the shift is from
+  # prompting to orchestrating", which IS the answer to "I already use ChatGPT,
+  # what next" - but an engine extracting Q&A pairs attaches it to a definitional
+  # query rather than to a buyer's. Same shape as the 3 Nov finding recorded
+  # below for the reviewer answer.
+  # Opted in on four probes, not on theory (9 Nov 2026, 20:00 cycle). "one day AI
+  # workshop for business owners who already use ChatGPT what next" (14:00 cycle),
+  # "how to go from using AI chatbots to building AI workflows that do real work",
+  # "what should I learn after ChatGPT to actually automate my own work" and "is a
+  # one day AI workshop worth it if I already use AI daily". No probe cited any
+  # page of this site, and no institutional publisher held any of the four fields.
+  # The last one's own closing criterion - that such a day is worth it where it
+  # "uses your own tasks" and gives you "something usable afterward" - is this
+  # page's published offer, and we were not in the answer.
+  # Every clause restates copy already on this page: sentences two and three are
+  # the "agentic" answer, the chatbot clause is the "Do I need to be technical?"
+  # answer, "a build day rather than a briefing" is "Who is it not for?", and the
+  # outcome sentence is `shortPitch`. No new claim, and no price, date, count,
+  # capacity, name or agenda timing.
+  - q: I already use ChatGPT every day. What does the day add?
+    a: >-
+      The step up from a chatbot to a workflow. Most people use AI one question at a
+      time - one prompt, one tab, with you carrying the work between the steps. Agentic
+      means several narrow AI steps handed off to each other in a pipeline: a scout that
+      gathers, a drafter that produces, a reviewer that checks. You spend the day
+      building one of those against a real task from your own work, and you leave with
+      it running. Daily chatbot use is the right starting point for that rather than a
+      reason to skip the day, and this is a build day rather than a briefing.
   - q: Who is it not for?
     a: >-
       People who want a conceptual overview of AI - this is a build day, not a briefing.

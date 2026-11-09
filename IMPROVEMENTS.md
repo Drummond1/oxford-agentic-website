@@ -1707,8 +1707,14 @@ Status: `todo` · `blocked` (why) · `doing`
     skip anything reached through a `subEvent` key. The reported Event count would then move from
     7 to 12, so say so in the same commit or the next cycle will read the jump as a regression.
 
-81. `todo` (loop-actionable, found 9 Nov 2026 in the 14:00 cycle; **the first probe in several
-    cycles that is winnable AND converting AND not already answered on the site**) - **"I already
+81. `done` 9 Nov 2026 (20:00 cycle), by the route this item named and after the re-probe it
+    asked for. Three more wordings put to search, none of them the 14:00 wording: all four
+    fields hold **no page of oxfordagentic.com and no institutional publisher**. The
+    "already answered in question shape" check was run first and came back **half yes** - the
+    programme page's *"What does “agentic” actually mean here?"* already carries the answer,
+    filed under a definitional query - so this shipped as a **2-sentence-shorter Q&A in the
+    buyer's own words on that same page**, not as a new guide and not as a Q&A block on a guide.
+    FAQPage count on that page 23 to 24. The original finding follows. - **"I already
     use ChatGPT - what is the next step?" is an unowned field and it is our published audience
     almost word for word.**
     **The evidence, from 9 Nov.** *"one day AI workshop for business owners who already use
@@ -1746,10 +1752,119 @@ Status: `todo` · `blocked` (why) · `doing`
     `src/pages/*.ts` pattern, for the reason recorded in the comment there - and re-run the
     dry-run on a real `.astro` page in the same cycle to prove nothing stopped submitting.
 
+83. `todo` (loop-actionable, low value and possibly correct as it stands; found 9 Nov 2026 in the
+    20:00 cycle, measured on that cycle's own change) - **a programme-page edit hints 27 IndexNow
+    URLs and moves 2 sitemap `lastmod`s, when the honest number for both is 1.**
+    Measured, not inferred. This cycle changed one `faqs` entry and `updatedDate` in
+    `src/content/programmes/oxford-agentic-bootcamp.md`. The whole-`dist` sha256 diff is **4 files
+    of 203**: the programme page, `llms-full.txt`, and the two sitemaps. The dry-run over the
+    change set returns **27 URLs** - the programme page, `/` and `/bootcamps/`, and **24 guides**
+    that name this programme in `relatedProgrammes`. Every one of those 24 guides' HTML is
+    **byte-identical**. Separately, the sitemap `lastmod` for `/` and `/bootcamps/` both moved to
+    this edit's timestamp while **`dist/index.html` and `dist/bootcamps/index.html` are
+    byte-identical too**.
+    **Why it may well be right as it stands, which is why this is a `todo` and not a defect.**
+    Both behaviours are documented and deliberate. `astro.config.mjs` says of the homepage
+    *"'What we run' renders a card per programme, so every programme edit moves it"*, and a
+    programme edit **can** change what those 24 guides render - `shortPitch` and the card copy are
+    on exactly that path. The mapping is coarse rather than wrong: it is only this edit, which
+    touched a field no other page renders, that makes it over-report. Backlog 74 weighs
+    over-submission as the milder failure and that still holds.
+    **If it is ever taken**, the only honest version is a build-output diff rather than a
+    source-path map - submit the URLs whose built bytes changed - and that is a much larger change
+    than the mapping table, so it should not be attempted as a cycle's one change. The cheaper
+    half is the `lastmod` claim, which is a truthfulness question rather than a budget one:
+    `astro.config.mjs`'s own standard for these derived dates is that they be *"verifiably
+    accurate"*, and a `lastmod` on a byte-identical page is not.
+
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 9 Nov 2026 (20:00 cycle) - the answer to "I already use ChatGPT, what next" was already on the programme page, filed under a definitional question. It is now also filed under the buyer's. One FAQ entry, 4 of 203 built files changed.
+
+**The gap, re-probed before it was acted on.** Backlog 81 was opened at 14:00 on a single probe
+and closed with an instruction: *"Re-probe before acting: one snapshot from a US-resident tool is
+not a field."* Three more wordings were put to search this cycle, none of them the 14:00 wording -
+*"I already use ChatGPT every day - what is the next step for my business?"*, *"how to go from
+using AI chatbots to building AI workflows that do real work"* and *"what should I learn after
+ChatGPT to actually automate my own work"* - plus the hesitation stated outright, *"is a one day
+AI workshop worth it if I already use AI daily"*. **Four fields, no page of oxfordagentic.com in
+any of them, and no institutional publisher in any of them.** What holds them is 2023-era business
+press, developer-blog chaff, course marketplaces selling ChatGPT-and-Zapier certificates, and
+other providers' own event listings.
+
+**The sharpest of the four, because the engine's own verdict is our published offer.** Asked flat
+out whether such a day is worth it, the engine closed on *"worth it mainly if it focuses on
+advanced or team-specific workflows, **uses your own tasks**, and **gives you something usable
+afterward**"*. Those two criteria are this programme's published promise almost word for word, and
+the engine assembled the answer from eleven other providers without us.
+
+**The site already held the answer, attached to the wrong question - the 3 Nov shape again.**
+Backlog 81's own precondition was to check whether the ladder is already answered in question
+shape before writing anything. It is, half: the programme page's *"What does “agentic” actually
+mean here?"* opens on *"Most people use AI one question at a time - one prompt, one tab"* and
+closes on *"the shift is from prompting to orchestrating"*. That **is** the answer to all four
+probes. It is filed under a definitional query, so an engine extracting Q&A pairs matches it to a
+reader rather than to a buyer. This is the same defect the 3 Nov cycle fixed on the same page,
+where the answer about checking an agent's work sat under *"Do I need to be technical?"*.
+
+**So the change is the smallest one that fits: one FAQ entry, in the buyer's words, on the page
+that already makes the claim.** *"I already use ChatGPT every day. What does the day add?"*
+**Not a new guide** - the field is a question, not an essay, and backlog 81 said to prefer the
+existing page if it already circles the answer. Every clause restates copy already on that page:
+sentences two and three are the "agentic" answer, the chatbot clause is the "Do I need to be
+technical?" answer, "a build day rather than a briefing" is "Who is it not for?", and the outcome
+sentence is `shortPitch`. **No new claim, and no price, date, count, capacity, name or agenda
+timing.** A 13-line comment above it records the four probes and which published sentence each
+clause comes from, so a later cycle can tell copy from invention.
+
+**Checks, read by exit code.** `npm ci` and `npm run build` green: 66 pages, **3,245 internal
+links resolve**, schema valid, **7 Event and 19 FAQPage nodes**, all titles and descriptions
+unique - every figure identical to the pre-edit baseline taken in the same session.
+`npm run check:flags` **exit 0** on both the all-on and all-off builds. A second full build after
+the flag check is **sha256-identical** to the first, so the output is reproducible.
+**Blast radius, measured rather than asserted:** whole-`dist` sha256 before and after, **203 files
+both sides, 4 differ** - the programme page, `llms-full.txt` (which gains the new pair and the new
+"Last updated"), and the two sitemaps. **Every other page is byte-identical**, including
+`/`, `/bootcamps/` and all 32 guides.
+**Headless Chromium at 375 and 1280px**, deviceScaleFactor 2, over the built page served locally:
+**22 assertions, 0 fail, 0 uncaught JS exceptions, 0 same-origin request failures.** They cover
+the page returning 200, the question rendering in visible text, the answer being correctly
+**hidden** while the `<details>` is closed and present in the DOM, the control opening on click,
+the answer box laid out (332x319 at 375px, 702x171 at 1280px), no horizontal page overflow at
+either width, the answer staying inside the viewport, **FAQPage `mainEntity` 23 to 24**, and the
+new pair present in the JSON-LD with its answer text intact. The only blocked requests were
+`googletagmanager.com`, proved third-party by capturing the failed URLs. Screenshots read at both
+widths: the entry sits third in the accordion, between *"Do I need to be technical?"* and
+*"Who is it not for?"*, in the page's own type and rhythm.
+**Voice:** British spelling, no em dash in the new copy (checked), no banned word, no exclamation
+mark.
+
+**IndexNow, dry-run before committing as the 02:00 correction requires: 27 URLs, and the honest
+number is 1.** The programme page, `/`, `/bootcamps/` and the **24 guides** that name this
+programme in `relatedProgrammes`. All 24 of those guides are byte-identical, and so are
+`/` and `/bootcamps/` - whose sitemap `lastmod`s nonetheless moved. Both behaviours are
+documented and deliberate (`astro.config.mjs`: *"'What we run' renders a card per programme, so
+every programme edit moves it"*), and a programme edit genuinely **can** change what those pages
+render; it is this edit, touching a field no other page shows, that makes the mapping over-report.
+Not changed here, because the honest fix is a built-output diff rather than a source-path map and
+that is a larger change than this cycle's one. **Recorded as backlog 83 with the measurement**,
+and weighed against backlog 74's standing judgement that over-submission is the milder failure.
+
+**No new guide, 0 of 3 for the week of 9-15 Nov**; this is a refresh of an existing page, which is
+what the standing rule asks for where an existing page's value is comparable. **One Q&A-style
+improvement this cycle and one today**, inside both the per-cycle and per-day limits.
+**Search Console unavailable for the thirtieth consecutive cycle**: no `GSC_SERVICE_ACCOUNT_KEY`,
+and no CSV, TSV or XLSX anywhere in the repository. Nothing estimated.
+**No Luma page is reachable from this sandbox, so no event fact was read, invented or changed**,
+and nothing in the shipped copy depends on one. **No new off-page target**, so
+`outreach/review-list.md` is untouched: probe 4's field is other providers' listings on platforms
+`outreach/off-page-listings.md` already holds. Production is unreachable on CONNECT as on every
+cycle since 30 Oct, so the Actions API stood in: **deploy run 389 on `0de61a3` success**, nothing
+queued or in progress, and that SHA is both `origin/main` and the HEAD this cycle built from.
+Backlog 81 closed; 83 opened.
 
 ### 9 Nov 2026 (14:00 cycle) - two source files were spending all 55 whole-site IndexNow hints on a change that cannot move a single sitemap page. The honest number is zero, and it is now zero. One regex, 203 files in `dist` byte-identical.
 
