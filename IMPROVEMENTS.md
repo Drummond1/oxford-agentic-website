@@ -1652,9 +1652,138 @@ Status: `todo` · `blocked` (why) · `doing`
     Q&A block on either, written from Drummond's own observation, would publish a `FAQPage` node
     on this axis without a new guide. Either route needs the same one input from him.
 
+79. `todo` (loop-actionable, found 9 Nov 2026 in the 08:00 cycle by running the dry-run before
+    committing, which is what the 02:00 correction asked for; **small, and it is the same class of
+    fix the script already contains**) - **IndexNow maps `src/lib/llms.ts` and
+    `src/pages/rss.xml.ts` to all 55 sitemap URLs, and the honest number for both is zero.**
+    Measured this cycle: `indexnow-ping --dry-run src/lib/llms.ts src/pages/rss.xml.ts` returns
+    **55**. Neither file can move a sitemap page. `src/lib/llms.ts` is imported by exactly two
+    things, `src/pages/llms.txt.ts` and `src/pages/llms-full.txt.ts` (grepped, not assumed), and
+    `src/pages/rss.xml.ts` builds only `/rss.xml`. **None of `/llms.txt`, `/llms-full.txt` or
+    `/rss.xml` is in the sitemap**, so the right submission for a change to any of them is
+    nothing at all.
+    **Why it falls through today.** `src/lib/llms.ts` is not in `SINGLE_PAGE_SOURCES`, and
+    `src/pages/rss.xml.ts` does not match the page pattern `^src/pages/(...)([a-z0-9-]+)\.astro$`
+    (it is `.ts`, and its name has a dot in it), so both reach the final branch and set
+    `wholeSite`.
+    **The shape of the fix, and the thing to be careful about.** `SINGLE_PAGE_SOURCES` maps a
+    shared source to one URL; this needs the neighbouring idea - a source that maps to **no**
+    sitemap URL. The existing exempt regex already does exactly that for docs, `outreach/`,
+    `seo-data/`, `.github/` and the check scripts, so the smallest honest change is to add these
+    two paths to that list, with the comment saying why (their outputs are real published files,
+    but none is in the sitemap, so IndexNow has nothing to hint). **Do not generalise it to
+    `src/pages/*.ts`**: `robots.txt.ts`, `favicon.svg.ts` and the rest are the same case, but
+    `src/pages/*.astro` is not, and a pattern loose enough to catch all the `.ts` routes is one
+    `.astro` typo away from silently submitting nothing on a real page change. Name the files.
+    **Cost of leaving it:** 55 whole-site hints on any cycle that edits either file, on a domain
+    whose measured constraint is crawl budget. Backlog 74 calls over-submission the milder
+    failure and that still holds, so this is tidying rather than a defect.
+
+80. `todo` (loop-actionable but **it buys nothing today, measured**; found 9 Nov 2026 in the
+    08:00 cycle) - **`scripts/check-schema.mjs` validates only the top-level `@graph` nodes, so
+    the five `EducationEvent` nodes nested inside `/events/`'s `ItemList` are checked by nothing.**
+    This is not a new observation - `eventListingItem`'s own comment in `src/lib/schema.ts`
+    records that a node missing `image` and `offers` "passed every build since it was written"
+    for exactly this reason, and the 25 Oct cycle fixed the data. **The detector was never
+    added**, which is the same shape as backlog 66 (the quote guard) and backlog 77 (the link
+    checker): the defect was fixed and the thing that would have caught it was not.
+    **Measured before proposing it, which is why this is a `todo` and not a cycle.** A walk of
+    every nested node in all 64 built pages finds **34** nested event nodes: the 5 entity-level
+    ones on `/events/`, which today carry **every** required field, and **29** `subEvent`
+    children, which correctly carry none of `offers`, `organizer` or `image` and must stay
+    exempt. So the guard would pass on the first run and fix nothing.
+    **If it is taken**, the scope is the distinction above and nothing wider: validate a nested
+    node only where it is an event entity in its own right - it has an `@id` and a `url` - and
+    skip anything reached through a `subEvent` key. The reported Event count would then move from
+    7 to 12, so say so in the same commit or the next cycle will read the jump as a regression.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 9 Nov 2026 (08:00 cycle) - the two files written for machines were the two still publishing em dashes: 36 of them, now none, and the feed finally has one name instead of two
+
+**What was wrong.** The standing voice rule bans the em dash and asks for a spaced hyphen. Every
+page of authored prose on the site honours it - a sweep of all 64 built pages finds **zero** em
+dashes in visible text. The two files written for machines did not. `/llms-full.txt`, which is
+the knowledge base the office-hours and finder voice agents read and the file AI crawlers are
+pointed at from `robots.txt` and from every page's `<link rel="alternate">`, carried **35**.
+`/rss.xml` carried **one**, in the feed's own `<channel><title>`.
+
+**The second half of it, which is a plain inconsistency rather than a style point.** The feed has
+two names. `src/components/BaseHead.astro:81` prints
+`title={`${config.brand.name} - Guides`}` into every page's head; `src/pages/rss.xml.ts:50`
+wrote `${escape(config.brand.name)} — Guides` into the feed itself. A reader subscribing from
+the page and a reader opening the file got different titles for the same feed, and the rule says
+which of the two was wrong.
+
+**Where they came from, and what was not touched.** All 36 were **generated separators**, not
+authored copy: `src/lib/llms.ts` at the file heading (1), the agenda line
+`- <time> <title> — <detail>` (29 across five events), the testimonial attribution
+`"<quote>" — <name>, <role>` (4), and a `'—'` placeholder for an event with no programme (a
+branch nothing currently takes), plus the one in `rss.xml.ts`. Five lines changed, all of them
+published strings. **The em dashes in code comments were left alone** - `src/lib/llms.ts` has
+three more in its own commentary and the repo has dozens - because the rule is about what is
+published, and touching them would have made the diff about something else.
+
+**Why the spaced hyphen rather than a colon.** The agenda line now reads
+`- 09:35 Anatomy of an agent pipeline - Built live in front of the room, on a real example -
+scout, drafter, reviewer`, which puts two spaced hyphens in one line. A colon was considered and
+declined: `llms.txt` uses one for its link-to-detail separator, but the agenda line already opens
+with a clock time containing a colon, and the rule names the replacement outright. Taking the
+rule literally is the smaller decision, and it makes the file read in the same voice as the pages
+it summarises.
+
+**Measured, by exit code and by diff, not argued.**
+- **`dist` before and after: 198 files on both sides, exactly two differ** - `llms-full.txt` and
+  `rss.xml`. Every HTML page is byte-identical, which is the expected result of changing only
+  these two generators.
+- **Both differing files are identical to their baseline once the em dash is replaced by a
+  hyphen** (`diff <(perl -CSD -pe 's/\x{2014}/-/g' baseline) new` is silent for each). So no word
+  of copy moved: 70 changed lines in `llms-full.txt`, every one of them a single character.
+- **The count the fix is for:** `llms-full.txt` 35 to **0**, `rss.xml` 1 to **0**, `llms.txt`
+  0 to 0.
+- **`npm run build` green**: 64 pages, 3,156 internal links resolve, schema valid, 7 Event and
+  19 FAQPage nodes, all titles and descriptions unique - every figure identical to the baseline
+  taken before the edit. `npm run check:flags` exit **0**. The 11 outbound warnings are the
+  sandbox egress policy, identical in kind to the baseline.
+- **Headless Chromium at 375 and 1280px: 34 assertions, 0 failing** - `/llms-full.txt`,
+  `/rss.xml` and `/llms.txt` each HTTP 200 with no em dash in the served body; the heading, the
+  agenda separator and the testimonial separator each hyphenated; the Cohort 3 and Coding
+  Bootcamp dates still present in the file; `rss.xml` still parses as XML in the browser and its
+  `<channel><title>` now equals the `title` attribute on `/guides/`'s feed link; no horizontal
+  page scroll, no page errors, no failed local requests. Screenshots read at both widths.
+
+**The crawl-budget cost, measured before the commit rather than asserted after it**, which is
+what the 02:00 correction asked of every cycle touching `src/lib/*`. `indexnow-ping --dry-run`
+over this commit's two code files returns **55 URLs** - the whole sitemap - because
+`src/lib/llms.ts` is not in `SINGLE_PAGE_SOURCES` and `src/pages/rss.xml.ts` does not match the
+`.astro` page pattern, so both fall to the whole-site branch. **The honest number is zero**:
+`/llms-full.txt`, `/llms.txt` and `/rss.xml` are none of them in the sitemap, and no sitemap page
+changed by a byte. That gap is **backlog 79**, left unbundled on the 8 and 9 November precedent -
+the mapping deserves its own cycle and its own proof - and recorded here rather than discovered
+afterwards. Over-submission stays the milder failure by backlog 74's own weighing, so nothing is
+broken; the 55 hints are simply spent on nothing.
+
+**Four GEO probes, zero citations, and for the first time in several cycles every decline was
+"already answered" rather than "not winnable".** No branded probe was run: five consecutive
+cycles have recorded the same branded miss with the same cause and the same remedy, which is
+Drummond's, so a sixth would buy nothing. The four buyer axes were transfer-if-you-cannot-attend,
+whether a paid AI subscription is needed, agents against legacy systems, and bring-your-own-work
+against demo-following. Two are winnable and already published machine-readably - *"What if I
+book but cannot make the date?"* and *"Do I need a paid AI subscription?"* are both `FAQPage`
+entries today, checked on the built site rather than assumed - one is a vendor field about its
+own tooling and the wrong buyer, and the fourth is the day's own premise, recommended back to us
+in the engine's own words. Logged in `seo-data/geo-citations.md`. No new off-page target
+surfaced, so nothing was added to the review list.
+
+No new guide: **0 of 3 for the week of 9-15 Nov**. Search Console unavailable for the
+twenty-eighth consecutive cycle - the newest reading in `seo-data/` is still 15 Sept, and no
+export newer than it exists - so nothing was estimated. `oxfordagentic.com` and `luma.com` are
+both refused on CONNECT by the sandbox, so the Actions API stood in for the deployment check
+(deploy run **384** succeeded on `c21cb7f`, which is `origin/main` and the HEAD this cycle
+started from) and **no event fact was read, invented or changed**.
 
 ### 9 Nov 2026 (02:00 cycle) — backlog 77, both halves in one commit: a redirect that pointed at a route which does not build, and the link checker that can see it
 

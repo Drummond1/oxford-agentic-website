@@ -193,7 +193,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
   const programmeById = new Map(programmes.map((p) => [p.id, p]));
 
   const out: string[] = [
-    `# ${config.brand.name} — full site text`,
+    `# ${config.brand.name} - full site text`,
     '',
     `> ${config.brand.longDescription}`,
     '',
@@ -261,7 +261,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
       `## Event: ${event.data.title}`,
       '',
       `URL: ${absoluteUrl(paths.event(event.data.slug))}`,
-      `Programme: ${programme?.data.name ?? '—'}`,
+      `Programme: ${programme?.data.name ?? '-'}`,
       `Status: ${status}`,
       `Date: ${formatDate(event.data.startDate)}`,
       `Time: ${formatTimeRange(event.data.startDate, event.data.endDate)} (Europe/London)`,
@@ -285,7 +285,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
     if (event.data.agenda.length > 0) {
       out.push(
         'Agenda:',
-        ...event.data.agenda.map((a) => `- ${a.time} ${a.title}${a.detail ? ` — ${a.detail}` : ''}`),
+        ...event.data.agenda.map((a) => `- ${a.time} ${a.title}${a.detail ? ` - ${a.detail}` : ''}`),
         '',
       );
     }
@@ -303,7 +303,7 @@ export async function renderLlmsFullTxt(): Promise<string> {
     out.push('## Outcomes and testimonials', '');
     for (const t of testimonials) {
       out.push(
-        `"${t.data.quote}" — ${t.data.name}, ${t.data.role}${t.data.company ? `, ${t.data.company}` : ''}` +
+        `"${t.data.quote}" - ${t.data.name}, ${t.data.role}${t.data.company ? `, ${t.data.company}` : ''}` +
           `${t.data.cohort ? ` (${t.data.cohort}, ${formatDate(t.data.date, { weekday: undefined })})` : ''}`,
         '',
       );

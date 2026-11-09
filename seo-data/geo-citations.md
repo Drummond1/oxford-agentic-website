@@ -5,6 +5,59 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-09 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND FOR THE FIRST TIME IN SEVERAL CYCLES EVERY DECLINE WAS "ALREADY ANSWERED" RATHER THAN "NOT WINNABLE"
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before, and deliberately **no
+branded probe**: the last five cycles have each recorded a branded miss with the same cause and
+the same remedy, which is Drummond's, so a sixth would have bought nothing. These four are all
+buyer axes: two pre-booking objections, one integration question and one format question.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what happens if I book a one day AI training course and then cannot attend can I transfer my place | **No** | provider cancellation policies and PDFs - `abouttoday.com.au`, `copc.com` (x2, PDFs), `ecc.ac.uk` (x3, the same course in three months), `aiawareness.ai` (x2), `iedconline.org` (PDF), `dreeam.ac.uk` (PDF), `winstonswish.org` (PDF), `cherwell.gov.uk`, `technologyonecorp.co.nz`, `housingrights.org.uk`, `humanfactors.com`, `dnv.us`, `hub.agentos.com`, `government-ai-academy.pages.dev`, `networkershome.com` |
+| 2 | do I need a paid Claude or ChatGPT subscription to get anything out of a hands-on AI training day | **No** | `gmelius.com` (x4, the same post in four languages), `findskill.ai` (x3), `freeacademy.ai` (x2), TechRadar, Tom's Guide, `overchat.ai`, `zemith.com`, `costbench.com`, `aitoolsatlas.ai`, three `pages.dev` microsites, `coconote.app`, `grandavehousing.calpoly.edu` |
+| 3 | will an AI agent work with the old legacy systems my company already uses or do we need new software | **No** | `zartis.com` + its Medium mirror, `stack-ai.com` / `stackai.com` (the same post twice), `icx.co` / `blog.icx.co` (the same post twice), `techstrong.ai`, `getmonetizely.com`, `accelirate.com`, `meoadvisors.com` |
+| 4 | bring your own real work to an AI workshop versus following a demo which actually leaves you with something | **No** | `amitkoth.pages.dev`, `anicca.co.uk` (x2), Fiverr, `trishusseywriting.substack.com`, `alicelabs.ai`, Eventbrite FI, `eurofinance.com` (PDF), `gathershot-marketing.pages.dev`, `brainstation.io`, `zackproser.com`, `studiomeyer.io`, `thoughtsbrewing.com`, `virtuelleakademie.github.io`, `tlc.uva.nl`, `pages.hireez.com` |
+
+**Reading.**
+
+- **Probe 1 is winnable and converting and is already answered, which is the honest outcome and
+  was checked rather than assumed.** The field is every provider publishing its own cancellation
+  policy, so no neutral party owns it, and the engine closed on *"The answer depends on the
+  provider"* and told the buyer to read their booking confirmation. That is a question we can
+  answer for our own day with a published fact. **We already do, machine-readably, in three
+  places**: *"What if I book but cannot make the date?"* is an entry in the `FAQPage` node on the
+  homepage, on the Agentic programme page and on the Coding Bootcamp programme page, and the same
+  promise is printed in the `assurances` block on each of the three event pages that take a
+  booking (*"If 19 November stops working, your place transfers to a future cohort at no
+  charge"*). Nothing to write.
+- **Probe 2 is the same shape.** The field is affiliate and comparison chaff - the same post in
+  four languages at the top of it - with no institutional publisher, so it is winnable on the
+  letter. It is also published already: *"Do I need a paid AI subscription?"* is in the Agentic
+  programme page's `FAQPage` node, the answer is repeated in the Cohort 3 event page's *"What
+  should I bring?"*, and the homepage FAQ carries the same sentence. Declined, with nothing
+  missing.
+- **Probe 3 is NOT winnable and is the wrong buyer.** Every result is an integration agency or an
+  agent platform writing about its own tooling, which is rule (a)'s named pattern, and several
+  are the same post served from two domains. The searcher is someone scoping an enterprise
+  integration programme, not someone choosing a day in Oxford. Declined on both limbs.
+- **Probe 4 is winnable and is the day's own premise, which is why there is nothing to add.** The
+  field is workshop vendors, a Fiverr gig and two `pages.dev` microsites, and the engine flagged
+  it itself - *"mostly workshop vendors and practitioner blogs, not controlled studies"* - and
+  then recommended, in its own words, *"asking attendees to bring one live task they want to
+  improve"*. That is what the site publishes on the homepage, on all three programme pages and in
+  `what-hands-on-ai-training-actually-means`. It also repeated the caveat that bringing real work
+  needs preparation, which we answer in *"What should I bring?"* and in
+  `how-to-choose-your-first-agentic-task`. Nothing left to write.
+
+**What this cycle did with that.** Nothing to content, correctly. The cycle spent itself on a
+voice defect in the two published machine-read files - `/llms-full.txt` and `/rss.xml` - which is
+the surface this log is about: 36 em dashes in files written for answer engines and read verbatim
+by the two voice agents, against a standing rule that bans them. Count after: zero. No new
+off-page target surfaced, so nothing was added to the review list.
+
 ## 2026-11-09 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - THE FIFTH BRANDED MISS IN FIVE CYCLES, AND THE FIRST TIME THE STALE THIRD-PARTY LISTING WAS USED TO RULE US *OUT* OF A QUERY WE HAVE A PRODUCT FOR
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
