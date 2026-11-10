@@ -5,6 +5,59 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-10 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - BACKLOG 75'S FIELD RE-PROBED AND CONFIRMED VENDOR-ONLY, AND THE STALE-RECORD FAILURE NOW ANSWERS A NOVEMBER-DATED QUERY WITH COHORT 3 NINE DAYS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Probes 1-3 are the purchase-shape axis backlog 75 opened on 8 November,
+re-probed in wordings it did not use, because that item had been declined twice on its route and
+the field deserved a second reading before anything was written. Probe 4 is the third consecutive
+re-measurement of the stale-record failure, this time with the month in the query.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | in-house AI training day for our team or send two people to an external cohort which is better | **No** | `ivee.jobs`, `academy.nebius.com`, `guvi.in`, `aicerts.ai` (x2), `intuitionlabs.ai`, `elderresearch.com`, `joinleland.com`, `disco.co`, `aitraining2u.com` |
+| 2 | how many people before a private in-house AI training day is better value than booking individual places | **No** | `aiag.org`, `aitraining2u.com` (x3), `pertamapartners.com` (x3), `getclear.ca`, `aisuperior.com`, `lumifywork.com`, `virti.com`, `accessanalytic.com.au`, `agilefever.com`, `teamland.com`, `dnv.co.uk`, `boti.co.za`, `mishu.my` |
+| 3 | we have a small team should everyone come to the AI training day or just the people who will build the workflows | **No** | `propellernet.co.uk`, `lilachbullock.com` (x3), `therundown.ai`, `enterprisenation.com`, `adventuremedia.ai` (x2), `beginnersinai.org`, `clickforest.com`, `generalassemb.ly`, `mostlyserious.io`, a `pages.dev` microsite, `cal.com`, `tally.so` |
+| 4 | one day agentic AI bootcamp Oxford November 2026 book a place | **No** | `luma.com/oxfordagentic2` (**Cohort 2, past**), `luma.com/k7c2rm5s` (**Cohort 1, 21 July, past**), `allai.events` (**still 21 July 2026**), `planomato.com` (**the Second Brain day, 21 October, past**), Saïd Business School's online programme, `eventbrite.co.uk` (x2, London), `learnersink.com`, `meetup.com/oxford-ai-training`, `createwith.com`, `pulse.bot`, `datasciencedojo.com`, `outsystems.com`, OxML via Google Groups (x2) |
+
+**Reading.**
+
+- **Probes 1-3 confirm backlog 75's field and sharpen it, so it was acted on this cycle.** Three
+  wordings, **no institutional publisher and no neutral party in any of them**, and the engine
+  said so itself on probe 1: ***"Many of the sources are vendors of training, so weigh their
+  claims accordingly."*** Every result on probe 1 sells training. This is the shape of the
+  purchase - in-house day against cohort seats - which is a more commercial question than
+  backlog 73's one-seat-or-two, and nobody without a stake in the answer is writing it down.
+- **Two of the three probes handed back questions this site had the answer to and could not
+  publish.** Probe 1's bottom line was the hybrid - *send two out first, then decide* - which
+  `in-house-ai-day-or-send-people-to-a-cohort` did not answer anywhere. Probe 3 returned the
+  engine's own admission: ***"The search didn't turn up anything that directly answers whether
+  everyone or only the builders should attend."*** Both are now `h3` questions on that guide, and
+  the page publishes its first `FAQPage` node. See the ledger entry for why the four statement
+  `h2`s were left alone.
+- **Probe 2's numbers are exactly what the accuracy rule exists for, and none of them was used.**
+  The field offers vendor break-evens of *"four delegates"*, *"8-12 participants"* and savings of
+  *"50-80%"*, every one from a sales page and none traced to a primary source. The headcount
+  answer published this cycle uses only this site's own published floor, *"below about four
+  people, a private day is usually poor value"*, and says plainly that there is no clean
+  threshold.
+- **Probe 4 is the third reproduction in three days, and the strongest, because the query names
+  the month.** 8 Nov found it on a branded query, 9 Nov on an unbranded commercial one, and this
+  one asks for a one-day agentic AI bootcamp in Oxford **in November 2026 and how to book it**.
+  **Cohort 3 is nine days away and bookable, the Coding Bootcamp sixteen.** Neither appeared. The
+  four records of us that did are **all past**: Cohort 2's Luma page, Cohort 1's Luma page, the
+  21 July `allai.events` listing and `planomato.com`'s Second Brain listing. The engine's verdict
+  was ***"I couldn't find a one-day agentic AI bootcamp in Oxford scheduled for November 2026, so
+  I can't confirm a booking option for that month"***, and it added that the Luma listing it found
+  *"doesn't show a date"*. **No on-site change can fix this**: the site carries both dates on the
+  homepage, `/events/`, the programme pages and both event pages, and has done since before each
+  cohort went on sale. It is the standing off-page ask, and nothing here is a target
+  `outreach/review-list.md` does not already hold (`allai.events` and `planomato.com` are both on
+  it), so nothing was added and nobody was contacted.
+- **No event fact was read, verified or changed.** `luma.com` is not reachable from this sandbox.
+  The engine's characterisation of any Luma page above is the engine's, not ours.
+
 ## 2026-11-09 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - AND THE 14:00 CYCLE'S ONE REAL GAP RE-PROBED IN THREE MORE WORDINGS AND CONFIRMED, SO IT WAS ACTED ON
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

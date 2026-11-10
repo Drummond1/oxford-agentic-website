@@ -1546,9 +1546,16 @@ Status: `todo` · `blocked` (why) · `doing`
       page. One cycle, and smaller than this entry.
 
 
-75. `todo` (loop-actionable, found 8 Nov 2026 in the 08:00 cycle; **declined this cycle on its
-    route, not on its merits, and the honest route the last two cycles used does not exist here**)
-    - **`in-house-ai-day-or-send-people-to-a-cohort` answers the single most commercial question
+75. `done` 10 Nov 2026 (08:00 cycle), and **not by the route this item declined twice**. The
+    four statement `h2`s are untouched. The node is built from **three new `h3` questions**
+    added as their own section, two of which came straight out of this cycle's re-probe: the
+    hybrid the engine itself recommended (*send two out first, then decide*) and whether the
+    whole team should come or only the builders, which the engine admitted the field does not
+    answer. So the page gained answers it did not have rather than headings bent into
+    questions. `FAQPage` count 19 to 20; `dist` 5 files of 203 changed; IndexNow 2 URLs, both
+    genuinely changed. The vendor break-evens the field offers (4-5, 8-12) were **not**
+    borrowed - the published floor is this site's own "below about four". The original
+    finding follows. - **`in-house-ai-day-or-send-people-to-a-cohort` answers the single most commercial question
     in the open field and cannot be quoted, because all four of its `h2`s are statements.** They
     are *"What an in-house day is good at"*, *"What a cohort is good at"*, *"The question that
     settles it"* and the template's *"Where this gets practical"*. `faqsFromQuestionHeadings`
@@ -1781,6 +1788,85 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 10 Nov 2026 (08:00 cycle) - the most commercial question in the open field had a guide and no way to be quoted. It now publishes a `FAQPage` node built from three questions it did not previously answer, and the four statement headings are untouched.
+
+**What was wrong, and why two earlier cycles were right to refuse the obvious fix.** Backlog 75
+recorded it on 8 November: `in-house-ai-day-or-send-people-to-a-cohort` answers the shape of the
+purchase - a private day for the team, or seats at an open cohort - and **all four of its `h2`s
+are statements**, so `faqsFromQuestionHeadings` had nothing to read and the page published no
+`FAQPage` node. The route that would have been quickest is rewriting those four statements into
+questions, which the 6 and 7 November cycles both named as prose bent to fit a schema node and
+declined. **This cycle did not take it either.** The four headings are byte-identical; the node
+comes from a new section of three `h3` questions placed between *"The question that settles it"*
+and *"Where this gets practical"*, so the essay above them still reads as an essay and the
+extractor publishes exactly the three leaves.
+
+**The field, re-probed in three wordings backlog 75 did not use.** Every result on probe 1 sells
+training (`ivee.jobs`, `academy.nebius.com`, `guvi.in`, `aicerts.ai` x2, `intuitionlabs.ai`,
+`elderresearch.com`, `joinleland.com`, `disco.co`, `aitraining2u.com`), **no institutional
+publisher and no neutral party in any of the three**, and the engine flagged it itself: *"Many of
+the sources are vendors of training, so weigh their claims accordingly."*
+
+**Two of the three questions are the engine's own, which is why this is not markup tidying.**
+Probe 1's bottom line was the hybrid - *send two people out first, then decide about an in-house
+day* - and **this page did not answer it anywhere**. Probe 3 came back with
+*"The search didn't turn up anything that directly answers whether everyone or only the builders
+should attend."* Both are now questions on the page with answers under them. The third is the
+headcount question, which the page already answered in passing and now answers in question shape.
+
+**Nothing was invented, and the field's numbers were deliberately left on the floor.** Probe 2
+offers vendor break-evens - *"four delegates"*, *"8-12 participants"*, savings of *"50-80%"* -
+every one a sales page, none traced to a primary source, none repeated here. The published floor
+is this page's own *"below about four people, a private day is usually poor value"*, with the
+answer saying plainly that there is no clean threshold. Every other clause restates published
+copy: alignment against capability is this page's own settling question, *"a build day, not a
+briefing"* and being unable to bring a real task are the programme page's *"Who is it not for?"*,
+the same-task advice is its teams answer, and the hour booked in the same week to be shown the
+thing running is `who-should-take-the-seat`, which the second answer now links. **No price, date,
+count, capacity, name or agenda timing.** A frontmatter comment records each probe and which
+published sentence each clause comes from.
+
+**The duplicate check that changed the shape of the block.** A fourth question - *"What if my task
+is confidential?"* - was drafted and dropped: the Agentic programme page **and** the Cohort 3 event
+page already answer it in question shape inside their own `FAQPage` nodes, so a third copy would
+have duplicated a quotable answer rather than added one. The first answer was also rewritten after
+the desktop screenshot showed it repeating two clauses verbatim from the paragraph directly above
+it, which reads as padding to a human even though an engine would not mind.
+
+**Checks, read by exit code.** `npm ci` and `npm run build` green: 64 pages built, 66 checked,
+**3,246 internal links resolve** (3,245 before - the one addition is this block's link to
+`who-should-take-the-seat`, which that guide already links back to), schema valid, **7 Event and
+20 FAQPage nodes** (19 before - the new one is this page's), all titles and descriptions unique. `npm run check:flags` **exit 0** on
+both the all-on and all-off builds. A second full build is **sha256-identical** to the first.
+**Blast radius measured rather than asserted:** whole-`dist` sha256 before and after, **203 files
+both sides, 5 differ** - the guide page, `/guides/` (its card's eyebrow moves October to November,
+isolated against a pristine build of `e63298c` and that single line is the entire difference),
+`llms-full.txt` and the two sitemaps. Every other page byte-identical. **IndexNow dry-run before
+committing: 2 URLs**, and both of them genuinely changed, so the honest number and the submitted
+number agree for once. Headless Chromium at 375 and 1280px over the built page served locally:
+**28 assertions, 0 fail**, covering all three headings rendering with anchor ids and non-zero
+boxes, the four original `h2`s intact, the new internal link laid out, no horizontal overflow,
+exactly one `FAQPage` node carrying exactly three pairs, 0 uncaught JS exceptions and 0
+same-origin request failures. The only blocked requests were googletagmanager, proved third-party
+by capturing the failed URLs. The new `h3`s were checked against the 7 November Q&A guide and
+their computed style is **identical** (Newsreader, 19.23px, weight 400, 20.8px top margin), so
+nothing new was introduced to the design.
+
+**Four probes, zero citations, logged in full in `seo-data/geo-citations.md`.** Probe 4 is the
+third reproduction in three days of the stale-record failure and the strongest, because the query
+names the month: *"one day agentic AI bootcamp Oxford November 2026 book a place"* returned **four
+past records of us** - both cohorts' Luma pages, the 21 July `allai.events` listing and
+`planomato.com`'s Second Brain listing - and the engine concluded ***"I couldn't find a one-day
+agentic AI bootcamp in Oxford scheduled for November 2026"***, with **Cohort 3 nine days away and
+the Coding Bootcamp sixteen**. No on-site change can fix that; the dates are on the homepage,
+`/events/`, both programme pages and both event pages. It is the standing off-page ask, and both
+domains are already on `outreach/review-list.md`, so **no new target was added and nobody was
+contacted**.
+
+**No new guide, 0 of 3 for the week of 9-15 Nov.** Search Console unavailable for the thirty-first
+consecutive cycle; nothing estimated. No Luma page is reachable from this sandbox, so no event
+fact was read, invented or changed.
 
 ### 9 Nov 2026 (20:00 cycle) - the answer to "I already use ChatGPT, what next" was already on the programme page, filed under a definitional question. It is now also filed under the buyer's. One FAQ entry, 4 of 203 built files changed.
 
