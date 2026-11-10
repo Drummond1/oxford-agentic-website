@@ -1784,10 +1784,141 @@ Status: `todo` · `blocked` (why) · `doing`
     `astro.config.mjs`'s own standard for these derived dates is that they be *"verifiably
     accurate"*, and a `lastmod` on a byte-identical page is not.
 
+84. `todo` (loop-actionable, **the better fix declined on scope** by the 10 Nov 2026 09:00 cycle,
+    which shipped the cheaper one) - **`subgrid` would align every row across a row of event
+    cards without reserving anything.** That cycle fixed the eyebrow row with
+    `min-block-size: 2lh`, which works because no programme name has ever needed a third line,
+    but it is a reservation rather than an alignment: it costs one line of air at roughly
+    900-992px, where every name fits on one line, and it only aligns the one row whose height
+    varies today. `grid-template-rows: subgrid` on the card would align all five rows - eyebrow,
+    cohort, meta, standfirst, call to action - whatever any of them says.
+    **Why it was not taken as that cycle's one change.** The cards are grandchildren of
+    `.grid--3` through a `<div data-reveal>` wrapper, so the subgrid chain needs the grid
+    (`global.css`), the wrapper and the card itself, across four files and six usage sites
+    (`HomeSections.astro`, `events/index.astro` twice, `404.astro`, `bootcamps/[slug].astro`
+    twice) - plus an `@supports (grid-template-rows: subgrid)` guard, because the card's
+    `.event-card__summary { flex: 1 }` is what pins the call to action to the bottom today and a
+    bare `display: grid` would drop it. That is a layout rewire of the homepage's conversion
+    module, not a cycle's one improvement.
+    **If it is taken**, the `2lh` reservation comes out in the same commit, and the check is the
+    same one that found the fault: full-page screenshots at 320, 375, 414, 704, 768, 900, 1024,
+    1280 and 1440px with motion disabled, expecting byte-identical below 705px.
+
+85. `todo` (loop-actionable, **low value, recorded so it is not re-derived**; found 10 Nov 2026
+    in the 09:00 cycle, measured on that cycle's own change) - **a change to one
+    `src/components/*.astro` file hints all 55 IndexNow URLs, and that cycle's honest number was
+    7.** `scripts/indexnow-ping.mjs` puts any `src/components/` path in the whole-site bucket,
+    which is right for a component in the header, the footer or the base layout and wrong for
+    `EventCard.astro`: the whole-`dist` sha256 diff for that cycle was **7 files of 203**, the
+    seven pages that render an event card.
+    **Why it is probably right as it stands.** Most shared components genuinely are on every
+    page, and backlog 74 weighs over-submission as the milder failure. Naming `EventCard.astro`
+    by hand in the map would fix this one case and quietly rot the next time a component moves,
+    which is the same objection backlog 41 was downgraded on.
+    **If it is ever taken**, the only honest version is the build-output diff that backlog 83
+    describes - submit the URLs whose built bytes changed - and it should be taken once, for
+    every source path, rather than one component at a time.
+
+86. `todo` (loop-actionable but **it is not one change and probably not the loop's**; found
+    10 Nov 2026 in the 09:00 cycle, on the first sweep this loop has run at a 32px browser
+    default) - **seven pages scroll sideways at 200% browser text, and the cause is shared
+    spacing rather than any one component.** The loop's standing sweep is 320px and 375px at a
+    16px and a 24px default, and it reads **0px on all 61 public pages**, which still holds.
+    Extended to a **32px** default - the 200% that WCAG 1.4.4 names - every page overflows by
+    **3px** from `.wordmark__text` (backlog 32, Drummond's) and seven overflow by much more:
+    `/` and `/ceo-roundtable/` and `/home-photos/` by **42px**, `/bootcamps/` and both on-sale
+    event pages by **45px**, `/bootcamps/oxford-agentic-bootcamp/` by **15px**.
+    **Measured cause, on `/bootcamps/` at 375px.** The card's own chrome scales 1:1 with the
+    reader's text: padding 44.8px a side, a 48px flex gap and a 49px arrow is **186.6px of a
+    295px box**, leaving 108px for text whose longest word needs 192px. At a 16px default the
+    same card needs 329.8px of the 332px available, so the margin was already one pixel wide and
+    the reader's text size is what spends it. The other pages fail differently - a `li` whose
+    longest token is an email address, a hero divider, body paragraphs - so **there is no single
+    component to fix**.
+    **Why it was not taken.** The honest fix caps shared spacing at large text, which means the
+    `.card` padding token and the design tokens are law; the cheap alternatives are a
+    `flex-wrap` behind a rem query (which drops the arrow below the text at that size only) or
+    a narrower gutter, and neither clears all seven pages. And the page still scrolls 3px from
+    the wordmark whatever is done here, so no fix on this list delivers "no sideways scroll"
+    until backlog 32 is answered. **Take backlog 32 and 31 to Drummond first**; this is the
+    third item in the same family and it wants the same decision about what spacing does when a
+    reader doubles their text.
+
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 10 Nov 2026 (09:00 cycle) - the two cards that sell the next two cohorts did not line up with each other. One media query in one component, 7 of 203 built files changed, and nothing at or below 704px moved.
+
+**What was wrong, measured rather than noticed.** `.event-card__programme` is the only row in the
+card whose height depends on what it says. Two of the three programme names wrap to a second line,
+and which ones wrap moves with the column count and with the fluid label size, so where cards sit
+side by side one card's eyebrow regularly took one line while its neighbour's took two. That put
+every row below it - the cohort, the date, the venue, the standfirst - **18px, exactly one line,
+out of step with the card beside it**. Measured on the built site across 24 widths on `/`,
+`/events/` and `/404.html`: out of step across **760-880px** and again across **1180-1320px**, so
+1280px and tablets in landscape are both inside the fault. Aligned by luck elsewhere - at 706-720,
+1000-1150 and 1340px up both names already wrap, and at 900-992px neither does.
+
+**What shipped.** `min-block-size: 2lh` on the eyebrow, inside `@media (min-width: 44.0625rem)`,
+the complement of the `max-width: 44rem` query in `global.css` that drops `.grid--3` to one
+column. A rem query, so it follows the reader's own text size the way the grid's own breakpoints
+do. No name has ever needed a third line, checked at every width from 706 to 1920. Where `lh` is
+unsupported the declaration is dropped and the card renders as it did before.
+
+**The cost, stated rather than hidden.** Around 900-992px every name fits on one line, so the
+reservation adds one line of air above the cohort. Both cards gain it equally, so nothing
+misaligns, and it reads as the card's constant rhythm; that band is the only place anything moves
+that was not already wrong. **Subgrid is the better fix and was declined on scope** - it needs the
+grid, the `data-reveal` wrapper and the card changed across four files plus an `@supports` guard.
+Recorded as backlog 84.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: 64 pages built, 66 checked,
+3,246 internal links resolve, schema valid, 7 Event and 20 FAQPage nodes - every count identical
+to the parent commit. `npm run check:flags` exit 0. `npm run check`, run with
+`npm i --no-save @astrojs/check typescript` as backlog 70 requires, reports **81 errors on this
+change and 81 on a pristine build of the parent**, with byte-identical error-location lists, so it
+adds none. *Note for the next cycle: backlog 70's recorded figure of 80 is now 81. It drifted with
+the commits since 6 November, not with this one.*
+
+**Blast radius measured, not asserted.** Whole-`dist` sha256 against a worktree build of
+`1ef5944`: 203 files both sides, **7 differ** - `/`, `/events/`, `/404.html`, the three programme
+pages and `/home-photos/`, which is exactly the set that renders an `EventCard`. The diff on each
+is one added media query inside the component's scoped style block: no markup, no copy, no
+sitemap, no `lastmod`, no llms file.
+
+**45 full-page screenshots before and after**, at 320, 375, 414, 704, 768, 900, 1024, 1280 and
+1440px over five pages, with motion disabled so the comparison is deterministic: **32
+byte-identical, 13 changed**. Identical at 320, 375, 414 and 704 on every page, so the phone
+layout is untouched, and identical at 1024 and 1440 where both names already wrapped. The 13 are
+768, 900 and 1280 - the fault and the one band that gains air. The accessibility sweep re-run over
+the 7 changed pages at 375, 768 and 1280 returns 0 horizontal overflow, 0 missing alt, 0
+unlabelled controls, 0 links or buttons without an accessible name, 0 duplicate ids, 0
+heading-level skips, 0 undersized targets, 0 elements without a focus style and 0 uncaught JS
+exceptions. Overflow at 320px and 375px across 16, 24 and 32px browser defaults is **identical
+before and after** on all seven pages.
+
+**This commit over-submits to IndexNow; the honest number is 7, not 55.** A `src/components/`
+path falls into the whole-site bucket. Left alone - backlog 74 weighs over-submission as the
+milder failure and most components really are on every page. Recorded as backlog 85.
+
+**Two findings recorded rather than shipped.** Backlog 86: at a **32px** browser default, 200%,
+seven pages scroll sideways by 15 to 45px, from shared spacing that scales 1:1 with the reader's
+text rather than from any one component - and every page already scrolls 3px from the wordmark,
+which is Drummond's call (backlog 32). The loop's own 16px and 24px sweep still reads 0px on all
+61 public pages. Also checked and clean this cycle, so no item was raised: 248 in-page anchors
+across 24 pages all clear the sticky header; every `data-reveal` block reveals on a human-paced
+scroll; the Back to top button clears the event pages' sticky booking bar by 9px; and every
+contrast failure on the site is still the one bronze token of backlog 21.
+
+**Production could not be read, as on every recent cycle.** The sandbox egress policy answers 403
+to `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io` (`connect_rejected`,
+logged by the proxy), so the before state is a worktree build of `main` HEAD rather than the live
+page. `luma.com` is blocked too: **no event fact was read, invented or changed.** The deploy run
+for `1ef5944` concluded `success` and `main` HEAD matches the Actions `head_sha`. PR #1 and PR #3
+and the `feat/ceo-roundtable-demand-page` branch are the known-stale leftovers already recorded in
+backlog 20, not work in flight.
 
 ### 10 Nov 2026 (08:00 cycle) - the most commercial question in the open field had a guide and no way to be quoted. It now publishes a `FAQPage` node built from three questions it did not previously answer, and the four statement headings are untouched.
 

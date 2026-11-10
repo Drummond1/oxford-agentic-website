@@ -53,6 +53,35 @@ const statusLabel: Record<string, string> = {
     margin-block-end: 0.7rem;
   }
 
+  /* The programme name is the only row in this card whose height depends on
+     what it says. Two of the three names wrap to a second line, and which ones
+     wrap moves with the column count and with the fluid label size, so where
+     cards sit side by side one card's eyebrow regularly takes one line and its
+     neighbour's takes two - which puts every row below it, the cohort, the
+     date, the venue and the standfirst, a line out of step with the card
+     beside it.
+
+     Measured on the built site over 24 widths on `/`, `/events/` and
+     `/404.html`: the rows are out of step by 18px, one line, across
+     760-880px and again across 1180-1320px, and 1280px sits in the second of
+     those. Reserving the two lines makes the rhythm constant instead. No name
+     has ever needed a third line - checked at every width from 706 to 1920 -
+     and at most widths both names already wrap, so nothing moves there; the
+     only place the reservation adds a line of air is roughly 900-992px, where
+     every name happens to fit on one.
+
+     Scoped to the multi-column layout, as the complement of the `max-width:
+     44rem` query in `global.css` that drops `.grid--3` to one column: on a
+     phone there is no neighbour to line up with, so the reservation would only
+     push the cohort down. A rem query, so it follows the reader's own text
+     size the way the grid's own breakpoints do. Where `lh` is not supported
+     the declaration is dropped and the card renders as it did before. */
+  @media (min-width: 44.0625rem) {
+    .event-card__programme {
+      min-block-size: 2lh;
+    }
+  }
+
   .event-card__title {
     font-size: var(--step-xl);
   }
