@@ -142,14 +142,19 @@ for (const file of changed) {
     // static href, so neither file can move a byte of any HTML page. Measured
     // 9 Nov 2026: before this line each mapped to all 55 sitemap URLs.
     //
-    // These are named individually on purpose. Do NOT widen this to
-    // `src/pages/*.ts`. Six other route files are the same case and are still
-    // missing from this list on purpose (llms.txt, llms-full.txt, robots.txt,
-    // favicon.svg, logo.svg, apple-touch-icon.png — see backlog 82), but a
-    // pattern loose enough to catch every `.ts` route is one `.astro` typo away
-    // from silently submitting nothing when a real page changes, which is much
-    // worse than the over-submission it would save.
-    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping|fetch-search-console)\.mjs$|^src\/lib\/llms\.ts$|^src\/pages\/rss\.xml\.ts$/.test(file)) wholeSite = true;
+    // All seven route files are named individually on purpose. Do NOT widen
+    // this to `src/pages/*.ts`: a pattern loose enough to catch every `.ts`
+    // route is one `.astro` typo away from silently submitting nothing when a
+    // real page changes, which is much worse than the over-submission it would
+    // save. The six added on 10 Nov 2026 are the remainder backlog 82 recorded,
+    // and they are the same case as rss.xml.ts, measured one file at a time:
+    // each builds exactly one published file, none of those files is in the
+    // sitemap, and none of the six is imported by anything (grepped, not
+    // assumed). /favicon.svg and /apple-touch-icon.png are referenced from
+    // BaseHead.astro by static href and /logo.svg from schema.ts by a static
+    // string, so none of the three can move a byte of any HTML page either.
+    // Measured before the change: all six returned 55.
+    if (!/^(IMPROVEMENTS|STATE|README)\.md$|^outreach\/|^seo-data\/|^\.github\/|^scripts\/(check-[a-z-]+|indexnow-ping|fetch-search-console)\.mjs$|^src\/lib\/llms\.ts$|^src\/pages\/(rss\.xml|llms\.txt|llms-full\.txt|robots\.txt|favicon\.svg|logo\.svg|apple-touch-icon\.png)\.ts$/.test(file)) wholeSite = true;
     continue;
   }
   const [, kind] = content;

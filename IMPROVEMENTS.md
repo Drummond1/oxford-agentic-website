@@ -1741,8 +1741,22 @@ Status: `todo` · `blocked` (why) · `doing`
     2-3 entry Q&A block on that page rather than a new guide. Re-probe before acting: one
     snapshot from a US-resident tool is not a field.
 
-82. `todo` (loop-actionable, **the remainder deliberately left by backlog 79**; found 9 Nov 2026
-    in the 14:00 cycle) - **six more route files are the same case as `rss.xml.ts` and still map
+82. `done` 10 Nov 2026 (20:00 cycle), exactly as scoped and by the route this item named - the
+    six paths added to the same exempt regex **by name**, not as a `src/pages/*.ts` pattern, with
+    the comment rewritten to say why and to carry the measurement. Measured both sides in the same
+    session: all six returned **55** before and **"nothing to submit"** after, against
+    `rss.xml.ts`'s "nothing to submit" in both runs. The regression check this item asked for was
+    run on more than one real page - `about.astro` 1, `index.astro` 1, `events/index.astro` 1,
+    `home.ts` 1, a guide 2, a team file 2, a programme 27, an event 55, and `Header.astro`,
+    `astro.config.mjs` and `schema.ts` 55 each - every figure identical to the ones backlog 79
+    recorded, so nothing stopped submitting. Two further things were proved rather than inherited
+    from the item's text: none of the six files is imported by anything (grepped), and the three
+    image paths are reached by a static href in `BaseHead.astro` and a static string in
+    `schema.ts`, so none of the six can move a byte of any HTML page. `dist` byte-identical, 203
+    files both sides, across three builds. **A correction to the 14:00 entry:** it recorded that
+    "the sandbox refuses to execute indexnow-ping.mjs even with --dry-run". That did not reproduce
+    - the dry-run ran fourteen times this cycle without complaint - so a later cycle should try it
+    before reading a mapping off the source. The original finding follows. - **six more route files are the same case as `rss.xml.ts` and still map
     to all 55 sitemap URLs.** Measured after the 79 fix landed, every one of them rather than
     inferred from two: `src/pages/llms.txt.ts`, `src/pages/llms-full.txt.ts`,
     `src/pages/robots.txt.ts`, `src/pages/favicon.svg.ts`, `src/pages/logo.svg.ts` and
@@ -1845,9 +1859,117 @@ Status: `todo` · `blocked` (why) · `doing`
     reader doubles their text.
 
 
+87. `todo` **(needs Drummond, the same one input backlog 78 is waiting on; found 10 Nov 2026 in the
+    20:00 cycle)** - **"what happens to the workflow after the day" is the one preparation-axis
+    question of four that this site does not answer, and the field prices it as an upsell.**
+    The 20:00 probe set put four attendee-preparation questions to search and the site was cited
+    in none. Three of them it already answers in question shape - *"Do I need a paid AI
+    subscription?"*, *"What do I need to bring?"*, *"What should I bring?"* - so those are a reach
+    problem, not a coverage one (see the GEO log). The fourth is genuinely unpublished: the site
+    says what you leave with and says nothing about whether that workflow is still running a month
+    later, or what happens when it breaks. The engine's own read of the field was that *"longer
+    support is usually an add-on"*, with one provider selling a two-hour follow-up session and
+    another a four-week check-in package, and it closed by telling the buyer to **ask the provider
+    before booking whether follow-up is included, how long it lasts, and who to contact when the
+    workflow breaks**. That is three questions a buyer will now arrive with, nine days before
+    Cohort 3.
+    **Why nothing was written.** The answer is a fact about our own practice. Whatever it is -
+    including "nothing formal, and here is why a day is built to survive without us" - it is
+    Drummond's to state, and the accuracy rules forbid the loop inventing it. It is the same input
+    backlog 78 needs, so **one answer from him closes both**, and the cheap version is a 2-3 entry
+    Q&A block on `after-the-ai-executive-programme` or `how-to-run-an-ai-pilot-that-survives`
+    rather than a new guide.
+    **Do not route around it with markup.** This cycle's evidence is that a twenty-first `FAQPage`
+    node on a question already answered changes nothing: four fields, four published answers, zero
+    citations.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 10 Nov 2026 (20:00 cycle) - six route files were each spending all 55 IndexNow hints on a commit that cannot move a page. They now spend none, and the fix is the one the 9 Nov cycle scoped and deliberately left.
+
+**What shipped.** `scripts/indexnow-ping.mjs`: the six paths backlog 82 named -
+`src/pages/llms.txt.ts`, `llms-full.txt.ts`, `robots.txt.ts`, `favicon.svg.ts`, `logo.svg.ts` and
+`apple-touch-icon.png.ts` - added to the exempt regex **individually by name**, joining
+`rss.xml.ts`, which the 9 Nov 14:00 cycle put there. The comment above the line was rewritten: it
+used to record these six as deliberately missing, and now records why all seven are there and what
+was measured. One file, one line of code, twelve lines of comment. **The `src/pages/*.ts` pattern
+was declined again**, for the reason already written in that comment - a pattern loose enough to
+catch every `.ts` route is one `.astro` typo away from silently submitting nothing when a real page
+changes, which is far worse than the over-submission it would save.
+
+**Why it is worth a cycle rather than tidying.** Each of these files publishes a real file -
+`/llms.txt`, `/llms-full.txt`, `/robots.txt`, `/favicon.svg`, `/logo.svg`,
+`/apple-touch-icon.png` - and **none of the six is in the sitemap**, which is what IndexNow submits.
+So a commit touching any one of them asked Bing-family engines to recrawl all 55 pages of the site
+on a change that cannot alter a byte of any of them. On a domain whose only real index measurement
+diagnoses **crawl budget** (24 Aug baseline: 23 indexed, 16 not indexed, zero external links), hints
+are not free and the honest number here is zero. `/llms.txt` and `/llms-full.txt` are the live
+knowledge base for both voice agents and are edited more often than most pages, so this was not a
+hypothetical path.
+
+**Measured, both sides, in the same session.**
+
+| source file | before | after |
+|---|---|---|
+| the six route files above | **55** each | **nothing to submit** |
+| `src/pages/rss.xml.ts` | nothing to submit | nothing to submit |
+| `src/pages/about.astro` / `index.astro` / `events/index.astro` / `src/lib/home.ts` | 1 | 1 |
+| a guide `.md` / a team `.md` | 2 | 2 |
+| a programme `.md` | 27 | 27 |
+| an event `.md` | 55 | 55 |
+| `Header.astro` / `astro.config.mjs` / `schema.ts` | 55 | 55 |
+
+Every figure in the lower half is identical to the ones backlog 79 recorded on 9 November, so
+**nothing stopped submitting** - the regression this item warned about is the only way this change
+could do harm, and it was checked on eleven paths rather than the one the item asked for.
+
+**Two claims proved rather than inherited.** Backlog 82 asserted that none of the six can move an
+HTML page; this cycle checked it. **None of the six files is imported by anything** (grepped across
+`src/`, zero hits each). `/favicon.svg` and `/apple-touch-icon.png` are reached from
+`BaseHead.astro` by a static `href`, and `/logo.svg` from `schema.ts` by a static string, so the
+three image routes cannot move a page's bytes either.
+
+**Checks, read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 66 pages checked, **3,246** internal links resolve, schema valid,
+**7** Event and **20** FAQPage nodes, all titles and descriptions unique. `npm run check:flags`
+exit 0 on both the all-on and all-off builds. **Blast radius measured, not asserted:** whole-`dist`
+sha256 before and after, **203 files both sides, 0 differ** - the built site is byte-identical, as
+it must be for a change to a script the build never imports, and a third build (the one
+`check:flags` restores) hashes identically again. Headless Chromium over the served build at 375
+and 1280px across `/`, `/events/`, the Cohort 3 event page and the Coding programme page: **56
+assertions, 0 fail**, 0 uncaught JS exceptions, 0 same-origin request failures, 0 horizontal
+overflow, one `h1` and JSON-LD present on each. Screenshots read at both widths.
+
+**This commit's own submission is nothing, and that is correct.** Both changed paths -
+`scripts/indexnow-ping.mjs` and `IMPROVEMENTS.md` - were already exempt, so the IndexNow job will
+report "no page URLs affected by this push". No page changed, so no page should be hinted.
+
+**A correction to the 14:00 entry.** It recorded that the sandbox *"refuses to execute
+indexnow-ping.mjs even with --dry-run"*, and read that cycle's figure of 10 off the script's source
+instead. That did not reproduce: the dry-run ran fourteen times this cycle without complaint. A
+later cycle should try it before reading a mapping off the code.
+
+**Search Console: unavailable from the cloud, thirty-third consecutive cycle.** `seo-data/` holds
+no export newer than the 24 August baseline. Nothing estimated, nothing inferred.
+
+**GEO: four probes, zero citations, and the first set where every question is already answered in
+question shape on this site.** The attendee-preparation axis - paid subscription, what to prepare,
+what to bring, what happens afterwards. Three of the four are published `FAQPage` pairs on the two
+programme pages today and were cited in none of the four fields, which makes this a measurement of
+reach rather than coverage and an argument for backlog 2b rather than for a twenty-first node. The
+fourth, post-day support, is a real gap and needs a fact only Drummond holds: **backlog 87**, which
+one answer closes together with backlog 78. Full tables and the engine's own admissions in
+`seo-data/geo-citations.md`.
+
+**No new guide.** 0 of 3 for the week of 9-15 November. **No new off-page target**, so
+`outreach/review-list.md` is untouched and nobody was contacted. **No event fact was read, verified
+or changed:** `luma.com` is unreachable from this sandbox, which the build's own outbound check
+records as `ERR ... fetch failed` on both on-sale cohorts' booking links. **Production could not be
+read** either - the sandbox egress policy answers 403 to `oxfordagentic.com` - so deployment state
+was confirmed through the Actions API instead: the Deploy run for `88fb9fe` concluded **success** at
+14:12 UTC and none was in progress.
 
 ### 10 Nov 2026 (14:00 cycle) - the Coding Bootcamp published what you leave with as a bullet list and a definitional FAQ, sixteen days before its first cohort. It is now one quotable pair in the buyer's own words, and the day's own limit is in it.
 

@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-10 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND FOR THE FIRST TIME EVERY ONE OF THE FOUR IS ALREADY ANSWERED IN QUESTION SHAPE ON THIS SITE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before, deliberately on the
+**attendee-preparation axis** rather than the purchase axis the last three cycles worked: with
+Cohort 3 nine days out and the Coding Bootcamp sixteen, this is the question a buyer asks between
+deciding and booking.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do I need a paid ChatGPT or Claude subscription to get value from an AI workflow training day | **No** | `gmelius.com` (x2), `tactiq.io`, `aipedia-en.pages.dev` (x2), `tools-34m.pages.dev`, `pricepertoken.com`, `photonpay.com`, `coconote.app`, `zemith.com` (x2), `subchoice-git.pages.dev`, `grandavehousing.calpoly.edu`, `sentisight.ai`, `freeacademy.ai` (x2), `findskill.ai` (x2), `aitoolsatlas.ai` |
+| 2 | what should I prepare before attending a one day hands-on AI workshop to leave with something working | **No** | `chatprd.ai` (x2), `fau.edu` (PDF), `learning.sap.com` (x5), `rtoleadership.pages.dev`, `gathershot-marketing.pages.dev`, `datanorth.ai`, `contra.com`, `tickettailor.com`, `ai.gov.au`, `studiomeyer.io`, `futurevocation.pages.dev`, `pair.withgoogle.com`, `shinydocs.com`, `ajai-live.pages.dev`, `amitkoth.pages.dev` |
+| 3 | what happens after a one day AI bootcamp do you get support keeping the workflow running | **No** | `getclear.ca`, `eventbrite.com` (x2), `luma.com`, `maven.com` (x3), `bizaccesshub-ai-deepdive.lovable.app`, `tessgroup-website.pages.dev`, `xray.tech`, `assets.noviams.com` (PDF), `planhat.com`, `precisionaiacademy.pages.dev`, `oreilly.com`, `pertamapartners.com` (x2), `gdg.community.dev`, `excaliburpress.co.uk` |
+| 4 | what do I need to bring to an AI workshop laptop accounts data | **No** | `ajai-live.pages.dev`, `luma.com` (x2), `posit-conf-2025.github.io`, `jotform.com`, `air.nuilab.org`, `happeningnext.com`, `polyrhythm.regfox.com`, `tally.so`, `biomedicalai.inf.ed.ac.uk`, `easlcongress.eu` (PDF), `lth.engineering.asu.edu` (x2), `fau.edu`, `na.eventscloud.com`, `uni-siegen.de`, `learn.aisingapore.org`, `rewrilab.notion.site` (x2), a `.top` mirror of a GitHub gist |
+
+**Reading.**
+
+- **This is the first probe set where the "already answered in question shape" check comes back
+  a flat YES on every question, and the site was still cited in none of them.** Checked in the
+  repository before anything was written, not assumed. Probe 1 is
+  `oxford-agentic-bootcamp.md`'s own FAQ entry ***"Do I need a paid AI subscription?"***. Probes
+  2 and 4 are ***"What do I need to bring?"*** on the Agentic page and ***"What should I
+  bring?"*** on the Coding page, both of which already name the laptop, the locked-down corporate
+  device and the one real task. Probe 3's nearest published answer is weaker and is treated
+  separately below.
+- **So this cycle measures reach, not coverage, and it points at backlog 2b rather than at more
+  FAQ entries.** The last four cycles each found an unanswered buyer question and shipped the
+  answer as a quotable pair, which was the right call each time on its own evidence. This set
+  says what the next one cannot be: there are already `FAQPage` pairs on these exact questions,
+  published, valid and counted by the build (20 nodes), and four fields went to vendors and
+  content farms anyway. **Adding a twenty-first node on a question we already answer would not
+  have changed any of these four results.** The thing those pages lack is not markup, it is an
+  external link and a crawl - the 24 August Search Console baseline's diagnosis, never
+  overturned.
+- **The field is the weakest this log has recorded on preparation, and the engine said so twice.**
+  Probe 2: ***"The search turned up few sources aimed at attendees. Most are guides for people
+  running team workshops"***. Probe 1: ***"The search didn't turn up anything about AI workflow
+  training days specifically"***, and it closed by telling the reader to ask the provider.
+  Probe 4's institutional-looking entries - ASU, Edinburgh, Siegen, AI Singapore, Posit - are
+  each a single event's own joining instructions, not anybody writing about the subject. Three
+  of the four fields contain `pages.dev` microsites.
+- **Probe 3 is the one real gap, and it is a fact the loop does not hold.** The site answers what
+  you leave with; it does not answer what happens to that workflow a month later, and the
+  engine's own summary of the field is that *"longer support is usually an add-on"* sold
+  separately. That is the same input backlog 78 has been waiting on since 9 November - Drummond's
+  own observation of what Cohorts 1-3 still had running weeks later - so it is recorded against
+  that item rather than opened as a new one. **Nothing was written, because the honest answer is
+  a fact about our own practice and inventing it is the first thing the rules forbid.**
+- **No new off-page target.** Every domain above is a competing provider, a course marketplace, a
+  single event's own joining page, a pricing-affiliate blog or a content farm. None is a listing
+  we could appear on that `outreach/review-list.md` and `outreach/off-page-listings.md` do not
+  already hold, so nothing was added and nobody was contacted.
+- **No event fact was read, verified or changed.** `luma.com` is not reachable from this sandbox:
+  the build's own outbound check reports `ERR ... fetch failed` for `luma.com/oxfordagentic3` and
+  `luma.com/agenticcoding`. Every date used this cycle comes from the repository's content files.
+
 ## 2026-11-10 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - THE CODING LINE'S OWN BUYER QUESTION IS UNANSWERED IN THE FIELD, AND THIS SITE HELD THE ANSWER IN A BULLET LIST
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
