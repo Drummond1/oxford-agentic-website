@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-10 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - THE CODING LINE'S OWN BUYER QUESTION IS UNANSWERED IN THE FIELD, AND THIS SITE HELD THE ANSWER IN A BULLET LIST
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct; the tool is US-resident, so UK results are under-weighted, which cuts against us
+rather than for us). Four questions, none probed in these words before, and deliberately aimed at
+the **Agentic Coding Bootcamp** rather than the Agentic line: Cohort 1 is sixteen days out, it is
+the newest of the three products, and its programme page carried 11 FAQ answers against the
+Agentic page's 24.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | can you learn to build software with AI agents in one day if you have never written code | **No** | `udemy.com` (x5), `turingcollege.com` (x2), `maven.com`, `university.mindstudio.ai` (x2), `mindstudio.ai`, `docs.praison.ai`, `vellum.ai`, `inflearn.com`, `offers.hubspot.com`, `agentui.ai`, `tutkit.com`, `gptcentral.substack.com` |
+| 2 | we already have Microsoft Copilot do we still need hands-on AI training for the team | **No** | `learn.microsoft.com`, `learningpeople.com`, `stl-training.co.uk` (x2), `educate360.com`, `lumifywork.com`, `mobile-mentor.com`, `pryor.com`, `pa.com.au`, `sbccd.edu` (x2), `primend.com`, `algonquincollege`, `dev.to`, two `.it.com` content farms |
+| 3 | what can a non-developer realistically finish in one day with an AI coding agent | **No** | `verdent.ai` (x4), `dev.to` (x2, first-person), three `pages.dev` microsites, `progress.com` (x2), `printmoneylab.com`, `taskade.com`, `godaddy.com` (x2), `manus.space`, `mindmapai.app` |
+| 4 | is a one day AI coding course worth it if I am never going to be a developer | **No** | `learningtree.com` (x5 domains, one course), `every.to` (x2), `nyp.edu.sg`, `shortcourses.lsbu.ac.uk` (x2), `baycollege.edu`, `ed2go.com`, `onlc.com`, `readynez.com`, `precisionaiacademy.pages.dev` (x2), `marq-ai-wiki.pages.dev`, `opencourser.com`, `courseverdict.vercel.app`, `inflearn.com` |
+
+**Reading.**
+
+- **Four fields, no page of this site in any of them, and no neutral party in any of them.**
+  Probes 1, 3 and 4 are course vendors, platform listings, first-person blogs and `pages.dev`
+  microsites. Probe 4's institutional-looking entries - LSBU, Nanyang Polytechnic, Bay College,
+  ed2go - are colleges selling their own one-day courses, which is vendor behaviour on the
+  winnability test, not an institutional publisher writing about the subject. Probe 2 is the one
+  with a real platform vendor in it, `learn.microsoft.com` on its own product, and the rest of
+  that field is Copilot training resellers.
+- **The engine said twice that the field does not answer the question.** Probe 1:
+  ***"The search results don't directly answer whether one day is enough. They are mostly course
+  marketing pages, and none makes a verified claim about a one-day outcome."*** Probe 3: a
+  non-developer can finish *"a small, tightly scoped app or prototype in a day, but not a polished
+  production product"*, with the caveat that ***"the evidence is mostly first-person blogs and
+  vendor guides, so treat the timeframes as anecdotal"*** and ***"the timeframes in these sources
+  are self-reported, and some pages cite no methodology."***
+- **Probe 4 is the sharpest, because the engine's rule of thumb is our published offer and we
+  were not in it.** It closed: ***"if you have a repetitive task at work you want to automate, or
+  you want hands-on experience to judge what AI tools can do, a one-day course with a concrete
+  project can pay off"*** - which is the Agentic Bootcamp's bring-one-real-task promise and the
+  Coding Bootcamp's two-things-live promise, assembled from twenty other providers without us.
+  It also stated the limit plainly: ***"A day gets you a guided first project, not lasting
+  skill."***
+- **What was actionable, and it was on our own page.** Probe 4 quotes a competing one-day
+  listing's outcome in exactly the shape an engine can lift - *"By the end of the course, each
+  participant has built, run, and demonstrated a working web app using an AI tool"* - while this
+  site's equivalent sat in four `outcomes` bullets and one line of body prose, plus a definitional
+  FAQ (*"What is the Oxford Agentic Coding Bootcamp?"*). So the day's outcome was published and
+  not quotable as an answer to the question a buyer actually types. **That is what this cycle
+  shipped**, as one FAQ entry restating that published copy. See the ledger.
+- **The duplicate check.** `what-you-can-build-in-one-day-with-ai` already publishes a three-pair
+  `FAQPage` node under *"Is one day enough?"*, so the one-day axis is answered in question shape
+  on this site - **for the workflow line**. That guide explicitly routes the code case elsewhere
+  (*"Code starts to matter when ... That is a genuinely different day, and the reason the Oxford
+  Agentic Coding Bootcamp exists as its own format"*), and it names software other people are
+  meant to use as one of four things that will **not** fit in a day. So the new entry does not
+  duplicate a quotable answer, and no clause was borrowed from that guide onto the coding page.
+- **No new off-page target.** Every domain above is a competing provider, a course marketplace, a
+  vendor's own guide or a content farm. None is a listing we could appear on that
+  `outreach/review-list.md` does not already hold, so nothing was added and nobody was contacted.
+- **No event fact was read, verified or changed.** `luma.com` is not reachable from this sandbox.
+
 ## 2026-11-10 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS - BACKLOG 75'S FIELD RE-PROBED AND CONFIRMED VENDOR-ONLY, AND THE STALE-RECORD FAILURE NOW ANSWERS A NOVEMBER-DATED QUERY WITH COHORT 3 NINE DAYS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

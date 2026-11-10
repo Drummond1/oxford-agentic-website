@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-06T08:30:00+00:00"
+updatedDate: "2026-11-10T14:15:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -71,6 +71,46 @@ faqs:
       terminal, repositories, version control, deployment, databases and tests - and
       how to check what the AI wrote rather than trusting it. Expect to leave
       understanding how the pieces fit, not just having watched them.
+  # The outcome question, in the buyer's words. This page already answers it - the
+  # four `outcomes` bullets, and the body's "By five o'clock you have shipped two
+  # things you own outright" - but it answered it as a marketing list and inside a
+  # definitional FAQ ("What is the Oxford Agentic Coding Bootcamp?"), so an engine
+  # extracting Q&A pairs matched it to someone asking what the thing is rather than
+  # to someone deciding whether to book it. Same defect shape as the 9 Nov fix on the
+  # Agentic programme page, where the answer about checking an agent's work sat under
+  # "Do I need to be technical?".
+  # Four probes on 10 Nov 2026 (14:00 cycle), none of them used before, logged in
+  # full in seo-data/geo-citations.md: "can you learn to build software with AI agents
+  # in one day if you have never written code", "what can a non-developer
+  # realistically finish in one day with an AI coding agent", "we already have
+  # Microsoft Copilot do we still need hands-on AI training for the team" and "is a
+  # one day AI coding course worth it if I am never going to be a developer". No page
+  # of this site in any of the four, and no institutional publisher or neutral party
+  # in any of the four: what holds them is Udemy and Maven listings, vendor guides,
+  # `pages.dev` microsites, first-person dev.to posts and colleges selling their own
+  # short courses. The engine said twice that the field does not answer the question -
+  # "The search results don't directly answer whether one day is enough" and "the
+  # evidence is mostly first-person blogs and vendor guides, so treat the timeframes
+  # as anecdotal" - and a competing one-day listing publishes its outcome in exactly
+  # the quotable shape this page lacked.
+  # Every clause restates copy already on this page, so no new claim is made about a
+  # day that has not yet run: the opening is the body's own "two things you own
+  # outright", the website and the prototype are `outcomes` 1 and 2 word for word, the
+  # kit and the cost control are `outcomes` 3 and 4, "turn you into a working
+  # developer" and "the agents do the typing ... the workflow around the code" are
+  # "Who is it not for?" below, and the five-step list is the `description`'s own.
+  # No price, date, venue, count, capacity, name or agenda timing. Nothing is claimed
+  # about what a day cannot produce beyond what this page already publishes.
+  - q: I cannot write code. What will I actually have finished by five o’clock?
+    a: >-
+      Two things you own outright: a personal website live on the internet, in your own
+      GitHub repository, and a working product prototype that saves real data and has
+      basic tests. You also leave with the prompts and commands used on the day, and a
+      way to keep costs under control once you are building on your own. What the day
+      does not do is turn you into a working developer - the agents do the typing, and
+      what it teaches is the workflow around the code: the brief the agent reads first,
+      the repository, the undo button, the deploy, and the check that what it wrote is
+      right.
   # The other half of the level screen. This page answers who the day is for -
   # `whoFor`, `shortPitch` and "Do I need to be able to code?" directly above -
   # and was the only one of the three programme pages with no answer to who it is

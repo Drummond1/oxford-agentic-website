@@ -1849,6 +1849,114 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+### 10 Nov 2026 (14:00 cycle) - the Coding Bootcamp published what you leave with as a bullet list and a definitional FAQ, sixteen days before its first cohort. It is now one quotable pair in the buyer's own words, and the day's own limit is in it.
+
+**What was wrong, and it is a shape this log has now found four times.** The Coding programme page
+already answers *what will I actually have at the end of the day* - the four `outcomes` bullets, and
+the body's *"By five o'clock you have shipped two things you own outright"*. It answered it as
+marketing furniture and, in question shape, only under **"What is the Oxford Agentic Coding
+Bootcamp?"**, a definitional query. An engine extracting Q&A pairs matches that to somebody asking
+what the thing is, not to somebody deciding whether to book it. Same defect as the 3 Nov fix on the
+Agentic page (checking an agent's work filed under *"Do I need to be technical?"*) and the 9 Nov one
+(the ChatGPT-next-step answer filed under *"What does agentic actually mean here?"*). This page was
+also the thinnest of the three: **11 FAQ answers against the Agentic page's 24**, on the newest
+product, with **Cohort 1 sixteen days out**.
+
+**Four probes, none used before, all on the coding line, zero citations.** *"can you learn to build
+software with AI agents in one day if you have never written code"*, *"what can a non-developer
+realistically finish in one day with an AI coding agent"*, *"we already have Microsoft Copilot do we
+still need hands-on AI training for the team"* and the objection stated outright, *"is a one day AI
+coding course worth it if I am never going to be a developer"*. **No page of this site in any of the
+four, and no neutral party in any of the four**: Udemy and Maven listings, vendor guides,
+`pages.dev` microsites, first-person `dev.to` posts, and colleges selling their own one-day courses,
+which is vendor behaviour rather than an institutional publisher. The engine said the field does not
+answer it, twice: ***"The search results don't directly answer whether one day is enough"*** and
+***"the evidence is mostly first-person blogs and vendor guides, so treat the timeframes as
+anecdotal."*** Probe 4 closed on our own offer - ***"a one-day course with a concrete project can
+pay off"*** - assembled from twenty other providers without us, and quoted a competitor publishing
+its outcome in exactly the shape we lacked: *"By the end of the course, each participant has built,
+run, and demonstrated a working web app using an AI tool."* Full tables in
+`seo-data/geo-citations.md` under 10 Nov 14:00.
+
+**One entry, and every clause is already on the page, so nothing is claimed about a day that has not
+yet run.** *"Two things you own outright"* is the body's own sentence; the website and the prototype
+are `outcomes` 1 and 2 word for word; the take-home kit and the cost control are `outcomes` 3 and 4;
+*"turn you into a working developer"* and *"the agents do the typing ... the workflow around the
+code"* are **"Who is it not for?"** directly below it; the five-step list is the `description`'s own.
+**No price, date, venue, count, capacity, name or agenda timing**, and the honest limit it states -
+a prototype and not a working developer - is the page's own published limit rather than one borrowed
+from elsewhere. A frontmatter comment records the four probes and which published sentence each
+clause comes from. Placed second, after *"Do I need to be able to code?"* and before *"Who is it not
+for?"*, which is the order the question arrives in.
+
+**The duplicate check, which is why this is not the guide.** `what-you-can-build-in-one-day-with-ai`
+already publishes a three-pair `FAQPage` node under *"Is one day enough?"*, so the one-day axis **is**
+answered in question shape on this site - for the **workflow** line. That guide routes the code case
+away explicitly (*"a genuinely different day, and the reason the Oxford Agentic Coding Bootcamp
+exists as its own format"*) and lists *"software other people are meant to use"* among four things
+that will not fit in a day. So a coding-line entry duplicates nothing, and **no clause was carried
+across from that guide**: writing the workflow day's limits onto the coding day would have been a
+new claim about a day that has not run. For the same reason no new guide was written - it would have
+been a near-duplicate of a guide that already ranks for the one-day question.
+
+**Caught by the repo's own guard, and worth recording.** The first draft wrote *"five o'clock"* with
+a **straight apostrophe** in frontmatter, and the build's straight-apostrophe warning named it on the
+built page. Frontmatter strings do not go through the markdown renderer's smart quotes, which the
+body prose on the same page does - line 200 has the same words with a straight mark in source and a
+curly one in `dist`. **So the 18 Oct sweep's invariant holds only because that warning exists**: any
+frontmatter copy needs the typographic mark written in by hand. Fixed before any check was recorded;
+the rebuilt page carries `o’clock` in the HTML and in the JSON-LD.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: **66 pages checked, 3,246 internal
+links resolve, schema valid, 7 Event and 20 FAQPage nodes, all titles and descriptions unique** -
+every figure identical to the baseline taken in this session before the edit. `npm run check:flags`
+**exit 0** on both the all-on and all-off builds. A second full build is **sha256-identical** to the
+first. The 11 outbound warnings are the sandbox's egress policy, identical before and after.
+
+**Blast radius measured, not asserted.** Whole-`dist` sha256 against the pre-edit build: **203 files
+both sides, 4 differ** - the programme page, `llms-full.txt` and the two sitemaps. The Coding event
+page, the homepage, `/bootcamps/` and all 32 guides are **byte-identical**.
+
+**Headless Chromium at 375 and 1280px over the built page served locally: 24 assertions, 0 fail**,
+covering the new question rendering as an FAQ summary with a non-zero box, closed by default, the
+answer laid out and opening on the published outcome after the click, 12 summaries on the page,
+exactly one `FAQPage` node carrying 12 pairs, no horizontal overflow, 0 uncaught JS exceptions and 0
+same-origin request failures. The only blocked requests were googletagmanager, proved third-party by
+capturing the failed URLs. **One assertion was wrong and is worth leaving written down:** a closed
+`<details>` on this template reports a full-height box for its `.faq__a` child, so "answer collapsed
+before click" failed on all 12 entries including the 11 untouched ones. The answer is correctly
+hidden - the `details` box measures its summary plus 1px - and the right measurement is the parent
+against the summary, not the child's preserved rect. Any future cycle writing this assertion should
+write that one.
+
+**This commit over-submits to IndexNow, and it is backlog 83 reproducing on a second page.** The
+mapping sends a `programmes/` edit to the programme page, `/`, `/bootcamps/` and every guide naming
+it in `relatedProgrammes` - **10 URLs**, when the measured honest number is **1**. The 7 guides and
+the two index pages are byte-identical. Separately, the sitemap `lastmod` for `/` and `/bootcamps/`
+both moved to this edit's timestamp while both pages are byte-identical, which is the half of
+backlog 83 that is a truthfulness question rather than a budget one. Left alone, as that item says:
+the honest fix is a built-output diff, too large to be a cycle's one change. *(The dry-run could not
+be executed this cycle - the sandbox's auto-mode classifier refuses to run `indexnow-ping.mjs` even
+with `--dry-run` - so the 10 is read off the script's `programmes` branch and a count of the guides
+tagged to this programme, rather than off the script's output. Noted so the next cycle does not
+treat the dry-run as an available instrument.)*
+
+**Production could not be read, as on every recent cycle.** The sandbox egress policy answers 403 to
+`oxfordagentic.com`, so `build.txt` could not be polled and the before state is a worktree build of
+`main` HEAD rather than the live page. Deployment was confirmed through the Actions API instead: the
+Deploy run for `048437e` concluded **success** and no run was in progress when this cycle started.
+`luma.com` is blocked too: **no event fact was read, invented or changed**, and the event dates used
+here to judge urgency (Cohort 3 on 19 November, Coding Cohort 1 on 26 November) are read from the
+repository's own content files, which are the only source available.
+
+**Search Console: unavailable, the thirty-second consecutive cycle, and this one has a new detail.**
+The `Search Console export` workflow ran at 13:41 today and concluded **success**, but it writes
+nothing without `GSC_SERVICE_ACCOUNT_KEY` and exits 0 by design, so a green run is not data: there is
+still no `seo-data/search-console-latest.json` and no commit from it on `main`. Nothing was estimated.
+
+**No new guide, 0 of 3 for the week of 9-15 Nov.** This is the second Q&A improvement today, which is
+the published daily ceiling of two.
+
 ### 10 Nov 2026 (09:00 cycle) - the two cards that sell the next two cohorts did not line up with each other. One media query in one component, 7 of 203 built files changed, and nothing at or below 704px moved.
 
 **What was wrong, measured rather than noticed.** `.event-card__programme` is the only row in the
