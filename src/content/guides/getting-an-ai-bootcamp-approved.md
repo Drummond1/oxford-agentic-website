@@ -11,7 +11,7 @@ capsule: >-
   thing running by the end of the day, rather than a better understanding of AI.
 author: drummond-gilbert
 publishDate: "2026-10-20T02:10:00+01:00"
-updatedDate: "2026-10-20T02:10:00+01:00"
+updatedDate: "2026-11-11T20:10:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -64,4 +64,4 @@ Then the question is not approval but who goes, and [the seat belongs to whoever
 
 Four sentences, in this order: the task, the deliverable, the date, and the offer to demonstrate it. If the request runs longer than that, something in it is about the subject rather than about the task.
 
-The next cohort is on [Thursday 19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/), 09:00 to 17:00, and its booking page carries the figure to attach.
+The next cohort is on [Thursday 19 November 2026 at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/), 09:00 to 17:00, and its booking page carries the figure to attach.

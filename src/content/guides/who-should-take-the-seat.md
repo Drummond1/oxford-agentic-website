@@ -11,7 +11,7 @@ capsule: >-
   build the next one. If all three point at you, go yourself.
 author: drummond-gilbert
 publishDate: "2026-10-19T14:15:00+01:00"
-updatedDate: "2026-11-07T14:00:00+00:00"
+updatedDate: "2026-11-11T20:10:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 # The three bold paragraph leads under `## Three questions that settle most cases` were
@@ -91,4 +91,4 @@ With one seat, the owner of the task goes, and you book an hour in the same week
 
 That usually means there are two tasks and one ambition, and it is worth saying out loud which one the day is being bought for. Deciding whether to adopt something and getting a specific morning back are both good reasons to spend a day. They are just not the same purchase, and a seat bought for the first while hoping for the second tends to deliver neither.
 
-The next cohort runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). If you are still deciding between sending a few people and bringing a day in-house, [that comparison is a separate one](/guides/in-house-ai-day-or-send-people-to-a-cohort/) and worth settling first.
+The next cohort runs on [19 November 2026 at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). If you are still deciding between sending a few people and bringing a day in-house, [that comparison is a separate one](/guides/in-house-ai-day-or-send-people-to-a-cohort/) and worth settling first.

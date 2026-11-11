@@ -12,7 +12,7 @@ capsule: >-
   something live.
 author: drummond-gilbert
 publishDate: "2026-09-25T19:00:00+01:00"
-updatedDate: "2026-11-06T14:00:00+00:00"
+updatedDate: "2026-11-11T20:10:00+00:00"
 relatedProgrammes:
   - agentic-coding-bootcamp
 # The three question headings below are what a reader asks once a coding agent
@@ -92,6 +92,6 @@ What it cannot do is know what you meant. That is the one check that does not ha
 
 ## Where this gets practical
 
-Reading the list is not the same as having done it, and the first time through, every step has a small trap in it that costs an evening. That day is what the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is for: Claude Code and Codex do the typing, and the day is spent on everything around them, from the brief to the repository, the deploy, the database and the tests. You leave with a personal site live on the internet and a working prototype, both in your own repository. Cohort 1 runs on [26 November at Worcester College](/events/oxford-agentic-coding-bootcamp-cohort-1/).
+Reading the list is not the same as having done it, and the first time through, every step has a small trap in it that costs an evening. That day is what the [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is for: Claude Code and Codex do the typing, and the day is spent on everything around them, from the brief to the repository, the deploy, the database and the tests. You leave with a personal site live on the internet and a working prototype, both in your own repository. Cohort 1 runs on [26 November 2026 at Worcester College](/events/oxford-agentic-coding-bootcamp-cohort-1/).
 
 If you are still deciding which agent to use, [the plain comparison of Claude, Cowork, Claude Code and Codex](/guides/claude-cowork-claude-code-or-codex/) is the place to start. If your problem is a recurring task rather than an idea you want running, the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is the better day.

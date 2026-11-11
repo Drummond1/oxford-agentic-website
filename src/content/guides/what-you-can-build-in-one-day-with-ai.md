@@ -12,7 +12,7 @@ capsule: >-
   unwatched.
 author: drummond-gilbert
 publishDate: "2026-10-12T08:00:00+01:00"
-updatedDate: "2026-11-07T02:30:00+00:00"
+updatedDate: "2026-11-11T20:10:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - agentic-coding-bootcamp
@@ -91,4 +91,4 @@ No, and that is worth saying plainly rather than waiting to be asked. What you l
 
 Three things, if the day has gone well: a workflow running against a real task from your own work, a review step inside it that checks its own output, and a written recipe so you can rebuild and extend it on Monday. The recipe is the part people underrate. A workflow you cannot rebuild is a demo you happened to attend.
 
-That is a smaller claim than "transform your business in a day", and a much more useful one. The next cohort runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/), and the task you bring decides most of what you get.
+That is a smaller claim than "transform your business in a day", and a much more useful one. The next cohort runs on [19 November 2026 at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/), and the task you bring decides most of what you get.

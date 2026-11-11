@@ -12,7 +12,7 @@ capsule: >-
   workflow was meant to save.
 author: drummond-gilbert
 publishDate: "2026-09-11T18:00:00+01:00"
-updatedDate: "2026-09-11T18:00:00+01:00"
+updatedDate: "2026-11-11T20:10:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -49,4 +49,4 @@ The order matters. Gathering usually earns trust first, drafting later, and judg
 
 ## Where this gets practical
 
-Deciding where the checkpoints go is much easier with a real task in front of you than in the abstract, which is why where to keep a human in the loop is part of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) curriculum. You bring one real task, build the workflow against it, and decide in the room where a human needs to stay. Cohort 3 runs on [19 November at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.
+Deciding where the checkpoints go is much easier with a real task in front of you than in the abstract, which is why where to keep a human in the loop is part of the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) curriculum. You bring one real task, build the workflow against it, and decide in the room where a human needs to stay. Cohort 3 runs on [19 November 2026 at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/). No coding required.

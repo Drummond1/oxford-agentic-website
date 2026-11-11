@@ -5,6 +5,90 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-11 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE FIRST ONE THAT POINTED AT A DEFECT ON OUR OWN PAGES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions, none probed in these words before: hiring against training, the category boundary
+against the automation tools, continuity when the builder leaves, and one deliberate commercial
+reach probe.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | should I hire someone who knows AI or train the people I already have, small business | **No** | `lilachbullock.com` (x4), `upwork.com`, `profiletree.com`, `talentfoot.com`, `enterprisedna.co`, `unite.ai`, `smallbiztrends.com`, `dynamicbusiness.com.au`, `maccelerator.la` (x2), `lloydstaffing.com`, `theaiboardroombrief.beehiiv.com`, `sagnikbhattacharya.com`, `dailyherald.com` |
+| 2 | what is the difference between an AI agent and a Zapier or Make automation for a business process | **No** | `make.com` (x2), `dev.to` (x2), `aiagentstore.ai`, `sista.ai`, `growwstacks.com`, `mindstudio.ai`, `slashdev.io`, `pokee.ai`, `arahi.ai` (x3), `digitalapplied.com`, `alejandrorioja.com`, `medium.com`, `amitkoth.com`, `shortcuts-ai.pages.dev`, `mikeoller82.github.io` |
+| 3 | what happens to an AI workflow when the person who built it leaves the business | **No** | `itbrief.com.au` / `securitybrief.com.au`, `itbrew.com`, `nojitter.com`, `nhimg.org` (x3), `lilachbullock.com` (x2), `viktor.com`, `infonaligy.com`, `techinformed.com`, `bamboohr.com`, `searchengineland.com`, `unixi.io`, `pravinkumar.co`, `lobsterpack.com`, `hashnode.com`, `club.ministryoftesting.com` |
+| 4 | hands-on agentic AI bootcamp Oxford one day build your own workflow (commercial reach probe) | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, `allai.events`, `planomato.com`, `sbs.ox.ac.uk`, `eventbrite.co.uk`, `nobleprog.co.uk`, `oreilly.com`, `maven.com` (x3), `brainstation.io`, `datasciencedojo.com`, `sectionai.com`, `ecornell.cornell.edu`, `onereach.ai`, `lu.ma/nktfdtqj`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 4 is the strongest reproduction of the stale-record failure this log has, and unlike
+  the four cycles before it, it ended in a change.** The engine **identified the entity
+  correctly** and described the format accurately - one day, in person, does not assume you can
+  code, Claude, Cowork, Claude Code and Codex, *"a working agentic workflow you built yourself
+  and a rollout plan"* - and reached **no page of oxfordagentic.com** to do it. Every record it
+  held was third-party and out of date: `allai.events` still 21 July, `planomato.com` carrying
+  the passed Second Brain day, and Luma's Cohort 2 page. Its conclusion, **eight days before
+  Cohort 3**, was ***"That date has already passed as of today (November 11, 2026), so I didn't
+  find an upcoming date or current ticket information."***
+- **The sentence in it that pointed at our own pages.** Of `planomato.com` the engine wrote
+  ***"It's also past, and the listing doesn't give a year."*** That is an engine stating, in its
+  own words, that a date without a year is a date it will not place - and it is the second
+  reading in nine days to turn on a missing year, after the 11 Nov 02:00 probe closed ***"I found
+  nothing for 19 November 2026, so that date is unverified."*** So the log asked what our own
+  pages publish, and the answer was the defect this cycle shipped: **21 visible long-form dates
+  carried no year, and eleven of them had no year within 400 characters in either direction**,
+  every one a booking call to action in a guide closer. `llms-full.txt`, the file this site
+  publishes **for** these crawlers, said bare "19 November" **eight times**. Measured, fixed and
+  re-measured the same cycle; see the ledger entry.
+- **This is the first cycle in five where "reach, not coverage" was the wrong reading.** The
+  previous four correctly concluded that the answers were written and unreached, and argued for
+  backlog 2b. That is still true of probes 1 to 3. But probe 4 shows a second failure sitting
+  **behind** the reach one: on the day retrieval does improve, eleven of our booking sentences
+  would have handed an engine a date it has just said it cannot place. Fixing it does not buy
+  retrieval and nothing here claims it does. It removes the thing that would waste retrieval.
+- **Probe 1 is winnable and is NOT a gap, and that is the test it fails.** No institutional
+  publisher in the field - it is consultant blogs, staffing firms and `upwork.com` writing about
+  its own marketplace - but the field **answers the question directly and repeatedly**, with
+  `lilachbullock.com` alone publishing three pages on it (`in-house-ai-training-vs-hiring-ai-consultant`,
+  `diy-ai-tools-vs-hiring-ai-expert-small-business`, `should-you-hire-an-ai-consultant-what-they-do`)
+  and `profiletree.com` carrying `in-house-vs-outsourced-ai-training-for-your-sme`. The engine
+  produced a confident structured answer with no admission of a gap. **Same shape as the 14:00
+  cycle's probe 2: the absence of an institutional publisher is not on its own a reason to write.**
+  Recorded so a later cycle does not read "no institutional publisher" and take it.
+- **Probe 1 has a second reason to leave it, and it is the standing decision.** The field's
+  recommendation converges on *train the team, and bring in a fractional expert for the part that
+  stalls*, so writing the page honestly means weighing one-to-one outside help. That is the
+  consultancy question the 13 September standing decision reserves. **Two cycles running have now
+  met this same boundary from different queries** (14:00 probe 3, group workshop against one-to-one).
+- **Probe 2 fails the winnability rule outright and should not be re-pitched.** The field is
+  platform vendors writing about their own product - `make.com`'s own comparison page, `arahi.ai`
+  three times, `aiagentstore.ai`, `mindstudio.ai`, `sista.ai`, `pokee.ai`, `growwstacks.com` - which
+  is the exact exclusion the rule names. The engine flagged it unprompted (*"mostly vendor
+  comparisons, so treat the specifics with some caution"*). Our glossary already draws the
+  distinction the field draws.
+- **Probe 3 is declined on the converting half.** The field is trade press and security vendors
+  (`itbrew.com`, `nojitter.com`, `nhimg.org`, `unixi.io`, `securitybrief.com.au`) and it answered
+  fully: orphaned agents, credentials that outlive their owner, named business and technical
+  owners. The searcher is an IT or security reader doing offboarding, **not a leader deciding
+  whether to book a hands-on build day**, so traffic from it is vanity. Worth noting that the
+  remedy the field names - a named owner who does the work, and documentation - is already the
+  published subject of `/guides/how-to-run-an-ai-pilot-that-survives/`.
+- **One new off-page target, `techinformed.com`**, a UK technology publication whose beat covers
+  this subject and which is not on the review list. Recorded at the same lower confidence as
+  `every.to`: a publication is a mention route, not a submit form. Every other host is already
+  recorded, a competitor's own course page, a vendor blog or a throwaway microsite. **Nobody was
+  contacted.**
+- **One competitor observation worth keeping, from probe 4.** `eventbrite.co.uk` returned
+  *"Agentic AI Bootcamp Day: Build an AI Agent with Claude, London Workshop"* - a direct format
+  competitor holding an Eventbrite slot in our own category, on a query naming Oxford. The
+  standing Eventbrite ask in `off-page-listings.md` has had no evidence attached to it this
+  specific before.
+- **No event fact was read, verified or changed.** `luma.com` answers 403 through the sandbox
+  egress policy, which the build's own outbound check records as a failed fetch on both on-sale
+  cohorts' booking links. Every year published this cycle was read from the repo's own
+  `startDate` frontmatter, which the site already prints in full on the event pages.
+
 ## 2026-11-11 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DURABILITY AXIS PROBED TWICE AND FOUND ALREADY ANSWERED IN ESSAY SHAPE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

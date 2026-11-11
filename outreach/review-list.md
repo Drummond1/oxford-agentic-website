@@ -11,6 +11,36 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **One new publication target, and a competitor sitting on the Eventbrite slot we have never
+  claimed.** Found 11 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **New target: `techinformed.com`.** A UK technology publication, returned on the probe *"what
+    happens to an AI workflow when the person who built it leaves the business"*, and not anywhere
+    else on this list or in `off-page-listings.md`. Same shape and the same lower confidence as
+    `every.to` below: a publication has no submission route, so it is a contribution or mention
+    route that costs a relationship rather than a form. It is listed because it is **UK-based**,
+    which most of this list is not, and the standing ask (backlog 2b) is for any citable
+    third-party record of the entity.
+  - **Evidence for the standing Eventbrite ask, and it is sharper than anything attached to it
+    so far.** The commercial probe *"hands-on agentic AI bootcamp Oxford one day build your own
+    workflow"* returned `eventbrite.co.uk` carrying *"Agentic AI Bootcamp Day: Build an AI Agent
+    with Claude, London Workshop"* - a direct format competitor holding an Eventbrite result on a
+    query that names **Oxford**. Eventbrite has been on the standing listing ask since July with
+    no evidence this specific. Nothing to do here but decide; the drafts are already written in
+    `outreach/submission-drafts.md`.
+  - **The same probe is the strongest stale-record reading in this log.** Eight days before
+    Cohort 3 an engine identified Oxford Agentic correctly, described the format accurately, and
+    concluded ***"I didn't find an upcoming date or current ticket information"*** - because every
+    record it held was third-party and out of date: `allai.events` still 21 July, `planomato.com`
+    carrying the passed Second Brain day, and Luma's Cohort 2 page. **This is the fourth separate
+    reading asking for the same two things**: correct or retire the 21 July `allai.events` record,
+    and give the Organization node one real `sameAs`. No page of oxfordagentic.com was reached.
+  - **No other new target in four probes.** Every other host is already on this list
+    (`lilachbullock.com`, `profiletree.com`, `sagnikbhattacharya.com`, `maven.com`), a platform
+    vendor writing about its own product (`make.com`, `arahi.ai`, `upwork.com`, `mindstudio.ai`),
+    a competitor's own course page (`brainstation.io`, `datasciencedojo.com`, `nobleprog.co.uk`,
+    `sectionai.com`, `ecornell.cornell.edu`), US trade press, or a throwaway microsite. Recorded
+    so a later cycle does not re-derive the same sweep.
+
 - **One new off-page target, and it is a publication rather than a directory.** Found
   11 Nov 2026 (14:00 cycle). **Nothing contacted, submitted or signed up for.**
   - **New target: `every.to`.** It returned the piece *"why some AI workflows stick and others

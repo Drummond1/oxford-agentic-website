@@ -1963,9 +1963,122 @@ Status: `todo` · `blocked` (why) · `doing`
     and visitors who saw the booking area and left without either booking or clicking
     through to Luma are the population this affects.
 
+91. `todo` (loop-actionable, found and half-closed 11 Nov 2026 in the 20:00 cycle; **the fix
+    shipped, the detector did not** - same shape as backlog 66, 77 and 80) - **nothing stops a
+    year-less cohort date reaching a published page again.** That cycle added the year to eleven
+    booking sentences after an engine said of a third-party listing of us ***"It's also past, and
+    the listing doesn't give a year."*** The eleven were found by a one-off sweep script, not by
+    anything in the build, so the next closer somebody types will be bare again.
+    **The shape of the guard**, and it is close to one that already exists: `scripts/check-dates.mjs`
+    already walks every indexable page's rendered prose and already parses the long-month date
+    forms for its tense check. The year check is the same walk with a different predicate - a
+    long-month date with **no four-digit year within 400 characters either side** - and the 400
+    is not arbitrary, it is the window the 20:00 sweep measured with and the one that correctly
+    separated the eleven defective instances from the ten sound ones.
+    **It must warn, never fail**, which is the opposite of `check:dates`' own stance and the
+    reason this is a `todo` rather than a one-line addition. The ten remaining bare dates are
+    **correct**: three event pages carry the year in their key-facts panel a few hundred
+    characters away, and `when-ai-executive-cohorts-run` names the Oxford online programme's
+    16 September and 11 November inside a clause that already says "for 2026". A hard fail would
+    block the deploy on all four, and tightening the window to make them pass would start missing
+    real ones. Warn-only, like the straight-quote guard in `check-schema.mjs`.
+    **Weigh before doing it:** today the count of genuinely defective instances is **zero**, so
+    the guard buys nothing until the next closer is written - which is exactly what backlog 66
+    said about the quote guard before a frontmatter string proved it wrong. Cheap to add in the
+    same cycle as any other `check-dates.mjs` change, and **backlog 89 falls due on 20 November**,
+    which will rewrite nine of these same sentences and is the natural cycle to fold it into.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 11 Nov 2026 (20:00 cycle) - eleven booking sentences named a day with no year, and an engine had just said in its own words that a date without a year is one it will not place. Ten guides, 21 lines, and `llms-full.txt` stops saying bare "19 November" eight times.
+
+**What shipped.** The year on eleven dates across ten guide files, plus each file's
+`updatedDate`. Twenty-one lines changed in all, every one of them either `2026` added to a date
+the repo already holds or a date stamp. No new fact: every year was read from the `startDate`
+frontmatter of the event it names, which the event pages already print in full.
+
+**How it was found, and it was not from the backlog.** The cycle's fourth GEO probe - a
+deliberate commercial reach probe, *"hands-on agentic AI bootcamp Oxford one day build your own
+workflow"* - returned the strongest stale-record reading this log has. The engine **identified
+the entity correctly** and described the format accurately (one day, in person, does not assume
+you can code, Claude, Cowork, Claude Code and Codex, *"a working agentic workflow you built
+yourself and a rollout plan"*) while reaching **no page of oxfordagentic.com**: every record it
+held was `allai.events` still at 21 July, `planomato.com` on the passed Second Brain day, and
+Luma's Cohort 2 page. **Eight days before Cohort 3** it concluded ***"That date has already
+passed as of today (November 11, 2026), so I didn't find an upcoming date or current ticket
+information."*** Of `planomato.com` it wrote ***"It's also past, and the listing doesn't give a
+year."***
+That sentence is the whole of this cycle. An engine stated plainly that a year-less date is a
+date it will not place, and it is the **second reading in nine days** to turn on a missing year -
+the 11 Nov 02:00 probe closed ***"I found nothing for 19 November 2026, so that date is
+unverified."*** So the obvious question was what our own pages publish, and it had never been
+measured.
+
+**Measured before changing anything.** A sweep of visible text on all 66 built pages, long-month
+date forms only, scoring each against the nearest four-digit year: **81 dates carried a year, 21
+did not**, and of those 21, **eleven had no year within 400 characters in either direction**.
+All eleven were in guide bodies and every one is a booking call to action - six closers naming
+Cohort 3's 19 November, two naming the Coding cohort's 26 November, two naming the Second Brain
+cohort's 21 October, and one multi-date sentence in `when-ai-executive-cohorts-run`. The other
+ten bare dates are on the three event pages and in the online-programme clause of that same
+guide, and all ten **do** have a year within 400 characters, so they were measured as sound and
+deliberately left. After the change: **91 with a year, 11 without, and zero without year context**.
+
+**The number that decided it was in `llms-full.txt`.** The file this site publishes *for* these
+crawlers said bare **"19 November" eight times**, plus 26 November three times and 21 October
+three times - seventeen year-less dates in the one artefact written to be read by machines.
+`llms.txt`, the curated entry file, was already clean, all five dates carrying their year, which
+is why no earlier sweep caught this. After the change `llms-full.txt` carries seven, all of them
+the sound ones above.
+
+**What this does and does not buy, stated plainly.** It buys nothing in retrieval and nothing
+here claims otherwise - the constraint remains backlog 2b, and probes 1 to 3 this cycle were
+"reach, not coverage" exactly as the previous four cycles found. What it removes is the thing
+that would have wasted retrieval on the day it improves: eleven sentences that would have handed
+an engine a date it has just said it cannot place. **This is the first cycle in five where
+"reach, not coverage" was not the whole reading.**
+
+**One copy decision, not a find-and-replace.** Nine of the eleven took `2026` straight after the
+date inside the existing link text. The tenth file, `when-ai-executive-cohorts-run`, lists four
+of our dates in a single sentence, and stamping the year four times would be clumsy, so one
+insertion governs the list: *"Ours are set individually: **in 2026** the Oxford Agentic Bootcamp
+ran on 16 September and runs again on 19 November, …"*. Read at both widths before shipping.
+
+**Relationship to backlog 89.** These same sentences fall due for a tense rewrite on 20 November,
+and this change does not pre-empt or complicate it: 89 is about what the closers should *point
+at* once Cohort 3 has run, which is a copy decision either way. The year simply travels with
+whatever each sentence becomes. 89 stays open and its scope is unchanged.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, **every figure identical to the
+baseline taken before the edit**: 64 pages built, 66 checked, 3,246 internal links resolve,
+schema valid, 7 Event and 20 FAQPage nodes, all titles and descriptions unique, `check:dates` 0
+findings across 55 indexable pages with 3 past cohorts checked. The date guard shipped at 08:00
+today passes unchanged, which was not a given - it reads long-month forms and the forms all grew
+four characters.
+**Blast radius measured, not asserted.** A pristine worktree of `HEAD` was built and compared
+file by file: **14 of 203 files in `dist` differ** and nothing was added or removed - the ten
+edited guides, `/guides/` (which prints each guide's updated date), `llms-full.txt` and the two
+sitemaps. **No sibling guide moved**, because no title changed, so backlog 41's under-submission
+does not apply here. The IndexNow `--dry-run` over exactly the ten changed source paths returns
+**11 URLs**, which is precisely the set of page URLs whose built bytes changed - no
+over-submission, unlike the cases in backlog 83 and 85.
+**Headless Chromium over the served build** at 375 and 1280px on the six most-affected guides and
+`/guides/`: **71 assertions, 0 fail** - 0 uncaught JS exceptions, 0 failed same-origin requests, 0
+horizontal overflow, one `h1` per page - plus a rendered check that the link text now reads
+*"19 November 2026 at Worcester College"* and screenshots at both widths. It wraps cleanly across
+two lines on a phone.
+
+**Search Console unavailable for the thirty-seventh consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for
+the week of 9-15 November.** One new off-page target, `techinformed.com`, recorded at the lower
+publication confidence, plus the first specific evidence for the standing Eventbrite ask (a
+direct format competitor holding an Eventbrite result on a query naming Oxford); nobody was
+contacted. **No event fact was read, verified or changed**: `luma.com` answers 403 through the
+sandbox egress policy. Production could not be read either - `oxfordagentic.com` does not resolve
+through this session's egress policy - so deployment state was confirmed through the Actions API,
+where the Deploy run for `badae29` concluded success and none was in progress.
 
 ### 11 Nov 2026 (14:00 cycle) - no page changed. The strongest GEO candidate in a fortnight was probed twice, passed winnability outright, and was declined because the site has answered it since July
 
