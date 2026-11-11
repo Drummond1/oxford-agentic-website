@@ -1967,6 +1967,89 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+### 11 Nov 2026 (14:00 cycle) - no page changed. The strongest GEO candidate in a fortnight was probed twice, passed winnability outright, and was declined because the site has answered it since July
+
+**Nothing in `dist` moved.** Whole-`dist` sha256 before and after: 203 files both sides, 0
+differ. Only `seo-data/geo-citations.md`, `outreach/review-list.md` and this file change, none
+of them published, so the IndexNow job should report nothing to submit.
+
+**The candidate, and why it looked like the first real coverage gap in weeks.** Two of this
+cycle's four probes were deliberately the same axis in two wordings - *"will the AI workflow I
+build in a one day workshop still work in six months"* and *"why AI automations stop working
+after a few months"* - because this log's own rule is to re-probe before acting. Both fields
+passed the winnability half of the topic-probe rule cleanly: **no institutional publisher in
+either**, one being practitioner posts, a vendor community forum and four `pages.dev` and
+`beehiiv` microsites, the other four DEV Community posts, a Google Sites page and nine vendor
+blogs. Both engines disclaimed their own sources unprompted, and the first opened by admitting
+***"the search didn't turn up any study on workshop-built AI workflows specifically"***. It also
+converts: a buyer asking whether what they build will last is raising a booking objection eight
+days before Cohort 3.
+
+**It was declined on the converting half's quieter precondition - that the site does not already
+answer it - and that check is the useful output of this cycle.** The second probe's field named
+five decay causes. **Four are the published subject of
+`/guides/how-to-run-an-ai-pilot-that-survives/`** (30 July, updated 13 Oct): a named owner who
+does the work rather than an innovation team, defining "better" in advance, building the check
+into the workflow, and a section called **"Plan for week two"** that names the silent-abandonment
+failure in the field's own terms - *"who notices if it stops being used, when you look at it
+again, and what small fix is allowed without another approval round"*. **The fifth, silent
+wrongness, is the published subject of `/guides/how-to-notice-when-an-ai-workflow-is-wrong/`.**
+The one cause neither guide covers, the tooling moving underneath the workflow, is answered on
+the two pages that take the booking: the Agentic programme page and the Cohort 3 event page both
+publish that you leave with *"the written recipe for rebuilding and extending it"* and with
+*"the pattern, which is the part that transfers"*. So coverage on this axis is complete and has
+been since July. **Reach, not coverage**, for the fourth consecutive cycle.
+
+**A second decline worth recording, because a later cycle will meet this field and misread it.**
+The probe *"AI training for a one person business, is a group workshop worth it or should I get
+one to one help"* is winnable by the letter of the rule - sixteen training vendors, no neutral
+party, and the only study in the field a 1997 municipal paper with 31 volunteers and no control
+group that the engine itself told the reader not to budget on. It is **declined on Drummond's
+13 September standing decision, not on its merits**: the answer that field converges on is a
+group day for the basics and then one-to-one help for your own processes, so writing the page
+well means making the case for one-to-one work, which is the consultancy question that decision
+reserves. The fourth probe, *"do I need to be able to code to use Claude Code or Codex"*, fails
+both halves - `xponent21.com` publishes that exact question as a page title and three more sites
+carry their own version - and our Coding pages answer it for our format already.
+
+**A technical sweep was run before concluding no page needed changing, and three of its findings
+were things the ledger had already settled, which is the memory working.** Past events publish a
+`Paid` Offer with no `availability` while the two on-sale cohorts carry `InStock` - that
+asymmetry is **deliberate**, the SoldOut inference having been retired on purpose (a day that has
+run is not sold out, and schema.org has no term for "this has happened"). `/`'s `lastmod`
+over-reporting is backlog 49 and 59, twice assessed as low value on the one page already crawled
+most. The three bare `lastmod` entries - `/about/`, `/privacy/`, `/testimonials/` - are the open
+half of backlog 63, recorded there as the lowest value of the eleven because a page that has
+genuinely not changed is the one a missing `lastmod` misrepresents least. None was re-pitched.
+
+**What the sweep measured fresh, and it is clean.** A link graph built over all 55 sitemap URLs:
+**zero orphans, every page reachable from `/`, maximum click depth 2** (1 page at depth 0, 12 at
+depth 1, 42 at depth 2). The feed is well formed and discoverable - `rss.xml` carries all 32
+guides with `pubDate`, `guid` and `description` on every item, and `<link rel="alternate">`
+declares it on all 64 built pages. `robots.txt` allows all sixteen named AI crawlers and declares
+the sitemap. Both on-sale event pages carry a complete `EducationEvent` with `offers`,
+`availability: InStock`, postal address, `sameAs` and `superEvent`. All three past event pages
+correctly say "This event has run" and the two Agentic ones link Cohort 3 by name and date in the
+first screen, which is the one surface we control on the path the engines keep taking.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: 64 pages built, 66 checked,
+3,246 internal links resolve, schema valid, 7 Event and 20 FAQPage nodes, all titles and
+descriptions unique, `check:dates` 0 findings across 55 indexable pages with 3 past cohorts
+checked. Headless Chromium over the served build at 375 and 1280px on `/`, `/events/`, both
+on-sale event pages, `/about/` and the guide this cycle's decline turned on: **72 assertions, 0
+fail**, 0 uncaught JS exceptions, 0 failed same-origin requests, 0 horizontal overflow, one `h1`
+and JSON-LD on each.
+
+**Search Console unavailable for the thirty-sixth consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. No new guide, 0 of 3 for the
+week of 9-15 November. One new off-page target, `every.to`, recorded on the review list at lower
+confidence than the aggregators because it is a publication with no submission route rather than
+a directory; nobody was contacted. No event fact was read, verified or changed: `luma.com`
+answers 403 through the sandbox egress policy. Production could not be read either -
+`oxfordagentic.com` does not resolve through this session's egress policy - so deployment state
+was confirmed through the Actions API, where the Deploy run for `2dded29` concluded success and
+none was in progress.
+
 ### 11 Nov 2026 (09:00 cycle) - no page changed. The one defect found this cycle is real, measured in three failure modes, and cannot be fixed without guessing at something the browser will not tell us
 
 **Nothing in `dist` moved.** The working tree is clean against `a5f09f9`; only this file

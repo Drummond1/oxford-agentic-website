@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-11 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DURABILITY AXIS PROBED TWICE AND FOUND ALREADY ANSWERED IN ESSAY SHAPE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions, none probed in these words before. Two of them are deliberately the same axis in two
+wordings - whether what you build on the day lasts - because this log's own rule is to re-probe
+before acting, and that axis looked like the first real coverage gap in several cycles.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | will the AI workflow I build in a one day workshop still work in six months | **No** | `asianefficiency.com` (x3), `community.latenode.com` (x3), `every.to`, `webprojectstudios.co.uk`, `presidio.com`, `theseventhsense.com`, `mindstudio.ai`, `workshopdigital.com`, `caimito.net`, `aisdr.com`, `fog.zeo.org`, `innovativesol.com`, `ai-scale-tips.beehiiv.com`, `cocoon-website-cfh.pages.dev`, `handsonai.info` |
+| 2 | do I need to be able to code to use Claude Code or Codex to build a working website | **No** | `xponent21.com`, `coredna.com`, `eseospace.com`, `websitesetup.org`, `ruben.substack.com` (x2), `kingy.ai` (x2), four Reddit snapshots, `adventureppc.com`, `hackmd.io`, `html.to.design`, `orbilontech.com`, `phosailabs.com`, `marcillyaiplaybook.it.com`, `rosetta.to` |
+| 3 | AI training for a one person business, is a group workshop worth it or should I get one to one help | **No** | `technologytherapy.com` (x2), `mentorcruise.com` (x2), `adventuremedia.ai` (x2), `lilachbullock.com`, `businessofsoftware.org`, `beginnersinai.org` / `beginnersinai.beehiiv.com`, `disco.co`, `generalassemb.ly`, `sagnikbhattacharya.com`, `sfailabs.com`, `hashnode.com`, three `pages.dev` microsites |
+| 4 | why AI automations stop working after a few months and what to do about it, small business | **No** | `dev.to` (x4), `13labs.au` (x2), `briggsit.substack.com`, `routine.co`, `techbehemoths.com`, `layer3labs.io`, `wrk.com`, `employmenthero.com`, `zendesk.es`, `greaterbirminghamchambers.com`, `metodoviral.com`, `sites.google.com`, `cortel.pages.dev`, `mktfit.pages.dev`, a Reddit snapshot |
+
+**Reading.**
+
+- **Probes 1 and 4 are one axis in two wordings, and it passed the winnability half of the rule
+  cleanly.** Neither field contains an institutional publisher: probe 1 is practitioner posts, a
+  vendor community forum and four `pages.dev` or `beehiiv` microsites, and probe 4 is four DEV
+  Community posts, a Google Sites page and nine vendor or consultant blogs. Both engines flagged
+  their own sources unprompted - *"several of these sources are opinion pieces or vendor
+  marketing"* and *"most of the sources are vendor or consultant blogs, so treat their specifics
+  as anecdotal"* - and probe 1 opened by admitting ***"the search didn't turn up any study on
+  workshop-built AI workflows specifically"***. On winnability alone this was the strongest
+  candidate the log has produced in a fortnight.
+- **It was not written, because the site already answers it - and the check that established
+  that is the useful part of this cycle.** Probe 4's field named five decay causes. Four of them
+  are the published subject of `/guides/how-to-run-an-ai-pilot-that-survives/` (30 July, updated
+  13 Oct): a named owner who does the work rather than an innovation team, defining "better"
+  before you start, building the check into the workflow rather than trusting the output, and a
+  whole section called **"Plan for week two"** that names precisely the failure the field calls
+  silent abandonment - *"who notices if it stops being used, when you look at it again, and what
+  small fix is allowed without another approval round"*. The fifth, silent wrongness, is the
+  published subject of `/guides/how-to-notice-when-an-ai-workflow-is-wrong/`. **So the coverage
+  is not thin, it is complete, and it has been complete since July.**
+- **The one cause those two guides do not cover is the tooling moving underneath the workflow,
+  and that is answered too, in different words and on the pages that take the booking.** The
+  Agentic programme page and the Cohort 3 event page both publish that you leave with *"the
+  written recipe for rebuilding and extending it"* and with *"the pattern, which is the part that
+  transfers"*. That is the honest answer to tool churn and it is already on the two commercial
+  surfaces. **Reach, not coverage**, for the fourth consecutive cycle, and the same conclusion:
+  it argues for backlog 2b and for nothing on the page.
+- **Probe 2 fails both halves and should not be re-pitched.** The field answers the question
+  directly and repeatedly - `xponent21.com` publishes a page titled *"Do I Need to Know How to
+  Code to Use Claude Code?"*, and `coredna.com`, `eseospace.com` and `websitesetup.org` each
+  carry their own version - so there is no gap to fill, and our own Coding programme page and
+  Cohort 1 event page answer it for our format already. The field's consensus (*"you don't need
+  to know how to code, but you need to know what the code is doing"*) is close to what this site
+  publishes, which is reassurance that the positioning is right, not an instruction to write.
+- **Probe 3 is winnable and was declined on Drummond's standing decision, not on its merits.**
+  The field is sixteen training vendors selling one format or the other, the engine said so
+  outright (*"most of the material comes from training vendors selling one format or the other"*)
+  and the only study in it is a 1997 municipal paper with 31 volunteers and no control group,
+  which the engine itself told the reader not to budget on. But the answer the field converges on
+  is *a group workshop for the basics, then one-to-one help for your own processes* - so writing
+  this page well means making the case for one-to-one work. That is the consultancy question the
+  13 September standing decision reserves ("considering it but does not want to dilute the
+  bootcamp offer", and no services content), so the loop is not writing it. **Recorded so that a
+  later cycle meeting this field does not read "no institutional publisher" and take it.**
+- **One new off-page target, and it is a different shape from the aggregators.** `every.to`
+  returned the piece *"why some AI workflows stick and others don't"* in probe 1. It is a
+  subscription publication with a real readership whose beat is exactly this site's subject, not
+  a directory with a submit form, so it is a contribution or mention route rather than a listing
+  one and is recorded on the review list at that lower confidence. Every other host in the four
+  fields is either already on the review list (`lilachbullock.com`, `adventuremedia.ai`,
+  `maven.com`, `sagnikbhattacharya.com`), a competitor's own course page with no submission route
+  (`handsonai.info`, `businessofsoftware.org`, `beginnersinai.org`, `mentorcruise.com`,
+  `generalassemb.ly`), or a throwaway `pages.dev` microsite. Nobody was contacted.
+- **No event fact was read, verified or changed.** `luma.com` answers 403 through the sandbox
+  egress policy, which the build's own outbound check records as a failed fetch on both on-sale
+  cohorts' booking links.
+
 ## 2026-11-11 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND NO COVERAGE GAP THE LOOP SHOULD WRITE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

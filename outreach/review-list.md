@@ -11,6 +11,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **One new off-page target, and it is a publication rather than a directory.** Found
+  11 Nov 2026 (14:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **New target: `every.to`.** It returned the piece *"why some AI workflows stick and others
+    don't"* on the probe *"will the AI workflow I build in a one day workshop still work in six
+    months"*, and it is not anywhere else on this list or in `off-page-listings.md`. Every is a
+    subscription publication with a real readership whose beat - practical AI workflows inside
+    working businesses - is the same subject this site publishes 32 guides on.
+  - **Why it is recorded at lower confidence than the aggregators.** Everything else on this
+    list has a submit form: `createwith.com`, Eventbrite, the UK AI event aggregators. A
+    publication has no submission route, so this is a contribution or mention route and it costs
+    a relationship rather than a form. It is also slower. **Your call entirely, and nobody has
+    approached them.** It is listed because the standing ask (backlog 2b) is for *any* citable
+    third-party record of the entity, and a publication that covers this beat is a better one
+    than a thin directory if it ever lands.
+  - **No other new target in four probes.** Every other host in the four fields is already on
+    this list (`lilachbullock.com`, `adventuremedia.ai`, `maven.com`, `sagnikbhattacharya.com`),
+    a competitor's own course page with no submission route (`handsonai.info`,
+    `businessofsoftware.org`, `beginnersinai.org`, `mentorcruise.com`, `generalassemb.ly`), or a
+    throwaway `pages.dev` microsite. Recorded so a later cycle does not re-derive the same sweep.
+
 - **A new aggregator target, and a Luma postcode worth two minutes of your time.** Found
   11 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed up for.**
   - **New target: `createwith.com`.** It returned **six** of the results on the probe *"last
