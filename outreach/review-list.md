@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A new aggregator target, and a Luma postcode worth two minutes of your time.** Found
+  11 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **New target: `createwith.com`.** It returned **six** of the results on the probe *"last
+    minute places on a hands-on AI workshop in Oxford this month"*, including an Oxford
+    one-day workshop listing of its own and a November 2026 Oxford AI listing, and it is not
+    anywhere else on this list or in `off-page-listings.md`. It is the same category as the
+    aggregators already on the standing ask: a citable third-party record of the entity, which
+    is the one thing the `Organization` node still lacks. It has a "Submit Event" route. **Your
+    call whether to list, and nobody has approached them.**
+  - **Smaller and unrecorded, for completeness**: `tutorials.co.uk/oxfordshire/oxford` appeared
+    in the same field. Thin directory, listed only because it ranked where we did not.
+  - **The postcode, and this one is worth checking today rather than approving later.** The
+    engine read a Luma listing's Worcester College address as **OX1 2JL**. This site publishes
+    **OX1 2HB** on every Worcester College page, and OX1 2HB is the correct one: it is what
+    Worcester College gives for Walton Street and what the charity register holds. **Nobody in
+    this cycle could open the Luma page** - `luma.com` answers 403 through the sandbox egress
+    policy - so this is an engine's paraphrase and not a reading of the listing. If the booking
+    page really carries OX1 2JL, it is sending attendees to the wrong postcode eight days before
+    Cohort 3, and it is thirty seconds to correct. **Not changed here: the site is already
+    right, and the Luma page is yours.**
+  - **Why this sits under the standing ask rather than beside it.** The probe that found the
+    target is the same probe that found no page of this site in a field that named our own city
+    and format, with three out-of-date third-party records of us in it instead. The remedy has
+    not moved: a LinkedIn Company Page or a real Luma calendar URL in `brand.social`, and the
+    21 July `allai.events` record corrected or retired.
+
 - **The same misdirection now reproduces on an UNBRANDED commercial query, so it is no longer
   only a problem for people searching our name.** Found 9 Nov 2026 (14:00 cycle). **No new
   target, nothing contacted or submitted**; this is added evidence for the entry directly below

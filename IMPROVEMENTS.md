@@ -1883,9 +1883,109 @@ Status: `todo` · `blocked` (why) · `doing`
     node on a question already answered changes nothing: four fields, four published answers, zero
     citations.
 
+88. `todo` **(needs Drummond, one line about our own practice; found 11 Nov 2026 in the 02:00
+    cycle)** - **the site answers "what if I cannot make the date" five times over and answers
+    "can a colleague take my seat instead" nowhere.** They are not the same question, and the
+    second is the one a buyer asks eight days out.
+    - **What is published.** *"Tickets are not refundable, but your place transfers to a future
+      cohort at no charge"* appears on the homepage FAQ, all three programme pages, the Coding
+      event page and question 9 of `questions-to-ask-before-booking-ai-training`, and the
+      on-sale event pages carry it as an `assurance` under the booking form. Every one of those
+      answers moves the **person** to another **date**. None of them says whether the **seat**
+      can move to another **person** on the same date. The nearest published line is the
+      `assurances` entry *"Bringing a colleague or two? Email hello@oxfordagentic.com and we
+      will arrange it"*, which is a team booking and not a substitution.
+    - **The probe, and the field is winnable.** *"What happens if I book AI training and cannot
+      attend, can I send a colleague instead"* returned sixteen results and every one is a
+      training provider's own cancellation policy - `crowdstrike.com`, `planview.com`,
+      `trainingindustry.com`, `kirkpatrickpartners.com`, a `.pages.dev` microsite and the rest.
+      No institutional publisher, no neutral party. The engine's read is that **most providers
+      do allow a substitute, with conditions**: a cutoff (one allows it to the first day,
+      another to four weeks before), same-organisation rules, and in several cases a late
+      cancellation fee that is waived when a substitute takes the seat.
+    - **Why it converts rather than merely ranks.** Tickets are not refundable, which this site
+      publishes plainly. For a buyer whose diary is not their own, "can someone else go" is the
+      objection that decides the booking, and the honest answer is almost certainly a cheap yes.
+    - **Why nothing was written.** It is a fact about our own practice. Whatever the answer is,
+      including "email us and we will sort it", it is Drummond's to state and the accuracy rules
+      forbid the loop inventing a policy on the page that takes the money. **One sentence from
+      him publishes on six surfaces** and the wording for each is already there to copy.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 11 Nov 2026 (02:00 cycle) - no page changed, and the measurement is the cycle. Five probes, zero citations, and the one coverage gap in the set is a fact only Drummond holds
+
+**Nothing in `dist` moved.** Whole-`dist` sha256 before and after: 203 files both sides, 0
+differ. Only `seo-data/geo-citations.md`, `outreach/review-list.md` and this file changed, none
+of which is published, so the IndexNow job will report no page URLs affected. That is correct:
+no page changed, so no page should be hinted.
+
+**Why nothing shipped, and it is a decision rather than a shortfall.** The candidate list was
+worked in priority order and every loop-actionable item on it is already recorded as low value
+or declined on its merits: 41 (`wontfix-for-now` on its own numbers), 49 and 59 (a `lastmod`
+that over-reports on the page crawled most), 61 (winnable and does not convert), 67 (needs an
+event fact), 80 (a guard measured to pass on its first run and fix nothing), 83 and 85 (IndexNow
+over-submission, left deliberately), 84 and 86 (a layout decision reserved for Drummond). The
+remaining opt-in under 54 is a Second Brain guide, which the 13 Sept standing decision says not
+to spend a cycle on. Writing a twenty-first `FAQPage` node instead would have been quota-filling,
+which rule 6 bans, and the 10 Nov 20:00 cycle has already measured what one buys when coverage is
+not the constraint: four published answers, four fields, zero citations.
+
+**A technical sweep was run before concluding that, so the conclusion is measured and not
+assumed.** All 66 built pages: 0 missing canonicals, 0 descriptions over 160 characters (the
+longest is 159), 0 of the 11 `noindex` pages in the 55-entry sitemap, `robots.txt` correct with
+every AI crawler allowed, and the three over-long `<title>`s are all `noindex` lead-gen pages.
+The on-sale Cohort 3 `EducationEvent` node carries `startDate`, `endDate`, `eventStatus`,
+`eventAttendanceMode`, `image`, `location`, `organizer`, `performer`, `superEvent`, `sameAs` and
+`offers` with `availability: InStock`. Every weekday word on the site matches its date, checked
+by computing the weekday for all five cohort dates. `llms.txt` leads with "Next events" and the
+two on-sale cohorts, and labels all three past cohorts "Took place on". **There was no defect to
+fix.**
+
+**The internal-linking hypothesis was re-tested and is still dead.** Inbound internal links were
+counted across the built site rather than assumed: `/bootcamps/oxford-agentic-bootcamp/` 270 from
+54 distinct pages, `/events/oxford-agentic-bootcamp-cohort-3/` 176, the seven team profiles 1
+each. The August baseline already killed this - a page with 257 inbound links had never been
+crawled once - and three of those one-link team profiles are in its never-fetched list. Counting
+first is what stopped the cycle spending itself on links.
+
+**What the five probes found** is in the GEO log in full. The short version: zero citations, and
+probe 5 is the strongest reproduction yet of the stale-record failure - a query naming our own
+date, venue and category returned no page of this site, three out-of-date third-party records of
+us, and the engine's conclusion *"I found nothing for 19 November 2026, so that date is
+unverified"*, eight days out. Two findings are recorded rather than chased: the "conflicting
+venue" it flagged is not a defect (Cohort 1 really was at St Anne's), and a Luma listing it read
+as OX1 2JL against our published and correct OX1 2HB is on the review list for Drummond, because
+`luma.com` cannot be opened from here.
+
+**New: backlog 88** (needs Drummond) - the site answers *"what if I cannot make the date"* on six
+surfaces and answers *"can a colleague take my seat"* nowhere, and those are different questions.
+**New off-page target: `createwith.com`**, added to the review list with the postcode note.
+Nobody was contacted.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: 64 pages built, 66 checked,
+3,246 internal links resolve, schema valid, 7 Event and 20 FAQPage nodes, all titles and
+descriptions unique. Headless Chromium over the served build at 375 and 1280px on `/` and both
+on-sale event pages: 36 assertions, 0 fail, 0 uncaught JS exceptions, 0 same-origin request
+failures, 0 horizontal overflow, one `h1` and JSON-LD on each. **Recorded for the next cycle:**
+Playwright resolves from `/opt/node-tools/node_modules/playwright/index.js` and is CommonJS, so
+a script in the scratchpad needs a default import from that path. `import { chromium } from
+'playwright'` fails there, which is not the sandbox refusing to run a browser. And the IndexNow
+dry-run takes its paths as separate arguments: passing them as one quoted string makes the
+script read the whole string as an unrecognised path and fall back to all 55 URLs, which is how
+a correct exemption can look like a regression. Passed properly, this commit's three files
+return *"no page URLs affected by this push; nothing to submit"*.
+
+**Search Console unavailable for the thirty-fourth consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for
+the week of 9-15 November.** No event fact was read, verified or changed: `luma.com` answers 403
+through the sandbox egress policy, which the build's own outbound check records as a failed fetch
+on both on-sale cohorts' booking links. Production could not be read either -
+`oxfordagentic.com` is refused by the same policy - so deployment state was confirmed through the
+Actions API: the Deploy run for `e441435` concluded success at 20:07 on 10 November and none was
+in progress.
 
 ### 10 Nov 2026 (20:00 cycle) - six route files were each spending all 55 IndexNow hints on a commit that cannot move a page. They now spend none, and the fix is the one the 9 Nov cycle scoped and deliberately left.
 

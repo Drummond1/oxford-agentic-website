@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-11 (02:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, AND THE STALE-RECORD FAILURE REPRODUCED ON A QUERY THAT NAMES OUR OWN DATE AND VENUE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
+since 12 Oct). Five questions, none probed in these words before. Deliberately spread across
+five axes rather than one: availability, value, the booking-path objection, the differentiator,
+and the dated commercial query. Cohort 3 is eight days out and the Coding Bootcamp fifteen.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | last minute places on a hands-on AI workshop in Oxford this month | **No** | `createwith.com` (x6), `enspire.ox.ac.uk` (x2), `oerc.ox.ac.uk`, `ctl.ox.ac.uk` / `it.ox.ac.uk` (x3), `oxford-royale.com` (x2), `luma.com/k7c2rm5s` (our Cohort 1, past), `luma.com/oxfordagentic2` (our Cohort 2, past), `luma.com/0mkaa4y4`, `luma.com/ozre44mg`, `tutorials.co.uk` |
+| 2 | is a one-day AI bootcamp worth it for a small business owner with no technical team | **No** | `babson.edu` (x2), `tusculum.edu` (x2), `lilachbullock.com`, `maven.com`, `kpu.ca`, `trainingcamp.com`, `cm.bothellkenmorechamber.org`, `adventuremedia.ai`, `smarterx.ai`, `syncni.com`, `blog.nobledesktop.com`, `luma.com/1swa5ccx`, `smarty.ai`, a `lovable.app` microsite, `gptprompts.ai`, `precisionaiacademy.pages.dev` |
+| 3 | what happens if I book AI training and cannot attend, can I send a colleague instead | **No** | `zywave.com`, `ptcorp.com`, `scppa.org` (x2), `government-ai-academy.pages.dev`, `crowdstrike.com` (x2), `ncais.org`, `appraisalinstitute.org`, `trainingindustry.com`, `allianz.com`, `totheweb.com`, `agentos.com`, `clocs.org.uk` (PDF), `nyc.gov`, `kirkpatrickpartners.com`, `planview.com` |
+| 4 | AI workshop where you build a workflow on your own real work rather than a prepared case study | **No** | `maven.com` (x8), `launchpadlab.com` (x2), `chipp.ai`, `lilachbullock.com`, `thecontentwrangler.com`, `prevail-website.pages.dev`, `zapier.com`, `mirantis.com`, `flaviocopes.com`, `funcshun.com` |
+| 5 | agentic AI bootcamp Oxford 19 November 2026 Worcester College | **No** | `luma.com/oxfordagentic2` (our Cohort 2, past), `luma.com/k7c2rm5s` (our Cohort 1, past), `allai.events` (**still 21 July 2026**), `sbs.ox.ac.uk` (x3), `nobleprog.co.uk` (x3), `lifelong-learning.ox.ac.uk` (x2), `eventbrite.co.uk/e/2003714053673` (a named competitor), `learnersink.com`, `business-school.ed.ac.uk`, `science.ai.cam.ac.uk`, `pulse.bot`, `help.datasciencedojo.com` |
+
+**Reading.**
+
+- **Probe 5 is the strongest form of the stale-record failure this log has recorded.** The
+  query names our exact date, our exact venue and our own category, and **no page of
+  oxfordagentic.com appears in it at all.** The only records of us in the field are three
+  out-of-date third-party ones. The engine's own conclusion, with Cohort 3 eight days away:
+  ***"I found nothing for 19 November 2026, so that date is unverified."*** It then told the
+  buyer to confirm the date on `luma.com/oxfordagentic2`, which is the **September** cohort.
+  The 10 Nov 08:00 cycle recorded this shape on a query that named the month; naming the day
+  and the college does not fix it.
+- **Probe 1 is the same failure on the availability axis**: ***"I couldn't find a confirmed,
+  in-person hands-on AI workshop in Oxford this month (November 2026) with last-minute
+  places."*** It had a Luma record of the Oxford Agentic Bootcamp in hand and said the listing
+  ***"doesn't show a date or remaining availability"***, so what it held was a past cohort's page.
+- **The "conflicting venue" the engine flagged in probe 5 is not a defect, and no later cycle
+  should chase it.** It read one Luma listing as Worcester College and another as St Anne's
+  College and could not tell whether this was a venue change. Checked against the repository:
+  **Cohort 1 genuinely ran at St Anne's** (`oxford-agentic-bootcamp-cohort-1.md`, 21 July) and
+  Cohorts 2 and 3 are at Worcester. The site is right and says so on each page. The engine is
+  reading two different events as one.
+- **One genuine third-party discrepancy, and it is on the page that takes the money.** The
+  engine read a Luma listing's Worcester College address as **OX1 2JL**. This site publishes
+  **OX1 2HB**, and OX1 2HB is correct: it is the address Worcester College itself and the
+  charity register both give for Walton Street. **Unverified from here** - `luma.com` answers
+  403 through the sandbox egress policy, so this is the engine's paraphrase of a page nobody in
+  this cycle could open. On the review list for Drummond to check rather than acted on.
+- **Probe 3 is the one coverage gap in the set, and it is not the question the site already
+  answers.** Published copy answers *"What if I book but cannot make the date?"* on the
+  homepage, all three programme pages, the Coding event page and question 9 of
+  `questions-to-ask-before-booking-ai-training`: tickets are not refundable, the place transfers
+  to a future cohort at no charge. **Nothing published says whether a colleague can take the
+  seat on the same day**, which is the different thing probe 3 asked and which most of that
+  field does allow, with conditions. The field is winnable - sixteen results, every one a
+  provider's own cancellation policy, no institutional publisher and no neutral party. It is
+  also a fact about our own practice that the loop must not invent. Backlog 88.
+- **Probes 2 and 4 are reach, not coverage, and neither warrants a twenty-first `FAQPage`
+  node.** Probe 4 is the site's own differentiator stated back to it: the engine found five
+  providers selling build-against-your-own-work days and not us, while
+  `what-hands-on-ai-training-actually-means` has published that distinction since July - and is
+  one of the eleven pages the August Search Console baseline records Google as never having
+  fetched. Probe 2's field is providers selling their own programmes, which the engine said
+  itself (***"most of the sources are providers promoting their own programs"***), and its
+  closing caveat - that a single day fades without follow-up - is backlog 87 and 78, which wait
+  on one answer from Drummond.
+- **New off-page target: `createwith.com`**, six results in probe 1 including a one-day Oxford
+  workshop listing, and not on the review list before today. Added there, nothing contacted.
+
 ## 2026-11-10 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND FOR THE FIRST TIME EVERY ONE OF THE FOUR IS ALREADY ANSWERED IN QUESTION SHAPE ON THIS SITE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle
