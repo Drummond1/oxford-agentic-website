@@ -1930,9 +1930,92 @@ Status: `todo` · `blocked` (why) · `doing`
     past tense. Measured both sets by building a copy of the site with each cohort's `endDate`
     moved back, so the counts are real and not projected.
 
+90. `todo` **(needs Drummond, because the only reliable remedy is a call on the booking
+    area's layout; found 11 Nov 2026 in the 09:00 cycle)** - **when Luma's iframe renders
+    nothing, the booking area on both on-sale event pages is an empty 520px box, and the
+    only way through is one line of 15px body text below it.** Measured at 375px on
+    `/events/oxford-agentic-bootcamp-cohort-3/` in headless Chromium, in three failure
+    modes - the request aborted the way a blocker aborts it, a 204, and a 200 with an
+    empty body. All three end identically: `register__frame is-loaded`, the "Loading the
+    booking form…" placeholder hidden, a 520px bordered box with nothing in it (64% of an
+    812px viewport), and `Having trouble? Register on Luma →` sitting 18px under it.
+    **The component's own safety net cannot fire in two of the three.** `LumaEmbed.astro`
+    says the placeholder "is cleared anyway after a few seconds" if the load event "never
+    fires", but the load event **does** fire on an aborted frame and on an empty 200 -
+    measured, both true - so the 6s timeout is only reached in the 204 case, and it does
+    the same thing as the load handler regardless. The code is not wrong; the signal it
+    waits for does not distinguish a painted form from a blank one.
+    **Why the loop did not fix it.** It built the obvious fix - keep the panel and spend
+    it on a message plus a booking button instead of hiding it - and the measurement above
+    is what killed it: there is no cross-origin signal that separates "Luma painted" from
+    "Luma painted nothing", so any trigger is a guess. A `fetch(src, {mode:'no-cors'})`
+    probe is the only candidate, and its false-positive mode puts "the booking form has
+    not loaded" over a working booking form on the two pages that sell the cohorts. The
+    change was written, built green, measured against all three modes and reverted; `dist`
+    is byte-identical to `main`.
+    **What a decision from him would look like**, any one of which the loop could then
+    ship: promote `Having trouble? Register on Luma →` to a visible button beside the
+    frame (a CTA change, which the loop's own rules put on him); or accept the probe and
+    its false-positive risk; or leave it, on the grounds that a corporate proxy usually
+    returns its own visible block page inside the frame rather than nothing, which makes
+    the pure-void case rarer than it first looks. **He can also size it before deciding**:
+    GA already records `register_section_viewed` and `luma_outbound_click` per event slug,
+    and visitors who saw the booking area and left without either booking or clicking
+    through to Luma are the population this affects.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 11 Nov 2026 (09:00 cycle) - no page changed. The one defect found this cycle is real, measured in three failure modes, and cannot be fixed without guessing at something the browser will not tell us
+
+**Nothing in `dist` moved.** The working tree is clean against `a5f09f9`; only this file
+changed, and it is not published. No page should be hinted to IndexNow, and none will be.
+
+**The sweep came back empty, and that is the first half of the cycle.** All 66 built pages at
+375, 768 and 1280px in headless Chromium - 198 page-widths - report **0px horizontal overflow,
+0 images without `alt`, 0 form controls without a label, 0 links or buttons without an
+accessible name, 0 duplicate `id`s and 0 empty headings**, with exactly one `h1` and one
+`main` per page and **no heading-level skips** anywhere. Keyboard: six templates at 375 and
+1280px, every tab stop in flow and carrying a visible focus ring, the single exception being
+Luma's cross-origin iframe, which cannot have one. Page weight on five key pages is **12
+requests and about 74KB, all of it fonts, with CLS measured at 0.0000**; `/team/` is 20 and
+127KB. Build, link check (3,246 internal links across 66 pages), schema (66 pages valid, 7
+`Event` and 20 `FAQPage` nodes) and the new `check:dates` (55 indexable pages, 0 findings) all
+pass. `check:flags` passes on the all-on and all-off builds. `astro check` reports **81 errors
+and 3 hints on unchanged `main`**, which is the standing baseline, not this cycle.
+
+**The one thing found is backlog 90, and it is on the booking path of both on-sale pages.**
+When Luma's iframe renders nothing, the register section is a 520px empty box at 375px - 64% of
+the viewport - with one 15px line of body text 18px beneath it as the only route through. The
+measurement that matters is why it stays open: **the iframe's `load` event fires even when the
+frame paints nothing**, true in two of the three failure modes tested, so the component's
+documented fallback ("if that never fires…") cannot run, and nothing in the browser separates a
+painted form from a blank one across origins. The fix was written, built green and reverted,
+because every available trigger is a guess whose wrong answer covers a working booking form
+eight days before Cohort 3. The item records the three options and how Drummond can size it
+from GA before choosing.
+
+**Three further candidates were examined and left, each for a recorded reason.** The duplicated
+29-word "agentic" definition across two FAQ answers on `/bootcamps/oxford-agentic-bootcamp/` is
+deliberate - the file's own comment explains it as extractable Q&A, shipped 9 Nov - so it is not
+repetition to remove. "The booking page" against "this page", three references to where pricing
+and places live in one Cohort 3 FAQ set, is a genuine but very small inconsistency and would
+have been quota-filling on its own. The Coding Bootcamp agenda publishes "Session 1" to
+"Session 7" with no clock times while the Agentic agenda publishes eleven timed slots; the times
+are a fact the loop does not hold and `luma.com` is unreachable from here, so it was not
+invented. Rule 6 bans making work to fill the cycle, and none of the three clears it.
+
+**Production could not be read, as on every recent cycle.** The sandbox egress policy answers
+403 on CONNECT to `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`
+(`connect_rejected`, logged by the proxy), so the before state is a local build of `main` HEAD
+rather than the live page. `luma.com` is refused by the same policy: **no event fact was read,
+invented or changed.** Deployment state was confirmed through the Actions API - the Deploy run
+for `a5f09f9` concluded `success` at 08:12 on 11 November, `main` HEAD matches its `head_sha`,
+and nothing was queued or in progress. PR #1 and PR #3 and the `feat/ceo-roundtable-demand-page`
+branch are the known-stale leftovers recorded in backlog 20, not work in flight. **Search
+Console unavailable for the thirty-fifth consecutive cycle**; nothing was estimated. **No new
+guide, 0 of 3 for the week of 9-15 November.**
 
 ### 11 Nov 2026 (08:00 cycle) - the stale forward-tense date now has a detector, eight days before the date it was written for
 
