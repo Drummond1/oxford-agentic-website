@@ -5,6 +5,58 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-11 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND NO COVERAGE GAP THE LOOP SHOULD WRITE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions, none probed in these words before, on four axes this log has never used: the
+confidence floor, the time cost, vendor neutrality, and the category definition itself.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | I am the least technical person on my team, will I keep up on a hands-on AI workshop | **No** | `chatprd.ai` (x3), `maven.com` (x2), `meetup.com` (x2), `uit.stanford.edu`, `newcomers.ox.ac.uk`, `atlassian.com` team playbook, `simplilearn.com`, `njii.com`, `nips.cc`, `goodlyai.pages.dev`, a Reddit snapshot |
+| 2 | is it worth taking a whole day out of the office for AI training for a business owner | **No** | `profiletree.com` (x5, one vendor), `adventuremedia.ai` (x3), `lilachbullock.com`, `entrepreneur.com`, `tech.co`, `manchesterdigital.com`, `cbtnuggets.com`, `gptprompts.ai`, `30elevate.pages.dev`, `sagnikbhattacharya.com`, `design-engine.com`, `digitaltreehouse.com` |
+| 3 | AI training course where the trainer is not selling you their own software, vendor neutral | **No** | `comptia.org`, `globalknowledge.com` (x3), `koenig-solutions.com` (x2), `webucator.com`, `go1.com`, `fastlanetraining.ca` / `fastlaneus.com`, `trainup.com` (x3), `niccs.cisa.gov`, `aicatalyst.stanford.edu`, `us.fitgap.com` |
+| 4 | difference between an agentic AI bootcamp and an AI strategy workshop for leaders | **No** | `maven.com` (x3), `brainstation.io` (x3), `leadwithai.co` (x2), `dasa.org` + `gofore.com` PDF, `aim.com.au`, `pluralsight.com`, `executive.berkeley.edu`, `ctme.caltech.edu`, `globalknowledge.com`, `handsonai.info`, `meetup.com` |
+
+**Reading.**
+
+- **Probe 4 is the category this site sells, defined for a buyer without us in it.** The engine
+  set out what an "agentic AI bootcamp" is and what an "AI strategy workshop" is, from Maven,
+  DASA, Pluralsight, Berkeley, Caltech, BrainStation and AIM, and said the label has no fixed
+  meaning. This site publishes two pages written for exactly that question,
+  `/guides/what-is-an-agentic-bootcamp/` and `/guides/ai-bootcamp-vs-course-vs-exec-education/`,
+  and neither was reached. **So this is reach, not coverage**, and it is the cleanest example
+  the log has: the answer is written, indexable and unread. It argues for backlog 2b and for
+  nothing on the page.
+- **One detail in probe 4 is worth keeping.** The field puts bootcamps at "multi-day or
+  multi-week" and strategy workshops at "half-day to two days", so a buyer who reads that and
+  then meets a one-day build day has been told, by a field we are absent from, that our format
+  is not quite either thing. Our own comparison guide already argues the opposite case. Nothing
+  to write; recorded because it is the first probe to show the category description itself
+  working against the format.
+- **Probe 2 closed on our differentiator again, assembled from other people.** The engine's own
+  verdict was that a day is worth it "if it is tailored to your business, uses your own tools
+  and workflows, and you come with specific processes to examine", which is the bring-one-real-task
+  format in the engine's words, reached through twelve vendors and not through us. The 10 Nov
+  20:00 cycle recorded the same shape on a different question.
+- **Probe 3 is not winnable and should not be re-pitched.** The field is CompTIA, Global
+  Knowledge, Koenig, Webucator, TrainUp, CISA and Stanford, which is the institutional-publisher
+  half of the winnability rule. The engine's closing advice, "confirm the provider does not sell
+  a product tied to the course", happens to favour us and the site says nothing of the kind, but
+  it is a positioning claim on an unwinnable query and the loop is not writing it.
+- **Probe 1 is already answered in question shape and still not cited.** The engine closed by
+  telling the reader to ask whether setup is handled in the session. *"Do I need to be
+  technical?"* and *"Can I install software on my work laptop?"* are published `FAQPage` pairs
+  on the Agentic programme page and on the Cohort 3 booking page today. Same finding as the
+  10 Nov 20:00 cycle's preparation set, and the same conclusion: a twenty-first node buys
+  nothing while reach is the constraint.
+- **No new off-page target.** Every host in the four fields that could be a listing rather than
+  a competitor is already on the review list - `profiletree.com`, `maven.com`, `lilachbullock.com`,
+  `adventuremedia.ai`, `teamland.com`. The one new name, `handsonai.info`, is a competitor's own
+  course page with no submission route, so it is not an opportunity and is not being added.
+  Nobody was contacted.
+
 ## 2026-11-11 (02:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, AND THE STALE-RECORD FAILURE REPRODUCED ON A QUERY THAT NAMES OUR OWN DATE AND VENUE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox, as on every cycle

@@ -1911,9 +1911,115 @@ Status: `todo` · `blocked` (why) · `doing`
       forbid the loop inventing a policy on the page that takes the money. **One sentence from
       him publishes on six surfaces** and the wording for each is already there to copy.
 
+89. `todo` (loop-actionable and **dated: it falls due on 20 November 2026**; found 11 Nov 2026
+    in the 08:00 cycle, by the guard shipped in the same cycle) - **nine sentences name
+    19 November as a day still to come, and they are typed into prose rather than derived, so
+    the morning after Cohort 3 runs the build will fail on exactly these nine.** That is the
+    guard working as intended, not a regression, and the list is recorded here so the cycle
+    that meets it does not have to re-derive the scope: six guide closers
+    (`claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved`,
+    `getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+    `where-the-human-goes-in-an-agentic-workflow`, `who-should-take-the-seat`), the capsule and
+    the "Has the Oxford Agentic Bootcamp run before?" FAQ answer in
+    `oxford-agentic-bootcamp-cohort-2.md`, and the capsule in
+    `oxford-agentic-bootcamp-cohort-3.md`. **A week later, on 27 November**, the Coding cohort
+    adds its own capsule, its booking-band copy and `why-the-code-an-agent-wrote-is-not-live`.
+    **What to do with each is a copy decision, not a find-and-replace.** A guide closer that
+    says "Cohort 3 runs on 19 November" wants pointing at whatever is next on sale, which on
+    20 November is the Coding cohort and after 26 November may be nothing; a capsule wants the
+    past tense. Measured both sets by building a copy of the site with each cohort's `endDate`
+    moved back, so the counts are real and not projected.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 11 Nov 2026 (08:00 cycle) - the stale forward-tense date now has a detector, eight days before the date it was written for
+
+**What shipped: `scripts/check-dates.mjs`, wired into `npm run build` as `check:dates`.** It
+fails the build when rendered copy on an indexable page names a cohort date that has already
+passed and writes it as a day still to come. Two files, no page changed.
+
+**Why this and not something else.** Everything the event template derives self-heals, because
+`effectiveStatus` computes "past" from `endDate`: status, meta description, the hero band, the
+event cards, the footer's "Upcoming" list and `llms.txt` all flip on their own the morning
+after a day runs. What does not self-heal is a date typed into prose. The template's own
+comment in `src/pages/events/[slug].astro` already writes the next instance down by name - the
+two on-sale summaries "become wrong the morning after each day runs, on 19 and 26 November" -
+and nothing was watching for it. This is the same shape as backlog 66 and backlog 77: the
+defect was fixed and the thing that would have caught it was not.
+
+**It is not hypothetical, and the evidence is in this ledger.** On 5 November an answer engine
+holding this site named the Second Brain cohort's **passed** 21 October date as "the next listed
+in-person date". That cycle fixed the copy. The detector is the half that was missing.
+
+**Measured on both sides rather than asserted.**
+- **Today, a real pass and not a vacuous one.** 0 findings across 55 indexable pages, 3 past
+  cohorts checked. Those three passed dates are named **32 times across indexable pages**
+  (21 July 10 times on 5 pages, 16 September 10 on 5, 21 October 12 on 6), and every one of
+  them is correctly written in the past tense. The guard is reading real copy and finding it
+  right.
+- **It fires, proved by building a copy of the site in which Cohort 3 has gone.** A worktree
+  at this commit's parent with Cohort 3's `endDate` moved back and its `startDate` left at
+  19 November, built with `astro build` and checked: **9 findings**, which is the real set -
+  six guide closers (`claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved`,
+  `getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+  `where-the-human-goes-in-an-agentic-workflow`, `who-should-take-the-seat`), two hard-coded
+  lines in Cohort 2's own file (its capsule and the "Has it run before?" FAQ answer), and
+  Cohort 3's capsule. **0 false positives**: the two derived event cards that a simulated
+  clock over today's HTML had flagged are gone from the real flipped build, exactly as
+  predicted, because they self-heal.
+- **Tested against a simulated clock too**, `--now=2026-11-27`, which adds the Coding cohort's
+  capsule, booking band and `why-the-code-an-agent-wrote-is-not-live`.
+
+**Two decisions inside the script, both recorded in its comments.**
+- **The window is the clause, capped at 90 characters either side of the date, not the
+  sentence.** A sentence was the first attempt and it was wrong: a key-facts table and a
+  "who it is for" list carry no full stop between rows, so whole panels collapsed into one
+  600-character "sentence" and a forward-tense word anywhere in the panel attached itself to a
+  date rows away. The cap is what makes the match local, and it is what removed four of the
+  eleven first-pass findings.
+- **The clause must also name a cohort or a bootcamp.** Date-matching alone is not safe here:
+  `when-ai-executive-cohorts-run` correctly reports the Oxford online programme's own
+  16 September and 11 November start dates, and 16 September is also Cohort 2's, so without
+  that condition a true sentence about somebody else's course reads as a stale claim about
+  ours. It was a real false positive in the first run, not a precaution.
+
+**Hard fail rather than a warning**, on the reasoning the title-length check already uses: a
+wrong date on the page that takes the booking is worse than a blocked deploy, and the fix is
+always available. A false positive costs one skipped cycle, which is the cheaper side of that
+trade. It skips `noindex` pages, which are the lead-gen and voice pages STATE.md reserves to
+Drummond, and it reads the long-month forms only ("19 November", "19 November 2026"), because
+the abbreviated form is the footer's and the cards', both derived and unable to go stale.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 64 pages built, 66 checked, 3,246 internal links resolve, schema
+valid, 7 Event and 20 FAQPage nodes, all titles and descriptions unique. The new line reads
+`✓ dates: 55 indexable pages carry no passed cohort date written as upcoming (3 past cohort(s)
+checked)`. `npm run check:flags` exit 0 on both the all-on and all-off builds. **Blast radius
+measured, not asserted: whole-`dist` sha256 before and after, 203 files both sides, 0 differ.**
+No published page moves, so the IndexNow job should report no page URLs affected. Headless
+Chromium over the served build at 375 and 1280px on `/`, `/events/`, both on-sale event pages
+and a guide: **70 assertions, 0 fail**, 0 uncaught JS exceptions, 0 failed same-origin requests,
+0 horizontal overflow, one `h1` and JSON-LD on each.
+
+**GEO: four probes, zero citations, on four axes this log has never used** - the confidence
+floor, the time cost, vendor neutrality and the category definition itself. Full table in the
+log. The one worth repeating: the engine defined "agentic AI bootcamp" against "AI strategy
+workshop" for a buyer out of Maven, DASA, Pluralsight, Berkeley, Caltech, BrainStation and AIM,
+while this site publishes two guides written for that exact question and neither was reached.
+Reach, not coverage. Nothing was written.
+
+**Search Console unavailable for the thirty-fifth consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for
+the week of 9-15 November** (the newest `publishDate` in the collection is 20 October). **No new
+off-page target**, so the review list is untouched: every listable host in the four fields is
+already on it, and the one new name is a competitor's course page with no submission route.
+**No event fact was read, verified or changed**: `luma.com` answers 403 through the sandbox
+egress policy, which the build's own outbound check records as a failed fetch on both on-sale
+booking links. **Production could not be read either** - `oxfordagentic.com` does not resolve
+from this sandbox - so deployment state was confirmed through the Actions API, where the Deploy
+run for `6ff35cf` concluded success and none was in progress.
 
 ### 11 Nov 2026 (02:00 cycle) - no page changed, and the measurement is the cycle. Five probes, zero citations, and the one coverage gap in the set is a fact only Drummond holds
 

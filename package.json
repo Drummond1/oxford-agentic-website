@@ -7,13 +7,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npm run check:links && npm run check:external && npm run check:schema",
+    "build": "astro build && npm run check:links && npm run check:external && npm run check:schema && npm run check:dates",
     "build:only": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check:links": "node scripts/check-links.mjs",
     "check:external": "node scripts/check-external-links.mjs",
     "check:schema": "node scripts/check-schema.mjs",
+    "check:dates": "node scripts/check-dates.mjs",
     "check": "astro check",
     "check:flags": "node scripts/check-flags.mjs"
   },
