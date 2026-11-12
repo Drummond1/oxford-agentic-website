@@ -1071,8 +1071,13 @@ Status: `todo` · `blocked` (why) · `doing`
       long - then nothing here is a defect and the right answer is to say so, and the item
       closes. Either answer from Drummond resolves it; the loop cannot pick between them.
 
-61. `todo` (loop-actionable, found 3 Nov 2026 in the 08:00 cycle; **declined this cycle on the
-    converting half of the rule, recorded so it is not re-derived**) - **the Coding Bootcamp is
+61. `done` 12 Nov 2026 (20:00 cycle), on the gate this item set for itself - a probe showing the
+    level **misread** rather than merely unasked, which the fifth probe of that cycle produced by
+    being handed the Agentic day's prerequisites in answer to a question naming the Coding day.
+    Shipped on the **booking** page, which is where this item's own trust argument pointed, and
+    which turned out to be the surface the Coding line was missing: the programme page gained the
+    answer on 4 November and the event page never had it. (Found 3 Nov 2026 in the 08:00 cycle;
+    **declined that cycle on the converting half of the rule, recorded so it is not re-derived**) - **the Coding Bootcamp is
     the only one of the three product lines with no "Who is it not for?" answer, and it is the
     one whose level is easiest to get wrong.** The homepage FAQ has one and the Agentic
     programme page has one; `agentic-coding-bootcamp.md` has nine FAQ entries and none of them.
@@ -2075,9 +2080,137 @@ Status: `todo` · `blocked` (why) · `doing`
     `09:00` for the same moment. One of the two should move; neither is wrong.
 
 
+94. `todo` (loop-actionable, **not blocked on Drummond** - that was checked and found wrong;
+    found 12 Nov 2026 in the 20:00 cycle) - **the Coding line answers nothing about group size on
+    any surface, while its own booking page already prints "A small cohort" in prose.**
+    Measured: of the site's 100 distinct `FAQPage` questions, **six** answer group size (the
+    12 Nov 14:00 cycle counted them) and **none is on the Coding line**. The Coding programme page
+    has 12 FAQ entries and no size question; the event page has 9 and none either. The Agentic
+    line answers it twice, on the programme page (*"How many people are in the room?"*) and on the
+    booking page (*"How big is the cohort?"*).
+    **The reason this is loop-actionable and was nearly filed as his.** The first read was that a
+    numberless answer would be a new claim about an unverifiable event fact, capacity being a Luma
+    fact and `luma.com` blocked from the sandbox. That is wrong, and the screenshot is what
+    corrected it: `src/pages/events/[slug].astro` prints **"A small cohort, so the day stays
+    facilitated rather than lectured"** in the closing band whenever `capacity` is unset, which it
+    deliberately is on this event. So "a small cohort" is **already published on that page**, and
+    an answer restating it adds no fact. What must **not** appear is a number: sixteen is the
+    Agentic Cohort 1 figure and belongs to a different day, and the 13 Sept standing decision for
+    Second Brain ("small group", never a number) is the nearest precedent.
+    **Why it is worth a cycle rather than a note.** Group size is a live objection axis - the
+    12 Nov 14:00 cycle spent a probe on it - and on this line it bears harder than on the others,
+    because the published format is *"show, then do... facilitators moving between tables, so
+    nobody spends the day stuck on setup"*, which is a claim whose credibility depends entirely on
+    the ratio. **Weigh it against backlog 25 first**, which is the same page, the same cycle's
+    worth of work, and the higher-value question - and is still waiting on the one fact only he
+    has.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 12 Nov 2026 (20:00 cycle) - the Agentic line got its booking-page "Who is it not for?" on the stated grounds that the Coding line already had one on both surfaces. It did not. One FAQ entry, one file, 4 of 203 built files changed.
+
+**What shipped.** A ninth FAQ entry on `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md`,
+placed directly under *"Do I need to be able to code?"* so the level screen sits in one place on the
+page that takes the money, plus a comment recording why and the `updatedDate`. The answer is the
+Coding **programme** page's own, **verbatim**, so no new claim is made about a day that has not run:
+
+> **Who is it not for?** Anyone who wants to come out of the day a working developer: the agents do
+> the typing, and what the day teaches is the workflow around the code rather than how to write it.
+> Anyone whose problem is a recurring task they already do by hand, because the Oxford Agentic
+> Bootcamp is the day for that one. And anyone who cannot bring a laptop they can install software
+> on, since the day sets up a code editor, a terminal and a GitHub account on your own machine,
+> which is worth checking before you book.
+
+**The diagnosis is a comment in this repo that was wrong.** The cycle that added this question to
+Cohort 3's event page justified it in a frontmatter comment reading *"The Coding Bootcamp answers
+this on both its programme and its booking page; this line answered it on neither."* The first half
+is true of the Coding **programme** page and **false of its booking page**: measured on the built
+site, the string `Who is it not for` appeared **nowhere** in
+`dist/events/oxford-agentic-coding-bootcamp-cohort-1/index.html` - not in an FAQ, not in the body.
+So the asymmetry that entry was written to close had simply moved to the other line, and the Coding
+Bootcamp has been the one on-sale booking page with no level screen ever since. That comment is
+corrected in the same commit; it changes no byte of output and it is the thing that would otherwise
+send the next cycle round the same loop.
+
+**This is backlog 61 falling due, on the condition backlog 61 set for itself.** That item declined
+the entry on 3 November on the converting half of the rule - the searcher who already codes is told
+this is not their day, which turns a reader away rather than books them - and kept it on the list
+for a trust reason: *"tickets are not refundable (that page's own answer), so an engineer who books
+on a misread of the level has no way out but a transfer, and the page that takes the booking is the
+right place to say so plainly."* It set one gate: **"one cycle, if a later probe shows the level
+being misread rather than merely unasked."** This cycle's fifth probe produced it, and more sharply
+than the item anticipated. Asked about the Coding Bootcamp **by name**, the engine opened
+***"The closest match is The Oxford Agentic Bootcamp"***, then answered the Coding day's audience
+question with the **Agentic** day's prerequisites - ***"it assumes you already use AI day to day.
+It doesn't assume you can code - you won't need to"*** - off `luma.com/oxfordagentic2`, a cohort
+that **ran on 16 September**, closing ***"I didn't find an official Oxford or organiser page with a
+full syllabus, so the listing is the only source on the audience."*** Fourteen days before Cohort 1.
+Backlog 61 is now `done`.
+
+**What it buys, at its real size, and what it does not.** It does **not** buy retrieval today and
+is not claimed to: no page of ours was reached on that probe or on any of the five, which is the
+**eighth consecutive cycle of reach, not coverage**, and the eighth argument for backlog 2b. What
+it buys is that the one surface a buyer actually reaches at the point of paying now carries the
+screen that the programme page, the homepage FAQ and the sibling booking page all carry, with a
+non-refundable ticket behind it, and a ninth extractable question on the page's `FAQPage` node for
+whenever it is crawled.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: **64 pages built, 66 checked, 3,247 internal links resolve**, schema
+valid, **7 `Event` and 20 `FAQPage` nodes**, all titles and descriptions unique, `check:dates`
+0 findings across 55 indexable pages and 0 year-less dates. `npm run check:flags` passes on the
+all-on and all-off builds. The `FAQPage` node on the Coding event page goes **8 questions to 9**;
+Cohort 3's stays at 11. Blast radius against a sha256 snapshot of `dist` taken before the edit:
+**4 of 203 files differ, none added or removed** - the Coding event page, `llms-full.txt` and the
+two sitemaps. Cohort 3's page is **byte-identical**, which is the correct result for a comment-only
+change to it.
+
+**`npx astro check` was not run this cycle, and that is a departure worth recording.** `@astrojs/check`
+is not a dependency of this project (`package.json` lists six, none of them it), so the `npm run check`
+script prompts to install it into the tree. The change is a markdown content file, outside the
+typecheck scope, and `astro build` already validates it against `src/content.config.ts`. Adding an
+untracked package to run a check that cannot see the changed file was the worse trade.
+
+**Browser checks, headless Chromium**, four pages - the Coding event page, Cohort 3, `/events/` and
+the Coding programme page - at 375 and 1280px with motion disabled: **52 assertions, 0 fail**,
+0 uncaught JS exceptions, 0 failed same-origin requests, **0px horizontal overflow**, one `h1` per
+page. The new entry was located, clicked open and re-measured at both widths, with no overflow after
+expansion. Screenshots read by eye at both widths: the question sits third in *Questions*, under
+*"Do I need to be able to code?"*, in the page's own type and rhythm. Two assertions failed on the
+first run and were **mine, not the page's** - they read `body.innerText`, which excludes the
+collapsed `<details>` answers; re-read as `textContent` they pass.
+
+**IndexNow over-submits by 54 on this push, and it is backlog 85's second instance exactly.** The
+dry run returns **all 55 URLs**, because `scripts/indexnow-ping.mjs` puts any `src/content/events/`
+path in the whole-site bucket on the reasoning that a date or venue change moves the header and
+footer everywhere. The honest number here is **1**. Measured, not inferred: the `dist` diff is 4
+files, of which one is a page. Not fixed, for backlog 41's reason - one more argument for taking
+the build-output diff once, for every source path, rather than special-casing by field.
+
+**GEO: five probes, zero citations.** Logged in full in `seo-data/geo-citations.md`. Three axes new
+to this log - agent versus Zapier automation, travelling to Oxford versus an online course, and
+liability for an agent's mistake - plus the Cohort 3 commercial reach probe at **seven days out**,
+plus the backlog 61 gate probe. **Probes 1 and 3 fail winnability outright and should not be
+re-pitched**: platform vendors writing about their own product (the engine disclaimed its own
+sources unprompted) and law firms on their own subject. **Probe 2 fails winnability too** - Oxford's
+own institutional publishers - and is separately already answered at
+`/guides/why-in-person-beats-online-for-learning-ai/`. **Probe 4 reproduces at seven days out**, the
+same three stale third-party records, closing *"Nothing in the results confirms a 19 November 2026
+session, ticket prices, or whether a place is still available."* Nothing was written beyond the one
+FAQ entry, which restates published copy rather than filling a field.
+
+**Search Console unavailable for the forty-first consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November.** No new off-page target in five probes, but the review list gets a new **reading**:
+the Coding Bootcamp has no third-party record at all, which is a worse failure mode than the stale
+records this list has raised five times, because the buyer is handed the wrong day's entry
+requirements rather than an old date. **Nobody was contacted.** **No event fact was read, verified or
+changed**: `luma.com` does not resolve through this session's egress policy. Production could not be
+read either, `oxfordagentic.com` not resolving through this session's egress policy, so deployment
+state was confirmed through the Actions API - the Deploy run for `85ef135` concluded **success at
+14:13 UTC** and none was in progress.
 
 ### 12 Nov 2026 (14:00 cycle) - the missing-year fix shipped on 11 Nov without the thing that would catch the next one. That guard now exists, warn-only, inside `check-dates.mjs`. One file, zero bytes of `dist` changed.
 

@@ -167,9 +167,16 @@ faqs:
       Anyone who cannot bring a real task from their own work, because the whole day
       runs against one and without it you get a demonstration instead of an outcome.
       And anyone expecting a vendor or platform pitch, because no tool is being sold.
-  # Same answer as the programme page, which is where the facts live. The Coding
-  # Bootcamp answers this on both its programme and its booking page; this line
-  # answered it on neither. Names unlinked, and the guest speakers stay unnamed.
+  # Same answer as the programme page, which is where the facts live. This line
+  # answered it on neither surface before this entry. Names unlinked, and the
+  # guest speakers stay unnamed.
+  # Corrected 12 Nov 2026 (20:00 cycle): this comment used to read "The Coding
+  # Bootcamp answers this on both its programme and its booking page", which was
+  # true of its programme page and false of its booking page. Measured on the
+  # built site - the string appeared nowhere in
+  # dist/events/oxford-agentic-coding-bootcamp-cohort-1/index.html - so the
+  # asymmetry this entry was meant to close had simply moved to the other line.
+  # That page now carries the same entry.
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs

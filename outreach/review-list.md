@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new target in five probes, and the sharpest argument yet for listing the Coding cohort
+  somewhere.** Found 12 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **The Coding Bootcamp has no third-party record at all, and an engine asked about it by name
+    answered with a different bootcamp's prerequisites.** Probed *"Oxford Agentic Coding Bootcamp
+    who is it for do I need to already know how to code"*, fourteen days before Cohort 1. The
+    engine did not find the Coding Bootcamp anywhere. It opened *"The closest match is The Oxford
+    Agentic Bootcamp"*, answered off `luma.com/oxfordagentic2` - **the cohort that ran on
+    16 September** - and told the reader the day *"assumes you already use AI day to day. It
+    doesn't assume you can code"*, which is the Agentic day's level screen, not this one's. It
+    closed *"I didn't find an official Oxford or organiser page with a full syllabus, so the
+    listing is the only source on the audience."* Every other reading on this list has been about
+    a **stale** record of the Agentic line; this is the first about a cohort that has **no**
+    record, and the failure mode is worse than staleness - the buyer is given the wrong day's
+    entry requirements. The two on-sale cohorts are 7 and 14 days out.
+  - **This is the sixth reading asking for the same two things**: correct or retire the 21 July
+    `allai.events` record, and give the Organization node one real `sameAs`. The commercial reach
+    probe for Cohort 3, re-run at **seven days out**, again reached no page of ours and closed
+    *"Nothing in the results confirms a 19 November 2026 session, ticket prices, or whether a
+    place is still available."*
+  - **No new target.** Four hosts were new to this list and none is a listing route:
+    `orielsquare.co.uk` (an Oxford academic-publishing services firm), `deepstation.ai` (a
+    competitor's vendor blog), `theknowledgeacademy.com` and `codecademy.com` (competitors' own
+    course pages). `tutorials.co.uk`, `createwith.com` and `datasciencedojo.com` are already here.
+    Everything else was a platform vendor writing about its own product (`mindstudio.ai`,
+    `arahi.ai`, `beam.ai`, `pokee.ai`, `getodin.ai`, `zams.com`, `airtop.ai`), a law firm, or a
+    throwaway microsite. Recorded so a later cycle does not re-derive the same sweep.
+
 - **No new target in four probes, and one new fact about the stale record that has now been
   raised five times.** Found 12 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed
   up for.**

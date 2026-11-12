@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-12 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS; AND THE CODING BOOTCAMP'S OWN AUDIENCE QUESTION IS ANSWERED WITH THE AGENTIC BOOTCAMP'S PREREQUISITES, OFF A PAST COHORT'S LUMA PAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Five
+questions. Three are axes this log has never used - the agent-versus-automation comparison, the
+travel-versus-online decision, and liability for an agent's mistake - the fourth is the standing
+commercial reach probe for Cohort 3 at **seven days out**, and the fifth was run *after* the
+others, to test the condition backlog 61 set for itself.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what is the difference between an AI agent and a Zapier automation for a business workflow | **No** | `getodin.ai`, `growwstacks.com`, `mindstudio.ai` (x3), `arahi.ai` (x2), `alejandrorioja.com`, `zams.com`, `clickittech.com`, `sista.ai`, `airtop.ai`, `pokee.ai`, `beam.ai`, `getmavrick.com`, `anavem.com`, `pulse.bot`, `articles.firstaimovers.com` |
+| 2 | is it worth travelling to Oxford for a one-day AI workshop instead of an online course | **No** | `luma.com/oxfordagentic2`, `conted.ox.ac.uk` (x2), `lifelong-learning.ox.ac.uk` (x4), `sbs.ox.ac.uk`, `theknowledgeacademy.com` (x4), `orielsquare.co.uk`, `createwith.com`, `tutorials.co.uk`, `deepstation.ai`, `pulse.bot` |
+| 3 | who is responsible when an AI agent makes a mistake in a company process | **No** | `insurancebusinessmag.com`, `bhfs.com`, `lawyer-monthly.com` (x2), `harperjames.co.uk`, `enterprisedna.co`, `thelyonfirm.com` (x2), `astrislaw.com`, `poland.revera.legal` |
+| 4 | Oxford Agentic Bootcamp 19 November 2026 Worcester College book a place (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `allai.events`, `sbs.ox.ac.uk` (x2), `lifelong-learning.ox.ac.uk` (x4), `conted.ox.ac.uk`, `nobleprog.co.uk` (x2), `mta-sts.jbs.cam.ac.uk`, `groups.google.com` (x3), `pulse.bot` |
+| 5 | Oxford Agentic Coding Bootcamp who is it for do I need to already know how to code | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `datasciencedojo.com` / `help.datasciencedojo.com` / `ask.datasciencedojo.com` (x6), `lifelong-learning.ox.ac.uk` (x4), `theknowledgeacademy.com`, `nobleprog.co.uk`, `codecademy.com`, `sbs.ox.ac.uk` (x2) |
+
+**Reading.**
+
+- **Probe 5 is the finding, and it is the condition backlog 61 set for itself, met more sharply
+  than that item anticipated.** Backlog 61 reserved a "Who is it not for?" entry on the Coding
+  line for a cycle where a probe showed the level being *misread* rather than merely unasked.
+  Asked about the Coding Bootcamp **by name**, the engine did not find it at all. It opened
+  ***"The closest match is The Oxford Agentic Bootcamp"*** and then answered the Coding day's
+  audience question with the **Agentic** day's prerequisites - ***"it assumes you already use AI
+  day to day. It doesn't assume you can code - you won't need to"*** - taken off
+  `luma.com/oxfordagentic2`, a cohort that **ran on 16 September**. It closed
+  ***"I didn't find an official Oxford or organiser page with a full syllabus, so the listing is
+  the only source on the audience."*** So fourteen days before the first Coding cohort, a buyer
+  asking who that day is for is handed a different bootcamp's level screen off a past listing.
+  It also repeated the two-Luma-listings warning of 12 Nov (08:00), here as *"these may be
+  different editions or different events"*.
+- **What that does and does not justify, stated plainly.** It does **not** mean an on-page FAQ
+  fixes this answer: no page of ours was reached, which is backlog 2b and the **eighth
+  consecutive cycle of reach, not coverage**. What it does establish is that the audience
+  question is the one being asked and misanswered on this line, and that of the four surfaces
+  that could answer it, the page that takes the booking was the one that did not. That is this
+  cycle's change, and it is argued as trust on a non-refundable ticket rather than as retrieval.
+- **Probes 1 and 3 fail winnability outright, and should not be re-pitched.** Probe 1's field is
+  platform vendors writing about their own product almost without exception - the engine
+  disclaimed its own sources unprompted (*"Odin, Beam, and Pokee are vendors selling agent
+  platforms, so their comparisons favor agents"*). Probe 3's field is law firms on their own
+  subject, nine of ten results, and the buyer intent behind it is legal rather than training.
+  Both are the publisher classes the rule excludes.
+- **Probe 2 fails winnability and is separately already covered.** The field is Oxford's own
+  institutional publishers (`conted.ox.ac.uk`, `lifelong-learning.ox.ac.uk`, `sbs.ox.ac.uk`)
+  plus `theknowledgeacademy.com` running Oxford-location course pages. The site also answers
+  this axis already, at `/guides/why-in-person-beats-online-for-learning-ai/`. Worth noting for
+  the record: the engine reached **our Luma page** on it and described the format accurately
+  (*"a practical, hands-on day... It doesn't assume you can code"*), then closed by telling the
+  reader to *"Check the syllabus against your current skill level"* - the same level-fit warning
+  probe 5 produced, from the other direction.
+- **Probe 4 reproduces at seven days out**, with the same three third-party records this log has
+  named five times - `allai.events` still showing *"21 Jul 2026"*, both past Luma cohorts - and
+  the same closing line: ***"Nothing in the results confirms a 19 November 2026 session, ticket
+  prices, or whether a place is still available."***
+- **No new off-page target in five probes.** `orielsquare.co.uk`, `deepstation.ai`,
+  `theknowledgeacademy.com` and `codecademy.com` are new hosts but none is a listing route: an
+  Oxford academic-publishing services firm, a competitor's vendor blog and two competitors' own
+  course pages. `tutorials.co.uk`, `createwith.com` and `datasciencedojo.com` are already on the
+  review list. The review list gets one new **reading** rather than a target, recorded there.
+  **Nobody was contacted.**
+- **No event fact was read, verified or changed.** `luma.com` does not resolve through this
+  session's egress policy, and the build's outbound check again records both on-sale cohorts'
+  booking links as unreachable fetches. This cycle's change restates copy already published on
+  the Coding programme page and touches no date, venue, price, capacity or availability.
+
 ## 2026-11-12 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR AXES TURN OUT TO BE ALREADY ANSWERED ON PAGES OF OURS - SEVENTH CONSECUTIVE CYCLE OF REACH, NOT COVERAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

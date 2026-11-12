@@ -8,7 +8,7 @@ status: upcoming
 # 26 November is GMT, hence +00:00.
 startDate: "2026-11-26T09:00:00+00:00"
 endDate: "2026-11-26T17:00:00+00:00"
-updatedDate: "2026-11-06T09:00:00+00:00"
+updatedDate: "2026-11-12T20:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -81,6 +81,30 @@ faqs:
       not assume you can code. It does teach everything around the code - the terminal,
       version control, deployment, databases and tests - and how to check what the AI
       wrote rather than trusting it.
+  # The other half of the level screen, and this was the only one of the two
+  # on-sale booking pages without it. The Agentic event page added it on the
+  # stated grounds that "the Coding Bootcamp answers this on both its programme
+  # and its booking page" - which was true of the programme page and not of this
+  # one, so that line got its booking-page answer and this line never did.
+  # Backlog 61 reserved the entry for a cycle where a probe showed the level being
+  # misread rather than merely unasked, and 12 Nov 2026 (20:00) produced it: asked
+  # about this bootcamp by name, an engine answered "The closest match is The
+  # Oxford Agentic Bootcamp" and handed back that day's prerequisites for this
+  # one - "it assumes you already use AI day to day. It doesn't assume you can
+  # code" - off a past cohort's Luma listing, closing "I didn't find an official
+  # Oxford or organiser page with a full syllabus, so the listing is the only
+  # source on the audience." Tickets are not refundable (see below), so the page
+  # that takes the money is where the screen belongs. Answer is the programme
+  # page's own, verbatim, so no new claim is made about a day that has not run.
+  - q: Who is it not for?
+    a: >-
+      Anyone who wants to come out of the day a working developer: the agents do the
+      typing, and what the day teaches is the workflow around the code rather than how
+      to write it. Anyone whose problem is a recurring task they already do by hand,
+      because the Oxford Agentic Bootcamp is the day for that one. And anyone who
+      cannot bring a laptop they can install software on, since the day sets up a code
+      editor, a terminal and a GitHub account on your own machine, which is worth
+      checking before you book.
   - q: How does the day run?
     a: >-
       Every session is show, then do. A facilitator builds each step in front of the
