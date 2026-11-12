@@ -11,6 +11,29 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new target in four probes, and one new fact about the stale record that has now been
+  raised five times.** Found 12 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed
+  up for.**
+  - **The `allai.events` listing of us publishes a price, and it is in US dollars.** The
+    commercial reach probe, re-run **seven days** before Cohort 3, quoted that record as
+    *"21 Jul 2026, 09:00 - 17:00 Europe/London, with tickets from $275"*. Until now this list has
+    asked for it to be corrected or retired because it is **four months out of date**. The
+    sharper reason is that an uncontrolled third-party record of Oxford Agentic is publishing a
+    **price**, in the **wrong currency**, on behalf of a site that deliberately publishes no
+    price anywhere - and it is one of the handful of records an answer engine reaches when no
+    page of ours is reached. **This is the fifth reading asking for the same two things**:
+    correct or retire the 21 July `allai.events` record, and give the Organization node one real
+    `sameAs`.
+  - **The engine again answered out of third-party records alone**, reaching no page of
+    oxfordagentic.com: Luma's Cohort 2 page, `luma.com/k7c2rm5s` and `allai.events`. Its
+    conclusion was *"I couldn't confirm a 19 November 2026 date"*. Nothing on-page fixes this;
+    backlog 2b does.
+  - **No new target.** Every other host in four probes is already on this list, a competitor's
+    own course page (`innovationvisual.com`, which held six of ten results on the leadership
+    away-day query, plus `brainstation.io`, `cambridgespark.com`, `nobleprog.co.uk`,
+    `conted.ox.ac.uk`, `lifelong-learning.ox.ac.uk`), a platform vendor writing about its own
+    product (`zapier.com`, `teamai.com`, `resources.github.com`), or a throwaway microsite.
+
 - **One new publication target, and a competitor sitting on the Eventbrite slot we have never
   claimed.** Found 11 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for.**
   - **New target: `techinformed.com`.** A UK technology publication, returned on the probe *"what

@@ -5,6 +5,76 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-12 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE COMMERCIAL REACH PROBE RE-RUN SEVEN DAYS OUT: SAME RESULT, ONE NEW DETAIL
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Three are axes this log has never used - the away-day format, do-it-yourself failure
+modes, and getting a built workflow adopted - and the fourth is a deliberate repeat of the
+commercial reach probe, re-run **seven days** before Cohort 3 and the day after the missing-year
+fix shipped, because the 20:00 cycle's conclusion deserved a second reading.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | Oxford Agentic Bootcamp 19 November 2026 tickets one day agentic AI (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `sbs.ox.ac.uk`, `allai.events`, `pulse.bot`, `groups.google.com` (OxML, x3), `lifelong-learning.ox.ac.uk` (x2), `nobleprog.co.uk` (x3), `learnersink.com`, `eventbrite.co.uk`, `conted.ox.ac.uk` (x2) |
+| 2 | AI workshop for a leadership team away day UK what to expect hands-on | **No** | `innovationvisual.com` (x6), `insideedge.netlify.app` (x2), `teamland.com` (x2), `brainstation.io`, `cambridgespark.com`, `ivee.jobs`, `aiireland.ie`, `madesmarter.uk`, `profiletree.com`, `dayseven.lovable.app` |
+| 3 | what goes wrong when a non-technical founder tries to build an AI agent themselves | **No** | `stackbuilders.com` (x2), `sfailabs.com` (x2), `dev.to`, `simonthesalesbooster.github.io`, `witscode.com`, `altar.io`, `hackernoon.com`, `uxcel.com`, `blog.mean.ceo`, `pctechmag.com`, `echai.ventures`, `f22labs.com`, `saastr.com`, `spiralscout.com`, `lilachbullock.com`, `boundev.ai`, `writewithai.substack.com` |
+| 4 | how do I get my team to actually use the AI workflow I built, adoption | **No** | `teamai.com` / `platform.teamai.com` (x3), `diginomica.com` (x2), `mindtheproduct.com` (x2), `sectionai.com`, `resources.github.com`, `zapier.com`, `enterprise.perplexity.ai`, `chatprd.ai`, `ai.wsiworld.com`, `balsamiq.com`, `ones.com`, `tomorrowtoday.com`, `devfirst.substack.com` |
+
+**Reading.**
+
+- **The reach probe reproduces, seven days out, and the missing-year fix did not change it -
+  which is what that fix predicted of itself.** The 20:00 commit said in terms that the year work
+  *"buys nothing in retrieval and does not claim to"*. It did not. The engine again reached **no
+  page of oxfordagentic.com**, again answered out of third-party records - Luma's Cohort 2 page,
+  `luma.com/k7c2rm5s`, `allai.events` - and again closed on a date it could not place:
+  ***"I couldn't confirm a 19 November 2026 date... I didn't find a 19 November listing."*** It
+  did read Worcester College, Oxford off Luma correctly. **Fifth consecutive cycle of reach, not
+  coverage**, and the fifth consecutive argument for backlog 2b.
+- **One new detail on the stale `allai.events` record, and it is worth Drummond's attention more
+  than the staleness is.** The engine quoted it as ***"21 Jul 2026, 09:00 - 17:00 Europe/London,
+  with tickets from $275"***. So the uncontrolled third-party record of us is not only four months
+  out of date, it publishes **a price, in US dollars**, on a site that deliberately publishes no
+  price anywhere. Added to the standing ask in the review list.
+- **Probe 2 is winnable and declined, on the standing decision rather than on the field.** No
+  institutional publisher: it is `innovationvisual.com` holding six of the results on its own
+  subject, plus `brainstation.io`, `cambridgespark.com`, `teamland.com` and `ivee.jobs`, every one
+  a provider writing about the day it sells. But what that searcher is buying is a **private
+  in-company day for one leadership team**, which is the in-house question `/guides/in-house-ai-day-or-send-people-to-a-cohort/`
+  already answers from our side, and writing it properly means selling the in-company format. That
+  is the consultancy and services boundary the 13 September standing decision reserves. **Third
+  cycle running to meet that boundary from a different query.**
+- **Probe 3 is the strongest of the four on winnability and is declined on coverage.** The field
+  is consultancy and vendor blogs with no institutional publisher anywhere in it, and the engine
+  disclaimed its own sources unprompted (*"most sources are vendor or consultancy blogs with an
+  incentive to sell services"*) and closed by naming its own gap: *"A search for independent
+  studies or post-mortems on failed DIY agent projects would be a useful follow-up."* But the five
+  failure modes it named are each already the published subject of a guide: over-architecting
+  before shipping is `/guides/how-to-choose-your-first-agentic-task/`, missing evaluation is
+  `/guides/how-to-notice-when-an-ai-workflow-is-wrong/`, autonomy overreach is
+  `/guides/where-the-human-goes-in-an-agentic-workflow/`, the demo-to-live gap is
+  `/guides/why-the-code-an-agent-wrote-is-not-live/`, and no owner and no week two is
+  `/guides/how-to-run-an-ai-pilot-that-survives/`. Reach, not coverage. Nothing written.
+- **Probe 4 fails both halves.** `resources.github.com`, `zapier.com` and
+  `enterprise.perplexity.ai` are platform vendors writing about their own rollouts and
+  `diginomica.com` is trade press, so the field has exactly the kind of publisher the winnability
+  rule excludes; and the searcher is running a change programme after the building is done, which
+  `/guides/how-to-run-an-ai-pilot-that-survives/` answers. Do not re-pitch.
+- **What the cycle did ship came out of probe 1's subject rather than its result.** Asked which of
+  our own pages an engine has ever been observed holding about the Coding Bootcamp, the log's own
+  answer is `/guides/claude-cowork-claude-code-or-codex/` - returned **first** on 24 October when
+  the domain was asked about that day. That page named the 26 November cohort in plain text and
+  linked nothing, while the paragraph directly above it linked Cohort 3's event page. See the
+  ledger entry.
+- **No new off-page target in four probes.** Every host is already on the review list, a
+  competitor's own course page (`innovationvisual.com`, `brainstation.io`, `cambridgespark.com`,
+  `nobleprog.co.uk`, `conted.ox.ac.uk`, `lifelong-learning.ox.ac.uk`), a platform vendor writing
+  about itself, or a throwaway microsite. **Nobody was contacted.**
+- **No event fact was read, verified or changed.** `luma.com` answers 403 through the sandbox
+  egress policy, which the build's own outbound check again records as a failed fetch on both
+  on-sale cohorts' booking links. Every date in this cycle's change was read from the repo's own
+  `startDate` frontmatter.
+
 ## 2026-11-11 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE FIRST ONE THAT POINTED AT A DEFECT ON OUR OWN PAGES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

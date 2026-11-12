@@ -1924,6 +1924,25 @@ Status: `todo` · `blocked` (why) · `doing`
     `oxford-agentic-bootcamp-cohort-2.md`, and the capsule in
     `oxford-agentic-bootcamp-cohort-3.md`. **A week later, on 27 November**, the Coding cohort
     adds its own capsule, its booking-band copy and `why-the-code-an-agent-wrote-is-not-live`.
+    **Extended 12 Nov 2026 (02:00 cycle) - the guard sees prose dates, not links, and there are
+    eight links.** Measured across `src/content/guides/*.md`: **8 guides link
+    `/events/oxford-agentic-bootcamp-cohort-3/`** and 2 link
+    `/events/oxford-agentic-coding-bootcamp-cohort-1/`. Six of the eight are the closers already
+    listed above, so the 20 November rewrite reaches them. **Two are not on that list and no
+    check can see them**, because they carry a link to the cohort page without writing a
+    forward-tense date in prose: `what-is-an-agentic-bootcamp` (whose only event link is
+    Cohort 3, under the anchor text *"each cohort's event page"* - and that mismatch is true
+    today, since the text promises the set and the href is one cohort) and
+    `when-ai-executive-cohorts-run` (which links four event pages as a deliberate roster). On
+    20 November both silently point a reader at a finished day. `what-is-an-agentic-bootcamp`
+    is the single most-cited guide in `seo-data/geo-citations.md`, so it matters more than its
+    size suggests; the honest target for *"each cohort's event page"* is `/events/`, which is
+    durable and one click from whatever is on sale. **Not fixed this cycle** - it is the same
+    dated event as the rest of this item and belongs in one pass, and the cycle's one change
+    went to the on-sale cohort with the weaker internal linking. Note also that a blanket
+    "guide links a past event page" detector is **not** viable: 7 such links already exist and
+    every one is a legitimate evidence citation (3 to Second Brain Cohort 1, 3 to Cohort 1,
+    1 to Cohort 2), so the check would be 7 correct warnings on the day it shipped.
     **What to do with each is a copy decision, not a find-and-replace.** A guide closer that
     says "Cohort 3 runs on 19 November" wants pointing at whatever is next on sale, which on
     20 November is the Coding cohort and after 26 November may be nothing; a capsule wants the
@@ -1991,6 +2010,83 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 12 Nov 2026 (02:00 cycle) - the one page an engine has been observed returning first about the Coding Bootcamp named its cohort date in plain text and linked nothing, while the paragraph above it linked Cohort 3. Fourteen days out, one sentence, 4 of 203 built files changed.
+
+**What shipped.** One sentence in `src/content/guides/claude-cowork-claude-code-or-codex.md`,
+plus its `updatedDate`. The closing paragraph's last line went from
+
+> It runs on 26 November 2026, also at Worcester College.
+
+to
+
+> Cohort 1 runs on [26 November 2026 at Worcester College](/events/oxford-agentic-coding-bootcamp-cohort-1/).
+
+**No new fact.** The date, the venue and the cohort were all already published in that same
+sentence and on the page being linked to; the only new thing on the page is the link.
+
+**Why this page and why now.** The paragraph directly above it reads *"Cohort 3 runs on
+[19 November 2026 at Worcester College](/events/oxford-agentic-bootcamp-cohort-3/)"* - the same
+sentence shape, linked. So within one closing section the Agentic cohort had a route to the page
+that takes its booking and the Coding cohort had none. It is not a house-style question either:
+the sibling guide `why-the-code-an-agent-wrote-is-not-live` publishes the identical sentence
+**with** the link, *"Cohort 1 runs on [26 November 2026 at Worcester College](...)"*. One guide
+of the two departed from the pattern.
+
+**And this is the page the 24 October cycle established an engine holds.** That cycle recorded
+the site-restricted coverage probe rising from 3 URLs to 4, the new one being
+`/guides/claude-cowork-claude-code-or-codex/`, *"returned **first** when the domain is asked
+about the Coding Bootcamp"*. It then fixed a **copy** asymmetry in this same paragraph - the
+Coding Bootcamp had no stated prerequisite while the Agentic one did - and did not notice that
+the paragraph also had a **link** asymmetry. Same paragraph, same shape of defect, nineteen days
+later and fourteen days before the day itself.
+
+**The commercial case, measured rather than asserted.** Sitewide inbound internal links:
+`/events/oxford-agentic-bootcamp-cohort-3/` **209**,
+`/events/oxford-agentic-coding-bootcamp-cohort-1/` **73**. The Coding cohort is the newest format,
+the less-linked of the two on sale, and the one whose audience this guide is written for - its
+whole subject is Claude Code and Codex, and its `relatedProgrammes` names `agentic-coding-bootcamp`.
+Before this change, exactly **2** guides of 32 linked that event page; now 3.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green. Every figure identical to the
+baseline taken before the edit except the one that should move: 64 pages built, 66 checked,
+schema valid, 7 Event and 20 FAQPage nodes, all titles and descriptions unique, `check:dates`
+0 findings across 55 indexable pages - and internal links **3,246 to 3,247**, which is the one
+link added and nothing else. Blast radius measured against a sha256 snapshot of `dist` taken
+before the edit: **4 of 203 files differ, none added or removed** - the guide, `llms-full.txt`
+and the two sitemaps. `/guides/` is byte-identical, so no sibling guide moved and backlog 41
+does not apply. The IndexNow dry-run over the changed path returns **2 URLs**, the guide and
+`/guides/`; the guide is right and `/guides/` is the documented coarse mapping of backlog 83,
+hinting a page whose bytes did not change. Headless Chromium at 375 and 1280px over the guide,
+the Coding Bootcamp event page, `/guides/` and `/events/`: **32 assertions, 0 fail**, 0 uncaught
+JS exceptions, 0 failed same-origin requests, 0 horizontal overflow, and the new link present
+exactly once in `main`, with the expected text and a non-zero box at both widths.
+
+**What this does not claim.** It buys no retrieval. Five consecutive cycles of probes now say
+the constraint is reach rather than coverage, and this cycle's reach probe - re-run seven days
+before Cohort 3 - reproduced exactly: no page of ours reached, the answer assembled from Luma's
+Cohort 2 page, `luma.com/k7c2rm5s` and the four-month-old `allai.events` record, closing on
+*"I couldn't confirm a 19 November 2026 date"*. What this change does is make the page an engine
+**has** been seen holding carry the route to the booking, for the day that is fourteen days away.
+
+**Also recorded, not shipped.** Backlog 89 is extended with the link half of the 20 November
+problem: eight guides link Cohort 3's event page, six are already in that item's rewrite list and
+**two are not and no check can see them** - `what-is-an-agentic-bootcamp`, whose anchor text
+*"each cohort's event page"* already does not match its single-cohort href, and
+`when-ai-executive-cohorts-run`. A blanket detector was considered and rejected on its own
+numbers: 7 guide links to past event pages exist today and all 7 are legitimate evidence
+citations, so it would ship 7 correct warnings.
+
+**Search Console unavailable for the thirty-eighth consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. No new guide, 0 of 3 for the
+week of 9-15 November; probe 3 (do-it-yourself failure modes) was the strongest winnable field in
+a week and was declined because five guides already publish its five answers. No new off-page
+target, but one new fact on the standing `allai.events` ask: the stale record publishes a price,
+in US dollars, on behalf of a site that publishes none. Nobody was contacted. No event fact was
+read, verified or changed: `luma.com` answers 403 through the sandbox egress policy. Production
+could not be read either - `oxfordagentic.com` does not resolve through this session's egress
+policy - so deployment state was confirmed through the Actions API, where the Deploy run for
+`2e752b0` concluded success and none was in progress.
 
 ### 11 Nov 2026 (20:00 cycle) - eleven booking sentences named a day with no year, and an engine had just said in its own words that a date without a year is one it will not place. Ten guides, 21 lines, and `llms-full.txt` stops saying bare "19 November" eight times.
 
