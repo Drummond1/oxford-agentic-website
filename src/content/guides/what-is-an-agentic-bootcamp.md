@@ -10,7 +10,7 @@ capsule: >-
   running. Most need no coding.
 author: drummond-gilbert
 publishDate: "2026-07-22T09:00:00+01:00"
-updatedDate: "2026-11-01T02:14:18+00:00"
+updatedDate: "2026-11-12T08:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 # The last two headings are a question-and-answer pair each, so they go out as an
@@ -59,7 +59,7 @@ Three questions worth asking before you book:
 
 ## What does the day look like, hour by hour?
 
-Many providers describe the day without breaking it into sessions, so a full timetable is worth asking for before you book, whoever you book with. The Oxford Agentic Bootcamp publishes its own in full on [each cohort's event page](/events/oxford-agentic-bootcamp-cohort-3/). The shape is this: registration and coffee from 09:00, then twenty minutes on why prompting and orchestrating are different skills, then forty minutes taking an agent pipeline apart live in front of the room. The first build on your own task runs from 10:15 to 11:30, facilitated, and everyone gets to a rough working pass however untidy. A guest session follows, then a second build that pushes the pipeline past single-shot by adding a step that checks its own work, then lunch at 13:00. The afternoon opens with a second guest session, gives the real build an hour and a quarter from 14:15, and closes with a showcase at 15:30 where everyone runs what they made and says what they will use it for, a last stretch on making it stick, then wrap and networking to a 17:00 finish.
+Many providers describe the day without breaking it into sessions, so a full timetable is worth asking for before you book, whoever you book with. The Oxford Agentic Bootcamp publishes its own in full on [each cohort's event page](/events/). The shape is this: registration and coffee from 09:00, then twenty minutes on why prompting and orchestrating are different skills, then forty minutes taking an agent pipeline apart live in front of the room. The first build on your own task runs from 10:15 to 11:30, facilitated, and everyone gets to a rough working pass however untidy. A guest session follows, then a second build that pushes the pipeline past single-shot by adding a step that checks its own work, then lunch at 13:00. The afternoon opens with a second guest session, gives the real build an hour and a quarter from 14:15, and closes with a showcase at 15:30 where everyone runs what they made and says what they will use it for, a last stretch on making it stick, then wrap and networking to a 17:00 finish.
 
 ## How much of the day is building, and how much is listening?
 

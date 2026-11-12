@@ -1937,7 +1937,12 @@ Status: `todo` · `blocked` (why) · `doing`
     20 November both silently point a reader at a finished day. `what-is-an-agentic-bootcamp`
     is the single most-cited guide in `seo-data/geo-citations.md`, so it matters more than its
     size suggests; the honest target for *"each cohort's event page"* is `/events/`, which is
-    durable and one click from whatever is on sale. **Not fixed this cycle** - it is the same
+    durable and one click from whatever is on sale. **DONE 12 Nov 2026 (08:00 cycle) - that half
+    is closed.** The href was retargeted to `/events/` on its own merits rather than waiting for
+    the dated pass, because the anchor-text mismatch was wrong on the day it was found and not
+    only on 20 November. **`when-ai-executive-cohorts-run` is still open and still invisible to
+    every check**, and it stays with this item: its four event links are a deliberate roster, so
+    what to do with them is a copy decision for the 20 November rewrite, not a retarget. **Not fixed this cycle** - it is the same
     dated event as the rest of this item and belongs in one pass, and the cycle's one change
     went to the on-sale cohort with the weaker internal linking. Note also that a blanket
     "guide links a past event page" detector is **not** viable: 7 such links already exist and
@@ -2007,9 +2012,98 @@ Status: `todo` · `blocked` (why) · `doing`
     same cycle as any other `check-dates.mjs` change, and **backlog 89 falls due on 20 November**,
     which will rewrite nine of these same sentences and is the natural cycle to fold it into.
 
+92. `todo` (loop-actionable, **low value and deliberately not taken** as the 12 Nov 2026 08:00
+    cycle's one change; found by that cycle's own GEO probe) - **question 6 of
+    `/guides/questions-to-ask-before-booking-ai-training/` raises the paid-subscription question
+    and links nothing, while our own answer to it is published two clicks away.** The line reads
+    *"Two things worth knowing early: whether you need a paid AI subscription, and whether any
+    setup is expected before you arrive."* The Agentic programme page answers exactly that as a
+    named FAQ (*"Do I need a paid AI subscription?"*, `src/content/programmes/oxford-agentic-bootcamp.md`),
+    and `src/lib/home.ts` answers it across all three lines on the homepage.
+    **Why it is worth recording.** That guide is one of the few pages this log has observed cited
+    at **#1** for its own query (13 Sept), and the 12 Nov probe found the subscription field
+    winnable - no institutional publisher, `generalassemb.ly` holding nine of ten results on its
+    own subject - with buyer intent behind it. So the page that ranks raises the question and the
+    page that answers it is unlinked from there.
+    **Why it is not obviously right to fix.** The guide's discipline is to ask questions a buyer
+    should put to *any* provider, and it already spends its programme links deliberately: three
+    at the foot, one per bootcamp line. Hanging a fourth link off question 6 pointed at our own
+    FAQ turns a neutral checklist item into a pitch mid-list, which is the thing that makes the
+    page credible. **If it is taken**, the honest version is probably a link on the *setup* half
+    rather than the subscription half, or nothing at all - weigh it as a copy call, not a
+    linking chore. Do not take it in the same cycle as anything else that touches this guide.
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 12 Nov 2026 (08:00 cycle) - a guide promised "each cohort's event page" and linked one cohort. Retargeted to `/events/`: true today, and it takes the first of the two invisible items off the 20 November list.
+
+**What shipped.** One href in `src/content/guides/what-is-an-agentic-bootcamp.md`, plus its
+`updatedDate`. The sentence is unchanged; only its target moved:
+
+> The Oxford Agentic Bootcamp publishes its own in full on [each cohort's event page](/events/).
+
+It was `/events/oxford-agentic-bootcamp-cohort-3/`. **No new fact, no new link** - the link
+count is identical on both sides of the build, because nothing was added, only pointed
+somewhere else.
+
+**Why this one.** It is wrong *today*, independent of any date. The anchor text promises the
+set and the href delivered one cohort, so a reader told that every cohort publishes a timetable
+was handed exactly one of them. And `/events/` is the honest target by measurement, not by
+taste: it links all five event pages, including both on sale.
+
+**It was already written down, by the cycle that could not take it.** Backlog 89's 02:00
+extension found this guide by measuring which guides link Cohort 3's event page - eight do -
+and separating the six the `check:dates` guard will catch on 20 November from the two it cannot
+see, because they link without writing a forward-tense date in prose. This is one of those two.
+That cycle named `/events/` as "the honest target... durable and one click from whatever is on
+sale" and deferred it to the dated pass. Taking it now is not a re-pitch of a decline: the
+deferral was about bundling, and the half that is true today does not need the bundle. **The
+other one, `when-ai-executive-cohorts-run`, is deliberately left**: it links four event pages as
+a roster, which is a copy decision that belongs with the 20 November rewrite. Backlog 89 updated
+to say so.
+
+**What it buys, stated at its real size.** Durability, not retrieval. On 20 November the old
+link would have pointed a reader of a page about how to choose a bootcamp at a day that had
+already run, and **no check in this build could have seen it** - that is the measured gap
+backlog 89 exists to record. It also moves one inbound internal link from a page with 209 of
+them to the index that outlives every cohort.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 64 pages built, 66 checked, **3,247 internal links resolve**
+(unchanged, as a retarget should be), schema valid, 7 Event and 20 FAQPage nodes, all titles and
+descriptions unique, `check:dates` 0 findings across 55 indexable pages. Blast radius against a
+sha256 snapshot of `dist` taken before the edit: **4 of 203 files differ, none added or
+removed** - the guide, `llms-full.txt` and the two sitemaps. `/guides/` is byte-identical, so no
+sibling guide moved and backlog 41 does not apply. The IndexNow dry-run returns 2 URLs, the
+guide and `/guides/`, the second being the documented coarse mapping of backlog 83. Headless
+Chromium at 375 and 1280px over the guide, `/events/`, `/guides/` and Cohort 3's event page:
+**48 assertions, 0 fail**, 0 uncaught JS exceptions, 0 failed same-origin requests, 0 horizontal
+overflow - and the retargeted link was clicked at both widths and confirmed to land on
+`/events/`.
+
+**GEO: four probes, zero citations.** The commercial reach probe was pointed at the **Coding
+Bootcamp** for the first time since 24 October and reproduced the Cohort 3 result fourteen days
+out - no page of ours reached, the answer built from Luma and Oxford institutional course pages,
+closing *"None of the results mention 26 November 2026 or confirm a session on that date."*
+**Sixth consecutive cycle of reach, not coverage.** One finding in it is Drummond's, not the
+loop's: the engine surfaced a second Luma listing (`luma.com/k7c2rm5s`) carrying **St Anne's
+College** against the same event title and told the buyer it was a *"possible conflict... check
+the date and venue before booking"*. Of the three new axes, the paid-subscription question is
+the only winnable field and is **declined on coverage** - three of our own surfaces answer it
+already, which retires backlog item 9's long-standing candidate for it. The Copilot-only and
+pre-workshop-setup axes both fail winnability, the second against institutional publishers
+outright. Nothing was written. See `seo-data/geo-citations.md`.
+
+**Search Console unavailable for the thirty-ninth consecutive cycle**; `seo-data/` holds no
+export newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for
+the week of 9-15 November.** No new off-page target, so the review list is untouched; nobody was
+contacted. No event fact was read, verified or changed: `luma.com` answers 403 through the
+sandbox egress policy. Production could not be read either - `oxfordagentic.com` does not
+resolve through this session's egress policy - so deployment state was confirmed through the
+Actions API, where the Deploy run for `023b157` concluded success at 02:11 UTC and none was in
+progress. New backlog 92.
 
 ### 12 Nov 2026 (02:00 cycle) - the one page an engine has been observed returning first about the Coding Bootcamp named its cohort date in plain text and linked nothing, while the paragraph above it linked Cohort 3. Fourteen days out, one sentence, 4 of 203 built files changed.
 

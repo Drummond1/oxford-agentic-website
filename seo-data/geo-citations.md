@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-12 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE CODING COHORT'S REACH PROBE REPRODUCES FOURTEEN DAYS OUT, AND THE ONE WINNABLE AXIS IS ALREADY ANSWERED ON A PAGE THAT RANKS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Three are axes this log has never used - the cost of entry in tool subscriptions, the
+Copilot-only corporate constraint, and what a buyer should set up before the day - and the fourth
+is the commercial reach probe pointed at the **Coding Bootcamp** rather than Cohort 3, fourteen
+days out, which this log has not done since 24 October.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do I need a paid ChatGPT or Claude subscription to attend a hands-on AI workshop | **No** | `generalassemb.ly` (x9), `weasydney.oncourse.cc`, `jbf.coursehorse.com`, `kerwinraesupport.zendesk.com`, `knudberthelsen-com.pages.dev`, `beginnersinai.org`, `the-virtual-savvy.helpscoutdocs.com` |
+| 2 | can I do agentic AI workflows with Microsoft Copilot only if my company blocks ChatGPT and Claude | **No** | `leadershipinchange.com`, `agentpulse.beehiiv.com`, `theneuron.ai`, `ibl.ai` (x3), `directionsonmicrosoft.com`, `techstrong.ai`, `hubsite365.com` (x2), `exchangepedia.com`, `m365scripts.com`, `implicator.ai`, `texxr.com`, `pulse.bot` |
+| 3 | Oxford Agentic Coding Bootcamp 26 November 2026 Worcester College book a place (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `lifelong-learning.ox.ac.uk` (x5), `conted.ox.ac.uk` (x4), `sbs.ox.ac.uk` (x2), `nobleprog.co.uk` (x3) |
+| 4 | what should I prepare before a one-day hands-on AI workshop, laptop accounts setup checklist | **No** | `microsoft.github.io`, `ibm.github.io`, `cloud.google.com`, `events.canonical.com`, `gri.msstate.edu`, `fau.edu`, `rsecon23.society-rse.org`, `sites.google.com`, `ajai-live.pages.dev`, `testers.ai`, `notion.site` (x2), `scribd.com`, `forums.fast.ai`, `meetup.com`, `designinformatics.org` |
+
+**Reading.**
+
+- **The reach probe reproduces on the other on-sale cohort, fourteen days out.** Pointed at the
+  Coding Bootcamp for the first time since 24 October, the engine again reached **no page of
+  oxfordagentic.com**. It answered out of Luma and Oxford institutional course pages, and closed
+  on the date exactly as the Cohort 3 probes have: ***"None of the results mention 26 November
+  2026 or confirm a session on that date."*** It also surfaced `luma.com/k7c2rm5s` beside
+  `luma.com/oxfordagentic2` and flagged the two as a **possible conflict** on venue - "a second
+  Luma listing with the same title gives St Anne's College... I can't tell from the results
+  whether this is a different event or an outdated page, so check the date and venue before
+  booking." So an engine is now telling a buyer to be careful before booking us, out of
+  third-party records alone. **Sixth consecutive cycle of reach, not coverage**, and the sixth
+  consecutive argument for backlog 2b. Recorded for Drummond below.
+- **Probe 1 is the one winnable field of the four, and it is declined on coverage.** No
+  institutional publisher anywhere in it: `generalassemb.ly` holds nine of the results on its own
+  subject, and the rest are a provider's prep page, a course aggregator, a `pages.dev` microsite
+  and two help-desk articles. The intent converts too - somebody pricing the cost of entry to a
+  hands-on day is a buyer, not a browser. But it is already the published subject of three of our
+  own surfaces: the Agentic programme page answers *"Do I need a paid AI subscription?"* as a
+  named FAQ, the homepage FAQ answers the same question across all three lines, and
+  `/guides/questions-to-ask-before-booking-ai-training/` raises it as question 6. This is backlog
+  item 9's long-standing "do I need a paid AI subscription?" candidate, and the honest verdict is
+  that writing it as a guide would restate pages that already rank. **Not re-pitched as a guide.**
+  One thing the probe did show is worth a later cycle: question 6 of that guide raises the
+  subscription question and links nothing, while our own answer sits two clicks away. Recorded as
+  backlog 92 rather than taken, because this cycle's one change was already chosen.
+- **Probe 2 fails winnability outright.** The field is Microsoft itself, trade press
+  (`theneuron.ai`, `techstrong.ai`, `directionsonmicrosoft.com`, `implicator.ai`) and vendors
+  writing about their own control planes (`ibl.ai` three times). That is exactly the publisher
+  class the rule excludes. Do not re-pitch.
+- **Probe 4 fails winnability for the opposite reason, and is the clearest case of it this log
+  has recorded.** Every substantial result is an institutional publisher on its own subject -
+  `microsoft.github.io`, `ibm.github.io`, `cloud.google.com`, Canonical, Mississippi State,
+  Florida Atlantic, the RSE conference. The engine even named its own gap unprompted (*"I didn't
+  find a single authoritative checklist covering every item"*), which on the old reading would
+  have looked like an opening. It is not: those pages are setup instructions for API and
+  developer workshops, so the searcher is not our buyer. Do not re-pitch.
+- **No new off-page target in four probes.** Every host is a competitor's own course page
+  (`generalassemb.ly`, `nobleprog.co.uk`, `lifelong-learning.ox.ac.uk`, `conted.ox.ac.uk`,
+  `sbs.ox.ac.uk`), a platform vendor writing about itself, trade press, or a throwaway microsite.
+  The review list is untouched. **Nobody was contacted.**
+- **No event fact was read, verified or changed.** `luma.com` answers 403 through the sandbox
+  egress policy, which the build's own outbound check again records as a failed fetch on both
+  on-sale cohorts' booking links. Nothing in this cycle's change touched a date, a venue, a price
+  or an availability figure.
+
 ## 2026-11-12 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE COMMERCIAL REACH PROBE RE-RUN SEVEN DAYS OUT: SAME RESULT, ONE NEW DETAIL
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
