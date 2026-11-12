@@ -1832,6 +1832,15 @@ Status: `todo` · `blocked` (why) · `doing`
     **If it is ever taken**, the only honest version is the build-output diff that backlog 83
     describes - submit the URLs whose built bytes changed - and it should be taken once, for
     every source path, rather than one component at a time.
+    **A second, larger instance measured 12 Nov 2026 (09:00 cycle), in a different branch of the
+    same map.** Any `src/content/events/` path goes whole-site, and the comment justifies it by
+    date and venue changes moving the header call to action and the footer on all 64 pages. That
+    is right for a date or a venue. It is wrong for a **past** cohort, whose card has already left
+    the header and the footer: rewriting five agenda `detail` lines on Cohort 2 moved **4 files of
+    203** and the dry run submitted **55**. So the whole-site branch over-reports by 54 on the one
+    class of event edit that is now the commonest - the past-tense sweeps this log keeps running.
+    Still not worth a special case by `status`, for backlog 41's reason; it is one more argument
+    for taking the build-output diff once.
 
 86. `todo` (loop-actionable but **it is not one change and probably not the loop's**; found
     10 Nov 2026 in the 09:00 cycle, on the first sweep this loop has run at a 32px browser
@@ -2033,9 +2042,121 @@ Status: `todo` · `blocked` (why) · `doing`
     rather than the subscription half, or nothing at all - weigh it as a copy call, not a
     linking chore. Do not take it in the same cycle as anything else that touches this guide.
 
+93. `todo` **(needs Drummond, one of two things: three facts, or a label call; found 12 Nov 2026
+    in the 09:00 cycle)** - **all three past cohorts invite the reader to "See what happened", and
+    two of the three link a page that does not say.** `src/components/EventCard.astro` sets the
+    past-event call to action to a single constant, `See what happened`, so `/events/` prints it
+    on the Second Brain Cohort 1, Agentic Cohort 2 and Agentic Cohort 1 cards alike. Only
+    **Cohort 1** carries an `outcomes` block. Cohort 2's file says in its own comment "no outcomes
+    are recorded here yet - nothing about the day has been confirmed", and Second Brain Cohort 1's
+    says the same. The index makes the promise three times over in prose as well: its standfirst
+    ("past ones stay here with what came out of them") and the "Already run" intro ("Each one
+    keeps its agenda and what came out of the day").
+    **Why it is recorded rather than shipped.** There are two remedies and the loop should take
+    neither on its own. Adding the outcomes is backlog 22 and 37 and wants facts only he has. The
+    other is to make the label conditional on whether the event has `outcomes` - true on Cohort 1,
+    something honest like "See the day" on the other two - and that is a call-to-action change on
+    a shared component, which the loop's own rules reserve. It would also paper over the gap
+    rather than close it: the right fix is almost certainly the outcomes, and three cards quietly
+    saying less is the fallback if they are never coming.
+    **Two smaller things found beside it on the same pages, both too small to be a cycle and both
+    recorded so they are not re-derived.** (a) On past pages the facts card is headed "What the
+    day was built around" (22 Oct) but its last item still reads "A written recipe, so you can
+    rebuild and extend it on **Monday**" - second person, future, on a day that ran. The 22 Oct
+    cycle left those items on purpose, as the day's intended deliverables under a past label, so
+    changing one now needs that decision revisited rather than overturned in passing. (b) Every
+    event page's key-facts panel prints `TIME 9:00-17:00` while its own agenda beneath prints
+    `09:00` for the same moment. One of the two should move; neither is wrong.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 12 Nov 2026 (09:00 cycle) - the past cohort's agenda was the upcoming cohort's sales copy, verbatim. Under a heading reading "How the day ran", it still said "what today is actually for". Five lines, one file, 4 of 203 built files changed.
+
+**What shipped.** Five `detail` strings in `src/content/events/oxford-agentic-bootcamp-cohort-2.md`,
+plus a comment recording why and the `updatedDate`. No session title moved, no fact was added or
+removed, and nothing claims an outcome:
+
+| was | is |
+|---|---|
+| what **today** is actually for | what **the day** was actually for |
+| Everyone **gets** to a rough working pass | Everyone **got** to a rough working pass |
+| **Push** the pipeline past single-shot … that **checks** its own work | **Pushing** the pipeline past single-shot … that **checked** its own work |
+| **Apply** it properly to the task **you came** with. This **is** the one **you take** home. | **Applying** it properly to the task each person came with - the one they took home. |
+| Everyone **runs** what they built, and **says** what they **will use** it for next week | Everyone **ran** what they built, and **said** what they **would use** it for next week |
+
+**The diagnosis is exact, because the two files are identical.** `diff` of Cohort 2's `agenda`
+block against Cohort 3's returned nothing before this edit: the page for a day that ran on
+16 September was carrying, word for word, the copy written to sell the day on 19 November. The
+other four `detail` lines on it were already tense-neutral ("Built live in front of the room",
+"AI coding and agentic tooling in practice") and were left alone.
+
+**This is the completion of a class the 22 Oct 2026 (09:00) cycle opened and scoped out.** That
+cycle switched the two `<dt>` labels on past pages to "Who it was for" and "What the day was
+built around", noting that the template already switched the agenda heading on `isPast`
+(`How the day ran` / `What happens on the day`). It deliberately changed no content string. The
+heading has therefore read "How the day ran" since then, over detail text addressing a reader in
+the second person about a day ahead of them - the sharpest instance being the word **today** on a
+page whose own hero band says "This event has run". Not a re-pitch: the labels were the template,
+these are the content.
+
+**The other two past pages were checked and need nothing.** Cohort 1's agenda detail is written
+in gerunds already ("Breaking a workflow into steps…", "Connecting your own email, files and
+meeting notes…") and Second Brain Cohort 1's in noun phrases ("What a second brain is, its
+anatomy, and designing yours"). Only Cohort 2's was copied from a live sales page, which is why
+only Cohort 2 is touched.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: 64 pages built, 66 checked,
+**3,247 internal links resolve** (unchanged), schema valid, 7 `Event` and 20 `FAQPage` nodes, all
+titles and descriptions unique, `check:dates` 0 findings across 55 indexable pages.
+`npm run check:flags` passes on the all-on and all-off builds. `npx astro check` reports
+**81 errors / 0 warnings / 3 hints**, identical to the standing baseline on unchanged `main`, none
+on a changed line (the file is content, not typechecked). Blast radius against a sha256 snapshot
+of `dist` taken before the edit: **4 of 203 files differ, none added or removed** - the Cohort 2
+page, `llms-full.txt` and the two sitemaps. `/events/`, Cohort 3's page and the homepage are
+**byte-identical**.
+
+**Browser checks, headless Chromium.** Whole-site sweep over all 55 indexable URLs at 375, 768 and
+1280px after the change: **0px horizontal overflow on all 165 page-widths**, 0 images without
+`alt`, 0 form controls without a label, 0 interactive targets under 24x24, 0 duplicate `id`s and 0
+ambiguous link labels - the same reading as before it. Focused pass over Cohort 2, Cohort 3, the
+Coding cohort, `/events/` and `/`: **159 assertions pass**, 0 JS exceptions, 0 failed same-origin
+requests, one `h1` and one `main` per page, no heading-level skips, the primary nav and the header
+call to action present on every one, and the Luma iframe and its fallback link still rendering on
+both on-sale pages. Keyboard: 36 tab stops on the changed page, every one in flow with a visible
+focus ring. Full-page screenshots at 375, 768 and 1280px: `/events/` and Cohort 3 **byte-identical
+before and after**; Cohort 2 unchanged in height at 375px and **+48px** at 768 and 1280px, which
+is the one agenda line that now sets on two lines rather than one. Read at both widths.
+
+**Two false positives in this cycle's own instruments, recorded so the next sweep does not chase
+them.** (1) A check for anchor targets sitting under the sticky header reported 268 hits on 55
+pages; the site solves it with `scroll-padding-top: 5.5rem` on `html` (88px against a 69px
+header), which a `scroll-margin-top` check cannot see. There is no defect. (2) Three links per
+page report no accessible name at 1280px: they are the desktop dropdown's three children, which
+are `visibility: hidden` until `:hover`/`:focus-within`, so `innerText` is empty while
+`textContent` is not. Both instruments were wrong, not the site.
+
+**IndexNow will submit 55 and the honest number is 1.** Measured on this change with
+`--dry-run`. `scripts/indexnow-ping.mjs` puts any `src/content/events/` path in the whole-site
+bucket, and its comment justifies that by date and venue changes moving the header call to action
+and the footer on every page - which a **past** cohort's agenda prose cannot do, as the 4-file
+blast radius shows. Logged against backlog 85 rather than fixed: the honest version is the
+build-output diff backlog 83 describes, taken once for every source path.
+
+**GEO and signal.** No probe was run and no page was written for an engine; this is a copy
+accuracy fix. **Search Console unavailable for the fortieth consecutive cycle** - `seo-data/`
+holds no export newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of
+3 for the week of 9-15 November.** No off-page target, nobody contacted.
+
+**No event fact was read, verified or changed.** `luma.com` answers 403 through the sandbox egress
+policy, and so does `oxfordagentic.com`, so the before state is a local build of `main` HEAD
+rather than the live page. Deployment state was confirmed through the Actions API: the Deploy run
+for `0b90cf8` concluded `success` at 08:06 UTC, `main` HEAD matches its `head_sha`, and nothing
+was queued or in progress. PR #1 and PR #3 are the known-stale leftovers recorded in backlog 20,
+not work in flight. **Note for any future cycle: this checkout arrived on a detached HEAD 29
+commits behind `origin/main`, exactly as rule 0 warns.** New backlog 93.
 
 ### 12 Nov 2026 (08:00 cycle) - a guide promised "each cohort's event page" and linked one cohort. Retargeted to `/events/`: true today, and it takes the first of the two invisible items off the 20 November list.
 

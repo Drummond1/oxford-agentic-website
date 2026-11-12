@@ -10,7 +10,7 @@ cohort: Cohort 2
 status: past
 startDate: "2026-09-16T09:00:00+01:00"
 endDate: "2026-09-16T17:00:00+01:00"
-updatedDate: "2026-11-06T02:30:00+00:00"
+updatedDate: "2026-11-12T09:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -54,24 +54,28 @@ whatYoullBuild:
   - A working agentic pipeline running on a real task from your own work
   - A review step that checks its own output, so it compounds rather than single-shots
   - A written recipe, so you can rebuild and extend it on Monday
+# The template heads this band "How the day ran" once the day has passed, and the detail
+# lines were still Cohort 3's verbatim - second person, present tense, one of them saying
+# "today". Put in the past tense on 12 Nov 2026. Session titles are names and are left
+# alone; nothing here claims an outcome, because none has been confirmed (see the note above).
 agenda:
   - time: 09:00
     title: Registration and coffee
   - time: 09:15
     title: Welcome and framing
-    detail: Why prompting and orchestrating are different skills, and what today is actually for.
+    detail: Why prompting and orchestrating are different skills, and what the day was actually for.
   - time: 09:35
     title: Anatomy of an agent pipeline
     detail: Built live in front of the room, on a real example - scout, drafter, reviewer.
   - time: 10:15
     title: Build one - your own task, first pass
-    detail: Facilitated. Everyone gets to a rough working pass, however untidy.
+    detail: Facilitated. Everyone got to a rough working pass, however untidy.
   - time: 11:30
     title: Guest session
     detail: A working practitioner on how they use this daily.
   - time: 12:15
     title: Build two - add a review step
-    detail: Push the pipeline past single-shot by giving it something that checks its own work.
+    detail: Pushing the pipeline past single-shot by giving it something that checked its own work.
   - time: 13:00
     title: Lunch
   - time: 13:45
@@ -79,10 +83,10 @@ agenda:
     detail: AI coding and agentic tooling in practice.
   - time: 14:15
     title: Build three - the real thing
-    detail: Apply it properly to the task you came with. This is the one you take home.
+    detail: Applying it properly to the task each person came with - the one they took home.
   - time: 15:30
     title: Showcase and debrief
-    detail: Everyone runs what they built, and says what they will use it for next week.
+    detail: Everyone ran what they built, and said what they would use it for next week.
   - time: 16:00
     title: Making it stick
   - time: 16:20
