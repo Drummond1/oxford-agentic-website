@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-12 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND ALL FOUR AXES TURN OUT TO BE ALREADY ANSWERED ON PAGES OF OURS - SEVENTH CONSECUTIVE CYCLE OF REACH, NOT COVERAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and
+the tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions, none of them a reach probe: this cycle deliberately spent all four on *objection*
+axes - the ones a buyer raises in the last week before a cohort - to test whether any of them is
+an unanswered field. None is.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is a one day AI workshop long enough to learn anything useful | **No** | `getclear.ca`, `asianefficiency.com` (x2), `maven.com` (x3), `tessgroup-website.pages.dev`, `ssw.com.au`, `robcressy.com`, `precisionaiacademy.pages.dev`, `mentorcruise.com`, `sfailabs.com`, `startupik.com` (x2), `xray.tech`, `pulse.bot`, `levelshift.com`, `datameaning.com` |
+| 2 | is an in-person AI course worth it when the AI tools change every few months | **No** | `nobledesktop.com` / `blog.nobledesktop.com` (x10), `precisionaiacademy.pages.dev` (x2), `coursera.org` (x2), `asianefficiency.com` (x2), `snhu.edu`, `mammothclub.com` |
+| 3 | how many people should be in a hands-on AI workshop group size for it to work | **No** | `learning.sap.com` (x2), `datanorth.ai`, `gyde.ai`, `bigmedium.com`, `33a.ai`, `beginnersinai.org` / `beginnersinai.beehiiv.com`, `intentful.ai`, `mentorcruise.com` (x3), `atlassian.com`, `designkit.stanford.edu`, `meetup.com`, `amitkoth.pages.dev`, `the-design-eng-com.pages.dev`, `aismartventures.com` |
+| 4 | can a non-developer learn Claude Code in one day without being a programmer | **No** | `adventuremedia.ai` / `adventureppc.com` (x6, one operator), `ccforeveryone.com` (x2), `maven.com` (x3), `marq-ai-wiki.pages.dev`, `trendpickw.blogspot.com`, `connections.villanova.edu`, `tw93.fun`, `artificialcorner.com`, `youmind.com`, `vibecodingacademy.ai`, `schweitzer-online.de` |
+
+**Reading.**
+
+- **All four are reach, not coverage, and this was checked rather than assumed.** Each axis was
+  taken back to the site and searched for in the vocabulary the probe used:
+  - Probe 1 (duration sufficiency) is the axis the **12 Oct** cycle already wrote a three-question
+    block for on `/guides/what-you-can-build-in-one-day-with-ai/`.
+  - Probe 2 (tool churn) is answered in question shape on
+    `/guides/scout-drafter-reviewer-pattern/` - *"Will this still be true when the tools change?"*
+    and *"Does what I learn go out of date in six months?"* - and in the Second Brain programme's
+    *"Tools change, and a second brain built inside one of them..."*.
+  - Probe 3 (group size) is answered in **six** distinct question shapes across the built site,
+    among the 100 distinct `FAQPage` questions: *"How many people are in the room?"*,
+    *"How big is the group?"*, *"How big is the cohort?"*, *"How many people are in the room, and
+    who is helping them?"*, *"Who else will be in the room?"* and the in-house guide's
+    *"How many people does it take before an in-house day is the better buy?"*
+  - Probe 4 (non-developer, one day) is the **10 Nov** cycle's own axis, answered on the Coding
+    programme page as *"I cannot write code. What will I actually have finished by five o'clock?"*
+    and *"Who is it not for?"*
+  **Seventh consecutive cycle of reach, not coverage**, and the seventh argument for backlog 2b.
+  Nothing was written, and nothing should have been: every one of these would have restated a
+  published answer.
+- **Probe 1 is the most winnable field of the four and the clearest case for not writing again.**
+  No institutional publisher anywhere in it - the whole page is provider marketing, two `pages.dev`
+  microsites and a productivity blog - and the engine said so itself, twice: *"mostly vendor
+  marketing and no independent research"* and *"None of these sources offer independent evidence
+  on learning outcomes"*. On the old reading that is an opening. It is not one here, because the
+  page that would fill it exists and has since 12 October.
+- **One detail worth keeping, because it is the fourth engine in eight days to name the same
+  gap.** Probe 1's synthesis listed what a one-day workshop should leave a buyer with and put
+  *"a dated follow-up"* in the list, closing that *"those follow-up pieces are what make the day
+  useful"*. Probe 2 reached the same place from the durability side. That is **backlog 87** - what
+  happens to the workflow after the day - which is a fact about our own practice and Drummond's to
+  state. No new argument, one more count on it.
+- **No new off-page target in four probes.** Every host is a competitor's own course page
+  (`nobledesktop.com`, `maven.com`, `mentorcruise.com`, `ssw.com.au`, `connections.villanova.edu`),
+  a platform vendor writing about itself (`coursera.org`, `learning.sap.com`, `atlassian.com`), a
+  `pages.dev` or `beehiiv` microsite, or a personal blog. The review list is untouched.
+  **Nobody was contacted.**
+- **No event fact was read, verified or changed.** `luma.com` does not resolve through this
+  session's egress policy, and the build's own outbound check again records both on-sale cohorts'
+  booking links as unreachable fetches. Nothing in this cycle's change touches a date, a venue, a
+  price or an availability figure - it touches no page at all.
+
 ## 2026-11-12 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE CODING COHORT'S REACH PROBE REPRODUCES FOURTEEN DAYS OUT, AND THE ONE WINNABLE AXIS IS ALREADY ANSWERED ON A PAGE THAT RANKS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

@@ -23,6 +23,10 @@
  * is always available - put the sentence in the past tense. A false positive
  * costs one skipped cycle, which is the cheaper side of that trade.
  *
+ * A second check rides the same page walk and is warn-only: a long-month date
+ * with no four-digit year near it. Its evidence, its window and why it must
+ * never fail are documented where it is implemented, below.
+ *
  * Pass `--now=2026-11-20` to prove it fires. That is the flag's only purpose.
  */
 import { readFile, readdir } from 'node:fs/promises';
@@ -98,8 +102,42 @@ const PAST = /\b(ran|took place|has run|have run|had run|was|were|passed|closed|
 const OURS = /\b(cohort|bootcamp)\b/i;
 const WINDOW = 90;
 
+/*
+ * The warn-only check: a long-month date in rendered copy with no four-digit
+ * year anywhere near it.
+ *
+ * The evidence is an answer engine's own words about a third-party listing of
+ * us, read on 11 November 2026: "It's also past, and the listing doesn't give a
+ * year." That is a retrieval engine saying out loud that a year-less date is one
+ * it will not place. The sweep it prompted found eleven of our own booking
+ * sentences written that way, every one a guide closer, and they were fixed that
+ * evening by a one-off script rather than by anything in this build - so the
+ * next closer somebody typed would have been bare again.
+ *
+ * Why 400 characters, and why either side: it is the window that sweep measured
+ * with, and the one that separated the eleven defective instances from the ten
+ * sound ones. The ten are sound because their year is genuinely nearby rather
+ * than in the same clause - three event pages carry it in a key-facts panel a
+ * few hundred characters away, and a guide names the Oxford online programme's
+ * dates inside a clause that already says "for 2026".
+ *
+ * Warn, never fail, which is the opposite of the check above. A hard fail would
+ * block every deploy on those ten correct instances, and tightening the window
+ * until they passed would start missing the real ones. A bare date reads a
+ * little worse to one kind of reader; it is not a wrong fact on a booking page.
+ */
+const MONTHS =
+  'January|February|March|April|May|June|July|August|September|October|November|December';
+const LONG_DATE = new RegExp(`\\b(\\d{1,2}) (${MONTHS})\\b(?: (\\d{4}))?`, 'g');
+const YEAR_NEARBY = /\b(19|20)\d{2}\b/;
+const YEAR_CONTEXT = 400;
+
 const errors = [];
+const warnings = [];
 let pagesRead = 0;
+let datesSeen = 0;
+let datesWithYear = 0;
+let datesWithYearNearby = 0;
 
 for (const file of await walk(DIST)) {
   const html = await readFile(file, 'utf8');
@@ -141,6 +179,25 @@ for (const file of await walk(DIST)) {
       );
     }
   }
+
+  for (const match of text.matchAll(LONG_DATE)) {
+    datesSeen += 1;
+    if (match[3]) {
+      datesWithYear += 1;
+      continue;
+    }
+    const at = match.index;
+    const around = text.slice(Math.max(0, at - YEAR_CONTEXT), at + match[0].length + YEAR_CONTEXT);
+    if (YEAR_NEARBY.test(around)) {
+      datesWithYearNearby += 1;
+      continue;
+    }
+    warnings.push(
+      `${page}: "${match[0]}" carries no year within ${YEAR_CONTEXT} characters — "${text
+        .slice(Math.max(0, at - 60), at + match[0].length + 60)
+        .trim()}"`,
+    );
+  }
 }
 
 if (errors.length > 0) {
@@ -151,6 +208,17 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
+// Printed after the hard gate above and before the pass line: visible in every
+// build log, never able to stop one.
+if (warnings.length > 0) {
+  console.log(`\n! ${warnings.length} year-less date warning(s) — not blocking:\n`);
+  for (const warning of warnings) console.log(`  ${warning}`);
+  console.log('');
+}
+
 console.log(
   `✓ dates: ${pagesRead} indexable pages carry no passed cohort date written as upcoming (${pastCohorts.length} past cohort(s) checked)`,
+);
+console.log(
+  `✓ dates: ${datesSeen} long-month date(s) in rendered copy — ${datesWithYear} carry a year, ${datesWithYearNearby} carry one within ${YEAR_CONTEXT} characters, ${warnings.length} carry none`,
 );

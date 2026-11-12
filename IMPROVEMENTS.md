@@ -1957,6 +1957,9 @@ Status: `todo` · `blocked` (why) · `doing`
     "guide links a past event page" detector is **not** viable: 7 such links already exist and
     every one is a legitimate evidence citation (3 to Second Brain Cohort 1, 3 to Cohort 1,
     1 to Cohort 2), so the check would be 7 correct warnings on the day it shipped.
+    **The year guard of backlog 91 is now in place (12 Nov, 14:00 cycle), so the cycle that meets
+    this item inherits it** - every sentence it rewrites is checked for a bare date as it is
+    written, rather than after.
     **What to do with each is a copy decision, not a find-and-replace.** A guide closer that
     says "Cohort 3 runs on 19 November" wants pointing at whatever is next on sale, which on
     20 November is the Coding cohort and after 26 November may be nothing; a capsule wants the
@@ -1996,8 +1999,11 @@ Status: `todo` · `blocked` (why) · `doing`
     and visitors who saw the booking area and left without either booking or clicking
     through to Luma are the population this affects.
 
-91. `todo` (loop-actionable, found and half-closed 11 Nov 2026 in the 20:00 cycle; **the fix
-    shipped, the detector did not** - same shape as backlog 66, 77 and 80) - **nothing stops a
+91. `done` 12 Nov 2026 (14:00 cycle), warn-only and scoped exactly as this item specified, and
+    **taken a cycle early rather than folded into backlog 89** - see that entry in Shipped for the
+    sequencing argument: a guard shipped after the 20 November rewrite cannot protect the
+    sentences that rewrite types. (Found and half-closed 11 Nov 2026 in the 20:00 cycle; **the fix
+    shipped, the detector did not** - same shape as backlog 66, 77 and 80.) - **nothing stops a
     year-less cohort date reaching a published page again.** That cycle added the year to eleven
     booking sentences after an engine said of a third-party listing of us ***"It's also past, and
     the listing doesn't give a year."*** The eleven were found by a one-off sweep script, not by
@@ -2072,6 +2078,99 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 12 Nov 2026 (14:00 cycle) - the missing-year fix shipped on 11 Nov without the thing that would catch the next one. That guard now exists, warn-only, inside `check-dates.mjs`. One file, zero bytes of `dist` changed.
+
+**What shipped.** A second check in `scripts/check-dates.mjs`, riding the page walk the stale-tense
+check already does: **a long-month date in rendered copy with no four-digit year within 400
+characters either side**. It warns and never fails. The pass line now carries the tally, so every
+build log records it:
+
+```
+! N year-less date warning(s) — not blocking:
+  /guides/<page>/: "19 November" carries no year within 400 characters — "<the sentence>"
+✓ dates: 102 long-month date(s) in rendered copy — 91 carry a year, 11 carry one within 400 characters, 0 carry none
+```
+
+**Why now and not on 20 November, which is where backlog 91 filed it.** That item said to fold the
+guard into the backlog 89 rewrite, on the grounds that today's count of defective instances is
+**zero** so it buys nothing until the next closer is written. The count is still zero - the run
+above is this tree. The sequencing is the argument: backlog 89 rewrites **nine** prose sentences
+about cohort dates on 20 November, and new sentences are exactly where the eleven defective ones
+came from. A guard added in the same commit as that rewrite is a guard that did not read it. This
+one did not need to wait for its own first catch to be worth having, and it cost one file.
+
+**Nothing about the predicate is new or guessed.** The 11 Nov 20:00 sweep that found the eleven
+bare booking dates measured with a 400-character window, and that window is what separated the
+eleven from the ten sound instances. Reimplemented inside the build, it reproduces that sweep
+exactly on today's tree: **91 dates with a year, 11 bare, 0 bare without year context**. The ten -
+now eleven - sound ones are sound for a reason the window encodes: three event pages carry the
+year in a key-facts panel a few hundred characters from the date, and `when-ai-executive-cohorts-run`
+names the Oxford online programme's dates inside a clause that already says "for 2026".
+
+**Warn, never fail, and that is the opposite of the check it sits beside.** A hard fail would block
+every deploy on those eleven correct instances, and tightening the window until they passed would
+start missing real ones. The evidence it is built on is an engine's own sentence about a
+third-party listing of us, read on 11 November - ***"It's also past, and the listing doesn't give
+a year."*** A bare date is a page one kind of reader places less well; it is not a wrong fact on a
+booking page, and `check-dates.mjs`'s hard gate is reserved for the second thing.
+
+**Proved to fire, not assumed to.** Run against a one-page fixture whose closer says
+*"...runs on 19 November at Worcester College"* with no year anywhere near it, the check prints the
+warning, names the page, quotes the sentence, and **exits 0**. Run against the real tree it prints
+nothing and the tally line reads 0. Both readings above are from those runs.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 64 pages built, 66 checked, **3,247 internal links resolve**,
+schema valid, 7 `Event` and 20 `FAQPage` nodes, all titles and descriptions unique, `check:dates`
+0 findings across 55 indexable pages. `npm run check:flags` passes on the all-on and all-off
+builds. `npx astro check` reports **81 errors / 0 warnings / 3 hints**, identical to the standing
+baseline (the file is a plain `.mjs` script, outside the typecheck scope). Blast radius against a
+sha256 snapshot of `dist` taken before the edit: **0 of 203 files differ** - this change produces
+no byte of output, which is the strongest form the measurement takes. The IndexNow dry run over
+the changed path prints *"no page URLs affected by this push; nothing to submit"*, which is
+correct and is the mapping behaving properly for a `scripts/` path.
+
+**Browser checks, headless Chromium**, run although `dist` is byte-identical, because the standing
+decision makes an uninspectable cycle a no-ship cycle and the sandbox's ability to run one is part
+of what is being confirmed. Five pages - `/`, `/events/`, both on-sale cohorts and `/guides/` - at
+375 and 1280px: **30 assertions, 0 fail**, 0 uncaught JS exceptions, 0 failed same-origin requests,
+**0px horizontal overflow** at both widths, one `h1` per page. Screenshots of Cohort 3's page at
+both widths read by eye: hero, key facts (Thursday, 19 November 2026 - 9:00-17:00 - Worcester
+College, Oxford) and the booking call to action all correct.
+
+**GEO: four probes, zero citations, and for the first time all four axes turned out to be already
+answered on pages of ours.** Logged in full in `seo-data/geo-citations.md`. This cycle spent every
+probe on an objection axis rather than a reach probe - duration sufficiency, tool churn, group
+size, and whether a non-developer can learn Claude Code in a day - and then took each one back to
+the built site in the vocabulary the probe used. All four are covered: the 12 Oct Q&A block, two
+question-shaped headings on `scout-drafter-reviewer-pattern`, **six** distinct group-size questions
+among the site's 100 `FAQPage` questions, and the 10 Nov Coding-page pair. **Seventh consecutive
+cycle of reach, not coverage.** Probe 1's field is the most winnable this log has seen in a while -
+no institutional publisher at all, and the engine disclaimed its own sources twice - and writing
+for it would still have restated a page that has existed since 12 October. Nothing was written.
+
+**What was measured and found clean, recorded so the next cycle does not re-derive it.** Titles and
+meta descriptions across all 55 indexable pages: **0 titles over 60 characters, 0 descriptions
+outside the 70-160 band**. Cross-surface fact consistency for both on-sale cohorts: every weekday
+word matches its date, no past venue appears beside a future date, **0 anomalies**. `llms.txt` is
+current - both on-sale cohorts under "Next events" with full dates, venue and times, all three past
+cohorts correctly in the past tense. Event schema re-read in full on Cohort 3: `startDate` /
+`endDate`, `eventStatus`, `eventAttendanceMode`, `location`, `organizer`, `performer`, `superEvent`,
+`sameAs` to Luma, price-free `offers` at `InStock`, 12 `subEvent`s. One thing checked and found
+**not** to be a fault: the parent nodes serialise to `Z` (Cohort 2 reads `08:00:00.000Z`) while
+their `subEvent`s keep the local offset, which is 09:00 local in both cases - BST in September,
+GMT in November. The 5 Nov cycle recorded the same conclusion; it is recorded again because the
+serialisation asymmetry invites the question a second time.
+
+**Search Console unavailable for the fortieth consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November.** No new off-page target in four probes, so the review list is untouched and nobody
+was contacted. **No event fact was read, verified or changed**: `luma.com` does not resolve through
+this session's egress policy. Production could not be read either, `oxfordagentic.com` not
+resolving through this session's egress policy, so deployment state was confirmed through the
+Actions API - the Deploy run for `e410857` concluded **success at 09:20 UTC**, a scheduled run on
+the same SHA concluded success at 11:01, and none was in progress.
 
 ### 12 Nov 2026 (09:00 cycle) - the past cohort's agenda was the upcoming cohort's sales copy, verbatim. Under a heading reading "How the day ran", it still said "what today is actually for". Five lines, one file, 4 of 203 built files changed.
 
