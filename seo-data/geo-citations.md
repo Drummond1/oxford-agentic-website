@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-13 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE CODING LINE'S GROUP-SIZE QUESTION IS ASKED, UNANSWERED, AND THE ENGINE SENDS THE BUYER TO THE ORGANISERS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Probe 1 was run first, to test the condition backlog 94 needed; probe 2 tests the same
+axis as an editorial topic; probe 3 is an axis new to this log; probe 4 is the standing commercial
+reach probe, pointed at the Coding cohort at **thirteen days out**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | Oxford Agentic Coding Bootcamp how many people in the cohort group size one day | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `sbs.ox.ac.uk` (x2), `nobleprog.co.uk` (x5), `lifelong-learning.ox.ac.uk`, `ouess.web.ox.ac.uk` (x2), `learnersink.com`, `datasciencedojo.com` (x2), `conted.ox.ac.uk`, `codecademy.com` |
+| 2 | how many people should be in the room at a hands-on AI coding workshop ratio of facilitators to attendees | **No** | `software.ac.uk` (x4), `statelibrary.ncdcr.gov`, `coach.djangogirls.org`, `claudemarket.ai`, `coderetreat.org`, `github.com`, `coderefinery.github.io`, `drupalize.me`, `zackproser.com`, `mentorcruise.com` (x3), `wiki.code4lib.org`, `akos.ma`, `substack.dylanbeattie.net` |
+| 3 | difference between an agentic AI bootcamp and an AI coding bootcamp which one should I book | **No** | `datasciencedojo.com` / `help.datasciencedojo.com` / `ask.datasciencedojo.com` (x7), `codecademy.com` (x3), `algo.monster`, `aisc.substack.com`, `udemy.com` (x2), `southernct.edu`, `agilefever.com` (x2) |
+| 4 | Oxford Agentic Coding Bootcamp 26 November 2026 Worcester College book a place (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `lifelong-learning.ox.ac.uk` (x5), `sbs.ox.ac.uk` (x2), `conted.ox.ac.uk` (x2), `nobleprog.co.uk` (x2), `allai.events`, `pulse.bot`, `tickettailor.com` |
+
+**Reading.**
+
+- **Probe 1 is the finding and it is the gate backlog 94 set, met in the engine's own words.**
+  Asked for this bootcamp's cohort size **by name**, the engine returned the Agentic day's two
+  Luma listings, stated ***"The search didn't turn up a cohort size or headcount for the Oxford
+  Agentic Bootcamp"***, noted that the listing ***"doesn't state how many people attend"***, and
+  closed by telling the buyer to check the Luma page or ***"contact the organisers through that
+  page"***. So thirteen days out, a buyer asking how big the room is on a non-refundable ticket is
+  told to go and ask. It also conflated the two bootcamps again, the third consecutive probe to do
+  so. That is this cycle's change, argued as trust on the booking decision rather than as
+  retrieval: **no page of ours was reached on any of the four probes, the ninth consecutive cycle
+  of reach, not coverage**, which is backlog 2b.
+- **Probe 2 was run to test the same axis as an editorial topic, and it fails CONVERTING outright.**
+  The field is real and winnable - workshop-running practitioners (`software.ac.uk`'s Carpentries
+  write-ups, CodeRefinery, Django Girls, coderetreat) rather than institutional publishers or
+  platform vendors - and it produced genuine numbers, roughly 1 helper per 3 to 5 attendees. But
+  the searcher behind it is **organising** a workshop, not booking a seat at one, so traffic from
+  it is vanity by the standing rule. **Declined as a guide. Do not re-pitch it.** Worth keeping
+  for one reason: it confirms the ratio claim our Coding copy makes is an ordinary one in the
+  field, which is why restating it without a number is safe.
+- **Probe 3 fails WINNABLE, and should not be re-pitched.** `datasciencedojo.com` holds seven of
+  the first ten results across three of its own subdomains, with Codecademy, Udemy and AgileFever
+  behind it - platform vendors writing about their own products, the publisher class the rule
+  excludes. The answer a buyer gets is nonetheless worth recording, because it is **the opposite
+  of this site's published position on both days**: the engine framed agentic bootcamps as
+  assuming Python and told a non-coder to go and learn Python first. Our Agentic day does not
+  assume code and our Coding day does not either. That is a field-level misconception no FAQ of
+  ours will reach while nothing of ours is retrieved.
+- **Probe 4 reproduces at thirteen days out**, on the same three third-party records this log has
+  now named six times. The engine could not confirm the date (***"I couldn't find a listing for an
+  Oxford Agentic Coding Bootcamp on 26 November 2026 at Worcester College"***), offered the Cohort
+  2 Luma page as the closest match, repeated the `luma.com/k7c2rm5s` St Anne's College conflict,
+  noted `allai.events` ***"shows 21 Jul 2026, which doesn't fit your date"***, and closed telling
+  the buyer to ***"check the Luma page or contact the organisers before booking"*** - the same
+  closing line as probe 1, from the other direction.
+- **No new off-page target in four probes.** The new hosts are `learnersink.com`, `algo.monster`,
+  `aisc.substack.com`, `agilefever.com`, `southernct.edu`, `tickettailor.com`, `software.ac.uk`,
+  `coderetreat.org`, `mentorcruise.com`, `drupalize.me`, `coderefinery.github.io`,
+  `wiki.code4lib.org`, `akos.ma`, `substack.dylanbeattie.net` and `claudemarket.ai`. None is a
+  listing route: competitors' own course pages, a ticketing platform carrying an unrelated online
+  series, and practitioner blogs about running workshops. `allai.events`, `luma.com/k7c2rm5s`,
+  `datasciencedojo.com`, `codecademy.com` and `nobleprog.co.uk` are already on the review list,
+  which therefore gets **nothing new this cycle and is untouched**. **Nobody was contacted.**
+- **No event fact was read, verified or changed.** `luma.com` does not resolve through this
+  session's egress policy, so nothing on Luma was opened and no date, venue, price or availability
+  was taken from any of the listings named above.
+
 ## 2026-11-12 (20:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS; AND THE CODING BOOTCAMP'S OWN AUDIENCE QUESTION IS ANSWERED WITH THE AGENTIC BOOTCAMP'S PREREQUISITES, OFF A PAST COHORT'S LUMA PAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and

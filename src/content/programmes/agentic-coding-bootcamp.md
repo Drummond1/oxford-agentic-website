@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-10T14:15:00+00:00"
+updatedDate: "2026-11-13T02:03:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -140,6 +140,33 @@ faqs:
       prototype, deployed and tested, in your own repository. If your problem is a
       recurring task, start with the Agentic Bootcamp. If it is an idea you want to see
       running, start here.
+  # Group size, the one objection axis this line answered on no surface. Measured by
+  # the 12 Nov 2026 20:00 cycle: of the site's 100 distinct FAQPage questions, six
+  # answer group size and none was on this line, while the Agentic line answers it
+  # twice (this page's sibling "How many people are in the room?" and Cohort 3's
+  # "How big is the cohort?"). The gate was a probe, and this cycle's first produced
+  # it: asked for this bootcamp's cohort size by name, the engine returned the
+  # Agentic day's two Luma listings, said the listing "doesn't state how many people
+  # attend" and told the buyer to contact the organisers.
+  # No number, deliberately. Sixteen is Agentic Cohort 1's figure and belongs to a
+  # different day; capacity is a Luma fact and `luma.com` is blocked from the sandbox;
+  # and the 13 Sept standing decision for Second Brain ("small group", never a number)
+  # is the nearest precedent. Nothing about a cap is claimed either, because this
+  # event deliberately leaves `capacity` unset and no cap is published anywhere on
+  # this line.
+  # Every clause restates copy already published on this line, so no new claim is made
+  # about a day that has not yet run: sentence one is the closing band that
+  # `src/pages/events/[slug].astro` prints verbatim on this line's event page when
+  # `capacity` is unset, and the site footer's "each in a small cohort" says it on this
+  # page itself; sentence two is Cohort 1's own "How does the day run?" answer, and
+  # "Every session is show, then do" is also this page's "Who runs it?"; sentence three
+  # is the reasoning both Agentic answers publish, "which stops working in a large room".
+  - q: How many people are in the room?
+    a: >-
+      A small cohort, so the day stays facilitated rather than lectured. Every session is
+      show, then do: a facilitator builds each step in front of the room, then you build
+      it on your own laptop, with facilitators moving between tables so nobody spends the
+      day stuck on setup. A large room would stop that working.
   - q: What should I bring?
     a: >-
       A laptop you can install software on. The day involves setting up a code editor,

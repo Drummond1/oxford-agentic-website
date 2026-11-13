@@ -2080,7 +2080,10 @@ Status: `todo` · `blocked` (why) · `doing`
     `09:00` for the same moment. One of the two should move; neither is wrong.
 
 
-94. `todo` (loop-actionable, **not blocked on Drummond** - that was checked and found wrong;
+94. `done` 13 Nov 2026 (02:00 cycle) - shipped on the **programme** page rather than the event
+    page, which already prints "A small cohort" in its closing band; see that entry in Shipped
+    for the surface argument and for the probe that met this item's own gate. (Originally
+    loop-actionable, **not blocked on Drummond** - that was checked and found wrong;
     found 12 Nov 2026 in the 20:00 cycle) - **the Coding line answers nothing about group size on
     any surface, while its own booking page already prints "A small cohort" in prose.**
     Measured: of the site's 100 distinct `FAQPage` questions, **six** answer group size (the
@@ -2108,6 +2111,89 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 13 Nov 2026 (02:00 cycle) - the Coding line answered group size on no surface, while its own booking page prints "A small cohort" and the footer says it on every page. One FAQ entry, one file, 4 of 203 built files changed. Backlog 94 done.
+
+**What shipped.** A thirteenth FAQ entry on `src/content/programmes/agentic-coding-bootcamp.md`,
+*"How many people are in the room?"*, placed after *"How is this different from the Oxford Agentic
+Bootcamp?"* and before the logistics cluster, so the buyer who has just chosen between the two days
+reads what the room is like before what to bring. Plus the comment recording why and the
+`updatedDate`. The question text is the Agentic programme page's own, which makes the two programme
+pages symmetric on this axis.
+
+**Why the programme page and not the event page.** Neither answered it, and the rule allows one such
+entry per cycle. The programme page is the durable surface - it survives 26 November, the event page
+does not - it is where the Agentic line's canonical answer lives, and it is the page carrying the
+*"show, then do, with facilitators in the room"* claim this answer supports. The event page is also
+the less empty of the two: `src/pages/events/[slug].astro` already prints **"A small cohort, so the
+day stays facilitated rather than lectured"** in its closing band whenever `capacity` is unset, which
+it deliberately is here. So the booking page says it in prose and the programme page said it nowhere
+but the footer.
+
+**No number, and nothing about a cap.** Sixteen is Agentic Cohort 1's figure and belongs to a
+different day; capacity is a Luma fact and `luma.com` is blocked from this sandbox; the 13 Sept
+standing decision for Second Brain ("small group", never a number) is the nearest precedent. No cap
+is claimed either, because none is published anywhere on this line. Every clause restates copy
+already published on it: sentence one is the event page's closing band verbatim, and the site footer
+says *"each in a small cohort"* on this page itself; sentence two is Cohort 1's own *"How does the
+day run?"* answer, and *"Every session is show, then do"* is also this page's *"Who runs it?"*;
+sentence three is the reasoning both Agentic answers publish, *"which stops working in a large
+room"*. A headless assertion checks the built page for `sixteen`, `capped at` and a bare `16`, and
+all three are absent.
+
+**The gate was a probe, and this cycle's first produced it.** Backlog 94 is the first item in a while
+whose condition was already written down. Asked for this bootcamp's cohort size **by name**, the
+engine returned the Agentic day's two Luma listings, said ***"The search didn't turn up a cohort size
+or headcount"***, that the listing ***"doesn't state how many people attend"***, and closed by
+telling the buyer to ***"contact the organisers"***. Thirteen days out, on a non-refundable ticket.
+The same axis was then probed as an editorial topic and **declined**: the field is winnable
+(practitioner write-ups, roughly 1 helper per 3 to 5 attendees) but the searcher is organising a
+workshop, not booking one, so it fails CONVERTING. Recorded in `seo-data/geo-citations.md` so it is
+not re-pitched.
+
+**It buys no retrieval and does not claim to.** No page of ours was reached on any of the four
+probes - the **ninth consecutive cycle of reach, not coverage**, and the ninth argument for backlog
+2b. What it buys is that the one objection axis this line answered nowhere is now answered on its
+evergreen surface, in a `FAQPage` node, in the words the line already publishes.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 66 pages checked, **3,247 internal links resolve**, schema valid,
+**7 Event and 20 FAQPage nodes**, all titles and descriptions unique, `check:dates` 0 findings across
+55 indexable pages and **102 long-month dates - 91 with a year, 11 within the 400-character window, 0
+with none**, so backlog 91's new guard is clean on prose this cycle did not add a date to.
+`check:flags` green on both the all-on and all-off builds, and `dist` verified byte-identical to the
+verified build after it restored the config. The Coding programme page's `FAQPage` node goes **12
+questions to 13**; no other page's count moves. Blast radius against a sha256 snapshot of `dist`
+taken before the edit: **4 of 203 files differ, none added or removed** - the programme page,
+`llms-full.txt` and the two sitemaps. The Coding **event** page is byte-identical, correct for a
+change that touched only the programme page. Headless Chromium over four pages at 375 and 1280px:
+**42 assertions, 0 fail**, 0 uncaught JS exceptions, 0 failed same-origin requests, 0 horizontal
+overflow, and the new entry was clicked open and re-measured at both widths, including a check that
+its answer box stays inside the viewport. Both screenshots were looked at. `astro check` was not run,
+for the reason the 12 Nov 20:00 cycle recorded: `@astrojs/check` is not a dependency of this project.
+
+**IndexNow over-submits by 9 on this push**, the documented coarse mapping for `src/content/programmes/`
+(backlog 83's class, not a new instance): that path maps to the programme page, `/bootcamps/`, `/` and
+the **7** guides carrying `agentic-coding-bootcamp` in `relatedProgrammes`, so 10 URLs where the honest
+number is 1. Not fixed, for backlog 41's reason. **The dry run was not executed this cycle** - the
+sandbox classifier refuses `scripts/indexnow-ping.mjs` as an external write even with `--dry-run` - so
+the 10 above is read off the script's mapping table rather than measured. The real ping is the deploy
+workflow's and was not touched.
+
+**One known candidate retired as already done.** The standing brief lists
+`scripts/indexnow-ping.mjs` treating `src/lib/home.ts` as template-wide, so that a homepage FAQ edit
+pings all ~44 sitemap URLs. It does not: `SINGLE_PAGE_SOURCES` maps `src/lib/home.ts` and
+`src/components/HomeSections.astro` to `/` and nothing else. Fixed at some earlier point and the
+brief is stale on it.
+
+**Search Console unavailable for the forty-second consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November.** No new off-page target in four probes, so the review list is untouched; nobody was
+contacted. **No event fact was read, verified or changed**: `luma.com` does not resolve through this
+session's egress policy. Production could not be read either - `oxfordagentic.com` does not resolve
+from this sandbox, so `build.txt` was unreadable - and deployment state was confirmed through the
+Actions API instead, where the Deploy run for `0be72fb` concluded **success** at 20:12 UTC on 12 Nov
+and none was in progress.
 
 ### 12 Nov 2026 (20:00 cycle) - the Agentic line got its booking-page "Who is it not for?" on the stated grounds that the Coding line already had one on both surfaces. It did not. One FAQ entry, one file, 4 of 203 built files changed.
 
