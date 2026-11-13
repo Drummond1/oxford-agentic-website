@@ -5,6 +5,106 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-13 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS; THE AFFILIATION QUESTION IS THE NEW READING - WE PUBLISH THE ANSWER IN PROSE AND IN `disambiguatingDescription` ON ALL 64 PAGES, AND THE ENGINE STILL HAD TO INFER IT FROM A LUMA HOST LIST
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Five
+questions. Probe 1 is the standing commercial reach probe in **undated** phrasing, because the
+08:00 cycle had already run the dated form at the same six days out. Probes 2, 3 and 5 are axes new
+to this log. Probe 4 re-runs the automation axis the 12 Nov 20:00 cycle declined, to see whether the
+field had moved.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | where can I attend a hands-on agentic AI workshop in Oxford this November 2026 (commercial reach probe, undated phrasing) | **No** | `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2`, `sbs.ox.ac.uk` (x3), `createwith.com` (x2), `science.ai.cam.ac.uk`, `cryptobriefing.com`, `alexandra.dk` |
+| 2 | what AI tools will I actually learn to use at a one day agentic AI bootcamp | **No** | `datasciencedojo.com` (x3), `cloudthat.com` (x2), `oreilly.com` (x2), `pluralsight.com` (x2), `outsystems.com`, `udemy.com`, `maven.com`, `learningtree.com`, `trainingcamp.com`, `interfacett.com`, `medium.com`, `educosys-student.vercel.app`, `pulse.bot` |
+| 3 | can my company pay by invoice for AI training instead of a card UK one day course | **No** | `acuitytraining.co.uk` (x3), `realtraining.co.uk` (x2), `bristol.ac.uk` (x2), `clinical-research-facility.ed.ac.uk` (x2), `wiseowl.co.uk`, `tsg-training.co.uk`, `help.cambridgeinternational.org`, `firstintuition.co.uk`, `sgsa.org.uk`, `scott-grant.co.uk`, `techni-k.co.uk`, `ice.cam.ac.uk` |
+| 4 | what is an agentic workflow for business and how is it different from automation | **No** | `domo.com` (x2), `elevenlabs.io`, `mindstudio.ai`, `netsuite.com`, `rapidcanvas.ai`, `zigment.ai`, `vortexiq.ai`, `vibrancy.ai`, `archestra.ai` |
+| 5 | is the Oxford Agentic Bootcamp run by the University of Oxford or independent | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `nobleprog.co.uk` (x4), `conted.ox.ac.uk` (x3), `sbs.ox.ac.uk` (x3), `lifelong-learning.ox.ac.uk` (x2), `allai.events`, `planomato.com`, `pulse.bot`, `simplilearn.com`, `shortcoursesportal.com` |
+
+**Reading.**
+
+- **Probe 5 is the finding, and it is a kind of reach failure this log has not recorded before.**
+  Every previous reading has been about a **date** or a **venue** an engine could not confirm. This
+  one is about **who we are**. Asked outright whether the bootcamp is the University of Oxford's or
+  independent, the engine got the right answer and got it the wrong way: *"The search results
+  suggest the Oxford Agentic Bootcamp is independent of the University of Oxford, **though the
+  evidence is indirect**."* Its three grounds were that the Luma listing is *"Hosted by Drummond
+  Gilbert & 3 others, so the hosts are named individuals rather than a university body"*, that a
+  second listing *"describes Oxford Agentic as the group running a similar bootcamp at the Pitt
+  Rivers Museum, which points to a non-university organiser"*, and that the University's own
+  programmes *"appear under different names"*. It closed ***"None of the results explicitly say who
+  organises the bootcamp, so checking the Luma page's host profile or the event's contact details
+  would confirm it."***
+- **Why that matters more than a missed citation.** This site states the answer plainly and states
+  it twice over, and neither statement was reached. The homepage FAQ carries *"Which organisations
+  is Oxford Agentic affiliated to?"*; `llms.txt` carries it in its fourth line, *"Oxford Agentic is
+  independent: it has no affiliation with the University of Oxford, its colleges, or any other
+  institution. Events are held in hired Oxford venues"*; and the `Organization` node's
+  **`disambiguatingDescription`** - which exists for precisely this task, and which was checked on
+  the built site this cycle - says *"It has no affiliation with the University of Oxford, its
+  colleges, or any other institution: college rooms are hired as venues and that is the whole
+  relationship. It is a separate organisation from any similarly named Oxford AI training provider
+  or university AI programme."* That node is on **all 64 built pages**. So the honest conclusion is
+  that **machine-readable disambiguation on a page nothing retrieves disambiguates nothing**, and a
+  provider trading on the word "Oxford" is relying on an engine's inference from a guest list.
+  There is no on-page change that improves this. It is **backlog 2b**, and it is now an entity-trust
+  argument for it rather than only a ranking one.
+- **Probe 2 is this cycle's one genuine coverage gap, and it cannot be closed from published copy.**
+  The field is winnable by a wide margin: eighteen results, every one a course vendor describing its
+  own curriculum (`outsystems.com`, `oreilly.com`, `cloudthat.com`, `pluralsight.com`,
+  `datasciencedojo.com`, `maven.com`, `udemy.com`, AWS resellers), with **no institutional publisher
+  anywhere in it**, and the engine said outright ***"Tools vary a lot by provider, and I found no
+  single standard toolset for a one-day agentic AI bootcamp."*** It converts: the searcher is
+  comparing bootcamps before booking one. And of the four things it told the buyer to go and ask -
+  *"whether you'll use hands-on products, which platform they are, and whether you need an account
+  or a coding background beforehand"* - **three are published on the Agentic programme page**
+  ("everything is facilitated in the room" and you build on your own machine; "Can I install
+  software on my work laptop?"; "Do I need to be technical?"). The fourth, **which platform**, is
+  answered on no surface of the Agentic line. Of 24 FAQ entries on the programme page and 11 on
+  Cohort 3's booking page, none asks it, and the only tools named anywhere on the line are
+  *"a paid plan such as ChatGPT Plus or Claude Pro"* in the subscription answer. **Nothing was
+  written**, because the honest answer is an event fact: what the day's builds actually run in is
+  not published anywhere in this repo, `luma.com` does not resolve from this sandbox, and an entry
+  headed "Which tools will we use?" whose answer names none would be a hedge on the page that takes
+  the booking. Filed as **backlog 95**. Note the asymmetry is confined to this line: the Coding
+  programme page names Claude Code eleven times and `llms.txt` names Claude Code and Codex for it.
+- **Probe 3 is reach, not coverage, and cleanly so.** *"Can my organisation pay by invoice?"* is
+  published in question shape on the Agentic programme page, Cohort 3's booking page and the Coding
+  booking page, and the homepage pricing answer carries it too. The field is entirely providers'
+  own payment pages, the engine found no AI-specific result at all, and it closed by telling the
+  buyer to *"email them asking whether they will invoice your company"* - which is exactly what our
+  published answer offers. **One thing in that answer we must not match:** it reported a provider's
+  claim that *"a UK VAT-registered company should be able to reclaim the full amount of VAT"*. VAT
+  treatment is unconfirmed here and stays unstated, which is the second cycle running that a probe
+  has put VAT in front of this log.
+- **Probe 4 does not reverse the 12 November decline; it strengthens it.** Nine of ten results are
+  platform vendors writing about their own product (`elevenlabs.io`, `mindstudio.ai`, `domo.com`,
+  `netsuite.com`, `rapidcanvas.ai`, `zigment.ai`, `vortexiq.ai`, `vibrancy.ai`, `archestra.ai`), and
+  the engine flagged its own field: ***"Note that these sources are mostly vendor blogs, so their
+  framing reflects some marketing."*** Winnable on the letter of the rule, but the searcher is doing
+  definitional research rather than deciding to book, and `/guides/agentic-ai-glossary/` and
+  `/guides/scout-drafter-reviewer-pattern/` already carry the distinction. **Declined again. Do not
+  re-pitch it without evidence of buying intent.**
+- **Probe 1 reproduces the venue ambiguity at six days out, in undated phrasing this time.** Asked
+  without a date, the engine still reached only the two Luma records and said ***"The two listings
+  give different venues: one names St Anne's College, 56 Woodstock Rd, and the other names Worcester
+  College. The results don't show the event date, so check the Luma page."*** St Anne's is Cohort 1,
+  July. So the fault does not depend on the buyer typing a date: a buyer asking the plainest possible
+  question is told our venue is ambiguous and our date unknown. Same three stale third-party records,
+  named in this log for the eighth time.
+- **No new off-page target in five probes.** Every credible host is already on
+  `outreach/review-list.md`: `allai.events`, `planomato.com`, `createwith.com`, Eventbrite,
+  `luma.com/k7c2rm5s`. The hosts new to this log are competitors, vendors or university programmes
+  rather than places to be listed: `science.ai.cam.ac.uk`, `alexandra.dk`, `cryptobriefing.com`,
+  `outsystems.com`, `cloudthat.com`, `learningtree.com`, `trainingcamp.com`, `interfacett.com`,
+  `educosys-student.vercel.app`, `simplilearn.com`, `shortcoursesportal.com`, and the whole of
+  probe 3's field, which is UK training providers' payment pages. **The review list takes one new
+  reading and no new target; nobody was contacted.**
+- **Eleventh consecutive cycle of reach, not coverage.** Five probes, zero citations. Three of the
+  five axes are answered on pages of ours in question shape, one is answered in the site's own
+  structured data on every page, and the one real gap is an event fact nobody here can verify.
+
 ## 2026-11-13 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE COHORT 3 REACH PROBE NOW REPRODUCES AT SIX DAYS OUT, AND THE ENGINE OFFERS THE SEPTEMBER COHORT AS THE CLOSEST MATCH
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

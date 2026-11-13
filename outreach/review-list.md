@@ -11,6 +11,47 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new target in five probes, and a new kind of reading: the thing an engine could not confirm
+  this time was not our date or our venue but whether we are the University of Oxford.** Found
+  13 Nov 2026 (14:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **Asked outright whether the bootcamp is the University's or independent, the engine got the
+    right answer by inference and said so.** *"The search results suggest the Oxford Agentic
+    Bootcamp is independent of the University of Oxford, **though the evidence is indirect**."* Its
+    grounds were that the Luma listing is *"Hosted by Drummond Gilbert & 3 others, so the hosts are
+    named individuals rather than a university body"* and that a second listing *"describes Oxford
+    Agentic as the group running a similar bootcamp at the Pitt Rivers Museum"*. It closed
+    ***"None of the results explicitly say who organises the bootcamp, so checking the Luma page's
+    host profile or the event's contact details would confirm it."***
+  - **Why this is the sharpest argument on this list for one real `sameAs`.** The site states the
+    answer twice and states it well. The homepage FAQ carries *"Which organisations is Oxford
+    Agentic affiliated to?"*, `llms.txt` carries it in its fourth line, and the `Organization`
+    node's `disambiguatingDescription` - the exact property for this job - carries *"It has no
+    affiliation with the University of Oxford, its colleges, or any other institution: college
+    rooms are hired as venues and that is the whole relationship"* on **all 64 built pages**. None
+    of it was reached. **Machine-readable disambiguation on a page nothing retrieves disambiguates
+    nothing**, and for a provider trading on the word "Oxford" that is a trust exposure rather than
+    a ranking one. Every previous reading here has argued 2b from a stale date or a wrong venue;
+    this one argues it from the entity.
+  - **Seventh reading asking for the same two things**: correct or retire the 21 July
+    `allai.events` record, and give the Organization node one real `sameAs` (a LinkedIn Company
+    Page or a genuine Luma calendar URL, which flows into schema automatically from
+    `brand.social`).
+  - **The venue ambiguity now reproduces in undated phrasing, at six days out.** Asked simply
+    *"where can I attend a hands-on agentic AI workshop in Oxford this November 2026"*, with no
+    date and no brand name, the engine reached only the two Luma records and answered ***"The two
+    listings give different venues: one names St Anne's College, 56 Woodstock Rd, and the other
+    names Worcester College. The results don't show the event date, so check the Luma page."***
+    St Anne's is Cohort 1, July. So this does not depend on the buyer typing a date: the plainest
+    possible question returns our own two listings contradicting each other on venue.
+  - **No new target.** `allai.events`, `planomato.com` (which surfaced again, on the affiliation
+    probe), `createwith.com`, Eventbrite and `luma.com/k7c2rm5s` are already on this list. The
+    hosts new to the log are not listing routes: `science.ai.cam.ac.uk` (a Cambridge research
+    group's own training page), `alexandra.dk` (a Danish institute's own workshop),
+    `cryptobriefing.com` (news coverage of someone else's summit), and otherwise competitors'
+    course pages (`outsystems.com`, `cloudthat.com`, `learningtree.com`, `trainingcamp.com`,
+    `interfacett.com`, `simplilearn.com`, `shortcoursesportal.com`, `educosys-student.vercel.app`)
+    or UK training providers' payment pages. Recorded so a later cycle does not re-derive the sweep.
+
 - **No new target in five probes, and the sharpest argument yet for listing the Coding cohort
   somewhere.** Found 12 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for.**
   - **The Coding Bootcamp has no third-party record at all, and an engine asked about it by name

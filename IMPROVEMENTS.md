@@ -2118,9 +2118,179 @@ Status: `todo` · `blocked` (why) · `doing`
     worth of work, and the higher-value question - and is still waiting on the one fact only he
     has.
 
+95. `todo` **(needs Drummond, one fact only he has, and it is the same shape as backlog 25; found
+    13 Nov 2026 in the 14:00 cycle)** - **the Agentic line answers three of the four things an
+    engine tells a buyer to go and ask about tooling, and not the fourth: which platform the day
+    actually runs in.** The probe *"what AI tools will I actually learn to use at a one day agentic
+    AI bootcamp"* returned eighteen results, every one a course vendor describing its own curriculum
+    (`outsystems.com`, `oreilly.com`, `cloudthat.com`, `pluralsight.com`, `datasciencedojo.com`,
+    `maven.com`, `udemy.com`, AWS resellers), with **no institutional publisher anywhere in it**, and
+    the engine stated ***"Tools vary a lot by provider, and I found no single standard toolset for a
+    one-day agentic AI bootcamp."*** **Winnable**, and it **converts**: the searcher is comparing
+    bootcamps before booking one. It closed by telling the buyer to ask the provider four things -
+    *"whether you'll use hands-on products, which platform they are, and whether you need an account
+    or a coding background beforehand"*.
+    - **Three of the four are published** on `/bootcamps/oxford-agentic-bootcamp/`: hands-on products
+      ("everything is facilitated in the room, and the point of the small cohort is that nobody gets
+      left stuck on tooling", and you build on your own machine), the account question ("Can I install
+      software on my work laptop?" plus "Do I need a paid AI subscription?"), and the coding
+      background ("Do I need to be technical?").
+    - **The fourth is answered on no surface of the Agentic line.** Measured on the built site:
+      24 FAQ entries on the programme page and 11 on Cohort 3's booking page, and none asks which
+      tools or which platform. The only tools named anywhere on this line are *"a paid plan such as
+      ChatGPT Plus or Claude Pro"* in the subscription answer, and the nearest positive statement is
+      the opposite of a tool list - *"Anyone expecting a vendor or platform pitch, because no tool is
+      being sold"*.
+    - **The asymmetry is confined to this line.** The Coding programme page names **Claude Code
+      eleven times** and `llms.txt` names Claude Code and Codex for it, so the buyer choosing between
+      the two days gets a straight answer on one and nothing on the other.
+    **Why the loop will not write it.** What the day's builds actually run in is not published
+    anywhere in this repo, and `luma.com` does not resolve through the sandbox egress policy, so any
+    named list would be invented. The alternative - an entry headed "Which tools will we use?" whose
+    answer names no tool - is a hedge, and putting a hedge on the page that takes the booking is
+    worse than the silence it replaces. **One line from him closes it on the programme page and the
+    booking page together**, and it can honestly be either shape: the named stack, or the
+    tool-agnostic framing in his own words, which the "no tool is being sold" line already implies
+    but does not say. Same class of ask as **backlog 25** (does the Coding day require a paid Claude
+    or ChatGPT plan, and which), and **weigh them together**: both are tooling facts on a booking
+    path, both have now been raised by a probe, and one reply could cover both.
+
+
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 13 Nov 2026 (14:00 cycle) - no page changed. The one coverage gap in five probes is an event fact nobody here can verify, and the cycle's real finding is that an engine asked whether we are the University of Oxford had to work it out from a Luma guest list
+
+**What this cycle did.** Five GEO probes, three of them on axes new to this log; a verification that
+the build still matches its recorded baseline exactly; an independent audit of titles, descriptions,
+`robots.txt`, the sitemap and the `noindex` seal; and a sweep for stale or relative date language six
+days out from Cohort 3. No page of the site changed. This entry, the GEO log, new backlog **95** and
+one new reading on `outreach/review-list.md` are the output.
+
+**The finding, and it is a kind of reach failure this log has not recorded before.** Every previous
+reading has been about a **date** or a **venue** an engine could not confirm. Probe 5 asked outright
+whether the bootcamp is the University of Oxford's or independent, and the engine reached the right
+answer the wrong way: ***"The search results suggest the Oxford Agentic Bootcamp is independent of
+the University of Oxford, though the evidence is indirect."*** Its grounds were that the Luma listing
+is *"Hosted by Drummond Gilbert & 3 others, so the hosts are named individuals rather than a
+university body"*, and it closed ***"None of the results explicitly say who organises the bootcamp,
+so checking the Luma page's host profile or the event's contact details would confirm it."***
+This site states the answer twice and states it well: the homepage FAQ carries *"Which organisations
+is Oxford Agentic affiliated to?"*, `llms.txt` carries it in its fourth line, and the `Organization`
+node's **`disambiguatingDescription`** - checked on the built site this cycle, and the exact
+schema.org property for this job - carries *"It has no affiliation with the University of Oxford, its
+colleges, or any other institution: college rooms are hired as venues and that is the whole
+relationship"* on **all 64 built pages**. None of it was reached. So **machine-readable
+disambiguation on a page nothing retrieves disambiguates nothing**, and for a provider trading on the
+word "Oxford" that is a trust exposure rather than a ranking one. There is no on-page change that
+improves it. **It is backlog 2b, now argued from the entity rather than from a stale date.**
+
+**The one genuine coverage gap, and why nothing was written.** Probe 2, *"what AI tools will I
+actually learn to use at a one day agentic AI bootcamp"*, is winnable by a wide margin - eighteen
+results, every one a course vendor describing its own curriculum, **no institutional publisher
+anywhere in it**, and the engine said ***"I found no single standard toolset for a one-day agentic AI
+bootcamp"*** - and it converts, because the searcher is comparing bootcamps before booking. Of the
+four things it told the buyer to go and ask, **three are published** on the Agentic programme page
+(hands-on products, whether an account is needed, coding background). The fourth, **which platform**,
+is answered on no surface of the Agentic line: 24 FAQ entries on the programme page and 11 on
+Cohort 3's booking page, and the only tools named anywhere on the line are *"a paid plan such as
+ChatGPT Plus or Claude Pro"*. The asymmetry is confined to this line - the Coding programme page
+names Claude Code **eleven** times. **Nothing shipped**, because what the day's builds actually run
+in is published nowhere in this repo and `luma.com` does not resolve from this sandbox, so a named
+list would be invented; and an entry headed "Which tools will we use?" that names no tool is a hedge
+on the page that takes the booking, which is worse than the silence it replaces. Filed as **backlog
+95**, same shape as **25**, and one reply from Drummond covers both.
+
+**Three of the five axes are reach, not coverage, and that is checked rather than assumed.**
+*"Can my organisation pay by invoice?"* (probe 3) is published in question shape on the Agentic
+programme page, Cohort 3's booking page and the Coding booking page; the field is entirely providers'
+own payment pages, the engine found no AI-specific result at all, and it closed by telling the buyer
+to email and ask - which is exactly what our answer offers. The affiliation answer (probe 5) is
+published three ways, above. The automation axis (probe 4) was **declined again**: nine of ten
+results are platform vendors writing about their own product and the engine flagged its own field
+(*"these sources are mostly vendor blogs, so their framing reflects some marketing"*), but the
+searcher is doing definitional research rather than deciding to book, and the glossary and the
+scout-drafter-reviewer guide already carry the distinction. **One thing from probe 3 we must not
+match:** it reported a provider's claim that a UK VAT-registered company can reclaim the VAT on a
+course. VAT treatment is unconfirmed here and stays unstated - the second cycle running that a probe
+has put VAT in front of this log.
+
+**Probe 1 shows the venue ambiguity no longer needs the buyer to type a date.** Asked simply
+*"where can I attend a hands-on agentic AI workshop in Oxford this November 2026"* - no date, no
+brand name - the engine reached only the two Luma records and answered ***"The two listings give
+different venues: one names St Anne's College, 56 Woodstock Rd, and the other names Worcester
+College. The results don't show the event date, so check the Luma page."*** St Anne's is Cohort 1,
+July. Six days out, the plainest possible question returns our own two listings contradicting each
+other on venue. Same three stale third-party records, named in this log for the eighth time.
+
+**What the audit measured clean, so a later cycle does not re-derive it.** `npm ci` and
+`npm run build` green, every figure identical to the recorded baseline: **66 pages checked, 3,247
+internal links resolve**, schema valid, **7 Event and 20 FAQPage nodes**, all titles and descriptions
+unique, `check:dates` 0 findings across 55 indexable pages and **102 long-month dates - 91 with a
+year, 11 within the 400-character window, 0 with none**. Beyond the build's own checks, measured by
+hand this cycle:
+- **The `noindex` seal, verified from the sitemap rather than from a list of known pages.** Of 65
+  built pages, 55 are in `sitemap-0.xml` and the **other 10 all carry `noindex`** - `/apply/`,
+  `/ceo-roundtable/`, `/find-your-bootcamp/`, `/first-workflow-picker/`,
+  `/first-workflow-picker/thanks/`, `/home-original/`, `/home-photos/`, `/office-hours/`,
+  `/second-brain-interest/`, `/team/josh-lawman/`. **None of the ten appears in `llms.txt` or
+  `llms-full.txt`** by URL. Done the other way round from the 08:00 cycle's check, and it agrees.
+- **Both on-sale pages carry the date and the venue in the two strings a search result prints.**
+  Cohort 3: title *"The Oxford Agentic Bootcamp - Cohort 3 | November 2026"*, description opening
+  *"Thursday, 19 November 2026 at Worcester College, Oxford"*. Coding Cohort 1 the same shape for
+  26 November. The homepage and the Agentic programme page both lead their descriptions with the
+  next cohort date. So probe 1's *"the results don't show the event date"* is not a metadata fault
+  at our end; the page was not retrieved.
+- **`robots.txt` is maximally permissive to AI crawlers and correct.** `Allow: /` for `*` plus
+  sixteen named agents (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User,
+  Claude-SearchBot, anthropic-ai, PerplexityBot, Perplexity-User, Google-Extended, Applebot,
+  Applebot-Extended, Bingbot, DuckDuckBot, meta-externalagent, CCBot), `sitemap-index.xml`
+  declared, and both llms files pointed at in comments.
+- **No stale or relative date language.** Seven files use "next week", "this month" or "last month"
+  and **every one is generic prose**, not a claim about a cohort: the showcase agenda line
+  ("what they will use it for next week"), four guides, and the two lead-gen pages. Cohort 3's
+  frontmatter is correct and complete - 19 November 2026, Worcester College, `confirmed: true`,
+  `capacity` deliberately unset with the comment explaining why.
+- **Backlog 54 is effectively closed for the loop.** Its one remaining candidate,
+  `is-it-safe-to-put-company-documents-in-a-second-brain`, still carries the `Question one: ` prefix
+  problem **and** the 7 November commercial reason to leave it: Second Brain has no bookable cohort
+  (backlog 36), so a `FAQPage` node there buys retrieval for a page whose call to action is a notify
+  form. Not taken, and that is deliberate rather than an oversight.
+
+**Checks read by exit code.** Build green as above. `dist` was built once as the baseline and
+nothing the build reads was touched afterwards, so the blast radius against a sha256 snapshot of all
+203 files is **0 of 203 differ, none added or removed**. **No headless browser pass was run and none
+was needed** - the standing rule forbids shipping a page change that cannot be inspected at 375px and
+1280px, and no page changed. `astro check` was **not** run, for backlog 70's recorded reason:
+`@astrojs/check` is not a dependency of this project and the command stops on an interactive prompt.
+The outbound link checker warns on the usual 11 third-party URLs (LinkedIn x4, both Luma pages,
+ElevenLabs, arXiv x2, ICO, a team member's site); that is this sandbox's egress policy, not the
+site's, and it is non-blocking by design.
+
+**IndexNow submits nothing on this push, and that is checked rather than assumed.**
+`scripts/indexnow-ping.mjs` excludes `IMPROVEMENTS.md` and `seo-data/` from the whole-site trigger
+by name and maps neither to any URL; `outreach/` is not a `src/` path and maps to nothing either. So
+the honest number is **0** and the deploy workflow will send none. The script was not run, manually
+or dry.
+
+**The checkout quirk recurred, exactly as the 09:00 cycle recorded it.** The fresh clone arrived on
+a **detached HEAD at `a0cc32d`, the true tip**, while the local `main` branch sat at `85ef135`,
+three commits behind. `git checkout main` would again have moved the tree backwards. `git fetch`
+corrected `origin/main`, and `git checkout -B main origin/main` attached HEAD to the branch at the
+right commit without touching the working tree. Two cycles running, so this is the checkout's normal
+behaviour here rather than a one-off: **check `git symbolic-ref HEAD` before trusting `git status`.**
+
+**Search Console unavailable for the forty-fifth consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline (the only file modified there is this loop's own GEO log) and
+nothing was estimated. **No new guide, 0 of 3 for the week of 9-15 November**, and no guide Q&A block
+either, so today's budget of two is untouched. **No new off-page target in five probes**, one new
+reading added to `outreach/review-list.md`; nobody was contacted. **No event fact was read, verified
+or changed**: `luma.com` does not resolve through this session's egress policy. Production could not
+be read either - the sandbox egress proxy answers **403 to CONNECT for `oxfordagentic.com`**, so
+`build.txt` was unreadable - and deployment state was confirmed through the Actions API, where the
+Deploy runs for `a0cc32d`, the current `origin/main`, concluded **success** at 09:23 and again at
+10:55 UTC today, with none queued or in progress.
 
 ### 13 Nov 2026 (09:00 cycle) - the team-booking route under both booking forms was an email address a reader had to copy by hand. One template, two pages, 2 of 203 built files changed
 
