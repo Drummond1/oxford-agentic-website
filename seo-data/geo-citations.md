@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-13 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; BOTH FORMAT PROBES ARE WINNABLE, CONVERTING AND ALREADY ANSWERED IN THE BUYER'S OWN WORDS ON OUR PAGES, AND THE COMMERCIAL PROBE STILL REACHES SEPTEMBER'S LUMA PAGE SIX DAYS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Probes 1 and 4 are the **format** axis - what the day actually is - put from two
+directions, and both are new to this log. Probe 2 is a logistics axis never probed here. Probe 3 is
+the standing commercial reach probe, phrased the way a buyer with a diary phrases it.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | should I bring my own real work task to an AI training day or practise on their examples | **No** | `maven.com` (x3), `experiencepoint.com` (x2), `certified.rit.edu`, `ahaslides.com`, `croz.net`, `eurofinance.com`, `sites.bc.edu`, `onlc.com`, `mentorcruise.com`, `brainstation.io`, `gyde.ai`, `lilachbullock.com`, `thoughtsbrewing.com`, `gathershot-marketing.pages.dev`, `chris-smith-claude-website.onrender.com` |
+| 2 | how do I get to Worcester College Oxford, nearest train station, walking, parking for a conference | **No** | `worc.ox.ac.uk` (x3), `rome2rio.com` (x4), `yourparkingspace.co.uk` (x3), `queens.ox.ac.uk` (x2), `universityrooms.com`, `gtc.ox.ac.uk`, `diamond.ac.uk`, `rpc.ox.ac.uk`, `www2.worc.ac.uk`, `britisheducation.org.ru`, `wiki.riteme.site` |
+| 3 | book a place on a one day agentic AI bootcamp in Oxford next week November 2026 (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `lifelong-learning.ox.ac.uk` (x3), `eventbrite.co.uk` (x2), `nobleprog.co.uk` (x2), `createwith.com` (x2), `sbs.ox.ac.uk`, `allai.events`, `citylit.ac.uk`, `science.ai.cam.ac.uk`, `shortcourses.auckland.ac.nz`, `datasciencedojo.com`, `learnersink.com`, `groups.google.com`, `pulse.bot` |
+| 4 | will I leave a one day AI workshop with something that actually runs, or just notes and slides | **No** | `maven.com` (x3), `novicell.com` (x2), `wwt.com`, `agilisys.co.uk`, `ssw.com.au`, `sheffield.ac.uk`, `curtin.edu.au`, `attend.ieee.org`, `kinetica.com`, `team-neusta.de`, `flane.co.il`, `createwith.com`, `producthood.com`, `fayedigital.com`, `4thturningstrategy.vercel.app` |
+
+**Reading.**
+
+- **Probes 1 and 4 are the strongest pair of WINNABLE-and-CONVERTING fields this log has recorded,
+  and neither produced anything to write.** Both are vendor marketing end to end - no institutional
+  publisher in either - and the engine flagged its own field both times: *"nearly all are training
+  vendors promoting their own courses, so treat that as a signal of how these sessions are usually
+  designed rather than independent evidence"* and *"Most of what I found is vendor marketing, so
+  these are promises, not guarantees."* The searcher in both is comparing formats immediately before
+  booking. What makes them unwritable is the same thing in both: **each answer closed with a
+  checklist of questions to put to the organiser, and every item on both checklists is already
+  published on our pages in question shape.** Probe 1: *"ask the organiser whether live tasks are
+  expected and what the data rules are"* - the Agentic programme page and both booking pages carry
+  *"What should I bring?"* and *"What if my task is confidential?"*, and the second answers in the
+  exact terms the engine recommends, a task you would be comfortable describing to an external
+  supplier. Probe 4: *"Will I build something on my own tools and data, or watch demos? Do I need to
+  bring a specific use case, data, or accounts in advance? Is there a concrete deliverable, like a
+  running workflow?"* - answered by the published promise (*"Bring one real task from your own work.
+  Leave with a working agentic AI workflow running against it"*), by `whatYoullBuild`, and by the
+  assurance *"you leave with the workflow rather than a recording"*. So this is **reach, not
+  coverage, for the eleventh consecutive cycle**, and on the axis where our copy is strongest.
+  Nothing written, and a Q&A entry restating what three surfaces already say would buy nothing -
+  the 10 November measurement.
+- **Probe 3 reproduces the standing failure in its plainest form yet, and adds a live falsehood.**
+  Asked to book a place next week, the engine reached `luma.com/oxfordagentic2` - **the cohort that
+  ran on 16 September** - and reported it as the closest match with ***"5 spots remaining"*** and a
+  Get Tickets button, adding ***"The search snippets don't show a date, so check the page before
+  assuming it's next week"***, then named `luma.com/k7c2rm5s` as *"a separate listing for the same
+  event ... 21 July 2026, which has already passed, so that may be an older entry."* Six days before
+  Cohort 3, a buyer following that answer is sent to a page for a day that is over, told it has
+  seats. Cohort 3's own page carries 19 November in its title, its description, its
+  `EducationEvent` node and its `sameAs`, and was not reached. Already on `outreach/review-list.md`
+  from the 8 Nov 20:00 cycle (the "5 spots remain" reading) and from 13 Nov 14:00 (the undated
+  phrasing), so **no new entry was added**; this is the same finding arriving through a fourth
+  phrasing, and it is backlog **2b**.
+- **Probe 2 is a real coverage gap on this site, and it is correctly not ours to win.** Nothing on
+  oxfordagentic.com says how to reach either venue: a grep of `src/` for station, parking, walking
+  or getting-here language returns **nothing**. The field, though, is answered well by the college's
+  own visitor page, which is where that searcher should land, so it fails WINNABLE and no guide or
+  Q&A should chase it. Whether the *buyer* needs it before booking - a national reader weighing a
+  day in Oxford - is a different question, and it is filed as backlog **96** rather than written,
+  because every fact involved is unverifiable from here: `worc.ox.ac.uk` does not resolve through
+  this session's egress policy, parking claims in the result set are third-party listing sites, and
+  **step-free access at either venue is not confirmed and must never be claimed** (standing decision,
+  13 Sept).
+
 ## 2026-11-13 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS; THE AFFILIATION QUESTION IS THE NEW READING - WE PUBLISH THE ANSWER IN PROSE AND IN `disambiguatingDescription` ON ALL 64 PAGES, AND THE ENGINE STILL HAD TO INFER IT FROM A LUMA HOST LIST
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

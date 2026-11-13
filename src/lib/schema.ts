@@ -3,6 +3,8 @@ import {
   absoluteUrl,
   effectiveStatus,
   isoDuration,
+  londonIso,
+  londonOffset,
   paths,
   type EventEntry,
   type ProgrammeEntry,
@@ -206,15 +208,8 @@ function agendaInstant(eventStart: Date, time: string): string | null {
     day: '2-digit',
   }).format(base);
 
-  const offset = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
-    timeZoneName: 'longOffset',
-  })
-    .formatToParts(base)
-    .find((part) => part.type === 'timeZoneName')?.value;
-
-  const suffix = offset?.replace('GMT', '') || '+00:00';
-  const composed = `${day}T${hh.padStart(2, '0')}:${mm}:00${suffix || '+00:00'}`;
+  const suffix = londonOffset(base);
+  const composed = `${day}T${hh.padStart(2, '0')}:${mm}:00${suffix}`;
   return Number.isNaN(Date.parse(composed)) ? null : composed;
 }
 
@@ -347,8 +342,8 @@ export function eventListingItem(event: EventEntry, ogImage: string) {
     '@id': `${url}#event`,
     name: event.data.title,
     description: event.data.capsule,
-    startDate: event.data.startDate.toISOString(),
-    endDate: event.data.endDate.toISOString(),
+    startDate: londonIso(event.data.startDate),
+    endDate: londonIso(event.data.endDate),
     eventStatus: eventStatusOf(event),
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     image: [ogImage],
@@ -393,7 +388,7 @@ export function eventSchema(
     if (!startsAt) return [];
 
     const next = event.data.agenda[index + 1];
-    const endsAt = next ? agendaInstant(event.data.startDate, next.time) : event.data.endDate.toISOString();
+    const endsAt = next ? agendaInstant(event.data.startDate, next.time) : londonIso(event.data.endDate);
 
     return [
       {
@@ -414,8 +409,8 @@ export function eventSchema(
     '@id': `${url}#event`,
     name: event.data.title,
     description: event.data.capsule,
-    startDate: event.data.startDate.toISOString(),
-    endDate: event.data.endDate.toISOString(),
+    startDate: londonIso(event.data.startDate),
+    endDate: londonIso(event.data.endDate),
     eventStatus,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     // Real photography first-class: each frame carries its caption (the alt
@@ -506,8 +501,8 @@ export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) 
     courseMode: 'onsite',
     // Computed from the published start and end times, never asserted.
     courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
-    startDate: event.data.startDate.toISOString(),
-    endDate: event.data.endDate.toISOString(),
+    startDate: londonIso(event.data.startDate),
+    endDate: londonIso(event.data.endDate),
     /* The same Place the event page and the events index publish, from the same
        frontmatter, rather than a second reduced copy of it. This node used to
        drop the street and the postcode, which are published on the event page

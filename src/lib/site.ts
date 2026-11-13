@@ -317,6 +317,45 @@ export function isoDuration(start: Date, end: Date): string {
   return `PT${hours > 0 ? `${hours}H` : ''}${rest > 0 || hours === 0 ? `${rest}M` : ''}`;
 }
 
+/**
+ * London's UTC offset at a given instant, as schema.org wants it written:
+ * `+01:00` through British Summer Time, `+00:00` the rest of the year.
+ *
+ * `longOffset` spells it `GMT+01:00` in summer and a bare `GMT` at zero, which
+ * is why the replace has a fallback rather than a trailing `:00`.
+ */
+export function londonOffset(date: Date): string {
+  const name = new Intl.DateTimeFormat('en-GB', { timeZone: LONDON, timeZoneName: 'longOffset' })
+    .formatToParts(date)
+    .find((part) => part.type === 'timeZoneName')?.value;
+  return name?.replace('GMT', '') || '+00:00';
+}
+
+/**
+ * An instant as ISO 8601 in London local time with the offset spelled out -
+ * `2026-07-21T09:00:00+01:00`, not the `2026-07-21T08:00:00.000Z` that
+ * `toISOString()` returns for the same moment.
+ *
+ * Both name the same instant, so this is fidelity rather than validity: a
+ * consumer that converts gets the right answer either way, and one that prints
+ * the hour it is handed does not. `src/content.config.ts` refuses an event date
+ * without an explicit offset, in as many words, so that "a 09:00 British Summer
+ * Time event" cannot be silently shifted - and the schema layer then threw that
+ * offset away, publishing an 08:00 start on three cohorts whose page, agenda and
+ * own first `subEvent` all say 09:00. Parent and child nodes now agree, and the
+ * published string is the one the frontmatter was authored in.
+ *
+ * Mechanism: shift the instant by its own offset and read the UTC fields of the
+ * result, which are London's wall-clock fields. No localised string is parsed.
+ */
+export function londonIso(date: Date): string {
+  const offset = londonOffset(date);
+  const sign = offset.startsWith('-') ? -1 : 1;
+  const [hours, minutes] = offset.slice(1).split(':').map(Number);
+  const shifted = new Date(date.getTime() + sign * (hours * 60 + minutes) * 60_000);
+  return `${shifted.toISOString().slice(0, 19)}${offset}`;
+}
+
 /* ------------------------------------------------------------------ *
  * Luma — PRD §9
  * ------------------------------------------------------------------ */

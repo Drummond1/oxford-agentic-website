@@ -2155,10 +2155,118 @@ Status: `todo` · `blocked` (why) · `doing`
     or ChatGPT plan, and which), and **weigh them together**: both are tooling facts on a booking
     path, both have now been raised by a probe, and one reply could cover both.
 
+96. `todo` **(needs Drummond, or a cycle that can reach a first-party source; found 13 Nov 2026
+    in the 20:00 cycle)** - **nothing on this site says how to get to either venue, and the
+    question is not ours to win in search but may well be ours to answer before a booking.**
+    A grep of `src/` for station, parking, "by train", "getting here" or walking language returns
+    **nothing**, on a site selling a day in a city most buyers travel to. The 20:00 probe
+    confirmed the search side is settled: the field is `worc.ox.ac.uk`'s own visitor page plus
+    `rome2rio` and parking marketplaces, which is where that searcher should land, so it fails
+    WINNABLE and **no guide or Q&A should chase the query**. The open question is the *buyer's*,
+    not the searcher's: a national reader deciding on a day in Oxford, six days out, has nowhere
+    on this site that says the venue is walkable from the station.
+    **Why the loop did not write it.** Every fact involved is unverifiable from this sandbox.
+    `worc.ox.ac.uk` does not resolve through the egress policy, so the college's own wording
+    could not be read; the parking statements in the result set come from third-party listing
+    sites; and **step-free access at either venue is not confirmed and must never be claimed**
+    (standing decision, 13 Sept 2026). Writing travel copy out of an answer engine's summary of
+    other people's pages is exactly the failure mode this log exists to prevent.
+    **The cheapest resolution is probably not site copy at all.** If the joining instructions
+    already carry it, the honest answer may be that a booking-page line is unnecessary - which is
+    his call, not the loop's. If he does want it, one sentence covering the station walk and
+    saying there is no parking, in his own words, would do it on both on-sale pages.
+
 
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 13 Nov 2026 (20:00 cycle) - every event on the site published its start hour in UTC, so three cohorts stated 08:00 in schema while the page, the agenda and the node's own first child all said 09:00. One helper, 9 of 203 built files, no visible byte changed
+
+**What shipped.** `src/lib/site.ts` gains `londonIso()` and `londonOffset()`, and
+`src/lib/schema.ts` uses them for the entity-level `startDate` and `endDate` on all three places
+it publishes them: the `EducationEvent` on each event page, the same node repeated in `/events/`'s
+`ItemList`, and the `CourseInstance` on each programme page. The published string is now
+`2026-07-21T09:00:00+01:00` where it was `2026-07-21T08:00:00.000Z`.
+
+**The fault, and why it is fidelity rather than validity.** Both strings name the same instant, and
+`check-schema.mjs` accepts either - its rule is "Timezone-bearing dates, or the event shows at the
+wrong hour", and `Z` is timezone-bearing. The problem is what the hour *reads as*. Three published
+cohorts ran in British Summer Time, so their `EducationEvent` node said the day started at
+**08:00** while the page prose, the visible agenda and the node's **own first `subEvent`** all said
+09:00 - the children kept the offset because `agendaInstant` composes them from the authored time,
+and only the parent went through `toISOString()`. A consumer that converts gets the right answer
+either way. One that prints the hour it is handed does not, and this log is a record of engines
+printing our event facts back at buyers.
+
+**The repo had already written down why this matters, one layer up.** `src/content.config.ts`
+refuses an event date without an explicit offset and says so in as many words: *"Unquoted, YAML
+parses it as UTC and silently shifts British Summer Time events by an hour."* The content layer
+insists on the offset; the schema layer then discarded it. The fix makes the output reproduce the
+authored frontmatter string exactly, which is the property that was intended all along.
+
+**Why now, with both on-sale cohorts in GMT.** 19 and 26 November are `+00:00`, so for the two
+pages that take money today the change is a pure restatement - `.000Z` becomes `+00:00`, same hour,
+same instant - and the three pages where the hour actually moves are past cohorts nobody is
+booking. The next cohort scheduled between late March and late October would have published the
+wrong-looking hour on a page selling it. This is the same sequencing argument backlog 91 was taken
+on: fix the mechanism in a cycle where it is provably inert, not in the cycle that first depends on
+it.
+
+**Proved across the boundaries the five real events do not reach.** Nine instants through a
+replication of the helper, including both sides of the 2027 spring forward and **both** of the
+repeated 01:30 on 31 October 2027: all nine round-trip **exactly** to the authored string, offset
+and all, and every one names the same instant. The mechanism avoids parsing a localised format -
+it shifts the instant by its own offset and reads the UTC fields of the result, which are London's
+wall-clock fields.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+recorded baseline: **66 pages checked, 3,247 internal links resolve**, schema valid, **7 Event and
+20 FAQPage nodes**, all titles and descriptions unique, `check:dates` 0 findings across 55
+indexable pages and 102 long-month dates with 0 carrying no year. Blast radius against a sha256
+snapshot of `dist`: **9 of 203 files differ, none added or removed** - the five event pages,
+`/events/`, both programme pages carrying a `CourseInstance`, and `/`. **Every differing byte on
+all nine is inside a date string**, measured character by character against a build of `HEAD`:
+Cohort 3's page has exactly three changed strings and nothing else, Cohort 2's three, the homepage
+eight. No sitemap, no `llms` file and no `lastmod` moved, because no content file was touched and
+so no `updatedDate` bumped. `astro check` was not run, for backlog 70's recorded reason. The
+outbound checker warns on the usual 11 third-party URLs, which is this sandbox's egress policy
+rather than the site's.
+
+**Headless Chromium over all nine changed pages at 375 and 1280px: 156 assertions, 0 failed.** No
+JS exceptions, no failed same-origin requests, 0px horizontal overflow, and on each page every
+`Event` and `CourseInstance` node in the graph was walked and asserted to carry an offset and no
+`Z` form - 0 of either remaining anywhere. On the five event pages the entity node's `startDate`
+was matched against the expected string and the rendered text re-checked for 09:00 and 17:00, so
+the markup and the page agree by assertion rather than by eye. Screenshots at both widths were
+looked at on Cohort 3.
+
+**IndexNow.** `src/lib/` is in the whole-site bucket, so this push submits all 55 sitemap URLs
+where the honest number is 9. That is backlog **85**'s fourth instance and the first where the
+over-report comes from a genuinely shared library rather than a pattern that cannot match: a change
+in `src/lib/schema.ts` really can touch every page, and this one touched nine. Not fixed, for
+backlog 41's reason, and one more argument for the build-output diff backlog 83 describes.
+
+**GEO: four probes, zero citations, the eleventh consecutive cycle of reach rather than coverage.**
+Full table and reasoning in `seo-data/geo-citations.md`. The pair worth reading is probes 1 and 4,
+the format axis from two directions - both fields are vendor marketing with no institutional
+publisher anywhere in them, the engine flagged its own sources both times, and both converge on a
+checklist of questions to ask the organiser **every item of which this site already publishes in
+question shape**. Nothing to write on the axis where our copy is strongest. The commercial probe
+reached September's Luma page six days before Cohort 3 and reported it as having *"5 spots
+remaining"*; that reading is already on `outreach/review-list.md` from 8 Nov, so no entry was
+duplicated. New **backlog 96** records the one genuine site gap found, travel and arrival, together
+with the reason the loop must not write it from here.
+
+**Search Console unavailable for the forty-sixth consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November**, and no guide Q&A block. **No new off-page target in four probes**; nobody was
+contacted. **No event fact was read, verified or changed**: `luma.com` does not resolve through this
+session's egress policy, and neither does `worc.ox.ac.uk`. Production could not be read either -
+the sandbox egress proxy answers **403 to CONNECT for `oxfordagentic.com`**, so `build.txt` was
+unreadable - and deployment state was confirmed through the Actions API, where the Deploy run for
+`dbce45c`, the current `origin/main`, concluded **success** at 15:00 UTC today with none queued or
+in progress.
 
 ### 13 Nov 2026 (14:00 cycle) - no page changed. The one coverage gap in five probes is an event fact nobody here can verify, and the cycle's real finding is that an engine asked whether we are the University of Oxford had to work it out from a Luma guest list
 
