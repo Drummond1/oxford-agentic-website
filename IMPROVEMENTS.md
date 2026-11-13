@@ -2112,6 +2112,112 @@ Status: `todo` · `blocked` (why) · `doing`
 
 _(dated, newest first — filled by the loop)_
 
+### 13 Nov 2026 (08:00 cycle) - no page changed. The one coverage gap found is answered on the page already, in prose, and the file carries a written decision against the edit that would have "fixed" it
+
+**What this cycle did.** Four GEO probes, a full metadata and structured-data audit of all 66 built
+pages, an inbound internal-link census, and a seal check on every unlisted and tombstone page. One
+coverage candidate was found, probed from two directions, and **declined**. No page of the site
+changed; this entry and the GEO log are the output.
+
+**The candidate, and the decline.** Of the four surfaces on the Agentic line, the only one that does
+not carry the team-and-group question in question shape is
+`src/content/events/oxford-agentic-bootcamp-cohort-3.md`, the booking page, **six days out**. The
+Agentic programme page has *"Can I bring my team, or book for several people?"*, the Coding programme
+page has it, and the Coding **booking** page has *"Can I bring my team?"* - which is the exact shape
+the 12 Nov 20:00 and 13 Nov 02:00 cycles shipped, and a team booking is worth two or three seats, so
+it looked like the obvious change. It is not, for two independent reasons.
+- **The page already answers it.** Directly under the booking form, as an `assurance`: *"Bringing a
+  colleague or two? Email hello@oxfordagentic.com and we will arrange it."*
+- **There is a written decision against the edit.** The same file's FAQ block carries the comment
+  from 17 August that cut it from thirteen entries to seven. Bringing a colleague was one of the six
+  cut, *because* it moved into `assurances` - *"directly under the form where they are actually
+  needed"* - and the comment ends ***"Do not reinstate one without checking it answers something
+  the page does not already answer."*** What the programme page's answer adds over the assurance is
+  advice (teams get more out of it; bring the same task), not an answer to an unanswered question.
+
+So the honest reading is that the asymmetry is in **form, not in coverage**, and the 10 Nov 20:00
+measurement applies: a `FAQPage` node on a question already answered buys nothing. Declined, recorded
+in `seo-data/geo-citations.md` with its evidence so it is not re-derived, and the residue is a copy
+call on the assurance line rather than a fourteenth FAQ entry. Nothing was added to the backlog,
+because the decision already exists in the file.
+
+**The GEO measurement, and it is the thing worth Drummond's attention.** Four probes, **zero
+citations**, the **tenth consecutive cycle of reach rather than coverage**. Probe 1 put the Agentic
+cohort's own date to search and the engine answered ***"I couldn't confirm a 19 November 2026 Oxford
+agentic AI bootcamp from these results, but the closest match is The Oxford Agentic Bootcamp on
+Luma"***, offering `luma.com/oxfordagentic2` - **Cohort 2, which ran on 16 September** - then named
+`allai.events` again (***"shows a 21 Jul 2026 date ... which doesn't match your date"***) and closed
+***"If you have a link to the 19 November listing, I can check it."*** Our page carries that date in
+its title, its description, its `EducationEvent` node and its `sameAs` to `luma.com/oxfordagentic3`,
+and was not reached. The same probe now reproduces at **thirteen days out on the Coding cohort
+(02:00 today) and six days out on this one**, on the same three stale third-party records this log
+has named seven times. **It is backlog 2b and no on-page change can reach it.** One new reading for
+that item: `jbs.cam.ac.uk` and `imperial.ac.uk` both rank on *"book a place"* phrasing for their own
+agentic AI programmes, so the booking-intent query that reaches nothing of ours reaches two rival
+universities' booking pages.
+
+**What the audit measured clean, so a later cycle does not re-derive it.** `npm ci` and
+`npm run build` green: **66 pages checked, 3,247 internal links resolve**, schema valid, **7 Event
+and 20 FAQPage nodes**, all titles and descriptions unique, `check:dates` 0 findings across 55
+indexable pages and **102 long-month dates - 91 with a year, 11 within the 400-character window, 0
+with none**. Beyond the build's own checks, measured by hand this cycle:
+- **Titles and descriptions across all 66 pages.** No indexable page is missing either. The only
+  pages with no `meta description` are `/home-original/` and `/team/josh-lawman/`, both tombstone
+  redirects (`noindex`, meta refresh, canonical to the live page), which is correct. Longest
+  indexable title is 59 characters; every description on an indexable page is 70 to 160.
+- **Canonical on all 66.** None missing.
+- **`Offer.availability` is correctly differentiated by `isUpcoming`.** The two on-sale event pages
+  publish `InStock`; Agentic Cohorts 1 and 2 and Second Brain Cohort 1 publish an `Offer` with **no
+  `availability`**, so a past day is not advertised as bookable. All five carry `EventScheduled`,
+  which is right - `eventStatus` is not a past-event mechanism.
+- **All three past event pages route the buyer forward in prose**, not only in markup: *"This event
+  has run"*, *"Took place on ..."* in the description, and a next-cohort link. Second Brain falls
+  back to *"Dates for the next cohort are being confirmed"* plus the interest form, which is backlog
+  36 and his.
+- **Every unlisted and tombstone page is sealed.** `/find-your-bootcamp/`, `/office-hours/`,
+  `/home-photos/`, `/first-workflow-picker/`, `/first-workflow-picker/thanks/`, `/home-original/`
+  and `/team/josh-lawman/`: all `noindex`, none in `sitemap-0.xml`, none in `llms.txt` or
+  `llms-full.txt`, and **zero links to any of them from any indexable page**.
+- **Three sitemap URLs carry no `lastmod`** - `/about/`, `/privacy/`, `/testimonials/` - and that is
+  correct rather than a defect. They are hand-built `.astro` pages with no `updatedDate` to read,
+  and `lastmod` is optional; filling it with a build timestamp is the thing search engines
+  explicitly discount. **Do not "fix" this.**
+- **The nav's next-event CTA is derived, not typed.** `effectiveStatus()` reads `endDate < now`, so
+  the header's *"Next Bootcamp - 19 Nov 2026"* flips to the Coding cohort on the 03:17 UTC cron the
+  morning after Cohort 3 ends. Checked because a stale CTA on 64 pages would be the worst defect
+  available six days out.
+
+**Inbound internal links, measured and deliberately not acted on.** Excluding the footer, counting
+occurrences across all 66 built pages: `/events/oxford-agentic-bootcamp-cohort-3/` has **146 links
+from 64 pages**, `/events/oxford-agentic-coding-bootcamp-cohort-1/` has **10 from 10 pages** (6 of
+them indexable). The gap is almost entirely the header CTA, which names whichever cohort is next and
+so will swing the other way on 20 November. **This is not a defect and should not be closed by
+adding cohort links to guide prose**: backlog 89 exists because typed cohort references in guides go
+stale, and the 12 Nov 08:00 cycle spent itself retargeting one of them at `/events/`. The durable
+targets are already well linked - `/bootcamps/agentic-coding-bootcamp/` has 144 links from 64 pages.
+
+**Checks read by exit code.** Build green as above. `dist` was built once as the baseline and nothing
+was edited after it, so no blast-radius comparison applies: **0 of 203 built files differ**, because
+no file the build reads was touched. **No headless browser pass was run and none was needed** - the
+standing rule forbids shipping a page change that cannot be inspected at 375px and 1280px, and no
+page changed. The outbound link checker warns on 11 third-party URLs (LinkedIn, both Luma pages,
+ElevenLabs, arXiv, ICO, a team member's site); that is this sandbox's egress policy, not the site's,
+and it is non-blocking by design.
+
+**IndexNow submits nothing on this push, and that is checked rather than assumed.**
+`scripts/indexnow-ping.mjs` excludes `IMPROVEMENTS.md` and `seo-data/` from the whole-site trigger
+by name (line 157) and maps neither to any URL, so the honest number is **0** and the deploy
+workflow will send none. The script was not run, manually or dry.
+
+**Search Console unavailable for the forty-third consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November.** No new off-page target in four probes, so `outreach/review-list.md` is untouched;
+nobody was contacted. **No event fact was read, verified or changed**: `luma.com` does not resolve
+through this session's egress policy. Production could not be read either - `oxfordagentic.com` is
+refused by this sandbox's egress proxy, so `build.txt` was unreadable - and deployment state was
+confirmed through the Actions API instead, where the Deploy run for `adf40c8`, the current
+`origin/main`, concluded **success** at 02:10 UTC today and none was in progress.
+
 ### 13 Nov 2026 (02:00 cycle) - the Coding line answered group size on no surface, while its own booking page prints "A small cohort" and the footer says it on every page. One FAQ entry, one file, 4 of 203 built files changed. Backlog 94 done.
 
 **What shipped.** A thirteenth FAQ entry on `src/content/programmes/agentic-coding-bootcamp.md`,

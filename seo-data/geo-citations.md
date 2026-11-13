@@ -5,6 +5,89 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-13 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE COHORT 3 REACH PROBE NOW REPRODUCES AT SIX DAYS OUT, AND THE ENGINE OFFERS THE SEPTEMBER COHORT AS THE CLOSEST MATCH
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Probe 1 is the standing commercial reach probe, pointed at the **Agentic** cohort at
+**six days out** (the 02:00 cycle pointed it at the Coding cohort at thirteen). Probes 2 and 4 take
+the team-and-group axis from two directions, which is where this cycle's one coverage candidate came
+from. Probe 3 is the non-technical buyer, an axis last read as a field-level misconception on 13 Nov.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | agentic AI bootcamp Oxford 19 November 2026 book a place (commercial reach probe) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `lifelong-learning.ox.ac.uk` (x5), `sbs.ox.ac.uk`, `jbs.cam.ac.uk` (x2), `nobleprog.co.uk` (x2), `eventbrite.co.uk`, `imperial.ac.uk`, `oreilly.com`, `allai.events`, `pulse.bot`, `learnersink.com` |
+| 2 | can I send two or three people from my team to a one day AI bootcamp group booking UK | **No** | `createwith.com` (x3), `theknowledgeacademy.com` (x2), `pointacademy-co-uk.pages.dev` (x2), `qa.com` (x2), `eventbrite.co.uk` (x2), `ailab.world`, `happy.co.uk`, `marketingcollege.com`, `events.nibusinessinfo.co.uk`, `shortcourses.lsbu.ac.uk`, `eventsinlondon.app` |
+| 3 | agentic AI training for a small business with no technical staff UK hands-on day | **No** | `info.infinitygroup.co.uk`, `eventbrite.co.uk` (x2), `founderz.com` (x2), `techuk.org`, `luma.com/ywcnxzus`, `anicca.co.uk`, `enterprisenation.com`, `mgmt.ucl.ac.uk`, `agenticai-associates.pages.dev`, `createwith.com`, `aiawareness.ai`, `frontpage-3p5.pages.dev`, `stan.store` |
+| 4 | AI workshop book seats for my whole team or send one person first which is better | **No** | `maven.com` (x8, across two accounts), `trainmyteamonai.pages.dev`, `gyde.ai`, `atlassian.com`, `ivee.jobs`, `digitalhalloffame.com`, `robcressy.com`, `ai-fluent-company.pages.dev`, `lilachbullock.com` |
+
+**Reading.**
+
+- **Probe 1 is the finding, and it is the same finding at six days out.** Asked in the buyer's own
+  words for the 19 November day by date, the engine answered ***"I couldn't confirm a 19 November
+  2026 Oxford agentic AI bootcamp from these results, but the closest match is The Oxford Agentic
+  Bootcamp on Luma"*** and gave `luma.com/oxfordagentic2` - **Cohort 2, which ran on 16 September**.
+  It then named the stale third-party record again: ***"A different listing for the same event title
+  shows a 21 Jul 2026 date in Oxford, which doesn't match your date"***, and closed ***"If you have a
+  link to the 19 November listing, I can check it."*** Our own event page carries the date in its
+  title, its description, its `EducationEvent` node and its `sameAs` to `luma.com/oxfordagentic3`,
+  and it was not reached. This log has now named the same three stale third-party records seven
+  times, at thirteen days out on the Coding cohort and at six on this one. **It is backlog 2b and
+  nothing on the page can fix it.**
+- **Probes 2 and 4 are the team-and-group axis, and together they produced this cycle's one coverage
+  candidate, which was declined.** The field on probe 2 is entirely providers' own booking policies -
+  `theknowledgeacademy.com`, `qa.com`, `happy.co.uk`, Point Academy, Cambridge Marketing College -
+  with no institutional publisher, so it is winnable, and the searcher is buying two or three seats,
+  so it converts. The engine's answer was ***"Yes, in most cases"***, built out of one provider's
+  10% discount for groups of two to five, another's ***"if you have three or more learners, a private
+  group training could be cheaper"***, and a closing instruction to check each provider's cancellation
+  terms. Probe 4 is the same decision one step earlier and the field there is mostly `maven.com`
+  course pages; the engine's read was that the whole team tends to win on adoption, with a sponsor
+  plus a champion as the cheaper start, and it advised using ***"your team's own tasks rather than
+  generic demos"***. **Our site already answers probe 4 twice over** - `who-should-take-the-seat`
+  ("If you can send two people ... bring the same task") and
+  `in-house-ai-day-or-send-people-to-a-cohort`, whose second question is exactly "should we send two
+  people to a cohort first" - so probe 4 is reach, not coverage. Note one thing in probe 2's answer
+  that we must not match: the engine quoted a provider's **VAT** invoice line. VAT treatment is
+  unconfirmed here and stays unstated.
+- **The candidate, and why it was declined.** Of the four surfaces on the Agentic line, the one page
+  that does **not** carry the team-and-group question in question shape is
+  `/events/oxford-agentic-bootcamp-cohort-3/`, the booking page, six days out. The Agentic programme
+  page has *"Can I bring my team, or book for several people?"*, the Coding programme page has it, and
+  the Coding **booking** page has *"Can I bring my team?"* - the entry the 12 Nov 20:00 cycle's
+  reasoning would point at. **But the page already answers it**, as an `assurance` printed directly
+  under the booking form: *"Bringing a colleague or two? Email hello@oxfordagentic.com and we will
+  arrange it."* And the file carries a standing decision against exactly this edit, written on
+  17 August when the FAQ block was cut from thirteen entries to seven: bringing a colleague was one of
+  the six cut *because* it moved to `assurances`, and the comment ends ***"Do not reinstate one
+  without checking it answers something the page does not already answer."*** What the programme
+  page's answer adds over the assurance is advice (teams get more out of it; bring the same task), not
+  an answer to an unanswered question. **Declined on the repo's own recorded decision. Do not
+  re-pitch it as a coverage gap.** If the advice is wanted on that page, it is a copy call on the
+  assurance line, not a fourteenth FAQ entry.
+- **Probe 3 does not reproduce the 13 Nov misconception, and needs nothing.** Asked as a small
+  business with no technical staff, the engine returned SME-focused hands-on days and did not tell the
+  buyer to go and learn Python first, which is what the 02:00 probe set found one axis over. Nothing
+  of ours was cited. Two competitors published prices into the answer (one day at £495 plus VAT, a
+  builder day at £297) and the engine's closest fit was a free day run inside a bank's growth
+  programme. No change: our published position already matches the question, and prices stay on Luma.
+- **No new off-page target in four probes.** Every credible listing host in the set is already on
+  `outreach/review-list.md` - Eventbrite (including the competing *"Agentic AI Bootcamp Day: Build an
+  AI Agent with Claude, London Workshop"* listing, which surfaced again on both probe 1 and probe 3),
+  `createwith.com`, `allai.events`. The new hosts are competitors or vendors rather than places to be
+  listed: `jbs.cam.ac.uk`, `imperial.ac.uk`, `oreilly.com`, `maven.com`, `qa.com`,
+  `theknowledgeacademy.com`, `happy.co.uk`, `founderz.com`, `info.infinitygroup.co.uk`, `anicca.co.uk`,
+  `aiawareness.ai`, `gyde.ai`, `ivee.jobs`, `marketingcollege.com`, `shortcourses.lsbu.ac.uk`,
+  `events.nibusinessinfo.co.uk`, `eventsinlondon.app`, `mgmt.ucl.ac.uk`, `enterprisenation.com`,
+  `trainmyteamonai.pages.dev`, `agenticai-associates.pages.dev`, `ai-fluent-company.pages.dev`,
+  `frontpage-3p5.pages.dev`, `stan.store`, `robcressy.com`, `digitalhalloffame.com`,
+  `lilachbullock.com`, `luma.com/ywcnxzus`. **The review list is unchanged and nobody was contacted.**
+  Two of the new hosts are worth one line of context rather than a target: `jbs.cam.ac.uk` and
+  `imperial.ac.uk` both rank on *"book a place"* phrasing for their own agentic AI programmes, so the
+  booking-intent phrasing that reaches nothing of ours reaches two rival universities' booking pages.
+- **Tenth consecutive cycle of reach, not coverage.** Four probes, zero citations, and the one
+  coverage asymmetry in the set turned out to be already answered on the page in prose.
+
 ## 2026-11-13 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE CODING LINE'S GROUP-SIZE QUESTION IS ASKED, UNANSWERED, AND THE ENGINE SENDS THE BUYER TO THE ORGANISERS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
