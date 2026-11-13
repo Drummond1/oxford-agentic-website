@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
+import EmailAddress from '../../components/EmailAddress.astro';
 import Faq from '../../components/Faq.astro';
 import LumaEmbed from '../../components/LumaEmbed.astro';
 import NewsletterForm from '../../components/NewsletterForm.astro';
@@ -225,6 +226,24 @@ const registrationOpen = Boolean(data.lumaEventId);
 const bookHref = data.lumaUrl ? lumaBookingUrl(data.lumaUrl) : '#register';
 const bookIsExternal = bookHref !== '#register';
 
+/*
+ * The assurances sit directly under the booking form, and on both on-sale
+ * events the third one is the only published route for a team booking:
+ * "Bringing a colleague or two? Email hello@oxfordagentic.com and we will
+ * arrange it." It was rendered as escaped plain text, so the address was the
+ * one place on that page a reader had to select and copy by hand — on a phone,
+ * at the moment they are deciding, for the ask worth two or three seats. The
+ * identical sentence in the footer's signup fallback has been a `mailto:` link
+ * all along (`NewsletterForm.astro`), so this is the same treatment, not a new
+ * one, and `EmailAddress.astro`'s own note says to use it "anywhere the address
+ * is shown to a reader" with the href at the call site.
+ *
+ * No copy changes. Each line is split on the address and only the address
+ * becomes the link, so an assurance that never names it renders exactly as
+ * before — which is every line on every other event, past and upcoming.
+ */
+const emailHref = `mailto:${config.brand.email}`;
+
 // "Book" beats "Register": it is what the visitor is actually doing, it implies a
 // held place rather than a form, and it does not share a word with the free
 // newsletter sign-up further down the page.
@@ -417,7 +436,7 @@ const metaDescription = (() => {
             {data.assurances.length > 0 && (
               <ul class="assurances">
                 {data.assurances.map((line) => (
-                  <li>{line}</li>
+                  <li>{line.split(config.brand.email).map((part, i) => (i === 0 ? part : [<a href={emailHref}><EmailAddress /></a>, part]))}</li>
                 ))}
               </ul>
             )}

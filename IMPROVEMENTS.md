@@ -1846,6 +1846,16 @@ Status: `todo` · `blocked` (why) · `doing`
     class of event edit that is now the commonest - the past-tense sweeps this log keeps running.
     Still not worth a special case by `status`, for backlog 41's reason; it is one more argument
     for taking the build-output diff once.
+    **A third instance, and a different branch again, measured 13 Nov 2026 (09:00 cycle).** The
+    page-source regex is `^src/pages/((?:[a-z0-9-]+/)*)([a-z0-9-]+)\.astro$`, which **no dynamic
+    route can ever match**, because of the brackets in `[slug].astro` and `[...slug].astro`. So an
+    edit to the event, guide, team or programme *template* falls straight through to the whole-site
+    branch: this cycle changed `src/pages/events/[slug].astro`, moved **2** built files, and the dry
+    run submitted **55**. That is not the coarse-mapping-by-design case the other two are - it is a
+    pattern that silently cannot match four of the site's busiest source files. Still over-submission,
+    which backlog 74 weighs as the milder failure, and still not worth a hand-written special case;
+    it is the strongest of the three arguments for taking the build-output diff once, for every
+    source path, rather than one path at a time.
 
 86. `todo` (loop-actionable but **it is not one change and probably not the loop's**; found
     10 Nov 2026 in the 09:00 cycle, on the first sweep this loop has run at a 32px browser
@@ -2111,6 +2121,96 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 13 Nov 2026 (09:00 cycle) - the team-booking route under both booking forms was an email address a reader had to copy by hand. One template, two pages, 2 of 203 built files changed
+
+**What shipped.** `src/pages/events/[slug].astro` now renders the `assurances` list with the
+brand address as a `mailto:` link. The third assurance on both on-sale events reads *"Bringing a
+colleague or two? Email hello@oxfordagentic.com and we will arrange it."* - it sits directly under
+the Luma form, it is the only published route for a team booking on the page that takes the money,
+and it was escaped plain text, so on a phone the reader had to select and copy 23 characters at the
+moment they were deciding. Six days out from Cohort 3 and thirteen from Coding Cohort 1.
+
+**Why this is the site's own treatment, not a new one.** The identical sentence in the footer's
+signup fallback has been a link since it was written (`NewsletterForm.astro`:
+`Email <a href={mailto:…}><EmailAddress /></a> and we will add you to the list`), and
+`EmailAddress.astro`'s own note says to use it *"anywhere the address is shown to a reader"* with
+the href at the call site. The assurances were the call site that never got it. No new colour, no
+new component, no new rule: the link inherits `--muted-on-dark` from the list and takes the
+browser underline, which is exactly how the footer renders it. Measured at 11.83:1 against the
+panel.
+
+**No copy changed, and that is proved rather than asserted.** Each line is split on
+`config.brand.email` and only the address becomes the anchor, so a line that never names it
+renders as before - which is every other assurance on every other event. The character-level diff
+of both built pages is **two insertions each and nothing else**: `<a href="mailto:` and
+`" …>hello@<wbr>oxfordagentic.com</a>` wrapped around the text that was already there. 74 bytes per
+page. The `FAQPage` and `EducationEvent` JSON-LD are byte-identical, as is `llms-full.txt`.
+
+**The one layout effect, measured.** DOM geometry of all 378 elements compared between a build of
+`HEAD` and this one, at three widths: **768px and 1280px are identical element for element, 0 of
+378**. At 375px every differing element has the same `x`, `width` and `height` and only moves in
+`y`: the assurance `li` goes 68px to 45px because `<wbr>` lets the address break after the `@`
+rather than forcing the unbreakable 23-character word onto a line of its own, so three lines become
+two and everything below it rises 22px. Nothing above the list moves. That is the break
+`EmailAddress.astro` exists to produce and the one the footer has always taken; both halves read as
+themselves (`hello@` / `oxfordagentic.com`). Screenshots at 375, 768 and 1280px were read before
+and after.
+
+**Scope, deliberately.** Only `assurances`. FAQ answers still cannot carry a link anywhere on the
+site - that is backlog 30, it changes how all 100-odd answers render and what goes into
+`acceptedAnswer.text`, and it is reserved for Drummond. This change touches neither the FAQ
+component nor any content file, so no `updatedDate` moved.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline taken before the edit: 66 pages checked, **3,247 internal links resolve**, schema valid,
+**7 Event and 20 FAQPage nodes**, all titles and descriptions unique, `check:dates` 0 findings
+across 55 indexable pages and **102 long-month dates - 91 with a year, 11 within the 400-character
+window, 0 with none**. `check:flags` green on both the all-on and all-off builds, and `dist`
+verified identical to the verified build after it restored the config. Blast radius against a
+sha256 snapshot of `dist` taken before the edit: **2 of 203 files differ, none added or removed** -
+the two on-sale event pages. The three past event pages are byte-identical, correct for a template
+branch that only renders when registration is open. Headless Chromium over both pages at 375, 768
+and 1280px: **69 assertions, 0 fail** - href is `mailto:hello@oxfordagentic.com`, link text is the
+address verbatim, the `li`'s full text string is unchanged, the link is underlined, its colour
+equals the surrounding text's, 0 horizontal overflow, the link sits inside the viewport, it is
+focusable and takes the 2px gold `:focus-visible` ring. 0 uncaught JS exceptions. `astro check` was
+**not** run, for the reason backlog 70 records: `@astrojs/check` is not a dependency of this
+project and the command stops on an interactive prompt.
+
+**The sweep that found it.** All 55 indexable pages at 375, 768 and 1280px - 165 page-width
+combinations - checked for horizontal overflow, missing `alt`, form controls with no label, links
+and buttons with no accessible name, duplicate `id`s, skipped heading levels, `h1` count, `lang`
+and JS errors: **clean on every one**. A WCAG 2.2 SC 2.5.8 pass applying both the inline-text and
+the 24px-spacing exceptions returned **2** candidates site-wide, one element, too small to be a
+cycle. A keyboard pass over 10 pages found a visible focus ring on every tab stop but the Luma
+iframe, which is third-party. The site's automated surface is in good order; this was found by
+reading a screenshot of the booking page.
+
+**IndexNow over-submits by 53 on this push**, and it is backlog **85**'s class rather than a new
+fault - measured, not inferred. `scripts/indexnow-ping.mjs` matches a page source with
+`^src/pages/(…)([a-z0-9-]+)\.astro$`, which a **dynamic** route cannot match because of the
+brackets in `[slug].astro`, so it falls through to the whole-site branch: the dry run returns
+**55** where the honest number is **2**. `IMPROVEMENTS.md` is exempt by name and contributes
+nothing (dry run on it alone: *"nothing to submit"*). Not fixed here, for backlog 41's reason, and
+recorded against 85 as one more argument for taking the build-output diff once.
+
+**Search Console unavailable for the forty-fourth consecutive cycle**; `seo-data/` holds no export
+newer than the 24 August baseline and nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November.** No GEO probe was run this cycle and `outreach/review-list.md` is untouched; nobody
+was contacted. **No event fact was read, verified or changed**: `luma.com` does not resolve through
+this session's egress policy. Production could not be read either - the sandbox egress proxy
+answers **403 to CONNECT for `oxfordagentic.com`** - so deployment state was confirmed through the
+Actions API, where the Deploy run for `68c352f`, the current `origin/main`, concluded **success**
+at 08:10 UTC today and none was queued or in progress. PR #1 and PR #3 and the
+`feat/ceo-roundtable-demand-page` branch are the known-stale leftovers already recorded in backlog
+20, read as such rather than as work in flight.
+
+**A checkout note, because it cost a cycle on 9 November and nearly cost this one.** The fresh
+clone arrived on a **detached HEAD at `68c352f`, the true tip**, while the local `main` branch and
+`origin/main` both pointed at `85ef135`, three commits behind. `git checkout main` moved the tree
+backwards and `git status` then reported "up to date with 'origin/main'". `git fetch` corrected
+both refs. Step 0 of this file's own instructions is right and was followed.
 
 ### 13 Nov 2026 (08:00 cycle) - no page changed. The one coverage gap found is answered on the page already, in prose, and the file carries a written decision against the edit that would have "fixed" it
 
