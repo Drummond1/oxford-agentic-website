@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-14 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE ONE GENUINE COVERAGE GAP IS THAT THE CODING LINE, WHOSE PUBLISHED TOOLS ARE PAID PRODUCTS, ANSWERS THE SUBSCRIPTION QUESTION ON NO SURFACE WHILE THE AGENTIC LINE ANSWERS IT ON THREE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Probe 1 is the Oxford-anchored commercial probe in its plainest form, which this log
+recorded citing us at #2 in September. Probes 2 and 3 are the **cost-of-tools** axis, new here,
+put twice: once as the buyer asks it before a workshop, once as the field's own question. Probe 4
+is the build-effort axis, also new here.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | hands-on agentic AI course Oxford (Oxford-anchored commercial probe) | **No** - but `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` both were | `sbs.ox.ac.uk`, `lifelong-learning.ox.ac.uk` (x3), `coursera.org` (x3), `maven.com`, `nobleprog.co.uk`, `theknowledgeacademy.com`, `pulse.bot`, `planomato.com` |
+| 2 | do I need a paid ChatGPT or Claude subscription to attend a hands-on AI workshop | **No** | `gmelius.com` (x3), `verdent.ai`/`freetier.co`, `morphllm.com`, `techradar.com`, `tech.yahoo.com`, `aiforeducation.io`, `zemith.com` (x2), `braindetox.kr`, `toolquestor.com` (x2), `freeacademy.ai` (x3), `findskill.ai`, `coconote.app` |
+| 3 | do I need a paid Claude subscription to use Claude Code, or does the free plan work | **No**, and correctly so | `superblocks.com`, `verdent.ai` (x4), `datacamp.com` (x5), `claudelog.com`, `theaiarchitects.com`, `costbench.com` |
+| 4 | how long does it take to build a working AI agent for a business process | **No** | `moveworks.com`, `rapidevelopers.com` (x2), `sectionai.com`, `pedowitzgroup.com` (x2), `slashdev.io`, `c-sharpcorner.com`, `bardeen.ai`, `isometrik.ai`, `upstackstudio.com`, `mainandmachine.com`, `lilachbullock.com`, `nimblebrain.substack.com`, `phosailabs.com`, one GitHub Pages SEO page |
+
+**Reading.**
+
+- **Probe 2 is the first coverage gap this log has found on the Coding line that is a silence
+  rather than a reach failure, and it is a cost question asked before paying.** The field is
+  nineteen results of ChatGPT-vs-Claude pricing comparison, no institutional publisher anywhere in
+  it, and the engine could not answer the question as asked: ***"The search didn't turn up anything
+  about what a specific hands-on AI workshop requires, so I can't say whether a paid plan is
+  needed"***, closing ***"the practical step is to check the workshop's registration page or ask the
+  organizer whether they need a paid account, or whether a free account is enough."*** So the buyer
+  is sent to our booking page with that question - and the Agentic line answers it on three
+  surfaces (`Do I need a paid AI subscription?` on the programme page, the same answer on Cohort
+  3's booking page, and `src/lib/home.ts` on the homepage) while **the Coding line answers it
+  nowhere**: 13 FAQ entries on its programme page, 9 on Cohort 1's booking page, and the only
+  account either mentions is GitHub. That line names Claude Code and Codex five times as the tools
+  the day runs on. **Nothing was written** - whether the day requires an attendee to hold a paid
+  plan, or provides access, is an event fact nobody here can verify with `luma.com` blocked, and an
+  answer headed "Do I need a paid AI subscription?" that hedges is worse than the silence on the
+  page that takes the booking. Filed as backlog 97, the same shape as 95 and 25.
+- **Probe 3 is the control for probe 2, and it says do not write a guide about tool pricing.** Asked
+  the generic version, the field answers it well and in detail - the free plan excludes Claude Code,
+  Pro at about $20/month or Anthropic API credits is the floor, the install itself is free - with
+  `datacamp.com`, `claudelog.com` and a spread of vendor guides covering it, and the engine even
+  adjudicating a contradiction between its own sources. Not winnable, not ours, and not needed:
+  this is a third-party product's pricing, which changes without notice. The gap in probe 2 is
+  specifically **what our day needs**, which is a booking-page answer and not a guide.
+- **Probe 1 is the reach failure at its sharpest yet on an Oxford-anchored query, which is the
+  class this log used to win.** On 13 September *"hands-on agentic AI course in Oxford for business
+  leaders"* cited the homepage at #2, About at #3 and Cohort 2's event page at #5. Today the same
+  axis returns **both of our Luma pages and no page of this site**, and the engine reproduced the
+  venue ambiguity unprompted: ***"The venue is listed as Worcester College on one page and St
+  Anne's College on another, so check the event page before booking."*** St Anne's is Cohort 1,
+  July. It also placed Saïd's online programme first and gave `lifelong-learning.ox.ac.uk`'s
+  30 November - 11 December course a date and an open application, which are the two facts it
+  could not state about ours. **Thirteenth consecutive cycle of reach rather than coverage, and
+  this is backlog 2b.** No new review-list entry: every source in the set is already recorded
+  there - `planomato.com` from 26 Oct and 13 Nov, `nobleprog.co.uk`, `pulse.bot` and
+  `lifelong-learning.ox.ac.uk` from earlier readings - and nobody new is contactable.
+- **Probe 4 is declined, and the reason is near-duplication rather than the field.** The field is
+  winnable on its face - sixteen results, every one a vendor, consultancy or SEO microsite, with
+  the engine opening ***"Estimates vary widely, mostly from vendors with a stake in the answer"*** -
+  and it quotes 48 hours to six months with no one answering the one-day question. But
+  `what-you-can-build-in-one-day-with-ai` already answers it from our side, in question shape, with
+  a `FAQPage` node since 7 November and `## Is one day enough?` carrying three `h3` answers. The
+  searcher is also as likely to be scoping a build or shopping for a supplier as booking a day, so
+  it does not pass CONVERTING cleanly, and the services cluster is barred by the 13 September
+  standing decision. Nothing to write.
+
 ## 2026-11-14 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE COMMERCIAL PROBE NOW RETURNS AN EXPLICIT "I COULDN'T FIND A 19 NOVEMBER BOOTCAMP" AND STILL SENDS THE BUYER TO SEPTEMBER'S LUMA PAGE, FIVE DAYS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

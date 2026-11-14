@@ -2012,6 +2012,21 @@ Status: `todo` · `blocked` (why) · `doing`
     past tense. Measured both sets by building a copy of the site with each cohort's `endDate`
     moved back, so the counts are real and not projected.
 
+    **The "honest dead end" above is overstated, corrected 14 Nov 2026 (08:00 cycle) by reading the
+    template rather than projecting from the simulation.** `src/pages/events/[slug].astro` already
+    has a no-successor branch, and it is not a bare sentence: with `interest` undefined (only
+    `second-brain-bootcamp` has an interest page, `src/lib/site.ts`) and `features.sections.newsletter`
+    true, the branch renders the **primary** `All events` button and the `Tell me when the next dates
+    are set` form under it. So from 20 November the three past Agentic pages read "Dates for the next
+    cohort are being confirmed", then offer `/events/` as the primary action - which is where whatever
+    is on sale lives, the Coding day included, without this site claiming one line is the other's next
+    cohort - and a way to be told. **What is genuinely missing is narrower than this item said**: a
+    forward *date* for the Agentic line, and an interest page of its own so the primary action is a
+    signup rather than an index. Both are still his call. The notify half of that branch is the one
+    thing unexercised on the live site today, because the only page that takes the branch
+    (Second Brain Cohort 1) has an interest page and so suppresses the form; the 20 November cycle
+    should assert it in the browser rather than assume it.
+
 90. `todo` **(needs Drummond, because the only reliable remedy is a call on the booking
     area's layout; found 11 Nov 2026 in the 09:00 cycle)** - **when Luma's iframe renders
     nothing, the booking area on both on-sale event pages is an empty 520px box, and the
@@ -2208,7 +2223,137 @@ Status: `todo` · `blocked` (why) · `doing`
     saying there is no parking, in his own words, would do it on both on-sale pages.
 
 
+97. `todo` **(needs Drummond, one fact only he has; found 14 Nov 2026 in the 08:00 cycle, and it
+    is the same shape as backlog 95 and 25)** - **the Coding line answers "do I need a paid AI
+    subscription?" on no surface, while the Agentic line answers it on three, and the Coding day
+    is the one whose published tools are paid products.** Counted on the built site: the Agentic
+    programme page carries `Do I need a paid AI subscription?` as a named FAQ entry, Cohort 3's
+    booking page carries the same answer, and `src/lib/home.ts` answers it for all three lines on
+    the homepage. The Coding programme page has **13** FAQ entries and Cohort 1's booking page
+    **9**, and neither mentions an AI account at all: the only account either names is GitHub, in
+    `What should I bring?`. The same two pages name **Claude Code and Codex five times** as the
+    tools the day runs on, and tell the reader to bring a laptop they can install software on.
+    **The evidence it is a real pre-purchase question**, from that cycle's probe 2 - *"do I need a
+    paid ChatGPT or Claude subscription to attend a hands-on AI workshop"* - nineteen results of
+    tool-pricing comparison blogs, no institutional publisher, and the engine unable to answer as
+    asked: ***"The search didn't turn up anything about what a specific hands-on AI workshop
+    requires"***, closing ***"check the workshop's registration page or ask the organizer whether
+    they need a paid account, or whether a free account is enough."*** So the field routes that
+    buyer to our booking page holding exactly this question, twelve days before the cohort.
+    Probe 3 is the control and rules out the guide version: the generic *"do I need a paid Claude
+    subscription to use Claude Code"* field answers itself well (free plan excludes Claude Code,
+    Pro at about $20/month or API credits is the floor), so this is a booking-page answer and not
+    a topic to write about.
+    **Why the loop did not write it.** The honest answer turns on what the day provides - whether
+    an attendee is expected to arrive holding a paid plan, or access is supplied in the room - and
+    that is an event fact, not published copy. `luma.com` does not resolve through this session's
+    egress policy, so the booking page could not be read, and the Agentic line's own wording
+    cannot simply be copied across: *"you will get the most from the day with a paid plan such as
+    ChatGPT Plus or Claude Pro, but it is not essential"* is true of a day built on chat tools and
+    may be false of a day built on Claude Code, which no free plan includes. An entry headed
+    "Do I need a paid AI subscription?" that hedges is worse on a booking page than the silence.
+    **One sentence from him closes it on both Coding surfaces**, in the wording the Agentic pages
+    already use. Nothing is needed about price or VAT.
+
 ## Shipped
+
+### 14 Nov 2026 (08:00 cycle) - no page changed. The one coverage gap in four probes is a cost question the field pushes onto our booking page, and the Coding line answers it on no surface while the Agentic line answers it on three
+
+No file under `src/`, `public/` or `scripts/` moved, so `dist` is byte-identical to the baseline
+build and nothing public changed. What ships is the evidence: this entry, the GEO log, new backlog
+97, and a correction to backlog 89 that makes the 20 November pass smaller than it was written to be.
+
+**The finding, and it is a silence rather than a reach failure, which makes it new on this line.**
+Probe 2 - *"do I need a paid ChatGPT or Claude subscription to attend a hands-on AI workshop"* -
+returned nineteen results of ChatGPT-vs-Claude pricing comparison, no institutional publisher
+anywhere in it, and the engine could not answer the question as asked: ***"The search didn't turn up
+anything about what a specific hands-on AI workshop requires, so I can't say whether a paid plan is
+needed"***, closing ***"the practical step is to check the workshop's registration page or ask the
+organizer whether they need a paid account, or whether a free account is enough."*** That buyer
+arrives on a booking page holding the question. The **Agentic** line answers it on three surfaces -
+`Do I need a paid AI subscription?` on the programme page, the same answer on Cohort 3's booking
+page, and `src/lib/home.ts` on the homepage. The **Coding** line answers it nowhere: 13 FAQ entries
+on its programme page, 9 on Cohort 1's booking page, and the only account either names is GitHub,
+on a day whose pages name **Claude Code and Codex five times** as the tools it runs on. Twelve days
+out. **Nothing was written**, for backlog 95's reason: whether an attendee must arrive holding a paid
+plan or access is supplied in the room is an event fact, `luma.com` does not resolve from this
+sandbox, and the Agentic wording cannot be copied across - *"not essential"* is true of a day built
+on chat tools and may be false of one built on Claude Code, which no free plan includes. Filed as
+backlog 97, one sentence from Drummond to close.
+
+**Probe 3 was run as the control for it, and it earns its place by ruling a guide out.** Asked the
+generic version - *"do I need a paid Claude subscription to use Claude Code, or does the free
+plan work"* - the field answers itself in detail across `datacamp.com`, `claudelog.com` and a spread
+of vendor guides, with the engine adjudicating a contradiction between its own sources. Not winnable,
+not ours, and a third-party product's pricing changes without notice. The gap is *what our day needs*,
+which is a booking-page answer and not a topic.
+
+**Probe 1 is the standing reach failure, on the class of query this log used to win.** On
+13 September *"hands-on agentic AI course in Oxford for business leaders"* cited the homepage at #2,
+About at #3 and Cohort 2's event page at #5. The same axis today returned **both of our Luma pages
+and no page of this site**, and the engine reproduced the venue ambiguity unprompted: ***"The venue
+is listed as Worcester College on one page and St Anne's College on another, so check the event page
+before booking"*** - St Anne's being Cohort 1, July. It placed Saïd's online programme first and
+gave `lifelong-learning.ox.ac.uk`'s 30 November course a date and an open application, the two facts
+it could not state about ours. **Thirteenth consecutive cycle of reach rather than coverage**, and
+backlog 2b. Probe 4, the build-effort axis, is declined on near-duplication:
+`what-you-can-build-in-one-day-with-ai` already answers it with a `FAQPage` node, and that searcher
+is as likely to be shopping for a supplier as booking a day.
+
+**Backlog 89 got smaller, by reading the template instead of projecting from the simulation.** That
+item's note for Drummond says the three past Agentic event pages become an honest dead end on
+20 November. They do not: `src/pages/events/[slug].astro` has a no-successor branch which, with no
+interest page for this programme and `features.sections.newsletter` true, renders the **primary**
+`All events` button and the `Tell me when the next dates are set` form. So those pages offer
+`/events/` as the primary action - where whatever is on sale lives, without this site claiming one
+product line is another's next cohort. What is actually missing is narrower: a forward date, or an
+interest page so the primary action is a signup rather than an index. Recorded on the item, with the
+note that the notify half of that branch is unexercised on the live site today and should be asserted
+in a browser by the cycle that meets it.
+
+**Checked and found clean before concluding there was nothing to ship**, so none of it is re-derived:
+the homepage's JSON-LD already carries **both** on-sale `EducationEvent` nodes complete with
+`startDate` and offset, `location` with a full `PostalAddress`, `eventStatus`, `offers` with
+`InStock` and `sameAs` to Luma - so the one page the 6 November probes showed an engine actually
+holding states the date and venue machine-readably, and backlog 69's diagnosis still stands. The
+`FAQPage` census reconciles exactly: 20 nodes = 11 guides opted in (11 flagged files), 3 programme
+pages, 5 event pages and the homepage, with no page rendering visible Q&A and emitting nothing.
+Backlog 92 was **re-declined, and this cycle's probe is the argument for leaving it alone** rather
+than against: `questions-to-ask-before-booking-ai-training` tells the reader to ask the provider
+about a paid subscription, which is word for word what the engine independently told that searcher
+to do, so the page is right as written and hanging our own FAQ off question 6 would trade that for a
+pitch. Distinct-page inbound internal links counted across all 55 indexable pages: the floor is the
+seven team profiles at 1 each (known, backlog 63) and nothing high-value sits unlinked.
+**No programme page, event page or the homepage links any individual guide** - 24, 11 and 7 guides
+name the three lines in `relatedProgrammes` and the flow is one-way by construction; recorded as an
+observation, not pitched, because sending a reader off a booking page is a conversion call.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline: 66 pages checked, 3,247 internal links resolve, schema valid, 12 Event nodes (7 top-level,
+5 nested entity), 20 `FAQPage` nodes, all titles and descriptions unique, `check:dates` 0 findings
+and 0 year-less dates. The outbound checker reports 0 of 11 third-party links reachable, which is
+this sandbox's egress policy and not a site fault - `luma.com`, `linkedin.com`, `arxiv.org` and
+`ico.org.uk` all fail to resolve here. No headless pass was needed because no page changed, but
+Chromium was confirmed working against the built Cohort 3 page at 375px, so the decision not to ship
+is on the merits and not on a blocked inspection.
+
+**Deployment state came from the Actions API**, since `oxfordagentic.com` is refused by this
+session's egress policy and `build.txt` could not be read: run 414 of *Deploy to GitHub Pages* for
+`73a089c` concluded **success** at 02:13 UTC today, nothing is queued or in progress, and
+`git log -1` matches that run's `head_sha` - the step 0 check. **IndexNow submits nothing**: the dry
+run over this cycle's three files prints *"no page URLs affected by this push"*, because
+`IMPROVEMENTS.md`, `seo-data/` and `outreach/` are all excluded by name. That is the honest number
+and the true one.
+
+**Search Console unavailable for the forty-seventh consecutive cycle.** No export newer than the
+24 August baseline in `seo-data/`, no API credentials in the repo, and the cause recorded on
+14 November still stands: the daily export workflow reports success while its fetch step exits in
+under a second, because the `GSC_SERVICE_ACCOUNT_KEY` repository secret is unset. Nothing estimated.
+**No new guide, 0 of 3 for the week of 9-15 November** (newest `publishDate` on the site is
+20 October), and no guide Q&A block either. **No new off-page target and no new review-list entry**:
+every source across the four probes is already recorded there - `planomato.com`, `nobleprog.co.uk`,
+`pulse.bot`, `lifelong-learning.ox.ac.uk` - and nobody new is contactable. Nobody was contacted.
+**No event fact was read, verified or changed.**
 
 _(dated, newest first — filled by the loop)_
 
