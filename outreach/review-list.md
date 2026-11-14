@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new contactable target in four probes. What is new is that the listings-win-the-query
+  finding recorded six hours ago on the Coding line reproduces on the Agentic line, five days
+  before Cohort 3 - so it is a property of the field, not of one product.** Found 14 Nov 2026
+  (20:00 cycle). **Nothing contacted, submitted or signed up for.**
+  - **The probe.** *"one day AI workshop where you bring your own real work task UK November 2026"* -
+    a description of this product almost word for word, in the month it runs. No page of this site
+    appeared. What did: `allai.events` (x2), `cademy.io`, `eventbrite.ca`, `techuk.org` - all
+    listings - alongside `citylit.ac.uk` (x2) and `innovationvisual.com` (x3), which are providers.
+  - **Why it strengthens the Eventbrite item rather than adding one.** The 14:00 entry above argued
+    from the Coding query that the field is won by listings and we hold none. That could have been a
+    quirk of a developer-tool query. It is not: the same mechanism beats the Agentic line on its own
+    format query, with a cohort on sale. Every directory the probe returned is already recorded -
+    `allai.events`, `cademy.io` and `techuk.org` are in this file, Eventbrite and the UK AI event
+    aggregators are in `outreach/off-page-listings.md` with copy in `submission-drafts.md`. There is
+    nothing new to approve, only the same approval outstanding.
+  - **The engine stated the gap in its own words**, closing: *"I found no result that clearly
+    confirms a one-day, bring-your-own-task workshop in November 2026... The others either have a
+    2025 date, run shorter than a day, or don't mention bringing your own task."* All three
+    disqualifiers are things this site publishes correctly and machine-readably. The buyer was ours.
+  - **Competitors seen, recorded so a later cycle does not mistake them for finds and spend a probe
+    rediscovering them:** `citylit.ac.uk`, `innovationvisual.com`, `womenofai.agency`,
+    `pointacademy-co-uk.pages.dev` (one-day UK AI days), and `nobledesktop.com`, which holds eight of
+    eighteen results on the bootcamp-versus-course question with its own category pages. None is an
+    outreach target. `ncace.ac.uk`, `nottingham.ac.uk` and `curtin.edu.au` are institutional
+    publishers and carry the same caution as `oerc.ox.ac.uk` below.
+  - Needs: nothing new. The outstanding approval is unchanged - list Cohort 3 and the Coding
+    cohort on Eventbrite. Nothing contacted, nothing submitted, no account made.
+
 - **No new contactable target in four probes, and the sharpest Eventbrite evidence this list has
   carried: on the Coding line's own commercial query, thirteen of nineteen results are booking
   platforms and six are Eventbrite.** Found 14 Nov 2026 (14:00 cycle), twelve days before Cohort 1.

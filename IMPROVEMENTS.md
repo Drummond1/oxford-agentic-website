@@ -1865,6 +1865,15 @@ Status: `todo` · `blocked` (why) · `doing`
     which backlog 74 weighs as the milder failure, and still not worth a hand-written special case;
     it is the strongest of the three arguments for taking the build-output diff once, for every
     source path, rather than one path at a time.
+    **A fourth instance, 14 Nov 2026 (20:00 cycle), and it retires the "strongest" label above.**
+    That cycle changed `scripts/check-schema.mjs` (excluded by name), `src/lib/schema.ts`
+    (whole-site bucket) and `src/pages/og/[key].png.ts` (falls through the page-source regex, which
+    no `.ts` or dynamic route can match - the third instance's branch). The map's number is **55**;
+    the honest number is **0**, because the whole-`dist` sha256 diff was **0 of 203 files**. Every
+    earlier instance over-submitted against a change that really did move some built bytes, so the
+    gap was one of degree. This one submits the entire sitemap for a change a crawler cannot see at
+    all. A build-output diff would have submitted nothing, which is the point: the honest rule is
+    not a better source-path map, it is reading what changed in `dist`.
 
 86. `todo` (loop-actionable but **it is not one change and probably not the loop's**; found
     10 Nov 2026 in the 09:00 cycle, on the first sweep this loop has run at a 32px browser
@@ -2279,7 +2288,152 @@ Status: `todo` · `blocked` (why) · `doing`
     Weigh it against backlog 49 and 59, which are about whether those dates are *true* rather than
     about how they are *spelled*; those are the more valuable half of the same file.
 
+99. `todo` (loop-actionable, **low value and deliberately left out of the commit that made it
+    visible**; found 14 Nov 2026 in the 20:00 cycle, by that cycle's own rule) - **the graph
+    reference check proves every breadcrumb URL resolves and says nothing about the shape of the
+    trail.** 160 of the 1,293 references it now walks are `itemListElement.item`, and
+    `breadcrumbSchema` in `src/lib/schema.ts` numbers them itself from the array index, so the
+    documented failure modes - a `position` that does not run 1..n, a missing `name`, a last crumb
+    that is not the page's own canonical - are all still unguarded. Measured on the built site the
+    day the reference rule shipped: **56 of 66 pages carry a `BreadcrumbList`**, the ten without
+    one are correct to lack it (the homepage is the root, plus `/404.html`, the two redirect
+    tombstones and the six noindex or ad-only pages), and every trail on all 56 is well formed
+    today.
+    **Why it was not taken in the same commit.** One rule, one reason: the reference rule answers
+    "does this address go anywhere", and a shape rule answers "is this list a list", which is a
+    second rationale and a second thing to get wrong in the same change. Two of the 56 are also a
+    judgement call rather than a defect - `/apply/` and `/second-brain-interest/` are noindex and
+    still emit a full trail naming themselves, which is inert rather than wrong, and deciding
+    whether a noindex page should carry breadcrumbs at all is a call to make before writing a rule
+    that would have to encode it.
+    **If it is taken**, assert `position === index + 1`, a non-empty `name`, and that the final
+    `item` equals the page's canonical URL - and settle the noindex question first, or the rule
+    ships with an exemption nobody can justify later.
+
+
 ## Shipped
+
+### 14 Nov 2026 (20:00 cycle) - the 1,293 internal URLs inside this site's JSON-LD were checked by nothing, and the guard that now checks them found two live dangling references on its first run. One rule, two one-place fixes, 0 of 203 built files changed
+
+**The gap, measured before it was filled.** This site publishes **1,293 absolute internal URLs
+inside its JSON-LD graphs**, across **27 distinct keys** and 64 pages, and **not one of them was
+read by any check in this repo**. Both link checkers work on HTML attributes and neither opens an
+`ld+json` block: `scripts/check-links.mjs` matches `href="..."` and then returns early on anything
+matching `^https?:` (line 86), and `scripts/check-external-links.mjs` matches `href="https://..."`
+(line 117). `check-schema.mjs` validated node shape - required Event fields, offsets, FAQ contents,
+empty arrays - and never asked whether an address the graph gives actually goes anywhere.
+
+Those URLs are not decoration. `@id` (222) is what binds Organization, WebSite, WebPage, Event,
+Course, FAQPage and BreadcrumbList into one entity an engine can resolve; `itemListElement.item`
+(160) is a breadcrumb crumb; and `url` (206), `logo.url` (63), `primaryImageOfPage.url` (55),
+`image.url` and `offers.url` are addresses a consumer dereferences. A reference to a path that no
+longer builds costs the rich result **silently**: the page still renders, the JSON still parses,
+and every other rule in the file still passes.
+
+**What shipped.** One rule in `scripts/check-schema.mjs`: every string in the graph that begins with
+the page's own canonical origin must resolve to a file the host would serve. The resolver is
+deliberately the same three candidates, in the same order, as `resolveFile` in `check-links.mjs`, so
+the two cannot come to disagree about what this host serves. The origin is read off the page's own
+`<link rel="canonical">` rather than a constant, so the rule follows the domain instead of having to
+be kept in step with it. The pass line now prints `1293 resolving internal graph reference(s)`.
+
+**It checks the path and drops the fragment, on purpose, and that is written at the call site.** A
+JSON-LD fragment names a node inside the graph - `#organization`, `#webpage`, `#event`, `#faq`,
+`#series`, `#person` - and is not required to match any element id in the document. Asserting it
+against the DOM reports **626 failures on a correct site**. That was this check's own first draft,
+and it is recorded in the source so a later cycle does not "tighten" the rule back into it.
+
+**Proved by mutation on a throwaway copy of `dist`, and one mutation is the whole argument for the
+rule.** Control: exit 0, 1,293 references. (1) A guide directory renamed: exit 1, **7** failures,
+each naming the page, the node type and the dotted path - `BreadcrumbList ... at
+"itemListElement[2].item"`. (2) **The decisive one** - delete `logo.svg` and one OG card, both
+referenced from JSON-LD only and from no `href` anywhere: the new rule exits **1** with **64** named
+failures, while `check-links.mjs` on the identical tree exits **0** and prints *"3247 internal links
+across 66 pages all resolve"*. The Organization's own logo and a page's share card can both vanish
+and the build is currently silent about it. (3) One nested event `url` inside `/events/`'s
+`ItemList` pointed at a cohort that does not exist: exit 1, named at
+`mainEntity.itemListElement[0].url`.
+
+**Then the rule found two real defects on its first run, in the configuration where they bite, and
+both are fixed in this commit.** `npm run check:flags` was green before this change and failed after
+it with **5** problems, all in the all-flags-OFF build. They are not false positives:
+
+- **`/about/` published a `Person` whose `@id` and `url` both pointed at a route that does not
+  build** when `features.team` is off. `organizationSchema` already guards exactly this, and says
+  why in as many words three hundred lines above: *"When the team section is flagged off that page
+  does not exist, so only the name is asserted."* The founder edge was guarded and `personSchema`,
+  which names the same people by the same URL, was not. **The same shape as backlog 66, 77 and 80 -
+  the defect fixed, the remaining instance left standing.** Now guarded in the same idiom; the other
+  call site, `src/pages/team/[...slug].astro`, only renders when the flag is on, so it is inert
+  there.
+- **The three past cohorts' OG cards were never generated** when `features.pastEvents` is off, while
+  their pages were - so each of those pages pointed `og:image` **and** `primaryImageOfPage.url` at a
+  PNG that does not exist. Root cause, and it needed no design call: `src/pages/og/[key].png.ts`
+  decided which *pages* need a card by reading `getEventsForIndex()`, the **listing** helper, which
+  drops past events on that flag. `src/pages/events/[slug].astro` builds from `getEvents()`, so all
+  five cohorts keep a page whatever the flag says. The OG route now reads `getEvents()` too. The
+  flag governs what the listings show, not which pages exist.
+
+`npm run check:flags` is green again and now reports the guard on both configurations: **1,293
+resolving references all-on, 348 all-off.**
+
+**Blast radius: 0 of 203 files differ**, against a sha256 snapshot of `dist` taken before the edit -
+none added, none removed, byte-identical. That is the expected and the correct result: the rule is a
+check script, and both fixes are inert with the flags on, which is production today. The OG set is
+identical when `pastEvents` is true, and `features.team` being true means `personSchema` emits
+exactly what it emitted before.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline but the new one: 66 pages, 3,247 internal links resolve, schema valid, 12 Event (7
+top-level, 5 nested entity), 20 FAQPage, 128 offset-bearing publication dates, all titles and
+descriptions unique, `check:dates` 0 findings and 0 year-less dates. `npm run check:flags` passes on
+both builds. The outbound checker reports 0 of 11 third-party links reachable, which is this
+sandbox's egress policy and not a site fault. Headless Chromium over six pages - both on-sale
+cohorts, a past cohort, `/`, `/about/` and a guide - at **375 and 1280px**: **400 assertions, 0
+fail**, 0 JS exceptions, 0 failed same-origin requests, 0 horizontal overflow, no `.000Z` surviving,
+and **328 graph references read out of the live DOM and dereferenced**, every one served 200. Full
+screenshots of Cohort 3 at both widths; nothing moved, which follows from `dist` being
+byte-identical.
+
+**IndexNow over-submits by 55 on this push, and this is the cleanest instance the log has recorded.**
+`scripts/check-schema.mjs` is excluded by name, but `src/lib/schema.ts` is in the whole-site bucket
+and `src/pages/og/[key].png.ts` falls through the page-source regex that no dynamic or `.ts` route
+can match - so the map submits all 55 sitemap URLs while **the honest number is 0**, because not one
+built byte changed. Backlog 83 and 85's sixth measured instance, not fixed, for backlog 41's reason.
+Previous instances over-submitted against a real change; this one submits the whole sitemap for a
+change that altered nothing a crawler can see, which is the strongest argument yet that the honest
+version is the **build-output diff** - it would have submitted nothing. The ping script was not run:
+the deploy workflow owns it.
+
+**GEO: four probes, zero citations, and the listings finding generalised from one product line to
+both.** Probe 3 - *"one day AI workshop where you bring your own real work task UK November 2026"* -
+describes this product almost word for word in the month it runs, and returned **no page of this
+site** with a cohort on sale **five days away**. What it returned was listings: `allai.events` (x2),
+`cademy.io`, `eventbrite.ca`, `techuk.org`. The 14:00 cycle made that argument from the Coding
+query; it is now measured on the Agentic line too, so it is a property of the field rather than of
+one product. The engine stated the gap itself: *"I found no result that clearly confirms a one-day,
+bring-your-own-task workshop in November 2026... The others either have a 2025 date, run shorter
+than a day, or don't mention bringing your own task"* - three disqualifiers this site publishes
+correctly and machine-readably. **Fifteenth consecutive cycle of reach rather than coverage.**
+Probes 1, 2 and 4 are each declined for a different reason and none becomes a backlog item: probe 1
+fails both halves of the standing test (ten of ten results are platform vendors on their own
+product, and a definitional searcher is not booking a day), probe 4 is already answered by
+`ai-bootcamp-vs-course-vs-exec-education`, and probe 2 - the one genuine candidate, *"can a
+non-developer learn to use Claude Code in one day"* - is answered twice in question shape on the
+Coding line already. **No new off-page target**: every directory the probes returned is already
+recorded. Nobody was contacted.
+
+**Search Console unavailable for the forty-ninth consecutive cycle, cause unchanged**: no export
+newer than the 24 August baseline in `seo-data/`, no API credentials in the repo, and the
+`GSC_SERVICE_ACCOUNT_KEY` repository secret is still unset, so the daily export workflow reports
+success while writing nothing. Nothing was estimated. **No new guide, 0 of 3 for the week of
+9-15 November** (newest `publishDate` on the site is 20 October), and no guide Q&A block. **No event
+fact was read, verified or changed** - `luma.com` and `oxfordagentic.com` are both refused by this
+session's egress policy (403 at the proxy), so deployment state came from the Actions API: run 418
+of *Deploy to GitHub Pages* for `cc33edd` concluded **success** at 14:16 UTC, nothing queued or in
+progress, and `git log -1` matched that run's `head_sha` - the step 0 check, which mattered again
+today: the checkout arrived detached at `cc33edd` while local `main` sat two commits behind at
+`85ef135`.
 
 ### 14 Nov 2026 (14:00 cycle) - every guide published its own publication date an hour early and in the wrong wall clock, one layer above the fix that shipped yesterday. One helper, three call sites, 32 of 203 built files, and the detector that makes `Z` fail
 

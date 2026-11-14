@@ -4,7 +4,7 @@ import config from '../../../site.config';
 import { renderOgImage, type OgOptions } from '../../lib/og';
 import {
   formatDate,
-  getEventsForIndex,
+  getEvents,
   getProgrammes,
   paths,
   showSection,
@@ -21,7 +21,23 @@ import {
 const keyFor = (pagePath: string) => (pagePath.replace(/^\/|\/$/g, '') || 'index').replace(/\//g, '--');
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { upcoming, past } = await getEventsForIndex();
+  /*
+   * Every event that gets a page needs a card, so this reads the collection
+   * rather than the listing helper.
+   *
+   * `getEventsForIndex` drops past events when `features.pastEvents` is off,
+   * because that flag governs what the listings SHOW. It does not govern which
+   * pages exist: `src/pages/events/[slug].astro` builds from `getEvents()`, so
+   * all five cohorts keep their page whatever the flag says. Reading the
+   * listing helper here therefore skipped the three past cohorts' cards in the
+   * all-flags-off build, leaving each of those pages pointing `og:image` and
+   * `primaryImageOfPage.url` at a PNG that was never written.
+   *
+   * With the flag on, which is production today, the set is identical and no
+   * byte of `dist` moves. Found on 14 November 2026 by the graph-reference rule
+   * added to `scripts/check-schema.mjs` in the same commit.
+   */
+  const events = await getEvents();
   const programmes = await getProgrammes();
   const programmeById = new Map(programmes.map((p) => [p.id, p]));
 
@@ -40,7 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
   ];
 
-  for (const event of [...upcoming, ...past]) {
+  for (const event of events) {
     const programme = programmeById.get(event.data.programme.id);
     entries.push({
       path: paths.event(event.data.slug),

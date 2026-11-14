@@ -8,9 +8,10 @@
  *  - every page carries the Organization entity
  *  - Event nodes have the fields Google requires for event rich results
  *  - titles and meta descriptions are present and unique across the site
+ *  - every internal URL the graph references resolves to a page the host serves
  *  - every event fact is in the HTML, not only inside the Luma iframe
  */
-import { readFile, readdir } from 'node:fs/promises';
+import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const DIST = path.resolve('dist');
@@ -37,6 +38,81 @@ function* emptyArrays(value, trail = '') {
       const here = trail ? `${trail}.${key}` : key;
       if (Array.isArray(child) && child.length === 0) yield [here, child];
       else yield* emptyArrays(child, here);
+    }
+  }
+}
+
+/**
+ * Resolve a site-relative path to the file the host would actually serve, or
+ * null. Deliberately the same three candidates, in the same order, as
+ * `resolveFile` in `scripts/check-links.mjs`, so the two checkers cannot come
+ * to disagree about what this host serves: a directory with no `index.html` is
+ * not a page, which is why `stat` alone would be too generous.
+ */
+async function isFile(target) {
+  try {
+    return (await stat(target)).isFile();
+  } catch {
+    return false;
+  }
+}
+
+async function resolvesInDist(urlPath) {
+  const clean = urlPath.split('#')[0].split('?')[0];
+  if (clean === '' || clean === '/') return isFile(path.join(DIST, 'index.html'));
+
+  const rel = clean.replace(/^\//, '');
+  for (const candidate of [
+    path.join(DIST, rel),
+    path.join(DIST, rel, 'index.html'),
+    path.join(DIST, `${rel.replace(/\/$/, '')}.html`),
+  ]) {
+    if (await isFile(candidate)) return true;
+  }
+  return false;
+}
+
+/**
+ * Every string in a JSON-LD node that is an absolute URL on this site, nested
+ * objects and arrays included, as [dottedPath, url] pairs.
+ *
+ * Why this needs its own walk rather than riding on either link checker: both
+ * of them read HTML attributes and neither one opens a `ld+json` block.
+ * `check-links.mjs` matches `href="..."` and then returns early on anything
+ * matching `^https?:`, and `check-external-links.mjs` matches
+ * `href="https://..."`. So on 14 November 2026 this site published **1,293**
+ * absolute internal URLs inside its graphs, across **27 distinct keys** and 64
+ * pages, and not one of them was checked by anything. They are not decoration:
+ * `@id` is what binds Organization, WebSite, WebPage, Event, Course, FAQPage
+ * and BreadcrumbList into one entity an engine can resolve, `item` is a
+ * breadcrumb crumb, and `url`, `logo.url`, `image.url`,
+ * `primaryImageOfPage.url` and `offers.url` are addresses a consumer
+ * dereferences. A reference to a path that no longer builds costs the rich
+ * result silently - the page still renders, the JSON still parses, and every
+ * other rule in this file still passes.
+ *
+ * The count was 1,293 with **zero** failures, so this ships as a guard rather
+ * than as a fix. What makes it worth a cycle anyway is the rate of change
+ * beneath it: `src/lib/schema.ts` was edited on 13 November and twice on
+ * 14 November, and `site.config.ts` carries a `redirects` list precisely
+ * because slugs here do move.
+ *
+ * It checks the PATH ONLY, and the fragment is dropped on purpose. A JSON-LD
+ * fragment names a node inside the graph - `#organization`, `#webpage`,
+ * `#event`, `#faq`, `#series`, `#person` - and is not required to match any
+ * element id in the document. Asserting it against the DOM reports 626 failures
+ * on a correct site; that was this check's own first draft, and it is recorded
+ * here so a later cycle does not "tighten" the rule back into it.
+ */
+function* internalUrlRefs(value, origin, trail = '') {
+  if (Array.isArray(value)) {
+    for (const [i, item] of value.entries()) yield* internalUrlRefs(item, origin, `${trail}[${i}]`);
+  } else if (value && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value)) {
+      const here = trail ? `${trail}.${key}` : key;
+      if (typeof child === 'string') {
+        if (child.startsWith(origin)) yield [here, child];
+      } else yield* internalUrlRefs(child, origin, here);
     }
   }
 }
@@ -107,6 +183,9 @@ let faqNodes = 0;
 /* Publication dates seen carrying a numeric offset, printed on the pass line so a
    later cycle reads a drop as a regression rather than as nothing happening. */
 let datedNodes = 0;
+/* Internal URL references inside the graph that resolve, printed on the pass
+   line for the same reason: a drop should read as a regression. */
+let graphRefs = 0;
 
 const files = await walk(DIST);
 
@@ -313,6 +392,26 @@ for (const file of files) {
         }
       }
 
+      /*
+       * Every internal URL in the graph resolves to a page the host serves.
+       *
+       * The origin comes off this page's own canonical link rather than from a
+       * constant, so the rule follows the domain instead of having to be kept
+       * in step with it. `canonical` is already required above, so it is there.
+       */
+      if (canonical) {
+        const origin = new URL(canonical).origin;
+        for (const [trail, url] of internalUrlRefs(node, origin)) {
+          if (await resolvesInDist(url.slice(origin.length))) {
+            graphRefs += 1;
+          } else {
+            errors.push(
+              `${page}: ${node['@type']} JSON-LD references "${url}" at "${trail}" — nothing at that path is served from dist/`,
+            );
+          }
+        }
+      }
+
       // An empty array claims a property and then supplies no value for it.
       // Omit the property instead. Generalises the FAQPage check above, and
       // added after `hasCourseInstance: []` was found waiting for the first
@@ -348,5 +447,5 @@ if (warnings.length > 0) {
 }
 
 console.log(
-  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), ${datedNodes} offset-bearing publication date(s), all titles and descriptions unique`,
+  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), ${datedNodes} offset-bearing publication date(s), ${graphRefs} resolving internal graph reference(s), all titles and descriptions unique`,
 );

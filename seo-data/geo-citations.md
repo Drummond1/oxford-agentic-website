@@ -5,6 +5,55 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-14 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE LISTINGS-WIN-THE-QUERY PATTERN FOUND ON THE CODING LINE SIX HOURS AGO NOW MEASURED ON THE AGENTIC LINE, FIVE DAYS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the three
+preceding cycles. Probe 3 is the Agentic line's own format query in a buyer's words, five days before
+Cohort 3.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what is an agentic workflow for business and how is it different from automation | **No** | `elevenlabs.io`, `mindstudio.ai`, `domo.com` (x2), `vortexiq.ai`, `rapidcanvas.ai`, `netsuite.com`, `zigment.ai`, `archestra.ai`, `vibrancy.ai` |
+| 2 | can a non-developer learn to use Claude Code in one day | **No** | `adventuremedia.ai`/`adventureppc.com` (x7), `maven.com` (x4), `ccforeveryone.com`, `villanova.edu`, `readwhitespace.substack.com`, `olenamytruk.substack.com`, `artificialcorner.com`, `marq-ai-wiki.pages.dev`, `tw93.fun` |
+| 3 | one day AI workshop where you bring your own real work task UK November 2026 | **No** | `citylit.ac.uk` (x2), `innovationvisual.com` (x3), `allai.events` (x2), `cademy.io`, `eventbrite.ca`, `techuk.org`, `womenofai.agency`, `pointacademy-co-uk.pages.dev`, `ncace.ac.uk`, `nottingham.ac.uk`, `curtin.edu.au`, `necc.co.uk`, `internshala.com`, `educationconferencesuk.co.uk` |
+| 4 | is a one day AI bootcamp worth it compared to an online AI course | **No** | `nobledesktop.com` (x8), `precisionaiacademy.pages.dev` (x3), `collegetransitions.com` (x2), `analyticsinsight.net` (x2), `coursera.org` |
+
+**Reading.**
+
+- **Probe 3 is this cycle's finding, and it is the Agentic-line twin of yesterday's Coding-line
+  result.** The question describes this product almost exactly - one day, in person, UK, bring your
+  own real work task, this month - and it returned **no page of this site** while we have a cohort
+  on sale five days away at a named Oxford venue. What it returned instead is **listings**:
+  `allai.events` twice, `cademy.io`, `eventbrite.ca`, `techuk.org`. The 14:00 cycle made this
+  argument from the Coding query (six Eventbrite results of nineteen) and called it the sharpest
+  evidence the log had produced for the Eventbrite item. It is no longer one product line's
+  problem: the same mechanism beats both. Recorded on `outreach/review-list.md`.
+- **The engine could not find us and said what it could not find.** Closing its answer: *"I found no
+  result that clearly confirms a one-day, bring-your-own-task workshop in November 2026 beyond the
+  Women of AI event. The others either have a 2025 date, run shorter than a day, or don't mention
+  bringing your own task."* Every one of those three disqualifiers is something this site publishes
+  correctly and machine-readably - a 2026 date with an offset, 09:00-17:00, and the bring-one-real-task
+  format in `whoFor` and in four `FAQPage` answers. The buyer it was answering is ours and it never
+  saw us. **Fifteenth consecutive cycle of reach rather than coverage.**
+- **Probes 1, 2 and 4 are all declined on the standing topic-probe test, and each for a different
+  reason, so none of them is a backlog item.** Probe 1 is **not winnable**: ten of ten results are
+  platform vendors writing about their own product (`elevenlabs.io`, `domo.com`, `netsuite.com`,
+  `mindstudio.ai`), and it is **not converting** either - someone asking for a definition is not
+  booking a day in Oxford. Probe 4 is a **coverage** question we already answer:
+  `ai-bootcamp-vs-course-vs-exec-education` is this question, and the field is one seller,
+  `nobledesktop.com`, holding eight of eighteen results on its own category - reach, not coverage.
+- **Probe 2 was the one genuine candidate and it is declined on coverage, not on the field.** The
+  Coding line answers it twice in question shape - *"Do I need to be able to code?"* on both the
+  programme page and Cohort 1's booking page, and *"I cannot write code. What will I actually have
+  finished by five o'clock?"* on the programme page. The field is crowded with course sellers rather
+  than institutional publishers, so it would pass WINNABLE and it certainly converts; what it does
+  not pass is the rule that a refresh needs an answer-engine check showing a real gap. There is no
+  gap, and a fourteenth FAQ entry on a page that already carries thirteen is the thing the 14:00
+  cycle's own evidence says changes nothing.
+- **Nothing was written and no page changed as a result of these probes.** This cycle's change is a
+  build-time guard; see `IMPROVEMENTS.md`.
+
 ## 2026-11-14 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND FOR THE FIRST TIME IN THIS LOG EVERY FIELD PROBED IS ALREADY ANSWERED ON THE SITE: FOUR REACH FAILURES AND NOT ONE COVERAGE GAP
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

@@ -540,6 +540,25 @@ export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) 
   };
 }
 
+/**
+ * The `@id` and `url` here address the person's own team page, so both have to
+ * follow the flag that decides whether that page exists.
+ *
+ * `organizationSchema` above already does this, and says why in as many words:
+ * "When the team section is flagged off that page does not exist, so only the
+ * name is asserted." The founder edge was guarded and this node, which names
+ * the same people by the same URL, was not - so with `features.team` off,
+ * `/about/` published a `Person` whose `@id` and `url` both pointed at a route
+ * that does not build. The other call site, `src/pages/team/[...slug].astro`,
+ * only renders when the flag is on, so the guard is inert there.
+ *
+ * Found on 14 November 2026 by the graph-reference rule in
+ * `scripts/check-schema.mjs`, which was added in the same commit: the
+ * all-flags-off build failed on exactly these two references and on nothing
+ * else in this file. The remaining assertions - name, job title, description,
+ * `sameAs` - are facts about the person rather than addresses on this site, so
+ * they stand either way.
+ */
 export function personSchema(speaker: {
   name: string;
   slug: string;
@@ -551,11 +570,11 @@ export function personSchema(speaker: {
   const sameAs = Object.values(speaker.links).filter(Boolean);
   return {
     '@type': 'Person',
-    '@id': `${absoluteUrl(paths.teamMember(speaker.slug))}#person`,
+    ...(config.features.team ? { '@id': `${absoluteUrl(paths.teamMember(speaker.slug))}#person` } : {}),
     name: speaker.name,
     jobTitle: speaker.role,
     description: speaker.bio,
-    url: absoluteUrl(paths.teamMember(speaker.slug)),
+    ...(config.features.team ? { url: absoluteUrl(paths.teamMember(speaker.slug)) } : {}),
     ...(speaker.company ? { worksFor: { '@type': 'Organization', name: speaker.company } } : {}),
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
