@@ -295,9 +295,27 @@ export function formatMonthYear(date: Date): string {
   return new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric', timeZone: LONDON }).format(date);
 }
 
+/**
+ * The day's hours, on a 24-hour clock, zero-padded at both ends.
+ *
+ * `hour: 'numeric'` gave "9:00–17:00", which is the only place on the site that
+ * wrote a morning hour without its leading zero. Everything else that states
+ * these same hours pads them: every agenda row on every event page ("09:00
+ * Registration and coffee"), the "What time does the day start and finish?"
+ * answer on the Agentic, Coding and Second Brain programme pages, the Coding and
+ * Second Brain event pages' own "When and where is it?" answers, and every
+ * `startDate` in the content files. A range is also internally inconsistent when
+ * only one end is padded: "17:00" is 24-hour notation, so "9:00" alongside it is
+ * the odd one out rather than a second convention. The Agentic programme file
+ * says as much where its hours answer was written: "09:00 to 17:00 is what every
+ * event file publishes".
+ *
+ * This is presentation only. It is derived from `startDate`/`endDate`, so no
+ * published fact moves with it.
+ */
 export function formatTimeRange(start: Date, end: Date): string {
   const fmt = (d: Date) =>
-    new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', hour12: false, timeZone: LONDON }).format(d);
+    new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: LONDON }).format(d);
   return `${fmt(start)}–${fmt(end)}`;
 }
 

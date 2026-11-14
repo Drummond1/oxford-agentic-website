@@ -2134,6 +2134,9 @@ Status: `todo` · `blocked` (why) · `doing`
     changing one now needs that decision revisited rather than overturned in passing. (b) Every
     event page's key-facts panel prints `TIME 9:00-17:00` while its own agenda beneath prints
     `09:00` for the same moment. One of the two should move; neither is wrong.
+    **(b) DONE 14 Nov 2026 (09:00 cycle)** - the padded form moved, because it is the site's own
+    and the unpadded one was alone: `formatTimeRange` now asks `Intl` for a 2-digit hour. See that
+    entry in Shipped. **(a) is untouched and stays with this item.**
 
 
 94. `done` 13 Nov 2026 (02:00 cycle) - shipped on the **programme** page rather than the event
@@ -2256,6 +2259,86 @@ Status: `todo` · `blocked` (why) · `doing`
     already use. Nothing is needed about price or VAT.
 
 ## Shipped
+
+### 14 Nov 2026 (09:00 cycle) - the two places every event page states its hours wrote "9:00-17:00" while the agenda four inches below wrote "09:00". One `Intl` option, 7 files of 203, no reflow at any width
+
+**What shipped.** `formatTimeRange` in `src/lib/site.ts` asks `Intl.DateTimeFormat` for
+`hour: '2-digit'` instead of `hour: 'numeric'`, so the day's hours read `09:00-17:00`. Backlog
+93(b), taken at the scope that item set and no wider. One line changed, plus the comment that
+records why.
+
+**Why this way round, and it was not a coin toss.** The item left the direction open ("one of the
+two should move; neither is wrong"); counting the surfaces settles it. The padded form is already
+what the site writes everywhere else it states these hours: **every agenda row on all five event
+pages** ("09:00 Registration and coffee"), the "What time does the day start and finish?" answer on
+the **Agentic**, **Coding** and **Second Brain** programme pages, the Coding and Second Brain event
+pages' own "When and where is it?" answers, and every `startDate` in the content files. The
+unpadded form existed in exactly two places, both derived from this one function: the hero meta
+line under the title and the `TIME` row of the key-facts panel. A range is also internally
+inconsistent when only one end is padded - `17:00` is 24-hour notation, so `9:00` beside it is the
+odd one out rather than a second convention. The Agentic programme file already says as much in the
+comment above the answer a previous cycle wrote there: *"No new fact: 09:00 to 17:00 is what every
+event file publishes."* That answer was written **because** the event pages said `9:00-17:00` and no
+programme page said anything; this closes the other half.
+
+**Blast radius, measured rather than asserted.** Whole-`dist` sha256 diff: **7 files of 203** - the
+five event pages (two strings each) and `llms.txt` / `llms-full.txt`. Nothing else, and no sitemap
+`lastmod` moved, because no content file was touched and nothing derived from one changed. The
+textual diff on each page is two lines and only the two time strings.
+
+**No pixel moved except those two strings.** Full-page screenshots of all five event pages at
+**375, 768 and 1280px**, motion disabled and the consent banner removed, diffed pixel by pixel
+against a build of `HEAD` served alongside. Page heights are **identical** in all fifteen pairs, so
+nothing reflowed. In thirteen of the fifteen the differing pixels are exactly **two 11px-tall
+bands** - the hero meta line and the key-facts `TIME` value - and nothing else. The two exceptions
+are Cohort 1 at 768 and 1280, whose third band is the photo strip: the baseline was served by
+`python3 -m http.server` and its lazy images had not decoded when the shot was taken. Cropped and
+read both: identical reserved boxes, photos in one and empty frames in the other. Not layout.
+
+**Checks read by exit code.** `npm run build` green and every figure identical to the baseline:
+66 pages checked, 3,247 internal links resolve, schema valid, 12 Event nodes (7 top-level, 5 nested
+entity), 20 `FAQPage` nodes, all titles and descriptions unique, `check:dates` 0 findings and
+0 year-less dates. `npm run check:flags` passes on both the all-on and all-off builds. `astro check`
+reports **83 errors before and after alike** - measured on a stashed tree in the same session, and
+they are backlog 70's pre-existing `ts(7006)` implicit-anys, which CI does not run. The outbound
+checker reports 0 of 11 third-party links reachable, which is this sandbox's egress policy and not
+a site fault. `formatTimeRange` is not used in `src/lib/schema.ts`, so no JSON-LD field moved;
+`startDate` and `endDate` are ISO and untouched.
+
+**The sweeps that found nothing, recorded so they are not re-run blind.** The standing overflow and
+accessibility sweep over **all 55 indexable pages at 375, 768 and 1280px** reads **0** - no
+horizontal overflow, no missing alt text, no unlabelled form control, no nameless link or button,
+no duplicate id - before the change and again after. A full **axe-core 4.12.1** pass over the same
+55 URLs at 375 and 1280px, run with the best-practice rules on as well as WCAG 2.0/2.1/2.2 A and AA,
+returns exactly **two** findings and both are already on this list: `color-contrast` (788 nodes,
+the bronze `#9A7B23` at 3.82:1, **backlog 21**, Drummond's token) and `region` (110 nodes, the
+consent banner's copy outside a landmark, left alone for the reason the 16 Oct cycle gave - it is
+the consent surface). A keyboard pass over six pages at 375px walked 239 tab
+stops: every one is inside the viewport, and every one carries a visible gold ring except the two
+Luma booking iframes, which take focus as frames rather than as controls; the mobile menu's tab-out-and-close and
+Escape-to-toggle both behave as `Header.astro` documents them, which was checked because the first
+read of the tab order looked like a focus leak and was not.
+
+**Deployment state came from the Actions API**, since `oxfordagentic.com` is refused by this
+session's egress policy (403 at the proxy on `curl -sI`). Run `43574563682` of *Deploy to GitHub
+Pages* for `20e7d909` concluded **success** at 08:10 UTC today, nothing is queued or in progress,
+and `git log -1` matches that run's `head_sha` - the step 0 check, which mattered today: the
+checkout arrived on a detached HEAD at `20e7d90` while the local `main` branch sat **eight commits
+behind** at `85ef135`, exactly the trap rule 0 describes, and was reset to `origin/main` before
+anything was measured. PR #1 and PR #3, and the `feat/ceo-roundtable-demand-page` branch, are the
+known-stale leftovers already recorded in backlog 20; none reads as work in flight.
+
+**IndexNow over-submits, in the branch backlog 83 and 85 describe.** `--dry-run` over this cycle's
+change set prints **55 URLs** because any `src/lib/` path goes whole-site; the honest number is the
+**5 event pages** (the two `llms` files are not in the sitemap). Over-submission, which backlog 74
+weighs as the milder failure. Recorded as a fourth measured instance of the same argument for taking
+the build-output diff once, not as a reason to special-case `site.ts`.
+
+**Search Console unavailable for the forty-eighth consecutive cycle**: no export newer than the
+24 August baseline in `seo-data/`, and the `GSC_SERVICE_ACCOUNT_KEY` secret is still unset, so the
+daily workflow succeeds and writes nothing. Nothing estimated. **No new guide**, no GEO probe, no
+off-page target, nobody contacted. **No event fact was read, verified or changed**, and no
+`updatedDate` was bumped - the hours are derived from `startDate` and `endDate`, which did not move.
 
 ### 14 Nov 2026 (08:00 cycle) - no page changed. The one coverage gap in four probes is a cost question the field pushes onto our booking page, and the Coding line answers it on no surface while the Agentic line answers it on three
 
