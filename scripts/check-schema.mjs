@@ -104,6 +104,9 @@ let eventNodes = 0;
 // this detector took the figure from 7 to 12 on the day it shipped.
 let nestedEventNodes = 0;
 let faqNodes = 0;
+/* Publication dates seen carrying a numeric offset, printed on the pass line so a
+   later cycle reads a drop as a regression rather than as nothing happening. */
+let datedNodes = 0;
 
 const files = await walk(DIST);
 
@@ -277,6 +280,32 @@ for (const file of files) {
         checkEventNode(nested, ` at ${trail}`);
       }
 
+      /*
+       * Publication dates must carry a NUMERIC offset, not `Z`.
+       *
+       * Stricter than the Event rule above on purpose. That one asks only for a
+       * timezone, and `Z` satisfies it - which is exactly the form this site
+       * published until 14 November 2026, when `toISOString()` was restating an
+       * authored `2026-10-19T14:15:00+01:00` as `2026-10-19T13:15:00.000Z` on
+       * every guide's `WebPage` and `Article` node. Both name one instant, so a
+       * rule that accepts `Z` cannot see the regression coming back. The site's
+       * own authored form, which `src/content.config.ts` enforces in as many
+       * words, is London local time with the offset written out; anything
+       * authored between midnight and 01:00 BST also publishes the WRONG
+       * CALENDAR DAY in the `Z` form, disagreeing with the date the page shows.
+       */
+      for (const key of ['datePublished', 'dateModified']) {
+        const value = node[key];
+        if (typeof value !== 'string') continue;
+        if (/[+-]\d{2}:\d{2}$/.test(value)) {
+          datedNodes += 1;
+        } else {
+          errors.push(
+            `${page}: ${node['@type']} ${key} "${value}" has no numeric UTC offset — publish London local time, e.g. "2026-10-19T14:15:00+01:00"`,
+          );
+        }
+      }
+
       if (node['@type'] === 'FAQPage') {
         faqNodes += 1;
         if (!Array.isArray(node.mainEntity) || node.mainEntity.length === 0) {
@@ -319,5 +348,5 @@ if (warnings.length > 0) {
 }
 
 console.log(
-  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), all titles and descriptions unique`,
+  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), ${datedNodes} offset-bearing publication date(s), all titles and descriptions unique`,
 );

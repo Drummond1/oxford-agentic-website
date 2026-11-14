@@ -126,8 +126,14 @@ export function webPageSchema(page: {
     isPartOf: { '@id': `${config.brand.domain}/#website` },
     primaryImageOfPage: { '@type': 'ImageObject', url: page.ogImage },
     inLanguage: 'en-GB',
-    ...(page.publishedTime ? { datePublished: page.publishedTime.toISOString() } : {}),
-    ...(page.modifiedTime ? { dateModified: page.modifiedTime.toISOString() } : {}),
+    /* London local time with the offset spelled out, like every other date this
+       file publishes. `toISOString()` here restated an authored
+       `2026-10-19T14:15:00+01:00` as `2026-10-19T13:15:00.000Z`, which is the
+       same instant and the wrong wall clock - and for anything authored in the
+       first hour of a British Summer Time day it is also the wrong calendar
+       day, which is what the visible date on the page states. */
+    ...(page.publishedTime ? { datePublished: londonIso(page.publishedTime) } : {}),
+    ...(page.modifiedTime ? { dateModified: londonIso(page.modifiedTime) } : {}),
   };
 }
 
@@ -572,8 +578,10 @@ export function articleSchema(guide: {
     headline: guide.title,
     description: guide.description,
     articleSection: 'Guides',
-    datePublished: guide.publishDate.toISOString(),
-    dateModified: guide.updatedDate.toISOString(),
+    // See the note on `webPageSchema`: London local time with its offset, which
+    // is the string `src/content.config.ts` insisted the frontmatter be written in.
+    datePublished: londonIso(guide.publishDate),
+    dateModified: londonIso(guide.updatedDate),
     image: [guide.ogImage],
     author: { '@id': `${absoluteUrl(paths.teamMember(guide.authorSlug))}#person`, '@type': 'Person', name: guide.authorName },
     publisher: { '@id': ORG_ID },

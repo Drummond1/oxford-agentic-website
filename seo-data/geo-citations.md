@@ -5,6 +5,60 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-14 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND FOR THE FIRST TIME IN THIS LOG EVERY FIELD PROBED IS ALREADY ANSWERED ON THE SITE: FOUR REACH FAILURES AND NOT ONE COVERAGE GAP
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions, none of them run in the three preceding cycles. Probe 1 is the **Coding line's own
+commercial query**, twelve days out, and it has not been put in this phrasing before. Probes 2, 3
+and 4 are the three pre-purchase decisions a buyer makes in order - which format, which task, which
+person - and each maps to a guide this site already publishes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | one-day Claude Code workshop UK in person for non-developers | **No** | `eventbrite.co.uk` (x6), `luma.com` (x3), `maven.com` (x4), `claude-code-course-c1w.pages.dev` (x2), `oerc.ox.ac.uk`, `claude101.every.to`, `dayseven.lovable.app`, `meetup.com` |
+| 2 | should I run an in-house AI training day or send people to a public AI course | **No** | `pertamapartners.com` (x3), `aicerts.ai` (x3), `go9x.com` (x2), `intuitionlabs.ai` (x2), `maven.com`, `aitraining2u.com`, `ivee.jobs`, `datasociety.com`, `techclass.com`, `verticalinstitute.com`, `guvi.in`, `agilefever.com`, `ttms.com` |
+| 3 | which task should I automate with AI first in my business | **No** | twenty results, all vendor or SEO blogs: `raftlabs.com` (x2), `wboc.com`, `g2.com`, `mind-core.com`, `lilachbullock.com`, `commercepundit.com`, `indiehackers.com`, `unifyapps.com`, `ciela.ai`, `jamout.ai`, `knowlee.ai`, `carrilagency.com`, `monrealit.com`, `stmicro.net`, `aiagencyplus.com`, `aicodex.to` |
+| 4 | who on my team should I send to an AI training course | **No** | `ttms.com` (x2), `scaledagile.com` (x2), `aihr.com` (x2), `resource-center.generalassemb.ly` (x2), `correlation-one.com`, `clutch.co`, `activepieces.com`, `shrm.org`, `learnexperts.ai`, `personio.com`, `itacit.com`, `talentlms.com`, `prodoscore.com` |
+
+**Reading.**
+
+- **The set was chosen to find a coverage gap and found none, which is itself the finding.** Probes
+  2, 3 and 4 are the three sequential pre-purchase decisions, and each is answered by a guide that
+  already carries a `FAQPage` node: `in-house-ai-day-or-send-people-to-a-cohort` (three questions,
+  added 10 Nov on probes in this same field), `how-to-choose-your-first-agentic-task`, and
+  `who-should-take-the-seat`. All three fields are **winnable** on the standing test - probe 2 is
+  thirteen training vendors with the engine's own caveat *"most are written by training vendors, so
+  treat their numbers as rough"*, probe 3 is twenty vendor and SEO blogs with no institutional
+  publisher anywhere in it, probe 4 is HR software and training vendors - and all three are
+  **converting**. Nothing was written, because on this log's own rule a field that is already
+  answered on the site is a reach problem and a second answer does not fix reach. **Fourteenth
+  consecutive cycle of reach rather than coverage.**
+- **Probe 1 is the Coding line's first commercial probe in its buyers' own words, and the field is
+  booking platforms rather than publishers.** `eventbrite.co.uk` holds **six of the nineteen**
+  results on its own, `luma.com` three and `maven.com` four: thirteen of nineteen are event or
+  course platforms, and the three remaining UK in-person days are one-off workshop pages. The
+  Coding Bootcamp's Cohort 1 is twelve days out and no page of this site appears. **This is the
+  single sharpest argument yet for the Eventbrite item in `outreach/off-page-listings.md`**: the
+  query is not being won by better pages, it is being won by listings, and we have none.
+- **The engine said the field it returned is stale, and ours is not.** It closed probe 1 with
+  ***"most of the dates in the results have already passed, so check each listing for upcoming
+  sessions"***, and then went through them: Ballpoint *"22 May or 5 June 2026, so these have
+  passed"*, Oxford's own AI Centre *"12 June 2026, so it has passed"*, Day Seven *"returning
+  September 2026, which is also before today's date"*. It could not confirm an upcoming date for
+  any of them. We publish two, machine-readably, with offsets and a named Oxford venue. The whole
+  gap on this query is that nothing it retrieves points at us.
+- **`oerc.ox.ac.uk` is a competitor, not a find, and is recorded so a later cycle does not mistake
+  it for one.** The Oxford e-Research Centre's AI Centre runs *"using coding agents for project
+  management, introduction to non-programmers"*, three hours, in person in Oxford, and it holds the
+  one institutional slot in probe 1's field. It is a University of Oxford unit, so it is the exact
+  entity this site spends an `Organization.disambiguatingDescription`, a homepage FAQ and the fourth
+  line of `llms.txt` distinguishing itself from. Not an outreach target. Noted in
+  `outreach/review-list.md` with that reasoning.
+- **No new contactable target in four probes.** Every other host in the four sets is either a
+  competitor's own marketing page, a course marketplace already covered by the listings file, or an
+  HR or vendor blog with no submission route. Nobody was contacted.
+
 ## 2026-11-14 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE ONE GENUINE COVERAGE GAP IS THAT THE CODING LINE, WHOSE PUBLISHED TOOLS ARE PAID PRODUCTS, ANSWERS THE SUBSCRIPTION QUESTION ON NO SURFACE WHILE THE AGENTIC LINE ANSWERS IT ON THREE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

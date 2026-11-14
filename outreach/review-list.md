@@ -11,6 +11,43 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new contactable target in four probes, and the sharpest Eventbrite evidence this list has
+  carried: on the Coding line's own commercial query, thirteen of nineteen results are booking
+  platforms and six are Eventbrite.** Found 14 Nov 2026 (14:00 cycle), twelve days before Cohort 1.
+  **Nothing contacted, submitted or signed up for.**
+  - **The probe.** *"one-day Claude Code workshop UK in person for non-developers"*, the Coding
+    Bootcamp's own query in a buyer's words, run for the first time. `eventbrite.co.uk` returned
+    **six** results on its own, `luma.com` three and `maven.com` four. No page of this site
+    appeared. The three remaining UK in-person days are individual workshop pages rather than
+    publishers.
+  - **Why it argues the Eventbrite item specifically**, rather than 2b in general. Every previous
+    reading here has argued off-page from a stale date, a wrong venue or an unresolved entity
+    question. This one argues it from the shape of the field: the query is not being won by better
+    pages than ours, it is being won by **listings**, and we hold none. Our own two Luma pages are
+    retrieved on the Agentic query, so the mechanism is proven to work for us; there is simply one
+    platform in this field and we are not on it. The copy for an Eventbrite listing already exists
+    in `outreach/submission-drafts.md`.
+  - **The engine volunteered that the field it returned is out of date, and could not confirm an
+    upcoming date for any of it**: *"most of the dates in the results have already passed, so check
+    each listing for upcoming sessions"*. We publish two upcoming dates with offsets and a named
+    Oxford venue. Nothing it retrieves points at them.
+  - Needs: Drummond's approval to list Cohort 1 of the Coding Bootcamp, and Cohort 3, on Eventbrite.
+    Nothing contacted, nothing submitted, no account made.
+
+- **`oerc.ox.ac.uk` - the Oxford e-Research Centre's AI Centre - is a competitor and NOT an outreach
+  target. Recorded 14 Nov 2026 so a later cycle does not spend a probe rediscovering it and mistake
+  it for a find.**
+  - What it is: the AI Centre runs *"using coding agents for project management, introduction to
+    non-programmers"*, three hours, in person in Oxford. It was the one institutional publisher in
+    probe 1's field, and the engine noted its listed date, 12 June 2026, has passed.
+  - **Why it must not be approached as a partner or a listing.** It is a University of Oxford unit.
+    This site spends an `Organization.disambiguatingDescription` on all 64 built pages, a homepage
+    FAQ and the fourth line of `llms.txt` stating that Oxford Agentic has no affiliation with the
+    University or its colleges. A link or a co-listing is the one off-page move that would muddy
+    the exact thing those three surfaces exist to keep clear. If Drummond ever wants it, it is his
+    call and a positioning decision, not a backlink.
+  - Needs: nothing. Nothing contacted, nothing submitted, no account made.
+
 - **No new target in five probes, and a new kind of reading: the thing an engine could not confirm
   this time was not our date or our venue but whether we are the University of Oxford.** Found
   13 Nov 2026 (14:00 cycle). **Nothing contacted, submitted or signed up for.**

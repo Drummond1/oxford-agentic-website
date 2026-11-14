@@ -2258,7 +2258,124 @@ Status: `todo` · `blocked` (why) · `doing`
     **One sentence from him closes it on both Coding surfaces**, in the wording the Agentic pages
     already use. Nothing is needed about price or VAT.
 
+98. `todo` (loop-actionable, **low value and deliberately not taken** as the 14 Nov 2026 14:00
+    cycle's one change; found by that cycle's own sweep) - **the sitemap's `lastmod` is the fourth
+    producer of a date in this repo and the only one still writing `toISOString()`.**
+    `astro.config.mjs:303` returns `lastmod: date.toISOString()`, so every entry publishes
+    `2026-10-19T13:15:00.000Z` where the authored string was `2026-10-19T14:15:00+01:00`. The other
+    three were fixed in two commits: the event and course dates on 13 November, and the `WebPage`,
+    `Article` and Open Graph publication dates today.
+    **Why it was left.** It is a different kind of fact from the three that were taken. Those are
+    authored publication moments that a consumer may print back at a reader; a `lastmod` is a
+    derived crawl hint, read by machines only, and the sitemap protocol takes either form. Taking
+    it would move **all 55 entries** in the same commit as a change that moved 32 pages, which
+    muddies a blast-radius measurement for no reader-visible gain. And `astro.config.mjs` holds its
+    own written standard for these derived dates - that they be *"verifiably accurate"*, with
+    *"understating is the safe direction"* - which should be read before anything in that file is
+    touched.
+    **If it is taken**, `londonIso` is already exported from `src/lib/site.ts` and the change is one
+    line, but it belongs in a cycle that is doing nothing else to the sitemap, and the check to run
+    is a diff of all 55 `lastmod` values proving each names the same instant it named before.
+    Weigh it against backlog 49 and 59, which are about whether those dates are *true* rather than
+    about how they are *spelled*; those are the more valuable half of the same file.
+
 ## Shipped
+
+### 14 Nov 2026 (14:00 cycle) - every guide published its own publication date an hour early and in the wrong wall clock, one layer above the fix that shipped yesterday. One helper, three call sites, 32 of 203 built files, and the detector that makes `Z` fail
+
+**What was wrong, and why yesterday's commit did not reach it.** The 13 Nov 20:00 cycle moved every
+**event** date from `toISOString()` to `londonIso()`, so `EducationEvent` and `CourseInstance`
+publish `2026-07-21T09:00:00+01:00` rather than `2026-07-21T08:00:00.000Z`. It did not sweep the
+other producers of a date in this repo, and there were three, all on guide pages and all still
+calling `toISOString()`:
+
+- `webPageSchema` - `WebPage.datePublished` and `dateModified` (`src/lib/schema.ts:129-130`)
+- `articleSchema` - `Article.datePublished` and `dateModified` (`src/lib/schema.ts:575-576`)
+- `BaseHead.astro` - the Open Graph `article:published_time` and `article:modified_time`
+
+So `who-should-take-the-seat`, authored `2026-10-19T14:15:00+01:00`, published `13:15:00.000Z` six
+times on its own page. **Same shape as backlog 66, 77 and 80 - the defect fixed, the remaining
+instances left standing** - and the argument for taking it is the one `londonIso`'s own doc comment
+already makes: `src/content.config.ts` refuses a frontmatter date without an explicit offset, in as
+many words, and says why; the same validator guards `publishDate` and `updatedDate` on guides; and
+the layer below then threw that offset away.
+
+**Measured, not asserted. 44 of the 64 authored guide timestamps were published an hour early**,
+being the ones written in British Summer Time; the other 20 were already the right hour and gained
+`+00:00` in place of `.000Z`. All 64 now round-trip through `londonIso` to the authored string
+exactly.
+
+**The part that is a bug rather than a fidelity question, proved on boundaries the corpus does not
+yet reach.** Anything authored between 00:00 and 00:59 BST publishes the **previous calendar day**
+in the `Z` form, while the date the page shows the reader is the right one: `2026-06-15T00:30:00+01:00`
+became `2026-06-14T23:30:00.000Z`, and `00:00+01:00` became the day before at 23:00. The corpus's
+closest approach is `getting-an-ai-bootcamp-approved` at `02:10+01:00`, one hour and ten minutes
+clear, and this loop has shipped guides at 02:00 before. Nine instants were run through a
+replication of the helper, including both sides of the 2027 spring forward and both of the repeated
+01:30 on 31 October 2027. The only input that does not round-trip is `2027-03-28T01:30:00+00:00`,
+which is inside the spring-forward gap: that wall clock does not exist in London, and `02:30+01:00`
+is the one correct rendering of that instant.
+
+**The detector, in the same commit, and deliberately stricter than the Event rule.** The existing
+check asks only for a timezone offset on `startDate` and `endDate`, and `Z` satisfies it - so a rule
+written to that standard could not see this regression returning. `check-schema.mjs` now requires a
+**numeric** offset on `datePublished` and `dateModified` on every node, with the reason written at
+the call site. **Proved by mutation on a throwaway copy of `dist`**: the control passes and exits 0;
+putting the `Z` form back on two guides fails with four named errors - the page, the node type and
+the key in each - and exits 1. The pass line now prints `128 offset-bearing publication date(s)`
+(32 guides x 4 nodes), so a later cycle reads a drop as a regression rather than as nothing.
+
+**Blast radius, against a sha256 snapshot of `dist` taken before the edit. 32 of 203 files differ,
+none added or removed** - the 32 guide pages, and nothing else. No sitemap, no `llms.txt`, no
+`llms-full.txt`, no `rss.xml` and no `lastmod` moved, because none of them reads these three call
+sites and no content file was touched. **Every differing byte is inside a date literal, proved
+rather than eyeballed:** masking every ISO datetime in both builds makes all 32 files byte-identical
+to their baselines, and of the **192** literals compared (32 guides x 6: four JSON-LD, two `meta`),
+**zero name a different instant**. This is a restatement, not a change of fact.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline but the new one: 66 pages, 3,247 internal links resolve, schema valid, 12 Event (7
+top-level, 5 nested entity) and 20 FAQPage nodes, all titles and descriptions unique, `check:dates`
+0 findings and 0 year-less dates. Headless Chromium over four guide pages at 375 and 1280px: **88
+assertions, 0 fail**, 0 JS exceptions, 0 failed same-origin requests, 0 horizontal overflow, with
+every JSON-LD and Open Graph date read out of the live DOM and asserted to carry a numeric offset,
+no `.000Z` surviving anywhere, and the JSON-LD day asserted equal to the day the visible `<time>`
+shows. Full-page screenshots of two guides at both widths, diffed against a build of `HEAD`, are
+**byte-identical**: nothing visible moved, which follows from every changed byte being in `<head>`.
+
+**IndexNow over-submits by 23 on this push**: `src/lib/` and `src/components/` are both in the
+whole-site bucket, so the dry run submits 55 where the honest number is 32. **Backlog 85's fifth
+instance, not fixed, for backlog 41's reason** - and `BaseHead.astro` is the case the whole-site
+branch is genuinely right about in general, which is why a hand-written special case would be wrong
+here.
+
+**Left deliberately, and recorded as backlog 98:** the sitemap's `lastmod` is the fourth producer of
+a date in this repo and still writes `toISOString()`. It was not taken in this commit because it is
+a different kind of fact - a derived crawl hint rather than an authored publication moment - it
+would move all 55 entries at once on a change that moved 32 pages, and `astro.config.mjs` holds its
+own written standard for these dates that should be read before touching them.
+
+**GEO: four probes, zero citations, and for the first time in this log every field probed was
+already answered on the site.** Probes 2, 3 and 4 are the three sequential pre-purchase decisions -
+which format, which task, which person - all three winnable on the standing test, all three
+converting, and all three already carrying a `FAQPage` node on this site. Nothing to write; the
+problem is reach. **Fourteenth consecutive cycle of reach rather than coverage.** Probe 1 is the
+Coding line's own commercial query in a buyer's words, run for the first time, twelve days out:
+thirteen of nineteen results are booking platforms, **six of them Eventbrite**, and no page of this
+site appears. That is the sharpest argument this log has produced for the Eventbrite item
+specifically rather than for 2b in general - the query is being won by listings, not by better
+pages. Both are in `outreach/review-list.md`, with `oerc.ox.ac.uk` recorded as a competitor and
+explicitly **not** an outreach target, because it is a University of Oxford unit and a link to it
+muddies the one thing the `disambiguatingDescription` exists to keep clear.
+
+**Search Console unavailable for the forty-eighth consecutive cycle, cause unchanged**: the
+`GSC_SERVICE_ACCOUNT_KEY` repository secret is unset, so the daily export workflow reports success
+(run 12, 12:25 UTC today) while writing nothing, and `seo-data/` holds no reading newer than the
+24 August baseline. Nothing was estimated.
+
+**No new guide, 0 of 3 for the week of 9-15 November, and no guide Q&A block.** No event fact was
+read, verified or changed; `luma.com` and `oxfordagentic.com` are both refused by this session's
+egress policy, so deployment state came from the Actions API.
 
 ### 14 Nov 2026 (09:00 cycle) - the two places every event page states its hours wrote "9:00-17:00" while the agenda four inches below wrote "09:00". One `Intl` option, 7 files of 203, no reflow at any width
 
