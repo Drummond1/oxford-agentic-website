@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-14 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; THE COMMERCIAL PROBE NOW RETURNS AN EXPLICIT "I COULDN'T FIND A 19 NOVEMBER BOOTCAMP" AND STILL SENDS THE BUYER TO SEPTEMBER'S LUMA PAGE, FIVE DAYS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the
+tool is US-resident, so the 26 Oct caveat about reading positions off it still stands. Four
+questions. Probe 1 is the free-material axis, re-run because it is the one the 7 November cycle
+acted on. Probe 2 is the **Coding** line's own buyer phrasing, which this log has not probed since
+the line went on sale. Probe 3 is a facilitator-side axis, new here. Probe 4 is the standing
+commercial reach probe, dated, at five days out.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is a one day AI bootcamp worth paying for compared with a free online course or an executive programme | **No** | `nobledesktop.com` (x4), `aicerts.ai` (x2), `datadrivendaily.com` (x2), `emeritus.org`, `tripleten.com`, `techademy.com`, `ivee.jobs`, `coursera.org`, `collegetransitions.com`, `tinkerllm.com` |
+| 2 | one day AI coding bootcamp for non developers UK build with Claude Code | **No** | `onlc.com` (x2), `vdci.edu` (x2), `maven.com` (x3), `claude-code-course-c1w.pages.dev` (x2), `learningtree.co.uk`, `nobledesktop.com`, `marq-ai-wiki.pages.dev`, `adventureppc.com`, `every.to`, `eventbrite.co.uk`, `creativelive.com`, `adventuremedia.ai` |
+| 3 | how many people should be in the room at a hands-on AI workshop, does group size matter | **No** | `mail-archive.com` / software-carpentry (x4), `medium.com` (x4), `oreilly.com`, `mindtools.com`, `eventbrite.com` (x2), `trainingzone.co.uk`, `breakthrough3x.com`, `thecoachingtoolscompany.com`, `occasion.app` |
+| 4 | agentic AI bootcamp Oxford 19 November 2026 how do I register, last places (commercial reach probe, dated, five days out) | **No** | `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`, `groups.google.com` (x5, OxML), `lifelong-learning.ox.ac.uk` (x3), `sbs.ox.ac.uk`, `help.datasciencedojo.com` (x2), `datasciencedojo.com`, `allai.events`, `learnersink.com`, `nobleprog.co.uk`, `business-school.ed.ac.uk`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 4 is the plainest statement of the standing failure this log has recorded, and it is the
+  twelfth consecutive cycle of reach rather than coverage.** Asked by date, the engine did not
+  hedge: ***"I couldn't find a 19 November 2026 Oxford agentic AI bootcamp in the results, and I
+  found no registration steps for that date."*** It then named `luma.com/oxfordagentic2` - **the
+  cohort that ran on 16 September** - as "the closest match", quoted its *"Get Tickets"*, and
+  closed ***"To register for the Oxford Agentic Bootcamp, open the Luma page, choose a ticket type,
+  and confirm the date and venue there."*** Five days before Cohort 3, a buyer following that
+  answer is sent to a finished day and told to buy. Cohort 3's page carries 19 November in its
+  title, its description, its `EducationEvent` node and its `sameAs`, and was not reached. The
+  engine also offered the competing dates it *could* confirm - Saïd's online programme starting
+  11 November, and a lifelong-learning course running 30 November to 11 December with a stated
+  registration deadline. **This is backlog 2b** and no new review-list entry was added: every
+  source in it is already recorded there, from 8 Nov (the "5 spots remain" reading), 13 Nov 14:00
+  (undated phrasing) and 13 Nov 20:00 (next-week phrasing). This is the same finding arriving
+  through a fifth phrasing.
+- **Probe 1 is WINNABLE and CONVERTING and we have already taken it - which is the useful finding,
+  because it means the 7 November opt-in was aimed correctly.** Nineteen results, every one a
+  course vendor, an aggregator or a listing site, with no institutional publisher; the engine
+  flagged its own field (***"The search found no independent head-to-head study... Most sources are
+  from providers selling their own courses, so weigh them accordingly"***) and closed against the
+  buyer in the same terms as the 7 November probe (***"a free course plus a short paid course may
+  cover most of it at lower cost"***). `ai-bootcamp-vs-course-vs-exec-education` answers exactly
+  that, in question shape, and has published a `FAQPage` node from those three `h3` headings since
+  7 November. **Nothing to write**: the three questions the field leaves open - is there anything
+  you could not find for free, why not do it yourself, when is a paid day not worth it - are the
+  three headings already there. Recorded so backlog 54 is not re-derived a third time.
+- **Probe 2 is the Coding line's own buyer, and the field has no UK answer.** The engine found
+  ***"only two clearly UK-based"*** one-day options - a Clerkenwell day whose listed date was May
+  2026, and an undated Eventbrite listing at Greenford Quay - and said of the rest ***"I didn't
+  find UK pricing or dates for most of these."*** A one-day, in-person, Oxford, non-developer
+  Claude Code day on sale for 26 November is precisely what that searcher asked for and it was not
+  returned. **Not a coverage gap**: the Coding programme page already screens on this exact
+  phrasing, and its own frontmatter records the 27 October cycle probing *"for non-developers"* and
+  *"without being a developer"* and writing the level screen in response. Reach again, and the
+  second axis this cycle to fail the same way.
+- **Probe 3 is declined on intent, not on winnability.** The searcher is designing a workshop, not
+  booking one, so it fails CONVERTING outright; the field is also general facilitation material
+  with `oreilly.com` and `mindtools.com` in it, so it is not clean on WINNABLE either. The site's
+  own answer ("a small room of senior people", and "small group" for Second Brain) stays as it is -
+  a number must not be written, per the 13 September standing decision.
+
 ## 2026-11-13 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS; BOTH FORMAT PROBES ARE WINNABLE, CONVERTING AND ALREADY ANSWERED IN THE BUYER'S OWN WORDS ON OUR PAGES, AND THE COMMERCIAL PROBE STILL REACHES SEPTEMBER'S LUMA PAGE SIX DAYS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), and the

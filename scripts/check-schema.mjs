@@ -41,6 +41,55 @@ function* emptyArrays(value, trail = '') {
   }
 }
 
+/** The two types this site ever publishes for a cohort. */
+function isEventNode(value) {
+  return value?.['@type'] === 'EducationEvent' || value?.['@type'] === 'Event';
+}
+
+/**
+ * Event nodes nested inside another node, as [dottedPath, node] pairs.
+ *
+ * `nodes` below is `@graph` only, so for two years every check in this file saw
+ * exactly the top level and nothing under it. That is not a theoretical gap:
+ * `eventListingItem`'s own comment in `src/lib/schema.ts` records that a node
+ * missing `image` and `offers` "passed every build since it was written", and
+ * the 25 October cycle fixed the data without adding the detector - the same
+ * shape as the quote guard and the link checker, where the defect was fixed and
+ * the thing that would have caught it was not.
+ *
+ * What is nested, measured on all 66 built pages: 34 nodes, of which 29 are
+ * `subEvent` children - agenda rows, which correctly carry a name, a time and a
+ * place and none of `organizer`, `eventStatus`, `image` or `offers`, and must
+ * stay exempt - and 5 are the entity-level cohorts inside `/events/`'s
+ * `ItemList`. Those five are the reason this matters: `/events/` is the page an
+ * engine reads to answer "when is the next cohort", its `ItemList` was given
+ * dates on 13 November precisely because twelve consecutive GEO probes recorded
+ * engines taking a passed date off someone else's crawl, and nothing validated
+ * the result.
+ *
+ * Two independent tests, and today they agree exactly on all 34: skip anything
+ * reached through a `subEvent` key, and require both `@id` and `url`, which is
+ * what a node claiming to be an entity in its own right carries. All 5 entities
+ * have both; none of the 29 agenda rows has either. A nested node with neither
+ * is left alone rather than guessed at.
+ */
+function* nestedEventEntities(value, trail = '', viaSubEvent = false, depth = 0) {
+  if (Array.isArray(value)) {
+    for (const [i, item] of value.entries()) {
+      yield* nestedEventEntities(item, `${trail}[${i}]`, viaSubEvent, depth + 1);
+    }
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+  if (depth > 0 && !viaSubEvent && isEventNode(value) && value['@id'] && value.url) {
+    yield [trail, value];
+  }
+  for (const [key, child] of Object.entries(value)) {
+    const here = trail ? `${trail}.${key}` : key;
+    yield* nestedEventEntities(child, here, viaSubEvent || key === 'subEvent', depth + 1);
+  }
+}
+
 /** Roughly what Google renders before it cuts a title. */
 const TITLE_LIMIT = 60;
 /** The documented meta-description target; over this warns, over 200 fails. */
@@ -51,6 +100,9 @@ const warnings = [];
 const titles = new Map();
 const descriptions = new Map();
 let eventNodes = 0;
+// Counted apart from the top level so the pass line explains its own total:
+// this detector took the figure from 7 to 12 on the day it shipped.
+let nestedEventNodes = 0;
 let faqNodes = 0;
 
 const files = await walk(DIST);
@@ -192,22 +244,37 @@ for (const file of files) {
 
     if (!types.includes('Organization')) errors.push(`${page}: JSON-LD has no Organization node`);
 
+    /*
+     * One set of Event rules, read by the top level and by every nested entity,
+     * so the two cannot come to disagree about what an event node must carry.
+     * `where` is empty for a top-level node, which keeps those messages exactly
+     * as they have always read, and names the path for a nested one.
+     */
+    const checkEventNode = (node, where) => {
+      const required = ['name', 'startDate', 'endDate', 'location', 'organizer', 'eventStatus', 'eventAttendanceMode', 'image', 'offers'];
+      for (const key of required) {
+        if (!node[key]) errors.push(`${page}: Event JSON-LD${where} missing "${key}"`);
+      }
+      if (node.location && !node.location.address?.addressLocality) {
+        errors.push(`${page}: Event${where} location needs a PostalAddress with addressLocality`);
+      }
+      // Timezone-bearing dates, or the event shows at the wrong hour.
+      for (const key of ['startDate', 'endDate']) {
+        if (node[key] && !/[Zz]|[+-]\d{2}:\d{2}$/.test(node[key])) {
+          errors.push(`${page}: Event${where} ${key} has no timezone offset`);
+        }
+      }
+    };
+
     for (const node of nodes) {
-      if (node['@type'] === 'EducationEvent' || node['@type'] === 'Event') {
+      if (isEventNode(node)) {
         eventNodes += 1;
-        const required = ['name', 'startDate', 'endDate', 'location', 'organizer', 'eventStatus', 'eventAttendanceMode', 'image', 'offers'];
-        for (const key of required) {
-          if (!node[key]) errors.push(`${page}: Event JSON-LD missing "${key}"`);
-        }
-        if (node.location && !node.location.address?.addressLocality) {
-          errors.push(`${page}: Event location needs a PostalAddress with addressLocality`);
-        }
-        // Timezone-bearing dates, or the event shows at the wrong hour.
-        for (const key of ['startDate', 'endDate']) {
-          if (node[key] && !/[Zz]|[+-]\d{2}:\d{2}$/.test(node[key])) {
-            errors.push(`${page}: Event ${key} has no timezone offset`);
-          }
-        }
+        checkEventNode(node, '');
+      }
+
+      for (const [trail, nested] of nestedEventEntities(node)) {
+        nestedEventNodes += 1;
+        checkEventNode(nested, ` at ${trail}`);
       }
 
       if (node['@type'] === 'FAQPage') {
@@ -252,5 +319,5 @@ if (warnings.length > 0) {
 }
 
 console.log(
-  `✓ schema: ${files.length} pages valid — ${eventNodes} Event node(s), ${faqNodes} FAQPage node(s), all titles and descriptions unique`,
+  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), all titles and descriptions unique`,
 );

@@ -1701,8 +1701,17 @@ Status: `todo` · `blocked` (why) · `doing`
     whose measured constraint is crawl budget. Backlog 74 calls over-submission the milder
     failure and that still holds, so this is tidying rather than a defect.
 
-80. `todo` (loop-actionable but **it buys nothing today, measured**; found 9 Nov 2026 in the
-    08:00 cycle) - **`scripts/check-schema.mjs` validates only the top-level `@graph` nodes, so
+80. `done` 14 Nov 2026 (02:00 cycle), scoped exactly as this item specified and by both of the
+    tests it named - and the thing it said would happen did: the guard passed on its first run
+    and the reported Event count moved from 7 to 12. The pass line now prints the split
+    (`12 Event node(s) (7 top-level, 5 nested entity)`) so the jump explains itself to every
+    later cycle rather than only in one commit message. Proved by mutation on a throwaway copy
+    of `dist`: a nested entity missing `startDate` and a nested entity whose `startDate` lost
+    its offset are both caught with the path named, a `subEvent` child stripped of its `name`
+    and its offset stays silent, and a nested entity with `@id` removed is skipped - visibly,
+    because the count falls to `11 (7 top-level, 4 nested entity)`, which turns the residual
+    gap this item accepted into something a reader can see rather than something silent. The
+    original finding follows. - **`scripts/check-schema.mjs` validates only the top-level `@graph` nodes, so
     the five `EducationEvent` nodes nested inside `/events/`'s `ItemList` are checked by nothing.**
     This is not a new observation - `eventListingItem`'s own comment in `src/lib/schema.ts`
     records that a node missing `image` and `offers` "passed every build since it was written"
@@ -1975,6 +1984,28 @@ Status: `todo` · `blocked` (why) · `doing`
     **The year guard of backlog 91 is now in place (12 Nov, 14:00 cycle), so the cycle that meets
     this item inherits it** - every sentence it rewrites is checked for a bare date as it is
     written, rather than after.
+    **SIMULATED IN FULL 14 Nov 2026 (02:00 cycle), and the scope above is confirmed exact.** A
+    clone of the repo built with the `now` default fixed to 2026-11-20T09:00Z in all ten places the
+    site derives it (eight helpers in `src/lib/site.ts`, two in `astro.config.mjs`) fails
+    `check:dates` on **exactly these nine sentences and nothing else**; links and schema both pass,
+    and every derived surface self-heals correctly - header CTA and footer Upcoming list move to
+    the Coding cohort, Cohort 3's meta/og/twitter descriptions become "Took place on...", its
+    `Offer` drops `InStock`, and `llms.txt` reorders it into the past list. **Do not read
+    `check-dates.mjs --now=2026-11-20` against today's `dist` as the scope**: it reports eleven,
+    the two extra being `/events/` and `/bootcamps/oxford-agentic-bootcamp/` showing Cohort 3 under
+    an "Upcoming" heading a real 20 November build never renders. The flag is a demonstration, not
+    a predictor.
+    **One thing for Drummond that falls out of the same simulation, and the loop must not decide
+    it.** `getSuccessorEvent` is same-programme by design - its comment refuses to offer one
+    product line as another's next cohort, and it is right to - so on 20 November **all three past
+    Agentic event pages** lose their forward card together and fall to the template's "Dates for
+    the next cohort are being confirmed", with no interest page behind it (the Agentic line has no
+    equivalent of `/second-brain-interest/`). The header on those same pages will advertise the
+    Coding day six days later. So Cohort 3, which carries ~146 inbound internal links and is the
+    page most likely to be landed on, becomes an honest dead end from 20 November until a Cohort 4
+    is authored. The loop cannot fix this: inventing a Cohort 4 date is barred, and routing an
+    Agentic reader to the Coding day crosses two lines that screen for different buyers. **Either a
+    Cohort 4 date, or a decision that the Agentic line gets an interest page of its own.**
     **What to do with each is a copy decision, not a find-and-replace.** A guide closer that
     says "Cohort 3 runs on 19 November" wants pointing at whatever is next on sale, which on
     20 November is the Coding cohort and after 26 November may be nothing; a capsule wants the
@@ -2180,6 +2211,113 @@ Status: `todo` · `blocked` (why) · `doing`
 ## Shipped
 
 _(dated, newest first — filled by the loop)_
+
+### 14 Nov 2026 (02:00 cycle) - the five cohort nodes inside `/events/`'s `ItemList` were validated by nothing, a day after they were given the dates twelve GEO probes said they needed. One check script, 0 of 203 built files changed
+
+**What shipped.** `scripts/check-schema.mjs` now validates event nodes nested inside another
+node, not only the top-level `@graph`. Backlog 80, taken at the scope that item set and no wider.
+
+**Why this one, and why now.** `const nodes = parsed['@graph'] ?? [parsed]` is the whole of what
+every check in that file has ever seen, so anything below the top level was unguarded. That is not
+a theoretical gap: `eventListingItem`'s own comment in `src/lib/schema.ts` records that a node
+missing `image` and `offers` *"passed every build since it was written"*, and the 25 October cycle
+fixed the data without adding the detector - the same shape as backlog 66 (the quote guard) and
+backlog 77 (the link checker), where the defect was fixed and the thing that would have caught it
+was not. What made it worth taking today rather than in June is which five nodes those are. They
+are the cohorts in `/events/`'s `ItemList`, and the 13 November cycle gave that list dates for one
+stated reason: `/events/` is the page an engine reads to answer "when is the next cohort", and
+twelve consecutive probes have recorded engines taking a passed date off someone else's crawl
+instead. The data was added on Thursday; nothing checked it on Friday.
+
+**The discriminator, measured rather than assumed.** A walk of all 66 built pages finds **34**
+nested event nodes. **29** are `subEvent` children - agenda rows, which correctly carry a name, a
+time and a place and none of `organizer`, `eventStatus`, `image` or `offers`, and must stay exempt
+or the guard is 29 false failures on the day it ships. **5** are the entity-level cohorts inside
+`/events/`'s `ItemList`, and all five carry every required field and a timezone-bearing
+`startDate` and `endDate`. The two tests agree exactly on all 34 today: all 5 entities have both
+`@id` and `url`, and **none** of the 29 agenda rows has either. Both are implemented, so a node
+has to pass both to be checked.
+
+**Proved by mutation**, on a throwaway copy of `dist` rather than on the real one:
+
+| Mutation | Expected | Result |
+|---|---|---|
+| nested entity loses `startDate` | fail, path named | `/events/: Event JSON-LD at mainEntity.itemListElement[0].item missing "startDate"` |
+| nested entity's `startDate` loses its offset | fail, path named | `/events/: Event at mainEntity.itemListElement[1].item startDate has no timezone offset` |
+| `subEvent` child loses `name` and its offset | silent | silent, 12 nodes |
+| nested entity loses `@id` | skipped | skipped, and the count falls to `11 (7 top-level, 4 nested entity)` |
+
+The last row is the point of printing the split. Backlog 80 accepted that a nested entity without
+`@id` escapes the guard; the pass line now makes that escape visible instead of silent.
+
+**One rule set, not two.** The field list, the `addressLocality` rule and the timezone rule moved
+into a single `checkEventNode` read by the top level and by every nested entity, so the two cannot
+come to disagree about what an event node must carry. `where` is empty for a top-level node, which
+leaves those messages reading exactly as they always have; the nested form appends the dotted path.
+
+**Checks, read by exit code.** `npm ci` and `npm run build` green. Every figure identical to the
+baseline except the one this change is about: 66 pages checked, 3,247 internal links resolve,
+schema valid, **12 Event nodes (7 top-level, 5 nested entity), where the baseline printed 7**, 20
+FAQPage nodes, all titles and descriptions unique, `check:dates` 0 findings and 0 year-less dates.
+**Blast radius against a sha256 snapshot of `dist`: 0 of 203 files differ**, none added or
+removed, because nothing the build reads was touched - this is a check script. Headless Chromium
+over `/events/`, `/` and Cohort 3 at 375 and 1280px all the same: **38 assertions, 0 fail**, no JS
+exception, no failed same-origin request, 0px horizontal overflow, one `h1` each, every JSON-LD
+block parsing, and the five nested entities on `/events/` asserted present with `@id`, `url` and
+offset-bearing dates in the live DOM rather than only in the file.
+
+**The 20 November transition, measured in advance so the cycle that meets it does not have to.**
+Not a change - a simulation, built by cloning the repo and fixing the `now` default in the eight
+`src/lib/site.ts` helpers and the two `astro.config.mjs` ones to 2026-11-20T09:00Z, which is every
+place the site derives "now". **The derived layer is sound and backlog 89's scope is exactly
+right.** On that build: the same 66 pages; the header CTA and the footer's Upcoming list both move
+to the Coding cohort on every page; Cohort 3's meta, og and twitter descriptions self-heal to
+"Took place on 19 November 2026"; its `Offer` drops `InStock`; `llms.txt` moves it into the past
+list in the right order; links and schema both pass. **`check:dates` fails on exactly nine
+sentences, and they are the nine backlog 89 lists** - six guide closers, Cohort 2's capsule and its
+"has it run before" FAQ answer, and Cohort 3's capsule. Nothing else fails. Two caveats for that
+cycle. (1) `check-dates.mjs --now=` run against a dist built *today* reports **eleven**, because
+`/events/` and `/bootcamps/oxford-agentic-bootcamp/` still show Cohort 3 under an "Upcoming"
+heading that a real 20 November build would not render; the flag is a demonstration, not a
+predictor, and the two extra findings are artefacts of the method. (2) `getSuccessorEvent` is
+same-programme by design, so on 20 November **all three past Agentic pages** lose their forward
+card and fall to the template's "Dates for the next cohort are being confirmed", while the header
+on those same pages advertises the Coding day six days later. That is correct - the comment on
+that helper refuses to offer one product line as another's next cohort, and the Coding day screens
+for a different buyer - but it means Cohort 3, the most-linked page on the site, becomes an honest
+dead end until a Cohort 4 is authored. **Not the loop's to fix**: inventing a date is barred, and
+crossing the two lines is a positioning call. Recorded for Drummond under backlog 89.
+
+**GEO.** Four probes, zero citations, the twelfth consecutive cycle of reach rather than coverage.
+Probe 4 is the plainest form yet: asked by date at five days out, the engine said *"I couldn't
+find a 19 November 2026 Oxford agentic AI bootcamp in the results, and I found no registration
+steps for that date"*, then sent the buyer to `luma.com/oxfordagentic2` - the cohort that ran on
+16 September - quoted its "Get Tickets" and told them to buy there. Backlog **2b**. No new
+review-list entry: every source is already recorded there from 8 and 13 November, and this is the
+fifth phrasing of one finding. Probe 1 confirms the 7 November `faqFromHeadings` opt-in on
+`ai-bootcamp-vs-course-vs-exec-education` was aimed correctly and that backlog 54 wants nothing
+more there. Probe 2 puts the **Coding** line's own buyer phrasing to search for the first time
+since it went on sale and finds the same reach failure on a second axis. Probe 3 is declined on
+intent - that searcher is running a workshop, not booking one.
+
+**Search Console: unavailable for the forty-sixth consecutive cycle, and this cycle has the
+precise reason rather than the usual one line.** The daily `Search Console export` workflow is
+running and reporting success - 11 runs, the latest at 13:21 UTC on 13 November - but its "Fetch
+Search Console data" step completes in **under one second** and commits nothing, because
+`scripts/fetch-search-console.mjs` reads `GSC_SERVICE_ACCOUNT_KEY` and the repository secret is
+unset. So the green tick on that workflow means "ran and found no credential", not "exported".
+**The remedy is one repository secret**, and the script's own footer documents how to mint it.
+This is backlog 2 stated exactly: nothing was estimated and no export newer than the 24 August
+baseline exists.
+
+**IndexNow submits nothing.** The script excludes `IMPROVEMENTS.md` and `seo-data/` by name,
+`outreach/` is not a `src/` path, and `scripts/` maps to no URL - so the honest number is 0, which
+is also the true number, since 0 of 203 built files changed. It was not run.
+
+**No new guide, 0 of 3 for the week of 9-15 November**, and no guide Q&A block either. No event
+fact was read, verified or changed: `luma.com` does not resolve through this session's egress
+policy and `oxfordagentic.com` is refused too, so deployment state came from the Actions API,
+where run 413 for `91e326f` concluded success at 20:12 UTC on 13 November.
 
 ### 13 Nov 2026 (20:00 cycle) - every event on the site published its start hour in UTC, so three cohorts stated 08:00 in schema while the page, the agenda and the node's own first child all said 09:00. One helper, 9 of 203 built files, no visible byte changed
 
