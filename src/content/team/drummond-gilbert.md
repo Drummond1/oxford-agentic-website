@@ -1,12 +1,12 @@
 ---
 name: Drummond Gilbert
 slug: drummond-gilbert
-updatedDate: "2026-10-18T08:23:27+00:00"
+updatedDate: "2026-11-15T09:10:41+00:00"
 role: Founder and host
 company: Oxford Agentic
 isHost: true
 order: 1
-programmes: ['oxford-agentic-bootcamp', 'second-brain-bootcamp']
+programmes: ['oxford-agentic-bootcamp', 'second-brain-bootcamp', 'agentic-coding-bootcamp']
 photo: ./photos/drummond-gilbert.jpg
 photoAlt: Portrait of Drummond Gilbert
 links:

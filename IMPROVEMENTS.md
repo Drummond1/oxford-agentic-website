@@ -2350,7 +2350,72 @@ Status: `todo` · `blocked` (why) · `doing`
     markup fix here, only a missing fact. Recorded now, twelve days ahead, so the cycle that meets
     27 November does not read the drop as a regression in `courseSchema`.
 
+101. `todo` **(needs Drummond, a bio, a photo and that person's consent; found 15 Nov 2026 in the
+    09:00 cycle, while fixing the other two thirds of the same gap)** - **the Coding Bootcamp's
+    third facilitator has no `/team/` profile.** Both the Coding programme page and its booking
+    page answer "Who runs it?" with Drummond Gilbert, Jonathan Waddingham **and Mike Bailey
+    (Coppice Labs)**. The first two have files in `src/content/team/` and this cycle tagged them
+    to the programme, so `/team/` now shows a Coding Bootcamp group of two. Mike Bailey appears
+    nowhere in that collection, so the group on the credibility page is one person short of the
+    answer the two commercial pages give. **The loop will not write it**: a profile needs a bio in
+    his own words, a headshot and his agreement to be listed, none of which exist here, and PRD
+    §21-style consent is a hard guardrail. Until then the group under-states rather than
+    mis-states, which is the right way round. Note that backlog 29's "ex-JustGiving" question is
+    now visible from one more surface, because Jonathan Waddingham's card sits under a third
+    heading; it is the same one word from Drummond and no new problem.
+
 ## Shipped
+
+### 15 Nov 2026 (09:00 cycle) - the page titled "The people who run it" covered two of the three bootcamps, eleven days before the third one's first cohort. Two programme tags, two content files, 3 of 203 built files changed
+
+**The defect, read off the built site.** `/team/` groups people by the `programmes` field and
+"a bootcamp with no one assigned is left out rather than shown empty", which is the right
+behaviour and was hiding a data gap. No file in `src/content/team/` carried
+`agentic-coding-bootcamp`, so the built page rendered exactly two group headings - The Oxford
+Agentic Bootcamp and The Oxford Second Brain Bootcamp - and the string "Coding Bootcamp"
+appeared on it **once**, in the footer's Upcoming list. The hero above says "Seven
+practitioners ... Each runs part of a day", so a buyer eleven days out from Cohort 1 on
+26 November read a page that names who runs two thirds of what the nav sells.
+
+**No new fact was published.** The Coding line already answers "Who runs it?" on both its
+programme page and its booking page: *"Drummond Gilbert ... with Jonathan Waddingham (CPO,
+ex-JustGiving) and Mike Bailey (Coppice Labs)."* Two of those three already have profiles on
+`/team/` under other headings. The change adds `agentic-coding-bootcamp` to
+`drummond-gilbert.md` and `jonathan-waddingham.md` and nothing else - no bio, role, company,
+photo or copy was touched, and no name was added to the site. It is the same fault class the
+4 Nov cycle fixed from the other direction, when the Second Brain pages named nobody in visible
+copy while `/team/` had the people.
+
+**What it deliberately does not do.** Mike Bailey is not invented a profile: that needs a bio,
+a photo and his consent. New **backlog 101** records it. The group therefore shows two of three
+and under-states rather than mis-states.
+
+**Checks.** `npm ci` and `npm run build` green. Internal links go **3,247 to 3,250** and all
+resolve - the three are the new group's heading link and its two person cards, which is the
+arithmetic the change predicts. Every other figure is identical to the baseline: 66 pages,
+12 Event nodes, 20 FAQPage, 128 offset-bearing publication dates, 1,293 resolving graph
+references, 56 well-formed breadcrumb trails, `check:dates` 0 findings.
+`npm run check:flags` green. **`npm run check` was not run - it cannot be, in a clean checkout;
+see backlog 70.** Blast radius against a sha256 snapshot of `dist`: **3 of 203 files differ** -
+`team/index.html`, `sitemap-0.xml` and `sitemap-index.xml` - none added or removed. The two
+profile pages are byte-identical, because the template passes `groups` to the index branch only.
+`/team/`'s `lastmod` moves from 18 Oct to today, correctly, since the page changed; the two
+profile URLs move with it although their bytes did not, which is the honest cost of the
+collection-wide `updatedDate` and is recorded rather than hidden.
+
+**Looked at, not just measured.** Local preview at 320, 375, 768 and 1280px with motion
+disabled: the new group takes the same heading, card, grid and spacing as the two above it -
+one column at 320 and 375, two at 768, the shared four-up row at 1280 - and `scrollWidth`
+equals `innerWidth` at every width. The whole-site sweep that found this (17 pages x 375, 768
+and 1280px, checking horizontal overflow, missing alt text, unlabelled form controls, links and
+buttons without accessible names, `h1` counts, heading order, tap-target size against the 24px
+spacing exception, and a 70-stop tab through four pages for focus rings and focus landing under
+the sticky header) returned **no other defect**: the only repeat hits are the hover/focus
+submenu links, which are `visibility: hidden` until `:focus-within` and so reachable by tab, and
+`/apply/`'s honeypot. Production could not be read again this cycle - the sandbox egress policy
+answers 403 to `oxfordagentic.com` and to the `github.io` origin - so before and after are both
+local previews of the exact built tree, and the 11 outbound-link warnings are the same proxy,
+not the links.
 
 ### 15 Nov 2026 (08:00 cycle) - the stale-date guard exempted a forward-tense claim whenever a true past-tense claim sat beside it, so the page whose whole subject is when cohorts run was the one page it could never flag. The governing verb now decides, and the guard gains three real instances: 0 of 203 built files changed
 
