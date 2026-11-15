@@ -108,6 +108,15 @@ const pageCandidates = new Set();
 const SINGLE_PAGE_SOURCES = new Map([
   ['src/lib/home.ts', '/'],
   ['src/components/HomeSections.astro', '/'],
+  // The one dynamic route in src/pages/ that builds exactly one page: its
+  // getStaticPaths returns a single entry with `slug: undefined`, so it emits
+  // /testimonials/ and nothing else. The page regex below cannot match a
+  // filename containing `[...slug]`, so before this line it fell through to the
+  // whole-site branch. Measured 15 Nov 2026 on this cycle's own change: 56 URLs
+  // submitted for a change that moves 1 page. Every other dynamic route
+  // (guides, events, team, bootcamps, first-workflow-picker) builds many pages,
+  // so the whole-site bucket is right for those and they are left alone.
+  ['src/pages/testimonials/[...slug].astro', '/testimonials/'],
 ]);
 
 for (const file of changed) {

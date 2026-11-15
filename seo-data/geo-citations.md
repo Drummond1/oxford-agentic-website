@@ -5,6 +5,71 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-15 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE BRAND-PLUS-REVIEWS QUERY ANSWERING WITH TRUSTPILOT SCORES FOR TWO DIFFERENT OXFORD COMPANIES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none of them run in the
+four preceding cycles. **Production could not be read at all this cycle** - the sandbox egress policy
+refuses `oxfordagentic.com`, the `github.io` origin and `luma.com`, so no live page and no Luma fact
+was checked from here.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what does a one day agentic AI bootcamp day actually look like hour by hour agenda | **No** | `precisionaiacademy.pages.dev`/`.com` (x2), `datasciencedojo.com` (x4), `ibm.com`, `eventbrite.co.uk`, `outsystems.com`, `cloudthat.com` (x2), `maven.com`, `microsoft.github.io`, `oreilly.com`, `baa.mindlash.com`, `agentforge.awstom.people.aws.dev`, `nofluffjuststuff.com`, `neura.market` |
+| 2 | can I send a colleague in my place if I cannot attend a paid AI training day UK transfer my booking | **No** | `etfoundation.co.uk`, `worcestershire.gov.uk`, `jee.co.uk` (x2), `cardiff.ac.uk` (x2), `stonebridge.uk.com`, `training.hse.gov.uk`, `cyclinguk.org`, `ukcoaching.org`, `eastsussex.gov.uk`, `contractsfinder.service.gov.uk`, `mhrglobal.com`, `ukca.org.uk`, `theaemt.com`, `greenbusinesscentre.org.uk`, `scott-grant.co.uk`, `cakeflix.com` |
+| 3 | will an AI agent I build at a workshop connect to my existing business tools like Xero HubSpot or spreadsheets | **No** | `tray.ai`, `zapier.com` (x2), `quadratichq.com`, `twin.so`, `mazaal.ai` (x2), `peliqan.io`, `operator.io` (x2), `windsor.ai`, `arahi.ai` (x2), `pipedream.com`, `ecosystem.hubspot.com`, `definable.ai` |
+| 4 | Oxford Agentic Bootcamp reviews what past attendees say was it worth it (branded due-diligence probe) | **No** - but `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2`, both passed cohorts, were | `trustpilot.com` for **`theoxfordaischool.com`** (x2) and for **`oxfordaitraining.com`**, `coursera.org` reviews of Saïd's online programme (x2), `coursereport.com` (x3, reviews of AgileFever's "Agentic AI Bootcamp"), `allai.events`, `planomato.com`, `sbs.ox.ac.uk`, `datasciencedojo.com` (x2), `agilefever.com`, `aisc.substack.com`, `daily.dev`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 4 is the 22 October reviews finding, repeated with a worse substitute set, and it is the
+  eighteenth consecutive cycle whose answer is reach rather than coverage.** The engine opened
+  ***"I didn't find any reviews from past attendees of the Oxford Agentic Bootcamp itself"***, then
+  offered Trustpilot for **two** confusable Oxford companies rather than the one the 22 Oct cycle
+  recorded - `theoxfordaischool.com` at *"a 4.2 TrustScore from 6 Bewertungen"* and
+  `oxfordaitraining.com` - plus Saïd's Coursera rating (*"4.8 from 84 ratings"*) and three
+  `coursereport.com` pages carrying reviews of a **competitor's product with nearly our product
+  name**, AgileFever's "Agentic AI Bootcamp". It flagged its own answer (*"Neither appears to be the
+  one-day bootcamp, so I wouldn't rely on them for it"*) and closed by telling the buyer to
+  ***"check Luma's guest list or comments, search LinkedIn for posts from people who attended, or
+  email the organisers"***. Meanwhile `/testimonials/` carries **four named, attributed quotes** -
+  Fei Gan, Kirsten Samuel, Dr Zeynep Hizir, Shrestha Mullick - is linked from **65 of the 67 built
+  pages** through the header and footer nav, and was cited nowhere. The two of our pages it did return are **passed cohorts'
+  Luma listings**, and it read the organiser's marketing off one of them as if it were evidence.
+  The off-page item in `outreach/review-list.md` is unchanged and still Drummond's.
+- **It did, however, find one thing no probe had looked at: the page's own machine title said
+  nothing a buyer types.** `<title>`, `og:title`, `twitter:title` and the `WebPage` node's `name`
+  all read **"Outcomes - Oxford Agentic"** - the nav label (PRD §11) doing double duty - on the one
+  page whose whole job is this query. That is this cycle's change, and it is deliberately not
+  claimed as a remedy for the citation gap above: it makes the title correct for the day the page is
+  crawled. See `IMPROVEMENTS.md`.
+- **Probe 2 is the second independent probe to land on backlog 88, four days before Cohort 3.** The
+  field is **seventeen providers' and public bodies' own booking terms** - ETF, Cardiff University,
+  HSE, two county councils, UK Coaching, UKAS - so it is not winnable as a guide: every result is a
+  party publishing its own policy, which is exactly what the buyer wants and exactly what this site
+  does not publish. The engine's read matches 11 November's: substitution is *"usually yes"*, with
+  written notice, sometimes a fee, sometimes a same-organisation rule. This site publishes the
+  **date** transfer five times over (*"your place transfers to a future cohort at no charge"*) and
+  says nothing about the **person**. One sentence from Drummond publishes on six surfaces; the loop
+  must not invent a policy on the page that takes the money.
+- **Probe 1 is declined, and the reason is worth recording because the gap is not ours.** The field
+  publishes real timed agendas - Microsoft's "Agent in a Day" from 09:00, Data Science Dojo 9-4,
+  AWS 10-18 - and so do we: Cohort 3's `EducationEvent` carries **12 named sub-events** from
+  "Registration and coffee" to "Wrap and networking", machine-readable and visible on the page. The
+  one line this site cannot publish is the Coding Bootcamp's, whose event node carries **no agenda at
+  all** eleven days before its first cohort. That is backlog 60 and it is a timetable Drummond holds.
+  Nothing to write.
+- **Probe 3 is declined on CONVERTING.** Winnable on its face - sixteen results, every one an
+  integration vendor's own connector page, no institutional publisher - but the answers are all
+  "which connector does your platform have", and the reader is shopping for middleware, not for a day
+  in Oxford. The engine's own closing advice (*"ask the organisers which platform and connectors they
+  use"*) points at a pre-booking question rather than a published page, and the nearest honest thing
+  this site says is already in `how-to-choose-your-first-agentic-task`.
+- **No new contactable target in four probes, and nobody was contacted.** Probe 4's
+  `coursereport.com`, `allai.events` and `planomato.com` are all already on
+  `outreach/review-list.md`; the two Trustpilot pages are other companies'. Probe 2's set is public
+  bodies' own terms with no submission route; probes 1 and 3 are competitors and integration vendors.
+
 ## 2026-11-15 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DECEMBER QUERY ANSWERED BY TWO OF OUR OWN DEAD LUMA PAGES PLUS OXFORD'S ONLINE COURSE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

@@ -20,10 +20,32 @@ const byId = new Map(programmes.map((p) => [p.id, p]));
 
 // Filtering is CSS-driven off a radio group, so it works without JavaScript.
 const usedProgrammes = programmes.filter((p) => testimonials.some((t) => t.data.programme.id === p.id));
+
+/*
+ * `pageTitle` below is the ONLY thing Base.astro composes the <title> from, and
+ * it rides into og:title, twitter:title and the WebPage node's `name`. It said
+ * "Outcomes" - the nav label (PRD §11) doing double duty as the machine title -
+ * so the one page a buyer opens to check that real people have said real things
+ * named nothing a buyer types. "Outcomes" is not a query; the words they use are
+ * "attendees", "said", "reviews" and "testimonials", and the URL slug already
+ * says the last. Changed 15 Nov 2026 to "What attendees said" (36 characters
+ * with the brand suffix).
+ *
+ * Evidence: a brand-plus-reviews probe that day, and the same axis on 22 Oct, had
+ * an engine answer "I didn't find any reviews from past attendees of the Oxford
+ * Agentic Bootcamp itself" and offer Trustpilot pages for two confusable Oxford
+ * companies instead. That miss is reach, not wording, and the off-page item in
+ * outreach/review-list.md stands: this only makes the title correct for the day
+ * the page is crawled, and should not be read as a remedy for the citation gap.
+ *
+ * The nav label and the h1 ("What came out of the room") are deliberately
+ * untouched - those are Drummond's words, and no pixel of the page moves. If he
+ * wants the title to match the nav again it is one word back.
+ */
 ---
 
 <Base
-  pageTitle="Outcomes"
+  pageTitle="What attendees said"
   description={`What people who attended ${config.brand.name} events in Oxford said afterwards - named and attributed, never anonymous.`}
   path={paths.testimonials()}
   breadcrumbs={[{ name: 'Outcomes', path: paths.testimonials() }]}

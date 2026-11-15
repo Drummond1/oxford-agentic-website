@@ -1952,6 +1952,16 @@ Status: `todo` · `blocked` (why) · `doing`
       including "email us and we will sort it", it is Drummond's to state and the accuracy rules
       forbid the loop inventing a policy on the page that takes the money. **One sentence from
       him publishes on six surfaces** and the wording for each is already there to copy.
+    - **Second independent probe, 15 Nov 2026 (14:00 cycle), and the clock has moved: four days out
+      from Cohort 3, not eight.** *"Can I send a colleague in my place if I cannot attend a paid AI
+      training day UK transfer my booking"* returned **seventeen** results and the field is sharper
+      than November's reading suggested: it is not only vendors but **public bodies publishing their
+      own terms** - the Education and Training Foundation, Cardiff University, HSE, Worcestershire
+      and East Sussex county councils, UK Coaching, UKAS. So it is **not winnable as a guide**, and
+      should not be re-pitched as one: every result is a party stating its own policy, which is
+      precisely what the buyer came for and precisely what this site does not publish. The engine's
+      read is unchanged - substitution *"usually yes"*, with written notice, sometimes a fee,
+      sometimes a same-organisation rule. One sentence from him, six surfaces, unchanged.
 
 89. `todo` (loop-actionable and **dated: it falls due on 20 November 2026**; found 11 Nov 2026
     in the 08:00 cycle, by the guard shipped in the same cycle) - **nine sentences name
@@ -2381,6 +2391,92 @@ Status: `todo` · `blocked` (why) · `doing`
     day rather than three. The site's own "Who runs it?" answer names three and was not changed.
 
 ## Shipped
+
+### 15 Nov 2026 (14:00 cycle) - the one page a buyer opens to check that real people said real things published a machine title naming nothing a buyer types, on four surfaces. One string, 1 of 205 built files, and the rendered body byte-identical
+
+**Found by this cycle's own GEO probe, on the most commercial query shape there is.** Asked
+*"Oxford Agentic Bootcamp reviews what past attendees say was it worth it"*, the engine answered
+***"I didn't find any reviews from past attendees of the Oxford Agentic Bootcamp itself"*** and
+offered Trustpilot scores for **two different Oxford companies** (`theoxfordaischool.com`,
+`oxfordaitraining.com`), Saïd's Coursera rating and three `coursereport.com` pages reviewing
+AgileFever's *"Agentic AI Bootcamp"*. The only pages of ours it returned were **two passed cohorts'
+Luma listings**. The 22 October cycle ran the same axis and recorded the same answer, so this is a
+confirmation, not a new finding - but it was the first time anyone read the page's own `<head>`.
+
+**The defect, measured on the built site.** `/testimonials/` passed `pageTitle="Outcomes"`, and
+`pageTitle` is the **only** thing `Base.astro` composes a title from (`src/layouts/Base.astro:50`),
+so the nav label (PRD §11) was doing double duty as the machine title on four surfaces at once:
+
+| surface | before | after |
+|---|---|---|
+| `<title>` | `Outcomes - Oxford Agentic` | `What attendees said - Oxford Agentic` |
+| `og:title` | `Outcomes - Oxford Agentic` | `What attendees said - Oxford Agentic` |
+| `twitter:title` | `Outcomes - Oxford Agentic` | `What attendees said - Oxford Agentic` |
+| `WebPage.name` | `Outcomes - Oxford Agentic` | `What attendees said - Oxford Agentic` |
+
+"Outcomes" is not a query. The words this buyer types are *attendees*, *said*, *reviews* and
+*testimonials*; the URL slug already says the last, the meta description already says the first two
+(*"What people who attended Oxford Agentic events in Oxford said afterwards - named and attributed,
+never anonymous"*, written 21 Oct), and the title said none of them. 36 characters with the brand
+suffix, inside the SERP limit `check-schema.mjs` measures, and still unique across all 67 pages.
+
+**What was deliberately not touched.** The nav label (3 links at 375px, 2 at 1280px), the breadcrumb
+crumb `name`, and the h1 *"What came out of the room"* all still read **Outcomes** / the same words.
+Those are Drummond's, and one word puts the title back if he wants it to match the nav. `Review`
+markup remains the wrong answer and was not added - self-serving reviews about one's own
+organisation are what Google asks sites not to publish, which is backlog 39's standing note.
+
+**This is not claimed as a fix for the citation gap, and the ledger should not read it as one.**
+Eighteen consecutive cycles say reach, not coverage; the 24 Aug Search Console baseline still reads
+23 indexed / 16 not with zero external links, and a correct title on an uncrawled page buys nothing
+until it is crawled. What it buys is that the page is right on the day it is. The remedy for the
+probe itself is backlog 2b and the Trustpilot entry in `outreach/review-list.md`, both his.
+
+**A second, coupled fix in the same commit, because this change exposed it.**
+`scripts/indexnow-ping.mjs`'s page regex cannot match a filename containing `[...slug]`, so
+`src/pages/testimonials/[...slug].astro` fell through to the whole-site branch. Measured on this
+cycle's own change: **56 URLs submitted for a change that moves 1 page**, now **1**. It is the only
+dynamic route in `src/pages/` that builds exactly one page - its `getStaticPaths` returns a single
+entry with `slug: undefined` - so it belongs in `SINGLE_PAGE_SOURCES` beside `src/lib/home.ts`.
+Guides, events, team, bootcamps and the picker all build many pages and are correctly left in the
+whole-site bucket. Same family as backlog 74, 82 and 85, and the fourth of these mappings.
+
+**Checks.** `npm ci` and `npm run build` green, every figure identical to the baseline taken before
+the change: 65 pages built, 67 checked, **3,296** internal links resolve, 12 Event nodes, 20
+FAQPage, 128 offset-bearing publication dates, **1,311** resolving graph references, 57 well-formed
+breadcrumb trails, all titles and descriptions unique, `check:dates` 0 findings over 56 indexable
+pages. `npm run check:flags` green on both the all-on and all-off builds. `npm run check` was not
+run and cannot be in a clean checkout - backlog 70. The 12 outbound warnings are the proxy, not the
+links: `luma.com`, `linkedin.com`, `arxiv.org`, `ico.org.uk` and `novaria.ai` are all refused by
+this session's egress policy, which is also why **no Luma fact was verified this cycle and no event
+fact was touched**.
+
+**Blast radius, and it is as small as a change gets.** Against a sha256 snapshot of all 205 files in
+`dist`: **1 file differs**, `testimonials/index.html`, none added or removed. Neither sitemap moved,
+because `lastmod` there derives from content dates rather than template bytes - the understating
+direction `astro.config.mjs` prefers, and IndexNow carries the hint instead. Proved that nothing a
+reader sees moved, rather than assuming it: the page was rebuilt from the committed source and from
+the changed source and the `<body>` compared - **byte-identical, 20,513 bytes, sha256
+`bfce7cef…5315`**. All four new strings live in `<head>`; the string "What attendees said" occurs 0
+times in the body.
+
+**Looked at, not only measured.** Headless Chromium at 375px and 1280px with motion disabled, 26
+assertions, **0 failed**: status 200, the four title surfaces agreeing, canonical
+`https://oxfordagentic.com/testimonials/`, no `robots` meta, exactly one h1 reading "What came out of
+the room", the nav label "Outcomes" still present and still visible in the page text, the new title
+**not** leaking into visible copy, all four quotes rendering with their names and roles,
+`scrollWidth == innerWidth` at both widths, 0 JS exceptions and 0 failed same-origin requests.
+
+**Production was not read, at either end.** The sandbox egress policy refuses `oxfordagentic.com`
+and the `github.io` origin (`connect_rejected`, and DNS does not resolve for `WebFetch`), so
+before-and-after are both local previews of the exact built tree. Deployment state was taken from the
+Actions API instead: run #424 for `7ce661a` **completed successfully at 10:49Z**, and the checkout,
+`origin/main` and that run's `head_sha` all agree, so nothing was in flight when this cycle started.
+
+**Allowances.** No new guide - this is a four-string change to an existing page's `<head>` plus one
+mapping entry, not content. Search Console unavailable from the cloud (no browser session, no API
+credentials, no export in `seo-data/` newer than the 24 August baseline). Backlog **88** gains a
+second independent probe, four days out from Cohort 3; nothing else on the backlog moved.
 
 ### 15 Nov 2026 (09:00 cycle, follow-up at Drummond's request) - Mike Bailey's profile ships, and adding the first team member without a photo exposed a fallback that had never been rendered: the initials tile was laid out as an inline-block and collapsed to its own two letters. 14 of 205 built files
 

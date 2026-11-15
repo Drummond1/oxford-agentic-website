@@ -1249,6 +1249,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     the same doorway pattern as the nobleprog.co.uk finding logged at 08:00 and the backlog's
     hard rule forbids it, so it is noted so a later cycle knows what occupies that result set
     and not as a route to copy.
+  - **Repeated 15 Nov 2026 (14:00 cycle) on a different phrasing, and the substitute set has got
+    worse rather than better.** *"Oxford Agentic Bootcamp reviews what past attendees say was it
+    worth it"*: the engine again opened with a plain miss - ***"I didn't find any reviews from past
+    attendees of the Oxford Agentic Bootcamp itself"*** - and this time offered Trustpilot for
+    **two** confusable Oxford companies, `theoxfordaischool.com` (*"a 4.2 TrustScore from 6
+    Bewertungen"*, one reviewer quoted as *"Highly recommended for any commercial teams"*) as well
+    as `oxfordaitraining.com`, plus Saïd's Coursera rating (*"4.8 from 84 ratings"*) and **three
+    `coursereport.com` pages carrying reviews of AgileFever's "Agentic AI Bootcamp"** - a
+    competitor's product under nearly our product's name, on a directory already on this list. It
+    read our own marketing off a passed cohort's Luma listing as if it were evidence, noted
+    `allai.events` showing *"0 Attendees"*, and closed by telling the buyer to *"check Luma's guest
+    list or comments, search LinkedIn for posts from people who attended, or email the organisers
+    and ask for past attendees to contact"*. **Three weeks, two phrasings, same answer**: the
+    decision below is unchanged and is the only thing that moves it. Nothing contacted. Table in
+    `seo-data/geo-citations.md` under 15 Nov 14:00.
+  - **One on-page thing did come out of the repeat, and it is already shipped, so it is not an ask.**
+    `/testimonials/` published `Outcomes - Oxford Agentic` as its `<title>`, `og:title`,
+    `twitter:title` and `WebPage.name`. That is now *What attendees said - Oxford Agentic*; the nav
+    label, breadcrumb and h1 are untouched. It does not answer this item - a correct title on a page
+    the index does not hold buys nothing - and the review-surface question stands on its own.
   - Needs: a yes or no from Drummond on whether a review surface is wanted. Nothing contacted,
     nothing submitted, no account made.
 
