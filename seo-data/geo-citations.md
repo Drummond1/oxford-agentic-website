@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-15 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE VENUE QUESTION ANSWERED ABOUT US, CORRECTLY, OFF A PASSED COHORT'S LUMA PAGE WITH A POSTCODE WE DO NOT PUBLISH
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the five
+preceding cycles. **Production could not be read at all this cycle** - the sandbox egress policy
+refuses `oxfordagentic.com`, the `github.io` origin and `luma.com`, so no live page and no Luma fact
+was checked from here. Run about twenty minutes after Drummond put **Cohorts 4 and 5 on sale**
+(a47348c, deployed 19:42Z), so the two new dates had no chance to be indexed and the probes are a
+before-reading, not a verdict on them.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | Oxford Agentic Bootcamp January 2027 next cohort how do I book a place (branded, on the date that went on sale tonight) | **No** - but `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s`, both passed cohorts, were | `learnersink.com`, `datasciencedojo.com` (x3), `allai.events`, `simplilearn.com` (x2), `lifelong-learning.ox.ac.uk`, `sbs.ox.ac.uk` (x5), `nobleprog.co.uk` (x3), `pulse.bot`, `certifications.sbs.ox.ac.uk` |
+| 2 | hands-on AI bootcamp UK January 2027 in person one day build your own agent | **No** - `luma.com/oxfordagentic2` was | `eventbrite.co.uk` (x5), `brainstation.io` (x6), `jbs.cam.ac.uk`, `luma.com/goodwithAI6` and `/goodwithAI7`, `citylit.ac.uk`, `london.theaisummit.com` |
+| 3 | which Oxford college venues host one day AI training days for business leaders | **No** - `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` and `planomato.com` were | `tutorials.co.uk`, `lifelong-learning.ox.ac.uk`, `conted.ox.ac.uk`, `theknowledgeacademy.com` (x5), `createwith.com`, `sbs.ox.ac.uk` (x2), `nobleprog.co.uk` (x2), `leoron.com`, `enspire.ox.ac.uk` (x2), `onlinecourses.worc.ox.ac.uk` |
+| 4 | how do I get my team to actually use the AI workflow I built at a training day (adoption axis, never probed) | **No** | `phosailabs.com` (x4), `teamai.com` (x2), `worklytics.co`, `insightful.io`, `jiangren.com.au`, `reworked.co`, `coderhouse.com`, `entrepreneur.com`, `thedecisionlab.com`, `experiencepoint.com`, `codeconspirators.com`, `designdata.com`, `ai.wsiworld.com` |
+
+**Reading.**
+
+- **Probe 3 is this cycle's finding, and it is the first probe in this log to be answered about our
+  venue rather than our product.** Asked which Oxford colleges host one-day AI days for business
+  leaders, the engine put **Worcester College first and named us for it** - *"its listed location is
+  Worcester College, Oxford OX1 2JL"* - and then listed **Jesus College** separately, for somebody
+  else's event (the Oxford Generative AI Summit at the Cheng Kar Shun Digital Hub), with no idea that
+  our own January cohort is there. Two things come out of that. The postcode it read is **not the one
+  this site publishes**: every event file and every page says Worcester College, Walton Street, Oxford
+  **OX1 2HB**, and `OX1 2JL` appears nowhere in this repository, so it came off a third-party record -
+  most likely a Luma listing, which could not be opened from here to check. It is in
+  `outreach/review-list.md` for Drummond, who can see the listing. And the answer it gave was built
+  from **two passed cohorts' Luma pages** while `/bootcamps/oxford-agentic-bootcamp/`, which answers
+  this exact question in an FAQ carried in `FAQPage` schema, was cited nowhere. **Nineteenth
+  consecutive cycle whose answer is reach, not coverage.**
+- **It also showed the on-site answer had gone out of date the same evening, which is this cycle's
+  change.** Both surfaces that answer "where in Oxford" - the Agentic programme page's FAQ and the
+  homepage's - opened *"At Worcester College on Walton Street"* and enumerated Cohorts 2 and 3. As of
+  19:41 tonight that is wrong for the only 2027 date on the site: **Cohort 5 is at Jesus College on
+  Turl Street**, and Cohort 4 had no mention anywhere in either answer. A buyer booking January off
+  the page that ranks was being pointed at the wrong street. Rewritten, with Cohort 5's
+  "room booking is being finalised" qualifier travelling with the college name, because its event file
+  still carries `confirmed: false`. See `IMPROVEMENTS.md`. Not claimed as a remedy for the citation
+  gap above: it makes the answer right for the day it is read.
+- **Probes 1 and 2 are the dead-Luma-record pattern again, now on the newest date on the site.** The
+  branded January question returned Cohorts 1 and 2 - July and September, both finished - and the
+  engine said plainly *"I couldn't confirm a January 2027 cohort"* before offering **Data Science
+  Dojo's ten-week online course starting 5 January 2027** and, more awkwardly, **Learners Ink's
+  "Oxford-branded" online batch on 28-29 January 2027 - the same date as our Cohort 5**. Probe 2
+  described us accurately off a Luma page and then said *"The listing doesn't show a date, so you'd
+  need to confirm whether it runs in January 2027"*, and gave Cambridge Judge's 20-22 January
+  programme as the only confirmed in-person January answer. Nothing on-page fixes this; it is backlog
+  2b and the Eventbrite and `allai.events` asks in `outreach/review-list.md`, all Drummond's.
+- **Probe 4 is DECLINED as a guide, and the reasoning is recorded so it is not re-probed.** The
+  adoption axis is winnable on the letter of the test - no institutional publisher owns it, the field
+  is fourteen vendor blogs selling adoption consultancy and training. It fails the second half.
+  The searcher is a manager rolling an AI tool out across a team, which is a change-management buyer,
+  not someone booking one hands-on day in Oxford for themselves; and the part of it that is ours -
+  taking one workflow back and making it survive the organisation - is already the "bring it back"
+  step on the programme page, `/guides/getting-an-ai-workflow-past-it-and-legal/` and
+  `/guides/in-house-ai-day-or-send-people-to-a-cohort/`. Winnable but not converting, so no guide.
+
 ## 2026-11-15 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE BRAND-PLUS-REVIEWS QUERY ANSWERING WITH TRUSTPILOT SCORES FOR TWO DIFFERENT OXFORD COMPANIES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

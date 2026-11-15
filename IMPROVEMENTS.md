@@ -2390,7 +2390,106 @@ Status: `todo` · `blocked` (why) · `doing`
     Bootcamp reads "Drummond Gilbert, Mike Bailey and I", which would make four people on that
     day rather than three. The site's own "Who runs it?" answer names three and was not changed.
 
+102. `todo` (small, and it is a detector gap rather than a page defect) - **`check-dates.mjs`'s
+    `FORWARD` list does not contain the verb the venue answers actually used, so the stale date it
+    was built to catch would have gone past it.** Measured 15 Nov 2026 (20:00 cycle) against the
+    regex itself: the sentence *"Cohort 2 ran there in September 2026 and Cohort 3 is there on
+    Thursday 19 November 2026"* returns `FORWARD=false, PAST=true`, because the list has `is on` and
+    `are on` but not `is there on`, `is at` or `are at`. So on 20 November that answer would have
+    read as a day still on offer to every human and to no check. This cycle removed that particular
+    sentence, which means the gap is now unobserved rather than fixed. Widening the list is a change
+    to a **hard-fail** regex, where a false positive blocks a deploy, so it wants its own cycle and a
+    run of the widened pattern over all 58 indexable pages before it ships - not a line added in
+    passing. The 13 findings the 20 November simulation does return are all genuine and all in prose
+    this cycle did not touch: 7 guides, 3 event pages and 2 collection-derived cards that self-heal.
+
+
 ## Shipped
+
+### 15 Nov 2026 (20:00 cycle) - two cohorts went on sale at 19:41 and the site's two "where in Oxford is it held" answers still said one college. The January day is at Jesus College, and both answers pointed its buyer at Walton Street. 6 of 209 built files
+
+**Caused by a real change twenty minutes earlier, not found by hunting.** Drummond pushed `a47348c`
+at 19:41Z putting **Cohort 4 (Thu 3 Dec 2026, Worcester College)** and **Cohort 5 (Thu 28 Jan 2027,
+Jesus College)** on sale, with dates, venues, hosts and Luma ids read from Luma that day. The commit
+added two event files and the STATE.md section and nothing else, which is correct for the event
+collection - the header CTA, the footer's "Upcoming" list, `/events/`, the cards and `llms.txt` all
+derive from it and self-healed on the next build. **Prose did not.** Two surfaces answer "where in
+Oxford", both enumerate cohorts by hand, and both still described a one-college programme:
+
+| surface | before | after |
+|---|---|---|
+| `/bootcamps/oxford-agentic-bootcamp/` FAQ | "At Worcester College on Walton Street, in central Oxford. Cohort 2 ran there in September 2026 and Cohort 3 is there on Thursday 19 November 2026." | "In central Oxford, and which college depends on the cohort. Cohorts 2, 3 and 4 are all at Worcester College on Walton Street - 16 September, 19 November and 3 December 2026 - and Cohort 5 moves to Jesus College on Turl Street for Thursday 28 January 2027, where the room booking is being finalised." |
+| `/` FAQ (`src/lib/home.ts`) | "The Agentic Bootcamp's Cohorts 2 and 3 and the Coding Bootcamp's first cohort are at Worcester College on Walton Street" | "...Cohorts 2, 3 and 4 and the Coding Bootcamp's first cohort are at Worcester College on Walton Street, in central Oxford; Cohort 5 moves to Jesus College on Turl Street for 28 January 2027, where the room booking is being finalised" |
+
+**Why this answer and not another.** It is the only published claim the new cohorts made *wrong*
+rather than merely incomplete. A buyer who books 28 January off the programme page - the page the
+ledger records at 257 inbound internal links, and the one that ranks for the queries with no date in
+them - was being told the day is on Walton Street, and would plan the train, the parking and the
+walk to the wrong college. Both answers sit inside `FAQPage` schema, so both are quoted surfaces as
+well as read ones. Everything else the new cohorts touch is either already right (the event pages
+themselves, the derived lists) or merely out of date in a way that costs nobody a journey, and those
+are left for their own cycles.
+
+**Cohort 5's room is not confirmed and the copy says so.** Its event file carries `venue.confirmed:
+false` and its page renders "Room booking being finalised" under the address. That qualifier now
+travels with the college name on both new answers, in the same clause, so the site cannot be read as
+promising a room that has not been booked. It comes out when the vault records the Jesus College
+booking, and not before - venue facts are a hard guardrail and this is the cautious side of it.
+
+**Written so the sentences do not go stale on Friday morning.** The dates are stated as facts about
+the venue ("Cohorts 2, 3 and 4 are all at Worcester College ... 16 September, 19 November and
+3 December 2026") rather than with a forward verb ("Cohort 3 is there on"), so 20 November does not
+make either answer false and no tense sweep is owed on them. Proved rather than asserted:
+`node scripts/check-dates.mjs --now=2026-11-20` returns 13 stale findings and **neither of these two
+answers is among them**, while the seven guides, three event pages and two derived cards that do
+appear are untouched prose for a later cycle.
+
+**And the detector would not have caught the old sentence either, which is new and is now backlog
+102.** `check-dates.mjs`'s `FORWARD` list holds `is on` and `are on` but not `is there on`. Run
+against the old answer the regexes return `FORWARD=false, PAST=true`, so the sentence that reads to
+any human as "Cohort 3 is still to come" was invisible to the only check that looks for exactly that.
+The sentence is gone, so the gap is unobserved rather than closed; widening a hard-fail regex is its
+own cycle's work.
+
+**Checks.** `npm ci` and `npm run build` green, every figure identical to the baseline taken before
+the change: 67 pages built, 69 checked, **3,526** internal links resolve, 17 Event nodes, 22
+FAQPage, 128 offset-bearing publication dates, **1,401** resolving graph references, 59 well-formed
+breadcrumb trails, all titles and descriptions unique, `check:dates` 0 findings at today's date over
+58 indexable pages. `npm run check` was not run and cannot be in a clean checkout - backlog 70. The
+14 outbound warnings are the proxy, not the links: `luma.com`, `linkedin.com`, `arxiv.org`,
+`ico.org.uk`, `elevenlabs.io` and `novaria.ai` are all refused by this session's egress policy, which
+is also why **no Luma fact was verified this cycle and no event fact was touched**. Every fact used
+here comes from the two event files Drummond committed four hours ago after reading Luma himself.
+
+**Blast radius.** Against a sha256 snapshot of all 209 files in `dist`: **6 differ** - the programme
+page, `/`, `/home-photos/` (noindex), `llms-full.txt` and the two sitemaps - none added, none
+removed. The sitemaps moved because the programme file's `updatedDate` is its `lastmod`. IndexNow
+will submit the programme page, `/bootcamps/`, `/` and the guides tagged to the programme, which is
+the `programmes` branch doing its job; `src/lib/home.ts` maps to `/` alone, so the homepage edit adds
+nothing to that set.
+
+**Looked at, not only measured.** Headless Chromium at 375px and 1280px with motion disabled, both
+pages, the accordion opened because `FAQPage` answers render inside `<details name="faq">` and a
+check that reads `innerText` on a collapsed page passes while seeing nothing. **50 assertions, 0
+failed**: status 200, the question present exactly once per page, the answer visible once opened and
+reading as intended end to end, Jesus College named with its date, the "room booking is being
+finalised" qualifier present, the St Anne's history and the "each event page confirms its own venue"
+line kept, the old single-venue opening gone, no em dash in either answer, `scrollWidth ==
+innerWidth` at both widths, 0 JS exceptions and 0 failed same-origin requests.
+
+**Production was not read, at either end.** The sandbox egress policy refuses `oxfordagentic.com` and
+the `github.io` origin, so before-and-after are both local previews of the built tree. Deployment
+state came from the Actions API instead: run #426 for `a47348c` **completed successfully at 19:42Z**,
+run #392 (CI) at 19:44Z, and the checkout, `origin/main` and that run's `head_sha` all agree, so
+nothing was in flight when this cycle started.
+
+**Allowances.** No new guide - this is a two-answer factual correction, and the one axis probed that
+could have been one (team adoption after the day) was declined for not converting; see
+`seo-data/geo-citations.md`. Search Console unavailable: the `Search Console export` workflow ran at
+12:54Z today and succeeded writing nothing, because `GSC_SERVICE_ACCOUNT_KEY` is still unset, so
+there is no reading newer than the 24 August baseline. Backlog gains **102**; `outreach/review-list.md`
+gains one entry, including a postcode on a third-party record that does not match the one this site
+publishes.
 
 ### 15 Nov 2026 (14:00 cycle) - the one page a buyer opens to check that real people said real things published a machine title naming nothing a buyer types, on four surfaces. One string, 1 of 205 built files, and the rendered body byte-identical
 

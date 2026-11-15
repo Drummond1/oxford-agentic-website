@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-11-09T20:30:00+00:00"
+updatedDate: "2026-11-15T20:20:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business
@@ -204,10 +204,23 @@ faqs:
       people out in Cohort 1, so it is better found now than at 09:30 on the day. If
       your laptop is locked down, email hello@oxfordagentic.com and we will work out
       what you need beforehand.
+  # Two colleges as of 15 Nov 2026, so this answer stopped being a single
+  # address. Cohorts 4 and 5 went on sale that evening and Cohort 5 is at Jesus
+  # College, not Worcester, while every surface that answered this question still
+  # opened "At Worcester College" - a buyer booking the January day and planning
+  # travel to Walton Street was being told the wrong street by the page that ranks.
+  # The dates are deliberately listed against the venue rather than with a forward
+  # verb ("Cohorts 2, 3 and 4 are all at Worcester", not "Cohort 3 is there on"),
+  # so the sentence stays true the morning after each day runs instead of needing a
+  # tense sweep. Cohort 5's room is `confirmed: false` in its event file and its
+  # page says "Room booking being finalised": that qualifier travels with the
+  # claim here too, and must stay until the vault records the booking.
   - q: Where in Oxford is it held?
     a: >-
-      At Worcester College on Walton Street, in central Oxford. Cohort 2 ran there in
-      September 2026 and Cohort 3 is there on Thursday 19 November 2026. Cohort 1 ran at
+      In central Oxford, and which college depends on the cohort. Cohorts 2, 3 and 4 are
+      all at Worcester College on Walton Street - 16 September, 19 November and
+      3 December 2026 - and Cohort 5 moves to Jesus College on Turl Street for Thursday
+      28 January 2027, where the room booking is being finalised. Cohort 1 ran at
       St Anne’s College in July 2026, in a seminar room laid out cabaret-style for
       small-group work, so an older listing may still show that address. Each event page
       confirms its own venue and date, and that is the page to go by.

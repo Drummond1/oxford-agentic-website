@@ -120,8 +120,18 @@ export const homeFaqs = [
     a: 'A laptop, and the raw material the day builds on: at the Oxford Agentic Bootcamp one real task from your own work that currently costs you meaningful time; at the Oxford Second Brain Bootcamp your own documents, notes and examples; at the Oxford Agentic Coding Bootcamp an idea you want to see running. Bringing something genuine matters more than any preparation, and everything is facilitated in the room. The one thing worth checking before you book is whether you can install software on your laptop, since corporate and government devices often block new tool sign-ups. At the Agentic Bootcamp you will get the most from the day with a paid plan such as ChatGPT Plus or Claude Pro, but it is not essential.',
   },
   {
+    /*
+     * Two colleges since 15 November 2026. Cohorts 4 and 5 went on sale that
+     * evening and Cohort 5 is at Jesus College on Turl Street, so an answer that
+     * put every Agentic cohort on Walton Street had become wrong for the only
+     * 2027 date on the site. Its room is `confirmed: false` in the event file and
+     * its page says "Room booking being finalised", so that qualifier travels
+     * with the college name here and must stay until the booking is recorded.
+     * The venue is stated as a fact about each cohort rather than with a forward
+     * verb, so the sentence survives the morning after each day runs.
+     */
     q: 'Where in Oxford are the events held?',
-    a: "In Oxford colleges and museums. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne’s College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. The Agentic Bootcamp’s Cohorts 2 and 3 and the Coding Bootcamp’s first cohort are at Worcester College on Walton Street, in central Oxford; the Second Brain Bootcamp’s first cohort was at the Pitt Rivers Museum on South Parks Road. Each event page confirms its own venue and date.",
+    a: "In Oxford colleges and museums. Cohort 1 of the Oxford Agentic Bootcamp ran at St Anne’s College on 21 July 2026, in a seminar room laid out cabaret-style for small-group work. The Agentic Bootcamp’s Cohorts 2, 3 and 4 and the Coding Bootcamp’s first cohort are at Worcester College on Walton Street, in central Oxford; Cohort 5 moves to Jesus College on Turl Street for 28 January 2027, where the room booking is being finalised; the Second Brain Bootcamp’s first cohort was at the Pitt Rivers Museum on South Parks Road. Each event page confirms its own venue and date.",
   },
   {
     q: 'Which organisations is Oxford Agentic affiliated to?',

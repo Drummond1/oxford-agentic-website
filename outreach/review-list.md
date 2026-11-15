@@ -11,6 +11,36 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A third-party record is circulating a Worcester College postcode this site does not publish, and a
+  confusable "Oxford" AI course is advertised on the exact date of the cohort that went on sale
+  tonight.** Found 15 Nov 2026 (20:00 cycle), about twenty minutes after Cohorts 4 and 5 went live.
+  **Nothing contacted, submitted or signed up for. One thing to check and one to be aware of; no new
+  listing target - the three outstanding asks are unchanged.**
+  - **The postcode.** Probe *"which Oxford college venues host one day AI training days for business
+    leaders"* put Worcester College first and named us for it, giving the address as
+    **"Worcester College, Oxford OX1 2JL"**. Every event file and every page on this site publishes
+    **Walton Street, Oxford OX1 2HB**, and `OX1 2JL` appears nowhere in the repository, so it was read
+    off a third-party record - most plausibly a Luma listing, which this session cannot open
+    (`luma.com` is refused by the sandbox egress policy). **Worth two minutes in the Luma dashboard**:
+    if a listing carries the wrong postcode, it is the address a buyer puts in a satnav, and it is the
+    address an answer engine repeats, because ours is the page it did not read. Not changed here -
+    the site's own address is correct and unverified third-party detail is not something the loop
+    edits on an inference.
+  - **The date collision.** The branded probe *"Oxford Agentic Bootcamp January 2027 next cohort how
+    do I book a place"* surfaced **`learnersink.com` advertising an Oxford-branded online AI course
+    with a weekday batch on 28-29 January 2027** - the same date as our **Cohort 5**, which went on
+    sale this evening - alongside **Data Science Dojo's** ten-week online "Agentic AI bootcamp"
+    starting **5 January 2027**. Neither is a one-day in-person Oxford day, but both will answer the
+    January query while our own January page is new and uncrawled. Recorded so a later cycle does not
+    spend a probe rediscovering it; `learnersink.com` is a competitor, not an outreach target.
+  - **What the same probes say about the three standing asks, which have not changed.** All four
+    questions were answered about us from **passed cohorts' Luma pages** (`luma.com/oxfordagentic2`
+    and `luma.com/k7c2rm5s`), never from oxfordagentic.com, and one answer said outright *"The listing
+    doesn't show a date"*. List the on-sale cohorts on **Eventbrite**, correct or retire the 21 July
+    **`allai.events`** record, and give the Organization node one real **`sameAs`** (a LinkedIn Company
+    Page or a Luma calendar URL in `brand.social`). Nothing contacted, nothing submitted, no account
+    made.
+
 - **The listings-win-the-query finding now reproduces for a month in which we have nothing on sale, and
   the two records winning it are our own passed cohorts.** Found 15 Nov 2026 (08:00 cycle).
   **Nothing contacted, submitted or signed up for. No new target - this strengthens the outstanding
