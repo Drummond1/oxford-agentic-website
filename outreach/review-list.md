@@ -11,6 +11,36 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The listings-win-the-query finding now reproduces for a month in which we have nothing on sale, and
+  the two records winning it are our own passed cohorts.** Found 15 Nov 2026 (08:00 cycle).
+  **Nothing contacted, submitted or signed up for. No new target - this strengthens the outstanding
+  Eventbrite approval rather than adding one.**
+  - **The probe.** *"agentic AI bootcamp Oxford December 2026 in person one day next cohort dates"*.
+    No page of this site appeared. **`luma.com/oxfordagentic2` ranked 1st and `luma.com/k7c2rm5s` 2nd -
+    Cohorts 2 and 1, both passed** - while `luma.com/oxfordagentic3`, the page that is actually on
+    sale, did not appear at all.
+  - **Two things follow, and the second is the reason this is worth an entry.** The engine read a
+    scarcity line off a dead listing (*"One listing shows five spots left"*) and could not date the
+    event (*"The results don't show its date, so I can't tell whether a December 2026 run exists"*).
+    It then filled the gap with **Oxford Lifelong Learning's "Agentic Workflows", 30 November to
+    11 December, online**, its "Low-Code Data Scientist" sessions, and Saïd's online programme. So for
+    a December buyer, the in-person Oxford answer is an online Oxford course, and our own stale records
+    are what carried the query.
+  - **Why it is new rather than a repeat of the 14 Nov entry.** That one measured listings beating us
+    in a month when a cohort **was** on sale. This one is the month **after** both cohorts, where we
+    have nothing listed anywhere - so from 27 November the only records of Oxford Agentic in this field
+    are three that are out of date. The ask does not change; its urgency does, and it has a date on it.
+  - Needs, unchanged and all three already on this list: list the Coding cohort (and whatever follows
+    it) on Eventbrite, correct or retire the 21 July `allai.events` record, and give the Organization
+    node one real `sameAs`. Nothing contacted, nothing submitted, no account made.
+  - **Competitors and institutional publishers seen, recorded so a later cycle does not spend a probe
+    rediscovering them:** `lifelong-learning.ox.ac.uk` and `sbs.ox.ac.uk` (institutional, same caution
+    as `oerc.ox.ac.uk` - not outreach targets), `nobleprog.co.uk`, `learnersink.com`,
+    `shortcourses.auckland.ac.nz`, `cambridgenetwork.co.uk`, `oreilly.com`. From the other three
+    probes: `bootcampdigital.com` (five of eighteen on the aftercare question), `trainingcamp.com`,
+    `fullstackacademy.com`, `cprime.com`, `excaliburpress.co.uk`, `datasciencedojo.com`. None is a
+    target.
+
 - **No new contactable target in four probes. What is new is that the listings-win-the-query
   finding recorded six hours ago on the Coding line reproduces on the Agentic line, five days
   before Cohort 3 - so it is a property of the field, not of one product.** Found 14 Nov 2026

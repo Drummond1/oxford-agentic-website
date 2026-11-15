@@ -2352,6 +2352,138 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 15 Nov 2026 (08:00 cycle) - the stale-date guard exempted a forward-tense claim whenever a true past-tense claim sat beside it, so the page whose whole subject is when cohorts run was the one page it could never flag. The governing verb now decides, and the guard gains three real instances: 0 of 203 built files changed
+
+**The defect, measured before it was fixed, and it had a date on it.** `check-dates.mjs` hard-fails
+the build when rendered copy names a passed cohort's date as still to come. It built its 90-character
+window around the date, then skipped the instance if `PAST` matched **anywhere in that window**. That
+reads as "something here says the day has gone", which is true of a window describing one day and
+false of a window describing several - and this site has a page whose whole subject is several.
+`/guides/when-ai-executive-cohorts-run/` publishes, in a single sentence:
+
+> "in 2026 the Oxford Agentic Bootcamp **ran** on 16 September and **runs again on 19 November**, the
+> Coding Bootcamp **takes** its first cohort a week after that **on 26 November**, all three at
+> Worcester College, and the Second Brain Bootcamp **ran** on 21 October at the Pitt Rivers Museum."
+
+Every clause is true today. On **20 November** the 19 November clause is false; on **27 November** so
+is the 26 November one. The old rule stayed silent on both, because `ran` - which governs 16 September,
+a **different cohort** - sat inside the same window and spoke for dates it does not govern. Instrumented
+on the built page: for `19 November` the window matched `PAST -> "ran"` and `FORWARD -> "runs"`, and
+`PAST` won by being tested first.
+
+**So the blind spot was the page the buyer in the probe below actually lands on.** At
+`--now=2026-11-20` the old rule reported **11** stale instances and this guide was not among them.
+
+**The fix is one rule with one reason: ask which tense word GOVERNS the date, not which ones are near
+it.** In prose of this shape the governing verb precedes its date - "ran on 16 September", "runs again
+on 19 November", "takes its first cohort ... on 26 November", "Took place on 16 September 2026" - so
+the **nearest tense word before the date wins**. Where no tense word precedes the date inside the
+window, the old whole-window reading stands, and that is deliberate rather than lazy: it is what
+catches the derived listings, where the marker is a bare "Upcoming" heading rows above a date, and
+dropping it would lose instances that fail correctly today. `takes` was added to `FORWARD`, which is
+what the 26 November clause needs and the only vocabulary change.
+
+**Strictly additive, proved by diffing the old rule against the new at both dates. Nothing was lost;
+three real prose instances were gained**, and one of the three was not predicted, which is the
+evidence the rule is a tense rule rather than a fix tailored to one page:
+
+| | 20 Nov | 27 Nov |
+|---|---|---|
+| old rule | 11 | 15 |
+| new rule | **13** | **18** |
+| lost | **0** | **0** |
+
+- `/guides/when-ai-executive-cohorts-run/` - the targeted one, at both dates (19 November), and again
+  at 27 November for 26 November.
+- `/events/oxford-agentic-bootcamp-cohort-1/` - **not predicted**: *"Cohort 2 ran on Wednesday
+  16 September 2026, and Cohort 3 runs on Thursday 19 November 2026."* The same shape, in prose, on a
+  second page. A correct past clause about Cohort 2 was exempting a forward claim about Cohort 3.
+
+**Proved by mutation on a throwaway copy of `dist`, and the mutation is the decisive one.** Control at
+`--now=2026-11-27`: 18 instances, this guide named twice. The same tree with **only the two verbs put
+into the past tense** (`runs again on` to `ran again on`, `takes its first cohort` to `took its first
+cohort`), nothing else touched: **16 instances, this guide named 0 times.** The rule tracks the tense
+of the governing verb, not the page.
+
+**No false positives, which is the half that matters because this check hard-fails a deploy.** At
+today's date the new rule reports **0 errors over 55 indexable pages**, identical to the old rule's
+control, and the pass lines are unchanged. The regression case worth naming is the Second Brain
+closers - *"Cohort 1 ran on 21 October 2026 at the Pitt Rivers Museum, and dates for the next cohort
+are being confirmed"* - where `next` is a `FORWARD` word sitting **after** a past date. The nearest
+word before it is `ran`, so it stays correctly exempt.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline: 66 pages, 3,247 internal links resolve, 12 Event nodes (7 top-level, 5 nested entity),
+20 FAQPage, 128 offset-bearing publication dates, 1,293 resolving graph references, 56 well-formed
+breadcrumb trails, `check:dates` 0 findings and 0 year-less dates. `npm run check:flags` green on both
+builds. **Blast radius against a sha256 snapshot of `dist`: 0 of 203 files differ**, none added or
+removed, because the only file touched is a check script the build does not import. The outbound
+checker reports 0 of 11 third-party links reachable, which is this sandbox's egress policy and not a
+site fault.
+
+**Headless Chromium over four pages at 375 and 1280px: 50 assertions, 0 fail**, 0 JS exceptions, 0
+failed same-origin requests, 0 horizontal overflow. The assertions are chosen for this change: each
+clause the rule now reads was asserted present in the **live DOM's visible text**, and every long-month
+date on those pages was checked to sit in an element that is not `display:none`, `visibility:hidden`
+or zero-opacity - because a guard that reads rendered text is only as honest as the text being
+rendered to a reader. Nothing moved visually, which follows from `dist` being byte-identical.
+
+**IndexNow submits nothing, and that is the honest number.** All four changed paths are excluded by
+name in `scripts/indexnow-ping.mjs` (`^(IMPROVEMENTS)\.md$`, `^outreach/`, `^seo-data/`,
+`^scripts/check-[a-z-]+\.mjs$`), so `wholeSite` stays false with no page candidates and the script
+takes its `no page URLs affected by this push; nothing to submit` branch. That matches the whole-`dist`
+diff of 0 files, so it is not an instance of backlog 85 for once. The mapping was read rather than run:
+this session's tool policy refuses the ping script even with `--dry-run`, and the deploy workflow owns
+the ping regardless.
+
+**What this buys, stated plainly.** It does not fix a word of copy. It means that on 20 November, when
+Cohort 3 passes, the build stops on **13** named instances rather than 11, and the two it would have
+missed are the sentence a buyer reads on the scheduling guide and the sentence on Cohort 1's page. The
+same on 27 November at 18 rather than 15. The 5 November incident that caused this guard to exist - an
+answer engine naming a passed 21 October date as "the next listed in-person date" - is exactly the
+failure these two would have reproduced.
+
+**The sweep this forecasts, recorded so the next cycles do not re-derive it.** From 20 November,
+`/bootcamps/oxford-agentic-bootcamp/`, `/events/`, the three Agentic event pages and six guides
+(`claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved`,
+`getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+`when-ai-executive-cohorts-run`, `where-the-human-goes-in-an-agentic-workflow`,
+`who-should-take-the-seat`) need their Cohort 3 sentences put in the past tense. Two of those are
+derived listings that self-heal on the real clock and appear only under `--now`. The Second Brain
+closers already published the honest pattern to copy: *"Cohort 1 ran on ... and dates for the next
+cohort are being confirmed."*
+
+**GEO: four probes, zero citations, and the one that matters is a dated reach failure rather than a
+coverage gap.** Probe 4 - *"agentic AI bootcamp Oxford December 2026 in person one day next cohort
+dates"* - returned **`luma.com/oxfordagentic2` first and `luma.com/k7c2rm5s` second, both passed
+cohorts**, with no page of oxfordagentic.com anywhere and **not** the Luma page that is actually on
+sale. The engine read a stale scarcity line off one of them (*"One listing shows five spots left"*),
+could not establish a date (*"The results don't show its date"*), and filled the December gap with
+**Oxford Lifelong Learning's online "Agentic Workflows" course, 30 November to 11 December**, plus
+Saïd's online programme. That is the 24 October cost measured again, in the month backlog 100 says the
+`Course` nodes go silent. **Seventeenth consecutive cycle of reach rather than coverage.** The other
+three are declined on the standing topic-probe test: probe 1 (workflow durability) is winnable but the
+field is production-engineering writing for engineers and the reader is not booking a day; probe 2
+(aftercare) is **already answered** on three surfaces - `What happens after the day?` on the Agentic
+programme page, Cohort 3's booking page and `src/lib/home.ts` - so it is reach again; probe 3
+(ownership of what you build) is the **second independent probe in ten days to land on backlog 68**,
+and that item is unchanged - it needs one line from Drummond, not a cycle.
+
+**Search Console unavailable for the forty-ninth consecutive cycle**, cause unchanged: access needs
+Drummond's logged-in browser and there are no API credentials in this sandbox. `seo-data/` holds no
+export newer than the 24 August baseline. Nothing estimated. **No new guide, 0 of 3 for the week of
+9-15 November**; the newest `publishDate` in `src/content/guides/` is still 20 October. **No event fact
+was read, verified or changed** - `luma.com` and `oxfordagentic.com` are both refused by this session's
+egress policy, so deployment state came from the Actions API. The prompt's cohort list (16 September,
+15 October, 21 October) is stale against the repo, which is authoritative: Cohort 3 is **19 November**
+and Coding Cohort 1 is **26 November**, both at Worcester College.
+
+**Backlog candidate 1 from the standing prompt is already done and was verified, not assumed:**
+`scripts/indexnow-ping.mjs:109` maps `src/lib/home.ts` to `/` alone. Candidate 2 (past-tense sweeps) is
+current - every passed cohort already reads in the past tense, which is why this cycle hardened the
+guard instead. Candidate 3 (Q&A blocks) had no supporting probe this cycle, so nothing was added.
+
+
 ### 15 Nov 2026 (02:00 cycle) - the graph reference rule proved every breadcrumb URL goes somewhere and said nothing about whether the trail is a list. One shape rule, three predicates, and the one with teeth is the one nothing could have caught: 0 of 203 built files changed
 
 **Backlog 99, taken as scoped and with the question it said to settle first settled.** The 14 Nov

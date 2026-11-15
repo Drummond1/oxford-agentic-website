@@ -97,10 +97,62 @@ for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
  * 600-character "sentence" and any forward-tense word anywhere in the panel
  * attached itself to a date rows away. The cap is what makes the match local.
  */
-const FORWARD = /\b(runs?|is on|are on|takes? place|will|next|upcoming|book|opens?|starts?|begins?)\b/i;
+const FORWARD = /\b(runs?|is on|are on|takes|takes? place|will|next|upcoming|book|opens?|starts?|begins?)\b/i;
 const PAST = /\b(ran|took place|has run|have run|had run|was|were|passed|closed|previous|previously|earlier|last year|already)\b/i;
 const OURS = /\b(cohort|bootcamp)\b/i;
 const WINDOW = 90;
+
+/*
+ * Which tense applies to THIS date, when the window holds both.
+ *
+ * The first version of this rule tested `PAST` against the whole window and
+ * skipped on a hit, which reads as "something here says the day has gone". That
+ * is true of a window describing one day, and false of a window describing
+ * several - and the site has a page whose whole subject is several. Measured on
+ * the built site on 15 November 2026, `/guides/when-ai-executive-cohorts-run/`
+ * publishes, in one sentence:
+ *
+ *   "in 2026 the Oxford Agentic Bootcamp ran on 16 September and runs again on
+ *    19 November, the Coding Bootcamp takes its first cohort a week after that
+ *    on 26 November, all three at Worcester College, and the Second Brain
+ *    Bootcamp ran on 21 October at the Pitt Rivers Museum."
+ *
+ * Every clause is true today. On 20 November the "runs again on 19 November"
+ * clause is false, and on 27 November so is the 26 November one - and the old
+ * rule stayed silent on both, because `ran` (which governs 16 September, a
+ * different cohort) sat inside the same window and exempted them. Eleven other
+ * instances failed correctly at --now=2026-11-20 and this page was not among
+ * them. So the guard's blind spot was exactly the page a buyer asking when the
+ * next cohort runs would land on.
+ *
+ * The fix is to ask which tense word GOVERNS the date rather than which ones
+ * are near it, and in prose of this shape the governing verb precedes its date:
+ * "ran on 16 September", "runs again on 19 November", "takes its first cohort
+ * ... on 26 November", "Took place on 16 September 2026". So the nearest tense
+ * word before the date wins, and a past verb further back no longer speaks for
+ * a date it does not govern.
+ *
+ * Where no tense word precedes the date inside the window, the old
+ * whole-window reading stands. That is not laziness: it is what catches the
+ * derived listings, where the marker is a bare "Upcoming" heading rows above a
+ * date, and dropping it would lose instances that fail correctly today.
+ */
+function governingTense(before, window) {
+  const pastAt = lastIndexOfMatch(before, PAST);
+  const forwardAt = lastIndexOfMatch(before, FORWARD);
+  if (pastAt === -1 && forwardAt === -1) {
+    return PAST.test(window) ? 'past' : FORWARD.test(window) ? 'forward' : 'none';
+  }
+  return pastAt > forwardAt ? 'past' : 'forward';
+}
+
+/** Where the last match of `re` starts in `text`, or -1. */
+function lastIndexOfMatch(text, re) {
+  const global = new RegExp(re.source, `${re.flags.replace('g', '')}g`);
+  let at = -1;
+  for (const match of text.matchAll(global)) at = match.index;
+  return at;
+}
 
 /*
  * The warn-only check: a long-month date in rendered copy with no four-digit
@@ -172,8 +224,9 @@ for (const file of await walk(DIST)) {
       }`;
 
       if (!OURS.test(window)) continue;
-      if (PAST.test(window)) continue;
-      if (!FORWARD.test(window)) continue;
+      // `before` is the window's own left half, so the governing verb is looked
+      // for inside the same 90 characters the rest of the rule reasons about.
+      if (governingTense(window.slice(0, window.indexOf(cohort.short)), window) !== 'forward') continue;
       errors.push(
         `${page}: names ${cohort.cohort ?? cohort.file}'s passed ${cohort.full} as still to come — "${window.trim()}"`,
       );

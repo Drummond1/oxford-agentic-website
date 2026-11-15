@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-15 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DECEMBER QUERY ANSWERED BY TWO OF OUR OWN DEAD LUMA PAGES PLUS OXFORD'S ONLINE COURSE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the three
+preceding cycles. Probe 4 asks for the month **after** both cohorts on sale, which is the window
+backlog 100 says the `Course` nodes go silent in.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | will the AI workflow I build at a training day still work in six months when the tools change | **No** | `union.ai` (x2), `datasociety.com` (x2), `mindstudio.ai` (x3), `engineering.salesforce.com` (x2), `phosailabs.com`, `temporal.io`, `gyde.ai`, `consultevo.com` (x2), `workwisesolutions.org`, `presidio.com`, `cuongnghiem1.pages.dev`, `plushcap.com`, `populer.com` |
+| 2 | is there any follow up support after a one day AI bootcamp or are you on your own | **No** | `bootcampdigital.com` (x5), `trainingcamp.com` (x2), `fullstackacademy.com` (x2), `cprime.com` (x2), `excaliburpress.co.uk`, `datasciencedojo.com`, `maven.com`, `unpackai.teachable.com`, `graduateschool.edu`, `precisionaiacademy.pages.dev` |
+| 3 | who owns what you build at an AI workshop can you take the workflow back to your company | **No** | `hackernoon.com`, `metacto.com` (x2), `allwork.space` (x2), `datacamp.com` (x3), `funcshun.com`, `ai.netzstrategen.com`, `getclear.ca`, `digitalscientists.com`, `leadershipinchange.com`, `a-website-called-mipyip.pages.dev` |
+| 4 | agentic AI bootcamp Oxford December 2026 in person one day next cohort dates | **No** - but `luma.com/oxfordagentic2` ranked **1st** and `luma.com/k7c2rm5s` **2nd**, both passed cohorts | `lifelong-learning.ox.ac.uk` (x4), `sbs.ox.ac.uk` (x2), `eventbrite.co.uk`, `allai.events`, `nobleprog.co.uk`, `shortcourses.auckland.ac.nz`, `cambridgenetwork.co.uk`, `oreilly.com`, `learnersink.com`, `jaxlondon.com`, `pulse.bot` |
+
+**Reading.**
+
+- **Probe 4 is this cycle's finding, and it is the 24 October cost measured again with a worse set of
+  substitutes.** Asked for an Oxford cohort in the month after both of ours, the engine returned **our
+  own two dead Luma listings at positions 1 and 2**, not the one that is on sale
+  (`luma.com/oxfordagentic3`), and no page of this site at all. It then read a stale scarcity line off
+  one of them - ***"One listing shows five spots left"*** - and said it could not place the event in
+  time: ***"The results don't show its date, so I can't tell whether a December 2026 run exists."***
+  What it offered the buyer instead was **Oxford Lifelong Learning's "Agentic Workflows", 30 November
+  to 11 December, online**, its "Low-Code Data Scientist" sessions in late November and early December,
+  and Saïd's online programme - the same substitution the 24 October cycle measured, now dated into
+  December. Everything it could not find, this site publishes correctly and machine-readably. **Reach,
+  not coverage, for the seventeenth consecutive cycle**, and the remedy is the one standing in
+  `outreach/review-list.md`, not another page.
+- **Probe 2 is declined because the site already answers it, which was checked rather than assumed.**
+  The field is **fifteen course vendors' own pages with no institutional publisher**, so it is
+  winnable, and the buyer converts. But the engine's closing advice - ***"check its FAQ or ask the
+  provider directly whether it offers post-course office hours, a Q&A channel, community access, or a
+  paid follow-up session"*** - points at a question `What happens after the day?` answers on **three
+  surfaces**: the Agentic programme page, Cohort 3's booking page and `src/lib/home.ts`. A fourth
+  answer does not fix retrieval. What the site deliberately does **not** claim is any entitlement to
+  support afterwards, and it should not without a line from Drummond.
+- **Probe 3 is the second independent probe in ten days to land on backlog 68, and it lands harder.**
+  The engine opened ***"The search didn't turn up a clear legal answer"***, noted that ***"vendor-run
+  workshops often address this in their own agreements, and the results don't show any standard"***,
+  and closed by telling the buyer to ***"check your employment agreement's IP clause and your
+  workshop's terms of service"***. No institutional publisher and no platform vendor writing about its
+  own product: winnable, and it converts, because the searcher is one step from booking and this is
+  what their employer will ask. Backlog 68 is unchanged and still his: the Coding line publishes
+  *"two things you own outright"* and no Agentic page says anything about ownership. **Two probes, ten
+  days apart, both routing our buyer to terms we have not published.**
+- **Probe 1 is declined on CONVERTING.** The field is winnable on its face - vendor blogs, a Salesforce
+  engineering post and a Temporal ebook, no institutional publisher - but every answer in it is
+  production engineering written for engineers: output validation between steps, schema checks, model
+  config separated from logic, fallback plans for an unavailable API. The reader is maintaining a
+  system, not choosing a day in Oxford. The nearest honest thing this site could say is already in
+  `is-your-ai-workflow-saving-time-or-just-effort`.
+- **No new contactable target in four probes, and nobody was contacted.** Probe 4's hosts are
+  `lifelong-learning.ox.ac.uk` and `sbs.ox.ac.uk` (institutional publishers, and the same caution as
+  `oerc.ox.ac.uk`), `allai.events` and `eventbrite.co.uk` (both already recorded), and competitor or
+  marketplace pages. Probe 2 and 3's sets are competitors' own marketing and opinion blogs with no
+  submission route. See `outreach/review-list.md` for why probe 4 strengthens the outstanding
+  Eventbrite approval rather than adding a target.
+- **Nothing was written and no page changed as a result of these probes.** This cycle's change is a
+  build-time fix to the stale-date guard; see `IMPROVEMENTS.md`.
+
 ## 2026-11-15 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ENGINE STATING OUTRIGHT THAT THE FIELD HAS NO ANSWER TO A QUESTION THIS SITE ANSWERS ON FIVE SURFACES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
