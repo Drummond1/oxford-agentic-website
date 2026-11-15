@@ -2350,7 +2350,10 @@ Status: `todo` · `blocked` (why) · `doing`
     markup fix here, only a missing fact. Recorded now, twelve days ahead, so the cycle that meets
     27 November does not read the drop as a regression in `courseSchema`.
 
-101. `todo` **(needs Drummond, a bio, a photo and that person's consent; found 15 Nov 2026 in the
+101. `half done` 15 Nov 2026 (09:00 cycle, follow-up), **at Drummond's explicit instruction: "Add
+    Mike Bailey based on LinkedIn profile and context you have about him." The profile shipped;
+    three things he still owns are listed at the end.** (Original entry:)
+    `todo` **(needs Drummond, a bio, a photo and that person's consent; found 15 Nov 2026 in the
     09:00 cycle, while fixing the other two thirds of the same gap)** - **the Coding Bootcamp's
     third facilitator has no `/team/` profile.** Both the Coding programme page and its booking
     page answer "Who runs it?" with Drummond Gilbert, Jonathan Waddingham **and Mike Bailey
@@ -2363,8 +2366,76 @@ Status: `todo` · `blocked` (why) · `doing`
     mis-states, which is the right way round. Note that backlog 29's "ex-JustGiving" question is
     now visible from one more surface, because Jonathan Waddingham's card sits under a third
     heading; it is the same one word from Drummond and no new problem.
+    **What is left after the follow-up, and all three are his:**
+    - **Confirm the role line, "Founder, Coppice Labs."** Supported by a LinkedIn listing reading
+      "Founder @ Coppice Labs" and by Companies House (Coppice Labs Ltd, 16755303, incorporated
+      1 Oct 2025), but neither page could be opened from here, so it rests on search summaries.
+    - **Confirm the LinkedIn URL, `linkedin.com/in/michaelcbailey/`.** It is the single
+      highest-risk line in the file: a wrong one misattributes a named real person, which is
+      backlog 29's error class. The profile it points at gives Coppice Labs and Greater Oxford
+      Area, which is why it was used.
+    - **A headshot**, if he wants one. Without it the card shows the initials tile, which as of
+      this cycle fills the photo slot properly rather than collapsing to its own two letters.
+    **One signal worth his eye.** A LinkedIn post by **Michael Ewers** describing the Coding
+    Bootcamp reads "Drummond Gilbert, Mike Bailey and I", which would make four people on that
+    day rather than three. The site's own "Who runs it?" answer names three and was not changed.
 
 ## Shipped
+
+### 15 Nov 2026 (09:00 cycle, follow-up at Drummond's request) - Mike Bailey's profile ships, and adding the first team member without a photo exposed a fallback that had never been rendered: the initials tile was laid out as an inline-block and collapsed to its own two letters. 14 of 205 built files
+
+**Asked for directly**, so backlog 101's consent block does not apply: *"Add Mike Bailey based on
+LinkedIn profile and context you have about him."*
+
+**What could and could not be read.** `linkedin.com` and `coppicelabs.com` are both refused by
+this session's egress policy, so neither page was opened. The profile is built from this site's
+own copy (the name and "Coppice Labs", from the Coding Bootcamp's "Who runs it?" answer) plus
+**search-engine summaries** of his LinkedIn profile and the Coppice Labs site. That is thinner
+sourcing than the other seven files in the collection have, so it is written into the file as a
+comment rather than left for someone to rediscover. The file deliberately carries **no previous
+employer, no credential or qualification, and no named session he leads** - the three things that
+could not be checked and the error class backlog 29 already records. Three lines need Drummond:
+the role, the LinkedIn URL and whether he wants a headshot. All three are on backlog 101.
+
+**The defect the addition exposed, which is the more interesting half.** `/team/`'s photo slot
+falls back to a type-and-colour initials tile, which PRD §10 requires so that "removing
+photography never breaks a layout". Nobody in the collection had ever lacked a photo, so that
+path had never been rendered on a card. It did not work. `global.css` gives every decorative
+glyph inside a card `display: inline-block` for the arrow nudge on hover:
+
+```
+a.card [aria-hidden='true'], .btn [aria-hidden='true'] { display: inline-block; ... }
+```
+
+Its own comment says "scoped to decorative arrow spans only". The selector is not: it matches any
+`aria-hidden` child of a card, including this tile, and at (0,2,1) it outranks
+`.person__initials[data-astro-cid]` at (0,2,0). So the tile was sized by its text.
+
+| viewport | initials tile, before | photo in the same slot | after |
+|---|---|---|---|
+| 320px | 233px | 233px | **233px** |
+| 375px | **51px** | 285px | **285px** |
+| 768px | **58px** | 287px | **287px** |
+| 1280px | **58px** | 183px | **183px** |
+
+(320px is in the table because it is the one width where the before was already right - the card
+is narrow enough there that the two agree by accident, which is why a single-width check would
+have passed it.)
+
+**Fixed in the team component, not in `global.css`.** `a.card .person__initials { display: flex;
+width: 100% }`, which Astro scopes to (0,3,1) and so wins outright. The arrow rule is doing its own
+job correctly on every other card, and narrowing it would mean guessing at what counts as an arrow.
+
+**Checks.** `npm run build` green: 67 pages, 3,296 internal links resolve, 12 Event nodes, 20
+FAQPage, 1,311 resolving graph references, 57 breadcrumb trails, `check:dates` 0 findings.
+`check:flags` green. `npm run check` still cannot run (backlog 70). The 12th outbound warning is
+the new LinkedIn URL, failing the same way the other four do: the proxy, not the link. Blast
+radius against the state pushed earlier this cycle: **14 of 205 files** - the new profile page and
+its OG image, all seven existing profile pages and `/team/` (the component's inlined CSS changed),
+`llms.txt`, `llms-full.txt` and the two sitemaps. Inspected at 320, 375, 768 and 1280px: the tile
+now reads as the deliberate treatment it was designed to be, no horizontal overflow at any width,
+and the a11y sweep on `/team/` and the new profile returns nothing. The hero subline counts itself
+and now says "Eight practitioners", which is what that counter was written for.
 
 ### 15 Nov 2026 (09:00 cycle) - the page titled "The people who run it" covered two of the three bootcamps, eleven days before the third one's first cohort. Two programme tags, two content files, 3 of 203 built files changed
 

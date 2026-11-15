@@ -299,6 +299,28 @@ function profileDescription(name: string, role: string, company: string | undefi
     margin-block-end: 1.15rem;
   }
 
+  /*
+   * The photo slot's fallback has to fill the slot, or PRD §10's "removing
+   * photography never breaks a layout" is not true.
+   *
+   * `a.card [aria-hidden='true']` in global.css gives every decorative glyph
+   * inside a card `display: inline-block`, for the arrow nudge on hover. Its
+   * comment says "scoped to decorative arrow spans only"; the selector is not,
+   * and it outranks the rule above (0,2,1 against 0,2,0), so this tile was laid
+   * out as an inline-block and shrank to its own two letters. Measured the first
+   * time a profile shipped without a photo: 51px at 375px, 58px at 768 and
+   * 1280px, against a photo's 285px, 287px and 183px in the same slot.
+   *
+   * Fixed here rather than in global.css because the arrow rule is doing its own
+   * job correctly everywhere else, and a narrower selector there would have to
+   * guess at what counts as an arrow. Astro appends the scope attribute, so this
+   * lands at (0,3,1) and wins outright.
+   */
+  a.card .person__initials {
+    display: flex;
+    width: 100%;
+  }
+
   .person__name {
     font-size: var(--step-lg);
   }
