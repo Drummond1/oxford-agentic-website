@@ -186,6 +186,9 @@ let datedNodes = 0;
 /* Internal URL references inside the graph that resolve, printed on the pass
    line for the same reason: a drop should read as a regression. */
 let graphRefs = 0;
+/* Well-formed breadcrumb trails, printed on the pass line for the same reason
+   again: 56 of the 66 built pages carry one, and a drop reads as a regression. */
+let breadcrumbTrails = 0;
 
 const files = await walk(DIST);
 
@@ -393,6 +396,76 @@ for (const file of files) {
       }
 
       /*
+       * Breadcrumb SHAPE, which is a different question from the one the graph
+       * reference rule below answers.
+       *
+       * That rule walks 160 `itemListElement.item` URLs and proves each goes
+       * somewhere. It cannot see a trail that resolves perfectly and is still
+       * wrong as a list: positions out of order, a crumb with no label, or a
+       * final crumb that names a different page from the one the reader is on.
+       * Google reads this node to replace the URL in a search result, so a trail
+       * ending somewhere other than this page advertises the wrong page.
+       *
+       * The three predicates do not all carry the same weight, and it is worth
+       * saying which is which so a later cycle does not mistake cheap insurance
+       * for the point of the rule.
+       *
+       * `position` and `name` are near-tautological TODAY: `breadcrumbSchema`
+       * in `src/lib/schema.ts` numbers the items from the array index itself, so
+       * they can only fail if that generator changes. They are here because it
+       * is the kind of thing that does change - numbering from an explicit field,
+       * or building a trail by splitting a path - and the rule should already be
+       * standing when it does.
+       *
+       * The last-crumb check is the one with teeth now. Trails are NOT derived
+       * from the URL: `Base.astro` prepends Home and every page hands in the rest
+       * by hand, at fourteen call sites across nine route files. The final entry's
+       * `path` is therefore typed, and nothing until this rule compared it with
+       * the page it ends up on. A route that gains a level, a page copied from a
+       * neighbour, or a canonical that moves while the hand-typed trail does not,
+       * all land here.
+       *
+       * Presence is deliberately NOT legislated, in either direction. Ten of the
+       * 66 built pages carry no `BreadcrumbList` and all ten are right to lack
+       * one: the homepage is the root (`Base.astro` emits the node only when the
+       * trail is longer than Home), `/404.html` and the two redirect stubs are not
+       * pages in a hierarchy, and the ad-only pages carry no JSON-LD at all by the
+       * rule above. Two of the trails that DO exist sit on noindex pages,
+       * `/apply/` and `/second-brain-interest/`, where a breadcrumb cannot produce
+       * a rich result. Those are inert rather than wrong - the node is still part
+       * of a graph a language model may read, and a malformed list is malformed
+       * wherever it sits - so this rule validates any trail it finds and leaves
+       * whether those two pages should carry one as a separate question.
+       */
+      if (node['@type'] === 'BreadcrumbList') {
+        const items = node.itemListElement;
+        if (!Array.isArray(items) || items.length === 0) {
+          errors.push(`${page}: BreadcrumbList has no itemListElement`);
+        } else {
+          breadcrumbTrails += 1;
+          items.forEach((item, i) => {
+            if (item.position !== i + 1) {
+              errors.push(
+                `${page}: BreadcrumbList item ${i + 1} has position ${JSON.stringify(item.position)} — positions must run 1..${items.length} in order`,
+              );
+            }
+            if (typeof item.name !== 'string' || item.name.trim() === '') {
+              errors.push(`${page}: BreadcrumbList item ${i + 1} has no name`);
+            }
+            if (typeof item.item !== 'string' || item.item === '') {
+              errors.push(`${page}: BreadcrumbList item ${i + 1} has no item URL`);
+            }
+          });
+          const last = items[items.length - 1];
+          if (canonical && typeof last?.item === 'string' && last.item !== canonical) {
+            errors.push(
+              `${page}: BreadcrumbList ends at "${last.item}" but this page's canonical is "${canonical}" — the last crumb must be the page itself`,
+            );
+          }
+        }
+      }
+
+      /*
        * Every internal URL in the graph resolves to a page the host serves.
        *
        * The origin comes off this page's own canonical link rather than from a
@@ -447,5 +520,5 @@ if (warnings.length > 0) {
 }
 
 console.log(
-  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), ${datedNodes} offset-bearing publication date(s), ${graphRefs} resolving internal graph reference(s), all titles and descriptions unique`,
+  `✓ schema: ${files.length} pages valid — ${eventNodes + nestedEventNodes} Event node(s) (${eventNodes} top-level, ${nestedEventNodes} nested entity), ${faqNodes} FAQPage node(s), ${datedNodes} offset-bearing publication date(s), ${graphRefs} resolving internal graph reference(s), ${breadcrumbTrails} well-formed breadcrumb trail(s), all titles and descriptions unique`,
 );

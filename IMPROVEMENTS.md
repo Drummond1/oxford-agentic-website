@@ -2288,7 +2288,15 @@ Status: `todo` · `blocked` (why) · `doing`
     Weigh it against backlog 49 and 59, which are about whether those dates are *true* rather than
     about how they are *spelled*; those are the more valuable half of the same file.
 
-99. `todo` (loop-actionable, **low value and deliberately left out of the commit that made it
+99. `done` 15 Nov 2026 (02:00 cycle), all three predicates, and with the noindex question this item
+    said to settle first settled in the rule rather than left as an exemption - validate any trail
+    that exists, legislate presence in neither direction, and the reasoning is at the call site. The
+    pass line prints `56 well-formed breadcrumb trail(s)`. Two of the three predicates are
+    near-tautological against today's generator and the commit says so; the last-crumb check is the
+    one with teeth, because trails are hand-typed at fourteen call sites rather than derived from the
+    URL. Proved by mutation, the decisive case being a last crumb retargeted at a path that
+    **resolves** - silent to the 14 Nov reference rule, caught here. See that entry in Shipped. The
+    original finding follows. - (loop-actionable, **low value and deliberately left out of the commit that made it
     visible**; found 14 Nov 2026 in the 20:00 cycle, by that cycle's own rule) - **the graph
     reference check proves every breadcrumb URL resolves and says nothing about the shape of the
     trail.** 160 of the 1,293 references it now walks are `itemListElement.item`, and
@@ -2311,7 +2319,150 @@ Status: `todo` · `blocked` (why) · `doing`
     ships with an exemption nobody can justify later.
 
 
+100. `todo` **(needs Drummond, a date or a decision; found 15 Nov 2026 in the 02:00 cycle, by reading
+    the built `Course` nodes rather than by projecting)** - **this site's eligibility for Google's
+    Course rich result expires on 27 November, on all three product lines, and one line has already
+    lost it.** `courseSchema` emits `hasCourseInstance` only for a programme's *upcoming* cohorts,
+    and omits the property rather than publishing an empty array - which is correct, and its own
+    comment says why. The consequence is dated and arithmetic rather than speculative:
+    - **The Second Brain line has no `hasCourseInstance` today.** Cohort 1 ran on 21 October and no
+      Cohort 2 is authored, so its `Course` node on `/bootcamps/second-brain-bootcamp/` and on `/`
+      carries `name`, `description`, `teaches`, `audience`, `coursePrerequisites` and `courseMode`
+      and **no dated instance at all**. Measured on the built site, not inferred.
+    - **The Agentic line loses it on 20 November**, when Cohort 3 passes with no Cohort 4 authored.
+    - **The Coding line loses it on 27 November**, when Cohort 1 passes with no Cohort 2 authored.
+    From 27 November all three `Course` nodes - six emissions, three on the programme pages and three
+    on the homepage - carry no instance, which is to say the site stops publishing a machine-readable
+    answer to *when does this run and where*. That matters more than its size suggests because of
+    where those nodes sit: the 24 October cycle moved them onto the homepage **precisely because**
+    an engine restricted to this domain holds `/` and two guides and nothing else, and the cost it
+    measured then was an engine offering Oxford Saïd's four-week online programme when asked for a
+    November cohort of ours. The same question in December gets the same silence from us.
+    **This is the structural twin of backlog 89's "honest dead end" and it wants the same input.**
+    That item is about what the three past *event* pages offer a reader; this is about what the
+    *programme* pages and the homepage tell a machine. One Cohort 4 date closes the Agentic half of
+    both at once. **The loop cannot route around it**: inventing a date is barred, publishing a past
+    instance as though it were scheduled would be worse than the silence, and an `EventSeries`
+    without a dated member asserts nothing Google reads for this result.
+    **Nothing to ship meanwhile, and that was checked rather than assumed.** The nodes are correct as
+    they stand - `courseMode`, `courseWorkload` computed from the published hours, `location` from
+    the same frontmatter the event page uses, `teaches` from the published outcomes - so there is no
+    markup fix here, only a missing fact. Recorded now, twelve days ahead, so the cycle that meets
+    27 November does not read the drop as a regression in `courseSchema`.
+
 ## Shipped
+
+### 15 Nov 2026 (02:00 cycle) - the graph reference rule proved every breadcrumb URL goes somewhere and said nothing about whether the trail is a list. One shape rule, three predicates, and the one with teeth is the one nothing could have caught: 0 of 203 built files changed
+
+**Backlog 99, taken as scoped and with the question it said to settle first settled.** The 14 Nov
+20:00 rule walks **160 `itemListElement.item` URLs** of its 1,293 and proves each resolves. It
+cannot see a trail that resolves perfectly and is still wrong as a list, and the three documented
+failure modes - a `position` that does not run 1..n, a crumb with no label, a last crumb that is not
+the page's own canonical - were all still unguarded. Google reads this node to **replace the URL in
+a search result**, so a trail ending somewhere other than the page it sits on advertises the wrong
+page while every existing check stays green.
+
+**The three predicates do not carry equal weight, and the commit says which is which rather than
+implying otherwise.** `position` and `name` are **near-tautological today**: `breadcrumbSchema` in
+`src/lib/schema.ts` numbers the items from the array index itself (`position: i + 1`), so they can
+only fail if that generator changes - which is exactly the kind of thing that does change, and the
+rule should be standing when it does. **The last-crumb check is the one with teeth now, and the
+reason is that trails are not derived from the URL at all.** `Base.astro` prepends `Home` and every
+page hands in the rest **by hand**: fourteen `breadcrumbs={[...]}` call sites across nine route
+files, each typing its own name and path. The final entry's path is therefore a typed string, and
+nothing until this rule compared it with the page it ends up on. A route that gains a level, a page
+copied from a neighbour, or a canonical that moves while the hand-typed trail does not, all land
+here.
+
+**The noindex question this item said to settle first is settled, and the rule encodes the answer
+rather than carrying an exemption nobody can justify later.** Presence is deliberately not
+legislated in either direction. Ten of the 66 built pages carry no `BreadcrumbList` and **all ten
+are right to lack one**: the homepage is the root and `Base.astro` emits the node only when the
+trail is longer than `Home`; `/404.html` and the two redirect stubs are not pages in a hierarchy;
+the ad-only pages carry no JSON-LD at all by the rule above them. Two of the 56 trails that do exist
+sit on noindex pages - `/apply/` and `/second-brain-interest/` - where a breadcrumb cannot produce a
+rich result. Those are **inert rather than wrong**, because the node is still part of a graph a
+language model may read and a malformed list is malformed wherever it sits. So the rule **validates
+any trail it finds** and leaves whether those two pages should carry one as the separate question it
+is.
+
+**Measured before the rule was written, which is why this is a guard and not a fix.** A walk of all
+66 built pages: **56 carry a `BreadcrumbList`** and every trail on all 56 is **well formed today** -
+positions in order, every crumb named, every crumb carrying an item URL, first crumb the homepage,
+last crumb equal to the page's canonical. 0 problems. The pass line now prints `56 well-formed
+breadcrumb trail(s)`, so a later cycle reads a drop as a regression rather than as nothing
+happening.
+
+**Proved by mutation on a throwaway copy of `dist`, and one of the five mutations is the decisive
+one.** Control exits 0 at 56. Each mutation exits 1 and names the page, the item index and the
+reason: a `position` of 3 in a two-crumb trail (`/events/`), a nameless final crumb (`/team/`), a
+final crumb with its `item` removed (`/privacy/`), an emptied `itemListElement` (`/about/`, which
+also trips the empty-array rule, as it should). The decisive one is the last crumb of
+`/guides/who-should-take-the-seat/` retargeted at `/guides/`: that URL **resolves perfectly**, so
+the 14 Nov graph reference rule stays **silent** on it and every other rule in the file passes,
+while this one reports `BreadcrumbList ends at ".../guides/" but this page's canonical is
+".../guides/who-should-take-the-seat/"`. That is the gap this rule exists to close, demonstrated
+rather than asserted.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green, every figure identical to the
+baseline but the new one: 66 pages, 3,247 internal links resolve, 12 Event nodes (7 top-level, 5
+nested entity), 20 FAQPage, 128 offset-bearing publication dates, 1,293 resolving graph references,
+`check:dates` 0 findings and 0 year-less dates. `npm run check:flags` green on both builds.
+**Blast radius against a sha256 snapshot of `dist`: 0 of 203 files differ**, none added or removed,
+because the only file touched is a check script the build does not import. The outbound checker
+reports 0 of 11 third-party links reachable, which is this sandbox's egress policy and not a site
+fault.
+
+**Headless Chromium over six pages at 375 and 1280px: 150 assertions, 0 fail**, 0 JS exceptions, 0
+failed same-origin requests, 0 horizontal overflow. The assertions are chosen for this change rather
+than generic: the **visible breadcrumb nav read out of the live DOM matches the JSON-LD trail
+crumb-for-crumb** on all six pages at both widths, every crumb URL was dereferenced and served 200,
+and the last crumb was asserted equal to the page's own canonical in the browser as well as in the
+file. The six include both noindex trail-carrying pages, `/apply/` and `/second-brain-interest/`,
+since the rule's noindex decision is about them. Nothing moved visually, which follows from `dist`
+being byte-identical.
+
+**IndexNow submits nothing, and that is the honest number.** The dry run over this change set -
+`scripts/check-schema.mjs`, `IMPROVEMENTS.md`, `seo-data/geo-citations.md` - prints `no page URLs
+affected by this push; nothing to submit`: the check script is excluded by name and the other two by
+directory. Not an instance of backlog 85 for once. The ping script was not run; the deploy workflow
+owns it.
+
+**GEO: four probes, zero citations, four declines - and the first probe in this log where the engine
+said in as many words that the field has no answer to a question this site answers on five
+surfaces.** Probe 2 - *"my work laptop blocks AI tools can I still attend a hands-on AI workshop"* -
+returned nineteen results, every one a workshop vendor's own listing (`brainstation.io` x4,
+`generalassemb.ly` x2, `training.cam.ac.uk` x2, `uit.stanford.edu`, `amanet.org`, `gyde.ai`,
+`maven.com`), and the engine opened with ***"The search didn't turn up anything about workshops that
+accommodate blocked work laptops, so this is inference from how these workshops are usually set
+up"***, closing by telling the buyer to ***"ask the organizer whether they provide sandboxed accounts
+or a browser-based environment"***. **We answer that question five times over**: `Can I install
+software on my work laptop?` is a named FAQ entry on all three programme pages and on two event
+pages, and three guides raise the locked-down-device problem in prose. So it is a **reach** failure,
+not a coverage gap, and no sixth answer fixes reach. **Sixteenth consecutive cycle of reach rather
+than coverage.** The other three are declined on the standing topic-probe test, each for a different
+reason: probe 1 (*"do AI training courses teach anything you cannot learn from YouTube for free"*)
+is winnable but **does not convert** - the searcher is price-sensitive and looking for free video,
+not a day in Oxford; probe 3 (*"AI training day for a leadership team away day UK in person"*) is
+winnable on the field (seven of eighteen results are `innovationvisual.com` alone, no institutional
+publisher) and **already answered** by `in-house-ai-day-or-send-people-to-a-cohort`, and the buyer
+wants a bespoke private day rather than a public cohort seat; probe 4 (*"how do I pick which AI tool
+to standardise on for my whole business"*) is nineteen vendor consultancies and would require
+publishing third-party pricing and feature claims that change without notice, which is the same
+control that ruled out the guide version of backlog 25. **No new contactable target in four probes**
+and nobody was contacted: every host is a competitor's own marketing, a course marketplace already
+in `outreach/off-page-listings.md`, or a vendor blog with no submission route.
+
+**One new finding, recorded as backlog 100 because the loop cannot fix it.** All three `Course`
+nodes lose their `hasCourseInstance` within twelve days, and the Second Brain line has already lost
+it. See that entry.
+
+**Search Console unavailable for the forty-eighth consecutive cycle**, cause unchanged: access needs
+Drummond's logged-in browser and there are no API credentials in this sandbox. `seo-data/` holds no
+export newer than the 24 August baseline. Nothing estimated. **No new guide, 0 of 3 for the week of
+9-15 November**; the newest `publishDate` in `src/content/guides/` is still 20 October. No event fact
+was read, verified or changed - `luma.com` and `oxfordagentic.com` are both refused by this session's
+egress policy, so deployment state came from the Actions API.
 
 ### 14 Nov 2026 (20:00 cycle) - the 1,293 internal URLs inside this site's JSON-LD were checked by nothing, and the guard that now checks them found two live dangling references on its first run. One rule, two one-place fixes, 0 of 203 built files changed
 

@@ -5,6 +5,61 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-15 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ENGINE STATING OUTRIGHT THAT THE FIELD HAS NO ANSWER TO A QUESTION THIS SITE ANSWERS ON FIVE SURFACES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the three
+preceding cycles. Probe 2 is the **locked-down-device** axis, which this log has not put to search
+before, and it is the sharpest reach-versus-coverage case the log holds.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do AI training courses teach anything you cannot learn from YouTube for free | **No** | `nobledesktop.com` (x2), `kdnuggets.com`, `guidde.com`, `antonioleiva.com`, `aibusiness.vc`, `pub.towardsai.net`, `analyticsinsight.net`, `tech.co`, `hackaday.com`, `kripeshadwani.com`, `firstaimovers.com` (x2), `getintoai.beehiiv.com`, `marcillyaiplaybook.it.com`, `getcoai.com`, `linkedin.com` |
+| 2 | my work laptop blocks AI tools can I still attend a hands-on AI workshop | **No** | `brainstation.io` (x4), `generalassemb.ly` (x2), `training.cam.ac.uk` (x2), `uit.stanford.edu`, `amanet.org`, `gyde.ai`, `maven.com`, `wwt.com`, `experiencepoint.com`, `events.lib.jmu.edu`, `meetup.com`, `sas.com`, `davebirss.com`, `ailab.world` |
+| 3 | AI training day for a leadership team away day UK in person | **No** | `innovationvisual.com` (x7), `ivee.jobs` (x2), `dayseven.lovable.app` (x2), `brainstation.io`, `cambridgespark.com`, `tutorials.co.uk`, `pointacademy-co-uk.pages.dev`, `aiaware.io` |
+| 4 | how do I pick which AI tool to standardise on for my whole business ChatGPT Claude or Copilot | **No** | `epcgroup.net` (x2), `uctoday.com` (x3), `egroup-us.com` (x2), `enterprisedna.co` (x2), `copilotconsulting.com` (x2), `consulting.sva.com`, `kubicle.com`, `bluelabellabs.com`, `epicit.com.au`, `intuitionlabs.ai`, `acetechgroup.com`, `ai.netzstrategen.com`, `incworx.com` |
+
+**Reading.**
+
+- **Probe 2 is this cycle's finding and it is a reach failure stated in the engine's own words.** It
+  opened with ***"The search didn't turn up anything about workshops that accommodate blocked work
+  laptops, so this is inference from how these workshops are usually set up"*** and closed by telling
+  the buyer to ***"ask the organizer whether they provide sandboxed accounts or a browser-based
+  environment, and confirm whether you can bring a personal laptop and a personal AI account."***
+  **This site answers that five times over**, as a named FAQ entry - `Can I install software on my
+  work laptop?` - on all three programme pages and on two event pages, plus the locked-down-device
+  problem raised in prose in `who-should-take-the-seat`, `what-hands-on-ai-training-actually-means`
+  and `why-in-person-beats-online-for-learning-ai`. Every result it returned instead is a workshop
+  vendor's own listing, four of them `brainstation.io`, so the field is winnable and the question
+  converts - and none of that matters, because the gap is retrieval and a sixth published answer does
+  not fix retrieval. **Sixteenth consecutive cycle of reach rather than coverage.**
+- **Probe 1 is declined on CONVERTING, which is the half of the test that catches good-looking
+  topics.** The field is free-course listicles and sellers with no institutional publisher, so it
+  passes WINNABLE. But the searcher is explicitly looking for free video; the engine's own summary of
+  the field is that *"paid courses rarely teach knowledge you cannot find free"* and that free
+  resources plus building projects *"will likely cover most of it"*. That reader is not booking a day
+  in Oxford. No backlog item.
+- **Probe 3 is declined on coverage, and the buyer behind it is not ours.** `innovationvisual.com`
+  holds **seven of eighteen** results on its own and there is no institutional publisher anywhere in
+  the set, so the field is winnable. Two things rule it out. The decision is already answered by
+  `in-house-ai-day-or-send-people-to-a-cohort`, which gained three `FAQPage` entries on 10 November
+  from probes in this same field. And the away-day buyer wants a **bespoke private day at their own
+  venue** - every provider in the set sells exactly that, priced by quote, one naming £1,049 + VAT
+  per day with travel included - which is not a public cohort seat. Writing for it would be writing
+  for a product this site does not sell.
+- **Probe 4 is declined because the honest version is a third-party pricing and feature page.** The
+  field is nineteen vendor consultancies, winnable on the standing test, and the buyer has budget. But
+  the answer turns on what Copilot, ChatGPT Enterprise and Claude Enterprise each cost and include
+  this month, which changes without notice - the same control that ruled out the guide version of
+  backlog 25 on 5 November. `claude-cowork-claude-code-or-codex` already carries as much of this axis
+  as the site can keep true.
+- **No new contactable target in four probes, and nobody was contacted.** Every host in the four sets
+  is a competitor's own marketing page, a course marketplace already covered in
+  `outreach/off-page-listings.md`, or a vendor or SEO blog with no submission route. `training.cam.ac.uk`
+  and `uit.stanford.edu` are university internal training catalogues, not listing routes.
+- **Nothing was written and no page changed as a result of these probes.** This cycle's change is a
+  build-time guard on breadcrumb shape; see `IMPROVEMENTS.md`.
+
 ## 2026-11-14 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE LISTINGS-WIN-THE-QUERY PATTERN FOUND ON THE CODING LINE SIX HOURS AGO NOW MEASURED ON THE AGENTIC LINE, FIVE DAYS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
