@@ -42,6 +42,19 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 🗓️ OAB Cohorts 4 and 5 - live since 15 Nov 2026 (Drummond's yes, 15 Nov)
+
+> **/events/oxford-agentic-bootcamp-cohort-4/** (Thu 3 Dec 2026, Worcester College, `luma.com/oxfordagentic4`) and
+> **/events/oxford-agentic-bootcamp-cohort-5/** (Thu 28 Jan 2027, Jesus College, `luma.com/oxfordagentic5`).
+> Both were copied from the Cohort 3 file. Date, times, venue, hosts and Luma ids were read from Luma on 15 Nov.
+- **Cohort 5's venue is `confirmed: false`**, so the page says "Room booking being finalised". Flip it to
+  `true` only once the vault records the Jesus College booking as confirmed.
+- **Not yet updated:** /find-your-bootcamp/ still offers Cohort 3 in its `choices`, and its agent prompt
+  and finder brief still list the older dates (see that section below). Changing the agent is a live
+  change, so it needs Drummond's yes.
+
+---
+
 ## 📘 First Workflow Picker - ad-only lead-gen pages, since 9 Nov 2026 (branch `leadgen-first-workflow-picker`, not merged)
 
 > **/first-workflow-picker/** and **/first-workflow-picker/thanks/** - noindex, out of the sitemap, linked from nowhere.
