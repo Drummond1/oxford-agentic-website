@@ -2276,6 +2276,15 @@ Status: `todo` · `blocked` (why) · `doing`
     "Do I need a paid AI subscription?" that hedges is worse on a booking page than the silence.
     **One sentence from him closes it on both Coding surfaces**, in the wording the Agentic pages
     already use. Nothing is needed about price or VAT.
+    **Re-confirmed 16 Nov 2026 (14:00 cycle) on a different phrasing, and the field has got sharper.**
+    Asked *"do I need a paid Claude or ChatGPT subscription to attend a hands-on AI workshop UK"*, the
+    engine this time **could** answer, from seven providers' own booking pages, and sorted them into
+    plans required (`j2dmasterclass`: *"required to ... have purchased a Claude Pro subscription"*;
+    General Assembly: *"you will need a paid subscription to ChatGPT"*), a paid tool but not a specific
+    one, and free accounts sufficient. It closed ***"Check the specific event page's preparation or FAQ
+    section."*** So the buyer is now being told to read a page we have not written, by a field that
+    publishes the answer as a prerequisite line. Still not written here, for the reason above: the
+    answer is an event fact. Ten days to Cohort 1 at the time of the probe.
 
 98. `todo` (loop-actionable, **low value and deliberately not taken** as the 14 Nov 2026 14:00
     cycle's one change; found by that cycle's own sweep) - **the sitemap's `lastmod` is the fourth
@@ -2390,7 +2399,10 @@ Status: `todo` · `blocked` (why) · `doing`
     Bootcamp reads "Drummond Gilbert, Mike Bailey and I", which would make four people on that
     day rather than three. The site's own "Who runs it?" answer names three and was not changed.
 
-102. `todo` (small, and it is a detector gap rather than a page defect) - **`check-dates.mjs`'s
+102. `done` 16 Nov 2026 (14:00 cycle) - widened, measured, and it caught a second live instance the
+    15 Nov entry did not know about: the Coding programme page's *"Cohort 1 is there on Thursday
+    26 November 2026"*. See that cycle's entry under Shipped, and backlog 103 for the rewrite it
+    schedules. Original diagnosis kept below. **`check-dates.mjs`'s
     `FORWARD` list does not contain the verb the venue answers actually used, so the stale date it
     was built to catch would have gone past it.** Measured 15 Nov 2026 (20:00 cycle) against the
     regex itself: the sentence *"Cohort 2 ran there in September 2026 and Cohort 3 is there on
@@ -2404,7 +2416,130 @@ Status: `todo` · `blocked` (why) · `doing`
     this cycle did not touch: 7 guides, 3 event pages and 2 collection-derived cards that self-heal.
 
 
+103. `todo` (loop-actionable and **dated: it falls due on 27 November 2026**; found 16 Nov 2026 in the
+    14:00 cycle, by the guard that cycle widened) - **one sentence goes stale the morning after the
+    Coding Bootcamp runs, and from this commit the build says so.**
+    `/bootcamps/agentic-coding-bootcamp/`'s *"Where in Oxford is it held?"* answer reads *"At Worcester
+    College on Walton Street, in central Oxford, which is also where the Oxford Agentic Bootcamp runs.
+    Cohort 1 is there on Thursday 26 November 2026. Each event page confirms its own venue and date."*
+    The middle sentence is true until 26 November and false on the 27th, and the derived "Upcoming
+    runs" card beside it will already have gone, so the page would have said it alone. It is the only
+    hand-authored forward-tense claim among the 32 tense-blind date windows measured this cycle: every
+    other one is either a derived card that self-heals or prose deliberately written tense-neutral.
+    **`check-dates.mjs --now=2026-11-27` now returns it**, which makes it a hard build failure from
+    that morning rather than a thing somebody has to remember.
+    **The fix is one clause, and the pattern already exists two files away.** The Agentic programme
+    page states the same kind of fact without a scheduling verb - *"Cohorts 2, 3 and 4 are all at
+    Worcester College on Walton Street - 16 September, 19 November and 3 December 2026"* - which stays
+    true as each date passes. Either write Cohort 1's day the same way, or put it in the past tense
+    and name the next bookable Coding cohort if one exists by then. **Do not bring it forward:** the
+    sentence is correct today and it is the on-sale cohort's own venue answer ten days out, so
+    rewriting it now would publish an error to prevent one. Same reasoning as backlog 89's four
+    remaining past-tense rewrites, which fall due on 20 November.
+
+104. `todo` **(needs Drummond, a homepage card-layout call; the same family as backlog 55; found
+    16 Nov 2026 in the 14:00 cycle)** - **the homepage shows three upcoming cohorts and there are now
+    four, so Cohort 5 is on the homepage as a footer link and nothing else.** `getHomeUpcoming()` in
+    `src/lib/site.ts` is `upcoming.slice(0, 3)`, which was a cap that never bound while there were
+    three or fewer. Measured on the built site: `/` emits `EducationEvent` nodes for Cohort 3,
+    Coding Cohort 1 and Cohort 4, and **none for Cohort 5** (28 January 2027), while `/events/` and
+    `/bootcamps/oxford-agentic-bootcamp/` carry all of them. The cap is not obviously wrong - "Next in
+    Oxford" is a shortlist, the fourth card changes the section's shape, and the node set is derived
+    from the same helper the cards render so the two cannot disagree - and it self-corrects on
+    20 November when Cohort 3 drops off. It is recorded so it is not re-derived as a defect, and
+    because the answer ("three is the shortlist" or "show every upcoming cohort") is a design call and
+    not the loop's. Nothing was changed.
+
+
 ## Shipped
+
+### 16 Nov 2026 (14:00 cycle) - the stale-date guard's forward-verb list was literal, so one word between the verb and its preposition hid a booking-page claim from it. One regex, 0 of 209 built files changed, and the `at` version of the same fix fails this build today
+
+**Evidence, and it is the guard's own blind spot measured rather than argued.** Backlog 102 recorded
+on 15 November that `FORWARD` holds `is on` and `are on` and not `is there on`, and that the instance
+which exposed it had just been rewritten away for other reasons - so the gap was "unobserved rather
+than fixed". This cycle swept every long-month date window on all 58 indexable pages and resolved the
+governing tense of each: **32 windows resolve to no tense at all**, which is where the guard is blind.
+Thirty-one of them are safe. **Twenty** are derived cards, "next cohort" bands, stat panels, article
+bylines and the `assurances` under each booking form, all of which self-heal from `effectiveStatus` on
+the next build or disappear with the panel that prints them. **Eleven** are prose, and every one is
+either a past fact stated in the past tense or a sentence the 15 and 16 November cycles wrote
+deliberately tense-neutral so that it survives its own dates - the venue answers on `/` and the
+Agentic programme page, and the 02:00 cycle's *"Ours were set that way, individually"* roster.
+
+**The thirty-second is a live defect with a date on it.** `/bootcamps/agentic-coding-bootcamp/`, the
+Coding Bootcamp's *"Where in Oxford is it held?"* answer: ***"Cohort 1 is there on Thursday
+26 November 2026."*** True today, false on 27 November, and on that morning the "Upcoming runs" card
+beside it has already gone, so the sentence stands alone - and the old pattern returned nothing,
+because `is there on` matches neither list. A buyer opening the venue answer after the day had run
+would have been told where a passed cohort *is*.
+
+**The change.** One optional word is allowed between `is`/`are` and `on`, which also covers "is held
+on" and "is also on" without enumerating adverbs, and `not` is excluded so that "is not on
+16 September" denies a date rather than claiming it. `is on`/`are on` leave the literal list and
+become the no-adverb case of the same alternative, so nothing is lost.
+
+**`at` was tested and rejected, on a measurement rather than a judgement.** The obvious companion fix
+is to accept `is at`/`are at` too, since Cohort 5's venue is the thing that moved this month. It
+**fails this build today, on a true sentence**: the Agentic programme page's *"Cohorts 2, 3 and 4 are
+all at Worcester College on Walton Street - 16 September, 19 November and 3 December 2026"*, which the
+15 November cycle wrote in exactly that shape so it would stay true as each date passes. A venue fact
+survives its dates; a scheduling claim does not, and `at` is how the first one is written. At later
+horizons it adds two more copies of the same false positive and no real finding. On a **hard-fail**
+gate, blocking a deploy on correct copy is worse than one blind spot, so the widening stops at `on`
+and the reasoning is in the file next to the regex.
+
+**Measured before shipping, as backlog 102 required.** Both patterns run over all 58 indexable pages
+at **seven horizons** - 16, 20 and 27 November, 4 December, 29 January, 5 February and 1 March -
+comparing full finding sets, not counts. **Identical today (0) and on 20 November (6).** From
+27 November onwards **exactly one finding is added** at every horizon, the sentence above
+(10 to 11, 17 to 18, 18 to 19, 18 to 19, 18 to 19), and **none is lost anywhere**. The regex was also
+unit-checked on eight sentences, including the four true ones it must not claim.
+
+**Nothing on any page was touched, deliberately.** The sentence it now catches is correct today and
+is the on-sale cohort's own venue answer ten days out; rewriting it now would publish an error to
+prevent one. It is **backlog 103**, dated 27 November, with the stale-proof pattern named - the
+Agentic programme page states the same kind of fact without a scheduling verb. Same reasoning as
+backlog 89's four remaining 20 November rewrites, and the same discipline the 08:00 cycle used on the
+two "next cohort" closers.
+
+**Checks.** `npm ci` then `npm run build` green, **every figure identical to the baseline build taken
+before the change**: 69 pages, 3,529 internal links, 17 Event nodes, 22 FAQPage nodes, 128
+offset-bearing publication dates, 1,401 resolving graph references, 59 well-formed breadcrumb trails,
+58 indexable pages clean on the date gate, 123 long-month dates with 0 carrying no year.
+`check:flags` passes on both the all-on and all-off builds. The 14 third-party outbound warnings are
+the standing set and non-blocking (this session's egress policy refuses `luma.com` and
+`linkedin.com`). Blast radius against a sha256 snapshot of `dist`: **0 of 209 files differ** - this
+commit changes a check, not an output. Headless Chromium at **375px and 1280px** over the homepage,
+both affected programme pages and the Cohort 4 booking page: **42 assertions, 0 failed** - 200s, no JS
+exceptions, no failed same-origin requests, no horizontal overflow, one `h1` per page, and the venue
+sentence present and unchanged in the DOM and in the page's `FAQPage` node.
+
+**Search Console.** Unavailable from the cloud, as every cycle since 24 August.
+`scripts/fetch-search-console.mjs` was run once and reports no service account key configured, which
+it treats as a configuration state rather than a failure. No export newer than the 24 August baseline
+exists in `seo-data/`. Nothing was estimated.
+
+**Production could not be read, as on every cycle since 30 Oct.** This session's egress policy answers
+403 on CONNECT to `oxfordagentic.com`; `luma.com` is refused the same way, so **no event fact was
+read, invented or changed**. Deployment state came from the Actions API: run `43855386352` of *Deploy
+to GitHub Pages* for `e3e3f0d` concluded `success` and `main` HEAD matches that `head_sha`, so no
+deploy was in flight.
+
+**GEO.** Four questions, none run in the five preceding cycles, logged in `seo-data/geo-citations.md`.
+**Zero citations of oxfordagentic.com on all four.** The finding is probe 1 - *"do I need a paid Claude
+or ChatGPT subscription to attend a hands-on AI workshop UK"* - where **seven competitors answer the
+prerequisite question on their own booking pages**, sorted by the engine into plans required, a paid
+tool but not a specific one, and free accounts sufficient, closing *"Check the specific event page's
+preparation or FAQ section."* That is **backlog 97** stated by an engine: the Agentic line answers it
+on four surfaces and the Coding line, whose published tools are Claude Code and Codex, answers it on
+none, ten days before its first cohort. Nothing was written, because the honest answer is an event
+fact and not published copy. Probe 2 is the Coding line's own commercial query and the engine opened
+*"The search found no UK in-person one-day course that clearly fits every part of your request"* -
+twenty-second consecutive cycle whose answer is reach, not coverage. Probe 3 is declined as content
+with the reasoning recorded: winnable, but the searcher has already booked somewhere, and backlog 87
+warns against a new node on a question the site already answers in question shape. No new off-page
+target; `outreach/review-list.md` records the re-confirmation.
 
 ### 16 Nov 2026 (09:00 cycle) - the programme pages filed cohorts that have already run under a heading that says "Upcoming runs". The heading outline now closes before them, and not one pixel moved
 

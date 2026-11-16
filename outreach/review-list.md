@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Re-confirmation, no new target: seven competitors answer the prerequisite question on their own
+  booking pages, and the engine tells the buyer to go and read one.** Found 16 Nov 2026 (14:00 cycle),
+  from four answer-engine probes. **Nothing contacted, submitted or signed up for.** Asked *"do I need
+  a paid Claude or ChatGPT subscription to attend a hands-on AI workshop UK"*, the engine answered off
+  `generalassemb.ly` (x3), `tickettailor.com` (x3), `pointacademy-co-uk.pages.dev`,
+  `governmentevents.co.uk`, `ailab.world`, `aiawareness.ai` and two `luma.com` listings, and closed
+  *"Check the specific event page's preparation or FAQ section."* No citation of oxfordagentic.com on
+  any of the four probes, including the Coding Bootcamp's own commercial query ten days before its
+  first cohort, where the engine opened *"The search found no UK in-person one-day course that clearly
+  fits every part of your request."* Every listing platform that surfaced - `createwith.com`,
+  `tickettailor.com`, `eventbrite.co.uk`, `meetup.com`, `luma.com` - is already on this list or in
+  `outreach/off-page-listings.md`, so **there is no new target to add**; `generalassemb.ly`,
+  `brainstation.io`, `learningtree.com`, `shortcourses.lsbu.ac.uk`, `ilxgroup.com` and
+  `dayseven.lovable.app` are competitors, not targets. The standing asks are unchanged: list the
+  on-sale cohorts on **Eventbrite**, correct or retire the 21 July **`allai.events`** record, and give
+  the `Organization` node one real **`sameAs`** (a LinkedIn Company Page, a Luma calendar URL, or the
+  `aicentreforbusiness.co.uk` listing recorded below) in `brand.social`.
+
+
 - **Re-confirmation, no new target: the question that describes our own format is answered entirely
   from event aggregators.** Found 16 Nov 2026 (08:00 cycle), from four answer-engine probes.
   **Nothing contacted, submitted or signed up for.** The probe *"AI workshop where you bring your own

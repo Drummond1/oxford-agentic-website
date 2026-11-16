@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-16 (14:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE PREREQUISITE QUESTION ANSWERED BY SEVEN COMPETITORS OFF THEIR OWN BOOKING PAGES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the five
+preceding cycles. **Production could not be read this cycle** - the sandbox egress policy refuses
+`oxfordagentic.com`, `www.oxfordagentic.com` and `luma.com` with a 403 on CONNECT, so no live page and
+no Luma fact was checked from here; deploy state came from the Actions API and every event fact used
+comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do I need a paid Claude or ChatGPT subscription to attend a hands-on AI workshop UK (prerequisite axis, this phrasing never run) | **No** | `generalassemb.ly` (x3), `pointacademy-co-uk.pages.dev`, `governmentevents.co.uk`, `tickettailor.com` (x3, incl. `j2dmasterclass`), `luma.com` (x2), `ailab.world`, `aiawareness.ai`, `pragmaticinstitute.com`, `eventbrite.com`, `anicca.co.uk` (x2) |
+| 2 | one day AI coding bootcamp for non developers UK in person build a working app without writing code (the Coding line's own query, ten days out) | **No** | `eventbrite.co.uk` (x6), `shortcourses.lsbu.ac.uk` (x3), `createwith.com` (x2), `learningtree.com`, `dayseven.lovable.app`, `conted.ox.ac.uk`, `ilxgroup.com`, `meetup.com`, `brainstation.io`, `oppworks.live.baluu.co.uk`, `happeningnext.com`, `new.onlc.com` |
+| 3 | what should I prepare before a hands-on AI workshop bring your own task pre-work (our own format's premise) | **No** | `brainstation.io` (x4), `thecdm.ca`, `sessionize.com`, `mentorcruise.com`, `funcshun.com`, `sites.bc.edu`, `copilot-academy-sites-basis-en.pages.dev`, `nypublichealth.cornell.edu`, `sectionschool.com`, `neurips.cc`, `sites.google.com` |
+| 4 | AI bootcamp Oxford Worcester College December 2026 one day leaders book place (commercial, our venue and Cohort 4's month) | **No** - `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s`, both **passed** cohorts, were | `lifelong-learning.ox.ac.uk`, `onlinecourses.worc.ox.ac.uk` (x3), `sbs.ox.ac.uk` (x3), `law.ox.ac.uk`, `ouess.web.ox.ac.uk`, `oubep.econ.ox.ac.uk`, `oxford-aiethics.ox.ac.uk`, `ox.ac.uk`, `createwith.com`, `b4-business.com` |
+
+**Reading.**
+
+- **Probe 1 is this cycle's finding, and it is a coverage finding about one line of the site rather
+  than a reach one.** Seven different providers answer the prerequisite question **on their own
+  booking pages**, in quotable form, and the engine assembled them into three groups - plans
+  required (`j2dmasterclass`: *"required to bring their laptop and have purchased a Claude Pro
+  subscription"*; General Assembly: *"you will need a paid subscription to ChatGPT"*), a paid tool but
+  not a specific one, and free accounts sufficient. It closed: ***"Check the specific event page's
+  preparation or FAQ section."*** That is the field telling a buyer to do exactly what **backlog 97**
+  says our Coding line does not support: the Agentic line answers it as a named FAQ entry on its
+  programme page and inside `What should I bring?` on all three booking pages, and the Coding line -
+  the one whose published tools are Claude Code and Codex, named five times across its two pages, with
+  its first cohort ten days away - answers it on no surface at all. **Nothing was written**, for the
+  reason backlog 97 already records: the honest answer turns on what the day provides, which is an
+  event fact and not published copy, and the Agentic line's *"not essential"* may be false of a day
+  built on a tool no free plan includes. **One sentence from Drummond closes it on both Coding
+  surfaces.** Re-confirmed, not re-derived.
+- **Probe 2 is the Coding Bootcamp's own commercial query ten days before its first cohort, and we are
+  not in it.** The engine's opening line was *"The search found no UK in-person one-day course that
+  clearly fits every part of your request"*, and the closest thing it could offer was a Leeds day
+  listed as *"coming soon"*. Every clause of that question is published on
+  `/bootcamps/agentic-coding-bootcamp/` and on Cohort 1's booking page. Twenty-second consecutive
+  cycle whose answer is reach rather than coverage.
+- **Probe 3 is DECLINED as content, and the reasoning is recorded so it is not re-probed.** Winnable
+  on the letter of the test - no institutional publisher owns it, the field is workshop vendors and
+  one Canadian college worksheet. It fails the second half: the searcher has **already booked**
+  somewhere and is preparing, so nothing in that query books a day in Oxford. The substance is also
+  already published on three surfaces (`What do I need to bring?`, `How do I choose which task to
+  bring?`, and the `assurances` under each booking form), which makes it the shape backlog 87 warns
+  against - a new node on a question the site already answers in question shape changes nothing.
+- **Probe 4 reads like the 15 Nov venue probe with a month attached, and fails the same way.** Asked
+  for our college, in Cohort 4's month, it found our Worcester listing and said *"the snippet I saw
+  has no date"*, found Cohort 1's **St Anne's** listing and said *"the two listings may be different
+  editions, so check which one matches your Worcester request"*, and could not place 3 December. Both
+  Luma pages it read are passed cohorts. The site has answered exactly this since 15 November - the
+  venue FAQ now names the college against the cohort on two surfaces, and
+  `/guides/when-ai-executive-cohorts-run/` carries all six dates - and none of it was reached. The
+  University's own domains took eleven of the sixteen results.
+- **No new off-page target.** `createwith.com`, `tickettailor.com`, `eventbrite.co.uk`, `meetup.com`
+  and `luma.com` all reappeared and are all already in `outreach/review-list.md` or
+  `outreach/off-page-listings.md`. `generalassemb.ly`, `brainstation.io`, `learningtree.com`,
+  `dayseven.lovable.app`, `shortcourses.lsbu.ac.uk` and `ilxgroup.com` are competitors, not targets.
+  Recorded there as a re-confirmation.
+
 ## 2026-11-16 (08:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE FORMAT QUESTION IN OUR OWN WORDS ANSWERED ENTIRELY FROM EVENT AGGREGATORS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

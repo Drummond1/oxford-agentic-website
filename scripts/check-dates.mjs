@@ -97,7 +97,44 @@ for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
  * 600-character "sentence" and any forward-tense word anywhere in the panel
  * attached itself to a date rows away. The cap is what makes the match local.
  */
-const FORWARD = /\b(runs?|is on|are on|takes|takes? place|will|next|upcoming|book|opens?|starts?|begins?)\b/i;
+/*
+ * `is on` and `are on` were literal, so any word between the verb and its
+ * preposition slipped the list. Measured on the built site on 16 November 2026,
+ * one hand-authored sentence does exactly that - the Coding programme page's
+ * "Where in Oxford is it held?" answer, "Cohort 1 is there on Thursday
+ * 26 November 2026" - and it was the only one of 32 tense-blind date windows
+ * that is neither a derived card (which self-heals) nor deliberately
+ * tense-neutral prose. On 27 November that sentence is false, the card beside
+ * it has already gone, and the old pattern returned nothing: `is there on`
+ * matched neither `is on` nor anything else in either list, so the answer read
+ * as a day still on offer to every human and to no check. This was backlog 102,
+ * recorded on 15 November when the instance that exposed it was rewritten away
+ * for other reasons; the instance above is a second, independent one.
+ *
+ * So one optional word is allowed between the verb and `on`, which also covers
+ * "is held on" and "is also on" without enumerating adverbs, and `not` is
+ * excluded because "is not on 16 September" denies a date rather than claiming
+ * it.
+ *
+ * `at` is deliberately NOT accepted next to `is`/`are`, and that is measured
+ * rather than argued. Accepting it fails this build today, on a true sentence:
+ * the Agentic programme page's "Cohorts 2, 3 and 4 are all at Worcester College
+ * on Walton Street - 16 September, 19 November and 3 December 2026", which the
+ * 15 November cycle wrote in that shape precisely so it would stay true as each
+ * date passes. A venue fact survives its dates; a scheduling claim does not, and
+ * `at` is how the first one is written. Later horizons add two and then three
+ * copies of that same false positive and no real finding at any of them. Since this gate is
+ * a hard fail, a pattern that blocks deploys on correct copy is worse than one
+ * blind spot, so the widening stops at `on`.
+ *
+ * Measured before shipping, by running both patterns over all 58 indexable
+ * pages at seven horizons (16 and 20 and 27 November, 4 December, 29 January,
+ * 5 February and 1 March): finding sets identical today and on 20 November
+ * (0 and 6), and from 27 November onwards exactly one finding added - the
+ * sentence above - with none lost at any horizon.
+ */
+const FORWARD =
+  /\b(runs?|takes|takes? place|will|next|upcoming|book|opens?|starts?|begins?)\b|\b(?:is|are)(?:\s+(?!not\b)\w+)?\s+on\b/i;
 const PAST = /\b(ran|took place|has run|have run|had run|was|were|passed|closed|previous|previously|earlier|last year|already)\b/i;
 const OURS = /\b(cohort|bootcamp)\b/i;
 const WINDOW = 90;
