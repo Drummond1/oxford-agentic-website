@@ -2450,8 +2450,143 @@ Status: `todo` · `blocked` (why) · `doing`
     because the answer ("three is the shortlist" or "show every upcoming cohort") is a design call and
     not the loop's. Nothing was changed.
 
+105. `todo` (loop-actionable, **declined on measurement and recorded so it is not re-derived**;
+    found 16 Nov 2026 in the 20:00 cycle, by that cycle's own GEO probe) - **the FAQ that routes a
+    buyer between the three bootcamp lines lives on one of the three programme pages, and
+    duplicating it onto the other two is the wrong fix.**
+    The probe that raised it asked which of an agentic bootcamp and a coding bootcamp suits a
+    non-technical manager. The engine described us accurately, quoted our own positioning, cited
+    **two passed cohorts' Luma pages and no page of this site**, and never surfaced the Coding line
+    at all. The tempting conclusion is a coverage gap. It is not one:
+    `/bootcamps/oxford-agentic-bootcamp/` carries ***"Which of the three bootcamps should I do
+    first?"***, which routes by the ceiling the reader has hit and names all three days, and
+    `src/lib/home.ts` answers the same distinction in four more FAQ entries. So the substance is
+    published, in question shape, on the site's most internally linked page (327 inbound link
+    instances).
+    **What is genuinely asymmetric, and why it was still left alone.** That routing FAQ is on the
+    Agentic programme page only. It is not on `/bootcamps/agentic-coding-bootcamp/`, not on
+    `/bootcamps/second-brain-bootcamp/`, and not on `/bootcamps/` - whose own source comment calls
+    it *"the page where someone picks a programme"*. Cross-posting one answer to three pages would
+    publish the same FAQ text three times and add two more `FAQPage` nodes on a question already
+    answered, which is exactly what **backlog 87** measured as changing nothing (four fields, four
+    published answers, zero citations), and it would trade a unique answer for duplicate copy.
+    **If it is ever taken**, the honest version is a *different* answer on each page written from
+    that line's own vantage point - the question a Coding buyer actually asks is whether to build
+    the workflow first or ship the thing first - not the Agentic page's answer moved around. That is
+    a copy call on three pages and not a linking chore, so it wants weighing as one, and it should
+    not be taken in a cycle that is touching anything else on those pages.
+
+
 
 ## Shipped
+
+### 16 Nov 2026 (20:00 cycle) - a no-change cycle, and the browser ran, so the decline is on merit and not on capability. The one candidate in the brief was already fixed, the strongest GEO idea was checked against the site and declined, and one new off-page ask went to Drummond
+
+**Nothing was changed on any page.** The build figures below are identical to the baseline taken
+at the start of the cycle, which is the same baseline the 14:00 cycle recorded, and `dist` is
+untouched. This entry exists so the measurements are not re-derived.
+
+**The candidate named in this cycle's brief was verified as already done, not acted on again.**
+The brief's first known candidate was that `scripts/indexnow-ping.mjs` treats `src/lib/home.ts` as
+template-wide, so a homepage FAQ edit hints all ~44 sitemap URLs. It does not, any more:
+`SINGLE_PAGE_SOURCES` in that script maps `src/lib/home.ts` to `/` and `HomeSections.astro` to `/`
+as well, with the reasoning in a comment beside it. Verified by reading the file rather than
+trusting the brief. The brief's second candidate - past-tense rewrites once 16 September, 15 October
+and 21 October have passed - is overtaken by events: those sweeps have been done, Cohorts 4 and 5
+went on sale on 15 November, and what remains is **backlog 89**, correctly dated 20 November.
+`check-dates --now=2026-11-20` was run and returns **exactly the six findings** the 08:00 cycle
+recorded - four prose sentences on event pages, and the two derived "Upcoming" cards the 14 November
+simulation proved a real 20 November build never renders. Not brought forward: those four sentences
+are true today.
+
+**One thing in Drummond's queue is now closed, and it was verified from the code rather than
+projected.** Backlog 89 asked him for *"either a Cohort 4 date, or a decision that the Agentic line
+gets an interest page of its own"*, because the 14 November simulation had all three past Agentic
+event pages losing their forward card together on 20 November. `getSuccessorEvent` in
+`src/lib/site.ts` is three lines: it takes `now`, and returns the first upcoming event of the same
+programme. With Cohort 3 passed, the first upcoming Agentic event is **Cohort 4 on 3 December**, so
+all three past Agentic pages keep a forward card and gain it without anyone doing anything. Today
+those pages already render *"Cohort 3 - 19 November 2026"* under *"The next cohort runs the same
+format"*. The ask is answered by Cohort 4 existing, and the interest-page question is now a
+preference rather than a gap.
+
+**What was measured, and all of it came back clean.** The on-page and structured-data layer was
+swept looking for a defect worth a cycle, and did not yield one:
+- **Sitemap and indexability agree exactly**: 58 `<loc>` entries against 58 built pages carrying no
+  `robots` meta, so nothing indexable is missing from the sitemap and nothing noindexed is in it.
+- **The two newest booking pages are a clean copy.** Diffed `oxford-agentic-bootcamp-cohort-4.md`
+  and `-cohort-5.md` against the Cohort 3 file they were authored from: the only differences are
+  title, slug, cohort, the dates, the Luma id and url, the capsule's date sentence, the transfer
+  line's date, and for Cohort 5 the venue block with its `confirmed: false` and the comment
+  explaining it. No Cohort 3 fact survives in either file.
+- **`Offer` availability is right on all seven event pages**: `InStock` on the four upcoming,
+  absent on the three that have run. Titles, descriptions and canonicals are unique and in budget
+  on all four upcoming pages (Cohort 5's description is the January one, naming Jesus College).
+- **`llms.txt` carries all four upcoming cohorts** in date order with venue and time, and files the
+  three passed ones under "Took place on".
+- **A sweep no earlier cycle appears to have run: hand-authored count and scarcity claims in
+  rendered copy**, which no date guard can see. Three "sold out" strings, all three about Cohort 2
+  in the past tense, which is a published fact; one "2 already run" on `/bootcamps/`, which is
+  derived. No static scarcity claim about any cohort on sale.
+- **Internal linking**: all three programme pages are linked from 67 pages. The on-sale pages carry
+  213 (Cohort 3), 78 (Cohort 4), 77 (Coding Cohort 1) and 70 (Cohort 5) inbound link instances. The
+  `relatedProgrammes` asymmetry (24 Agentic, 11 Second Brain, 7 Coding) tracks genuine topical
+  relevance, so no link was forced.
+
+**The strongest GEO idea was declined, and the check that killed it took one grep.** Probe 1 asked
+which of an agentic bootcamp and a coding bootcamp suits a non-technical manager. The engine
+described us accurately, quoted our own copy - *"It assumes you already use AI day to day. It
+doesn't assume you can code - you won't need to."* - and read it off **`luma.com/oxfordagentic2` and
+`luma.com/k7c2rm5s`, both passed cohorts, with no page of this site cited**. It then recommended a
+London course and an Eventbrite listing, and never surfaced the Coding line, although the two coding
+bootcamps it did surface are the counter-example our Coding line publishes (one *"requires basic
+Python"*, the other says in its own FAQ that it is not for beginners). That looks like a coverage
+gap and is not one: `/bootcamps/oxford-agentic-bootcamp/` already carries *"Which of the three
+bootcamps should I do first?"*, the homepage answers the same distinction four more times, and the
+Coding page's meta description carries the differentiator in 141 characters. **Recorded as backlog
+105**, along with the one genuine asymmetry it exposed - that routing FAQ is on one of three
+programme pages - and the reasoning for why duplicating it would be the wrong fix. Twenty-third
+consecutive cycle whose answer is reach rather than coverage.
+
+**Checks.** `npm ci` then `npm run build` green: 69 pages, 3,529 internal links, 17 Event nodes,
+22 FAQPage nodes, 128 offset-bearing publication dates, 1,401 resolving graph references, 59
+well-formed breadcrumb trails, 58 indexable pages clean on the date gate, 123 long-month dates with
+0 carrying no year. Every figure identical to the 14:00 cycle's. The 14 third-party outbound
+warnings are the standing set and non-blocking (this session's egress policy refuses `luma.com` and
+`linkedin.com`). **Headless Chromium ran**, at 375px and 1280px over `/`, `/bootcamps/`, the Coding
+programme page and the Cohort 4 and Cohort 5 booking pages: **50 assertions, 0 failed** - 200s, no
+JS exceptions, no failed same-origin requests, no horizontal overflow, one `h1` per page. That
+matters for the record: the standing rule is not to ship a cycle whose change cannot be inspected,
+and this cycle could have inspected one. Nothing shipped because nothing was worth shipping.
+
+**Search Console.** Unavailable from the cloud, as every cycle since 24 August.
+`scripts/fetch-search-console.mjs` was run once and reports no service account key configured, which
+it treats as a configuration state rather than a failure. No export newer than the 24 August
+baseline exists in `seo-data/`. Nothing was estimated.
+
+**Production could not be read, as on every cycle since 30 Oct.** This session's egress policy
+answers 403 on CONNECT to `oxfordagentic.com`; `luma.com` is refused the same way, so **no event
+fact was read, invented or changed** - no date, venue, capacity, price or availability was touched.
+Deployment state came from the Actions API: run `43883694044` of *Deploy to GitHub Pages* for
+`634498b` concluded `success` at 14:15Z, and `main` HEAD matches that `head_sha`, so no deploy was
+in flight. HEAD was checked against `origin/main` before anything else, per step 0.
+
+**One live claim the loop deliberately did not touch.** Cohort 3's `Offer` publishes `InStock` and
+the 02:00 cycle recorded an engine reporting that cohort as sold out. That cannot be verified from
+here, availability is a Luma fact, and lowering a published one on a scrape is the thing this log
+has refused twice before. It stays in `outreach/review-list.md` for Drummond.
+
+**GEO.** Four questions, none run in the eight preceding cycles, logged in `seo-data/geo-citations.md`.
+**Zero citations of oxfordagentic.com on all four.** Probes 3 and 4 are declined as content with the
+reasoning recorded - probe 4 fails WINNABLE outright on platform vendors writing about their own
+product, probe 3 because the engine opened by telling the reader to discount bootcamp vendors and we
+are one. Probe 2 is logged as positioning information for Drummond rather than a defect: the field
+publishes cohort caps of 8, 12-16 and 20 and the engine put the common range at 8-12, where the
+Agentic line publishes *"capped at roughly twenty-five"* and the Second Brain line publishes no
+number at all (backlog 15, his). **One new off-page ask** went to `outreach/review-list.md`: the two
+passed cohorts' Luma pages are the ones engines keep reaching, and neither says the day has gone or
+where the next one is - one line on each, pointing at 3 December, is the cheapest remedy this log has
+found for a failure it has now recorded four times in one day.
 
 ### 16 Nov 2026 (14:00 cycle) - the stale-date guard's forward-verb list was literal, so one word between the verb and its preposition hid a booking-page claim from it. One regex, 0 of 209 built files changed, and the `at` version of the same fix fails this build today
 

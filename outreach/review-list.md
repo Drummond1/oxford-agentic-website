@@ -11,6 +11,37 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **New ask, and it is not a new listing: the two Luma pages answer engines keep reaching are both
+  passed cohorts, and neither says the day has gone or where the next one is.** Found 16 Nov 2026
+  (20:00 cycle), from four answer-engine probes, and it is the fourth independent sighting today.
+  **Nothing contacted, submitted or signed up for, and the loop cannot edit Luma.**
+  - **What was measured.** Asked which of an agentic bootcamp and a coding bootcamp suits a
+    non-technical manager, the engine described us accurately and quoted our own positioning -
+    *"It assumes you already use AI day to day. It doesn't assume you can code - you won't need
+    to."* It read that off **`luma.com/oxfordagentic2`** (Cohort 2, 16 September 2026) and
+    **`luma.com/k7c2rm5s`** (Cohort 1, 21 July 2026). Both have run. The 02:00, 08:00 and 14:00
+    cycles hit the same two pages on different questions, and in each case the engine could not get
+    a current date out of them: *"the snippet gives no date"*, 21 July *"is outside your window"*,
+    and on the December question it read our passed 21 October Second Brain date and rejected it.
+  - **Why this is worth his five minutes.** Those pages already rank and are already being cited, so
+    they are not a reach problem - they are the one place where our reach is working and our routing
+    is not. A buyer who follows the citation lands on a day that has gone, with nothing pointing
+    forward. The remedy is one line at the top of each passed cohort's Luma description, for example:
+    *"This cohort has run. The next Oxford Agentic Bootcamp is on Thursday 3 December 2026:
+    luma.com/oxfordagentic4."* No price, no scarcity claim, nothing the site does not already
+    publish.
+  - **Why the loop cannot do it.** Luma is his account, and `luma.com` is refused by this session's
+    egress policy, so even the readings above come from the engines' quotations rather than the live
+    pages. Worth checking at the same time whether those two pages carry a stale "register" button.
+  - **Additive, not a replacement.** The standing three asks are unchanged: list the on-sale cohorts
+    on **Eventbrite**, correct or retire the 21 July **`allai.events`** record, and give the
+    `Organization` node one real **`sameAs`** in `brand.social` (a LinkedIn Company Page, a Luma
+    calendar URL, or the `aicentreforbusiness.co.uk` listing recorded below). Every platform that
+    surfaced this cycle - `eventbrite.co.uk`, `luma.com`, `coursereport.com` - is already on this
+    list or in `outreach/off-page-listings.md`; `datasciencedojo.com`, `agilefever.com`,
+    `knowledgehut.com`, `nobledesktop.com`, `cambridgespark.com`, `qa.com` and
+    `precisionaiacademy.pages.dev` are competitors or content farms, not targets.
+
 - **Re-confirmation, no new target: seven competitors answer the prerequisite question on their own
   booking pages, and the engine tells the buyer to go and read one.** Found 16 Nov 2026 (14:00 cycle),
   from four answer-engine probes. **Nothing contacted, submitted or signed up for.** Asked *"do I need

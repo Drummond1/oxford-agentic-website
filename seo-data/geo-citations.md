@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-16 (20:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND AN ENGINE DESCRIBING US ACCURATELY IN OUR OWN WORDS OFF TWO PASSED COHORTS' LUMA PAGES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the eight
+preceding cycles. **Production could not be read this cycle** - the sandbox egress policy refuses
+`oxfordagentic.com` and `luma.com` with a 403 on CONNECT, so no live page and no Luma fact was checked
+from here; deploy state came from the Actions API and every event fact used comes from the committed
+event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | agentic AI bootcamp vs AI coding bootcamp, which should a non-technical manager choose, one day in person UK (cross-line choice, never probed) | **No** - but our own positioning was quoted, off `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s`, both **passed** | `datasciencedojo.com` (x3) and `help.datasciencedojo.com` (x2), `eventbrite.co.uk` (x2), `knowledgehut.com`, `coursereport.com`, `pointacademy-co-uk.pages.dev`, `agilefever.com`, `highintentlabs-website-org.pages.dev`, `luma.com/nvqgzyor`, `imperial.ac.uk`, `qa.com`, `waimakers.com` |
+| 2 | how many people are in the room at a one day AI workshop UK, cohort size, small group (group-size axis, never probed) | **No** | `innovationvisual.com` (x2), `training.cam.ac.uk` (x2), `cambridgespark.com` (x2), `ailab.world`, `cii.co.uk`, `imperial.ac.uk`, `ucl.ac.uk`, `c2d3.cam.ac.uk`, `mediatraining.ltd.uk`, `adult.activatelearning.ac.uk`, `anicca.co.uk`, `tessgroup-website.pages.dev`, `dayseven.lovable.app`, `designforonline.com` |
+| 3 | I am the only person at my company using AI, is a one day AI bootcamp still worth it (lone-adopter axis, never probed) | **No** | `nobledesktop.com` (x4), `precisionaiacademy.pages.dev` (x4), `quickstart.com` (x2), `trainingcamp.com` (x2), `metana.io`, `buildyouraicareer.pages.dev`, `codelabsacademy.com`, `mindstudio.ai`, `365datascience.com` |
+| 4 | who stays in control when an AI agent runs a business workflow, human oversight, approval step (our own guide's subject) | **No** | `zapier.com` (x3), `airia.com` (x2), `growwstacks.com`, `dzone.com`, `tallyfy.com`, `bmc.com`, `velt.dev`, `domo.com`, `kanerika.com`, `gravitee.io`, `data-mania.com`, `pickaxe.co`, `candede.com`, `waxell.ai` |
+
+**Reading.**
+
+- **Probe 1 is this cycle's finding, and it is the cleanest demonstration yet that the problem is reach
+  rather than coverage, because the engine got us right.** Asked which of the two formats suits a
+  non-technical manager, it described the Oxford Agentic Bootcamp accurately and quoted our own
+  positioning back: *"It assumes you already use AI day to day. It doesn't assume you can code - you
+  won't need to."* Every word of that is ours. **It read it off `luma.com/oxfordagentic2` (Cohort 2,
+  16 September) and `luma.com/k7c2rm5s` (Cohort 1, 21 July), both passed cohorts, and not one page of
+  oxfordagentic.com.** It then recommended a London one-day course and an Eventbrite listing to the
+  reader, and **never surfaced the Oxford Agentic Coding Bootcamp at all** - although the two coding
+  bootcamps it did surface are the exact counter-example our Coding line publishes: Data Science Dojo's
+  *"requires basic Python"*, and AgileFever's own FAQ saying its bootcamp is for experienced IT
+  professionals and *"isn't suitable for beginners"*. Twenty-third consecutive cycle whose answer is
+  reach, not coverage.
+- **The content idea probe 1 suggests was checked against the site before it was proposed, and
+  declined.** The obvious reading is "we have three lines and nothing that helps a buyer choose". That
+  is false, and the check took one grep: `/bootcamps/oxford-agentic-bootcamp/` - the most internally
+  linked page on the site at 327 inbound link instances - carries the FAQ ***"Which of the three
+  bootcamps should I do first?"***, whose answer routes by the ceiling the reader has hit, names all
+  three days and says why they compound. The homepage answers the same distinction four more times
+  (*"What is Oxford Agentic?"*, *"Who are the bootcamps for?"*, *"What do I need to bring"*, *"What
+  will I actually leave with?"*), and the Coding programme page's own meta description carries the
+  differentiator in 141 characters: *"A one-day bootcamp in Oxford for people who have not yet shipped
+  software. Claude Code and Codex do the typing."* A new node on a question answered in question shape
+  on the site's strongest page is the shape **backlog 87** measured as changing nothing. **Recorded as
+  backlog 105** so it is not re-derived.
+- **Probe 4 fails WINNABLE outright and is declined.** The field is platform vendors writing about
+  their own product, which is the exact pattern the topic-probe rule names: Zapier three times, plus
+  Domo, BMC, Airia twice, an n8n review, `velt.dev` and `pickaxe.co`. Our
+  `/guides/where-the-human-goes-in-an-agentic-workflow/` covers this subject and was not cited, so the
+  gap here is reach on a page that already exists, not a missing page. The engine also flagged its own
+  sources: *"mostly vendor marketing and practitioner blogs, and I did not find an independent
+  empirical study."*
+- **Probe 3 is declined for the reason the 08:00 cycle declined its probe 2, and the engine said it
+  first.** It opened *"The search results are mostly marketing from bootcamp vendors, so treat their
+  claims with caution"* and closed by telling the reader to compare against free resources. We are a
+  bootcamp vendor with a stake in that answer. A guide arguing that a one-day bootcamp is worth it
+  lands in the bucket the engine has just told the reader to discount. The lone-adopter angle is
+  genuinely unoccupied - the field is `nobledesktop.com` and a cluster of `.pages.dev` content farms -
+  but it is unoccupied on the generic "are bootcamps worth it" question, not on ours.
+- **Probe 2 is a measurement for Drummond rather than a content idea, and nothing was changed.** The
+  field publishes its cohort caps and we sit at the top of its range: Point Academy *"Max 20
+  participants per group"*, the CII *"No of attendees: 12-16"*, one London provider *"small groups of
+  up to eight"*, and the engine's own summary was *"roughly 6-16 people, with about 8-12 the most
+  common range for in-person small-group formats"*. The Agentic line publishes *"capped at roughly
+  twenty-five"*; the Second Brain line publishes no number at all, which is **backlog 15** and
+  Drummond's. Capacity is a confirmed fact and the loop does not move a published one on an inference
+  drawn from a scrape, so this is logged as positioning information and not as a defect.
+- **One new off-page ask, in `outreach/review-list.md`:** the passed cohorts' Luma pages are what
+  engines keep reaching, and neither of them says the day has gone or where the next one is. Every
+  other platform that surfaced is already on that list or a competitor.
+
 ## 2026-11-16 (14:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE PREREQUISITE QUESTION ANSWERED BY SEVEN COMPETITORS OFF THEIR OWN BOOKING PAGES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
