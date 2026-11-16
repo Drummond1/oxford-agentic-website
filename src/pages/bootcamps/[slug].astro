@@ -230,8 +230,8 @@ const bands = {
 
       {
         past.length > 0 && (
-          <div class="past">
-            <h3 class="past__title">Previous cohorts</h3>
+          <section class="past" aria-labelledby="past-cohorts">
+            <h2 class="past__title" id="past-cohorts">Previous cohorts</h2>
             <div class="grid grid--3">
               {past.map((event, i) => (
                 <div data-reveal data-reveal-delay={i * 80}>
@@ -239,7 +239,7 @@ const bands = {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )
       }
     </div>
@@ -349,8 +349,12 @@ const bands = {
     margin-block-start: clamp(2.5rem, 2rem + 2vw, 3.5rem);
   }
 
+  /* An h2, so the heading outline closes "Upcoming runs" before the cohorts that
+     have already happened. /events/ already splits the two this way, and the size and
+     line height stay those of the h3 it replaces, so nothing moves on the page. */
   .past__title {
     font-size: var(--step-lg);
+    line-height: 1.2;
     margin-block-end: 1.25rem;
   }
 

@@ -2406,6 +2406,68 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 16 Nov 2026 (09:00 cycle) - the programme pages filed cohorts that have already run under a heading that says "Upcoming runs". The heading outline now closes before them, and not one pixel moved
+
+**Evidence.** `/bootcamps/[slug]/` built its whole runs block as a single
+`<section aria-labelledby="runs">` headed `<h2>Upcoming runs</h2>`, with "Previous cohorts"
+inside it as an `h3` - the same level as the cohort cards themselves. The measured outline on
+`/bootcamps/oxford-agentic-bootcamp/` was: **h2 Upcoming runs, h3 Cohort 3, h3 Cohort 4,
+h3 Cohort 5, h3 Previous cohorts, h3 Cohort 2, h3 Cohort 1.** Every cohort sat at one level
+under "Upcoming runs", and the label meant to separate them was a sibling of the things it
+labels rather than their parent. Someone navigating by heading, or reading the outline, was
+told that Cohort 1 (21 July 2026) and Cohort 2 (16 September 2026) are upcoming runs. Three of
+the six are bookable and three are over, so this is a booking-relevant confusion, not a tidiness
+one. `check-dates.mjs` cannot see it: every date on the page is correct, and the structure is
+what misfiles them.
+
+**The pattern was already in the repo, so nothing was invented.** `/events/` has always done
+this properly - two sibling `<section>`s, each `aria-labelledby` its own `h2` ("Upcoming" and
+"Already run"), cohort `h3`s inside each. The programme page is the one place that did not
+follow it. The fix borrows it: `<div class="past">` becomes
+`<section class="past" aria-labelledby="past-cohorts">` and its `h3` becomes
+`<h2 class="past__title" id="past-cohorts">`. The outline now reads **h2 Upcoming runs,
+h3 Cohort 3/4/5, h2 Previous cohorts, h3 Cohort 2/1** - the `h2` closes the upcoming scope, and
+the past cohorts are additionally inside a region named "Previous cohorts".
+
+**Nothing moved.** `.past__title` already pinned `font-size: var(--step-lg)`, so the only
+property an `h2` would have changed is `line-height` (1.08 against the `h3`'s 1.2); that is now
+pinned in the same rule. Checked by measuring the section box, the title box and the computed
+font-size, line-height, weight, family, colour and margin at 375, 768 and 1280px, plus the full
+document height of all three programme pages: **every value identical before and after**, and
+with `prefers-reduced-motion` forced to make the reveals deterministic, the nine
+before/after screenshots of the runs section are **byte-identical**.
+
+**Scope.** One file, `src/pages/bootcamps/[slug].astro` - 7 insertions, 3 deletions. It reaches
+all three programme pages, but only the two with past cohorts change at all: the Agentic page
+and the Second Brain page (whose "Runs" heading is the empty-state variant). The Coding page has
+no previous cohorts, so its markup is unchanged. Nothing links to `#runs`, no table of contents
+reads these headings, and `.past` / `.past__title` are used nowhere else.
+
+**Checks.** `npm run build` passes (3529 internal links, 69 pages of schema, both date guards);
+`check:flags` passes on the all-on and all-off builds; `astro check` reports **83 errors before
+and 83 after** - all pre-existing implicit-`any` findings, none in the file touched, and CI does
+not run it. The whole-site audit at 375/768/1280 across 69 pages (207 page-width records) shows
+zero horizontal overflow, zero missing alt, zero unlabelled controls, zero links or buttons
+without an accessible name, zero duplicate ids (so the new `past-cohorts` id collides with
+nothing), zero heading-level skips and exactly one `h1` per page. Keyboard tab order was walked
+on twelve pages at two widths: every focusable element has a visible cue except the third-party
+Luma iframe.
+
+**Production could not be read, as on every cycle since 30 Oct.** This session's egress policy
+answers 403 on CONNECT to `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`
+(`connect_rejected`, logged by the proxy), so the before state is a local preview build of `main`
+HEAD rather than the live site, and deployment state came from the Actions API: run
+`43828770813` of *Deploy to GitHub Pages* for `d0f8eb6` concluded `success`, and `main` HEAD
+matches that `head_sha`. `luma.com` is unreachable the same way, so **no event fact was read,
+invented or changed** - no date, venue, capacity, price or availability was touched. PR #1 and
+PR #3 and the `feat/ceo-roundtable-demand-page` branch are the known-stale leftovers already
+recorded in backlog 20, not work in flight.
+
+**Nothing else re-pitched.** Backlog 26 (the event-page hero printing its heading twice) is a
+hero-layout call reserved for Drummond and was left alone, as was backlog 21 (bronze contrast).
+Backlog 89's remaining half - four past-tense rewrites on event pages - is correctly still dated
+20 November and was not brought forward.
+
 ### 16 Nov 2026 (08:00 cycle) - six evergreen guide closers were sending every reader to a day three days away; they now send them to the one on sale. Six sentences, six files, 6 of 209 built files, and half of the 20 November build failure retired early
 
 **Evidence.** Two things, and the second is what made the first actionable.
