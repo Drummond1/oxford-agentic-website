@@ -2406,6 +2406,109 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 16 Nov 2026 (08:00 cycle) - six evergreen guide closers were sending every reader to a day three days away; they now send them to the one on sale. Six sentences, six files, 6 of 209 built files, and half of the 20 November build failure retired early
+
+**Evidence.** Two things, and the second is what made the first actionable.
+
+1. **`check-dates.mjs --now=2026-11-20` returned twelve findings**, the scope backlog 89 recorded on
+   11 Nov and confirmed exact by the 14 Nov simulation. **Six of the twelve are guide closers** -
+   `claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved`,
+   `getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+   `where-the-human-goes-in-an-agentic-workflow`, `who-should-take-the-seat` - each naming
+   19 November 2026 in prose and linking `/events/oxford-agentic-bootcamp-cohort-3/`.
+2. **Cohorts 4 and 5 went on sale on 15 November**, which removes the precondition backlog 89 said
+   was missing. That item was written when no Cohort 4 existed, and it concluded that a closer
+   pointing at a finished Cohort 3 had nowhere honest to point. It now has: **Cohort 4, Thursday
+   3 December 2026, Worcester College** - the *same college* all six closers already name, so the
+   retarget changes a date and an href and touches no other fact.
+
+**Why now and not on 20 November, which is what backlog 89 scheduled.** Because four of these six
+sentences are already working against the reader today, and that is true independently of the build
+failure. They are **evergreen** pages whose job is to hand an interested reader a bookable day, and
+until this commit all six handed them one **three days out**. `getting-an-ai-bootcamp-approved` is the
+clearest case and it is close to self-defeating: a guide about getting a day signed off by a budget
+holder, closing *"The next cohort is on Thursday 19 November 2026"*. Nobody gets a bootcamp approved
+in three days. Seventeen days is the realistic ask, and that is Cohort 4. The 02:00 cycle's own
+`outreach/review-list.md` finding - an engine reporting Cohort 3 as **sold out, waitlist** - points the
+same way, and is deliberately **not** leaned on here: `luma.com` is refused by this session's egress
+policy, so availability could not be checked and nothing in this change assumes it.
+
+**The accuracy trap, and how it was avoided.** Two of the six opened *"The next cohort runs on..."*.
+Cohort 3 is still the next cohort today, so writing *"The next cohort runs on 3 December"* would have
+published a false sentence to fix a stale one. Both now name the cohort instead - *"Cohort 4 runs
+on 3 December 2026 at Worcester College"* - which is true today, stays true through 19 November, and
+matches the shape the other four already used. All six now read identically, which was a side effect
+rather than the aim. Every one carries the year explicitly, so the year guard (backlog 91) is satisfied
+without relying on its 400-character window.
+
+**It self-detects when it goes stale.** `check-dates.mjs --now=2026-12-04` returns seven findings
+naming Cohort 4 and 3 December, so the guard that would have caught the old sentences catches the new
+ones the morning after Cohort 4 runs. The pattern is unchanged: name the next bookable date, link its
+page, let the hard gate find it when it passes.
+
+**What this leaves for 20 November.** Six findings, down from twelve, and the remainder is a different
+kind of work that is correctly **not** done today. Four are prose on event pages
+(`cohort-1` once, `cohort-2` twice - its capsule and its "Has the Oxford Agentic Bootcamp run before?"
+answer - and `cohort-3`'s own capsule). Every one of those four is **true today** and wants the past
+tense only once it is false, so touching them now would publish an error to prevent one. The other two
+are `/events/` and `/bootcamps/oxford-agentic-bootcamp/` showing Cohort 3 under an "Upcoming" heading,
+which the 14 Nov simulation proved are flag artefacts that a real 20 November build never renders.
+Backlog 89's remaining half is therefore now: **four past-tense rewrites, no link decisions.** The
+`when-ai-executive-cohorts-run` roster that item also tracks was rewritten by the 02:00 cycle and
+carries all six dates already.
+
+**Second effect, and the one with commercial value beyond freshness.** Cohort 4 is the page that takes
+money for the next seventeen days and it had **one** hand-authored inbound internal link (the
+`when-ai-executive-cohorts-run` roster, added at 02:00) against Cohort 3's eight. It now has seven,
+from six of the most-cited evergreen pages on the site. Total internal links across the build are
+unchanged at **3,529** - six links moved, none added - so this is a redistribution of existing internal
+authority onto the on-sale page, not new linking.
+
+**GEO.** Four questions, none run in the five preceding cycles and none overlapping the 02:00 set six
+hours earlier, logged in `seo-data/geo-citations.md`. **Zero citations of oxfordagentic.com on all
+four.** The finding is probe 4 - our own promise line in a buyer's words, *"AI workshop where you bring
+your own task and leave with a working workflow UK no coding"* - answered entirely from **event
+aggregators and ticketing platforms** (`luma.com` x2, `createwith.com` x3, `tickettailor.com` x2,
+`meetup.com` x2), closing by telling the buyer to go and check two of those listings for dates. On that
+question the field is neither institutional publishers nor competitors' own sites; it is listing
+platforms, and we are on none of them. That is **backlog 2b** stated by an engine rather than argued
+from a baseline. Probes 2 and 3 are both declined as content with the reasoning recorded so neither is
+re-probed: probe 3 fails WINNABLE (platform vendors writing about their own product, `slack.com` six
+times), and probe 2's axis is already published as a guide - and the engine discounted its own sources
+as *"training vendors with a stake in the answer"*, which we would be too. No new off-page target;
+`outreach/review-list.md` records the re-confirmation.
+
+**Search Console.** Unavailable from the cloud, as every cycle since 24 August.
+`scripts/fetch-search-console.mjs` was run once and reports no service account key configured, which it
+treats as a configuration state rather than a failure. No export newer than the 24 August baseline
+exists in `seo-data/`. Nothing was estimated.
+
+**Checks.** `npm ci` then `npm run build` green. **Every figure identical to the baseline build taken
+before the change**: 69 pages, **3,529** internal links, 17 Event nodes, 22 FAQPage nodes, 128
+offset-bearing publication dates, 1,401 resolving graph references, 59 well-formed breadcrumb trails,
+58 indexable pages clean on the date gate, 123 long-month dates with 0 carrying no year. `check:flags`
+passes on both the all-on and all-off builds. The 14 third-party outbound warnings are the standing
+set and non-blocking (this session's egress policy refuses `luma.com` and `linkedin.com`, so they fail
+here every cycle). Blast radius against a sha256 snapshot of `dist`: **6 of 209 files differ**, all six
+the changed guides, none added or removed; `llms-full.txt` and the two sitemaps move as derived
+surfaces. Headless Chromium at **375px and 1280px** over the six guides and the Cohort 4 booking page:
+**132 assertions, 0 failed** - 200s, no JS exceptions, no failed same-origin requests, no horizontal
+overflow, and on every guide "Cohort 4" and "3 December 2026" present, "19 November 2026" absent, a
+resolving `cohort-4` link and no `cohort-3` link.
+
+**Not verified, and it is the same gap as the last four cycles.** `oxfordagentic.com`, the `github.io`
+origin and `luma.com` are all refused by this session's egress policy, so **no live page was read at
+either end** and **no Luma fact was checked**. Every event fact used here comes from
+`src/content/events/oxford-agentic-bootcamp-cohort-4.md`, committed on 15 Nov after another session
+read Luma. Deploy state was read from the Actions API: run 428 (`431ae6f`) completed **success** at
+02:09Z, nothing queued or in progress.
+
+**Expected benefit.** Six evergreen pages stop pointing at a day that is three days out and, on
+20 November, finished; the on-sale booking page gains seven internal links from pages the index
+actually holds; and the 20 November build failure is halved before it lands, leaving four past-tense
+rewrites with no decisions attached.
+
+
 ### 16 Nov 2026 (02:00 cycle) - the one guide whose whole subject is when cohorts run listed four dates, three of them spent, and neither of the two that went on sale six hours earlier. Two paragraphs, one file, 4 of 209 built files
 
 **Evidence.** Four GEO probes, none run in the five preceding cycles, logged in

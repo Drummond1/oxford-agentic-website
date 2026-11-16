@@ -5,6 +5,53 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-16 (08:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE FORMAT QUESTION IN OUR OWN WORDS ANSWERED ENTIRELY FROM EVENT AGGREGATORS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the five
+preceding cycles and none overlapping the 02:00 set six hours earlier. **Production could not be read
+this cycle** - the sandbox egress policy refuses `oxfordagentic.com` and `luma.com`, so no live page
+and no Luma fact was checked from here; deploy state was read from the Actions API and every event
+fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | one day agentic AI bootcamp Oxford January 2027 book a place in person (commercial, Cohort 5's date, never probed) | **No** - answered about us from `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` | `luma.com` (x4), `allai.events`, `eventbrite.co.uk`, `nobleprog.co.uk` (x2), `learnersink.com`, `sbs.ox.ac.uk`, `lifelong-learning.ox.ac.uk`, `datasciencedojo.com` (x2), `theknowledgeacademy.com`, `citylit.ac.uk`, `meetup.com` |
+| 2 | should we run an in-house AI training day or send staff to a public course (our own guide's thesis) | **No** | `profiletree.com` (x4), `maven.com`, `ivee.jobs`, `pertamapartners.com` (x2), `intuitionlabs.ai`, `agilefever.com`, `aicerts.ai`, `techclass.com`, `lumifywork.com` |
+| 3 | what is an agentic workflow for business explained with an example (definitional, broad) | **No** | `slack.com` (x6 locales), `netsuite.com`, `acceldata.io`, `domo.com`, `vonage.com`, `pickl.ai` (x2), `gptbots.ai`, `gamut.so`, `impactanalytics.ai` |
+| 4 | AI workshop where you bring your own task and leave with a working workflow UK no coding (our format, in a buyer's words) | **No** | `luma.com` (x2), `createwith.com` (x3), `tickettailor.com` (x2), `meetup.com` (x2), `ivee.jobs`, `citylit.ac.uk`, `artefact.com`, `brainstation.io`, `norfolkchamber.co.uk`, `propellernet.co.uk`, `sites.google.com` |
+
+**Reading.**
+
+- **Probe 4 is this cycle's finding.** It is our format put in a buyer's words - bring your own task,
+  leave with a working workflow, UK, no coding - which is close to the promise line every event file
+  on this site publishes, and **not one citation came from oxfordagentic.com**. What answered instead
+  was almost entirely **event aggregators and ticketing platforms**: two Luma listings, three
+  `createwith.com` pages, two `tickettailor.com`, two `meetup.com`. The engine's closing advice was to
+  *"check the Claude Cowork and Bristol listings for upcoming dates"*. That is the clearest statement
+  this log has yet recorded of what **backlog 2b** has been asking for: on this question the field is
+  not institutional publishers and not competitors' own sites, it is listing platforms, and we are on
+  none of the ones it read. Twenty-first consecutive cycle whose answer is reach rather than coverage.
+- **Probe 1 confirms the January gap and adds nothing new to chase.** Cohort 5 is on 28 January 2027
+  and the engine said *"I didn't find a one-day, in-person agentic AI bootcamp in Oxford scheduled for
+  January 2027, so I can't point you to a booking page for that exact date."* It reached us only
+  through two **passed** cohorts' Luma pages, and said of one *"the snippet gives no date"* and of the
+  other that 21 July 2026 *"is outside your window"*. Same shape as the 02:00 cycle's probes 1 and 3
+  about December, one day later and about January. The page that would answer it went live 15 Nov and
+  has had no chance to be crawled.
+- **Probes 2 and 3 are both DECLINED as content, and the reasoning is recorded so neither is
+  re-probed.** Probe 3 fails WINNABLE outright: the field is platform vendors writing about their own
+  product (`slack.com` six times over, `netsuite.com`, `domo.com`, `vonage.com`), which is the exact
+  pattern the topic-probe rule names. Probe 2 is more interesting and still a decline - we already
+  publish `/guides/in-house-ai-day-or-send-people-to-a-cohort/` on precisely this question, so there
+  is nothing to write - but note **how** the engine framed its own sources: *"The search results mostly
+  come from training vendors with a stake in the answer, so treat their numbers as rough guides."*
+  We are a training vendor with a stake in that answer too. A second guide on the same axis would
+  land in the bucket the engine just told the reader to discount.
+- **No new off-page target.** `allai.events`, `createwith.com`, Eventbrite, `luma.com/k7c2rm5s` and
+  `learnersink.com` all reappeared and are all already in `outreach/review-list.md`. Recorded there as
+  a re-confirmation rather than a new find.
+
 ## 2026-11-16 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND TWO INDEPENDENT PROBES SAYING IN THEIR OWN WORDS THAT OXFORD HAS NOTHING ON 3 DECEMBER, THE DAY AFTER 3 DECEMBER WENT ON SALE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

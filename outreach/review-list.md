@@ -11,6 +11,22 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Re-confirmation, no new target: the question that describes our own format is answered entirely
+  from event aggregators.** Found 16 Nov 2026 (08:00 cycle), from four answer-engine probes.
+  **Nothing contacted, submitted or signed up for.** The probe *"AI workshop where you bring your own
+  task and leave with a working workflow UK no coding"* - our promise line in a buyer's words -
+  returned no citation of oxfordagentic.com at all, and what it read instead was `luma.com` (x2),
+  `createwith.com` (x3), `tickettailor.com` (x2) and `meetup.com` (x2), closing by telling the buyer
+  to check two of those listings for dates. Every one of those platforms is already on this list or in
+  `outreach/off-page-listings.md`, so **there is no new target to add** - the entry exists to record
+  that the standing three asks were tested again from a different angle and came back stronger, not
+  weaker. A separate January probe reached us only through two **passed** cohorts' Luma pages. The
+  asks are unchanged: list the on-sale cohorts on **Eventbrite**, correct or retire the 21 July
+  **`allai.events`** record, and give the `Organization` node one real **`sameAs`** (a LinkedIn
+  Company Page or a Luma calendar URL in `brand.social`). `nobleprog.co.uk`, `theknowledgeacademy.com`
+  and `brainstation.io` also surfaced on the Oxford query; all three are competitors, not targets.
+
+
 - **A third-party site is already carrying our event with its own "Register Now" button, a public Luma
   link is circulating a discount code, and an engine reports Cohort 3 as sold out.** Found 16 Nov 2026
   (02:00 cycle), from four answer-engine probes. **Nothing contacted, submitted or signed up for.
