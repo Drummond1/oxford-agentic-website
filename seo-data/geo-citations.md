@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-16 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND TWO INDEPENDENT PROBES SAYING IN THEIR OWN WORDS THAT OXFORD HAS NOTHING ON 3 DECEMBER, THE DAY AFTER 3 DECEMBER WENT ON SALE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the five
+preceding cycles. **Production could not be read this cycle** - the sandbox egress policy refuses
+`oxfordagentic.com`, the `github.io` origin and `luma.com`, so no live page and no Luma fact was
+checked from here; deploy state was read from the Actions API and every event fact used comes from the
+committed event files. Run about six hours after Cohorts 4 and 5 went on sale (a47348c, deployed
+19:42Z on 15 Nov), so the two new dates have had almost no chance to be indexed.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | when is the next in person agentic AI bootcamp in Oxford December 2026 how do I book a place (commercial, on the date that went on sale last night) | **No** - homepage *returned in links*, not used in the answer | `infosecinstitute.com`, `luma.com/oxfordagentic3?coupon=EMINE25`, `lifelong-learning.ox.ac.uk` (x2), `aicentreforbusiness.co.uk`, `sbs.ox.ac.uk`, `gogradia.com`, `oxfordaitraining.com`, `groups.google.com` |
+| 2 | do executive AI courses still have autumn intakes or do they run all year round now (this guide's own thesis) | **No** | `executive.mit.edu` (x4), `alphastar.academy`, `lse.ac.uk`, `ai-x-leaders.com`, `executive.berkeley.edu`, `executive-ed.xpro.mit.edu` |
+| 3 | one day hands-on AI workshop Oxford 3 December 2026 build an agent bring your own task | **No** - homepage *returned in links*, and our Second Brain date was read and rejected as not matching | `createwith.com`, `inagentic.ai`, `github.com`, `buildanagent.io`, `digitalhuboxford.com`, `gogradia.com`, `theoxfordaischool.com`, `getsmarter.com` |
+| 4 | I finished an AI course but still cannot build anything should I take another course or just build (progression axis, never probed) | **No** | `classcentral.com`, `careery.pro`, `community.deeplearning.ai` (x3), `h2kinfosys.com`, `trainingatinfoseek.com`, `coursera.org` (x2), `gumroad.com` |
+
+**Reading.**
+
+- **Probes 1 and 3 are this cycle's finding, and they agree with each other in plain English.** Probe 1
+  opened *"I found no in-person agentic AI bootcamp in Oxford in December 2026"* and closed *"If you
+  specifically need an in-person December session, the search didn't turn one up. It's worth checking
+  the Oxford Agentic website directly."* Probe 3 opened *"I couldn't find a one-day AI workshop in
+  Oxford on 3 December 2026"*, then found our site, read **the Second Brain Bootcamp's passed
+  21 October date** off it and said *"so it doesn't match your date"*. **Cohort 4 is on 3 December and
+  went on sale the previous evening.** Both probes reached `oxfordagentic.com` - it is in the returned
+  links of each - and neither could get a December date out of it. Twentieth consecutive cycle whose
+  answer is reach rather than coverage, but with a coverage component this time, which is the change.
+- **The coverage component, and this cycle's change.** The one guide on this site whose entire subject
+  is *when cohorts run* - `/guides/when-ai-executive-cohorts-run/` - enumerated the in-person dates and
+  named **16 September, 19 November, 26 November and 21 October**, three of which have passed or pass
+  within three days, and **neither 3 December nor 28 January**: the only two dates a reader could
+  actually book. It also said *"all three at Worcester College"*, which the 20:00 cycle had just
+  corrected on the two FAQ surfaces and which is wrong now that Cohort 5 is at Jesus College. Rewritten
+  to carry all six dates and both colleges. Not claimed as a remedy for the citation gap: a correct
+  page the index has not yet crawled buys nothing today. It makes the page right for the day it is
+  read, and it is the page the engine's own closing advice - *check the Oxford Agentic website
+  directly* - sends the buyer to.
+- **Probe 1 also returned three off-page facts, all of them Drummond's, all in `outreach/review-list.md`.**
+  A third-party site, **`aicentreforbusiness.co.uk/events`**, is carrying our bootcamp with its own
+  "Register Now" button - the first third-party listing in this log the loop did not propose, and a real
+  candidate for the empty `sameAs` slot (backlog 2b). The Luma URL the engine returned carries a
+  **discount code in the query string**, publicly searchable. And the engine reports Cohort 3 as **sold
+  out, waitlist, £495**, read off Luma, which cannot be opened from here. Nothing on the site was
+  changed on any of the three.
+- **Probe 2 is the one that should have cited us and did not, and it is a reach failure, not a gap.**
+  The question is this guide's thesis almost word for word, and the guide has answered it since
+  25 August. The field is MIT Executive Education four times over, LSE and Berkeley - institutional
+  publishers writing about their own programmes, which is the pattern the winnability test names. One
+  comparison blog, `ai-x-leaders.com`, was cited for the observation that *"Oxford, MIT Sloan and MIT
+  xPRO listed next starts in November 2026, November 2026 and February 2027"* - our own argument, made
+  about Oxford, sourced to someone else. Nothing on-page fixes this.
+- **Probe 4 is DECLINED as a guide, and the reasoning is recorded so it is not re-probed.** Winnable on
+  the letter of the test - the field is course-aggregator blogs and DeepLearning.AI forum threads, no
+  institutional owner. It fails the second half badly. Every answer in it is about free projects,
+  Python APIs and which cheaper online course to take next; the searcher is a self-taught learner
+  building a portfolio, not someone booking a day in Oxford. The executive version of the same question
+  is already `/guides/after-the-ai-executive-programme/` and the sequencing argument is in this cycle's
+  own guide. Winnable but not converting, so no guide.
+
 ## 2026-11-15 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE VENUE QUESTION ANSWERED ABOUT US, CORRECTLY, OFF A PASSED COHORT'S LUMA PAGE WITH A POSTCODE WE DO NOT PUBLISH
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

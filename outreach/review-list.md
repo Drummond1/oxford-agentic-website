@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A third-party site is already carrying our event with its own "Register Now" button, a public Luma
+  link is circulating a discount code, and an engine reports Cohort 3 as sold out.** Found 16 Nov 2026
+  (02:00 cycle), from four answer-engine probes. **Nothing contacted, submitted or signed up for.
+  Three things to check; one of them is a listing we did not know we had.**
+  - **`aicentreforbusiness.co.uk/events` carries the Agentic Bootcamp.** Asked where to book an
+    in-person agentic AI bootcamp in Oxford, the engine named two booking routes: the Luma page, and
+    *"the AI Centre for Business events page, which has a 'Register Now' button"*. This is the first
+    third-party listing of ours this log has found that the loop did not propose. It matters twice
+    over. It is a citable third-party mention of the entity, which is the whole of **backlog 2b**, and
+    a real candidate for the `sameAs` slot the `Organization` node still has empty - drop the URL into
+    `brand.social` and it flows into schema automatically. And it is a page selling our seats that we
+    do not control: **worth opening to check the date, the venue and the booking link are current**,
+    because a stale listing of ours is the failure mode this log has recorded against Luma eight times.
+    The page could not be opened from here (the sandbox egress policy refuses non-search hosts).
+  - **A Luma URL carrying a discount code is publicly indexed.** The search result for Cohort 3 came
+    back as `luma.com/oxfordagentic3?amp=&amp=&amp=&coupon=EMINE25` - that is, a coupon code reachable
+    by anyone who searches for the bootcamp, not only by whoever it was issued to. The loop has not
+    published, repeated or acted on the code anywhere on the site, and prices and codes stay off the
+    site by standing decision. **Drummond's call entirely**: if that code is meant to be private, it
+    is not, and the Luma dashboard is where it is revoked or capped.
+  - **The engine says Cohort 3 is sold out, with a waitlist, at £495.** Read off the Luma page, which
+    this session cannot open to confirm (`luma.com` is refused by the egress policy), so it is
+    second-hand and **nothing on the site was changed on the strength of it**. Flagged because if it
+    is true it changes what this site should be doing: `/events/` and the homepage still present
+    Cohort 3 as the next bookable day, and the honest next date for a buyer reading today would be
+    **26 November (Coding) or 3 December (Cohort 4)**. One line from Drummond settles it.
+
 - **A third-party record is circulating a Worcester College postcode this site does not publish, and a
   confusable "Oxford" AI course is advertised on the exact date of the cohort that went on sale
   tonight.** Found 15 Nov 2026 (20:00 cycle), about twenty minutes after Cohorts 4 and 5 went live.

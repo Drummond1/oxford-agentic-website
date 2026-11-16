@@ -2406,6 +2406,82 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 16 Nov 2026 (02:00 cycle) - the one guide whose whole subject is when cohorts run listed four dates, three of them spent, and neither of the two that went on sale six hours earlier. Two paragraphs, one file, 4 of 209 built files
+
+**Evidence.** Four GEO probes, none run in the five preceding cycles, logged in
+`seo-data/geo-citations.md`. Two of them, asked independently, returned the same sentence in
+different words. Probe 1: *"I found no in-person agentic AI bootcamp in Oxford in December
+2026 ... It's worth checking the Oxford Agentic website directly."* Probe 3: *"I couldn't find a
+one-day AI workshop in Oxford on 3 December 2026"*, after reaching this site, reading the Second
+Brain Bootcamp's **passed 21 October** date off it and concluding *"so it doesn't match your
+date"*. **Cohort 4 is on 3 December.** It went on sale at 19:41 the previous evening (a47348c)
+together with Cohort 5 on 28 January 2027. `oxfordagentic.com` was in the returned links of both
+probes, so both reached the site and neither got a December date out of it.
+
+**What was actually wrong, which is not the same thing.** Six hours of index latency explains a
+missing December date in search. It does not explain what was on the page. The paragraph in
+`src/content/guides/when-ai-executive-cohorts-run.md` that enumerates our in-person dates named
+**16 September, 19 November, 26 November and 21 October** - two already passed, one passing in
+three days - and **neither 3 December nor 28 January**, the only two dates a reader can still
+book. It also said *"all three at Worcester College"*, the exact claim the 20:00 cycle had
+corrected on the two FAQ surfaces four hours earlier, and wrong for the same reason: Cohort 5 is
+at **Jesus College**. The guide was last updated 11 Nov. Nothing had pointed at it since, because
+nothing on the site changes this file when an event file is added.
+
+**The change.** The enumeration now carries all six dates, each linked to its own event page -
+16 September, 21 October, 19 November, 26 November, 3 December and 28 January - plus Jesus College
+against the January date with Cohort 5's `confirmed: false` qualifier travelling with it ("the room
+booking there still being finalised"), and a closing pointer to `/events/` as the list that stays
+current. Three new internal links, 3,526 to 3,529.
+
+**Written so it does not need doing again on Friday.** The governing verb is "were set", past
+tense about the act of scheduling, so no date in the paragraph is claimed as still to come and
+every one of them stays true as it passes. Measured rather than asserted, against
+`check-dates.mjs --now=` at three horizons, before and after, comparing the full finding sets:
+
+| horizon | before | after | removed | added |
+|---|---|---|---|---|
+| 2026-11-20 (day after Cohort 3) | 13 | 12 | this guide's 19 November | none |
+| 2026-12-04 (day after Cohort 4) | 19 | 17 | this guide's 19 and 26 November | none |
+| 2027-01-29 (day after Cohort 5) | 20 | 18 | this guide's 19 and 26 November | none |
+
+It contributes **zero** findings at all three, including the horizon past the two dates it has just
+started naming. The twelve remaining at 20 November are backlog 89 and are not this cycle's.
+
+**Two sentences downstream were repaired with it, because the rewrite stranded them.** "If both of
+those November dates look plausible" no longer had a referent and went stale on 26 November; it is
+now "If the agentic day and the coding day both look plausible", which is durable and says the same
+thing. And "The same choice arrives again in November" was deleted outright: it pointed at the
+online programme's 11 November start, which passed five days ago, so it had been stale since 12 Nov
+and no cycle had caught it. **No new claim about that programme was added in its place** - its dates
+could not be checked from here, and the surviving sentence about it is past tense, attributed and
+carries its own "checked on its own page, 31 August 2026".
+
+**Checks.** Build green. Links 3,529/69 pages. Schema 69 pages valid, all figures identical to the
+baseline except the three new links. Dates: 58 pages clean, 123 long-month dates, 0 without a year.
+Flags: both the all-on and all-off builds pass. Blast radius against a sha256 snapshot of `dist`:
+**4 of 209 files differ** - the guide page, `llms-full.txt`, and the two sitemaps taking a new
+`lastmod` - none added, none removed. Headless Chromium at 375px and 1280px: **60 assertions, 0
+failed**, 0 JS exceptions, 0 failed same-origin requests, 0 horizontal overflow, all seven links
+present with the right labels and hrefs, and the three deleted strings confirmed absent.
+
+**Not verified, and not guessed at.** `luma.com` is refused by this session's egress policy, so no
+Luma fact was checked and no event fact was touched; every date here comes from the event files
+committed last night after Luma was read. `oxfordagentic.com` is refused too, so production was
+read through the Actions API, not fetched.
+
+**Three off-page findings went to `outreach/review-list.md`, none acted on.** `aicentreforbusiness.co.uk/events`
+is carrying our bootcamp with its own "Register Now" button - the first third-party listing in that
+log the loop did not propose, and a real candidate for the `sameAs` slot the `Organization` node
+still has empty (backlog 2b). The Luma URL the engine returned carries a **discount code in the
+query string**, publicly searchable. And the engine reports **Cohort 3 as sold out, waitlist,
+£495**, read off a Luma page that cannot be opened from here - flagged, not acted on, because if it
+is true then `/events/` and the homepage are presenting a sold-out day as the next bookable one.
+
+**Probe 4 declined** (progression axis: winnable, not converting - the field is course-aggregator
+blogs and DeepLearning.AI threads, and the searcher is a self-taught learner, not someone booking a
+day in Oxford). No new guide this week.
+
 ### 15 Nov 2026 (20:00 cycle) - two cohorts went on sale at 19:41 and the site's two "where in Oxford is it held" answers still said one college. The January day is at Jesus College, and both answers pointed its buyer at Walton Street. 6 of 209 built files
 
 **Caused by a real change twenty minutes earlier, not found by hunting.** Drummond pushed `a47348c`
