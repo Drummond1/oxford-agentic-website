@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import EmailAddress from '../../components/EmailAddress.astro';
 import Faq from '../../components/Faq.astro';
@@ -44,6 +45,19 @@ const programme = programmes.find((p) => p.id === data.programme.id)!;
 const successor = isPast ? await getSuccessorEvent(event) : undefined;
 const testimonials = await getTestimonials(programme.id);
 const photos = await getPhotos('event', event.id);
+
+/*
+ * The facilitators this event's `speakers` references name, resolved to their
+ * real names so the Event node's `performer` list can carry both the name and
+ * the `/team/` Person it belongs to. Order follows the event file, which
+ * follows the order the page's own "Who runs it?" answer reads in. A reference
+ * to a profile that no longer exists is dropped rather than guessed at.
+ */
+const teamBySlug = new Map((await getCollection('team')).map((member) => [member.id, member]));
+const facilitators = data.speakers.flatMap((ref) => {
+  const member = teamBySlug.get(ref.id);
+  return member ? [{ name: member.data.name, slug: member.data.slug }] : [];
+});
 
 /*
  * One quote is promoted out of the grid and set directly beneath the booking
@@ -326,7 +340,10 @@ const metaDescription = (() => {
   description={metaDescription}
   path={path}
   ogImage={ogImage}
-  schemaNodes={[eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos), showFaq ? faqSchema(data.faqs, path) : null]}
+  schemaNodes={[
+    eventSchema(event, programme, absoluteUrl(ogImage), schemaPhotos, facilitators),
+    showFaq ? faqSchema(data.faqs, path) : null,
+  ]}
   breadcrumbs={[
     { name: 'Events', path: paths.events() },
     { name: data.title, path },

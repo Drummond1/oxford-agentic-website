@@ -2476,9 +2476,135 @@ Status: `todo` · `blocked` (why) · `doing`
     a copy call on three pages and not a linking chore, so it wants weighing as one, and it should
     not be taken in a cycle that is touching anything else on those pages.
 
+106. `todo` (loop-actionable, **and it is the half of this cycle's change that was deliberately not
+    taken**; found 17 Nov 2026 in the 02:00 cycle) - **`speakers` is a content field with no renderer,
+    so the eight `/team/` profiles are the site's weakest-linked indexable pages: one inbound internal
+    link each, from `/team/` itself.** Measured over the whole of `dist`: every other indexable page
+    has two or more, these eight have exactly one. Four on-sale event pages and three programme pages
+    name these people in prose - *"Drummond Gilbert, who tutors in AI in Management at Saïd Business
+    School... with Nicolai Thomson (founder, Jenesys AI)..."* - and not one of those names is a link.
+    - **What this cycle did take**, and why it is not the same thing: the `speakers` field is now
+      populated on the four on-sale event pages and feeds `performer` in the Event JSON-LD. That joins
+      the Person and the Event **in the graph**. It adds **zero** internal links, because nothing
+      renders the field: `grep -rn speakers src/pages src/components` returns one comment in
+      `about.astro` and two `getCollection('team')` calls in `llms.ts`, and no component at all.
+    - **Why the rest was not taken.** Two routes, both bigger than a cycle. (a) Render a speakers
+      section on the event page: that is a new module on the conversion page - photos, roles, bios,
+      a layout call at 375px - which is design work and wants Drummond or the design loop, and
+      **backlog 10** is the stale ancestor of it (it is still marked `blocked` on "Drummond has not
+      reviewed his bio", which has been overtaken: eight bios are live on `/team/` and Mike Bailey's
+      was added at his request on 15 November, so backlog 10's stated blocker no longer exists and it
+      should be re-read before anyone acts on it). (b) Link the names inside the "Who runs it?" answer:
+      `Faq.astro` renders answers as `{faq.a}`, escaped text, so this needs the component switched to
+      `set:html` across **22** `FAQPage` sets, and the same strings feed the JSON-LD, where the markup
+      would then have to be stripped. A shared component used on 22 pages is not a cycle's one change.
+    - **The cheapest honest version, if it is ever taken**, is probably (b) scoped down: a separate
+      optional field for a linked facilitator line rather than markup inside FAQ answers. Weigh it
+      against what it buys - eight pages going from one inbound link to roughly five - before building
+      it.
 
 
 ## Shipped
+
+### 17 Nov 2026 (02:00 cycle) - the Event nodes said a company runs the day and never said who. Each on-sale event now names its own facilitators as `performer`, resolving to the `Person` node its `/team/` profile already publishes - no copy changed, no new fact asserted, every event page's visible HTML byte-identical
+
+**The defect, measured rather than assumed.** Every `EducationEvent` node on this site carried
+`performer: { '@id': ORG_ID }` and nothing else. Meanwhile each on-sale event page names its
+facilitators in prose, in its own "Who runs it?" answer, and the site publishes a full `Person` node
+for each of them at `/team/<slug>/#person` - name, job title, bio, `worksFor`, `sameAs`. So the graph
+held both halves of "who teaches this day" and joined neither: an engine reading the Event learned
+that a company runs it, and an engine reading the profile learned a biography with no event attached.
+The `speakers` field exists in the events schema (`z.array(reference('team'))`, `src/content.config.ts`)
+and **no event file used it** - zero occurrences across all seven.
+
+**The evidence that this costs something.** The 13 Nov 2026 (14:00) probe is the clearest instance in
+the GEO log: asked how this site relates to the University of Oxford, the engine had to infer our
+people from a **Luma host list**, because nothing on this site tied a named person to a named day.
+This does not fix retrieval - nothing on-page has, for twenty-four cycles - but it is the one fact the
+graph was missing, and it is free to assert because the page already says it in words.
+
+**What changed.**
+- `speakers` populated on the four on-sale event pages, in the order each page's own "Who runs it?"
+  answer reads: Cohorts 3, 4 and 5 get Drummond Gilbert, Nicolai Thomson, Emine Gokce Phillips and
+  Jonathan Waddingham; the Coding Bootcamp's Cohort 1 gets Drummond Gilbert, Jonathan Waddingham and
+  Mike Bailey. **The three past events were deliberately left empty**: their pages name nobody, and a
+  performer list on a page that does not name its people would be an assertion the page does not make.
+- `eventSchema` takes a resolved facilitator list and emits `performer` as an array - the Organization
+  first, then one `Person` per facilitator carrying `@type`, the team file's own `name`, the
+  `#person` `@id` and the profile `url`. The name is read from the team file, never built from the
+  slug, and nothing else about the person is restated here, so the Event node and the profile cannot
+  drift.
+- Guarded on `config.features.team`, for the same reason `personSchema` is: with the flag off
+  `/team/` does not build, and these would be references to pages nothing serves - the exact fault the
+  graph-reference rule in `check-schema.mjs` was added on 14 November to catch. Flag off, the
+  Organization stands alone exactly as before, and `npm run check:flags` passes both builds.
+
+**`updatedDate` was deliberately not bumped on the four event files, and the measurement is the
+reason.** Every event page's **visible** HTML is byte-identical before and after - checked by
+rebuilding at the previous commit, keeping all seven event pages, rebuilding with the change and
+diffing each pair with the `ld+json` blocks removed: seven of seven identical. `updatedDate` drives
+sitemap `lastmod`, and `astro.config.mjs` derives several other pages' `lastmod` from the newest event
+`updatedDate` - including `/events/`, whose bytes did not change at all. Bumping it would therefore
+move `lastmod` on byte-identical pages, which is the truthfulness objection **backlog 83** raises
+against exactly this. The served event files did change, so this is a judgement rather than a rule;
+IndexNow submits the changed URLs regardless.
+
+**Checks.** Build, link, schema, date and flag checks all green. Schema's resolving internal graph
+references go **1401 to 1431**, which is +30 and exactly right: 15 performer entries (4+4+4+3) each
+contributing an `@id` and a `url`. Blast radius **7 of 209** built files, none added or removed, all
+seven of them event pages - and all seven only in their JSON-LD, because `performer` went from an
+object to a one-element array on the three past pages too. Sitemap unchanged at 58 entries.
+`check:flags` passes with all seven flags on and all seven off. Headless Chromium at 375px and 1280px
+over the four changed event pages, one past event page and one team profile: **170 assertions, 0
+failed** - 200s, no JS errors, no sideways scroll, one `h1` each, every `ld+json` block parses, every
+`performer` entry well-formed, and every performer name both present in the page's own copy and
+visible to a reader once the FAQ accordion is open. IndexNow dry run: **58 URLs** for a seven-file
+change, which is **backlog 85** over-reporting again (`src/content/events/` and `src/lib/schema.ts`
+both fall in the whole-site bucket); recorded, not fixed, because the honest fix is the build-output
+diff taken once for every source path.
+
+**A note on the one assertion that failed first, because it is a trap worth writing down.** The
+visible-copy check was originally written against `document.body.innerText` and failed 30 times - the
+FAQ is a `<details>` accordion and only the first item is open, so the answer naming these people is
+in the DOM and collapsed. `innerText` omits it; `textContent` does not. The check now asserts both:
+present in `textContent`, and visible in `innerText` once every `<details>` is opened. The names are
+in the served HTML three to four times each.
+
+**GEO: four probes, none run in the nine preceding cycles, zero citations.** Two axes this log had
+never touched - procurement ("can my company pay by invoice or purchase order") and cancellation
+("what happens if I book and cannot attend, refund policy"). The finding is about page *type*: between
+them those two probes returned about thirty sources and **every one was a first-party policy page** -
+providers' terms, help-centre articles, payment-options pages, and public bodies publishing their own
+cancellation terms. No aggregator, no comparison site, no editorial page. That is the page type this
+site already publishes, on both questions, in question shape, on up to nine surfaces each - and
+against the field measured here our cancellation answer is the stronger one, with no notice ladder and
+no admin fee. Nobody reached it. **Reach, not coverage, for the twenty-fourth consecutive cycle.**
+Probes 3 and 4 declined as content with the reasoning recorded in `seo-data/geo-citations.md`.
+
+**One asymmetry found and deliberately not closed**, recorded so it is not rediscovered: the three
+on-sale Agentic event pages carry the invoice answer as an FAQ but the transfer answer only as an
+`assurance` under the booking form, while the Coding event page carries both as FAQs. Backlog 88
+already weighed that placement, and the `assurances` field's own comment records the 17 August
+decision behind it.
+
+**Search Console: unavailable, as every cycle since 24 August.** `fetch-search-console.mjs` reports no
+service account key, and `seo-data/` holds nothing newer than the 13 September reading. Nothing
+estimated.
+
+**Production could not be read.** `oxfordagentic.com` and `luma.com` are both refused by this
+session's egress policy with a 403 on CONNECT, so `build.txt` could not be polled and no Luma fact was
+checked. Deploy state came from the Actions API: run 433 for `0ccad15` completed **success** at
+20:12 UTC on 16 November, nothing queued or in progress. Every event fact used here comes from the
+committed event files, and no event fact was changed.
+
+**No new guide** (0 this week so far, by `publishDate` in Monday-Sunday Europe/London weeks), and no
+Q&A refresh either. This is a structured-data change, which neither allowance governs.
+
+**Off-page:** no new target. Recorded in `outreach/review-list.md` with the reason - on these two axes
+there is no third-party page to be listed on, because the buyer is looking for the seller's own
+statement. Nothing contacted, submitted or signed up for. **New: backlog 106**, the half of this
+change that was not taken - `speakers` still has no renderer, so the eight `/team/` profiles still
+have exactly one inbound internal link each.
 
 ### 16 Nov 2026 (20:00 cycle) - a no-change cycle, and the browser ran, so the decline is on merit and not on capability. The one candidate in the brief was already fixed, the strongest GEO idea was checked against the site and declined, and one new off-page ask went to Drummond
 

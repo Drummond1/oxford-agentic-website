@@ -80,6 +80,18 @@ agenda:
     title: Making it stick
   - time: 16:20
     title: Wrap and networking
+# The people this page already names in "Who runs it?", as references rather
+# than prose, so the Event node can say who performs it. Nothing renders from
+# this field - there is no speakers section on an event page - so this adds no
+# copy and no new fact: it is the same list, in the same order, resolvable to
+# the Person node each `/team/` profile already publishes. Keep it in step with
+# that answer; if one changes and the other does not, the page contradicts its
+# own graph.
+speakers:
+  - drummond-gilbert
+  - nicolai-thomson
+  - emine-gokce-phillips
+  - jonathan-waddingham
 # Cut from thirteen to seven on 17 Aug. Six answers were restating something the
 # same page already said: the date and venue (hero and facts card, twice),
 # transfers, lunch and recording, bringing a colleague (all three now sit in

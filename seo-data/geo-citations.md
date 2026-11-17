@@ -5,6 +5,60 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-17 (02:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE TWO COMMERCIAL-LOGISTICS PROBES ANSWERED ENTIRELY OFF COMPETITORS' OWN TERMS AND HELP-CENTRE PAGES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none run in the nine
+preceding cycles, chosen on two axes this log has never probed: **procurement** (how an employer pays)
+and **cancellation** (what happens to the money if the buyer cannot come). **Production could not be
+read this cycle** - the sandbox egress policy refuses `oxfordagentic.com` and `luma.com` with a 403 on
+CONNECT, so no live page and no Luma fact was checked from here; deploy state came from the Actions API
+and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | can my company pay by invoice or purchase order for a one day AI training course UK (procurement axis, never probed) | **No** | `acuitytraining.co.uk` (x2), `cademy.io` (x2), `help.british-sign.co.uk` (x2), `ilxgroup.com`, `prince2.com`, `tsg-training.co.uk`, `techni-k.co.uk`, `training.cam.ac.uk`, `stpub.pages.dev`, `acecentre.org.uk`, `knowledge.redcrossfirstaidtraining.co.uk`, `electricaltrainingcourse.co.uk`, `midlandsandlancashirecsu.nhs.uk` |
+| 2 | what happens if I book a one day AI training day and then cannot attend, refund policy UK (cancellation axis; substitution was probed on 11 and 15 Nov, refund never) | **No** | `acuitytraining.co.uk` (x2), `londonchamber.co.uk` (x2), `bic.org.uk` (x2), `sprintlaw.co.uk`, `the-sra.org.uk`, `learndirect.com`, `aiawareness.ai`, `uk-cpi.com`, `cycj.org.uk`, `westnorthants.gov.uk`, `cherwell.gov.uk`, `government-ai-academy.pages.dev`, `accessfobs.co.uk`, `ivee.jobs` |
+| 3 | how do I measure whether an AI workflow actually saved time after a training day (our own guide's thesis) | **No** | `therundown.ai`, `gaas.it.com`, `eve.legal` (x2), `totheweb.com` (x3), `rize.io` (x2), `insightful.io` (x2), `rework.com`, `itechguides.com`, `denveraitraining.pages.dev`, `claudereadiness.pages.dev`, `gptprompts.ai`, `theneuralbase.com`, `amworldgroup.com`, `mendo.cloud` |
+| 4 | how should I organise my notes and files so an AI assistant can actually use them (the Second Brain subject, in a phrasing that avoids the words "second brain") | **No** | `mem.ai` (x3), `herwaka.shesharp.org.nz` (x2), `dev.to`, `asianefficiency.com`, `marcus-povey.co.uk`, `buttondown.com`, `hynote.ai`, `obsidianstats.com`, `termdock.com`, `medium.com`, `autonestor.substack.com`, `discoveraiskills.com`, `clickup.com` |
+
+**Reading.**
+
+- **Probes 1 and 2 are this cycle's finding, and the finding is about page *type*, not coverage.**
+  Both are the questions a buyer asks with their card already out, and in both the entire answer was
+  assembled from **first-party policy pages**: providers' terms and conditions, help-centre articles
+  and payment-options pages, plus - on the cancellation question - public bodies publishing their own
+  cancellation terms (London Chamber, two county councils, the SRA). Not one editorial page, not one
+  institutional publisher, not one comparison site. So the page that wins these queries is the
+  provider's own statement of its own policy, which is **exactly the page type this site already
+  publishes** and the reason neither is writable as a guide. The same conclusion backlog 88 reached
+  about substitution on 15 November, now measured on two more axes.
+- **We answer both, and the answers are not thin.** *"Can my organisation pay by invoice?"* is a
+  question-shaped FAQ on all four on-sale event pages, all three programme pages and the homepage, and
+  is argued at length in `getting-an-ai-bootcamp-approved`. The cancellation answer - *"Tickets are not
+  refundable, but your place transfers to a future cohort at no charge"* - is on the homepage FAQ, all
+  three programme pages, the Coding event page, question 9 of
+  `questions-to-ask-before-booking-ai-training`, and sits directly under the booking form on each
+  on-sale event page as an `assurance`. **Against the field measured here that answer is strong**: the
+  providers in probe 2 publish notice ladders (full refund at 30 days, 80% at 14), per-day late fees,
+  and non-refundable online bookings. Ours has no ladder and no fee. The problem is that no engine
+  reached it. **Reach, not coverage, for the twenty-fourth consecutive cycle.**
+- **One asymmetry worth naming, and it is deliberately not being closed this cycle.** The three
+  on-sale Agentic event pages carry the invoice answer as an FAQ but carry the transfer answer only as
+  an `assurance` line under the form, while the Coding event page carries both as FAQs. That is a real
+  difference in machine-readable shape - the `assurance` is prose, the FAQ is a `FAQPage` node. It is
+  **not** re-pitched as a change here, because backlog 88 already weighed exactly this placement and
+  the `assurances` field's own comment records the 17 August decision that put it there: the answers
+  that decide a paid booking belong under the form, not inside a twelve-item accordion. Recorded so
+  the next cycle does not rediscover it as a gap.
+- **Probes 3 and 4 are declined as content, with the reasoning.** Probe 3's field is consultancy and
+  vendor blogs plus three `.pages.dev` microsites, and `is-your-ai-workflow-saving-time-or-just-effort`
+  already makes this argument with two cited papers; the miss is retrieval, not absence. Probe 4 is
+  owned by note-app vendors writing about their own products (`mem.ai` three times, `hynote.ai`,
+  `clickup.com`), which fails the WINNABLE half of the topic probe rule outright - and the standing
+  decision on Second Brain is that its constraint is demand, not ranking, so more Second Brain content
+  is the wrong answer even where the field is soft.
+
 ## 2026-11-16 (20:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND AN ENGINE DESCRIBING US ACCURATELY IN OUR OWN WORDS OFF TWO PASSED COHORTS' LUMA PAGES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

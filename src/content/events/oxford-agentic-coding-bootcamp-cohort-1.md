@@ -70,6 +70,17 @@ agenda:
   - time: Session 7
     title: Testing on a real person
     detail: Swapping prototypes and capturing feedback.
+# The people this page already names in "Who runs it?", as references rather
+# than prose, so the Event node can say who performs it. Nothing renders from
+# this field - there is no speakers section on an event page - so this adds no
+# copy and no new fact: it is the same list, in the same order, resolvable to
+# the Person node each `/team/` profile already publishes. Keep it in step with
+# that answer; if one changes and the other does not, the page contradicts its
+# own graph.
+speakers:
+  - drummond-gilbert
+  - jonathan-waddingham
+  - mike-bailey
 faqs:
   - q: When and where is it?
     a: >-

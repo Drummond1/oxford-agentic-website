@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new target this cycle, and the re-confirmation is worth one line because it is now measured on
+  two more axes.** Found 17 Nov 2026 (02:00 cycle), from four answer-engine probes.
+  **Nothing contacted, submitted or signed up for.**
+  - Two of the four probes were commercial-logistics questions never put to an engine before - how an
+    employer pays (invoice or purchase order) and what happens to the money if the buyer cannot come.
+    Between them they returned roughly thirty sources and **every single one was a first-party policy
+    page**: training providers' terms, help-centre articles and payment-options pages, plus public
+    bodies publishing their own cancellation terms (London Chamber of Commerce, Cherwell and West
+    Northamptonshire councils, the SRA). No aggregator, no comparison site, no editorial page.
+  - **Why that matters for this list rather than for the site.** On these two axes there is no
+    third-party page to be listed on: the buyer is looking for the seller's own statement, which we
+    publish. So the asks do not change and no new domain is added. The only domains that recurred
+    and are not already in this file or in `off-page-listings.md` are competitors stating their own
+    terms (`acuitytraining.co.uk`, `ilxgroup.com`, `tsg-training.co.uk`, `techni-k.co.uk`,
+    `aiawareness.ai`), which are not targets. `cademy.io` appeared again and is already here.
+  - **The standing asks are unchanged:** list the on-sale cohorts on **Eventbrite**, correct or
+    retire the 21 July **`allai.events`** record, and give the Organization node its first
+    third-party `sameAs` (a LinkedIn Company Page or a Luma calendar URL in `brand.social`).
+
 - **New ask, and it is not a new listing: the two Luma pages answer engines keep reaching are both
   passed cohorts, and neither says the day has gone or where the next one is.** Found 16 Nov 2026
   (20:00 cycle), from four answer-engine probes, and it is the fourth independent sighting today.

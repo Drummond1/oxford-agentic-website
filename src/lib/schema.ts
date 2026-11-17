@@ -366,6 +366,7 @@ export function eventSchema(
   programme: ProgrammeEntry,
   ogImage: string,
   photos: Array<{ url: string; caption: string }> = [],
+  facilitators: Array<{ name: string; slug: string }> = [],
 ) {
   const url = absoluteUrl(paths.event(event.data.slug));
   const eventStatus = eventStatusOf(event);
@@ -448,7 +449,42 @@ export function eventSchema(
     inLanguage: 'en-GB',
     location: eventPlace(event),
     organizer: { '@id': ORG_ID },
-    performer: { '@id': ORG_ID },
+    /*
+     * Who performs the day: the organisation, and then the people the page
+     * itself names under "Who runs it?".
+     *
+     * Until 17 Nov 2026 the Organization was the only performer, while every
+     * on-sale event page named three or four facilitators in prose and the site
+     * published a full `Person` node for each one at `/team/<slug>/#person`.
+     * So the graph held both halves of "who teaches this" and joined neither:
+     * an engine reading the Event learned that a company runs it, and an engine
+     * reading the profile learned a biography with no event attached. The
+     * 13 Nov GEO probe is the cost - asked how this site relates to the
+     * University of Oxford, the engine had to infer our people from a Luma host
+     * list, because nothing here tied a named person to a named day.
+     *
+     * Each entry asserts nothing the page does not already say in words. The
+     * name is the team file's own, not a label made from the slug, and the
+     * reference resolves to the one Person node for that person rather than
+     * restating their role or bio here, so the two cannot drift.
+     *
+     * Guarded on `features.team`, for the reason `personSchema` is: with the
+     * flag off, `/team/` does not build and these would be references to pages
+     * nothing serves, which is the fault the graph-reference rule in
+     * `scripts/check-schema.mjs` exists to catch. Flag off, the Organization
+     * stands alone exactly as before.
+     */
+    performer: [
+      { '@id': ORG_ID },
+      ...(config.features.team
+        ? facilitators.map((person) => ({
+            '@type': 'Person',
+            '@id': `${absoluteUrl(paths.teamMember(person.slug))}#person`,
+            name: person.name,
+            url: absoluteUrl(paths.teamMember(person.slug)),
+          }))
+        : []),
+    ],
     superEvent: {
       '@type': 'EventSeries',
       // A stable @id, so the cohorts of one bootcamp declare membership of one
