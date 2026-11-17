@@ -5,6 +5,82 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-17 (20:00 GMT cycle) - THREE AXES NEVER PROBED, THE ONE AXIS THE LAST CYCLE LEFT OPEN RE-ASKED IN A NEW PHRASING, ZERO CITATIONS - AND THE TWO PASSED LUMA PAGES ANSWERED FOR US TWICE MORE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions. One deliberately re-runs the
+**format-adequacy** axis the 14:00 cycle flagged as its one topic candidate, in a different phrasing, so
+the decision to write or not write is taken on two readings rather than one. The other three are axes this
+log has never put to an engine: **the leadership away day** (a team buying a day rather than an
+individual), **the coding prerequisite**, and **travel justification** (in person in Oxford against
+online). **Production could not be read this cycle**, and neither could anything else: the sandbox egress
+policy refuses `oxfordagentic.com`, `luma.com`, `gov.uk` and every other host tried, with the search tool
+the only route to the web. So no live page and no Luma fact was checked from here, deploy state came from
+the Actions API, and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is one day enough to learn to build AI workflows or do I need a longer programme UK (format-adequacy axis, re-asked in a new phrasing after the 14:00 cycle flagged it) | **No** | `citylit.ac.uk` (x2), `shortcourses.lsbu.ac.uk` (x3), `aiaware.io` (x2), `wiseowl.co.uk` (x2), `cademy.io`, `ipsofacto.uk.com`, `revolutionlearning.co.uk`, `southnorfolkandbroadland.gov.uk`, `theknowledgeacademy.com`, `governmentevents.co.uk`, `aiawareness.ai`, `mediatraining.ltd.uk`, `qa.com`, `abeuk.com` |
+| 2 | hands-on AI away day for a senior leadership team Oxford (leadership-away-day axis, never probed) | **No page of this site** - but **both of our passed cohorts' Luma pages were**, and so was a third-party listing of ours | `sbs.ox.ac.uk` (x4), `innovationvisual.com` (x2), `staff.admin.ox.ac.uk`, `lifelong-learning.ox.ac.uk`, `tutorials.co.uk`, `eventbrite.co.uk`, `simplilearn.com`, `pulse.bot`, `wait.co.uk`, a Squarespace leadership-workshop page, **`luma.com/oxfordagentic2`**, **`luma.com/k7c2rm5s`**, **`planomato.com`** |
+| 3 | do I need to know how to code to build an AI agent for my own business one day course (coding-prerequisite axis, never probed) | **No** | `fastgpt.io` (x6), `skillcrush.com` (x2), `ciela.ai` (x2), `fuzen.io`, `theneuron.ai`, `codewords.ai`, `taskade.com`, `gaas.it.com`, `tinycommand.com`, `ivee.jobs`, `discuss.huggingface.co`, a Reddit mirror |
+| 4 | is it worth travelling to Oxford for a one day AI workshop instead of online training (travel-justification axis, never probed) | **No page of this site** - but **both passed Luma pages were, again** | `theknowledgeacademy.com` (x4), `nobleprog.co.uk` (x3), `tutorials.co.uk` (x2), `conted.ox.ac.uk` / `lifelong-learning.ox.ac.uk`, `orielsquare.co.uk`, `createwith.com`, `sbs.ox.ac.uk`, `oerc.ox.ac.uk`, `spicyadvisory.pages.dev`, `oxford-royale.com`, **`luma.com/oxfordagentic2`**, **`luma.com/k7c2rm5s`** |
+
+**Reading.**
+
+- **Probe 1 closes the question the 14:00 cycle left open, and the answer is that the page already
+  exists.** That cycle called format-adequacy the one topic candidate of its four, WINNABLE and
+  CONVERTING, and ended *"the honest version is not a new guide ... weigh that first"*. Weighed. Asked in
+  a different phrasing, the engine returns the same shape of field - UK training vendors and college short
+  courses, no institutional publisher - and its own summary argues directly against this product:
+  *"A single day is enough to grasp the concepts and build a simple, no-code automation, but not to design
+  and maintain real multi-step AI workflows"*, closing *"If you want to build workflows rather than just
+  use AI tools, plan for a multi-day course."*
+  - **The site answers that, in question shape, with a `FAQPage` node, and has since 7 November.**
+    `/guides/what-you-can-build-in-one-day-with-ai/` carries `## Is one day enough?` with three sibling
+    `h3` questions under it - *would a longer course not give me more*, *will I build something or watch
+    someone else build it*, *is a day enough if nothing happens afterwards* - and the opt-in that cycle
+    added publishes all three as FAQ entries. One of them concedes the engine's point in our own words:
+    a day is not enough to make you fluent, and if what you want is breadth, a programme is the better buy.
+  - **So this is reach, not coverage, again, and the axis is now closed rather than open.** Do not write a
+    guide on it. If a later cycle wants to move this axis it is an off-page problem, like the rest.
+
+- **Probes 2 and 4 are the sixth and seventh recordings of the same failure, and they are the strongest
+  pair yet, because in both the engine answered *about us* and *correctly* without reading a word of this
+  site.** Probe 4's engine described the Agentic Bootcamp as *"a practical, hands-on day for people who
+  want to put agentic AI to work in their organisation. It assumes you already use AI day to day"* - an
+  accurate description of our positioning, sourced from `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s`,
+  **both passed cohorts**. Probe 2's engine reached the same two pages plus `planomato.com` and then
+  warned the buyer: *"The listing is for a past date (21 October), so check whether it runs again."*
+  - **The entity is reachable; the bookable date is not.** The pages carrying our words are the ones that
+    have already happened, and neither says the day has run or where the next one is. No page of this site
+    can fix that, and the remedy is still one line on each passed Luma page. Re-stated under the existing
+    entry in `outreach/review-list.md` rather than filed again.
+  - **One substantive thing probe 2 got wrong off Luma**, worth recording because it is a commercial
+    misread rather than a stale date: it told a team shopping for an away day that our day is *"aimed at
+    individuals, though, not a whole leadership team"*, and pointed them at an on-site trainer instead.
+    The site answers that question twice -
+    `/guides/in-house-ai-day-or-send-people-to-a-cohort/` and `/guides/who-should-take-the-seat/` - and
+    neither was reached.
+
+- **Probe 3 is declined on the CONVERTING half of the topic-probe rule, and it is a clean example of
+  it.** The field is no-code agent-builder vendors writing about their own product category
+  (`fastgpt.io` six times, `taskade.com`, `tinycommand.com`, `gaas.it.com`), so it is winnable. But the
+  searcher is someone deciding whether they personally can build an agent at their desk, not someone
+  deciding whether to book a day in Oxford, and the one UK training result in the field
+  (`ivee.jobs`, already in the review list) argues for a day without selling ours. The site answers the
+  no-code point anyway, in *"The 'no coding' part is mostly true"* on
+  `/guides/what-you-can-build-in-one-day-with-ai/` and in the Coding line's own differentiator. Winnable
+  and not converting is still no.
+
+- **Two hosts in these fields are new to this log and neither is an opportunity.**
+  `oxford-royale.com` is a summer school for teenagers, so the audience is wrong in a way no listing
+  fixes, and `wait.co.uk` is an Oxfordshire AI consultancy, which is to say a competitor rather than a
+  directory. Recorded in `outreach/review-list.md` as checked-and-declined so a later probe does not
+  mistake either for a find. Everything else in all four fields -  `cademy.io`, `governmentevents.co.uk`,
+  `innovationvisual.com`, `orielsquare.co.uk`, `oerc.ox.ac.uk`, `createwith.com`, `planomato.com`,
+  `pulse.bot`, `tutorials.co.uk`, `nobleprog.co.uk`, `lifelong-learning.ox.ac.uk` - is already recorded
+  there. Nothing was contacted, submitted or signed up for.
+
 ## 2026-11-17 (14:00 GMT cycle) - FOUR MORE FRESH AXES, ZERO CITATIONS, AND THE LUMA ASK CONFIRMED BY AN ENGINE ASKED THE EXACT MONTH COHORT 4 RUNS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

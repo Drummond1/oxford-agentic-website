@@ -11,6 +11,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Checked and declined, so no later probe mistakes either for a find: `oxford-royale.com` and
+  `wait.co.uk`.** Found 17 Nov 2026 (20:00 cycle) in the away-day and travel-justification probes.
+  **Nothing contacted, submitted or signed up for.**
+  - `oxford-royale.com` runs Oxford summer schools for teenagers. The name and the city match and
+    nothing else does: no senior-leader audience, and no listing surface a one-day business bootcamp
+    belongs on.
+  - `wait.co.uk` is an Oxfordshire AI company offering training locally, which makes it a competitor
+    rather than a directory. It is recorded here only so the next cycle that meets it spends no time
+    on it. If Drummond ever wants a local-partner conversation rather than a listing, that is a
+    different kind of approach and his to make.
+  - **Not checked at all.** Neither host resolves from this sandbox, so both readings come from search
+    results rather than from the pages themselves.
+  - Needs: nothing.
+
 - **The Luma ask is no longer theoretical, and this is the evidence that makes it urgent.** Found
   17 Nov 2026 (14:00 cycle), from an answer-engine probe. **Nothing contacted, submitted or changed:
   only Drummond can edit a Luma page.**
@@ -35,6 +49,22 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     Organization node's `sameAs`, which still has no third-party identity at all (backlog 2b).
   - **The standing asks are unchanged:** list the on-sale cohorts on **Eventbrite**, correct or
     retire the 21 July **`allai.events`** record, and give the Organization node a real `sameAs`.
+  - **Two more recordings, six hours later (17 Nov, 20:00 cycle), and these are the strongest pair.**
+    Both probes reached `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` - the same two **passed**
+    cohorts - and in both the engine then described this business *accurately and favourably* without
+    reading one word of this site. Asked whether it is worth travelling to Oxford for a day rather
+    than training online, it answered that the Oxford Agentic Bootcamp is *"a practical, hands-on day
+    for people who want to put agentic AI to work in their organisation"* which *"assumes you already
+    use AI day to day"*. Asked for a hands-on AI away day for a senior leadership team in Oxford, it
+    reached the same two pages, warned *"The listing is for a past date (21 October), so check whether
+    it runs again"*, and sent the team to an on-site trainer instead. **The entity is reachable and the
+    bookable date is not**, which is the whole of the ask above.
+  - **A second thing those pages are costing us, and it is not a date.** The away-day probe concluded
+    from Luma that our day is *"aimed at individuals, though, not a whole leadership team"*. That is a
+    group booking talking itself out of the room on a reading of a page that does not answer the
+    question. The site answers it twice - `/guides/in-house-ai-day-or-send-people-to-a-cohort/` and
+    `/guides/who-should-take-the-seat/` - and neither was reached. If a line is ever added to those
+    Luma pages, a clause about teams costs nothing extra.
 
 - **One new listing target, the first in several cycles, and it needs checking before it needs
   approval: `reed.co.uk` (Reed Courses).** Found 17 Nov 2026 (08:00 cycle), from four answer-engine

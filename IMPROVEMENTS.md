@@ -2553,7 +2553,149 @@ Status: `todo` · `blocked` (why) · `doing`
     the file this cycle already has notes in, and a cycle that takes them should check the rendered
     PNGs rather than the built HTML, because no text check can see inside an image.
 
+
+109. `blocked` (not by Drummond and not by a decision - **by this sandbox's egress policy**; found
+    17 Nov 2026 in the 20:00 cycle, by following up the 14:00 cycle's own probe) - **the first
+    institutional citation this site could honestly carry is sitting in a UK government evidence
+    review, and the loop cannot open it.**
+    The 14:00 cycle's probe 1 (*"how do I stop my team wasting time on AI tools that do not stick"*)
+    returned, at the top of its field, the UK government's **SKAI** programme - *What works for AI
+    upskilling in the UK* - and recorded it as *"a citation candidate, not a topic"*. Two searches
+    this cycle agree on what it is: four linked outputs (employer guide, case studies, insight
+    briefing, research and methodology) published **10 June 2026**, by Dr Nisreen Ameen of Royal
+    Holloway in partnership with **Skills England**, built from workshops with around 150
+    organisations, an employer survey and ten case studies, and setting out a framework whose first
+    principle is **practical: training linked to real tasks and decisions in the learner's role**.
+    One search also reports the review finding that many AI courses are generic and do not reflect
+    the realities of different sector job roles.
+    **That is this site's own argument, made by a publisher no vendor page can outrank**, and the
+    guides that would carry it already exist: `what-hands-on-ai-training-actually-means` (the four
+    levels of "hands-on", whose level four is your own task) and `how-to-choose-your-first-agentic-task`.
+    The site has the precedent too - `is-your-ai-workflow-saving-time-or-just-effort` cites two arXiv
+    papers.
+    **It was not written, and the reason is the rule and not a preference.** `www.gov.uk` and
+    `assets.publishing.service.gov.uk` do not resolve from this sandbox, so the primary source could
+    not be opened and every fact above is second-hand from a search tool's summary. The two summaries
+    already disagree on one detail - whether the framework's acronym expands to six named principles,
+    and which - which is exactly the kind of error a citation of a government publication must not
+    carry. **Publishing a quotation from a document the author could not read is the defect this
+    ledger exists to prevent**, so it is recorded instead.
+    **What closes it, and it is ten minutes.** Anyone with an unblocked browser - Drummond, or a cycle
+    whose egress policy allows `gov.uk` - opens
+    `https://www.gov.uk/government/publications/skills-for-ai-what-works-for-ai-upskilling-in-the-uk`,
+    confirms the title, the publisher, the date and one sentence about practical, task-linked training,
+    and pastes the sentence with its URL into this item. A later cycle then adds one properly attributed
+    sentence and link to one of the two guides above. One citation, one outbound link, no new claim of
+    ours. Do not write it from a search summary.
+
+110. `done` 17 Nov 2026 (20:00 cycle) - **checked, clean, and recorded so it is not re-derived: the
+    `faqFromHeadings` census is correct as it stands, and the two guides that look like misses are
+    not.** A census of all 32 guide files against question-shaped `h2`/`h3` headings finds 11 opted in
+    and 21 not, and **exactly two un-flagged files carry any question heading at all**. Both are
+    correctly un-flagged, which is a stronger result than it sounds, because the flag's leaf rule would
+    have emitted something from each:
+    - `is-it-safe-to-put-company-documents-in-a-second-brain` has three, and they read *"Question one:
+      which account is it going into?"*, *"Question two: what kind of information is it?"* and
+      *"Question three: whose information is it?"*. They are the three steps of one sort, numbered and
+      sequential, and as standalone FAQ entries they are meaningless - a name beginning "Question one:"
+      is not a question anybody asks an engine.
+    - `second-brain-for-ai-vs-note-taking` has one, `## Do you need both?`, with no sibling questions, so
+      opting in would publish a one-entry `FAQPage` whose entry cannot be understood away from the page.
+    **The rule this confirms**, already written in the 7 November opt-in's own comment and now tested
+    against the whole collection: the flag belongs on a page whose question headings *stand on their
+    own*, not on any page that happens to end a heading with a question mark. There is no third guide
+    waiting for this flag. A cycle looking for `FAQPage` coverage should look at pages that render Q&A
+    and emit nothing, and today there are none.
+
 ## Shipped
+
+### 17 Nov 2026 (20:00 cycle) - records only. Four probes closed the one topic candidate the last cycle left open, the best new find is blocked by this sandbox's egress policy, and the strongest-looking defect of the day turned out to be Drummond's own decision, written in the template
+
+**Nothing on any page changed. No source file was touched, so `dist` is the baseline build and this
+commit is records only.**
+
+**The cycle's brief named three candidates and all three were already settled.** (1)
+`scripts/indexnow-ping.mjs` maps `src/lib/home.ts` to `/` in `SINGLE_PAGE_SOURCES` - fixed before the
+brief was written, verified again by reading the file. (2) The past-tense sweeps have run; what remains
+is backlog 89, dated 20 November, and backlog 103, dated 27 November, and both are deliberately not
+brought forward because the sentences are true today. (3) A guide Q&A block was weighed and declined on
+measurement - see backlog 110, and the probe reading below.
+
+**The strongest-looking defect of the day was not one, and the correction matters more than the
+measurement.** Counting inbound internal links per guide across all 69 built pages gives a result that
+looks alarming: **all 32 guides are linked only from `/guides/` and from each other**, between 4 and 11
+distinct guide sources each, and **not one page outside `/guides/` links to any individual guide** - not
+the homepage, not `/bootcamps/`, not any of the three programme pages, not any event page, not `/about/`.
+The 15 November cycle measured the same thing and recorded it as *"one-way by construction ... because
+sending a reader off a booking page is a conversion call"*. It is more settled than that:
+`src/pages/bootcamps/[slug].astro` carries the decision in its own comment, **Drummond, 4 August 2026** -
+*"Guides deliberately do NOT surface here ... the programme page's one job is the booking path"* - and
+the 23 July "Further reading" section this file records under cycle 2 is what that decision removed. So
+the ledger now holds the cause, not just the shape, and no future cycle needs to re-derive it or pitch
+it. Nothing was changed.
+
+**Four GEO probes, zero citations, and one of them finally closes an open question rather than opening
+another.** Three axes had never been put to an engine (the leadership away day, the coding prerequisite,
+travel justification); the fourth deliberately re-asked the **format-adequacy** axis the 14:00 cycle had
+flagged as WINNABLE, CONVERTING and *"weigh that first"*. Weighed, and the answer is that the page already
+exists: `/guides/what-you-can-build-in-one-day-with-ai/` carries `## Is one day enough?` with three
+standalone sub-questions and has published them as a `FAQPage` node since 7 November, including the
+concession the engine's own summary makes against us. **The axis is now closed rather than open: do not
+write a guide on it.** The coding-prerequisite axis is declined on the CONVERTING half of the rule - a
+field of no-code tool vendors, and a searcher deciding whether they can build at their desk rather than
+whether to book a day. Full tables and readings in `seo-data/geo-citations.md`.
+
+**The sixth and seventh recordings of the Luma failure, and the strongest pair yet, because in both the
+engine answered about us accurately without reading a word of this site.** Probes 2 and 4 each reached
+`luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` - **both passed cohorts**. One described the day as
+*"a practical, hands-on day for people who want to put agentic AI to work in their organisation"* that
+*"assumes you already use AI day to day"*, which is our positioning, correctly stated, off a page for a
+day that has happened. The other warned the buyer *"The listing is for a past date (21 October), so check
+whether it runs again"* and sent a leadership team to an on-site trainer. A new cost appeared alongside
+the stale date: the away-day probe concluded from Luma that our day is *"aimed at individuals, though, not
+a whole leadership team"*, a group booking talking itself out of the room on a page that does not answer
+the question, while the site answers it twice. Re-stated under the existing entry in
+`outreach/review-list.md` rather than filed again. Only Drummond can edit a Luma page.
+
+**One genuinely new find, and it is blocked by the sandbox rather than by a decision - backlog 109.**
+The UK government's SKAI review, *What works for AI upskilling in the UK*, argues the task-first case this
+site is built on, and would be the first institutional citation any of these guides carries. `gov.uk` does
+not resolve from here, the two search summaries of it already disagree on one detail, and a citation of a
+government publication nobody opened is precisely the defect this ledger exists to prevent. Recorded with
+the exact URL, the four facts to confirm and the one sentence to paste, so it costs ten minutes for anyone
+with a browser.
+
+**Checked and found clean before concluding there was nothing to ship, so none of it is re-derived.**
+The `faqFromHeadings` census over all 32 guides (backlog 110) - 11 opted in, and the only two un-flagged
+files with question headings are correctly un-flagged. All four `ItemList` nodes complete and matching
+their collections: 32 guides, 7 events, 3 programmes, 8 team profiles. `/rss.xml` carries all 32 guides.
+The `Article` node on a sampled guide carries `datePublished`, `dateModified`, `author`, `publisher`,
+`image`, `mainEntityOfPage`, `inLanguage` and `about`. Breadcrumbs on all 69 built pages.
+
+**Checks read by exit code.** `npm ci` and `npm run build` green: 69 pages, **3,529 internal links**
+resolve, schema valid with 17 Event nodes (10 top-level, 7 nested entity), **22 `FAQPage` nodes**, 1,431
+resolving graph references, 59 well-formed breadcrumb trails, all titles and descriptions unique;
+`check:dates` finds no passed cohort date written as upcoming and no year-less date. The outbound checker
+reports **0 of 14** third-party links reachable, which is this sandbox's egress policy and not a site
+fault. **Headless Chromium over six pages at 375px and 1280px: 72 assertions, 0 failed** - status, single
+`h1`, no horizontal overflow, `og:image` resolving to a PNG and a canonical on `https://oxfordagentic.com`
+for each - plus the one-day guide read as a rendered screenshot at 375px. That is recorded because the
+standing rule is not to ship what cannot be inspected, and this cycle could inspect. Nothing shipped
+because nothing was worth shipping.
+
+**Deployment state came from the Actions API**, since `oxfordagentic.com` is refused by this session's
+egress policy and `build.txt` could not be read: run 438 of *Deploy to GitHub Pages* for `c8bff11`
+concluded **success** at 14:10 UTC, nothing is queued or in progress, and `git log -1` matches that run's
+`head_sha` - the step 0 check. **IndexNow submits nothing**: `IMPROVEMENTS.md`, `seo-data/` and
+`outreach/` are excluded by name, so this push maps to no page URL.
+
+**Search Console unavailable**, as every cycle since the 24 August baseline: no API credentials in the
+repo and no export newer than that baseline in `seo-data/`. Nothing estimated. **No new guide**, and none
+published in the week of 16-22 November. **No new off-page target**: of the two hosts new to the log,
+`oxford-royale.com` is a teenagers' summer school and `wait.co.uk` is a competitor, both recorded as
+checked-and-declined, and every other host in all four fields was already on the review list. Nobody was
+contacted, nothing was submitted and no account was made. **No event fact was read, verified or changed**:
+`luma.com` is refused by this session's egress policy.
 
 ### 17 Nov 2026 (14:00 cycle) - the 56 social cards were the last surface publishing em dashes, and the /team/ card described one bootcamp when there are three. Backlog 108, both halves, and a guard so no card can drift again
 
