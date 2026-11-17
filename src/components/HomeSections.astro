@@ -15,7 +15,7 @@ import GoldDivider from './GoldDivider.astro';
 import NewsletterForm from './NewsletterForm.astro';
 import Quote from './Quote.astro';
 import { createRhythm, getHomeUpcoming, getPhotos, getProgrammes, getTestimonials, paths, showSection } from '../lib/site';
-import { homeFaqs } from '../lib/home';
+import { homeFaqs, homeHeadline } from '../lib/home';
 
 interface Props {
   /** Off for the reference variant, which keeps the original typographic hero. */
@@ -59,7 +59,7 @@ const bands = {
 
 <Hero
   eyebrow="One day · Hands-on · An Oxford Experience"
-  title="Build impactful agentic AI workflows"
+  title={homeHeadline}
   subline="One day in Oxford. One real task from your own work. A workflow that runs by the time you leave."
   motif
   size="full"

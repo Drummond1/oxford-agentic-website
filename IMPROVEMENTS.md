@@ -2539,7 +2539,102 @@ Status: `todo` · `blocked` (why) · `doing`
     is a decision for him, and re-running it will keep returning the same field.
 
 
+108. `todo` **(a typography and wording call the loop can ship, found 17 Nov 2026 in the 09:00
+    cycle while fixing the homepage card)** - **two smaller drifts in the same place the stale
+    headline hid: `src/pages/og/[key].png.ts`.** (a) Every one of the 56 social cards joins its
+    eyebrow and its meta line with an em dash - `The Oxford Agentic Bootcamp — Cohort 5`,
+    `Thu, 28 January 2027 — Jesus College, Oxford` - while the page behind each card writes the
+    same two strings with ` - `, and the 9 November cycle removed 36 em dashes from the two files
+    written for machines on the grounds that the house style has none. The cards are now the last
+    surface publishing them. (b) The `/team/` card is titled *"The people who run the day"* while
+    the page itself is titled *"The people who run it"*, which is the wording that stopped the page
+    describing one bootcamp when there are three. Neither is urgent and neither asserts anything
+    false, which is why they were left out of this cycle's one change. Both are one string each in
+    the file this cycle already has notes in, and a cycle that takes them should check the rendered
+    PNGs rather than the built HTML, because no text check can see inside an image.
+
 ## Shipped
+
+### 17 Nov 2026 (09:00 cycle) - the picture shown whenever anyone shared this site still carried the positioning the message house replaced on 13 August. One string, now imported rather than repeated, and the built HTML is byte-identical on all 69 pages
+
+**The defect.** `dist/og/index.png` - the 1200x630 card LinkedIn, X, WhatsApp, Slack and iMessage
+render when someone shares `https://oxfordagentic.com/` - was titled **"Build agents. In a day. In
+Oxford."** The message house of 13 August 2026 sets the headline verbatim as "Build impactful
+agentic AI workflows", and the homepage `h1`, the `<title>`, the meta description and llms.txt have
+carried the new one since the cycles 65-69 sweep. The card did not, for three months.
+
+**Why nothing caught it, which is the part worth keeping.** This file records on 25 August 2026
+that the superseded positioning was *"gone everywhere"*. It was gone from everywhere that sweep
+could look: the string lived in `src/pages/og/[key].png.ts` as a build-time argument that satori
+paints into a PNG, so no grep of `dist`, no HTML scan, no link check and no schema check can see
+it, and neither could the message-house sweep that rewrote the prose around it. **A text audit of a
+site does not audit its images.**
+
+**The fix, made at the cause rather than the symptom.** The headline is now
+`homeHeadline` in `src/lib/home.ts`, imported by both the things that need it: the `<Hero>` in
+`HomeSections.astro` and the homepage card in the OG route. It was two separate literals, which is
+why one of them moved in August and the other did not. One copy, imported twice, and the next
+headline change moves both together. The comment at the constant records the three months and the
+reason a text check could not see it.
+
+**Measured.** `dist` before and after differ by **exactly one file**, `og/index.png`. All 69 HTML
+pages are byte-identical, so no page copy changed, no `updatedDate` moved and `homepageCopyLastmod`
+was deliberately not touched: the homepage's rendered copy did not change, only where its literal
+lives, which is the same rule that file's own comment states for itself. The new card was read as
+an image: two lines, Newsreader at the same size, inside the margins, nothing clipped, eyebrow and
+meta line unchanged.
+
+**Checks.** `npm run build` green - 3529 internal links across 69 pages resolve, 69 pages of schema
+valid with 1431 resolving graph references and 59 breadcrumb trails, `check:dates` clean on 58
+indexable pages. `npm run check:flags` green on both the all-on and all-off builds. The 14 outbound
+third-party links fail for the sandbox egress reason every recent cycle records, and are warn-only.
+`npm run check` was **not** run and is not claimed: `astro check` asks to install `@astrojs/check`
+interactively in a clean checkout, which is backlog 70, and installing it would have put a
+dependency change in this commit.
+
+**Browser work this cycle, since it is what the decline rests on elsewhere.** Headless Chromium
+over **all 69 built routes at 375, 768 and 1280px**: no horizontal overflow anywhere, no image
+without `alt`, no form control without a label, no duplicate `id`, one `h1` per page and no heading
+jumps. The only repeated finding is the three `/bootcamps/` links inside the desktop dropdown,
+which report no accessible name only because the menu is `visibility: hidden` until
+`:hover`/`:focus-within` - checked in `Header.astro`, keyboard-reachable, not a defect. Keyboard
+tab-through of a booking page: 40 stops, every one with the gold focus ring (the first frame reads
+`transparent` because `focus-in` animates the outline in - not a missing ring). Mobile nav opens,
+closes on Escape and reports `aria-expanded` correctly; the FAQ accordions open one at a time;
+back-to-top appears after a screen and a half and hit-tests clear of the booking bar.
+
+**Two stress tests the earlier sweeps had not run, and the instrument correction that came out of
+them.** WCAG text-spacing (line-height 1.5, letter-spacing 0.12em, word-spacing 0.16em) across all
+69 routes: no overflow, and every "clipped" hit is a `.visually-hidden` heading or a honeypot
+field. Browser default font size, set through CDP `Page.setFontSizes` rather than by writing
+`documentElement.style.fontSize`: **the two are not the same test**, because `rem` in a media query
+resolves against the browser's own default and not against an author-set root, so the author
+emulation reported `/bootcamps/` overflowing by 36px at 24px text and the real one reports zero.
+The row guard behind `@media (min-width: 19rem)` works exactly as its comment says. Any future
+cycle testing text size should use the CDP route. At a real 24px default - Chrome's "Very large" -
+**nothing on the site overflows**. At 32px the known pair appears and both are already escalated:
+the wordmark (backlog 32) and the consent banner's buttons (backlog 31). Neither was touched.
+
+**Other candidates found and left, with the reason.** The copy scan across all 69 pages is clean:
+no em dash in rendered prose, no exclamation mark outside a quoted testimonial, no Americanism
+except `licence` used as a verb once in the public-sector guide, no relative-time phrase that has
+gone stale. The Coding line still answers "do I need a paid AI subscription?" on no surface - that
+is backlog 97 and needs a fact only Drummond has, nine days before that cohort. The two guest
+sessions on the Agentic agenda are still unnamed (backlog 12a). Social metadata, OG images and
+titles are complete and correct on all four on-sale event pages. **Backlog 108 is new**, from
+inside the same file this cycle edited.
+
+**Deploy and production state.** Local `HEAD` matched `origin/main` at `db05810` after a fetch -
+and the step-0 check earned its place again: the fresh checkout arrived on a detached HEAD at the
+true tip while the local `main` branch sat at `85ef135`, several commits behind, so `git checkout
+main` would have moved the tree backwards. Actions runs 44044462237 and 44044462240 both completed
+**success** for that SHA at 08:10 UTC, nothing queued or in progress, and the two long-stale pull
+requests (#1 breadcrumb overflow, #3 the 2 November ledger branch) are the known ones under backlog
+20. **Production could not be read**: the sandbox egress policy refuses `oxfordagentic.com`,
+`www.oxfordagentic.com` and `drummond1.github.io` as well as `luma.com`, exactly as the 08:00 cycle
+recorded, so production state was taken from the Actions API and every screenshot in this entry is
+of the local preview build.
+
 
 ### 17 Nov 2026 (08:00 cycle) - a no-change cycle, decided on merit with the browser proved working. The best candidate found this cycle turns out to be the one question already sitting with Drummond as backlog 24, and the four fresh GEO axes returned no writable topic. Records, one new off-page target and two cross-references
 

@@ -38,6 +38,26 @@ import config from '../../site.config';
 export const homepageCopyLastmod = '2026-11-08T02:04:03Z';
 
 /**
+ * The homepage headline, set verbatim by the message house of 13 August 2026.
+ *
+ * It lives here for the reason the FAQ below does: two things need it at once.
+ * The <Hero> on every homepage variant renders it, and `src/pages/og/[key].png.ts`
+ * paints it into the 1200x630 card that LinkedIn, X, WhatsApp and Slack show when
+ * anyone shares the site. Until 17 November 2026 those were two separate string
+ * literals, so when the message house replaced the positioning in August the hero
+ * moved and the card did not: the card kept rendering the superseded
+ * "Build agents. In a day. In Oxford." for three months. Nothing caught it,
+ * because the stale copy was a build-time string that renders into a PNG - no
+ * grep of `dist`, no HTML scan and no link or schema check can see inside it, and
+ * the 25 August sweep that declared that headline "gone everywhere" was reading
+ * rendered prose.
+ *
+ * One copy, imported twice, is what stops that happening again. Change it here
+ * and both surfaces move together.
+ */
+export const homeHeadline = 'Build impactful agentic AI workflows';
+
+/**
  * The homepage FAQ, shared by every homepage variant.
  *
  * It lives here rather than in a page because two things need it at once: the

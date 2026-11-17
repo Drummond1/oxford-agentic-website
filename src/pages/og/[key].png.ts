@@ -1,6 +1,7 @@
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import config from '../../../site.config';
+import { homeHeadline } from '../../lib/home';
 import { renderOgImage, type OgOptions } from '../../lib/og';
 import {
   formatDate,
@@ -44,7 +45,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const entries: Array<{ path: string; options: OgOptions }> = [
     {
       path: paths.home(),
-      options: { title: 'Build agents. In a day. In Oxford.', meta: config.brand.tagline },
+      /*
+       * The hero's own headline, imported rather than repeated. This card said
+       * "Build agents. In a day. In Oxford." until 17 November 2026 - the
+       * positioning the message house replaced on 13 August, still being shown
+       * to everyone who shared the site. See `homeHeadline` in src/lib/home.ts.
+       */
+      options: { title: homeHeadline, meta: config.brand.tagline },
     },
     {
       path: paths.events(),
