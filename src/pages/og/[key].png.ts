@@ -17,6 +17,13 @@ import {
  *
  * The card set is derived from the same helpers the pages use, so a flagged-off
  * section produces no orphan cards and a brand rename regenerates all of them.
+ *
+ * Every separator below is a spaced hyphen, never an em dash. The house style
+ * has none, `Base.astro` joins a page title to the brand with ' - ', and
+ * `events/[slug].astro` builds the identical eyebrow with ' - '. These cards
+ * were the last surface publishing em dashes in visible copy, and no text
+ * check can see them, because they live inside a PNG. Fixed 17 November 2026,
+ * and guarded at the bottom of this function.
  */
 
 const keyFor = (pagePath: string) => (pagePath.replace(/^\/|\/$/g, '') || 'index').replace(/\//g, '--');
@@ -55,11 +62,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     },
     {
       path: paths.events(),
-      options: { eyebrow: `${config.brand.name} — Events`, title: 'Every cohort, past and upcoming', meta: 'Oxford' },
+      options: { eyebrow: `${config.brand.name} - Events`, title: 'Every cohort, past and upcoming', meta: 'Oxford' },
     },
     {
       path: paths.about(),
-      options: { eyebrow: `${config.brand.name} — About`, title: config.brand.tagline, meta: 'Oxford, United Kingdom' },
+      options: { eyebrow: `${config.brand.name} - About`, title: config.brand.tagline, meta: 'Oxford, United Kingdom' },
     },
   ];
 
@@ -68,16 +75,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
     entries.push({
       path: paths.event(event.data.slug),
       options: {
-        eyebrow: [programme?.data.name, event.data.edition ?? event.data.cohort].filter(Boolean).join(' — '),
+        eyebrow: [programme?.data.name, event.data.edition ?? event.data.cohort].filter(Boolean).join(' - '),
         title: event.data.title,
-        meta: `${formatDate(event.data.startDate, { weekday: 'short' })} — ${venueLine(event.data.venue)}`,
+        meta: `${formatDate(event.data.startDate, { weekday: 'short' })} - ${venueLine(event.data.venue)}`,
       },
     });
   }
 
   entries.push({
     path: paths.programmes(),
-    options: { eyebrow: `${config.brand.name} — Bootcamps`, title: 'One day. Your own real task.', meta: 'Oxford' },
+    options: { eyebrow: `${config.brand.name} - Bootcamps`, title: 'One day. Your own real task.', meta: 'Oxford' },
   });
 
   for (const programme of programmes) {
@@ -90,7 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   if (showSection('team')) {
     entries.push({
       path: paths.team(),
-      options: { eyebrow: `${config.brand.name} — Team`, title: 'The people who run the day', meta: 'Oxford' },
+      options: { eyebrow: `${config.brand.name} - Team`, title: 'The people who run it', meta: 'Oxford' },
     });
 
     /*
@@ -115,7 +122,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   if (showSection('guides')) {
     entries.push({
       path: paths.guides(),
-      options: { eyebrow: `${config.brand.name} — Guides`, title: 'Writing on agentic AI', meta: 'Oxford' },
+      options: { eyebrow: `${config.brand.name} - Guides`, title: 'Writing on agentic AI', meta: 'Oxford' },
     });
 
     // A card per guide, so a shared article gets its own headline rather than
@@ -124,8 +131,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
     for (const guide of guides) {
       entries.push({
         path: paths.guide(guide.data.slug),
-        options: { eyebrow: `${config.brand.name} — Guide`, title: guide.data.title, meta: config.brand.locality },
+        options: { eyebrow: `${config.brand.name} - Guide`, title: guide.data.title, meta: config.brand.locality },
       });
+    }
+  }
+
+  /*
+   * The guard the em-dash sweep earned. Card text is painted into a PNG, so no
+   * check over `dist` can read it: the stale strings above survived every text
+   * check the repo has. This one runs at build time, on the strings themselves,
+   * and fails the build rather than shipping a card nobody can grep.
+   */
+  for (const { path, options } of entries) {
+    for (const [field, value] of Object.entries(options)) {
+      if (typeof value === 'string' && /[\u2014\u2013]/.test(value)) {
+        throw new Error(`og card ${path}: ${field} uses an en or em dash. House style is a spaced hyphen.`);
+      }
     }
   }
 

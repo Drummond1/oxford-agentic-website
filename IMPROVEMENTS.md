@@ -2539,7 +2539,7 @@ Status: `todo` · `blocked` (why) · `doing`
     is a decision for him, and re-running it will keep returning the same field.
 
 
-108. `todo` **(a typography and wording call the loop can ship, found 17 Nov 2026 in the 09:00
+108. `done` 17 Nov 2026 (14:00 cycle), both halves together, plus the build-time guard the sweep earned - detail in the Shipped entry. Originally filed as: **(a typography and wording call the loop can ship, found 17 Nov 2026 in the 09:00
     cycle while fixing the homepage card)** - **two smaller drifts in the same place the stale
     headline hid: `src/pages/og/[key].png.ts`.** (a) Every one of the 56 social cards joins its
     eyebrow and its meta line with an em dash - `The Oxford Agentic Bootcamp — Cohort 5`,
@@ -2554,6 +2554,56 @@ Status: `todo` · `blocked` (why) · `doing`
     PNGs rather than the built HTML, because no text check can see inside an image.
 
 ## Shipped
+
+### 17 Nov 2026 (14:00 cycle) - the 56 social cards were the last surface publishing em dashes, and the /team/ card described one bootcamp when there are three. Backlog 108, both halves, and a guard so no card can drift again
+
+**The defect, in two parts, both found by the 09:00 cycle while fixing the stale headline in the
+same file.** (a) Every card joined its eyebrow and its meta line with an **em dash** -
+`The Oxford Agentic Bootcamp — Cohort 5`, `Thu, 28 January 2027 — Jesus College, Oxford` - while
+the house style has none and the page behind each card writes the identical two strings with a
+spaced hyphen. This was not a judgement call: `src/pages/events/[slug].astro:143` builds the same
+eyebrow from the same two fields with `.join(' - ')`, `src/layouts/Base.astro:50` joins a page title
+to the brand with `' - '`, and `BaseHead.astro:81` titles the RSS feed `Oxford Agentic - Guides`.
+The cards disagreed with all three. The 9 November cycle removed 36 em dashes from the two files
+written for machines on exactly this ground; the cards were what that sweep could not see.
+(b) The `/team/` card was titled **"The people who run the day"** while the page it represents is
+titled **"The people who run it"** - and that wording was chosen deliberately, because "the day"
+describes one bootcamp when the site runs three.
+
+**The fix.** Eight strings in `src/pages/og/[key].png.ts`: seven separators and the `/team/` title.
+Nothing else was touched - not the comments in the same file, not the testimonial quotes in
+`src/content/testimonials/`, which are four real people's own words and are not ours to restyle.
+
+**The guard, which is the part worth keeping.** Card text is painted into a PNG by satori, so **no
+check over `dist` can read it**: no grep, no link check, no schema check, no date check. That is how
+a three-month-stale headline survived here until this morning and how these survived until this
+afternoon. The route now asserts, at build time and on the strings themselves, that no card field
+contains an en or em dash, and throws if one does. **Proved by deliberately reintroducing one**: the
+build exited 1 with `og card /team/: eyebrow uses an en or em dash. House style is a spaced hyphen.`
+A guard that has never been seen to fail is not a guard.
+
+**Measured.** Blast radius **44 of 209 files in `dist`**, every one a PNG under `dist/og/`, none
+added or removed. **Zero HTML pages changed**, so no page copy moved, no `updatedDate` was bumped
+and no `lastmod` moved. The 44 is itself the check: 56 cards minus the 12 that never carried an em
+dash (the homepage, the three programme cards and the eight team-member cards, whose eyebrow is the
+bare brand name). Build, link, schema, date and flag checks green, every figure identical to the
+09:00 baseline - 3,529 internal links, 69 pages valid, 1,431 resolving graph references, 22
+`FAQPage` nodes.
+
+**Inspected as images, not as text**, which is what backlog 108 asked of whoever took it. Three
+cards of the three distinct kinds were read as rendered PNGs: `team.png` (brand-section eyebrow and
+the retitled headline), `events--oxford-agentic-bootcamp-cohort-5.png` (both an eyebrow and a meta
+line, now consistent with its own title, which already used a hyphen) and
+`guides--who-should-take-the-seat.png` (guide eyebrow). All three correct, no wrapping or overflow
+introduced. Headless Chromium over six pages at 375px and 1280px: **86 assertions, 0 failed**,
+including that each page's `og:image` resolves and serves a PNG.
+
+**One measurement correction worth recording, because the 09:00 entry's phrasing invites it.** The
+cards were the last surface publishing em dashes **in visible copy**; they were not the last
+occurrence in `dist`. Two remain in the built HTML of every page - inside inline `<script>` blocks,
+as JavaScript comments carried over from `BackToTop.astro` and `ConsentBanner.astro`. They are
+invisible to a reader and to anything reading prose, and stripping them is a build-config question
+rather than a copy one. Recorded, not fixed, and not worth a cycle.
 
 ### 17 Nov 2026 (09:00 cycle) - the picture shown whenever anyone shared this site still carried the positioning the message house replaced on 13 August. One string, now imported rather than repeated, and the built HTML is byte-identical on all 69 pages
 

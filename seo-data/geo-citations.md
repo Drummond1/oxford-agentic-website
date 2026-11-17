@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-17 (14:00 GMT cycle) - FOUR MORE FRESH AXES, ZERO CITATIONS, AND THE LUMA ASK CONFIRMED BY AN ENGINE ASKED THE EXACT MONTH COHORT 4 RUNS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none in the ~66 recorded
+over the preceding cycles, on four axes this log has never put to an engine: **adoption stickiness**
+(how do I stop a tool being abandoned), **format adequacy** (is one day enough), **pre-arrival
+practicalities** (what do I bring, what do I leave with), and a **dated local** query naming the
+month Cohort 4 actually runs. **Production could not be read this cycle** - the sandbox egress policy
+refuses `oxfordagentic.com` and `luma.com`, so no live page and no Luma fact was checked from here;
+deploy state came from the Actions API and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I stop my team wasting time on AI tools that do not stick, practical AI adoption training UK (adoption-stickiness axis, never probed) | **No** | `gov.uk` (the SKAI "what works for AI upskilling in the UK" briefings, x2), `assets.publishing.service.gov.uk`, `skillsengland.blog.gov.uk`, `profiletree.com` (x3), `ivee.jobs` (x3), `whitehat-seo.co.uk`, `spotdev.co.uk`, `grantthornton.co.uk`, `avadolearning.com`, `spicyadvisory.com`, `version1.com`, `cloudswitched.com`, `tutorials.co.uk` |
+| 2 | is a one day AI bootcamp enough or do I need a longer programme to actually change how I work (format-adequacy axis, never probed) | **No** | `nobledesktop.com` (x7), `aicerts.ai` (x4), `precisionaiacademy.pages.dev` (x3), `techguide.org`, `warwick.ac.uk`, `aicerts09.blogspot.com` |
+| 3 | what should I bring to a hands-on AI workshop and what will I actually walk out with (pre-arrival axis, never probed) | **No** | `brainstation.io` (x3), `ajai-live.pages.dev`, `gaar.com`, `halbritter-lab.github.io`, `appliedmldays.org`, `redhat.com` (x2), `learn.aisingapore.org`, `codedthinking.github.io`, `sans.org`, `fau.edu`, `gathershot-marketing.pages.dev`, `nips.cc`, `gdg.community.dev`, `bemyapp.com` |
+| 4 | AI training near Oxford for business owners December 2026 in person one day (dated local query, naming Cohort 4's own month) | **No page of this site** - but **two of our own Luma pages were**, and **a third-party listing of ours was** | `tutorials.co.uk` (x4), `conted.ox.ac.uk` / `lifelong-learning.ox.ac.uk`, `eventbrite.co.uk` (x3), `theknowledgeacademy.com` (x3), `enspire.ox.ac.uk`, `createwith.com`, `sbs.ox.ac.uk`, `ipsofacto.uk.com`, `charlbury.info`, **`luma.com/oxfordagentic2`**, **`luma.com/k7c2rm5s`**, **`planomato.com`** |
+
+**Reading.**
+
+- **Probe 4 is this cycle's finding, and it is the sharpest version yet of a failure this log has
+  now recorded five times.** The engine was asked for one-day in-person AI training near Oxford **in
+  December 2026**. Cohort 4 runs on **3 December 2026**. The engine reached two Oxford Agentic Luma
+  pages, read a passed date off one of them, and told the searcher: *"Oxford Agentic runs a one-day
+  bootcamp for business leaders, but the listing I found was for Wednesday 21 October, which has
+  already passed"* - and then concluded, in its own words, *"I didn't find any confirmed December
+  2026 in-person, one-day AI training near Oxford."* It recommended the searcher contact
+  `tutorials.co.uk` instead.
+  - **This is not a coverage gap and no page of this site can fix it.** `/events/
+    oxford-agentic-bootcamp-cohort-4/` exists, carries the date, is in the sitemap and in llms.txt,
+    and the homepage carries the card. The engine did not reach any of it. What it reached was the
+    off-site surface, and the off-site surface is out of date.
+  - **It is the one-line Luma ask**, already recorded on 16 Nov (20:00 cycle) and now carrying a
+    direct commercial cost rather than a theoretical one: an engine asked the exact month, held our
+    own pages, and sent the buyer to a competitor. Only Drummond can edit a Luma page. Re-stated in
+    `outreach/review-list.md` this cycle.
+  - **`planomato.com` is new to this log**: a third-party directory already carrying the Oxford
+    Agentic Second Brain Bootcamp, with nobody having submitted it. Recorded in the outreach file as
+    an existing mention to verify rather than a listing to create.
+
+- **Probe 2 is the one topic candidate of the four, and it is recorded rather than written.** The
+  field - `nobledesktop.com`, `aicerts.ai` and a `.pages.dev` microsite, every one of them a
+  training vendor writing about its own product category - is **WINNABLE** under the topic probe
+  rule: no institutional publisher holds it. It is **CONVERTING**: someone asking whether one day is
+  enough is deciding whether to book this exact format. The engine's own summary even concedes the
+  evidence is thin - *"The search didn't turn up independent research on whether a one-day course
+  changes how people work"* - and one vendor answer argues directly against us, that a one-day
+  course's value *"fades quickly without a structured continuation model"*.
+  **Not taken this cycle, for two reasons.** One change per cycle, and this cycle already has one.
+  More importantly, the honest version is not a new guide: `ai-bootcamp-vs-course-vs-exec-education`,
+  `what-you-can-build-in-one-day-with-ai` and `after-the-ai-executive-programme` already answer the
+  three halves of this question in three places, so the preference for improving a useful existing
+  page over creating a new one applies before any new file does. Weigh that first.
+  **And note the overlap with backlog 107**, written this morning: that item is the same objection
+  from the supply side (the buyer who cannot give up a day), and its standing conclusion - the loop
+  does not invent a format, and arguing the full day is the point is the only thing the loop could
+  ever ship - governs this too.
+
+- **Probe 1's field is the most authoritative this log has measured, and it is not a competitor.**
+  The top sources are the UK government's own SKAI research on what works for AI upskilling, which
+  argues that training built around real job tasks outlasts generic awareness sessions. That is the
+  site's own positioning, published by a source no vendor page can outrank. **It is a citation
+  candidate, not a topic**: an existing guide that already argues the task-first case could cite
+  gov.uk rather than assert it alone. Recorded; not taken, because this cycle has its one change and
+  adding a source to published prose is a copy edit that wants its own cycle and its own read of the
+  guide it lands in.
+
+- **Probe 3 is already answered and needs nothing.** The site publishes "What do I need to bring?"
+  on every programme page, and `coursePrerequisites` has carried the same answer in schema since
+  25 October. The field is vendor FAQs and university setup pages. The searcher is also mostly
+  someone who has already booked, so it is the weakest of the four on conversion. Reach, not
+  coverage, for the twenty-fifth consecutive cycle.
+
 ## 2026-11-17 (08:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND ONE ENGINE ADMISSION THAT LOOKS LIKE AN OPENING AND IS NOT ONE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

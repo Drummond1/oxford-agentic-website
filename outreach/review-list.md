@@ -11,6 +11,31 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The Luma ask is no longer theoretical, and this is the evidence that makes it urgent.** Found
+  17 Nov 2026 (14:00 cycle), from an answer-engine probe. **Nothing contacted, submitted or changed:
+  only Drummond can edit a Luma page.**
+  - **What happened.** The probe asked for *"AI training near Oxford for business owners December
+    2026 in person one day"*. **Cohort 4 runs on 3 December 2026.** The engine reached
+    `luma.com/oxfordagentic2` and `luma.com/k7c2rm5s` - both **passed** cohorts - read 21 October
+    off one of them, and answered: *"Oxford Agentic runs a one-day bootcamp for business leaders,
+    but the listing I found was for Wednesday 21 October, which has already passed."* It then
+    concluded *"I didn't find any confirmed December 2026 in-person, one-day AI training near
+    Oxford"* and pointed the buyer at `tutorials.co.uk` instead.
+  - **Why no page of this site can fix it.** `/events/oxford-agentic-bootcamp-cohort-4/` exists,
+    carries the date, is in the sitemap and in llms.txt, and the homepage carries the card. The
+    engine reached none of it. It reached the off-site surface, and the off-site surface is stale.
+  - **The ask, unchanged from 16 Nov (20:00 cycle) and now costed.** One line on each passed Luma
+    page saying the day has run and where the next one is - `luma.com/oxfordagentic4` for 3
+    December. This is the fifth recording of the same failure and the first where an engine was
+    asked the exact month, held our own pages, and still sent the buyer to a competitor.
+  - **One new domain, and it is a mention rather than a target: `planomato.com`.** It already
+    carries the Oxford Agentic Second Brain Bootcamp, with nobody having submitted it. Worth a look
+    before anything is done with it: check whether the record is accurate and current, and whether
+    it is claimable. If it is a real, controllable profile it is also a candidate for the
+    Organization node's `sameAs`, which still has no third-party identity at all (backlog 2b).
+  - **The standing asks are unchanged:** list the on-sale cohorts on **Eventbrite**, correct or
+    retire the 21 July **`allai.events`** record, and give the Organization node a real `sameAs`.
+
 - **One new listing target, the first in several cycles, and it needs checking before it needs
   approval: `reed.co.uk` (Reed Courses).** Found 17 Nov 2026 (08:00 cycle), from four answer-engine
   probes. **Nothing contacted, submitted or signed up for, and no account made.**
