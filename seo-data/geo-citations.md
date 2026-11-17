@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-17 (08:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND ONE ENGINE ADMISSION THAT LOOKS LIKE AN OPENING AND IS NOT ONE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, none in the ~62 recorded
+over the preceding cycles, on four axes this log has never put to an engine: **terminology scepticism**
+(is "agentic" a real distinction or a label), **time cost** (can the buyer avoid giving up a working
+day), **compliance** (does building an agent put a small business under the AI Act), and **sector -
+legal and accountancy** (the one professional-services pairing the three sector guides do not cover).
+**Production could not be read this cycle** - the sandbox egress policy refuses `oxfordagentic.com`
+and `luma.com`, so no live page and no Luma fact was checked from here; deploy state came from the
+Actions API and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is agentic AI just a buzzword for automation, what does agentic actually mean for a business (terminology-scepticism axis, never probed) | **No** | `agiliway.com`, `customerthink.com`, `techradar.com`, `builtin.com`, `rapidcanvas.ai`, `nexos.ai`, `zencoder.ai`, `analyticsvidhya.com`, `isometrik.ai`, `sia.hackernoon.com` |
+| 2 | can I do a hands-on AI course without taking a whole day off work, evening or weekend AI training UK (time-cost axis, never probed) | **No** | `cademy.io` (x4), `citylit.ac.uk` (x3), `generalassemb.ly` (x2), `nobleprog.co.uk`, `reed.co.uk`, `forthvalley.ac.uk`, `mediatraining.ltd.uk`, `functionalskillsuk.co.uk`, `shifttotech.co.in` |
+| 3 | do I need to worry about UK AI regulation or the EU AI Act if I build an AI agent for my own small business (compliance axis, never probed) | **No** | `mondaq.com` (x2), `pinsentmasons.com`, `walkermorris.co.uk`, `sprintlaw.co.uk`, `isms.online`, `forvismazars.com`, `artificialintelligenceact.eu`, `prowess.org.uk`, `profiletree.com`, `webprojectstudios.co.uk`, `redsquid.co.uk`, `crox.io`, `geekchamp.com`, `cloudswitched.com`, plus three `.pages.dev` microsites |
+| 4 | hands-on AI training for a small law firm or accountancy practice UK one day in person (sector axis - legal and accountancy, never probed) | **No** | `events.icaew.com` (x5), `astranti.com` (x5), `icaew.com`, `cademy.io/mangatesinc`, `brainstation.io`, `learnsignal.com`, `flane.co.uk`, `lancaster.ac.uk`, `eventbrite.co.uk` |
+
+**Reading.**
+
+- **Probe 4 is this cycle's finding, and the finding is that an engine admission is not by itself a
+  topic.** The engine closed its own answer with *"I did not find a single provider that combines
+  one-day, in-person, and tailored-to-small-firm delivery with clear current availability"* - the
+  shape of evidence the topic probe rule treats as the strongest kind, and the shape that carried
+  `who-should-take-the-seat` and `getting-an-ai-bootcamp-approved` into print. It fails anyway, on
+  all three tests, and the reasons are worth recording because this admission will recur.
+  - **WINNABLE fails.** The field is not soft, it is held by a professional body and a
+    sector specialist: `events.icaew.com` returned five dated in-person classroom sessions of
+    *Generative AI for accountants*, and `astranti.com` five pages of one-day AI training sold
+    separately to law and to accountancy. An institutional publisher writing its own CPD
+    calendar and a competitor with a sector-specific one-day format are exactly the two
+    categories the rule excludes.
+  - **The gap the engine named is not one we can fill.** What it could not find was delivery
+    *tailored to a small firm*. This site's format is deliberately the opposite - one real task
+    per person, cross-sector, facilitated rather than taught to a syllabus - so the honest answer
+    to that query is that we do not do the thing being asked for. Writing a page that implies
+    otherwise would assert a tailoring the site does not offer.
+  - **Near-duplicate.** `agentic-ai-for-consultants`, `agentic-ai-for-finance-teams` and
+    `agentic-ai-for-public-sector-and-nhs-leaders` already hold the sector axis. A fourth is the
+    near-duplicate query variation rule 6 bars, and professional services is the closest of the
+    four to the three already published.
+- **Probe 2 is a demand signal rather than a content one, and it is the first of its kind in this
+  log.** Every other declined probe has been declined because the site already answers the question
+  or cannot win the field. This one is declined because **the field is answering a question we have
+  decided not to answer**: the aggregators returned evening courses (Forth Valley, 12 sessions of
+  7pm to 9pm), live-online half-days (Reed, a four-hour instructor-led Copilot course) and
+  term-time part-time formats, against our single 09:00 to 17:00 day. There is no page to write -
+  the answer is "a full day, in person" and that is already published on every surface - but the
+  volume of evening and half-day supply on a buyer-phrased query is a format observation for
+  Drummond, not a gap in copy. **Recorded as backlog 107, not acted on**: the loop does not invent
+  a format.
+- **Probes 1 and 3 are declined on the standing rule and need no new argument.** Probe 1's field is
+  ten vendor and consultancy blogs writing about their own product category, which fails WINNABLE
+  outright, and `agentic-ai-glossary` plus `what-is-an-agentic-bootcamp` already make the
+  distinction the engine spent its answer making. Probe 3's field is law firms and compliance
+  consultancies plus three `.pages.dev` microsites; it fails CONVERTING, because someone checking
+  whether the AI Act reaches them is doing due diligence rather than looking for a day in Oxford,
+  and `getting-an-ai-workflow-past-it-and-legal` already carries the adjacent argument.
+- **Zero citations across four questions. Reach, not coverage, for the twenty-fifth consecutive
+  cycle.** Nothing in these four results is a coverage gap: one is already written twice, one is a
+  question we answer and the engine did not reach, one does not convert, and one asks for something
+  the format deliberately is not.
+
 ## 2026-11-17 (02:00 GMT cycle) - FOUR FRESH QUESTIONS, ZERO CITATIONS, AND THE TWO COMMERCIAL-LOGISTICS PROBES ANSWERED ENTIRELY OFF COMPETITORS' OWN TERMS AND HELP-CENTRE PAGES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

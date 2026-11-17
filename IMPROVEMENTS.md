@@ -2502,9 +2502,138 @@ Status: `todo` · `blocked` (why) · `doing`
       optional field for a linked facilitator line rather than markup inside FAQ answers. Weigh it
       against what it buys - eight pages going from one inbound link to roughly five - before building
       it.
+    - **Cross-reference added 17 Nov 2026 (08:00 cycle), because this is the third time the same
+      measurement has been taken and the second time it has been written up as new: this item is a
+      rediscovery of backlog 24, which is `needs Drummond` and has been since 16 October.** Backlog 24
+      measured the same thing (then seven profiles, one inbound link each, counted the same way),
+      weighed **three** placements rather than two, and escalated the decision rather than the build.
+      The placement this item calls the cheapest honest version - a linked facilitator line on the
+      event page - is backlog 24's second placement, declined there on Drummond's own 4 August
+      instruction that the programme page's one job is the booking path. **The third placement, which
+      this item does not mention, is the one that settles it: the guide byline.** It is plain text
+      today, all 32 guides are his, and `articleSchema` already asserts the author as the `#person`
+      at `/team/drummond-gilbert/` - so linking it is one template line, adds 32 links and asserts
+      nothing new. Backlog 24 declined it anyway, and the reason is a positioning call the loop must
+      not make for him: 32 links anchored on his name to his own profile is what the 15 October
+      `/team/` diagnosis said not to chase, under the 9 October preference that the site read as a
+      team rather than as one person. **Verified again this cycle from the built site**:
+      `/team/drummond-gilbert/` has 3 inbound internal links, the other seven profiles have 1 or 2,
+      and the byline renders as `<p class="byline">By Drummond Gilbert . Updated ...</p>` with no
+      anchor. **So the honest status of both items is one question to Drummond, already on the record
+      in backlog 24, and no cycle should re-measure this a fourth time before he answers it.**
+
+107. `todo` **(needs Drummond, a format call and not a copy one; found 17 Nov 2026 in the 08:00
+    cycle, from an answer-engine probe)** - **the time-cost axis is the first probe in the GEO log
+    whose field answers a question this site has decided not to answer.** Asked *"can I do a
+    hands-on AI course without taking a whole day off work, evening or weekend AI training UK"*, the
+    engine returned evening courses (Forth Valley College, twelve sessions of 7pm to 9pm), live
+    online half-days (Reed, a four-hour instructor-led Copilot course), and term-time part-time
+    formats, against this site's single 09:00 to 17:00 day. **There is nothing to write**: the
+    answer - a full day, in person, in Oxford - is already published on every surface that answers
+    it, and it is correct. The observation is about supply, not copy: a buyer-phrased query about
+    avoiding a day out of the office returns a field full of formats we do not run.
+    **The loop does not invent a format**, so this is recorded and left. If Drummond ever wants the
+    objection answered rather than stated, that is a product decision (an evening or half-day
+    variant, or a sentence that argues the full day is the point) and the second of those two is
+    the only one the loop could ever ship. Do not re-probe this axis for a cycle's work: the result
+    is a decision for him, and re-running it will keep returning the same field.
 
 
 ## Shipped
+
+### 17 Nov 2026 (08:00 cycle) - a no-change cycle, decided on merit with the browser proved working. The best candidate found this cycle turns out to be the one question already sitting with Drummond as backlog 24, and the four fresh GEO axes returned no writable topic. Records, one new off-page target and two cross-references
+
+**Nothing was changed on any page.** No source file was touched, so `dist` is the baseline build and
+the figures below are that baseline. This entry exists so the sweep is not re-run.
+
+**Deploy and production state.** Local `HEAD` is `966d9fa` and equals `origin/main` after a fetch,
+which is the step-0 check this file opens with. Actions run **434** for that same SHA completed
+**success** at 02:15 UTC today, and nothing is queued or in progress, so no other cycle's deployment
+was running. **`build.txt` could not be polled**: the sandbox egress policy refuses
+`oxfordagentic.com` and `luma.com`, so production was read from the Actions API rather than from the
+live site, and no Luma fact was checked. No event fact was changed.
+
+**The browser ran, so the decline is on merit and not on capability.** Headless Chromium over six
+pages at 375px and 1280px - `/`, the next on-sale event page (Cohort 4), the Agentic programme page,
+`/guides/`, the most-cited guide and `/team/drummond-gilbert/`: **84 assertions, 0 failed**. 200s,
+one `h1` each, no sideways scroll, every `ld+json` block parses, titles present. Two third-party
+hosts are blocked by the sandbox and are the only requests that fail - `luma.com` and
+`www.googletagmanager.com` - which is the egress policy, not a page defect; the first pass counted
+them as errors and was corrected to report them separately.
+
+**Checks.** Build, link, schema and date checks all green, every figure identical to the 02:00
+baseline: 69 pages valid, 17 Event nodes, 22 FAQPage nodes, **1431** resolving internal graph
+references, 59 breadcrumb trails, all titles and descriptions unique, 58 sitemap entries, and
+`check:dates` clean on 58 indexable pages. The 14 third-party outbound links all fail for the egress
+reason above and are warn-only by design. `npm run check` was **not** run and is not claimed:
+backlog 70 records why it cannot run in a clean checkout.
+
+**The candidate worth a cycle, found and then correctly declined.** The sweep looked for the
+weakest-linked indexable pages and found the guide byline: `<p class="byline">By Drummond Gilbert .
+Updated ...</p>` is plain text on all 32 guides, while `articleSchema` already asserts
+`author` as the `#person` at `/team/drummond-gilbert/`. That is the **same defect class the 02:00
+cycle shipped for events** - the graph joins two things the page does not - it is one template line,
+it adds 32 internal links, and it asserts no new fact. **It was not shipped, because it is already
+on the record as Drummond's call**: backlog 24 weighed this exact placement on 16 October and
+declined it on a positioning ground the loop must not overrule, that 32 links anchored on his name
+to his own profile is what the 15 October `/team/` diagnosis said not to chase, under the 9 October
+preference that the site read as a team rather than as one person. Recorded as a cross-reference on
+**backlog 106**, which was written yesterday as a new finding and is a rediscovery of backlog 24:
+same measurement, three placements rather than two, and the decision already escalated. **Verified
+from the built site rather than from the ledger**: `/team/drummond-gilbert/` has 3 inbound internal
+links, the other seven profiles 1 or 2.
+
+**Swept for a defect worth a cycle and found none.** Inbound internal links counted for all 69 built
+pages (the one page at zero is `/team/josh-lawman/`, which is the deliberate 17 August redirect stub
+- `noindex`, canonical to `/team/`, out of the sitemap, and correct as it stands). `Course` and
+`CourseInstance` already carry `courseMode`, `courseWorkload`, dated instances and the full `Place`;
+`EducationEvent` already carries `organizer` and a Luma `sameAs`; `robots.txt` admits all sixteen
+named AI crawlers; the sitemap index and its 58 entries are consistent. The brief's **candidate 1**
+was verified fixed by reading `scripts/indexnow-ping.mjs`: `SINGLE_PAGE_SOURCES` maps
+`src/lib/home.ts` and `HomeSections.astro` to `/`. The brief's **candidate 2** is overtaken - the
+16 September, 15 October and 21 October sweeps have run, `check:dates` is clean today, and what
+remains is backlog 89 on 20 November and backlog 103 on 27 November. The brief's **candidate 3**
+needed an answer-engine gap and the four probes below found none.
+
+**Backlog 89 is smaller than it reads, and the correction is worth recording for the cycle that
+meets it on 20 November.** Its headline scope was nine sentences. Six of those were the guide
+closers, and they were retargeted at Cohort 4 on 16 November, so `check:dates --now=2026-11-20`
+against today's tree returns **6**, of which 2 are derived surfaces that self-heal. **The real prose
+scope on 20 November is four sentences in three event files**: Cohort 1's "Cohort 2 ran ... and
+Cohort 3 runs on Thursday 19 November 2026", two sentences on the Cohort 2 page, and Cohort 3's own
+capsule. **None was rewritten today**, for the reason backlog 103 records against itself: Cohort 3
+runs in two days, every one of those sentences is true this morning, and rewriting them now would
+publish an error to prevent one.
+
+**Search Console: unavailable, as every cycle since 24 August.** `fetch-search-console.mjs` reports
+no service account key, and `seo-data/` holds nothing newer than the 13 September reading. Nothing
+estimated.
+
+**GEO: four fresh axes, zero citations, no writable topic.** Terminology scepticism, time cost,
+compliance, and the legal-and-accountancy sector - none in the ~62 questions already logged. The
+result worth reading is **probe 4**, where the engine closed with *"I did not find a single provider
+that combines one-day, in-person, and tailored-to-small-firm delivery with clear current
+availability"* - the admission shape that carried two earlier guides into print - and it fails
+anyway: the field is `events.icaew.com` with five dated in-person sessions and `astranti.com` with
+one-day AI training sold separately to law and to accountancy, which is a professional body plus a
+sector specialist rather than a soft field, and what the engine could not find is *tailoring to a
+small firm*, which this format deliberately does not offer. **An engine admission is not by itself a
+topic**, and that is the finding. Reasoning for all four in `seo-data/geo-citations.md`.
+**Twenty-fifth consecutive cycle whose answer is reach, not coverage.**
+
+**No new guide** (0 this week so far, by `publishDate` in Monday-Sunday Europe/London weeks), and no
+Q&A refresh: candidate 3 required an answer-engine gap and there was none.
+
+**Off-page: one new target, the first in several cycles.** `reed.co.uk` (Reed Courses) - a UK course
+marketplace carrying third-party listings, same class as `cademy.io` and Eventbrite, which surfaced
+on the time-cost probe holding a featured-courses result. Recorded in `outreach/review-list.md`
+**as a candidate to price rather than a form to fill in**: whether it accepts a provider of this
+size, and on what terms, needs checking first and is likely paid. Nothing contacted, submitted or
+signed up for, and no account made. The other new domains are competitors or institutions and are
+listed there so they are not re-examined. **New: backlog 107**, from probe 2 - the first probe in
+this log whose field answers a question the site has decided not to answer (evening, half-day and
+live-online formats against our single full day). Nothing to write, and the loop does not invent a
+format, so it is a product note for Drummond.
 
 ### 17 Nov 2026 (02:00 cycle) - the Event nodes said a company runs the day and never said who. Each on-sale event now names its own facilitators as `performer`, resolving to the `Person` node its `/team/` profile already publishes - no copy changed, no new fact asserted, every event page's visible HTML byte-identical
 

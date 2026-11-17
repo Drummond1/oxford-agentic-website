@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **One new listing target, the first in several cycles, and it needs checking before it needs
+  approval: `reed.co.uk` (Reed Courses).** Found 17 Nov 2026 (08:00 cycle), from four answer-engine
+  probes. **Nothing contacted, submitted or signed up for, and no account made.**
+  - **Why it is a target and not a competitor.** It surfaced on the time-cost probe - *"can I do a
+    hands-on AI course without taking a whole day off work, evening or weekend AI training UK"* -
+    holding a featured-courses result and listing other providers' courses, including a four-hour
+    instructor-led Copilot course and a one-day live-online course capped at eight attendees. It
+    sells nobody's own training: it is a UK course marketplace carrying third-party listings, which
+    is the same class of surface as `cademy.io` and Eventbrite, both already on this list.
+  - **What needs checking first, and the loop cannot check it.** Whether Reed Courses accepts
+    listings from a provider of this size, and on what terms - it is likely a paid or partner
+    arrangement rather than a free submission, and the cost may not be worth one cohort. So this is
+    a candidate to price, not a form to fill in. Verify the current terms on Reed's own provider
+    pages before anything else.
+  - **The other new domains from this cycle are not targets**, recorded so they are not re-examined:
+    `events.icaew.com` and `icaew.com` (a professional body selling its own dated in-person AI
+    courses), `astranti.com` (a direct competitor with one-day AI training sold separately to law
+    and accountancy), `citylit.ac.uk`, `brainstation.io`, `forthvalley.ac.uk`,
+    `mediatraining.ltd.uk`, `functionalskillsuk.co.uk`, `nobleprog.co.uk` and `generalassemb.ly`
+    (competitors), `lancaster.ac.uk` and `learnsignal.com` (an institution and a sector publisher),
+    and the law-firm and consultancy blogs from the compliance probe. `cademy.io` and
+    `eventbrite.co.uk` appeared again and are both already here.
+  - **The standing asks are unchanged:** list the on-sale cohorts on **Eventbrite**, correct or
+    retire the 21 July **`allai.events`** record, and give the Organization node its first
+    third-party `sameAs` (a LinkedIn Company Page or a Luma calendar URL in `brand.social`).
+
 - **No new target this cycle, and the re-confirmation is worth one line because it is now measured on
   two more axes.** Found 17 Nov 2026 (02:00 cycle), from four answer-engine probes.
   **Nothing contacted, submitted or signed up for.**
