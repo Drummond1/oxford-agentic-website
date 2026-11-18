@@ -11,7 +11,7 @@ capsule: >-
   rather than for a future version of yourself who was never going to browse it.
 author: drummond-gilbert
 publishDate: "2026-09-02T20:00:00+01:00"
-updatedDate: "2026-09-02T20:00:00+01:00"
+updatedDate: "2026-11-18T14:30:00+00:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
@@ -52,4 +52,4 @@ Open whatever you built. Find the last time you went to it to answer a real ques
 
 If that date is further back than you expected, the system is not underused. It is finished, and it is telling you it was built for a reader who was never going to turn up.
 
-That is the premise the [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) starts from. You spend the day building one from your own material, for a reader that will actually do the reading, and you leave with it working rather than with a template to fill in later. No coding required.
+That is the premise the [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) starts from. You spend the day building one from your own material, for a reader that will actually do the reading, and you leave with it working rather than with a template to fill in later. No coding required, and less to keep than the one that stopped getting used.

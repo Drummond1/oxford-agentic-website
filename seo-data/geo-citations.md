@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-18 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ONE THAT MATTERS IS THE DECEMBER COHORT MISSING FROM ITS OWN DATED COMMERCIAL QUERY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, chosen to sit either side of
+this cycle's change: two on the **Second Brain** line, whose four guide closers this cycle edited, one
+**dated commercial** query for **Cohort 4 on 3 December**, and one on the **platform-memory** axis, which
+this log has never probed. **Production could not be read this cycle.** The sandbox egress policy refuses
+`oxfordagentic.com` and `luma.com` with a 403 to CONNECT, the search tool being the only route to the web,
+so no live page and no Luma fact was checked from here, deploy state came from the Actions API, and every
+event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | second brain workshop UK build from your own documents one day in person (the Second Brain commercial query, re-probed in a new phrasing) | **No - but a third party carried us**: `planomato.com` returned our own Second Brain Bootcamp copy as the first result | **`planomato.com/en/oxford/p/oxford-agentic-second-brain-bootcamp`**, `thinkproductive.co.uk`, `maven.com` (four separate workshops), `luma.com` (five listings, London/Birmingham 3-4 Jun 2026, passed), `eventbrite.com`, `humanitix.com`, `allai.events`, `williamwong.co` |
+| 2 | how to stop re-explaining my business to ChatGPT every conversation (platform-memory axis, never probed - and it is the Second Brain day's own premise in a buyer's words) | **No** | `customgpt.ai`, `jeffbullas.com`, `bluehost.com`, `intelligencebyintent.com`, `lilachbullock.com`, `aifirstsearch.pages.dev` (four pages), `effectiveaitools.pages.dev`, `smithstephen.com`, `click4assistance.co.uk`, `freeacademy.ai` |
+| 3 | one day hands-on AI bootcamp December 2026 UK in person business leaders (dated commercial query, the Agentic line, Cohort 4 on 3 December) | **No** | `innovationvisual.com` (six pages, and the engine's recommended answer: Manchester and London, 9 December, full-day, GBP 480), `salford.ac.uk` (16 December, GBP 1,200 + VAT), `eventbrite.co.uk` (two), `cademy.io`, `createwith.com` (four), `happeningnext.com`, `ailab.world`, `bilginc.com` |
+| 4 | is it safe to upload company documents to AI tools what can you put in (the exact question `is-it-safe-to-put-company-documents-in-a-second-brain` was written to answer) | **No** | `statusdraft-marketing.pages.dev`, `dash.dropbox.com`, `tomsguide.com`, `upguard.com`, `securityjourney.com`, `eset.com` (four pages), `ciso.inc`, `esecurityplanet.com`, `cio.com`, `vktr.com`, `leanlaw.co`, `cognetryx.com`, `wald.ai`, `toolnavs.com` |
+
+**Reading.**
+
+- **Probe 3 is the finding of this cycle, and it is a reach failure on the query class that converts.**
+  Cohort 4 has been on sale since 15 November, runs on **3 December at Worcester College**, and has its
+  own page, its own `EducationEvent` node and a `CourseInstance` that since this morning names its four
+  facilitators. Asked for exactly that - a one-day, in-person, hands-on AI day for business leaders in
+  the UK in December 2026 - the engine returned **nine other providers and not this site**, and made a
+  London and Manchester day on 9 December its recommended answer. **No Luma page of ours appeared
+  either.** This is the mirror image of the 08:00 probe six hours earlier, where the same query shape
+  aimed at **November** and the **Coding** line returned us third and made us the recommended answer.
+  The difference between the two is not the markup, which is now better on the December day than it was
+  on the November one: it is reach. **It is the sharpest argument yet for backlog 2b** - 23 indexed and
+  16 not, zero external links, `Organization.sameAs` still empty - and it is two weeks before the day
+  it costs.
+- **Probe 1: a third party is answering the Second Brain query in our words, and it is `planomato.com`
+  again.** Second sighting, recorded under the existing review-list entry rather than filed as new.
+  The engine quoted our own copy off it - *"a one-day, no-coding session in which you turn your own
+  meetings, files and messages into a structured second brain"* - and then said *"The listing I found
+  doesn't show a date."* That part is **not** a stale-listing failure: Cohort 2 has no confirmed date,
+  and this site says so in those words. The cost is subtler. A reader who wants this day is being given
+  it by a site nobody here controls, while `oxfordagentic.com` is absent from the answer entirely.
+- **Probe 2 is a genuine coverage gap, and it is deliberately not being filled this cycle.** The field
+  answers *"stop re-explaining your business"* with ChatGPT's own memory and custom-instructions
+  features, and that is honestly the right first answer for a searcher at that stage. The site nowhere
+  says why a stored memory feature is not the same thing as a second brain: a grep for "memory",
+  "custom instructions" and "Projects" across all 32 guides returns four mentions of the word and not
+  one of the objection. Filed as **backlog 114**. Not written here for two reasons: the standing
+  decision that Second Brain's constraint is demand and not ranking, so do not pile on its SEO content
+  expecting bookings; and the accuracy rule, because the answer turns on a third-party product's
+  retention and recall behaviour, which moves monthly and cannot be verified from a sandbox that
+  cannot open a page.
+- **Probe 4 confirms the guide is a reach problem and not a coverage one, and it is the fourth axis in
+  a row to fail CONVERTING.** We have published a dedicated guide on this exact question since 11
+  September. The field is security vendors, `.pages.dev` SEO microsites and two trade titles - no
+  institutional publisher, so nominally winnable - but the searcher wants a redaction checklist before
+  pasting one document, not a day in Oxford. The one thing the field does not say is our guide's own
+  framing, that a second brain is read **again and again** rather than pasted once. Nothing to write.
+- **Nothing in any of the four produced a guide candidate**, which is the expected and correct outcome
+  under the topic-probe rule. No new guide this week.
+
 ## 2026-11-18 (08:00 GMT cycle) - THE SITE WAS CITED, ON THE ONE QUERY CLASS THAT CONVERTS, AND THE ENGINE GOT BOTH OF THE NEXT TWO DAYS RIGHT OFF OUR OWN PAGES
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

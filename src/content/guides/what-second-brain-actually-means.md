@@ -11,7 +11,7 @@ capsule: >-
   question before booking anything is which problem it solves.
 author: drummond-gilbert
 publishDate: "2026-09-04T14:00:00+01:00"
-updatedDate: "2026-10-18T09:20:00+01:00"
+updatedDate: "2026-11-18T14:30:00+00:00"
 relatedProgrammes:
   - second-brain-bootcamp
 ---
@@ -48,6 +48,6 @@ Work backwards from the sentence you would use to complain about your own week.
 
 ## Where this one sits
 
-The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is squarely the second kind. One day in Oxford, built from your own material, and you leave with a second brain populated and connected to the tools you already use. No coding.
+The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) is squarely the second kind. One day in Oxford, built from your own material, and you leave with a second brain populated and connected to the tools you already use. No coding, and no attempt to be a task system as well.
 
 If, having read the above, your problem is actually the first kind, this is not your day, and it is better that you know that now than at eleven o'clock on the morning of it.

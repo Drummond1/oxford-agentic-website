@@ -2653,8 +2653,10 @@ Status: `todo` · `blocked` (why) · `doing`
     bump" against the gain of one freshness hint on three low-change pages. A cycle looking for sitemap
     work should not start here.
 
-113. `todo` (loop-actionable, **the half of this cycle's change deliberately not taken**; found and
-    measured 18 Nov 2026 in the 09:00 cycle) - **four Second Brain guide closers still end on a bare
+113. `done` 18 Nov 2026 (14:00 cycle), all four, each with a clause drawn from its own guide exactly as
+    this item required - detail in the Shipped entry, including the post-change census that shows zero bare
+    closers left on the site. Originally filed as: **(loop-actionable, the half of the 09:00 cycle's change
+    deliberately not taken**; found and measured 18 Nov 2026 in the 09:00 cycle) - **four Second Brain guide closers still end on a bare
     "no coding", and each wants a clause of its own rather than a seventh copy of the house pairing.**
     The 09:00 cycle swept the message-house rule that "no coding" is never left standing on its own
     and found **ten breaches**, all of them the last sentence of a closer that sells a bootcamp. Six
@@ -2679,7 +2681,156 @@ Status: `todo` · `blocked` (why) · `doing`
     ends *"Most need no coding."* The 24 Aug cycle ruled that a definition capsule is a neutral factual
     claim rather than sales copy, and that editing one for pattern-consistency is meddling. That holds.
 
+114. `todo` **(needs Drummond for the half that is a claim about a third-party product, and it is not a
+    guide; found 18 Nov 2026 in the 14:00 cycle, from an answer-engine probe)** - **the site nowhere
+    answers "isn't ChatGPT's memory enough?", which is the free alternative to the Second Brain day and
+    the form the buyer's own question now takes.**
+    - **The probe.** *"How to stop re-explaining my business to ChatGPT every conversation"* is the
+      Second Brain day's premise in a buyer's words - `second-brain-for-ai-vs-note-taking` puts it as
+      *"every conversation starts from zero"* and `what-second-brain-actually-means` as *"I keep
+      explaining the same things to a machine that should already know them"*. The engine cited **none
+      of this site**. What it returned was the platform's own answer: turn memory on, write custom
+      instructions, use Projects for reference material, then audit what is stored. The field is
+      `customgpt.ai`, four `.pages.dev` SEO microsites, `bluehost.com`, `jeffbullas.com` and similar -
+      no institutional publisher, so nominally winnable.
+    - **The gap, measured.** A grep for "memory", "custom instructions" and "Projects" across all 32
+      guides returns **four mentions of the word "memory" and not one instance of the objection**: a
+      model with no memory of you, your own memory doing the rest of the work in a note system, using
+      memory as a to-do list, and describing a colleague's workflow from memory. The site argues that
+      a second brain is a supply of context; it never says why a stored memory feature is not that.
+    - **Why nothing was written this cycle, and both reasons matter.** (a) **The standing decision**
+      that Second Brain's constraint is demand and not ranking, and not to pile on its SEO content
+      expecting bookings. (b) **The accuracy rule.** The honest answer turns on what a third-party
+      product actually retains and recalls, which moves monthly and which the engine's own sources
+      contradict each other on - one claimed a limit this probe could not verify, from a promotional
+      page. A sandbox that cannot open a web page must not write it.
+    - **The cheapest honest version, if it is ever taken**, is not a guide. It is one or two Q&A
+      entries on the Second Brain programme page, written as *what the day gives you that a memory
+      feature does not* rather than as a claim about anyone's product - the distinction the site
+      already owns is **who the material is written for** and **that you can read and change it**,
+      both published. Even that wants Drummond's eye, because it names a competitor's feature on the
+      page that takes the money.
+    - **Do not re-pitch it as a guide** without new evidence that the searcher converts. The searcher
+      in this probe is at the free-fix stage and the field's first answer is correct for them.
+
+
 ## Shipped
+
+### 18 Nov 2026 (14:00 cycle) - the four Second Brain closers that still ended on a bare "no coding" each gain a clause of their own, drawn from that guide's own argument rather than a seventh copy of the house pairing. The sweep the 09:00 cycle opened is now closed: zero bare closers on the site. Four sentences, four files, 8 of 209 built files
+
+**This is backlog 113, taken in exactly the form that item specified** - *"four sentences, four files, one
+clause each, every clause restating something that guide already publishes"*, and *"do not take it in the
+same cycle as any other guide-copy change"*. Nothing else in this commit touches a guide.
+
+**Why four different clauses and not the approved pairing again.** The 09:00 cycle shipped *"No coding
+required, and nothing hand-waved"* to six Oxford Agentic Bootcamp closers and deliberately left these four,
+writing the reason into backlog 113: that pairing answers a reader worried a workflow will fail quietly,
+which is the Agentic day's own reliability argument, and reaching for it on a day about organising your own
+material would be pattern-matching. The eight guides that already complied show the house habit is the
+opposite - pair it with the thing **that guide's** reader is worried about - and the two compliant Second
+Brain guides are the models: `second-brain-for-ai-vs-note-taking` (*"and no requirement to have kept good
+notes beforehand"*, because that guide is about whether notes are enough) and
+`keeping-a-second-brain-from-going-stale` (*"and nothing hand-waved"*, which works **there** because that
+guide is about decay).
+
+**The four, and the sentence in each guide that each clause restates.**
+
+| Guide | What the closer now says | Where the clause comes from, in that guide |
+|---|---|---|
+| `how-long-to-build-a-second-brain` | "No coding required, **and no months of capture first**." | Its whole thesis: *"A second brain for AI is not grown. It is written"*, against a standard answer of weeks or months of capture. |
+| `is-it-safe-to-put-company-documents-in-a-second-brain` | "No coding required, **and nothing in it you did not choose to bring**." | The same paragraph's own first sentence: *"it is worth running this sort before you arrive and bringing what passes it"*. |
+| `why-your-second-brain-stopped-getting-used` | "No coding required, **and less to keep than the one that stopped getting used**." | Its bolded finding: *"**You keep less, not more.** ... Most of what sank the old system does not belong in the new one."* |
+| `what-second-brain-actually-means` | "No coding, **and no attempt to be a task system as well**." | Its central distinction: the day is *"squarely the second kind"*, and *"They are just not the same day"*. It also reads into the disqualifying paragraph that already follows it. |
+
+**No new claim is made in any of the four**, which is the test the change had to pass, and the one backlog
+113 wrote in capitals: *"do not invent a Second Brain capability to fill the clause"*. Each clause is a
+restatement of a sentence already published on the same page. `what-second-brain-actually-means` keeps its
+shorter *"No coding,"* opening rather than being normalised to *"No coding required,"*, because the only
+defect was the clause standing alone and `second-brain-for-ai-vs-note-taking` shows that form is the house's
+own.
+
+**The census, taken whole across all 32 guides after the change.** **22 mentions of "no coding" in total.
+Zero bare closers remain.** Twenty are paired. The two that are not are both correct and are recorded here so
+no later cycle re-derives them as defects:
+- `what-is-an-agentic-bootcamp`'s capsule ends *"Most need no coding."* - **exempt on the 24 August ruling**
+  that a definition capsule is a neutral factual claim rather than sales copy, and editing one for
+  pattern-consistency is meddling. That holds.
+- `questions-to-ask-before-booking-ai-training` contains *"No coding is required."* **mid-paragraph**, as
+  the sixth of ten answers about our own day, immediately followed by *"A paid AI plan helps but is not
+  essential"* and four more qualifications. It is not a closer and the clause is not standing alone, which
+  is why the 09:00 census of ten breaches correctly excluded it.
+
+**Blast radius, measured whole-site against a sha256 snapshot of the pre-change build, then again against a
+second build from a stash of the source.** **8 of 209 files in `dist` differ, none added, none removed**: the
+four guides, `/guides/`, `llms-full.txt` and the two sitemaps. A token-level diff of every one of the eight
+shows **nothing moved that was not meant to**: on each guide, one clause, the byline date, and the
+`dateModified` in both JSON-LD nodes; on `/guides/` the **entire** difference is two card labels, "October"
+and "September" to "November"; `llms-full.txt` carries the four clauses; `sitemap-0.xml` moves five `lastmod`
+values, the four guides and `/guides/` itself. The other 28 guides, all three programme pages, every event
+page, `/` and `llms.txt` are byte-identical.
+
+**`updatedDate` bumped on all four**, to `2026-11-18T14:30:00+00:00`. That is this loop's standing instruction
+for any content entry touched, and it is honest here for the same reason it was six hours ago: this is body
+copy a reader sees, not a meta field.
+
+**Checks.** `npm run build` green: **3,529 internal links across 69 pages resolve**, schema **69 pages valid -
+17 Event nodes (10 top-level, 7 nested entity), 22 `FAQPage`, 128 offset-bearing publication dates, 1,501
+resolving internal graph references, 59 breadcrumb trails, all titles and descriptions unique**, both date
+rules green. **Every figure is identical to the 09:00 baseline**, which is the expected result: this change
+adds no node and moves no link. `npm run check:flags` green on the all-on and all-off builds. The 14 outbound
+warnings are the sandbox egress policy, identical on the baseline. **`npx astro check` was not run**, and that
+is a gap worth stating rather than glossing: `@astrojs/check` is not a project dependency and it prompts to
+install, which would be an unrelated change to `package.json`. This cycle touches **no `.astro` and no `.ts`
+file at all** - four markdown content files and nothing else - so there is nothing in the change set for it to
+type-check. The frontmatter that did move is schema-validated by the content collections during
+`npm run build`, which passed.
+
+**Before and after, in a headless browser, local preview against local preview** at **375, 768 and 1280px** on
+all four pages, built from the stash and then from the change: **168 assertions, 0 failed**. **Horizontal
+overflow 0 at every width on every page, both sides.** The closer paragraph grows by exactly one line (29px)
+at 375px on all four, and at 768 and 1280px on three of the four. The rendered clause was asserted present in
+the live DOM on all twelve after-combinations and asserted **absent** on all twelve before-combinations, which
+is what proves the two builds are the two states. Every JSON-LD block parses in the live DOM, each page has
+exactly one `h1`, and no page has a heading-level skip. Screenshots at 375px and 1280px of all four closers,
+checked as images: the clause lands in the paragraph as written, and on `what-second-brain-actually-means` it
+reads into the *"if your problem is actually the first kind, this is not your day"* paragraph that follows.
+
+**IndexNow, and for once there is nothing to report against backlog 85.** The dry run over this change set
+prints **5 URLs** - the four guides and `/guides/` - which is exactly the five HTML files that changed. Guide
+markdown files map one-to-one in the IndexNow map, so this change set never reaches the whole-site bucket that
+produced the 58-for-2 over-submission recorded this morning.
+
+**Production could not be read, as on every cycle since 30 October.** The sandbox egress policy answers **403
+to CONNECT** for `oxfordagentic.com`, `www.oxfordagentic.com` and `luma.com`, confirmed directly this cycle
+against the proxy's own status endpoint, so the Actions API stood in: **Deploy to GitHub Pages run 443 and CI
+run 406 both `success` on `ef97a12`**, which is `origin/main` and the HEAD this cycle started from, with
+nothing queued or in progress. **No event fact was read, invented or changed** - no date, venue, capacity,
+price or availability was touched, and no consent-gated flag was moved. The one event sentence inside the
+change set, *"Cohort 1 ran on 21 October 2026 at the Pitt Rivers Museum, and dates for the next cohort are
+being confirmed"*, appears on two of the four pages and is **character-identical** before and after.
+
+**GEO: four probes, zero citations, and one of them is the sharpest argument for backlog 2b this log holds.**
+Asked for a one-day, in-person, hands-on AI day for business leaders in the UK in **December 2026** - which is
+Cohort 4, on sale since 15 November, running 3 December at Worcester College - the engine returned **nine
+other providers and not this site**, and made a 9 December Manchester and London day its recommended answer.
+No Luma page of ours appeared either. Six hours earlier the **same query shape**, aimed at November and the
+Coding line, returned this site third and made it the recommended answer. The difference is not markup, which
+is now better on the December day than it was on the November one: it is reach, and the day it costs is two
+weeks away. The Second Brain commercial query returned **`planomato.com` quoting our own copy** while
+`oxfordagentic.com` was absent from the answer entirely - third sighting, recorded under the existing entry.
+The platform-memory axis is **new, and it is a real coverage gap**, filed as backlog 114 and deliberately not
+written. The document-safety probe confirms that guide is a reach problem and not a coverage one. Full fields
+and reasoning in `seo-data/geo-citations.md`.
+
+**Off-page: no new target, and the absence is the finding.** Both entries added to
+`outreach/review-list.md` resolve to asks already on that list - Eventbrite, the `allai.events` record, and
+one real `Organization.sameAs` - now with a date attached to them. Nothing contacted, nothing submitted,
+nothing paid for. Neither `planomato.com` nor any competitor listing was opened: they do not resolve from
+this sandbox.
+
+Search Console unavailable, as every cycle since 24 August: no credentials, and no export in `seo-data/`
+newer than the 24 August baseline. Nothing estimated. **No new guide this week**, and none of the four probes
+produced a candidate.
 
 ### 18 Nov 2026 (09:00 cycle) - ten guide closers end on the one clause the message house says must never stand alone. The six that sell the Agentic day now carry the approved pairing; the four Second Brain ones want their own clause and are filed. Six sentences, six files, 10 of 209 built files
 

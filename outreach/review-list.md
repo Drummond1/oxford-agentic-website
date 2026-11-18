@@ -11,6 +11,37 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Cohort 4 is absent from its own dated commercial query, two weeks out, and nine competitors are
+  not.** Found 18 Nov 2026 (14:00 cycle). Asked *"one day hands-on AI bootcamp December 2026 UK in
+  person business leaders"*, the engine returned `innovationvisual.com` (Manchester and London, 9
+  December, full-day, GBP 480) as its recommended answer, plus `salford.ac.uk` (16 December),
+  `eventbrite.co.uk`, `cademy.io`, `createwith.com`, `happeningnext.com`, `ailab.world` and
+  `bilginc.com`. **No page of ours appeared, and no Luma page of ours either.** Six hours earlier the
+  same query shape, aimed at November and the Coding line, returned this site third and made it the
+  recommended answer, so the difference is reach rather than markup.
+  - **No new target here, and that is the point: every remedy is already on this list.** This is the
+    standing ask - list the on-sale cohorts on **Eventbrite**, correct or retire the 21 July
+    **`allai.events`** record, and give the `Organization` node one real **`sameAs`** (a LinkedIn
+    Company Page or a real Luma calendar URL) - arriving with a date attached to it. The day it
+    costs is 3 December.
+  - **Not checked.** `oxfordagentic.com` and `luma.com` are both refused by this sandbox's egress
+    policy, so neither our own page nor any competitor listing was opened; the field above is the
+    search tool's summary only.
+- **Third sighting for `planomato.com`, and this time it stood in for us rather than beside us.**
+  Found 18 Nov 2026 (14:00 cycle). Asked *"second brain workshop UK build from your own documents one
+  day in person"*, the engine's first result was
+  `planomato.com/en/oxford/p/oxford-agentic-second-brain-bootcamp`, quoting our own copy back - *"a
+  one-day, no-coding session in which you turn your own meetings, files and messages into a structured
+  second brain connected to the tools you already use"* - while `oxfordagentic.com` did not appear in
+  the answer at all. The engine added *"The listing I found doesn't show a date"*, which is **correct
+  and not a stale-listing failure**: Second Brain Cohort 2 has no confirmed date and this site says so.
+  - **Recorded under the existing `planomato.com` entry below, not filed as a new target.** The ask is
+    unchanged and now has a second reason behind it: check whether the record is accurate and current,
+    and **whether it is claimable**. If it is a real, controllable profile it is a candidate for the
+    `Organization` node's `sameAs`, which still has no third-party identity at all (backlog 2b) - and
+    it is demonstrably a page an engine reaches when ours is not.
+  - **Not checked.** `planomato.com` does not resolve from this sandbox either.
+
 - **The site was cited, the engine got the next two days right, and the two third-party pages beside
   us in that answer are both carrying the 19 November cohort: `aicentreforbusiness.co.uk` (already on
   this list) and `novaria.ai` (new).** Found 18 Nov 2026 (08:00 cycle), in a dated commercial probe.
