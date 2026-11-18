@@ -59,7 +59,28 @@ for (let count = nextDates.length; count > 0; count -= 1) {
 ---
 
 <Base
-  pageTitle="Bootcamps"
+  {/*
+   * The machine title, not the nav label. `pageTitle` is the only thing
+   * `Base.astro` composes a <title> from (src/layouts/Base.astro:50), so it also
+   * sets og:title, twitter:title and `WebPage.name` - four surfaces. This page
+   * passed "Bootcamps", which is the PRD §11 nav label and names nothing a buyer
+   * types: no "AI", no format, and "Oxford" only inside the brand suffix. That is
+   * the defect the 15 November cycle fixed on /testimonials/ ("Outcomes" ->
+   * "What attendees said"), on the page where someone picks a programme.
+   *
+   * /events/ is the model, and it is deliberately not copied word for word:
+   * it holds "AI bootcamp dates in Oxford" because its job is when, and this
+   * page's job is which. No count, for the same reason `formatsLine` below is
+   * guarded by `programmes.length === 3` - a fourth line must not make the
+   * title false. "One-day" is the differentiator a four-week programme cannot
+   * claim and the modifier the buyer queries in the GEO log keep using.
+   *
+   * The nav label, the breadcrumb crumb, the hero h1 ("The programmes") and the
+   * `CollectionPage` name are all left reading "Bootcamps" / their own words -
+   * /events/ keeps `collectionPageSchema('Events', ...)` beside its own buyer
+   * title, so this matches the shape already on the site. One word puts it back.
+   */}
+  pageTitle="One-day AI bootcamps in Oxford"
   description={description}
   path={paths.programmes()}
   ogImage={ogPathFor(paths.programmes())}

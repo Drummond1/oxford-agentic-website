@@ -2714,7 +2714,97 @@ Status: `todo` · `blocked` (why) · `doing`
       in this probe is at the free-fix stage and the field's first answer is correct for them.
 
 
+115. `todo` (loop-actionable for two of the three, **a copy call for the third**, and measured in full so
+    no cycle re-derives it; found 18 Nov 2026 in the 20:00 cycle while fixing `/bootcamps/`) - **three
+    more indexable pages still publish a nav label as their machine title.** `pageTitle` is the only
+    thing `Base.astro` composes a title from, so each of these sets `<title>`, `og:title`,
+    `twitter:title` and `WebPage.name` at once. The full census of `pageTitle=` across `src/pages`,
+    taken this cycle:
+    - **`/guides/` → "Guides"**, on the hub for all 32 guides, whose own description is already written
+      for a buyer (*"Practical writing for business leaders on agentic AI workflows, second brains for
+      AI and shipping software with coding agents"*). The strongest of the three: it is the site's
+      largest internally linked cluster and the title names neither the subject nor the audience.
+    - **`/team/` → "Team"** and **`/about/` → "About"**. Weaker, and genuinely arguable: a reader
+      searching the brand plus "team" or "about" types those exact words, so the nav label is closer to
+      being the right title here than it was on `/testimonials/` or `/bootcamps/`.
+    - **Not a defect and not in scope:** `/privacy/` ("Privacy and cookies"), `/apply/`, `/404`, and the
+      four unlisted pages, all of which are either already descriptive or noindex.
+    **Do not sweep all three in one cycle.** The two precedents (15 Nov `/testimonials/`, 18 Nov
+    `/bootcamps/`) each took one page, each kept the nav label, the breadcrumb, the `h1` and the
+    `CollectionPage` name untouched, and each measured a head-only diff. `/guides/` is the one worth
+    taking on its own merits; `/team/` and `/about/` want a reason better than consistency, and if a
+    cycle cannot write one it should say so here and close them.
+
+
 ## Shipped
+
+### 18 Nov 2026 (20:00 cycle) - the page where a buyer picks a programme published the nav label as its machine title, on four surfaces. The same defect the 15 November cycle fixed on `/testimonials/`, one string, 1 of 209 built files, and the rendered body byte-identical
+
+**The defect, measured on the built site.** `src/pages/bootcamps/index.astro` passed
+`pageTitle="Bootcamps"`, and `pageTitle` is the **only** thing `Base.astro` composes a title from
+(`src/layouts/Base.astro:50`), so the PRD §11 nav label was doing duty as the machine title on four
+surfaces at once:
+
+| surface | before | after |
+|---|---|---|
+| `<title>` | `Bootcamps - Oxford Agentic` | `One-day AI bootcamps in Oxford - Oxford Agentic` |
+| `og:title` | `Bootcamps - Oxford Agentic` | `One-day AI bootcamps in Oxford - Oxford Agentic` |
+| `twitter:title` | `Bootcamps - Oxford Agentic` | `One-day AI bootcamps in Oxford - Oxford Agentic` |
+| `WebPage.name` | `Bootcamps - Oxford Agentic` | `One-day AI bootcamps in Oxford - Oxford Agentic` |
+
+"Bootcamps" names nothing a buyer types: no **AI**, no format, and **Oxford** only inside the brand
+suffix. This is `/bootcamps/`, whose own source comment calls it *"the page where someone picks a
+programme"*, which carries the `CollectionPage` and the three programme rows, which takes **71**
+inbound internal links from 67 pages, and which Google's 24 August index-coverage report put in the
+"Discovered - currently not indexed" list along with the three programme pages under it.
+
+**This is the 15 November precedent applied to its obvious second instance.** That cycle changed
+`/testimonials/` from `pageTitle="Outcomes"` to `"What attendees said"` on exactly this reasoning and
+exactly these four surfaces. The census that should have come with it was never taken; it is now, and
+is backlog 115 - `/guides/`, `/team/` and `/about/` still pass bare nav labels, and those are weighed
+there rather than swept in here.
+
+**The wording, and what it deliberately is not.** `/events/` is the model and is **not** copied: it
+holds *"AI bootcamp dates in Oxford"* because its job is *when*, and this page's job is *which*, so
+the two stay distinct and `check-schema`'s uniqueness rule still passes across all 69 pages. **No
+count**, for the same reason `formatsLine` ten lines below is guarded by `programmes.length === 3`: a
+fourth line must not make the title false. **"One-day"** is the differentiator a four-week programme
+cannot claim, it is the modifier the buyer queries in `geo-citations.md` keep using (*"one day
+hands-on AI bootcamp ... in person"*), and it is already the page's own first clause in prose
+(*"Three one-day bootcamps in Oxford"*). 47 characters with the brand suffix, inside the SERP limit
+`check-schema.mjs` measures. Nothing new is asserted: every word of it is published on the page.
+
+**What was deliberately not touched.** The nav label, the breadcrumb crumb, the hero `h1` (*"The
+programmes"*) and `collectionPageSchema('Bootcamps', ...)` all still read as they did - `/events/`
+keeps `collectionPageSchema('Events', ...)` beside its own buyer-facing title, so this matches the
+shape already on the site rather than inventing one. One word puts it back if Drummond wants the
+title to match the nav.
+
+**Measured, not inferred.** 1 of 209 files in `dist` differs against a sha256 snapshot taken before
+the rebuild, none added or removed: `dist/bootcamps/index.html`. Within that file the `<body>` is
+**byte-identical**, 19,918 characters each way; the `<head>` grows 84 characters; the old string
+occurs **0** times and the new one **4**, which is the table above. Build, link (3,529 internal links
+across 69 pages), outbound, schema (69 pages valid, 17 Event, 22 FAQPage, 1,501 resolving graph
+references, 59 breadcrumb trails, all titles and descriptions unique) and both date checks green,
+with **every figure identical to this cycle's own pre-change baseline**. `astro check` not run: it
+needs two dependencies this repo does not carry, which is backlog 70. IndexNow dry run over the real
+change set submits **1 URL**, `https://oxfordagentic.com/bootcamps/`, which is exactly the one file
+that moved - the page-source regex matches this path, so none of backlog 85's four over-submission
+branches is reached.
+
+**Browser, headless Chromium, 42 assertions and 0 failures.** `/bootcamps/`, `/` and `/events/` at
+375, 768 and 1280px: every page 200, **zero horizontal overflow at every width**, and on
+`/bootcamps/` the new title asserted on all three head surfaces, the `h1` still *"The programmes"*,
+the nav label and the breadcrumb crumb still *"Bootcamps"*, and the three programme rows intact.
+`/events/` and `/` titles asserted unchanged, because a shared layout is where a title change would
+leak. Full-page screenshots at 375 and 1280px read exactly as before, which is what a head-only
+change should look like.
+
+**What this does not buy, stated as plainly as the 15 November entry stated it.** Nineteen
+consecutive cycles say reach, not coverage. A correct title on a page Google has discovered and never
+crawled buys nothing until it is crawled, and the remedy for that is backlog 2b and the Luma and
+Eventbrite asks in `outreach/review-list.md`, all of them Drummond's. What it buys is that the page is
+right on the day it is, and that the four surfaces agree with the page they describe.
 
 ### 18 Nov 2026 (14:00 cycle) - the four Second Brain closers that still ended on a bare "no coding" each gain a clause of their own, drawn from that guide's own argument rather than a seventh copy of the house pairing. The sweep the 09:00 cycle opened is now closed: zero bare closers on the site. Four sentences, four files, 8 of 209 built files
 

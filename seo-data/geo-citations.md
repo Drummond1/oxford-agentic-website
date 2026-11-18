@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-18 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE QUERY A READER WILL ASK TOMORROW MORNING WAS ANSWERED BY TWO COHORTS THAT HAVE ALREADY RUN
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, all on axes this log has never
+probed: a **role** axis (operations manager), an **incumbency** axis (a team that already has Microsoft 365
+Copilot), a **missed-the-last-one** commercial query, and a **solo-buyer** axis. **Production could not be
+read this cycle.** `oxfordagentic.com` does not resolve from here and `luma.com` is refused, with the search
+tool the only route to the web, so no live page and no Luma fact was checked, deploy state came from the
+Actions API, and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | AI training for an operations manager with repetitive manual processes UK one day in person hands-on (role axis, never probed) | **No** | `aiawareness.ai` (two formats, on-site from GBP 1,795 + VAT for up to 10), `pointacademy-co-uk.pages.dev` (three pages), `innovationvisual.com` (three pages), `cademy.io`, `brainstation.io`, `acuitytraining.co.uk`, `bilginc.com`, `nobleprog.co.uk`, `ipsofacto.uk.com`, `aiaware.io`, `london.theaisummit.com` |
+| 2 | we already have Microsoft 365 Copilot do we still need agentic AI training for our team (incumbency axis, never probed) | **No** | `learn.microsoft.com` (five pages), `sharegate.com`, `office365itpros.com`, `proserveit.com`, `themissinglink.com.au`, `nexacu.com.au`, `centrumxp.pl`, `cloudthat.com`, `aldridge.com`, `notes.kodekloud.com` |
+| 3 | missed the November Oxford agentic AI bootcamp when is the next cohort December 2026 how to book (the question a reader has from tomorrow morning) | **No - and both pages of "ours" it read are passed cohorts**: `luma.com/oxfordagentic2` (16 Sept) and `luma.com/k7c2rm5s` (21 July) | `sbs.ox.ac.uk`, `lifelong-learning.ox.ac.uk` (two), `allai.events`, `simplilearn.com` (two), `certifications.sbs.ox.ac.uk`, `help.datasciencedojo.com` (two), `learnersink.com`, `pulse.bot`, three `groups.google.com` OxML threads |
+| 4 | is a one day AI bootcamp worth it for a freelancer or solo consultant one person business UK build your own agent (solo-buyer axis, never probed) | **No** | `maven.com` (six separate courses), `eventbrite.co.uk`, `eventbrite.com`, `luma.com` (another organiser's two-hour workshop), `ai.pipdecks.com` (two), `ivee.jobs`, `highintentlabs-website-org.pages.dev`, `mindstudio.ai`, `syncni.com`, `anicca.co.uk`, `diginius.com` |
+
+**Reading.**
+
+- **Probe 3 is the finding, and it is the ninth recording of the same failure in the single worst
+  week for it.** Cohort 3 runs tomorrow. From Friday morning the reader who wanted that day and
+  missed it asks exactly this question, and the engine answered it by reading **two cohorts that have
+  already run** - *"the Luma page ... doesn't show a date"* - and then concluded ***"I couldn't find a
+  confirmed December 2026 date"***. Cohort 4 is on sale, runs on 3 December at Worcester College,
+  and publishes that date in its own `EducationEvent` node, in `/events/`'s meta description, in the
+  footer of all 58 indexable pages and on the homepage card an engine does retrieve. None of it was
+  read. **No page of this site appeared at all.** The remedy is not more markup: it is the two-line
+  Luma edit and the Eventbrite listing already costed in `outreach/review-list.md`, both of which
+  need Drummond, and it is backlog 2b.
+- **Probe 2 is declined, and on the cleanest WINNABLE failure since the hallucination-control axis.**
+  Five of the citations are `learn.microsoft.com` - the platform vendor, writing about its own
+  product, which is the category the topic rule names - and the rest are Copilot resellers and
+  managed-service blogs. The converting half fails too: the buyer in that question is an IT or L&D
+  function choosing a training programme for a department, not a person booking a seat.
+- **Probe 1 is declined on coverage, and the engine's own closing sentence is why.** It ended by
+  telling the reader to *"ask providers whether they'll tailor the exercises to your actual
+  processes"*, and it reported that **none** of the sixteen results addressed automating a specific
+  repetitive process. That is this format's entire premise - one real task from your own work - and
+  it is published on every commercial surface the site has. Writing a page for the operations-manager
+  phrasing of it would be a near-duplicate of `/guides/how-to-choose-your-first-agentic-task/` with a
+  job title in the title, which is the thin-variant pattern the standing decision bans.
+- **Probe 4 fails CONVERTING, and the field's own verdict is the argument.** It concluded that a day
+  is *"worth it only if you already have a concrete workflow to automate"* and that otherwise *"free
+  tutorials could get you to the same place"* - correct advice for that searcher, and the published
+  answer to the first half is our own `how-to-choose-your-first-agentic-task`. A solo consultant
+  weighing a day against free tutorials is the price-sensitive end of the market this site does not
+  write for.
+- **Nothing in any of the four produced a guide candidate**, which is the expected and correct outcome
+  under the topic-probe rule. No new guide this week.
+- **One competitor fact worth recording and NOT worth writing from.** Probe 3 returned a
+  `lifelong-learning.ox.ac.uk` listing the search tool summarised as *"Agentic Workflows: Design,
+  Build, and Deploy Enterprise AI Agents"*, online, running **30 November to 11 December 2026**. If
+  that is right, the University's own continuing-education arm now sells in this exact vocabulary, a
+  second Oxford-branded competitor beside Saïd's programme. **It is second-hand from a search summary
+  and the host does not resolve from this sandbox**, so it is recorded here and in
+  `outreach/review-list.md` as unverified, nothing on the site mentions it, and no cycle should treat
+  it as a fact until someone with a browser opens the page. Same rule as backlog 109.
+
 ## 2026-11-18 (14:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ONE THAT MATTERS IS THE DECEMBER COHORT MISSING FROM ITS OWN DATED COMMERCIAL QUERY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

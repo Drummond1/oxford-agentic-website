@@ -11,6 +11,44 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The ninth recording of the stale-Luma failure, and it now has a date on it: tomorrow.** Found
+  18 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for, and the loop cannot
+  edit Luma.** Asked *"missed the November Oxford agentic AI bootcamp when is the next cohort
+  December 2026 how to book"* - the question a reader who wanted Cohort 3 has from Friday morning -
+  the engine read **`luma.com/oxfordagentic2`** (16 September) and **`luma.com/k7c2rm5s`** (21 July),
+  both **passed**, said *"the Luma page ... doesn't show a date"*, and concluded ***"I couldn't find
+  a confirmed December 2026 date"***. No page of this site appeared.
+  - **No new target, and no new ask.** This is the same two-line Luma edit costed on 16 and 17
+    November, plus the Eventbrite listing and one real `sameAs`. What is new is the timing: Cohort 3
+    runs tomorrow, so from 19 November the two listings answering this question are joined by a
+    third passed cohort, and the only bookable Agentic day is 3 December. **One line at the top of
+    each passed cohort's Luma description** - that the day has run, and where the next one is -
+    is the single cheapest thing on this list, and it is also two external links to a domain that
+    has none.
+  - **Unverified competitor fact from the same probe, recorded so a later cycle does not spend a
+    probe rediscovering it, and NOT to be written from.** The search tool summarised a
+    `lifelong-learning.ox.ac.uk` listing as *"Agentic Workflows: Design, Build, and Deploy
+    Enterprise AI Agents"*, online, **30 November to 11 December 2026**. If right, the University's
+    continuing-education arm is now selling in our exact vocabulary - a second Oxford-branded
+    competitor beside Saïd's £1,500 programme, which STATE.md records as the main one. The host does
+    not resolve from this sandbox, so this is second-hand and unconfirmed. **Ten minutes with an
+    unblocked browser settles it**, the same close as backlog 109. Institutional, so not an outreach
+    target either way.
+  - **No contactable target in four probes.** Everything else the four returned is a competitor's own
+    course page (`aiawareness.ai`, `pointacademy-co-uk.pages.dev`, `ipsofacto.uk.com`, `aiaware.io`,
+    `acuitytraining.co.uk`, `innovationvisual.com`, `nobleprog.co.uk`, `brainstation.io`,
+    `anicca.co.uk`, `diginius.com`, `syncni.com`, `ai.pipdecks.com`), a platform vendor writing about
+    its own product (`learn.microsoft.com` five times, `mindstudio.ai`), a reseller blog
+    (`sharegate.com`, `proserveit.com`, `office365itpros.com`, `themissinglink.com.au`,
+    `nexacu.com.au`, `cloudthat.com`, `aldridge.com`), an institutional publisher (`sbs.ox.ac.uk`,
+    `lifelong-learning.ox.ac.uk`, `certifications.sbs.ox.ac.uk`), a throwaway microsite, or a host
+    already on this list (`allai.events`, `eventbrite.co.uk`, `luma.com`, `maven.com`, `cademy.io`,
+    `learnersink.com`, `datasciencedojo.com`, `ivee.jobs`). **`maven.com` held six of seventeen
+    results on probe 4** - six separate one-day or short agent-building courses by different
+    organisers - which is the clearest sighting yet of where the solo-buyer end of this market
+    transacts; it is already on this list and the standing note that we do not write for that end of
+    the market is unchanged.
+
 - **Cohort 4 is absent from its own dated commercial query, two weeks out, and nine competitors are
   not.** Found 18 Nov 2026 (14:00 cycle). Asked *"one day hands-on AI bootcamp December 2026 UK in
   person business leaders"*, the engine returned `innovationvisual.com` (Manchester and London, 9
