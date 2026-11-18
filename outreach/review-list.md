@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The site was cited, the engine got the next two days right, and the two third-party pages beside
+  us in that answer are both carrying the 19 November cohort: `aicentreforbusiness.co.uk` (already on
+  this list) and `novaria.ai` (new).** Found 18 Nov 2026 (08:00 cycle), in a dated commercial probe.
+  **Nothing contacted, submitted or signed up for.**
+  - **What happened, and it is the opposite of the seven recordings below.** Asked for a one-day
+    agentic coding bootcamp in Oxford in November 2026, the engine returned `oxfordagentic.com`
+    itself, named the **Coding Bootcamp on 26 November at Worcester College** as the best match,
+    distinguished it correctly from **the Agentic day on 19 November**, and told the reader to check
+    our own site for the booking link because it could not find a price. Every fact in that answer is
+    one this site publishes. **No Luma page appeared at all**, passed or current, which is the first
+    probe in some weeks where none did.
+  - **`novaria.ai` is new to this log.** The engine named it, with `aicentreforbusiness.co.uk`, as
+    describing the 19 November day. Novaria is Emine Gokce Phillips's company and the site already
+    links it from her `/team/` profile, so a listing there is a warm, existing relationship rather
+    than a submission to make - but nobody here recorded that it carries an event of ours, and it has
+    not been read. **Worth opening** to check the date, the venue and the booking link are current,
+    for the same reason the `aicentreforbusiness.co.uk` entry below says so: a stale third-party
+    listing of ours is this log's commonest failure.
+  - **Second sighting for `aicentreforbusiness.co.uk`**, in a different query from the one that found
+    it on 16 November, and the detail is new: it is the **19 November** day it carries. Noted under
+    the existing entry below rather than filed again. It remains the strongest `sameAs` candidate on
+    this list, with `planomato.com`.
+  - **Not checked at all.** Neither host resolves from this sandbox: `novaria.ai` is one of the 14
+    outbound links the build's own checker could not reach today, and the readings above come from
+    search results rather than from the pages themselves.
+  - Needs: nothing, unless Drummond wants either listing corrected or claimed.
+
 - **No new contactable target in four probes, and two sector hosts checked and declined so no later
   probe mistakes either for a find: `dsc.org.uk` and `charitydigital.org.uk`.** Found 18 Nov 2026
   (02:00 cycle) in the charity-sector probe. **Nothing contacted, submitted or signed up for.**

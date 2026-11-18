@@ -371,6 +371,30 @@ export function eventListingItem(event: EventEntry, ogImage: string) {
     image: [ogImage],
     location: eventPlace(event),
     organizer: { '@id': ORG_ID },
+    /*
+     * Who performs the day: the organisation, and only the organisation.
+     *
+     * Added 18 Nov 2026, and it is the minimum version of this gap rather than
+     * the full one. Before it, `/` and `/events/` published ten
+     * `EducationEvent` nodes carrying an `organizer` and no `performer` at all,
+     * under the same `@id` the cohort's own page uses for a node that names the
+     * Organization and then its facilitators. The two did not contradict each
+     * other, but one of them said nothing whatever about who delivers the day,
+     * and `courseSchema`'s own comment below holds the stance this follows: two
+     * descriptions under one `@id` want to agree.
+     *
+     * The facilitators are deliberately not here. The homepage already names
+     * them by the route Google documents for course data - `instructor` on each
+     * `CourseInstance` - so repeating the same four `Person` references in this
+     * node would publish those people twice in one page's graph. This node is
+     * the lighter description of an event by design, and its history is of
+     * being quietly over-fed: `image` and `offers` both arrived late, as the
+     * comment above records. The Organization is the one performer fact the
+     * heavier node has asserted since it was written, so nothing new is said
+     * here, and nothing is said that this node's own `organizer` does not
+     * already name.
+     */
+    performer: [{ '@id': ORG_ID }],
     offers: eventOffer(event, url),
     url,
     ...(event.data.lumaUrl ? { sameAs: [event.data.lumaUrl] } : {}),

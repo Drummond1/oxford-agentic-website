@@ -2619,7 +2619,11 @@ Status: `todo` · `blocked` (why) · `doing`
     waiting for this flag. A cycle looking for `FAQPage` coverage should look at pages that render Q&A
     and emit nothing, and today there are none.
 
-111. `todo` (loop-actionable, **weighed and deliberately not taken this cycle**; found 18 Nov 2026 in the
+111. `done` 18 Nov 2026 (08:00 cycle), in exactly the form this item asked be weighed on its own - the
+    Organization at minimum, the facilitators deliberately not - and in a cycle touching nothing else,
+    least of all `courseSchema`. Every `EducationEvent` node on the site now declares both an organiser
+    and a performer: 17 of 17, measured on the built site. Detail in the Shipped entry. Originally filed
+    as: (loop-actionable, **weighed and deliberately not taken this cycle**; found 18 Nov 2026 in the
     02:00 cycle, while fixing the `Course` half of the same gap) - **`eventListingItem` publishes no
     `performer` at all, not even the Organization, so one `EducationEvent` `@id` is described two ways
     on two pages.** Measured on the built site: `/events/oxford-agentic-bootcamp-cohort-3/#event` carries
@@ -2650,6 +2654,85 @@ Status: `todo` · `blocked` (why) · `doing`
     work should not start here.
 
 ## Shipped
+
+### 18 Nov 2026 (08:00 cycle) - ten Event nodes on the two pages engines actually return named an organiser and no performer at all, under the same `@id` whose detail page names five. One line, 2 of 209 built files, and with the JSON-LD masked both are character-for-character identical
+
+**What changed.** `eventListingItem` emits `performer: [{ '@id': ORG_ID }]`. That is the whole of it:
+one line and its comment in `src/lib/schema.ts`, no other file touched. **Every `EducationEvent` node
+on the site now declares both an organiser and a performer - 17 of 17**, counted on the built site,
+where before this 10 of 17 declared only an organiser.
+
+**Why it is worth a cycle.** Backlog 111 filed it yesterday and explicitly declined to take it as the
+tail of the `courseSchema` change that found it, saying the honest question was *"should the listing
+node carry the Organization at minimum, so every Event node on the site has an organiser and a
+performer"*, that it was *"one line and worth weighing on its own"*, and **"do not take it in a cycle
+that is touching `courseSchema`"**. This cycle touches nothing else. The defect it describes is real
+and measured: `/` and `/events/` publish the lighter event node, and that node said nothing whatever
+about who delivers the day, while the node under the **same `@id`** on each cohort's own page has
+named the Organization since it was written and four facilitators since 17 November. `courseSchema`'s
+own comment holds the stance - two descriptions under one `@id` want to agree - and this is the
+cheapest version of agreement.
+
+**What was deliberately not done, which is the half the backlog item cared about.** The facilitators
+are not here. The homepage already names them by the route Google documents for course data,
+`instructor` on each `CourseInstance`, added six hours earlier; repeating the same four `Person`
+references in the listing node would publish those people twice in one page's graph, and this node
+has a recorded history of being quietly over-fed (`image` and `offers` both arrived late). So the
+listing node stays the deliberately lighter description it is, and gains only the one performer fact
+its heavier twin has always asserted. **Nothing new is said**: the `@id` it points at is the
+Organization this very node already names as `organizer`.
+
+**Measured.** **2 of 209 files in `dist` differ** - `/` and `/events/` - none added, none removed,
+against a sha256 snapshot taken before the rebuild. A second build from a stash of the source proves
+the stronger claim: **with the JSON-LD blocks masked, both pages are character-for-character identical
+to the baseline**, 58,173 and 34,534 characters each way. So no copy moved, no `updatedDate` was
+bumped, no sitemap `lastmod` moved, and the seven event detail pages are byte-identical, which is what
+proves the change did not reach the node that already had a performer.
+
+Build, link, schema and date checks green, every figure identical to the 02:00 baseline except the one
+this change is supposed to move: **resolving internal graph references 1,491 to 1,501**, which is the
+10 listing nodes gaining one Organization reference each. 3,529 internal links, 69 pages valid, 17
+Event nodes (10 top-level, 7 nested entity), 22 `FAQPage` nodes, 59 breadcrumb trails.
+
+Headless Chromium over four pages at 375px and 1280px: **138 assertions, 0 failed**, including that
+every JSON-LD block parses in the live DOM, that `/` carries 3 and `/events/` 7 `EducationEvent`
+nodes and each has the Organization as its only performer, that the Cohort 4 detail node still carries
+five performers (the Organization and four people), that `/bootcamps/oxford-agentic-bootcamp/` carries
+none, and that the homepage still serves the `Organization` node under the `@id` all of these now
+reference. Screenshots of both changed pages at both widths, checked as images.
+
+**GEO: four probes, and for the first time in this log's recent run the site was cited - on the one
+query class that converts.** Asked for a one-day agentic coding bootcamp in Oxford in November 2026,
+the engine returned `oxfordagentic.com`, made the **Coding Bootcamp on 26 November at Worcester
+College** its recommended answer, and **separated the two upcoming days correctly**, warning the
+reader that 19 November belongs to the non-coding Agentic day. **No Luma page appeared in that answer
+at all**, passed or current, which is the first probe in several weeks where none did and the
+strongest evidence yet that the seven stale-Luma recordings are a reach-and-phrasing problem rather
+than a standing one. The other three axes had never been probed - agent against automation, tool
+choice for a team, time-to-build - and all three are declined: the first on coverage (three guides
+answer it), the second on CONVERTING and on the accuracy rule (ten affiliate-shaped comparisons
+quoting prices that move monthly), the third because it is the format-adequacy axis the 20:00 cycle
+closed yesterday, arriving in a new phrasing. Full fields and reasoning in `seo-data/geo-citations.md`.
+
+**One new off-page name and one second sighting**, both recorded in `outreach/review-list.md`, nothing
+contacted and nothing submitted. `novaria.ai` is new to the log: the engine named it, with
+`aicentreforbusiness.co.uk`, as carrying the **19 November** day. Novaria is Emine Gokce Phillips's
+company and this site already links it from her `/team/` profile, so a listing there is an existing
+relationship rather than a submission to make - but nobody here had recorded that it carries an event
+of ours, and neither host resolves from this sandbox, so neither page has been read.
+
+**A fifth instance of backlog 85, recorded with its numbers because this one is cheap to read.**
+`src/lib/schema.ts` is in the IndexNow map's whole-site bucket, so the dry run over this change set
+submits **58 URLs** where the honest number is **2**. That is the documented over-submission backlog
+74 weighs as the milder failure, and it is one more argument for the build-output diff backlog 85
+asks for rather than a hand-written special case. Not fixed here: this cycle is one line in one file.
+
+Search Console unavailable, as every cycle since 24 August: no credentials and no newer export in
+`seo-data/`. Nothing estimated. **No new guide this week**, and none of the three declined probes
+produced a candidate. `oxfordagentic.com` and `luma.com` are refused by this session's egress policy,
+so no live page was read and no event fact was touched; deploy state came from the Actions API, where
+run 440 for `c259b0e` concluded success at 02:14 UTC with nothing queued or in progress, and
+`git log -1` matched that run's `head_sha`.
 
 ### 18 Nov 2026 (02:00 cycle) - the homepage's graph said who organises the three bootcamps and nothing about who runs them. Each on-sale cohort's `CourseInstance` now names its own facilitators as `instructor`, resolving to the `Person` node their `/team/` profile already publishes. 3 of 209 built files, and the visible HTML of all three byte-identical
 

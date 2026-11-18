@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-18 (08:00 GMT cycle) - THE SITE WAS CITED, ON THE ONE QUERY CLASS THAT CONVERTS, AND THE ENGINE GOT BOTH OF THE NEXT TWO DAYS RIGHT OFF OUR OWN PAGES
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions. One is a **dated commercial**
+query, deliberately, because the three cycles before this one all closed on the observation that the
+Luma failure shows up on commercial queries and none of their probes was one. The other three are axes
+this log has never put to an engine: **agent against automation**, **tool choice for a team**, and
+**time-to-build**. **Production could not be read this cycle.** The sandbox egress policy refuses
+`oxfordagentic.com` and `luma.com`, with the search tool the only route to the web, so no live page and
+no Luma fact was checked from here, deploy state came from the Actions API, and every event fact used
+comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | one day agentic coding bootcamp Oxford November 2026 book in person AI course (dated commercial query, the Coding line) | **YES - third result, and the engine's recommended answer** | `maven.com`, `sbs.ox.ac.uk`, **`oxfordagentic.com`**, `aicentreforbusiness.co.uk`, `aifundamentals.dev`, `novaria.ai`, `towardsai.com`, `en.wikipedia.org`, `coderfaculty.com` |
+| 2 | what is the difference between an AI agent and an automation for a business process (agent-vs-automation axis, never probed) | **No** | `dev.to`, `straive.com`, `unity-connect.com`, `arxiv.org`, `salesmotion.io`, `theaiconsultinglab.com`, `whaleboss.com`, `thestrategyinstitute.org`, `aiagentslibrary.com`, `mindstudio.ai` |
+| 3 | ChatGPT or Claude which should my team learn for building business workflows (tool-choice axis, never probed) | **No** | `eesel.ai`, `upwork.com`, `layer3labs.io`, `prometheusagency.co`, `pocketctopartners.com`, `badalkhatri.com`, `wrightmode.com`, `justinmckelvey.com`, `aismartventures.com`, `lorphic.com` |
+| 4 | how long does it take to build an AI agent for my own business, the first one (time-to-build axis, never probed) | **No** | `commercepundit.com`, `jahanzaib.ai`, `klevere.ai`, `rebuilt.studio`, `factoryjet.com`, `toadster.ai`, `iqdigitalai.com`, `inferya.com`, `graygroupintl.com` |
+
+**Reading.**
+
+- **Probe 1 is the finding, and it is the first clean one in this direction the log holds.** The
+  engine returned this site, made the Coding Bootcamp its recommended answer - *"a one-day, in-person
+  event at Worcester College, Oxford, on 26 November 2026"* - said attendees *"ship software they own,
+  using Claude Code and Codex to write the code"*, and then did the thing every stale-Luma probe has
+  failed to do: it **separated the two upcoming days correctly**, warning the reader that the
+  19 November date belongs to the non-coding Agentic Bootcamp and *"don't confuse the two"*. Every
+  fact in that answer is published on this site, in those words, and it closed by sending the reader
+  to our own site for the booking link because it could not find a price - which is the deliberate
+  design, since price lives on Luma.
+  - **No Luma page appeared in this answer at all**, passed or current. That is the first probe in
+    several weeks where none did, and it is the strongest evidence so far that the seven stale-Luma
+    recordings are a **phrasing-and-reach** problem rather than a standing one: asked a query that
+    names the product and the month, the engine reads our pages; asked a generic one, it reads
+    someone's expired listing.
+  - **Nothing to ship from it.** It is a page working as intended. Recorded in
+    `outreach/review-list.md` because two of the hosts beside us - `aicentreforbusiness.co.uk`, already
+    on that list, and `novaria.ai`, new to it - are both described as carrying the 19 November day.
+- **Probe 2 is WINNABLE and is declined on coverage, not on the field.** Every citation is a vendor or
+  an agency blog writing about the thing it sells, which is the category the topic rule names, and one
+  of them is an arXiv PDF whose headline figure the search tool's own summary flags as vendor-reported.
+  But the site already answers this: `/guides/agentic-ai-glossary/` defines the terms,
+  `/guides/what-is-an-agentic-bootcamp/` separates the two in buyer language, and
+  `/guides/where-the-human-goes-in-an-agentic-workflow/` is the harder half of the same question. A
+  fifth page restating the distinction is the duplicate-coverage failure backlog 87 and 105 both price
+  as changing nothing.
+- **Probe 3 is declined on CONVERTING and on the accuracy rule.** The field is ten affiliate-shaped
+  comparison posts, half of them quoting per-seat prices and context-window numbers that move monthly.
+  The site does not publish tool prices and cannot verify those figures, and a reader choosing between
+  two subscriptions is not choosing whether to book a day in Oxford.
+  `/guides/claude-cowork-claude-code-or-codex/` already covers the only version of this question that
+  is ours - which tool for which job, from use - and it does it without a pricing table.
+- **Probe 4 looked like the best opening of the four and fails the same way probe 1 of the 20:00 cycle
+  did.** The field disagrees with itself by two orders of magnitude - *15 to 60 minutes* against
+  *8 to 16 weeks* - because each source defines "first agent" to suit what it sells, and the honest
+  answer to the question is the one this site already publishes: `/guides/what-you-can-build-in-one-day-with-ai/`
+  carries `## Is one day enough?` as a `FAQPage` node and concedes in our own words what a day does and
+  does not buy. The format-adequacy axis was closed yesterday on exactly this ground. **Do not re-open
+  it from the time-to-build phrasing.**
+- **One guide candidate considered and not taken**, so it is not re-derived: none of probes 2, 3 or 4
+  clears the topic rule's two halves, and no new guide was published this week.
+
 ## 2026-11-18 (02:00 GMT cycle) - FOUR AXES NEVER PROBED, ZERO CITATIONS, AND THE FIRST SET IN SEVERAL CYCLES IN WHICH NEITHER PASSED LUMA PAGE APPEARED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
