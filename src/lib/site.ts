@@ -165,6 +165,45 @@ export async function getTestimonials(programmeId?: string) {
   return filtered.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
+/** A facilitator of one cohort, as the schema layer needs them: name and profile slug. */
+export type Facilitator = { name: string; slug: string };
+
+/**
+ * The people an event's `speakers` names, resolved against the team collection.
+ *
+ * Lifted out of `src/pages/events/[slug].astro` on 18 Nov 2026, unchanged, so a
+ * second page could use it without a second copy of it. The event page had the
+ * only copy, which is why the `Course` node that the homepage and the three
+ * programme pages publish said nothing about who teaches: resolving `speakers`
+ * was four lines of one template rather than something the site could ask for.
+ *
+ * Order follows the event file, which follows the order the page's own
+ * "Who runs it?" answer reads in. A reference to a profile that no longer
+ * exists is dropped rather than guessed at.
+ */
+export async function getFacilitators(event: EventEntry): Promise<Facilitator[]> {
+  const bySlug = new Map((await getCollection('team')).map((member) => [member.id, member]));
+  return event.data.speakers.flatMap((ref) => {
+    const member = bySlug.get(ref.id);
+    return member ? [{ name: member.data.name, slug: member.data.slug }] : [];
+  });
+}
+
+/**
+ * The same, for a set of events, keyed by event id.
+ *
+ * `courseSchema` needs one list per cohort rather than one list, and both of its
+ * call sites must pass the identical map: the homepage and the programme page
+ * emit that `Course` node under one `@id`, so a facilitator list on one of them
+ * and not the other would be two descriptions of one course that disagree.
+ */
+export async function getFacilitatorsByEvent(events: EventEntry[]): Promise<Map<string, Facilitator[]>> {
+  const pairs = await Promise.all(
+    events.map(async (event) => [event.id, await getFacilitators(event)] as const),
+  );
+  return new Map(pairs);
+}
+
 /**
  * Photos are consent-gated the same way testimonials are (PRD §21): anything
  * showing an identifiable attendee stays out of the build until cleared.

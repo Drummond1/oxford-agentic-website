@@ -2046,6 +2046,18 @@ Status: `todo` · `blocked` (why) · `doing`
     (Second Brain Cohort 1) has an interest page and so suppresses the form; the 20 November cycle
     should assert it in the browser rather than assume it.
 
+    **The whole dead-end question is now moot, corrected 18 Nov 2026 (02:00 cycle), and the 20 November
+    cycle should not spend a minute on it.** Both paragraphs above were written on 14 November, when the
+    Agentic line had exactly one upcoming cohort. Cohorts 4 and 5 went on sale at 19:41 on 15 November.
+    `getSuccessorEvent` returns the first upcoming event of the **same programme**, so from 20 November
+    Cohorts 1, 2 and 3 all take the successor branch and all three show a card for Cohort 4 on
+    3 December, with Cohort 5 behind it on 28 January. The no-successor branch is not reached on any
+    Agentic page, nothing falls to "Dates for the next cohort are being confirmed", and the notify form
+    the 14 November note asked a cycle to assert in the browser is still not exercised anywhere, for the
+    same reason as before. What survives of the item is only the prose rewrite: four sentences in three
+    event files, plus `when-ai-executive-cohorts-run`'s four event links. The interest-page question for
+    the Agentic line is still Drummond's, but it is no longer urgent and no longer has a dated trigger.
+
 90. `todo` **(needs Drummond, because the only reliable remedy is a call on the booking
     area's layout; found 11 Nov 2026 in the 09:00 cycle)** - **when Luma's iframe renders
     nothing, the booking area on both on-sale event pages is an empty 520px box, and the
@@ -2607,7 +2619,126 @@ Status: `todo` · `blocked` (why) · `doing`
     waiting for this flag. A cycle looking for `FAQPage` coverage should look at pages that render Q&A
     and emit nothing, and today there are none.
 
+111. `todo` (loop-actionable, **weighed and deliberately not taken this cycle**; found 18 Nov 2026 in the
+    02:00 cycle, while fixing the `Course` half of the same gap) - **`eventListingItem` publishes no
+    `performer` at all, not even the Organization, so one `EducationEvent` `@id` is described two ways
+    on two pages.** Measured on the built site: `/events/oxford-agentic-bootcamp-cohort-3/#event` carries
+    `performer` with the Organization and four named `Person` references, and the node under that same
+    `@id` on `/` and on `/events/` carries none. The two do not contradict each other - the listing node
+    is a subset, and it is deliberately lighter - but the codebase's own stance on this, written in
+    `courseSchema`'s comment, is that two descriptions under one `@id` want to agree.
+    **Why it was left.** This cycle's change already puts the facilitators on `/` by the other route, as
+    `instructor` on the `CourseInstance`, which is the field Google documents for course data and reaches
+    the three programme pages too. Adding `performer` to the listing node as well would publish the same
+    four people twice in one page's graph, and `eventListingItem` has an explicit history of being the
+    node that gets quietly over-fed (its own comment records `image` and `offers` arriving late). So the
+    honest question is not "add it" but **"should the listing node carry the Organization at minimum, so
+    every Event node on the site has an organiser and a performer"**, which is one line and worth
+    weighing on its own rather than as the tail of someone else's change. Do not take it in a cycle that
+    is touching `courseSchema`.
+
+112. `todo` (**checked, deliberate, and recorded so it is not re-derived as a defect**; found 18 Nov 2026
+    in the 02:00 cycle) - **three of the 58 sitemap URLs carry no `lastmod`, and that is a decision, not
+    an omission.** `/about/`, `/privacy/` and `/testimonials/` are bare; the other 55 all carry one. The
+    reason is written where the behaviour lives, in `listingLastmods` in `astro.config.mjs`: these three
+    have no content file behind them, their copy lives in templates, and a template edit moves 55 pages,
+    so stamping a date on these three alone "would be the same lie in the other direction". Backlog 49
+    and 59 are the matching items on the overstating side for `/`. **If it is ever revisited**, the only
+    honest version is the `HOMEPAGE_COPY_LASTMOD` pattern - a hand-recorded copy date per page, bumped in
+    the same commit as the copy - and the ledger already prices that as "a third thing to remember to
+    bump" against the gain of one freshness hint on three low-change pages. A cycle looking for sitemap
+    work should not start here.
+
 ## Shipped
+
+### 18 Nov 2026 (02:00 cycle) - the homepage's graph said who organises the three bootcamps and nothing about who runs them. Each on-sale cohort's `CourseInstance` now names its own facilitators as `instructor`, resolving to the `Person` node their `/team/` profile already publishes. 3 of 209 built files, and the visible HTML of all three byte-identical
+
+**What changed.** `courseSchema` takes a facilitator map and each `CourseInstance` emits
+`instructor`, built from the cohort's own `speakers` field and resolved to
+`/team/<slug>/#person`. The lookup that resolves `speakers` moved out of
+`src/pages/events/[slug].astro`, which held the site's only copy of it, into
+`getFacilitators` and `getFacilitatorsByEvent` in `src/lib/site.ts`. `personReference` in
+`src/lib/schema.ts` is the one place a facilitator becomes a graph reference, shared by
+`performer` on the Event and `instructor` on the CourseInstance, which were the same four
+lines written twice.
+
+**Why this and not the event pages again.** The 17 Nov 02:00 cycle gave the four on-sale
+`EducationEvent` nodes a `performer` list naming their facilitators. That fixed the pages an
+engine has never returned. The homepage is the page it does return - a search restricted to
+this domain gives back `/` and two guides whatever is asked, which is why `courseSchema` was
+put on `/` on 24 October in the first place - and on `/` the graph still named nobody.
+Measured before the change, on the built homepage: three `Course` nodes carrying four
+`CourseInstance` nodes between them, not one of which had an `instructor`, beside three
+`EducationEvent` nodes from `eventListingItem` which has no `performer` at all, not even the
+Organization. So the cost the 13 November probe recorded - an engine asked how this site
+relates to the University of Oxford, inferring our people from a Luma host list - was still
+unpaid on the one page it reads, a day after it was paid on the pages it does not.
+
+**Nothing new is asserted, and that was the test the change had to pass.** The names come from
+each cohort's `speakers`, which is the roster its own page prints under "Who runs it?", and the
+programme page that owns the `Course` `@id` names the same people in the same order in its own
+answer: Drummond Gilbert, Nicolai Thomson, Emine Gokce Phillips and Jonathan Waddingham on the
+Agentic line, Drummond Gilbert, Jonathan Waddingham and Mike Bailey on the Coding line. Each
+entry is identity plus the printed name and nothing else - no role, no bio - so the one `Person`
+node at `/team/<slug>/#person` stays the only description of that person and the two cannot
+drift. `instructor` is Google's own documented property for this on `CourseInstance`, so it is
+the field a course rich result reads rather than a field of our choosing.
+
+**Both call sites pass the same map, deliberately.** `/` and `/bootcamps/<slug>/` emit this node
+under one `@id` from one helper, precisely so they cannot come to disagree; a facilitator list on
+one and not the other would have been two descriptions of one course that contradict each other,
+which is the fault that arrangement exists to prevent. Verified on the built site: the Agentic
+and Coding `Course` nodes are instructor-for-instructor identical on the homepage and on their
+own programme pages. The Second Brain node has no scheduled cohort, so it has no instance and
+gains nothing, and its page is byte-identical.
+
+**Measured.** 3 of 209 files in `dist` differ - `/`, `/bootcamps/oxford-agentic-bootcamp/` and
+`/bootcamps/agentic-coding-bootcamp/` - none added, none removed, against a sha256 snapshot taken
+before the rebuild. A second build from a stash of the source proves the stronger claim: with the
+JSON-LD blocks masked, all three pages are **character-for-character identical** to the baseline,
+58,174 / 63,173 / 47,710 characters each way. So no copy moved, no `updatedDate` was bumped, no
+sitemap `lastmod` moved, and the five event pages are byte-identical, which is what proves the
+`getFacilitators` extraction changed nothing where the lookup used to live.
+
+Build, link, schema and date checks green, every figure identical to the 20:00 baseline except the
+one this change is supposed to move: **resolving internal graph references 1,431 to 1,491**, which
+is the 30 new instructor entries counted twice each, by `@id` and by `url`. 3,529 internal links,
+69 pages valid, 17 Event nodes, 22 FAQPage nodes, 59 breadcrumb trails.
+
+Headless Chromium over six pages at 375px and 1280px: **128 assertions, 0 failed**, including that
+every instructor `@id` resolves to a page the host serves **and** that the page serves a node under
+that exact `@id`, that the homepage carries 15 instructor references and the two programme pages
+12 and 3, that `/bootcamps/second-brain-bootcamp/`, the Cohort 3 event page and a `/team/` profile
+carry none, that every JSON-LD block parses in the live DOM, and that the prose naming these people
+is unchanged. Two of the first run's ten failures were the assertions being wrong rather than the
+site: the homepage carries 15 references and not the 11 first written, and the facilitator names
+sit inside collapsed `<details>` elements, so they read from `textContent` and not `innerText`.
+Screenshots of all three changed pages at both widths, checked as images.
+
+**GEO: four probes on four axes never logged, zero citations, and nothing to ship from any of
+them.** Confidential material on the day, the finance-director business case, hallucination control,
+and the charity sector. Probe 3 is the cleanest WINNABLE failure the topic rule has produced - every
+citation in the field is a platform vendor writing about its own guardrail product - and probe 2
+fails on the accuracy rule before it reaches the topic rule, because the field's numbers are vendor
+marketing its own summariser flags as unverified. Probe 1 is the one that looked like coverage and
+is not: *"What if my task is confidential?"* is published on five surfaces, and the half of that
+question the site cannot answer is backlog 50 and 88, already with Drummond. Probe 4 is declined on
+CONVERTING: the field's own recommended route for a small charity is a free course. Full fields and
+reasoning in `seo-data/geo-citations.md`. First set in several cycles in which neither passed Luma
+page surfaced, with the caveat that none of these four was a commercial or dated query.
+
+**Two things checked and recorded rather than fixed**, both new backlog entries. `eventListingItem`
+publishes no `performer` at all while the same `@id` on the event page publishes four (backlog 111).
+And the three sitemap URLs with no `lastmod` are deliberate and the reason is written in
+`astro.config.mjs` (backlog 112). A third is a correction to backlog 89, below: its "honest dead end"
+paragraph was overtaken when Cohorts 4 and 5 went on sale on 15 November.
+
+Search Console unavailable, as every cycle since 24 August: no credentials and no newer export in
+`seo-data/`. Nothing estimated. No new guide this week. No new off-page target: `dsc.org.uk` and
+`charitydigital.org.uk` recorded as checked and declined, `learnsignal.com` noted as a second sighting
+of an entry already on the list. Nothing contacted or submitted. `oxfordagentic.com` and `luma.com` are
+refused by this session's egress policy, so no live page was read and no event fact was touched; deploy
+state came from the Actions API.
 
 ### 17 Nov 2026 (20:00 cycle) - records only. Four probes closed the one topic candidate the last cycle left open, the best new find is blocked by this sandbox's egress policy, and the strongest-looking defect of the day turned out to be Drummond's own decision, written in the template
 

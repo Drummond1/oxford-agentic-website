@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-18 (02:00 GMT cycle) - FOUR AXES NEVER PROBED, ZERO CITATIONS, AND THE FIRST SET IN SEVERAL CYCLES IN WHICH NEITHER PASSED LUMA PAGE APPEARED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, all on axes this log has
+never put to an engine: **confidential material on the day**, **the finance-director business case**,
+**hallucination control in a running workflow**, and **the charity sector**. None is a dated or branded
+commercial query, which is the one caveat on the Luma observation in the heading: those pages surface on
+commercial queries, and none of these four was one. **Production could not be read this cycle.** The
+sandbox egress policy refuses `oxfordagentic.com` and `luma.com`, with the search tool the only route to
+the web, so no live page and no Luma fact was checked from here, deploy state came from the Actions API,
+and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | can I bring confidential client data to a hands-on AI workshop UK, is it safe to use real work data in AI training (confidential-material axis, never probed) | **No** | `orrick.com` (x5), `learnsignal.com` (x2), `digital-compliance-academy.pages.dev` (x2), `gov.uk` (x2), `brabners.com`, `dataprotectionpeople.com`, `kent.ac.uk`, `bcs.org`, `alphaxiv.org`, `ordolux-site.pages.dev`, `aursec-website.pages.dev`, `emlaw.co.uk` |
+| 2 | how do I justify the cost of AI training to my finance director, business case for sending staff on an AI course UK (finance-approval axis, never probed; the manager version was probed 13 Sept) | **No** | `itbrief.co.uk` (x3), `cfotech.co.uk` (x2), `spicyadvisory` (x3), `digit.fyi` (x2), `itpro.com`, `business-reporter.co.uk`, `hrgrapevine.com`, `okoone.com`, `whitehat-seo.co.uk`, `ivee.jobs`, `profiletree.com`, `aspirevitawebsite.pages.dev`, `case-studies.getcoai.com` |
+| 3 | how do I stop an AI agent making things up in a business workflow, checking agent output accuracy (hallucination-control axis, never probed) | **No** | `superagent.sh` (x2), `stackai.com` (x2), `geekflare.com`, `delos.so`, `getspine.ai`, `splunk.com`, `symphony-solutions.com`, `suprmind.ai` |
+| 4 | hands-on AI training for charities and non-profits UK, one day in person workshop, small charity team (charity-sector axis, never probed) | **No** | `dsc.org.uk` (x5), `bookwhen.com` (x5), `charitydigital.org.uk`, `imperial.ac.uk`, `cambridgenetwork.co.uk`, `eventbrite.co.uk`, `eastsidepeople.org` |
+
+**Reading.**
+
+- **Probe 1 is the closest thing to a coverage question in the set, and the site already answers the
+  half that is ours.** The engine opened by saying it could not find guidance specific to bringing
+  client data to a hands-on workshop, which is the admission shape that has carried two guides into
+  print before. It fails anyway, twice over. *"What if my task is confidential?"* is published on
+  `/bootcamps/oxford-agentic-bootcamp/` and on all three on-sale Agentic cohort pages, with the
+  external-supplier test in it, and the Second Brain line answers its own version of the same question
+  on both of its pages. So the substance is published, in question shape, on five surfaces. And the
+  half the site cannot answer is **backlog 50 and backlog 88**: what this company does with material a
+  visitor brings, which is a fact only Drummond holds. Recorded against those two rather than filed as
+  a new finding. The field itself is law firms, GDPR consultancies and a university policy PDF, so it
+  is not winnable either.
+- **Probe 2 fails the topic rule on both halves and on a third ground of its own.** The field is trade
+  press reporting one IBM survey and a tier of vendor ROI calculators, and the search tool's own summary
+  warns twice that the break-even figures come from a training vendor's marketing content and that the
+  CIPD attribution has no link behind it. Writing into that field means publishing numbers this loop
+  cannot verify, which the accuracy rule forbids outright. The site's own answer -
+  *"How do I justify this to my manager?"*, on the Agentic programme page and on Cohort 4's page, plus
+  the `getting-an-ai-bootcamp-approved` guide - argues from the reader's own task rather than from a
+  benchmark, which is the only version of this answer that is both ours and checkable.
+- **Probe 3 is the cleanest WINNABLE failure the rule has produced.** Every citation in the field is a
+  platform vendor writing about its own guardrail product: `superagent.sh`, `stackai.com`, `delos.so`,
+  `getspine.ai`, `suprmind.ai`, plus one observability vendor. That is the exact category the topic
+  probe rule names. The site has a guide on the same subject already -
+  *"Agentic workflows fail quietly. Here is how you would notice"* - so there is nothing to add and
+  nowhere to put it.
+- **Probe 4 is the one to be careful with, because it looks like an opening.** The engine could not find
+  a confirmed, upcoming, in-person, one-day AI workshop for UK charities, and said so. It is declined on
+  CONVERTING and on scope. The field is sector institutions - the Directory of Social Change, Charity
+  Digital, Imperial, a district council's voluntary-sector team - and the one route it recommends is a
+  **free** TechSoup course for small charities. A buyer who is pointed at a free course by the sector's
+  own body is not the buyer for a paid day in an Oxford college. Separately, a charity-sector page is a
+  sector variant, and whether to court that buyer at all is a product decision for Drummond and not a
+  thing the loop invents on the strength of one probe.
+- **Nothing to ship from any of the four**, which is the honest result when the axes left unprobed are
+  the ones the site has either answered already or decided not to answer.
+
 ## 2026-11-17 (20:00 GMT cycle) - THREE AXES NEVER PROBED, THE ONE AXIS THE LAST CYCLE LEFT OPEN RE-ASKED IN A NEW PHRASING, ZERO CITATIONS - AND THE TWO PASSED LUMA PAGES ANSWERED FOR US TWICE MORE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,

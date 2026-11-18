@@ -12,6 +12,7 @@ import {
   formatDate,
   formatShortDate,
   getEventsForProgramme,
+  getFacilitatorsByEvent,
   getProgrammes,
   getTestimonials,
   interestPath,
@@ -35,6 +36,9 @@ const data = programme.data;
 const { Content } = await render(programme);
 
 const { upcoming, past } = await getEventsForProgramme(programme.id);
+/* The same map the homepage passes to the same helper, so the one `Course` node
+   both pages publish under this `@id` names the same facilitators on both. */
+const facilitatorsByEvent = await getFacilitatorsByEvent(upcoming);
 const testimonials = await getTestimonials(programme.id);
 
 const path = paths.programme(data.slug);
@@ -127,7 +131,10 @@ const bands = {
   ogImage={ogPathFor(path)}
   {/* The Course node is built by the shared helper, because the homepage
       publishes it too under this same `@id`. */}
-  schemaNodes={[courseSchema(programme, upcoming), showFaq ? faqSchema(data.faqs, path) : null]}
+  schemaNodes={[
+    courseSchema(programme, upcoming, facilitatorsByEvent),
+    showFaq ? faqSchema(data.faqs, path) : null,
+  ]}
   breadcrumbs={[
     { name: 'Bootcamps', path: paths.programmes() },
     { name: data.name, path },

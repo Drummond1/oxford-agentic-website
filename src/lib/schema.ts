@@ -7,6 +7,7 @@ import {
   londonOffset,
   paths,
   type EventEntry,
+  type Facilitator,
   type ProgrammeEntry,
 } from './site';
 
@@ -20,6 +21,21 @@ import {
 
 /** Stable @id for the Organization so every page references one entity node. */
 export const ORG_ID = `${config.brand.domain}/#organization`;
+
+/**
+ * A facilitator as a reference to the `Person` node their own profile publishes.
+ *
+ * Identity and the name the page prints, and deliberately nothing else: the role
+ * and the bio live on the one `Person` node at `/team/<slug>/#person`, so a
+ * consumer follows the reference rather than reading a second, thinner copy that
+ * can drift from it. Shared by `performer` on an `EducationEvent` and
+ * `instructor` on a `CourseInstance`, which name the same people for the same
+ * day and were written twice before 18 Nov 2026.
+ */
+function personReference(person: Facilitator) {
+  const url = absoluteUrl(paths.teamMember(person.slug));
+  return { '@type': 'Person', '@id': `${url}#person`, name: person.name, url };
+}
 
 export function organizationSchema(founder?: { name: string; slug: string }) {
   /*
@@ -366,7 +382,7 @@ export function eventSchema(
   programme: ProgrammeEntry,
   ogImage: string,
   photos: Array<{ url: string; caption: string }> = [],
-  facilitators: Array<{ name: string; slug: string }> = [],
+  facilitators: Facilitator[] = [],
 ) {
   const url = absoluteUrl(paths.event(event.data.slug));
   const eventStatus = eventStatusOf(event);
@@ -476,14 +492,7 @@ export function eventSchema(
      */
     performer: [
       { '@id': ORG_ID },
-      ...(config.features.team
-        ? facilitators.map((person) => ({
-            '@type': 'Person',
-            '@id': `${absoluteUrl(paths.teamMember(person.slug))}#person`,
-            name: person.name,
-            url: absoluteUrl(paths.teamMember(person.slug)),
-          }))
-        : []),
+      ...(config.features.team ? facilitators.map(personReference) : []),
     ],
     superEvent: {
       '@type': 'EventSeries',
@@ -531,7 +540,11 @@ export function eventSchema(
  * then supplies none, which is malformed, and the node is still a valid
  * `Course` without it.
  */
-export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) {
+export function courseSchema(
+  programme: ProgrammeEntry,
+  upcoming: EventEntry[],
+  facilitatorsByEvent: Map<string, Facilitator[]> = new Map(),
+) {
   const url = absoluteUrl(paths.programme(programme.data.slug));
 
   /* Google's course rich result reads the dates, workload and mode off each
@@ -545,6 +558,35 @@ export function courseSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) 
     courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
     startDate: londonIso(event.data.startDate),
     endDate: londonIso(event.data.endDate),
+    /*
+     * Who teaches this cohort, added 18 Nov 2026 and the same join the
+     * `performer` list made on event pages the day before - but on the two
+     * surfaces that matter more, because the homepage publishes every `Course`
+     * node and `/` is the one page restricted-domain probes have ever returned.
+     *
+     * Before this, the graph on `/` said who organises the days and nothing
+     * about who runs them: `eventListingItem`, the lighter event node this page
+     * and `/events/` carry, has no `performer` at all, and the `CourseInstance`
+     * nodes beside it had no `instructor`. So the 13 November probe's cost - an
+     * engine asked how this site relates to the University of Oxford, inferring
+     * our people from a Luma host list - was still unpaid on the page it reads,
+     * a day after it was paid on the pages it does not.
+     *
+     * Nothing new is asserted. The names come from the cohort's own `speakers`,
+     * which is the roster its page prints under "Who runs it?", and the
+     * programme page that owns this `@id` names the same people in the same
+     * order in its own answer. `instructor` is Google's documented property for
+     * this on `CourseInstance`, so it is also the field a course rich result
+     * reads rather than a field of our own choosing.
+     *
+     * Guarded on `features.team` for the reason `performer` is: with the flag
+     * off `/team/` does not build, and these would reference `Person` nodes
+     * nothing serves. Omitted rather than empty when a cohort names nobody,
+     * on the same ground as `hasCourseInstance` below.
+     */
+    ...(config.features.team && (facilitatorsByEvent.get(event.id) ?? []).length > 0
+      ? { instructor: (facilitatorsByEvent.get(event.id) ?? []).map(personReference) }
+      : {}),
     /* The same Place the event page and the events index publish, from the same
        frontmatter, rather than a second reduced copy of it. This node used to
        drop the street and the postcode, which are published on the event page

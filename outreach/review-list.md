@@ -11,6 +11,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new contactable target in four probes, and two sector hosts checked and declined so no later
+  probe mistakes either for a find: `dsc.org.uk` and `charitydigital.org.uk`.** Found 18 Nov 2026
+  (02:00 cycle) in the charity-sector probe. **Nothing contacted, submitted or signed up for.**
+  - `dsc.org.uk` (the Directory of Social Change) runs its own AI courses for charities, several of
+    them free, which makes it a competitor rather than a directory. `charitydigital.org.uk` is a
+    sector publication whose own AI-training round-up points readers at free and online options.
+  - The deeper reason neither is an opportunity is the buyer, not the host. The engine's recommended
+    route for a small charity was a **free** TechSoup course, so the field's own answer undercuts a
+    paid day in an Oxford college before any listing of ours would be read. Whether to court that
+    buyer at all is a product decision for Drummond, not something the loop opens with a submission.
+  - `learnsignal.com` appeared again, this time in the confidential-material field. It is already on
+    this list from 24 Oct, so it is noted rather than filed a second time; two sightings in two
+    unrelated fields is mild evidence that it is worth the ten minutes when the list gets worked.
+  - **Not checked at all.** None of these hosts resolves from this sandbox, so every reading comes
+    from search results rather than from the pages themselves.
+  - Needs: nothing.
+
 - **Checked and declined, so no later probe mistakes either for a find: `oxford-royale.com` and
   `wait.co.uk`.** Found 17 Nov 2026 (20:00 cycle) in the away-day and travel-justification probes.
   **Nothing contacted, submitted or signed up for.**

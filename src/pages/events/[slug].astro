@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import EmailAddress from '../../components/EmailAddress.astro';
 import Faq from '../../components/Faq.astro';
@@ -15,6 +14,7 @@ import {
   formatMonthYear,
   formatTimeRange,
   getEvents,
+  getFacilitators,
   getPhotos,
   getPredecessorEvent,
   getProgrammes,
@@ -49,15 +49,12 @@ const photos = await getPhotos('event', event.id);
 /*
  * The facilitators this event's `speakers` references name, resolved to their
  * real names so the Event node's `performer` list can carry both the name and
- * the `/team/` Person it belongs to. Order follows the event file, which
- * follows the order the page's own "Who runs it?" answer reads in. A reference
- * to a profile that no longer exists is dropped rather than guessed at.
+ * the `/team/` Person it belongs to. These twelve lines were the site's only
+ * copy of that lookup until 18 Nov 2026, which is why the `Course` node on the
+ * homepage and the programme pages could not name anybody; they now live in
+ * `getFacilitators`, unchanged, and this page's output with them.
  */
-const teamBySlug = new Map((await getCollection('team')).map((member) => [member.id, member]));
-const facilitators = data.speakers.flatMap((ref) => {
-  const member = teamBySlug.get(ref.id);
-  return member ? [{ name: member.data.name, slug: member.data.slug }] : [];
-});
+const facilitators = await getFacilitators(event);
 
 /*
  * One quote is promoted out of the grid and set directly beneath the booking

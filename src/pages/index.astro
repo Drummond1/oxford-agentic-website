@@ -4,7 +4,15 @@ import HomeSections from '../components/HomeSections.astro';
 import config from '../../site.config';
 import { homeFaqs } from '../lib/home';
 import { courseSchema, eventListingItem, faqSchema } from '../lib/schema';
-import { absoluteUrl, formatShortDate, getEventsForProgramme, getHomeUpcoming, getProgrammes, paths } from '../lib/site';
+import {
+  absoluteUrl,
+  formatShortDate,
+  getEventsForProgramme,
+  getFacilitatorsByEvent,
+  getHomeUpcoming,
+  getProgrammes,
+  paths,
+} from '../lib/site';
 import { ogPathFor } from '../lib/og';
 
 /*
@@ -67,9 +75,10 @@ const eventNodes = upcoming.map((event) =>
  * so the two cannot come to disagree.
  */
 const courseNodes = await Promise.all(
-  (await getProgrammes()).map(async (programme) =>
-    courseSchema(programme, (await getEventsForProgramme(programme.id)).upcoming),
-  ),
+  (await getProgrammes()).map(async (programme) => {
+    const { upcoming } = await getEventsForProgramme(programme.id);
+    return courseSchema(programme, upcoming, await getFacilitatorsByEvent(upcoming));
+  }),
 );
 
 /*
