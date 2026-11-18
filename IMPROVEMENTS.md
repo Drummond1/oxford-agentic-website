@@ -2653,7 +2653,131 @@ Status: `todo` · `blocked` (why) · `doing`
     bump" against the gain of one freshness hint on three low-change pages. A cycle looking for sitemap
     work should not start here.
 
+113. `todo` (loop-actionable, **the half of this cycle's change deliberately not taken**; found and
+    measured 18 Nov 2026 in the 09:00 cycle) - **four Second Brain guide closers still end on a bare
+    "no coding", and each wants a clause of its own rather than a seventh copy of the house pairing.**
+    The 09:00 cycle swept the message-house rule that "no coding" is never left standing on its own
+    and found **ten breaches**, all of them the last sentence of a closer that sells a bootcamp. Six
+    were Oxford Agentic Bootcamp closers and took the approved pairing verbatim. The four left are
+    Second Brain ones: `how-long-to-build-a-second-brain`,
+    `is-it-safe-to-put-company-documents-in-a-second-brain`, `why-your-second-brain-stopped-getting-used`
+    (all *"No coding required."*) and `what-second-brain-actually-means`, which ends on the barest form
+    of all, *"No coding."* - the exact string the 24 Aug cycle removed from the Second Brain event
+    summary for breaching the same rule.
+    **Why they were not swept in.** "Nothing hand-waved" is the Agentic day's pairing: it answers a
+    reader worried that a workflow will fail quietly, which is what that day's reliability paragraph is
+    about. Applying it to a day about organising your own material would be pattern-matching, and the
+    eight guides that already comply show the house habit is the opposite - pair it with the thing that
+    guide's own reader is worried about. The models to copy are in the repo:
+    `second-brain-for-ai-vs-note-taking` (*"No coding, and no requirement to have kept good notes
+    beforehand"*) and `keeping-a-second-brain-from-going-stale` (*"No coding required, and nothing
+    hand-waved"*, which works there because the guide is about decay).
+    **Scope if it is taken:** four sentences, four files, one clause each, every clause restating
+    something that guide already publishes. **Do not invent a Second Brain capability to fill the
+    clause**, and do not take it in the same cycle as any other guide-copy change.
+    **One instance deliberately exempt, and it stays exempt:** `what-is-an-agentic-bootcamp`'s capsule
+    ends *"Most need no coding."* The 24 Aug cycle ruled that a definition capsule is a neutral factual
+    claim rather than sales copy, and that editing one for pattern-consistency is meddling. That holds.
+
 ## Shipped
+
+### 18 Nov 2026 (09:00 cycle) - ten guide closers end on the one clause the message house says must never stand alone. The six that sell the Agentic day now carry the approved pairing; the four Second Brain ones want their own clause and are filed. Six sentences, six files, 10 of 209 built files
+
+**The rule, and it is law.** `STATE.md` records the 13 August message house as setting "the rule that
+'no coding' is never left standing on its own", and the off-page rules the 24 August cycles quote put
+it as **"pair it every time"**. The reason is written into the homepage itself: *"'No coding required'
+on its own reads as 'not serious' to a technical buyer, so it is never left on its own."* The loop has
+enforced it three times already - on `home.ts`'s "What is Oxford Agentic?" answer, on the Cohort 2
+summary and on the Second Brain event summary - each time by moving to the approved pairing,
+**"No coding required, and nothing hand-waved."**
+
+**The breach, measured across all 32 guides rather than spotted on one.** Eighteen guides mention no
+coding in their closer. **Eight already pair it**, each in its own words - `agentic-ai-for-finance-teams`
+twice, `agentic-ai-for-public-sector-and-nhs-leaders`, `how-to-notice-when-an-ai-workflow-is-wrong`,
+`keeping-a-second-brain-from-going-stale`, `second-brain-for-ai-vs-note-taking`,
+`what-hands-on-ai-training-actually-means`, `why-in-person-beats-online-for-learning-ai` - which is
+what proves the habit exists and is the house's own. **Ten do not.** In every one of the ten the bare
+clause is the closer's last sentence, which is the strongest sales position on the page, and in three
+of them it lands immediately after a date and a booking link: *"Cohort 4 runs on 3 December 2026 at
+Worcester College. No coding required."*
+
+**What shipped: the six Oxford Agentic Bootcamp closers.** `agentic-ai-for-consultants`,
+`claude-cowork-claude-code-or-codex`, `getting-an-ai-workflow-past-it-and-legal`,
+`how-to-run-an-ai-pilot-that-survives`, `scout-drafter-reviewer-pattern` and
+`where-the-human-goes-in-an-agentic-workflow` each gain four words and nothing else.
+
+**No new claim was made, and that is the point of choosing this pairing over a better-tailored one.**
+"Nothing hand-waved" is not written for this commit: it is live verbatim on the homepage, in
+`longDescription`, in the most-quoted FAQ answer on the site, and on two guides already. All six pages
+sell the same day the sentence describes. Six of six are Agentic Bootcamp closers; the Coding Bootcamp
+paragraph that follows the one in `claude-cowork-claude-code-or-codex` was not touched, because
+"no coding" is not its claim to make.
+
+**What was deliberately not done.** The four Second Brain closers are **backlog 113**, with the reason
+written there: "nothing hand-waved" answers a reader worried a workflow will fail quietly, which is the
+Agentic day's own reliability argument, and reaching for it on a day about organising your own material
+would be pattern-matching rather than editing. They want a clause each, drawn from their own text, and
+the two compliant Second Brain guides show how. `what-is-an-agentic-bootcamp`'s *"Most need no coding"*
+stays exempt on the 24 August ruling that a definition capsule is not sales copy.
+
+**Blast radius, measured whole-site against a sha256 snapshot of the pre-change build.** **10 of 209
+files in `dist` differ**, none added, none removed: the six guides, `/guides/`, `llms-full.txt` and the
+two sitemaps. On `/guides/` the **entire** difference is two words - two cards move from "October 2026"
+and "July 2026" to "November 2026" - which is a structural diff of the whole file, not a sample. The
+other 26 guides, all three programme pages, every event page, `/` and `llms.txt` are byte-identical.
+`llms-full.txt` now carries the pairing 8 times, 6 new and the 2 that were already there.
+
+**`updatedDate` bumped on all six**, to `2026-11-18T09:30:00+00:00`. That is this loop's instruction
+for any content entry touched, and six guide bumps in one commit is the 16 November 08:00 precedent
+exactly. It is honest here in a way the 24 August exemption was not available: that cycle declined to
+bump for a meta-description fix because it was "not a revision of the article", and this is body copy a
+reader sees.
+
+**Checks.** `npm run build` green both sides: **3,529 internal links across 69 pages resolve**, schema
+**69 pages valid - 17 Event nodes (10 top-level, 7 nested entity), 22 `FAQPage`, 128 offset-bearing
+publication dates, 1,501 resolving internal graph references, 59 breadcrumb trails, all titles and
+descriptions unique**, dates green on both rules. Every figure is identical to the 08:00 baseline, which
+is the expected result: this change adds no node and moves no link. `npm run check:flags` green on the
+all-on and all-off builds. `npx astro check` reports **83 errors, 0 warnings**, all pre-existing
+implicit-`any` in `.astro` files and **none in any file this cycle touched** - no `src/content/guides`
+path appears in its output. The 14 outbound warnings are the sandbox egress policy, identical on the
+baseline.
+
+**Before and after, in a headless browser, local preview against local preview** at **375, 768 and
+1280px** on all six pages, built from the stash and then from the change. **Horizontal overflow 0 at
+every width on every page, both sides.** The paragraph grows by one line at 375px on four of the six
+(288 to 317px, and 230 to 259px on `claude-cowork`) and not at all at 768 or 1280, where the clause
+lands on the existing last line. The rendered sentence was asserted in the live DOM on all eighteen
+page-width combinations.
+
+**Whole-site sweep, unchanged.** All 68 routes at **320, 375, 768, 1024, 1280 and 1440px**: horizontal
+overflow 0, zero missing `alt`, zero unlabelled form controls, zero links or buttons without an
+accessible name, zero duplicate ids, exactly one `h1` per page and no heading-level skips. A second
+sweep over the same routes returns nothing on `lang`, skip link, landmarks, `nav` labelling,
+`aria-controls`/`aria-expanded` pairing, `target="_blank"` without `noopener`, empty headings or
+untitled iframes. The contrast sweep at 375px returns **only** the bronze `#9A7B23` at 3.83:1 that is
+backlog 21 and Drummond's call, plus the gold `#D4AF37` numeral on the unlisted office-hours page; the
+one "ink on ink" row is a label on a gradient orb, which the walker cannot see through. A real Tab
+traversal of the homepage gives **78 tab stops**, every one with a visible `2px solid rgb(212, 175, 55)`
+ring, the skip link first and the dropdown children in source order.
+
+**Production could not be read, as on every cycle since 30 October.** The sandbox egress policy answers
+**403 to CONNECT** for `oxfordagentic.com`, `www.oxfordagentic.com` and `drummond1.github.io`, and the
+GitHub Pages API path is blocked through this proxy, so the Actions API stood in: **Deploy to GitHub
+Pages and CI both `success` on `6f3d5c55`**, which is `origin/main` and the HEAD this cycle started
+from, with nothing queued or in progress. `luma.com` is unreachable the same way, so **no event fact
+was read, invented or changed** - no date, venue, capacity, price or availability was touched, and no
+consent-gated flag was moved.
+
+**Nothing else re-pitched.** PR #1 (breadcrumb, 26 September) and PR #3 (the 2 November SEO-loop ledger
+branch), and the `fix/breadcrumb-mobile-overflow`, `seo-loop/2026-11-02-0800-ledger` and
+`feat/ceo-roundtable-demand-page` branches, read as the known-stale leftovers already recorded in
+backlog 20, not as work in flight.
+
+**Honest about the upside.** Nobody fails to book over four words. The defensible claim is narrower:
+a rule Drummond set in his own positioning document was being kept on the pages that sell and broken on
+the pages that bring readers in, and six of the ten breaches are now closed with his own approved
+sentence rather than with anything written here.
 
 ### 18 Nov 2026 (08:00 cycle) - ten Event nodes on the two pages engines actually return named an organiser and no performer at all, under the same `@id` whose detail page names five. One line, 2 of 209 built files, and with the JSON-LD masked both are character-for-character identical
 

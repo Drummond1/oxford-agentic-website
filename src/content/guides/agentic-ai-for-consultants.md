@@ -13,7 +13,7 @@ capsule: >-
   next one.
 author: drummond-gilbert
 publishDate: "2026-07-28T09:00:00+01:00"
-updatedDate: "2026-07-28T09:00:00+01:00"
+updatedDate: "2026-11-18T09:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -41,4 +41,4 @@ A consultancy sells time, which means every efficiency either becomes margin or 
 
 ## Where this gets practical
 
-The hard part is not agreeing with any of this. It is building the first workflow against a real engagement rather than a demo. That is what a day at the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: bring one real task - a synthesis, a proposal, a review step - build a working pipeline against it in a room where someone walks over when you get stuck, and leave with it running. No coding required.
+The hard part is not agreeing with any of this. It is building the first workflow against a real engagement rather than a demo. That is what a day at the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: bring one real task - a synthesis, a proposal, a review step - build a working pipeline against it in a room where someone walks over when you get stuck, and leave with it running. No coding required, and nothing hand-waved.

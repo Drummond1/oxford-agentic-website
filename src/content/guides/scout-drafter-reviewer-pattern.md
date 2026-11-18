@@ -12,7 +12,7 @@ capsule: >-
   any repeated knowledge task.
 author: drummond-gilbert
 publishDate: "2026-08-05T09:00:00+01:00"
-updatedDate: "2026-11-02T02:05:00+00:00"
+updatedDate: "2026-11-18T09:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 faqFromHeadings: true
@@ -72,4 +72,4 @@ They are not going to settle, so waiting is a decision to carry on without anyth
 
 ## Where this gets practical
 
-Reading about the pattern and having one running against your own work are different things, and the second one is a day's work with someone on hand. That is what the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: you bring one real task, build the scout, the drafter and the reviewer against it, and leave with the pipeline running and a written recipe to rebuild it. No coding required.
+Reading about the pattern and having one running against your own work are different things, and the second one is a day's work with someone on hand. That is what the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: you bring one real task, build the scout, the drafter and the reviewer against it, and leave with the pipeline running and a written recipe to rebuild it. No coding required, and nothing hand-waved.

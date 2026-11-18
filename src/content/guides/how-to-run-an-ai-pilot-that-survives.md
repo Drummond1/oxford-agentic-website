@@ -11,7 +11,7 @@ capsule: >-
   in advance what better looks like, and plan for week two.
 author: drummond-gilbert
 publishDate: "2026-07-30T09:00:00+01:00"
-updatedDate: "2026-10-13T07:30:00+01:00"
+updatedDate: "2026-11-18T09:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -50,4 +50,4 @@ And keep the pilot small enough that it can succeed. One task, done properly, ch
 
 ## Where this gets practical
 
-All of this is easier to agree with than to do, and the hardest part is the first working version. That is what a day at the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: bring the real task, build the workflow yourself with someone on hand when you get stuck, and leave with it running rather than with a plan to run it. No coding required.
+All of this is easier to agree with than to do, and the hardest part is the first working version. That is what a day at the [Oxford Agentic Bootcamp](/bootcamps/oxford-agentic-bootcamp/) is for: bring the real task, build the workflow yourself with someone on hand when you get stuck, and leave with it running rather than with a plan to run it. No coding required, and nothing hand-waved.
