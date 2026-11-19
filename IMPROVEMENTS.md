@@ -2757,7 +2757,9 @@ Status: `todo` · `blocked` (why) · `doing`
     Agentic programme page 24 FAQ entries against the Coding programme page's 13 (14 after this cycle),
     and the Agentic on-sale event pages 11 against Cohort 1's 9. Six questions are answered on one line
     and not the other, and they are not one kind of thing:
-    - **`How do I justify this to my manager?` - DONE this cycle**, programme page only.
+    - **`How do I justify this to my manager?` - DONE.** Programme page 19 Nov 08:00 cycle, Cohort 1's
+      booking page 19 Nov 14:00 cycle. Both Coding surfaces now carry it, which is the shape the Agentic line
+      has (programme page plus all four event pages). Nothing left on this one.
     - **`Do I need a paid AI subscription?`** - blocked, and it is **backlog 97**, which has now been
       raised by three probes. One sentence from Drummond closes it on both Coding surfaces.
     - **`Is lunch included?`** - blocked and correctly so: the Coding event file says in a comment that
@@ -2782,6 +2784,99 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 19 Nov 2026 (14:00 cycle) - the approval answer reached the Coding programme page this morning and stopped there. It now sits on the page that takes the booking too, seven days out. One FAQ entry, one file, 2 of 209 built files
+
+**The defect, and it is this morning's change finished rather than repeated.** The 08:00 cycle published
+*"How do I justify this to my manager?"* on `/bootcamps/agentic-coding-bootcamp/` and scoped itself, in its own
+commit message, to the **programme page only**. The Agentic line publishes that question on its programme page
+**and on all four of its event pages** (Cohorts 2, 3, 4 and 5). So the Coding line answered it on one of its two
+surfaces, and the surface it was missing from is `/events/oxford-agentic-coding-bootcamp-cohort-1/` - the page
+that carries the Luma form, and the nearest bookable day on the whole site at **26 November, seven days out**.
+
+**The file argued for it itself.** The comment above `Can I bring my team?` in
+`oxford-agentic-coding-bootcamp-cohort-1.md` already states the principle: those are *"the two questions a buyer
+asks after deciding and before paying ... this is the booking page, which is where they are actually asked."*
+Getting the day approved is the question before both of them, and it was the one not there.
+
+**The argument from the field is this morning's probe 4, unchanged and not re-run.** *"How do I convince my
+employer to pay for a one day AI coding course business case"* returned sixteen results and not one provider
+answering it on a page that takes a booking: eleven US university tuition-reimbursement pages, the rest advice
+blogs, and the only tax claim IRS Section 127, which is not a UK fact. The engine's own close asks the buyer to
+write *"a one-page memo: the problem, the course, the cost, and a concrete outcome you'd deliver"*, and the
+outcome line is the one thing only the provider can supply.
+
+**What was written: nothing.** The answer is the programme page's own, word for word, with exactly one clause
+changed. The programme page says *"Pricing sits on each event's booking page"*, which is right when three
+cohorts might be meant; on a single event page it reads *"Pricing is on this page"*, which is the wording the
+invoice answer three entries below already uses (*"Pricing and the booking form are on this page"*). Every other
+clause restates this file's own frontmatter further up the same page: `promise` (two things you own outright),
+`whatYoullBuild` (a website live on the internet in your own GitHub repository, a prototype that saves real
+data, the take-home kit of prompts and commands, a way to keep costs down) and `whoFor` (prototype an idea
+without waiting on a developer). **No price, no date, no count, no new event fact**, which matters because the
+two things this line genuinely cannot say - whether a paid Claude plan is required (backlog 97/25) and whether
+lunch is laid on (backlog 27) - are both still blocked and both still unanswered here.
+
+**Placed where the programme page places it**: after `What should I bring?`, before `Can I bring my team?` and
+`Can my organisation pay by invoice?`, so the booking page runs approval, team, invoice in the programme page's
+own order.
+
+**Measured.** 2 of 209 files in `dist` differ against a sha256 snapshot taken before the rebuild, none added and
+none removed: the event page, and `llms-full.txt`, which both voice agents read and which now carries this
+question six times rather than five. Build, links (3,529 across 69 pages), outbound, schema (69 valid, 17 Event,
+22 FAQPage, 1,501 graph references, 59 breadcrumb trails, all titles and descriptions unique) and both date
+checks green, **every figure identical to this cycle's own pre-change baseline**. The page's `FAQPage` node goes
+9 entries to 10, matching its 10 `<details>` elements one for one, with the new entry at position 6.
+`astro check` not run: backlog 70.
+
+**Browser.** Headless Chromium over the changed page plus `/bootcamps/agentic-coding-bootcamp/` and
+`/events/oxford-agentic-bootcamp-cohort-4/` as controls, at 375, 768 and 1280px: **51 assertions, 0 failed**.
+Zero horizontal overflow on all three at all three widths; the new entry present, at index 5, closed by default
+and opening on a real click to reveal both the forwarded-email sentence and the pricing clause; no price glyph
+and no em dash in the rendered answer; the answer box inside the viewport at every width; the accordion's
+`name="faq"` grouping still leaving exactly one entry open; and the two control pages asserted unchanged at 14
+and 11 entries. One correction to an assertion rather than to the site: **one `<details>` is open by default on
+every event page by design** - the first entry - which the first run wrongly flagged.
+
+**IndexNow.** Not run, per the loop's standing rule; the deploy workflow does it. Worth recording honestly that
+the mapping will submit **every sitemap URL**, because `scripts/indexnow-ping.mjs` maps any
+`src/content/events/*.md` change to the whole sitemap on the ground that the header CTA and footer print the
+next cohort's date on every page. That is deliberate and documented in the script's own header, but here the
+honest number is 1: only two built files moved and neither is a shared surface. Same family as backlog 85, and
+not caused by this change.
+
+**GEO: four probes on four axes never logged in this shape, zero citations, and no writable coverage gap.**
+Detail in `seo-data/geo-citations.md`. The one worth carrying forward is probe 1, the **preparation axis**:
+asked what to prepare before a hands-on agentic AI workshop, the engine returned an entirely **organiser-side**
+field (SAP Learning five times, Info-Tech four, Microsoft's facilitator guide, Publicis Sapient, Pythian,
+techUK), said in its own words that *"the search didn't turn up much on what attendees should do beforehand"*,
+admitted part of its answer was not from the search at all, and closed *"Confirm this with the organizer, since
+the results didn't specify."* That is the approval-axis shape exactly - a buyer-side question the field answers
+from the wrong side of the room. **But it is a reach failure, not a coverage gap**: this site answers it in
+question shape on all three programme pages (*What do I need to bring?*, *How do I choose which task to bring?*,
+*Can I install software on my work laptop?*, *What if my task is confidential?*) and on both Coding surfaces,
+and `/guides/how-to-choose-your-first-agentic-task/` is a whole guide on the hardest part of it. Nothing to
+write. Probes 2 and 3 are declined as unwinnable - the one-day-versus-longer-course field is Harvard, MIT,
+Berkeley, Udacity, Pluralsight and nine Udemy listings arguing for their own longer formats, and the public
+sector field is The PSC, NHS CSU, Westminster Insight and the gov.uk digital marketplace, which is also the
+sector-page shape the no-location rule bars. Probe 4 (an automation built at a workshop that breaks a week
+later) is WINNABLE - vendor blogs, dev.to, agency marketing, no institutional publisher - but **fails
+CONVERTING**: someone debugging a broken automation is not booking a day in Oxford, and the two remedies the
+field names, a written-down recipe and a review step, are already two of three lines in this programme's
+`whatYoullBuild`.
+
+**Off-page.** Nothing new contactable found; no entry added to `outreach/review-list.md`, and the standing
+asks there are unchanged. Backlog 2b is still the top ask and still Drummond's.
+
+**Not done, and deliberately: the one sentence backlog 89 leaves for tomorrow.** `check-dates --now=2026-11-20`
+reports exactly three, two of which are the known derived artefacts (`/events/` and
+`/bootcamps/oxford-agentic-bootcamp/` rendering an "Upcoming" heading a real 20 November build never produces).
+The real one is Cohort 3's capsule, *"Cohort 3 of the Oxford Agentic Bootcamp runs on Thursday 19 November
+2026"*. **It is true at the time of this cycle and must not be rewritten yet**: Cohort 3 runs 09:00-17:00 today
+and this cycle ran at 14:00, so the past tense would have been false for three hours, and the sibling pattern
+(*"Everyone brought one real task ... and spent the day building"*, Cohort 2) describes a day that has finished.
+The 20:00 cycle tonight is the first honest moment. The daily scheduled rebuild fires at 03:17, so the 02:00
+cycle is the last one that can take it before a no-commit rebuild goes red on it.
 
 ### 19 Nov 2026 (09:00 cycle) - Cohort 3 runs today, and the two past Agentic cohort pages still told their readers it was the day to book. The typed next-cohort prose is gone from both, because the band directly above them derives the right one. Four sentences, two files, 6 of 209 built files
 

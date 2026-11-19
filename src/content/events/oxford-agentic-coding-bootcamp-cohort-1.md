@@ -127,6 +127,25 @@ faqs:
       a terminal and a GitHub account on your own machine, and corporate or government
       devices often block that. If your laptop is locked down, email
       hello@oxfordagentic.com before you book and we will work out what you need.
+  # The approval question. The 19 Nov 2026 08:00 cycle published it on the Coding
+  # programme page and deliberately stopped there; the Agentic line publishes it on
+  # its programme page and on all four of its event pages. So this line answered it
+  # on one of its two surfaces, and the surface it was missing from is the page that
+  # takes the booking, seven days out. The answer is the programme page's own, word
+  # for word, with one clause changed: pricing is "on this page" here, which is the
+  # invoice answer's own wording three entries below, rather than the programme
+  # page's "each event's booking page". Placed where the programme page places it,
+  # before the team and invoice pair. Nothing new is asserted - every clause is a
+  # restatement of this file's own promise, whatYoullBuild and whoFor. No price.
+  - q: How do I justify this to my manager?
+    a: >-
+      If you need to put it in an email, this is the version that survives being
+      forwarded: a day out to ship two working things - a website live on the internet
+      and a prototype that saves real data - both in your own repository, and to come
+      back able to build the next one with a coding agent rather than waiting on a
+      developer. You also take away the prompts and commands used on the day, and a way
+      to keep costs under control once you are building on your own. Pricing is on this
+      page, so the numbers are easy to attach.
   # The two questions a buyer asks after deciding and before paying. Both are
   # answered verbatim on the programme page and on both sibling event pages; this
   # is the booking page, which is where they are actually asked.

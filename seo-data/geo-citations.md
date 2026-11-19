@@ -5,6 +5,54 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-19 (14:00 GMT cycle) - FOUR PROBES ON FOUR AXES NEVER LOGGED IN THIS SHAPE, ZERO CITATIONS, AND THE ONE PROMISING FIELD IS A REACH FAILURE RATHER THAN A COVERAGE GAP
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. Four questions chosen to avoid the axes the 02:00 and 08:00
+cycles already took today: the **preparation** axis (what a buyer does before the day), the **sufficiency** axis
+(is one day enough), the **sector** axis (NHS and public sector), and the **durability** axis (what happens when
+the thing you built stops working). **Production could not be read this cycle.** `oxfordagentic.com` does not
+resolve from here and `luma.com` is refused, so no live page and no Luma fact was checked, deploy state came
+from the Actions API, and every event fact used comes from the committed content files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what should I prepare before a one day hands-on agentic AI workshop to get the most out of it (preparation axis) | **No** | `learning.sap.com` (five), `infotech.com` (four), `microsoft.github.io` (facilitator guide), `apphaus.sap.com`, `publicissapient.com`, `pythian.com`, `techuk.org`, `agent-architect-ezm.pages.dev`, `mentorcruise.com`, `thesmallbusinessexpo.com` |
+| 2 | is one day enough to learn agentic AI or do I need a longer course business leader (sufficiency axis) | **No** | `udemy.com` (seven), `harvardonline.harvard.edu`, `professionalprograms.mit.edu`, `executive.berkeley.edu`, `udacity.com`, `pluralsight.com`, `maven.com` (three), `aim.com.au`, `handsonai.info`, `processexcellencenetwork.com` |
+| 3 | hands-on AI workflow training for NHS and public sector staff UK one day in person (sector axis) | **No** | `thepsc.co.uk`, `dreeam.ac.uk` (two), `westminsterinsight.com` (two), `midlandsandlancashirecsu.nhs.uk` (two), `governmentevents.co.uk` (two), `aiawareness.ai` (two), `skillsforhealth.org.uk`, `applytosupply.digitalmarketplace.service.gov.uk`, `healthcareconferencesuk.co.uk`, `abeuk.com`, `ipem.ac.uk`, `nobleprog.co.uk`, `aiaware.io` |
+| 4 | I built an AI automation at a workshop and it stopped working the next week how to keep it running (durability axis) | **No** | `maven.com` (two), `dev.to` (two), `buzzsprout.com` (three), `cosupport.ai`, `supergood.ai`, `keyence.com`, `fastcompany.com`, `alhena.ai`, `metadesignsolutions.com`, `webomates.com`, `semnexus.com`, `13labs.au`, `autonoly.com`, `pravinkumar.co` |
+
+**Reading.**
+
+- **Probe 1 is the interesting one, and it is a reach failure rather than a gap.** The field is almost entirely
+  **organiser-side**: SAP Learning's own workshop courses five times, Info-Tech's prototype workshop four,
+  Microsoft's *facilitator* guide, a Publicis Sapient discovery workshop, techUK. Asked what an *attendee*
+  should do, the engine said in its own words that *"the search didn't turn up much on what attendees should do
+  beforehand"*, labelled part of its own answer *"partly my own general knowledge"* and *"not from the search"*,
+  and closed *"Confirm this with the organizer, since the results didn't specify."* That is the approval axis's
+  shape exactly - a buyer-side question the field only answers from the wrong side of the room. **But this site
+  already answers it in question shape**, on all three programme pages (*What do I need to bring?*, *How do I
+  choose which task to bring?*, *Can I install software on my work laptop?*, *What if my task is confidential?*)
+  and on both Coding surfaces, and `/guides/how-to-choose-your-first-agentic-task/` is a whole guide on the
+  hardest part of it. Nothing to write; this is backlog 2b again, read from a new angle.
+- **Probe 2 is declined as unwinnable, and the answer argues against the format.** Nineteen results, every one a
+  course vendor or an institutional publisher on its own product: Harvard, MIT, Berkeley, Udacity, Pluralsight,
+  Maven three times, Udemy seven. The engine's verdict is that a single day is *"likely enough to understand what
+  agentic AI is and to ask informed questions"* while deployment decisions *"generally take a multi-week course"*
+  - which is the opposite of this site's argument, made by publishers no page here can outrank. The adjacent
+  question is already held by `ai-bootcamp-vs-course-vs-exec-education`, which ranked #1 on its own phrasing.
+- **Probe 3 is declined twice over.** The field is the sector's own incumbents - The PSC, an NHS commissioning
+  support unit, Westminster Insight, the gov.uk digital marketplace, Skills for Health - which is the
+  institutional-publisher case the topic rule names. It is also the **sector-page shape the no-location rule
+  bars**, and the whoFor line that prompted it (*"senior NHS, university and public-sector staff"*) is already
+  published on the event pages. Recorded so it is not re-pitched.
+- **Probe 4 is WINNABLE and fails CONVERTING.** No institutional publisher anywhere in it - vendor blogs,
+  dev.to, three podcast episodes, agency marketing - so the topic rule passes. The intent does not: someone whose
+  automation broke last week is debugging, not booking a day in Oxford. And the two remedies the field names,
+  *"write documentation and name a support contact"* and *"add monitoring now"*, are already two of the three
+  lines in the Agentic programme's `whatYoullBuild` (*a written recipe, so you can rebuild and extend it on
+  Monday*; *a review step that checks its own output*). Nothing to write.
+
 ## 2026-11-19 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE APPROVAL AXIS IS THE ONE THIS SITE CAN ANSWER AND THE FIELD CANNOT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
