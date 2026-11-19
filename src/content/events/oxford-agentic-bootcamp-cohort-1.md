@@ -6,7 +6,7 @@ cohort: Cohort 1
 status: past
 startDate: "2026-07-21T09:00:00+01:00"
 endDate: "2026-07-21T17:00:00+01:00"
-updatedDate: "2026-10-18T08:23:27+00:00"
+updatedDate: "2026-11-19T09:00:00+00:00"
 venue:
   name: St Anne’s College
   street: 56 Woodstock Road
@@ -66,8 +66,9 @@ faqs:
   - q: Has the Oxford Agentic Bootcamp run before?
     a: >-
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne’s College, Oxford, with
-      sixteen attendees. Cohort 2 ran on Wednesday 16 September 2026, and Cohort 3 runs on
-      Thursday 19 November 2026.
+      sixteen attendees, and Cohort 2 on Wednesday 16 September 2026 at Worcester College.
+      Later cohorts have run the same one-day format in an Oxford college, and the events
+      page lists the dates on sale.
   - q: Can I still join this cohort?
     a: >-
       No - this date has passed. The next cohort is the one to book; it runs the same

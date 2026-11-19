@@ -2000,6 +2000,13 @@ Status: `todo` · `blocked` (why) · `doing`
     "guide links a past event page" detector is **not** viable: 7 such links already exist and
     every one is a legitimate evidence citation (3 to Second Brain Cohort 1, 3 to Cohort 1,
     1 to Cohort 2), so the check would be 7 correct warnings on the day it shipped.
+    **MOSTLY DONE 19 Nov 2026 (09:00 cycle).** Three of the four prose instances that survived into
+    19 November were cleared on their own merits, the morning Cohort 3 ran: the Cohort 2 capsule, and the
+    run-history and "Can I still join this cohort?" answers on the Cohort 1 and Cohort 2 pages, all of which
+    named Cohort 3 as the day to book while it was running. `--now=2026-11-20` now reports three rather than six,
+    and two of those are the known derived artefacts. **What the 20 November cycle inherits is one sentence**:
+    the capsule in `oxford-agentic-bootcamp-cohort-3.md`, which is true today and wants the past tense tomorrow.
+    The 27 November Coding items are untouched and still stand.
     **The year guard of backlog 91 is now in place (12 Nov, 14:00 cycle), so the cycle that meets
     this item inherits it** - every sentence it rewrites is checked for a bare date as it is
     written, rather than after.
@@ -2775,6 +2782,47 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 19 Nov 2026 (09:00 cycle) - Cohort 3 runs today, and the two past Agentic cohort pages still told their readers it was the day to book. The typed next-cohort prose is gone from both, because the band directly above them derives the right one. Four sentences, two files, 6 of 209 built files
+
+**The defect.** `/events/oxford-agentic-bootcamp-cohort-2/` named Cohort 3 three times in typed prose: in its
+capsule ("Cohort 3 runs on 19 November at the same college"), in its run-history FAQ, and in the direct answer
+to *"Can I still join this cohort?"* ("Cohort 3 is the one to book"). `/events/oxford-agentic-bootcamp-cohort-1/`
+carried a fourth, in the same history FAQ. **Cohort 3 runs today, 19 November**, so it is not a day anyone can
+book, and Cohorts 4 (3 December, Worcester) and 5 (28 January, Jesus) went on sale on 15 November without either
+page naming them.
+
+**Where it was published.** Beyond the two pages themselves: the capsule sentence is the Cohort 2 `Event` node's
+`description`, so it also shipped inside the JSON-LD on `/events/`, and all four sentences are in
+`llms-full.txt`, which is the knowledge base both voice agents read. 6 of 209 built files changed, three of them
+sitemap `lastmod` values.
+
+**The fix is the shape the sibling page already used.** Cohort 1's answer to the same booking question has read
+"The next cohort is the one to book" since it was written, and its capsule names no successor at all. Both pages
+now follow that. Nothing was put in place of the removed prose, because the template's successor band sits
+directly above the capsule and derives the real next cohort and its date (today "Cohort 3 - 19 November 2026",
+tomorrow Cohort 4), and the page's upcoming list already names Cohorts 3, Coding 1, 4 and 5 with their dates. The
+two run-history answers now end on the cohorts that have definitely run and point at the events page. A comment
+above the Cohort 2 capsule records why it must not name a cohort again.
+
+**Checks.** `npm run build` passes (3,529 internal links across 69 pages, schema 69 pages, both date rules; the
+14 outbound warnings are this sandbox's egress policy, not the site). `npm run check:flags` passes both builds.
+`npm run check` reports **85 TypeScript errors before and after, byte for byte the same**: `@astrojs/check` is
+not a project dependency and is not in CI, and this change touches two markdown files only. Screenshots at 375,
+768 and 1280 on both event pages and `/events/`, before and after: zero horizontal overflow at every width,
+`/events/` byte-identical as an image, the two event pages 58px shorter where the capsule lost a line. Keyboard:
+the FAQ summaries take focus in tab order and the gold ring lands at 2px solid `#D4AF37`, offset 3px, once its
+240ms reveal finishes.
+
+**It retires three quarters of tomorrow's build failure (backlog 89).** `check-dates.mjs --now=2026-11-20`
+reported six before this change and three after, and two of the three left are the derived "Upcoming" sections
+the 14 Nov simulation already recorded as artefacts of the flag rather than predictions. **The one real item
+remaining is Cohort 3's own capsule**, which reads "runs on Thursday 19 November 2026" and is true today. It
+cannot be put into the past tense until it is past, so the 20 November cycle inherits exactly one sentence.
+
+**Honest about the upside.** Nobody abandons a booking over this. The defensible claim is narrower: on the
+morning Cohort 3 ran, two past-cohort pages and the site's machine-readable knowledge told a reader to book it,
+and neither named either of the two days that were actually on sale.
 
 ### 19 Nov 2026 (08:00 cycle) - the page that sells the nearest on-sale day answered nothing about getting it signed off, while the other line answered it on four surfaces. One FAQ entry, one file, 1 of 209 built files, and the field that argues for it cannot supply the one line a provider can
 

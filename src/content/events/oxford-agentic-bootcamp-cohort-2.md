@@ -10,7 +10,7 @@ cohort: Cohort 2
 status: past
 startDate: "2026-09-16T09:00:00+01:00"
 endDate: "2026-09-16T17:00:00+01:00"
-updatedDate: "2026-11-12T09:00:00+00:00"
+updatedDate: "2026-11-19T09:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -28,11 +28,16 @@ summary: The second Oxford Agentic Bootcamp. A sold-out day at Worcester College
 # Oxford" and the date and venue render on the very next line. This says the
 # part the meta line cannot. Substance is the capsule's, front-loaded.
 promise: Bring one real task from your own work. Leave with a working agentic AI workflow running against it.
+# Ends on this day and names no successor, as Cohort 1's capsule does. The
+# "next cohort" band directly above derives the real one and its date, and this
+# string is also the Event node's description on /events/ and in llms-full.txt, so
+# a typed cohort number here goes stale in three places at once. It did: it read
+# "Cohort 3 runs on 19 November" until 19 Nov 2026, the morning Cohort 3 ran.
 capsule: >-
   Cohort 2 of the Oxford Agentic Bootcamp ran on Wednesday 16 September 2026 at Worcester
   College, Oxford, and sold out beforehand. Everyone brought one real task from their own
   work and spent the day building a working agentic AI workflow against it, facilitated
-  rather than lectured. Cohort 3 runs on 19 November at the same college.
+  rather than lectured.
 # Deliberately unset. The published cap has to match whatever Luma will actually
 # sell, and re-syncing a number across two event files, two programme pages, the
 # About page and four guides every time the ticket limit moves is how the site
@@ -110,11 +115,12 @@ faqs:
     a: >-
       Yes. Cohort 1 ran on Tuesday 21 July 2026 at St Anne’s College, Oxford, with
       sixteen attendees, and Cohort 2 on Wednesday 16 September 2026 at Worcester
-      College. Cohort 3 runs on Thursday 19 November 2026, also at Worcester College.
+      College. Later cohorts have run the same one-day format in an Oxford college, and
+      the events page lists the dates on sale.
   - q: Can I still join this cohort?
     a: >-
-      No - this date has passed. Cohort 3 is the one to book; it runs the same format,
-      in the same kind of small, capped room.
+      No - this date has passed. The next cohort is the one to book; it runs the same
+      format, in the same kind of small, capped room.
   - q: What did people in Cohort 1 actually build?
     a: >-
       Real tasks from their own work rather than a set exercise, so they varied. The
