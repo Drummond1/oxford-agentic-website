@@ -11,6 +11,30 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The tenth recording of the stale-Luma failure, and it now reaches the January cohort, ten weeks
+  out.** Found 19 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed up for, and the
+  loop cannot edit Luma.** Asked *"AI bootcamp Oxford January 2027 one day in person book a place"*,
+  the engine again read **`luma.com/oxfordagentic2`** (16 September) and **`luma.com/k7c2rm5s`**
+  (21 July), both passed, quoted *"one listing shows 21 Jul 2026"*, and concluded it **"didn't find a
+  one-day, in-person AI bootcamp in Oxford scheduled for January 2027 with a booking page"**. Cohort 5
+  is on sale for **28 January 2027** and publishes that date on the site. No page of this site
+  appeared.
+  - **No new target and no new ask - what is new is the range.** The nine earlier recordings were all
+    the *next-cohort* question, which a passed listing answers badly for a week or two. This one is
+    ten weeks ahead, which shows the two stale Luma pages now answer for the **whole forward
+    calendar**, not just the turnover week. The same cheapest fix still applies: **one line at the top
+    of each passed cohort's Luma description** saying the day has run and where the next one is. Two
+    minutes, and two external links to a domain that still has none.
+  - **No contactable target in four probes.** Probe 1's field is Oxford institutions
+    (`sbs.ox.ac.uk`, `lifelong-learning.ox.ac.uk`, `conted.ox.ac.uk`, `oerc.ox.ac.uk`, `ox.ac.uk`) and
+    general course listings; probe 2's is platform vendors (`openai.com`, `salesforce.com`,
+    `kore.ai`, `airtable.com`); probes 3 and 4 are competitors' own course pages and HR trade
+    publishers. `allai.events` reappeared and is already recorded above. Nothing new worth an approach.
+  - **Last cycle's unverified competitor fact is still unverified.** `lifelong-learning.ox.ac.uk` and
+    `conted.ox.ac.uk` both returned again and neither host resolves from this sandbox, so the
+    continuing-education listing recorded on 18 November stays second-hand. Ten minutes with an
+    unblocked browser settles it.
+
 - **The ninth recording of the stale-Luma failure, and it now has a date on it: tomorrow.** Found
   18 Nov 2026 (20:00 cycle). **Nothing contacted, submitted or signed up for, and the loop cannot
   edit Luma.** Asked *"missed the November Oxford agentic AI bootcamp when is the next cohort

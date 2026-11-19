@@ -276,7 +276,30 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
     </Base>
   ) : (
     <Base
-      pageTitle="Guides"
+      {/*
+       * The machine title, not the nav label - backlog 115, taken one page at a
+       * time as that item requires. `pageTitle` is the only thing `Base.astro`
+       * composes a <title> from (src/layouts/Base.astro:50), so it also sets
+       * og:title, twitter:title and `WebPage.name` - four surfaces. This hub for
+       * all 32 guides passed "Guides", the PRD nav label, which names neither
+       * the subject nor the reader. Same defect the 15 November cycle fixed on
+       * /testimonials/ ("Outcomes") and the 18 November cycle on /bootcamps/
+       * ("Bootcamps").
+       *
+       * Both halves come from this page's own description, three lines up:
+       * "Practical writing for business leaders on ...". Nothing new is
+       * asserted. "AI" rather than "agentic AI" is deliberate and is the one
+       * decision here - the comment on GUIDES_INDEX_DESCRIPTION records why the
+       * snippet was widened to name all three subjects, because a third of the
+       * index is second brains and coding agents, and a title narrower than the
+       * description it sits above would put that mistake back. The word
+       * "agentic" is still in the title, in the brand suffix.
+       *
+       * The nav label, the breadcrumb crumb, the `h1` ("Writing on agentic AI"),
+       * the subline and `collectionPageSchema('Guides', ...)` are all untouched,
+       * which is the shape /events/ and /bootcamps/ already have.
+       */}
+      pageTitle="Practical AI guides for business leaders"
       description={GUIDES_INDEX_DESCRIPTION}
       path={paths.guides()}
       ogImage={ogPathFor(paths.guides())}

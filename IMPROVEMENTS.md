@@ -2714,7 +2714,16 @@ Status: `todo` · `blocked` (why) · `doing`
       in this probe is at the free-fix stage and the field's first answer is correct for them.
 
 
-115. `todo` (loop-actionable for two of the three, **a copy call for the third**, and measured in full so
+115. `half done` 19 Nov 2026 (02:00 cycle) - **`/guides/` shipped**, on its own merits and on its own,
+    exactly as this item required: `pageTitle="Guides"` became *"Practical AI guides for business
+    leaders"*, both halves lifted from the page's own description, with the nav label, breadcrumb, `h1`
+    and `CollectionPage` name untouched. Detail in the Shipped entry, including why the title is as wide
+    as the description rather than narrowed to agentic workflows. **`/team/` and `/about/` are what is
+    left**, and the item's own instruction stands: they want a reason better than consistency, and a
+    cycle that cannot write one should close them here. One correction to the census below, found by
+    this cycle's browser pass: *"Guides"* is the **footer** nav label (`src/lib/site.ts:304`); the
+    header carries no Guides link at all, so on this page the label was not even the thing a reader
+    saw. Originally filed as: (loop-actionable for two of the three, **a copy call for the third**, and measured in full so
     no cycle re-derives it; found 18 Nov 2026 in the 20:00 cycle while fixing `/bootcamps/`) - **three
     more indexable pages still publish a nav label as their machine title.** `pageTitle` is the only
     thing `Base.astro` composes a title from, so each of these sets `<title>`, `og:title`,
@@ -2737,6 +2746,79 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 19 Nov 2026 (02:00 cycle) - the hub for all 32 guides published the site-nav label as its machine title. Backlog 115 taken one page at a time, 1 of 209 built files, rendered body byte-identical, and the title deliberately kept as wide as the description above it
+
+**The defect, measured.** `src/pages/guides/[...slug].astro` passed `pageTitle="Guides"` on the index
+branch, and `pageTitle` is the **only** thing `Base.astro` composes a title from
+(`src/layouts/Base.astro:50`), so one word was the machine title on four surfaces at once:
+
+| surface | before | after |
+|---|---|---|
+| `<title>` | `Guides - Oxford Agentic` | `Practical AI guides for business leaders - Oxford Agentic` |
+| `og:title` | `Guides - Oxford Agentic` | `Practical AI guides for business leaders - Oxford Agentic` |
+| `twitter:title` | `Guides - Oxford Agentic` | `Practical AI guides for business leaders - Oxford Agentic` |
+| `WebPage.name` | `Guides - Oxford Agentic` | `Practical AI guides for business leaders - Oxford Agentic` |
+
+This is the page backlog 115 named as the one worth taking on its own merits, and the third instance
+of the defect the 15 November cycle fixed on `/testimonials/` and the 18 November cycle on
+`/bootcamps/`. It is the hub of the site's largest internally linked cluster - 32 guides, each of
+which links back to it - and the title named neither the subject nor the reader.
+
+**Where the words come from, and the one decision in them.** Both halves are lifted from this page's
+own `description`, three lines above the change: *"**Practical** writing **for business leaders** on
+agentic AI workflows, second brains for AI and shipping software with coding agents."* Nothing new is
+asserted.
+
+The one decision is **"AI" rather than "agentic AI"**, and it is deliberate. The comment on
+`GUIDES_INDEX_DESCRIPTION` records why that snippet was widened to name all three subjects: of 32
+guides, 11 are tagged to the Second Brain Bootcamp and 7 to the Coding Bootcamp, and 7 are Second
+Brain alone, so roughly a third of the index is not about agentic workflows. A title narrower than
+the description it sits above would put that same mistake back one line higher up. The word
+*agentic* is still in the title, in the brand suffix, and the `h1` still reads *"Writing on agentic
+AI"*.
+
+**This cycle's own GEO probe is the second argument for that choice.** Asked *"practical guides to
+building agentic AI workflows for business leaders"*, the field came back `openai.com`,
+`salesforce.com` (three pages), `kore.ai`, `airtable.com`, `fractal.ai`, `arxiv.org`, `bernardmarr.com`
+and a dozen vendor blogs - platform vendors writing about their own product, which is exactly what
+the topic rule calls unwinnable. A title aimed at that head query would have been aimed at a query
+this site cannot take. This title is aimed at the brand-plus-subject and reader-shaped queries a hub
+actually wins.
+
+**What was deliberately not touched.** The site-nav label (`src/lib/site.ts:304`, which is a footer
+link - the header carries no Guides link at all, a detail backlog 115 should carry for its remaining
+two), the breadcrumb crumb, the `h1`, the subline and `collectionPageSchema('Guides', ...)` all still
+read *"Guides"* or their own words. `"name":"Guides"` occurs twice in the built page before and after.
+That is the same shape `/events/` and `/bootcamps/` already have.
+
+**Measured, not inferred.** 1 of 209 files in `dist` differs against a sha256 snapshot taken before
+the rebuild, none added or removed: `dist/guides/index.html`. Within it the `<body>` is
+**byte-identical**, 37,802 characters each way; the `<head>` grows 136; the old string occurs **0**
+times and the new one **4**, which is the table above. 57 characters with the brand suffix, inside the
+60 `check-schema.mjs` measures. Build, links (3,529 across 69 pages), outbound, schema (69 valid, 17
+Event, 22 FAQPage, 1,501 resolving graph references, 59 breadcrumb trails, all titles and descriptions
+unique) and both date checks green, **every figure identical to this cycle's own pre-change baseline**.
+`astro check` not run: backlog 70.
+
+**Browser, headless Chromium, 69 assertions and 0 failures.** `/guides/`, `/events/` and `/bootcamps/`
+at 375, 768 and 1280px: every page 200, **zero horizontal overflow at every width**, and on `/guides/`
+the new title asserted on all three head surfaces plus `WebPage.name`, the `CollectionPage` name still
+*"Guides"*, the `h1` still *"Writing on agentic AI"*, the breadcrumb crumb and the footer nav label
+still *"Guides"*, the description unchanged, the canonical correct, no `noindex`, and all **32** guide
+cards rendering. `/events/` and `/bootcamps/` titles asserted unchanged, because a shared layout is
+where a title change would leak. Screenshots at 375 and 1280px read exactly as before, which is what a
+head-only diff should look like.
+
+**A sixth instance of backlog 85, and close to its worst ratio.** The IndexNow dry run over
+`src/pages/guides/[...slug].astro` submits **58** URLs; the honest number is **1**. This is the third
+instance's branch - the page-source regex `^src/pages/((?:[a-z0-9-]+/)*)([a-z0-9-]+)\.astro$` cannot
+match a dynamic route, because of the brackets - so the file falls straight through to the whole-site
+bucket. Over-submission, which backlog 74 weighs as the milder failure, and one more argument for
+taking the build-output diff once rather than patching the map path by path. **The deploy workflow's
+own ping is unaffected in kind**: it maps from changed files the same way, so it will hint the sitemap
+for a one-file change. Nothing was pinged by hand.
+
 
 ### 18 Nov 2026 (20:00 cycle) - the page where a buyer picks a programme published the nav label as its machine title, on four surfaces. The same defect the 15 November cycle fixed on `/testimonials/`, one string, 1 of 209 built files, and the rendered body byte-identical
 

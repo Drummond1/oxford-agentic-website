@@ -5,6 +5,60 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-19 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE STALE-LUMA FAILURE HAS NOW REACHED THE JANUARY COHORT, TEN WEEKS OUT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions on four axes: a **dated
+commercial** query aimed at Cohort 5 rather than the next one, the **guides-hub head query** this
+cycle's own change sits under, a **group-and-invoice** axis never probed, and an **adoption-stall**
+axis never probed. **Production could not be read this cycle.** `oxfordagentic.com` does not resolve
+from here and `luma.com` is refused, so no live page and no Luma fact was checked, deploy state came
+from the Actions API, and every event fact used comes from the committed event files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | AI bootcamp Oxford January 2027 one day in person book a place (dated commercial, aimed at Cohort 5) | **No - and both pages of "ours" it read are passed cohorts**: `luma.com/oxfordagentic2` (16 Sept) and `luma.com/k7c2rm5s` (21 July) | `sbs.ox.ac.uk` (two), `lifelong-learning.ox.ac.uk` (four), `conted.ox.ac.uk`, `eventbrite.com`, `journalism.co.uk`, `tutorials.co.uk`, `theknowledgeacademy.com`, `createwith.com`, `oerc.ox.ac.uk`, `economics.web.ox.ac.uk`, `ox.ac.uk`, `meetup.com`, `allai.events` |
+| 2 | practical guides to building agentic AI workflows for business leaders (the hub's own head query) | **No** | `openai.com`, `salesforce.com` (three), `kore.ai`, `fractal.ai`, `airtable.com`, `arxiv.org` (two), `bernardmarr.com`, `apiko.com`, `biz4group.com`, `eesel.ai`, `capably.ai`, `bridgeapp.ai`, `dreamztech.com`, `salesmate.io`, `aiplusinfo.com`, `rohitprabhakar.com` |
+| 3 | send two managers to a one day hands-on AI workshop UK pay by invoice company booking (group-and-invoice axis, never probed) | **No** | `pointacademy-co-uk.pages.dev` (three), `innovationvisual.com` (five), `tutorials.co.uk` (two), `eventbrite.co.uk`, `cademy.io`, `ipsofacto.uk.com`, `anicca.co.uk`, `ailab.world` |
+| 4 | our team tried AI tools and nobody uses them how to make AI stick training UK (adoption-stall axis, never probed) | **No** | `personneltoday.com`, `itbrief.co.uk` (two), `cfotech.co.uk`, `cmotech.uk`, `digit.fyi` (two), `cypherlearning.com`, `uktech.news`, `hrcentre.uk.brightmine.com` |
+
+**Reading.**
+
+- **Probe 1 is the finding, and it is the tenth recording of the stale-Luma failure - now ten weeks
+  ahead of the date rather than the morning after one.** Every previous recording was the
+  *next-cohort* question. This one asks about **January 2027**, where Cohort 5 is on sale for
+  **28 January 2027** and publishes that date in its own `EducationEvent` node, in `/events/`, on
+  `/bootcamps/oxford-agentic-bootcamp/` and in the footer of all 58 indexable pages. The engine read
+  **two passed cohorts' Luma pages**, quoted *"one listing shows 21 Jul 2026"*, and concluded it
+  **"didn't find a one-day, in-person AI bootcamp in Oxford scheduled for January 2027 with a booking
+  page"**. No page of this site appeared. So the failure is not confined to the week a cohort turns
+  over: the two stale Luma pages are now answering for the whole forward calendar. The remedy is
+  unchanged and still needs Drummond - one line at the top of each passed cohort's Luma description,
+  the Eventbrite listing, and one real `sameAs`. Backlog 2b.
+- **Probe 2 is declined, and it is the argument for how this cycle's own change was worded.** The
+  field is `openai.com`, `salesforce.com` three times, `kore.ai`, `airtable.com`, `fractal.ai` and
+  `arxiv.org` - platform vendors writing about their own product, plus an academic publisher, which is
+  the category the topic rule names as unwinnable. The hub title shipped this cycle is deliberately
+  **not** aimed here: it names the reader (*business leaders*) and stays as wide as the page's own
+  description rather than chasing *agentic AI workflows*, which this probe shows is owned.
+- **Probe 3 is a reach failure, not a coverage gap, and the check is on the record.** The engine's own
+  closing line was that **none** of its results confirmed pay-by-invoice booking and that the reader
+  should email a provider to ask. This site answers that question in question shape on **six** pages -
+  *"Can my organisation pay by invoice?"* on all four on-sale event pages and the Second Brain
+  programme page - and `getting-an-ai-bootcamp-approved` answers it in prose, under the approver's own
+  words (*"Can we pay properly rather than on a card?"*). Writing a seventh copy would be backlog 87's
+  measured nothing. Nothing written.
+- **Probe 4 fails both halves of the topic rule.** The field is HR and technology trade publishers
+  reporting vendor surveys - `personneltoday.com`, `itbrief.co.uk`, `cfotech.co.uk`, `brightmine` -
+  which is institutional publishing, and the searcher behind that phrasing wants adoption statistics
+  for a slide, not a seat in Oxford. Declined on WINNABLE and on CONVERTING.
+- **Nothing in any of the four produced a guide candidate**, which is the expected outcome under the
+  topic-probe rule. No new guide this week.
+- **No new off-page target.** `allai.events` reappeared in probe 1 and is already on the review list;
+  everything else is a competitor course page or an institutional listing. The
+  `lifelong-learning.ox.ac.uk` and `conted.ox.ac.uk` hosts returned again and still do not resolve from
+  this sandbox, so last cycle's unverified competitor fact stays unverified.
+
 ## 2026-11-18 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE QUERY A READER WILL ASK TOMORROW MORNING WAS ANSWERED BY TWO COHORTS THAT HAVE ALREADY RUN
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
