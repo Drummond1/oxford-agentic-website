@@ -2744,8 +2744,130 @@ Status: `todo` · `blocked` (why) · `doing`
     taking on its own merits; `/team/` and `/about/` want a reason better than consistency, and if a
     cycle cannot write one it should say so here and close them.
 
+116. `todo` (loop-actionable in part, **the rest measured and recorded so no cycle re-derives it**;
+    found 19 Nov 2026 in the 08:00 cycle while closing the approval asymmetry) - **the full census of
+    what the Agentic line answers and the Coding line does not.** Counted on the built site this cycle,
+    Agentic programme page 24 FAQ entries against the Coding programme page's 13 (14 after this cycle),
+    and the Agentic on-sale event pages 11 against Cohort 1's 9. Six questions are answered on one line
+    and not the other, and they are not one kind of thing:
+    - **`How do I justify this to my manager?` - DONE this cycle**, programme page only.
+    - **`Do I need a paid AI subscription?`** - blocked, and it is **backlog 97**, which has now been
+      raised by three probes. One sentence from Drummond closes it on both Coding surfaces.
+    - **`Is lunch included?`** - blocked and correctly so: the Coding event file says in a comment that
+      *"whether food is laid on for this day is not published anywhere"*. Not a loop decision.
+    - **`What happens after the day?`** - blocked, and it is **backlog 87**.
+    - **`Is the day recorded?`** - the Agentic answer (*"No. The value is in being in the room"*) is a
+      statement about how that day runs, and nothing on this line says it. Asserting it here would be
+      inventing an event fact. **Needs one word from Drummond**, and it is the cheapest of the four asks
+      on this list.
+    - **`What if my task is confidential?`** - weakest of the six, and possibly correctly absent: the
+      Coding day's published deliverables are a personal website and a prototype in the attendee's own
+      repository, so the Agentic version's premise (you bring a real task from work) does not transfer
+      cleanly. **Do not write it without a reason better than symmetry.**
+    **A second, separate find from the same pass, and it is a decline rather than a todo.**
+    `getting-an-ai-bootcamp-approved` declares `relatedProgrammes: [oxford-agentic-bootcamp]` only. The
+    obvious move - add `agentic-coding-bootcamp` and let one guide serve both lines - was considered and
+    **declined**: the guide's argument is that a build day names the task, the deliverable and the date,
+    and every worked example in it is an agentic workflow against a task you already do by hand. The
+    Coding day's deliverable is a shipped prototype, which is a different promise to put in an approval
+    email. Retagging would surface a guide that answers the neighbouring question. Take it only as a
+    rewrite of the guide, not as a tag.
+
 
 ## Shipped
+
+### 19 Nov 2026 (08:00 cycle) - the page that sells the nearest on-sale day answered nothing about getting it signed off, while the other line answered it on four surfaces. One FAQ entry, one file, 1 of 209 built files, and the field that argues for it cannot supply the one line a provider can
+
+**The defect, counted on the built site.** *"How do I justify this to my manager?"* is published on
+`/bootcamps/oxford-agentic-bootcamp/` and on all three on-sale Agentic event pages - four surfaces. On
+the Coding line it was published on **neither** of its two: 13 FAQ entries on
+`/bootcamps/agentic-coding-bootcamp/` and 9 on Cohort 1's booking page, and no entry on either asks how
+to get the day approved or paid for. **Cohort 1 runs on 26 November, seven days from this cycle**, and
+it is the nearest bookable day on the whole site.
+
+**The evidence, from this cycle's probe 4.** *"how do I convince my employer to pay for a one day AI
+coding course business case"* returned sixteen results and not one of them is a provider answering the
+question where a booking is taken: **eleven are US university extension tuition-reimbursement pages**
+(`upskill.gonzaga.edu`, `online-certificates.lsu.edu`, `online-certificates.uwo.ca`,
+`skills.mccombs.utexas.edu` and seven more), the rest are advice blogs (`opendatascience.com`,
+`opsmatters.com`, `nocode.mba`), and the only tax claim in the answer is **IRS Section 127**, which is
+not a UK fact at all. The engine's close is the finding: write *"a one-page memo: the problem, the
+course, the cost, and a concrete outcome you'd deliver"*. **The deliverable is the one line only the
+provider can write**, and in that field nobody writes it. WINNABLE on the topic rule (no institutional
+publisher holds the question, and the vendors in it are not writing about their own product in the way
+the rule bars) and CONVERTING (the searcher is trying to get a specific day signed off). Full field in
+`seo-data/geo-citations.md`.
+
+**What shipped, and where every clause of it comes from.** One entry, inserted at position 10 of 14, in
+the Agentic page's own order - approval, then team, then invoice, then transfer - so the money cluster
+reads in one run:
+
+> If you need to put it in an email, this is the version that survives being forwarded: a day out to
+> ship two working things - a website live on the internet and a prototype that saves real data - both
+> in your own repository, and to come back able to build the next one with a coding agent rather than
+> waiting on a developer. You also take away the prompts and commands used on the day, and a way to
+> keep costs under control once you are building on your own. Pricing sits on each event's booking
+> page, so the numbers are easy to attach.
+
+Every claim restates this page's own frontmatter, three screens above the change: `outcomes` (*"A
+personal website live on the internet, in your own GitHub repository"*, *"A working product prototype
+that saves real data and has basic tests"*, *"A take-home kit of the prompts and commands used on the
+day"*, *"A way to keep costs under control once you are building on your own"*), `capsule` (*"leave with
+two things live that you own outright"*) and `whoFor` (*"Founders and operators who want to prototype
+an idea without waiting on a developer"*). **Nothing new is asserted and no price appears**; the
+pricing clause is the Agentic page's own sentence and points at Luma, as everywhere else.
+
+**The one sentence deliberately not carried across.** The Agentic answer opens *"Some people pay for
+themselves, some expense it, and occasionally a company buys two or three seats"*. That is a statement
+about how a line that has already run three cohorts has actually been bought, and it is published
+nowhere about this line, whose first cohort has not happened. Copying it would have been the only
+invented thing in the entry, so it was dropped rather than reworded.
+
+**What was deliberately not touched.** Cohort 1's booking page keeps its 9 entries: the two precedents
+for this shape (13 Nov 02:00 on group size, 12 Nov 20:00 on "Who is it not for?") each took one surface,
+and the programme page is the one that ranks for the queries with no date in them and the one a buyer
+reads before any cohort page. `getting-an-ai-bootcamp-approved` was **not** retagged to this programme:
+its `relatedProgrammes` is `oxford-agentic-bootcamp` and its whole argument turns on an agentic workflow
+as the deliverable, so pointing it at a day whose deliverable is a shipped prototype would surface a
+guide that answers a different question. Filed as part of backlog 116.
+
+**One voice correction caught in the browser pass and fixed before the final build.** The first draft
+wrote *"each event's booking page"* with a straight apostrophe. The frontmatter strings on every other
+programme page use the typographic one - markdown bodies get it from smartypants at render, YAML strings
+do not - so the page would have published one straight apostrophe among curly ones. Changed in source,
+rebuilt, re-measured.
+
+**Measured, not inferred.** 1 of 209 files in `dist` differs against a sha256 snapshot taken before the
+change, none added or removed: `dist/bootcamps/agentic-coding-bootcamp/index.html`. The new question
+occurs **twice** in it, which is the visible accordion and the `FAQPage` node. Build, links (3,529
+across 69 pages), outbound, schema (69 valid, 17 Event, **22 FAQPage**, 1,501 resolving graph
+references, 59 breadcrumb trails, all titles and descriptions unique) and both date checks green,
+**every figure identical to this cycle's own pre-change baseline** - the FAQPage count is unchanged
+because a Question was added to a node that already existed, which is the cheapest possible way to buy
+retrieval. `astro check` not run: backlog 70.
+
+**Browser, headless Chromium, 102 assertions and 0 failures.** `/bootcamps/agentic-coding-bootcamp/`,
+`/bootcamps/oxford-agentic-bootcamp/` and `/events/oxford-agentic-coding-bootcamp-cohort-1/` at 375, 768
+and 1280px: every page 200, **zero horizontal overflow at every width**, `FAQPage` Question counts
+**14 / 24 / 9** and `<details>` element counts matching them one for one, no em or en dash and no
+price-shaped string anywhere in the rendered FAQ copy, and on the changed page the new question present
+in the visible copy, present in the `FAQPage` node at position 10, closed by default, growing its box
+and revealing the answer text on a real click, and behaving identically to a control question measured
+the same way. Screenshots at 375 and 1280px read correctly, the entry sitting between *"What time does
+the day start and finish?"* and *"Can I bring my team, or book for several people?"*. **One measurement
+worth keeping**: `.faq__a` keeps a non-zero bounding height while its `<details>` is shut, because the
+accordion clips it in a wrapper, so an assertion written against the answer element rather than the
+`<details>` box reads "already open" on a closed accordion. The first version of this cycle's script did
+exactly that and reported three false failures.
+
+**Backlog 85 again, and this is the mildest instance recorded.** The IndexNow dry run over this
+cycle's whole commit - the programme file plus the three ledger files, which map to nothing - submits
+**10** URLs: `/`, `/bootcamps/`, the changed page, and the seven guides naming this programme in
+`relatedProgrammes`. The honest number is **1**, the `dist` diff above. This is the programmes branch
+working as designed rather than a map defect: the seven guides print this programme's name and its next
+cohort, so the rule is right in kind and wrong by nine on a change confined to one accordion. Still
+over-submission, which backlog 74 weighs as the milder failure. Nothing was pinged by hand; the deploy
+workflow's own job maps the same way.
 
 ### 19 Nov 2026 (02:00 cycle) - the hub for all 32 guides published the site-nav label as its machine title. Backlog 115 taken one page at a time, 1 of 209 built files, rendered body byte-identical, and the title deliberately kept as wide as the description above it
 

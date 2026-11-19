@@ -11,6 +11,24 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The eleventh recording, and the first one read from the competition's side: on the Coding line's
+  own commercial query, three of the providers ranking hold it through an Eventbrite listing.** Found
+  19 Nov 2026 (08:00 cycle). **Nothing contacted, submitted or signed up for.** Asked *"one day Claude
+  Code training course UK in person for people who do not code"* - which is this line's offer in the
+  buyer's words, seven days before Cohort 1 - no page of this site appeared. What did: a London
+  one-day workshop on its own domain, **three separate `eventbrite.co.uk` listings** for Claude Code
+  workshops, four `maven.com` cohorts, and `jellyfish.com`, `nobleprog.co.uk` and `onlc.com`.
+  - **No new target. It is the standing Eventbrite ask, with evidence that it is how this exact query
+    is being won.** The pages above are not better-written course pages; they are the same offer on a
+    platform that gets crawled and cited. Every host named is a competitor rather than somewhere to
+    ask for a mention.
+  - **The December cohort now fails the same way January does.** Probe 2 of the same cycle, *"AI
+    bootcamp Oxford December 2026 one day in person book a place"*, again read `luma.com/oxfordagentic2`
+    and `luma.com/k7c2rm5s`, both passed, quoted *"One listing dates it to 21 Jul 2026"*, and found no
+    December date, while **Cohort 4 is on sale for 3 December**, nine days out. Unchanged ask, unchanged
+    owner: one line at the top of each passed cohort's Luma description, the Eventbrite listing, one
+    real `sameAs`.
+
 - **The tenth recording of the stale-Luma failure, and it now reaches the January cohort, ten weeks
   out.** Found 19 Nov 2026 (02:00 cycle). **Nothing contacted, submitted or signed up for, and the
   loop cannot edit Luma.** Asked *"AI bootcamp Oxford January 2027 one day in person book a place"*,

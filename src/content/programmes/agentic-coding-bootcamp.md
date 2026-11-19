@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-13T02:03:00+00:00"
+updatedDate: "2026-11-19T08:00:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
 # changes, this file follows it, not the other way round.
@@ -185,6 +185,26 @@ faqs:
       The day runs 09:00 to 17:00, so it is worth checking both ends against your
       travel before you book. Each event page confirms its own date and times, and
       that is the page to go by.
+  # The approval answer, and the asymmetry is this line's own. The Agentic line
+  # answers "how do I justify this to my manager?" on its programme page and on all
+  # three on-sale event pages; this line answered it on neither of its two surfaces,
+  # seven days before Cohort 1. Every claim below restates this page's own
+  # `outcomes`, `capsule` and `whoFor`: a website live on the internet and a
+  # prototype that saves real data, both in your own repository, the take-home kit,
+  # the cost-control answer, and prototyping without waiting on a developer. Wording
+  # follows the Agentic programme page's answer so the two cannot drift, minus its
+  # one sentence about who has paid so far - that is true of a line that has already
+  # run and is published about this one nowhere. No price here: pricing stays on the
+  # booking page, as everywhere else.
+  - q: How do I justify this to my manager?
+    a: >-
+      If you need to put it in an email, this is the version that survives being
+      forwarded: a day out to ship two working things - a website live on the internet
+      and a prototype that saves real data - both in your own repository, and to come
+      back able to build the next one with a coding agent rather than waiting on a
+      developer. You also take away the prompts and commands used on the day, and a way
+      to keep costs under control once you are building on your own. Pricing sits on
+      each event’s booking page, so the numbers are easy to attach.
   - q: Can I bring my team, or book for several people?
     a: >-
       Yes. Bringing a colleague means two of you go back able to build rather than one,

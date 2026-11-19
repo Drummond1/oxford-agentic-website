@@ -5,6 +5,58 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-19 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE APPROVAL AXIS IS THE ONE THIS SITE CAN ANSWER AND THE FIELD CANNOT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
+so the 26 Oct caveat about reading positions off it stands. Four questions, three of them aimed at the
+**Coding line**, whose Cohort 1 is seven days out and is the nearest on-sale day: its **core commercial
+query**, its **topic axis**, and the **approval axis** this cycle's change answers. The fourth is the
+**dated commercial** query for Cohort 4 on 3 December. **Production could not be read this cycle.**
+`oxfordagentic.com` does not resolve from here and `luma.com` is refused, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every event fact used comes from the
+committed content files.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | one day Claude Code training course UK in person for people who do not code (the Coding line's own commercial query, 7 days out) | **No** | `claude-code-course-c1w.pages.dev` (Ballpoint, London, one day, £600), `eventbrite.co.uk` (three separate Claude Code workshops), `maven.com` (four), `jellyfish.com`, `nobleprog.co.uk` (two), `onlc.com` (two), `dayseven.lovable.app`, `marq-ai-wiki.pages.dev`, `every.to` |
+| 2 | AI bootcamp Oxford December 2026 one day in person book a place (dated commercial, aimed at Cohort 4) | **No - and both pages of "ours" it read are passed cohorts**: `luma.com/oxfordagentic2` (16 Sept) and `luma.com/k7c2rm5s` (21 July) | `lifelong-learning.ox.ac.uk` (four), `sbs.ox.ac.uk` (three), `conted.ox.ac.uk`, `createwith.com` (two), `allai.events`, `eventbrite.com`, `tutorials.co.uk`, `theknowledgeacademy.com`, `economics.web.ox.ac.uk` |
+| 3 | can a non-technical person actually ship software using an AI coding agent (the Coding line's topic axis) | **No** | `zapier.com` (three), `cosine.sh`, `stacker.com` plus four local-news syndications of the same survey story, `toolsforhumans.ai`, `mindstudio.ai`, `umans.ai`, `noproduct.substack.com`, `hashnode.com` |
+| 4 | how do I convince my employer to pay for a one day AI coding course business case (the approval axis) | **No** | eleven US university extension **reimbursement** pages (`upskill.gonzaga.edu`, `online-certificates.lsu.edu`, `business-science.csuchico.edu`, `advance.cpe.kennesaw.edu`, `advance.ce.arizona.edu`, `online-certificates.uwo.ca`, `skills.mccombs.utexas.edu`, `training.gvsu.edu`, `upskill.utah.edu`, `ziplines.training.uark.edu`, `ziplines.uab.edu`), `opendatascience.com`, `opsmatters.com`, `nocode.mba`, `dev.to`, `precisionaiacademy.pages.dev` |
+
+**Reading.**
+
+- **Probe 4 is this cycle's change, and the field is the argument for it.** Sixteen results and not one
+  of them is a provider answering the question on the page that takes the booking: eleven are US
+  universities' own *tuition-reimbursement* pages, the rest are advice blogs, and the one tax claim in
+  the answer is IRS Section 127, which is not a UK fact at all. The engine's own close is the
+  interesting part - write *"a one-page memo: the problem, the course, the cost, and a concrete outcome
+  you'd deliver"* - because the deliverable is the one line only the provider can supply, and the field
+  supplies it nowhere. The Agentic line already answered this on its programme page and all three
+  on-sale event pages. **The Coding line answered it on neither of its two surfaces**, seven days before
+  Cohort 1, and that is what shipped: one FAQ entry on `/bootcamps/agentic-coding-bootcamp/`, written
+  out of that page's own `outcomes`, `capsule` and `whoFor`. No price, no new fact.
+- **Probe 1 is the eleventh recording of the off-page gap, read from the competition's side.** The
+  Coding line is absent from its own core commercial query a week before its first cohort, and of the
+  providers that are there, **three hold the query through an Eventbrite listing** and one through a
+  Maven page. That is the standing ask of backlog 2b shown working for somebody else: the pages ranking
+  are not better-written course pages, they are the same offer on a platform that gets crawled. No page
+  of this site appeared.
+- **Probe 2 is the eleventh recording of the stale-Luma failure, now nine days ahead of a date that is
+  on sale.** Same two passed Luma pages as the 02:00 cycle, same quoted *"One listing dates it to
+  21 Jul 2026"*, same conclusion - the engine *"found no one-day, in-person AI bootcamp in Oxford dated
+  December 2026"* - while Cohort 4 is on sale for **3 December 2026** and publishes that date in its own
+  `EducationEvent` node, in `/events/`, on `/bootcamps/oxford-agentic-bootcamp/` and in the footer of
+  every indexable page. The remedy is unchanged and still Drummond's: one line at the top of each passed
+  cohort's Luma description, the Eventbrite listing, one real `sameAs`.
+- **Probe 3 is declined as a topic, and the decline is on the field rather than on the question.** The
+  answer is carried by one Zapier survey (*"about a third of people shipping software with AI tools have
+  no formal programming background"*) syndicated through four local-news sites, plus vendor blogs that
+  sell the tools. WINNABLE on the topic rule, but it fails CONVERTING: the searcher is asking whether
+  the thing is possible at all, not who to book a day with, and the engine's own close sends them to
+  engineers for anything touching payments or auth. The adjacent reader question is already answered
+  here by `/guides/why-the-code-an-agent-wrote-is-not-live/`, which opted into `FAQPage` on 6 November.
+  **Nothing to write.**
+
 ## 2026-11-19 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE STALE-LUMA FAILURE HAS NOW REACHED THE JANUARY COHORT, TEN WEEKS OUT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident,
