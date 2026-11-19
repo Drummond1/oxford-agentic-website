@@ -3,10 +3,10 @@ title: The Oxford Agentic Bootcamp - Cohort 3
 slug: oxford-agentic-bootcamp-cohort-3
 programme: oxford-agentic-bootcamp
 cohort: Cohort 3
-status: upcoming
+status: past
 startDate: "2026-11-19T09:00:00+00:00"
 endDate: "2026-11-19T17:00:00+00:00"
-updatedDate: "2026-10-18T13:12:03+00:00"
+updatedDate: "2026-11-19T20:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -19,13 +19,25 @@ lumaUrl: https://luma.com/oxfordagentic3
 # the line directly above this one, so the summary opens on the promise instead.
 # (12 Oct 2026: it used to open "Thursday 19 November at Worcester College,
 # Oxford", which was the line above repeated word for word.)
-summary: Bring one real task from your own work and leave with an agentic workflow running against it.
+# Rewritten past-tense on the evening of 19 November 2026, for the same reason
+# Cohort 1's and Cohort 2's are past-tense: on a past event the meta description
+# is "Took place on <date> at <venue>. <summary>", so a forward-tense summary
+# publishes a sales line for a day that has gone, straight into the search
+# snippet. 97 chars, which fits the second rung with the venue still on it.
+# Says only what the format was; no count and no sold-out claim, because
+# nothing about who came is recorded yet.
+summary: The third Oxford Agentic Bootcamp. A build day against one real task from each person’s own work.
 promise: Bring one real task from your own work. Leave with a working agentic AI workflow running against it.
+# Past tense from the evening of 19 November 2026, the day it ran, which is what
+# check:dates had started failing on. Describes the format of the day, which this
+# page already published, and claims no outcome: nothing about who came or what
+# they left with is recorded anywhere yet. When Drummond has the numbers, this is
+# where they go, in the shape Cohort 1 uses (`outcomes`, and a sentence here).
 capsule: >-
-  Cohort 3 of the Oxford Agentic Bootcamp runs on Thursday 19 November 2026 at Worcester
-  College, Oxford. You bring one real task from your own work and leave having built a
-  working agentic AI workflow against it, so the routine runs itself and the hours go back
-  into the work only you can do. A small cohort, facilitated rather than lectured.
+  Cohort 3 of the Oxford Agentic Bootcamp ran on Thursday 19 November 2026 at Worcester
+  College, Oxford. The day asked each person to bring one real task from their own work
+  and to build a working agentic AI workflow against it. A small cohort, facilitated
+  rather than lectured.
 # Deliberately unset. The published cap has to match whatever Luma will actually
 # sell, and re-syncing a number across two event files, two programme pages, the
 # About page and four guides every time the ticket limit moves is how the site

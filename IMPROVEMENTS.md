@@ -2007,6 +2007,17 @@ Status: `todo` · `blocked` (why) · `doing`
     and two of those are the known derived artefacts. **What the 20 November cycle inherits is one sentence**:
     the capsule in `oxford-agentic-bootcamp-cohort-3.md`, which is true today and wants the past tense tomorrow.
     The 27 November Coding items are untouched and still stand.
+    **THE AGENTIC HALF IS DONE, 19 Nov 2026 (20:00 cycle), and one assumption in this item was wrong.**
+    The last inherited sentence - Cohort 3's capsule - is in the past tense, and its `summary` went with it
+    (see the Shipped entry: a past event's meta description is `Took place on <date> at <venue>. <summary>`,
+    so a forward-tense summary publishes a sales line for a gone day straight into the search snippet, and no
+    check can see it because nothing in it is a date). **The guard does not wait for the morning.** It compares
+    `endDate` against `now`, so the build went red at **17:00** on the day itself, not on 20 November, and the
+    shared gate blocked every pusher until the fix landed. **The Coding cohort's turn is 26 November at its own
+    end time, and Cohort 4's is 3 December** - a cycle running in those evenings should expect a red build and
+    should check `summary` as well as the prose. The 14 Nov simulation's dead-end warning is also closed: Cohort
+    4 went on sale on 15 November, so `getSuccessorEvent` resolves and the Cohort 3 page renders a 3 December
+    card rather than "Dates for the next cohort are being confirmed".
     **The year guard of backlog 91 is now in place (12 Nov, 14:00 cycle), so the cycle that meets
     this item inherits it** - every sentence it rewrites is checked for a bare date as it is
     written, rather than after.
@@ -2782,8 +2793,117 @@ Status: `todo` · `blocked` (why) · `doing`
     email. Retagging would surface a guide that answers the neighbouring question. Take it only as a
     rewrite of the guide, not as a tag.
 
+117. `blocked` (needs Drummond, and it is the only coverage gap any probe has admitted in weeks; found
+    19 Nov 2026 in the 20:00 cycle) - **"does what you build at a bootcamp still work a month later?"**
+    Asked in the buyer's words, the engine answered plainly: *"I didn't find any study that tracks whether
+    bootcamp-built workflows still run a month later."* Everything it could offer was generic
+    automation-drift material (Zendesk, Glean, Keyence) or bootcamp vendors' own production-ready marketing,
+    which it dismissed as *"a sales pitch, not evidence of outcomes"*. **Winnable** - no institutional
+    publisher owns it. **Converting** - this is due diligence immediately before paying. It passes both
+    halves of the standing probe rule, which almost nothing does.
+    **And the loop cannot write it.** The honest version needs what actually happened to Cohort 1, 2 and 3
+    attendees' workflows weeks later, and nothing of the sort is recorded in this repo; writing it from the
+    published format would be inventing outcomes. **The ask is a handful of real follow-ups** - three or four
+    attendees, what they built, whether it still runs, what broke - and that is a guide no competitor can
+    answer, plus `outcomes` stats for the three cohort pages, which Cohort 2 and Cohort 3 both lack.
+    Do not write this guide from the format. It is evidence or nothing.
+118. `todo` (**needs Drummond: it is a live change to a page and an ElevenLabs agent together**; found
+    19 Nov 2026 in the 20:00 cycle) - **as of 17:00 today the Agentic line has disappeared from
+    `/find-your-bootcamp/` and `/office-hours/`.** Both pages build their three cards from a hand-written
+    `choices` list and then filter it with `isUpcoming`. The Agentic entry points at
+    `oxford-agentic-bootcamp-cohort-3`, which has now passed, and the Second Brain entry points at a cohort
+    that passed on 21 October - so of three choices **only the Coding Bootcamp still renders**, on two pages
+    Drummond promotes personally, while Cohorts 4 and 5 are on sale for 3 December and 28 January. The
+    repo-side fix is one slug. **It must not ship alone**: STATE.md records that both agents' prompts list the
+    three dates and keys by hand in ElevenLabs, and the finder brief with them, so changing the page without
+    the agent desynchronises what the voice says from what the page opens - the exact failure logged on
+    1 October ("card matches speech"). Page, agent prompt and finder brief move together, and the loop does
+    not touch the agents. Second Brain has no successor cohort authored at all, so its card has nowhere to
+    point; that one is a product decision, not a slug.
+
 
 ## Shipped
+
+### 19 Nov 2026 (20:00 cycle) - the build was red when this cycle opened. Cohort 3 finished at 17:00 and its page was still selling it. Past tense on one page, 7 of 209 built files
+
+**This is the handover the 14:00 cycle wrote down, and it came due three hours early.** That cycle left one
+sentence for tonight - the capsule in `oxford-agentic-bootcamp-cohort-3.md`, true while the day was running -
+and expected `check:dates` to fail "the morning after". It does not work that way: the guard compares `endDate`
+against `now`, and Cohort 3's `endDate` is 17:00 on 19 November, so **`npm run build` was already failing when
+this cycle started its baseline**, three hours before anyone planned for it. That matters beyond this page: the
+gate is shared, so from 17:00 until this commit **no cycle, no content loop and no push by Drummond could have
+shipped anything at all**. Worth recording for the Coding cohort on 26 November and for Cohort 4 on 3 December:
+**the red window opens at the event's end time, not at midnight.**
+
+**What was wrong on the page.** `check:dates` named one sentence, and the measurement found a second surface it
+cannot see. (1) The capsule read *"Cohort 3 of the Oxford Agentic Bootcamp **runs on** Thursday 19 November
+2026 at Worcester College, Oxford"* - a day that had ended three hours earlier, in a string that is also the
+Event node's `description` on `/events/` and a paragraph in `llms-full.txt`, which both voice agents read.
+(2) **The `summary` field was still the sales imperative**, *"Bring one real task from your own work and leave
+with an agentic workflow running against it"*, and on a past event the template composes the meta description as
+`Took place on <date> at <venue>. <summary>`. So the page's search snippet, and its `og:description`, read
+*"Took place on 19 November 2026 at Worcester College, Oxford. Bring one real task..."* - past tense, then a
+pitch for a day that has gone. No check covers that, because nothing in it is a stale *date*. Cohort 1 and
+Cohort 2 both had their `summary` rewritten when they passed, which is how the house already handles it; the
+rule just was not written down anywhere, and it is now, in a comment above the field.
+
+**What was written, and what deliberately was not.** Both sentences are in the past tense and claim **no
+outcome**. Cohort 1's capsule can say *"Sixteen founders..."* and Cohort 2's *"sold out beforehand"* because
+those are recorded; **nothing about who came to Cohort 3 or what they left with is recorded anywhere in this
+repo**, and the room could not be checked from here. So the capsule describes the format the page already
+published - *"The day asked each person to bring one real task from their own work and to build a working
+agentic AI workflow against it"* - and the summary says *"The third Oxford Agentic Bootcamp. A build day against
+one real task from each person's own work"*, 97 characters, which fits the rung that keeps the venue on it.
+Cohort 2's own wording, *"Everyone brought one real task..."*, was considered and **not** copied across: it is a
+claim about what sixteen-odd people actually did, and this cycle has no source for it. The comment above the
+capsule says where the numbers go when Drummond has them. `status: upcoming` also went to `past`, matching the
+other three passed cohorts; it changes no output, because `effectiveStatus` derives status from `endDate` and
+refuses to trust frontmatter either way.
+
+**Measured.** 7 of 209 files in `dist` differ against a sha256 snapshot taken before the change, **none added
+and none removed**: the Cohort 3 page, `/events/`, `/bootcamps/oxford-agentic-bootcamp/`, `llms.txt`,
+`llms-full.txt` and both sitemaps. Build, links (**3,462** across 69 pages), outbound, schema (69 valid, 17
+Event, 22 FAQPage, 1,483 graph references, 59 breadcrumb trails, all titles and descriptions unique) and both
+date checks green. The link count is **67 lower than the 3,529 the last three cycles recorded**, and that is the
+transition working rather than a regression: Cohort 3 left the header CTA, the footer's Upcoming list and every
+"next cohort" card the moment its end time passed, before this commit touched anything. The `Offer` on its Event
+node has dropped `availability: InStock`, `llms.txt` has reordered it into the past list, and the hero now reads
+*"This event has run"*. **`astro check` not run: backlog 70.**
+
+**The dead end the 14 Nov simulation warned about did not happen, and can be closed.** That simulation predicted
+that on 20 November all three past Agentic pages would lose their forward card together and fall to *"Dates for
+the next cohort are being confirmed"*, leaving the site's most-linked event page an honest dead end until a
+Cohort 4 existed. Cohort 4 went on sale on 15 November, so `getSuccessorEvent` resolves same-programme as
+designed: the page now reads *"The next cohort runs the same format - details below"* and renders a
+**Cohort 4 - 3 December 2026** card. Verified in the browser, not inferred.
+
+**Browser.** Headless Chromium over the changed page plus `/events/oxford-agentic-bootcamp-cohort-4/` and
+`/events/` as controls, at 375, 768 and 1280px: **60 assertions, 0 failed.** Zero horizontal overflow and no
+JavaScript errors at any width; the past-tense capsule present and the old wording absent; the hero's *"took
+place on Thursday, 19 November 2026"*; the successor band naming Cohort 4; no booking form and no price glyph
+anywhere on the page; the capsule box inside the viewport at every width; 11 `<details>` matching the FAQPage
+node; and both controls asserted unchanged, Cohort 4 still showing 3 December. Screenshots at 375 and 1280 read
+correctly by eye.
+
+**IndexNow.** Not run, per the standing rule; the deploy workflow does it. `scripts/indexnow-ping.mjs` maps any
+`src/content/events/*.md` change to **every sitemap URL**, which is deliberate and documented in that script, but
+the honest number here is 7.
+
+**Search Console: unavailable from cloud.** No credentials, and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week** (0 published 16-22 Nov; 32 guides total).
+
+**GEO: four probes, zero citations, and one of them is the worst reading of the stale-Luma problem yet.** Detail
+in `seo-data/geo-citations.md`. Asked *"hands-on agentic AI course Oxford one day"* - the plainest commercial
+question in this category - the engine named the Oxford Agentic Bootcamp as its **best match**, described the
+format correctly, and then **dated it "21 Jul 2026"**, because it reached the business through
+`luma.com/k7c2rm5s` and `luma.com/oxfordagentic2` and **no page of this site at all**, while Cohorts 4 and 5 are
+on sale for 3 December and 28 January. One new thing fell out of it: **`allai.events` already carries a listing
+of this bootcamp** and was cited in the answer - a third-party page about this entity, which is exactly what
+`Organization.sameAs` has never had. Filed in `outreach/review-list.md`; nothing contacted or submitted, and the
+listing could not be opened from here to see which cohort it names. Of the other three probes, the definitional
+agentic-workflow query is declined as unwinnable (one Slack post in seven locales, plus Box, Airbyte, Ema), the
+differentiator query failed for the second time in a quarter on reach rather than copy, and the durability
+question is the one admitted gap - **blocked on evidence only Drummond has**, and filed as backlog 117.
 
 ### 19 Nov 2026 (14:00 cycle) - the approval answer reached the Coding programme page this morning and stopped there. It now sits on the page that takes the booking too, seven days out. One FAQ entry, one file, 2 of 209 built files
 

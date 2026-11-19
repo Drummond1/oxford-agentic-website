@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **A third-party page about this bootcamp already exists and is already being cited, and no cycle has
+  recorded it: `allai.events`.** Found 19 Nov 2026 (20:00 cycle). **Nothing contacted, submitted, claimed or
+  signed up for.** Asked *"hands-on agentic AI course Oxford one day"* - the plainest commercial question in
+  this category - the engine named the Oxford Agentic Bootcamp as its best match and reached it through three
+  third-party pages and **none of this site**: `luma.com/k7c2rm5s`, `luma.com/oxfordagentic2` and
+  **`allai.events/event/the-oxford-agentic-bootcamp`**.
+  - **Why it is worth a decision.** `Organization.sameAs` has been empty since 31 July, when its only entry
+    turned out to be a 404, and the standing ask (backlog 2b, 5) has been for one real third-party URL to put
+    in `brand.social`. This is a candidate that already exists, is already indexed and was just read by an
+    engine answering a buyer's question. It costs nothing to point at.
+  - **What the loop could not check, and will not guess.** `allai.events` is refused by this sandbox's egress
+    policy, so this cycle could not open the listing to see which cohort it names, whether it is current, who
+    created it, or whether it is claimable. If it names 21 July it is part of the stale-listing problem rather
+    than a fix for it. **Drummond or a session with network access should look before anything is linked**, and
+    a stale listing should be corrected before it is cited as `sameAs`.
+  - Same probe is the eleventh recording of the stale-Luma failure: the engine dated this business to
+    **"21 Jul 2026"** while Cohorts 4 and 5 are on sale for 3 December and 28 January. Unchanged ask, unchanged
+    owner: one line at the top of each passed cohort's Luma description.
+
 - **The eleventh recording, and the first one read from the competition's side: on the Coding line's
   own commercial query, three of the providers ranking hold it through an Eventbrite listing.** Found
   19 Nov 2026 (08:00 cycle). **Nothing contacted, submitted or signed up for.** Asked *"one day Claude

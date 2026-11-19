@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-19 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ENGINE DATES THIS BUSINESS TO 21 JULY ON ITS OWN BEST-MATCH QUERY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read this cycle either**:
+`oxfordagentic.com` does not resolve from this sandbox and `luma.com` is refused, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every event fact used comes from committed files.
+Two of the four axes below overlap work logged earlier today or on 13 September, and are marked as re-probes
+rather than presented as new ground.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | hands-on agentic AI course Oxford one day (Oxford commercial axis) | **No** | `luma.com/k7c2rm5s` and `luma.com/oxfordagentic2` - **our own passed cohorts** - plus `allai.events`, `sbs.ox.ac.uk`, `conted.ox.ac.uk`, `lifelong-learning.ox.ac.uk` (four), `nobleprog.co.uk`, `citylit.ac.uk`, `pluralsight.com`, `globalknowledge.com` (two), `pulse.bot`, `umbctraining.com` |
+| 2 | what is an agentic workflow for business (definition axis) | **No** | `slack.com` (seven locale copies of one post), `airbyte.com`, `techtarget.com`, `boxenterprise.net`, `ema.ai`, `tech.co`, one Supabase-hosted PDF |
+| 3 | AI workshop where you bring your own work task and leave with something running UK (differentiator axis - **re-probe**, 13 Sept asked the same thing in different words) | **No** | `lilachbullock.com` (two), `ivee.jobs`, `propellernet.co.uk`, `pointacademy`, `qa.com`, `brainstation.io` (three), `citylit.ac.uk`, `luma.com/z22rlt26`, `meetup.com`, `techuk.org`, two university library pages |
+| 4 | what happens after an AI bootcamp, does the workflow still work a month later (durability axis, buyer side - **re-probe**: the 14:00 cycle asked the same axis from the builder's side) | **No** | `sfailabs.com`, `glean.com`, `zendesk.com` (four locales), `metana.io` (three), `nuvepro.com` (two), `bootcampdigital.com` (two), `maven.com`, `coda.io`, `hyperskill.org`, `dev.to`, `fastcompany.com`, `keyence.com`, `semnexus.com` |
+
+**Reading.**
+
+- **Probe 1 is the one that matters, and it is the stale-Luma failure again, now on the query this business
+  should own outright.** The engine called the Oxford Agentic Bootcamp its **best match** - it described the
+  format correctly, "a real task in their own work", "doesn't assume you can code", named Claude, Cowork, Claude
+  Code and Codex - and then dated it **"21 Jul 2026, 09:00 - 17:00"**, because it reached the business through
+  `luma.com/k7c2rm5s` (Cohort 1, four months passed) and `luma.com/oxfordagentic2` (Cohort 2, two months
+  passed). **No page of this site appeared at all.** A buyer asking the most obvious question in this category
+  is told, correctly, that this is the right day, and then told it happened in July. Cohorts 4 and 5 are on sale
+  for 3 December and 28 January and neither was mentioned. This is the eleventh recording of the same failure
+  (see `outreach/review-list.md`), and the ask has not changed: the loop cannot edit Luma.
+- **One genuinely new thing in probe 1: `allai.events` carries a listing of this bootcamp already**, at
+  `allai.events/event/the-oxford-agentic-bootcamp`, and it was cited. No cycle has recorded it before. It is a
+  third-party page about this entity that an engine is reading - which is precisely what `Organization.sameAs`
+  has never had. Filed in `outreach/review-list.md` for Drummond; **nobody has been contacted and no listing has
+  been submitted or claimed**, and the loop could not open the page to check whether it is current or which
+  cohort it names, because that host is refused here too.
+- **Probe 2 is declined as unwinnable and non-converting, on both halves of the standing rule.** The field is
+  platform vendors writing about their own product - one Slack post returned seven times in seven locales, plus
+  Box, Airbyte, Ema and monday.com - and the engine said so itself: *"Most of these results come from vendors
+  that sell agentic AI products ... their framing may favor their own tools."* The searcher wants a definition,
+  not a day in Oxford. Do not re-pitch a definitional agentic-workflow guide.
+- **Probe 3 is the second failure on this site's own differentiator, and it is a reach problem, not a copy
+  problem.** The query is close to a transcription of what this business sells - bring your own task, leave with
+  it running, UK, in person - and the winner was a single UK trainer's site, with the engine volunteering that
+  her workshops *"start with each attendee's real tasks and end with a workflow they'll keep using"*. That
+  sentence is on this site in several places. 13 September asked the same thing in different words and also got
+  **No**. Two readings a quarter apart, same answer: the pages exist and say the right thing, and the engine is
+  not reaching them. Nothing to write.
+- **Probe 4 is the only admitted gap, and it is blocked on evidence only Drummond has.** Asked whether what you
+  build at a bootcamp still runs a month later, the engine stated plainly: *"I didn't find any study that tracks
+  whether bootcamp-built workflows still run a month later"*, and everything it offered was either generic
+  automation-drift content (Zendesk, Glean, Keyence) or bootcamp vendors' own production-ready marketing, which
+  it dismissed as *"a sales pitch, not evidence of outcomes"*. **Winnable: yes. Converting: plausibly** - this is
+  a buyer doing due diligence before paying. **But it cannot be written from this repo.** The honest version
+  needs what happened to Cohort 1, 2 and 3 attendees' workflows weeks later, and no such record exists here;
+  writing it from the published format would be inventing outcomes, which the hard guardrails forbid. Logged as
+  backlog 117 and raised in the cycle report. The closest existing pages -
+  `/guides/is-your-ai-workflow-saving-time-or-just-effort/`, `/guides/keeping-a-second-brain-from-going-stale/`
+  and `/guides/where-the-human-goes-in-an-agentic-workflow/` - answer the mechanics, not the question a buyer is
+  actually asking, which is "did it stick for the people who came".
+
 ## 2026-11-19 (14:00 GMT cycle) - FOUR PROBES ON FOUR AXES NEVER LOGGED IN THIS SHAPE, ZERO CITATIONS, AND THE ONE PROMISING FIELD IS A REACH FAILURE RATHER THAN A COVERAGE GAP
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
