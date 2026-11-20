@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-20 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, AND THE FIRST DIRECT MEASUREMENT OF THE REACH PROBLEM: A QUERY NAMING THE DOMAIN RETURNS NO PAGE OF IT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy, and it does not resolve for the fetch tool
+either) and so are `luma.com` and `googletagmanager.com`, so no live page and no Luma fact was checked, deploy
+state came from the Actions API, and every fact used below comes from committed files.
+
+| # | Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|---|
+| 1 | only one seat on an AI training course, who in the team should go | **No** | academy.nvidia.com x2, maven.com x3, mentorcruise.com x5, webucator.com, blitzmetrics.com, generalassemb.ly, improving.com, bitfieldconsulting.com, lilachbullock.com, articulate community, atdintensive.td.org |
+| 2 | how many people should be in a hands-on AI workshop to actually build something | **No - and the probe was wasted** | skillshare.com, woodcraft.com x2, coursehorse.com x3, rebuildingcenter.org x2, eliotschool.org, northhouse.org, ajc.com, bobvila.com |
+| 3 | business case to get a one-day AI training course approved by my manager UK | **No** | **imperial.ac.uk x3**, **gov.uk**, **skillsengland.education.gov.uk x2**, cambridgespark.com, nobleprog.co.uk x3, learnsignal.com, resources.rework.com, pub.towardsai.net, precisionaiacademy.com, knowledgetrain.co.uk |
+| 4 | what do you actually walk away with after a one day AI bootcamp (**re-probe** of 7 Nov) | **No** | precisionaiacademy.com x2, udemy.com x3, eventbrite.com, coursera.org, trainingcamp.com, oreilly.com, nofluffjuststuff.com x3, codecademy.com, skool.com, medium.com |
+| 5 | who owns an AI workflow after the person who built it leaves | **No** | pravinkumar.co x3, nhimg.org x3, vercel.com, mindstudio.ai, knime.com, viktor.com, businessabc.net, digitalapplied.com, infonaligy.com, krea.ai, sacra.com |
+
+**Two further queries, run as a measurement rather than as buyer questions.**
+
+| Query | Result |
+|---|---|
+| `site:oxfordagentic.com` | **No page of the domain returned at all.** What came back: `luma.com/oxfordagentic2` (Cohort 2, 16 September, passed), `corpsignals.uk` (a company record), `builtwith.com/meta/oxfordalgorithmics.com`, and eleven `ox.ac.uk` pages and sitemaps |
+| `oxfordagentic.com Oxford Agentic Bootcamp guides` | **No page of the domain, and no guide.** `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` (Cohort 1, 21 July), `allai.events/event/the-oxford-agentic-bootcamp` (dated "21 Jul 2026"), `planomato.com` (Second Brain), plus `lifelong-learning.ox.ac.uk` x4, `conted.ox.ac.uk` x2, `sbs.ox.ac.uk` x2, `nobleprog.co.uk` x2, `imperial.ac.uk`, `learnersink.com`, `theknowledgeacademy.com` |
+
+**Reading.**
+
+- **The measurement is the cycle's finding, and it turns a standing inference into a reading.** Fifteen
+  cycles of probes have concluded "this is a reach problem, not a coverage problem" from the absence of this
+  site in buyer answers. Two queries that *name the domain* now return **no page of it** on this engine, while
+  three third-party pages about the entity do rank: two spent Luma listings and `allai.events` dated to
+  21 July. The 26 Oct caveat applies with full force - this is one engine, US-resident, and `site:` is an
+  operator this tool does not reliably honour, so **this is not a Google index count and must not be
+  reported as one**. But it is the first direct evidence for what every probe has implied, and it points at
+  the same owner: **backlog 2** (submit the sitemap and request indexing in the GSC UI) and **backlog 2b**
+  (one real third-party identity). No on-site change follows from it, because nothing on-site is withholding
+  these pages: 58 sitemap URLs, 3,462 internal links resolving, `robots.txt` explicitly allowing fifteen
+  named AI crawlers plus `*`, canonical on every page, and 69 pages of valid schema.
+- **Probes 1, 3 and 4 all fail the same way, and the site has the exact page for each.** Probe 1 is
+  `who-should-take-the-seat` almost verbatim ("One seat, two candidates"); probe 3 is
+  `getting-an-ai-bootcamp-approved`; probe 4 is `what-you-can-build-in-one-day-with-ai`, which was opted into
+  `faqFromHeadings` on 7 November *on this exact axis*. **Declined, all three: there is nothing to write.**
+  Probe 4 should be marked a re-probe rather than new ground - the 7 Nov frontmatter comment records the same
+  question in different words - and that axis is now closed.
+- **Probe 3 is also the first of the three that fails the winnability half outright.** The field is
+  `imperial.ac.uk` three times, `gov.uk`'s own SKAI employer guide and two Skills England apprenticeship
+  units: institutional publishers on their own subject, which the topic-probe rule bars. Do not re-pitch an
+  approval or business-case guide against this query.
+- **Probe 5 (who owns the workflow after the builder leaves) is WINNABLE and DECLINED on intent.** No
+  institutional publisher is anywhere in the field - it is practitioner blogs and automation vendors, one of
+  them returning three times - so the query is open. But the engine's own answer is a handover and
+  offboarding checklist: credential rotation, shared service users, alert routing, cross-training. That
+  searcher is an ops or IT manager inheriting somebody's automation stack, not a leader booking a build day
+  in Oxford, and the only thing this site could add is a generic handover checklist of the kind the field is
+  already full of. **Nothing of our own experience is recorded about offboarding a workflow**, so writing it
+  would be the format-not-evidence failure backlog 117 exists to refuse. Do not re-pitch it.
+- **Probe 2 was a wasted probe and is recorded as one.** Asked from a US-resident engine without an AI
+  anchor in the phrasing, "hands-on workshop" and "class size" resolved to woodworking and craft classes:
+  every one of fourteen results was a woodshop, a craft school or a course aggregator. Nothing about this
+  site, and nothing about AI. The lesson is about phrasing, not about the field - **a cohort-size query
+  needs "AI" or "agentic" in the noun phrase, not only in the preamble** - and the axis itself is untested.
+  Worth re-asking properly in a later cycle; the site answers it on all three programme pages.
+- **Off-page: one new host, and one new and material fact about a host already on the list.**
+  `corpsignals.uk` is new to every log. And the Second Brain listing on `planomato.com` - already recorded
+  with three sightings - is now reported by an engine as saying **"Entry is free"**, which is a price claim
+  about a paid day, on a page that ranks where ours does not. Both filed in `outreach/review-list.md`.
+  **Nothing was contacted, submitted, claimed or corrected**, and neither host resolves from this sandbox,
+  so neither page was opened.
+
 ## 2026-11-20 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DATE-ANCHORED ONE FOUND THE DEFECT THIS CYCLE SHIPPED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

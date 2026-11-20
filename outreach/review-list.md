@@ -11,6 +11,46 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two queries that name this domain return no page of it, and the pages that do rank in their place now
+  include one asserting a price we do not publish.** Found 20 Nov 2026 (14:00 cycle). **Nothing contacted,
+  submitted, claimed or corrected, and none of the hosts below resolves from this sandbox.**
+  - **The measurement, and its limits.** `site:oxfordagentic.com` and `oxfordagentic.com Oxford Agentic
+    Bootcamp guides` both returned **no page of this site**. What ranked instead, across the two:
+    `luma.com/oxfordagentic2` (Cohort 2, passed 16 September), `luma.com/k7c2rm5s` (Cohort 1, passed
+    21 July), `allai.events/event/the-oxford-agentic-bootcamp` (dated "21 Jul 2026"),
+    `planomato.com/en/oxford/p/oxford-agentic-second-brain-bootcamp`, `corpsignals.uk`, and a long tail of
+    `ox.ac.uk`, `conted.ox.ac.uk`, `lifelong-learning.ox.ac.uk` and `sbs.ox.ac.uk` pages. One engine,
+    US-resident, and `site:` is an operator the search tool does not reliably honour, **so this is not a
+    Google index count and should not be repeated as one.** Treat it as the sharpest reading yet of why
+    every buyer probe reaches this business through somebody else's page: the off-page record of this
+    entity is three third-party listings, two of them spent and one dated to July.
+  - **New fact on `planomato.com`, and it is a commercial one rather than a date one.** Its Second Brain
+    listing is already on this list with three sightings. This time the engine summarised it as *"Entry is
+    free, according to that listing"*, alongside the correct date and venue for a day that has passed
+    (21 October, Pitt Rivers Museum). **This site publishes no prices by standing decision, and the day is
+    not free.** So a page that ranks where ours does not is telling buyers the wrong thing about what this
+    costs. That raises the existing `planomato.com` ask from "check whether it is accurate, current and
+    claimable" to **"this one has a wrong price on it"**. The loop did not open the page - `planomato.com`
+    does not resolve from here - so the claim is the search tool's summary of it, and the first step is for
+    somebody with network access to read the listing before anybody writes to anyone.
+  - **`corpsignals.uk` is new to every log, and it is a record about the company rather than the events.**
+    `corpsignals.uk/companies/uk/oxford-agentic-ltd-16842234.html` carries a company entry for **Oxford
+    Agentic Ltd**, which the engine summarised as incorporated **10 November 2025** with a **registered
+    address in London** that it flagged as *"may be a virtual address"*. **The loop is not asserting this is
+    Drummond's company**: it could not open the page, it has no company number on record anywhere in this
+    repo to check `16842234` against, and an aggregator's summary is not a filing. Two reasons it is worth
+    his two minutes anyway. (a) If it is the right company, it is a third-party page about this entity that
+    an engine returns for the domain's own name, which is what `Organization.sameAs` has never had
+    (backlog 2b) - though a Companies House profile is a weaker identity signal than a LinkedIn Company
+    Page or a live Luma calendar, and it should not be the first `sameAs`. (b) The `Organization` node on
+    all 60 pages publishes an address of **Oxford, Oxfordshire, GB**, and a registered office is allowed to
+    differ from where a business operates, but an engine triangulating the entity across sources will read
+    both. Worth knowing which number and which address are the ones he wants found.
+  - **No new submission target, and the standing asks are unchanged.** Backlog 2 (submit
+    `sitemap-index.xml` and request indexing in the GSC UI) and backlog 2b (one real third-party identity,
+    and a line at the top of each passed cohort's Luma description) are still the two highest-value items
+    on the whole list, and this cycle is the strongest evidence yet for both.
+
 - **A third-party page about this bootcamp already exists and is already being cited, and no cycle has
   recorded it: `allai.events`.** Found 19 Nov 2026 (20:00 cycle). **Nothing contacted, submitted, claimed or
   signed up for.** Asked *"hands-on agentic AI course Oxford one day"* - the plainest commercial question in

@@ -2743,7 +2743,17 @@ Status: `todo` · `blocked` (why) · `doing`
       in this probe is at the free-fix stage and the field's first answer is correct for them.
 
 
-115. `half done` 19 Nov 2026 (02:00 cycle) - **`/guides/` shipped**, on its own merits and on its own,
+115. `done` 20 Nov 2026 (14:00 cycle) - **closed, not finished, in the form this item specified.** It said
+    `/team/` and `/about/` *"want a reason better than consistency, and a cycle that cannot write one should
+    say so here and close them"*. The 14:00 cycle tried and failed, and recorded the attempt so nobody
+    rebuilds it: the argument was that `/about/` is the entity page (its own source comment says so) and
+    that entity confusion is the GEO log's one recurring failure, sharpened the same day by a query naming
+    this domain that returned `ox.ac.uk` pages and `builtwith.com/meta/oxfordalgorithmics.com`. It does not
+    hold - disambiguation is carried by `Organization.disambiguatingDescription` on all 60 pages holding the
+    node, by the independence sentence in the page's own copy, and by the empty `sameAs` that is backlog 2b,
+    none of which a `<title>` substitutes for - and this item's own counter-argument is unrebutted: someone
+    searching the brand plus "about" or "team" types those exact words. **Both titles stay. Do not
+    re-pitch.** Detail in the Shipped entry. The `/guides/` half follows. - **`/guides/` shipped**, on its own merits and on its own,
     exactly as this item required: `pageTitle="Guides"` became *"Practical AI guides for business
     leaders"*, both halves lifted from the page's own description, with the nav label, breadcrumb, `h1`
     and `CollectionPage` name untouched. Detail in the Shipped entry, including why the title is as wide
@@ -2869,6 +2879,102 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 20 Nov 2026 (14:00 cycle) - a no-change cycle. The board is green, every loop-actionable item left is either dated later, already measured and declined, or Drummond's - and this cycle closes the one it was told to close if it could not write a better reason. The new thing is a measurement: two queries that name this domain return no page of it
+
+**Why nothing shipped to the site.** The board was clean on every check the loop makes. `main` at `a0fbc3f`,
+deploy run **44728390128** (the 11:32 scheduled run) `success` on that exact SHA, nothing queued or in
+progress, working tree clean, local `HEAD` verified equal to `origin/main` before anything else per step 0.
+`npm ci && npm run build` green: **3,462 internal links across 69 pages**, **69 pages of valid schema**
+(17 Event nodes, 22 FAQPage, 1,483 resolving graph references, 59 breadcrumb trails, all titles and
+descriptions unique), **both date checks** green, and `check:flags` green on the all-on and all-off builds.
+Thirteen outbound warnings, all of them this sandbox's egress policy rather than the sites (LinkedIn, Luma,
+arXiv, the ICO). **Production itself could not be read**, for the fourth cycle running:
+`oxfordagentic.com` is refused at the proxy (HTTP 403) and does not resolve for the fetch tool, and
+`luma.com` and `googletagmanager.com` are refused too, so deploy state came from the Actions API and no
+event fact was touched. **The browser works**: headless Chromium over `/`, `/about/`, `/events/`,
+`/bootcamps/` and `/guides/` at 375, 768 and 1280px, **105 assertions, 0 failed** - no horizontal overflow,
+every image with an alt, exactly one `h1` per page, no nameless links, no JavaScript errors. The one
+correction worth recording is to the audit script rather than the site: a bare
+*"Failed to load resource"* console error carries no URL, so the first run attributed the proxy's refusal of
+`googletagmanager.com` to the page and reported 15 false failures. The check now matches each such error
+against the failed request list and only counts one whose request was local. Same wart the 08:00 cycle hit
+from the other direction.
+
+**What was examined and left alone, so no cycle re-derives it.**
+- **Both of the standing instruction's named candidates are already closed, and a cycle should stop
+  checking them.** Candidate 1 (`src/lib/home.ts` pinging all ~44 sitemap URLs) was shipped on 15 November:
+  `SINGLE_PAGE_SOURCES` in `scripts/indexnow-ping.mjs` maps `src/lib/home.ts` and
+  `src/components/HomeSections.astro` to `/` alone, verified in the file this cycle. Candidate 2's last
+  instance - *"the Cohort 1 event FAQ that names Cohort 2's date"* - is correct and durable: it reads
+  *"Cohort 1 ran on Tuesday 21 July 2026 ... and Cohort 2 on Wednesday 16 September 2026"*, past tense,
+  with *"the events page lists the dates on sale"* carrying the forward half. The only hand-authored
+  forward-tense cohort claim left on the site is **backlog 103**, which falls due on **27 November** and
+  which that item explicitly says not to bring forward.
+- **A fresh sweep for a current defect found none.** All 69 built pages' `<title>` and meta description
+  read end to end: two titles over the 60-character limit, both `noindex` and correctly exempt
+  (`/first-workflow-picker/` 85, `/second-brain-interest/` 73); the three dated descriptions each pair a
+  line's own date with its own promise after the 08:00 fix; `/bootcamps/` naming two of three upcoming
+  cohorts is the deliberate length cap written into its own comment, not a dropped date. Inbound internal
+  links recomputed over the whole of `dist`: the eight `/team/` profiles still have exactly one each
+  (backlog 24/106, Drummond's) and nothing else indexable is under three. `robots.txt` allows `*` plus
+  fifteen named AI crawlers and points at `sitemap-index.xml`; 58 sitemap URLs; `llms.txt` lists the three
+  on-sale cohorts first and the four passed ones as past. The Second Brain line, a month without a
+  bookable date, degrades correctly: *"Dates for the next cohort are being confirmed"* and no dated clause
+  in its description.
+- **Every loop-actionable backlog item was re-read and each is already answered.** 103 dated to
+  27 November; 105 declined on measurement; 112 a recorded decision; 116's remainder blocked on facts;
+  54's last `faqFromHeadings` candidate deferred for a commercial reason that still holds (Second Brain
+  has no date to book); 41 downgraded on its own numbers; 39 carrying its own argument against itself.
+  **Nothing was re-litigated and nothing re-measured for a fourth time.**
+
+**Backlog 115 is closed rather than finished, which is what that item asked for.** It left `/team/`
+("Team") and `/about/` ("About") as `pageTitle`s reading their nav label, with the instruction that they
+*"want a reason better than consistency, and a cycle that cannot write one should say so here and close
+them"*. This cycle tried to write one and will not pretend it succeeded. The argument built was that
+`/about/` is the entity page - its own source comment says so, *"the canonical document describing who the
+brand is ... AI engines triangulate entities across sources; this page is the anchor"* - and that the one
+recurring failure in the GEO log is entity confusion, sharpened today by a query naming this domain
+returning `ox.ac.uk` pages and `builtwith.com/meta/oxfordalgorithmics.com`. **It does not hold.** Entity
+disambiguation is carried by `Organization.disambiguatingDescription` on all 60 pages that hold the node,
+by the independence sentence in the page's own visible copy, and by `sameAs` - which is empty, which is
+backlog 2b, and which a `<title>` cannot substitute for. Against that, backlog 115's own counter-argument
+is strong and unrebutted: a reader searching the brand plus "about" or "team" types those exact words, so
+here the nav label is close to the right title, unlike on `/testimonials/`, `/bootcamps/` and `/guides/`
+where it named neither subject nor audience. **Both pages keep their titles. Do not re-pitch this.**
+
+**GEO: five probes, zero citations, and the measurement is the cycle's one new thing.** Full tables and
+readings in `seo-data/geo-citations.md`. Three of the five probes asked a question this site has the exact
+page for - `who-should-take-the-seat`, `getting-an-ai-bootcamp-approved`,
+`what-you-can-build-in-one-day-with-ai` - and none was cited, which is the reach reading fifteen cycles
+have reached by inference. Two queries that *name the domain* now return **no page of it**, while two spent
+Luma listings and an `allai.events` page dated to 21 July do rank. One engine, US-resident, `site:`
+unreliable through this tool, **so it is not a Google index count and must not be reported as one** - but
+it is the first direct reading of the thing, and it points at backlog 2 and 2b rather than at any page.
+One probe (the approval axis) fails the winnability half outright on `imperial.ac.uk`, `gov.uk` and Skills
+England. One (workflow ownership after the builder leaves) is winnable and declined on intent: the field
+answers it as an offboarding checklist for an ops manager, and nothing of our own practice on it is
+recorded. One was wasted - a US engine read "hands-on workshop" and "class size" as woodworking - and is
+recorded as a phrasing lesson rather than as a field reading, so the cohort-size axis stays untested.
+
+**Off-page: one new host and one new material fact, both filed for Drummond in
+`outreach/review-list.md`.** `corpsignals.uk` carries a company record for "Oxford Agentic Ltd" and is new
+to every log; the loop could not open it, has no company number to check it against, and **is not asserting
+it is Drummond's company**. The Second Brain listing on `planomato.com`, already recorded with three
+sightings, is now reported as saying **"Entry is free"** - a price claim about a paid day, on a page that
+ranks where ours does not. **Nothing was contacted, submitted, claimed or corrected**, and neither host
+resolves from this sandbox.
+
+**Search Console: unavailable from cloud.** No credentials, no browser session, and no export in
+`seo-data/` newer than the 24 August baseline. Nothing estimated and nothing inferred.
+
+**New guides this week: none.** Monday 16 November to Sunday 22 November, counted by `publishDate` in
+`src/content/guides/*.md`: zero. No probe this cycle produced a topic passing both halves of the standing
+rule, and the one that passes winnability fails intent.
+
+**IndexNow.** Not run, per the standing rule; the deploy workflow does it. Nothing to run it on either:
+`IMPROVEMENTS.md`, `seo-data/` and `outreach/` are all in the map's no-page list, so this commit maps to
+zero URLs by design. **No public URL changed.**
 
 ### 20 Nov 2026 (09:00 cycle) - a no-change cycle, decided on merit with the browser working. The one defect worth a cycle is the booking-path call filed seven hours ago as backlog 119, which is Drummond's; it was built, measured and reverted rather than shipped. The site-wide browser audit behind that decision is new, and it is clean
 
