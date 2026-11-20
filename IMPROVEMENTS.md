@@ -2832,8 +2832,112 @@ Status: `todo` · `blocked` (why) · `doing`
     not touch the agents. Second Brain has no successor cohort authored at all, so its card has nowhere to
     point; that one is a product decision, not a slug.
 
+119. `todo` **(needs Drummond, a booking-path call of the same family as backlog 42; found 20 Nov 2026 in
+    the 08:00 cycle, while fixing the description half of the same conflation)** - **the homepage's primary
+    button sits under the Agentic headline and books the Coding day.** `HomeSections.astro` renders *"Book
+    the next cohort"* against `nextThree[0]`, the soonest cohort of any programme. Measured on the built
+    site today, it points at **`/events/oxford-agentic-coding-bootcamp-cohort-1/#register`** - directly
+    below the hero headline *"Build impactful agentic AI workflows"* and the subline *"One real task from
+    your own work. A workflow that runs by the time you leave."* Both of those are the Agentic line's; the
+    booking form it opens is the Coding line's, for *"people who have not yet shipped software"*.
+    **This is the same conflation this cycle fixed in the meta description, and it is the sharper half**,
+    because it is the booking path rather than a snippet. It was deliberately **not** taken in the same
+    cycle, for two reasons. (a) It is a real question with two defensible answers - the hero's job may be
+    *"book the soonest day we run"*, in which case the button is right and the copy above it is what wants
+    widening, or *"book the agentic day"*, in which case the button follows the description. The loop must
+    not pick a conversion path for him; backlog 42 is the standing precedent. (b) One focused change per
+    cycle, and the description was the part that could be fixed without making that choice, because both
+    of its sentences were already published Agentic copy.
+    **Note the asymmetry before deciding**: the button is the only surface that *acts* on the global next
+    cohort. The header CTA (*"Next Bootcamp - 26 Nov 2026"*) names its date, which is honest because the
+    label is programme-neutral, and the "Next in Oxford" cards show all three with their own names. Also
+    note it self-heals on **3 December**, when Cohort 4 becomes the soonest cohort and the button points at
+    an Agentic day again - so the window in which it is wrong is **now until 3 December**, which includes
+    the whole of the Coding cohort's remaining selling period. Deciding after 3 December costs nothing;
+    deciding this week is worth more.
+
 
 ## Shipped
+
+### 20 Nov 2026 (08:00 cycle) - the homepage's meta description has been dating the agentic-workflow day to the coding day since 17:00 on 19 November. The date now comes from the Agentic line, as it does on every programme page. One expression, one file, 1 of 209 built files
+
+**A cap that never bound until yesterday.** `src/pages/index.astro` composes the homepage description as
+`HOME_LEAD + " Next cohort <date>. " + HOME_PROMISE`, and took the date from **`upcoming[0]`** - the soonest
+cohort of **any** programme. Both prose sentences are the Oxford Agentic Bootcamp's: the lead is
+`brand.description`'s first sentence and the promise is its second, trimmed. For as long as the Agentic line
+happened to hold the next date they agreed by accident. **They stopped agreeing at 17:00 on 19 November**, when
+Cohort 3 passed and the soonest cohort became the **Coding** Bootcamp on 26 November. Production has been
+serving this since the 02:10 deploy this morning:
+
+> *"Hands-on agentic AI training in Oxford for business leaders. **Next cohort 26 Nov 2026.** In one day you
+> build and run an agentic AI workflow on your own task."*
+
+**26 November is a different day for a different reader** - the Coding Bootcamp is for *"people who have not yet
+shipped software"*, where *"Claude Code and Codex do the typing"*, and its deliverable is a live site and a
+prototype, not a workflow against a task you already do by hand. So the one field an engine quotes most
+readily, on **the one page a domain-restricted search demonstrably returns**, dated the agentic-workflow day to
+the coding day and omitted **3 December** altogether. A buyer who read it and booked would be on the wrong day;
+one who read it and could not make 26 November would conclude there was nothing until January.
+
+**The fix is to the date, not to the sentences, and it is the house pattern already.** Both programme pages
+pair their own date with their own promise - `/bootcamps/oxford-agentic-bootcamp/` reads *"Next cohort
+3 December 2026. ... a working agentic AI workflow on a real task from your own work"* and
+`/bootcamps/agentic-coding-bootcamp/` reads *"Next cohort 26 November 2026. ... have not yet shipped
+software"*. The homepage was the only page pairing one line's date with another line's promise. The sentences
+themselves are positioning (the message house of 13 August) and **not the loop's to rewrite**, so the date
+moved instead: `upcoming[0]` became `upcoming.find(e => e.data.programme.id === 'oxford-agentic-bootcamp')`.
+
+**Taken from the page's own `upcoming` slice, deliberately, rather than from the programme's full set.** That
+keeps the invariant the original comment states - it cannot name a cohort the cards do not show. If none of the
+three carded cohorts is an Agentic one, the clause empties, exactly as it already does between cohorts: **no
+date is weaker than a date, and a date the page does not show would be worse than either.** Measured across the
+whole known schedule, the dated branch still fits the 160-character budget at every value it can take -
+**154** characters with *3 Dec 2026*, **155** with *28 Jan 2027* - so it does not silently fall back to the
+undated form when Cohort 4 passes.
+
+**Nothing is hidden.** The Coding cohort keeps the header CTA (*"Next Bootcamp - 26 Nov 2026"*, asserted in the
+browser at all three widths), its own card, its own `EducationEvent` node on `/` and its own programme page. The
+page's structured data already told the two days apart correctly; only the human-readable description did not.
+
+**Measured.** **1 of 209 files in `dist` differs** against a sha256 snapshot taken before the change, none
+added and none removed: `dist/index.html`. Four surfaces inside it move together - `meta[name=description]`,
+`og:description`, `twitter:description` and `WebPage.description` in the graph. Build, links (**3,462** across
+69 pages), outbound, schema (69 valid, 17 Event, 22 FAQPage, 1,483 graph references, 59 breadcrumb trails, all
+titles and descriptions unique) and both date checks green, **every figure identical to this cycle's own
+pre-change baseline**, including the long-month census at 120 dates, 104 carrying a year, 16 within 400
+characters and **0 carrying none**. `astro check` not run: backlog 70.
+
+**Browser.** Headless Chromium over `/` plus `/bootcamps/oxford-agentic-bootcamp/` and
+`/events/oxford-agentic-coding-bootcamp-cohort-1/` as controls, at 375, 768 and 1280px: **108 assertions,
+0 failed.** All three description surfaces naming 3 Dec 2026, none still naming 26 Nov as the next cohort, the
+agentic promise intact and every one within 160 characters; the title unchanged; the header CTA still reading
+26 Nov; all three upcoming cards present and Cohort 3 absent; both controls asserted unchanged; zero horizontal
+overflow, no price glyph and no em dash anywhere. **Two assertions were corrected rather than the site**: the
+first run counted the sandbox proxy's refusals of `googletagmanager.com` and the Luma booking embed as page
+errors (they are environment blocks - there were no `pageerror` events at all), and read the header CTA off
+`body.innerText`, which CSS uppercasing strips the date from. Screenshots at 375 and 1280 read correctly by eye.
+
+**IndexNow.** Not run, per the standing rule; the deploy workflow does it. `scripts/indexnow-ping.mjs` maps
+`src/pages/index.astro` - if it maps it at all - and the honest number of changed public URLs here is **1**,
+the homepage.
+
+**Search Console: unavailable from cloud.** No credentials, and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week** (0 published 16-22 Nov; 32 guides total).
+
+**GEO: four probes, zero citations, and probe 2 is what found the defect above.** Detail in
+`seo-data/geo-citations.md`. Asked for a December UK in-person one-day agentic bootcamp, the engine reached
+this business through **two spent Luma pages** (Cohort 2 and Cohort 1), said our listing *"doesn't show a
+date"*, and closed *"I found no confirmed in-person, one-day agentic AI bootcamp in the UK for December 2026
+with a clear date and booking link"* - while Cohorts 1 (Coding) and 4 are on sale for 26 November and
+3 December. That sent this cycle to look at what the page an engine actually holds says about which day is
+which. The other three probes are declined with reasons recorded: the admin-automation axis is winnable and
+converting but already answered in question shape (reach, not copy); the ChatGPT-plateau axis is held by
+OpenAI's own guides plus Fortune and Fast Company; the professional-services axis would be the sector-variation
+near-duplicate rule 6 bars.
+
+**Off-page.** Nothing new. Every host surfaced is a competitor or already recorded in
+`outreach/review-list.md`, the chamber-of-commerce shape included. No entry added; backlog 2b is still the top
+ask and still Drummond's.
 
 ### 20 Nov 2026 (02:00 cycle) - the one guide whose whole subject is when cohorts run listed six dates as one flat roster, three of them spent, with no tense on any of them. It now reads has-run and on-sale, and for the first time the sentence is visible to `check:dates`. One paragraph, one file, 4 of 209 built files
 

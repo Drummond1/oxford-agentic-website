@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-20 (08:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE DATE-ANCHORED ONE FOUND THE DEFECT THIS CYCLE SHIPPED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy, and it does not resolve for the fetch tool
+either) and so are `luma.com` and `googletagmanager.com`, so no live page and no Luma fact was checked, deploy
+state came from the Actions API, and every event fact used below comes from committed files.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| one day workshop UK automate a repetitive admin task in my small business with AI in person | **No** | eventbrite.co.uk x6, norfolkchamber.co.uk x3, emc-dnl.co.uk x2, createwith.com, citylit.ac.uk, luma.com, meetup.com, codebreak.co.uk, southnorfolkandbroadland.gov.uk, industry.gov.au |
+| AI bootcamp December 2026 UK in person one day book a place agentic | **No page of this site - but the brand surfaced through two spent Luma pages** (`luma.com/oxfordagentic2`, `luma.com/k7c2rm5s`) | eventbrite.co.uk x2, createwith.com x2, citylit.ac.uk, lifelong-learning.ox.ac.uk, imperial.ac.uk, efi.ed.ac.uk, globalknowledge.com x3, luma.com x2 more, learnersink.com |
+| our team already uses ChatGPT but nothing has actually changed what do we do next | **No** | growthtribe.io x3, **cdn.openai.com** and OpenAI's own success hub, fortune.com, fastcompany.com, techradar.com, webpronews.com, worklytics.co, pixelplex.io, workato.com |
+| AI workshop for professional services firm partners UK in person agentic workflows one day | **No** | innovationvisual.com x4, eventbrite.co.uk x3, brainstation.io x4, luma.com x4, cademy.io, columbusglobal.com, government-transformation.com |
+
+**Reading.**
+
+- **Probe 2 is the cycle's finding, and it is the stale-Luma problem with a date on it.** Asked for a
+  December UK in-person one-day agentic bootcamp, the engine reached this business through
+  **`luma.com/oxfordagentic2`** (Cohort 2, which ran 16 September) and **`luma.com/k7c2rm5s`** (Cohort 1,
+  21 July), said of our own listing *"it doesn't show a date in these results"*, and closed: ***"I found no
+  confirmed in-person, one-day agentic AI bootcamp in the UK for December 2026 with a clear date and booking
+  link."*** Cohort 4 is on sale for **3 December 2026** at Worcester College and the Coding cohort for
+  **26 November**. It then offered Oxford's **online** Agentic Workflows course (30 Nov - 11 Dec) as the
+  alternative, which is the same confusion with the Oxford online programme the 29 Oct and 19 Nov entries
+  recorded. **This is the fourth logged reading of the same failure**, and the off-page half of it is
+  backlog 2b and still Drummond's.
+- **What it did change here, and it is on-site.** The probe sent this cycle to look at what the one page an
+  engine demonstrably holds says about which day is which - and the homepage's meta description was pairing
+  **the Coding cohort's date with the Agentic line's promise**: *"Hands-on agentic AI training in Oxford for
+  business leaders. Next cohort 26 Nov 2026. In one day you build and run an agentic AI workflow on your own
+  task."* 26 November is the Coding Bootcamp. That is the field an engine quotes most readily, on the page it
+  holds, naming the wrong day as the agentic one and omitting 3 December entirely. Fixed this cycle; detail in
+  the ledger.
+- **Probe 1 (automate a repetitive admin task) is WINNABLE and CONVERTING, and there is no copy gap to
+  write.** The field is Eventbrite listings, chambers of commerce and growth hubs, with no institutional
+  publisher holding it, and a small-business owner naming a repetitive task is the Lean Owner-Operator buyer
+  almost word for word. But the substance is already published in question shape - the whole of
+  `how-to-choose-your-first-agentic-task`, plus the Agentic programme page - so this is a reach failure, not a
+  coverage one. **Declined: nothing to write.** The engine again volunteered the field's condition unprompted
+  (*"Many listed dates have already passed"*), which is now the **twelfth** such reading.
+- **Probe 3 (the ChatGPT plateau) is DECLINED on winnability.** The intent converts - *"we tried it and
+  nothing changed"* is the objection immediately before booking - but the field is **OpenAI's own business
+  guide and success hub** plus Fortune, Fast Company and TechRadar, which is the platform-vendor-on-its-own-
+  product and institutional-publisher shape the topic-probe rule bars. A guide here would also sit on top of
+  `how-to-run-an-ai-pilot-that-survives` and `agentic-ai-for-business-leaders-where-to-start`.
+  **Do not re-pitch it.**
+- **Probe 4 (professional services partners) is DECLINED as a near-duplicate.** The engine said outright it
+  *"found no workshop aimed specifically at professional services partners"*, which looks like a gap, but the
+  site already publishes `agentic-ai-for-consultants`, `agentic-ai-for-finance-teams` and
+  `agentic-ai-for-public-sector-and-nhs-leaders`. A partners-specific guide would be the sector-variation
+  pattern rule 6 bars, and the only thing the field actually wants is a closed private cohort, which is a
+  commercial decision and not a page.
+- **Off-page: nothing new.** Every host across the four probes is either a competitor or already recorded in
+  `outreach/review-list.md` - `eventbrite.co.uk`, `luma.com`, `cademy.io`, `createwith.com`, `meetup.com`,
+  `citylit.ac.uk`, `brainstation.io` - including the chamber-of-commerce shape probe 1 surfaced, which that
+  file already carries as *"Oxfordshire business and chamber"* listings. **No entry added.**
+
 ## 2026-11-20 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. ONE AXIS DUPLICATED YESTERDAY'S BY ACCIDENT, AND THE TWO FRESH ONES BOTH FAIL ON A TEST THIS SITE CANNOT PASS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

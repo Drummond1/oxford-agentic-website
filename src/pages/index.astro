@@ -109,10 +109,42 @@ const courseNodes = await Promise.all(
  * truncates still shows it. Nothing new is asserted: the lead sentence is
  * `brand.description`'s own, the date is already in the header and footer of
  * every page, and the promise is that string's second sentence trimmed.
+ *
+ * The date must come from the Agentic line, not from whichever cohort is
+ * soonest.
+ *
+ * Both prose sentences are the Oxford Agentic Bootcamp's: the lead is
+ * `brand.description`'s first sentence and the promise is its second, trimmed.
+ * This used `upcoming[0]`, the soonest cohort of any programme, which agreed
+ * with them by accident for as long as the Agentic line happened to hold the
+ * next date. It stopped agreeing at 17:00 on 19 November 2026, when Cohort 3
+ * passed and the soonest cohort became the Coding Bootcamp on 26 November -
+ * a different day, for a different reader ("people who have not yet shipped
+ * software", where "Claude Code and Codex do the typing"). The description
+ * then read "Hands-on agentic AI training ... Next cohort 26 Nov 2026 ... you
+ * build and run an agentic AI workflow on your own task", which dates the
+ * agentic-workflow day to the coding day and hides 3 December from the field
+ * an engine quotes most readily, on the one page a domain-restricted search
+ * demonstrably returns.
+ *
+ * Both programme pages already pair their own date with their own promise -
+ * "Next cohort 3 December 2026. ... a working agentic AI workflow on a real
+ * task from your own work" and "Next cohort 26 November 2026. ... have not yet
+ * shipped software" - so this is the house pattern, not a new rule. The fix is
+ * to the date rather than to the sentences, because the sentences are
+ * positioning (the message house of 13 August) and not the loop's to rewrite.
+ *
+ * Still taken from the page's own `upcoming` slice rather than from the
+ * programme's full set, so the original invariant holds: it cannot name a
+ * cohort the cards do not show. If none of the three carded cohorts is an
+ * Agentic one, the clause empties, exactly as it does between cohorts - no
+ * date is weaker than a date, and a date the page does not show would be
+ * worse than either. The Coding cohort keeps the header CTA, its own card and
+ * its own programme page; nothing is hidden by this, only correctly labelled.
  */
 const HOME_LEAD = 'Hands-on agentic AI training in Oxford for business leaders.';
 const HOME_PROMISE = 'In one day you build and run an agentic AI workflow on your own task.';
-const nextCohort = upcoming[0];
+const nextCohort = upcoming.find((event) => event.data.programme.id === 'oxford-agentic-bootcamp');
 const dateLine = nextCohort ? ` Next cohort ${formatShortDate(nextCohort.data.startDate)}.` : '';
 const dated = `${HOME_LEAD}${dateLine} ${HOME_PROMISE}`;
 const description = dated.length <= 160 ? dated : `${HOME_LEAD} ${HOME_PROMISE}`;
