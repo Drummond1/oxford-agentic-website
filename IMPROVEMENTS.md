@@ -1963,7 +1963,7 @@ Status: `todo` · `blocked` (why) · `doing`
       read is unchanged - substitution *"usually yes"*, with written notice, sometimes a fee,
       sometimes a same-organisation rule. One sentence from him, six surfaces, unchanged.
 
-89. `todo` (loop-actionable and **dated: it falls due on 20 November 2026**; found 11 Nov 2026
+89. `done` 20 Nov 2026 (02:00 cycle) - all of it, the half no check could see included. Originally filed as: (loop-actionable and **dated: it falls due on 20 November 2026**; found 11 Nov 2026
     in the 08:00 cycle, by the guard shipped in the same cycle) - **nine sentences name
     19 November as a day still to come, and they are typed into prose rather than derived, so
     the morning after Cohort 3 runs the build will fail on exactly these nine.** That is the
@@ -2018,6 +2018,17 @@ Status: `todo` · `blocked` (why) · `doing`
     should check `summary` as well as the prose. The 14 Nov simulation's dead-end warning is also closed: Cohort
     4 went on sale on 15 November, so `getSuccessorEvent` resolves and the Cohort 3 page renders a 3 December
     card rather than "Dates for the next cohort are being confirmed".
+    **CLOSED 20 Nov 2026 (02:00 cycle). The last open piece - `when-ai-executive-cohorts-run`'s event
+    roster - is rewritten, and the decision this item deferred is made: the links all stay and the
+    tense does the work.** The three spent dates are governed by `ran on` and are now durable; the
+    three on sale are governed by `runs on` / `is on` and are therefore **deliberately fragile**, so
+    `check:dates` fires on each as it passes instead of the sentence drifting invisibly. Measured at
+    `--now=2026-11-27`: 6 findings before the change with this page absent, 7 after, the seventh being
+    this sentence. Nothing of backlog 89 is now invisible to a check. **What remains dated is backlog
+    103 only** - the Coding cohort's own capsule, booking-band copy and
+    `why-the-code-an-agent-wrote-is-not-live`, due at 17:00 on 26 November, plus Cohort 4's turn at
+    17:00 on 3 December. Remember the 19 November lesson: **the red window opens at the event's end
+    time, not at midnight**, and the gate is shared, so it blocks every pusher until it is fixed.
     **The year guard of backlog 91 is now in place (12 Nov, 14:00 cycle), so the cycle that meets
     this item inherits it** - every sentence it rewrites is checked for a bare date as it is
     written, rather than after.
@@ -2823,6 +2834,80 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 20 Nov 2026 (02:00 cycle) - the one guide whose whole subject is when cohorts run listed six dates as one flat roster, three of them spent, with no tense on any of them. It now reads has-run and on-sale, and for the first time the sentence is visible to `check:dates`. One paragraph, one file, 4 of 209 built files
+
+**This is the last open piece of backlog 89, and it is the piece that item said no check could see.** The
+Agentic half closed last night when Cohort 3's capsule went into the past tense. What was left was
+`when-ai-executive-cohorts-run`'s event roster, which backlog 89 explicitly deferred to this cycle as *"a copy
+decision for the 20 November rewrite, not a retarget"*.
+
+**The defect.** The guide's second paragraph read: *"...which is why the 2026 sequence is as uneven as it is:
+the Oxford Agentic Bootcamp on **16 September** and **19 November**, the Second Brain Bootcamp on
+**21 October** at the Pitt Rivers Museum, the first Coding Bootcamp on **26 November**, and a fourth agentic
+day on **3 December**. The 2027 dates were set the same way, the first of them **28 January**..."* Six dates,
+each a link to its own event page, and **not one verb between them**. As of this morning three of the six have
+run - 16 September, 21 October and 19 November, the last of them yesterday - and three are on sale. A reader
+landing on the page that answers *when do cohorts run* could not tell which was which, and neither could an
+engine extracting dates from it. **This is the stale-roster failure the GEO log has now recorded eleven times
+in other people's listings, published on our own site, in the one guide whose subject it is.**
+
+**Why no check saw it, and why one does now.** `check-dates.mjs` asks which tense word *governs* a date, and
+in the old sentence nothing did: no `ran`, no `runs`, no `is on`, and the only past verb (*"Ours were set that
+way"*) sat outside the 90-character window. So `governingTense` returned `none` and the roster passed every
+build. The rewrite gives each date a governing verb - *"The Oxford Agentic Bootcamp **ran on** 16 September and
+again on 19 November, and the Second Brain Bootcamp **ran on** 21 October"*, then *"The days still on sale are
+the first Coding Bootcamp, which **runs on** 26 November, a fourth agentic day on 3 December, and the first of
+the 2027 dates, which **is on** 28 January"*. Past verbs on the spent dates are durable and can never go stale;
+forward verbs on the live ones are deliberately **fragile**, so the guard fires the moment each passes.
+**Measured, not asserted:** at `--now=2026-11-27`, the build before this change reported **6** stale dates and
+this page was **not among them**; after it, **7**, and the seventh is this sentence. The page the check's own
+comment calls *"exactly the page a buyer asking when the next cohort runs would land on"* is guarded at last.
+
+**What was preserved, deliberately.** Every fact and every link. All six event links stay (backlog 89 already
+established that links to passed cohorts are legitimate evidence citations, and there are seven such links
+elsewhere on the site), plus `/events/` as *"the list that stays current"*. The uneven-sequence argument, the
+year anchors *"the 2026 sequence"* and *"the 2027 dates"*, the Pitt Rivers and Jesus College venue facts,
+*"with the room booking there still being finalised"* (still correct: `cohort-5.md` carries `confirmed: false`
+on its venue), *"Worcester College holds all of the others"* (true of the four in the list; Cohort 1 was at
+St Anne's and is not in it), and the September-date coincidence with the Oxford online programme all survive
+word for word. **No count was written** - *"three have run, three are on sale"* was drafted and rejected,
+because a number goes stale on 26 November with nothing to catch it, whereas the tense is caught.
+
+**Measured.** 4 of 209 files in `dist` differ against a sha256 snapshot taken before the change, **none added
+and none removed**: the guide page, `llms-full.txt` (which both voice agents read) and the two sitemaps.
+Build, links (**3,462** across 69 pages), outbound, schema (69 valid, 17 Event, 22 FAQPage, 1,483 graph
+references, 59 breadcrumb trails, all titles and descriptions unique) and both date checks green, **every
+figure identical to this cycle's own pre-change baseline**, including the long-month census at 120 dates, 104
+carrying a year, 16 carrying one within 400 characters and **0 carrying none**. `astro check` not run:
+backlog 70.
+
+**Browser.** Headless Chromium over the changed page plus `/events/oxford-agentic-coding-bootcamp-cohort-1/`
+and `/guides/` as controls, at 375, 768 and 1280px: **87 assertions, 0 failed.** Zero horizontal overflow and
+no JavaScript errors at any width; both new tense clauses present and the old flat roster absent; the Jesus
+College caveat and the Worcester sentence intact; no price glyph and no em dash rendered; all six cohort links
+plus `/events/` resolving from the body; and both controls asserted unchanged. One correction to an assertion
+rather than to the site: the first run expected six event links and found seven, the seventh being `/events/`
+itself, which belongs there. Screenshots at 375 and 1280 read correctly by eye.
+
+**IndexNow.** Not run, per the standing rule; the deploy workflow does it. `scripts/indexnow-ping.mjs` maps a
+`src/content/guides/*.md` change to that guide's URL, so the honest number here is 1.
+
+**Search Console: unavailable from cloud.** No credentials, and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week** (0 published 16-22 Nov; 32 guides total).
+
+**GEO: four probes, zero citations, no writable coverage gap, and one of the four was wasted.** Detail in
+`seo-data/geo-citations.md`. Probe 1 accidentally re-ran yesterday's 08:00 axis in different words and
+replicated it exactly - recorded so the axis is now closed rather than phrased a third way. The two fresh
+axes both fail: the **group-booking** query is winnable and strongly converting, but the engine answered it in
+prices and group discounts, which this site does not publish by standing decision, and the substance is
+already in question shape on all three programme pages; the **in-person-versus-online** query is unwinnable
+(`nobledesktop.com` holds nine of seventeen results on its own catalogue) and its intent is career-changers,
+not buyers. The one new signal is the field's own condition: on two separate probes the engine volunteered
+that most listings it found were already past.
+
+**Off-page.** Nothing new. Every host surfaced is a competitor or already recorded in
+`outreach/review-list.md`; no entry added, and backlog 2b is still the top ask and still Drummond's.
 
 ### 19 Nov 2026 (20:00 cycle) - the build was red when this cycle opened. Cohort 3 finished at 17:00 and its page was still selling it. Past tense on one page, 7 of 209 built files
 

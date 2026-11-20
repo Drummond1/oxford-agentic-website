@@ -5,6 +5,51 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-20 (02:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS. ONE AXIS DUPLICATED YESTERDAY'S BY ACCIDENT, AND THE TWO FRESH ONES BOTH FAIL ON A TEST THIS SITE CANNOT PASS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy) and so is `luma.com`, so no live page and no
+Luma fact was checked, deploy state came from the Actions API, and every event fact used below comes from
+committed files.
+
+| Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|
+| in-person one day course learn Claude Code for non-developers UK | **No** | Ballpoint (London, pages.dev), **three `eventbrite.co.uk` listings**, `maven.com` x2, jellyfish.com, nobleprog.co.uk, onlc.com, every.to |
+| build and ship a working prototype in one day workshop without a developer UK | **No** | **three `luma.com` listings**, meetup.com, `maven.com` x3, createwith.com x3, 13labs.au, eventbrite.co.uk |
+| send three people from my team to a one-day AI workshop UK group booking in person | **No** | innovationvisual.com x5, pointacademy (pages.dev) x2, ailab.world, cademy.io, tutorials.co.uk, eventbrite.co.uk, ucl.ac.uk, cam.ac.uk |
+| in-person AI bootcamp or online cohort course which is better for actually building something | **No** | **nobledesktop.com x9**, coursera.org, bestcolleges.com, techguide.org, dataquest.io |
+
+**Reading.**
+
+- **Probe 1 was an accidental re-probe and should not have been spent.** Yesterday's 08:00 cycle asked
+  *"one day Claude Code training course UK in person for people who do not code"*, which is the same axis in
+  different words, and it is already written up in `outreach/review-list.md`. The result replicates exactly:
+  no page of this site, and three competitors holding the query through Eventbrite listings. Replication is
+  worth something, but the axis is closed - **do not phrase this one a third way**.
+- **The one genuinely new signal is in probe 1's own framing**, and it is the stale-listing problem read from
+  the field's side rather than ours: the engine volunteered that *"most dates listed have already passed as of
+  today (20 November 2026), so check each provider for current sessions."* Probe 3 said the same thing
+  unprompted. So the whole category is full of spent dates, which is the condition under which a provider
+  publishing three live ones ought to win - and we are absent from both.
+- **Probe 3 (group booking) is WINNABLE and strongly CONVERTING, and we still cannot win it as asked.** The
+  field is competitors rather than institutional publishers, and a buyer pricing three seats is as close to a
+  booking as a query gets. But the engine answered it almost entirely in **prices and group discounts** - 10%
+  off for 2-5, 25% for a colleague, per-group day rates, a worked total for three people - and this site
+  publishes no prices by standing decision. There is no coverage gap to write: all three programme pages
+  already answer *"Can I bring my team, or book for several people?"* and *"Can my organisation pay by
+  invoice?"* in question shape. **Declined: the gap is reach and the price surface, not copy.**
+- **Probe 4 (in-person versus online cohort) is DECLINED on both tests.** `nobledesktop.com` holds **nine of
+  seventeen** results on a question about which format to pick, which is an aggregator-publisher writing about
+  its own catalogue - the "institutional publisher on its own subject" shape the topic-probe rule bars. And the
+  intent is wrong: the engine's own answer talks about the job market, portfolio projects and open-source
+  contributions, so the searcher is a career-changer, not a leader booking a day in Oxford. **Do not re-pitch
+  a format-comparison guide.**
+- **Off-page: nothing new.** Every host surfaced across the four probes is either a competitor or already
+  recorded in `outreach/review-list.md` - `eventbrite.co.uk`, `luma.com`, `maven.com`, `cademy.io`,
+  `createwith.com`, `tutorials.co.uk`, `meetup.com`, `nobleprog.co.uk`, `allai.events`. No entry added, and
+  the standing asks are unchanged: backlog 2b is still the top one and still Drummond's.
+
 ## 2026-11-19 (20:00 GMT cycle) - FOUR PROBES, ZERO CITATIONS, AND THE ENGINE DATES THIS BUSINESS TO 21 JULY ON ITS OWN BEST-MATCH QUERY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
