@@ -2855,9 +2855,80 @@ Status: `todo` · `blocked` (why) · `doing`
     an Agentic day again - so the window in which it is wrong is **now until 3 December**, which includes
     the whole of the Coding cohort's remaining selling period. Deciding after 3 December costs nothing;
     deciding this week is worth more.
+    **Costed 20 Nov (09:00 cycle), so the decision is one word rather than a scoping exercise.** The 09:00
+    cycle reached this defect independently, built the fix, measured it and reverted it unpushed, because
+    the call is his. The fix is one expression - `nextThree.find(e => e.data.programme.id ===
+    'oxford-agentic-bootcamp') ?? nextThree[0]`, the same shape the 08:00 cycle used on the description -
+    and it changes **2 of 209 built files**, `dist/index.html` and `dist/home-photos/index.html`, none
+    added and none removed. Inside each, a tag-level diff shows **exactly one element changed**: the hero
+    button's `href` and its `data-analytics-slug`. The label, the position, the analytics event name, the
+    secondary "All dates" button, the three cards, the header CTA and every other byte are identical.
+    Asserted in headless Chromium at 375, 768 and 1280px: **57 assertions, 0 failed**, including Enter on
+    the focused button landing on `#register` of the Cohort 4 page. **Yes is a two-minute change; no costs
+    nothing and the item closes itself on 3 December.**
 
 
 ## Shipped
+
+### 20 Nov 2026 (09:00 cycle) - a no-change cycle, decided on merit with the browser working. The one defect worth a cycle is the booking-path call filed seven hours ago as backlog 119, which is Drummond's; it was built, measured and reverted rather than shipped. The site-wide browser audit behind that decision is new, and it is clean
+
+**Why nothing shipped.** The cycle opened on a green board: `main` at `e9ce71e`, deploy run 44700270559 and
+CI both `success` on that exact SHA, nothing queued or in progress, and the working tree clean. The two open
+pull requests (#1 breadcrumb, #3 the 2 November SEO-loop ledger branch) and the three branches ahead of `main`
+are the known stale set recorded under backlog 20, not fresh work. **Production itself could not be read, as
+on every cycle since 30 October**: this sandbox's egress policy answers `403 Forbidden` for
+`oxfordagentic.com`, so the Actions API stood in and the local `astro preview` build of the deployed SHA was
+the surface under test.
+
+**The search was systematic before it was selective.** Headless Chromium over **every built page except
+`/404.html` at 375, 768 and 1280px - 68 pages, 204 page-widths** - asserting horizontal overflow, images
+without `alt`, form controls without a label, links and buttons without an accessible name, heading-level
+skips, `h1` count and JavaScript errors. **Zero findings on every axis**, with one false positive corrected
+rather than the site: the desktop nav's three dropdown links read as nameless because `innerText` is empty
+under `visibility: hidden`, and the panel is keyboard-reachable by `:focus-within`, which is what the
+component's own comment says it is for. Alongside it: every `<img>` on the site carries `width`, `height`
+and `loading`; the FAQ sets of the three programme pages, the three on-sale event pages and the homepage were
+read side by side for coverage gaps and the one that looked like a gap is not - the Coding line's
+locked-down-laptop answer is in "What should I bring?" and in "Who is it not for?", in more detail than the
+Agentic line's.
+
+**The one real defect found is backlog 119, and it is not the loop's to fix.** The homepage hero's single
+primary button, *"Book the next cohort"*, sits under the message house's verbatim *"Build impactful agentic AI
+workflows"* and the subline *"One real task from your own work. A workflow that runs by the time you leave"*,
+and books `/events/oxford-agentic-coding-bootcamp-cohort-1/#register` - the Coding day, for *"people who have
+not yet shipped software"*. Since this morning's 08:00 fix the page's own meta description names **3 Dec 2026**
+while its own primary button books **26 Nov 2026**. This cycle reached it from the other end, through
+`getSuccessorEvent`'s comment, which records the loop already narrowing exactly this fault on past event pages
+("a promise in one line's words with a button to another line's day"), and then found the 08:00 cycle had
+filed it as **backlog 119, marked needs Drummond**, on the standing precedent of backlog 42: the loop does not
+pick a conversion path. **That decision is seven hours old and was not re-litigated.** The fix was written and
+measured anyway, then reverted unpushed, so that the cost is on the record for whoever decides - the figures
+are in backlog 119. The window in which the button is wrong is now until **3 December**, which is the Coding
+cohort's whole remaining selling period, so the value of deciding this week is the whole of it.
+
+**One further candidate, declined.** The past-event band reads *"The next cohort runs the same format -
+details below."* above a card linking the successor, while what is literally below on the page is this past
+cohort's own agenda and key facts. Left alone: the sentence was rendered, read and verified in the browser as
+recently as the 19:00-20:00 cycle on 19 November, which quotes it approvingly, and "below" is a fair
+description of the card directly beneath it. Re-wording a line two cycles after it was checked, on a reading
+that is arguable either way, is churn rather than improvement.
+
+**Checks run.** `npm ci`, `npm run build` green: links **3,462 across 69 pages**, outbound (13 warnings, all
+this sandbox's egress policy), schema **69 pages valid - 17 Event nodes, 22 FAQPage nodes, 128
+offset-bearing publication dates, 1,483 resolving internal graph references, 59 well-formed breadcrumb
+trails, all titles and descriptions unique**, and both date checks green at **58 indexable pages** and **120
+long-month dates, 104 carrying a year, 16 within 400 characters, 0 carrying none**. `npm run check:flags`
+passes both the all-on and all-off builds. **`astro check` not run: backlog 70** - it asks to install
+`@astrojs/check` and `typescript`, which is a dependency change this cycle has no business making.
+
+**IndexNow.** Not run, and nothing to run it on: no public URL changed.
+
+**Search Console: unavailable from cloud.** No credentials, and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week** (0 published 16-22 Nov; 32 guides total).
+
+**GEO and off-page.** No probes this cycle and no entry added. The cycle's time went into the whole-site
+browser audit above, which is the measurement this ledger did not have, and into costing the one decision
+that is blocking the site's most important button.
 
 ### 20 Nov 2026 (08:00 cycle) - the homepage's meta description has been dating the agentic-workflow day to the coding day since 17:00 on 19 November. The date now comes from the Agentic line, as it does on every programme page. One expression, one file, 1 of 209 built files
 
