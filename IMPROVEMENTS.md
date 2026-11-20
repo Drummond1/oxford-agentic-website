@@ -2880,6 +2880,89 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 20 Nov 2026 (20:00 cycle) - stop a profile's meta description ending on "a". `/team/mike-bailey/` published "...works with founders and product teams on where a…" as its snippet on four surfaces, and the build now refuses that shape
+
+**The defect, measured rather than inferred.** `profileDescription` in `src/pages/team/[...slug].astro`
+prefers a run of whole sentences and, where none fits the 160-character budget, falls back to a word-boundary
+cut closed with an ellipsis. That rule was written on **17 November** to stop cuts landing **mid-word**, and
+it works. What it does not do is stop a cut landing **mid-phrase**, because the budget stops at whatever word
+it reaches. On `/team/mike-bailey/` that word was the indefinite article, and the published description read:
+
+> Mike Bailey - Founder, Coppice Labs. Mike Bailey runs Coppice Labs, a product consultancy in Oxford that
+> works with founders and product teams on where a…
+
+That one string is the `<meta name="description">`, the `og:description`, the `twitter:description` and the
+`WebPage.description` node on that page, so a clause broken on "a" was this site's snippet for a named real
+person. Mike's profile was added on **15 November**, after the rule and before anything swept its output, which
+is why nothing caught it. The `Person` node, `llms.txt` and `llms-full.txt` all carry the full bio and were
+never affected: this is the snippet layer only, exactly as it was in November's first instance of the same
+family.
+
+**Why this is the one page.** All eight profiles were computed. Five end on a whole sentence and never reach
+the fallback. Of the three whose first sentence does not fit, Glenn's cut ends on *"AI"* and Adrian's on
+*"teaches"*, both content words that can carry the end of a phrase, and neither moves. Mike's is the only one
+that ends on a word that cannot.
+
+**The fix, and why it is a tail-walk rather than a different cut.** The tail is now walked back off words that
+cannot end a phrase - articles, prepositions, conjunctions, relatives, auxiliaries and the determiners and
+quantifiers in the same class - so Mike's loses *"on where a"* and ends *"...with founders and product
+teams…"*, 139 characters. Two alternatives were written out and rejected: cutting at the last **clause**
+boundary inside the budget would have left *"Mike Bailey runs Coppice Labs…"* and thrown away everything the
+field is for, and rewriting the bio to fit would be published prose bent to suit a snippet, which this ledger
+has refused twice. Over-trimming by one word is the safe direction here: it costs a word of snippet and never
+publishes a dangling one. **Nothing new is written** - the result is still a prefix of the bio the same page
+prints in full further down, with fewer words of it.
+
+**The guard, because this is the second time the same class has reached production.** `check-schema.mjs` now
+fails any page whose meta description is closed with an ellipsis and ends on a word that cannot carry a
+phrase. Proved before the fix was built: run against the pre-change `dist`, it returned exactly one page,
+`/team/mike-bailey/: truncated meta description ends on "a", which cannot end a phrase`, and nothing else.
+The checker holds its **own, shorter** word list rather than importing the producer's, deliberately: `scripts/`
+imports nothing from `src/`, and a checker asserting the outcome over the built HTML is worth more than one
+that trusts the rule. A disagreement between the two lists fails on a description the producer allowed, which
+is the loud direction. Only one thing on this site truncates a description today; the point of the guard is
+the next thing that does.
+
+**Blast radius, measured against a sha256 snapshot of the whole of `dist` taken before the change.** **1 of
+209 built files differs**, none added or removed: `dist/team/mike-bailey/index.html`, in which the four
+description surfaces move together. `llms.txt`, `llms-full.txt`, both sitemaps and the other 207 files are
+byte-identical. Build, links (**3,462 across 69 pages**), outbound, schema (**69 valid**, 17 Event, 22
+FAQPage, 1,483 graph references) and both date checks green, every figure identical to the pre-change
+baseline. Headless Chromium over `/team/mike-bailey/`, `/team/`, `/team/glenn-smith/` and
+`/team/adrian-shedden/` at 375, 768 and 1280px: **99 assertions, 0 failed**, including that the three
+description surfaces agree with each other, that the new tail is what was intended, and that the full bio
+sentence is still on the page. One assertion was corrected rather than the site: a link inside the collapsed
+nav submenu has an empty `innerText` and a perfectly good accessible name, so the nameless-link check reads
+`textContent`.
+
+**GEO: four fresh axes, zero citations, and the sharpest commercial probe this log has recorded.** Asked
+*"one day AI course Oxford before Christmas 2026 in person book a place"*, the engine closed *"I didn't find
+a one-day, in-person AI course in Oxford running before Christmas 2026, so there's nothing I can point you to
+for booking"* - with the Coding Bootcamp on sale for **26 November** and Cohort 4 for **3 December**, both
+one-day, both in person, both in Oxford, both carrying a page, a date, a venue, an `EducationEvent` node and
+a booking link, and `/events/` publishing all three dates in its own meta description. **There is no page to
+write.** It is backlog 2b arriving through the query with the most buyer intent yet logged, six days out, and
+it is filed to `outreach/review-list.md` rather than to the content backlog. The other three axes are declined
+with reasons recorded: the marketing-sector axis is unwinnable (`cim.co.uk`, the Chartered Institute of
+Marketing, on its own courses) **and** off-format, because this day runs against whatever task the attendee
+brings; the first-task axis is unwinnable (`producttalk.org`, `ibm.com`, an O'Reilly/HBR chapter) and already
+answered twice on this site; and the build-versus-hire axis is winnable and declined on intent, because half
+of it is hiring somebody, which is the cluster the 13 September standing decision puts out of scope.
+
+**Off-page.** Two entries added to `outreach/review-list.md`, at the top as that file asks: probe 3's reading
+itself, against backlog 2b, and `meetup.com/oxford-ai-training`, the one non-university, non-aggregator result
+in that field and a group Drummond's own Mindstone meetup gives a normal reason to talk to. Nothing contacted,
+submitted, claimed or signed up for, and neither host resolves from this sandbox.
+
+**Search Console: unavailable from cloud.** No credentials and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week**, and none since 20 October.
+
+**Board state before anything was touched**, per step 0: `main` at `1eed74d`, local `HEAD` verified equal to
+`origin/main`, working tree clean, deploy run **44751127180** `success` on that exact SHA at 14:12, nothing
+queued or in progress. `oxfordagentic.com`, `luma.com` and `googletagmanager.com` are all refused by this
+sandbox's egress policy, so no live page was read and no event fact was touched; deploy state came from the
+Actions API.
+
 ### 20 Nov 2026 (14:00 cycle) - a no-change cycle. The board is green, every loop-actionable item left is either dated later, already measured and declined, or Drummond's - and this cycle closes the one it was told to close if it could not write a better reason. The new thing is a measurement: two queries that name this domain return no page of it
 
 **Why nothing shipped to the site.** The board was clean on every check the loop makes. `main` at `a0fbc3f`,

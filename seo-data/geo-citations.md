@@ -5,6 +5,55 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-20 (20:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND THE SHARPEST COMMERCIAL PROBE YET: AN ENGINE SAYS OXFORD HAS NO ONE-DAY AI COURSE BEFORE CHRISTMAS, SIX DAYS BEFORE ONE OF OURS RUNS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy, and it does not resolve for the fetch tool
+either) and so are `luma.com` and `googletagmanager.com`, so no live page and no Luma fact was checked, deploy
+state came from the Actions API, and every fact used below comes from committed files.
+
+| # | Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|---|
+| 1 | agentic AI training for a marketing team UK one day in person hands-on workshop (sector axis - marketing, never probed) | **No** | **cim.co.uk x4**, brainstation.io x2, eventbrite.co.uk x3, luma.com x2, lxahub.com, targetinternet.com, jellyfish.com, anicca.co.uk x2, ecornell.cornell.edu |
+| 2 | which of my tasks should I automate with AI first how to choose the right task (this site's own guide's thesis) | **No** | **producttalk.org**, **ibm.com x2**, **oreilly.com**, learn.g2.com x2, dev.to x2, stacker.com x2, pictory.ai, clickup.com, futurumgroup.com, therundown.ai |
+| 3 | one day AI course Oxford before Christmas 2026 in person book a place (dated commercial, a buyer phrasing never used) | **No - and the engine declared the gap our two on-sale cohorts fill** | **lifelong-learning.ox.ac.uk x12**, **conted.ox.ac.uk**, **sbs.ox.ac.uk x2**, eventbrite.com, meetup.com/oxford-ai-training |
+| 4 | should I learn to build AI workflows myself or hire someone to build them for my business (build-versus-hire axis, never probed) | **No** | **lilachbullock.com x8**, bushe.co x2, upwork.com, twine.net, educative.io x2, dev.to, honeybook.com |
+
+**Probe 3 is the finding, and it is not a coverage gap.** Asked in a buyer's words for a one-day, in-person AI
+course in Oxford before Christmas, the engine closed: *"I didn't find a one-day, in-person AI course in Oxford
+running before Christmas 2026, so there's nothing I can point you to for booking."* The Oxford Agentic Coding
+Bootcamp runs on 26 November and Cohort 4 on 3 December, both one-day, both in person, both in Oxford, both on
+sale, both with a page, a date, a venue, an `EducationEvent` node and a booking link, and `/events/` publishes
+all three dates in its own meta description. Nothing is missing from the site. The four things the engine
+offered instead were all `ox.ac.uk` short courses, three of them undated in its own summary and the fourth
+starting in January. This is the eighteenth consecutive probe set with zero citations and it arrives through
+the query with the most commercial intent yet logged - a buyer, in Oxford, with a date range, six days out.
+Filed to `outreach/review-list.md` against backlog 2b, not to the content backlog.
+
+**The other three are declines, each with its reason recorded so no cycle re-derives them.**
+
+- **Probe 1, marketing sector: unwinnable and off-format.** `cim.co.uk` is the Chartered Institute of
+  Marketing writing about its own courses, which is the institutional-publisher half of the standing rule,
+  and the rest of the field is vendors' own catalogues. The deeper objection is that our day is not a
+  marketing day: it runs against one real task the attendee brings, whatever the function. A marketing-sector
+  guide would be a near-duplicate of the sector guides already live, written to a specialism the format does
+  not have. Declined on winnability and on substance.
+- **Probe 2, choosing the first task: unwinnable, and already answered.** `producttalk.org`, `ibm.com` and
+  an O'Reilly/HBR chapter hold the field, which is institutional publishing. The site also answers this
+  already, twice: `/guides/how-to-choose-your-first-agentic-task/` and the unlisted First Workflow Picker.
+  Nothing to write.
+- **Probe 4, build versus hire: winnable, declined on intent.** No institutional publisher is in it and the
+  engine flagged its own field twice (*"Most of the sources are consultants' own marketing, so weigh them
+  accordingly"*). But half the intent behind the question is hiring somebody, which is the
+  services-and-consultancy cluster Drummond's 13 September standing decision puts out of scope, and a
+  training provider arguing "learn it yourself" is the twentieth self-interested voice in a field the engine
+  has already discounted on exactly that ground. Declined, and it should not be re-pitched as winnable
+  without an answer to the second objection.
+
+**New host for the off-page list:** `meetup.com/oxford-ai-training`, the one non-university, non-aggregator
+result in probe 3. Filed with the caveat that it does not resolve from here.
+
 ## 2026-11-20 (14:00 GMT cycle) - FIVE PROBES, ZERO CITATIONS, AND THE FIRST DIRECT MEASUREMENT OF THE REACH PROBLEM: A QUERY NAMING THE DOMAIN RETURNS NO PAGE OF IT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

@@ -108,6 +108,67 @@ const profileLinks = speaker
  */
 const SERP_DESCRIPTION_LIMIT = 160;
 
+/*
+ * Words that cannot end a phrase, so that a cut tail is walked back off them.
+ *
+ * The word-boundary rule above stops at whatever word the character budget
+ * happens to land on, and on 20 November 2026 that word was an article:
+ * `/team/mike-bailey/` published "...works with founders and product teams on
+ * where a…" as its meta description, its `og:` and `twitter:` description and
+ * its `WebPage.description`. That is the same defect the word-boundary rule was
+ * written for, one level up - it stopped cuts landing mid-word and left cuts
+ * landing mid-phrase, which read as a broken string rather than as an
+ * unfinished sentence. Mike's profile was added on 15 November, after the rule,
+ * which is why nothing caught it.
+ *
+ * Measured on the three profiles whose first sentence does not fit the budget:
+ * Mike's loses "on where a" and ends "...with founders and product teams…",
+ * Glenn's ends on "AI" and Adrian's on "teaches", both content words, and
+ * neither of those two moves. Over-trimming by a word is the safe direction:
+ * it costs one word of snippet and never publishes a dangling one.
+ *
+ * Nothing new is written. The result is still a prefix of the bio this same
+ * page prints in full further down, with fewer words of it.
+ */
+const NON_TERMINAL_WORDS = new Set([
+  // Articles, demonstratives and possessive determiners
+  'a', 'an', 'the', 'this', 'that', 'these', 'those',
+  'its', 'his', 'her', 'their', 'our', 'your', 'my', 'whose',
+  // Prepositions
+  'of', 'in', 'on', 'at', 'to', 'for', 'with', 'from', 'by', 'into', 'onto',
+  'over', 'under', 'between', 'through', 'during', 'about', 'across',
+  'against', 'among', 'amongst', 'around', 'before', 'after', 'behind',
+  'below', 'beneath', 'beside', 'beyond', 'near', 'since', 'than', 'toward',
+  'towards', 'upon', 'within', 'without', 'along', 'like', 'per', 'via',
+  // Conjunctions
+  'and', 'or', 'but', 'nor', 'so', 'yet', 'as', 'if', 'because', 'while',
+  'whereas', 'although', 'though', 'unless', 'until', 'whether',
+  // Relatives and interrogatives
+  'which', 'who', 'whom', 'where', 'when', 'how', 'what', 'why',
+  // Auxiliaries and copula
+  'is', 'are', 'was', 'were', 'be', 'been', 'being', 'am', 'has', 'have',
+  'had', 'having', 'do', 'does', 'did', 'will', 'would', 'shall', 'should',
+  'can', 'could', 'may', 'might', 'must',
+  // Quantifiers and adverbs that cannot carry the end of a phrase
+  'not', 'no', 'both', 'either', 'neither', 'each', 'every', 'any', 'some',
+  'more', 'most', 'much', 'many', 'few', 'several', 'such', 'very', 'also',
+  'still', 'then',
+]);
+
+/** Trailing punctuation a cut can land on: Adrian's lands after a spaced hyphen. */
+const trimTailPunctuation = (text: string) => text.replace(/[\s,;:-]+$/, '');
+
+function trimNonTerminalTail(text: string) {
+  let out = trimTailPunctuation(text);
+  for (;;) {
+    const words = out.split(' ');
+    if (words.length < 2) return out;
+    const last = words[words.length - 1].toLowerCase().replace(/[^a-z']/g, '');
+    if (!NON_TERMINAL_WORDS.has(last)) return out;
+    out = trimTailPunctuation(words.slice(0, -1).join(' '));
+  }
+}
+
 function profileDescription(name: string, role: string, company: string | undefined, bio: string) {
   const prefix = `${name} - ${role}${company ? `, ${company}` : ''}. `;
   const sentences = (bio.replace(/\s+/g, ' ').trim().match(/[^.]+\.(?=\s|$)/g) ?? [bio]).map((s) =>
@@ -122,7 +183,8 @@ function profileDescription(name: string, role: string, company: string | undefi
   const room = SERP_DESCRIPTION_LIMIT - prefix.length - 1; // the ellipsis
   const cut = sentences[0].slice(0, room);
   const atWord = cut.slice(0, cut.lastIndexOf(' '));
-  return `${prefix}${atWord.replace(/[\s,;:-]+$/, '')}…`;
+  const tail = trimNonTerminalTail(atWord);
+  return `${prefix}${tail || trimTailPunctuation(atWord)}…`;
 }
 ---
 

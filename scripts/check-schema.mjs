@@ -171,6 +171,38 @@ const TITLE_LIMIT = 60;
 /** The documented meta-description target; over this warns, over 200 fails. */
 const DESCRIPTION_TARGET = 160;
 
+/*
+ * Words that cannot end a phrase, for the truncated-description check below.
+ *
+ * Deliberately this checker's own list rather than the producer's. Only one
+ * thing on the site truncates a description - `profileDescription` in
+ * `src/pages/team/[...slug].astro`, which cuts a long bio at a word boundary
+ * and closes it with an ellipsis - and on 20 November 2026 it published
+ * "...works with founders and product teams on where a…" on
+ * `/team/mike-bailey/`, a description ending on an article. The producer now
+ * walks the tail back off words like that, and this asserts the outcome over
+ * the built HTML instead of trusting the rule: the next thing that truncates a
+ * description gets the same guarantee without having to remember this one.
+ *
+ * Shorter than the producer's list on purpose. It needs only the classes that
+ * unambiguously cannot carry the end of a phrase, so a disagreement between
+ * the two fails loudly on a description the producer allowed, which is the
+ * safe direction, rather than passing one it did not.
+ */
+const NON_TERMINAL_TAIL = new Set([
+  'a', 'an', 'the', 'this', 'these', 'those', 'its', 'his', 'her', 'their',
+  'our', 'your', 'my', 'whose',
+  'of', 'in', 'on', 'at', 'to', 'for', 'with', 'from', 'by', 'into', 'onto',
+  'over', 'under', 'between', 'through', 'during', 'about', 'across',
+  'against', 'among', 'around', 'before', 'after', 'behind', 'below', 'near',
+  'since', 'than', 'toward', 'towards', 'upon', 'within', 'without', 'via',
+  'and', 'or', 'but', 'nor', 'as', 'if', 'because', 'while', 'although',
+  'though', 'unless', 'until', 'whether',
+  'which', 'who', 'whom', 'where', 'when', 'how', 'what', 'why',
+  'is', 'are', 'was', 'were', 'be', 'been', 'being', 'has', 'have', 'had',
+  'does', 'did', 'will', 'would', 'should', 'could', 'may', 'might', 'must',
+]);
+
 const errors = [];
 const warnings = [];
 const titles = new Map();
@@ -211,6 +243,25 @@ for (const file of files) {
   if (!canonical) errors.push(`${page}: missing canonical URL`);
   if (description && description.length > 200) {
     errors.push(`${page}: meta description is ${description.length} chars (keep it under ~160)`);
+  }
+
+  /*
+   * A description that was cut to fit must still end on a word that can carry
+   * the end of a phrase. See `NON_TERMINAL_TAIL` above for what went live.
+   * Only descriptions closed with an ellipsis are read, so nothing that ends on
+   * a full stop is touched.
+   */
+  if (description && /(\u2026|&#8230;|&hellip;)\s*$/.test(description)) {
+    const lastWord = description
+      .replace(/(\u2026|&#8230;|&hellip;)\s*$/, '')
+      .trim()
+      .split(/\s+/)
+      .pop()
+      ?.toLowerCase()
+      .replace(/[^a-z']/g, '');
+    if (lastWord && NON_TERMINAL_TAIL.has(lastWord)) {
+      errors.push(`${page}: truncated meta description ends on "${lastWord}", which cannot end a phrase`);
+    }
   }
 
   /*

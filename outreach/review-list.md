@@ -11,6 +11,42 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **An engine asked for a one-day in-person AI course in Oxford before Christmas said there is not one,
+  while two of ours are on sale for 26 November and 3 December.** Found 20 Nov 2026 (20:00 cycle).
+  **Nothing contacted, submitted or claimed, and none of the hosts below resolves from this sandbox.**
+  - **The reading.** The probe was a buyer's phrasing, not a branded one: *"one day AI course Oxford
+    before Christmas 2026 in person book a place"*. The engine closed with *"I didn't find a one-day,
+    in-person AI course in Oxford running before Christmas 2026, so there's nothing I can point you
+    to for booking"*, and then offered four `ox.ac.uk` courses as the nearest things, three of which
+    it could not date and one of which starts in January. Everything it cited was
+    `lifelong-learning.ox.ac.uk`, `conted.ox.ac.uk`, `sbs.ox.ac.uk` or an Eventbrite listing.
+  - **Why it belongs on this list rather than on the backlog.** Both cohorts have had a page, a date,
+    a venue, an `EducationEvent` node and a booking link for weeks, and `/events/` publishes all three
+    dates in its own meta description. There is no page to write and no field to fill. This is the
+    reach problem the 24 August Search Console baseline diagnosed and the 14:00 cycle measured
+    directly, arriving one more time through the query with the most commercial intent of any yet
+    logged: a buyer, in Oxford, with a date range, six days before one of the two days runs.
+  - **One engine, US-resident, one day.** Not a ranking. It is recorded because of what was asked,
+    not because of where anything placed.
+  - Needs: the standing ask, which is backlog 2b. One external link, a LinkedIn Company Page or a real
+    Luma calendar URL in `brand.social`, so `Organization.sameAs` stops being empty.
+
+- **meetup.com/oxford-ai-training - an Oxford group running AI training events, new to every log** -
+  found 20 Nov 2026 (20:00 cycle) by the probe above.
+  - Where it came from: it was the one non-university, non-aggregator result in a field otherwise
+    owned by `ox.ac.uk`, and it carried a dated Oxford AI course (listed through Eventbrite, starting
+    6 January).
+  - What it might be: both a competitor and a local audience. Meetup groups are the one route on this
+    list where the ask is a human one rather than a submission form, and Drummond already hosts the
+    Mindstone Practical AI meetup in Oxford, so a conversation between two Oxford AI groups is a
+    normal thing rather than a cold pitch. It is also an Oxford audience that is already turning up
+    in person to learn AI, which is the whole of our buyer definition.
+  - **Not checked at all.** `meetup.com` does not resolve from this sandbox, so who runs the group,
+    how large it is, how active it is and whether it accepts cross-posts are all unknown. The three
+    earlier `meetup.com` mentions on this list are different groups.
+  - Needs: someone with an unblocked browser to open it and decide whether it is worth a message.
+    Nothing contacted, nothing submitted, no account made.
+
 - **Two queries that name this domain return no page of it, and the pages that do rank in their place now
   include one asserting a price we do not publish.** Found 20 Nov 2026 (14:00 cycle). **Nothing contacted,
   submitted, claimed or corrected, and none of the hosts below resolves from this sandbox.**
