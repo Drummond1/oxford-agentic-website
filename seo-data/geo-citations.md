@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-21 (14:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND ONE OF THEM IS THE FIRST COVERAGE GAP IN WEEKS THAT THE LOOP COULD HONESTLY CLOSE ITSELF
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy, and it does not resolve for the fetch tool
+either) and so are `luma.com` and the third-party hosts the outbound checker tries, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every fact used below comes from committed files.
+
+| # | Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|---|
+| 1 | is it worth travelling to Oxford for a one day AI course if I am based in London in person (travel-decision axis, never probed) | **No - and the engine described our day accurately from two passed cohorts' Luma pages** | **lifelong-learning.ox.ac.uk x10**, conted.ox.ac.uk x2, sbs.ox.ac.uk, meetup.com/oxford-ai-training x2, eventbrite.com, `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` |
+| 2 | my team thinks AI is hype how do I get them to actually use it day to day (scepticism and buy-in axis, never probed) | **No** | **atlassian.com x4**, **slack.com x3**, asana.com x2, zapier.com, lattice.com, martech.org, entrepreneur.com, mindtheproduct.com, balsamiq.com, ere.net, bensbites.com |
+| 3 | what if the task I bring to a one day AI build workshop turns out to be too hard to finish in a day (in-the-room failure axis, never probed) | **No** | deeplearning.ai x2, specstory.com, verdent.ai, createwith.com, skool.com, three LinkedIn profiles, two Substacks, Unreal and Godot forum threads |
+| 3b | AI workshop what happens if we don't finish the project in the day is it a waste of money (probe 3 re-asked, because one wording is not a field) | **No** | nicd.org.uk, getclear.ca, datameaning.com, mentorcruise.com, kinetica.com, sfailabs.com, ventionteams.com, scan.co.uk, deeplearning.ai, dev.to, two forum threads |
+| 4 | is a paid AI training day worth it for a one person business sole trader UK (sole-trader axis, never probed) | **No - and the engine argued the buyer should take free government training instead** | **westyorks-ca.gov.uk x2**, **mkcollege.ac.uk x2**, **startups.co.uk x4**, ipa.co.uk, sage.com, lilachbullock.com x3, wiseowl.co.uk x2, profiletree.com, tutorials.co.uk, pointacademy-co-uk.pages.dev |
+
+**Probe 3 is the finding, and it is the first in weeks that the loop could close with its own published copy.**
+It was re-asked rather than acted on, because one wording is a snapshot and not a field, and both wordings
+returned the same admission. The first closed: *"I found no sources about specific workshop policies, so check
+with your facilitator if you need their rules on partial credit or carrying work forward."* The second closed:
+*"The search didn't turn up anything on refund terms or what happens when a one-day AI workshop runs out of
+time"*, and told the buyer to **ask the provider what happens if the project is not done by end of day**.
+Neither field holds an institutional publisher - vendors describing their own workshops, a DeepLearning.AI
+newsletter piece, two Substacks and some forum threads - so it is **winnable**, and it **converts**, because it
+is the objection a buyer raises with their hand on the booking button: if the task is too big, have I bought a
+wasted day. **Shipped this cycle** as a fourth question on
+`/guides/what-you-can-build-in-one-day-with-ai/`, inside the `FAQPage` node that page already emits, with every
+clause drawn from prose the same page has published since 12 October. Nothing was asserted about what a
+facilitator does on the day, because that is an event fact and `luma.com` does not resolve from here.
+
+**The other three are declines, each with its reason recorded so no cycle re-derives them.**
+
+- **Probe 1, the travel decision: the sharpest reach reading of the set, and not a page to write.** Asked
+  whether Oxford is worth the trip from London, the engine described the Oxford Agentic Bootcamp correctly and
+  in our own terms - *"a one-day, hands-on session at Worcester College aimed at people who already use AI
+  daily and want to build agentic workflows. It doesn't assume you can code"* - and then said *"the search
+  didn't show its date or price"*. It had read two **passed** cohorts' Luma pages (`oxfordagentic2`, 16 Sept,
+  and `k7c2rm5s`, 21 July) and no page of this site, while three dated cohorts are on sale with a page, a
+  venue, an `EducationEvent` node and a booking link each. The positioning has reached the engine; the
+  calendar has not. That is backlog 2b in its purest form yet: the entity is known and the inventory is
+  invisible. Ten of the field's results were `lifelong-learning.ox.ac.uk`. Filed to the review list, not to
+  the content backlog.
+- **Probe 2, the sceptical team: nominally winnable, declined on the buyer and on the field's weight.** No
+  institutional publisher is in it and the engine flagged its own sources (*"Most of these sources are vendor
+  blogs, and none directly addresses people who think AI is hype"*), which passes the letter of the standing
+  rule. Two objections hold it back. The field is Atlassian, Slack, Asana and Zapier writing about adoption of
+  their own products, which is the platform-vendor half of the same rule and a weight a 69-page site does not
+  move by writing one more page into it. And the searcher wants change-management tactics this week, not a day
+  in Oxford: the booking-shaped version of their question is *which person do I send*, which
+  `/guides/who-should-take-the-seat/` has answered since 19 October. Do not re-pitch without an answer to the
+  second objection.
+- **Probe 4, the sole trader: unwinnable, and the format is not for this buyer anyway.** `westyorks-ca.gov.uk`,
+  `mkcollege.ac.uk` and `ipa.co.uk` are the institutional half of the rule, and the engine's own answer routes
+  the buyer to free government training first (the AI Skills Hub, and a Skills Bootcamp for freelancers with
+  eligibility rules). A sole trader choosing between free funded provision and a paid day is not the published
+  audience, and arguing them out of a free government course would be the twentieth self-interested voice in a
+  field the engine has already discounted on exactly that ground. Declined on both halves.
+
+**One measurement worth keeping.** Probe 4's engine quoted a price range for UK AI training days from vendor
+pages. Nothing on this site publishes a price and nothing should - prices live on the booking pages - but it is
+the first time a probe has returned the market's price band unprompted, and it is recorded here rather than
+acted on.
+
 ## 2026-11-21 (08:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND THE TWO WINNABLE-LOOKING ONES ARE BOTH ALREADY ANSWERED ON THIS SITE IN DEPTH
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

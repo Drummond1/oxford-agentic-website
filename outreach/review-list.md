@@ -11,6 +11,43 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Three UK publishers that write about paid-versus-free AI training for small businesses, and none of
+  them has ever mentioned us.** Found 21 Nov 2026 (14:00 cycle), in the field of a sole-trader probe.
+  **Nothing contacted, submitted or claimed, and none of these hosts resolves from this sandbox.**
+  - `startups.co.uk` - returned four times in one probe, on pieces titled *"Free AI training offered to 10m
+    workers - why SMEs should pay attention"* and *"UK SMEs given free tools to help close AI skills gap"*.
+    A UK small-business news outlet actively covering the AI-skills question our three bootcamps answer.
+    This is a press and comment opportunity rather than a directory: the angle we could honestly offer is
+    what free provision does and does not do, which `/guides/ai-bootcamp-vs-course-vs-exec-education/`
+    already argues in published copy.
+  - `ipa.co.uk` - the Institute of Practitioners in Advertising, carrying *"Free AI training - the good, the
+    useful and the reality"*. Institutional, so not a page we outrank, and for exactly that reason a
+    mention there is worth more than a listing. Likely needs a member route in.
+  - `nicd.org.uk` - the National Innovation Centre for Data, which runs its own one-day *Project Success
+    Workshop*. A peer rather than a directory, and recorded as a possible partnership or cross-referral
+    rather than a link target. Note it is a competitor for the same day of someone's time.
+  - **Why these three and nothing else from the probe.** `createwith.com`, `cademy.io`, `allai.events`,
+    `tutorials.co.uk`, `lilachbullock.com`, `profiletree.com`, `mentorcruise.com` and `getclear.ca` were all
+    in this cycle's fields and are all already on this list or in `off-page-listings.md`, so under this
+    list's own no-duplicates rule nothing was added for them. `westyorks-ca.gov.uk` and `mkcollege.ac.uk`
+    are publicly funded provision, not placements.
+  - **One engine, US-resident, one day.** Recorded for what was asked, not for where anything placed.
+
+- **An engine has our positioning word for word and still cannot find a date.** Found 21 Nov 2026 (14:00
+  cycle), on a travel-decision probe (*"is it worth travelling to Oxford for a one day AI course if I am
+  based in London in person"*). **Nothing contacted, submitted or claimed.**
+  - **The reading.** The engine described the Oxford Agentic Bootcamp accurately and in our own terms -
+    *"a one-day, hands-on session at Worcester College aimed at people who already use AI daily and want to
+    build agentic workflows. It doesn't assume you can code"* - and then said *"the search didn't show its
+    date or price"*. The two pages it had read were `luma.com/oxfordagentic2` (16 September) and
+    `luma.com/k7c2rm5s` (21 July), **both passed cohorts**. No page of oxfordagentic.com was cited, while
+    three dated cohorts are on sale.
+  - **Why it belongs here and not on the content backlog.** There is no page to write. The entity has
+    reached the engine and the inventory has not, which is backlog 2b, and the two artefacts that would fix
+    it are the ones that have been waiting for Drummond for months: a third-party `sameAs` for the
+    Organization node, and current listings that are not spent Luma pages. Ten of the eighteen results were
+    `lifelong-learning.ox.ac.uk`.
+
 - **An engine asked for a one-day in-person AI course in Oxford before Christmas said there is not one,
   while two of ours are on sale for 26 November and 3 December.** Found 20 Nov 2026 (20:00 cycle).
   **Nothing contacted, submitted or claimed, and none of the hosts below resolves from this sandbox.**

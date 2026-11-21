@@ -2927,7 +2927,107 @@ Status: `todo` · `blocked` (why) · `doing`
     questions were looked at again and left alone: that opt-in was argued on 7 November in the file's own
     comment and is not re-litigated here.
 
+122. `todo` (**declined on its merits and recorded so it is not re-derived as a gap**; found 21 Nov 2026 in
+    the 14:00 cycle, by that cycle's probe 2) - **"my team thinks AI is hype, how do I get them to actually
+    use it" is an unowned field that this site should probably still not write into.**
+    The field holds **no institutional publisher**, and the engine flagged its own sources
+    (*"Most of these sources are vendor blogs, and none directly addresses people who think AI is hype"*),
+    so it passes the letter of the standing winnability rule. Two objections were enough to decline it.
+    (a) The field is `atlassian.com` four times, `slack.com` three, plus `asana.com`, `zapier.com` and
+    `lattice.com`, all writing about adoption of their own products. That is the **platform-vendor half of
+    the same rule**, and it is a weight a 69-page site does not shift by adding one more page to it.
+    (b) The searcher wants change-management tactics this week. The booking-shaped version of their
+    question is *which person do I send*, and `/guides/who-should-take-the-seat/` has answered that since
+    19 October, with `/guides/how-to-run-an-ai-pilot-that-survives/` carrying the week-two half.
+    **What would change the verdict**, and nothing less should: evidence that this searcher books. A probe
+    phrased from the budget holder's side rather than the team's (*"I have a team that will not use the
+    tools I bought, is a hands-on day worth it"*) has never been run, and if that field were also unowned
+    the second objection would have an answer. Do not re-pitch on the first objection alone.
+    **Measured while deciding**: a grep for "sceptic", "skeptic", "hype" and "buy-in" across all 32 guides,
+    the three programmes and `home.ts` returns four files and not one instance of the objection in question
+    shape, so the gap is real. It is the conversion case that fails, not the coverage case.
+
 ## Shipped
+
+### 21 Nov 2026 (14:00 cycle) - a fourth question on the one-day guide, on the first coverage gap in weeks that two probes agreed on and the loop could close out of its own published copy
+
+**The change is one `h3` and one paragraph**, added under `## Is one day enough?` on
+`/guides/what-you-can-build-in-one-day-with-ai/`: *"What if the task turns out to be too big for the day?"*
+The section's own lead moved from *"Three versions of this question arrive"* to *"Four"*, which is the
+only other visible edit. That section is already a genuine FAQ inside an essay and already carries
+`faqFromHeadings`, so the `FAQPage` node this page emits moved from **3 entries to 4** without anything
+being copied into frontmatter.
+
+**The evidence is two probes, not one, because one wording is a snapshot and not a field.**
+*"What if the task I bring to a one day AI build workshop turns out to be too hard to finish in a day"*
+closed: *"I found no sources about specific workshop policies, so check with your facilitator if you need
+their rules on partial credit or carrying work forward."* Re-asked as *"AI workshop what happens if we
+don't finish the project in the day is it a waste of money"*, it closed: *"The search didn't turn up
+anything on refund terms or what happens when a one-day AI workshop runs out of time"*, and told the buyer
+to **ask the provider what happens if the project is not done by end of day**. Neither field holds an
+institutional publisher - vendors describing their own workshops, a DeepLearning.AI newsletter piece, two
+Substacks and some forum threads - so it passes **winnable**, and it passes **converting** on the harder
+half: this is the objection raised with a hand on the booking button, five days before the Coding day and
+twelve before Cohort 4.
+
+**Nothing new is claimed, and that was the constraint the answer was written under.** Every clause is
+already published on the same page: the three passes and *"if you have not got something rough running by
+midday, the problem is the task, not the time"* from `## Three passes, not one build`; *"three narrow
+steps, each testable on its own"* from `## What fits`; *"no amount of time in a room will help"* and the
+four-things list from `## Four things that will not fit`; and the recipe you *"rebuild and extend at your
+own desk"* from the third sibling and the closing section. **No claim is made about what a facilitator
+does on the day** - that is an event fact, `luma.com` does not resolve from this sandbox, and the probe's
+own field is full of providers promising exactly that sort of thing. The reasoning is recorded in the
+guide's frontmatter comment beside the flag, with both probe quotations.
+
+**Asserted on the built node rather than assumed, which the guide's own comment demands.** The node
+publishes 4 entries, not 5: the parent `h2` is still skipped by the leaf rule because it now groups four
+question children. The three pre-existing entries are **byte-identical** to the pre-change build, which
+was the one thing that could have gone wrong silently - the third sibling's answer used to run to the next
+`h2` and now stops at the new `h3`, and there was nothing between the two. The four `name` strings carry no
+`#`: each heading renders a visible permalink from a CSS pseudo-element, which `innerText` reports and the
+extractor correctly never sees. That cost one false failure and **the assertion was corrected, not the
+site**, which is the third time in four cycles a browser audit has blamed the page for its own tooling.
+
+**Blast radius measured against a sha256 snapshot of the pre-change `dist`: 4 files of 209 differ, none
+added or removed** - the guide page, `llms-full.txt` and the two sitemaps. Build, links (3,462 across 69
+pages), outbound, schema (69 valid, 17 Event, 22 FAQPage, 128 offset-bearing publication dates, 1,483
+graph references, 59 breadcrumb trails, all titles and descriptions unique), both date checks and
+`check:flags` all green, every figure identical to the pre-change baseline except the FAQ entry count.
+Headless Chromium over four pages at 375, 768 and 1280px: **99 assertions, 0 failed** - zero horizontal
+overflow, one `h1` each, zero images without alt, zero nameless links, zero heading-level skips, zero
+local console errors, and the new heading typographically identical to its three siblings at both 375 and
+1280px.
+
+**IndexNow maps a guide edit to 2 URLs**, the guide and `/guides/`. Only the guide's bytes changed, so one
+of the two is over-submission - the milder failure by backlog 74's own weighing, and the same coarse
+mapping backlog 83 measured and left. The dry-run was not executed this cycle: the sandbox's auto-mode
+classifier refused to run `indexnow-ping.mjs` at all, so the mapping above is read off the source. A later
+cycle should try it again rather than inherit that, exactly as the 10 Nov entry says.
+
+**Four fresh axes probed, zero citations - the twentieth consecutive set.** Probe 1 is the sharpest reach
+reading yet: asked whether Oxford is worth the trip from London, the engine described this bootcamp
+**accurately and in our own words** and then said *"the search didn't show its date or price"*, having read
+`luma.com/oxfordagentic2` (16 Sept) and `luma.com/k7c2rm5s` (21 July), **both passed cohorts**, and no page
+of this site. The positioning has reached the engine and the calendar has not, which is backlog 2b in its
+purest form. Probe 2 (a team that thinks AI is hype) is nominally winnable and **declined**: the field is
+Atlassian, Slack, Asana and Zapier on adoption of their own products, which is the platform-vendor half of
+the standing rule, and the booking-shaped version of that searcher's question is *which person do I send*,
+which `who-should-take-the-seat` has answered since 19 October. Probe 4 (sole trader) is **unwinnable** on
+`westyorks-ca.gov.uk`, `mkcollege.ac.uk` and `ipa.co.uk`, and the engine routes that buyer to free
+government provision, which is the right answer for them.
+
+**Off-page: two entries added, four hosts between them** - `startups.co.uk`, `ipa.co.uk` and `nicd.org.uk`
+as UK publishers writing about paid-versus-free AI training, and the probe-1 reading filed against backlog
+2b. Eight other hosts in this cycle's fields were deliberately **not** added, each already on the review
+list or in `off-page-listings.md`. Nothing contacted, submitted, claimed or paid for, and no third-party
+host resolves from here.
+
+**Search Console unavailable from cloud**: `fetch-search-console.mjs` reports no service-account key, and
+there is no export in `seo-data/` newer than the 24 August baseline. Nothing estimated. **No new guide this
+week** - this is a refresh of a guide published on 12 October, not a new one. `oxfordagentic.com` and
+`luma.com` are both refused by this sandbox's egress policy, so no live page was read and no event fact was
+touched; deploy state came from the Actions API.
 
 ### 21 Nov 2026 (08:00 cycle) - a no-change cycle: the two winnable axes this cycle's probes found are both already answered on this site, and the one loop-actionable item left on the list is worth less than the commit that would carry it
 
