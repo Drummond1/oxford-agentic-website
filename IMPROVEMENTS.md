@@ -2949,6 +2949,89 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 21 Nov 2026 (09:00 UTC cycle) - the one guide written for readers whose job is reading documents closely used the noun where British English wants the verb. One word, one file, 4 of 209 built files, and the sweep that found it says a build-time guard is not warranted
+
+**The change is one letter.** `/guides/agentic-ai-for-public-sector-and-nhs-leaders/` read *"built in
+tools your organisation may already licence"*. In British English `licence` is the noun and `license`
+is the verb, and after *may already* only a verb can stand, so the sentence now reads *"may already
+license"*. Nothing else in the paragraph moved, the two words are the same length, and the rendered
+line breaks identically. `updatedDate` moved from 10 August to today, which is the only other visible
+change: the byline reads *Updated 21 November 2026* and `dateModified` follows it in the `Article`
+node.
+
+**Why this page rather than a bigger one.** It is addressed to information-governance, procurement and
+NHS board readers - an audience whose working day is reading documents for exactly this kind of slip -
+and the paragraph it sits in is the budget objection, which is the closest thing the guide has to a
+conversion argument. British spelling is a hard guardrail in this ledger, so this is a guardrail breach
+in published copy rather than a style preference.
+
+**The sweep behind it, recorded so no cycle rebuilds a guard for a class with one member.** A usage
+pass over all of `src/content`, `src/lib`, `src/pages` and `src/components` for the British noun/verb
+pairs (`licence`/`license`, `practice`/`practise`, `advice`/`advise`, `principle`/`principal`,
+`complement`/`compliment`, `dependant`/`dependent`) and for `comprised of` and `less` with a count noun
+returned **one hit, the one fixed here**. A full-site sweep of American spellings
+(`organize`, `optimize`, `color`, `center`, `behavior`, `analyze`, `favorite` and nine more) returned
+**zero**. A rendered-text sweep of all 69 pages found **zero em dashes, zero emoji and one exclamation
+mark**, which is inside Kirsten Samuel's quote and is hers, not ours. **Do not build a `check:usage`
+step on this evidence**: one instance in 32 guides does not pay for a build gate that would have to
+tell *a driving licence* from *to license a tool*, and the cheap version would fail the build on the
+correct noun the first time one appears.
+
+**Three measurements this cycle made that the ledger did not have, all clean, all recorded so they are
+not re-derived.**
+
+- **WCAG 2.2 SC 2.5.8 Target Size (Minimum), properly applied, across the whole site: 7,005 targets over
+  all 69 pages at 375, 768 and 1280px, and zero failures.** The naive version of this check reports
+  hundreds of hits and all of them are exceptions. Of 3,075 targets smaller than 24 by 24 CSS px, every
+  one passes the **spacing** exception - no other target's 24px circle intersects theirs - and the
+  rest are inline links inside running prose. **One class was a false positive and the assertion was
+  corrected rather than the site:** the `#` heading handles on 30 guides measure 17 by 34, and a
+  comment in `global.css` records that a September cycle already gave them `pointer-events: none` at
+  zero opacity precisely because a thumb was landing on them. They cannot be pressed, so they are not
+  targets. Same class of correction as 20 and 21 November's.
+- **Keyboard focus is visible on every focusable control the site owns.** Forty tabs deep on thirteen
+  pages at 375 and 1280px, the only element reached with neither an outline nor a box-shadow is the
+  **Luma booking iframe** on the Coding cohort page, which is third-party content inside a frame and
+  not ours to style.
+- **Every in-page anchor resolves.** 80 fragment links across the built site, 0 broken. `check:links`
+  checks paths and not fragments, so this had never been measured.
+
+**The wider sweep found nothing else to ship.** 207 page-width combinations through headless Chromium:
+zero horizontal overflow, exactly one `h1` per page, zero images without `alt`, zero links or buttons
+without an accessible name, zero form controls without a label, zero skipped heading levels, zero
+duplicate `id`s, `lang` on every page. Meta descriptions: none over 160 characters. Titles over 60
+characters: three, all on `noindex` pages where the SERP limit does not apply.
+
+**Board state before anything was touched.** The fresh-checkout trap from 9 November caught the usual
+way and checked first: HEAD arrived detached at `de93c38` while the local `main` ref sat three commits
+behind at `c259b0e`, so `main` was reset onto the verified tip rather than checked out. `de93c38` equals
+`origin/main`; deploy run 44883834614 and CI run 44883834684 both success on that SHA at 08:13; nothing
+queued or running; tree clean. Build, links (3,462 across 69 pages), outbound, schema (69 valid, 17
+Event, 22 FAQPage, 128 offset-bearing dates, 1,483 graph references, 59 breadcrumb trails, all titles
+and descriptions unique) and both date checks green before and after. `check:flags` green on both the
+all-on and all-off builds. `astro check` reports **85 pre-existing TypeScript errors**, 68 of them
+`ts(7006)` implicit-`any` in `.astro` files; the change here is two lines of Markdown front matter and
+body and cannot touch them, and CI does not run `astro check` - it runs `build`, `check:flags`,
+`build:only` and Lighthouse.
+
+**PR #1 and PR #3 and the `feat/ceo-roundtable-demand-page` branch** are the known-stale leftovers
+already recorded in the backlog, not unfinished work for this cycle.
+
+**Search Console unavailable from cloud:** no credentials, no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **No new guide this week** (the newest `publishDate` in the
+collection is 20 October). **Production could not be read.** This sandbox's egress policy answers 403
+at the proxy for `oxfordagentic.com`, `www.oxfordagentic.com`, `drummond1.github.io` and every
+third-party host the outbound checker tries, so the before-and-after comparison is the local
+`astro preview` build at 375, 768 and 1280px rather than production against preview, and deploy state
+came from the Actions API. The changed string is the same length as the one it replaces, so no layout
+can have moved.
+
+**A labelling note for the next cycle, because this file is read top-down.** The two entries below this
+one call themselves the 21 November 08:00 and 14:00 cycles and were committed at 02:10 and 08:13 UTC.
+This entry is labelled by the clock it actually ran on. Nothing follows from it except that cycle labels
+in this file have drifted about six hours ahead of UTC since 21 November, so do not read an entry's
+label as the time it shipped.
+
 ### 21 Nov 2026 (14:00 cycle) - a fourth question on the one-day guide, on the first coverage gap in weeks that two probes agreed on and the loop could close out of its own published copy
 
 **The change is one `h3` and one paragraph**, added under `## Is one day enough?` on

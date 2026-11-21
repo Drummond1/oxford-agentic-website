@@ -12,7 +12,7 @@ capsule: >-
   is not a blocker - it is the selection criterion for what to build first.
 author: drummond-gilbert
 publishDate: "2026-07-29T09:00:00+01:00"
-updatedDate: "2026-08-10T11:00:00+01:00"
+updatedDate: "2026-11-21T09:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 ---
@@ -36,7 +36,7 @@ None of this is a limitation unique to AI. It is the same line your organisation
 
 ## Budgets are an argument for method, not against it
 
-Public-sector budgets do not stretch to speculative platforms, and they do not need to. An agentic workflow is a method - a sequence of narrow steps with a check at the end - built in tools your organisation may already licence. The investment is a day of learning the pattern, not a procurement exercise. And the wins, while smaller-scoped than a vendor deck would claim, are real: hours back each week on assembly work, applied by the person who understands the service.
+Public-sector budgets do not stretch to speculative platforms, and they do not need to. An agentic workflow is a method - a sequence of narrow steps with a check at the end - built in tools your organisation may already license. The investment is a day of learning the pattern, not a procurement exercise. And the wins, while smaller-scoped than a vendor deck would claim, are real: hours back each week on assembly work, applied by the person who understands the service.
 
 ## Where this gets practical
 
