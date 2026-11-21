@@ -38,6 +38,9 @@ const roomPhotos = ['cohort-1-room-and-cohort', 'cohort-1-flipchart-group', 'coh
 const byId = new Map(programmes.map((p) => [p.id, p]));
 
 const nextThree = await getHomeUpcoming();
+// The hero sits under the Agentic headline, so its button books the Agentic line's next day, not whichever
+// cohort is soonest (backlog 119, night-shift A10). Falls back to the soonest only if no Agentic cohort is carded.
+const heroEvent = nextThree.find((e) => e.data.programme.id === 'oxford-agentic-bootcamp') ?? nextThree[0];
 
 // Backgrounds are assigned by position among the sections that actually render,
 // so switching any of them off can never leave two same-coloured bands touching.
@@ -67,12 +70,12 @@ const bands = {
 >
   <div class="btn-row">
     {
-      nextThree[0] ? (
+      heroEvent ? (
         <a
-          href={`${paths.event(nextThree[0].data.slug)}#register`}
+          href={`${paths.event(heroEvent.data.slug)}#register`}
           class="btn btn--primary"
           data-analytics-event="next_event_cta_click"
-          data-analytics-slug={nextThree[0].data.slug}
+          data-analytics-slug={heroEvent.data.slug}
         >
           Book the next cohort
         </a>
