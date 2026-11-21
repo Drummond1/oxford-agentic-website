@@ -5,6 +5,67 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-21 (08:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND THE TWO WINNABLE-LOOKING ONES ARE BOTH ALREADY ANSWERED ON THIS SITE IN DEPTH
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy, and it does not resolve for the fetch tool
+either) and so are `luma.com` and the third-party hosts the outbound checker tries, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every fact used below comes from committed files.
+
+| # | Question | oxfordagentic.com cited? | What else ranks |
+|---|---|---|---|
+| 1 | will what I learn at an AI bootcamp be out of date in six months AI tools change so fast (obsolescence axis, never probed) | **No** | **aicerts.ai x2**, **coursereport.com x4**, coursera.org x2, curve.mit.edu, tianpan.co, invozone.com, redmonk.com, bootcamp.utdallas.edu, the-virtual-savvy |
+| 2 | second brain vs RAG vs knowledge base for a business which one do I actually need (architecture axis, never probed) | **No** | **mindstudio.ai x2**, glukhov.org x2, buildtolaunch.substack.com x3, dev.to, skool.com, studiomeyer.io, linkedin.com |
+| 3 | is one day enough to learn AI agents or do I need a longer course for business leaders (format-duration axis, in a buyer's words) | **No - and the engine argued against our format** | **udemy.com x10**, kelley.iu.edu, ctme.caltech.edu, plus.columbia.edu, pluralsight.com, udacity.com x2, coursera.org |
+| 4 | one day coding bootcamp for non developers UK build an app with AI no programming experience in person (the Coding line's own commercial query) | **No** | **eventbrite.co.uk x5**, **luma.com x6**, citylit.ac.uk x2, codecademy.com, learningtree.com, cheshireandwarrington.com |
+
+**The finding is that probes 1 and 3 are reach failures and not coverage gaps, and both were checked against the
+files rather than assumed.** This is the nineteenth consecutive probe set with zero citations.
+
+- **Probe 1, obsolescence: answered, and better than anything the field returned.**
+  `/guides/scout-drafter-reviewer-pattern/` carries *"Does what I learn go out of date in six months?"* as a
+  published `h3`, inside a `FAQPage` node, with two siblings - *"If the models keep getting better, will one
+  prompt not just do it?"* and *"Should I wait until the tools settle down?"*. The answer is 758 characters and
+  argues the specific thing the field does not: the shape *gather, produce, check* describes the work rather
+  than a product, so what dates is which agent you opened and where the button sat. The field, by contrast, is
+  `aicerts.ai` claiming a curriculum is *"completely wrong in 8 to 12 weeks"* about its own certification
+  business and `coursereport.com` interviewing bootcamp instructors. **Winnable** on the standing rule - no
+  institutional publisher owns it - but there is nothing to write, because it is written. Not a backlog item.
+- **Probe 3, "is one day enough": answered three ways, and this is the sharpest commercial reading of the set.**
+  `/guides/what-you-can-build-in-one-day-with-ai/` carries *"Is one day enough?"* as a signpost over three leaf
+  questions, all three in its `FAQPage` node: *"Would a longer course not give me more?"*, *"Will I build
+  something, or watch someone else build it?"* and *"Is a day enough if nothing happens afterwards?"*. The
+  middle one answers the buyer's actual worry and the third concedes the honest limit in the site's own words
+  (*"No, and that is worth saying plainly rather than waiting to be asked"*). The engine, reading only exec-ed
+  and platform catalogues, told the buyer *"one day is enough for awareness"* and to *"plan for something in the
+  10-hour to multi-week range"* - a direct argument against the format, assembled from providers describing
+  their own longer products. **Declined as a page**: the field is `udemy.com` ten times, plus Kelley, Caltech,
+  Columbia, Pluralsight and Udacity on their own courses, which is the institutional-publisher-and-platform-vendor
+  half of the standing rule, and our answer is already published at greater depth than theirs.
+- **Probe 2, second brain versus RAG: winnable and declined on intent and on standing decision.** No
+  institutional publisher is in the field: it is `mindstudio.ai` on its own product, two personal
+  knowledge-management blogs and a Substack. But the searcher is choosing an architecture to build themselves,
+  not booking a day in Oxford, and Drummond's standing decision of 13 September is explicit that Second Brain's
+  constraint is demand rather than ranking and that the loop must not pile on Second Brain content expecting
+  bookings. Both halves point the same way. Do not re-pitch without new evidence.
+- **Probe 4, the Coding line's own query: no new target, and it is the standing ask with fresh evidence.**
+  Asked in a non-developer's words for a one-day in-person build day in the UK, eleven of the first seventeen
+  results were `eventbrite.co.uk` and `luma.com` listings, including a competitor's recurring monthly
+  *"Ship Your First App in a Day"* series at a London hotel and a past East Sussex workshop the engine itself
+  flagged as out of date. The Oxford Agentic Coding Bootcamp runs in **five days**, on 26 November, one day,
+  in person, in Oxford, for *"people who have not yet shipped software"*, with a page, a date, a venue, an
+  `EducationEvent` node, an `Offer` and a booking link. A spent listing and a London series outrank it on its
+  own description. Every host in that field is already on `outreach/review-list.md` or
+  `outreach/off-page-listings.md` - `eventbrite.co.uk`, `luma.com`, `citylit.ac.uk`, `learningtree.com`,
+  `codecademy.com`, and the "Ship Your First App in a Day" series itself at line 988 - so **nothing was added
+  to the review list this cycle**, deliberately, under its own no-duplicates rule. It is backlog 2b again.
+
+**One vocabulary finding came out of probe 4 and is filed as backlog 120 rather than acted on.** The word
+*"vibe"* appears nowhere in this repository, and eight of probe 4's results use *"vibe coding"* as the name of
+the format. Whether to name that term - to claim it, or to distinguish the day from it - is a positioning call
+on a conversion page and not the loop's. Both options are costed in the backlog item.
+
 ## 2026-11-20 (20:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND THE SHARPEST COMMERCIAL PROBE YET: AN ENGINE SAYS OXFORD HAS NO ONE-DAY AI COURSE BEFORE CHRISTMAS, SIX DAYS BEFORE ONE OF OURS RUNS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

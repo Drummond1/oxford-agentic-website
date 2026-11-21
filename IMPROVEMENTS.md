@@ -2878,7 +2878,128 @@ Status: `todo` · `blocked` (why) · `doing`
     nothing and the item closes itself on 3 December.**
 
 
+120. `todo` **(needs Drummond, a positioning call on a conversion page; found 21 Nov 2026 in the 08:00
+    cycle, by that cycle's own GEO probe)** - **the field calls the Coding Bootcamp's format "vibe coding"
+    and this site has never used the phrase.** `grep -rin vibe src/` returns nothing: not in
+    `src/content/programmes/agentic-coding-bootcamp.md`, not on the Cohort 1 event page, not in any guide,
+    not in `llms.txt`. Probe 4 of the 21 November set asked, in a non-developer's words, for *"one day
+    coding bootcamp for non developers UK build an app with AI no programming experience in person"*, and
+    **eight of seventeen results used "vibe coding" as the name of the thing** - a recurring monthly London
+    series (*"Ship Your First App in a Day: Vibe Coding with AI"*), an East Sussex workshop, a Codecademy
+    workshop, a Learning Tree course, and three Eventbrite listings. None of ours was returned.
+    **Why it is not a loop decision, and why it is not obviously right either.** Our own copy argues the
+    opposite case: the programme page says the day is about *"the workflow around them - the brief the agent
+    reads first, the repository, the undo button, the deploy, the check that what it wrote is right"*, and
+    `/guides/why-the-code-an-agent-wrote-is-not-live/` exists to argue that a thing which ran once is not a
+    thing which ships. "Vibe coding" names the practice that guide warns about, and in engineering circles it
+    carries that edge. So adopting the term as our own label would misdescribe the day and lose the credibility
+    the level-naming copy was written to win.
+    **Two options, both his.** (a) **Claim it**, on the grounds that it is the buyer's word and the day
+    genuinely starts there - cheapest version is one clause in a page that already exists, not a new page.
+    (b) **Distinguish from it**, which is the more on-brand move and the one our published argument already
+    makes: name the term and say plainly what the day does instead. (b) is a paragraph on the Coding
+    programme page or a section in the existing guide, which is copy on a conversion page.
+    **Do not take either without his word.** The message house of 13 August sets the vocabulary and the
+    banned list, and whether to court a trend term is in that territory. Recorded with the evidence so the
+    next probe that returns this field does not re-derive it.
+
+121. `todo` (**checked, deliberate, and recorded so it is not re-derived as a defect**; found 21 Nov 2026
+    in the 08:00 cycle) - **the full census of `faqFromHeadings` across all 32 guides, and the one
+    unflagged guide with a real question-heading run is correctly unflagged.** Counted this cycle: 12 guides
+    carry a `FAQPage` node, 20 do not, and all 56 published question strings were read end to end from the
+    built JSON-LD. Only one unflagged guide has more than one question heading:
+    `is-it-safe-to-put-company-documents-in-a-second-brain`, with **three of its five headings** ending in a
+    question mark, a higher density than six of the twelve guides that are flagged.
+    **It should stay unflagged, and the reason is in the heading text rather than in the count.** The three
+    read *"Question one: which account is it going into?"*, *"Question two: what kind of information is it?"*
+    and *"Question three: whose information is it?"*. They are ordinal signposts inside one argument, not
+    questions anyone types, and `faqsFromQuestionHeadings` strips a leading `1.` but not a leading
+    `Question one:` - so flagging it would publish three `acceptedAnswer` pairs whose `name` carries a place
+    marker from a list the reader cannot see. That is the failure mode the field's own comment in
+    `src/content.config.ts` was written against: *"a few question headings in an essay are not an FAQ"*.
+    **If it is ever taken**, the honest version is rewriting the three headings as the questions a buyer asks
+    (*"Which account should work material go into?"*) and then flagging it - which is a copy change to a
+    published guide, not a flag flip, and wants weighing as one. **The rest of the census is clean:** the 56
+    question strings all read as standalone questions, no numbered or ordinal prefix survives into any
+    `name`, the shortest answer is 82 characters and the signpost-skipping rule is working (the parent
+    *"Is one day enough?"* and *"Will this still be true when the tools change?"* are both correctly absent
+    while their children stand alone). `getting-an-ai-workflow-past-it-and-legal`'s thirteen short checklist
+    questions were looked at again and left alone: that opt-in was argued on 7 November in the file's own
+    comment and is not re-litigated here.
+
 ## Shipped
+
+### 21 Nov 2026 (08:00 cycle) - a no-change cycle: the two winnable axes this cycle's probes found are both already answered on this site, and the one loop-actionable item left on the list is worth less than the commit that would carry it
+
+**No page changed.** The board was green on every check before anything else: HEAD verified equal to
+`origin/main` at `58f9117` (the fresh-checkout trap from 9 Nov checked first), deploy run 44809106933
+success on that SHA at 20:12 on 20 November, nothing queued or running, tree clean. Build, links (3,462
+across 69 pages), outbound, schema (69 valid, 17 Event, 22 FAQPage, 128 offset-bearing publication dates,
+1,483 graph references, 59 breadcrumb trails, all titles and descriptions unique) and both date checks all
+green. Headless Chromium over ten pages at 375, 768 and 1280px: **210 assertions, 0 failed** - zero
+horizontal overflow, one `h1` each, zero images without alt, zero nameless links or buttons, title,
+description and canonical on every one. One assertion was corrected rather than the site: the desktop nav
+submenu is hidden with `visibility: hidden` rather than `display: none`, so its three links keep a layout box
+while `innerText` returns empty, and the first run blamed the page for three nameless links at 1280px that
+carry good accessible names from `textContent`. Same class of correction as 20 November's.
+
+**Why nothing shipped, item by item, so the reasoning is on the record rather than implied.**
+
+- **The GEO probes found two axes that pass the standing winnable test, and this site already answers both
+  at greater depth than the field.** The obsolescence axis (*"will what I learn be out of date in six
+  months"*) is `/guides/scout-drafter-reviewer-pattern/`'s own published `h3`, inside its `FAQPage` node,
+  758 characters, against a field of `aicerts.ai` on its own certification business and `coursereport.com`
+  interviewing instructors. The format-duration axis (*"is one day enough"*) is three leaf questions in
+  `/guides/what-you-can-build-in-one-day-with-ai/`'s `FAQPage`, including the one that concedes the honest
+  limit. Neither is a page to write. Full reasoning and the ranking fields are in
+  `seo-data/geo-citations.md`.
+- **Probe 3 is the sharpest commercial reading of the set and still produces no page.** Reading only
+  exec-ed and platform catalogues, the engine told the buyer *"one day is enough for awareness"* and to
+  *"plan for something in the 10-hour to multi-week range"* - an argument against the whole format,
+  assembled from providers describing their own longer products, with `udemy.com` ten times and Kelley,
+  Caltech, Columbia, Pluralsight and Udacity behind it. That field fails winnability on the
+  institutional-publisher-and-platform-vendor half of the rule, and our answer is already better.
+- **Probe 4 is backlog 2b again, through the Coding line's own commercial query, five days out.** Eleven
+  of seventeen results were `eventbrite.co.uk` and `luma.com` listings, including a competitor's recurring
+  monthly London series and a workshop the engine itself flagged as past. **Nothing was added to
+  `outreach/review-list.md`:** every host in that field is already on it or on
+  `outreach/off-page-listings.md`, the "Ship Your First App in a Day" series included at line 988, and the
+  list's own rule is not to duplicate. Resisting a new entry is the correct output when the finding is the
+  same finding.
+- **The backlog has no unblocked item worth a commit.** 103 is dated to 27 November and says explicitly not
+  to bring it forward. 104, 112, 105 and 106 are measured declines or escalations. 116's four remaining
+  asks need one sentence from Drummond each. 117, 118, 119 and the new 120 are his. **98 is the only
+  loop-actionable, zero-risk item left**, and it was weighed and left: the sitemap publishes
+  `2026-10-19T13:15:00.000Z` where `londonIso` would publish `2026-10-19T14:15:00+01:00`, which is the same
+  instant spelled differently in a machine-only crawl hint that the sitemap protocol accepts either way.
+  Shipping it would move all 55 entries for no reader-visible gain, which is publishing to have published.
+- **A fresh sweep found no current defect.** Every indexable page carries a canonical; the two built pages
+  with no `og:image` are both deliberate redirect stubs (`/home-original/`, `/team/josh-lawman/`);
+  `robots.txt` names and allows sixteen crawlers including GPTBot, ClaudeBot, PerplexityBot, CCBot and
+  Google-Extended; `llms.txt` carries all three on-sale cohorts with correct dates and venues; `/events/`
+  carries `CollectionPage`, an `ItemList` and seven `EducationEvent` nodes with `Offer`s; all three passed
+  Agentic cohort pages route a reader to Cohort 4 on 3 December and the Second Brain page degrades to
+  *"Dates for the next cohort are being confirmed"*; inbound internal links recomputed over all of `dist`
+  put every indexable page except the eight `/team/` profiles on five or more unique sources, which is
+  backlog 106 and 24 and not re-measured a fifth time.
+
+**Two items added to the backlog, both found by this cycle and neither acted on.** **120** is the one new
+finding worth his attention: *"vibe coding"* is how eight of probe 4's seventeen results name the Coding
+Bootcamp's format, the phrase appears nowhere in this repository, and whether to claim the term or
+distinguish the day from it is a positioning call on a conversion page - with our own guide
+`why-the-code-an-agent-wrote-is-not-live` already arguing the second. **121** records the full
+`faqFromHeadings` census across all 32 guides and all 56 published question strings, and the conclusion that
+`is-it-safe-to-put-company-documents-in-a-second-brain` is correctly unflagged despite the highest
+question-heading density of any unflagged guide: its three headings are ordinal signposts
+(*"Question one: which account is it going into?"*) and the extractor strips a leading `1.` but not a
+leading `Question one:`.
+
+**Search Console unavailable from cloud:** no credentials, no export in `seo-data/` newer than the 24 August
+baseline. Nothing estimated. **No new guide this week** (the newest `publishDate` in the collection is
+20 October). `oxfordagentic.com` is refused by this sandbox's egress policy at the proxy and does not
+resolve for the fetch tool either, and so are `luma.com` and every third-party host the outbound checker
+tries, so no live page was read and no event fact was touched; deploy state came from the Actions API. No
+public URL changed, so this commit maps to zero IndexNow URLs by design.
 
 ### 20 Nov 2026 (20:00 cycle) - stop a profile's meta description ending on "a". `/team/mike-bailey/` published "...works with founders and product teams on where a…" as its snippet on four surfaces, and the build now refuses that shape
 
