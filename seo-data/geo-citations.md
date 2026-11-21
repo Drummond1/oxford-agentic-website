@@ -5,6 +5,92 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-21 (20:00 GMT cycle) - SIX PROBES, ZERO CITATIONS, AND THE FIRST LESSON THIS LOG HAS RECORDED ABOUT ITS OWN PROBING
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (403 at the proxy on `curl`, and it does not resolve for the fetch tool
+either) and so are `luma.com` and every third-party host the outbound checker tries, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every fact used below comes from committed files.
+
+**The lesson first, because it cost four of this cycle's six probes.** Four questions were put to the engine
+before this log's own question column was read end to end. All four turned out to be re-phrasings of axes
+already probed and already decided:
+
+| Asked this cycle | Already in this log as |
+|---|---|
+| how many people from my company should I send to a one day AI training day or should I send just one | *"only one seat on an AI training course, who in the team should go"*, *"how many people should be in a hands-on AI workshop to actually build something"*, *"send two managers to a one day hands-on AI workshop UK pay by invoice company booking"* |
+| is it better to send staff on an external AI course or run AI training in house for the team | *"should I learn to build AI workflows myself or hire someone to build them for my business"*, and `/guides/in-house-ai-day-or-send-people-to-a-cohort/` is the published answer |
+| what should I prepare before attending a hands-on AI workshop to get the most out of the day | *"what should I prepare before a one day hands-on agentic AI workshop to get the most out of it"* (8 Nov), *"what should I bring to a hands-on AI workshop and what will I actually walk out with"* |
+| AI workflow automation training for operations managers UK in person practical | *"AI training for an operations manager with repetitive manual processes UK one day in person hands-on"* |
+
+**The standing instruction says to rotate the questions. After 70-odd logged axes, rotating by intuition no
+longer produces fresh ones: a cycle must grep this file's question column first.** The four above are recorded
+rather than deleted, because two of them carry a field reading worth keeping, and because the next cycle should
+be able to see the mistake rather than repeat it.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how many people from my company should I send to a one day AI training day or should I send just one (**duplicate axis**) | **No** | sfailabs.com, newhorizons.com, mentorcruise.com x3, clutch.co, teamland.com, pythian.com, correlation-one.com, atlassian.com, itpro.com, nbcnewyork.com, enterprisenation.com |
+| 2 | is it better to send staff on an external AI course or run AI training in house for the team (**duplicate axis**) | **No** | **cio.com**, **inc.com**, personio.com, aicerts.ai, intuitionlabs.ai x2, profiletree.com x3, ivee.jobs, maven.com, mentorcruise.com, nebius academy, techclass.com, generalassemb.ly, whitehat-seo.co.uk |
+| 3 | what should I prepare before attending a hands-on AI workshop to get the most out of the day (**duplicate axis**) | **No** | **learning.sap.com x8**, nngroup.com, atlassian.com x2, neurips.cc, datatalks.club, insivia.com, contra.com, mentorcruise.com |
+| 4 | AI workflow automation training for operations managers UK in person practical (**duplicate axis**) | **No** | **nobleprog.co.uk x6**, **theknowledgeacademy.com x3**, edstellar.com, brainstation.io, tsg-training.co.uk x2, learningtechnologies.co.uk, emc-dnl.co.uk, profiletree.com |
+| 5 | we already use Zapier and Make for automation why would we need agentic AI agents instead (**tool-incumbency axis, never probed**) | **No** | **make.com x4**, **zapier.com**, mindstudio.ai, stack-ai.com, dev.to x7, medium.com, echai.ventures x2, digitalapplied.com, mikeoller82.github.io |
+| 6 | hands-on agentic AI training for HR and people teams UK one day in person workshop (**HR-sector axis, never probed**) | **No - and the engine said no such day exists in the UK** | **cipd.org x2**, **uhr.ac.uk x2**, **roehampton.ac.uk**, **techuk.org**, ipa.co.uk, generalassemb.ly, `luma.com` x4, eventbrite.co.uk, legal-island.com, ahri.com.au, agile-academy.com |
+
+**Reading.**
+
+- **Probe 6 is the finding, and it is not a page to write. It is backlog 2b through a sixth query.** Asked for a
+  one-day, in-person, hands-on agentic AI workshop for UK HR teams, the engine closed: *"I found no clear match
+  for a one-day, in-person, hands-on agentic AI workshop for UK HR teams"*, then offered six near-misses and
+  advised the buyer to **contact providers directly to ask whether they run a full-day in-house version**. Four
+  of the six it did find are `luma.com` listings and one is `eventbrite.co.uk` - and it flagged one of the Luma
+  pages as **a past event** and still ranked it. Meanwhile three of our cohorts are on sale, each with a page, a
+  date, a venue, an `EducationEvent` node, an `Offer` and a booking link. The pattern every probe since
+  mid-October has returned holds again: **competitors are found through listings; we are not found at all.**
+  Filed to the review list.
+- **Probe 6 is also a decline on winnability, separately from the above.** `cipd.org`, `uhr.ac.uk`,
+  `roehampton.ac.uk`, `techuk.org` and `ipa.co.uk` are the institutional half of the standing topic rule, and
+  three of them are chartered or sector bodies whose members are exactly the searcher. **Do not write an HR
+  sector guide on this field.** The sector axes now probed and declined are finance, marketing, NHS and public
+  sector, charities, law and accountancy, consultants, operations and HR.
+- **Probe 5 is the one genuinely new axis and it fails the topic rule's second half, not its first.** No
+  institutional publisher is in the field, which is the half cycles usually check. But `make.com` appears four
+  times and `zapier.com` once, writing about their own products, which is the **platform-vendor** clause of the
+  same rule, and the rest is `dev.to` and Medium posts comparing those same platforms. The engine's own summary
+  flagged it: *"the sources are largely vendor-written, so weigh them accordingly"*. Writing *"why you need
+  agents rather than the Zapier you already have"* would be the twentieth vendor voice in a field of vendor
+  voices, and ours would be the one selling a day.
+  - **A real coverage observation came out of it and is filed as backlog 123, not acted on.** `Zapier`, `Make`
+    and `n8n` appear **nowhere** in `src/content`, and `/guides/agentic-ai-glossary/`'s fifteen terms do not
+    include **automation**. The 19 Nov cycle already declined a *new page* on the agent-versus-automation
+    distinction, correctly, on the ground that the glossary, `what-is-an-agentic-bootcamp` and
+    `where-the-human-goes-in-an-agentic-workflow` answer it between them. A sixteenth glossary term is a
+    cheaper move than a page and is not the same decline, but it is still a decline **this** cycle, because the
+    probe that would justify it failed the topic rule. Re-probe on a buyer phrasing that is not a platform
+    comparison before taking it.
+- **Probe 4 is the ops-manager axis again and the field has not moved**: `nobleprog.co.uk` six times,
+  `theknowledgeacademy.com` three, and `brainstation.io` running a **full-day in-person AI for Leaders course in
+  London with dates into early 2027**. Catalogue providers, no institutional publisher, and nothing of ours.
+  Same reading as probe 6.
+- **Probe 2 fails winnability outright** on `cio.com` and `inc.com`, and the substance is published:
+  `/guides/in-house-ai-day-or-send-people-to-a-cohort/` has argued it since 11 October, and three other guides
+  link to it.
+- **Probe 3's field is the clearest "wrong reader" result the log holds**, and it is worth keeping even though
+  the axis is a duplicate. Eight of the eighteen results are `learning.sap.com` pages, and every one of them -
+  SAP, NN/g, Atlassian - is written **for the person running the workshop**, not the person attending it. The
+  engine said so: *"Most of the search results are written for workshop organizers"* and *"I didn't find a
+  source with a complete attendee checklist"*. That is the same admission the 8 Nov cycle acted on, and the
+  answer it shipped then is still live on the homepage and on all three programme pages, so there is nothing
+  further to do.
+- **Probe 1 adds nothing to the three seat-count axes already closed**, and the site answers it at more depth
+  than the field: the programme pages' *"Can I bring my team, or book for several people?"*,
+  `/guides/who-should-take-the-seat/` and `/guides/in-house-ai-day-or-send-people-to-a-cohort/`.
+
+**Twenty-one consecutive probe sets with zero citations.** Every set in that run has ended at the same two
+places: the page is already written, or the engine cannot find our calendar. Nothing on the content backlog
+changes the second one.
+
 ## 2026-11-21 (14:00 GMT cycle) - FOUR FRESH AXES, ZERO CITATIONS, AND ONE OF THEM IS THE FIRST COVERAGE GAP IN WEEKS THAT THE LOOP COULD HONESTLY CLOSE ITSELF
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

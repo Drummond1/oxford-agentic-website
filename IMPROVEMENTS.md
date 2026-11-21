@@ -2947,7 +2947,126 @@ Status: `todo` · `blocked` (why) · `doing`
     the three programmes and `home.ts` returns four files and not one instance of the objection in question
     shape, so the gap is real. It is the conversion case that fails, not the coverage case.
 
+123. `todo` (**measured, declined this cycle, and recorded so it is not re-derived as a gap**; found
+    21 Nov 2026 in the 20:00 cycle, by that cycle's probe 5) - **`Zapier`, `Make` and `n8n` appear nowhere
+    in `src/content`, and the glossary's fifteen terms do not include `automation`.**
+    Measured, not inferred: a case-insensitive grep for those three product names across all of
+    `src/content/guides`, `src/content/programmes`, `src/content/events` and `src/lib/home.ts` returns
+    **zero hits**, and the word "automat-" appears in only **7 of 32 guides**, once or twice each, never
+    contrasting an agentic workflow with the rules-based automation a reader may already run.
+    `/guides/agentic-ai-glossary/` defines agent, agentic workflow, orchestration, prompt, context, second
+    brain, tool use, pipeline, scout-drafter-reviewer, human in the loop, model, MCP, coding agent,
+    repository and no-code. It does not define the word most buyers bring **in**.
+    **Why it was declined this cycle rather than taken.** The probe that raised it
+    (*"we already use Zapier and Make for automation why would we need agentic AI agents instead"*) fails
+    the standing topic rule's **platform-vendor** clause: `make.com` four times and `zapier.com` once,
+    writing about their own products, with the rest `dev.to` and Medium comparisons of those same
+    platforms. The engine said so itself. A day-selling site adding *"why you need agents rather than the
+    Zapier you already have"* would be the twentieth self-interested voice in a field the engine has
+    already discounted on that exact ground.
+    **Why it is not the same item the 19 Nov cycle closed.** That cycle declined a **new page** on the
+    agent-versus-automation distinction, on the ground that the glossary, `what-is-an-agentic-bootcamp` and
+    `where-the-human-goes-in-an-agentic-workflow` answer it between them. That reasoning holds for a page
+    and does not reach a **sixteenth glossary term**, which adds no page, no duplicate `FAQPage` node and
+    no new URL, and lands on a page an engine has already cited (#7, 15 Sept).
+    **If it is ever taken**, two conditions, both of them. (1) Re-probe on a buyer phrasing that is **not**
+    a platform comparison - something nearer *"is an AI agent just an automation with extra steps"* - and
+    require a field that passes both halves of the rule. (2) Write it as one glossary entry defining
+    **automation** and placing it beside *agentic workflow*, drawn from published copy only: the existing
+    entries already carry the distinction in substance (*"given a goal and the means to work towards it -
+    rather than a single question and a single answer"*, *"check its own progress"*), so the entry states
+    what is already on the page rather than arguing a new claim. **Do not write it as a comparison with a
+    named third-party product**: the site names no competitor tool today, that is a positioning call of
+    backlog 114's family, and it would date.
+
 ## Shipped
+
+### 21 Nov 2026 (20:00 UTC cycle) - no page changed. Four clean measurements, one of them closing the last of the standing instruction's own named candidates, and a lesson about this loop's probing that cost four of its six probes
+
+**No page changed, and the one axis worth writing into failed the topic rule.** The commit carries records
+only: this entry, backlog 123, the GEO log and two off-page entries. None of those paths is public and all
+four are in `indexnow-ping.mjs`'s exempt list, read off the source this cycle, so **this commit maps to zero
+IndexNow URLs by design**.
+
+**Board state before anything was touched.** HEAD checked against `origin/main` first, as the 9 November trap
+requires: both at `fa0fd57`, tree clean. Deploy run 44896751374 (scheduled, 10:57) and run 44888641740 (push,
+09:14) both **success** on that SHA, nothing queued or running. Baseline build green: links (3,462 across 69
+pages), outbound, schema (69 valid, 17 Event nodes - 10 top-level and 7 nested entity - 22 `FAQPage`, 128
+offset-bearing publication dates, 1,483 resolving graph references, 59 breadcrumb trails, all titles and
+descriptions unique), and both date checks. Every figure identical to the 21 Nov 09:00 baseline.
+
+**Four measurements this cycle made that the ledger did not have. All four came back clean, and they are
+recorded so they are not re-derived.**
+
+- **Breadcrumbs: the ten pages without a `BreadcrumbList` are the nine `noindex` pages and the homepage.**
+  Schema reports 59 trails against 69 pages and no cycle had said which ten were missing. Walked over all of
+  `dist`: `ceo-roundtable`, `find-your-bootcamp`, `first-workflow-picker` and its `thanks`, `home-original`,
+  `home-photos`, `office-hours` and `team/josh-lawman` are all `noindex`, and the tenth is `/`, which is the
+  root of every trail and correctly carries none. **Nothing to fix, and no cycle should re-count this.**
+- **`Offer.availability` is correctly present on every on-sale cohort and absent from every passed one.**
+  Read off the built `EducationEvent` nodes rather than the source: Cohorts 1, 2 and 3 and Second Brain
+  Cohort 1 carry `@type`, `url` and `category: Paid` and **no `availability`**, while Cohort 4 carries
+  `https://schema.org/InStock`. A stale `InStock` on a day that has run is the exact machine-readable
+  version of the claim `check-dates.mjs` guards in prose, and it is not happening.
+- **Backlog 104 self-corrected on 20 November exactly as it predicted, and is now closed by observation.**
+  `getHomeUpcoming()`'s `slice(0, 3)` cap stopped binding when Cohort 3 passed. `/` now emits
+  `EducationEvent` nodes for **Coding Cohort 1 (26 Nov), Cohort 4 (3 Dec) and Cohort 5 (28 Jan 2027)**, and
+  the three cards link all three event pages. The `Course` nodes on `/` carry **2 instances for the Agentic
+  line, 1 for Coding and 0 for Second Brain** - that last is backlog 100 and still wants one date from
+  Drummond.
+- **The standing instruction's candidate 2 is closed, on the last file it names.**
+  `/guides/when-ai-executive-cohorts-run.md` was read end to end. The 20 November cycle did it properly: the
+  three passed days are in the past tense with their dates, and the guide now names all three on-sale days
+  (26 November, 3 December, 28 January at Jesus College with the room booking being finalised) with a link
+  each. Candidate 1 closed on 15 November and candidate 3 is the Q&A rule the 14:00 cycle used today.
+  **The standing prompt's three named candidates are now all closed; a cycle should stop checking them.**
+
+**Headless Chromium ran and the page set is clean.** Six pages at 375, 768 and 1280px against the local
+`astro preview` build: **144 assertions, 0 failed** - zero horizontal overflow, exactly one `h1` each, zero
+images without `alt`, zero links or buttons without an accessible name, zero duplicate `id`s, zero skipped
+heading levels, `lang` on every page, zero local console errors. Screenshots taken at 375 and 1280. Recorded
+because the standing decision bars shipping a change in a cycle that cannot run the browser: this one could,
+and chose not to change a page for a different reason. **One note for the next cycle:** `playwright` resolves
+from `/opt/node-tools/node_modules/playwright/index.js` and is **CommonJS**, so an audit script run from
+outside the repo needs the absolute path and a default import, not `import { chromium } from 'playwright'`.
+
+**Six probes, zero citations, and four of them were duplicates of axes this log had already decided.** The
+full table and the four pairings are in `seo-data/geo-citations.md`. The lesson is recorded there and worth
+repeating here, because it is about how this loop works rather than about the site: **after seventy-odd logged
+axes, rotating the questions by intuition no longer produces fresh ones, and a cycle must grep that file's
+question column before it searches.** Of the two genuinely new axes, **probe 5** (we already use Zapier and
+Make) fails the topic rule's platform-vendor clause on `make.com` four times and `zapier.com`, and is filed as
+**backlog 123** with the real coverage observation it produced: `Zapier`, `Make` and `n8n` appear nowhere in
+`src/content`, and the glossary's fifteen terms do not include `automation`. **Probe 6** (HR and people teams)
+fails winnability on `cipd.org`, `uhr.ac.uk`, `roehampton.ac.uk`, `techuk.org` and `ipa.co.uk`, and with it
+the sector axes now probed and declined run to nine: finance, marketing, NHS and public sector, charities, law
+and accountancy, consultants, operations and HR.
+
+**Probe 6 is the cycle's real finding and there is no page to write for it.** Asked for a one-day, in-person,
+hands-on agentic AI day for UK HR teams, the engine closed *"I found no clear match"* and told the buyer to
+contact providers directly. Four of the six near-misses it did find were `luma.com` listings and one was
+`eventbrite.co.uk`, and it described one of those Luma pages as **a past event and ranked it anyway**, while
+three of our cohorts are on sale with a page, a date, a venue, an `EducationEvent` node, an `Offer` and a
+booking link each. **That is backlog 2b through a sixth query and the sixth consecutive probe in which a
+competitor's listing is found and our calendar is not.** Probe 4 says the same thing from the operations side:
+`nobleprog.co.uk` six times, `theknowledgeacademy.com` three, and `brainstation.io` running a full-day
+in-person *AI for Leaders* in London with dates into early 2027. **Twenty-one consecutive probe sets have now
+returned zero citations, and every one has ended in the same two places: the page is already written, or the
+engine cannot find our calendar. Nothing on the content backlog changes the second.**
+
+**Off-page: three hosts new to both lists, all of them mention or partnership routes rather than directories**
+- `cipd.org` (the chartered body for UK people professionals, running a bring-your-laptop hands-on AI workshop
+for exactly our format and an audience we do not reach), `uhr.ac.uk` (Universities HR, Oxford-adjacent in
+membership) and `roehampton.ac.uk` (a peer running a people-professionals AI short course). Thirteen other
+hosts in this cycle's six fields were deliberately **not** added, each already on the review list or in
+`off-page-listings.md`. **Nothing was contacted, submitted, claimed or paid for.**
+
+**Search Console unavailable from cloud.** `fetch-search-console.mjs` was run once and reports no service
+account key; there is no export in `seo-data/` newer than the 24 August baseline. **Nothing estimated.**
+**No new guide this week** - the newest `publishDate` in the collection is 20 October, so the week of
+16-22 November stands at zero of three. **Production could not be read:** this sandbox's egress policy answers
+403 at the proxy for `oxfordagentic.com` and `luma.com` does not resolve either, so no live page was read, **no
+event fact was touched**, and deploy state came from the Actions API.
 
 ### 21 Nov 2026 (09:00 UTC cycle) - the one guide written for readers whose job is reading documents closely used the noun where British English wants the verb. One word, one file, 4 of 209 built files, and the sweep that found it says a build-time guard is not warranted
 

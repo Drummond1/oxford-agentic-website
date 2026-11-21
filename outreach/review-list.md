@@ -11,6 +11,39 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **An engine asked for a one-day in-person hands-on agentic AI day for UK HR teams said no such thing exists,
+  and ranked a past Luma listing above us.** Found 21 Nov 2026 (20:00 cycle). **Nothing contacted, submitted,
+  claimed or paid for, and none of the hosts below resolves from this sandbox.**
+  - **The reading.** The probe was a buyer's phrasing: *"hands-on agentic AI training for HR and people teams
+    UK one day in person workshop"*. The engine closed *"I found no clear match for a one-day, in-person,
+    hands-on agentic AI workshop for UK HR teams"* and told the buyer to **contact providers directly to ask
+    whether they run a full-day in-house version**. Four of the six near-misses it did find were `luma.com`
+    listings and one was `eventbrite.co.uk`; it described one of the Luma pages as a past event and ranked it
+    anyway. Three of our cohorts are on sale with a page, a date, a venue, an `EducationEvent` node, an `Offer`
+    and a booking link. This is backlog 2b through a sixth query, and the sixth consecutive probe in which a
+    competitor's listing is found and our own calendar is not.
+  - **Three hosts new to both lists, and all three are mention or partnership routes rather than directories.**
+    None is a page we would outrank, which is the reason a mention on one is worth more than a listing.
+    - `cipd.org` - the Chartered Institute of Personnel and Development, the UK professional body for people
+      professionals, returned twice: a facilitator-led one-day GenAI course (online) and *"AI in Action - a
+      hands-on introduction for people professionals"*, a bring-your-laptop in-person workshop. It is running
+      the format we run, for an audience we do not currently reach, and it is the most credible single name in
+      this field. A member or speaker route in, not a submission.
+    - `uhr.ac.uk` - Universities HR, the body for HR in UK higher education, carrying an AI workshops
+      programme and an event booking page. Oxford-adjacent in membership, which is the part worth your eye.
+    - `roehampton.ac.uk` - running a short course, *"AI for People Professionals: Practical GenAI, Workflows
+      and Responsible Adoption"*. Recorded as a peer and a competitor for the same day of someone's time
+      rather than as a link target.
+  - **Why nothing else from this cycle's six fields was added.** `techuk.org`, `generalassemb.ly`,
+    `brainstation.io`, `nobleprog.co.uk`, `theknowledgeacademy.com`, `tsg-training.co.uk`, `eventbrite.co.uk`,
+    `ipa.co.uk`, `make.com`, `mindstudio.ai`, `profiletree.com`, `mentorcruise.com` and `maven.com` are all
+    already on this list or in `off-page-listings.md`, and this list's own rule is not to duplicate.
+    `cio.com`, `inc.com` and `learning.sap.com` are national and vendor publishers with no plausible route in.
+  - **One competitor fact worth your eye, from a different probe the same cycle.** `brainstation.io` runs
+    *AI for Leaders* as a **full-day, in-person** course in London with dates listed into early 2027. It is the
+    closest competing shape to ours that any probe has surfaced with a published forward calendar.
+  - **One engine, US-resident, one day.** Recorded for what was asked, not for where anything placed.
+
 - **Three UK publishers that write about paid-versus-free AI training for small businesses, and none of
   them has ever mentioned us.** Found 21 Nov 2026 (14:00 cycle), in the field of a sole-trader probe.
   **Nothing contacted, submitted or claimed, and none of these hosts resolves from this sandbox.**
