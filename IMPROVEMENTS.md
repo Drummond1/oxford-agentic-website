@@ -2947,8 +2947,9 @@ Status: `todo` · `blocked` (why) · `doing`
     the three programmes and `home.ts` returns four files and not one instance of the objection in question
     shape, so the gap is real. It is the conversion case that fails, not the coverage case.
 
-123. `todo` (**measured, declined this cycle, and recorded so it is not re-derived as a gap**; found
-    21 Nov 2026 in the 20:00 cycle, by that cycle's probe 5) - **`Zapier`, `Make` and `n8n` appear nowhere
+123. `closed` 21 Nov 2026 (20:05 UTC cycle) - **not deferred: its own gate was answered out of the GEO log,
+    in the negative, without spending a probe on it.** Originally filed as: (**measured, declined this cycle,
+    and recorded so it is not re-derived as a gap**; found 21 Nov 2026 in the 20:00 cycle, by that cycle's probe 5) - **`Zapier`, `Make` and `n8n` appear nowhere
     in `src/content`, and the glossary's fifteen terms do not include `automation`.**
     Measured, not inferred: a case-insensitive grep for those three product names across all of
     `src/content/guides`, `src/content/programmes`, `src/content/events` and `src/lib/home.ts` returns
@@ -2978,8 +2979,133 @@ Status: `todo` · `blocked` (why) · `doing`
     what is already on the page rather than arguing a new claim. **Do not write it as a comparison with a
     named third-party product**: the site names no competitor tool today, that is a positioning call of
     backlog 114's family, and it would date.
+    **Closed 21 Nov 2026 (20:05 UTC cycle), and the reason is that condition (1) had already been run.** This
+    item asked for a re-probe on a phrasing that is not a platform comparison before the glossary term could be
+    written. A grep of the GEO log's question column - all 485 distinct strings - returns **eleven** prior
+    probes on the agent-versus-automation axis, and one of them is exactly the phrasing this item asks for,
+    with no platform named: *"what is the difference between AI automation and an AI agent for a business"*.
+    Its field was **AWS, Zapier x2, Slack, Oracle x2, monday.com, Moveworks, Hostinger and Aalpha** -
+    hyperscalers and platform vendors on their own products, which is the same clause this item was declined
+    under. The gate is answered and it fails. The coverage observation stands and is still true (`Zapier`,
+    `Make` and `n8n` appear nowhere in `src/content`; the glossary has no `automation` entry), but it is a
+    coverage observation about a field we should not write into, which is not a gap. **Do not re-open this
+    without something other than a re-phrasing**: every wording of this axis that anyone has thought of has now
+    been tried, and the field has been vendor-owned in all eleven.
+
+124. `todo` (**a genuinely new axis, declined on its merits and recorded so it is not re-derived as a gap**;
+    found 21 Nov 2026 in the 20:05 UTC cycle, by that cycle's probe 2) - **"one-to-one AI coaching or a group
+    workshop" is an unowned field that this site should still probably not write into.**
+    The probe was *"is one to one AI coaching better than a group AI workshop UK for a business leader"*. No
+    institutional publisher is in the field and the engine flagged its own sources: *"The search didn't turn up
+    independent research comparing outcomes, and most of the sources are trainers selling one format or the
+    other."* So it passes the letter of the winnability rule, and the buyer is choosing between two paid
+    formats, which is nearer a booking than most axes this log declines.
+    **Why it was declined anyway.** We sell the group format. A provider of the group format publishing "why
+    the group format wins" is the twenty-first trainer selling one format or the other, in a field the engine
+    had just discounted on precisely that ground, and it is the same objection that killed the sole-trader axis
+    (20 Nov) and backlog 122. The neighbourhood is its own signal too: `lilachbullock.com`, `tutorials.co.uk`,
+    `innovationvisual.com`, `brainstation.io` and `mentorcruise.com` were all already on the off-page review
+    list from earlier cycles.
+    **And the honest half is published.** `/guides/questions-to-ask-before-booking-ai-training/` carries *"Peer
+    level matters more in a small room than the syllabus"* - the real argument for a cohort - framed as a
+    question to put to **any** provider rather than as a pitch, which is the discipline that makes that page
+    credible and the reason it is one of the few pages this log has seen cited at #1 for its own query.
+    **What would change the verdict**, and nothing less should: a phrasing where the searcher has already
+    chosen a cohort and is comparing cohorts, rather than one where they are choosing between formats we do not
+    both sell. Do not re-pitch on winnability alone.
 
 ## Shipped
+
+### 21 Nov 2026 (20:05 UTC cycle) - no page changed. The one backlog item this cycle set out to ship was closed out of the log instead of probed, and the cycle's real finding is an engine telling a buyer to pay for our 3 December day on a September cohort's checkout
+
+**No page changed.** The commit carries records only: this entry, backlog 123 closed, backlog 124, the GEO log
+and one off-page entry. All four paths are in `indexnow-ping.mjs`'s exempt list, read off the source this
+cycle, so **this commit maps to zero IndexNow URLs by design**.
+
+**A correction to this ledger's own timekeeping, because two entries now read 20:00.** The three entries below
+are headed 20:00, 14:00 and 08:00 UTC and were committed at **14:09, 08:13 and 02:10** UTC. The headings run
+six hours ahead of the runs that wrote them, in this file and in `seo-data/geo-citations.md`. This entry is
+headed by the clock it ran on. Nothing earlier has been rewritten; a cycle ordering these entries should use
+`git log`, not the headings.
+
+**Board state before anything was touched.** HEAD checked against `origin/main` first, as the 9 November trap
+requires: both at `fd5dde1`, tree clean. Deploy run 44912557431 and CI run 44912557434 both **success** on that
+SHA, nothing queued or running, and the scheduled Search Console export (run 19, 13:39) green. Baseline build
+green and every figure identical to the last three cycles': links (3,462 across 69 pages), outbound (13
+third-party warnings, all of them this sandbox's egress policy rather than the sites), schema (69 pages valid,
+17 Event nodes, 22 `FAQPage`, 128 offset-bearing publication dates, 1,483 resolving graph references, 59
+breadcrumb trails), both date checks, and `check:flags` (all-on and all-off builds both pass link and schema).
+Headless Chromium over `/events/` and the three on-sale event pages at 375px and 1280px: **40 assertions, 0
+failed**, no page errors, no horizontal overflow, and `/events/` read correctly at 375px by eye.
+
+**The cycle's most useful half is a probe it did not run.** The previous cycle's lesson - that after seventy-odd
+logged axes a cycle must grep this log's question column before it searches - was applied first. All **485**
+distinct question strings were extracted and grepped. It paid twice. Two candidate axes were dropped as
+duplicates before they cost anything. And **backlog 123, the item this cycle expected to ship, was closed out of
+the log rather than probed.** That item proposed a sixteenth glossary term defining *automation*, gated on a
+re-probe using a phrasing with no platform named. The grep returns eleven prior probes on that axis, one of them
+phrased exactly as the gate asks - *"what is the difference between AI automation and an AI agent for a
+business"* - whose field was **AWS, Zapier x2, Slack, Oracle x2, monday.com, Moveworks, Hostinger and Aalpha**.
+Hyperscalers and platform vendors on their own products: the same clause the item was declined under. The gate
+is answered in the negative, so 123 is **closed rather than deferred**, and the ledger now says that every
+wording of that axis anyone has thought of has been tried.
+
+**Four probes, zero citations, the twenty-second consecutive set, and probe 4 is the finding.** Asked for our
+own bootcamp on its own on-sale date at its own venue - *"one day agentic AI bootcamp Oxford 3 December 2026
+Worcester College book a place"* - the engine answered *"To book, use the 'Get Tickets' button on the Luma page
+at https://luma.com/oxfordagentic2"*. That is **Cohort 2, 16 September, already run**. The only other page of
+ours it found was `luma.com/k7c2rm5s`, **Cohort 1, 21 July, already run**, which it could not tell apart from
+the first, and it closed *"I did not find a confirmed 3 December 2026 date in these results"*. No page of this
+site appeared. Twenty-one earlier sets recorded that we were not cited; this is the first that recorded a buyer
+being sent to a two-month-old checkout.
+
+**The site was checked rather than assumed, and it is not the cause.** Cohort 4's page carries the date, the
+venue, an `EducationEvent` node, an `Offer` marked `InStock` and the booking link. `/events/` carries a
+`CollectionPage` → `ItemList` of all seven cohorts with a nested `EducationEvent` each, the three on-sale ones
+carrying `offers.availability: InStock` and the four passed ones correctly carrying none - and
+`eventStatus: EventScheduled` on a passed cohort was weighed and left alone, because schema.org has no
+"completed" value and `EventScheduled` means "took place as planned" rather than "is still to come", with
+`startDate` doing the discriminating. The passed cohort pages no longer link to Luma at all. `/events/`
+separates "Upcoming" from "Already run" in copy. The inventory is published, complete and correct. **This is
+backlog 2b and nothing on the content backlog touches it.**
+
+**Backlog 122 is settled, and not in the direction it hoped for.** That item named one thing that would change
+its verdict: the scepticism question asked from the budget holder's side, never run. It was run as probe 1.
+The field still fails on `atlassian.com` writing about adoption of its own products and `fortune.com`, so the
+first objection stands. The second objection now has an answer and it is worse than none: the engine's closing
+test was that a hands-on day is worth paying for *"if it's built around your team's real work, includes a clear
+follow-up plan... and someone owns adoption afterward"*, and that *"if the day is a standalone event with no
+follow-through, the evidence suggests it will likely fade"*. We meet the first half and publish it. **The second
+half is the fact this site cannot state**, and it is blocked twice on the backlog as **87** and **117**, both
+waiting on Drummond. The probe opens no page; it raises the price of two questions already on his desk, and
+gives them their clearest commercial argument yet.
+
+**Probes 2 and 3 declined, each recorded.** One-to-one coaching against a group day is a new axis, unowned, and
+declined because we sell the group format and would be the twenty-first trainer arguing for the one they sell -
+filed as **backlog 124**, with the honest half of the argument already published on
+`questions-to-ask-before-booking-ai-training`. Tools blocked at work is unwinnable on Cornell, Northeastern and
+`maven.com` five times, and its substance is in `getting-an-ai-workflow-past-it-and-legal`.
+
+**One fact verified and one that only Drummond can check.** The engine read Worcester College's postcode off
+Luma as **OX1 2JL**; this site publishes **OX1 2HB**, which is right - confirmed this cycle against the
+college's own contact page, the University's admissions pages and the Charity Commission register (charity
+1143479). Nothing to change here. But if `luma.com/oxfordagentic4` carries OX1 2JL, that is the address
+attendees will put into a map on the morning of 3 December, and `luma.com` does not resolve from this sandbox.
+Filed to the review list.
+
+**Off-page: one entry, four hosts new to both lists**, all mention, speaking or partnership routes rather than
+directories - `onlinecourses.worc.ox.ac.uk` (Worcester College's own online "AI for Business" short course,
+which is our venue publishing education of its own and is the judgement call worth making before Cohort 4),
+`itpro.com`, `learningtechnologies.co.uk` and `talentedlearning.com`. Eleven other hosts in this cycle's fields
+were deliberately not added, each already on the review list or in `off-page-listings.md`, and `imperial.ac.uk`
+and `sbs.ox.ac.uk` were recorded as peers rather than routes. Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud**, tried once: `fetch-search-console.mjs` reports no service-account key
+configured, and there is no export in `seo-data/` newer than the 24 August baseline. Nothing estimated. **No new
+guide this week** - 32 guides, newest `publishDate` 20 October, so the three-a-week and one-a-day limits are
+untouched. `oxfordagentic.com` and `luma.com` are both refused by this sandbox's egress policy (403 at the
+proxy), so no live page was read and no event fact was touched; deploy state came from the Actions API and every
+site fact above came from committed files or the built output.
 
 ### 21 Nov 2026 (20:00 UTC cycle) - no page changed. Four clean measurements, one of them closing the last of the standing instruction's own named candidates, and a lesson about this loop's probing that cost four of its six probes
 

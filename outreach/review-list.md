@@ -11,6 +11,50 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **An engine told a buyer to book our 3 December day by pressing Get Tickets on the booking page of a cohort
+  that ran in September.** Found 21 Nov 2026 (20:05 UTC cycle). **Nothing contacted, submitted, claimed or paid
+  for, and none of the hosts below resolves from this sandbox.**
+  - **The reading, and it is the strongest single piece of evidence this loop has produced for backlog 2b.**
+    The probe was our own event in a buyer's words: *"one day agentic AI bootcamp Oxford 3 December 2026
+    Worcester College book a place"*. The engine answered *"I found one listing that matches: The Oxford
+    Agentic Bootcamp, hosted on Luma... To book, use the 'Get Tickets' button on the Luma page at
+    https://luma.com/oxfordagentic2"* - which is **Cohort 2, 16 September, already run**. The only other page
+    of ours it found was `luma.com/k7c2rm5s`, **Cohort 1, 21 July, already run**, which it could not tell apart
+    from the first. It closed *"I did not find a confirmed 3 December 2026 date in these results"*. No page of
+    oxfordagentic.com appeared. Every previous probe recorded that we were not cited; this one recorded a buyer
+    being pointed at a two-month-old checkout.
+  - **The site is not the problem and cannot be the fix.** Checked this cycle: Cohort 4's page carries the
+    date, the venue, an `EducationEvent` node, an `Offer` marked `InStock` and the booking link; `/events/`
+    carries all three on-sale cohorts in machine-readable form and separates them from the four that have run;
+    the passed cohort pages no longer link to Luma at all. The inventory is published and correct. One
+    third-party listing that an engine already trusts would do what twenty-two probe sets of on-page work has
+    not.
+  - **One thing only you can check, and it is a minute's work.** The engine read Worcester College's postcode
+    off the Luma page as **OX1 2JL**. This site publishes **OX1 2HB**, which is correct - verified this cycle
+    against the college's own contact page, the University's admissions pages and the Charity Commission
+    register (charity 1143479). If `luma.com/oxfordagentic4` carries OX1 2JL, it is wrong and it is the address
+    attendees will put in a map on the morning of 3 December. `luma.com` does not resolve from this sandbox, so
+    nobody here can look.
+  - **Four hosts new to both lists. All are mention, speaking or partnership routes, not directories.**
+    - `onlinecourses.worc.ox.ac.uk` - **Worcester College's own online "AI for Business" short course**, returned
+      in the field for our own venue's name. This is the most interesting name of the cycle and it is not a link
+      target: it is the college that already takes our room hire, publishing AI-for-business education of its
+      own. Whether that reads as a conflict or as the warmest partnership route on this list is a judgement only
+      you can make, and it is worth making before Cohort 4. Not verified from here; the engine returned it.
+    - `itpro.com` - UK technology publisher, in the field for the budget-holder probe with a piece on a
+      week-long AI immersion programme and what made it stick. Writes about exactly what we run, for exactly our
+      reader. A mention or a comment route.
+    - `learningtechnologies.co.uk` - the UK learning-and-development conference and its publishing arm, in the
+      field on coaching and workplace AI. A speaking route rather than a listing.
+    - `talentedlearning.com` - L&D analyst publication, returned five times on "how to build workforce AI
+      skills". A mention route.
+  - **Also seen and not added**: `imperial.ac.uk` ("Agentic AI: from Blueprint to Business Value") and
+    `sbs.ox.ac.uk` are peers rather than routes, and the Oxford institutional cluster
+    (`lifelong-learning.ox.ac.uk` seven times, `conted.ox.ac.uk`) is already recorded. `lilachbullock.com`,
+    `tutorials.co.uk`, `innovationvisual.com`, `brainstation.io`, `mentorcruise.com`, `nobledesktop.com`,
+    `generalassemb.ly`, `maven.com`, `nobleprog.co.uk`, `profiletree.com` and `eventbrite.co.uk` are all already
+    on this list or in `off-page-listings.md`, and this list's rule is not to duplicate.
+
 - **An engine asked for a one-day in-person hands-on agentic AI day for UK HR teams said no such thing exists,
   and ranked a past Luma listing above us.** Found 21 Nov 2026 (20:00 cycle). **Nothing contacted, submitted,
   claimed or paid for, and none of the hosts below resolves from this sandbox.**

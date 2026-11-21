@@ -5,6 +5,119 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-21 (20:05 UTC cycle) - FOUR PROBES, ZERO CITATIONS, AND AN ENGINE THAT TOLD A BUYER TO BOOK OUR 3 DECEMBER DAY ON THE BOOKING PAGE OF A COHORT THAT RAN IN SEPTEMBER
+
+**A note on this log's own headings first, because two entries now read 20:00.** The three entries below are
+labelled 20:00, 14:00 and 08:00 and were committed at 14:09, 08:13 and 02:10 UTC. The labels run six hours
+ahead of the run that wrote them. This entry is labelled by the clock it ran on. A cycle reading this file
+cannot order entries by their headings - use `git log --follow` on the file.
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy on `curl`) and so is `luma.com`, so no live page
+and no Luma fact was checked, deploy state came from the Actions API, and every fact below comes from committed
+files or from the engine.
+
+**The previous cycle's lesson was applied before a single search was run, and it paid for itself twice.** All
+**485** distinct question strings in this file's question column were extracted and grepped. Two candidate axes
+were dropped as duplicates before they cost a probe. More usefully, **backlog 123's own gate was answered out of
+this log rather than out of a search** - see "the probe not run" below.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | I bought AI tools for my team and nobody uses them is a hands-on training day worth paying for (**the budget-holder phrasing backlog 122 named as the thing that would settle it**) | **No** | **talentedlearning.com x5**, **atlassian.com x2**, fortune.com, perficient.com, itpro.com |
+| 2 | is one to one AI coaching better than a group AI workshop UK for a business leader (**format-alternative axis, never probed**) | **No** | **lilachbullock.com x5**, coachhub.com, mentorcruise.com, brainstation.io, innovationvisual.com, tutorials.co.uk, profiletree.com, ai.wsiworld.com, learningtechnologies.co.uk, advanceonline.cam.ac.uk, europeanbusinessreview.com |
+| 3 | my company blocks ChatGPT and Claude at work can I still learn to build AI workflows training (**blocked-tools axis, never probed**) | **No** | **maven.com x5**, **ecornell/nypublichealth.cornell.edu x2**, creativelive.com x2, improving.com x2, graduateschool.edu, nobledesktop.com, roux.northeastern.edu, mygreatlearning.com, generalassemb.ly |
+| 4 | one day agentic AI bootcamp Oxford 3 December 2026 Worcester College book a place (**our own on-sale cohort, its own date, its own venue**) | **No - and the engine sent the buyer to a passed cohort's booking page** | **lifelong-learning.ox.ac.uk x7**, conted.ox.ac.uk x2, sbs.ox.ac.uk, onlinecourses.worc.ox.ac.uk, imperial.ac.uk, nobleprog.co.uk, eventbrite.co.uk, `luma.com/oxfordagentic2`, `luma.com/k7c2rm5s` |
+
+**Probe 4 is the finding, and it is the sharpest version of backlog 2b this log holds.**
+
+Asked for our own bootcamp, on its own on-sale date, at its own venue, the engine answered: *"I found one
+listing that matches: **The Oxford Agentic Bootcamp**, hosted on Luma, with a venue of Worcester College,
+Oxford OX1 2JL, UK. To book, use the 'Get Tickets' button on the Luma page at
+https://luma.com/oxfordagentic2 and choose a ticket type."* It then named the second Luma page,
+`luma.com/k7c2rm5s`, gave St Anne's College as its location, said it was *"unclear whether this is a separate
+event or a duplicate"*, and closed: *"I did not find a confirmed 3 December 2026 date in these results, so
+please verify it before booking."*
+
+- **Both pages it found are cohorts that have already run** - `oxfordagentic2` is Cohort 2, 16 September, and
+  `k7c2rm5s` is Cohort 1, 21 July. **No page of this site appeared at all**, while
+  `/events/oxford-agentic-bootcamp-cohort-4/` carries the date, the venue, an `EducationEvent` node, an
+  `Offer` with `availability: InStock` and a booking link, and `/events/` carries all three on-sale cohorts in
+  a `CollectionPage` → `ItemList` with a nested `EducationEvent` each.
+- **The harm is now concrete rather than abstract.** Twenty-one previous probe sets recorded "not cited". This
+  one recorded an engine instructing a buyer to press Get Tickets on an event that happened two months ago.
+  The previous three cycles each found the same two passed Luma pages standing in for our calendar; this is
+  the first time the engine turned that into a booking instruction.
+- **Nothing on the site causes it and nothing on the site fixes it.** Checked this cycle rather than assumed:
+  the passed cohort pages no longer link to Luma at all (the outbound checker lists Luma links from Cohort 4,
+  Cohort 5 and the Coding day only), `/events/` separates "Upcoming" from "Already run" in copy, and
+  `check:dates` passes on all 58 indexable pages. The site's own record is correct and complete. It is simply
+  not what the engine reads.
+- **One fact worth keeping and one worth checking.** The engine's description of our day came from Luma and was
+  accurate. Its postcode for Worcester College, **OX1 2JL**, does not match what this site publishes, **OX1
+  2HB**. The site is right: OX1 2HB was verified this cycle against the college's own contact page, the
+  University's admissions pages and the Charity Commission register (charity 1143479). So there is nothing to
+  change here, but if `luma.com/oxfordagentic4` carries OX1 2JL, that is a one-line correction on Luma and only
+  Drummond can see the page. Filed to the review list.
+
+**Probe 1 settles backlog 122, and not in the direction that item hoped for.**
+
+Backlog 122 declined the "my team thinks AI is hype" axis and named exactly one thing that would change the
+verdict: the same question asked from the budget holder's side, which had never been run. It has now been run.
+The field fails on **atlassian.com** writing about adoption of its own products and **fortune.com**, so the
+first objection stands unchanged. The second objection gets an answer, and the answer is worse for us than no
+answer: the engine's closing advice was that a hands-on day is worth paying for *"if it's built around your
+team's real work, includes a clear follow-up plan (office hours, peer sessions, usage goals), and someone owns
+adoption afterward"*, that *"if the day is a standalone event with no follow-through, the evidence suggests it
+will likely fade"*, and that the buyer should *"ask the provider for post-training usage data, not just
+satisfaction scores"*.
+
+The first half of that test is our central published claim and we meet it. **The second half is the one fact
+this site cannot publish**, and it is `blocked` twice over on the backlog: **87** ("what happens to the workflow
+after the day") and **117** ("does what you build still work a month later"), both waiting on Drummond. So the
+budget-holder probe does not open a page to write. It raises the price of the two questions already on his desk,
+and it is the clearest commercial argument for them the log has: the field's own adoption test turns on the
+sentence we are missing. **Backlog 122 stays declined** and should not be re-pitched again - its own gate has
+now been tried.
+
+**Probes 2 and 3 are declines, each recorded so no cycle re-derives them.**
+
+- **Probe 2, one-to-one coaching against a group day: a genuinely new axis, declined on the field's weight and
+  on who would be arguing.** The engine flagged its own sources: *"The search didn't turn up independent
+  research comparing outcomes, and most of the sources are trainers selling one format or the other."* No
+  institutional publisher owns it, so it passes the letter of the winnability rule, and `lilachbullock.com`,
+  `tutorials.co.uk`, `innovationvisual.com`, `brainstation.io` and `mentorcruise.com` are all already on the
+  review list from earlier cycles, which is its own signal about the neighbourhood. It is declined because a
+  provider that sells the group format writing "why the group format wins" is the twenty-first trainer selling
+  one format or the other, which is the thing the engine had just discounted the field for. There is also less
+  of a gap than it looks: `/guides/questions-to-ask-before-booking-ai-training/` already carries *"Peer level
+  matters more in a small room than the syllabus"*, which is the honest half of the argument and is framed as a
+  question to put to any provider rather than a pitch. **Filed as backlog 124.**
+- **Probe 3, tools blocked at work: unwinnable, and the searcher is not booking a day in Oxford.** The field is
+  `maven.com` five times and Cornell, Northeastern and `graduateschool.edu` on their own catalogues, which is
+  the institutional-publisher-and-platform-catalogue half of the rule. The engine's own answer was *"Yes, you
+  can still learn this, but your employer's block mostly limits where you practice, not what you can study"*,
+  and its practical advice was to check the acceptable-use policy and ask the employer for an account. That is
+  the subject of `/guides/getting-an-ai-workflow-past-it-and-legal/` and the public-sector guide, both
+  published. Declined on both halves.
+
+**The probe not run, and it is the more useful half of this cycle.** Backlog 123 proposed a sixteenth glossary
+term defining **automation**, gated on one condition: *"re-probe on a buyer phrasing that is not a platform
+comparison... and require a field that passes both halves of the rule"*. That probe did not need running,
+because **this log already holds it**. A grep of the question column returns eleven prior probes on the
+agent-versus-automation axis, and the one phrased exactly as backlog 123 asks for - *"what is the difference
+between AI automation and an AI agent for a business"*, no platform named - returned **AWS, Zapier x2, Slack,
+Oracle x2, monday.com, Moveworks, Hostinger and Aalpha**. Hyperscalers and platform vendors on their own
+products, which is the clause backlog 123 was declined under in the first place. The gate is answered in the
+negative and the item is closed, not deferred. **This is the second cycle running in which the question column
+answered something a search was about to be spent on.**
+
+**Twenty-two consecutive probe sets with zero citations.** Every set in that run has ended in one of two places:
+the page is already written, or the engine cannot find our calendar. This set ended in both, and in a third
+place that is new - the engine found our calendar on someone else's platform, two months out of date, and told
+a buyer to pay on it.
+
 ## 2026-11-21 (20:00 GMT cycle) - SIX PROBES, ZERO CITATIONS, AND THE FIRST LESSON THIS LOG HAS RECORDED ABOUT ITS OWN PROBING
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
