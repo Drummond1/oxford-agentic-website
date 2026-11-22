@@ -1,0 +1,116 @@
+---
+/**
+ * Agentic AI 101: post-booking page. Calendly's "event scheduled" message on
+ * /agentic-ai-101/book/ sends the buyer here.
+ *
+ * Added 22 Nov 2026 (Linear DRU-18). noindex, out of the sitemap (astro.config.mjs),
+ * out of llms.txt and llms-full.txt, linked from nowhere on the site. Copy: PRD Appendix A.
+ *
+ * ASSUMPTION for Drummond to confirm: step 1 names the Claude desktop app. Appendix A left
+ * "which app" as [TBC]; this is the resolution the brief gave.
+ */
+import Base from '../../../layouts/Base.astro';
+import Hero from '../../../components/Hero.astro';
+import config from '../../../../site.config';
+---
+
+<Base
+  pageTitle="You’re booked in - Agentic AI 101"
+  description="Your Agentic AI 101 session is booked. Three things to do before we meet."
+  path="/agentic-ai-101/confirmed/"
+  noindex
+  footerSignup={false}
+>
+  <Hero eyebrow="Agentic AI 101 - one to one" title="You’re booked in" size="compact">
+    <p class="hero-note">Your calendar invite is on its way.</p>
+  </Hero>
+
+  <section class="band band--cream" aria-labelledby="before-title">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="before-title">Before we meet, please can you:</h2>
+      </div>
+      <ol class="todo" role="list">
+        <li>
+          <span class="todo__num" aria-hidden="true">1</span>
+          <p>Install the Claude desktop app from <a href="https://claude.com/download" rel="noopener">claude.com/download</a> on the laptop you’ll use.</p>
+        </li>
+        <li>
+          <span class="todo__num" aria-hidden="true">2</span>
+          <p>Check you can sign in to the accounts on the checklist.</p>
+        </li>
+        <li>
+          <span class="todo__num" aria-hidden="true">3</span>
+          <p>Pick one task you do every week that you’d like AI to take on.</p>
+        </li>
+      </ol>
+      <p class="todo__note">
+        If your laptop won’t let you install software, reply to your confirmation email and we’ll find another way.
+      </p>
+      <p class="todo__note todo__note--small">
+        Something not right? Email <a href={`mailto:${config.brand.email}?subject=Agentic%20AI%20101%20booking`}>{config.brand.email}</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-note {
+    margin-block-start: 1rem;
+    font-size: var(--step-md);
+    color: var(--muted-on-dark);
+  }
+
+  .todo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .todo li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    max-width: 62ch;
+  }
+
+  .todo__num {
+    font-family: var(--font-label);
+    font-size: var(--step-sm);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--rust);
+    color: var(--rust);
+  }
+
+  .todo p {
+    padding-block-start: 0.3rem;
+    font-size: var(--step-lg);
+    line-height: 1.5;
+  }
+
+  .todo a,
+  .todo__note a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .todo__note {
+    margin-block-start: 2rem;
+    max-width: 62ch;
+    font-size: var(--step-md);
+    line-height: 1.55;
+  }
+
+  .todo__note--small {
+    margin-block-start: 1rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+  }
+</style>

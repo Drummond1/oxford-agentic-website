@@ -1,0 +1,1079 @@
+---
+/**
+ * Agentic AI 101: a paid one-hour, one-to-one session with Drummond.
+ *
+ * Added 22 Nov 2026 (Linear DRU-18). PRD: Digital Brain/prds/agentic-ai-101-one-to-one-prd.md,
+ * copy from its Appendix A. Flow: this form -> n8n "Agentic AI 101 - intake" -> Stripe
+ * Checkout -> /agentic-ai-101/book/ -> n8n "Agentic AI 101 - paid" -> Calendly inline ->
+ * /agentic-ai-101/confirmed/.
+ *
+ * STANDING DECISIONS (Drummond, 22 Nov 2026, memory/decisions/gtm.md - do not re-litigate)
+ *  - THE PRICE IS SHOWN ON THIS PAGE ONLY. It is a deliberate one-page exception to the
+ *    no-prices rule. It is read from site.config.ts, never typed here, and this page, /book/
+ *    and /confirmed/ are kept out of llms.txt and llms-full.txt (src/lib/llms.ts throws if
+ *    either file ever names the offer or its price).
+ *  - Not linked from the homepage or any other page. Drummond links it when he is ready.
+ *  - Online and in Oxford at the same price. Never a Said Business School venue.
+ *  - Pay first, then pick a time.
+ *  - No refund guarantee and no bootcamp credit: both undecided.
+ *
+ * This page is INDEXED and in the sitemap. /book/ and /confirmed/ are noindex and out of it.
+ */
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Faq from '../../components/Faq.astro';
+import Quote from '../../components/Quote.astro';
+import config from '../../../site.config';
+import { createRhythm, getProgrammes, getTestimonials, paths, absoluteUrl } from '../../lib/site';
+import { ORG_ID } from '../../lib/schema';
+import { getCollection } from 'astro:content';
+
+const cfg = config.agenticAi101;
+const email = config.brand.email;
+const price = `£${cfg.priceGbp}`;
+const path = '/agentic-ai-101/';
+
+const host = (await getCollection('team', ({ data }) => data.isHost))[0];
+const hostName = host?.data.name ?? 'Drummond Gilbert';
+
+const programmes = await getProgrammes();
+const bootcamp = programmes.find((p) => p.id === 'oxford-agentic-bootcamp');
+const bootcampName = bootcamp?.data.name ?? `${config.brand.name} Bootcamp`;
+const bootcampHref = bootcamp ? paths.programme(bootcamp.data.slug) : paths.programmes();
+
+// One cleared testimonial, read from the collection so the consent flag still governs it.
+const testimonial = (await getTestimonials('oxford-agentic-bootcamp')).find((t) => t.data.name === 'Fei Gan');
+
+const rhythm = createRhythm('cream');
+const bands = {
+  learn: rhythm.next(),
+  how: rhythm.next(),
+  included: rhythm.next(),
+  who: rhythm.next(),
+  // The quote band exists only while the testimonial is consent-cleared, so the
+  // alternation is computed in page order rather than fixed.
+  ...(testimonial ? { quote: rhythm.next() } : {}),
+  fit: rhythm.next(),
+  limit: rhythm.next(),
+  faq: rhythm.next(),
+  close: rhythm.next(),
+  form: rhythm.next(),
+  terms: rhythm.next(),
+};
+
+const topics = [
+  { key: 'context', title: 'Context engineering', body: 'how to give AI what it needs to produce useful work, not generic answers.' },
+  { key: 'tools', title: 'Tools', body: 'which software to connect, so AI can work with your email, calendar and documents.' },
+  { key: 'skills', title: 'Skills', body: 'how to hand repeat tasks to AI so it does them the same way every time.' },
+  { key: 'agents', title: 'Agents', body: 'how to use agents well, and where you stay in charge.' },
+];
+
+const interestChoices = [
+  { key: 'context', label: 'Context engineering - getting more useful results from AI' },
+  { key: 'tools', label: 'Tools - what software to connect' },
+  { key: 'skills', label: 'Skills - handing repeat tasks to AI' },
+  { key: 'agents', label: 'Agents - using agents well' },
+];
+
+const oxfordOption =
+  'In person in central Oxford on set days - you’ll see the times when you book, and I’ll confirm the venue by email.';
+
+const steps = [
+  'Tell me what you’d like to learn. It takes a minute.',
+  'Pay securely by card.',
+  'Pick a time that suits you.',
+  'Run through a short set-up checklist, so our hour goes on the work, not installs.',
+  'One hour together, online or in Oxford.',
+  'Your personalised plan arrives within two working days.',
+];
+
+const faqs = [
+  { q: 'Do I need to be technical?', a: 'No. No coding. If something breaks, I’ll show you how you’d notice and what to do.' },
+  {
+    q: 'What do I need?',
+    a: 'A laptop you can install software on. If what you’d like to learn needs a paid AI plan, I’ll tell you which one before we meet.',
+  },
+  {
+    q: 'I work with sensitive data. Is that a problem?',
+    a: 'No. We start with which tools and settings suit sensitive work, before anything is connected.',
+  },
+  { q: 'Can my company pay?', a: 'Yes. You’ll get a receipt and can download an invoice to expense.' },
+  {
+    q: 'Online or in Oxford?',
+    a: 'Online by Zoom or Google Meet, most weekdays. Or in person in central Oxford on set days - you’ll see the times when you book.',
+  },
+  {
+    q: 'What if I need to move it?',
+    a: 'Reschedule free up to 24 hours before, using the link in your confirmation. If no time suits within 21 days, I’ll refund you in full.',
+  },
+  {
+    q: 'How is this different from the bootcamp?',
+    a: 'The bootcamp is a full day in a room of people building a complete workflow. The 101 is one hour, just you: set up, a first build and a plan. Many people start here.',
+  },
+];
+
+const metaDescription =
+  'A one-hour, one-to-one session to get set up for agentic AI: your tools on your laptop, one thing built on a real task, and a written plan. Online or in Oxford.';
+
+// Service + Offer. The price is read from config so this node and the visible page cannot drift.
+const serviceNode = {
+  '@type': 'Service',
+  '@id': `${absoluteUrl(path)}#service`,
+  name: 'Agentic AI 101 - one hour, one to one',
+  serviceType: 'One-to-one agentic AI set-up session',
+  description:
+    'A one-hour, one-to-one session with Drummond Gilbert. Your AI tools set up on your own laptop, one thing built on a real task from your week, and a personalised written set-up plan within two working days. Online, or in person in central Oxford on set days.',
+  url: absoluteUrl(path),
+  provider: { '@id': ORG_ID },
+  mainEntityOfPage: { '@id': `${absoluteUrl(path)}#webpage` },
+  offers: {
+    '@type': 'Offer',
+    price: cfg.priceGbp,
+    priceCurrency: 'GBP',
+    url: absoluteUrl(`${path}#book`),
+    seller: { '@id': ORG_ID },
+  },
+};
+---
+
+<Base
+  pageTitle="Agentic AI 101 - one to one"
+  description={metaDescription}
+  path={path}
+  breadcrumbs={[{ name: 'Agentic AI 101', path }]}
+  schemaNodes={[serviceNode]}
+  footerSignup={false}
+>
+  <Hero
+    eyebrow={`Agentic AI 101 - one to one with ${hostName}`}
+    title="Get set up for agentic AI, and ready to do useful work"
+    subline="One hour, online or in Oxford. We set up your tools on your own laptop, build one thing on a real task from your week, and you leave with a written plan for what to do next."
+    motif
+  >
+    <p class="hero-price"><strong>{price}</strong> - one hour with me, plus your personalised set-up plan.</p>
+    <p class="hero-cta">
+      <a class="btn btn--primary" href="#book" data-ai101-cta="hero">Book your hour <span aria-hidden="true">→</span></a>
+    </p>
+    <p class="hero-note">Pick your time straight after payment. Free to reschedule up to 24 hours before.</p>
+  </Hero>
+
+  <section class:list={['band', `band--${bands.learn}`]} aria-labelledby="learn-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="learn-title">What you’ll learn</h2>
+        <p class="lede">Choose what matters to you when you book. Most people pick two.</p>
+      </div>
+      <ul class="topics" role="list">
+        {
+          topics.map((t) => (
+            <li class="topic" data-reveal>
+              <p>
+                <strong>{t.title}</strong> - {t.body}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.how}`]} aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="how-title">How it works</h2>
+      </div>
+      <ol class="steps" role="list">
+        {
+          steps.map((s, i) => (
+            <li class="step" data-reveal>
+              <span class="step__num" aria-hidden="true">{i + 1}</span>
+              <p>{s}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.included}`]} aria-labelledby="included-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="included-title">What’s included</h2>
+      </div>
+      <div class="included">
+        <div class="included__col" data-reveal>
+          <h3>Before</h3>
+          <p>A set-up checklist, so you arrive ready.</p>
+        </div>
+        <div class="included__col" data-reveal>
+          <h3>The hour</h3>
+          <p>
+            We check your set-up, connect the tools you need, and build one thing on a task you do every week - a
+            context file, a skill or your first agent.
+          </p>
+        </div>
+        <div class="included__col" data-reveal>
+          <h3>After</h3>
+          <p>
+            A written plan made for you: what we set up and why, a context file for your work, one skill and one
+            agent to build next, and a 30-day practice plan.
+          </p>
+        </div>
+      </div>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          The point isn’t the set-up. It’s getting the routine work off your plate, so your hours go on the work
+          only you can do.
+        </p>
+      </div>
+      <p class="btn-row" data-reveal>
+        <a class="btn btn--primary" href="#book" data-ai101-cta="middle">Book your hour <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.who}`]} aria-labelledby="who-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="who-title">Who you’ll work with</h2>
+      </div>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          I’m {hostName}. I teach AI in Management at Saïd Business School and run Oxford’s Practical AI meetup. I
+          lead the <a href={bootcampHref}>{bootcampName}</a>, a full build day in Oxford - Cohort 1 ran at St Anne’s
+          College in July 2026, with 16 attendees.
+        </p>
+        <p>The 101 is the core of that day, one to one.</p>
+        <p>
+          {config.brand.name} is independent - no affiliation with the University of Oxford, its colleges, or any
+          other institution.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {
+    testimonial && (
+      <section class:list={['band', `band--${bands.quote}`]} aria-label="What a Cohort 1 attendee said">
+        <div class="wrap wrap--narrow">
+          <Quote testimonial={testimonial} variant="lead" />
+        </div>
+      </section>
+    )
+  }
+
+  <section class:list={['band', `band--${bands.fit}`]} aria-labelledby="fit-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="fit-title">Is it for you?</h2>
+      </div>
+      <div class="fit">
+        <div class="fit__col" data-reveal>
+          <h3 class="fit__head">Yes, if</h3>
+          <p>
+            you use ChatGPT, Copilot or Claude most days, get decent answers, and still do the work by hand. Or
+            you’d like the bootcamp but can’t give up a full day yet.
+          </p>
+          <p>No coding needed - and nothing hand-waved.</p>
+        </div>
+        <div class="fit__col" data-reveal>
+          <h3 class="fit__head">Not yet, if</h3>
+          <p>
+            you’re after a broad overview of AI, or you can’t install software on the laptop you’ll use. Many work
+            laptops block it. Please check before you book.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.limit}`]} aria-labelledby="limit-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="limit-title">The honest limit</h2>
+      </div>
+      <div class="prose prose--wide" data-reveal>
+        <p>
+          One hour won’t automate your job. It gets you set up properly and builds the first piece. Part of it is
+          working out what to leave alone - not every task is worth handing to AI, and knowing the difference is
+          most of the skill.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.faq}`]} aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="faq-title">Questions</h2>
+      </div>
+      <Faq faqs={faqs} />
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.close}`]} aria-labelledby="close-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="close-title">One hour. Your tools, your task, your plan. {price}.</h2>
+      </div>
+      <p class="btn-row btn-row--tight" data-reveal>
+        <a class="btn btn--primary" href="#book" data-ai101-cta="footer">Book your hour <span aria-hidden="true">→</span></a>
+      </p>
+      <p class="note" data-reveal>Pick your time straight after payment. Free to reschedule up to 24 hours before.</p>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.form}`]} aria-labelledby="book-title" id="book">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <hr class="dash" />
+        <h2 id="book-title" tabindex="-1">Tell me a little about you</h2>
+      </div>
+
+      <form class="ai" data-endpoint={cfg.intakeEndpoint} data-email={email} data-terms={cfg.termsVersion} data-updates-version={cfg.updatesConsentVersion} novalidate>
+        {/* Spam trap. Humans never see or fill it. */}
+        <div class="ai__trap" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_term" />
+        <input type="hidden" name="li_fat_id" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="page_url" />
+
+        <div class="ai__grid">
+          <div class="field">
+            <label class="field__label" for="ai-name">Your name</label>
+            <input class="field__input" id="ai-name" type="text" name="name" required maxlength="200" autocomplete="name" aria-describedby="err-name" />
+            <p class="field__error" id="err-name" hidden></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="ai-email">Your email</label>
+            <input class="field__input" id="ai-email" type="email" name="email" required autocomplete="email" placeholder="you@company.com" aria-describedby="err-email" />
+            <p class="field__error" id="err-email" hidden></p>
+          </div>
+        </div>
+
+        <fieldset class="ai__group" aria-describedby="err-interests">
+          <legend class="ai__legend">What would you like to learn? <span class="ai__hint">(tick any)</span></legend>
+          <div class="options">
+            {
+              interestChoices.map((c) => (
+                <label class="option">
+                  <input type="checkbox" name="interests" value={c.key} />
+                  <span>{c.label}</span>
+                </label>
+              ))
+            }
+          </div>
+          <p class="field__error" id="err-interests" hidden></p>
+        </fieldset>
+
+        <fieldset class="ai__group" aria-describedby="err-mode">
+          <legend class="ai__legend">How would you like to meet?</legend>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="mode" value="online" />
+              <span>Online</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="mode" value="oxford" />
+              <span>{oxfordOption}</span>
+            </label>
+          </div>
+          <p class="field__error" id="err-mode" hidden></p>
+        </fieldset>
+
+        <div class="field">
+          <label class="field__label" for="ai-task">One task you’d love AI to take off your plate <span class="ai__hint">(optional)</span></label>
+          <textarea class="field__input" id="ai-task" name="task" rows="3" maxlength="500" aria-describedby="err-task"></textarea>
+          <p class="field__error" id="err-task" hidden></p>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="updates_opt_in" />
+          <span>{cfg.updatesConsentText} <span class="ai__hint">(optional)</span></span>
+        </label>
+
+        <div class="ai__submit">
+          <button type="submit" class="btn btn--primary ai__button">Continue to payment - {price} <span aria-hidden="true">→</span></button>
+          <p class="ai__reassure">Secure payment by Stripe. You’ll pick your time straight after.</p>
+          <p class="ai__reassure">
+            By continuing you agree to the <a href="#terms">booking terms</a>. I’ll use these details to prepare your
+            session - more in the <a href="/privacy/#agentic-ai-101">privacy note</a>.
+          </p>
+        </div>
+
+        <div class="ai__status" role="alert" tabindex="-1" hidden></div>
+      </form>
+
+      <noscript>
+        <p class="ai__noscript">
+          This form needs JavaScript. To book, email <a href={`mailto:${email}?subject=Agentic%20AI%20101`}>{email}</a>
+          and I’ll book you in by hand.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class:list={['band', `band--${bands.terms}`]} aria-labelledby="terms-title" id="terms">
+    <div class="wrap wrap--narrow">
+      <div class="section-head" data-reveal>
+        <hr class="dash" />
+        <h2 id="terms-title">Booking terms</h2>
+      </div>
+      <div class="prose" data-reveal>
+        <ul class="terms">
+          <li>You can reschedule free of charge up to 24 hours before your session.</li>
+          <li>
+            You get a full refund if you cancel 48 or more hours before your session, or if no time suits within 21
+            days of paying.
+          </li>
+        </ul>
+        <p class="terms__version">Version {cfg.termsVersion}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-price {
+    margin-block-start: 1.5rem;
+    font-size: var(--step-lg);
+    max-width: 40rem;
+  }
+
+  .hero-price strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .hero-cta {
+    margin-block-start: 1.5rem;
+  }
+
+  .hero-note {
+    margin-block-start: 0.85rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    color: var(--muted-on-dark);
+  }
+
+  .topics,
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .topic {
+    border-block-start: 1px solid var(--gold-hairline);
+    padding-block-start: 1rem;
+    max-width: 62ch;
+    font-size: var(--step-md);
+    line-height: 1.6;
+  }
+
+  :global(.band--cream) .topic {
+    border-block-start-color: rgba(5, 24, 23, 0.14);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    align-items: start;
+    max-width: 62ch;
+  }
+
+  .step__num {
+    font-family: var(--font-label);
+    font-size: var(--step-sm);
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+  }
+
+  :global(.band--cream) .step__num {
+    border-color: var(--rust);
+    color: var(--rust);
+  }
+
+  .step p {
+    padding-block-start: 0.3rem;
+    font-size: var(--step-md);
+    line-height: 1.55;
+  }
+
+  .included {
+    display: grid;
+    gap: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+
+  .included__col {
+    border-block-start: 1px solid rgba(5, 24, 23, 0.14);
+    padding-block-start: 1rem;
+  }
+
+  .included__col h3 {
+    font-size: var(--step-xl);
+    margin-block-end: 0.5rem;
+  }
+
+  .included__col p {
+    line-height: 1.6;
+    color: var(--muted-on-cream);
+  }
+
+  .prose--wide {
+    margin-block-start: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+  }
+
+  .prose--wide p {
+    max-width: 62ch;
+    font-size: var(--step-lg);
+    line-height: 1.55;
+  }
+
+  .prose--wide p + p {
+    margin-block-start: 1rem;
+  }
+
+  .prose--wide a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .btn-row {
+    margin-block-start: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+  }
+
+  .btn-row--tight {
+    margin-block-start: 1.25rem;
+  }
+
+  .note {
+    margin-block-start: 0.85rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-cream);
+  }
+
+  :global(.band--dark) .note {
+    color: var(--muted-on-dark);
+  }
+
+  .fit {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  }
+
+  .fit__head {
+    font-size: var(--step-xl);
+    margin-block-end: 0.75rem;
+  }
+
+  .fit__col p {
+    max-width: 52ch;
+    line-height: 1.6;
+  }
+
+  .fit__col p + p {
+    margin-block-start: 0.75rem;
+  }
+
+  /* ---- Form (sits on a band; colours follow the band) ---- */
+
+  #book-title:focus {
+    outline: none;
+  }
+
+  .ai,
+  .ai__noscript {
+    border: 1px solid var(--gold-hairline);
+    background: var(--deep-card);
+    color: var(--cream);
+    padding: clamp(1.25rem, 0.8rem + 2.5vw, 2.5rem);
+  }
+
+  .ai__noscript {
+    margin-block-start: 1rem;
+  }
+
+  .ai > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  .ai > .ai__grid {
+    margin-block-start: 0;
+  }
+
+  .ai__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .ai__grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+  }
+
+  .field__label {
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+  }
+
+  .field__input {
+    width: 100%;
+    background: var(--ink-dark);
+    border: 1px solid var(--gold-hairline);
+    color: var(--cream);
+    padding: 0.8rem 0.9rem;
+    min-height: 3rem;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+
+  .field__input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .field__input[aria-invalid='true'] {
+    border-color: #e08a6b;
+  }
+
+  .field__error {
+    font-size: var(--step-sm);
+    color: #f0a98d;
+  }
+
+  .field__error[hidden] {
+    display: none;
+  }
+
+  .ai__group {
+    border: 0;
+    padding: 0;
+    margin-inline: 0;
+    min-width: 0;
+  }
+
+  .ai__legend {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    margin-block-end: 0.75rem;
+    padding: 0;
+  }
+
+  .ai__hint {
+    font-family: var(--font-body, inherit);
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark-dim);
+  }
+
+  .options {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .option {
+    position: relative;
+    cursor: pointer;
+    display: block;
+  }
+
+  .option input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .option span {
+    display: block;
+    padding: 0.8rem 1rem;
+    min-height: 3rem;
+    line-height: 1.45;
+    border: 1px solid var(--gold-hairline);
+    font-size: var(--step-sm);
+    transition: background 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease);
+  }
+
+  .option:hover span {
+    border-color: var(--gold);
+  }
+
+  .option input:checked + span {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+  }
+
+  .option input:focus-visible + span {
+    outline: 2px solid var(--cream);
+    outline-offset: 2px;
+  }
+
+  .consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark);
+    line-height: 1.5;
+  }
+
+  .consent input {
+    margin-block-start: 0.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .ai__button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ai__button[disabled] {
+    opacity: 0.7;
+    cursor: progress;
+  }
+
+  .ai__reassure {
+    margin-block-start: 0.75rem;
+    font-size: var(--step-sm);
+    color: var(--muted-on-dark-dim);
+    text-align: center;
+  }
+
+  .ai__reassure a,
+  .ai__status a,
+  .ai__noscript a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .ai__status {
+    padding: 0.85rem 1rem;
+    border: 1px solid #e08a6b;
+    font-size: var(--step-sm);
+    line-height: 1.55;
+  }
+
+  .ai__status[hidden] {
+    display: none;
+  }
+
+  .ai__status:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .terms {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .terms li {
+    position: relative;
+    padding-inline-start: 1.6rem;
+    line-height: 1.55;
+    max-width: 62ch;
+  }
+
+  .terms li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 0.7em;
+    width: 0.8rem;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  .terms__version {
+    margin-block-start: 1.25rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.1em;
+    color: var(--muted-on-cream);
+  }
+
+  #terms,
+  #book {
+    scroll-margin-block-start: 4.5rem;
+  }
+</style>
+
+<script>
+  import { track } from '../../lib/track';
+
+  const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const TIMEOUT_MS = 20000;
+
+  track('ai101_view');
+
+  // ---- Every Book button: analytics, then focus the form heading so keyboard and
+  // screen-reader users land where the page scrolls to. ----
+  const bookHeading = document.getElementById('book-title');
+  document.querySelectorAll<HTMLElement>('[data-ai101-cta]').forEach((el) =>
+    el.addEventListener('click', () => {
+      track('ai101_cta_click', { position: el.dataset.ai101Cta ?? '' });
+      window.setTimeout(() => bookHeading?.focus({ preventScroll: true }), 50);
+    }),
+  );
+
+  const form = document.querySelector<HTMLFormElement>('form.ai');
+  if (form) {
+    const endpoint = form.dataset.endpoint ?? '';
+    const contact = form.dataset.email ?? '';
+    const termsVersion = form.dataset.terms ?? '';
+    const updatesVersion = form.dataset.updatesVersion ?? '';
+    const status = form.querySelector<HTMLElement>('.ai__status')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const buttonLabel = button.innerHTML;
+
+    // ---- Campaign context from the URL, so ad and post traffic is attributable ----
+    const query = new URLSearchParams(window.location.search);
+    const setHidden = (name: string, value: string) => {
+      const el = form.elements.namedItem(name);
+      if (el instanceof HTMLInputElement) el.value = value;
+    };
+    for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'li_fat_id']) {
+      setHidden(key, query.get(key) ?? '');
+    }
+    setHidden('referrer', document.referrer ?? '');
+    setHidden('page_url', window.location.href);
+
+    const text = (name: string) => {
+      const el = form.elements.namedItem(name);
+      return el && 'value' in el ? String((el as HTMLInputElement).value).trim() : '';
+    };
+    const values = (name: string) =>
+      Array.from(form.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((i) => i.value);
+
+    const MESSAGES: Record<string, string> = {
+      name: 'Please add your name.',
+      email: 'Please add a valid email address.',
+      interests: 'Please tick at least one, so I know where to start.',
+      mode: 'Please choose online or in Oxford.',
+      task: 'Please keep this to 500 characters or fewer.',
+    };
+
+    const controlFor = (field: string): HTMLElement | null => {
+      if (field === 'name') return form.querySelector<HTMLElement>('#ai-name');
+      if (field === 'email') return form.querySelector<HTMLElement>('#ai-email');
+      if (field === 'task') return form.querySelector<HTMLElement>('#ai-task');
+      if (field === 'interests') return form.querySelector<HTMLElement>('input[name="interests"]');
+      if (field === 'mode') return form.querySelector<HTMLElement>('input[name="mode"]');
+      return null;
+    };
+
+    const clearErrors = () => {
+      status.hidden = true;
+      status.textContent = '';
+      form.querySelectorAll<HTMLElement>('.field__error').forEach((p) => {
+        p.hidden = true;
+        p.textContent = '';
+      });
+      form.querySelectorAll<HTMLElement>('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+    };
+
+    /** Marks fields and returns the first control to focus, or null if none matched. */
+    const markFields = (fields: string[]): HTMLElement | null => {
+      let first: HTMLElement | null = null;
+      for (const field of fields) {
+        const error = form.querySelector<HTMLElement>(`#err-${field}`);
+        if (!error) continue;
+        error.textContent = MESSAGES[field] ?? 'Please check this.';
+        error.hidden = false;
+        const control = controlFor(field);
+        if (control && (field === 'name' || field === 'email' || field === 'task')) control.setAttribute('aria-invalid', 'true');
+        if (control && !first) first = control;
+      }
+      return first;
+    };
+
+    const clientErrors = (): string[] => {
+      const bad: string[] = [];
+      if (!text('name')) bad.push('name');
+      if (!EMAIL_PATTERN.test(text('email'))) bad.push('email');
+      if (values('interests').length === 0) bad.push('interests');
+      if (values('mode').length === 0) bad.push('mode');
+      if (text('task').length > 500) bad.push('task');
+      return bad;
+    };
+
+    const labels: Record<string, string> = {
+      context: 'Context engineering',
+      tools: 'Tools',
+      skills: 'Skills',
+      agents: 'Agents',
+    };
+
+    /** The fallback. Never pretends the booking went through; hands the answers over by email. */
+    const showFallback = () => {
+      const mode = text('mode') || values('mode')[0] || '';
+      const body = [
+        'Hello - the Agentic AI 101 form did not work for me, so here are my answers.',
+        '',
+        `Name: ${text('name')}`,
+        `Email: ${text('email')}`,
+        `I would like to learn: ${values('interests').map((k) => labels[k] ?? k).join(', ')}`,
+        `How I would like to meet: ${mode === 'oxford' ? 'In person in central Oxford' : mode === 'online' ? 'Online' : ''}`,
+        `One task: ${text('task')}`,
+      ].join('\n');
+      const href = `mailto:${contact}?subject=${encodeURIComponent('Agentic AI 101 - please book me in')}&body=${encodeURIComponent(body)}`;
+      status.textContent = '';
+      status.append('Something went wrong on my side. Please email ');
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = contact;
+      status.append(link, ' and I’ll book you in by hand.');
+      status.hidden = false;
+      status.focus();
+    };
+
+    const resetButton = () => {
+      button.disabled = false;
+      button.innerHTML = buttonLabel;
+    };
+
+    // Coming back from Stripe with the back button must not leave a dead, disabled button.
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) resetButton();
+    });
+
+    form.addEventListener('input', () => {
+      // Editing clears only the visible validation, never a fallback message.
+      form.querySelectorAll<HTMLElement>('.field__error').forEach((p) => {
+        p.hidden = true;
+      });
+      form.querySelectorAll<HTMLElement>('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+
+      const bad = clientErrors();
+      if (bad.length > 0) {
+        markFields(bad)?.focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Taking you to payment';
+      track('ai101_form_submit', { mode: values('mode')[0] ?? '', source: text('utm_source') || 'direct' });
+
+      const payload = {
+        name: text('name').slice(0, 200),
+        email: text('email'),
+        interests: values('interests'),
+        mode: values('mode')[0] ?? '',
+        task: text('task').slice(0, 500),
+        updates_opt_in: (form.elements.namedItem('updates_opt_in') as HTMLInputElement | null)?.checked === true,
+        updates_consent_version: updatesVersion,
+        terms_version: termsVersion,
+        utm_source: text('utm_source'),
+        utm_medium: text('utm_medium'),
+        utm_campaign: text('utm_campaign'),
+        utm_content: text('utm_content'),
+        utm_term: text('utm_term'),
+        li_fat_id: text('li_fat_id'),
+        referrer: text('referrer'),
+        page_url: text('page_url'),
+        _gotcha: text('_gotcha'),
+      };
+
+      try {
+        if (!endpoint) throw new Error('no endpoint');
+        const controller = new AbortController();
+        const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
+        let response: Response;
+        try {
+          response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+          });
+        } finally {
+          window.clearTimeout(timer);
+        }
+
+        let data: { ok?: boolean; checkout_url?: unknown; error?: unknown; fields?: unknown } | null = null;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
+        }
+
+        // The server named fields it did not like: mark them and let the visitor fix them.
+        if (response.status === 400 && data && data.ok === false && data.error === 'validation' && Array.isArray(data.fields) && data.fields.length > 0) {
+          resetButton();
+          const first = markFields(data.fields.filter((f): f is string => typeof f === 'string'));
+          if (first) {
+            first.focus();
+          } else {
+            showFallback();
+          }
+          return;
+        }
+
+        const url = data && data.ok === true && typeof data.checkout_url === 'string' ? data.checkout_url : '';
+        let target: URL | null = null;
+        try {
+          target = url ? new URL(url) : null;
+        } catch {
+          target = null;
+        }
+        if (!response.ok || !target || target.protocol !== 'https:') throw new Error('no checkout url');
+
+        track('ai101_checkout_redirect');
+        // Give the event a moment to leave before the page does.
+        window.setTimeout(() => window.location.assign(target!.href), 250);
+      } catch {
+        resetButton();
+        showFallback();
+      }
+    });
+  }
+</script>

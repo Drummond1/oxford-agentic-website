@@ -18,6 +18,7 @@ export interface SiteConfig {
   applications: Applications;
   secondBrainInterest: SecondBrainInterest;
   firstWorkflowPicker: FirstWorkflowPicker;
+  agenticAi101: AgenticAi101;
   ceoRoundtable: CeoRoundtable;
   assistant: Assistant;
 }
@@ -167,6 +168,21 @@ export interface SecondBrainInterest {
    * to the owner on every stage. Empty = the form shows its email fallback.
    */
   endpoint: string;
+}
+
+export interface AgenticAi101 {
+  /** n8n webhook the sign-up form posts to. Returns a Stripe Checkout URL. */
+  intakeEndpoint: string;
+  /** n8n webhook /book/ posts the Stripe session id to. Returns a one-time Calendly link. */
+  paidEndpoint: string;
+  /** Shown on /agentic-ai-101/ only. Never printed on any other page, llms.txt or llms-full.txt. */
+  priceGbp: number;
+  /** Version of the booking terms the buyer agrees to; stored with the booking. */
+  termsVersion: string;
+  /** Version of the optional updates consent; must match the n8n consent table. */
+  updatesConsentVersion: string;
+  /** The exact label of the optional updates tick box. */
+  updatesConsentText: string;
 }
 
 export interface FirstWorkflowPicker {
@@ -474,6 +490,17 @@ const config: SiteConfig = {
     consentText:
       'Yes, email me the guide, a few short notes over about two weeks, and then a monthly email with upcoming bootcamp dates. I can unsubscribe at any time.',
     guidePath: '/first-workflow-picker/guide.pdf',
+  },
+
+  // 22 Nov 2026: paid one-to-one. Price shown on /agentic-ai-101/ only (Drummond, 22 Nov).
+  // n8n workflows "Agentic AI 101 - intake" and "Agentic AI 101 - paid" are INACTIVE until Drummond publishes them.
+  agenticAi101: {
+    intakeEndpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/agentic-ai-101-intake',
+    paidEndpoint: 'https://drummondgilbert.app.n8n.cloud/webhook/agentic-ai-101-paid',
+    priceGbp: 275,
+    termsVersion: 'v1-2026-11-22',
+    updatesConsentVersion: 'v1-2026-11-22',
+    updatesConsentText: 'Send me occasional emails about Oxford Agentic events. I can unsubscribe at any time.',
   },
 
   // 13 Oct 2026: ad-only demand-validation page at /ceo-roundtable/ (noindex, not linked).
