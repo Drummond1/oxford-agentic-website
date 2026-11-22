@@ -16,6 +16,7 @@ export interface SiteConfig {
   analytics: Analytics;
   newsletter: Newsletter;
   applications: Applications;
+  dayHub: DayHub;
   secondBrainInterest: SecondBrainInterest;
   firstWorkflowPicker: FirstWorkflowPicker;
   ceoRoundtable: CeoRoundtable;
@@ -145,6 +146,20 @@ export interface Newsletter {
   method: 'POST' | 'GET';
   /** Name of the email field the provider expects. */
   fieldName: string;
+}
+
+export interface DayHub {
+  /**
+   * Where the "I'm stuck" form on the unlisted Day Hub pages (/day/<cohort>/)
+   * posts. Provider-agnostic, like `applications.endpoint`: any service that
+   * accepts a form POST and answers JSON (an n8n webhook, Formspree, a Zapier
+   * hook) drops in here.
+   *
+   * Empty string is an honest fallback, not a dead form: the answers are
+   * written into an email to `brand.email` in the visitor's own mail app and
+   * the page tells them to press send rather than claiming it went.
+   */
+  stuckEndpoint: string;
 }
 
 export interface Applications {
@@ -457,6 +472,14 @@ const config: SiteConfig = {
   applications: {
     // 23 Sept 2026: no provider chosen yet, so applications arrive by email.
     endpoint: '',
+  },
+
+  // 22 Nov 2026: the Day Hub "I'm stuck" form (DRU-17). No endpoint yet, so it opens
+  // a pre-filled email to brand.email, exactly as /apply/ does. Paste an n8n webhook
+  // (or any form-POST endpoint that answers JSON) here to post directly instead, and
+  // change the privacy page's #day-hub paragraph in the same commit.
+  dayHub: {
+    stuckEndpoint: '',
   },
 
   // 27 Oct 2026: register-interest page for the next Second Brain Bootcamp (noindex).
