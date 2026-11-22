@@ -43,8 +43,8 @@ const cohort: DayCohort = {
     // PLACEHOLDER: OAB4 feedback form link - to be built and tested by Mon 30 Nov (run sheet s1).
     feedbackForm: null,
     luma: 'https://luma.com/oxfordagentic4',
-    // PLACEHOLDER: fact-checker to confirm. The copy prints "claude.ai/download"; that address redirects
-    // to https://claude.com/download (the build's outbound-link check, 22 Nov), so the link points there.
+    // The copy printed "claude.ai/download"; that address redirects to https://claude.com/download, the
+    // official page (fact-checked 22 Nov), so the link and the visible text both use claude.com/download.
     claudeDownload: 'https://claude.com/download',
     // PLACEHOLDER: one n8n guide link from Emine, coming Tue 1 Dec. Run sheet s1 rule: one link only.
     n8nGuide: null,
@@ -124,16 +124,18 @@ const cohort: DayCohort = {
     body: 'The College caters by name, so please can they register on [the Luma page]({luma}) by midday on Wednesday 2 December.',
   },
 
-  // False until the times are confirmed with Worcester. The times below are the run sheet s3 pack times.
-  // If the pack has not gone by 27 Nov, the contract times apply instead: lunch 13:00-14:00 and the
-  // afternoon shifted (27 Nov call page D1). Set the times, then set this to true.
+  // False until the times are confirmed with Worcester; while false the session cards show no time range.
+  // The times below are the run sheet s3 pack times, which have not been sent to the College as of 22 Nov
+  // (E49 held). D1 on the 27 Nov call recommends the contract times instead; it is a decision for the call.
+  // Under the contract times lunch is 13:00-14:00 and the 11:00 session runs to 13:00 (run sheet s3,
+  // right-hand column). Set the times, then set this to true.
   timetableConfirmed: false,
 
   today: {
     heading: 'Thursday 3 December',
     intro: 'Each session has its slides, prompts and files below. Use the copy button on a prompt, then paste it into Claude.',
     // Shown while `timetableConfirmed` is false. (The earlier line "Times follow the timetable sent to
-    // the College (16 Nov)" was withdrawn: the pack was never sent.)
+    // the College (16 Nov)" was withdrawn: the pack is not sent as of 22 Nov (E49 held).)
     timetableNote:
       'We start at 9:15am and finish at 5pm. The times in between are still being confirmed with the College, and the final timetable will be here by Tuesday 1 December.',
     sessionEmpty: 'Slides and prompts for this session are coming on Tuesday 1 December.',

@@ -192,7 +192,7 @@ const client = {
             cohort.sessions.map((s) => (
               <article class="day-session" id={`session-${s.id}`}>
                 <h4>{s.title}</h4>
-                <p class="day-muted">{timeRange(s.start, s.end)} · {s.lead}</p>
+                <p class="day-muted">{cohort.timetableConfirmed ? `${timeRange(s.start, s.end)} · ${s.lead}` : s.lead}</p>
 
                 {s.slides_url && (
                   <div class="day-row">
@@ -531,7 +531,10 @@ const client = {
         }
         const step = String(values.get('step') ?? '').trim();
         const subject = `I'm stuck${step ? ` - ${step}` : ''}`;
-        const body = labels.map(([name, label]) => `${label}: ${String(values.get(name) ?? '').trim()}`).join('\n');
+        const body = [
+          `Page: ${location.pathname}`,
+          ...labels.map(([name, label]) => `${label}: ${String(values.get(name) ?? '').trim()}`),
+        ].join('\n');
         const mail = () => {
           window.location.href = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         };
