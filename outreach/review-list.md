@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Three UK bodies that reach a budget holder rather than a buyer, all new to both lists.** Found 22 Nov 2026
+  (08:00 UTC cycle), in the fields of two answer-engine probes. **Nothing contacted, submitted, claimed or paid
+  for, and none of these hosts resolves from this sandbox, so none was checked beyond what the search returned.**
+  - `iuk-business-connect.org.uk` - **Innovate UK Business Connect**, and the strongest find on this list in
+    some weeks. It took five of the result slots on the cohort-composition probe on its own, with a programme
+    of practical AI workshops - an AI Adoption Clinic, a responsible-AI workforce session, and the **BridgeAI**
+    series, which promises attendees *"experts and peers from your sector"*. It is a publicly funded national
+    body rather than a vendor or a directory, it runs the same format we run, and it publishes an events
+    calendar. **The route is partnership or speaking, not a listing**, and a mention from it would be the kind
+    of institutional third-party citation backlog 2b has been asking for since July.
+  - `wonkhe.com` - **Wonkhe**, the UK higher-education policy site, in the field for the skills-funding probe.
+    A commentary or contributed-piece route, and the natural one for an Oxford-based practitioner who teaches
+    at Saïd: the live subject there is what universities should do about AI skills, which is Drummond's subject
+    from the practitioner side rather than the policy side.
+  - `feweek.co.uk` - **FE Week**, the further-education and skills trade title, same field. It ran
+    *"AI training is of limited use if staff can't safely use the tech"*, which is this site's own argument in
+    a sector title. A mention or comment route, weaker than the other two because its readership is providers
+    rather than buyers.
+  - **Deliberately not added**, each for a stated reason rather than by omission: `ai-uk.turing.ac.uk` (a
+    speaking route with a bar we cannot clear cold), `builtin.com` (US readership, not our buyer),
+    `skillsengland.education.gov.uk` (a register, not a mention route - it belongs to backlog 109's thread,
+    not this list), and nine training providers and colleges from the self-funded probe, which are competitors
+    rather than opportunities. A further five hosts in these fields were already on this list or in
+    `off-page-listings.md`.
+
+
 - **Two UK small-business bodies that reach our buyer and are not directories.** Found 22 Nov 2026
   (02:00 UTC cycle), in the fields of two answer-engine probes. **Nothing contacted, submitted, claimed
   or paid for, and neither host resolves from this sandbox.**

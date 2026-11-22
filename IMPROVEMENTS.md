@@ -2516,6 +2516,19 @@ Status: `todo` · `blocked` (why) · `doing`
     cycle on either morning should run `check-dates.mjs --now=` first and trace every hit to its source file
     before touching anything, rather than trusting any count written down here.
 
+    **Census re-run and confirmed, 22 Nov 2026 (08:00 cycle).** `check-dates.mjs --now=2026-11-27` against a
+    build made this morning returns **seven** windows, the same seven, in the same seven places, with the same
+    two derived and five hand-authored. This is the first time a cycle has followed this item's own
+    instruction to re-run rather than trust the number, and the number held. **Nothing was brought forward
+    again, and one option was weighed and declined on its own**: fixing the Coding programme page's venue
+    answer alone. That one is not a patch that hides work - this item concedes tense-neutral is its correct
+    final form - so doing it today would have finished it and taken the 27 November sweep from five files to
+    four. It was declined on the **copy** rather than the mechanism. That sentence is the venue answer on the
+    programme page for a day that is on sale and four days out, and *"Cohort 1 is there on Thursday 26
+    November 2026"* is the better sentence for a buyer in those four days than any date-proof form of it. The
+    trade is live selling copy during the only week it sells, against a maintenance saving of one file.
+    **The same applies on the 23rd, 24th, 25th and 26th**: this is a 27 November job in full.
+
 104. `todo` **(needs Drummond, a homepage card-layout call; the same family as backlog 55; found
     16 Nov 2026 in the 14:00 cycle)** - **the homepage shows three upcoming cohorts and there are now
     four, so Cohort 5 is on the homepage as a footer link and nothing else.** `getHomeUpcoming()` in
@@ -3052,7 +3065,152 @@ Status: `todo` · `blocked` (why) · `doing`
     chosen a cohort and is comparing cohorts, rather than one where they are choosing between formats we do not
     both sell. Do not re-pitch on winnability alone.
 
+125. `todo` (loop-actionable and **dated: it falls due on 4 December 2026, and again on 29 January 2027**;
+    measured 22 Nov 2026 in the 08:00 cycle, by running the checker forward rather than guessing) - **the
+    sibling of backlog 103, and it is larger than that item predicted.** Backlog 103 says the 4 December job
+    is *"at least five guides"*. Measured: it is **seven guides plus one event file**.
+    `check-dates.mjs --now=2026-12-04` against a build made on 22 November returns **16** windows. Seven of
+    them are 26 November's and belong to backlog 103, which retires them on the 27th. Of the nine that are
+    Cohort 4's, one is the derived "Upcoming runs" card on `/bootcamps/oxford-agentic-bootcamp/` and
+    **self-heals** on the first real build after the day. The other **eight are hand-authored**:
+    - `src/content/events/oxford-agentic-bootcamp-cohort-4.md` - the Key facts summary, the same field
+      rewritten by hand after Cohorts 1, 2 and 3, and the one that can only be done after the day because it
+      is also where the outcome goes.
+    - Seven guides, all carrying the date in the same closing-pointer shape:
+      `claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved` (which also prints the 09:00 to
+      17:00 hours), `getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+      `when-ai-executive-cohorts-run`, `where-the-human-goes-in-an-agentic-workflow`, `who-should-take-the-seat`.
+    **Two files appear in both sweeps** and should be opened once each morning rather than twice:
+    `claude-cowork-claude-code-or-codex` and `when-ai-executive-cohorts-run` carry both dates.
+    **29 January 2027 is small by comparison, and that is itself the finding.** `--now=2027-01-29` returns
+    **17**: the 16 above plus Cohort 5's own event-file Key facts summary. **No guide carries Cohort 5's date
+    in the "Cohort 4 runs on ..." shape at all** - the only hand-authored mention of 28 January outside its
+    own event page is the clause inside `when-ai-executive-cohorts-run`'s on-sale sentence. So the seven
+    guides do not point past Cohort 4 today, which is correct (they should point at the nearest bookable day),
+    and it means **the 4 December sweep is not a tidy-up but a re-point**: each of those seven closing lines
+    has to be aimed at Cohort 5, and will then fall due again on 29 January. That is backlog 126.
+    **The rule from backlog 103 carries over unchanged**: tense-neutral is right for a venue statement and
+    wrong for a booking pointer, and all eight of these are booking pointers. Run `check-dates.mjs --now=` on
+    the morning and trace every hit to its source file before touching anything, rather than trusting this count.
+
+126. `todo` (**a structural question the loop should not answer alone - it is a copy call on seven guides**;
+    found 22 Nov 2026 in the 08:00 cycle, by measuring 125) - **seven guide closing pointers hard-code the
+    nearest bookable cohort's date, so every cohort rollover is an eight-file rewrite rather than a one-file
+    one, and at the current cadence that is roughly every six weeks.**
+    The shape is always the same: *"Cohort 4 runs on 3 December 2026 at Worcester College."* as the last line
+    before the call to action. **It is good copy and good for an engine**, which is the whole difficulty: a
+    dated, venued, specific pointer is exactly what the GEO log keeps recording that answer engines fail to
+    find anywhere, and replacing it with *"see the programme page"* would hand away the one thing those pages
+    assert that a generic page does not. **So this is not a defect and must not be filed as one.** It is a
+    standing maintenance cost that has now been measured: eight files on 4 December, two on 29 January, and
+    eight again on whatever follows Cohort 5.
+    **The three options, so a future cycle does not re-derive them.** (a) Leave it, and treat the rollover
+    sweep as scheduled work the checker already forces - the status quo, and defensible. (b) Make the pointer
+    derived, so the prose keeps its date and self-heals. Guides are `.md`, not `.mdx`, so there is no
+    component route; it would need a placeholder the renderer substitutes from the events collection, which
+    puts text on the page that the author cannot see in the source. That is a build feature and a real
+    trade-off in authorability, not a cycle. (c) A middle form: keep the dated sentence but move it into
+    frontmatter as a named pointer field, so one edit per guide becomes one field and the build can render it
+    consistently - still eight edits per rollover, but mechanical ones a script could make.
+    **Weigh (b) against (a) only with a number in hand**: how many rollovers a year, and how long the sweep
+    actually takes a cycle. The 4 December cycle is the first chance to time it. Do not build (b) before that.
+
 ## Shipped
+
+### 22 Nov 2026 (08:00 UTC cycle) - no page changed. The cycle ran the date checker forward instead of guessing, and found that the 4 December job is eight hand-authored sentences rather than the "at least five guides" the backlog predicted, seven of them guide closing pointers that will fall due again on 29 January
+
+**No page changed.** The commit carries records only: this entry, the confirmed census on backlog 103, two new
+backlog items, the GEO log and one off-page entry. All four paths match the exempt pattern in
+`indexnow-ping.mjs` line 166, read off the source this cycle (`^(IMPROVEMENTS|STATE|README)\.md$`,
+`^outreach/`, `^seo-data/`), so **this commit maps to zero IndexNow URLs by design**. The ping script was not
+run, in dry-run or otherwise.
+
+**Board state before anything was touched.** HEAD checked against `origin/main` first, as the 9 November trap
+requires: both at `cf6c571`, tree clean. Deploy run 44974981940 **success** on that SHA at 02:13 UTC, nothing
+queued or running. Baseline build green and every figure identical to the last five cycles': links (3,462
+across 69 pages), outbound (13 third-party warnings, all of them this sandbox's egress policy rather than the
+sites), schema (69 pages valid, 17 Event nodes, 22 `FAQPage`, 128 offset-bearing publication dates, 1,483
+resolving graph references, 59 breadcrumb trails, all titles and descriptions unique), both date checks and
+`check:flags`.
+
+**The measurement this cycle exists for.** Backlog 103 tells a cycle to run `check-dates.mjs --now=` and trace
+every hit rather than trust a written count. This is the first cycle to do that on a count the ledger already
+held, and on the two dates nobody had run at all.
+
+- **27 November, confirmed.** Seven windows, the same seven places, two derived and five hand-authored. The
+  02:00 census held exactly.
+- **4 December, new and larger than predicted.** Sixteen windows. Seven are 26 November's and retire on the
+  27th. Of Cohort 4's nine, one is a derived "Upcoming runs" card that self-heals, and **eight are
+  hand-authored**: the Cohort 4 event file's Key facts summary, and **seven guides** - backlog 103 predicted
+  "at least five". Two files carry both dates and should be opened once per morning, not twice.
+- **29 January 2027, and its smallness is the finding.** Seventeen windows: the same sixteen plus Cohort 5's
+  own Key facts summary. **No guide carries Cohort 5's date in the pointer shape at all.** The seven guides
+  all point at Cohort 4, which is correct - a pointer should name the nearest bookable day - and it means the
+  4 December sweep is a **re-point** rather than a tidy-up, and the re-pointed lines fall due again on 29
+  January. Filed as **backlog 125**, with the file list and line shapes.
+
+**The structural question that falls out of it, filed as backlog 126 and deliberately not answered.** Seven
+guides hard-code the nearest cohort's date in their closing line, so every rollover is an eight-file rewrite,
+roughly every six weeks at the current cadence. **This is not a defect and must not be filed as one**: a
+dated, venued, specific pointer is precisely what the GEO log keeps recording that engines cannot find
+anywhere, so trading it for "see the programme page" would give away the one thing those pages assert. The
+item records three options and the condition for choosing between them - a measured timing of the 4 December
+sweep - rather than picking one.
+
+**What was weighed and declined, recorded so it is not re-derived and not taken early.** Bringing forward the
+Coding programme page's venue answer **on its own**. That one is the honest exception to backlog 103's "do not
+bring it forward", because tense-neutral is its correct final form rather than a patch, so shipping it today
+would have finished it and shortened the 27 November sweep to four files. It was declined on the copy rather
+than the mechanism: that sentence is the venue answer on the programme page for a day that is **on sale and
+four days out**, and "Cohort 1 is there on Thursday 26 November 2026" is a better sentence for a buyer this
+week than any date-proof form of it. The trade is live selling copy during the only week it sells, for a
+maintenance saving of one file. The same reasoning holds on the 23rd through the 26th.
+
+**Four clean sweeps, recorded so no cycle re-derives them as defects.**
+
+- **Whole-`dist` on-page sweep, eight dimensions, zero findings.** Across the 58 indexable pages (11 noindex):
+  every one has exactly one `h1`, a canonical that matches its own URL, a meta description inside 160
+  characters, an `og:image`, no `http://` link, no `img` without an `alt` attribute, and no generic anchor
+  text ("click here", "read more", "learn more"). Nothing to fix on any of the eight.
+- **Guide-to-offer link census, 32 guides.** Every guide reaches a programme or event page. One guide's
+  **markdown body** carries neither link - `what-is-an-agentic-bootcamp`, which is the top-of-funnel
+  definition page - but the built page emits five links to the Agentic programme page and three to the Coding
+  cohort, from `relatedProgrammes` frontmatter and the template. A prose observation, not a page gap.
+- **Relative-time sweep across content, lib, pages and components.** Twenty hits on phrases that go stale
+  silently ("next week", "this month", "next year"). Every one is generic - "says what they will use it for
+  next week", "you hear first when the next one is on" - and not one is a dated claim. `check-dates.mjs`
+  covers the class that matters; a second guard is not warranted.
+- **Headless Chromium over five pages at 375 and 1280px**, including the Coding programme page selling the
+  day four days out: 60 assertions, 50 passed, and all 10 failures are the single console-error assertion
+  against hosts this sandbox blocks (googletagmanager.com everywhere, the luma.com embed on the event pages).
+  Every structural assertion - status, single visible `h1`, no horizontal scroll, footer - clean at both
+  widths. Screenshots inspected.
+
+**Four probes, zero citations, the twenty-fourth consecutive set, and each declined on a different clause of
+the topic rule.** Probe 1 (an employee paying for a day themselves) fails the self-interest clause against
+nine UK providers and colleges, and its answer turns on price and on HMRC tax relief, both of which this site
+must not publish. Probe 2 (portability when a company switches from Claude to Copilot) is the only field in
+this log with no institutional publisher in it and fails the platform-vendor clause instead, on mindstudio.ai
+four times; the engine discounted its own sources as "vendor and consultancy blogs with a commercial stake in
+portability". Probe 3 (who else is in the room) looked like the coverage gap of the set and is a measurement:
+the engine told the buyer to ask the organiser how the cohort is composed, and
+`/guides/questions-to-ask-before-booking-ai-training/` already answers it in question shape at heading 7.
+Probe 4 (whether the apprenticeship levy can pay) is unwinnable against the Skills England register and six
+universities, and unanswerable from here because it is a claim about public money behind blocked hosts.
+**Skills England has now appeared twice in six days**, which is backlog 109's thread and a second reason to go
+if egress ever opens.
+
+**Off-page: three hosts new to both lists**, all mention, speaking or partnership routes rather than
+directories - `iuk-business-connect.org.uk` (Innovate UK Business Connect, which took five result slots on one
+probe and runs the same workshop format we run, as a publicly funded national body), `wonkhe.com` and
+`feweek.co.uk`. Four hosts and nine competitor providers in these fields were deliberately not added, each
+with the reason written next to it. Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud, tried once:** `fetch-search-console.mjs` reports no service-account
+key, and `seo-data/` holds no export newer than the 24 August baseline. Nothing estimated. **No new guide this
+week** - 32 guides, newest `publishDate` 20 October. `oxfordagentic.com`, `luma.com` and `www.gov.uk` all fail
+to resolve from this sandbox, so no live page was read, no event fact was touched, backlog 109 stays blocked,
+and deploy state came from the Actions API.
 
 ### 22 Nov 2026 (02:00 UTC cycle) - no page changed. The cycle's finding is that the dated item due on 27 November is five sentences in five files rather than the one clause the backlog recorded, and that the obvious fix for four of them would silence the guard instead of solving it
 

@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-22 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-FOURTH CONSECUTIVE SET, AND FOUR DECLINES ON FOUR DIFFERENT CLAUSES OF THE SAME RULE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com`
+does not resolve from this sandbox, and neither do `luma.com` or `www.gov.uk`, so no live page and no Luma
+fact was checked, deploy state came from the Actions API, and every site fact below comes from committed files
+or from the built output.
+
+**The dedupe ran first and the 02:00 refinement was followed.** All **218** distinct question strings in the
+column below were extracted and then **read for the concept rather than grepped for the vocabulary**, which is
+what that cycle's lesson asks for. Six candidate axes were dropped as already covered in the buyer's own
+wording: a certificate or CV-credential axis (unwritable anyway under the standing decision to say nothing
+either way), running cost of a workflow after the day, remote or livestream attendance (covered three times as
+in-person against online), what to build second, repeat attendance, and overnight logistics.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | my employer will not pay for AI training, is it worth paying for a one day hands-on AI course myself UK (**self-funded individual axis, never probed**) | **No** | **qa.com x3**, **shortcourses.lsbu.ac.uk x3**, **wiseowl.co.uk x3**, reed.co.uk x2, generalassemb.ly x2, citylit.ac.uk, tees.ac.uk, leicestercollege.ac.uk, westminster.ac.uk |
+| 2 | if I build an AI workflow with Claude and my company later switches to Microsoft Copilot do I have to start again, vendor lock-in (**portability axis, never probed**) | **No** | **mindstudio.ai x4**, dev.to x3, ibl.ai x2, raw.githubusercontent.com x2, builtin.com, rework.com, softwareseni.com, hashnode.com, joinnextdev.com, beri.net |
+| 3 | who else will be in the room at a hands-on AI workshop, mix of industries or peers from my own sector UK (**cohort-composition axis, never probed**) | **No** | **iuk-business-connect.org.uk x5**, eventbrite.co.uk x2, mgmt.ucl.ac.uk, sheffield.ac.uk, kcl.ac.uk, ai-uk.turing.ac.uk, brainstation.io, innovationvisual.com, luma.com, createwith.com, artefact.com |
+| 4 | can the apprenticeship levy or UK skills funding pay for a one day AI training course for staff (**funding-route axis, never probed**) | **No** | **skillsengland.education.gov.uk x3**, **york.ac.uk x3**, **imperial.ac.uk x3**, wonkhe.com x2, feweek.co.uk x2, bpp.com, salford.ac.uk, bath.ac.uk, gceducationandskills.ac.uk, assets.publishing.service.gov.uk |
+
+**Reading.**
+
+- **All four decline on the topic rule, and the useful part is that each one fails a different clause of it.**
+  That is worth recording on its own: after twenty-four sets the rule is still doing real discriminating work
+  rather than rejecting everything for the same reason.
+- **Probe 1 fails the self-interest clause and the never-state list at the same time.** The field is nine UK
+  training providers and colleges writing about their own courses, so there is no independent voice in it to
+  displace, and we would be the tenth. Worse for us: the engine's answer turns almost entirely on **price**
+  and closes by pointing the buyer at **HMRC guidance on tax relief for self-funded training**. This site
+  publishes no prices by standing decision, and VAT treatment is a standing never-state. There is no honest
+  page here, and the part of the question that decides the sale is the part we must not answer.
+- **Probe 2 is the only probe in this log whose field holds no institutional publisher at all, and it still
+  fails.** The clause it fails is the platform-vendor one: `mindstudio.ai` four times selling a portability
+  product, plus `ibl.ai` and `softwareseni.com`. The engine flagged its own sources unprompted - *"these
+  sources are mostly vendor and consultancy blogs with a commercial stake in portability"*. It also fails
+  CONVERTING on inspection: the searcher is making an architecture decision about a stack, not choosing a
+  training day. The axis is genuinely distinct from the three covered ones nearest it (durability as time
+  passes, which tool to standardise on, and the Copilot-only constraint), so it is logged as new rather than
+  as a duplicate, and declined on its merits.
+- **Probe 3 looked like the coverage gap of the set and is not one.** The engine could not name who attends
+  any particular workshop and closed by telling the buyer to *"check the booking page's 'who should attend'
+  section, or ask the organiser directly how the cohort is composed"*. That is the question this site already
+  answers in question shape: `/guides/questions-to-ask-before-booking-ai-training/` carries **"## 7. Who else
+  will be in the room?"** with *"Peer level matters more in a small room than the syllabus does"*, and four
+  further surfaces describe the room as a small room of senior people or senior peers
+  (`/bootcamps/oxford-agentic-bootcamp/` twice, `ai-bootcamp-vs-course-vs-exec-education`,
+  `after-the-ai-executive-programme`). A measurement, not a gap. The field is institutional anyway - Innovate
+  UK Business Connect five times, UCL, Sheffield, King's and the Turing Institute - so it is unwinnable on the
+  first clause as well.
+- **Probe 4 is unwinnable and also unanswerable from here, and both halves matter.** The field is the Skills
+  England apprenticeship-unit register itself plus six universities and two education trade titles, which no
+  independent page displaces. And the answer is a claim about **public money**: whether levy funds can pay for
+  a one-day course turns on whether it is a registered apprenticeship unit and on a 30-hour minimum, which
+  would have to be read off `skillsengland.education.gov.uk` and `assets.publishing.service.gov.uk`. Neither
+  resolves from this sandbox. A page asserting funding eligibility from a search tool's summary is exactly the
+  defect **backlog 109** was blocked on. Recorded, not written.
+- **Skills England appears for the second time in six days**, which is backlog 109's thread. The 17 November
+  cycle found the SKAI review there; this probe finds the apprenticeship-unit register. Both are behind the
+  same blocked hosts. If egress ever opens, there are now two reasons to go.
+- **Twenty-four consecutive probe sets with zero citations of oxfordagentic.com.**
+
 ## 2026-11-22 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-THIRD CONSECUTIVE SET, AND A REFINEMENT TO THE DEDUPE LESSON THAT ALMOST COST THIS CYCLE A PROBE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
