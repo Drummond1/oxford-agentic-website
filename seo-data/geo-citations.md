@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-22 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-THIRD CONSECUTIVE SET, AND A REFINEMENT TO THE DEDUPE LESSON THAT ALMOST COST THIS CYCLE A PROBE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused by this sandbox's egress policy (HTTP 403 at the proxy on `curl`) and so are `luma.com` and
+`www.gov.uk`, so no live page and no Luma fact was checked, deploy state came from the Actions API, and every
+site fact below comes from committed files or from the built output.
+
+**The dedupe ran first, and it needs a correction to the lesson it was following.** All **215** distinct
+question strings in the column below were extracted and normalised before a single search, as the 21 November
+cycles require. Six candidate axes were then dropped as duplicates. But the one that nearly got through is the
+useful part: **the durability axis - what happens to the workflow when the model or the tool changes - looked
+untouched on four separate keyword greps** (`model`, `update`, `maintain` and `stale` all return zero in the
+question column) **and is in fact covered three times over**, by *"will the AI workflow I build at a training
+day still work in six months when the tools change"*, *"why AI automations stop working after a few months and
+what to do about it, small business"* and *"what happens after an AI bootcamp, does the workflow still work a
+month later"*. Not one of those uses any of the four words.
+**So the refinement is this: grepping the question column on the candidate's own vocabulary is not enough,
+because the covering question is usually phrased in the buyer's words rather than the candidate's. Read the
+column for the concept.** It is 215 lines; reading it costs less than the probe it saves.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is an AI conference or a hands-on AI workshop better value for a business owner who wants to actually build something UK (**format-alternative axis, never probed**) | **No** | **eventbrite.co.uk x5**, lilachbullock.com x2, meetup.com, uwe.ac.uk, mgmt.ucl.ac.uk, innovationvisual.com, internshala.com, bethebusiness.com, thesmallbusinessexpo.com, destinationmiltonkeynes.co.uk |
+| 2 | do I need to learn prompt engineering before I can build an AI agent for my own business (**prerequisite axis, never probed**) | **No** | **salesforce.com x4**, **business.adobe.com x3**, databricks.com, relevanceai.com, freecodecamp.org, techtarget.com |
+| 3 | should we run an internal AI hackathon or send people to an external hands-on AI workshop UK which actually produces working tools (**format-alternative axis from the budget holder's side, never probed**) | **No** | **angelhack.com x3**, virtasant.com x2, edelman.com x2, corporate.hackathon.com, teamland.com, techcrunch.com, activepieces.com, aihr.com, gartner.com, profiletree.com, itrevolution.com |
+| 4 | is a hands-on AI workshop useful if my business data is all in spreadsheets and email not in a proper system (**data-readiness objection, never probed**) | **No** | **Google x4** (workspace.google.com x2, blog.google, grow.google), microsoft.com, cdn.openai.com, claude.com, meetup.com x2, enterprisenation.com, training.unh.edu, it.cornell.edu, sba.gov, commbank.com.au, salford.ac.uk, mothership.sg |
+
+**Reading.**
+
+- **Probes 2 and 4 fail the topic rule's platform-vendor clause outright, and probe 4 is the plainest example
+  this log holds.** Probe 2's field is Salesforce four times, Adobe three and Databricks once, every one of them
+  writing about prompting on its own platform. Probe 4's is **Google four times, plus Microsoft, OpenAI and
+  Anthropic** - the four companies whose products the question is about, answering a question about their own
+  products. There is no gap to fill against a field like that and no cycle should re-probe either axis.
+- **Probe 4 is worth one more line, because the engine's own answer is this site's Second Brain argument.**
+  It closed: *"a workshop is worth it if it works with your actual spreadsheets and email and covers privacy.
+  It's less useful if you're hoping it will fix a disorganized setup. Consider a small first step, such as
+  consolidating key data into one clean sheet."* That is the Second Brain Bootcamp's premise, arrived at
+  independently. **Nothing was written**, under the standing decision of 13 September: ranking is not the
+  Second Brain line's constraint, demand is, and piling on Second Brain content does not fix demand.
+- **Probe 3 is a genuinely new axis, unowned, and declined on self-interest.** The engine said in terms that
+  *"the search turned up no independent comparison of external workshops against internal hackathons"* and that
+  *"most of the sources are written by hackathon vendors or consultancies"*. So the field is vendor-owned from
+  the other side of the same trade, and a comparison of hackathons against workshops written by a workshop
+  seller is the same objection **backlog 124** was declined under three cycles ago. The engine's own closing
+  advice already favours us (*"run an external workshop first to build skills, then an internal hackathon"*),
+  which makes writing it look tempting and makes it no more honest. **Declined, recorded, do not re-pitch.**
+- **Probe 1 is the one that is winnable on the letter of the rule and still should not be written.** Its field
+  is event listings - Eventbrite five times - plus two marketing blogs, with no institutional publisher and no
+  platform vendor in it, and the engine volunteered that it *"found no independent UK comparison of costs or
+  outcomes, and no data on how many workshop attendees actually build working tools afterwards"*. It fails on
+  **CONVERTING**: a reader weighing a conference against a workshop in the abstract is not close to booking a
+  day in Oxford, and the format comparison nearest to it that we do publish -
+  `in-house-ai-day-or-send-people-to-a-cohort` - earns its place because it argues against a format we also
+  sell. This one would not. **Declined, recorded.**
+- **Twenty-three consecutive probe sets have now returned zero citations.** Four of this cycle's four fields
+  were decided on winnability or conversion rather than on reach, so unlike the 21 November sets this one adds
+  no new evidence for backlog **2b**. It does not weaken it either: nothing here was a retrieval test.
+
+**The headless browser ran, and the two things it flagged are both this sandbox rather than the site.**
+Seven pages at 375 and 1280px against a local `astro preview` build, eight assertions each: **112 assertions,
+98 passed.** Every structural assertion is clean on every page and both widths - HTTP 200, zero horizontal
+overflow, exactly one `h1`, zero images without `alt`, zero links or buttons without an accessible name, zero
+duplicate `id`s, `lang` set. **All 14 failures are the single console-error assertion, and every one of them is
+a blocked third-party host**: `googletagmanager.com` (the GTM container and the Google Ads tag) on all seven
+pages, and `luma.com/embed/event/...` on the three on-sale event pages. Both are refused by the egress proxy,
+so a cycle running this audit should expect them and must not read either as a site fault.
+**Two notes for whoever writes the next audit script**, both of which cost this cycle a re-run: `playwright`
+resolves from `/opt/node-tools/node_modules/playwright/index.js` and is CommonJS, so it needs the absolute path
+and a default import; and an accessible-name check must read `textContent`, not `innerText`, or the three
+collapsed desktop-dropdown links report as nameless at 1280px when their text is right there in the markup.
+
 ## 2026-11-21 (20:05 UTC cycle) - FOUR PROBES, ZERO CITATIONS, AND AN ENGINE THAT TOLD A BUYER TO BOOK OUR 3 DECEMBER DAY ON THE BOOKING PAGE OF A COHORT THAT RAN IN SEPTEMBER
 
 **A note on this log's own headings first, because two entries now read 20:00.** The three entries below are

@@ -2464,9 +2464,11 @@ Status: `todo` · `blocked` (why) · `doing`
     College on Walton Street, in central Oxford, which is also where the Oxford Agentic Bootcamp runs.
     Cohort 1 is there on Thursday 26 November 2026. Each event page confirms its own venue and date."*
     The middle sentence is true until 26 November and false on the 27th, and the derived "Upcoming
-    runs" card beside it will already have gone, so the page would have said it alone. It is the only
-    hand-authored forward-tense claim among the 32 tense-blind date windows measured this cycle: every
-    other one is either a derived card that self-heals or prose deliberately written tense-neutral.
+    runs" card beside it will already have gone, so the page would have said it alone. **That claim was wrong, and the correction is the body of this item now
+    (measured 22 Nov 2026, 02:00 cycle, by running `check-dates.mjs --now=2026-11-27` against the built
+    site and then tracing every hit back to its source file).** It is not the only hand-authored
+    forward-tense claim on 26 November. **There are five, in five files**, and the 27 November cycle must
+    sweep all five rather than the one clause this item originally described.
     **`check-dates.mjs --now=2026-11-27` now returns it**, which makes it a hard build failure from
     that morning rather than a thing somebody has to remember.
     **The fix is one clause, and the pattern already exists two files away.** The Agentic programme
@@ -2477,6 +2479,42 @@ Status: `todo` · `blocked` (why) · `doing`
     sentence is correct today and it is the on-sale cohort's own venue answer ten days out, so
     rewriting it now would publish an error to prevent one. Same reasoning as backlog 89's four
     remaining past-tense rewrites, which fall due on 20 November.
+
+    **The census, 22 Nov 2026.** `check-dates.mjs --now=2026-11-27` returns **seven** stale windows. Two are
+    derived cards that self-heal on the first real build after the day - the "Upcoming runs" card on
+    `/bootcamps/agentic-coding-bootcamp/` and the "Upcoming" band on `/events/` - and the checker only flags
+    them because it simulates a date against HTML built today. **The other five are hand-authored and will
+    not heal:**
+    - `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md` (line 25, the Key facts summary) -
+      *"Cohort 1 of the Oxford Agentic Coding Bootcamp runs on Thursday 26 November 2026 at Worcester
+      College, Oxford."* This is the same field that was rewritten by hand on Cohorts 1, 2 and 3 after each
+      ran, so it is a known job, not a new one - and it is the one that can only be done after the day,
+      because it is also where the outcome goes.
+    - `src/content/programmes/agentic-coding-bootcamp.md` (line 179, "Where in Oxford is it held?") - the
+      clause this item was originally about.
+    - `src/content/guides/claude-cowork-claude-code-or-codex.md` (line 61) - *"Cohort 1 runs on 26 November
+      2026 at Worcester College"*, as the guide's closing pointer.
+    - `src/content/guides/why-the-code-an-agent-wrote-is-not-live.md` (line 95) - the same sentence, same job.
+    - `src/content/guides/when-ai-executive-cohorts-run.md` (line 26) - *"The days still on sale are the
+      first Coding Bootcamp, which runs on 26 November, a fourth agentic day on 3 December..."*. **This one
+      also retires the 21 Nov 20:00 cycle's note that the standing prompt's candidate 2 is closed on this
+      file.** It reads correctly today; it asserts what is on sale, so it goes wrong on the 27th.
+
+    **The rule the sweep needs, and it is why a blanket tense-neutral rewrite would be the wrong fix.**
+    Tense-neutral is right for a **venue statement**, where the fact is simply where a day happens - that is
+    the Agentic programme page's published pattern and it is the right fix for the programme page above.
+    It is the wrong fix for a **booking pointer**: four of the five exist to hand a reader a day they can
+    book, and a tense-neutral sentence pointing at a day that has passed satisfies the checker while leaving
+    the buyer at a dead end. Those four want a forward pointer to the next bookable day, which on 27 November
+    means Cohort 4 on 3 December unless a second Coding cohort is on sale by then. **That is the reason this
+    was not brought forward on 22 November**: silencing the guard early with tense-neutral copy would have
+    removed the thing that forces the real rewrite, and it would have blunted the closing line of two guides
+    four days before the day they point at.
+
+    **The same class falls due twice more**: on **4 December** for Cohort 4's 3 December date, which at least
+    five guides carry in the same "Cohort 4 runs on ..." shape, and on **29 January 2027** for Cohort 5. A
+    cycle on either morning should run `check-dates.mjs --now=` first and trace every hit to its source file
+    before touching anything, rather than trusting any count written down here.
 
 104. `todo` **(needs Drummond, a homepage card-layout call; the same family as backlog 55; found
     16 Nov 2026 in the 14:00 cycle)** - **the homepage shows three upcoming cohorts and there are now
@@ -3015,6 +3053,101 @@ Status: `todo` · `blocked` (why) · `doing`
     both sell. Do not re-pitch on winnability alone.
 
 ## Shipped
+
+### 22 Nov 2026 (02:00 UTC cycle) - no page changed. The cycle's finding is that the dated item due on 27 November is five sentences in five files rather than the one clause the backlog recorded, and that the obvious fix for four of them would silence the guard instead of solving it
+
+**No page changed.** The commit carries records only: this entry, the corrected backlog 103, the GEO log and
+one off-page entry. All four paths match the exempt pattern in `indexnow-ping.mjs` line 166, read off the
+source this cycle (`^(IMPROVEMENTS|STATE|README)\.md$`, `^outreach/`, `^seo-data/`), so **this commit maps to
+zero IndexNow URLs by design**. The ping script was not run, in dry-run or otherwise.
+
+**Board state before anything was touched.** HEAD checked against `origin/main` first, as the 9 November trap
+requires: both at `8336017`, tree clean. Deploy run 44944858065 and CI run 44944858082 both **success** on that
+SHA, nothing queued or running. One open pull request from Drummond (#4, `drummondgilbert/dru-12-...`, CI green)
+sits on a branch and not on `main`, so it does not block this cycle; it touches the homepage hero's booking
+button, and nothing here goes near that file. Baseline build green and every figure identical to the last four
+cycles': links (3,462 across 69 pages), outbound (13 third-party warnings, all of them this sandbox's egress
+policy rather than the sites), schema (69 pages valid, 17 Event nodes, 22 `FAQPage`, 128 offset-bearing
+publication dates, 1,483 resolving graph references, 59 breadcrumb trails, all titles and descriptions unique)
+and both date checks.
+
+**The cycle's finding, and it corrects an item this ledger wrote six days ago.** Backlog **103** records one
+hand-authored sentence that goes stale the morning after the Coding Bootcamp runs, and says in terms that it
+*"is the only hand-authored forward-tense claim"* on that date. Run properly -
+`check-dates.mjs --now=2026-11-27` against the built site, then every hit traced back to the file it came from
+- the count is **seven windows, of which two are derived cards that self-heal and five are hand-authored and
+will not**: the Coding event file's own Key facts summary, the Coding programme page's venue answer, the
+closing pointer in `claude-cowork-claude-code-or-codex` and again in `why-the-code-an-agent-wrote-is-not-live`,
+and the on-sale sentence in `when-ai-executive-cohorts-run`. The last of those also retires yesterday's note
+that the standing prompt's candidate 2 is closed on that file: it is correct today and wrong on the 27th. The
+full census, with line numbers, is in the corrected item.
+
+**The more useful half is why none of it was shipped today, because the obvious fix is a trap.** Backlog 103
+offers a tense-neutral rewrite as one of two options, and tense-neutral copy would pass the checker on 27
+November without publishing anything false today. It is still the wrong move for four of the five. A venue
+statement is a fact about where a day happens, so tense-neutral is right for it - that is the Agentic
+programme page's published pattern. The other four exist to hand a reader a day they can **book**, and a
+tense-neutral sentence pointing at a day that has passed satisfies the guard while leaving the buyer at a dead
+end. Those four want a forward pointer to the next bookable day, and what that is depends on facts the 27
+November cycle will have and this one does not. **Shipping the cheap version today would have removed the
+thing that forces the real rewrite, and blunted the closing line of two guides four days before the day they
+point at.** The guard firing on the 27th is the mechanism working, not a defect to pre-empt. The same class
+falls due again on **4 December** and **29 January 2027**.
+
+**Four probes, zero citations, the twenty-third consecutive set, and all four declined on the topic rule
+rather than on reach.** The full table and the readings are in `seo-data/geo-citations.md`. Probes 2
+(prompt-engineering as a prerequisite) and 4 (data that lives in spreadsheets and email) fail the
+platform-vendor clause outright - Salesforce four times and Adobe three on the first, **Google four times plus
+Microsoft, OpenAI and Anthropic** on the second, every one of them answering a question about its own product.
+Probe 3 (an internal hackathon against an external workshop) is a genuinely new and unowned axis, declined on
+the self-interest clause that settled backlog 124: the engine said outright that the field is hackathon
+vendors and consultancies, and a workshop seller writing that comparison is the other side of the same trade.
+Probe 1 (a conference against a workshop) is the one that is winnable on the letter of the rule - event
+listings and two marketing blogs, no institutional publisher - and is declined on **CONVERTING**, because that
+reader is not close to booking a day in Oxford. **Nothing was written, and all four are recorded so no cycle
+re-derives them.**
+
+**A refinement to the dedupe lesson, earned the hard way.** The 21 November cycles established that a cycle
+must grep the GEO log's question column before searching. This cycle did, across all **215** distinct
+questions, and the durability axis - what happens when the model or the tool changes - came back clean on four
+separate keyword greps (`model`, `update`, `maintain`, `stale` all zero) while being **covered three times
+over** in the buyer's own wording. **Grepping the column on the candidate's vocabulary is not enough; the
+covering question is phrased in the buyer's words. Read the column for the concept.**
+
+**The headless browser ran and the page set is clean.** Seven pages at 375 and 1280px against a local `astro
+preview` build, eight assertions each: **112 assertions, 98 passed, and all 14 failures are the single
+console-error assertion against hosts this sandbox blocks** - `googletagmanager.com` on all seven pages and
+the `luma.com` booking embed on the three on-sale event pages. Every structural assertion is clean on every
+page at both widths: HTTP 200, zero horizontal overflow, exactly one `h1`, zero images without `alt`, zero
+links or buttons without an accessible name, zero duplicate `id`s, `lang` set. The Coding Bootcamp's booking
+page was read at 375px by eye - date, hours, venue and the booking button all correct four days out.
+Recorded because the standing decision bars shipping in a cycle that cannot run the browser: this one could,
+and declined to change a page for the reason above.
+
+**Measurements taken and recorded so they are not re-derived.** All seven event pages carry the month and year
+in `<title>` and the full date in the meta description, so the "an engine cannot tell our cohorts apart"
+failure of 21 November is **not** a titling fault on our side. The passed cohort pages already link forward -
+Cohort 2's page carries two links to Cohort 4, one to Cohort 5 and three to the Coding cohort. `llms.txt` is
+current: it lists the three on-sale days under "Next events" with correct dates and venues, and all four
+passed cohorts in the past tense. `robots.txt` allows every named AI crawler and points at the sitemap index.
+Of 58 sitemap URLs, **55 carry a `lastmod` and three do not** - `/about/`, `/privacy/` and `/testimonials/` -
+and that is deliberate and documented in `astro.config.mjs`, not a defect: no content file backs them, and a
+build-date stamp would be untrue. **No cycle should re-measure any of these five.**
+
+**Off-page: one entry, two hosts new to both lists**, both UK small-business bodies and both mention or
+speaking routes rather than directories - `enterprisenation.com` and `bethebusiness.com`. Twelve other hosts
+in this cycle's four fields were deliberately not added: `teamland.com`, `innovationvisual.com`,
+`lilachbullock.com` and `meetup.com` are already listed; `angelhack.com`, `corporate.hackathon.com` and
+`virtasant.com` are hackathon vendors rather than routes; `uwe.ac.uk`, `mgmt.ucl.ac.uk`, `it.cornell.edu` and
+`training.unh.edu` are peers running their own courses; and the platform vendors are not approachable as
+mentions. Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud**, tried once: `fetch-search-console.mjs` reports no service-account
+key configured, and there is no export in `seo-data/` newer than the 24 August baseline. Nothing estimated.
+**No new guide this week** - 32 guides, newest `publishDate` 20 October, so the week of 16-22 November ends at
+zero of three and the limits are untouched. `oxfordagentic.com`, `luma.com` and `www.gov.uk` are all refused
+by this sandbox's egress policy, so no live page was read, **no event fact was touched**, backlog 109 stays
+blocked for the same reason it was filed, and deploy state came from the Actions API.
 
 ### 21 Nov 2026 (20:05 UTC cycle) - no page changed. The one backlog item this cycle set out to ship was closed out of the log instead of probed, and the cycle's real finding is an engine telling a buyer to pay for our 3 December day on a September cohort's checkout
 

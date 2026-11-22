@@ -11,6 +11,26 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two UK small-business bodies that reach our buyer and are not directories.** Found 22 Nov 2026
+  (02:00 UTC cycle), in the fields of two answer-engine probes. **Nothing contacted, submitted, claimed
+  or paid for, and neither host resolves from this sandbox.**
+  - `enterprisenation.com` - **Enterprise Nation**, the UK small-business network. It appeared in the
+    field for the data-readiness probe with a "lunch and learn" session called *How to use AI to turn
+    business data into useful answers*, and the line the engine quoted from it is ours almost word for
+    word: most small businesses *"already sit on useful data - in spreadsheets, accounting tools, CRMs
+    and website analytics - but struggle to turn it into clear answers"*. So it runs short practical AI
+    sessions, for exactly the lean owner-operator we sell to, in a format Drummond already delivers.
+    **The route is speaking or contributing, not a listing.** Worth ten minutes because it is the
+    nearest thing in these fields to an audience we do not reach and cannot buy.
+  - `bethebusiness.com` - **Be the Business**, the UK business-productivity non-profit, in the field for
+    the conference-against-workshop probe with a case study rather than marketing. A mention or
+    contribution route, and a more institutional one than anything else on this list: it is a national
+    productivity body rather than a vendor, so a mention there is the kind of third-party citation
+    backlog 2b keeps asking for.
+  - **Neither was checked.** Both hosts are refused by this sandbox's egress policy, so whether either
+    takes outside contributions, what it asks for, and whether any link is followed are all unknown.
+  - Needs: someone with an unblocked browser to open both and decide whether either is worth an email.
+
 - **An engine told a buyer to book our 3 December day by pressing Get Tickets on the booking page of a cohort
   that ran in September.** Found 21 Nov 2026 (20:05 UTC cycle). **Nothing contacted, submitted, claimed or paid
   for, and none of the hosts below resolves from this sandbox.**
