@@ -24,7 +24,17 @@ const statusLabel: Record<string, string> = {
   <p class="event-card__meta">
     <span class="event-card__part">{formatDate(event.data.startDate)}</span>
     <span class="event-card__part">{venueLine(event.data.venue)}</span>
-    {!event.data.venue.confirmed && <span class="event-card__tbc">venue to confirm</span>}
+    {
+      /* `venue.confirmed` is false while the *booking* is provisional, not while
+         the venue is in doubt: the schema field says so, the event page renders
+         "Room booking being finalised." from the same flag, and the programme and
+         homepage answers both carry the qualifier as "the room booking is being
+         finalised". This chip said "venue to confirm" and sat directly under the
+         venue line, so on the one card it applies to a reader saw "Jesus College,
+         Oxford" and then read that the college itself might change. It names the
+         room, as the rest of the site does. */
+      !event.data.venue.confirmed && <span class="event-card__tbc">room booking to confirm</span>
+    }
     {
       /* The cap is the honest scarcity signal — a real number from the event
          file, shown only while booking is open. */

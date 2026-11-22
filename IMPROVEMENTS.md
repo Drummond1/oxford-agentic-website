@@ -3117,6 +3117,102 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 22 Nov 2026 (09:00 UTC cycle) - the one card that qualifies an unconfirmed booking said "venue to confirm" and sat directly under the venue it was qualifying. It names the room, as the event page, both FAQ answers, the guide and `llms.txt` already do. One string, one shared component, 4 of 209 built files
+
+**The defect.** `src/components/EventCard.astro` rendered `venue to confirm` whenever
+`venue.confirmed` is false. Only Cohort 5 carries that flag today, and its card prints
+`JESUS COLLEGE, OXFORD` on the line immediately above the chip. Read at 320px and at 1280px, the
+card says the college and then says the venue is not settled, so a buyer planning travel to Turl
+Street for 28 January is told the address above may change.
+
+**It is the only surface on the site that reads the flag that way, and the repo had already decided
+the other way twice in writing.** `src/content.config.ts` line 70 defines the field as *"False while
+a **booking** is provisional"*. `src/pages/events/[slug].astro` line 582 renders *"Room booking being
+finalised."* from the same flag. `src/lib/llms.ts` line 270 appends *"(room booking being
+finalised)"*. `src/content/programmes/oxford-agentic-bootcamp.md` and `src/lib/home.ts` both answer
+"where in Oxford" with *"where the room booking is being finalised"*, and both carry a source comment
+saying in terms that the qualifier **travels with the claim** and must stay until the vault records
+the booking. `when-ai-executive-cohorts-run` says *"with the room booking there still being
+finalised"*. Five surfaces say room; the card said venue. The event file's own comment is explicit -
+Jesus College is *"Shown on Luma"* and it is the **room** that is an open task.
+
+**The change.** One string, `venue to confirm` to `room booking to confirm`, with the reasoning as a
+comment next to it. No fact was added, removed or weakened: the college was already published on six
+surfaces and the booking is still stated as unconfirmed. `confirmed: false` was not touched and must
+not be flipped until Jesus College confirms.
+
+**Why that wording and not the event page's verbatim.** All four candidates were measured in the
+browser at 320, 375, 414, 768, 1024 and 1280px: `venue to confirm` 134px, `room to confirm` 126px,
+`room booking to confirm` 186px, `room booking being finalised` 223px. **Every one fits on a single
+line at every width** - chip height 23px and meta-block height 78px are identical across all four, so
+the exact-match option was available and was not declined on layout. It was declined on register: the
+chip is a label inside a card, not a sentence, the card's own established grammar is *"... to
+confirm"*, and at 320px the 223px version fills almost the whole 236px content line for a secondary
+qualifier. The defect was the noun, and the noun is what changed. If a later cycle prefers the
+verbatim form, it fits.
+
+**Scope, measured rather than assumed.** Whole-`dist` sha256 diff: **4 of 209 files** - `/`,
+`/events/`, `/bootcamps/oxford-agentic-bootcamp/` and `/home-photos/` (noindex). With the lines split
+on tag boundaries, each of the four diffs is **exactly one line**, the chip's own, and the component's
+scoped style hash `data-astro-cid-j3v25qam` is unchanged, so no CSS moved. Nothing else in `dist`
+changed, the sitemap did not move, and no schema node was touched.
+
+**Checks.** `npm run build` green, every figure identical to the last six cycles': links (3,462 across
+69 pages), outbound (13 third-party warnings, all of them this sandbox's egress policy), schema (69
+pages valid, 17 Event nodes, 22 `FAQPage`, 128 offset-bearing publication dates, 1,483 resolving graph
+references, 59 breadcrumb trails, all titles and descriptions unique), both date checks, and
+`check:flags` (all-on and all-off builds both pass link and schema). `astro check` **not run: backlog
+70** - it still asks to install `@astrojs/check` interactively in a clean checkout, and installing it
+would put `package.json` and the lockfile in this cycle's diff. Headless Chromium against a local
+`astro preview` build: the Cohort 5 card screenshotted before and after at **320, 375, 768 and
+1280px** on `/` and `/events/` and read by eye at each; the four affected pages re-audited at 320,
+375, 768 and 1280px with **zero horizontal overflow, zero elements past the viewport, zero heading
+skips, zero controls without an accessible name and zero duplicate ids**. All three Luma links
+(`oxfordagentic4`, `oxfordagentic5`, `agenticcoding`) and the Cohort 5 route still render on every
+affected page. The chip sits inside the card's own anchor, so tab order is unchanged; the focus sweep
+below was run before the edit and the edit cannot move it.
+
+**Four clean sweeps from this cycle, recorded so no cycle re-derives them as defects.**
+
+- **Keyboard focus, 10 pages at 1280px**, tabbing every focusable element in order: **0 of 512 stops
+  without a visible indicator**, counting an outline or a box-shadow. The single exception is the
+  Luma `iframe` on an event page, which is a third-party document and not ours to ring.
+- **Whole-site DOM audit, all 58 sitemap pages plus the 11 noindex ones, at 375, 768 and 1280px.**
+  Zero horizontal overflow on every page at every width, zero in-flow elements past the viewport,
+  zero heading-level skips, zero links, buttons or form controls without an accessible name, zero
+  duplicate ids, every page HTTP 200. The only off-viewport elements found are the three forms'
+  honeypot fields at `left: -9999px`, which is what they are for.
+- **Form labelling, `/apply/`, `/second-brain-interest/` and `/first-workflow-picker/`.** Every
+  input, radio, checkbox, textarea and select is **wrapped in its own `<label>`**, so every control
+  is labelled and the whole label row is the hit area. A target-size pass flags the bare 18 by 18px
+  consent and outcome boxes; the wrapping label is the target, so this is **not** a WCAG 2.5.8
+  failure and should not be re-filed as one.
+- **Heading anchors are not a touch-target defect either.** The `#` handles in guides measure 17 by
+  34px and there are 214 of them, which a naive sweep flags on every guide. `global.css` line 757
+  sets `opacity: 0` with `pointer-events: none` and a comment recording that this exact fault was
+  found and fixed. They cannot be tapped. **Do not re-file them.**
+
+**The contrast sweep found exactly one failing colour pair across all 69 pages, and it is backlog 21,
+which is Drummond's.** Computed foreground against the nearest opaque background for every text node
+at three widths: **399 instances on the 58 sitemap pages and 39 on the noindex ones, all of them the
+same pair** - `#9A7B23` on `#FFF9EC` at **3.83:1** against the 4.5:1 small text needs - plus the gold
+`#D4AF37` arrow at **2.0:1** against the 3:1 large text needs, on `/home-photos/` only. That is backlog
+21 exactly, measured on 13 October and unchanged. **Not re-pitched, and no cycle should re-measure
+it**: bronze is Drummond's Brand Guide Gold token and the design tokens are law. No second failing
+pair exists anywhere on the site.
+
+**Board state before anything was touched.** The fresh checkout arrived **detached at `c33ae82` with
+the local `main` ref 21 commits stale at `c259b0e`**, which reads as a branch behind production until
+you fetch; `git fetch` then put `origin/main`, `main` and `HEAD` all at `c33ae82`, tree clean. Deploy
+run 45001639211 and CI run 45001639206 both **success** on that SHA at 08:11 UTC, nothing queued or
+running. **Five open pull requests, none of them blocking and none of them touched**: #1 and #3 are the
+known-stale leftovers this log has recorded since September, #4 is Drummond's homepage hero button,
+and **#5 (`dru-17`, a Cohort 4 day hub) and #6 (`dru-18`, an Agentic AI 101 paid one-to-one) are new
+drafts of his from this morning** - all five sit on branches and not on `main`, and nothing in this
+cycle goes near a file any of them touches. `oxfordagentic.com` is refused by this sandbox's egress
+policy, so **no live page was read and no event fact was touched**; deploy state came from the Actions
+API and the before-state from a local `astro preview` build of `c33ae82`.
+
 ### 22 Nov 2026 (08:00 UTC cycle) - no page changed. The cycle ran the date checker forward instead of guessing, and found that the 4 December job is eight hand-authored sentences rather than the "at least five guides" the backlog predicted, seven of them guide closing pointers that will fall due again on 29 January
 
 **No page changed.** The commit carries records only: this entry, the confirmed census on backlog 103, two new
