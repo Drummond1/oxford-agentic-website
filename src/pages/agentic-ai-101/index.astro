@@ -76,7 +76,7 @@ const interestChoices = [
 ];
 
 const oxfordOption =
-  'In person in central Oxford on set days - you’ll see the times when you book, and I’ll confirm the venue by email.';
+  'In person in Oxford on set days - you’ll see the times when you book, and I’ll confirm the venue by email.';
 
 const steps = [
   'Tell me what you’d like to learn. It takes a minute.',
@@ -100,7 +100,7 @@ const faqs = [
   { q: 'Can my company pay?', a: 'Yes. Stripe emails you a receipt straight away, and if your company needs an invoice, email me and I’ll send one.' },
   {
     q: 'Online or in Oxford?',
-    a: 'Online by Zoom or Google Meet, most weekdays. Or in person in central Oxford on set days - you’ll see the times when you book.',
+    a: 'Online by Zoom or Google Meet, most weekdays. Or in person in Oxford on set days - you’ll see the times when you book.',
   },
   {
     q: 'What if I need to move it?',
@@ -108,7 +108,7 @@ const faqs = [
   },
   {
     q: 'How is this different from the bootcamp?',
-    a: 'The bootcamp is a full day in a room of people building a complete workflow. The 101 is one hour, just you: set up, a first build and a plan. Many people start here.',
+    a: 'The bootcamp is a full day in a room of people building a complete workflow. The 101 is one hour, just you: set up, a first build and a plan.',
   },
 ];
 
@@ -122,7 +122,7 @@ const serviceNode = {
   name: 'Agentic AI 101 - one hour, one to one',
   serviceType: 'One-to-one agentic AI set-up session',
   description:
-    'A one-hour, one-to-one session with Drummond Gilbert. Your AI tools set up on your own laptop, one thing built on a real task from your week, and a personalised written set-up plan within two working days. Online, or in person in central Oxford on set days.',
+    'A one-hour, one-to-one session with Drummond Gilbert. Your AI tools set up on your own laptop, one thing built on a real task from your week, and a personalised written set-up plan within two working days. Online, or in person in Oxford on set days.',
   url: absoluteUrl(path),
   provider: { '@id': ORG_ID },
   mainEntityOfPage: { '@id': `${absoluteUrl(path)}#webpage` },
@@ -130,7 +130,7 @@ const serviceNode = {
     '@type': 'Offer',
     price: cfg.priceGbp,
     priceCurrency: 'GBP',
-    url: absoluteUrl(`${path}#book`),
+    url: `${absoluteUrl(path)}#book`,
     seller: { '@id': ORG_ID },
   },
 };
@@ -162,7 +162,7 @@ const serviceNode = {
       <div class="section-head" data-reveal>
         <hr class="dash" />
         <h2 id="learn-title">What you’ll learn</h2>
-        <p class="lede">Choose what matters to you when you book. Most people pick two.</p>
+        <p class="lede">Choose what matters to you when you book.</p>
       </div>
       <ul class="topics" role="list">
         {
@@ -244,7 +244,7 @@ const serviceNode = {
       <div class="prose prose--wide" data-reveal>
         <p>
           I’m {hostName}. I teach AI in Management at Saïd Business School and run Oxford’s Practical AI meetup. I
-          lead the <a href={bootcampHref}>{bootcampName}</a>, a full build day in Oxford - Cohort 1 ran at St Anne’s
+          lead <a href={bootcampHref}>{bootcampName}</a>, a full build day in Oxford - Cohort 1 ran at St Anne’s
           College in July 2026, with 16 attendees.
         </p>
         <p>The 101 is the core of that day, one to one.</p>
@@ -957,7 +957,7 @@ const serviceNode = {
         `Name: ${text('name')}`,
         `Email: ${text('email')}`,
         `I would like to learn: ${values('interests').map((k) => labels[k] ?? k).join(', ')}`,
-        `How I would like to meet: ${mode === 'oxford' ? 'In person in central Oxford' : mode === 'online' ? 'Online' : ''}`,
+        `How I would like to meet: ${mode === 'oxford' ? 'In person in Oxford' : mode === 'online' ? 'Online' : ''}`,
         `One task: ${text('task')}`,
       ].join('\n');
       const href = `mailto:${contact}?subject=${encodeURIComponent('Agentic AI 101 - please book me in')}&body=${encodeURIComponent(body)}`;
