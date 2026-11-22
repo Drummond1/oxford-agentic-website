@@ -97,7 +97,7 @@ const faqs = [
     q: 'I work with sensitive data. Is that a problem?',
     a: 'No. We start with which tools and settings suit sensitive work, before anything is connected.',
   },
-  { q: 'Can my company pay?', a: 'Yes. You’ll get a receipt and can download an invoice to expense.' },
+  { q: 'Can my company pay?', a: 'Yes. Stripe emails you a receipt straight away, and if your company needs an invoice, email me and I’ll send one.' },
   {
     q: 'Online or in Oxford?',
     a: 'Online by Zoom or Google Meet, most weekdays. Or in person in central Oxford on set days - you’ll see the times when you book.',
@@ -1065,7 +1065,7 @@ const serviceNode = {
         } catch {
           target = null;
         }
-        if (!response.ok || !target || target.protocol !== 'https:') throw new Error('no checkout url');
+        if (!response.ok || !target || target.protocol !== 'https:' || target.hostname !== 'checkout.stripe.com') throw new Error('no checkout url');
 
         track('ai101_checkout_redirect');
         // Give the event a moment to leave before the page does.

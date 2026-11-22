@@ -189,7 +189,7 @@ const email = config.brand.email;
 
     const showCalendar = (url: URL, firstName: string) => {
       const name = firstName.trim();
-      setHeading('Payment received - now pick your time', name ? `Thank you, ${name}. I’ve also emailed you this link, in case you’d rather book later.` : 'I’ve also emailed you this link, in case you’d rather book later.');
+      setHeading('Payment received - now pick your time', name ? `Thank you, ${name} - your payment has gone through.` : 'Your payment has gone through.');
       status.textContent = 'Choose a slot below.';
       status.hidden = false;
       help.hidden = true;
@@ -269,7 +269,7 @@ const email = config.brand.email;
       } else {
         showHelp(
           'Pick your time by email',
-          'I’ve also emailed you a link to pick your time. If it doesn’t arrive, email ',
+          'If your payment went through, I’ll email you a link to pick your time. If nothing arrives by tomorrow, please email ',
           '.',
         );
       }
