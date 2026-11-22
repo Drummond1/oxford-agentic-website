@@ -5,6 +5,74 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-22 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-FIFTH CONSECUTIVE SET, AND THE FIRST SET IN WEEKS WHOSE MOST USEFUL LINE IS AN ENGINE AGREEING WITH THE MESSAGE HOUSE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy, as are `luma.com` and the three Luma cohort pages, so no
+live page and no Luma fact was checked, deploy state came from the Actions API, and every site fact below
+comes from committed files or from the built output.
+
+**The dedupe ran first and the 02:00 refinement was followed.** All **702** distinct question strings in the
+column below were extracted and read for the concept rather than grepped for the vocabulary. Eight candidate
+axes were dropped as already covered in the buyer's own wording: a payback-period framing of the cost
+question, handover of a built workflow to a colleague, one-day against a multi-week programme, learning in a
+room against learning alone, team away days, year-end timing, who is responsible when an agent gets something
+wrong, and self-teaching from free material. The four below are what survived that.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do I need to understand how large language models work before building an AI agent for my business (**foundations axis, never probed**) | **No** | **learn.microsoft.com x2**, dev.to, huggingface.co, mindstudio.ai, frontendmasters.com, dice.com, educative.io, arxiv.org, livebook.manning.com |
+| 2 | what does "no coding" actually mean on an AI course, will I have to write any code at all (**claim-interrogation axis, never probed as a subject**) | **No** | **guvi.in x2**, **ucertify.com x2**, **coursereport.com x2**, blog.udemy.com, udemy.com, iabac.org, boostelearning.com, coursiv.io, coursera.org x2, knowledgehut.com, wisecentral.freshdesk.com |
+| 3 | will an AI workflow I build on my own laptop work on my company's systems or does IT have to rebuild it (**deployment-to-systems axis, never probed**) | **No** | **thoughtworks.com x3**, nocobase.com, architech.ca, cloudwell.io, levelup.gitconnected.com, medium.com, techrepublic.com, cio.com, dev.to, noti.st, two linkedin.com profiles |
+| 4 | is it better to learn AI agents from a practitioner who builds them or from a university lecturer, business course UK (**practitioner-against-academic axis, never probed**) | **No** | **imperial.ac.uk x5**, **lsi.ac.uk x4**, westminster.ac.uk x2, business-school.ed.ac.uk, online.essex.ac.uk, **sbs.ox.ac.uk**, **lifelong-learning.ox.ac.uk**, jbs.cam.ac.uk, jellyfish.com, citylit.ac.uk |
+
+**Reading.**
+
+- **All four decline, and for once the most useful line in the set is not a decline at all.** Probe 2's
+  engine, asked what "no coding" means, answered that there is **no standard definition**, that it means three
+  different things across providers, and that the practical move is to read the syllabus, the tool list and the
+  prerequisites. That is independent corroboration, from outside this site, of the message house rule that
+  "no coding" must never be left standing on its own - a rule the 18 November cycles spent two commits
+  enforcing across ten guide closers. The rule was a judgement call when it was written on 13 August. It is now
+  a judgement call that an answer engine reaches on its own evidence. **No action: the site already complies,
+  and the 18 November sweep closed the last bare closer.** Recorded so the rule is not softened later.
+- **Probe 2 is also unwritable, which is the ordinary finding.** The field is twelve online course sellers
+  writing about their own courses - Udemy twice, uCertify twice, GUVI twice, Coursera twice, Coursiv,
+  KnowledgeHut - so it fails the platform-vendor and self-interest clauses together, and its substance is
+  machine-learning no-code platforms rather than agentic workflows. We would be the thirteenth provider
+  defining a term in the way that suits the thing we sell.
+- **Probe 1 fails on reader, not only on field.** Microsoft's agent-framework docs, Hugging Face's agents
+  course, MindStudio, Frontend Masters, Educative and a Manning book are all teaching a developer how to build,
+  and the engine's own answer tells the reader they can "skip the transformer math" but should understand
+  tokens, context limits and tool calls. That is a developer's answer to a developer's question. Our buyer asks
+  this because they are worried they lack the background, and that worry is answered on this site already, in
+  the buyer's own words, by the prerequisites and "Do I need to be technical?" answers on all three programme
+  pages and on the homepage.
+- **Probe 3 is the consultancy cluster in a different costume, and the standing decision covers it.** Three of
+  the top slots are Thoughtworks, and the rest are NocoBase, Architech and Cloudwell - firms selling AI
+  deployment services. Drummond's 13 September decision is not to target the providers/consultants/services
+  cluster or build services content, and an answer about what IT will make you rebuild is services content
+  whoever writes it. The half of the question that is ours is already published as
+  `getting-an-ai-workflow-past-it-and-legal`, and "Can I install software on my work laptop?" answers the
+  nearest practical half on five pages.
+- **Probe 4 is the least winnable field this log has recorded in a month, and it is a measurement rather than a
+  candidate.** Nineteen of the results are universities and training providers writing about their own
+  programmes: Imperial five times, LSI four, Westminster twice, plus Edinburgh, Essex, Cambridge Judge, City
+  Lit and Jellyfish. **Saïd and `lifelong-learning.ox.ac.uk` both appear**, which is the first time this log has
+  seen the two Oxford institutional lines returned together on a format question. Nothing here is new -
+  `lifelong-learning.ox.ac.uk`'s agentic-workflows course is already recorded in `outreach/review-list.md`, and
+  Saïd's programme is in `STATE.md` - but the two of them answering the practitioner-against-academic question
+  side by side is the clearest statement yet of what this site is up against on a national, undated query, and
+  of why the dated, venued, Oxford-anchored pages are the asset to defend.
+- **Off-page: no new host.** Every contactable host in these four fields is either already on
+  `outreach/review-list.md` (`coursereport.com`, `reed.co.uk`, `cio.com`, `builtin.com`, `imperial.ac.uk`,
+  `knowledgehut.com`, `lifelong-learning.ox.ac.uk`), a competitor provider rather than an opportunity (the
+  nineteen in probe 4, the twelve in probe 2), a consultancy selling the services we have decided not to sell
+  (Thoughtworks, NocoBase, Architech, Cloudwell), or US-readership tech media that fails the same test
+  `builtin.com` failed on 22 November (`techrepublic.com`, `dice.com`). A cycle that adds nothing is recorded
+  as such rather than padded.
+
 ## 2026-11-22 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-FOURTH CONSECUTIVE SET, AND FOUR DECLINES ON FOUR DIFFERENT CLAUSES OF THE SAME RULE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

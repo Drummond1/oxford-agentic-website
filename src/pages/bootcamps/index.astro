@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Hero from '../../components/Hero.astro';
 import config from '../../../site.config';
-import { formatShortDate, getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
+import { absoluteUrl, formatShortDate, getEventsForProgramme, getProgrammes, paths } from '../../lib/site';
 import { ogPathFor } from '../../lib/og';
 import { collectionPageSchema } from '../../lib/schema';
 
@@ -88,7 +88,37 @@ for (let count = nextDates.length; count > 0; count -= 1) {
     collectionPageSchema(
       'Bootcamps',
       paths.programmes(),
-      programmes.map((p) => ({ name: p.data.name, path: paths.programme(p.data.slug) })),
+      /*
+       * What this page lists is a Course, and the list said so nowhere. Each
+       * entry was a bare `ListItem` with a name and a URL, so a consumer that
+       * reads this page alone learned that three pages exist and nothing about
+       * what they are - while each of the three publishes a full `Course` node
+       * of its own, with `teaches`, `audience`, `coursePrerequisites` and a
+       * dated `hasCourseInstance`, under `<url>#course`.
+       *
+       * This is the join the 26 October cycle made on the guides, where
+       * `Article.about` named the programme as an anonymous `Thing` with no
+       * `@id`, and the one `/events/` has carried since 23 October: a listing
+       * whose items are entities in their own right names them as such.
+       * `/guides/` and `/team/` stay bare on purpose - an `Article` node here
+       * has no `@id` to point at, and the `/team/` question is backlog 24's,
+       * which is Drummond's.
+       *
+       * Identity only, exactly as on the guides. `name` and `url` are the two
+       * strings the `ListItem` already published, and the `@id` is derived from
+       * the same path the entry is built from, so nothing is asserted here that
+       * the programme's own page does not already publish.
+       */
+      programmes.map((p) => ({
+        name: p.data.name,
+        path: paths.programme(p.data.slug),
+        item: {
+          '@type': 'Course',
+          '@id': `${absoluteUrl(paths.programme(p.data.slug))}#course`,
+          name: p.data.name,
+          url: absoluteUrl(paths.programme(p.data.slug)),
+        },
+      })),
     ),
   ]}
   breadcrumbs={[{ name: 'Bootcamps', path: paths.programmes() }]}

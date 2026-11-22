@@ -11,6 +11,25 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host this cycle, and the four fields it looked in are recorded so they are not swept again.**
+  Found 22 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
+  claimed or paid for.** Every contactable host in those fields fell into one of four buckets, each named
+  here with its reason rather than left out:
+  - **Already on this list or in `off-page-listings.md`:** `coursereport.com`, `reed.co.uk`, `cio.com`,
+    `builtin.com`, `imperial.ac.uk`, `knowledgehut.com`, `lifelong-learning.ox.ac.uk`.
+  - **Competitor providers rather than opportunities:** nineteen universities and training companies from the
+    practitioner-against-academic probe (Imperial five times, `lsi.ac.uk` four, Westminster, Edinburgh, Essex,
+    Cambridge Judge, City Lit, Jellyfish, and both Oxford institutional lines), and twelve online course
+    sellers from the "no coding" probe (Udemy, uCertify, GUVI, Coursera, Coursiv, `iabac.org`,
+    `boostelearning.com`, `wisecentral.freshdesk.com`).
+  - **Consultancies selling the services Drummond has decided not to sell** (13 Sept standing decision):
+    `thoughtworks.com`, `nocobase.com`, `architech.ca`, `cloudwell.io`.
+  - **US-readership tech media**, which fails the same test `builtin.com` failed on 22 November:
+    `techrepublic.com`, `dice.com`. Developer-education hosts from the foundations probe
+    (`learn.microsoft.com`, `huggingface.co`, `frontendmasters.com`, `educative.io`, `mindstudio.ai`,
+    `livebook.manning.com`) are the wrong reader as well as the wrong buyer.
+
+
 - **Three UK bodies that reach a budget holder rather than a buyer, all new to both lists.** Found 22 Nov 2026
   (08:00 UTC cycle), in the fields of two answer-engine probes. **Nothing contacted, submitted, claimed or paid
   for, and none of these hosts resolves from this sandbox, so none was checked beyond what the search returned.**

@@ -3115,7 +3115,137 @@ Status: `todo` · `blocked` (why) · `doing`
     **Weigh (b) against (a) only with a number in hand**: how many rollovers a year, and how long the sweep
     actually takes a cycle. The 4 December cycle is the first chance to time it. Do not build (b) before that.
 
+127. `todo` (loop-actionable in part, **the rest measured and recorded so no cycle re-derives it**; found
+    22 Nov 2026 in the 14:00 cycle, by the sweep that shipped the `/bootcamps/` half) - **two listing pages
+    still publish bare `ListItem`s, and only one of the two has an entity to point at.**
+    `collectionPageSchema` takes an optional `item`, and after this cycle three of the four listings that use
+    it carry one: `/events/` nests a full `EducationEvent` per cohort (23 Oct), `/bootcamps/` nests a `Course`
+    reference per programme (today). The two left are measured: **`/guides/` lists 32 items, 0 nested**, and
+    **`/team/` lists 8 items, 0 nested**.
+    - **`/guides/` is not the same change and should not be filed as one.** `articleSchema` gives the
+      `Article` no `@id` at all - it binds to its page through `mainEntityOfPage` - so there is no identifier
+      to reference, and nesting would mean either minting `@id`s on 32 Article nodes or inlining 32 partial
+      copies of them into the hub. The first is a real change to how this site identifies its own articles and
+      wants weighing on its own; the second is the duplication backlog 87 measured as changing nothing. **If
+      it is ever taken, take the `@id` question first and the hub second.**
+    - **`/team/` is backlog 24's, not this item's.** The eight profiles already publish `#person` nodes, so the
+      reference exists and the change would be mechanical - but backlog 24 is the standing question about how
+      hard this site should lean on named individuals, it has been with Drummond since 16 October, and
+      backlog 106 is already on record as a rediscovery of it. **Do not take `/team/` before he answers.**
+    - **`/testimonials/` and `/outcomes/` carry no `ItemList` at all**, checked this cycle: `/testimonials/`
+      emits no `CollectionPage` node and `/outcomes/` does not build as a page of its own. Recorded so the
+      "five listing pages" framing in `collectionPageSchema`'s own comment is not read as a to-do list.
+
 ## Shipped
+
+### 22 Nov 2026 (14:00 UTC cycle) - the page where a buyer picks a programme listed three somethings. Each entry now names the `Course` node its own page already publishes, which is the join the guides got on 26 October. Three references, 1 of 209 built files, and the visible HTML byte-identical
+
+**The defect.** `/bootcamps/` is the hub a buyer opens to choose between the three lines - its own source
+comment calls it *"the page where someone picks a programme"* - and its `CollectionPage` published an
+`ItemList` of three bare `ListItem`s: a position, a name and a URL, and nothing else. No `@type` on the thing
+being listed, no `item`, no identifier. A consumer that reads this page and no other learned that three pages
+exist and nothing whatever about what they are.
+
+Meanwhile each of the three pages it lists publishes a full `Course` node under `<url>#course`, with
+`teaches`, `audience`, `coursePrerequisites`, `provider`, `courseMode` and - on the two lines with dates on
+sale - a `hasCourseInstance` carrying the cohort's date, venue and facilitators. The hub pointed at those
+three pages as strings.
+
+**Why this one and not the alternatives.** This is the third instance of one shape, and the first two are
+already fixed, which is what makes it a defect rather than a preference:
+
+- `/events/` had exactly this fault and it was taken on 23 October: *"its `ItemList` published five names and
+  five URLs and not one date. So the page an engine would read to answer 'when is the next cohort?' carried,
+  machine-readably, no answer"* (`src/lib/schema.ts`). It now nests all seven cohorts as `EducationEvent`.
+- The guides had it in a different field and it was taken on 26 October: `Article.about` named the programme
+  as an anonymous `Thing` with a name, a URL and no `@id`, so 32 guides pointed at `/bootcamps/<slug>/` as a
+  string rather than at the Course. It now emits `@type: Course` with that `@id`.
+
+`/bootcamps/` is the remaining listing whose items are entities in their own right, and it is the commercially
+important one: `STATE.md` records all three `/bootcamps/` pages among the eleven Google found and has never
+fetched, and the GEO log has now recorded **twenty-five consecutive probe sets** in which no page of this site
+is cited while engines answer from third parties' expired listings. A hub that says "these three things are
+Courses, and here is each one's identifier" is the cheapest available join between the page an engine is most
+likely to reach and the three nodes that carry the dates.
+
+**The change.** Three `item` objects in `src/pages/bootcamps/index.astro`, each
+`{'@type': 'Course', '@id': '<programme url>#course', name, url}`. `collectionPageSchema` has taken an
+optional `item` since it was written, so no shared code moved and no other listing changed. **Identity only**:
+`name` and `url` are the two strings the `ListItem` already published, and the `@id` is derived from the same
+path the entry is built from, so nothing is asserted that the programme's own page does not already publish.
+Every one of the three `@id`s resolves to a node this site serves, which the schema checker proves rather than
+assumes - its resolving-internal-graph-reference count went 1,483 to **1,489**, the six being three `@id`s and
+three `url`s.
+
+**Blast radius, measured rather than inferred.** `dist` diffed file by file against the pre-change build:
+**1 file of 209** differs, `dist/bootcamps/index.html`. With the JSON-LD masked out, that file is
+**character-for-character identical** before and after, both 27,492 bytes. No copy changed, no fact was added,
+no pixel moved.
+
+**Checks.** `npm ci` and `npm run build` green: 67 pages built, 69 checked, **3,462 internal links** resolve,
+schema valid on 69 pages with 17 Event nodes (10 top-level, 7 nested entity), 22 FAQPage nodes, 128
+offset-bearing publication dates, **1,489** resolving graph references and 59 well-formed breadcrumb trails,
+all titles and descriptions unique. Both date checks green: 58 indexable pages carry no passed cohort date
+written as upcoming, and 120 long-month dates all carry a year or have one within 400 characters.
+`npm run check:flags` green on both the all-on and all-off builds. The 13 outbound warnings are this sandbox's
+egress policy, not the site. Every figure except the graph-reference count is identical to the last six
+cycles' baseline.
+
+**Browser.** Headless Chromium over `/bootcamps/` and all three programme pages at 375 and 1280px, motion
+disabled, `deviceScaleFactor: 2`: **48 assertions, 40 passed**, and all 8 failures are the single
+console-error assertion against hosts this sandbox blocks. Every structural assertion clean at both widths -
+status 200, zero horizontal overflow, exactly one `h1`, every JSON-LD block parses, non-empty title. Both
+`/bootcamps/` screenshots read: the three cards stack cleanly at 375 and sit in the measure at 1280, and the
+page is indistinguishable from the pre-change build, as the byte comparison predicts.
+
+**IndexNow.** `src/pages/bootcamps/index.astro` matches the page-source regex in `scripts/indexnow-ping.mjs`
+(group 1 `bootcamps/`, group 2 `index`), so it maps to `https://oxfordagentic.com/bootcamps/` and nothing
+else. The other three paths in this commit - `IMPROVEMENTS.md`, `seo-data/geo-citations.md` and
+`outreach/review-list.md` - all match the exempt pattern on line 166. So this commit maps to **exactly one
+URL, and exactly one built page moved**: the first commit in some weeks where the map's number and the honest
+number are the same. The script was not run. Backlog 83, 85 and 98 are unaffected and stay open.
+
+**Settled decision re-examined once and left alone, so no cycle re-opens it.** The passed cohorts' `Offer`
+nodes were looked at again this cycle on the back of the 21 November finding that an engine sent a buyer to
+Cohort 2's September checkout: all four carry `url` and `category: Paid` with **no `availability`**, which is
+the 22 October decision, written into `eventOffer` and marked *"do not re-pitch"* on 26 October. The one term
+that write-up does not name is `https://schema.org/OutOfStock`, which says *not purchasable* without saying
+*it filled up* and so escapes the specific objection that retired `SoldOut`. **Still declined**, and the
+reason is the general half of that decision rather than the specific half: it would be an availability claim
+derived from the date rather than from an authored fact, which is the class the decision removed. Recorded
+here because the gap in the original reasoning is now closed, not because the verdict changed.
+
+**Search Console: unavailable from this checkout, tried once.** `node scripts/fetch-search-console.mjs`
+reports no service-account key configured and exits 0, and there is no export in `seo-data/` newer than the
+24 August baseline. Nothing was estimated or inferred. Rule 4 is dead again and the cycle ran under rule 5,
+for the umpteenth time; **backlog 2 and task 4 in `STATE.md` remain the single highest-value thing Drummond
+could do for this loop**, and it is ten minutes once.
+
+**Production could not be read.** `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403, the proxy's own failure log names the policy denial), as are `luma.com` and the three cohort pages
+on it. So no live page, no `build.txt` and no Luma fact was checked; **no event fact was read, invented or
+changed** - no date, venue, capacity, price or availability was touched - and backlog 109 stays blocked.
+Deploy state came from the Actions API: HEAD verified equal to `origin/main` at `78a2ca6` before anything was
+touched, tree clean, deploy run 45016547900 success on that SHA at 11:17 UTC, nothing queued.
+
+**Four probes, zero citations, the twenty-fifth consecutive set**, and this one has a finding that is not a
+decline. Asked what "no coding" means on an AI course, the engine answered that there is no standard
+definition, that it means three different things across providers, and that a buyer should read the syllabus
+and the prerequisites. That is independent corroboration of the message house rule that "no coding" must never
+stand alone - a rule two cycles on 18 November spent two commits enforcing across ten guide closers. No action
+follows, because the site already complies; recorded so the rule is not softened later. The other three
+declined on the topic rule: a developer-reader field for the foundations question, twelve course sellers
+defining a term to suit what they sell, and the consultancy cluster that Drummond's 13 September decision
+takes off the table. Full tables and the dedupe in `seo-data/geo-citations.md`.
+
+**Off-page: no new host, and the reasons are written down.** Every contactable host in the four probe fields
+was already listed, a competitor provider, a consultancy selling the services we have decided not to sell, or
+US-readership media that fails the test `builtin.com` failed yesterday. Entry added to
+`outreach/review-list.md` so the same four fields are not swept again. Nothing contacted, submitted, claimed
+or paid for.
+
+**No new guide.** 32 guides, newest `publishDate` 20 October 2026, so none this week and none this day. This
+is a structured-data change and neither allowance governs it.
 
 ### 22 Nov 2026 (09:00 UTC cycle) - the one card that qualifies an unconfirmed booking said "venue to confirm" and sat directly under the venue it was qualifying. It names the room, as the event page, both FAQ answers, the guide and `llms.txt` already do. One string, one shared component, 4 of 209 built files
 
