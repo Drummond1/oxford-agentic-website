@@ -71,12 +71,12 @@ const cohort: DayCohort = {
     {
       id: 'app',
       title: 'Install the Claude desktop app',
-      body: 'Download it from [claude.ai/download]({claudeDownload}) and sign in with the account that has your paid plan.',
+      body: 'Download it from [claude.com/download]({claudeDownload}) and sign in with the account that has your paid plan.',
     },
     {
       id: 'plugin',
       title: 'Install the Oxford Agentic plugin',
-      body: "We'll email you the plugin. In Claude, go to Customise, then Plugins, then Upload, and choose the file. Then type /readiness-check and follow what it says.",
+      body: "We'll email you the plugin. In Claude, go to Customize, then Plugins, then Upload, and choose the file. Then type /readiness-check and follow what it says.",
       onlyWithPlugin: true,
     },
     {
@@ -124,12 +124,18 @@ const cohort: DayCohort = {
     body: 'The College caters by name, so please can they register on [the Luma page]({luma}) by midday on Wednesday 2 December.',
   },
 
+  // False until the times are confirmed with Worcester. The times below are the run sheet s3 pack times.
+  // If the pack has not gone by 27 Nov, the contract times apply instead: lunch 13:00-14:00 and the
+  // afternoon shifted (27 Nov call page D1). Set the times, then set this to true.
+  timetableConfirmed: false,
+
   today: {
     heading: 'Thursday 3 December',
     intro: 'Each session has its slides, prompts and files below. Use the copy button on a prompt, then paste it into Claude.',
-    // PLACEHOLDER: if Worcester holds the contract times, lunch moves to 13:00-14:00 and the afternoon
-    // shifts - run sheet s3, right-hand column. Confirm before merge.
-    timetableNote: 'Times follow the timetable sent to the College (16 Nov).',
+    // Shown while `timetableConfirmed` is false. (The earlier line "Times follow the timetable sent to
+    // the College (16 Nov)" was withdrawn: the pack was never sent.)
+    timetableNote:
+      'We start at 9:15am and finish at 5pm. The times in between are still being confirmed with the College, and the final timetable will be here by Tuesday 1 December.',
     sessionEmpty: 'Slides and prompts for this session are coming on Tuesday 1 December.',
   },
 

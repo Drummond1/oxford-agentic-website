@@ -167,7 +167,7 @@ const client = {
         <p>{cohort.today.intro}</p>
 
         <h4 class="day-h4">Timetable</h4>
-        <p class="day-muted">{cohort.today.timetableNote}</p>
+        {!cohort.timetableConfirmed && <p class="day-muted">{cohort.today.timetableNote}</p>}
         <div class="day-table-wrap">
           <table class="day-table">
             <thead>
@@ -901,7 +901,7 @@ const client = {
     padding: 0.65rem 0.75rem;
     min-height: 44px;
     border: 1px solid var(--ink-dark);
-    background: #fff;
+    background: var(--cream);
     color: var(--ink-dark);
     border-radius: 0;
     width: 100%;

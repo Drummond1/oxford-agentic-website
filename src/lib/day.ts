@@ -106,6 +106,8 @@ export interface DayCohort {
   whatsapp: { heading: string; body: string };
   colleague: { heading: string; body: string };
   today: { heading: string; intro: string; timetableNote: string; sessionEmpty: string };
+  /** False while the times between start and finish are unconfirmed: the page shows `today.timetableNote`. Nothing shows when true. */
+  timetableConfirmed: boolean;
   timetable: DayTimetableRow[];
   sessions: DaySession[];
   /** Items may open with a **bold** lead. */
