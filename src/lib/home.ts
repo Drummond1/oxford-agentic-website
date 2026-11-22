@@ -35,7 +35,7 @@ import config from '../../site.config';
  * constant out of the config, and a homepage-copy commit hints at `/` and
  * nothing else.
  */
-export const homepageCopyLastmod = '2026-11-08T02:04:03Z';
+export const homepageCopyLastmod = '2026-11-22T13:00:00Z';
 
 /**
  * The homepage headline, set verbatim by the message house of 13 August 2026.
@@ -86,7 +86,7 @@ export const homeFaqs = [
      * commit.
      */
     q: `What is ${config.brand.name}?`,
-    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across three one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. The Oxford Agentic Coding Bootcamp is where you ship software you own outright, with Claude Code and Codex doing the typing. All three are hands-on, and none of them expects you to arrive able to code. Nothing is hand-waved either.`,
+    a: `${config.brand.name} runs in-person, hands-on AI training in Oxford for business leaders, across three one-day bootcamps. The Oxford Agentic Bootcamp is where you build and run a working agentic AI workflow on a real task from your own work. The Oxford Second Brain Bootcamp is where you build the structured store of your own context that AI tools draw on. The Oxford Agentic Coding Bootcamp is a practical, hands-on day where you build a website with coding agents in guided sessions, and come away with a real understanding of how software gets built. All three are hands-on, and none of them expects you to arrive able to code. Nothing is hand-waved either.`,
   },
   {
     q: 'Who are the bootcamps for?',
@@ -159,7 +159,7 @@ export const homeFaqs = [
   },
   {
     q: 'What will I actually leave with?',
-    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful. At the Oxford Agentic Coding Bootcamp it is a personal website live on the internet and a working prototype that saves real data, both in your own repository.',
+    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful. At the Oxford Agentic Coding Bootcamp it is a website you built in guided sessions, and a real understanding of how software gets built.',
   },
   {
     /*

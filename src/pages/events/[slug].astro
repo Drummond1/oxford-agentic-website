@@ -210,6 +210,11 @@ const bands = {
 // The CTA has to tell the truth about what it does. An announced event whose
 // Luma page does not exist yet offers a notify state, not a booking.
 const registrationOpen = Boolean(data.lumaEventId);
+// No live seat count supports "Seats are limited." on these three (night-shift A10, DRU-13), so the closing band
+// makes no scarcity claim. The Coding day has no Luma line about group size, so its band says only what Luma says;
+// Cohorts 4 and 5 both open "In a small group" on Luma.
+const codingBand = data.slug === 'oxford-agentic-coding-bootcamp-cohort-1';
+const smallGroupBand = ['oxford-agentic-bootcamp-cohort-4', 'oxford-agentic-bootcamp-cohort-5'].includes(data.slug);
 
 /*
  * The footer's email ask stands down wherever this page already carries the
@@ -723,11 +728,23 @@ const metaDescription = (() => {
       <section class="band band--gold final-cta">
         <div class="wrap final-cta__inner">
           <div>
-            <h2 class="final-cta__title">{registrationOpen ? 'Seats are limited.' : 'Seats will be limited.'}</h2>
+            <h2 class="final-cta__title">
+              {codingBand
+                ? 'A practical, hands-on day.'
+                : smallGroupBand
+                  ? 'A small group.'
+                  : registrationOpen
+                    ? 'Seats are limited.'
+                    : 'Seats will be limited.'}
+            </h2>
             <p class="final-cta__copy">
               {data.capacity
                 ? `Capped at ${data.capacity} so the day stays facilitated rather than lectured.`
-                : 'A small cohort, so the day stays facilitated rather than lectured.'}
+                : codingBand
+                  ? 'You build a website in guided sessions, with no coding or technical background needed.'
+                  : smallGroupBand
+                    ? 'The day stays facilitated rather than lectured.'
+                    : 'A small cohort, so the day stays facilitated rather than lectured.'}
             </p>
           </div>
           <a

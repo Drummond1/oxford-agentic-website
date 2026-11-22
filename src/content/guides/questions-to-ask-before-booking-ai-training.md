@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-11-26T14:30:00+00:00"
+updatedDate: "2026-11-27T04:58:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
@@ -100,6 +100,6 @@ What that day deliberately does not cover: the AI landscape, model comparisons, 
 
 The [Oxford Second Brain Bootcamp](/bootcamps/second-brain-bootcamp/) runs in a small, capped group for people who already use AI most days and have hit the ceiling of what prompting alone can do. You bring a laptop and your own material - the documents, notes and examples that carry how you work and what you know - and build a second brain out of that rather than from a template, so you leave with it populated, organised and set up to maintain. Nothing technical is required: the work is thinking clearly about your own business rather than writing code. What it is not is a conceptual overview of AI, a vendor pitch or a tutorial in one app.
 
-The [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is for people who understand the concepts but have not yet built and shipped something of their own. It does not assume you can code - Claude Code and Codex do the typing - and what it teaches is everything around the code: the brief the agent reads first, the terminal, version control, deployment, databases and testing, and how to check what the agent wrote rather than trusting it. You leave with a personal website live on the internet and a working prototype that saves real data, both in your own GitHub repository. Question 6 is the one that matters most here: bring a laptop you can install software on, because it involves setting up a code editor, a terminal and a GitHub account on your own machine, and corporate or government devices often block that. If yours is locked down, email hello@oxfordagentic.com before you book and we will work out what you need.
+The [Oxford Agentic Coding Bootcamp](/bootcamps/agentic-coding-bootcamp/) is for people who understand the concepts but have not yet built and shipped something of their own. It does not assume you can code - Claude Code and Codex do the typing - and what it teaches is everything around the code: the brief the agent reads first, the terminal, version control, deployment, databases and testing, and how to check what the agent wrote rather than trusting it. You leave with a website you built in guided sessions, and a real understanding of how software gets built. Question 6 is the one that matters most here: bring a laptop you can install software on, because it involves setting up a code editor, a terminal and a GitHub account on your own machine, and corporate or government devices often block that. If yours is locked down, email hello@oxfordagentic.com before you book and we will work out what you need.
 
 All three run 09:00 to 17:00, in person in Oxford, and all three answer question 9 the same way: places are not refundable, but if the date stops working your place transfers to a future cohort at no charge.

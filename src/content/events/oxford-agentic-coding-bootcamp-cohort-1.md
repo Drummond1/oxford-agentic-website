@@ -8,7 +8,7 @@ status: past
 # 26 November is GMT, hence +00:00.
 startDate: "2026-11-26T09:00:00+00:00"
 endDate: "2026-11-26T17:00:00+00:00"
-updatedDate: "2026-11-28T09:00:00+00:00"
+updatedDate: "2026-11-28T11:58:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -19,13 +19,13 @@ lumaEventId: evt-zaLSsbdEhtA1THK
 lumaUrl: https://luma.com/agenticcoding
 # Opens on the promise, not the date: the card prints the date and the venue on
 # the line directly above. (12 Oct 2026, same fix as Cohort 3.)
-summary: Build and ship a live website and a working prototype, with Claude Code and Codex doing the typing.
-promise: Leave having shipped two things you own outright - a live website and a working product prototype.
+summary: Build a website in guided sessions, with no coding or technical background needed.
+promise: Build a website in guided sessions, with no coding or technical background needed.
 capsule: >-
   Cohort 1 of the Oxford Agentic Coding Bootcamp ran on Thursday 26 November 2026 at
-  Worcester College, Oxford. It was a hands-on day for people who understand the
-  concepts but have not yet shipped something of their own: Claude Code and Codex did
-  the typing, and the day was spent building a live website and a working prototype.
+  Worcester College, Oxford. It was a practical, hands-on day showing how to build
+  effectively with AI. You built a website in guided sessions, and left with a
+  real understanding of how software gets built.
 # Capacity deliberately unset, as on every other event: Luma is the source of
 # truth for how many places are left.
 # Each line restates an answer this page already gives further down, moved to
@@ -42,9 +42,8 @@ whoFor:
   - Founders and operators who want to prototype an idea without waiting on a developer
   - Anyone who has watched a coding agent work and wants to know what to do around it
 whatYoullBuild:
-  - A personal website live on the internet, in your own GitHub repository
-  - A working product prototype that saves real data, has basic tests and sits on your site
-  - A take-home kit of the prompts and commands used on the day, and how to keep costs down
+  - A website you built
+  - A real understanding of how software gets built
 # No timed agenda yet: the day plan is still a draft between the facilitators.
 # These are the topics Luma publishes, in its order, not a schedule.
 agenda:
@@ -144,12 +143,9 @@ faqs:
   - q: How do I justify this to my manager?
     a: >-
       If you need to put it in an email, this is the version that survives being
-      forwarded: a day out to ship two working things - a website live on the internet
-      and a prototype that saves real data - both in your own repository, and to come
-      back able to build the next one with a coding agent rather than waiting on a
-      developer. You also take away the prompts and commands used on the day, and a way
-      to keep costs under control once you are building on your own. Pricing is on this
-      page, so the numbers are easy to attach.
+      forwarded: a day out to build a website in guided sessions, and to come back with
+      a real understanding of how software gets built. No coding or technical background
+      is needed. Pricing is on this page, so the numbers are easy to attach.
   # The two questions a buyer asks after deciding and before paying. Both are
   # answered verbatim on the programme page and on both sibling event pages; this
   # is the booking page, which is where they are actually asked.

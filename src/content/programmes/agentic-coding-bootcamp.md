@@ -3,9 +3,13 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-26T20:00:00+00:00"
+updatedDate: "2026-11-27T04:58:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
-# evt-zaLSsbdEhtA1THK), read 25 Sept 2026. Nothing here is invented: if Luma
+# evt-zaLSsbdEhtA1THK), re-read 22 Nov 2026. Its "You'll leave with" is, in full:
+# "A real understanding of how software gets built, and a website you built."
+# Nothing here promises more - no live site, own repository, working prototype,
+# saved data, tests, take-home kit or cost control (removed under DRU-13,
+# 22 Nov 2026; the 25 Sept Luma text they came from has since changed). If Luma
 # changes, this file follows it, not the other way round.
 # Names the level, because the field does not and buyers screen on it. Two probes on
 # 27 Oct 2026 asked for a one-day in-person agentic coding day "for non-developers" and
@@ -31,8 +35,8 @@ capsule: >-
   The Oxford Agentic Coding Bootcamp is a one-day, in-person course in Oxford for
   people who understand the concepts but have not yet built and shipped something of
   their own. Claude Code and Codex do the typing; you learn the workflow around them,
-  from the brief to version control, deployment and testing, and leave with two
-  things live that you own outright.
+  from the brief to version control, deployment and testing, and leave with a website
+  you built and a real understanding of how software gets built.
 description: >-
   Most people who use AI every day have never shipped software with it. The tools can
   now write the code, but the workflow around them - the brief the agent reads first,
@@ -40,10 +44,8 @@ description: >-
   is what stands between a demo and something live. This is a day of sitting next to
   a senior engineer who does the typing, not a course that turns you into a junior one.
 outcomes:
-  - A personal website live on the internet, in your own GitHub repository
-  - A working product prototype that saves real data and has basic tests
-  - A take-home kit of the prompts and commands used on the day
-  - A way to keep costs under control once you are building on your own
+  - A website you built
+  - A real understanding of how software gets built
 whoFor:
   - People who understand the concepts but have not yet built and shipped something of their own
   - Founders and operators who want to prototype an idea without waiting on a developer
@@ -63,7 +65,8 @@ faqs:
       A one-day, in-person course in Oxford on how software actually gets built and
       shipped with coding agents such as Claude Code and Codex. You work through the
       whole path, from writing the brief the agent reads to deploying, testing and
-      reviewing what it wrote, and leave with a live website and a working prototype.
+      reviewing what it wrote, and leave with a website you built and a real understanding
+      of how software gets built.
   - q: Do I need to be able to code?
     a: >-
       No, and that is not the whole answer. The day does not assume you can code: the
@@ -72,8 +75,8 @@ faqs:
       how to check what the AI wrote rather than trusting it. Expect to leave
       understanding how the pieces fit, not just having watched them.
   # The outcome question, in the buyer's words. This page already answers it - the
-  # four `outcomes` bullets, and the body's "By five o'clock you have shipped two
-  # things you own outright" - but it answered it as a marketing list and inside a
+  # two `outcomes` bullets and the body's closing paragraph - but it answered it as a
+  # list and inside a
   # definitional FAQ ("What is the Oxford Agentic Coding Bootcamp?"), so an engine
   # extracting Q&A pairs matched it to someone asking what the thing is rather than
   # to someone deciding whether to book it. Same defect shape as the 9 Nov fix on the
@@ -93,20 +96,22 @@ faqs:
   # evidence is mostly first-person blogs and vendor guides, so treat the timeframes
   # as anecdotal" - and a competing one-day listing publishes its outcome in exactly
   # the quotable shape this page lacked.
-  # Every clause restates copy already on this page, so no new claim is made about a
-  # day that has not yet run: the opening is the body's own "two things you own
-  # outright", the website and the prototype are `outcomes` 1 and 2 word for word, the
-  # kit and the cost control are `outcomes` 3 and 4, "turn you into a working
-  # developer" and "the agents do the typing ... the workflow around the code" are
-  # "Who is it not for?" below, and the five-step list is the `description`'s own.
-  # No price, date, venue, count, capacity, name or agenda timing. Nothing is claimed
-  # about what a day cannot produce beyond what this page already publishes.
-  - q: I cannot write code. What will I actually have finished by five o’clock?
+  # Every clause restates Luma (re-read 22 Nov 2026) or copy already on this page, so
+  # no new claim is made about a day that has not yet run: the opening is Luma's
+  # "You will build a website with guided sessions" and its "You'll leave with" line,
+  # which are also `outcomes` 1 and 2; "No coding or technical background is needed"
+  # is Luma's own; "turn you into a working developer" and "the agents do the typing
+  # ... the workflow around the code" are "Who is it not for?" below, and the
+  # five-step list is the `description`'s own. The question no longer says "finished
+  # by five o'clock": the day is show-then-do, with no claim about what every
+  # attendee finishes (Drummond, 8 Oct 2026). Before DRU-13 this answer promised a
+  # live site, a working prototype, a take-home kit and cost control - none is on
+  # Luma, so do not restore them. No price, date, venue, count, capacity, name or
+  # agenda timing.
+  - q: I cannot write code. What will I actually leave with?
     a: >-
-      Two things you own outright: a personal website live on the internet, in your own
-      GitHub repository, and a working product prototype that saves real data and has
-      basic tests. You also leave with the prompts and commands used on the day, and a
-      way to keep costs under control once you are building on your own. What the day
+      A website you build in guided sessions, and a real understanding of how software
+      gets built. No coding or technical background is needed. What the day
       does not do is turn you into a working developer - the agents do the typing, and
       what it teaches is the workflow around the code: the brief the agent reads first,
       the repository, the undo button, the deploy, and the check that what it wrote is
@@ -136,8 +141,8 @@ faqs:
   - q: How is this different from the Oxford Agentic Bootcamp?
     a: >-
       The Agentic Bootcamp builds workflows: pipelines of AI steps that do a task you
-      already do by hand. The Coding Bootcamp builds software: a website and a product
-      prototype, deployed and tested, in your own repository. If your problem is a
+      already do by hand. The Coding Bootcamp is about software: you build a website
+      in guided sessions and come away with a real understanding of how software gets built. If your problem is a
       recurring task, start with the Agentic Bootcamp. If it is an idea you want to see
       running, start here.
   # Group size, the one objection axis this line answered on no surface. Measured by
@@ -156,14 +161,14 @@ faqs:
   # this line.
   # Every clause restates copy already published on this line, so no new claim is made
   # about a day that has not yet run: sentence one is the closing band that
-  # `src/pages/events/[slug].astro` prints verbatim on this line's event page when
-  # `capacity` is unset, and the site footer's "each in a small cohort" says it on this
-  # page itself; sentence two is Cohort 1's own "How does the day run?" answer, and
+  # `src/pages/events/[slug].astro` prints verbatim on this line's event page (title
+  # and line, which make no size or scarcity claim - DRU-13, 22 Nov 2026); sentence two is Cohort 1's own "How does the day run?" answer, and
   # "Every session is show, then do" is also this page's "Who runs it?"; sentence three
   # is the reasoning both Agentic answers publish, "which stops working in a large room".
   - q: How many people are in the room?
     a: >-
-      A small cohort, so the day stays facilitated rather than lectured. Every session is
+      A practical, hands-on day. You build a website in guided sessions, with no coding
+      or technical background needed. Every session is
       show, then do: a facilitator builds each step in front of the room, then you build
       it on your own laptop, with facilitators moving between tables so nobody spends the
       day stuck on setup. A large room would stop that working.
@@ -188,23 +193,20 @@ faqs:
   # The approval answer, and the asymmetry is this line's own. The Agentic line
   # answers "how do I justify this to my manager?" on its programme page and on all
   # three on-sale event pages; this line answered it on neither of its two surfaces,
-  # seven days before Cohort 1. Every claim below restates this page's own
-  # `outcomes`, `capsule` and `whoFor`: a website live on the internet and a
-  # prototype that saves real data, both in your own repository, the take-home kit,
-  # the cost-control answer, and prototyping without waiting on a developer. Wording
-  # follows the Agentic programme page's answer so the two cannot drift, minus its
-  # one sentence about who has paid so far - that is true of a line that has already
-  # run and is published about this one nowhere. No price here: pricing stays on the
-  # booking page, as everywhere else.
+  # seven days before Cohort 1. Wording is the Coding Cohort 1 event page's answer
+  # word for word, so the two cannot drift, and it says only what Luma says (re-read
+  # 22 Nov 2026): "You will build a website with guided sessions. No coding or
+  # technical background needed." and "a website you built" with "a real
+  # understanding of how software gets built". The live site, saved data, own
+  # repository, take-home kit and cost control were not on Luma and were removed
+  # under DRU-13 - do not restore them. No price here: pricing stays on the booking
+  # page, as everywhere else.
   - q: How do I justify this to my manager?
     a: >-
       If you need to put it in an email, this is the version that survives being
-      forwarded: a day out to ship two working things - a website live on the internet
-      and a prototype that saves real data - both in your own repository, and to come
-      back able to build the next one with a coding agent rather than waiting on a
-      developer. You also take away the prompts and commands used on the day, and a way
-      to keep costs under control once you are building on your own. Pricing sits on
-      each event’s booking page, so the numbers are easy to attach.
+      forwarded: a day out to build a website in guided sessions, and to come back with
+      a real understanding of how software gets built. No coding or technical background
+      is needed. Pricing sits on each event’s booking page, so the numbers are easy to attach.
   - q: Can I bring my team, or book for several people?
     a: >-
       Yes. Bringing a colleague means two of you go back able to build rather than one,
@@ -244,5 +246,5 @@ the brief the agent reads first and asking for a plan before it builds, the edit
 the terminal, version control as an undo button, deploying to the web, giving the
 product a real database, and checking what the AI wrote with tests and a second model.
 
-By five o'clock you have shipped two things you own outright: a personal website live
-on the internet, and a working prototype that saves real data.
+You build a website in guided sessions, and you leave with a real understanding of how
+software gets built.
