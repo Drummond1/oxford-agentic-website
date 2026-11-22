@@ -35,7 +35,7 @@ import config from '../../site.config';
  * constant out of the config, and a homepage-copy commit hints at `/` and
  * nothing else.
  */
-export const homepageCopyLastmod = '2026-11-22T13:00:00Z';
+export const homepageCopyLastmod = '2026-11-22T13:30:00Z';
 
 /**
  * The homepage headline, set verbatim by the message house of 13 August 2026.

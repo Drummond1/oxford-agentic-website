@@ -161,14 +161,15 @@ faqs:
   # this line.
   # Every clause restates copy already published on this line, so no new claim is made
   # about a day that has not yet run: sentence one is the closing band that
-  # `src/pages/events/[slug].astro` prints verbatim on this line's event page (title
-  # and line, which make no size or scarcity claim - DRU-13, 22 Nov 2026); sentence two is Cohort 1's own "How does the day run?" answer, and
+  # `src/pages/events/[slug].astro` prints verbatim on this line's event page when
+  # `capacity` is unset, and the site footer's "each in a small cohort" says it on this
+  # page itself; sentence two is Cohort 1's own "How does the day run?" answer, and
   # "Every session is show, then do" is also this page's "Who runs it?"; sentence three
   # is the reasoning both Agentic answers publish, "which stops working in a large room".
+  # OPEN: research pack s10 Q1 (may the Coding Bootcamp say "small group"?) is with Drummond on DRU-13. Restored to main's wording until he answers; do not reword.
   - q: How many people are in the room?
     a: >-
-      A practical, hands-on day. You build a website in guided sessions, with no coding
-      or technical background needed. Every session is
+      A small cohort, so the day stays facilitated rather than lectured. Every session is
       show, then do: a facilitator builds each step in front of the room, then you build
       it on your own laptop, with facilitators moving between tables so nobody spends the
       day stuck on setup. A large room would stop that working.
