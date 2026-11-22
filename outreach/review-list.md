@@ -11,6 +11,41 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Three UK business and trade titles that reach a budget holder, all new to both lists, plus the reason
+  every other host in four probe fields was left out.** Found 22 Nov 2026 (20:00 UTC cycle), across four
+  answer-engine probes. **Nothing contacted, submitted, claimed or paid for, and none of these hosts resolves
+  from this sandbox, so none was checked beyond what the search returned.**
+  - `accountingweb.co.uk` - **AccountingWEB**, the UK accountancy community, and the strongest find here. It
+    took two of the result slots on the build-or-buy probe on its own, and the line the engine quoted from it
+    is an argument this site already makes: for a small firm, *"being absorbed in a tech project can take
+    partners' attention away from client work and business development"*. It is a practitioner community
+    rather than a vendor or a directory, its readers are the finance decision-makers the site already writes
+    for in `agentic-ai-for-finance-teams`, and **the route is a contributed piece, not a listing**.
+  - `raconteur.net` - **Raconteur**, the UK business title, in the field for the support-team probe with
+    *"Beyond the bot: a blueprint for people-first automation"*. A comment or contributed-piece route, and the
+    most institutional of the three: a mention there is the kind of third-party citation backlog 2b has been
+    asking for since July.
+  - `startupsmagazine.co.uk` - **Startups Magazine**, UK startup media, same field as AccountingWEB with
+    *"Buy or build AI: what's best for startups"*. Weakest of the three because its readership skews earlier
+    than our buyer, but it is UK, it is editorial rather than a directory, and it publishes exactly this
+    subject.
+  - **Deliberately not added, each with its reason rather than by omission.** `business-reporter.co.uk` is the
+    same shape as Startups Magazine and was held back to keep this entry to the three worth ten minutes; it
+    goes on the list if any of the three above is taken up. `kpmg.com` is an institutional publisher on its
+    own subject and an advisory competitor. **Consultancies and agencies selling the services Drummond has
+    decided not to sell** (13 Sept standing decision): `advania.co.uk`, `agilisys.co.uk`, `spotdev.co.uk`,
+    `mecanik.dev`, `lowcode.agency`. **Platform vendors answering about their own product**: `salesforce.com`
+    (six slots), `adobe.com`, `intercom.com`, `crisp.chat`, `retool.com`, `landbot.io`. **Competitor
+    providers**: `theknowledgeacademy.com`, `nobleprog.co.uk`, `maven.com`, TESS Group, and every University
+    of Oxford and Imperial property in probes 3 and 4. **US readership**, failing the test `builtin.com`
+    failed on 22 November: `aibusiness.com`, `dev.to`, `medium.com`. `cxtoday.com` is UK-reaching but its
+    readers are CX providers rather than our buyer. `allai.events`, `eventbrite` and `meetup.com` are already
+    on this list or in `off-page-listings.md`.
+  - **Probe 3 found no off-page opportunity and instead re-measured the problem this list exists to solve**:
+    the two hosts answering a live Oxford December query about this bootcamp are the brand's **own** passed
+    Luma pages, which nobody here can edit. Detail in `seo-data/geo-citations.md` under 22 Nov 20:00.
+
+
 - **No new host this cycle, and the four fields it looked in are recorded so they are not swept again.**
   Found 22 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
   claimed or paid for.** Every contactable host in those fields fell into one of four buckets, each named

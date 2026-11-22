@@ -696,6 +696,23 @@ export function articleSchema(guide: {
 }) {
   return {
     '@type': 'Article',
+    /*
+     * An identifier, so the hub can reference the article instead of naming it.
+     *
+     * This node bound to its page through `mainEntityOfPage` alone and carried no
+     * `@id`, so there was no address for another page to point at. `/guides/` is
+     * the hub for all 32 of them and its `ItemList` published 32 bare `ListItem`s -
+     * a position, a name and a URL - which is the shape `/events/` was fixed out of
+     * on 23 October and `/bootcamps/` on 22 November. The hub could not be fixed
+     * the same way while the thing it lists had nothing to be referenced by.
+     *
+     * `#article` follows the fragment convention every other node here already
+     * uses - `#webpage`, `#event`, `#course`, `#faq`, `#person`, `#series` - and it
+     * is derived from the same path `mainEntityOfPage` is built from, so it cannot
+     * drift from the page it names. Identity only: no property of this node
+     * changed, and nothing is asserted that the guide did not already publish.
+     */
+    '@id': `${absoluteUrl(paths.guide(guide.slug))}#article`,
     headline: guide.title,
     description: guide.description,
     articleSection: 'Guides',

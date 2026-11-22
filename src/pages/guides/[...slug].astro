@@ -304,10 +304,32 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
       path={paths.guides()}
       ogImage={ogPathFor(paths.guides())}
       schemaNodes={[
+        /*
+         * Each entry names the `Article` its own page publishes, which is the join
+         * `/events/` got on 23 October and `/bootcamps/` on 22 November. This hub
+         * listed 32 guides as a position, a name and a URL, with no type on the
+         * thing being listed, so a consumer reading this page and no other learned
+         * that 32 pages exist and nothing about what they are.
+         *
+         * Identity only. `name` and `url` are the two strings the `ListItem`
+         * already published, and the `@id` is derived from the same path the entry
+         * is built from, so nothing is asserted that the guide's own page does not
+         * already publish. Each guide's `Article` gained that `@id` in the same
+         * commit; see the note on `articleSchema`.
+         */
         collectionPageSchema(
           'Guides',
           paths.guides(),
-          guides.map((entry) => ({ name: entry.data.title, path: paths.guide(entry.data.slug) })),
+          guides.map((entry) => ({
+            name: entry.data.title,
+            path: paths.guide(entry.data.slug),
+            item: {
+              '@type': 'Article',
+              '@id': `${absoluteUrl(paths.guide(entry.data.slug))}#article`,
+              name: entry.data.title,
+              url: absoluteUrl(paths.guide(entry.data.slug)),
+            },
+          })),
         ),
       ]}
       breadcrumbs={[{ name: 'Guides', path: paths.guides() }]}

@@ -5,6 +5,68 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-22 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-SIXTH CONSECUTIVE SET, AND THE SECOND CONSECUTIVE MEASUREMENT OF THE BRAND'S OWN PASSED LUMA LISTINGS ANSWERING ITS LIVE COMMERCIAL QUERY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy, as are `luma.com` and the cohort pages on it, so no live
+page and no Luma fact was checked, deploy state came from the Actions API, and every site fact below comes
+from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** The question column was extracted and
+read, then each candidate axis was grepped for its concept across the whole log before being put to an
+engine. Four candidates were dropped as already covered: the pilot-that-never-ships framing (`pilot`, 63
+hits), the solo-buyer and one-person-business axis (probed as its own axis), year-end and January timing, and
+the cohort-size question. The four below returned nothing on the concept grep - `build or buy`, `off-the-shelf`,
+`build our own` and `custom agent` all score **0** across the entire log, and `customer support`, `support team`
+and `email triage` all score **0**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | should we build our own AI agent or buy an off-the-shelf tool small business UK (**build-or-buy axis, never probed**) | **No** | **accountingweb.co.uk x2**, kpmg.com, advania.co.uk, agilisys.co.uk, business-reporter.co.uk, startupsmagazine.co.uk, aibusiness.com, retool.com, landbot.io, lowcode.agency, spotdev.co.uk, mecanik.dev, tessgroup, two dev.to |
+| 2 | agentic AI training for a customer support team hands-on one day UK (**support-team vertical, never probed**) | **No** | **salesforce.com x6**, adobe.com, intercom.com, crisp.chat, two maven.com, theknowledgeacademy.com, nobleprog.co.uk, cxtoday.com, raconteur.net, buzzsprout.com, uk.trustpilot.com |
+| 3 | one day hands-on agentic AI bootcamp Oxford December 2026 build your own workflow (**dated commercial reach, Cohort 4 eleven days out**) | **No** | **luma.com/oxfordagentic2** (Cohort 2, ran 16 Sept), **luma.com/k7c2rm5s** (Cohort 1, ran 21 July), **allai.events** (the 21 July listing), lifelong-learning.ox.ac.uk x8, conted.ox.ac.uk x3, sbs.ox.ac.uk, imperial.ac.uk, eventbrite.co.uk, nobleprog.co.uk |
+| 4 | is it worth travelling to Oxford for a one-day AI course or should I find one in London (**travel-justification axis, never probed**) | **No** | **lifelong-learning.ox.ac.uk x9**, **conted.ox.ac.uk x4**, sbs.ox.ac.uk x2, theknowledgeacademy.com, nobleprog.co.uk, eventbrite.com, meetup.com |
+
+**Reading.**
+
+- **Probe 3 is the finding of the set, and it is the second consecutive measurement of one failure.** The
+  21 November cycle recorded an engine sending a buyer to a September checkout. Asked now for an Oxford
+  one-day agentic bootcamp **in December**, with Cohort 4 eleven days away and on sale, the engine returned
+  **no page of this site** and described the bootcamp off **two passed cohorts' Luma pages**: Cohort 2's, which
+  ran on 16 September, and Cohort 1's, which ran on 21 July and which the engine reports as saying
+  ***"5 Spots Remaining"***. Its own closing line is the cost: ***"To confirm a December 2026 Oxford date for
+  the bootcamp, check the Luma page directly or contact the organisers."*** The entity is held and described
+  accurately - Worcester College, no coding, leave with a working workflow - and the one thing missing is the
+  date, which this site publishes on nine surfaces.
+- **The site is not the cause, and that was checked rather than assumed.** `llms.txt` lists Cohort 4
+  (3 December, Worcester College) and Cohort 5 (28 January, Jesus College) in both its "Next events" and
+  "Pages" blocks; all seven cohort URLs are in the sitemap; and **no passed cohort links or embeds its Luma
+  checkout anywhere in visible HTML** - grepped across the whole of `dist`, the passed cohorts' Luma URLs
+  appear only inside `EducationEvent.sameAs`, where they are true identity statements about the same event.
+  The booking embed is removed when a cohort passes, which is correct and is what the engine is not reading.
+  So this is backlog 2b in its purest form: the brand's most reachable artefacts are third-party pages nobody
+  here can edit, and the remedy named since July is one external link, not more on-page work.
+- **Probe 4 fails WINNABLE outright and is the cleanest example of the institutional-publisher clause yet.**
+  Seventeen of nineteen results are University of Oxford properties or competitor providers; the field for
+  "is Oxford worth the trip" is owned by Oxford. The engine could not answer it either - *"The search didn't
+  return any London course listings, so I can only assess the Oxford side"* and *"I'd need a separate search
+  to compare London options properly"* - which makes it a genuine unanswered question in a field we cannot
+  win. CONVERTING is strong and WINNABLE is hopeless, so the rule does its job. **Declined.**
+- **Probe 1 fails on two clauses at once.** KPMG on its own subject is the institutional-publisher case, and
+  the rest of the field is agencies and platform vendors answering a question they sell the answer to. It is
+  also **unwritable here for a third reason the rule does not name**: every substantive answer in that field
+  turns on money - build costs, monthly model fees, the salary of an engineer - and this site publishes no
+  prices by decision. **Declined.**
+- **Probe 2 fails the platform-vendor clause by the widest margin in the log**: Salesforce six times, with
+  Adobe and Intercom behind it, every one answering about its own product. The engine did admit a product gap
+  (*"none is clearly a one-day, agentic-AI-specific course for a support team in the UK"*), and it is not
+  worth acting on: the gap is in a field Salesforce owns, and the Agentic day's published premise is one real
+  task from your own work rather than a function-specific curriculum. **Declined** - the same reasoning that
+  killed charities on 16 Oct and legal on 22 Oct.
+- **No guide, and none of the four is a Q&A candidate either.** A cycle that correctly declines to publish is
+  a good cycle.
+
 ## 2026-11-22 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-FIFTH CONSECUTIVE SET, AND THE FIRST SET IN WEEKS WHOSE MOST USEFUL LINE IS AN ENGINE AGREEING WITH THE MESSAGE HOUSE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

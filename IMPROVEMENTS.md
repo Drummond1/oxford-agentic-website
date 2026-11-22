@@ -3115,8 +3115,16 @@ Status: `todo` · `blocked` (why) · `doing`
     **Weigh (b) against (a) only with a number in hand**: how many rollovers a year, and how long the sweep
     actually takes a cycle. The 4 December cycle is the first chance to time it. Do not build (b) before that.
 
-127. `todo` (loop-actionable in part, **the rest measured and recorded so no cycle re-derives it**; found
-    22 Nov 2026 in the 14:00 cycle, by the sweep that shipped the `/bootcamps/` half) - **two listing pages
+127. `half done` 22 Nov 2026 (20:00 cycle) - **the `/guides/` half shipped, including the `@id` question this
+    item said to weigh first; `/team/` is still Drummond's and is the only listing left.** The `@id` question
+    answered itself once asked: `#article` collided with nothing (0 occurrences in `dist` before minting it),
+    it is the fragment convention every other node here already uses, and it is derived from the same
+    `paths.guide(slug)` call `mainEntityOfPage` is built from, so it cannot drift. Shipping it without the hub
+    would have been a change with no consumer, so both halves went in one commit: 32 `Article` nodes gained an
+    `@id`, the hub's 32 `ListItem`s gained an `Article` reference, 96 graph references, 33 of 209 built files,
+    every one byte-identical with the JSON-LD masked. Detail in that cycle's Shipped entry. **What is left is
+    `/team/` only, and the bar on it is unchanged: do not take it before Drummond answers backlog 24.**
+    Original diagnosis kept below. - **two listing pages
     still publish bare `ListItem`s, and only one of the two has an entity to point at.**
     `collectionPageSchema` takes an optional `item`, and after this cycle three of the four listings that use
     it carry one: `/events/` nests a full `EducationEvent` per cohort (23 Oct), `/bootcamps/` nests a `Course`
@@ -3137,6 +3145,107 @@ Status: `todo` · `blocked` (why) · `doing`
       "five listing pages" framing in `collectionPageSchema`'s own comment is not read as a to-do list.
 
 ## Shipped
+
+### 22 Nov 2026 (20:00 UTC cycle) - the fourth and largest instance of one shape, and the half backlog 127 said to weigh first. 32 `Article` nodes gained an `@id`, so `/guides/` can reference the article instead of naming it. 96 references, 33 of 209 built files, and every one of them byte-identical with the JSON-LD masked
+
+**The defect.** `/guides/` is the hub for all 32 guides and its `CollectionPage` published an `ItemList` of 32
+bare `ListItem`s - a position, a name and a URL, with no `@type` on the thing being listed and no identifier.
+A consumer that reads this page and no other learned that 32 pages exist and nothing whatever about what they
+are. This is the same shape the loop has now fixed three times: `/events/` on 23 October (five names, five
+URLs, not one date), the guides' own `Article.about` on 26 October (an anonymous `Thing` with no `@id`), and
+`/bootcamps/` six hours ago in the 14:00 cycle.
+
+**Why it could not simply be done the same way, which is the half backlog 127 flagged.** That item measured
+this gap this morning and said the hub should not be filed as the same change, because `articleSchema` gave
+the `Article` **no `@id` at all** - it binds to its page through `mainEntityOfPage` - so there was no address
+for the hub to point at. Its instruction was *"take the `@id` question first and the hub second"*. **Both
+halves are here, in one commit, and the reason is that the `@id` question answers itself once it is asked
+rather than wanting a cycle of its own:**
+
+- The two alternatives the item named are both worse. Inlining 32 partial copies of the Article nodes into
+  the hub is the duplication **backlog 87** measured as changing nothing. Leaving the hub bare is the status
+  quo that three previous cycles have now rejected on three other pages.
+- `#article` is **not a new convention**: every other node this site publishes already carries exactly this
+  kind of fragment - `#webpage`, `#event`, `#course`, `#faq`, `#person`, `#series`. Measured before minting
+  it, `#article` appears **0 times** anywhere in `dist`, so nothing collides and nothing is re-pointed.
+- It cannot drift, because it is derived from `paths.guide(slug)` - the same call `mainEntityOfPage` is built
+  from three lines below it.
+- Shipping the `@id` alone would have been a change with no consumer, which is not a smaller cycle, just an
+  emptier one.
+
+**The change.** Two files. `articleSchema` in `src/lib/schema.ts` gains one property,
+`'@id': <guide url>#article`. The `collectionPageSchema` call in `src/pages/guides/[...slug].astro` gains an
+`item` per entry: `{'@type': 'Article', '@id': '<guide url>#article', name, url}`. `collectionPageSchema` has
+taken an optional `item` since it was written, so **no shared code moved and no other listing changed**.
+**Identity only**: `name` and `url` are the two strings the `ListItem` already published, the `@id` is derived
+from the same path the entry is built from, and not one existing property of any `Article` node was touched.
+
+**The join is proved rather than asserted.** All 32 `Article` nodes carry an `@id`, all 32 are unique, and all
+32 of the hub's references match an `@id` a guide's own page actually publishes - **32 of 32**. The schema
+checker's resolving-internal-graph-reference count went **1,489 to 1,585** against this cycle's own baseline
+build, and the arithmetic is exact: 32 article `@id`s plus 32 x (`@id` + `url`) in the hub is **96**.
+
+**Blast radius, measured rather than inferred.** Whole-`dist` sha256 diff against the pre-change build:
+**33 files of 209** - the 32 guides and `/guides/index.html`, and nothing else. No sitemap entry moved, no
+other page moved. With the JSON-LD masked out, **all 33 are character-for-character identical** before and
+after, and identical in length. No copy changed, no fact was added, no pixel moved.
+
+**Checks.** `npm ci` and `npm run build` green: 67 pages built, 69 checked, **3,462 internal links** resolve,
+schema valid on 69 pages with 17 Event nodes (10 top-level, 7 nested entity), 22 FAQPage nodes, 128
+offset-bearing publication dates, **1,585** resolving graph references and 59 well-formed breadcrumb trails,
+all titles and descriptions unique. Both date checks green: 58 indexable pages carry no passed cohort date
+written as upcoming, and 120 long-month dates all carry a year or have one within 400 characters.
+`npm run check:flags` green on both the all-on and all-off builds. The 13 outbound warnings are this sandbox's
+egress policy, not the site. Every figure except the graph-reference count is identical to the last seven
+cycles' baseline.
+
+**Browser.** Headless Chromium over `/guides/` and two guides at 375 and 1280px, motion disabled,
+`deviceScaleFactor: 2`: **36 assertions, 30 passed**, and all 6 failures are the single console-error
+assertion against hosts this sandbox blocks. Every structural assertion clean at both widths - status 200,
+zero horizontal overflow, exactly one `h1`, every JSON-LD block parses, non-empty title. Both `/guides/`
+screenshots read correctly: the cards stack at 375 and sit three across at 1280, and the page is
+indistinguishable from the pre-change build, as the byte comparison predicts.
+
+**IndexNow.** `src/lib/schema.ts` is in the whole-site bucket, which is **backlog 85's over-submission in its
+mildest form and honest by accident this time**: the map's number is 55 and the honest number is 33, the
+closest the two have been on a schema change. `src/pages/guides/[...slug].astro` is a dynamic route and falls
+through the page-source regex, which is backlog 85's third instance, unchanged. The other three paths in this
+commit all match the exempt pattern on line 166. The script was not run.
+
+**Search Console: unavailable from this checkout, tried once.** `node scripts/fetch-search-console.mjs`
+reports no service-account key configured and exits 0, and there is no export in `seo-data/` newer than the
+24 August baseline. Nothing was estimated or inferred. Rule 4 is dead again and the cycle ran under rule 5;
+**backlog 2 and task 4 in `STATE.md` remain the single highest-value thing Drummond could do for this loop.**
+
+**Production could not be read.** `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), as are `luma.com` and the cohort pages on it. So no live page, no `build.txt` and no Luma fact was
+checked; **no event fact was read, invented or changed** - no date, venue, capacity, price or availability was
+touched - and backlog 109 stays blocked. Deploy state came from the Actions API: HEAD verified equal to
+`origin/main` at `8d04773` before anything was touched, tree clean, deploy run 45031562578 success on that SHA
+at 14:13 UTC, nothing queued.
+
+**Four probes, zero citations, the twenty-sixth consecutive set, and probe 3 is the second consecutive
+measurement of one failure.** Asked for an Oxford one-day agentic bootcamp **in December**, with Cohort 4
+eleven days out and on sale, the engine returned no page of this site and answered off **two passed cohorts'
+Luma pages** - Cohort 2's September one and Cohort 1's July one, the latter reported as saying *"5 Spots
+Remaining"* - closing *"check the Luma page directly or contact the organisers."* **The site was checked and is
+not the cause**: `llms.txt` carries both upcoming cohorts with dates and venues, all seven cohort URLs are in
+the sitemap, and no passed cohort links or embeds its Luma checkout in visible HTML anywhere in `dist` - those
+URLs appear only in `EducationEvent.sameAs`, where they are true. This is backlog 2b in its purest form. The
+other three declined: probe 4 is the cleanest institutional-publisher case in the log (seventeen of nineteen
+results are University of Oxford properties, for the question of whether Oxford is worth the trip), probe 1
+fails on KPMG plus a field of agencies **and** on turning entirely on prices this site does not publish, and
+probe 2 fails the platform-vendor clause by the widest margin yet, Salesforce six times. Full tables and the
+concept-level dedupe in `seo-data/geo-citations.md`.
+
+**Off-page: three UK titles new to both lists** - `accountingweb.co.uk` (two result slots on the build-or-buy
+probe, a practitioner community rather than a vendor, and the reader `agentic-ai-for-finance-teams` is written
+for), `raconteur.net` and `startupsmagazine.co.uk`. Roughly twenty other hosts in these fields were
+deliberately not added, each with its reason written down. Nothing contacted, submitted, claimed or paid for.
+
+**No new guide.** 32 guides, newest `publishDate` 20 October 2026, so none this week and none this day. None
+of the four probe fields was a guide or Q&A candidate; all four declined on the topic rule. This is a
+structured-data change and neither allowance governs it.
 
 ### 22 Nov 2026 (14:00 UTC cycle) - the page where a buyer picks a programme listed three somethings. Each entry now names the `Course` node its own page already publishes, which is the join the guides got on 26 October. Three references, 1 of 209 built files, and the visible HTML byte-identical
 
