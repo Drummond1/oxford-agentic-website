@@ -724,7 +724,38 @@ export function personSchema(speaker: {
     jobTitle: speaker.role,
     description: speaker.bio,
     ...(config.features.team ? { url: absoluteUrl(paths.teamMember(speaker.slug)) } : {}),
-    ...(speaker.company ? { worksFor: { '@type': 'Organization', name: speaker.company } } : {}),
+    /*
+     * `worksFor` named an organisation and gave no address for it, so on the two
+     * pages that publish Drummond's `Person` node - `/about/` and his team page -
+     * the graph said this person works for *some* organisation called "Oxford
+     * Agentic", while the same page's `Organization` node at `ORG_ID` named this
+     * same person as its `founder` by resolvable `@id`. One edge resolved and the
+     * one coming back did not.
+     *
+     * So when the company is this organisation, the node takes this site's own
+     * Organization `@id`. Identity only: `name` is unchanged, and `ORG_ID` is the
+     * constant the `Organization` node is already minted from, so it cannot drift.
+     * No flag guard, unlike the `@id` and `url` above: that node addresses the
+     * person's team page, which `features.team` can remove, whereas the
+     * `Organization` node is published on every page whatever the flags say.
+     *
+     * The other five companies stay anonymous and should. Jenesys AI, Novaria,
+     * GenieOS, Coppice Labs and Accelerated Impact Ops are other people's
+     * organisations; this site publishes no `@id` for any of them, and minting one
+     * here would be asserting an identity we do not own. The comparison is an exact
+     * match against `config.brand.name`, so a company string that does not match
+     * falls back to the anonymous node, which is the behaviour this replaces and
+     * therefore the safe direction.
+     */
+    ...(speaker.company
+      ? {
+          worksFor: {
+            '@type': 'Organization',
+            ...(speaker.company === config.brand.name ? { '@id': ORG_ID } : {}),
+            name: speaker.company,
+          },
+        }
+      : {}),
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 }

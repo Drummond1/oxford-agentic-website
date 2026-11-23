@@ -5,6 +5,97 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-23 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTIETH CONSECUTIVE SET - AND THE SIXTH CONSECUTIVE MEASUREMENT OF BACKLOG 2B, IN ITS WORST FORM YET: THE ENGINE RECOMMENDED THIS BRAND'S DECEMBER DAY OFF TWO OF ITS OWN PASSED LUMA LISTINGS, QUOTED "5 SPOTS REMAINING" FROM A JULY EVENT, AND SAID IT COULD NOT FIND THE DATE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403), and the WebFetch route cannot resolve it either,
+as is `luma.com`. So no live page and no Luma fact was checked, deploy state came from the Actions API, and
+every site fact below comes from committed files or from the built output.
+
+**The dedupe ran first.** Twenty-eight candidate concept strings were counted over the whole log before any
+question was put to an engine. The chosen axes score low or zero: `choose a tool` **0**, `tool to use` **0**,
+`proof of concept` **0**, `stop using` **0**, `first workflow` **1**, `know Python` **1**, `context
+engineering` **1**, `what goes wrong` **2**. Rejected as already worked: `fails` **82**, `pilot` **68**,
+`failure` **61**, `December 2026` **31**, `no coding` **30**, `brief` **21**, `law firm` **17**.
+
+### Probe 1 - *"do I need to know Python to build AI agents for my business no coding"* - NOT CITED, DECLINED (platform-vendor clause, by a wide margin)
+15 results, no page of this site. The field is platform vendors writing about their own product almost without
+exception: monday.com, hostinger.com (four of the fifteen, the same article on four regional domains),
+pipefy.com (twice), zoho.com, salesforce.com, mindstudio.ai, rocket.new, everand.com, plus two dev.to posts and
+one GitHub Pages blog. **No institutional publisher, but no gap either** - the engine named Lindy AI, Zapier
+Agents, Relevance AI and Make.com and quoted monthly prices off vendor pages. It flagged its own sources
+unprompted: ***"most of these results are vendor marketing or blog posts from platform sellers, so the cost and
+capability claims are not independent."*** Fails **WINNABLE** on the platform-vendor clause. Worth noting for
+the message house rather than for a guide: the whole field answers "no coding" with "buy this builder", which
+is the opposite of this site's published argument that the day is about the workflow around the tools.
+
+### Probe 2 - *"what should my first AI automation be at work how to pick the first workflow"* - NOT CITED, DECLINED (the site already answers it; this is retrieval, not coverage)
+19 results, no page of this site. **This is the second consecutive cycle in which a probe passes the topic
+gates and leaves nothing to write, for the same reason** (see 23 Nov 14:00, probe 1). The field splits: an
+O'Reilly-hosted chapter of the *HBR Guide to AI Basics* and an AWS Builder Center post are institutional
+publishers on their own subject, and the remaining seventeen are agencies and vendors - metacto.com twice,
+codesignal twice, g2, crox.io, hexnode, enterprisedna, cloudtango/TruAdvantage, producttalk.org,
+vincentschmalbach.com, FlowMason, an Austley PDF, azbigmedia, comptia and dev.to. **And this site already
+answers the question**: `/guides/how-to-choose-your-first-agentic-task/` is exactly this, shipped in cycle 38, and the
+unlisted `/first-workflow-picker/` lead-gen page is the same question again. The engine's own filters -
+frequent, boring, low-risk, easy to verify, keep a human in the loop - are the guide's filters. **So the gap is
+that the guide is not retrieved, not that it is unwritten.** Backlog 2b.
+
+### Probe 3 - *"what goes wrong when a small business automates a process with AI agents and nobody maintains it"* - NOT CITED, PASSES THE TOPIC GATES, DECLINED ON EVIDENCE - AND IT IS BACKLOG 117
+10 results, no page of this site, and **the cleanest field in this set**: dev.to five times (four of them by one
+author), a Buzzsprout podcast episode, mindstudio.ai, builtin.com, and a Google Sites page. **No institutional
+publisher and no platform vendor writing about its own product**, so it passes **WINNABLE**. It plausibly
+converts too - the reader is a small business owner who has been burned or expects to be. The engine's answer is
+unusually concrete: silent degradation, scope creep, *"most automation failures aren't due to poor building;
+they fail because people stop maintaining them"*, a 90-day staleness heuristic it flagged as a rule of thumb
+rather than a measurement, API drift, and ownership gaps.
+**Declined, and the reason is the same one that blocks backlog 117**: the honest version of this page needs
+what actually happened to Cohort 1, 2 and 3 attendees' workflows weeks later, and nothing of the sort is
+recorded in this repo. Writing it from the published format would be inventing outcomes, which is the error
+class the accuracy rules exist to prevent. **This is a second, independent arrival at backlog 117 from a
+different phrasing**, which raises that item's value without changing who can close it: it is a handful of real
+follow-ups from Drummond, or nothing.
+
+### Probe 4 - *"one day in person agentic AI bootcamp Oxford December 2026 build a workflow book a place"* - NOT CITED, AND THE WORST MEASUREMENT OF BACKLOG 2B IN THIS LOG
+18 results. **No page of oxfordagentic.com appeared.** The top two results are **this brand's own passed Luma
+listings** - `luma.com/oxfordagentic2` (Cohort 2, which ran on 16 September) and `luma.com/k7c2rm5s` (Cohort 1,
+July) - and the engine built its recommendation on them, naming them *"the best fit"*, describing the format
+correctly (*"a practical, hands-on day... It doesn't assume you can code"*), and then:
+- it **could not supply the date**, opening ***"I couldn't find a confirmed one-day, in-person agentic AI
+  bootcamp in Oxford in December 2026"*** and closing ***"the closest match is a Luma event, but its date isn't
+  in the results"***;
+- it quoted ***"5 Spots Remaining"*** off a **July** event as live scarcity, the same false reading the 22 Nov
+  20:00 cycle recorded;
+- it gave the venue as ***"Worcester College, Oxford OX1 2JL"***. STATE.md records Worcester College as
+  **OX1 2HB**. The postcode was not checked against the live Luma page, because `luma.com` does not resolve
+  from this sandbox, and **no site fact was changed on the strength of it** - it is recorded only as one more
+  way a passed third-party listing can hand a buyer a wrong detail this site cannot correct.
+- it then sent the buyer to those two pages to book: ***"open the Luma bootcamp page to confirm the date and
+  book."***
+**The rest of the field is the University of Oxford's own properties**: `lifelong-learning.ox.ac.uk` nine
+times, `conted.ox.ac.uk`, `sbs.ox.ac.uk`'s Oxford Generative and Agentic AI Programme, plus Imperial,
+Edinburgh, NobleProg and one Eventbrite listing for a London Claude workshop. So the dated commercial query in
+this brand's own city is held by the institution whose name the brand shares, and the only route the engine
+found to this business was two expired listings on someone else's domain.
+**Nothing on the site is the cause, and that was checked rather than assumed.** Cohort 4's page, the Agentic
+programme page, the homepage `EducationEvent` nodes and `llms.txt` all carry **3 December 2026** and Worcester
+College; all seven cohort URLs are in the sitemap; and the passed-cohort pages forward correctly and with the
+date - Cohort 2's page reads *"This event has run... The next cohort runs the same format - details below.
+Cohort 4 - 3 December 2026"*, and the footer of every page lists all three upcoming cohorts with their dates.
+**That measurement is this cycle's contribution to backlog 2b**: six cycles have now recorded this symptom, and
+this is the first to rule out the on-site forward path as a cause by measuring it. The remedy named in backlog
+2b - one external link, an `Organization.sameAs`, a real listing - is unchanged and is not the loop's to take.
+
+**Off-page: no new host, the fourth consecutive cycle, and this set is the clearest argument yet that the
+constraint is not discovery.** Every host these four probes returned that is not already on the review list is
+disqualified by a rule already in it: `g2.com`, `hexnode`, `enterprisedna`, `cloudtango`, `crox.io`,
+`codesignal`, `producttalk.org`, `buzzsprout`, `vincentschmalbach.com` and the GitHub Pages and Google Sites
+blogs are vendor content, software-review platforms or self-publishing. `builtin.com` (5 prior mentions),
+`dev.to` (4), `mindstudio.ai` (7), `metacto.com` (1), `nobleprog.co.uk` (19) and `eventbrite` (77) are all
+already written up. The one genuinely new and credible class in the set - the University of Oxford's own course
+properties - is a competitor, not a listing route. **Nothing was contacted, submitted, claimed or paid for.**
+
 ## 2026-11-23 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-NINTH CONSECUTIVE SET - AND THE FIRST PROBE IN THIS LOG THAT PASSES BOTH GATES AND STILL CANNOT BE ANSWERED ON THE PAGE, BECAUSE THE PAGE ALREADY ANSWERS IT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

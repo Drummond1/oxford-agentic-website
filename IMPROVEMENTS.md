@@ -3267,8 +3267,131 @@ Status: `todo` · `blocked` (why) · `doing`
       still names their Luma listing, which is deliberate (15 Oct) and is what tells an engine holding a
       passed Luma page that it is ours. **No change on any of the four.**
 
+131. `todo` (**one census run and closed in the same cycle, plus two sweeps run clean - all three recorded so
+    no cycle re-derives them**; measured 23 Nov 2026 in the 20:00 cycle on the built site) - **the
+    `Organization`-node census, which is the one the backlog 127 census could not perform, and two on-page
+    sweeps that came back empty.**
+    - **(a) The `Organization` census is now run and the shape is closed.** Inventory every
+      `Organization`-typed node anywhere in `dist`, at any depth, keyed on whether it carries an `@id`.
+      Result before this cycle: **66 with an `@id`** (all `#organization`) and **7 without**, all seven under
+      `Person.worksFor`. Two named this organisation and were given `ORG_ID` this cycle. **The remaining five
+      are correct and must not be "fixed"**: Accelerated Impact Ops, Jenesys AI, GenieOS, Novaria and Coppice
+      Labs are other people's companies, this site publishes no `@id` for any of them, and minting one would
+      assert an identity we do not own. **Do not re-run this census** - it returns those five every time, and
+      they are a documented decision rather than a gap. Note for anyone tempted to generalise: backlog 127's
+      closing grep (nodes with no `@id` beside a node that has one **for the same url**) is sound, but a node
+      with no `url` at all - which `worksFor` is - can never be in its range. A future census of a *different*
+      node type should key on the type, not on the url.
+    - **(b) Titles and meta descriptions against SERP truncation budgets: zero findings across all 58
+      indexable pages.** Measured on the rendered `<title>` and `<meta name="description">`: **0** titles over
+      60 characters (min 21, median 53, max 59) and **0** descriptions over 160 (min 82, median 145, max 158),
+      with none missing. So rule 8's "validate metadata" is answered, and the standing worry about
+      `brand.description` rendering at 166 characters does **not** reach any page's meta description - the
+      composer keeps every page inside budget. There is no truncation problem to find here and a cycle with no
+      Search Console data should not go looking for one again.
+    - **(c) The on-site forward path from a passed cohort to the live one is correct and dated.** Chased
+      because six consecutive GEO probes have shown engines answering live commercial queries off **passed**
+      Luma listings, and the obvious on-site hypothesis was that our own passed-cohort pages fail to forward.
+      **They do not.** All four passed cohort pages link `/events/oxford-agentic-bootcamp-cohort-4/`,
+      `cohort-5` and the Coding cohort; Cohort 2's page reads *"This event has run... The next cohort runs the
+      same format - details below. Cohort 4 - 3 December 2026"*, its FAQ answers *"Can I still join this
+      cohort? No - this date has passed"*, and the footer of every page lists all three upcoming cohorts with
+      their dates. **So backlog 2b is an off-page and indexing problem, not a copy one**, and that is now
+      measured rather than assumed. Do not re-measure the forward path.
+
 
 ## Shipped
+
+### 23 Nov 2026 (20:00 UTC cycle) - Close the reciprocal edge between the founder and the organisation: `Person.worksFor` named this company and gave no address for it, while the same page's `Organization` node named that person as its `founder` by resolvable `@id`
+
+**The defect.** `personSchema` emitted `worksFor: { '@type': 'Organization', name: speaker.company }` - a
+node with a name and no identity. On the two pages that publish Drummond's `Person` node, `/about/` and
+`/team/drummond-gilbert/`, the graph therefore said this person works for *some* organisation called
+"Oxford Agentic", while the `Organization` node published on the same page, at
+`https://oxfordagentic.com/#organization`, named this same person as its `founder` with a resolvable `@id`
+pointing back at him. **One direction of the edge resolved and the other did not**, on the pages that carry
+the site's only `Person` entity of any weight - the one all 32 guides declare as `author` and the
+`Organization` node names as `founder`.
+
+**Seventh instance of one shape, and the census that was declared exhausted could not have found it.** The
+sixth was `CollectionPage` six hours ago; before that `CourseInstance` -> `Event`, the guides' `Article`
+`@id`, `/bootcamps/`, `/guides/`, `/events/`. The 14:00 cycle closed backlog 127 and wrote that "the shape is
+exhausted and the census should not be run again", having run that item's own closing instruction: grep for
+nodes with no `@id` **sitting beside a node that has one for the same url**. That grep is sound and its
+conclusion stands for what it measured. **`worksFor` has no `url` at all**, so it was never in range of it.
+The census that finds this one is different and is recorded below as backlog 131 so it is not re-derived: an
+inventory of every `Organization`-typed node in `dist`, keyed on whether it carries an `@id`.
+
+**Measured first, over the whole built site.** 66 `Organization` nodes carry `@id`, every one of them
+`#organization`. **Seven** carry none, all seven under `worksFor`, on seven pages: "Oxford Agentic" twice
+(`/about/`, `/team/drummond-gilbert/`), and then Accelerated Impact Ops, Jenesys AI, GenieOS, Novaria and
+Coppice Labs once each.
+
+**Only the two were taken, and the other five must stay as they are.** Jenesys AI, Novaria, GenieOS, Coppice
+Labs and Accelerated Impact Ops are other people's organisations. This site publishes no `@id` for any of
+them and minting one here would be asserting an identity we do not own - the same reasoning
+`organizationSchema` already applies in the other direction when it filters a personal
+`linkedin.com/in/...` out of `Organization.sameAs` because "a personal LinkedIn profile identifies a person,
+not the organisation". **Verified after the build**: those five are still anonymous and still named.
+
+**Identity only, from a constant that cannot drift.** One property. `ORG_ID` is the same constant the
+`Organization` node is minted from, so a brand rename moves both together. `name` is unchanged, no existing
+property of any node was touched, and the comparison is an exact match against `config.brand.name` - a
+company string that does not match falls through to the anonymous node, which is the behaviour this
+replaces and therefore the safe direction.
+
+**No feature-flag guard, unlike the `@id` and `url` two lines above, and that decision was proved rather
+than asserted.** Those address the person's own team page, which `features.team` can remove - the fault
+found on 14 November. The `Organization` node is published on every page whatever the flags say, so the
+reference holds either way. `npm run check:flags` was run in full: **all flags ON** 69 pages valid and 1,597
+resolving references; **all flags OFF** 25 pages valid and 448 resolving references, both green. With the
+team section off, `/team/drummond-gilbert/` does not build, `/about/` still publishes the `Person` node, and
+`ORG_ID` still resolves there. Had it not, the schema checker's graph-reference rule would have failed on
+exactly this reference, which is how the 14 November fault surfaced.
+
+**The join is proved, not claimed.** Both `worksFor` nodes carry `@id`, both equal
+`https://oxfordagentic.com/#organization`, and **2 of 2** resolve to an `Organization` node published on the
+same page - checked on the built files and again in the live DOM in headless Chromium. The schema checker's
+resolving-reference count went **1,595 to 1,597**, and the arithmetic is exact: two pages, one new reference
+each.
+
+**Blast radius measured, not inferred.** **2 of 209** built files differ, `about/index.html` and
+`team/drummond-gilbert/index.html`, none added and none removed. With the JSON-LD masked, both are
+character-for-character identical before and after, at 31,397 and 27,725 bytes, so **nothing rendered
+changed**. No sitemap entry moved.
+
+**Checks.** `npm run build` green: 67 pages built, links **3,462 across 69 pages**, outbound (13 third-party
+warnings, all `fetch failed` against hosts this sandbox blocks - not blocking and unchanged from the
+baseline), schema **69 pages valid - 17 Event, 22 FAQPage, 128 offset-bearing dates, 1,597 resolving
+references, 59 breadcrumb trails, all titles and descriptions unique**, both date guards green (58 indexable
+pages carry no passed cohort date written as upcoming; 120 long-month dates, 0 without a year in range).
+`check:flags` green on both builds. Headless Chromium over both changed pages at 375 and 1,280px: **28
+assertions, 24 passed**, and all 4 failures are the single console-error assertion - the only failing
+requests on either page are `googletagmanager.com/gtag/js` and `gtm.js`, refused by this sandbox's egress
+proxy with `ERR_TUNNEL_CONNECTION_FAILED`. Screenshots read at both widths.
+
+**IndexNow.** `src/lib/schema.ts` is in the whole-site bucket, backlog 85 again - the map says 55 and the
+honest number is **2**. The three record files match the exempt pattern on line 166. The script was not run.
+
+**Board state, verified before anything was read.** The fresh checkout arrived detached at `9eb68b7`, which
+**is** `origin/main` after `git fetch` - checked, not assumed. Tree clean. Deploy run **45191451239 success**
+on that SHA at 14:12 UTC, nothing queued or in progress. `oxfordagentic.com` is refused at CONNECT by this
+sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`,
+so **no live page, no `build.txt` and no Luma fact was read, and no event fact was touched** - no date,
+venue, capacity, price or availability. Backlog 109 stays blocked. Deploy state came from the Actions API.
+
+**Search Console: unavailable from cloud, tried once.** `scripts/fetch-search-console.mjs` reports no service
+account key, and there is no export in `seo-data/` newer than the 24 August baseline. Nothing was estimated
+or fabricated. **No new guide this week** - 32 guides, newest `publishDate` 20 October.
+
+**Four probes, zero citations, the thirtieth consecutive set**, and the sixth consecutive measurement of
+backlog 2b - this time with the engine recommending this brand's December day off two of its own **passed**
+Luma listings, quoting "5 Spots Remaining" from a July event, and stating it could not find the date. Probe 3
+passes both topic gates and is a second independent arrival at **backlog 117**, declined on evidence rather
+than on topic. Full detail in `seo-data/geo-citations.md`. **Off-page: no new host, fourth consecutive
+cycle**; every new name in the set is disqualified by a rule already on the review list, and the one credible
+new class is the University's own course pages, which is a competitor rather than a listing route. Nothing
+was contacted, submitted, claimed or paid for.
 
 ### 23 Nov 2026 (14:00 UTC cycle) - NOTHING SHIPPED TO THE SITE, and that is the finding. The seventh schema census ran the instruction backlog 127 left and came back empty, three more sweeps came back clean, and the one answer-engine probe that passes both topic gates turns out to be a page this site already has. Records only: no `src/`, no `public/`, no `dist` byte changed
 
