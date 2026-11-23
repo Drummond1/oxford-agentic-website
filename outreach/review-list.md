@@ -11,6 +11,46 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, third consecutive cycle - and this time the field itself is the argument for the list that
+  already exists.** Found 23 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing
+  contacted, submitted, claimed or paid for, and none of these hosts resolves from this sandbox, so nothing
+  below was checked beyond what the search returned.**
+  - **The forward-deliverable probe is the strongest evidence this list has produced for its own top item.**
+    Asked *"what will I actually have built by the end of a one day AI workshop"* - the question a buyer asks
+    in the last minute before booking - the engine returned nineteen results and **at least fourteen are
+    event-platform listings**: `meetup.com` seven times, `maven.com` four, a `luma.com` page that is not
+    ours, plus `createwith.com`, `ti.to` and `brainstation.io`. No institutional publisher and no platform
+    vendor in the field, and the site answers the question properly on three of its own pages. **Every one of
+    those hosts is already named on this list or in `off-page-listings.md`.** So there is nothing to add, and
+    that is the point: the buyer's pre-booking question is being answered by other people's listings on
+    platforms we are not on, while a cohort that answers it is on sale three days out. **The constraint is
+    not finding hosts. It is approval to use the ones already written up.**
+  - **One mild correction to a standing assumption, worth more than a new name.** `off-page-listings.md`
+    counts *"course-roundup and comparison sites"* among the longer-standing targets. On the
+    bootcamp-versus-university-short-course probe, **no roundup or comparison site ranked at all** - all
+    nineteen results were UK universities describing their own courses. That does not retire the category,
+    but on this axis there is no aggregator to get into, and a cycle planning work there should expect to
+    find fewer doors than the list implies.
+  - **`ti.to` deliberately not added, and it is the only genuinely new host of the four fields.** It is an
+    event-ticketing platform, the same category as Luma and Eventbrite rather than a listing site that would
+    carry a link. Putting a cohort on a second ticketing platform is a commercial call about where bookings
+    land, not an off-page one, so it is Drummond's and it is not an SEO recommendation.
+  - **Deliberately not added, each with its reason rather than by omission. Platform vendors writing about
+    their own product**: `salesforce.com` (four slots, including its own Agentforce testing hub),
+    `ibm.com`, `servicenow.com` (twice, across two probes), `jetbrains.com`, `zendesk.com`, `infobip.com`,
+    `tricentis.com`, `braintrust.dev`, `thoughtspot.com`, `fin.ai`, `beyondtrust.com`, `smartsuite.com`,
+    `mangoapps.com`, `cdata.com`, `ninjaone.com`, `atera.com`, `creately.com`, `aona.ai`,
+    `securityscientist.net`, `kinetica.com`. **Competitor training and course providers**: `brainstation.io`
+    and `maven.com` (both already on this list as listing targets, which is a different relationship),
+    `lsi.ac.uk`. **Consultancies selling the work our buyers would otherwise do themselves, the consultancy
+    clause of the 13 September standing decision**: `rework.com`. **Institutional publishers and universities
+    on their own subject** - the whole of the format-comparison field, nineteen results:
+    `liverpool.ac.uk`, `exeter.ac.uk`, `uwl.ac.uk`, `st-andrews.ac.uk`, `yorksj.ac.uk`, `ntu.ac.uk`,
+    `hull.ac.uk`, `ucl.ac.uk`, `uwe.ac.uk`, `kcl.ac.uk`, `brunel.ac.uk`, `salford.ac.uk`, `tees.ac.uk`,
+    `sps.nyu.edu`, `genai.uchicago.edu`. **US-readership media and aggregator blogs**: `builtin.com`
+    (already on this list), `nhimg.org` (four slots), `iansresearch.com`, `techbloat.com`, `dev.to`,
+    `github.com`, `meetup.com` as a publisher rather than as the listing target it already is.
+
 - **No new host, and the reason is structural rather than bad luck: today's four fields are HR-tech and
   L&D media, which is not where this site's buyer reads.** Found 23 Nov 2026 (08:00 UTC cycle), across four
   answer-engine probes. **Nothing contacted, submitted, claimed or paid for, and none of these hosts resolves

@@ -3115,7 +3115,26 @@ Status: `todo` · `blocked` (why) · `doing`
     **Weigh (b) against (a) only with a number in hand**: how many rollovers a year, and how long the sweep
     actually takes a cycle. The 4 December cycle is the first chance to time it. Do not build (b) before that.
 
-127. `half done` 22 Nov 2026 (20:00 cycle). **Its census was wrong twice about what was left, and both
+127. `done` 23 Nov 2026 (14:00 cycle) - **closed by running its own closing instruction a third time and
+    getting nothing back.** It asked a seventh census to *"grep for nodes with no `@id` that sit beside a
+    node that has one for the same `url`"*, which is the narrower shape the fifth and sixth instances shared.
+    That census ran this cycle over all **69 built pages and 1,497 JSON-LD nodes**, in both the strict form
+    (same page) and a wider one (the `url` is identified anywhere in `dist`), and **every hit is a false
+    positive or a documented decision**:
+    - **50 `ListItem` hits: false positives, and the census was wrong to count them.** A `ListItem` is a
+      positional wrapper, not an entity, and all 50 already carry the reference on `item` - checked on the
+      built output: `{"@type":"ListItem","position":1,...,"item":{"@type":"Article","@id":".../#article"}}`.
+      The wrapper's own `url` is a sibling of the thing it points at, so a `ListItem` wants no `@id` of its
+      own. These are the four listings the 22-23 November cycles already fixed, re-counted by a cruder rule.
+    - **17 `Offer` hits: a settled decision, twice over.** `schema.ts` states it on line 208 - *"`offers.url`
+      points at OUR event page, not Luma: the site is the canonical place to register, and the embed lives
+      there"* - so the Offer's `url` matching the event page's `url` is the intent, not a collision. And an
+      `Offer` is not the event: it is a price-free statement of availability about it, so it has no identity
+      to assert. No change.
+    **So the shape is exhausted.** Six instances were real and all six are shipped; the seventh census
+    returns none. **A future cycle should not run this census again** unless a new node type is added to
+    `schema.ts`, in which case the one-page script is the thing to re-run, not the reasoning to redo.
+    Original status line kept below. - **Its census was wrong twice about what was left, and both
     corrections came from running its own closing instruction rather than its count.** A **fifth** instance
     shipped 23 Nov 2026 (02:00 cycle) outside the `ItemList` family, and a **sixth** shipped 23 Nov 2026
     (08:00 cycle) outside it again: every page that calls `collectionPageSchema` was publishing an anonymous
@@ -3205,7 +3224,157 @@ Status: `todo` · `blocked` (why) · `doing`
     `0.75rem` (12px) is the nearest value that keeps it subordinate while clearing the floor by less.
 
 
+130. `todo` (**four sweeps run clean and recorded so no cycle re-derives them as gaps**; measured 23 Nov 2026
+    in the 14:00 cycle on the built site) - **none of these four is a defect, and three of the four are the
+    places a cycle with no Search Console data is most tempted to go looking.**
+    - **(a) Canonical URLs, `og:url` and robots directives: zero findings across all 69 built pages.** All
+      **58** sitemap pages carry a self-referencing absolute canonical (`https://oxfordagentic.com` + the
+      page's own path), an `og:url` identical to it, and **no** `robots` meta at all - which is correct, since
+      indexability is the default. All **11** non-sitemap pages carry `noindex`: `/404.html`, `/apply/`,
+      `/find-your-bootcamp/`, `/first-workflow-picker/` and its `/thanks/`, `/home-photos/`, `/office-hours/`,
+      `/second-brain-interest/` (all `noindex, follow`), `/ceo-roundtable/` (`noindex, nofollow`), and
+      `/home-original/` and `/team/josh-lawman/` (`noindex`, each canonicalised to another page, which is a
+      mixed signal only in theory - a `noindex` page's canonical is not consulted). **Nothing to fix**, and
+      rule 8's "validate canonical URLs" is answered for as long as `BaseHead` keeps minting them.
+    - **(b) Inbound internal links per guide: healthy, and the `/team/` figure is not the general case.**
+      Counted from indexable pages only, with JSON-LD stripped so schema URLs do not inflate it: all **32**
+      guides have **5 to 12** inbound internal links, median **6**, minimum 5
+      (`agentic-ai-for-consultants`, `why-the-code-an-agent-wrote-is-not-live`,
+      `how-to-run-an-ai-pilot-that-survives`, `agentic-ai-for-finance-teams`,
+      `agentic-ai-for-public-sector-and-nhs-leaders`), and **almost all of it is guide-to-guide**: the same
+      guides score 4 to 11 counting guide pages alone. **So there is no orphan-guide problem.** Backlog 106's
+      one-inbound-link finding is specific to the eight `/team/` profiles and must not be generalised to the
+      guides.
+    - **(c) `faqFromHeadings` adoption is swept, and the one remaining candidate is deliberately declined.**
+      **11 of 32** guides are opted in. Of the other 21, **twenty have no question-shaped heading at all** -
+      they are essays under `h2`s, and opting them in would mean rewriting prose into questions, which is a
+      copy call and is **backlog 126**'s neighbour, not a markup change. Exactly **one** clears `faq.ts`'s
+      two-or-more threshold: `is-it-safe-to-put-company-documents-in-a-second-brain` (3 of its 5 `h2`s are
+      questions). **Not taken, and the reason is value rather than mechanism.** It is a Second Brain guide,
+      and the 13 September standing decision plus `STATE.md`'s own record - Search Console has logged exactly
+      one second-brain query in the site's life, at 1 impression - put its expected return at approximately
+      nothing. **`STATE.md` names this exact move as the loop's known failure mode**: fourteen evidence-free
+      cycles that *"narrowed to re-publishing existing prose as FAQ nodes... because that was the only move
+      left that required no evidence"*. A cycle that reaches for this one should read that paragraph first.
+      (`second-brain-for-ai-vs-note-taking` has 1 question `h2` of 3 and fails the threshold.)
+    - **(d) Passed cohorts' `eventStatus` and `offers`: correct, and `EventScheduled` on a past day is not a
+      bug.** All 7 cohort pages publish `eventStatus: EventScheduled`, including the four that have run
+      (Cohorts 1, 2 and 3, and Second Brain Cohort 1). **That is the right value**: schema.org offers
+      `EventCancelled`, `EventMovedOnline`, `EventPostponed`, `EventRescheduled` and `EventScheduled` and
+      **no completed state**, so every alternative would assert something false about a day that happened as
+      planned. Meanwhile `effectiveStatus` is already doing the real work: the three on-sale cohorts carry
+      `availability: InStock` and the four passed ones carry **no `availability` at all**. Their `sameAs`
+      still names their Luma listing, which is deliberate (15 Oct) and is what tells an engine holding a
+      passed Luma page that it is ours. **No change on any of the four.**
+
+
 ## Shipped
+
+### 23 Nov 2026 (14:00 UTC cycle) - NOTHING SHIPPED TO THE SITE, and that is the finding. The seventh schema census ran the instruction backlog 127 left and came back empty, three more sweeps came back clean, and the one answer-engine probe that passes both topic gates turns out to be a page this site already has. Records only: no `src/`, no `public/`, no `dist` byte changed
+
+**What this cycle changed on the site: nothing.** No file under `src/` or `public/` was touched, so the built
+output is byte-identical to `213f055` and **no page moved**. The commit carries three record files only -
+`seo-data/geo-citations.md`, `outreach/review-list.md` and this ledger - all three of which match
+`indexnow-ping.mjs`'s exempt pattern on line 166, so **the deploy will ping nothing**, correctly. The report
+below is the cycle's product.
+
+**Board state, verified before anything was read.** The fresh checkout arrived detached at `213f055`, which
+**is** `origin/main` after `git fetch` - the 9 November trap did not bite this time, and it was checked rather
+than assumed. Tree clean. Deploy run **45174970532 success** on that SHA at 12:31 UTC (a scheduled run), CI run
+**45146327263 success** on it at 09:24, **nothing queued or in progress**. `oxfordagentic.com` is refused at
+CONNECT by this sandbox's egress proxy (HTTP 403), as are `luma.com` and the cohort pages on it, so **no live
+page, no `build.txt` and no Luma fact was read, and no event fact was touched** - no date, venue, capacity,
+price or availability. Backlog 109 stays blocked. Deploy state came from the Actions API.
+
+**Candidate 1 of the standing prompt is closed and was confirmed closed rather than re-shipped.**
+`scripts/indexnow-ping.mjs` maps `src/lib/home.ts` to `/` on line 109, inside `SINGLE_PAGE_SOURCES`. The
+23 Nov 02:00 cycle recorded this; it was read off the source this cycle rather than taken on trust.
+
+**Candidate 2 is a 27 November job and the ledger already says why it must not be brought forward.**
+Backlog 103 holds the census: `check-dates.mjs --now=2026-11-27` returns seven stale windows, two derived and
+self-healing and **five hand-authored in five files**, all of them the Coding Bootcamp's 26 November date. Its
+own reasoning, re-run and confirmed on 22 November, is that four of the five are **booking pointers** rather
+than venue statements, so a tense-neutral rewrite would satisfy the guard while leaving a buyer at a dead end,
+and that rewriting on the 23rd *"would publish an error to prevent one"* during the only week that day sells.
+**Left alone, deliberately, for the fourth day running.**
+
+**Candidate 3 was measured and declined, and the decline is the recorded one rather than a new judgement.**
+Guides carry no `faqs:` frontmatter field at all - the mechanism is `faqFromHeadings`, which derives the node
+from the guide's own rendered question headings so the two cannot drift. **11 of 32** guides are opted in;
+twenty of the remaining 21 have no question-shaped heading to derive from. Exactly one candidate clears the
+threshold and it is a Second Brain guide, where `STATE.md` records one second-brain query in the site's whole
+life at 1 impression. Full reasoning, including `STATE.md`'s own warning that this is the loop's known
+evidence-free failure mode, is backlog 130(c).
+
+**The seventh schema census: the shape is exhausted, and backlog 127 is closed.** It ran that item's own
+closing instruction - grep for nodes with no `@id` sitting beside a node that has one for the same `url` -
+over **69 pages and 1,497 JSON-LD nodes**, in a strict same-page form and a wider whole-`dist` form. Every hit
+is a false positive (50 `ListItem` wrappers, all of which already carry the reference on `item`, verified on
+the built output) or a documented decision (17 `Offer` nodes, whose `url` matching their event's is stated as
+the intent on line 208 of `schema.ts`, and which have no identity to assert in any case). Six instances of
+this shape were real and all six are shipped. **Detail and the do-not-re-run note in backlog 127.**
+
+**Three further sweeps, all clean, all recorded as backlog 130 so no cycle re-derives them.** Canonicals,
+`og:url` and robots directives: **zero findings** over all 69 pages - 58 self-referencing absolute canonicals
+with no robots meta, 11 non-sitemap pages all carrying `noindex`. Inbound internal links per guide: all **32**
+guides have **5 to 12**, median 6, almost all of it guide-to-guide, so **there is no orphan-guide problem** and
+backlog 106's one-link finding must not be generalised off `/team/`. Passed cohorts' event nodes: all four
+passed cohorts correctly carry **no `offers.availability`**, and `EventScheduled` on a day that has run is the
+right value because schema.org publishes **no completed state**.
+
+**Checks.** `npm ci` and `npm run build` green on the unchanged tree: 67 pages built, 69 checked, **3,462
+internal links** resolve, schema valid on 69 pages with 17 Event nodes, 22 FAQPage nodes, 128 offset-bearing
+publication dates, **1,595** resolving graph references and 59 well-formed breadcrumb trails, all titles and
+descriptions unique. Both date guards green at today's date: 58 indexable pages carry no passed cohort date
+written as upcoming, and 120 long-month dates all carry a year or have one within 400 characters. The 13
+outbound warnings are this sandbox's egress policy, not the site. Every figure is identical to the last ten
+cycles' baseline, as it must be on a tree with no source change. Headless Chromium launches
+(**157.0.8103.78**), confirmed this cycle so the capability is on record - **but no page was screenshotted,
+because no page changed**; the standing rule that a cycle which cannot run a browser must not ship has nothing
+to gate here.
+
+**Search Console: unavailable from this checkout, tried once.** `node scripts/fetch-search-console.mjs` reports
+no service-account key configured and exits 0, and `seo-data/` holds only the 24 August baseline, the GEO log
+and a README - **no export newer than the baseline**. Nothing was estimated, inferred or fabricated. Rule 4 is
+dead again and this cycle ran under rule 5. The freshest real reading is still **30 October (151 clicks, 2.37k
+impressions, 6.4% CTR, position 13.1)**, read rather than re-derived, and nothing in it reopens a page.
+**Backlog 2 and task 4 in `STATE.md` remain the single highest-value thing Drummond could do for this loop**,
+and this cycle is a fair illustration of the cost: with four probes declined on the topic rule and four sweeps
+clean, there was no evidence left on which to choose a page.
+
+**Four probes, zero citations, the twenty-ninth consecutive set - and for the first time a probe passes both
+topic gates and still leaves nothing to write.** Probe 4 asked *"what will I actually have built by the end of
+a one day AI workshop"*, the question a buyer asks in the last minute before booking. **WINNABLE passes** (no
+institutional publisher, not one platform vendor writing about its own product) and **CONVERTING passes about
+as hard as it can** - and the site already answers it, in three places, checked on the built output:
+`what-you-can-build-in-one-day-with-ai` carries *"What you should expect to leave with"* and *"Will I build
+something, or watch someone else build it?"*, is opted into `faqFromHeadings`, and its capsule names the
+deliverable and the four things that will not fit. **So the gap is retrieval, not coverage**, and the field
+says what the remedy is: nineteen results, **at least fourteen of them event-platform listings** - Meetup
+seven times, Maven four, a Luma page that is not ours, plus createwith, ti.to and BrainStation - **every one
+already named in `outreach/`**. That makes this the cleanest statement of **backlog 2b** in the log. Probes 2
+and 3 tell the same story on two more axes: each returned a field with no owner, each asked a question this
+site has a guide written specifically for (`getting-an-ai-workflow-past-it-and-legal`,
+`ai-bootcamp-vs-course-vs-exec-education`), and neither guide appeared. **Three different axes, one diagnosis,
+and it is not a content diagnosis.** Probe 2 also produced the set's only engine admission - *"The search
+didn't turn up guidance written for employees asking for an exception"* - and the procedural half of it was
+**declined on accuracy**: every source is US GRC or security-vendor marketing, and this site cannot assert how
+IT departments handle requests from its own experience. Probe 1 fails the platform-vendor clause outright,
+Salesforce four times. Probe 3 is the log's cleanest institutional-publisher decline at **19 of 19 UK
+universities**. Full tables, the forty-seven-string dedupe and the market-context prices in
+`seo-data/geo-citations.md`.
+
+**Off-page: no new host, third consecutive cycle, and this time the field is itself the argument.** Probe 4's
+fourteen event-platform results are all already on the review list or in `off-page-listings.md`, which is the
+point - **the constraint is not finding hosts, it is approval to use the ones already written up**, while a
+cohort that answers the buyer's question is on sale three days out. One mild correction filed: no roundup or
+comparison site ranked anywhere in the format-comparison field, so that category has fewer doors than
+`off-page-listings.md` implies. `ti.to` is the only genuinely new host and was declined as a ticketing
+platform rather than a listing site - where bookings land is Drummond's commercial call. Roughly forty other
+hosts deliberately not added, each with its reason. **Nothing contacted, submitted, claimed or paid for.**
+
+**No new guide this week** - 32 guides, newest `publishDate` 20 October 2026. The week of 23-29 November has
+**zero** so far, against a limit of three.
 
 ### 23 Nov 2026 (09:00 UTC cycle) - the card that sells every cohort put the programme name outside the heading, so `/events/` published three headings reading "Cohort 1" for three different bootcamps. The eyebrow moves inside the `h3`, 7 of 209 built files, and all 18 full-page screenshots byte-identical
 

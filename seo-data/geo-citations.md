@@ -5,6 +5,94 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-23 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-NINTH CONSECUTIVE SET - AND THE FIRST PROBE IN THIS LOG THAT PASSES BOTH GATES AND STILL CANNOT BE ANSWERED ON THE PAGE, BECAUSE THE PAGE ALREADY ANSWERS IT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403), as are `luma.com` and the cohort pages on it, so
+no live page and no Luma fact was checked, deploy state came from the Actions API, and every site fact below
+comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Forty-seven candidate strings across
+roughly twenty concepts were grepped over the whole log before any question was put to an engine. The
+testing-and-trust axis scores **0** on `test an agent`, `trust an agent`, `evaluate an agent`,
+`how do I know it works`, `check its work` and `fails quietly`; the IT-exception axis scores **0** on
+`blocked by IT` and `IT department`; the university-comparison axis scores **0** on `university course` and
+`short course versus`; the forward deliverable axis scores **0** on `what will I have built` and
+`what do you get`. Dropped as already covered: the which-task axis (`which task`, 10 hits), the
+confidential-data axis (28), adoption (17), the approval axis in its manager form (18), `non-developer` (53)
+and `leave with` (27).
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I test an AI agent before trusting it with real work (**testing-and-trust axis, never probed**) | **No** | **salesforce.com x4** (incl. admin.salesforce.com and the Agentforce testing hub), ibm.com, servicenow.com, jetbrains.com, zendesk.com x2, infobip.com x2, tricentis.com, braintrust.dev, thoughtspot.com, fin.ai, dev.to x3 |
+| 2 | my IT team won't approve AI tools, how do I get an exception for AI at work (**IT-exception axis, never probed in the employee's words**) | **No** | **nhimg.org x4, smartsuite.com x2**, servicenow.com, beyondtrust.com, mangoapps.com, cdata.com, ninjaone.com, atera.com, iansresearch.com, securityscientist.net, creately.com, aona.ai, builtin.com, techbloat.com, rework.com, genai.uchicago.edu |
+| 3 | one day AI bootcamp or university short course, which is better for business leaders UK (**format-comparison axis, never probed**) | **No** | **19 of 19 results are UK universities**: liverpool.ac.uk, exeter (business-school x2), uwl.ac.uk, st-andrews.ac.uk, yorksj.ac.uk, ntu.ac.uk x2, hull.ac.uk x2, ucl.ac.uk x2, uwe.ac.uk, kcl.ac.uk, brunel.ac.uk, salford.ac.uk, tees.ac.uk x2, lsi.ac.uk |
+| 4 | what will I actually have built by the end of a one day AI workshop (**forward deliverable axis, never probed**) | **No** | **meetup.com x7, maven.com x4**, luma.com (someone else's listing), createwith.com, brainstation.io, ti.to, sps.nyu.edu, kinetica.com, github.com |
+
+**Reading.**
+
+- **Probe 4 is the finding of the set, and it is the first probe in twenty-nine sets to pass both gates and
+  still leave nothing to write.** WINNABLE passes: no institutional publisher anywhere in the field, and not
+  one platform vendor writing about its own product. CONVERTING passes about as hard as it can - this is the
+  question a buyer asks in the last minute before booking a one-day workshop. **And the site already answers
+  it, properly, in three places**, checked on the built output rather than assumed:
+  `what-you-can-build-in-one-day-with-ai` carries *"What you should expect to leave with"* as an `h2` and
+  *"Will I build something, or watch someone else build it?"* as a leaf question heading, is opted into
+  `faqFromHeadings`, and its capsule states the deliverable and the four things that will not fit; every
+  on-sale event page and both Agentic programme surfaces answer *"What did people in Cohort 1 actually
+  build?"*. So **the gap is not coverage, it is retrieval** - and that makes this probe the cleanest
+  statement of **backlog 2b** the log has recorded. The field is **nineteen results and at least fourteen of
+  them are event-platform listings**: Meetup seven times, Maven four, plus a Luma page that is not ours,
+  createwith, ti.to and BrainStation. A buyer asking what they will walk away with is being answered by
+  other people's event listings on platforms this site is not listed on, while a cohort it answers for is on
+  sale three days out. **Declined as a content change, recorded as evidence for the listings work.**
+- **Probe 2 produced the set's only engine admission, and it is a re-measurement rather than a new axis.**
+  The engine said in as many words: *"The search didn't turn up guidance written for employees asking for an
+  exception, but several sources describe how organizations handle these requests from the IT side."* That is
+  an admitted hole in the field, and the field has no institutional publisher in it. **But this site already
+  took that hole**, on 7 November: `getting-an-ai-workflow-past-it-and-legal` exists for exactly this reader
+  (*"Most of what is written about that conversation is written for the person on the other side of the
+  table... This is for the person asking"*), carries **thirteen** question headings grouped by who asks them,
+  and was opted into `faqFromHeadings` that day off a probe of the neighbouring phrasing. So today's probe
+  measures the same decision from a new angle and returns the same answer: the asset exists and is not being
+  retrieved. **One thing the guide genuinely does not carry** is the procedural half the field does offer -
+  ask IT what the review process is, whether a lower-risk tier or a sandbox route exists, propose a
+  time-limited pilot. **Not added, and the reason is accuracy rather than scope**: every source for it is
+  GRC-platform or security-vendor marketing, mostly US, and the site cannot assert how IT departments handle
+  requests from its own experience. Writing it would mean restating vendor marketing as practice.
+- **Probe 3 is the cleanest institutional-publisher decline in the log, at 19 of 19.** Every result is a UK
+  university short course or executive-education page. **Declined on WINNABLE**, and it needs no further
+  argument. Two things in it are worth keeping, though. **(a) The site has a guide aimed squarely at this
+  query** - `ai-bootcamp-vs-course-vs-exec-education`, opted into `faqFromHeadings` - and it did not appear,
+  which is the same retrieval story as probes 2 and 4. **(b) There is no comparison site anywhere in the
+  field.** The question is answered entirely by providers describing themselves. That is a mild correction to
+  the standing assumption in `outreach/off-page-listings.md` that course-roundup and comparison sites are a
+  route in on this axis: on this phrasing, no roundup ranks at all.
+- **Probe 1 fails the platform-vendor clause outright.** Salesforce four times including its own Agentforce
+  testing hub, plus IBM, ServiceNow, JetBrains, Zendesk twice, Infobip twice, Tricentis, Braintrust,
+  ThoughtSpot and fin.ai - every one of them writing about testing agents on its own platform. The engine
+  flagged it unprompted: *"the sources are mostly vendor blogs, so treat their tool recommendations as
+  starting points rather than endorsements."* **Declined.** Worth noting that the advice the field does give
+  - sandbox first, use real tasks not demo questions, test the failure paths, keep a human in the loop with
+  limited permissions - is what `where-the-human-goes-in-an-agentic-workflow`,
+  `how-to-notice-when-an-ai-workflow-is-wrong` and `why-the-code-an-agent-wrote-is-not-live` have said in
+  plainer words since September.
+
+**The pattern across three of the four probes, stated once so it is not re-derived as three findings.**
+Probes 2, 3 and 4 each returned a field with no institutional publisher and no owner, each asked a question
+this site has a guide written specifically for, and each returned nineteen results without that guide. Three
+different axes, one diagnosis, and it is not a content diagnosis. **The on-page work on these three axes is
+done; what is missing is the thing backlog 2b has been asking for since 30 July.**
+
+**Competitive intelligence from probe 3, recorded because it is cheap to keep and expensive to re-derive.**
+Comparable UK one-day AI courses for leaders, as those pages stated their own prices: Nottingham Trent
+AI Essentials **£195** (listing shows a 2024 start date, so possibly stale), York St John **£450**,
+Liverpool **£500** (with a 30-day check-in and a certificate). Multi-day: NTU three-day **£795**,
+St Andrews **£3,300** with an organisation-specific project. **Prices stay off this site** (PRD §18), and the
+certificate point is a standing do-not-mention. Recorded as market context only.
+
+
 ## 2026-11-23 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-EIGHTH CONSECUTIVE SET, AND FOUR DECLINES WITH FOUR DIFFERENT REASONS - INCLUDING ONE PHRASING TEST THAT SHOWS WHERE THIS SITE'S CEILING ACTUALLY IS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
