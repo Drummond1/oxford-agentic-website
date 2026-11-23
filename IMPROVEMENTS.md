@@ -3115,7 +3115,16 @@ Status: `todo` · `blocked` (why) · `doing`
     **Weigh (b) against (a) only with a number in hand**: how many rollovers a year, and how long the sweep
     actually takes a cycle. The 4 December cycle is the first chance to time it. Do not build (b) before that.
 
-127. `half done` 22 Nov 2026 (20:00 cycle) - **the `/guides/` half shipped, including the `@id` question this
+127. `half done` 22 Nov 2026 (20:00 cycle), **and its census was wrong about "the only listing left" - a fifth
+    instance was shipped 23 Nov 2026 (02:00 cycle) outside the `ItemList` family this item was counting.**
+    `Course.hasCourseInstance` published anonymous `CourseInstance` nodes for the same cohorts the homepage
+    describes beside them as `EducationEvent`s with `@id`s, so `/` described one day twice. Every instance
+    now carries `<event url>#event`: six references, 3 of 209 built files, detail in that cycle's Shipped
+    entry. **The lesson for the next census is the one this item got wrong: the shape is "a node names
+    something that has its own identifier and does not use it", and it is not confined to
+    `collectionPageSchema`.** Grep for nodes built with `name` and `url` and no `@id`, not for listings.
+    `/team/` remains the last `ItemList` one and is still Drummond's.
+    Original status line kept below. - **the `/guides/` half shipped, including the `@id` question this
     item said to weigh first; `/team/` is still Drummond's and is the only listing left.** The `@id` question
     answered itself once asked: `#article` collided with nothing (0 occurrences in `dist` before minting it),
     it is the fragment convention every other node here already uses, and it is derived from the same
@@ -3145,6 +3154,142 @@ Status: `todo` · `blocked` (why) · `doing`
       "five listing pages" framing in `collectionPageSchema`'s own comment is not read as a to-do list.
 
 ## Shipped
+
+### 23 Nov 2026 (02:00 UTC cycle) - the fifth and last instance of one shape, and the first found outside an `ItemList`. Every `CourseInstance` now carries the `@id` of the cohort's own `Event` node, so the homepage stops describing one day twice. Six references, 3 of 209 built files, all three byte-identical with the JSON-LD masked
+
+**The defect, and it is on one page rather than between two.** `/` publishes both of these nodes in the same
+graph. `eventListingItem` emits a top-level `EducationEvent` under `<event url>#event` for each upcoming
+cohort - with `eventStatus`, `offers`, `image`, `sameAs`, `organizer` and `performer`. Beside it, the three
+`Course` nodes carried a `CourseInstance` for the **same cohort** with a name, a URL, dates, `courseMode`,
+`courseWorkload`, `instructor` and `location` - and **no identifier**. So the homepage described one day
+twice, as two nodes nothing joined. Measured on the built page before anything was touched: three
+`EducationEvent` nodes at `@id` `.../#event`, three anonymous `CourseInstance` nodes for the same three
+cohorts.
+
+**Why this is the same shape as the last four and not a new theme.** `/events/` published five names and no
+dates and was taken on 23 October. The guides' `Article.about` named the programme as an anonymous `Thing` and
+was taken on 26 October. `/bootcamps/` and `/guides/` published bare `ListItem`s and were taken on 22 November.
+Backlog 127's census called `/team/` "the only listing left", and that census was looking only at
+`collectionPageSchema`. **This is the fifth instance and the first outside an `ItemList`**, which is why four
+cycles of sweeping listings did not find it.
+
+**Why it is worth more than the four before it.** The `Course` node is the one node this site publishes on `/`
+as well as on the programme page, and `courseSchema`'s own comment records why: restricted to this domain, the
+engine holds `/` and two guides and nothing else. The GEO log has now recorded **twenty-seven consecutive probe
+sets** with no page of this site cited, and **three consecutive days** of engines answering a live commercial
+query off passed Luma listings - today handing a buyer a venue contradiction in as many words. The page an
+engine does read was publishing the cohort's dates in one node and the cohort's status, booking offer and
+identity in another, with nothing saying they are the same day.
+
+**It also repairs the premise of a decision made five days ago.** `eventListingItem` declines to name the
+facilitators, and the reason it gives is that *"the homepage already names them by the route Google documents
+for course data - `instructor` on each `CourseInstance`"*. That is only true if the two nodes are one node, and
+until this commit they were not: the Event node has no `instructor`, the instance had no address, and nothing
+said those four `Person` references belong to the day the Event node describes. The `@id` is what makes the
+18 November reasoning sound. **This is the second time in two days a cycle has closed a gap in the reasoning of
+an existing decision rather than in a page** - the 22 Nov 14:00 cycle did it for the passed cohorts' `Offer`
+nodes - and it is a better use of a cycle than finding a fifth thing to nest.
+
+**The change.** One file, one property. `courseSchema` in `src/lib/schema.ts`: the instance builder becomes a
+block body so the event URL is computed once, and each `CourseInstance` gains
+`'@id': <event url>#event`. **Identity only.** Not one existing property of any node was touched, no copy
+changed, no fact was added. The `@id` is derived from the same `paths.event(slug)` call `url` on the next line
+is built from, so it cannot drift, and `#event` is the fragment the cohort's own page and `eventListingItem`
+already mint, not a new convention. The diff is 93 changed lines, of which **43 are whitespace**: `git diff -w`
+reads 50 insertions and 3 deletions, and 46 of those 50 are the comment.
+
+**Safe because the two nodes agree, and that was measured rather than assumed.** The rule this file holds
+itself to is that two descriptions under one `@id` want to agree, so the merge was checked property by property
+on the built homepage **before** the line was written. Every property the two nodes share - `name`, `url`,
+`startDate`, `endDate`, `location` - is **byte-identical**, because both are derived from the same cohort
+frontmatter. What each adds is complementary rather than contradictory: `courseMode`, `courseWorkload` and
+`instructor` on one side, `eventStatus`, `offers`, `image`, `sameAs`, `organizer` and `performer` on the other.
+`CourseInstance` and `EducationEvent` are both `Event` subtypes, so a consumer merging them gets one node of
+both types, which is what this cohort actually is.
+
+**The join is proved, not asserted.** All 6 `CourseInstance` nodes across the four pages that carry one now
+have an `@id`; all 6 match `url + '#event'` exactly; and all **6 of 6** match an `@id` that the cohort's own
+event page publishes. The schema checker's resolving-internal-graph-reference count went **1,585 to 1,591**
+against this cycle's own baseline build, and the arithmetic is exact: three instances on `/`, two on the
+Agentic programme page, one on the Coding programme page, none on Second Brain, which has no scheduled cohort.
+
+**Blast radius, measured rather than inferred.** Whole-`dist` file-by-file comparison against the pre-change
+build: **3 files of 209** differ - `/index.html` and the two programme pages with cohorts on sale - and nothing
+else. With the JSON-LD masked out, all three are **character-for-character identical** before and after and
+identical in length (58,092 / 48,420 / 63,029 bytes). No sitemap entry moved; `sitemap-0.xml` is identical.
+
+**Checks.** `npm ci` and `npm run build` green: 67 pages built, 69 checked, **3,462 internal links** resolve,
+schema valid on 69 pages with 17 Event nodes (10 top-level, 7 nested entity - unchanged, because
+`isEventNode` matches `Event` and `EducationEvent` only), 22 FAQPage nodes, 128 offset-bearing publication
+dates, **1,591** resolving graph references and 59 well-formed breadcrumb trails, all titles and descriptions
+unique. Both date checks green: 58 indexable pages carry no passed cohort date written as upcoming, and 120
+long-month dates all carry a year or have one within 400 characters. `npm run check:flags` green on both the
+all-on and all-off builds. The 13 outbound warnings are this sandbox's egress policy, not the site. Every
+figure except the graph-reference count is identical to the last eight cycles' baseline.
+
+**One sweep run and recorded clean so it is not re-derived.** Eight on-page dimensions across all 58 indexable
+built pages, none of them in the standing list: heading-level skips (`h1` straight to `h3` and the like),
+duplicate `id` attributes in one document, `target="_blank"` without `rel="noopener"`, missing `<html lang>`,
+missing `og:title` / `og:description` / `og:url` / `og:type` / `twitter:card`, `<img>` without width and
+height, and anchors with neither text nor an accessible name. **Zero findings on all eight.** The 11 noindex
+pages were excluded, and `/team/josh-lawman/` is among them, which is worth noting against backlog 16: the page
+is still live and still in `/team/`, but it is no longer indexable.
+
+**Browser.** Headless Chromium over `/` and the two programme pages at 375 and 1280px, motion disabled,
+`deviceScaleFactor: 2`: **36 assertions, 30 passed**, and all 6 failures are the single console-error assertion
+against hosts this sandbox blocks. Every structural assertion clean at both widths - status 200, zero
+horizontal overflow, exactly one `h1`, every JSON-LD block parses, non-empty title. The Coding programme page
+at 375px was read in full and is indistinguishable from the pre-change build, as the byte comparison predicts:
+hero, outcomes, format, the "Upcoming runs" card reading Thursday 26 November 2026 at Worcester College, the
+FAQ set and the footer all render correctly.
+
+**IndexNow.** `src/lib/schema.ts` is in the whole-site bucket, which is **backlog 85 again**: the map's number
+is 55 and the honest number is **3**. The other three paths in this commit match the exempt pattern on line
+166, read off the source this cycle. The script was not run. One thing confirmed while reading that file, since
+it was on the loop's own candidate list: `src/lib/home.ts` is mapped to `/` on line 109 and no longer goes
+whole-site, so that item is **closed**.
+
+**Search Console: unavailable from this checkout, tried once.** `node scripts/fetch-search-console.mjs` reports
+no service-account key configured and exits 0, and there is no export in `seo-data/` newer than the 24 August
+baseline - the directory holds that file, the GEO log and a README and nothing else. Nothing was estimated or
+inferred. Rule 4 is dead again and the cycle ran under rule 5. The freshest real reading is still 30 October
+(151 clicks, 2.37k impressions, 6.4% CTR, position 13.1), it was read rather than re-derived, and nothing in it
+reopens a page: `/events/` has recovered, `/about/` and `/guides/` were opened and closed in it, and the
+county-provider cluster is 7.5% of impressions and none of the clicks. **Backlog 2 and task 4 in `STATE.md`
+remain the single highest-value thing Drummond could do for this loop.**
+
+**Production could not be read.** `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), as are `luma.com` and the cohort pages on it. So no live page, no `build.txt` and no Luma fact was
+checked; **no event fact was read, invented or changed** - no date, venue, capacity, price or availability was
+touched - and backlog 109 stays blocked. Deploy state came from the Actions API: HEAD verified equal to
+`origin/main` at `4811d4d` before anything was touched, tree clean, deploy run 45064897484 success on that SHA
+at 20:11 UTC on 22 November, nothing queued.
+
+**Four probes, zero citations, the twenty-seventh consecutive set, and probe 3 is the third consecutive
+measurement of one failure in its worst form yet.** Asked for a one-day in-person Claude Code bootcamp in
+Oxford in **November 2026**, with the Coding Bootcamp's first cohort **three days away** and on sale, the engine
+returned no page of this site, answered off the same two passed Luma listings as yesterday, and - reading two
+of them for two different colleges - told the buyer *"Its listings also give a different venue, Worcester
+College, so check the date and location before booking."* The brand's stale third-party artefacts now generate
+a contradiction that reads as a reason to hesitate. The Coding line did not appear at all, although the query
+named four of its own strings. The site was checked and is not the cause. The other three probes declined, and
+probe 1 is the most interesting decline in weeks: the technical-co-founder axis is squarely this programme's
+published `whoFor`, and the field has no institutional publisher in it and several AI-written blogs - but four
+of the top results are **Anthropic's own founder playbook on `claude.com`**, so it fails the platform-vendor
+clause while the field is weak rather than strong. Worth re-probing if `claude.com` ever drops out of it. Full
+tables and the concept-level dedupe in `seo-data/geo-citations.md`.
+
+**Off-page: no new host, and one correction worth more than a new name.** The dated Oxford probe returned an
+EnSpire event page - an Anthropic and Claude Code session, in Oxford, in the same week as our Coding cohort -
+on **`enspire.site.ox.ac.uk`**, where every entry in the review list since 11 October names the target as
+`enspire.ox.ac.uk`. One of the two is stale, this sandbox cannot reach either to tell which, and a submission
+to the wrong one is a submission to nowhere, so it is recorded as a correction to the standing target. Roughly
+twenty-five other hosts across the four fields were deliberately not added, each with its reason, and eight
+were confirmed already listed rather than assumed to be. Nothing contacted, submitted, claimed or paid for.
+
+**No new guide.** 32 guides, newest `publishDate` 20 October 2026, so none this week and none this day. All
+four probe axes declined on the topic rule, so neither the guide allowance nor the Q&A allowance was spent.
+This is a structured-data change and neither governs it.
 
 ### 22 Nov 2026 (20:00 UTC cycle) - the fourth and largest instance of one shape, and the half backlog 127 said to weigh first. 32 `Article` nodes gained an `@id`, so `/guides/` can reference the article instead of naming it. 96 references, 33 of 209 built files, and every one of them byte-identical with the JSON-LD masked
 

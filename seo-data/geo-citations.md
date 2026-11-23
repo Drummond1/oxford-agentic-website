@@ -5,6 +5,70 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-23 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-SEVENTH CONSECUTIVE SET, AND THE THIRD CONSECUTIVE MEASUREMENT OF PASSED LUMA LISTINGS ANSWERING A LIVE COMMERCIAL QUERY - THIS TIME HANDING THE BUYER A VENUE CONTRADICTION
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403), as are `luma.com` and the cohort pages on it, so
+no live page and no Luma fact was checked, deploy state came from the Actions API, and every site fact below
+comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Each candidate axis was grepped across the
+whole log before being put to an engine. Four candidates were dropped as already covered: the agent-versus-
+automation framing (`zapier`, 34 hits), the solo-buyer axis, the vibe-coding framing and the level-fit axis.
+The four below returned nothing on the concept grep - `technical co-founder` and `cofounder` both score **0**
+across the entire log, `recruitment` scores **0**, and `audit trail` scores **0**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | do I need a technical co-founder or can I build the prototype myself with AI coding agents (**technical-co-founder axis, never probed**) | **No** | **claude.com x4** (Anthropic's own founder playbook), spiralscout.com x2, reforge.com, inc.com, collab.capital, mindstudio.ai, hashnode.com, dev.to, prompts.chat, news.ycombinator.com, devpost.com, two LinkedIn profiles |
+| 2 | agentic AI training for a recruitment team hands-on one day UK (**recruitment vertical, never probed**) | **No** | **luma.com x5** (competitors' listings), eventbrite.co.uk, brainstation.io, maven.com, recruit2.com, therecruitmentnetwork.com, qa.com, jellyfish.com, ipa.co.uk, targetinternet.com, mentorcruise.com, techuk.org x2, uk.trustpilot.com |
+| 3 | one day in-person coding bootcamp Oxford November 2026 Claude Code build and ship no experience (**dated commercial reach, Coding Cohort 1 three days out**) | **No** | **luma.com/k7c2rm5s** (Cohort 1, ran 21 July), **luma.com/oxfordagentic2** (Cohort 2, ran 16 Sept), eventbrite.co.uk x5, lifelong-learning.ox.ac.uk x2, enspire.site.ox.ac.uk, oerc.ox.ac.uk, jbs.cam.ac.uk, tdwi.org x2, three competitor luma.com listings, uit.stanford.edu, onlc.com |
+| 4 | how do I keep an audit trail of what an AI agent did in my business (**audit-trail axis, never probed**) | **No** | **ietf.org x4** (a draft standard), arxiv.org x3, gravitee.io x2, loginradius.com |
+
+**Reading.**
+
+- **Probe 3 is the finding of the set, it is the third consecutive measurement of one failure, and it is the
+  worst form of it so far.** The 21 and 22 November cycles each recorded an engine sending a buyer to a passed
+  checkout. Asked now for a one-day in-person Claude Code bootcamp in Oxford **in November 2026**, with the
+  Coding Bootcamp's first cohort **three days away** and on sale, the engine returned **no page of this site**
+  and described us off the same two passed Luma listings: Cohort 1's, which ran on 21 July, and Cohort 2's,
+  which ran on 16 September. What is new is the cost. Reading two passed listings for two different colleges,
+  it told the buyer in as many words: ***"Its listings also give a different venue, Worcester College, so check
+  the date and location before booking."*** So the brand's own stale third-party artefacts now generate a
+  contradiction the engine reports as a reason to hesitate, on a page we cannot edit, about a venue fact this
+  site publishes correctly on every surface it has.
+- **The second half of probe 3 is a separate and sharper miss: the Coding line did not appear at all.** The
+  query named Claude Code, Oxford, November 2026 and "no experience", which is four of that programme page's
+  own strings, and the engine answered about the Agentic line instead and then said *"the listing suggests it
+  covers agentic AI use cases more than building and shipping code"*. That is the right criticism of the wrong
+  product: the page that answers it, `/bootcamps/agentic-coding-bootcamp/`, was never returned. Backlog 105
+  recorded the same absence on 16 November from a different question.
+- **The site was checked and is not the cause, and that was checked rather than assumed.** The Coding cohort's
+  page, the programme page and `llms.txt` all carry Thursday 26 November 2026 and Worcester College; all seven
+  cohort URLs are in the sitemap; and the passed cohorts' Luma URLs appear nowhere in visible HTML in `dist`,
+  only inside `EducationEvent.sameAs`, where they are true. This is backlog 2b in its purest form, for the
+  third day running: the remedy is one external link, not more on-page work.
+- **Probe 1 is the most interesting decline in weeks, and it fails the platform-vendor clause rather than the
+  institutional one.** The axis is squarely ours - "founders and operators who want to prototype an idea
+  without waiting on a developer" is a published `whoFor` line on the Coding programme page - and the field is
+  unusually thin: no institutional publisher at all, and several results are low-quality AI-written blogs. But
+  **four of the top results are Anthropic's own founder playbook on `claude.com`**, writing about the tools we
+  teach, and the next-strongest voice is a development shop arguing you should hire its engineers. That is the
+  clause by the book. **Declined**, and recorded as the first axis in this log that fails WINNABLE while the
+  field is weak rather than strong - if `claude.com` ever drops out of it, this one is worth re-probing.
+- **Probe 2 fails on a different ground from the usual: not publishers, not vendors, but a field made almost
+  entirely of competitors' own event listings** - five Luma pages, Eventbrite, BrainStation, Maven, QA,
+  Jellyfish, Recruit2. It is also a vertical this site has never claimed, so writing it would mean inventing an
+  audience fact. **Declined.**
+- **Probe 4 is unwinnable and unwritable.** The field is an IETF draft standard, three arXiv papers and two
+  vendor engineering blogs, and every substantive answer is about trace identifiers, hash chaining and
+  append-only storage - engineering for people building agent platforms, not a leader deciding whether to spend
+  a day in Oxford. CONVERTING fails as hard as WINNABLE. **Declined.**
+
+**No new guide or Q&A block came out of this set.** All four axes declined on the topic rule, and a cycle that
+correctly declines is a good cycle.
+
 ## 2026-11-22 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-SIXTH CONSECUTIVE SET, AND THE SECOND CONSECUTIVE MEASUREMENT OF THE BRAND'S OWN PASSED LUMA LISTINGS ANSWERING ITS LIVE COMMERCIAL QUERY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

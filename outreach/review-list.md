@@ -11,6 +11,35 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, and one correction to an existing target that matters more than a new name would.** Found
+  23 Nov 2026 (02:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted, claimed or
+  paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond what the
+  search returned.**
+  - **`enspire.site.ox.ac.uk` may be where the EnSpire calendar now lives.** The dated Oxford probe returned
+    an EnSpire event page - *"Unpacked: An Insider's Guide to Anthropic and Claude Code Session"* - on
+    **`enspire.site.ox.ac.uk`**, where every entry in this file since 11 October names the target as
+    **`enspire.ox.ac.uk`**, including the "What's On" item and the drafts that point at it. One of the two is
+    stale and this sandbox cannot tell which. **Check the host before anything is submitted**, because a
+    submission to the wrong one is a submission to nowhere. Recorded as a correction to the standing target,
+    not as a new one.
+  - **That same result is the strongest evidence yet that EnSpire is the right target.** It shows EnSpire
+    listing an Anthropic and Claude Code session, in Oxford, in the same field and the same week as the
+    Coding Bootcamp's first cohort - a calendar actively carrying our exact subject, to our exact city, while
+    the engine answering that query returned no page of ours. It has been the best-placed target since
+    7 November; this is the third probe to put it in front of a question we should be answering.
+  - **Deliberately not added, each with its reason rather than by omission.** `therecruitmentnetwork.com` is a
+    members-only recruitment programme and a comparable, not an opportunity. `reforge.com` and `inc.com` fail
+    the US-readership test, and `reforge.com` is paywalled besides. `spiralscout.com` is a development shop
+    selling the engineering work our buyers would otherwise do themselves, which is the **consultancy clause**
+    of the 13 September standing decision. **Platform vendors answering about their own product**:
+    `claude.com` (four slots) and `mindstudio.ai`. **Standards bodies and academic publishers on their own
+    subject**: `ietf.org`, `arxiv.org`. **Vendor engineering blogs**: `gravitee.io`, `loginradius.com`.
+    **Competitor providers**: `brainstation.io`, `maven.com`, `qa.com`, `jellyfish.com`, `recruit2.com`,
+    `targetinternet.com`, `mentorcruise.com`, `tdwi.org`, `onlc.com`, and every University of Oxford,
+    Cambridge Judge and Stanford property in probes 2 and 3. **Already on one of these lists, checked rather
+    than assumed**: `techuk.org`, `oerc.ox.ac.uk`, `cxtoday.com`, `allai.events`, `eventbrite.co.uk`,
+    `hashnode.com`, `dev.to` and EnSpire itself.
+
 - **Three UK business and trade titles that reach a budget holder, all new to both lists, plus the reason
   every other host in four probe fields was left out.** Found 22 Nov 2026 (20:00 UTC cycle), across four
   answer-engine probes. **Nothing contacted, submitted, claimed or paid for, and none of these hosts resolves

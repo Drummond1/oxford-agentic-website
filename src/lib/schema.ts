@@ -573,52 +573,99 @@ export function courseSchema(
 
   /* Google's course rich result reads the dates, workload and mode off each
      instance. */
-  const instances = upcoming.map((event) => ({
-    '@type': 'CourseInstance',
-    name: event.data.title,
-    url: absoluteUrl(paths.event(event.data.slug)),
-    courseMode: 'onsite',
-    // Computed from the published start and end times, never asserted.
-    courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
-    startDate: londonIso(event.data.startDate),
-    endDate: londonIso(event.data.endDate),
-    /*
-     * Who teaches this cohort, added 18 Nov 2026 and the same join the
-     * `performer` list made on event pages the day before - but on the two
-     * surfaces that matter more, because the homepage publishes every `Course`
-     * node and `/` is the one page restricted-domain probes have ever returned.
-     *
-     * Before this, the graph on `/` said who organises the days and nothing
-     * about who runs them: `eventListingItem`, the lighter event node this page
-     * and `/events/` carry, has no `performer` at all, and the `CourseInstance`
-     * nodes beside it had no `instructor`. So the 13 November probe's cost - an
-     * engine asked how this site relates to the University of Oxford, inferring
-     * our people from a Luma host list - was still unpaid on the page it reads,
-     * a day after it was paid on the pages it does not.
-     *
-     * Nothing new is asserted. The names come from the cohort's own `speakers`,
-     * which is the roster its page prints under "Who runs it?", and the
-     * programme page that owns this `@id` names the same people in the same
-     * order in its own answer. `instructor` is Google's documented property for
-     * this on `CourseInstance`, so it is also the field a course rich result
-     * reads rather than a field of our own choosing.
-     *
-     * Guarded on `features.team` for the reason `performer` is: with the flag
-     * off `/team/` does not build, and these would reference `Person` nodes
-     * nothing serves. Omitted rather than empty when a cohort names nobody,
-     * on the same ground as `hasCourseInstance` below.
-     */
-    ...(config.features.team && (facilitatorsByEvent.get(event.id) ?? []).length > 0
-      ? { instructor: (facilitatorsByEvent.get(event.id) ?? []).map(personReference) }
-      : {}),
-    /* The same Place the event page and the events index publish, from the same
-       frontmatter, rather than a second reduced copy of it. This node used to
-       drop the street and the postcode, which are published on the event page
-       and in its `EducationEvent`, so one venue was described two ways and the
-       weaker description sat on the page engines actually return. Nothing new is
-       asserted: `eventPlace` reads the same `venue` fields. */
-    location: eventPlace(event),
-  }));
+  const instances = upcoming.map((event) => {
+    const eventUrl = absoluteUrl(paths.event(event.data.slug));
+
+    return {
+      '@type': 'CourseInstance',
+      /*
+       * The cohort's own identifier, added 23 Nov 2026, and the gap it closes is
+       * on the homepage rather than across pages.
+       *
+       * `/` publishes both of these nodes in one graph: `eventListingItem` emits
+       * a top-level `EducationEvent` under `<event url>#event` for each upcoming
+       * cohort, and the `Course` nodes beside it carried a `CourseInstance` for
+       * the same cohort with a name, a URL and no identifier. So one page
+       * described one day twice, as two nodes nothing joined. `CourseInstance`
+       * and `EducationEvent` are both `Event` subtypes and this is the same day,
+       * so the honest statement is that they are one thing.
+       *
+       * This is the stance `eventListingItem` above already states in as many
+       * words - "the `@id` is the one the cohort's own page already publishes, so
+       * a consumer holding both describes one event rather than two" - and it is
+       * the fifth and last listing on this site to publish bare items, after
+       * `/events/` (23 Oct), the guides' `Article.about` (26 Oct), `/bootcamps/`
+       * and `/guides/` (22 Nov).
+       *
+       * It also repairs the premise of a decision made on 18 November.
+       * `eventListingItem` declines to name the facilitators because "the
+       * homepage already names them by the route Google documents for course data
+       * - `instructor` on each `CourseInstance`". That is only true if the two
+       * nodes are one node, and until this line they were not: the Event node has
+       * no `instructor` and the instance had no address, so nothing said the four
+       * `Person` references belong to the day the Event node describes. The `@id`
+       * is what makes that reasoning sound.
+       *
+       * Safe because the two agree, and that was measured on the built homepage
+       * before this was written rather than assumed: every property the two nodes
+       * share - `name`, `url`, `startDate`, `endDate` and `location` - is
+       * byte-identical, because both are derived from this cohort's own
+       * frontmatter. What each adds is complementary rather than contradictory:
+       * `courseMode`, `courseWorkload` and `instructor` here, and `eventStatus`,
+       * `offers`, `image`, `sameAs`, `organizer` and `performer` there. So the
+       * rule this function is held to - two descriptions under one `@id` want to
+       * agree - is met rather than tested.
+       *
+       * It cannot drift: it is derived from the same `paths.event(slug)` call
+       * `url` below is built from, and `#event` is the fragment the cohort's own
+       * page and `eventListingItem` already mint, not a new convention.
+       */
+      '@id': `${eventUrl}#event`,
+      name: event.data.title,
+      url: eventUrl,
+      courseMode: 'onsite',
+      // Computed from the published start and end times, never asserted.
+      courseWorkload: isoDuration(event.data.startDate, event.data.endDate),
+      startDate: londonIso(event.data.startDate),
+      endDate: londonIso(event.data.endDate),
+      /*
+       * Who teaches this cohort, added 18 Nov 2026 and the same join the
+       * `performer` list made on event pages the day before - but on the two
+       * surfaces that matter more, because the homepage publishes every `Course`
+       * node and `/` is the one page restricted-domain probes have ever returned.
+       *
+       * Before this, the graph on `/` said who organises the days and nothing
+       * about who runs them: `eventListingItem`, the lighter event node this page
+       * and `/events/` carry, has no `performer` at all, and the `CourseInstance`
+       * nodes beside it had no `instructor`. So the 13 November probe's cost - an
+       * engine asked how this site relates to the University of Oxford, inferring
+       * our people from a Luma host list - was still unpaid on the page it reads,
+       * a day after it was paid on the pages it does not.
+       *
+       * Nothing new is asserted. The names come from the cohort's own `speakers`,
+       * which is the roster its page prints under "Who runs it?", and the
+       * programme page that owns this `@id` names the same people in the same
+       * order in its own answer. `instructor` is Google's documented property for
+       * this on `CourseInstance`, so it is also the field a course rich result
+       * reads rather than a field of our own choosing.
+       *
+       * Guarded on `features.team` for the reason `performer` is: with the flag
+       * off `/team/` does not build, and these would reference `Person` nodes
+       * nothing serves. Omitted rather than empty when a cohort names nobody,
+       * on the same ground as `hasCourseInstance` below.
+       */
+      ...(config.features.team && (facilitatorsByEvent.get(event.id) ?? []).length > 0
+        ? { instructor: (facilitatorsByEvent.get(event.id) ?? []).map(personReference) }
+        : {}),
+      /* The same Place the event page and the events index publish, from the same
+         frontmatter, rather than a second reduced copy of it. This node used to
+         drop the street and the postcode, which are published on the event page
+         and in its `EducationEvent`, so one venue was described two ways and the
+         weaker description sat on the page engines actually return. Nothing new is
+         asserted: `eventPlace` reads the same `venue` fields. */
+      location: eventPlace(event),
+    };
+  });
 
   return {
     '@type': 'Course',
