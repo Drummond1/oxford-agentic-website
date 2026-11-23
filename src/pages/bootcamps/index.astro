@@ -75,10 +75,13 @@ for (let count = nextDates.length; count > 0; count -= 1) {
    * title false. "One-day" is the differentiator a four-week programme cannot
    * claim and the modifier the buyer queries in the GEO log keep using.
    *
-   * The nav label, the breadcrumb crumb, the hero h1 ("The programmes") and the
-   * `CollectionPage` name are all left reading "Bootcamps" / their own words -
-   * /events/ keeps `collectionPageSchema('Events', ...)` beside its own buyer
-   * title, so this matches the shape already on the site. One word puts it back.
+   * The nav label, the breadcrumb crumb and the hero h1 ("The programmes") are
+   * all left reading "Bootcamps" / their own words - /events/ keeps its own
+   * short crumb beside a buyer title, so this matches the shape already on the
+   * site. One word puts it back. The `CollectionPage` node carried the short
+   * label too until 23 Nov 2026, when it was merged into this page's `WebPage`
+   * node under one `@id` and its second name was dropped; see the note on
+   * `collectionPageSchema`. The crumb is where that label lives now.
    */}
   pageTitle="One-day AI bootcamps in Oxford"
   description={description}
@@ -86,7 +89,6 @@ for (let count = nextDates.length; count > 0; count -= 1) {
   ogImage={ogPathFor(paths.programmes())}
   schemaNodes={[
     collectionPageSchema(
-      'Bootcamps',
       paths.programmes(),
       /*
        * What this page lists is a Course, and the list said so nowhere. Each

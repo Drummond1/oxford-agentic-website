@@ -274,7 +274,6 @@ function profileDescription(name: string, role: string, company: string | undefi
       ogImage={ogPathFor(paths.team())}
       schemaNodes={[
         collectionPageSchema(
-          'Team',
           paths.team(),
           members.map((m) => ({ name: m.data.name, path: paths.teamMember(m.data.slug) })),
         ),

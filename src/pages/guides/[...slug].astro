@@ -296,7 +296,7 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
        * "agentic" is still in the title, in the brand suffix.
        *
        * The nav label, the breadcrumb crumb, the `h1` ("Writing on agentic AI"),
-       * the subline and `collectionPageSchema('Guides', ...)` are all untouched,
+       * the subline and the `/guides/` `CollectionPage` node are all untouched,
        * which is the shape /events/ and /bootcamps/ already have.
        */}
       pageTitle="Practical AI guides for business leaders"
@@ -318,7 +318,6 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
          * commit; see the note on `articleSchema`.
          */
         collectionPageSchema(
-          'Guides',
           paths.guides(),
           guides.map((entry) => ({
             name: entry.data.title,

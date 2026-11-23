@@ -52,7 +52,6 @@ if (nextDates.length > 0) {
   ogImage={ogPathFor(paths.events())}
   schemaNodes={[
     collectionPageSchema(
-      'Events',
       paths.events(),
       [...upcoming, ...past].map((event) => ({
         name: event.data.title,

@@ -815,16 +815,54 @@ export function articleSchema(guide: {
  * the recurring shape in this codebase: a treatment applied by hand in two
  * places and silently absent from the rest. Sharing it is what stops a sixth
  * listing page inheriting the gap.
+ *
+ * `@id` is `<url>#webpage`, the identifier `webPageSchema` already mints for
+ * the same URL, because this node and that one are the same page. Until
+ * 23 November 2026 they were two. `/guides/`, `/bootcamps/`, `/events/` and
+ * `/team/` each published a `WebPage` under `<url>#webpage` carrying the page's
+ * name, description, image and language, and beside it an anonymous
+ * `CollectionPage` carrying the item list. So the hub for 32 guides, the page
+ * where a buyer picks a programme and the page an engine reads for dates each
+ * described themselves twice, and the `ItemList` belonged to no page a consumer
+ * could resolve.
+ *
+ * Sixth instance of one shape, and the first five are fixed: `/events/` on
+ * 23 October, the guides' `Article.about` on 26 October, `/bootcamps/` and
+ * `/guides/` on 22 November, `CourseInstance` on 23 November. It is also the
+ * instance the last of those predicted - a node that names something with its
+ * own identifier and does not use it, found outside the `ItemList` family that
+ * census was counting.
+ *
+ * The merge is safe because the two nodes agree on what they share, and that
+ * was measured on the built pages before this line was written: `url` and
+ * `isPartOf` are byte-identical on all four, both being derived from the same
+ * path and the same domain constant. `CollectionPage` is a subtype of
+ * `WebPage`, so a consumer merging them gets one node of both types, which is
+ * what these pages are.
+ *
+ * The one property that disagreed was `name`: the `WebPage` publishes the
+ * page's title, this node published a short label - "Guides", "Bootcamps",
+ * "Events", "Team" - so a merged node would have carried two names for one
+ * page. The label is dropped rather than reconciled, because it is already
+ * published where it belongs: it is the leaf of each of these pages'
+ * `BreadcrumbList`, with the same URL beside it. Nothing is lost, and the
+ * `name` parameter goes with it.
+ *
+ * One caveat for whoever adds the fifth caller. `BaseHead` emits no `WebPage`
+ * node on a noindex or hidden page, so a noindex listing would publish this
+ * `@id` with nothing beside it: still a correct name for the page, but with no
+ * title, description or image at it. All four callers are indexable, checked
+ * on the built site. A noindex listing wants its own look at this.
  */
 export function collectionPageSchema(
-  name: string,
   path: string,
   items: Array<{ name: string; path: string; item?: Record<string, unknown> }>,
 ) {
+  const url = absoluteUrl(path);
   return {
     '@type': 'CollectionPage',
-    name,
-    url: absoluteUrl(path),
+    '@id': `${url}#webpage`,
+    url,
     isPartOf: { '@id': `${config.brand.domain}/#website` },
     mainEntity: {
       '@type': 'ItemList',

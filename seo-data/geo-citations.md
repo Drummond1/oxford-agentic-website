@@ -5,6 +5,69 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-23 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-EIGHTH CONSECUTIVE SET, AND FOUR DECLINES WITH FOUR DIFFERENT REASONS - INCLUDING ONE PHRASING TEST THAT SHOWS WHERE THIS SITE'S CEILING ACTUALLY IS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403), as are `luma.com` and the cohort pages on it, so
+no live page and no Luma fact was checked, deploy state came from the Actions API, and every site fact below
+comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Twenty-three candidate concepts were
+grepped across the whole log before any question was put to an engine. Eight were dropped as already covered:
+the hackathon-versus-workshop trade (probed in full as its own axis, with the engine's own admission that the
+field is vendor-owned from both sides), the is-one-day-enough axis (`one day enough`, 19 hits; `is one day`,
+22), the shadow-AI framing (a field a team-consistency probe already routed into), the week-before-booking
+axis, the Copilot comparison (26), the board-level framing (13), the charity vertical (9) and the law-firm
+vertical (17). The four below returned nothing on the concept grep - `scale from` and `second workflow` both
+score **0** across the entire log, `refresher`, `muscle memory`, `new starter` and `induction` all score **0**,
+and `without a technical` scores **0**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | I have one AI agent workflow working, how do I get from one to ten across my team (**scale-out axis, never probed**) | **No** | **salesforce.com x2, datarobot.com x2, mindstudio.ai x2, monday.com x2**, atlassian.com, zapier.com, airtable.com, clickup.com, augmentcode.com, auth0.com, creatio via thedigitalprojectmanager.com, insightglobal.com x2, insightpartners.com, martech.org, stacker.com, salesforceben.com |
+| 2 | how do I stop forgetting what I learned on an AI training day and actually keep using it at work (**training-retention axis, never probed**) | **No** | **elearningindustry.com x4**, td.org (ATD), oreilly.com x2 (two textbook chapters), capsim.com, business.com, wikipedia.org |
+| 3 | how do we get a new starter up to speed on the AI workflows our team already uses (**induction axis, never probed**) | **No** | **moveworks.com x2, monday.com x2, aihr.com x2**, workday.com, zapier.com, sage.com, workvivo.com, taskade.com, disco.co, tallyfy.com, employmenthero.com, peoplemanagingpeople.com, trainingindustry.com |
+| 4 | who should own AI workflows in a company without a technical team (**ownership axis, never probed**) | **No** | **datacamp.com x5** (one webinar in five languages), rework.com, metacto.com, fastslowmotion.com, kissflow.com, techtarget.com, nojitter.com, cio.com |
+
+**Reading.**
+
+- **Probe 2 is the finding of the set, and it is a phrasing test rather than a coverage gap.** This site already
+  owns the AI-specific version of this exact question: on 14 September the log recorded
+  `after-the-ai-executive-programme` cited **#1** for *"what to do after finishing an executive AI programme to
+  actually use it at work"*. Drop the words "executive programme" and ask the same thing generically, and the
+  engine does not return a page of this site at all - it returns the **transfer-of-training literature**: the
+  Association for Talent Development, two O'Reilly textbook chapters, the Baldwin and Ford model, Wikipedia,
+  and eLearning Industry four times. That is a seventy-year-old academic field with its own institutional
+  publishers, and it is not ours to take. **Declined on WINNABLE**, and the useful part is the boundary it
+  draws: this site wins the retention question when the question names AI and names a programme, and loses it
+  the moment the question is about training in general. Writing to the generic phrasing would mean competing
+  with ATD on learning science, which is neither winnable nor what a buyer in Oxford is asking.
+- **Probe 3 is the only engine admission in the set, and it still fails CONVERTING.** The engine said in as
+  many words that *"the search turned up mostly vendor and HR-focused material, not guidance on handing off a
+  team's own AI workflows"*, and the field bears that out: every result answers the inverse question, using AI
+  to onboard a person, rather than onboarding a person onto your AI. No institutional publisher anywhere in
+  it. So WINNABLE passes. **CONVERTING is what fails.** The person asking already has a team and working
+  workflows; they want documentation and handover, not a day building their first one. The nearest thing this
+  site sells is the Second Brain Bootcamp - capturing what a team knows so AI can use it - and the standing
+  decision of 13 September is explicit that Second Brain's constraint is demand rather than ranking and that
+  no cycle should pile on Second Brain content expecting bookings. **Declined**, and recorded with that
+  reasoning so a future cycle does not read the engine's admission alone and take it as a green light.
+- **Probe 1 fails the platform-vendor clause by about the widest margin the log has recorded.** Nineteen
+  results, and the top of the field is Salesforce twice, DataRobot twice, MindStudio twice, monday.com twice,
+  plus Atlassian, Zapier, Airtable, ClickUp, Auth0, Creatio and Augment Code - every one of them writing about
+  scaling agents on its own platform. **Declined.**
+- **Probe 4 fails on the consultancy clause rather than on publishers, and the field agrees with us anyway.**
+  The strongest non-vendor voices are `rework.com`, `metacto.com` and `fastslowmotion.com`, consultancies
+  selling the ownership and implementation work, which is the cluster the 13 September standing decision puts
+  out of bounds. DataCamp occupies five of the thirteen slots with one webinar republished in five languages,
+  and it is a training platform, so it fails the vendor clause too. **And the answers already say what we
+  would say**: a business operator accountable for the outcome, not IT, not the most enthusiastic person. A
+  fourteenth voice agreeing adds no original experience or evidence, which is the guide bar. **Declined.**
+
+**No new guide or Q&A block came out of this set.** All four axes declined on the topic rule, for four
+different reasons, and a cycle that correctly declines is a good cycle.
+
 ## 2026-11-23 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE TWENTY-SEVENTH CONSECUTIVE SET, AND THE THIRD CONSECUTIVE MEASUREMENT OF PASSED LUMA LISTINGS ANSWERING A LIVE COMMERCIAL QUERY - THIS TIME HANDING THE BUYER A VENUE CONTRADICTION
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

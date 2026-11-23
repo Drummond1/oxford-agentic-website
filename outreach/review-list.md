@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, and the reason is structural rather than bad luck: today's four fields are HR-tech and
+  L&D media, which is not where this site's buyer reads.** Found 23 Nov 2026 (08:00 UTC cycle), across four
+  answer-engine probes. **Nothing contacted, submitted, claimed or paid for, and none of these hosts resolves
+  from this sandbox, so nothing below was checked beyond what the search returned.** Second consecutive cycle
+  with no new host.
+  - **Two were weighed properly rather than waved past, because both take contributed articles and both are
+    genuinely read.** `elearningindustry.com` took **four** of the ten slots on the training-retention probe,
+    so it owns that field - but its readership is L&D professionals choosing training platforms, not leaders
+    choosing a day in Oxford, and a material share of what it publishes is paid placement, which the
+    13 September standing rule puts behind Drummond's approval and a cheque. `trainingindustry.com` is the
+    closer of the two on readership, because its readers are people who *buy* training, but it is a US
+    publication with US readers and this list has declined US-readership media consistently since 11 October.
+    **Both declined**, and written down so the next cycle that meets this field does not re-weigh them from
+    scratch. If Drummond wants either, `trainingindustry.com` is the one worth the stamp.
+  - **Deliberately not added, each with its reason rather than by omission. Platform vendors writing about
+    their own product**: `salesforce.com` and `salesforceben.com`, `datarobot.com`, `mindstudio.ai`,
+    `monday.com`, `atlassian.com`, `zapier.com`, `airtable.com`, `clickup.com`, `auth0.com`, `augmentcode.com`,
+    `creatio` via `thedigitalprojectmanager.com`, `kissflow.com`, `moveworks.com`, `workday.com`, `sage.com`,
+    `workvivo.com`, `taskade.com`, `tallyfy.com`, `employmenthero.com`, `disco.co`. **Competitor training
+    providers**: `datacamp.com` (five slots, one webinar in five languages), `capsim.com`. **Consultancies
+    selling the work our buyers would otherwise do themselves, which is the consultancy clause of the
+    13 September standing decision**: `rework.com`, `metacto.com`, `fastslowmotion.com`, `insightpartners.com`,
+    `insightglobal.com`. **Academic and institutional publishers on their own subject**: `td.org` (the
+    Association for Talent Development), `oreilly.com`, `wikipedia.org`. **US-readership media**:
+    `cio.com` (already on this list in any case), `techtarget.com`, `nojitter.com`, `martech.org`,
+    `stacker.com`, `business.com`, `aihr.com`, `peoplemanagingpeople.com`.
+
 - **No new host, and one correction to an existing target that matters more than a new name would.** Found
   23 Nov 2026 (02:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted, claimed or
   paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond what the
