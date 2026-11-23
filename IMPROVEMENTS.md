@@ -3184,7 +3184,93 @@ Status: `todo` · `blocked` (why) · `doing`
     about when the policy changed, which is Drummond's to give and must not be invented. Until someone wants
     to maintain three dates by hand, **leave all three bare**.
 
+129. `todo` (**measured and deliberately not taken - a type-scale call, recorded so no cycle re-derives it as
+    a defect**; measured 23 Nov 2026 in the 09:00 cycle, in a browser at 375, 768 and 1280px) - **the one
+    chip on the event card is the smallest text on the public site, 16 per cent below the type scale's own
+    floor.** `.event-card__tbc` - the "room booking to confirm" chip, which today shows on Cohort 5 only -
+    is set at `font-size: 0.68rem`, computing to **10.88px**, uppercase, with `0.08em` tracking and
+    `opacity: 0.75`. The scale in `global.css` bottoms out at `--step-xs: 0.8125rem` (13px, "label"), which
+    is what the date, the venue and the programme eyebrow beside it all use, so the chip is the only run of
+    words on an indexable page below the floor. Checked across the whole of `src/`: the other sub-13px
+    one-offs are `Assistant.astro` (off since 29 September), `find-your-bootcamp` and `office-hours` (the
+    two unlisted pages the loop leaves alone), and `Quote.astro`'s `0.7rem` monogram, which is two initials
+    in a 2.1rem box rather than prose. So this is one declaration, not a family.
+    **Why it was not simply raised to `--step-xs`.** The chip is deliberately quieter than the facts it
+    qualifies - smaller, dimmed, bordered - and at 13px it is the same size as the venue line directly above
+    it, which would make an unconfirmed room booking as loud as the confirmed college. It also grows the
+    chip from 186px to roughly 215px at 375px, inside a flex line that already wraps. Sizing it is a
+    judgement about how loudly the site should qualify its own facts, and the quietest honest size is
+    Drummond's call, not a cycle's. **What would settle it in one line from him:** whether the chip should
+    sit at the scale floor (13px, matching its neighbours) or stay deliberately smaller. If smaller,
+    `0.75rem` (12px) is the nearest value that keeps it subordinate while clearing the floor by less.
+
+
 ## Shipped
+
+### 23 Nov 2026 (09:00 UTC cycle) - the card that sells every cohort put the programme name outside the heading, so `/events/` published three headings reading "Cohort 1" for three different bootcamps. The eyebrow moves inside the `h3`, 7 of 209 built files, and all 18 full-page screenshots byte-identical
+
+**The defect, measured rather than noticed.** `EventCard.astro` builds its card as a `<span class="eyebrow">`
+carrying the programme name followed by a sibling `<h3>` carrying the cohort - a split the 20 November cycle
+called the right one and the event pages' own backlog item (26) holds up as the pattern to copy. It is right
+about the look and wrong about the outline: the name sits **beside** the heading, not in it, so the heading
+text is the cohort alone. Measured on the built site at eight widths: `/` publishes **h3 "Cohort 1",
+h3 "Cohort 4", h3 "Cohort 5"** under "Next in Oxford", and `/events/` publishes **"Cohort 1" three times** -
+the Coding day on 26 November, the Second Brain day that ran on 21 October and the first Agentic day of July
+2026 - with "Cohort 4", "Cohort 5", "Cohort 3" and "Cohort 2" between them.
+
+**Why that is a booking problem and not a tidiness one.** Heading navigation is how a screen-reader user
+skims a page, and on the two pages where cards from different programmes sit side by side the outline tells
+them nothing: three of the seven headings on `/events/` are the same four characters, and the one that is
+three days away is indistinguishable from one that ran in July. The visible page is not ambiguous - the gold
+eyebrow is right there - so this is the sighted reader's affordance not reaching the outline. **Same fault
+and same remedy as the 16 November cycle**, which found the programme pages filing run cohorts under a
+heading that said "Upcoming runs" and fixed the outline without moving a pixel.
+
+**The change.** The eyebrow moves inside the `h3`. Two elements, same order, same classes, same styles - the
+`<span>` is simply nested now instead of preceding. The heading reads "The Oxford Agentic Coding Bootcamp
+Cohort 1", confirmed through Chromium's own accessible-name computation rather than from the markup: the
+browser inserts the separating space because the eyebrow is a block, so the name is correct although the
+built HTML has `Bootcamp</span>Cohort 1` with no whitespace between.
+
+**One declaration came with it, and the repo already knew why.** The sitewide `h1, h2, h3, h4` rule sets
+`text-wrap: balance`, which is inherited, so nesting would have handed the eyebrow a balanced break - and two
+of the three programme names wrap to a second line at most widths. `.event-card__programme` now pins
+`text-wrap: wrap`, the value it computed to as a sibling. `global.css` carries the same correction for the
+other direction (`:is(h2, h3).eyebrow { text-wrap: inherit }`, for an eyebrow that *is* a heading); this is
+the nested case of it.
+
+**Nothing moved, and it was checked rather than assumed.** 48 page-width records across `/`, `/events/`,
+all three `/bootcamps/<slug>/` pages, `/404.html` and `/home-photos/` at 320, 375, 414, 768, 900, 1024, 1280
+and 1440px: **0 changes** in card box, meta height, standfirst offset, and the eyebrow's width, height,
+bottom margin, size, line-height, colour and computed `text-wrap`; **0 changes** in document height; **0
+changes** in any card link's accessible name, which reads the same words in the same order as before. With
+`prefers-reduced-motion` forced, the **18 full-page screenshots** at 375, 768 and 1280px of all six pages are
+**byte-identical** before and after. The built output differs on **7 of 209 files**, exactly the pages that
+render the card.
+
+**Checks.** `npm run build` passes (3,462 internal links across 69 pages, 69 pages of schema with 1,595
+resolving graph references, both date guards); `check:flags` passes on the all-on and all-off builds;
+`@astrojs/check` reports 10 errors before and after, all pre-existing and none in the file touched, and CI
+does not run it. The whole-site audit at 375, 768 and 1280px over the 58 sitemap pages reports zero
+horizontal overflow, zero images without `alt`, zero unlabelled controls, zero links or buttons without an
+accessible name, zero duplicate ids, zero heading-level skips and one `h1` per page - so the new nesting
+introduces no skip. In-page fragment links: 69 pages, 0 broken. Keyboard: tab order walked on `/` and
+`/events/` at 375 and 1280px, 25 to 28 stops each and **0 without a visible focus cue**.
+
+**No content file was touched**, so no `updatedDate` moves, and `EventCard.astro` is deliberately outside
+`homepageCopyLastmod`'s three sources (its own comment says a shared component moves 63 pages and claiming
+it moved one would be the lie in the other direction), so no `lastmod` moves either.
+
+**Board state before anything was touched.** The fresh checkout arrived detached at `54a78b7` with the local
+`main` ref 26 commits stale at `c259b0e` - the 9 November trap, and `git checkout main` walked the tree
+backwards before `git fetch` and a fast-forward put all three at `54a78b7`, tree clean. Deploy run
+45136828085 and CI run 45136828192 both **success** on that SHA at 08:13 UTC, nothing queued or running.
+**Six open pull requests, none of them blocking and none of them touched**: #1 and #3 are the known-stale
+leftovers on record since September, #4, #5 and #6 are Drummond's drafts, and **#7 (`dru-13`, the Coding
+Bootcamp pages) is new since yesterday**. Their files were listed before anything was edited and
+`EventCard.astro` is in none of them. `oxfordagentic.com` is refused by this sandbox's egress policy
+(`CONNECT` 403), so **no live page was read and no event fact was touched**: deploy state came from the
+Actions API and the before-state from a local `astro preview` build of `54a78b7`.
 
 ### 23 Nov 2026 (08:00 UTC cycle) - the sixth instance of one shape, found by following the instruction the fifth one left behind, and the four hub pages stop describing themselves twice. Four `CollectionPage` nodes merged into the `WebPage` node they sit beside, 4 of 209 built files, all four byte-identical with the JSON-LD masked
 
