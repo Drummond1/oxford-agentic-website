@@ -6,7 +6,15 @@ const nav = await getNav();
 const nextEvent = await getNextEvent();
 const current = Astro.url.pathname;
 
-const isActive = (href: string) => current === href || (href !== '/' && current.startsWith(href));
+/*
+ * Which nav item is the one you are standing in. An item's `section` wins over
+ * its `href` where the two differ, so the mark follows the section rather than
+ * the single page the item happens to point at.
+ */
+const isActive = (item: { href: string; section?: string }) => {
+  const href = item.section ?? item.href;
+  return current === href || (href !== '/' && current.startsWith(href));
+};
 ---
 
 <header class="site-header">
@@ -27,7 +35,7 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
         {
           nav.map((item) => (
             <li class:list={['site-nav__item', item.children && 'site-nav__item--has-menu']}>
-              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+              <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
                 {item.label}
               </a>
               {item.children && (
@@ -74,7 +82,9 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
       {
         nav.flatMap((item) => [
           <li>
-            <a href={item.href}>{item.label}</a>
+            <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
+              {item.label}
+            </a>
           </li>,
           ...(item.children ?? []).map((child) => (
             <li class="mobile-nav__child">
@@ -402,6 +412,12 @@ const isActive = (href: string) => current === href || (href !== '/' && current.
     font-size: var(--step-xs);
     color: var(--cream);
     text-decoration: none;
+  }
+
+  /* The same acknowledgement the desktop nav gives, in the same colour. The
+     menu is the only nav a phone has, and it marked nothing on any page. */
+  .mobile-nav__list > li > a[aria-current='page'] {
+    color: var(--gold);
   }
 
   .mobile-nav__child a {

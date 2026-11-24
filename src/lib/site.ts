@@ -262,6 +262,13 @@ export interface NavItem {
   label: string;
   href: string;
   children?: NavItem[];
+  /*
+   * The section this item stands for, when that is not simply its `href`.
+   * The header decides which item is the current one by prefix, so an item
+   * pointing at one page inside a section would otherwise only light up on
+   * that page. Set it to the section root and every page beneath it counts.
+   */
+  section?: string;
 }
 
 /**
@@ -294,6 +301,15 @@ export async function getNav(placement: 'header' | 'footer' = 'header'): Promise
        * decision rather than a cleanup, and it belongs to Drummond.
        */
       href: placement === 'footer' ? paths.programmes() : paths.programme(programmes[0].data.slug),
+      /*
+       * Because the header's `href` is one programme rather than the index,
+       * the "you are here" mark followed that one page and nothing else: on
+       * /bootcamps/, /bootcamps/second-brain-bootcamp/ and
+       * /bootcamps/agentic-coding-bootcamp/ no header item was marked at all,
+       * while every event page marks Events and every profile marks Team.
+       * The section is the index, whatever the item points at.
+       */
+      section: paths.programmes(),
       children: programmes.map((p) => ({ label: p.data.name, href: paths.programme(p.data.slug) })),
     });
   }

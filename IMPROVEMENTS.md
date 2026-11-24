@@ -3332,8 +3332,100 @@ Status: `todo` · `blocked` (why) · `doing`
       reader to `/testimonials/`, or does anything that is not the booking form cost more than it earns
       there?** The loop will not answer it either way.
 
+133. `todo` (**three measurements from the cycle that fixed the nav mark - two of them things that look
+    like defects and are not, recorded so no cycle re-derives them, and one note about this loop's own
+    screenshot method**; measured 24 Nov 2026 in the 09:00 cycle, in a browser over all 58 indexable pages)
+    - **(a) The desktop submenu reads as "three links with no accessible name" to a naive audit, and it is
+      a false positive.** Any sweep that derives a link's name from `innerText` will flag the three
+      `.site-nav__menu` children - "The Oxford Agentic Bootcamp" and its two siblings - on **all 58 pages at
+      1280px**, because the panel is `visibility: hidden` until hover or focus and `innerText` returns the
+      empty string for hidden text while `offsetParent` is still non-null. The links carry their text in the
+      markup and a real accessibility tree reads them. **Check `textContent` as a fallback before filing
+      this**, which is the one line this cycle's sweep was missing.
+    - **(b) The same submenu can be tabbed past, but only inside a single frame, so it is not a defect.**
+      `visibility: hidden` does remove the children from the tab order, and `:focus-within` is what restores
+      it when the parent link takes focus. Measured by focusing "Bootcamps" and pressing Tab after a set
+      delay: at **0ms** the next stop is "Outcomes" and the three children are skipped; at **20ms and every
+      delay above it** the next stop is the first child. The gap is one style recalculation, roughly 16ms,
+      and no human - and not keyboard auto-repeat, which is an order of magnitude slower - presses Tab
+      inside it. **Do not "fix" this** by dropping `visibility` from the transition: visibility is what keeps
+      the hidden children out of the tab order in the first place.
+    - **(c) A byte-identical screenshot comparison on `/about/` is not reliable, and the loop uses that test
+      constantly.** The page's first `.grid--2` photograph (`<img>` at x 95-625, y 2454-2766 at 1280px)
+      sometimes finishes decoding after `networkidle` plus 250ms, so three captures of **one unchanged
+      build** returned **two different hashes**. This cycle only established it was a race by re-capturing;
+      a cycle that compares once and trusts the result would read it as a change it caused. **On any page
+      with lazy photographs, wait on `img.decode()` or on every `img.complete` before capturing**, or
+      compare a clipped region rather than the full page.
+
 
 ## Shipped
+
+### 24 Nov 2026 (09:00 UTC cycle) - the header told a visitor which section they were standing in everywhere except the one section that sells the days, and on a phone it never told them at all. One boolean and one CSS rule, 23 of 209 built files
+
+**The defect, measured on the built site before anything was written.** Counting `aria-current="page"`
+inside `<nav class="site-nav">` on all 69 built pages: **20 marked, 49 not**. The 20 are the ones you would
+expect - `/about/`, `/events/` and all 7 event pages, `/team/` and all 8 profiles, `/testimonials/` - so the
+site has an established convention and applies it across whole sections: stand on
+`/events/oxford-agentic-bootcamp-cohort-4/` and "Events" lights up. **The exception is the Bootcamps
+section.** Of its four pages, only `/bootcamps/oxford-agentic-bootcamp/` was marked;
+`/bootcamps/second-brain-bootcamp/`, `/bootcamps/agentic-coding-bootcamp/` and the hub `/bootcamps/` itself
+carried **no mark on any item**, so the header gave a reader no "you are here" at all on two pages that sell
+a bootcamp and on the index of all three. Confirmed in a browser at 1280px: "BOOTCAMPS" is gold and
+underlined on the Agentic programme page and plain cream on the Second Brain one.
+
+**The cause, and it is not the funnel decision above it.** `getNav('header')` points the Bootcamps item at
+`programmes[0]` rather than at the index, which `src/lib/site.ts` already records as **Drummond's** ("where
+'Bootcamps' lands in the header is a funnel decision rather than a cleanup"). That decision is untouched
+here. What follows from it accidentally is that `isActive` tests the item's **`href`** by prefix, so an item
+whose href is one page inside a section can only ever match that one page. The fix is to let an item name the
+section it stands for: a new optional `section` on `NavItem`, set to `paths.programmes()` on that one item,
+and `isActive` prefers it. **No link destination, label, order or flag changes.**
+
+**The second half, and it is the bigger number: the mobile menu marked nothing, on any page.** Below 900px
+the `.mobile-nav` panel is the only navigation there is, and its links were rendered with no `aria-current`
+at all - **0 of 69 pages** - so every phone visitor got the flattened list with nothing to say where they
+were. It now takes the same attribute from the same function, and one CSS rule gives it the same colour the
+desktop nav has always used: `.mobile-nav__list > li > a[aria-current='page'] { color: var(--gold) }`. Gold
+on `--ink-dark` measures **8.69:1**, which clears AA and AAA, and it is the pairing already shipped in
+`.site-nav`. Only top-level items are marked, in both navs, exactly as desktop already did - the submenu
+children carry no mark in either place.
+
+**After, re-counted the same way: desktop 20 to 23, mobile 0 to 23, and the two agree on all 69 pages.**
+No page carries more than one mark, and the three that gained one are the three that had none.
+
+**Measured, not inferred.** Against a sha256 snapshot of a build made before the change: **67 of 209 files
+differ, none added and none removed except the stylesheet's content hash.** With that hash normalised, a
+token-level diff of every page says the whole change is **23 pages gaining the attribute** - 20 gain one
+insertion (the mobile link) and 3 gain two (desktop and mobile) - and the other 44 HTML pages are
+**character-for-character identical**. A character-level diff of the CSS bundle returns **one insertion**,
+the rule above, 35,942 to 36,077 characters. No JSON-LD, no sitemap, no internal link count moved.
+
+**Checks.** Build green (links 3,465 across 69 pages; outbound; schema 69 valid, 1,597 resolving references;
+both date guards) and `check:flags` green both ways. `astro check` is not a project dependency and is not in
+CI, so it was run from a pinned `npx` copy without touching `package.json`: **10 errors, all pre-existing,
+and the list is byte-identical with the change stashed and unstashed** - none in `Header.astro` or `site.ts`.
+Headless Chromium over the **58 indexable pages at 375, 768 and 1280px**: 0 horizontal overflow, 0 images
+without `alt`, 0 form controls without a label, 0 heading-order skips, exactly one `h1` per page, 0 duplicate
+`id`s and 0 dangling `aria-*` references. Full-page screenshots of 14 pages at 3 widths were taken against
+both builds: **36 of 42 byte-identical**; 3 are the intended change (the three bootcamp pages at 1280px, and
+on `/bootcamps/` the pixel diff is **625 pixels in a box at x 646-747, y 30-47**, which is the nav item and
+nothing else); the remaining 3 are `/about/`, whose differing region is an `<img>` at x 95-625, y 2454-2766 -
+three repeat captures of the same build returned two different hashes, one of them equal to the other
+build's, so it is the harness racing a lazy photograph rather than a change. Keyboard: the first ten tab
+stops on `/bootcamps/second-brain-bootcamp/` are the same ten in the same order before and after, each with
+the 2px gold focus ring.
+
+**Not reached from production.** `oxfordagentic.com` is refused by this sandbox's egress policy, as it has
+been for the last several cycles, so the before-and-after comparison is between two local builds rather than
+between production and preview, and deploy state came from the Actions API. **Board green before anything
+was read**: local `main` was behind `origin/main`, fast-forwarded to `49aced1`, tree clean, deploy run
+45353858374 success on that SHA at 08:11 UTC, nothing queued or in progress. Six pull requests are open and
+all six are **Drummond's own** (four `drummondgilbert/dru-*` branches from Linear, plus the two long-stale
+ones this ledger already records as backlog 20 and the 2 November SEO ledger branch); none is this loop's
+unfinished work, which is the reading the 21-24 November cycles took and this one keeps. **No GEO probing
+this cycle** - today's instruction is the quality, clarity, usability and visual-consistency loop and does
+not ask for it.
 
 ### 24 Nov 2026 (08:00 UTC cycle) - the hub over 32 guides had 123 inbound internal links and not one of them was a sentence. The census backlog 132 asked for, run over every hub, and the one finding it produced. One sentence on /about/, 1 of 209 built files
 
