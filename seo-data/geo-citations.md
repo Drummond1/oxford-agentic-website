@@ -5,6 +5,95 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-24 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SECOND CONSECUTIVE SET - AND THE EIGHTH BACKLOG 2B MEASUREMENT, WHERE A QUERY FOR A JANUARY 2027 OXFORD DAY WAS ANSWERED OFF THIS BRAND'S OWN PASSED SEPTEMBER LISTING WHILE THE COHORT 5 PAGE THAT CARRIES THE DATE DID NOT APPEAR
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route
+either, as is `luma.com`. So no live page and no Luma fact was checked, no event fact was touched, deploy state
+came from the Actions API, and every site fact below comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Twenty-four candidate strings were counted
+over the whole log before any question was put to an engine. The chosen axes score zero: `resistant` **0**,
+`resistance` **0**, `won't use` **0**, `team buy-in` **0**, `no IT department` **0**, `how much time` **0**,
+`how often` **0**, `sustain` **0**. Rejected as already worked: `one day enough` **20**, `adoption` **20**,
+`maintain` **10**, `too short` **6**, `handover` **5**, `long enough` **4**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | my team won't use the AI tools we bought, how do I get people to actually use AI at work (**workforce-resistance axis, never probed**) | **No** | **atlassian.com x3**, cio.com, fastcompany.com, techtarget.com, entrepreneur.com, lattice.com, asana.com, pluralsight.com, unisys.com, blog.workday.com, cultureamp.com, builtin.com, thedecisionlab.com |
+| 2 | can a small business use AI agents without an IT department (**no-IT-department axis, never probed**) | **No** | **salesforce.com x3**, monday.com x2, sage.com x2, ibl.ai x2, clickup.com, botpress.com, clickpost.ai, rework.com, smallbiztrends.com, biztechmagazine.com, cxotalk.com |
+| 3 | how much time each week does it take to maintain an AI workflow once you have built it (**ongoing-upkeep axis, never probed**) | **No** | twig.so, kissflow.com, twin.so, amplience.com, therundown.ai, activecampaign.com, lilachbullock.com, producthunt.com x2, clutch.co, two personal GitHub Pages guides, a Substack and a Medium post |
+| 4 | agentic AI bootcamp Oxford January 2027 one day in person book a place (**the Agentic line's own commercial query for Cohort 5, never probed on this cohort**) | **No page of this site** | **luma.com x2, both this brand's own listings, one of them the passed Cohort 2**; then lifelong-learning.ox.ac.uk x6, conted.ox.ac.uk, sbs.ox.ac.uk, jbs.cam.ac.uk x2, imperial.ac.uk, business-school.ed.ac.uk, nobleprog.co.uk |
+
+### Probe 1 - workforce resistance - DECLINED (fails both clauses of the winnability rule, and then fails CONVERTING)
+17 results, no page of this site, and the field is held twice over. **Institutional publishers on their own
+subject**: `cio.com`, `fastcompany.com`, `techtarget.com`, `entrepreneur.com`, plus Yahoo and AOL syndications.
+**Platform vendors writing about their own product**: `atlassian.com` three times, `asana.com`, `lattice.com`,
+`blog.workday.com`, `cultureamp.com`, `pluralsight.com`. That is the NHS-England shape the 12 Aug rule was
+written for, twice. **It also fails CONVERTING, which is the more useful half of the reading**: the searcher's
+problem is organisational change management across a whole workforce, and every answer in the field is an
+OCM answer - incentives, champions, licensing, embedding AI in tools people already open. The nearest thing
+this site sells is one seat on one day for one person with one task, and
+`/guides/how-to-run-an-ai-pilot-that-survives/` already makes the organisational argument without pretending
+the day is a rollout programme. Do not re-pitch this as a guide: the gap is real and it is not ours.
+
+### Probe 2 - no IT department - DECLINED (platform-vendor clause, by one of the widest margins in the log, and the honest version needs evidence this repo does not hold)
+18 results, no page of this site, and **the engine flagged its own field before being asked**: *"most of the
+sources are vendor marketing, so treat their claims with some caution"*, and again at the close, *"The sources
+were mostly vendor blogs (Salesforce, ibl.ai, Monday.com, ClickUp), so their claims about ease of setup are
+promotional."* `salesforce.com` holds three slots, `monday.com`, `sage.com` and `ibl.ai` two each. **Fails
+WINNABLE on the platform-vendor clause.** The engine then named the gap outright - *"The results didn't
+include independent data on how hard setup, security, or ongoing maintenance actually are without technical
+staff"* - and that admission is why this is a decline on evidence rather than on topic. The honest version of
+that page would say what people without technical staff actually managed to keep running after one of these
+days, and **nothing of the sort is recorded in this repo**. That is the same evidence failure as backlog 117
+and as probe 3 below. Writing it from the published format would be inventing an outcome.
+
+### Probe 3 - ongoing upkeep - PASSES WINNABLE, DECLINED ON ACCURACY, AND IT IS THE CLEANEST EXAMPLE OF THAT DISTINCTION IN THE LOG
+18 results, no page of this site, and **no institutional publisher anywhere in the field**: vendor blogs
+(`twig.so`, `kissflow.com`, `twin.so`, `amplience.com`, `therundown.ai`, `activecampaign.com`), two personal
+GitHub Pages guides, two ProductHunt posts, a Substack and a Medium piece. So it **passes WINNABLE**, and it
+plausibly converts: "what does this cost me every week after the day" is an objection a buyer raises with a
+hand on the booking button, which is the shape of the question the 13 September cycle shipped against.
+**It is declined on the accuracy rule instead, and the field shows exactly why.** The engine returned numbers -
+*"about 1-3 hours a week for a simple workflow after the first month or two"*, 5-8 hours in weeks 1-2, a
+half-day a week for anything business-critical - and then said of its own answer that these *"are not from
+independent research"*. To beat that, this site would have to publish a better number. **It does not have
+one.** No follow-up data on what attendees' workflows cost to keep running exists in this repo, and
+`/guides/is-your-ai-workflow-saving-time-or-just-effort/` is careful to publish a measurement method rather
+than a figure, which is the right answer and already shipped. **A guide here would be a made-up statistic
+wearing a buyer's question**, so nothing was written. Re-probe only if follow-up data from a cohort ever
+exists; that is the condition, not the calendar.
+
+### Probe 4 - Cohort 5's own commercial query - NOT CITED, AND THE EIGHTH CONSECUTIVE BACKLOG 2B READING
+18 results. **No page of oxfordagentic.com appeared.** The brand did appear, twice, and both times through
+Luma rather than through this site: one listing the engine presented as the match, and
+**`luma.com/oxfordagentic2`, which is Cohort 2 and ran on 16 September 2026**. The engine opened *"I couldn't
+confirm a January 2027 date"* and closed *"The results don't show its date or a price, so check the Luma page
+for those"* - while `/events/oxford-agentic-bootcamp-cohort-5/` publishes Thursday 28 January 2027 at Jesus
+College in visible copy, in `EducationEvent` JSON-LD with `startDate` and a full `PostalAddress`, in
+`llms.txt`, in the footer of all 58 indexable pages and in the homepage graph. **Third separate cycle in which
+a live commercial query is answered off this brand's own passed Luma listings while the page carrying the
+date is absent.** It is the same diagnosis the 24 August Search Console baseline gave and nineteen cycles have
+repeated: this is reach, not coverage, and no further on-page work moves it.
+
+**The competitive half of probe 4 is new and is the sharpest reading of this field yet.** Of the eighteen
+results, **ten are universities describing their own courses** - `lifelong-learning.ox.ac.uk` six times,
+`conted.ox.ac.uk`, `sbs.ox.ac.uk`, `jbs.cam.ac.uk` twice, `imperial.ac.uk`, `business-school.ed.ac.uk` - so
+the Oxford-anchored commercial query for a January day is now held by the University's own continuing-education
+pages. The engine's own closing line is the one worth keeping: *"Other Oxford options in the results are
+multi-week or online, so they don't match a one-day in-person event."* The format is the differentiator and
+the field agrees; what is missing is a route to being seen at all.
+
+**One thing for Drummond's eye, and it could not be verified from here.** The listing the engine chose as its
+match is a `luma.com` page carrying this brand's name, the Worcester College venue and the bootcamp's own
+outcome copy, and the engine reported it as offering *"Get Tickets"*. Its short id is not one of the vanity
+slugs on record (`oxfordagentic2` to `oxfordagentic5`, `agenticcoding`, `secondbrain`), and **`luma.com` does
+not resolve from this sandbox, so which cohort it is and whether it is still selling tickets could not be
+checked.** Stated as an unverified observation, not as a finding. If it is a passed cohort still showing a
+ticket button, that is worth two minutes of his time.
+
 ## 2026-11-24 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FIRST CONSECUTIVE SET - AND THE SEVENTH CONSECUTIVE MEASUREMENT OF BACKLOG 2B, THIS TIME ON THE CODING LINE'S OWN COMMERCIAL QUERY, WHERE A COMPETITOR RUNS THE SAME FORMAT MONTHLY ON LUMA AND HOLDS SEVEN OF TWENTY RESULTS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

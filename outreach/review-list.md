@@ -11,6 +11,42 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, sixth consecutive cycle - and the first cycle in which the Oxford-anchored commercial query
+  is held by the University's own continuing-education pages rather than by aggregators.**
+  Found 24 Nov 2026 (08:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
+  claimed or paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond
+  what the search returned.**
+  - **What the field looks like now on this brand's own query.** Asked for a one-day, in-person agentic AI
+    bootcamp in Oxford in January 2027, the engine returned eighteen results and **ten are universities
+    describing their own courses**: `lifelong-learning.ox.ac.uk` six times, plus `conted.ox.ac.uk`,
+    `sbs.ox.ac.uk`, `jbs.cam.ac.uk` twice, `imperial.ac.uk` and `business-school.ed.ac.uk`. **No page of this
+    site appeared.** The brand appeared only through Luma, and one of the two Luma pages was the **passed
+    Cohort 2**. This changes the shape of the problem on this axis: there is no aggregator here to get into,
+    because the first page is occupied by institutions publishing their own catalogue. It corroborates the
+    23 November note that the course-roundup category has fewer doors than `off-page-listings.md` implies.
+  - **What it adds to the top item.** Not a new host. It is the eighth consecutive measurement that the
+    constraint is reach rather than on-page work, and the third cycle running in which a live commercial query
+    is answered off this brand's own **passed** Luma listings while the page that carries the date is absent.
+    The remedy named in the 24 August Search Console baseline has not changed: one external link, and
+    `Organization.sameAs` is still empty.
+  - **One unverified observation worth two minutes of Drummond's time.** The listing the engine chose as its
+    match for a January 2027 Oxford day is a `luma.com` page carrying this brand's name, the Worcester College
+    venue and the bootcamp's own outcome copy, reported by the engine as offering *"Get Tickets"*. Its short id
+    is not one of the vanity slugs on record (`oxfordagentic2` to `oxfordagentic5`, `agenticcoding`,
+    `secondbrain`), and **`luma.com` does not resolve from this sandbox, so which cohort it is, and whether it
+    is still showing a ticket button, could not be checked.** Recorded as unverified, not as a finding.
+  - **Deliberately not added, each with its reason rather than by omission.** Competitors rather than listing
+    routes: `lifelong-learning.ox.ac.uk`, `conted.ox.ac.uk`, `sbs.ox.ac.uk`, `jbs.cam.ac.uk`,
+    `imperial.ac.uk`, `business-school.ed.ac.uk`, and `nobleprog.co.uk`, which is already on this list.
+    Platform vendors writing about their own product: `atlassian.com` (three slots on one probe),
+    `salesforce.com` (three), `monday.com`, `sage.com`, `ibl.ai`, `clickup.com`, `botpress.com`, `asana.com`,
+    `lattice.com`, `blog.workday.com`, `cultureamp.com`, `pluralsight.com`, `kissflow.com`, `twig.so`,
+    `twin.so`, `amplience.com`, `activecampaign.com`. Institutional publishers on their own subject:
+    `cio.com`, `fastcompany.com`, `techtarget.com`, `entrepreneur.com`, `biztechmagazine.com`. US readership,
+    declined consistently since 11 October: `smallbiztrends.com`, `thedecisionlab.com`, `cxotalk.com`,
+    `clutch.co`. Self-publishing and user-generated: two personal GitHub Pages guides, `producthunt.com`,
+    a Substack and a Medium post.
+
 - **No new host, fifth consecutive cycle - and the clearest reading yet of what the existing top item is worth.**
   Found 24 Nov 2026 (02:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
   claimed or paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond

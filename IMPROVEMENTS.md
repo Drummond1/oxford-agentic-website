@@ -3304,6 +3304,16 @@ Status: `todo` · `blocked` (why) · `doing`
     it - recorded so no cycle re-derives either**; measured 24 Nov 2026 in the 02:00 cycle on the built site)
     - **the quote band renders on seven pages and only the homepage now points at the page that holds the
       rest.**
+    - **(a) DONE 24 Nov 2026 (08:00 cycle) - the census was run over every hub and it produced exactly one
+      finding, `/guides/`, which shipped the same cycle. See that Shipped entry for the full table. The short
+      version: `/events/` already had 5 prose anchors and `/about/`, `/bootcamps/` and `/testimonials/` one
+      each, while `/guides/` had **0 of 122** and `/team/` has **0 of 190**. `/guides/` was taken. **`/team/`
+      is deliberately left**, and not for want of noticing: backlog 24 is the item for it, all seven profiles
+      sit on one inbound link each, and that item records three placements the loop considered and declined
+      because each argues with a decision already on the record. A prose link to the `/team/` hub does not fix
+      backlog 24 and would pre-empt the one-line answer from Drummond that would. **Do not re-run this
+      census**; the distribution is recorded here and the only thing that changes it is a new prose link,
+      which a cycle shipping one already knows about. Original method kept below.**
     - **(a) The census, so it is not re-run blind.** Count `href="/testimonials/"` on every indexable page and
       read each occurrence's anchor text. Before this cycle: **174 occurrences over 58 pages, exactly 3 per
       page, and the anchor text was the single word "Outcomes" on all 174** - desktop nav, mobile nav, footer,
@@ -3324,6 +3334,101 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 ## Shipped
+
+### 24 Nov 2026 (08:00 UTC cycle) - the hub over 32 guides had 123 inbound internal links and not one of them was a sentence. The census backlog 132 asked for, run over every hub, and the one finding it produced. One sentence on /about/, 1 of 209 built files
+
+**This is backlog 132(a), run exactly as that item specified.** It asked for the `/testimonials/` anchor-text
+census to be repeated over the other hub pages, and it set the method: *"key on the anchor-text distribution
+rather than the count, because the count alone cannot tell boilerplate from prose."* Run that way over all
+**58** indexable built pages, counting every `<a>` to each hub and reading each occurrence's anchor text:
+
+| Hub | Occurrences | Distinct anchor texts | Prose anchors before this cycle |
+|---|---|---|---|
+| `/events/` | 189 | 6 | **5** - "All events", "All dates", "events page", "each cohort's event page", "the events page" |
+| `/team/` | 190 | 2 | 0 ("Team" x182 boilerplate, "Back to the team" x8) |
+| `/about/` | 175 | 2 | **1** - "about page" |
+| `/testimonials/` | 175 | 2 | **1** - "outcomes page", shipped six hours ago |
+| `/guides/` | 122 | 2 | **0** |
+| `/bootcamps/` | 62 | 2 | **1** - "bootcamps", on /about/ |
+
+**`/guides/` is the finding, and it is the biggest instance of the shape by content weight.** Its 122 links
+are 90 anchored "Guides" (the footer on all 58 pages, plus the breadcrumb on each of the 32 guide pages) and
+32 anchored "All guides" (the button at the foot of each guide). **Every one is navigation.** So the hub over
+**32 articles** - the site's largest body of content, and by the GEO log the content that actually earns this
+site its citations - had no sentence anywhere pointing at it, and the only anchor text an engine could read
+against it was the word "Guides" repeated 90 times. That is the same diagnosis as six hours ago over one
+proof page, here over a hub of 32, on the domain whose 24 August Search Console baseline reads 23 indexed,
+16 not indexed and diagnoses crawl budget with zero external links. Repeated nav links are discounted for
+being on every page; a contextual link is not.
+
+**Where it went, and why not the obvious place.** The homepage is the obvious place and it was **declined on a
+decision already in this ledger**, not on caution. The 9 November entry recorded, having measured the same
+thing from the other direction, that *"No programme page, event page or the homepage links any individual
+guide ... recorded as an observation, not pitched, because sending a reader off a booking page is a
+conversion call."* That stands, and this cycle did not reopen it. `/about/` is none of those three. It is
+also the one page that **already enumerates the site's sections in prose** - it carries the site's only
+contextual links to `/bootcamps/` and to `/events/`, in a single sentence - so the guides hub was the one
+member of that list the sentence did not name. The new sentence is the third clause of a pattern the page
+already had.
+
+**No new claim, and the wording cannot drift.** The sentence is `/guides/`'s own subline, reused verbatim from
+`src/pages/guides/[...slug].astro:339` rather than rewritten: *"short, practical pieces for people who intend
+to build something rather than form a view."* That is the same discipline the independence line on this page
+used in October ("Wording matches the homepage FAQ verbatim so the two cannot drift"). No price, date, venue,
+capacity, name, number or outcome.
+
+**Guarded, so it cannot leave a dangling reference.** The sentence sits inside `config.features.guides`, which
+is the flag that removes the hub and the footer link together, so the sentence and its target go together.
+`check:flags` green both ways.
+
+**Measured, not inferred.** **1 of 209** built files differs against a sha256 snapshot taken before the
+rebuild, none added and none removed: `dist/about/index.html`. `sitemap-0.xml` byte-identical. The page's
+JSON-LD is **byte-identical before and after at 2,866 characters**, so nothing in the entity graph moved.
+Internal links **3,464 to 3,465**, which is the one link. `href="/guides/"` on `/about/` goes 1 to 2, and the
+re-run census reads **123 occurrences, 3 distinct anchor texts**, the third being the hub's first prose
+anchor in the site's life.
+
+**Checks.** Build, links (3,465 across 69 pages), outbound, schema (69 valid, 17 Event, 22 FAQPage, 1,597
+resolving references, 59 breadcrumb trails, all titles and descriptions unique), both date guards and
+`check:flags` all green, **every figure except the link count identical to the baseline taken at the start of
+this cycle**. Headless Chromium on `/about/` at 375 and 1280px: **22 assertions, 18 passed**, and all four
+failures are the console-error and failed-request assertions, whose only entries are two
+`googletagmanager.com` scripts this sandbox's egress proxy refuses. The link was clicked in the browser at
+both widths and lands on `/guides/` with its `h1` intact; no horizontal scroll at either width.
+
+**IndexNow submits exactly one URL.** `src/pages/about.astro` matches the static-page regex in
+`scripts/indexnow-ping.mjs`, so it maps to `https://oxfordagentic.com/about/` and nothing else - the one page
+that moved. None of backlog 85's over-submission branches is reached. The script was not run. Checked while
+reading it: **`src/lib/home.ts` is already mapped to `/` on line 109**, so the standing candidate about the
+homepage FAQ pinging all 44 sitemap URLs is closed and should not be re-derived.
+
+**Four probes, zero citations, the thirty-second consecutive set, and one of them is the cleanest
+WINNABLE-but-inaccurate decline in the log.** The ongoing-upkeep question ("how much time a week does it take
+to keep an AI workflow running") has no institutional publisher in its field and plausibly converts, and it
+was still declined, because beating the field would mean publishing a better number than the engine's
+"1-3 hours a week" and **this repo holds no follow-up data from any cohort**. A guide there would be an
+invented statistic wearing a buyer's question. The other three fail the winnability rule outright, two of
+them on both clauses at once.
+
+**The eighth backlog 2b measurement, on Cohort 5's own commercial query.** Asked for a one-day agentic AI
+bootcamp in Oxford in January 2027, the engine returned no page of this site; the brand appeared twice, both
+times through Luma, and one of those was the **passed Cohort 2**. The engine said *"I couldn't confirm a
+January 2027 date"* while `/events/oxford-agentic-bootcamp-cohort-5/` publishes it in visible copy, in
+`EducationEvent` JSON-LD, in `llms.txt`, in the footer of all 58 indexable pages and in the homepage graph.
+**Ten of the eighteen results are universities describing their own courses**, which is new on this axis and
+means there is no aggregator here to get into. Reach, not coverage.
+
+**Off-page: no new host, sixth consecutive cycle**, and one unverified observation flagged for Drummond - the
+Luma page the engine matched is not one of the vanity slugs on record and was reported as offering "Get
+Tickets", and `luma.com` does not resolve from this sandbox, so which cohort it is could not be checked.
+Nothing contacted, submitted, claimed or paid for.
+
+**Board green before anything was read.** HEAD verified equal to `origin/main` at `68b2ad0`, tree clean,
+deploy run 45310898584 success on that SHA at 02:15 UTC, nothing queued. **Search Console unavailable from
+cloud, tried once**: `fetch-search-console.mjs` reports no service-account key and there is no export newer
+than the 24 August baseline. Nothing estimated. **No new guide this week** - 32 guides, newest `publishDate`
+20 October. `oxfordagentic.com` and `luma.com` are refused by this sandbox's egress policy, so no live page
+was read, no event fact was touched, and deploy state came from the Actions API.
 
 ### 24 Nov 2026 (02:00 UTC cycle) - the site's only page of named, attributed proof had no contextual inbound link anywhere. All 174 links pointing at it were nav and footer boilerplate reading one word, "Outcomes". One sentence on the homepage, 2 of 209 built files
 
