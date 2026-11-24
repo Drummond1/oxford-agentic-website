@@ -3389,8 +3389,146 @@ Status: `todo` · `blocked` (why) · `doing`
     already knows about. If one is ever minted, the rule it must satisfy is the one this cycle applied: the
     page whose URL an `@id` names is the page that defines it.
 
+136. `todo` (**a method fix for this loop's own GEO dedupe, learned by getting it wrong**; found 24 Nov 2026
+    in the 20:00 cycle, after four probes all landed on axes already worked) - **counting keywords over the
+    prose of `geo-citations.md` under-detects a worked axis, and the question column answers it in one
+    command.**
+    That cycle counted thirty-one concept strings over the whole 956KB log and chose four axes for scoring at
+    or near zero: `own data` 0, `sample data` 0, `two seats` 0, `connector` 3, `cohort size` 3. **All four had
+    been probed before.** `two seats` reads 0 because the 22 November probe was phrased *"send two managers to
+    a one day hands-on AI workshop UK pay by invoice company booking"*; `own data` reads 0 because the
+    20 November probe was *"can I bring my own work task to an AI training day and build something I keep"*;
+    `cohort size` reads 3 because both prior probes said *"how many people should be in the room"*, which the
+    same cycle counted at **26** and read as a different question. **The failure is systematic, not careless:
+    a probe records the buyer's phrasing, and a buyer phrases the same concept differently every time, so any
+    keyword is a lossy index of an axis.**
+    **The fix, and it is cheap.** Extract the question column and read it, rather than grepping the prose:
+    `grep -oE '^\| *[0-9]* *\| [^|]{15,}\|' seo-data/geo-citations.md | sed -E 's/^\| *[0-9]* *\| //; s/ *\|$//' | sort -u`
+    returns **255** distinct question strings, which is a list a cycle can actually read before choosing an
+    axis. Every one of the four axes above is visible in it. The prose grep is still worth running afterwards
+    for the *verdict* on an axis - that is where the declines and their reasons are written - but it must not
+    be what chooses the axis.
+    **A caveat on the number.** 255 is what that regex returns; the 21 Nov cycle reported 485 distinct strings
+    by a different extraction, so the two are not measuring quite the same thing and neither count should be
+    quoted as the number of probes ever run. Read the list, do not trust either total.
+
+137. `todo` (**five censuses run clean, two of them new shapes, recorded so no cycle re-derives them as
+    gaps**; measured 24 Nov 2026 in the 20:00 cycle on the built site) - **the crawl-budget shapes that are
+    not present on this domain, which matters because crawl budget is what the only real index measurement in
+    this repo diagnoses.**
+    - **(a) Click depth from the homepage is 2 at worst, and nothing is unreachable. NEW SHAPE.** BFS over
+      every internal link in `dist`, keyed on the sitemap for the indexable set: **1 page at depth 0, 13 at
+      depth 1, 44 at depth 2, 0 deeper, 0 unreachable.** The 24 August baseline reads 23 indexed, 16 not
+      indexed and diagnoses crawl budget on a domain with no external links, and the classic on-site cause is
+      depth - a page four or five clicks down gets crawled last or not at all. **It is not the cause here**,
+      and that is now measured. **Do not re-run this blind**: the only thing that changes it is a new page
+      reachable from nothing but a deep page, and the nav and footer put every hub one click from everywhere.
+    - **(b) Internal links that would take a redirect hop: zero. NEW SHAPE.** Every internal `href` on all 69
+      built pages either ends in a trailing slash or names a file with an extension, so no crawler request is
+      spent on a 301 from this site to its own canonical. Worth having measured once on a crawl-limited
+      domain; it is a build-wide property of how links are authored here, so it will stay zero unless someone
+      hand-writes an extensionless path.
+    - **(c) `<img>` missing `width` or `height`: zero, and `<a target="_blank">` with no `rel`: zero**, over
+      every built page. The first is why Lighthouse finds no layout shift to report. Neither needs re-running.
+    - **(d) Two pages carry no `html lang` and no `og:image`, and both are correct - this is the one that will
+      be re-derived as a defect.** They are `/home-original/` and `/team/josh-lawman/`, and both are **Astro
+      redirect stubs**: a one-line body, `<meta name="robots" content="noindex">` and a canonical pointing at
+      their target (`/home-photos/` and `/team/` respectively). Neither is in the sitemap. A stub needs no
+      language and no social card. **Any future `lang`, Open Graph or metadata sweep will flag exactly these
+      two; read the file before filing it.**
+    - **(e) The 27 November date sweep, confirmed a third time and deliberately not brought forward.**
+      `check-dates.mjs --now=` is **clean on 25 and 26 November** and returns **seven** windows on the 27th -
+      the same seven places backlog 103 records, two derived and five hand-authored. Backlog 103 holds the
+      reasoning and the rule for fixing each; this is only the third confirmation that its count is stable.
 
 ## Shipped
+
+### 24 Nov 2026 (20:00 UTC cycle) - nothing shipped to the site, and the reason is that five censuses came back clean and four probes landed on axes already worked. Three record files only, and the cycle's useful output is a dedupe method
+
+**No file under `src/` or `public/` was touched**, so the built output is byte-identical to `e1c9052` and no
+page moved. Three record files only - this ledger, `seo-data/geo-citations.md` and
+`outreach/review-list.md` - all three matching `indexnow-ping.mjs`'s exempt pattern, so the deploy pings
+nothing.
+
+**Deploy state, checked first.** `HEAD` is `e1c9052`, which equals `origin/main`; Actions run 480 for that
+SHA completed **success** at 14:13 UTC. No deploy in progress, nothing queued. **`build.txt` could not be
+read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not
+resolve through the WebFetch route, as is `luma.com`. So no live page was read, no Luma fact was checked and
+no event fact was touched.
+
+**`npm ci` then `npm run build` green.** 69 pages, 58 indexable. Schema: 17 Event nodes (10 top-level, 7
+nested), 22 `FAQPage`, 1,609 resolving internal graph references, 59 well-formed breadcrumb trails, all
+titles and descriptions unique. Both date guards green. The 13 outbound third-party failures are the
+sandbox's egress policy, which the checker warns on by design.
+
+**Five censuses, all clean, and two of the five are new shapes. Recorded as backlog 137 so no cycle
+re-derives them.** The headline is the first one, because it tests the thing the only real index measurement
+in this repo actually diagnoses.
+- **Click depth from the homepage: every one of the 58 indexable pages sits at depth 2 or less, and nothing
+  is unreachable.** 1 page at depth 0, 13 at depth 1, 44 at depth 2. This matters because the 24 August
+  Search Console baseline reads 23 indexed, 16 not indexed and diagnoses crawl budget on a domain with no
+  external links, and burying a page four clicks down is the on-site way to cause exactly that. **It is not
+  happening here**, so that hypothesis is now closed by measurement rather than left open.
+- **Internal links that would take a redirect hop: zero.** Every internal `href` either ends in a trailing
+  slash or names a file with an extension, across all 69 built pages, so no crawl of this site spends a
+  request on a 301 to its own canonical. A new shape and worth having on a crawl-budget-limited domain.
+- **`<a target="_blank">` with no `rel`: zero.** **`<img>` missing `width` or `height`: zero**, over every
+  built page, which is why Lighthouse has no layout-shift to report.
+- **`html lang` and `og:image`: two pages lack both, and both are correct.** `/home-original/` and
+  `/team/josh-lawman/` are Astro redirect stubs - `noindex`, a canonical pointing at their target, and a
+  one-line body. Neither is in the sitemap. **Recorded because they look like defects in any sweep that
+  counts pages rather than reading them**, and the next cycle to run a `lang` or Open Graph sweep will find
+  the same two.
+
+**The date guards were run forward, which is the one dated job near today.** `check-dates.mjs --now=` returns
+**clean on 25 and 26 November** and **seven stale windows on the 27th** - the same seven, in the same seven
+places, two derived and five hand-authored, exactly as backlog 103's census recorded and now confirmed on a
+**third** independent re-run. **Nothing was brought forward, for backlog 103's own reason**: four of the five
+hand-authored sentences are booking pointers at a day that is on sale and two days out, and rewriting them
+now would publish an error to prevent one. **This is a 27 November job in full and the next cycle on that
+morning should run the guard first and trace every hit to its source, rather than trust the number above.**
+
+**Four answer-engine probes, zero citations, the thirty-fourth consecutive set - and all four landed on axes
+this log has already worked, which is the finding.** Full fields and reasoning in `geo-citations.md`. The
+short version: probe 1 (own data rather than sample exercises) found a **vocabulary collision** - all
+nineteen results read "your own data" as fine-tuning or grounding a model, so the phrase belongs to a
+different product category, the same class as backlog 134's reading of "bootcamp"; probe 2 (cohort size) is
+held by a PMC systematic review, an NCBI randomised trial, a University of Minnesota textbook and AACSB, and
+the flagship programme page answers *"How many people are in the room?"* already, and it could not be won
+honestly because Second Brain's group size is published as *"small group"* and never as a number; probe 3
+(two people from one team) is `mentorcruise.com` six times out of eighteen, and was declined on a prior
+ground that came out the opposite way to the obvious guess - the substance is **already published in question
+shape on all three programme pages, every live event page and the homepage FAQ**, and the honest rest of the
+answer is price and group terms, which never go on this site; probe 4 (MCP connectors) is vendor
+documentation and a prior cycle already declined it in almost these words.
+
+**The dedupe lesson, and it is filed as backlog 136 because it will save a future cycle four probes.** Thirty-one
+concept strings were counted over the whole 956KB log before any question was asked, and four axes were
+chosen for scoring at or near zero. **All four had been worked.** A keyword count under-detects a worked axis
+because the same concept is phrased differently every time it is probed: `two seats` reads 0 while the
+group-and-invoice probe of 22 November is the same question, and `own data` reads 0 while *"can I bring my own
+work task to an AI training day"* of 20 November is the same question. The fix is to read the **question
+column** rather than the prose, which takes one command and returns 255 distinct strings.
+
+**Off-page: two genuinely new candidates, the first in eight cycles, and both are editorial rather than
+directory routes.** `trainingzone.co.uk` (UK learning-and-development, now in three separate probes) and
+`personneltoday.com` (UK HR, three probes). They are the only two names in this cycle's forty-odd results
+that are not a competitor, a platform vendor on its own product, an institutional publisher on its own
+subject, or US readership. **The distinction that makes them admissible is recorded in the review list**:
+declining to write a page that competes with an HR trade publisher for its own query says nothing against
+being mentioned in one, and a mention is the remedy the 24 August baseline actually names - one external
+link, on a domain that still has none, and the first entry `Organization.sameAs` could carry. **Nothing
+contacted, submitted, claimed or paid for, and neither host resolves from this sandbox**, so both need
+verifying before anyone writes to them.
+
+**Why nothing shipped, stated plainly.** No census returned a defect. No probe returned a gap this site can
+honestly fill. The one dated job falls on 27 November and bringing it forward would damage live selling copy.
+The standing diagnosis - that the constraint is off-page reach and indexing, blocked on Drummond - took its
+**tenth** consecutive consistent measurement this cycle. The two moves available to a cycle in that position
+are the loop's documented failure modes: publishing a guide into a vendor-owned field, or re-publishing
+existing prose as `FAQPage` nodes, which `STATE.md` records as fourteen evidence-free cycles. Neither was
+taken. **Backlog 104 also self-corrected as predicted**: Cohort 3 passed on 19 November, so `getHomeUpcoming()`
+now returns exactly three upcoming cohorts and the `slice(0, 3)` cap no longer binds.
 
 ### 24 Nov 2026 (14:00 UTC cycle) - five cohort pages told an engine they belong to a named series, and the page that owns that series' identifier published no node claiming to be it. One function, 3 of 209 built files, and not one visible pixel
 

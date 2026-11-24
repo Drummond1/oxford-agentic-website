@@ -11,6 +11,35 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two UK trade publications, and they are the first genuinely new off-page candidates in eight cycles -
+  both are editorial routes rather than directory listings, and neither has been checked.**
+  Found 24 Nov 2026 (20:00 UTC cycle), from the cohort-size probe. **Nothing contacted, submitted, claimed or
+  paid for. Neither host resolves from this sandbox, so nothing below was checked beyond what the search
+  returned, and both need verifying before anyone writes to them.**
+  - **`trainingzone.co.uk`** - a UK learning-and-development publication. It has now appeared in **three
+    separate probes** in this log (cohort size, twice, and workshop IP ownership), which is how it was
+    noticed: it ranks on the questions our buyers ask about training formats, and its readership is the
+    people who commission training.
+  - **`personneltoday.com`** - a UK HR publication, appeared in **three probes** (adoption stall, what you
+    take home, cohort size).
+  - **Why these two and not the other forty hosts in this cycle's fields.** Every other name was a
+    competitor, a platform vendor on its own product, an institutional publisher on its own subject, or US
+    readership - all four excluded on grounds already on the record. These two are neither competitors nor
+    vendors: they are UK publications whose subject is how organisations train people, which is the one
+    category where a founder who runs hands-on days in Oxford is a credible contributed voice rather than an
+    advertiser.
+  - **An important distinction, because this log has declined `personneltoday.com` before and that decline
+    does not apply here.** On 22 November the adoption-stall *topic* was declined partly because the field
+    was HR trade publishers, meaning **we should not write a page competing with them for that query**. Being
+    *mentioned in* one of those publications is the opposite move, and it is the remedy the 24 August Search
+    Console baseline actually names: one external link on a domain that has none, and the first entry
+    `Organization.sameAs` could carry.
+  - **What this is not.** Not a listing Drummond can submit in two minutes, and not free: both would want a
+    pitch, most likely a contributed article or an expert quote, which costs his time and may cost nothing
+    else or may be paid placement - unknown, and worth him checking before any effort goes in. **The decision
+    for him is one line: is a contributed piece in a UK L&D or HR publication worth an hour of his writing,
+    given that one external link is the named remedy and the site still has zero?**
+
 - **No new host, seventh consecutive cycle - and the first probe set in which the competing field is a
   different product category rather than a different provider.**
   Found 24 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,

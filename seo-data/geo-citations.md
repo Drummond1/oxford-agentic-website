@@ -5,6 +5,96 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-24 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FOURTH CONSECUTIVE SET - AND THE FINDING IS ABOUT THIS LOG'S OWN DEDUPE: ALL FOUR AXES HAD BEEN WORKED BEFORE, AND A KEYWORD COUNT SAID THEY HAD NOT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route
+either, as is `luma.com`. No live page and no Luma fact was checked, no event fact was touched, deploy state
+came from the Actions API, and every site fact below comes from committed files or from the built output.
+
+**The dedupe was run first and it was not good enough. That is this cycle's most useful result.** Thirty-one
+concept strings were counted over the whole log before any question was put to an engine, and four axes were
+chosen because they scored at or near zero: `own data` **0**, `sample data` **0**, `two seats` **0**,
+`generic answers` **0**, `CLAUDE.md` **0**, `connector` **3**, `cohort size` **3**. Axes scoring high were
+rejected as worked: `HR` **755**, `room` **60**, `manager` **49**, `prerequisite` **37**, `vertical` **30**,
+`follow-up` **29**, `how many people` **26**.
+**Checked after the probes, against the question column rather than against the prose, all four turn out to
+have been worked already** - and three of the four were previously declined for the same reason this cycle
+reached independently. The method that found this is the one a future cycle should use instead, and it is
+filed as backlog 136.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | AI training where you work on your own real data instead of sample exercises (**worked axis, new field: see below**) | **No** | vendasta.com x2, eesel.ai x2, clickup.com x2, towardsdatascience.com, dev.to, geekflare.com, customgpt.ai, block.fiverr.com, zapier.com x2, rtinsights.com, apollo.io, denser.ai, multimodal.dev, ivee.jobs |
+| 2 | how many people should be in a hands-on AI training cohort to actually learn (**worked axis, probed twice before**) | **No** | **pmc.ncbi.nlm.nih.gov**, **ncbi.nlm.nih.gov**, pluralsight.com x2, personneltoday.com, **open.lib.umn.edu**, **aacsb.edu**, disco.co, shwetadoshi.substack.com, trainingzone.co.uk |
+| 3 | should I send two people from my team to the same AI bootcamp or one (**worked axis, the group-and-invoice probe**) | **No** | **mentorcruise.com x6**, agilefever.com, atdintensive.td.org, coursera.org, miro.com, hyperskill.org x3, blitzmetrics.com, university.mindstudio.ai, teamblind.com, maven.com, aihr.com |
+| 4 | what is an MCP connector and does a non-technical business user need one (**worked axis, declined before on the same ground**) | **No** | docs.uipath.com x2, composio.dev x2, merge.dev, docs.mulesoft.com, docs.cloud.google.com, docs.mistral.ai x4, getmaxim.ai, docs.snowflake.com, truefoundry.com |
+
+### Probe 1 - own data rather than sample exercises - DECLINED, and the new thing here is a vocabulary collision rather than a content gap
+19 results, no page of this site. **The axis was worked on 20 November** as *"can I bring my own work task to
+an AI training day and build something I keep"*, which returned event platforms. This phrasing returned a
+completely different field, and that difference is the finding: **every one of the nineteen results reads
+"your own data" as training or grounding a model**, not as a person practising on their own work. The field is
+fine-tuning and retrieval guides - `vendasta.com`, `eesel.ai`, `geekflare.com`, `customgpt.ai`, `denser.ai`,
+`multimodal.dev`, `apollo.io` - and the engine's own summary went to RAG, fine-tuning and data cleaning.
+So the phrase **"train AI on your own data" belongs to a different product category**, and a page written at
+this query would be read as competing with middleware. `techtarget`-class publishers are absent, but
+`zapier.com`, `clickup.com`, `apollo.io`, `customgpt.ai`, `denser.ai` and `eesel.ai` are platform vendors on
+their own product, so the clause is engaged anyway.
+**It fails CONVERTING on the same fact.** The searcher wants a model that knows their documents, which is the
+Second Brain day's subject, and that line's constraint is demand rather than ranking. **Nothing written.**
+Recorded because the collision is worth knowing before anyone writes "your own data" into a title: it is the
+same class as backlog 134, where the unqualified word "bootcamp" imports a category this brand is not in.
+
+### Probe 2 - cohort size - DECLINED on the institutional-publisher clause, and the axis was already closed twice
+10 results, no page of this site. **This axis has been probed twice before** - *"how many people should be in
+the room at a hands-on AI workshop, does group size matter"* and *"...is a small cohort better than a large
+one"* - and the `how many people` count of 26 should have been read as worked rather than as a different
+question. The field here is the strongest institutional one in the log: a **PMC systematic review**, a
+**randomised controlled trial on NCBI**, the **University of Minnesota** open textbook and **AACSB** hold the
+evidence, with `pluralsight.com` and `disco.co` as the vendor claims the engine itself flagged as
+*"a vendor claim and not peer-reviewed"*.
+**It is not a coverage gap in any case.** `/bootcamps/oxford-agentic-bootcamp/` answers ***"How many people
+are in the room?"*** directly, as one of its 24 FAQ entries. **And it could not be won honestly**: beating
+peer-reviewed group-size evidence would mean publishing our own, and the Second Brain standing decision is
+that its group size is said as *"small group"* and never as a number. Do not re-pitch this axis.
+
+### Probe 3 - two people from one team - DECLINED, because the substance is already published on every commercial page
+18 results, no page of this site. **The axis was worked on 22 November** as *"send two managers to a one day
+hands-on AI workshop UK pay by invoice company booking"*; `two seats` scored 0 but `group booking` scored 12,
+and 12 was the number that mattered. The field is the platform-vendor clause close to pure - **`mentorcruise.com`
+is six of the eighteen** and `hyperskill.org` three more - and the engine's own caveat names it:
+*"most of what I found comes from training vendors, so treat it as marketing-informed rather than independent
+research."* That reads like the opening `who-should-take-the-seat` shipped into on 19 October.
+**It was still declined, on a prior ground, and the check is worth recording because it came out the opposite
+way to the obvious guess.** The site already answers it in question shape on **all three programme pages**,
+every live event page and the homepage FAQ: ***"Can I bring my team, or book for several people?"*** - with
+the invoice answer beside it for the organisation that cannot put a card through. A grep found it on
+`oxford-agentic-bootcamp.md:257`, `agentic-coding-bootcamp.md:209` and `second-brain-bootcamp.md:106`, plus
+`assurances` on each cohort page. **The honest half of the answer is price and group terms, which never go on
+this site.** So this is the tenth consecutive measurement that the constraint is reach, not copy.
+
+### Probe 4 - MCP connectors - DECLINED on CONVERTING, exactly as a prior cycle decided
+14 results, no page of this site, and the field is **vendor documentation almost without exception**:
+`docs.uipath.com`, `docs.mulesoft.com`, `docs.cloud.google.com`, `docs.mistral.ai` four times,
+`docs.snowflake.com`, plus `composio.dev`, `merge.dev`, `getmaxim.ai` and `truefoundry.com`.
+**A prior cycle reached this verdict in these words** - *"the answers are all 'which connector does your
+platform have', and the reader is shopping for middleware, not for a day in Oxford"* - and this field is the
+same field. The engine could not answer the second half of the question at all (*"the sources don't address
+this"*), which is a real gap, but it is a gap in **documentation for developers**, and the searcher is
+configuring software rather than booking a seat. The glossary already defines MCP in plain English. **Nothing
+written, and this axis should now be treated as closed rather than low-scoring.**
+
+**Reading, and it is a verdict on the instrument rather than on the site.** Four probes, zero citations, the
+thirty-fourth consecutive set. Nothing on this site needed changing on any of the four: one is a different
+product category, one is answered on the flagship programme page and cannot be won honestly, one is published
+on all three programme pages and every live event page, and one is for a developer configuring middleware.
+**The cycle's useful output is the dedupe lesson**, because a keyword count over a 956KB log under-detects a
+worked axis: the same concept is phrased differently every time it is probed, so `two seats` reads 0 while the
+axis has been worked, and `own data` reads 0 while *"bring my own work task"* is the same question. Probing
+the question column directly is cheap and would have caught all four. Filed as backlog 136 with the command.
+
 ## 2026-11-24 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-THIRD CONSECUTIVE SET - AND PROBE 4 IS THE CLEANEST SEPARATION OF REACH FROM RELEVANCE IN THIS LOG: THE ENGINE SAID IT COULD NOT FIND GUIDANCE FOR A BOOTCAMP WHILE THE BEST-MATCHING PAGE IN EXISTENCE SITS ON THIS DOMAIN
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
