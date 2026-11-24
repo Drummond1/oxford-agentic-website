@@ -3358,8 +3358,121 @@ Status: `todo` · `blocked` (why) · `doing`
       with lazy photographs, wait on `img.decode()` or on every `img.complete` before capturing**, or
       compare a clipped region rather than the full page.
 
+134. `todo` **(needs Drummond, a positioning call and explicitly not the loop's; found 24 Nov 2026 in the
+    14:00 cycle, from one probe)** - **to an answer engine, the unqualified phrase "AI bootcamp" means a
+    multi-week developer course.** Asked *"what task should I bring to a hands-on AI bootcamp to build on the
+    day"* - very nearly the title of `/guides/how-to-choose-your-first-agentic-task/` - the engine returned
+    sixteen results of which **twelve are developer or machine-learning bootcamps** (`codecademy.com` x2,
+    `coursera.org`, `digitalocean.com`, `bootcamp.unf.edu` x2, `bootcamp.sandiego.edu`,
+    `startupstudio.berkeley.edu`, `udemy.com`, `lenovo.com` x2 serving a glossary), and answered with MNIST
+    handwritten digits and a cats-versus-dogs classifier. **The word "agentic" is what separates this brand
+    from that field**, and every query in the GEO log that carries it behaves differently from every query
+    that does not. **Deliberately not acted on.** The obvious move - push "agentic" harder into titles that
+    currently say "bootcamp" - is a positioning decision across the whole site, it rests on a single probe,
+    and backlog 13 already reserves title rewrites for when Search Console data exists, after a near-miss
+    rewrite on a page sitting at position 81.9. **Do not rewrite a title on this reading alone.** The thing
+    worth putting to Drummond is one question: is "bootcamp" earning its place in the brand's vocabulary, or
+    is it importing a category we are not in?
+
+135. `todo` (**one census run and closed in the same cycle, recorded so no cycle re-derives it**; measured
+    24 Nov 2026 in the 14:00 cycle on the built site) - **the definition census, the third distinct `@id`
+    sweep and the one that found what the other two could not.** Backlog 127 looks for nodes with no `@id`
+    beside a node that has one for the same url; backlog 131 inventories `Organization`-typed nodes by
+    `@id`. Neither can see an `@id` that is present, well-formed, resolves to a served page, and is simply
+    **never defined**. The method: walk every JSON-LD graph in `dist`, classify each `@id` as *defined* (the
+    node carries keys besides `@id`) or *referenced-only*, then ask of every defined `@id` of the form
+    `https://oxfordagentic.com<path>#fragment` whether `<path>` is among the pages that define it. **Run
+    before this cycle it returned exactly three findings, all `#series`, all fixed in the same cycle. Run
+    after, it returns zero, and zero referenced-only `@id`s that are never defined anywhere.** The script is
+    about forty lines and is not worth committing; the method above reproduces it. **Do not re-run this
+    blind** - the only thing that changes the result is a new cross-page `@id`, which a cycle minting one
+    already knows about. If one is ever minted, the rule it must satisfy is the one this cycle applied: the
+    page whose URL an `@id` names is the page that defines it.
+
 
 ## Shipped
+
+### 24 Nov 2026 (14:00 UTC cycle) - five cohort pages told an engine they belong to a named series, and the page that owns that series' identifier published no node claiming to be it. One function, 3 of 209 built files, and not one visible pixel
+
+**The defect, measured on the built site before anything was written.** `eventSchema` emits, on every event
+page, a `superEvent` stub whose `@id` is `<programme url>#series`, and its comment states the intent plainly:
+*"A stable `@id`, so the cohorts of one bootcamp declare membership of one identified series rather than each
+carrying its own anonymous copy of it."* The reasoning is sound and the fragment is right. **The other half
+was missing.** An inventory of every `@id` in the built graph - 135 defined, 50 referenced-only - asked one
+question of each: is this `@id` defined on the page its own URL names? Three came back no, and all three are
+the same thing:
+
+| `@id` | Asserted by | Defined on its own page? |
+|---|---|---|
+| `/bootcamps/oxford-agentic-bootcamp/#series` | Cohorts 1, 2, 3, 4, 5 | **No** |
+| `/bootcamps/agentic-coding-bootcamp/#series` | Coding Cohort 1 | **No** |
+| `/bootcamps/second-brain-bootcamp/#series` | Second Brain Cohort 1 | **No** |
+
+The Agentic programme page published `Organization`, `WebSite`, `WebPage`, `Course`, `FAQPage` and
+`BreadcrumbList`, and **nothing claiming to be the series**. So the series existed only as five identical
+stubs on the pages of the cohorts that belong to it, and the one page an engine would read to learn what the
+series *is* said nothing about it.
+
+**Eighth instance of one shape, and the census that finds it is new.** `CollectionPage` joined to its
+`WebPage` (22 Nov), each `CourseInstance` given the cohort's own Event `@id` (23 Nov), the founder's
+`worksFor` given the organisation's (23 Nov) - same test each time: one direction of the edge resolved and
+the one coming back did not. **The three censuses already run could not have found this one.** Backlog 127
+looked for nodes with no `@id` beside a node that has one; backlog 131 inventoried `Organization`-typed
+nodes. This `@id` is present, well-formed and resolves to a served page - it is simply never *defined*. The
+census that finds it keys on definition rather than presence, and it is filed as backlog 135 with its closing
+instruction.
+
+**Why it is worth a cycle, on this domain's own measurements.** The 24 August Search Console baseline reads
+23 indexed, 16 not indexed. The 24 Nov 02:00 cycle recorded, from a probe, that *"a recurring series on an
+event platform accrues authority that outlives each date"* - and this site's own series page was the one
+thing in its graph that could not be resolved. Cohorts expire; the series does not. `/bootcamps/<slug>/` is
+the evergreen page, and it now carries the node that says so.
+
+**Nothing new is asserted, and it cannot drift.** `name` and `url` are the two properties the stubs already
+carry, read from the same `programme.data.name` and the same `paths.programme(slug)` call the stubs are built
+from. `organizer` is `ORG_ID`, the constant the `Organization` node is minted from, and every event already
+names the same organiser. **No price, date, venue, capacity, name, number or outcome.**
+
+**`subEvent` resolves on the page rather than pointing away from it, and that is a consequence of yesterday's
+work.** Each cohort is referenced by the `@id` its own page publishes - which, since 23 November, is also the
+`@id` the `Course` node *on this same page* gives its `CourseInstance` for that cohort. Checked in the built
+DOM: 2 of 2 references on the Agentic page and 1 of 1 on the Coding page resolve to a node defined on that
+page. **Omitted rather than empty where there is nothing to list**: Second Brain's only cohort ran on
+21 October, so that page's node carries no `subEvent` at all, for the reason `hasCourseInstance` is omitted -
+`subEvent: []` claims the series has instances and then supplies none. That branch was exercised by this
+build, not reasoned about.
+
+**The Event-node totals are unchanged by design, and that was asserted rather than assumed.** `isEventNode`
+in `scripts/check-schema.mjs` matches `EducationEvent` and `Event` only, and `EventSeries` is neither, so the
+checker's count stays at **17 (10 top-level, 7 nested entity)** across the change. Resolving internal graph
+references go **1,597 to 1,609**, which is the twelve new ones and nothing else.
+
+**Measured, not inferred.** Against a sha256 snapshot of a build made before the change: **3 of 209 files
+differ, none added and none removed** - the three programme pages. **With the JSON-LD blocks masked, all
+three are character-for-character identical before and after**, at 63,055, 48,444 and 48,466 bytes, so not
+one visible pixel moved. `sitemap-0.xml` byte-identical. Internal links unchanged at **3,465 across 69
+pages**. The re-run `@id` census returns **zero** cross-page identity gaps and, as before, zero dangling
+references.
+
+**Checks.** Build green (links, outbound, schema, both date guards) and `check:flags` green both ways.
+Headless Chromium over all three changed pages at 375 and 1280px: **6 of 6 passed** - HTTP 200, exactly one
+`h1`, no horizontal overflow at either width, no image without `alt`, and exactly one `EventSeries` node per
+page with the right `@id`, name and `subEvent` count. Canonicals correct on all three, no `robots` directive,
+titles 49, 54 and 56 characters. The only console errors and failed requests are the two
+`googletagmanager.com` scripts this sandbox's egress proxy refuses, as in every recent cycle.
+
+**Not reached from production.** `oxfordagentic.com` and `luma.com` are refused by this sandbox's egress
+policy, so no live page was read, no event fact was touched, and deploy state came from the Actions API.
+**Board green before anything was changed**: HEAD, local `main` and `origin/main` all at `6a67f76`, tree
+clean, deploy run 45405475571 success on that SHA at 13:38 UTC, nothing queued or in progress.
+
+**Search Console unavailable from cloud, tried once**: `scripts/fetch-search-console.mjs` reports no service
+account key, and `seo-data/` holds no export newer than the 24 August baseline. Nothing estimated. **Four
+probes, zero citations, the thirty-third consecutive set**, and probe 4 is the cleanest separation of reach
+from relevance in the log: the engine said it could not find guidance for a bootcamp while the page titled
+almost exactly as the query was typed sits on this domain. **No new guide** - four declines, one of them
+because the page already exists. 32 guides, newest `publishDate` 20 October, none this week. **Off-page: no
+new host, seventh consecutive cycle**; nothing contacted, submitted, claimed or paid for.
 
 ### 24 Nov 2026 (09:00 UTC cycle) - the header told a visitor which section they were standing in everywhere except the one section that sells the days, and on a phone it never told them at all. One boolean and one CSS rule, 23 of 209 built files
 

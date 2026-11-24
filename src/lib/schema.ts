@@ -690,6 +690,60 @@ export function courseSchema(
 }
 
 /**
+ * The series a programme's cohorts already declare membership of, published on
+ * the page that owns its `@id`.
+ *
+ * `eventSchema` above emits, on every event page, a `superEvent` stub whose
+ * `@id` is `<programme url>#series`, and says why: "a stable `@id`, so the
+ * cohorts of one bootcamp declare membership of one identified series rather
+ * than each carrying its own anonymous copy of it". That reasoning is sound and
+ * the fragment is correct. What was missing is the other half of it: the
+ * programme page at that URL published `Organization`, `WebSite`, `WebPage`,
+ * `Course`, `FAQPage` and `BreadcrumbList`, and **no node claiming to be the
+ * series**. So the series existed only as identical stubs on the pages of the
+ * cohorts that belong to it, and the page an engine would read to learn what
+ * the series is said nothing about it.
+ *
+ * Eighth instance of the shape this ledger has been closing since 22 November -
+ * `CollectionPage` joined to its `WebPage`, each `CourseInstance` given the
+ * cohort's own Event `@id`, the founder's `worksFor` given the organisation's -
+ * and the same test applies: one direction of the edge resolved and the one
+ * coming back did not.
+ *
+ * Nothing new is asserted. `name` and `url` are the two properties the stubs
+ * already carry, read from the same `programme.data.name` and the same
+ * `paths.programme(slug)` call, so the node and the stubs cannot drift. No
+ * price, date, venue, capacity, name, number or outcome is added here.
+ *
+ * `subEvent` references each scheduled cohort by the `@id` the cohort's own page
+ * publishes, which is also the `@id` the `Course` node on this same page gives
+ * its `CourseInstance` for that cohort - so these resolve on this page rather
+ * than pointing away from it, and the series enumerates its cohorts rather than
+ * merely being named. It is omitted rather than empty between cohorts, for the
+ * reason `hasCourseInstance` is: `subEvent: []` claims the series has instances
+ * and then supplies none.
+ *
+ * `EventSeries` is not `Event` or `EducationEvent`, so `isEventNode` in
+ * `scripts/check-schema.mjs` does not count it and the Event-node totals are
+ * unchanged by design - assert that on the built site rather than assume it.
+ */
+export function eventSeriesSchema(programme: ProgrammeEntry, upcoming: EventEntry[]) {
+  const url = absoluteUrl(paths.programme(programme.data.slug));
+  const cohorts = upcoming.map((event) => ({
+    '@id': `${absoluteUrl(paths.event(event.data.slug))}#event`,
+  }));
+
+  return {
+    '@type': 'EventSeries',
+    '@id': `${url}#series`,
+    name: programme.data.name,
+    url,
+    organizer: { '@id': ORG_ID },
+    ...(cohorts.length > 0 ? { subEvent: cohorts } : {}),
+  };
+}
+
+/**
  * The `@id` and `url` here address the person's own team page, so both have to
  * follow the flag that decides whether that page exists.
  *

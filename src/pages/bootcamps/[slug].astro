@@ -19,7 +19,7 @@ import {
   paths,
   showSection,
 } from '../../lib/site';
-import { courseSchema, faqSchema } from '../../lib/schema';
+import { courseSchema, eventSeriesSchema, faqSchema } from '../../lib/schema';
 import { ogPathFor } from '../../lib/og';
 
 /**
@@ -133,6 +133,7 @@ const bands = {
       publishes it too under this same `@id`. */}
   schemaNodes={[
     courseSchema(programme, upcoming, facilitatorsByEvent),
+    eventSeriesSchema(programme, upcoming),
     showFaq ? faqSchema(data.faqs, path) : null,
   ]}
   breadcrumbs={[

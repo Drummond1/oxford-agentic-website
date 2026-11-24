@@ -5,6 +5,88 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-24 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-THIRD CONSECUTIVE SET - AND PROBE 4 IS THE CLEANEST SEPARATION OF REACH FROM RELEVANCE IN THIS LOG: THE ENGINE SAID IT COULD NOT FIND GUIDANCE FOR A BOOTCAMP WHILE THE BEST-MATCHING PAGE IN EXISTENCE SITS ON THIS DOMAIN
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route
+either, as is `luma.com`. No live page and no Luma fact was checked, no event fact was touched, deploy state
+came from the Actions API, and every site fact below comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Fifty-five candidate strings were counted
+over the whole log before any question was put to an engine. The chosen axes score zero: `which task first`
+**0**, `where to start` **0**, `pick a task` **0**, `off the shelf` **0**, `choose between` **0**, `measure ROI`
+**0**, `worth the money` **0**. Rejected as already worked: `zapier` **39**, `laptop` **32**, `two days` **21**,
+`security` **20**, `prepare` **19**, `n8n` **17**, `beginner` **15**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | which task should I automate first with AI at work, how do I pick the right one (**task-selection axis, never probed**) | **No** | dev.to x3, producthunt.com x2, codesignal.com x2, builder.aws.com, oreilly.com (HBR Guide), producttalk.org, azbigmedia.com, botpress.com, therundown.ai, discuss.comptia.org, asianefficiency.com, buildaiq.com, vincentschmalbach.com |
+| 2 | should I buy an off-the-shelf AI tool or build my own workflow for my business (**build-vs-buy axis, never probed**) | **No** | **techtarget.com x3**, cio.com, dev.to x4, a.team, unanet.com, inbenta.com, edge-ai-vision.com, pinggy.io, enterprisedna.co, searchengineland.com, techround.co.uk x2, raftlabs.com |
+| 3 | how do I measure the ROI of AI training for my team after the course (**training-ROI axis, never probed**) | **No** | **business.udemy.com x6** (one post in six languages), disco.co x2, articulate.com, dev.to |
+| 4 | what task should I bring to a hands-on AI bootcamp to build on the day (**the exact question one of this site's own guides is titled after**) | **No** | coursera.org, digitalocean.com, codecademy.com x2, bootcamp.unf.edu x2, bootcamp.sandiego.edu, startupstudio.berkeley.edu, udemy.com, lenovo.com x2, learn.aisingapore.org, github.com, hackmd.io, decentfoot.com, a LinkedIn profile |
+
+### Probe 1 - which task to automate first - DECLINED, because this site already publishes the page and it is not a content gap
+17 results, no page of this site. The field is mixed rather than closed - `dev.to` three times, two ProductHunt
+posts, `producttalk.org`, `asianefficiency.com` and two personal blogs are not institutional publishers - but
+`oreilly.com` is serving the **HBR Guide** chapter *"How to Pick the Right Automation"* and `discuss.comptia.org`
+is CompTIA, so the institutional-publisher clause is engaged at the top of the field, and `codesignal.com`,
+`botpress.com`, `therundown.ai` and `buildaiq.com` are platform vendors on their own product.
+**It does not matter, because the decline is on a prior ground: `/guides/how-to-choose-your-first-agentic-task/`
+already exists**, published 4 August and updated 4 November, and its five tests (you do it repeatedly; it runs
+on words and documents; you can check the output at a glance) are the same tests the engine assembled from
+fifteen sources. Writing a second page against this query would be the near-duplicate the new-guide rule
+forbids. Nothing to write.
+
+### Probe 2 - build versus buy - DECLINED (institutional-publisher clause, and it fails CONVERTING)
+18 results, no page of this site. `techtarget.com` holds **three** slots with one article and `cio.com` a
+fourth: that is the clause the 12 Aug rule was written for, and the engine's own caveat names the rest of the
+problem - *"KORIX and A.Team both sell custom AI, so I'd weigh their advice with that in mind."* **It also fails
+CONVERTING, which is the more useful half.** Build-versus-buy is a procurement decision taken before anyone
+books a training day, and the honest answer for most readers is "buy the standard tool", which argues against
+the purchase rather than for it. This site sells one seat on one day for one person with one task. Do not
+re-pitch it.
+
+### Probe 3 - ROI of AI training - DECLINED (platform-vendor clause, and then the same accuracy wall as six hours ago)
+10 results, no page of this site, and the field is the narrowest in this log: **`business.udemy.com` is six of
+the ten**, the same post served in English, German, Indonesian, Turkish, Korean and Japanese, then `disco.co`
+twice and `articulate.com` once. Udemy, Disco and Articulate are all **training platforms writing about the ROI
+of training**, which is the platform-vendor clause almost in its pure form. The tenth is a `dev.to` thread
+asking *"has anyone actually measured the ROI of training their team on AI tools"* - and that thread is the
+reading worth keeping, because it says the demand is real and the evidence is thin on all sides.
+**Declined anyway on accuracy, for the third cycle running.** To beat the field this site would have to publish
+what attendees actually saved after one of these days, and **no follow-up data from any cohort exists in this
+repo**. `/guides/is-your-ai-workflow-saving-time-or-just-effort/` publishes a measurement method rather than a
+figure, which is the right answer and already shipped. Re-probe only if follow-up data ever exists; that is the
+condition, not the calendar.
+
+### Probe 4 - the question one of our own guides is named after - NOT CITED, AND IT SEPARATES REACH FROM RELEVANCE MORE CLEANLY THAN ANY PROBE IN THIS LOG
+16 results. **No page of this site appeared**, and the engine opened with
+*"The search didn't turn up guidance for your specific bootcamp, so these are general patterns from similar
+programs."* It then answered with **MNIST handwritten digits and a cats-versus-dogs image classifier**.
+
+**What makes this probe worth more than the thirty-two before it.** Every previous zero-citation set left open
+the question of whether the site lacked the page or lacked the reach. Here there is no ambiguity:
+`/guides/how-to-choose-your-first-agentic-task/` is **titled** "How to choose the task you bring to an AI
+bootcamp" - very nearly the query as typed - carries an `FAQPage` node, has been live since 4 August, was
+updated on 4 November, and holds ten inbound internal links, the second-highest of any guide on this site. The
+best-matching page in the field exists, is indexed in this site's own sitemap and llms.txt, and was not
+returned. **That is reach, and nothing written on this domain changes it.** It is the ninth consecutive
+measurement pointing at backlog 2b.
+
+**The competitive half is new and is a positioning reading rather than an SEO one.** Of the sixteen results,
+**twelve are developer or machine-learning bootcamps**: `codecademy.com` twice, `coursera.org`,
+`digitalocean.com`, `bootcamp.unf.edu` twice, `bootcamp.sandiego.edu`, `startupstudio.berkeley.edu`,
+`udemy.com`, and `lenovo.com` twice serving a glossary definition. So to an engine the unqualified phrase **"AI
+bootcamp" means a multi-week developer course**, and the task it expects you to bring is a training dataset.
+The word "agentic" is what separates this brand from that field, and every query in this log that carried it
+has behaved differently from every query that did not. **Recorded as an observation for Drummond, not as a
+change**: nothing was rewritten on the strength of one probe, and a title or positioning move on this axis is
+his call, not the loop's. Filed as backlog 134.
+
+**No new guide.** Four probes, four declines - one because the page already exists, two on the winnability rule,
+one on accuracy. Thirty-two guides, newest `publishDate` 20 October, none published this week.
+
 ## 2026-11-24 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SECOND CONSECUTIVE SET - AND THE EIGHTH BACKLOG 2B MEASUREMENT, WHERE A QUERY FOR A JANUARY 2027 OXFORD DAY WAS ANSWERED OFF THIS BRAND'S OWN PASSED SEPTEMBER LISTING WHILE THE COHORT 5 PAGE THAT CARRIES THE DATE DID NOT APPEAR
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

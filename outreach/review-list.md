@@ -11,6 +11,38 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, seventh consecutive cycle - and the first probe set in which the competing field is a
+  different product category rather than a different provider.**
+  Found 24 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
+  claimed or paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond
+  what the search returned.**
+  - **The one new reading, and it is positioning rather than a listing route.** Asked what task to bring to a
+    hands-on AI bootcamp, **twelve of sixteen results are developer or machine-learning bootcamps** -
+    `codecademy.com` twice, `coursera.org`, `digitalocean.com`, `bootcamp.unf.edu` twice,
+    `bootcamp.sandiego.edu`, `startupstudio.berkeley.edu`, `udemy.com`, and `lenovo.com` twice serving a
+    glossary definition - and the engine answered with MNIST digits and a cats-versus-dogs classifier. To an
+    engine, the unqualified phrase "AI bootcamp" means a multi-week developer course. **This is a question for
+    Drummond, not a host to approach**, and it is filed as backlog 134 rather than acted on: nothing was
+    rewritten on the strength of one probe.
+  - **What it adds to the top item.** Not a new host. It is the ninth consecutive measurement that the
+    constraint is reach rather than on-page work, and it is the cleanest one so far, because this time the
+    best-matching page in the whole field demonstrably exists on this domain:
+    `/guides/how-to-choose-your-first-agentic-task/` is titled almost exactly as the query was typed, has been
+    live since 4 August, and was not returned. The remedy named in the 24 August Search Console baseline has
+    not changed: one external link, and `Organization.sameAs` is still empty.
+  - **Deliberately not added, each with its reason rather than by omission.** Competitors rather than listing
+    routes: `codecademy.com`, `coursera.org`, `udemy.com`, `business.udemy.com`, `bootcamp.unf.edu`,
+    `bootcamp.sandiego.edu`, `startupstudio.berkeley.edu`, `codesignal.com`, `disco.co`, `learn.aisingapore.org`.
+    Platform vendors writing about their own product: `botpress.com`, `therundown.ai`, `buildaiq.com`,
+    `articulate.com`, `a.team`, `inbenta.com`, `unanet.com`, `enterprisedna.co`, `raftlabs.com`, `pinggy.io`,
+    `digitalocean.com`, `lenovo.com`. Institutional publishers on their own subject: `oreilly.com` (serving the
+    HBR Guide chapter), `techtarget.com` (three slots on one probe), `cio.com`, `discuss.comptia.org`,
+    `searchengineland.com`. US readership, declined consistently since 11 October: `azbigmedia.com`,
+    `producttalk.org`, `asianefficiency.com`. Self-publishing and user-generated: `dev.to` (seven slots across
+    two probes), `producthunt.com`, `github.com`, `hackmd.io`, `builder.aws.com`, `decentfoot.com`,
+    `vincentschmalbach.com`, `edge-ai-vision.com`, and a LinkedIn profile page. UK but a competitor:
+    `techround.co.uk`.
+
 - **No new host, sixth consecutive cycle - and the first cycle in which the Oxford-anchored commercial query
   is held by the University's own continuing-education pages rather than by aggregators.**
   Found 24 Nov 2026 (08:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
