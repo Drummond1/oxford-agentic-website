@@ -5,6 +5,91 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-24 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FIRST CONSECUTIVE SET - AND THE SEVENTH CONSECUTIVE MEASUREMENT OF BACKLOG 2B, THIS TIME ON THE CODING LINE'S OWN COMMERCIAL QUERY, WHERE A COMPETITOR RUNS THE SAME FORMAT MONTHLY ON LUMA AND HOLDS SEVEN OF TWENTY RESULTS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off it stands. **Production could not be read**: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route
+either, as is `luma.com`. So no live page and no Luma fact was checked, no event fact was touched, deploy state
+came from the Actions API, and every site fact below comes from committed files or from the built output.
+
+**The dedupe ran first, on the concept rather than the vocabulary.** Twenty-four candidate strings were counted
+over the whole log before any question was put to an engine. The chosen axes score low or zero: `model changes`
+**0**, `document your processes` **0**, `process documentation` **0**, `standard operating` **0**,
+`difference between automation` **0**, `automation vs` **0**, `ops team` **0**, `model update` **2**. Rejected
+as already worked: `version` **61**, `laptop` **31**, `how many people` **25**, `bring my team` **13**,
+`what to bring` **12**, `group booking` **11**.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | my AI agent workflow broke after the model updated, how do I keep an automation working when the model changes (**model-drift axis, never probed**) | **No** | **mindstudio.ai x5**, community.n8n.io x5, dev.to, techcommunity.microsoft.com, arthur.ai, opusresearch.net, outsystems.com |
+| 2 | how to document a business process so an AI agent can run it (**process-documentation axis, never probed**) | **No** | **lucid.co x3**, tallyfy.com x2, salesforce.com (Trailhead), learn.microsoft.com, bpmoportal.berkeley.edu, ai.gov.au, scribe.com, rackspace.com, lowcode.agency, gravitee.io x2 |
+| 3 | what is the difference between automation and agentic AI for a business, which one do I need (**definition axis in the buyer's words, never probed**) | **No** | **aws.amazon.com x2**, builtin.com, analyticsvidhya.com x2, blog.workday.com, customerthink.com, techradar.com, arxiv.org, dev.to |
+| 4 | one day in person course, build an app with AI without coding, UK, book a place (**the Coding line's own commercial query, two days before its first cohort**) | **No** | **luma.com x7 (all one competitor's recurring series)**, eventbrite.co.uk x4, maven.com x2, meetup.com x2, citylit.ac.uk x2, reed.co.uk, learningtree.com, events.icaew.com |
+
+### Probe 1 - model drift - DECLINED (platform-vendor clause, and the honest version needs evidence this repo does not hold)
+17 results, no page of this site. `mindstudio.ai` holds five of them, every one a blog post about its own
+product ("model agnostic ai agent stack survives disruptions", "durable ai agent workflow survives model
+changes"), and five more are n8n community support threads - users debugging node versions, not a field anyone
+is writing for. **Fails WINNABLE on the platform-vendor clause.** It also fails the same evidence test as
+backlog 117 in its second half: the honest version of this page would say what happened to workflows built on
+the Agentic days when the models under them changed, and nothing of the sort is recorded in this repo. The
+site's nearest page, `/guides/how-to-notice-when-an-ai-workflow-is-wrong/`, is about silent failure generally
+and was written from the published format rather than from follow-ups.
+
+### Probe 2 - process documentation for agents - DECLINED (institutional publishers and process-documentation vendors hold the whole field)
+17 results, no page of this site, and the field is held twice over: **institutional publishers on their own
+subject** (`learn.microsoft.com`, Berkeley's BPM office, the Australian government's `ai.gov.au`) and
+**vendors whose product is process documentation** (`lucid.co` three times, `tallyfy.com` twice, `scribe.com`,
+`lowcode.agency`). That is the NHS-England shape the 12 Aug rule was written for. **Fails WINNABLE.** Noted
+for the message house rather than for a guide: the field's answer is "write a better SOP", where this site's
+published argument is that the day is about building the workflow around the tools, not documenting the one
+you already have. The nearest published page is the Agentic programme page's own FAQ, *"Do I need a
+written-down process before I can automate a task?"*, which answers it directly.
+
+### Probe 3 - automation versus agentic AI - DECLINED (the site already answers it; and the field is held by hyperscalers)
+10 results, no page of this site. `aws.amazon.com`'s "Agents vs automation: a strategic guide for business
+leaders" takes two slots, with `builtin.com`, `blog.workday.com`, `techradar.com`, `analyticsvidhya.com` twice
+and an arXiv paper behind it. **Fails WINNABLE on the institutional-publisher clause**, and it would fail
+CONVERTING anyway: the engine's own answer is "start with automation", which sends the reader away from a
+build day rather than towards one. **And the site already answers it** - `/guides/agentic-ai-glossary/` defines
+the terms and the Agentic programme page's *"What does 'agentic' actually mean here?"* answers it in the
+buyer's words. Third consecutive cycle in which a probe's gap turns out to be retrieval rather than coverage.
+
+### Probe 4 - the Coding line's own commercial query, two days out - NOT CITED, AND THE SHARPEST BACKLOG 2B READING ON THIS LINE
+20 results. **No page of oxfordagentic.com appeared, and neither did our own Luma listing**
+(`luma.com/agenticcoding`), for the first Coding Bootcamp which runs on **26 November 2026**, two days after
+this probe. What did appear:
+- **Seven `luma.com` pages, all of them one competitor's recurring series**, "Ship Your First App in a Day:
+  Vibe Coding with AI", listed month by month - December 2025, January, March, April, July and August 2026.
+  **Most of those dates have passed and they rank anyway.** The engine read a £600 ticket price off one of
+  them and flagged that "some listings are marked as past events".
+- **Four `eventbrite.co.uk` listings**, including a London half-day and an Edinburgh 3.5-hour workshop, plus
+  `maven.com` twice, `meetup.com` twice, `citylit.ac.uk`, `reed.co.uk`, `learningtree.com` and
+  `events.icaew.com`.
+- The engine's closing line is the measurement: ***"I found a few UK options, but most listings I saw are
+  either online, dated, or not a full day."*** A one-day, in-person, no-coding-assumed UK day two days away is
+  exactly what it said it could not find, and it is on sale.
+**This is the same finding as 23 Nov's probe 4 on a different product line, and it rules out the same
+explanation.** There a passed Luma listing of ours outranked our own pages; here a competitor's passed Luma
+listings outrank both our page and our listing. The common factor is the platform, not the copy: **recurring
+listings on event platforms are what this query returns, and we have one listing on one platform with no
+external links pointing at it.** The on-site facts were checked rather than assumed - `/bootcamps/
+agentic-coding-bootcamp/`, the Cohort 1 event page and `llms.txt` all carry 26 November 2026, 09:00 to 17:00,
+Worcester College, and the cohort is in the sitemap - so nothing on the site is the cause. **Seventh
+consecutive cycle recording this symptom.** The remedy named in backlog 2b is unchanged and is not the loop's
+to take.
+
+**Off-page: no new host, the fifth consecutive cycle.** Every host in these four fields that is not already on
+the review list is disqualified by a rule already in it, and the ones that are credible are already written
+up: `eventbrite` (77 prior mentions), `meetup.com`, `maven.com`, `reed.co.uk`, `nobleprog` and `events.icaew.com`
+all appear on the list or in `off-page-listings.md`. `citylit.ac.uk` and `learningtree.com` are competitors
+selling their own courses, not listing routes. `mindstudio.ai`, `lucid.co`, `tallyfy.com`, `scribe.com`,
+`lowcode.agency`, `gravitee.io`, `arthur.ai` and `outsystems.com` are platform vendors; `community.n8n.io`,
+`dev.to` and `techcommunity.microsoft.com` are user forums; `analyticsvidhya.com`, `customerthink.com`,
+`opusresearch.net` and `techradar.com` are trade media already declined. **Nothing was contacted, submitted,
+claimed or paid for.**
+
 ## 2026-11-23 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTIETH CONSECUTIVE SET - AND THE SIXTH CONSECUTIVE MEASUREMENT OF BACKLOG 2B, IN ITS WORST FORM YET: THE ENGINE RECOMMENDED THIS BRAND'S DECEMBER DAY OFF TWO OF ITS OWN PASSED LUMA LISTINGS, QUOTED "5 SPOTS REMAINING" FROM A JULY EVENT, AND SAID IT COULD NOT FIND THE DATE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

@@ -232,6 +232,25 @@ const bands = {
         <div class="section-head" data-reveal>
           <hr class="dash" />
           <h2 id="proof">What people said</h2>
+          {/* The site's only page of named, attributed proof had no contextual
+              inbound link anywhere: measured 24 Nov 2026 over all 58 indexable
+              pages, /testimonials/ is linked exactly three times from every one
+              of them - desktop nav, mobile nav, footer - and all 174 of those
+              links read "Outcomes" and nothing else. So no sentence on the site
+              sent a reader there, and the only anchor text pointing at the proof
+              page was one word of nav boilerplate. This band is where that
+              sentence belongs: it is the page an engine restricted to this
+              domain actually holds, and it shows three of the quotes while the
+              page holds the rest. The first clause is /testimonials/'s own
+              standfirst, so no new claim is made, and "collected" carries no
+              count, which keeps it true however many quotes clear consent. Not
+              repeated on the programme page, which renders all four quotes, nor
+              on the event pages, where anything added beside the booking form is
+              a call Drummond reserves. */}
+          <p>
+            Named and attributed, because specific beats polished. They are collected on the{' '}
+            <a href={paths.testimonials()}>outcomes page</a>.
+          </p>
         </div>
         <div class="grid grid--2">
           {testimonials.slice(0, 3).map((t, i) => (

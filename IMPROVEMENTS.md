@@ -3300,7 +3300,127 @@ Status: `todo` · `blocked` (why) · `doing`
       measured rather than assumed. Do not re-measure the forward path.
 
 
+132. `todo` (**the two surfaces this cycle's change deliberately did not reach, plus the census that found
+    it - recorded so no cycle re-derives either**; measured 24 Nov 2026 in the 02:00 cycle on the built site)
+    - **the quote band renders on seven pages and only the homepage now points at the page that holds the
+      rest.**
+    - **(a) The census, so it is not re-run blind.** Count `href="/testimonials/"` on every indexable page and
+      read each occurrence's anchor text. Before this cycle: **174 occurrences over 58 pages, exactly 3 per
+      page, and the anchor text was the single word "Outcomes" on all 174** - desktop nav, mobile nav, footer,
+      and nothing else anywhere on the site. The same census over the other hub pages is the obvious next
+      question and was **not** run; if a cycle runs it, key on the anchor-text distribution rather than the
+      count, because the count alone cannot tell boilerplate from prose.
+    - **(b) `/bootcamps/oxford-agentic-bootcamp/` was weighed and declined on a fact, not on caution.** Its
+      band is `testimonials.slice(0, 4)` against a collection of **four**, so it already renders every quote
+      the site publishes. "They are collected on the outcomes page" would be true there and useless: it would
+      point a reader who has just read all four at the same four. **If a fifth testimonial ever clears
+      consent, that stops being true and this becomes a one-line change** - which is the condition to watch,
+      not the calendar.
+    - **(c) The five event pages are deliberately untouched and that is Drummond's, not the loop's.** Their
+      bands sit on the booking path, and what goes beside a booking form is the family backlog 42 and backlog
+      119 reserve for him. The question for him is one line: **should the quote band on an event page send a
+      reader to `/testimonials/`, or does anything that is not the booking form cost more than it earns
+      there?** The loop will not answer it either way.
+
+
 ## Shipped
+
+### 24 Nov 2026 (02:00 UTC cycle) - the site's only page of named, attributed proof had no contextual inbound link anywhere. All 174 links pointing at it were nav and footer boilerplate reading one word, "Outcomes". One sentence on the homepage, 2 of 209 built files
+
+**The defect, measured before anything was written.** `/testimonials/` is the page that holds the four named,
+attributed attendee quotes - the thing a hesitant buyer looks for and the thing an answer engine quotes. A
+census over all **58** indexable built pages found `href="/testimonials/"` **174 times, exactly 3 on every
+page** - the desktop nav, the mobile nav and the site footer - and **the anchor text was the single word
+"Outcomes" on all 174 of them**. So **no sentence anywhere on this site sent a reader to the proof page**, and
+the only anchor text any engine could read against it was one word of nav boilerplate repeated 174 times.
+
+**Why that is worth a cycle on a domain with this one's measurements.** The 24 August Search Console baseline -
+still the only real index measurement in this repo - reads 23 indexed, 16 not indexed, and diagnoses **crawl
+budget on a domain with zero external links**. A page reachable only from site-wide boilerplate is the shape
+that stays uncrawled: repeated nav links are discounted precisely because every page has them, and a
+contextual link in prose is the kind that is not. It is also the conversion route: a visitor who has just read
+three quotes has no in-copy way to the fourth, only a nav label that does not say what is behind it.
+
+**The homepage, and only the homepage, and the reason is a fact rather than caution.** The band renders on
+seven pages from three templates. The homepage band is `testimonials.slice(0, 3)` against a collection of
+**four**, so there genuinely is a rest to point at; the Agentic programme page is `slice(0, 4)` and already
+renders every quote the site publishes, where the same sentence would point a reader at what they have just
+read. The five event-page bands sit on the booking path, which is the family backlog 42 and 119 reserve for
+Drummond. Both exclusions and the census are filed as **backlog 132** so neither is re-derived, with the
+condition that reopens the programme page: a fifth testimonial clearing consent.
+
+**No new claim, and the first clause is not this cycle's wording.** *"Named and attributed, because specific
+beats polished"* is `/testimonials/`'s own standfirst ("Named and attributed. Specific beats polished."),
+reused rather than rewritten, which is the practice every recent copy change here has followed. *"They are
+collected on the outcomes page"* **carries no count on purpose**: "the rest" or "three of four" would be a
+number that goes false the moment a quote is added or a consent is withdrawn, and the quote collection is
+consent-gated. "Outcomes" is the label the nav already gives that page, so the sentence names it the way the
+site already does. No price, date, venue, capacity, name or number.
+
+**It degrades with its own flag.** The sentence sits inside the `showProof` block, so a build with
+`features.testimonials` off removes the band and the link together and cannot leave a dangling reference.
+`npm run check:flags` run in full: **all flags ON** 69 pages valid, **all flags OFF** 25 pages valid, both
+green on links and schema.
+
+**Blast radius measured, not inferred. 2 of 209** built files differ, none added and none removed: `/` and
+`/home-photos/`, which is the noindex, out-of-sitemap photo variant that renders the same component and is
+recorded in STATE.md as the swap pair. **No other page moved, and `sitemap-0.xml` is unchanged.** The internal
+link count went **3,462 to 3,464**, and the arithmetic is exact: one new link on each of those two pages. The
+homepage now carries **4** links to `/testimonials/` and, for the first time, an anchor text that is not
+"Outcomes".
+
+**Checks.** `npm run build` green: 67 pages built, links **3,464 across 69 pages**, outbound (13 third-party
+warnings, all `fetch failed` against hosts this sandbox blocks - not blocking and unchanged from the
+baseline), schema **69 pages valid - 17 Event, 22 FAQPage, 128 offset-bearing dates, 1,597 resolving
+references, 59 breadcrumb trails, all titles and descriptions unique**, both date guards green (58 indexable
+pages carry no passed cohort date written as upcoming; 120 long-month dates, 0 without a year in range).
+Every figure except the link count is identical to the baseline. Headless Chromium over the homepage at 375
+and 1,280px: **18 assertions, 14 passed**, and all 4 failures are the console-error and failed-request
+assertions, whose only entries on either width are `googletagmanager.com/gtag/js` and `gtm.js`, refused by
+this sandbox's egress proxy with `ERR_TUNNEL_CONNECTION_FAILED`. The change-specific assertions passed at both
+widths: exactly one contextual link, anchor text "outcomes page", visible, inside the viewport, **and it
+navigates to `/testimonials/`** - clicked in the browser, not inferred from the href. No horizontal page
+scroll at either width. Band screenshots read at both: the standfirst sits where the "room" band's standfirst
+sits, wraps to three lines at 375px and two at 1,280px, and the link underlines in the house ink.
+
+**One false alarm, recorded because the next cycle will hit it.** A first read of the rendered sentence showed
+*"outcomes page ."* with a space before the full stop. It was an artefact of the measuring script, which
+replaced every tag with a space; the raw HTML is `<a ...>outcomes page</a>.` and the browser renders it
+closed up. **Strip tags with the empty string when reading rendered copy, or every element boundary becomes a
+phantom space.**
+
+**IndexNow.** The dry run over the changed file maps `src/components/HomeSections.astro` to **1 URL**,
+`https://oxfordagentic.com/`, which is the honest number: `/home-photos/` is noindex and out of the sitemap
+and is correctly not submitted. The three record files match the exempt pattern. The script was not run.
+
+**Board state, verified before anything was read.** The fresh checkout arrived at `bcd268f`, which **is**
+`origin/main` after `git fetch` - checked, not assumed. Tree clean. Deploy run **45256334779 success** on that
+SHA at 20:09 UTC, nothing queued or in progress. `oxfordagentic.com` is refused at CONNECT by this sandbox's
+egress proxy (HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`, so **no live
+page, no `build.txt` and no Luma fact was read, and no event fact was touched** - no date, venue, capacity,
+price or availability. Backlog 109 stays blocked. Deploy state came from the Actions API.
+
+**Search Console: unavailable from cloud, tried once.** `scripts/fetch-search-console.mjs` reports no service
+account key, and there is no export in `seo-data/` newer than the 24 August baseline. Nothing was estimated or
+fabricated. **No new guide this week** - 32 guides, newest `publishDate` 20 October.
+
+**Four sweeps run clean before this change was chosen, and they are the ones a cycle with no Search Console
+data reaches for first.** Over all 58 indexable pages: **0** images with no `alt` attribute, **0** pages whose
+`h1` count is not exactly 1, **0** heading-level skips, **0** same-page fragment links with no matching `id`,
+**0** cross-page fragment links that do not resolve, and **0** vague anchor texts ("here", "read more", "click
+here"). The 29 pages where `<title>` and `<h1>` diverge were checked and are **correct by design**: the title
+is the SERP string capped at 43 characters by the content schema and the `h1` is the editorial headline. None
+of these is a defect and none should be re-derived.
+
+**Four probes, zero citations, the thirty-first consecutive set**, and the seventh consecutive measurement of
+backlog 2b - this time on the **Coding line's own commercial query two days before its first cohort**, where
+one competitor's recurring Luma series holds **seven of twenty results, most of those dates passed**, our own
+Luma listing does not appear, and the engine closes on *"most listings I saw are either online, dated, or not
+a full day"*. Probes 1, 2 and 3 decline on the platform-vendor clause, the institutional-publisher clause, and
+the site already answering it. Full detail in `seo-data/geo-citations.md`. **Off-page: no new host, fifth
+consecutive cycle**, with one thing worth Drummond's eye that is not a new name: a recurring series on an
+event platform accrues authority that outlives each date, so if Eventbrite is approved, listing the series
+rather than a single cohort is the version worth doing. Nothing was contacted, submitted, claimed or paid for.
 
 ### 23 Nov 2026 (20:00 UTC cycle) - Close the reciprocal edge between the founder and the organisation: `Person.worksFor` named this company and gave no address for it, while the same page's `Organization` node named that person as its `founder` by resolvable `@id`
 

@@ -11,6 +11,33 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, fifth consecutive cycle - and the clearest reading yet of what the existing top item is worth.**
+  Found 24 Nov 2026 (02:00 UTC cycle), across four answer-engine probes. **Nothing contacted, submitted,
+  claimed or paid for, and none of these hosts resolves from this sandbox, so nothing below was checked beyond
+  what the search returned.**
+  - **The Coding line's own commercial query is held by one competitor's recurring Luma listings, several of
+    them expired.** Asked for a one-day, in-person, no-coding-assumed course in the UK, the engine returned
+    twenty results: **seven `luma.com` pages, every one of them the same competing monthly series** ("Ship Your
+    First App in a Day"), listed December 2025 through August 2026, **most of those dates passed and ranking
+    anyway**; then `eventbrite.co.uk` four times, `maven.com` and `meetup.com` twice each. **Our own Luma
+    listing for a cohort two days away did not appear, and neither did any page of this site.** The engine
+    closed on *"most listings I saw are either online, dated, or not a full day"*, which is a description of
+    the gap our 26 November day fills.
+  - **What that adds to the top item.** It is not a new host and not a new category: `eventbrite`, `meetup`,
+    `maven` and Luma are all already written up. It is evidence about *how* these platforms rank - a recurring
+    series accrues authority that outlives each individual date, so one listing for one cohort is the weakest
+    possible version of this play. If Eventbrite is approved, listing the series rather than a single cohort is
+    the version worth doing.
+  - **Deliberately not added, each with its reason rather than by omission.** `citylit.ac.uk` and
+    `learningtree.com` sell their own competing courses and are competitors, not listing routes.
+    `events.icaew.com` and `reed.co.uk` are already on this list. Platform vendors writing about their own
+    product: `mindstudio.ai` (five slots on one probe), `lucid.co` (three), `tallyfy.com`, `scribe.com`,
+    `lowcode.agency`, `gravitee.io`, `arthur.ai`, `outsystems.com`, `salesforce.com`. Institutional publishers
+    on their own subject: `learn.microsoft.com`, `bpmoportal.berkeley.edu`, `ai.gov.au`, `aws.amazon.com`.
+    User forums and self-publishing: `community.n8n.io`, `dev.to`, `techcommunity.microsoft.com`. Trade media
+    already declined on readership: `analyticsvidhya.com`, `customerthink.com`, `opusresearch.net`,
+    `techradar.com`, `builtin.com`, `blog.workday.com`.
+
 - **No new host, third consecutive cycle - and this time the field itself is the argument for the list that
   already exists.** Found 23 Nov 2026 (14:00 UTC cycle), across four answer-engine probes. **Nothing
   contacted, submitted, claimed or paid for, and none of these hosts resolves from this sandbox, so nothing
