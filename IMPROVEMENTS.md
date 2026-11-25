@@ -3495,8 +3495,10 @@ Status: `todo` · `blocked` (why) · `doing`
     rather than reasoned from the template. Low urgency: it fires only when the host's own team file changes,
     which has happened twice since August.
 
-141. `todo` (loop-actionable, **found while diffing the built output of this cycle's own change, and
-    deliberately not taken in the same commit**; found 25 Nov 2026 in the 09:00 cycle) - **every guide page
+141. `done` 25 Nov 2026 (14:00 cycle) - **closed by the one prop its own note predicted, measured at 32 of
+    209 built files.** Original entry, unchanged, follows. (loop-actionable, **found while diffing the
+    built output of that cycle's own change, and deliberately not taken in the same commit**; found
+    25 Nov 2026 in the 09:00 cycle) - **every guide page
     makes the same email ask twice.** `src/pages/guides/[...slug].astro` renders `NewsletterForm` in a card
     at the end of the article, and `Footer.astro` renders the identical control - same label, same fallback
     sentence, same mailto - a screen below it, because the guide template never passes `signup={false}`.
@@ -3510,7 +3512,101 @@ Status: `todo` · `blocked` (why) · `doing`
     two to keep, and the in-article card is the one with the stated rationale ("the moment they are most
     interested").
 
+142. `todo` (**a sector-guide candidate with real evidence behind it, deliberately not written in the cycle
+    that found it**; found 25 Nov 2026 in the 14:00 cycle, by GEO probe 3) - **there is no UK one-day
+    agentic build day for manufacturing or operations teams, and an engine said so in its own words.**
+    Asked for exactly that, the engine returned: NMIS FAIM in Scotland, which is manufacturing-specific and
+    lists its agent modules as "coming soon"; a one-day manufacturing AI day in Tennessee; the University of
+    Essex's two-day academic workshop; and otherwise London general-audience days (BrainStation, an
+    Eventbrite Claude bootcamp). That is a field with a hole in it rather than a field owned by an
+    institutional publisher, which is the first gate passed. **Not written today for two reasons.** The
+    cycle's rules allow one change and that change was backlog 141. More substantially, the site already
+    carries three sector guides (consultants, finance, public sector and NHS), so a fourth has to clear the
+    thin-variant rule as well as the two topic gates, and the honest test of that is a probe on the narrower
+    phrasing a manufacturing or operations leader would actually type, plus a check that this repo holds a
+    real task of that shape to write from. The second gate, converting, is also untested: an operations
+    leader in a manufacturer is plausibly our buyer, but "plausibly" is what the topic probe rule exists to
+    stop. **Whoever takes it: probe first, and be willing to come back with no.**
+
 ## Shipped
+
+### 25 Nov 2026 (14:00 UTC cycle) - every guide asked for the same email address twice, a screen apart, in the identical words. One prop on the guide template, 32 of 209 built files, and the removed block is byte-for-byte the one the homepage already stands down
+
+**What was wrong.** `src/pages/guides/[...slug].astro` ends each article on a capture card
+(`showCapture`, "the moment they are most interested"), and then `Footer.astro` rendered the identical
+control a screen below it: same component, same label "Hear about new dates first", same fallback sentence,
+same `mailto:hello@oxfordagentic.com?subject=New%20dates`. Not a near-duplicate, the same markup twice. It
+ran on all 32 guides and had since the capture card was added.
+
+**This is a swept defect, not a new call.** `Footer.astro` carries a `signup` prop whose own doc describes
+exactly this case ("Set false by a page that already carries its own email capture, so the same ask is not
+made twice on one page"), `Base.astro` exposes it as `footerSignup`, and five pages already pass it:
+`/`, `/first-workflow-picker/`, its `/thanks/` page, `/second-brain-interest/` and `/home-photos/`. The
+homepage's comment states the reasoning in full - "Two identical asks a screen apart read as a template
+fault rather than a second chance". The guide template was the unswept case. Which of the two to keep was
+the open question in backlog 141, and the in-article card is the one with a stated rationale, so the footer
+copy stands down, as it does on the homepage.
+
+**Measured, not inferred.** 32 of 209 built files differ and every one is a guide page. Nothing else moved:
+not `/guides/`, not the sitemap, not `llms.txt` or `llms-full.txt`, not one other page. The diff on each of
+the 32 is the same eight lines deleted and nothing added or changed - the footer's `wrap` wrapper,
+`site-footer__signup`, the `signup signup--compact` div and its label and fallback paragraph. Counted on
+the rendered HTML: a guide carried 2 instances of the label, 2 of the fallback sentence and 6 matches of
+`class="signup`, and now carries 1, 1 and 3, which is what the homepage has carried all along.
+
+**One change was considered and deliberately not made.** The prop is passed unconditionally rather than
+gated on `showCapture`. Both controls read `showSection('newsletter')`, so with `features.newsletter` off
+neither renders and the prop changes nothing; a conditional would only add a second way to express one
+state. Recorded because it looks like an omission.
+
+**A latent defect goes with it, named rather than claimed as the reason.** `NewsletterForm` renders
+`id="signup-email"` and a `label for="signup-email"` when a newsletter endpoint is configured. With the
+control twice on a page that would be two elements sharing one id, and the label would point at the wrong
+input. It is latent today because `newsletter.endpoint` is empty, so both renders take the mailto fallback
+branch, which carries no id. The browser check asserts zero duplicate ids and passes both before and after;
+this change removes the condition under which it would have failed.
+
+**Checks.** `npm ci`, build, links (3465 internal links across 69 pages), outbound, schema (69 pages valid),
+both date guards: all green, every figure identical to this cycle's baseline. Headless Chromium against the
+built output at 375 and 1280px, over two guides and the homepage as a control: **62 assertions, 62 passed** -
+HTTP 200, one `h1`, no horizontal overflow, no image without alt, no duplicate element ids, no robots
+directive, canonical correct, exactly one email ask per page, zero in the footer, the in-article card still
+present on both guides, and the footer's own nav and UPCOMING links intact. The footer was also screenshot
+as an element at 375px to confirm no empty space is left where the block was. The only console errors are
+the two googletagmanager.com scripts this sandbox's egress proxy refuses.
+
+**Four probes, zero citations, the thirty-seventh consecutive set**, with ten candidate axes dropped on
+backlog 136's dedupe (745 distinct question strings) before any search ran. Probe 1, the board-and-governance
+axis, is the most institutionally owned field this log has recorded - Grant Thornton, the WEF, the AICD, the
+NACD, Oliver Wyman, Citigroup, MinterEllison - and fails the converting gate too: that searcher wants a
+board paper, not a seat. Probe 2 is vendor-owned workshops and the wrong buyer. Probes 3 and 4 both found a
+real hole in the field and are handled differently: manufacturing and operations is filed as backlog 142
+with its evidence and an instruction to probe the narrower phrasing first, and insurance is declined
+outright because this repo holds no insurance attendee, task or outcome to write from. **The finding that
+spans three of the four**: asked "is there a day like this", the engine answered with fourteen Luma URLs and
+six Eventbrite URLs across three different sectors. That is the third independent sector-axis confirmation
+of backlog 2b in two days. Off-page: one new host, diginomica.com, recorded with its limits. Nothing
+contacted, submitted, claimed or paid for.
+
+**Deploy state checked first.** HEAD equals `origin/main` at `943d940` after `git fetch`, and Actions run
+485 for that SHA completed success at 12:48 UTC, so no deploy was in progress and nothing was queued.
+`build.txt` could not be read: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`. No live page was read,
+no Luma fact was checked and no event fact was touched.
+
+**IndexNow was dry-run on this exact change set and submits 58 URLs for 32 moved pages.** That is the
+whole-site branch working as designed rather than a defect: `src/pages/guides/[...slug].astro` cannot match
+the page regex, and the script's own comment records the decision that the whole-site bucket is right for
+the dynamic routes that build many pages. Over-submitting a hint is generous rather than wrong, and the
+three record files are all exempt, so they add nothing. Not filed as a backlog item, because it is the
+documented behaviour and not a finding.
+
+**Known candidate 1 from the standing prompt is already closed and needs no cycle.**
+`scripts/indexnow-ping.mjs` maps `src/lib/home.ts` to `/` in `SINGLE_PAGE_SOURCES`, fixed on 8 November.
+
+Search Console unavailable from cloud, tried once: no `search-console-latest.md` or `.json` in `seo-data/`,
+no CSV anywhere in the tree, and no service-account key, so the export job has written nothing. Nothing
+estimated. No new guide this week - 32 guides, newest `publishDate` 20 October 2026.
 
 ### 25 Nov 2026 (09:00 UTC cycle) - the email list on every page offered to tell a reader "first" about a cohort the same page had just named, dated and opened for booking. One label and one sentence in one shared component, 64 of the 69 built HTML pages
 

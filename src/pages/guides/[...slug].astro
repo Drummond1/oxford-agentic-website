@@ -207,6 +207,21 @@ const guideFaqNode = guide ? faqSchema(guideFaqs, paths.guide(guide.data.slug)) 
         modifiedTime: guide.data.updatedDate,
         author: author?.data.name ?? config.brand.name,
       }}
+      {/*
+       * This page ends on its own capture card (the `showCapture` aside below),
+       * which renders the same NewsletterForm with the same label and, with no
+       * newsletter endpoint set, the same fallback sentence and the same
+       * mailto. The footer then asked for the email again a screen later, on
+       * all 32 guides. Two identical asks that close together read as a
+       * template fault rather than a second chance, which is the reason the
+       * homepage stands the footer's copy down (src/pages/index.astro:165) and
+       * the reason `signup` exists on Footer.astro at all. The in-article card
+       * is the one kept because it is the one with a stated rationale: the
+       * moment the reader is most interested. Unconditional, as on the
+       * homepage - both controls are gated on `features.newsletter`, so when
+       * that is off neither renders and this prop changes nothing.
+       */}
+      footerSignup={false}
     >
       <Hero eyebrow="Guide" title={guide.data.title} />
 

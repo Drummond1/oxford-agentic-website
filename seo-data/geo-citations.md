@@ -5,6 +5,66 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-25 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SEVENTH CONSECUTIVE SET - AND THREE OF THE FOUR ANSWERED WITH EVENTBRITE AND LUMA LISTINGS, WHICH IS THE THIRD SECTOR-AXIS CONFIRMATION OF BACKLOG 2b IN TWO DAYS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`. No live page was read,
+no Luma fact was checked, no event fact was touched, deploy state came from the Actions API, and every site
+fact below comes from committed files or from the built output.
+
+**Dedupe by backlog 136's method, third use.** The question column was extracted and read - 745 distinct
+strings by this cycle's regex - and fourteen candidate axes were scored against it before any search ran.
+Ten were dropped as already worked: **January 2027 intake** (6), **December dates** (16), **solo founder and
+freelancer** (4), **law firms and accountants** (6), **recruitment** (2), **universities and research teams**
+(10), **spreadsheets** (3), **prompt engineering** (3), **maintaining a workflow after the day** (4) and
+**rollout and scaling** (1). The four below scored zero and are genuinely new axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I explain agentic AI to my board before they approve spending on it (board and governance axis, never probed) | **No** | grantthornton.com x2, weforum.org, aicd.com.au, oliverwyman.com, citigroup.com, nacdonline.org, minterellison.com, corporatecomplianceinsights.com, cio.com, bankinfosecurity.com, salesforceben.com, workday.com, cyberhaven.com, metacto.com, unsw.edu.au |
+| 2 | hands-on in-person AI workshop UK for a customer support team, build an agent on our own tickets (customer-support sector axis, never probed) | **No** | luma.com x6 (Dust x ContentSquare, Dust CS, AI for Customer Success, two HR breakfasts, AI Agent Builder), eventbrite.co.uk x3, brainstation.io x2, commbox.io x2, tray.ai, parloa.com |
+| 3 | one-day in-person agentic AI training for a UK manufacturing or operations team, hands-on, build a workflow (manufacturing and operations sector axis, never probed) | **No** | eventbrite.co.uk, luma.com x2, brainstation.io x2, nmis.scot, nobleprog.co.uk x2, aws.amazon.com, sheffield.ac.uk, essex.ac.uk, ncsu.edu, mit.edu, utk.edu, salesforce.com, innovationvisual.com |
+| 4 | agentic AI hands-on day for a UK insurance team, build a workflow on a real case, no coding (insurance sector axis, never probed) | **No** | luma.com x6, eventbrite.co.uk x2, socotra.com x2, meetup.com x2, nashtechglobal.com, diginomica.com, independentagent.com, ecornell.cornell.edu |
+
+**Reading, probe by probe.**
+
+- **Probe 1 declines on both gates, and it is the clearest institutional field this log has recorded.** Every
+  one of the first ten results is a professional-services firm, a directors' institute or a governance
+  publisher writing on its own subject: Grant Thornton, Oliver Wyman, the World Economic Forum, the
+  Australian Institute of Company Directors, the US National Association of Corporate Directors, Citigroup,
+  MinterEllison. Not winnable. It also fails the converting gate on its own terms: the searcher wants a board
+  paper on oversight and risk, not a seat on a day where they build something. Do not re-pitch it.
+- **Probe 2 declines on the vendor-owned shape and on the buyer.** Six of the first dozen results are Luma
+  pages for workshops run by agent vendors on their own products (Dust twice, Parloa, Commbox, Tray,
+  Microsoft via Eventbrite), which is the category this log has declined repeatedly. The second reason is
+  the buyer: a support team lead with a ticket queue is not the senior leader who books this day, and the
+  honest answer to their question is the tooling, which this site does not sell.
+- **Probe 3 is the one with a real gap in the field, and it is recorded rather than acted on.** The engine
+  said in its own words that it found no UK one-day agentic build course for manufacturing or operations:
+  the manufacturing-specific option it names (NMIS FAIM, Scotland) lists its agent modules as "coming soon",
+  the one-day manufacturing day it found is in Tennessee, and the rest is London general-audience
+  (BrainStation, an Eventbrite Claude bootcamp). That is a gap, but what it argues for is a sector guide,
+  and the site already carries three (consultants, finance, public sector and NHS). Whether a fourth is a
+  genuine answer or a thin sector variant is a judgement that wants its own cycle and its own probe on the
+  narrower phrasing. Filed as backlog 142 with the evidence, not written today.
+- **Probe 4 is the same shape as probe 3 and declines on accuracy.** The engine again said no UK insurance
+  day matching the brief exists, and the near-misses are vendor sessions (Socotra's own configuration
+  workshop, a StackAI webinar). A guide here would have to describe what an insurance team can build in a
+  day, and this repo holds no insurance attendee, no insurance task and no insurance outcome to write it
+  from. Declined on evidence, not on winnability.
+
+**The finding that spans three of the four.** Probes 2, 3 and 4 all asked a version of "is there a day like
+this", and in all three the engine answered with Eventbrite and Luma listing pages: fourteen Luma URLs and
+six Eventbrite URLs across the three. The 08:00 cycle recorded exactly this on a retail-sector question and
+called it an independent confirmation of backlog 2b. This makes it three independent sector axes in two
+days, on four different sectors, with the same two hosts. Nothing on this site can be written to change it:
+the pages being cited are listings of the kind backlog 2b asks for, and this site has none.
+
+**Off-page: one new host, diginomica.com, recorded with its limits.** Nothing contacted, submitted, claimed
+or paid for.
+
 ## 2026-11-25 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SIXTH CONSECUTIVE SET - AND THE ONE WORTH READING IS PROBE 2, WHERE THE ENGINE SAID IN ITS OWN WORDS THAT NO SUCH DAY EXISTS AND THEN LISTED FOUR EVENTBRITE PAGES AND A LUMA PAGE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

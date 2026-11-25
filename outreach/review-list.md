@@ -2718,3 +2718,20 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     unknown.
   - Needs: someone with an unblocked browser to open it and decide whether it is worth an email.
     Nothing contacted, nothing submitted, no account made.
+
+- **diginomica.com - UK enterprise-technology publisher, an editorial mention route rather than a
+  directory** - found 25 Nov 2026 by answer-engine probe. Added at the bottom, like the entries above it.
+  - Where it came from: the 25 Nov insurance-sector probe asked for a hands-on agentic day for a UK
+    insurance team, and this host supplied the one piece of real UK practitioner evidence in the answer, a
+    report on NFU Mutual's agentic claims pilot. It is the only name in that result set that is not a
+    competitor, a platform vendor on its own product, an insurance trade body or US readership.
+  - What it would be: the same shape as trainingzone.co.uk and personneltoday.com, recorded on 24 November.
+    Not a submission form. The route is a pitch to an editor or a contributed piece, which is slower than a
+    listing and more likely to be ignored, and it is Drummond's call because it is a byline rather than a
+    directory entry. What makes it worth recording is the audience: it writes for the senior people who
+    sign off this kind of spending, in the UK, about what enterprises actually did rather than about
+    products.
+  - **Not checked at all.** The host does not resolve from this sandbox: whether it takes contributed
+    pieces, who commissions them, and whether any link is followed are all unknown.
+  - Needs: someone with an unblocked browser to open it and decide whether it is worth an email. Nothing
+    contacted, nothing submitted, no account made.
