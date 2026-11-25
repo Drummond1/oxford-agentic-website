@@ -1129,6 +1129,13 @@ Status: `todo` · `blocked` (why) · `doing`
       `Person` entities all 32 guides declare as `author` and the Organization node names as
       `founder`, they have **one inbound internal link each**, and they are therefore the pages on
       this site least likely to be recrawled.
+    - **`/testimonials/`. DONE 25 Nov 2026 (02:00 UTC cycle)**, and the premise below was wrong about it:
+      it is not template copy with no content file behind it, it renders a card per consented quote, so it
+      was derivable exactly as `/team/` was. The `testimonials` collection gained a required `updatedDate`,
+      the four files carry dates read off full history, and `listingLastmods` is five hubs rather than four.
+      **`/about/` and `/privacy/` remain open and the paragraph below still describes them correctly** - see
+      that cycle's Shipped entry for why a constant is a different mechanism with a measured IndexNow cost,
+      and for the sharpened note that `/about/` changed on 24 November and said nothing.
     - **`/about/`, `/privacy/` and `/testimonials/`. STILL OPEN.** Template copy with no content
       file behind them, so each wants a hand-recorded constant, exactly as the homepage has. That
       is three more things to remember to bump, which is the cost `HOMEPAGE_COPY_LASTMOD` already
@@ -3441,7 +3448,117 @@ Status: `todo` · `blocked` (why) · `doing`
       the same seven places backlog 103 records, two derived and five hand-authored. Backlog 103 holds the
       reasoning and the rule for fixing each; this is only the third confirmation that its count is stable.
 
+138. `todo` (loop-actionable, **deliberately not taken in the commit that found it**; found 25 Nov 2026 in the
+    02:00 cycle, while reading `indexnow-ping.mjs` before shipping the `/testimonials/` `lastmod`) - **a
+    change to a testimonial file submits all 58 sitemap URLs.** `scripts/indexnow-ping.mjs` matches content
+    files with `^src/content/(guides|events|programmes|team)/`, so `src/content/testimonials/*.md` falls
+    through to the whole-site branch. What such a change actually moves is `/testimonials/` plus the pages
+    carrying the quote band, which backlog 132 counts at seven. **Not fixed in that cycle's commit** because
+    it is unrelated to the sitemap change and because the honest mapping needs the band's page set measured
+    from the built output rather than guessed - `SINGLE_PAGE_SOURCES` maps one file to one URL, so a quote
+    file mapping to eight needs either a second structure or a deliberate decision to submit only
+    `/testimonials/`. **Low urgency**: it fires only when a quote file changes, and that needs consent, which
+    backlog 6 has blocked since August. Worth doing in the same cycle as a fifth testimonial, if one ever
+    clears.
+
 ## Shipped
+
+### 25 Nov 2026 (02:00 UTC cycle) - the proof page now publishes a sitemap `lastmod`, derived from the quotes it renders. Backlog 63's remainder goes from three bare URLs to two
+
+**One of 209 built files differs and it is `dist/sitemap-0.xml`.** `dist/testimonials/index.html` is
+**byte-identical** before and after, so not one rendered byte and not one pixel moved. 58 URLs before, 58
+after, none added and none removed, **one entry changed**: `https://oxfordagentic.com/testimonials/` from no
+`lastmod` at all to `2026-08-18T05:48:47.000Z`. Nothing else in the sitemap moved.
+
+**What was wrong.** Backlog 63 closed its first half on 3 November - the `team` collection gained a required
+`updatedDate` and eight URLs stopped being silent - and left three: `/about/`, `/privacy/` and
+`/testimonials/`, described there as "template copy with no content file behind them". That description is
+right for two of the three and **wrong for `/testimonials/`**, which renders a card per consented quote out
+of a real collection and is derivable exactly the way `/team/` is. The three were parked as "lowest value of
+the eleven" on the argument that "a page that genuinely has not changed is the one a missing `lastmod`
+misrepresents least" - which is true about truthfulness and sideways to the point on this domain. The only
+real index measurement in this repo is the 24 August baseline: **23 indexed, 16 not indexed, diagnosed as
+crawl budget on a domain with no external links.** An accurate old `lastmod` is worth having on a
+crawl-limited domain precisely because it lets a crawler skip - that is the field Google says it acts on, and
+silence does not carry that information either way.
+
+**The change, in three parts and no fourth.**
+- `src/content.config.ts` - the `testimonials` collection gains a required `updatedDate`, the same field with
+  the same contract as `team`'s, required rather than optional so a fifth quote cannot ship silently absent
+  from the signal.
+- The four quote files carry a hand-recorded date. **Each is the commit that last changed that file's
+  published copy, read from full git history** after `git fetch --unshallow` (this checkout arrives shallow at
+  50 commits, the trap the 3 November entry records): `ecbc23d`, 18 Aug 2026 06:48:47+01:00 for `fei-gan`,
+  `kirsten-samuel` and `shrestha-mullick`; `9ddf3bf`, 18 Aug 2026 06:31:22+01:00 for `zeynep-hizir`.
+  **Deliberately not today's date** - adding a sitemap field changes nothing a reader sees, and the `team`
+  precedent recorded the prior content-change date for the same reason.
+- `astro.config.mjs` - `listingLastmods` becomes five hubs rather than four, taking the newest `updatedDate`
+  among the quotes. `readRecords` carries one new field, `consentGiven`, and nothing else reads it:
+  `getTestimonials()` returns only consented quotes (PRD §21), so **an unconsented file must not supply a
+  date** - editing a quote nobody can see moves no page. All four are consented today; the filter is there so
+  the fifth cannot get this wrong.
+
+**Three things it deliberately does not do.**
+- **`/about/` and `/privacy/` are left bare, and that is a scope call rather than an oversight.** Neither has
+  a collection behind it, so each wants a hand-recorded constant - a different mechanism from this
+  derivation, and one with a real cost already measured: a constant must live in a module
+  `astro.config.mjs` can import, and `indexnow-ping.mjs` maps that config file to the whole site, which is
+  the 55-URL over-submission the 8 November cycle fixed by moving `homepageCopyLastmod` into
+  `src/lib/home.ts`. `SINGLE_PAGE_SOURCES` maps one file to one URL and cannot express one module serving two
+  pages without being widened. **That is a second change and it should be weighed as one.** Sharpened note
+  for whoever takes it: `/about/` changed on 24 November (the prose link to `/guides/`) and said nothing in
+  the sitemap, so of the two it is the one with a live argument.
+- **It understates and that is the house stance, not an accident.** This page's own template copy can change
+  without any quote changing - its `<title>` did, on 15 November - and a date of 18 August will not reflect
+  that. The four existing hubs have the same exposure and the comment above them already states the reason:
+  claiming the content moved when the template did would be the same untruth in the other direction.
+- **`indexnow-ping.mjs` was read and left alone.** A change to `src/content/testimonials/*.md` is not matched
+  by its content regex (`guides|events|programmes|team`) and falls to the whole-site branch, so a future quote
+  edit will submit 58 URLs for a change that moves `/testimonials/` and the quote band's seven pages. That is
+  pre-existing, it fires only when a quote changes, and a quote changing needs consent that is blocked
+  (backlog 6). **Filed as backlog 138 rather than fixed in a commit about something else**, and the honest fix
+  needs the band's page set measured rather than guessed.
+
+**Checks.** Build, links, outbound, schema and both date guards green, every figure identical to this cycle's
+baseline except the one sitemap entry: 3,465 internal links across 69 pages, 69 pages schema-valid, 17 Event
+nodes, 22 FAQPage nodes, 1,609 resolving graph references, 58 indexable pages with no passed cohort date
+written as upcoming. `check:flags` green **both ways** - with `features.testimonials` off the page is not
+built and the URL is not in the sitemap, so the new map entry is simply never read, which is the same
+property the `team` entry has. The 13 outbound third-party warnings are the sandbox's egress policy refusing
+every external host, as every cycle since 12 Oct.
+
+**Headless Chromium on `/testimonials/` at 375 and 1280px: 20 assertions, 16 passed.** HTTP 200, exactly one
+`h1`, no horizontal overflow at either width, no image without `alt`, canonical correct and absolute, no
+robots directive, all four quotes present and attributed, and the served `sitemap-0.xml` carrying the new
+value. **The four failures are the two `googletagmanager.com` scripts this sandbox's egress proxy refuses**,
+counted once as a console error and once as a failed request at each width - the same four this loop has
+recorded on every browser sweep.
+
+**A screenshot note, and it is the family of backlog 133(c) rather than a defect.** A `fullPage` capture of
+this page shows two quotes and a tall empty band where the other two are: the quote cards reveal on scroll,
+and a full-page screenshot never scrolls, so the lower two stay at opacity 0 while the layout reserves their
+space. The DOM says four and the HTML is byte-identical to the previous build, so there is nothing here to
+fix - but **any future visual sweep will read this page as half-empty**, and that is now written down. Filed
+with backlog 133.
+
+**Probes.** Four, zero citations, the thirty-fifth consecutive set, and the set's own finding is that two of
+the four are reach failures on pages this site already publishes: the provider-questions axis, which this log
+recorded at **#1 on 13 September**, and the finance-sector axis, where the engine said in its own words that
+nothing in its results is an exact fit for a one-day in-person hands-on agentic AI day for a UK finance team
+while `/guides/agentic-ai-for-finance-teams/` has been live for weeks. Both readings are hedged in the log:
+different engine, different phrasing, and the 26 October entry retired position-reading through this
+instrument. The two genuinely new axes declined on winnability (email-security vendors) and on accuracy (a
+running-cost field whose own figures span $20 to $5,000 and which this repo holds no data to beat). Backlog
+136's dedupe method was used for the first time and worked: 259 question strings read in one command, none of
+the four axes previously probed.
+
+**Off-page: no new host, eighth consecutive cycle.** Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud, tried once**: no `GSC_SERVICE_ACCOUNT_KEY`, no
+`seo-data/search-console-latest.*` in the tree, and no export newer than the 24 August baseline. Nothing
+estimated. **No new guide this week** - 32 guides, newest `publishDate` 20 October.
+`oxfordagentic.com` and `luma.com` are refused by this sandbox's egress policy, so no live page was read, no
+event fact was touched, and deploy state came from the Actions API (run 481, `ad45fe7`, success 20:09 UTC).
 
 ### 24 Nov 2026 (20:00 UTC cycle) - nothing shipped to the site, and the reason is that five censuses came back clean and four probes landed on axes already worked. Three record files only, and the cycle's useful output is a dedupe method
 

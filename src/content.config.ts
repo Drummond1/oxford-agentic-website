@@ -339,6 +339,32 @@ const testimonials = defineCollection({
        * until the "can we quote you?" ask has come back yes.
        */
       consentGiven: z.boolean(),
+      /**
+       * Hand-recorded, and **bumped in the same commit whenever this file's
+       * published copy changes.** Added 25 Nov 2026, for the same reason and in
+       * the same shape as the `team` field above.
+       *
+       * Never shown to a reader: `date` is the quote's own date and is what the
+       * page renders. This exists for the sitemap. `/testimonials/` was 1 of the
+       * 3 URLs still carrying no `lastmod` at all - the other two, `/about/` and
+       * `/privacy/`, have no collection behind them and are left bare - and it is
+       * the page a buyer opens to check that real people said real things, in the
+       * nav of all 58 indexable pages, on a domain whose only real index
+       * measurement diagnoses crawl budget.
+       *
+       * Required rather than optional, like the other collections, so a fifth
+       * quote cannot ship silently absent from that signal. git cannot supply the
+       * date instead: CI clones at depth 1, as `homepageCopyLastmod` in
+       * `src/lib/home.ts` already records. The four initial values are each the
+       * commit that last changed that file's published copy, read from full
+       * history and written down here.
+       *
+       * It understates rather than overstates, which is the stance the four
+       * listing hubs in `astro.config.mjs` already take: this page's own template
+       * copy can change without any quote changing, and claiming a quote moved
+       * would be the same untruth in the other direction.
+       */
+      updatedDate: isoDateTime,
     }),
 });
 

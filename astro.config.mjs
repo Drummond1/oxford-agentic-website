@@ -38,6 +38,10 @@ function readRecords(dir) {
         endDate: field('endDate'),
         status: field('status'),
         draft: field('draft') === 'true',
+        // Only the `testimonials` collection reads this. An unconsented quote is
+        // not rendered anywhere (PRD §21), so it must not supply a `lastmod`
+        // either - editing a quote nobody can see moves no page.
+        consent: field('consentGiven') === 'true',
       };
     });
 }
@@ -118,8 +122,8 @@ function homepageLastmod(events, programmes, now = new Date()) {
 }
 
 /**
- * `lastmod` for the four listing hubs. Three added 3 Nov 2026, `/team/` later
- * the same day.
+ * `lastmod` for the five listing hubs. Three added 3 Nov 2026, `/team/` later
+ * the same day, `/testimonials/` on 25 Nov 2026.
  *
  * The first three were 3 of the 14 URLs left with no lastmod at all, and they
  * are the three worst to leave silent: `/events/` is the dated list an engine is asked
@@ -140,6 +144,12 @@ function homepageLastmod(events, programmes, now = new Date()) {
  *    `updatedDate` counts — unlike on the two pages above, a past-tense rewrite
  *    does change this page. A passed cohort also moves between the two bands,
  *    on a date no file edit carries, so `endDate` joins the set the same way.
+ *  - `/testimonials/` prints a card per consented quote, so it is the newest
+ *    `updatedDate` among them. Same shape as `/team/` and with the same one
+ *    time-independent property: nothing drops off this page on a date. The one
+ *    extra term is consent - `getTestimonials()` returns only quotes where
+ *    `consentGiven` is true, so an unconsented file must not count, and the
+ *    `consent` flag in `readRecords` is there for this and nothing else.
  *  - `/team/` prints a card per person carrying their name, role and the
  *    opening of their bio, so it is the newest `updatedDate` among the seven.
  *    It is the simplest of the four and the only one with no time-based term:
@@ -151,13 +161,15 @@ function homepageLastmod(events, programmes, now = new Date()) {
  *    can bump another date in it, and `/guides/` has carried the same property
  *    since it was added.
  *
- * All four understate rather than overstate: the standfirsts and headings live
+ * All five understate rather than overstate: the standfirsts and headings live
  * in templates, and a template edit moves 55 pages, so claiming it moved only
  * these would be the same lie in the other direction (same stance as
- * `homepageCopyLastmod`, and the reason `/about/`, `/privacy/` and
- * `/testimonials/` are still bare).
+ * `homepageCopyLastmod`, and the reason `/about/` and `/privacy/` are still
+ * bare - neither has a collection behind it, so each would want a hand-recorded
+ * constant rather than a derivation, which is a different mechanism and a
+ * different decision).
  */
-function listingLastmods(guides, events, programmes, team, now = new Date()) {
+function listingLastmods(guides, events, programmes, team, testimonials, now = new Date()) {
   const map = new Map();
 
   const guideDates = guides.filter((g) => !g.draft).map((g) => toDate(g.updated)).filter(Boolean);
@@ -178,6 +190,9 @@ function listingLastmods(guides, events, programmes, team, now = new Date()) {
 
   const teamDates = team.map((m) => toDate(m.updated)).filter(Boolean);
   if (teamDates.length > 0) map.set('/team/', newest(teamDates));
+
+  const quoteDates = testimonials.filter((t) => t.consent).map((t) => toDate(t.updated)).filter(Boolean);
+  if (quoteDates.length > 0) map.set('/testimonials/', newest(quoteDates));
 
   return map;
 }
@@ -205,6 +220,10 @@ function contentLastmod() {
   const programmes = readRecords('src/content/programmes');
   const guides = readRecords('src/content/guides');
   const team = readRecords('src/content/team');
+  // Read for `listingLastmods` only. It is deliberately NOT in `collections`
+  // below: these files build no page of their own, so there is no per-file URL
+  // to key a date to.
+  const testimonials = readRecords('src/content/testimonials');
   const collections = [
     [guides, '/guides'],
     [programmes, '/bootcamps'],
@@ -225,7 +244,7 @@ function contentLastmod() {
   }
 
   map.set('/', homepageLastmod(events, programmes));
-  for (const [url, date] of listingLastmods(guides, events, programmes, team)) map.set(url, date);
+  for (const [url, date] of listingLastmods(guides, events, programmes, team, testimonials)) map.set(url, date);
 
   return map;
 }

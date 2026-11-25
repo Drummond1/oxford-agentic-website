@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-25 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FIFTH CONSECUTIVE SET - AND TWO OF THE FOUR ARE REACH FAILURES ON PAGES THIS SITE ALREADY PUBLISHES, ONE OF THEM AN AXIS THIS LOG RECORDED AT #1 ON 13 SEPTEMBER
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the
+26 Oct caveat about reading positions off this instrument stands and governs everything below. **Production
+could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and
+does not resolve through the WebFetch route either, as is `luma.com`. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or from the built output.
+
+**Dedupe was done by backlog 136's method, on its first use.** The question column was extracted and read -
+259 distinct strings - and the four axes below were chosen because none of them is in that list. The prose
+grep was run afterwards for verdicts, as that item instructs, not to choose the axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is it safe to let an AI agent send emails or take actions on my behalf at work (agent-action axis, never probed) | **No** | proofpoint.com x2, bitdefender.com x2, powerdmarc.com x2, checkpoint.com, zoho.com, cloaked.com, engadget.com, fastcompany.com, spectrum.ieee.org, kuppingercole.com, wwt.com, britinsurance.com, thegoan.net, aol.com |
+| 2 | what questions should I ask an AI training provider before booking for my team UK (**reach probe: this site has a guide titled almost exactly this**) | **No** | profiletree.com x2, lilachbullock.com x3, aptem.co.uk x4, tsg.com, dabapps.com, **gov.uk x2**, rws.com, sagnikbhattacharya.com, ivee.jobs, opentext.wsu.edu |
+| 3 | how much does it cost to run an AI agent each month after you build it, API costs small business (running-cost axis, never probed) | **No** | dev.to x2, startupik.com x2, hubspot.com x3, designrush.com, cloudzero.com, saastr.com, differ.blog, scalevise.com, lobsterpack.com, thomas-wiegold.com, botpress.com, lilachbullock.com, unity-connect.com, remoteopenclaw.com, wpfastestcache.com |
+| 4 | agentic AI training for a finance team UK one day in person hands-on workshop (**sector axis - finance; the only sector with a guide that had never been probed**) | **No** | **bdo.co.uk**, **ukfinance.org.uk x2**, **icaew.com x2**, **techuk.org x2**, **kpmg.com**, **pwc.com**, eventbrite.co.uk, fienta.com, optimizely.com x2, pigment.com, blog.cfte.education |
+
+### Probe 1 - letting an agent act on your behalf - DECLINED on winnability, and the field is not the one the question sounds like
+Seventeen results, no page of this site. The question reads like a buyer's hesitation about agentic work, and
+**the field that answers it is email security**: Proofpoint, Bitdefender, Check Point, PowerDMARC, Zoho,
+Cloaked, Brit Insurance, IEEE Spectrum. That is platform vendors writing about their own product category,
+which is the winnability rule's own example of a field to leave alone. The converting half fails too: the
+searcher is deciding whether agents are safe to connect to a mailbox, not whether to book a day in Oxford.
+Worth recording that the site is not silent on the substance - `/guides/` carries the human-oversight piece
+and the reliability piece - so this is a field mismatch, not a coverage gap.
+
+### Probe 2 - what to ask a training provider - DECLINED, and it is the most interesting line in this set
+Nineteen results, no page of this site. The field is **UK training providers' own blogs**
+(`profiletree.com`, `lilachbullock.com`, `aptem.co.uk`, `tsg.com`, `dabapps.com`) plus two gov.uk pages, and
+the engine said in its own words that it *"didn't find an independent, authoritative standard for AI training
+providers"*. So it is a provider-marketing field, and writing another page into it is the move this loop has
+declined thirty-odd times.
+**The reason it is worth more than a decline.** `/guides/questions-to-ask-before-booking-ai-training/` has
+been live since before 13 September and **this log recorded it at #1 on that axis on 13 September 2026**
+("what questions to ask before booking AI training for your team"). Today, on a close phrasing, it does not
+appear at all.
+**That is an observation and not a finding, and the caveat matters more than the reading.** Three things
+differ: the engine (Perplexity then, web search now - no Perplexity route since 12 Oct), the phrasing (this
+one adds "provider", "for my team" and "UK"), and the instrument (the 26 Oct entry retired position-reading
+through this tool after it returned a query-invariant set of URLs and ignored its own domain restriction).
+**Do not read it as a ranking loss.** Read it as a fourth consecutive reach measurement in the same direction
+as backlog 2b, on a page whose content is not in question.
+
+### Probe 3 - what an agent costs to run each month - DECLINED on accuracy, which is the rarer of the two gates
+Twenty results, no page of this site, and the field is dev blogs and vendor pricing pages with figures that do
+not agree with each other ($20-$100, $30-$150, $50-$5,000, EUR 50, $280-$420). No institutional publisher owns
+it and a buyer asking it is plausibly a buyer, so it is nearer winnable than most. **It fails the accuracy
+rule instead.** Beating that field means publishing a better number, this repo holds no running-cost data from
+any cohort, and the one thing adjacent to it that we do know - what the day costs - never goes on this site.
+Same shape as the 24 November ongoing-upkeep decline: winnable, converting, and still not honestly answerable.
+
+### Probe 4 - agentic AI training for a finance team - DECLINED on winnability, with the engine conceding the gap
+Sixteen results, no page of this site. The field is held by **BDO, UK Finance, ICAEW, techUK, KPMG and PwC** -
+institutional publishers and professional bodies on their own subject, the rule's first example - and the
+nearest listings are an online certification, a virtual classroom and a London Copilot day whose date has
+passed. The engine's own summary: *"Nothing in the results is an exact fit for a one-day, in-person, hands-on
+agentic AI course for a UK finance team."* **We are an exact fit for that sentence and we have the guide**
+(`/guides/agentic-ai-for-finance-teams/`), which is why this is the second reach failure of the set rather
+than a second content gap. The honest move against ICAEW on ICAEW's own subject is not another page.
+
+**Reading.**
+- **Four probes, zero citations, and two of the four landed on axes where the page already exists.** The
+  pattern across this set is not "what should we write" but "why is what we have not retrieved", which is the
+  question backlog 2b has held since 24 August and which no on-site change has moved.
+- **The dedupe method from backlog 136 worked on first use.** Reading 259 question strings took one command
+  and none of the four axes chosen had been probed. Recommend it stays the method.
+- **Nothing was written from this set**, and the two genuinely new axes (1 and 3) both failed a gate for a
+  reason already written down, which is the expected outcome of a well-deduped set rather than a disappointing
+  one.
+- **Off-page: no new host, eighth consecutive cycle.** Every non-competitor name in the four fields is either
+  a platform vendor on its own product, an institutional publisher or professional body on its own subject, or
+  US readership. `trainingzone.co.uk` and `personneltoday.com`, added 24 November, remain the two live
+  editorial candidates and both still need verifying from an unblocked browser. Nothing contacted, submitted,
+  claimed or paid for.
+
 ## 2026-11-24 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FOURTH CONSECUTIVE SET - AND THE FINDING IS ABOUT THIS LOG'S OWN DEDUPE: ALL FOUR AXES HAD BEEN WORKED BEFORE, AND A KEYWORD COUNT SAID THEY HAD NOT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

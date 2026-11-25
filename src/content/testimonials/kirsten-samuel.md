@@ -24,4 +24,9 @@ date: "2026-08-13T00:00:00+01:00"
 # is ever withdrawn.
 featured: false
 consentGiven: true
+# The commit that last changed this file's published copy, read from full
+# git history on 25 Nov 2026 (ecbc23d). Not the date the field was
+# added - adding a sitemap field changes nothing a reader sees. Bump it in
+# the same commit as any edit to the quote, name, role or company.
+updatedDate: "2026-08-18T06:48:47+01:00"
 ---
