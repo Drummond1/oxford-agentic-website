@@ -7,6 +7,18 @@ import EmailAddress from './EmailAddress.astro';
  * site.config; swapping Luma for Buttondown or Mailchimp is a config change.
  * With no endpoint set the form still renders, but as an honest mailto
  * fallback rather than a control that silently does nothing.
+ *
+ * The default label says NEW DATES, not "the next cohort". This control is the
+ * one capture that renders while cohorts are on sale - the homepage band, the
+ * footer of every page, the foot of every guide - and in all three the next
+ * cohort is named, dated and bookable within a screen of it: the footer lists
+ * three of them directly above. Offering to tell someone "first" about a day
+ * they can book from the link above contradicted the homepage band's own
+ * paragraph ("you will hear about the ones after them as soon as the dates are
+ * set"). New dates is what the list is actually for, and it stays true in the
+ * empty-diary states, where the call sites pass their own "tell me when..."
+ * labels. The fallback sentence no longer names a cohort either, so one
+ * sentence now reads correctly under all four labels.
  */
 interface Props {
   label?: string;
@@ -14,7 +26,7 @@ interface Props {
   compact?: boolean;
 }
 
-const { label = 'Hear about the next cohort first', cta = 'Notify me', compact = false } = Astro.props;
+const { label = 'Hear about new dates first', cta = 'Notify me', compact = false } = Astro.props;
 const { endpoint, method, fieldName } = config.newsletter;
 const configured = endpoint.length > 0;
 ---
@@ -50,8 +62,8 @@ const configured = endpoint.length > 0;
     <div class:list={['signup', compact && 'signup--compact']}>
       <p class="signup__label">{label}</p>
       <p class="signup__fallback">
-        Email <a href={`mailto:${config.brand.email}?subject=Next%20cohort`}><EmailAddress /></a> and we will add
-        you to the list for the next cohort.
+        Email <a href={`mailto:${config.brand.email}?subject=New%20dates`}><EmailAddress /></a> and we will add
+        you to the list.
       </p>
     </div>
   )

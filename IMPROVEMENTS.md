@@ -3495,7 +3495,94 @@ Status: `todo` · `blocked` (why) · `doing`
     rather than reasoned from the template. Low urgency: it fires only when the host's own team file changes,
     which has happened twice since August.
 
+141. `todo` (loop-actionable, **found while diffing the built output of this cycle's own change, and
+    deliberately not taken in the same commit**; found 25 Nov 2026 in the 09:00 cycle) - **every guide page
+    makes the same email ask twice.** `src/pages/guides/[...slug].astro` renders `NewsletterForm` in a card
+    at the end of the article, and `Footer.astro` renders the identical control - same label, same fallback
+    sentence, same mailto - a screen below it, because the guide template never passes `signup={false}`.
+    This is the exact defect the homepage was corrected for (the `signup` prop exists for it, and
+    `Footer.astro`'s own prop doc describes that case), applied to 32 pages that were never swept. Proof is
+    mechanical: the before/after diff of this cycle's one-string change shows 8 changed lines on each of the
+    32 guides and 2 on each of the other 32 built pages. **Not taken here** because removing a conversion
+    control is a different kind of change from correcting the words on one, it wants its own before/after
+    measurement of where a guide reader actually meets the ask, and the cycle's rules allow one change. The
+    likely fix is one prop on the guide template's `Base`/`Footer` call; the open question is which of the
+    two to keep, and the in-article card is the one with the stated rationale ("the moment they are most
+    interested").
+
 ## Shipped
+
+### 25 Nov 2026 (09:00 UTC cycle) - the email list on every page offered to tell a reader "first" about a cohort the same page had just named, dated and opened for booking. One label and one sentence in one shared component, 64 of the 69 built HTML pages
+
+**What was wrong, and it is a contradiction rather than a nuance.** `NewsletterForm` is the site's one lead
+capture, and the label it carries on every surface that renders while cohorts are on sale read **"Hear about
+the next cohort first"**, over a fallback sentence reading "and we will add you to the list for the next
+cohort". Three surfaces carry it: the homepage's gold "Not ready to book?" band, the foot of all 32 guides,
+and the footer of every page. In each one the next cohort is named, dated and bookable within a screen of it.
+The footer is the plainest case - its own **UPCOMING** column lists three cohorts with their dates, the
+nearest **tomorrow**, and 60px below that column the site offers to tell you "first" about the next one.
+On the homepage it contradicts the paragraph directly above it in the same gold band, which the 13 October
+cycle branched to read *"The cohorts above are open for booking. Leave your email and you will hear about
+**the ones after them** as soon as the dates are set."* That cycle fixed the paragraph and recorded that it
+left "the form, its label and the single CTA untouched". This is the half it left.
+
+**The change: two strings, no new control, no new ask.**
+- The default label and the three call sites that pass it verbatim (`HomeSections.astro`, `Footer.astro`,
+  `guides/[...slug].astro`) now read **"Hear about new dates first"**. New dates is what the list is
+  actually for, it is true whether or not something is on sale, and it stops the control claiming priority
+  access to a day with a Register link above it.
+- The fallback sentence drops its object: "and we will add you to the list for the next cohort" becomes
+  "and we will add you to the list." That sentence is shared by **all four** labels this component is given
+  (`Tell me when registration opens`, `Tell me when the next dates are set`, `Tell me when the next cohort
+  opens` are the empty-state three), so naming a cohort in it was wrong under one and imprecise under the
+  others. The label states the purpose, the sentence states the mechanism, and one sentence now reads
+  correctly under all four. The mailto subject follows, `Next cohort` to `New dates`.
+
+**Nothing else moved, and that is measured rather than asserted.** The built output of `main` and of this
+change were diffed file by file: **64 of the 69 built HTML pages differ**, and in every one of them the diff is exactly the
+two lines above - twice on each of the 32 guides, which render the control at the article foot and again in
+the footer, once on each of the other 32 pages. No non-HTML file changed. No date, venue, capacity, price,
+claim or link moved, no Luma embed, no form endpoint, no analytics attribute: the capture is unconfigured
+(backlog 1, `newsletter.endpoint` still empty) so it renders its honest mailto fallback, exactly as before.
+
+**Why the loop shipped it rather than filing it.** It is a wording correction to an existing control, which
+this loop may ship; it is not a new or materially different call to action, which it may not. The action,
+its placement, its single CTA and its route are untouched. Nothing in `STATE.md`, the backlog or the GEO log
+records a decision on this string, and it is not in the message house or the outreach packs - the one prior
+mention anywhere is a GEO note observing that "how do I hear about the next cohort" is not a query a buyer
+makes while a day is on sale, which is the same finding from the other direction.
+
+**Checks.** `npm run build` green: 3,465 internal links across 69 pages resolve, 69 pages schema-valid, both
+date guards pass, `check:flags` green on the all-on and all-off builds. `astro check` reports **85 errors, 0
+warnings, 3 hints with and without the change** - all pre-existing implicit-`any` in `.astro` files,
+measured by stashing. Headless Chromium over **all 58 sitemap pages at 375, 768 and 1280px - 174 page-widths,
+zero findings**: no horizontal overflow, no image without alt, no unlabelled control, no link or button
+without an accessible name, one `h1` each, no heading-level skips, no duplicate ids. The band and the footer
+captured before and after at 375 and 1280, and the footer at 768. Keyboard: 37 tab stops on the homepage and
+42 on a guide all show a visible focus ring. Checked at the real scroll bottom that the fixed "Back to top"
+button does not overlap the shortened sentence at 375px (it does not; an element screenshot makes it look as
+though it does, before and after alike).
+
+**Found and filed, not taken: every guide asks twice.** The file-by-file diff is what exposed it - 8 changed
+lines on a guide against 2 elsewhere, because the guide template renders this control at the article foot and
+the footer renders it again below. The homepage was corrected for exactly this with the `signup` prop that
+`Footer.astro` already documents; the 32 guides were never swept. **Backlog 141**, with the reason it is a
+separate change: removing a conversion control is not the same kind of edit as correcting the words on one.
+
+**Board state before anything was touched.** The checkout arrived **detached at `ca513bb`** with local `main`
+and `origin/main` both stale at `bcd268f`, four commits behind - the same trap the 23 November 08:00 cycle
+recorded. `git ls-remote` confirms the real remote `main` is `ca513bb`; `git fetch` plus `git checkout -B main
+ca513bb` put branch, remote-tracking ref and tree together, clean apart from this change. Deploy run
+45574059485 and CI run 45574059307 both **success** on `ca513bb` at 08:10 UTC, nothing queued or running.
+**Six open pull requests, none blocking and none touched** - #1 and #3 the known-stale leftovers, #4, #5, #6
+and #7 Drummond's drafts; none of them touches `NewsletterForm.astro`, `Footer.astro`, `HomeSections.astro`
+or the guide template.
+
+**`oxfordagentic.com` is refused by this sandbox's egress policy** (`CONNECT` 403, same for `luma.com`), so
+no live page was read and no event fact was touched: production state came from the Actions API and the
+before-state from a local `astro preview` of the exact deployed SHA. Search Console unavailable from cloud -
+still no service-account key (STATE task 4), nothing estimated. No new guide this week; 32 guides, newest
+`publishDate` 20 October.
 
 ### 25 Nov 2026 (08:00 UTC cycle) - the entity page now publishes a sitemap `lastmod`. Backlog 63's remainder goes from two bare URLs to one, and the one left is blocked on a question for Drummond rather than on a mechanism
 
