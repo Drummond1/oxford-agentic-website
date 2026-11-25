@@ -5,6 +5,88 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-25 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SIXTH CONSECUTIVE SET - AND THE ONE WORTH READING IS PROBE 2, WHERE THE ENGINE SAID IN ITS OWN WORDS THAT NO SUCH DAY EXISTS AND THEN LISTED FOUR EVENTBRITE PAGES AND A LUMA PAGE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`. No live page was read,
+no Luma fact was checked, no event fact was touched, deploy state came from the Actions API, and every site
+fact below comes from committed files or from the built output.
+
+**Dedupe by backlog 136's method, second use.** The question column was extracted and read - 496 strings by
+this cycle's regex, which is looser than the 259 the 24 November cycle counted and so errs towards finding a
+duplicate rather than missing one - and four candidate axes were dropped on it before any search was run:
+**January 2027 intake**, **charity and non-profit**, **send the team or attend yourself** and **sorting out
+AI context first** are all already in that column. The four below are not.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I measure whether an AI workflow actually saved time at work (measurement axis, never probed; **reach probe: this site has a guide on exactly this**) | **No** | workday.com x4, salesforce.com x2, worklytics.co x2, microsoft.com, thomsonreuters.com, freshworks.com, industryweek.com, thedigitalprojectmanager.com, itechguides.com, asianefficiency.com, israelnationalnews.com |
+| 2 | agentic AI training for a retail or ecommerce business UK one day in person hands-on (sector axis - retail, never probed) | **No** | **eventbrite.co.uk x3**, **eventbrite.com**, **luma.com**, brainstation.io, ucl.ac.uk, brc.org.uk x2, anicca.co.uk x2, lxahub.com, impactanalytics.ai, ecommercetech.io, meetup.com, optimizely.com |
+| 3 | how to write instructions an AI agent will actually follow for business tasks (agent-craft axis, never probed) | **No** | servicenow.com x5, learn.microsoft.com x4, developer.salesforce.com, docs.cloud.google.com, help.webex.com, towardsdatascience.com |
+| 4 | what AI skills should a senior manager actually learn in 2027 (forward-looking skills axis, never probed) | **No** | salesforce.com x7, lse.ac.uk, sloanreview.mit.edu |
+
+### Probe 1 - measuring whether a workflow saved time - DECLINED on winnability, and it is the third reach failure in two cycles on a page that already exists
+Seventeen results, no page of this site. The field is **enterprise platform vendors writing about their own
+product category**: Workday four times, Salesforce twice, Worklytics twice, Microsoft, Thomson Reuters,
+Freshworks. That is the winnability rule's own example of a field to leave alone, and the one independent
+name in it, `itechguides.com`, holds a page titled almost exactly as the query was typed.
+**The reason it is worth recording rather than just declining.**
+`/guides/is-your-ai-workflow-saving-time-or-just-effort/` has been live since 13 October and is the site's
+answer to this question. It did not appear. That is the same shape as 24 November's probe 2 (the
+booking-questions guide) and 24 November's probe 4 (the what-to-bring page): **a page this site publishes,
+on the axis it was written for, not reached.** Three in two cycles, all pointing where backlog 2b points.
+Do not read any of them as a ranking loss - different engine, different phrasing, and the 26 October entry
+retired position-reading through this instrument.
+
+### Probe 2 - a one-day agentic day for a retail or ecommerce business - DECLINED as a content idea, and the single most useful line in this set is the engine's own
+Sixteen results, no page of this site, and the engine opened its answer with: *"I found no single one-day,
+in-person agentic AI course aimed specifically at UK retail or ecommerce."* It then described the nearest
+things it could find - a London full-day at BrainStation, a seven-hour "build your own AI agent in Claude"
+day on Eventbrite, a one-day product-manager workshop on Luma, a UCL AWS immersion day, a ten-day Leicester
+course - and advised the searcher to "ask providers to tailor the examples".
+**A one-day, in-person, hands-on agentic day where you bring your own real task is what this site sells.**
+The gap the engine described is the product, and the site was not in the answer.
+**Declined as a content idea, on two grounds and not on caution.** A retail guide would be a sector variant
+of three that already exist (consultants, finance, public sector and NHS) with nothing retail-specific
+behind it - no retail cohort evidence in this repo, no retail build to describe - so it would be the
+near-duplicate rule's own example. And the probe does not show a content gap: it shows a reach gap, on a
+query the existing pages already answer.
+**What it does show, and it is the clearest instance yet.** Of the sixteen hosts, **five are aggregators**
+- four Eventbrite pages and a Luma page - and they carry the two listings closest to our own day. Backlog
+2b names exactly those two routes (an Eventbrite listing, a real Luma calendar URL for
+`Organization.sameAs`) and has done since 30 July. This is a fresh, independent measurement of the same
+thing on a sector axis nobody has probed, and the 10 August downgrade of that item rested on an instrument
+the 26 October entry retired.
+
+### Probe 3 - writing instructions an agent will follow - DECLINED on winnability, and the field is unusually pure
+Fourteen results and **thirteen are vendor documentation**: ServiceNow five, Microsoft Learn four, Salesforce
+Developers, Google Cloud docs, Webex help. One practitioner article, on Towards Data Science. Platform
+vendors writing about their own product, which is the rule's own example, and the advice they give is
+platform-shaped (XML tags for Google, keyword conventions for ServiceNow) in a way a general page cannot
+honestly compete with. The converting half is weaker than it looks too: someone searching this is already
+building inside a vendor's agent framework, not deciding whether to spend a day in Oxford.
+
+### Probe 4 - what skills a senior manager should learn in 2027 - DECLINED on winnability and on accuracy
+Ten results, and the field is **one platform vendor repeated seven times** (Salesforce, the same two posts
+across regional domains) plus LSE Executive Education and MIT Sloan Management Review. Institutional
+publishers on their own subject, which is the other half of the winnability rule. The engine also said it
+"didn't turn up anything specific to 2027", which looks like an opening and is not one: beating that field
+means publishing a forecast, this repo holds no evidence about 2027, and a dated prediction is the kind of
+claim the accuracy rule exists to stop. Worth noting the LSE line is one this site already agrees with in
+published copy - senior leaders do not need to learn to code - so this is not a positioning disagreement,
+it is a field we cannot win and should not try to.
+
+### Reading
+- **Zero citations for the thirty-sixth consecutive set**, and this one adds a third reach failure on an
+  existing page plus a sector-axis confirmation of backlog 2b. The content is not the thing in question.
+- **No new guide was written and none should have been.** Two probes declined on vendor-owned fields, one on
+  institutional publishers plus a forecast we cannot evidence, and one on near-duplication of three existing
+  sector guides. A cycle that correctly declines to publish is a good cycle.
+- **Off-page: one new host, `brc.org.uk`, recorded with its caveats** in `outreach/review-list.md`. Nothing
+  contacted, submitted, claimed or paid for.
+
 ## 2026-11-25 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-FIFTH CONSECUTIVE SET - AND TWO OF THE FOUR ARE REACH FAILURES ON PAGES THIS SITE ALREADY PUBLISHES, ONE OF THEM AN AXIS THIS LOG RECORDED AT #1 ON 13 SEPTEMBER
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so the

@@ -11,6 +11,23 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`brc.org.uk` - the British Retail Consortium, one new host, and it is recorded with its limits rather
+  than pitched.** Found 25 Nov 2026 (08:00 UTC cycle), from the retail-sector probe. **Nothing contacted,
+  submitted, claimed or paid for. The host does not resolve from this sandbox, so nothing below was checked
+  beyond what the search returned.**
+  - Where it came from: the retail and ecommerce axis returned two BRC event pages, "Scaling AI adoption
+    across your organisation" and "Building the AI Skills Roadmap for Retail". It is a UK trade body running
+    its own AI-skills programme for members, not a publication and not a directory.
+  - What the route would be, and it is not a listing: speaking, contributing to a member session, or being
+    named in one. That makes it slower than anything else on this list and it needs Drummond, not the loop.
+  - **Why it is thin, said plainly.** One probe, on a sector this site has no content for and no cohort
+    evidence from. By the standard this list already uses - `trainingzone.co.uk` and `personneltoday.com`
+    each appeared in three separate probes before being written up - this is one appearance and should be
+    read that way. It is here so a later cycle does not spend a probe rediscovering it and mistake it for a
+    find.
+  - Needs: nothing, unless retail is a direction Drummond wants. Nothing contacted, nothing submitted, no
+    account made.
+
 - **Two UK trade publications, and they are the first genuinely new off-page candidates in eight cycles -
   both are editorial routes rather than directory listings, and neither has been checked.**
   Found 24 Nov 2026 (20:00 UTC cycle), from the cohort-size probe. **Nothing contacted, submitted, claimed or

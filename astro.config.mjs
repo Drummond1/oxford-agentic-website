@@ -14,6 +14,11 @@ import siteConfig from './site.config.ts';
  * submitted for a commit that moved one page. See the comment on the constant.
  */
 import { homepageCopyLastmod } from './src/lib/home.ts';
+/**
+ * The same thing for `/about/`, in its own module for the same reason and with
+ * the reason written out there. See `aboutLastmod()` below.
+ */
+import { aboutCopyLastmod } from './src/lib/about.ts';
 
 /** Frontmatter fields this file needs, read without pulling in a parser. */
 function readRecords(dir) {
@@ -42,6 +47,10 @@ function readRecords(dir) {
         // not rendered anywhere (PRD §21), so it must not supply a `lastmod`
         // either - editing a quote nobody can see moves no page.
         consent: field('consentGiven') === 'true',
+        // Only `aboutLastmod` reads this. `/about/` publishes the host's
+        // `Person` node, so that one team file moves that page and the other
+        // six do not.
+        isHost: field('isHost') === 'true',
       };
     });
 }
@@ -122,6 +131,45 @@ function homepageLastmod(events, programmes, now = new Date()) {
 }
 
 /**
+ * `lastmod` for `/about/`, the second composed page to earn one and the last of
+ * backlog 63's three bare URLs with a live argument behind it.
+ *
+ * It was 1 of the 2 URLs in this 58-entry sitemap still carrying no `lastmod`
+ * at all, and the narrower case
+ * for giving it one is that it is the entity page - PRD §7.4, the canonical
+ * document describing who the brand is, and with `/` the only page publishing
+ * the host's `Person` node. The measured constraint on this domain is crawl
+ * budget (Search Console, 24 Aug: 23 indexed, 16 not), and `lastmod` is the one
+ * sitemap field Google says it acts on. On 24 November this page changed - a
+ * prose link to `/guides/` - and said nothing.
+ *
+ * Two terms, the same composition as `homepageLastmod`: a hand-recorded
+ * constant for the page's own copy, plus the dates of what it renders out of a
+ * collection.
+ *
+ *  - `aboutCopyLastmod` - `src/pages/about.astro`, recorded by hand in
+ *    `src/lib/about.ts` because no file in a collection backs this page.
+ *  - The host's team `updatedDate`. The "Who runs it" band is off (Drummond, 9
+ *    Oct 2026) but `personSchema` is not: this page publishes the host's name,
+ *    role, bio and links as a `Person` node, so an edit to that one team file
+ *    changes this page's rendered output. Only the host's - the other six team
+ *    files move `/team/` and their own profile, not this page.
+ *
+ * It understates, which is the house stance for every lastmod here and the safe
+ * direction. Two inputs are deliberately uncovered. The shared templates (Base,
+ * Hero, the header and footer) move 58 pages, so claiming they moved only this
+ * one would be the same untruth in the other direction. The venue photo band
+ * reads `src/content/photos/photos.json`, a manifest with no date field of any
+ * kind, so there is nothing truthful to take from it - noted rather than
+ * guessed at, because a photo added there would move this page silently.
+ */
+function aboutLastmod(team) {
+  const host = team.find((m) => m.isHost);
+  const hostDate = host ? toDate(host.updated) : null;
+  return newest([new Date(aboutCopyLastmod), ...(hostDate ? [hostDate] : [])]);
+}
+
+/**
  * `lastmod` for the five listing hubs. Three added 3 Nov 2026, `/team/` later
  * the same day, `/testimonials/` on 25 Nov 2026.
  *
@@ -164,10 +212,15 @@ function homepageLastmod(events, programmes, now = new Date()) {
  * All five understate rather than overstate: the standfirsts and headings live
  * in templates, and a template edit moves 55 pages, so claiming it moved only
  * these would be the same lie in the other direction (same stance as
- * `homepageCopyLastmod`, and the reason `/about/` and `/privacy/` are still
- * bare - neither has a collection behind it, so each would want a hand-recorded
- * constant rather than a derivation, which is a different mechanism and a
- * different decision).
+ * `homepageCopyLastmod`). `/about/` took the other mechanism on 25 Nov 2026 - a
+ * hand-recorded constant, because no collection backs it - which leaves
+ * `/privacy/` the one bare URL in this sitemap. It is bare on a reason of its
+ * own rather than for want of a mechanism: the page prints its own "Last
+ * updated" line, `const updated` in `privacy.astro`, and that line reads 29
+ * September 2026 while the page's copy last changed on 9 November. Publishing a
+ * truthful 9 November `lastmod` beside a visible 29 September would set the two
+ * signals against each other, and which of them is wrong is a call on a legal
+ * notice. Backlog 139.
  */
 function listingLastmods(guides, events, programmes, team, testimonials, now = new Date()) {
   const map = new Map();
@@ -244,6 +297,7 @@ function contentLastmod() {
   }
 
   map.set('/', homepageLastmod(events, programmes));
+  map.set('/about/', aboutLastmod(team));
   for (const [url, date] of listingLastmods(guides, events, programmes, team, testimonials)) map.set(url, date);
 
   return map;

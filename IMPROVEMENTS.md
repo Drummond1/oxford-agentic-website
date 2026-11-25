@@ -3461,7 +3461,113 @@ Status: `todo` · `blocked` (why) · `doing`
     backlog 6 has blocked since August. Worth doing in the same cycle as a fifth testimonial, if one ever
     clears.
 
+139. `todo` **(needs Drummond, a call on a legal notice and explicitly not the loop's; found 25 Nov 2026 in
+    the 08:00 cycle, while closing `/about/`'s `lastmod`)** - **`/privacy/` is now the one URL in this
+    sitemap with no `lastmod`, and it is bare on a reason of its own rather than for want of a mechanism.**
+    The mechanism exists as of this cycle: a hand-recorded constant in a module of its own, `src/lib/about.ts`
+    for `/about/`, with its own `SINGLE_PAGE_SOURCES` line so the contract costs one URL and not 58. A
+    `src/lib/privacy.ts` would be twenty minutes. **What stops it is a contradiction on the page.**
+    `privacy.astro` prints its own last-updated line - `const updated = '29 September 2026'` - while the
+    page's copy last changed on **9 November 2026**, commit `6b066c3`, which added a whole paragraph
+    describing what happens to a First Workflow Picker lead's name, email, task and campaign source. Two
+    earlier copy changes sit between those dates as well (`f310f84`, 27 Oct, the Second Brain register-interest
+    paragraph; `95df769`, 8 Nov). So publishing a truthful 9 November `lastmod` would set the sitemap against
+    a visible 29 September, and suppressing it to match the page would mean publishing a date this repo knows
+    is wrong. **Which of the two is wrong is the actual question, and it is about a privacy notice rather than
+    about SEO**: a notice that gained a new processing purpose in November and still says September is the
+    kind of thing a reader or a regulator reads as the notice's own claim. The loop should not quietly change
+    a date on a legal page, and it should not paper over it with a sitemap field either. **One line for
+    Drummond: should the privacy page's "last updated" read 9 November 2026?** If yes, the `lastmod` follows
+    in the same commit and backlog 63 closes completely.
+
+140. `todo` (loop-actionable, **sharpened rather than created by this cycle's change**; found 25 Nov 2026 in
+    the 08:00 cycle) - **a change to the host's team file moves `/about/` and `indexnow-ping.mjs` does not say
+    so.** `/about/` publishes the host's `Person` node - name, `jobTitle`, `description` from the bio, `sameAs`
+    from the links - via `personSchema`, and has done since long before this cycle; the "Who runs it" band is
+    off (Drummond, 9 Oct 2026) but the schema is not. The script's `team` branch submits
+    `/team/<slug>/` and `/team/`, so an edit to `src/content/team/drummond-gilbert.md` has always left
+    `/about/` unhinted. **Pre-existing, and not introduced here** - but this cycle's `aboutLastmod()` now
+    takes that file's `updatedDate` as a term, so the sitemap date for `/about/` moves on exactly the commit
+    the ping stays silent about, which makes the gap easier to see and slightly more worth closing. The honest
+    fix is three lines in the `team` branch: if the changed file carries `isHost: true`, add `/about/`. **Not
+    done in the commit that found it** because it is a second change to a second file's logic and the
+    measurement that justifies it - which pages a host-file edit actually moves - deserves to be run properly
+    rather than reasoned from the template. Low urgency: it fires only when the host's own team file changes,
+    which has happened twice since August.
+
 ## Shipped
+
+### 25 Nov 2026 (08:00 UTC cycle) - the entity page now publishes a sitemap `lastmod`. Backlog 63's remainder goes from two bare URLs to one, and the one left is blocked on a question for Drummond rather than on a mechanism
+
+**Two of 209 built files differ and both are sitemap files.** `dist/about/index.html` is **byte-identical**
+before and after, so not one rendered byte and not one pixel moved. 58 URLs before, 58 after, none added and
+none removed, **one entry changed**: `https://oxfordagentic.com/about/` from no `lastmod` at all to
+`2026-11-24T08:10:36.000Z`. `sitemap-index.xml` moved with it, from `2026-11-21T09:00` to the same value,
+because that file carries the newest date in the sitemap and `/about/`'s is now it - correct rather than
+noise, and the sitemap's own freshness signal was understating by three days.
+
+**What was wrong.** `/about/` was 1 of 58 sitemap URLs with no `lastmod`, and after the 02:00 cycle gave
+`/testimonials/` one it was 1 of 2. That cycle left a sharpened note naming this as the half with a live
+argument: **the page changed on 24 November - the prose link to `/guides/` - and said nothing.** The narrower
+case is what the page is. It is the entity page (PRD §7.4), the canonical document describing who the brand
+is, and with `/` the only page publishing the host's `Person` node. The only real index measurement in this
+repo is the 24 August baseline - **23 indexed, 16 not indexed, diagnosed as crawl budget on a domain with no
+external links** - and `lastmod` is the one sitemap field Google says it acts on.
+
+**The change, in three parts and no fourth.**
+- `src/lib/about.ts` (new) - `aboutCopyLastmod`, the date the page's own copy last changed, recorded by hand
+  because no collection backs this page. Value `2026-11-24T08:10:36Z`, commit `49aced1`, read from full git
+  history after `git fetch --unshallow` because this checkout arrives shallow at 50. **Deliberately not
+  today's date**, the same stance as `team` and `testimonials`: adding a sitemap field changes nothing a
+  reader sees.
+- `astro.config.mjs` - `aboutLastmod()`, composed the way `homepageLastmod()` is: the constant, plus the
+  host's team `updatedDate`, because `personSchema` puts that file's name, role, bio and links into this
+  page's rendered JSON-LD. Only the host's - the other six team files move `/team/` and their own profile.
+  `readRecords` carries one new field, `isHost`, and nothing else reads it. **The host term changes nothing
+  today** (Drummond's file reads 15 November, older than the constant) and is there so the next bio edit
+  does not leave this page's date stale while its entity node moves.
+- `scripts/indexnow-ping.mjs` - one `SINGLE_PAGE_SOURCES` line, `src/lib/about.ts` to `/about/`, **and it is
+  the reason the constant is a module at all.** Verified by dry run: that file alone submits exactly 1 URL.
+  `src/pages/about.astro` already maps to `/about/` by the page regex, so a future About-copy commit - which
+  the contract requires to touch both files - hints at that one URL and nothing else. Left in the config it
+  would have submitted all 58, which is the 8 November measurement on `homepageCopyLastmod`, and it is why
+  a second page wants a second module rather than a shared one: `SINGLE_PAGE_SOURCES` maps one file to one
+  URL.
+
+**This commit itself submits all 58, and that is correct.** It touches `astro.config.mjs`, which is whole-site
+by default because it holds the sitemap filter and every lastmod derivation. No page HTML moved, so the hint
+is generous rather than wrong - and it is the last time this page's date will cost that.
+
+**Two inputs are deliberately uncovered, and both are named in the code.** The shared templates move 58
+pages, so claiming they moved only this one would be the same untruth in the other direction - the house
+stance on every lastmod here. The venue photo band reads `src/content/photos/photos.json`, a manifest with no
+date field of any kind, so there is nothing truthful to take from it; a photo added there would move this
+page silently. Understating is the safe direction: a crawler is told less recently than the truth, never more.
+
+**`/privacy/` was weighed and deliberately not taken, on a reason that is not scope.** Filed as **backlog
+139**: the page prints `const updated = '29 September 2026'` while its copy last changed on 9 November
+(`6b066c3`, the First Workflow Picker paragraph), with two further copy changes between. A truthful `lastmod`
+would contradict the visible line and a matching one would publish a date this repo knows is wrong, so the
+real question is which of the two is right - a call on a legal notice, and Drummond's.
+
+**Checks.** Build, links, outbound, schema, both date guards and `check:flags` green. Headless Chromium on
+`/about/` at 375 and 1280px: **17 assertions, 17 passed** - HTTP 200, one h1, no horizontal overflow, no image
+without alt, canonical correct, no robots directive, the `Person` node present and named, the 24 November
+`/guides/` link still in the prose, and the served sitemap carrying the new value. The only console errors are
+the two `googletagmanager.com` scripts this sandbox's egress proxy refuses, counted at each width.
+
+**GEO.** Four probes, zero citations, the thirty-sixth consecutive set, and four candidate axes were dropped
+on backlog 136's dedupe before any search ran. Probe 1 is a third reach failure in two cycles on a page this
+site already publishes. Probe 2 is the clearest one yet: asked for a one-day in-person agentic day for a UK
+retail business, the engine said no such thing exists and then cited four Eventbrite pages and a Luma page -
+an independent, sector-axis confirmation of backlog 2b. Probes 3 and 4 decline on vendor documentation and on
+institutional publishers plus a forecast this repo cannot evidence. **Off-page: one new host, `brc.org.uk`,
+recorded with its limits.** Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud**, tried once: no service-account key and no export newer than the 24
+August baseline. Nothing estimated. **No new guide this week** - 32 guides, newest `publishDate` 20 October.
+`oxfordagentic.com` and `luma.com` are refused by this sandbox's egress policy, so no live page was read, no
+event fact was touched, and deploy state came from the Actions API.
 
 ### 25 Nov 2026 (02:00 UTC cycle) - the proof page now publishes a sitemap `lastmod`, derived from the quotes it renders. Backlog 63's remainder goes from three bare URLs to two
 

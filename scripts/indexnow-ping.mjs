@@ -108,6 +108,13 @@ const pageCandidates = new Set();
 const SINGLE_PAGE_SOURCES = new Map([
   ['src/lib/home.ts', '/'],
   ['src/components/HomeSections.astro', '/'],
+  // The About page's own `lastmod` constant, added 25 Nov 2026. It is a module
+  // of its own precisely so this line can exist: the contract is to bump it in
+  // the same commit as an About-copy edit, and `src/pages/about.astro` already
+  // maps to `/about/` by the page regex below, so both files in that commit
+  // point at the one URL. Left in `astro.config.mjs` it would have submitted
+  // all 58, the way `homepageCopyLastmod` did before 8 November.
+  ['src/lib/about.ts', '/about/'],
   // The one dynamic route in src/pages/ that builds exactly one page: its
   // getStaticPaths returns a single entry with `slug: undefined`, so it emits
   // /testimonials/ and nothing else. The page regex below cannot match a
