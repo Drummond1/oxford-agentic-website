@@ -12,7 +12,8 @@
  *                                   date on every page
  *   src/content/programmes/x.md  -> /bootcamps/<slug>/, /bootcamps/, / and every
  *                                   guide naming it in `relatedProgrammes`
- *   src/content/team/x.md        -> /team/<slug>/ and /team/
+ *   src/content/team/x.md        -> /team/<slug>/ and /team/, plus /about/ if
+ *                                   that file is the host's
  *   src/pages/a/b.astro (static) -> /a/b/, if it is in the sitemap
  *   any template/config/style change -> every URL in the sitemap, since every
  *   page was rebuilt
@@ -47,6 +48,22 @@ function slugOf(file) {
     return fs.readFileSync(file, 'utf8').match(/^slug:\s*"?([a-z0-9-]+)"?\s*$/m)?.[1] ?? null;
   } catch {
     return null;
+  }
+}
+
+/**
+ * Whether a team file is the host's. The Organization node's `founder` edge and
+ * the `Person` node on `/about/` are both sourced from whichever team entry
+ * carries `isHost: true`, so that one file moves a page no other team file
+ * touches. Read the same way as `slugOf` above - a regex over the frontmatter,
+ * tolerant of a file the commit deleted - rather than by parsing YAML, because
+ * the field is a plain boolean and this script deliberately has no dependencies.
+ */
+function isHostFile(file) {
+  try {
+    return /^isHost:\s*true\s*$/m.test(fs.readFileSync(file, 'utf8'));
+  } catch {
+    return false;
   }
 }
 
@@ -211,6 +228,18 @@ for (const file of changed) {
     // and a hint for a page that did not move costs nothing.
     if (slug) urls.add(`https://${HOST}/team/${slug}/`);
     urls.add(`https://${HOST}/team/`);
+    // And `/about/`, for the host only. That page publishes the host's `Person`
+    // node - name, `jobTitle`, `description` from the bio, `sameAs` from the
+    // links - via `personSchema`, and since 25 Nov 2026 its sitemap `lastmod`
+    // takes the host file's `updatedDate` as a term, so the one commit that
+    // moves the date is the one this branch said nothing about. Measured
+    // 25 Nov 2026 by editing this file's `bio` and `updatedDate` and
+    // rebuilding: 5 of 209 built files differ - `/about/`, the profile,
+    // llms-full.txt and the two sitemaps - and `/about/`'s `lastmod` became
+    // exactly that `updatedDate`. `dist/team/index.html` was byte-identical, so
+    // the branch submitted two URLs, one of which had not moved, and omitted
+    // the one that had. `/team/` stays for the reason given above.
+    if (isHostFile(file)) urls.add(`https://${HOST}/about/`);
   }
 }
 

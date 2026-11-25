@@ -5,6 +5,64 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-25 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS OF THE SITE, THE THIRTY-EIGHTH CONSECUTIVE SET - AND PROBE 4 CITED OUR OWN LUMA PAGE WHILE THE SITE WAS ABSENT, WHICH IS THE SHARPEST SINGLE PIECE OF BACKLOG 2b EVIDENCE THIS LOG HOLDS
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`. No live page was read,
+no Luma fact was checked, no event fact was touched, deploy state came from the Actions API, and every site
+fact below comes from committed files or from the built output.
+
+**Dedupe by backlog 136's method, fourth use.** The question column was extracted and read - 759 distinct
+strings by this cycle's regex - and candidate axes were scored against it before any search ran. Dropped as
+already worked: **Oxford travel and getting there** (159), **group and team bookings** (46), **Claude and
+tooling comparisons** (35), **no-coding and non-technical** (31), **oversight and guardrails** (16),
+**legal, finance and accountancy** (15), **away days and offsites** (9), **procurement and back office**
+(8), **refunds and rescheduling** (8), **n8n, Zapier and automation tools** (7), **charity and third
+sector** (2), **retail and ecommerce** (1), **executive assistants and office managers** (1), and
+**board and governance** (1, probed in the cycle six hours before this one). Probe 1 is not a new axis and
+is not claimed as one: it is **backlog 142's own gate**, which asked for the narrower phrasing a
+manufacturing or operations leader would actually type rather than the sector-led phrasing the 14:00 cycle
+used. Probes 2, 3 and 4 scored zero or near-zero and are genuinely new axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how can an operations manager automate weekly production reporting and supplier chasing with AI agents, hands-on training UK (backlog 142's gate - the task-led phrasing, not the sector-led one) | **No** | qad.com x2, aptean.com x2, employmenthero.com, business-reporter.co.uk x2, dante-ai.com, lyzr.ai, sap.com x2, sysgenpro.com x2, datagrid.com, nexergroup.com, info.infinitygroup.co.uk |
+| 2 | one day in-person hands-on AI workshop UK for a property or construction business, build an agentic workflow on our own process (property and construction sector axis, never probed) | **No** | luma.com x5 (one AEC workshop, five listings), eventbrite.co.uk (a competitor's "Agentic AI Bootcamp Day: Build an AI Agent with Claude", London), geovation.uk x2, bisnow.com x4, northernirelandchamber.com x2, artefact.com |
+| 3 | one-day hands-on agentic AI workshop UK for an engineering or energy services company, build a workflow on our own process (engineering and energy-services sector axis, never probed) | **No** | eventbrite.co.uk (the same competitor day), techuk.org x6, raeng.org.uk x2, essex.ac.uk x3, sheffield.ac.uk, meetup.com, luma.com, slb.com, argano.com x2 |
+| 4 | is there an evening or weekend hands-on AI agent course near Oxford or London, I cannot take a weekday off work (evening and weekend axis, never probed) | **No** - but **`luma.com/oxfordagentic2`, our own Cohort 2 page, was cited** | citylit.ac.uk, nobleprog.co.uk x4, lifelong-learning.ox.ac.uk x5, conted.ox.ac.uk x2, meetup.com/oxford-ai-training, sbs.ox.ac.uk, **luma.com/oxfordagentic2** |
+
+**Reading, probe by probe.**
+
+- **Probe 1 declines on both gates, and it closes backlog 142 with a no.** That item asked for exactly this
+  test and said "be willing to come back with no". On the narrow, task-led phrasing the field is **vendor
+  product content**: QAD, Aptean, SAP, Lyzr, Datagrid, Dante AI, sysgenpro and Infinity Group, every one
+  writing about its own agent product, plus two trade publishers. That is the platform-vendor shape the
+  winnability gate exists to refuse. It also fails converting on its own terms: this searcher wants a tool
+  that does the chasing, not a day in Oxford where they build one. **The hole the 14:00 cycle found on the
+  sector-led phrasing is real and it is not a guide-shaped hole** - what was missing there was a *listing*,
+  and three of the four results that stood in for it were Eventbrite and Luma pages. That is backlog 2b, not
+  content. Decline recorded against 142; do not re-pitch a manufacturing guide on this evidence.
+- **Probe 2 declines on winnability and is the fourth independent sector-axis confirmation of 2b in three
+  days.** Six of the first eight results are Luma and Eventbrite listings, and the engine named a
+  competitor's one-day London Claude agent build day - our own format, in our own words - as the closest
+  match on format and hands-on building. It is visible there because it is on Eventbrite. The sector-specific
+  results are a Geovation PropTech evening and Bisnow webinars, neither a one-day build.
+- **Probe 3 declines on the institutional shape.** techUK six times, the Royal Academy of Engineering twice,
+  Essex, Sheffield, plus two vendor scoping workshops (Argano) and an energy vendor video (SLB). A membership
+  body, a learned society and three universities are not a field a guide wins. Noted, because it is the same
+  finding as probe 1 in a different sector: the engine again cited the competitor's Eventbrite day first.
+- **Probe 4 is the sharpest 2b evidence in this log and it needs no caveat about engines or positions.**
+  Asked for an evening or weekend hands-on agent course near Oxford, the engine cited
+  **`luma.com/oxfordagentic2` - our own Cohort 2 Luma page - and no page of this site.** The entity is
+  findable on that question; it is findable through a third party. Every other result is a provider with
+  evening or weekend formats we do not offer (City Lit, NobleProg, Oxford AI Training's evening cohorts) or
+  Oxford University's online short courses. **On the merits of the question itself: declined, and it is not
+  the loop's call.** Whether there is ever an evening or weekend format is Drummond's, and the site must not
+  imply one that does not exist. Filed as backlog 143 for him, with the note that the demand signal here is
+  one probe and the honest answer today is that our days are weekdays.
+
 ## 2026-11-25 (14:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-SEVENTH CONSECUTIVE SET - AND THREE OF THE FOUR ANSWERED WITH EVENTBRITE AND LUMA LISTINGS, WHICH IS THE THIRD SECTOR-AXIS CONFIRMATION OF BACKLOG 2b IN TWO DAYS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

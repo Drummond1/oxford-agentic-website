@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`geovation.uk` - Geovation, one new host, recorded with its limits and thinner than the last one.**
+  Found 25 Nov 2026 (20:00 UTC cycle), from the property-and-construction probe. **Nothing contacted,
+  submitted, claimed or paid for. The host does not resolve from this sandbox, so nothing below was checked
+  beyond what the search returned.**
+  - Where it came from: the property and construction axis returned two Geovation pages, including an
+    "AI in PropTech: practical use cases and emerging opportunities" event described as in-person, free and
+    demo-led, with a session on building an AI agent. It is a London accelerator that runs its own practical
+    events, not a publication and not a directory.
+  - What the route would be: speaking at or contributing to one of those sessions. Not a listing, so it is
+    slower than anything in `off-page-listings.md` and it needs Drummond, not the loop.
+  - **Why it is thin, said plainly.** One probe, on a sector this site has no content for, no cohort
+    evidence from and no stated interest in. By this list's own standard - `trainingzone.co.uk` and
+    `personneltoday.com` each appeared in three separate probes before being written up - this is one
+    appearance, the same weight as `brc.org.uk` below. It is here so a later cycle does not spend a probe
+    rediscovering it and mistake it for a find.
+  - Needs: nothing, unless property or construction is a direction Drummond wants.
+
+- **Not a new host, and the most useful off-page fact this loop has recorded: an engine cited our own Luma
+  page while the site was absent.** Found 25 Nov 2026 (20:00 UTC cycle), probe 4. Asked for an evening or
+  weekend hands-on agent course near Oxford, the engine returned **`luma.com/oxfordagentic2`** - Cohort 2's
+  own page - and **no page of oxfordagentic.com**. Separately, probes 2 and 3 each named a competitor's
+  one-day London Claude agent build day, listed on **Eventbrite**, as the closest match to our own format.
+  - Why it belongs on this list rather than only in the GEO log: it is direct evidence for the top item in
+    `off-page-listings.md`. A third-party listing is already carrying this brand into answers that the site
+    itself does not reach, and the competitor nearest our format is reachable because it is listed where
+    buyers and engines look. **Nothing was contacted, submitted, claimed or paid for, and no account was
+    made.** The Eventbrite listing and the LinkedIn Company Page still need Drummond's go-ahead.
+
 - **`brc.org.uk` - the British Retail Consortium, one new host, and it is recorded with its limits rather
   than pitched.** Found 25 Nov 2026 (08:00 UTC cycle), from the retail-sector probe. **Nothing contacted,
   submitted, claimed or paid for. The host does not resolve from this sandbox, so nothing below was checked

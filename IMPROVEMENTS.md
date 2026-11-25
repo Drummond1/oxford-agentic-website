@@ -3480,7 +3480,10 @@ Status: `todo` · `blocked` (why) · `doing`
     Drummond: should the privacy page's "last updated" read 9 November 2026?** If yes, the `lastmod` follows
     in the same commit and backlog 63 closes completely.
 
-140. `todo` (loop-actionable, **sharpened rather than created by this cycle's change**; found 25 Nov 2026 in
+140. `done` 25 Nov 2026 (20:00 UTC cycle) - **closed by the three lines it prescribed, after running the
+    measurement it said must be run rather than reasoned from the template, and that measurement found a
+    second thing: the branch's other URL had not moved either.** Detail in the Shipped entry. Original
+    entry, unchanged, follows. (loop-actionable, **sharpened rather than created by this cycle's change**; found 25 Nov 2026 in
     the 08:00 cycle) - **a change to the host's team file moves `/about/` and `indexnow-ping.mjs` does not say
     so.** `/about/` publishes the host's `Person` node - name, `jobTitle`, `description` from the bio, `sameAs`
     from the links - via `personSchema`, and has done since long before this cycle; the "Who runs it" band is
@@ -3512,7 +3515,18 @@ Status: `todo` · `blocked` (why) · `doing`
     two to keep, and the in-article card is the one with the stated rationale ("the moment they are most
     interested").
 
-142. `todo` (**a sector-guide candidate with real evidence behind it, deliberately not written in the cycle
+142. `closed with a no` 25 Nov 2026 (20:00 UTC cycle) - **its own gate was run and the answer was no, which
+    is the outcome this item asked for in its last line.** The gate it set was a probe on the narrower
+    phrasing a manufacturing or operations leader would actually type. Run as that cycle's probe 1: *how can
+    an operations manager automate weekly production reporting and supplier chasing with AI agents, hands-on
+    training UK*. The field is **vendor product content** - QAD, Aptean, SAP, Lyzr, Datagrid, Dante AI,
+    sysgenpro and Infinity Group, every one writing about its own agent product - plus two trade publishers.
+    That is the platform-vendor shape the winnability gate refuses. It fails the converting gate too, on its
+    own terms: the searcher wants a tool that does the chasing, not a day in Oxford where they build one.
+    **And the hole the finding cycle saw is real but is not guide-shaped**: on the sector-led phrasing three
+    of the four stand-ins were Eventbrite and Luma listings, so what is missing there is a listing, which is
+    backlog 2b. **Do not re-pitch a manufacturing or operations guide on this evidence.** Original entry,
+    unchanged, follows. (**a sector-guide candidate with real evidence behind it, deliberately not written in the cycle
     that found it**; found 25 Nov 2026 in the 14:00 cycle, by GEO probe 3) - **there is no UK one-day
     agentic build day for manufacturing or operations teams, and an engine said so in its own words.**
     Asked for exactly that, the engine returned: NMIS FAIM in Scotland, which is manufacturing-specific and
@@ -3528,7 +3542,138 @@ Status: `todo` · `blocked` (why) · `doing`
     leader in a manufacturer is plausibly our buyer, but "plausibly" is what the topic probe rule exists to
     stop. **Whoever takes it: probe first, and be willing to come back with no.**
 
+143. `todo` **(needs Drummond, a format decision the loop must not imply an answer to; found 25 Nov 2026 in the
+    20:00 UTC cycle, by GEO probe 4)** - **asked for an evening or weekend hands-on agent course near Oxford,
+    an engine cited our own Cohort 2 Luma page and no page of this site, and every other result was a
+    provider with a format we do not offer.** City Lit lists evening and weekend AI courses in London,
+    Oxford AI Training runs four-week evening cohorts in Oxford at 18:30, NobleProg advertises weekend and
+    evening options, and Oxford University's short courses are online. Our days are weekdays, and that is the
+    honest answer today. **Two separate things come out of this and only the first is Drummond's.**
+    (a) Is an evening or weekend format ever wanted? That is a product call, and the loop must not write a
+    page that implies one exists - the standing accuracy rule and the date guard both bite here. The demand
+    signal is **one probe**, so this is a question and not a recommendation. (b) The site has no page that
+    answers *"do I have to take a day off work"* for the format we do run. That is loop-actionable in
+    principle, and it was **not** taken in the cycle that found it: a page whose honest answer is "yes, a
+    weekday" converts nobody searching for a weekend, and the FAQ that already answers who the seat is for
+    sits closer to the booking path. Weigh (b) only if Drummond answers (a) with "weekdays, and say so".
+
+144. `todo` (loop-actionable, **measured in the cycle that fixed its sibling and deliberately not taken**;
+    found 25 Nov 2026 in the 20:00 UTC cycle) - **a change to the host's `name` moves 69 of 209 built files
+    and the ping script submits 3.** Measured, not inferred, by editing `name:` in
+    `src/content/team/drummond-gilbert.md` and rebuilding: **69 of 209** files differ, **65** of them HTML
+    pages, because `BaseHead.astro` reads the host's `name` and `slug` into the Organization node's `founder`
+    edge on **every** page. The bio case this cycle fixed moves 5 files; the name case moves 69. So the team
+    branch is now exact for the common edit and under-submits by roughly 55 sitemap URLs on one rare one.
+    **Why it was not taken.** The honest fix needs the script to know *which field* changed, and the script's
+    whole contract is that it receives file paths and nothing else - telling a `name` edit from a `bio` edit
+    means reading git state, which is a new dependency and the kind of special case backlog 41 and 85 were
+    both put down on. Making the host branch whole-site instead would submit 58 URLs on every bio edit that
+    moves 2 pages, which is precisely the noise this loop has spent a month removing. **Low urgency, and
+    arguably never**: the host's own name changing is a once-ever event, and a `slug` change would move the
+    page's URL, which is a different operation altogether. Recorded so no cycle re-derives it as a defect,
+    and it is one more entry in the column backlog 85 keeps: the only complete answer is reading what changed
+    in `dist`.
+
 ## Shipped
+
+### 25 Nov 2026 (20:00 UTC cycle) - the one commit that moves `/about/`'s sitemap date was the one commit the IndexNow ping said nothing about. Three lines, 0 of 209 built files moved, and the measurement found the branch's other URL had not moved either
+
+**What was wrong.** `scripts/indexnow-ping.mjs` mapped `src/content/team/x.md` to `/team/<slug>/` and
+`/team/`. `/about/` publishes the host's `Person` node - name, `jobTitle`, `description` from the bio,
+`sameAs` from the links - via `personSchema`, and has done since long before this cycle. Since the 08:00
+cycle that page's sitemap `lastmod` also takes the host file's `updatedDate` as a term. So the host's team
+file is the one content file that moves `/about/`, and the ping branch had never mentioned it. Filed as
+backlog 140 by the cycle that sharpened it, with the fix prescribed as three lines and the measurement
+explicitly deferred: *"the measurement that justifies it - which pages a host-file edit actually moves -
+deserves to be run properly rather than reasoned from the template."*
+
+**The measurement, run properly.** Baseline build, then `bio` and `updatedDate` edited in
+`src/content/team/drummond-gilbert.md`, then rebuilt and every file in `dist` compared by sha256.
+**5 of 209** differ: `dist/about/index.html`, `dist/team/drummond-gilbert/index.html`, `llms-full.txt` and
+the two sitemaps. `/about/`'s sitemap entry moved from `2026-11-24T08:10:36.000Z` to exactly the
+`updatedDate` written in the test edit, which is the derivation the 08:00 cycle built, confirmed from the
+built output rather than from the config.
+
+**And it found a second thing the item did not predict.** `dist/team/index.html` is **byte-identical** after
+that edit. So the branch submitted two URLs, **one of which had not moved**, and omitted the one that had.
+`/team/` is deliberately left in the set anyway, on the reason already written there: a bio edit does not
+move it but a `role` or `photo` edit does, telling those apart means parsing the file, and a hint for a page
+that did not move costs nothing. The fix is purely additive.
+
+**The change.** An `isHostFile()` reader beside `slugOf()` - a regex over the frontmatter, tolerant of a
+file the commit deleted, no YAML parser and no new dependency, which is how `slugOf` already works - and one
+line in the `team` branch adding `/about/` when the file carries `isHost: true`. The header's mapping table
+gains the case, so the contract is documented where it is read. Three lines of logic and the comment that
+records the measurement.
+
+**Verified by dry run across every case, not just the happy one.** The host file now submits **3** URLs
+(`/about/`, `/team/`, `/team/drummond-gilbert/`), up from 2. A non-host file - `nicolai-thomson.md` -
+submits **2**, unchanged, so the new URL is not leaking to the other seven profiles. All eight team files at
+once submit **10**, which is the eight profiles plus `/team/` plus one `/about/`. A team file that does not
+exist, the deleted-in-this-commit case, submits **1** and does not throw. A guide submits 2, unchanged. The
+script itself submits nothing, which is why **this push will submit no URLs at all** - correct, because no
+page moved.
+
+**0 of 209 built files differ.** The script is not imported by the build, so `dist` is byte-identical to
+this cycle's baseline, sitemaps included. Not one rendered byte and not one pixel moved. Build, links,
+outbound, schema and both date guards green: 69 pages valid, 17 Event nodes, 22 `FAQPage` nodes, 1,609
+resolving internal graph references, 58 indexable pages carrying no passed cohort date written as upcoming.
+The 13 outbound warnings are all hosts this sandbox's egress proxy refuses, and the checker is warn-only by
+design. Headless Chromium over `/about/` and `/team/drummond-gilbert/` at 375 and 1280px: **46 assertions,
+46 passed** - HTTP 200, one `h1`, no horizontal overflow, no image without alt, canonical correct, no robots
+directive, the `Person` node present and named with the bio as its `description` and the LinkedIn URL in
+`sameAs`, the Organization `founder` edge resolving to `/team/drummond-gilbert/`, and the 24 November
+`/guides/` link still in the prose. The only failed network requests are the two googletagmanager.com
+scripts the proxy refuses, named exactly rather than counted.
+
+**What the three lines buy, stated honestly.** It fires when the host's own team file changes, which has
+happened twice since August, and what it buys then is an IndexNow hint for the entity page on the one commit
+that moves its date. Small and rare. It is worth the three lines because of what that page is - the
+canonical document describing who the brand is (PRD 7.4), and with `/` the only page publishing the host's
+`Person` node - and because the one real index measurement in this repo is the 24 August baseline, 23
+indexed and 16 not, diagnosed as crawl budget on a domain with no external links. **No cycle should claim
+this moves rankings**, and an IndexNow submission never guarantees indexing.
+
+**One thing measured and deliberately not taken**, filed as backlog 144 with its numbers: changing the
+host's `name` moves **69 of 209** files, 65 of them HTML pages, because `BaseHead.astro` reads the host's
+name and slug into the Organization `founder` edge on every page. The branch would submit 3. The honest fix
+needs the script to know which field changed, which means reading git state - a new dependency and the kind
+of special case backlog 41 and 85 were both put down on - and the alternative, making the host branch
+whole-site, would submit 58 URLs on every bio edit that moves 2 pages. Low urgency and arguably never: the
+host's own name changing is a once-ever event.
+
+**GEO: four probes, zero citations of the site, the thirty-eighth consecutive set - and probe 4 is the
+sharpest piece of backlog 2b evidence this log holds.** Backlog 136's dedupe used for the fourth time, 759
+distinct prior questions, fourteen axes scored and ten dropped before any search ran. **Backlog 142 is
+closed with a no**, which is the outcome it asked for: its own gate, the task-led phrasing an operations
+manager would type, returned a field of vendor product pages (QAD, Aptean, SAP, Lyzr, Datagrid, Dante AI)
+and failed the converting gate on its own terms - that searcher wants a tool, not a day in Oxford. **No new
+guide was written and none should be on this evidence.** Probes 2 and 3 decline on Luma-and-Eventbrite
+listings and on institutional publishers (techUK six times, the Royal Academy of Engineering, three
+universities), and both named a competitor's one-day London Claude agent build day - our own format - as the
+closest match, visible because it is listed on Eventbrite. **Probe 4 cited `luma.com/oxfordagentic2`, our own
+Cohort 2 page, and no page of this site**: the entity is findable on that question through a third party and
+not through the site, which is 2b's argument with no caveat about engines or positions attached. The
+question itself - evening or weekend formats - is filed as backlog 143 for Drummond, because our days are
+weekdays and the loop must not imply otherwise.
+
+**Off-page: one new host, `geovation.uk`, recorded with its limits and explicitly thin** - one probe, a
+sector this site has no content for, and a speaking route rather than a listing. The Luma and Eventbrite
+finding above is recorded on the review list too, because it is direct evidence for the top item in
+`off-page-listings.md`. **Nothing contacted, submitted, claimed or paid for, and no account made.**
+
+**Search Console: unavailable from cloud, tried once.** No `search-console-latest.json` or `.md` in
+`seo-data/`, no CSV anywhere in the tree, and no service-account key in this environment. The scheduled
+export workflow ran today at 15:56 UTC and completed green, which is its documented no-key behaviour: it
+prints the set-up steps and exits 0 rather than turning red. So rule 5 again, and **nothing was estimated or
+fabricated**. Backlog 2 is still the loop's biggest self-inflicted blocker.
+
+**Production could not be read, and that bounded this cycle.** `oxfordagentic.com` is refused at CONNECT by
+this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch route either; `luma.com` is
+the same. Deploy state came from the Actions API: run 486 for `3523334`, the 14:07 UTC push, completed
+successfully at 14:08, nothing queued and nothing in progress. **No live page was read, no Luma page was
+checked and no event fact was touched** - this change moves no rendered byte, which is why a cycle that
+cannot see production could take it. Recorded against backlog 109.
 
 ### 25 Nov 2026 (14:00 UTC cycle) - every guide asked for the same email address twice, a screen apart, in the identical words. One prop on the guide template, 32 of 209 built files, and the removed block is byte-for-byte the one the homepage already stands down
 
