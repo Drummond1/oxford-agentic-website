@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-26 (14:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FIRST CONSECUTIVE SET - AND THE FIRST ONE IN WEEKS THAT PRODUCED A SHIPPABLE CHANGE RATHER THAN AN ASK
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), as is `luma.com`, `allai.events` and `planomato.com`. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output.
+
+**Dedupe by backlog 136's method, seventh use.** The question column was extracted and read before any
+search ran. **Dropped as already worked**: stickiness and momentum (`stick` 6), follow-up and alumni
+support (`follow-up` 2, `afterwards` 2, `alumni` 1), hiring and headcount (`hire` 6), vendor lock-in
+(`lock` 6, `vendor` 5), pilots (`pilot` 8), laptops (`laptop` 7), Zapier and n8n (6 and 3), API access
+(`API` 7) and consultancy (`consult` 6). **Also dropped as unanswerable rather than unworked**:
+certification, which scores 0 and is a standing decision to say nothing either way. Probes 1 to 3 scored 0
+or 1 on the question list and are genuinely new axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | will an AI agent I build at a workshop connect to the software my business already uses UK hands-on training (integration axis - `integrat` 0; distinct from backlog 67, which is about granting an agent *access*, not about what the day builds on) | **No** | essex.ac.uk x2, eventbrite.co.uk x6, cim.co.uk x3, invite.salesforce.com, brainstation.io, techuk.org, informaconnect.com, tickettailor.com, luma.com, meetup.com, generalassemb.ly |
+| 2 | can I see named reviews or speak to past attendees before booking AI training UK (credibility-evidence axis - `proof` 0, `testimonial` 0, `reference` 0, `refer` 0) | **No** | mediatraining.ltd.uk x4, coursecheck.com x5, trustpilot.com x4 (`embraceai.training` x3, `theaiworkshop.co.uk`), wiseowl.co.uk |
+| 3 | how do I check what an AI agent actually did, audit trail and logs, non-technical business owner (observability axis - `audit` 1, `log` 0, `trust` 2) | **No** | docs.appian.com x4, vercel.com, atera.com, docs.celigo.com, oliv.ai, sre.azure.com, pedowitzgroup.com x2, cio.com, loginradius.com, help.aspireapp.com, sageitinc.com x2, docs.gitlab.com |
+
+**Reading, probe by probe.**
+
+- **Probe 1 is the one that produced a change, and it is the first probe in weeks whose finding is neither a
+  reach failure nor an ask.** The engine did not answer the question; it said so, and then named the
+  question itself: *"none of the pages I found promise that your specific software will be connected during
+  the session. You'll need to check that with the provider."* It then listed what a buyer should ask -
+  *"Which platform is used? Does the course include live connections to tools, or only demo data? Can you
+  bring your own software (for example, a CRM or accounting package) and do you need admin access, API keys,
+  or a developer on hand?"* - and the field it read bears the question out: Essex covers connecting agents
+  to APIs and databases, CIM names Copilot Agent Builder, Copilot Studio, Google Workspace Studio, Claude
+  and Zapier, BrainStation builds in its own Agent Builder, which the engine described as *"a sandbox
+  build, not a link to your systems"*, and one Eventbrite listing is titled "bring your own dev". **Five
+  providers, five different days, and the difference is not on any booking page.**
+  - **Winnable, and we already hold the field it lands in.** The checklist query is the one query family
+    this site has ever been cited first on: the 13 Sept probe returned
+    `/guides/questions-to-ask-before-booking-ai-training/` at **#1** for *"what questions to ask before
+    booking AI training for your team"*. The field above holds no institutional publisher on its own
+    subject, and the four university pages in it are selling their own courses rather than publishing on
+    the buying decision.
+  - **Converting, in the strongest sense available.** The searcher is comparing providers before paying for
+    a day. That is the best intent on the site.
+  - **What shipped, and what deliberately did not.** Question 6 of that guide - *"What do I need to bring
+    or set up beforehand?"* - gained two paragraphs: which tools you will be building on, whether you
+    connect your own accounts or work against sample data, and the locked-down-laptop consequence.
+    `faqsFromQuestionHeadings` takes everything under a heading as the answer, so it reaches that
+    `acceptedAnswer` without an eleventh question, and the guide's title, its `seoTitle`, its capsule, its
+    "all ten" closing line and the one hand-written cross-link that calls it "ten questions" all stay
+    correct. **Nothing was claimed about our own three days**, which is the half that did not ship and is
+    now a backlog item for Drummond: whether an Agentic attendee connects a real account on the day, or
+    builds against exported or sample material on their own machine, is a product fact only he holds, and
+    the published copy is genuinely ambiguous on it - *"you build on your own machine"* and
+    *"credentials, keys and other people's personal data do not belong in an AI workflow in any form"*
+    rule out pasting keys into a corporate system but say nothing about an OAuth sign-in to the attendee's
+    own tools. **One sentence from him and the same answer can go on the programme page and into the
+    guide's own "For the record, here are ours" section.**
+- **Probe 2 is a reach failure on the content and an off-page finding on the field.** We publish four
+  named, attributed quotes on `/testimonials/` and the site's own rule is that a testimonial is never
+  anonymous. The engine returned none of it, said *"the search didn't turn up any provider that offers
+  direct contact with past attendees"*, and noted that provider-hosted testimonials are curated anyway -
+  which is the argument for the third-party half, not the on-site half. **The field is review platforms,
+  and that is a category this log has never recorded**: `coursecheck.com` five times, a UK training-course
+  review site, alongside Trustpilot, which is already on the review list. CourseCheck is new and is in
+  `outreach/review-list.md` as of this cycle. **No on-site change**: a fifth quote needs consent, which
+  backlog 6 has blocked since August, and nothing on this site can manufacture a third-party profile.
+- **Probe 3 declines on both gates, and plainly.** Seventeen results and fifteen are vendor or platform
+  documentation - Appian four times, plus Vercel, Atera, Celigo, Azure, GitLab, LoginRadius, Aspire - with
+  the engine stating its own field: *"The search mostly returned vendor documentation."* That is the
+  platform-vendors-on-their-own-product half of the winnability gate. It fails converting too: a reader
+  hunting for an audit trail is already operating an agent in production, not booking a day to build a
+  first one. **No action, recorded so the observability axis is not re-probed.**
+
+**No new guide, and none is warranted on this evidence.** One probe produced a two-paragraph refresh of an
+existing guide, which the standing prompt's candidate 3 calls a refresh rather than a guide; one is a reach
+failure that produced an off-page entry; one declines on both gates.
+
 ## 2026-11-26 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE FORTIETH CONSECUTIVE SET - AND TWO OF THE FOUR ARE REACH FAILURES ON QUESTIONS THIS SITE ANSWERS ON EVERY PAGE THAT SELLS A DAY
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

@@ -11,6 +11,32 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`coursecheck.com` - a new CATEGORY, not just a new host: a UK review platform for training courses, and
+  the first `Organization.sameAs` candidate this log has found that is not an event listing.** Found
+  26 Nov 2026 (14:00 UTC cycle), from the credibility-evidence probe. **Nothing contacted, submitted,
+  claimed, signed up for or paid for, and the host does not resolve from this sandbox.**
+  - Where it came from: asked whether a buyer can see named reviews or speak to past attendees before
+    booking AI training in the UK, the field was review platforms rather than providers -
+    `coursecheck.com` **five** times, `trustpilot.com` four (already on this list), `mediatraining.ltd.uk`
+    four and `wiseowl.co.uk`. The engine closed that *"the search didn't turn up any provider that offers
+    direct contact with past attendees"* and warned that provider-hosted testimonials are curated.
+  - **Why it is worth a decision, and why it is different from every listing already recorded.** Every
+    off-page target on this list and in `off-page-listings.md` is an event or course *listing* -
+    Eventbrite, the aggregators, the Oxfordshire business directories. A review-platform profile is an
+    *identity* page for the company, which is the exact shape `brand.social` wants and
+    `Organization.sameAs` has lacked since 31 July. It is also the one answer to the engine's own
+    objection: four named quotes on our own `/testimonials/` are curated by us, and a third-party profile
+    is not. That is backlog 2b and 5 arriving from a direction nobody has proposed in 41 probe sets.
+  - **What the loop could not check, and will not guess.** `coursecheck.com` is refused by this sandbox's
+    egress policy, so this cycle could not see whether profiles are provider-created or invite-only,
+    whether reviews must come through the platform's own post-course survey, whether there is a fee, or
+    whether a one-day bootcamp fits what it lists. The Trustpilot entry on this list has the same open
+    questions and the two should be decided together.
+  - **One standing caution that applies to both.** Collecting reviews needs attendee consent, which is
+    backlog 6 and has been blocked since August. A profile with no reviews on it is worth less than no
+    profile, so the sequence matters: consent first, then a platform.
+  - Needs: Drummond. Nothing happens without his go-ahead - no account, no claim, no submission, no spend.
+
 - **Two probes asked a question this site answers on seven pages and returned nobody's answer, including
   ours - and one of the two fields says in so many words that nobody answers it.** Found 26 Nov 2026
   (08:00 UTC cycle). **Nothing contacted, submitted, claimed or paid for, and none of the hosts below

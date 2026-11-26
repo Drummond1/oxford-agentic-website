@@ -11,13 +11,18 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-10-28T19:30:00+00:00"
+updatedDate: "2026-11-26T14:30:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp
   - agentic-coding-bootcamp
 # The ten headings below are the ten questions, so they go out as an FAQPage
 # node too, read off the rendered page rather than copied into frontmatter.
+# `faqsFromQuestionHeadings` takes everything under a heading as its answer, so
+# prose added inside a question reaches that `acceptedAnswer` without a new
+# heading - which is why the tooling clause added to question 6 on 26 Nov 2026
+# is two paragraphs rather than an eleventh question. The probe behind it is in
+# `seo-data/geo-citations.md` under that date.
 faqFromHeadings: true
 ---
 
@@ -54,6 +59,10 @@ Everyone gets stuck, usually on something dull - a login, a permission, a tool t
 ## 6. What do I need to bring or set up beforehand?
 
 Two things worth knowing early: whether you need a paid AI subscription, and whether any setup is expected before you arrive. Neither is unreasonable. Both are annoying to discover the night before.
+
+A third is worth adding, because almost no booking page answers it: which tools you will actually be building on, and whether you connect your own accounts to them or work against sample data. The answers range from a vendor's own sandbox to your own machine with your own logins, and the difference decides how much of what you build is still useful the week after.
+
+It also tells you whether your laptop is a problem. Anything that needs installing, or a new sign-in, can be blocked outright on a corporate or government device, and that is easier to sort out now than on the morning.
 
 ## 7. Who else will be in the room?
 

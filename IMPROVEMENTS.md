@@ -3589,7 +3589,149 @@ Status: `todo` · `blocked` (why) · `doing`
     and it is one more entry in the column backlog 85 keeps: the only complete answer is reading what changed
     in `dist`.
 
+145. `todo` **(needs Drummond, one product fact only he holds, and it is the same shape as backlog 25 and 67;
+    found 26 Nov 2026 in the 14:00 cycle, from the integration probe that produced this cycle's change)** -
+    **does an Agentic attendee connect a real account to the workflow on the day, or build against exported
+    or sample material on their own machine?** The probe *"will an AI agent I build at a workshop connect to
+    the software my business already uses"* returned no page of this site and an engine that named the gap
+    itself: *"none of the pages I found promise that your specific software will be connected during the
+    session. You'll need to check that with the provider."* The field bears it out - Essex covers connecting
+    agents to APIs and databases, CIM names five platforms, BrainStation builds in its own Agent Builder,
+    which the engine called *"a sandbox build, not a link to your systems"*, and one Eventbrite listing is
+    titled "bring your own dev".
+    **Why the loop wrote the question and not the answer.** The buyer-checklist half shipped this cycle,
+    because a checklist question asserts nothing about us. The answer does, and **the published copy is
+    genuinely ambiguous**: *"you build on your own machine"* and *"credentials, keys and other people's
+    personal data do not belong in an AI workflow in any form"* rule out pasting keys into a corporate
+    system, but say nothing about an OAuth sign-in to the attendee's **own** Gmail, Drive or Notion, which
+    needs no key and breaks no published rule. Writing either reading would be inventing a product fact, and
+    guessing wrong in the deterring direction costs a booking.
+    **Where the answer goes once he gives it, and it is three places in one cycle**: a new FAQ on
+    `/bootcamps/oxford-agentic-bootcamp/` (nothing there answers it - the closest are "What do I need to
+    bring?", "What if my task is confidential?" and "Can I install software on my work laptop?"), the
+    Coding programme page, which has the sharper version of the same question because Claude Code and Codex
+    need accounts, and the *"For the record, here are ours"* section of
+    `/guides/questions-to-ask-before-booking-ai-training/`, which now poses the question to every provider
+    and does not yet answer it for our own three days. **One sentence from him closes all three.**
+
+
 ## Shipped
+
+### 26 Nov 2026 (14:00 UTC cycle) - the first probe in weeks whose finding was neither a reach failure nor an ask. The guide that ranks #1 for the buyer checklist gains the one question the field admits nobody answers, inside question 6 rather than as an eleventh
+
+**What shipped, and it is one content file.** Question 6 of
+`/guides/questions-to-ask-before-booking-ai-training/` - *"What do I need to bring or set up beforehand?"* -
+gained two paragraphs: **which tools you will actually be building on, whether you connect your own accounts
+to them or work against sample data, and the locked-down-laptop consequence.** `updatedDate` bumped to
+26 November, and a frontmatter comment records why the shape is what it is. No other file under `src/` or
+`public/` was touched; three record files beside it, `IMPROVEMENTS.md`, `seo-data/geo-citations.md` and
+`outreach/review-list.md`.
+
+**Why inside question 6 and not as an eleventh question, which was the first design and was rejected.**
+`faqsFromQuestionHeadings` takes **everything under a heading** as that heading's `acceptedAnswer` - read in
+`src/lib/faq.ts` before writing a line - so prose added inside a question reaches the node without a new
+heading. Verified on the built output: the page still emits **10** `Question` nodes, and the node for
+question 6 now carries all three paragraphs in its `acceptedAnswer.text`. An eleventh question would have
+cost the `title`, the `seoTitle`, the `description`, the *"You do not need perfect answers to all ten"*
+closing line, the frontmatter comment and **one hand-written cross-link** in
+`what-hands-on-ai-training-actually-means.md:54` that calls it *"ten questions to ask before booking AI
+training"* - six edits and a changed `h1` on the one page this site has ever been cited **first** on, to buy
+a node it gets anyway. The slug never moves either way, so there was no link-rot argument on the other side.
+
+**The evidence, and it is a named gap rather than an inferred one.** Asked *"will an AI agent I build at a
+workshop connect to the software my business already uses UK hands-on training"*, the engine did not answer
+and said so: ***"none of the pages I found promise that your specific software will be connected during the
+session. You'll need to check that with the provider."*** It then produced the question itself -
+*"Which platform is used? Does the course include live connections to tools, or only demo data?"* - and the
+field it read bears it out: Essex covers connecting agents to APIs and databases, CIM names Copilot Agent
+Builder, Copilot Studio, Google Workspace Studio, Claude and Zapier, BrainStation builds in its own Agent
+Builder, which the engine described as ***"a sandbox build, not a link to your systems"***, and one
+Eventbrite listing is titled "bring your own dev". Five providers, five different days, and the difference
+is on none of their booking pages. **Both gates pass**: winnable, because the field holds no institutional
+publisher on the buying decision and the four university pages in it are selling their own courses, and this
+is the one query family the site has been cited **#1** on (13 Sept probe); and converting, because the
+searcher is comparing providers before paying for a day.
+
+**What deliberately did not ship, and it is now backlog 145.** Nothing was claimed about our own three days.
+Whether an Agentic attendee connects a real account on the day or builds against exported material on their
+own machine is a product fact only Drummond holds, and **the published copy is genuinely ambiguous on it**:
+*"you build on your own machine"* and *"credentials, keys and other people's personal data do not belong in
+an AI workflow in any form"* rule out pasting keys into a corporate system but say nothing about an OAuth
+sign-in to the attendee's own tools. Guessing wrong in the deterring direction costs a booking, so the loop
+wrote the question and left the answer. One sentence from him fills it in three places.
+
+**Board state, checked first.** The fresh checkout arrived on a **detached HEAD at `0de8a49`**, which
+`git fetch` confirmed equals `origin/main`, so step 0's trap did not bite but was checked for. Deploy run
+**491** on that SHA completed **success** at 12:27 UTC, ninety minutes before this cycle started, and run
+**490** at 09:20; nothing queued, nothing in progress, tree clean. `build.txt` could not be read:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403), as are `luma.com`,
+`allai.events`, `planomato.com` and `coursecheck.com`. **No live page was read, no Luma fact was checked and
+no event fact was touched** - no date, venue, capacity, price or availability.
+
+**Today's dated job was weighed again and is still tomorrow's.** It is 14:00 on Thursday 26 November and the
+Coding Bootcamp Cohort 1 is in the room. Backlog 103's five hand-authored sentences are all true right now
+and four of the five are booking pointers on a day that is on sale, which is that item's own reason for
+refusing a tense-neutral patch early; it becomes a hard build failure from 00:00 tomorrow. **Not brought
+forward, for the fourth cycle running.**
+
+**Two candidate defects of my own, hunted and both disproved.** Written down so no later cycle pays for the
+same hunt. (a) **The event page looked as though it read the hand-authored `status` field**, which would
+have left the Coding Cohort 1 page in the future tense from tomorrow while `/events/` had already moved it.
+It does not: `src/pages/events/[slug].astro:40` is `effectiveStatus(event)`, and that helper exists for
+exactly this - *"A live event's status is derived, not trusted"* - deriving `past` from `endDate < now`.
+**Grepped all seven consumers and every one of them uses it**, `llms.ts` twice, `schema.ts` twice,
+`EventCard.astro` and the event page. The whole tense machinery self-heals at 17:00 today. (b) **The four
+list pages emit both a `WebPage` and a `CollectionPage` node sharing one `@id`.** That is a merge, not a
+collision: node-map generation folds them into one node typed as both, which is what a hand-written
+`"@type": ["WebPage","CollectionPage"]` would produce. Not a defect. **One measurement beside them, clean**:
+rendered `<title>` and meta description lengths across all 58 indexable pages - **0 titles over 60
+characters and 0 descriptions outside 70-160**.
+
+**Checks.** `npm ci`, then `npm run build` before and after: build, internal links, outbound links, schema
+and **both** date guards green on both. **69 pages built, 3,465 internal links across 69 pages all resolve**,
+schema **69 pages valid** with 17 Event nodes, **22 FAQPage nodes** (unchanged - no node was added or lost),
+128 offset-bearing dates, 1,609 resolving graph references, 59 breadcrumb trails, all titles and descriptions
+unique. Dates: 58 indexable pages carry no passed cohort date written as upcoming; 120 long-month dates, 0
+without a year in range. The 13 outbound warnings are this sandbox refusing every external host, not thirteen
+outages. **IndexNow: this push submits exactly two URLs.** Read off `scripts/indexnow-ping.mjs` rather than
+run - the script's guide branch maps a guide file to `/guides/<slug>/` and `/guides/`, and the three record
+files all match the exempt pattern on line 190, so they add nothing and do not trip the whole-site branch.
+Correct: the guide page moved and the guides index carries its updated date.
+
+**Headless inspection, which is the gate on shipping at all.** Chromium at **375** and **1280px**,
+`deviceScaleFactor` 2, against a local `astro preview` of this build: **16 assertions, 16 passed** at both
+widths - HTTP 200, both new paragraphs present once and visible, placed after heading 6 and before heading 7,
+**zero horizontal overflow**, still exactly **ten** numbered questions, the `h1` still reading "Ten", and the
+byline rendering "UPDATED 26 NOVEMBER 2026". Screenshots read at both widths with the cookie banner
+dismissed: the two paragraphs sit in the rhythm of the surrounding answers. The only failed requests are the
+two `googletagmanager.com` scripts this sandbox's egress proxy refuses.
+
+**Search Console: unavailable from this checkout, tried once.** `seo-data/` holds nothing newer than the
+24 August baseline and there is no CSV in the tree. **Nothing estimated or fabricated.** Backlog 2 remains
+the single highest-value thing Drummond could do for this loop.
+
+**GEO: three probes, zero citations, the forty-first consecutive set.** Full table and reading in
+`seo-data/geo-citations.md`. Probe 1 is above. Probe 2, the credibility-evidence axis, is a reach failure on
+content and an off-page finding on the field: we publish four named, attributed quotes and the engine
+returned none of them, saying *"the search didn't turn up any provider that offers direct contact with past
+attendees"* - and the field was **review platforms**, `coursecheck.com` five times. Probe 3, the
+observability axis, declines on both gates: fifteen of seventeen results are vendor or platform
+documentation, the engine saying so itself, and a reader hunting an audit trail is already running an agent
+rather than booking a day to build a first one. **Do not re-probe the observability axis.**
+
+**Off-page: one new entry, and it is a new category rather than a new host.** `coursecheck.com`, a UK
+review platform for training courses - the first `Organization.sameAs` candidate this log has found that is
+an **identity** page for the company rather than an event listing, which is the exact shape `brand.social`
+has wanted since 31 July. Recorded with its open questions and with the sequencing caution that a profile
+with no reviews is worth less than no profile, and reviews need consent, which is backlog 6.
+`allai.events`, `planomato.com`, `eventbrite.co.uk`, `meetup.com`, `trustpilot.com`, `nobleprog.co.uk`,
+`brainstation.io`, `generalassemb.ly` and `cim.co.uk` all surfaced again and are **all already recorded**, so
+under this list's no-duplicates rule nothing was added for them. Nothing contacted, submitted, claimed,
+signed up for or paid for.
+
+**No new guide.** 32 guides, newest `publishDate` 20 October 2026; the week of 23-29 November has zero of
+the three allowed, and this cycle's change is a refresh of an existing guide, which the standing prompt's
+candidate 3 defines as exactly that.
 
 ### 26 Nov 2026 (09:00 UTC cycle) - no site change. Six sweeps run, five of them clean, and the one that found something found the page every cycle already knows about. The useful output is a census nobody had run: `/testimonials/` is the only page of 58 with no link out of it
 
