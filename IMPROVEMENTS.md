@@ -497,6 +497,16 @@ Status: `todo` · `blocked` (why) · `doing`
     version is the line the empty state already uses, under the quotes; the better one
     probably names the next cohort. One line from him either way. (Found 21 Oct 2026 in
     the 09:00 cycle, alongside the "dated" claim that cycle fixed.)
+    - **Quantified for the first time on 26 Nov 2026 (09:00 cycle), and the number is the whole
+      argument: `/testimonials/` is the only page of the 58 indexable ones with ZERO in-body
+      links.** Method, so it is not re-derived: load every sitemap page in headless Chromium and
+      count `a[href]` inside `main` after excluding `header`, `footer` and the breadcrumb trail.
+      The next lowest are `/bootcamps/agentic-coding-bootcamp/` and two team profiles at one each,
+      and every one of those three has a documented reason (one on-sale cohort; no `sameAs`, which
+      is backlog 11). **Every other page on the site ends somewhere. This one ends in the footer.**
+      Nothing changed, because the remedy is still the call this item has been holding for Drummond
+      since 21 October. **Do not re-run this census**; it moves only when a prose link is added,
+      which the cycle adding one already knows about.
 36. `todo` **(needs Drummond, one fact only he has)** - **is there a second Second Brain
     cohort?** Cohort 1 ran on 21 Oct 2026 and the 20:00 cycle moved every sentence that
     called it upcoming into the past tense. The programme now has no date, so
@@ -3580,6 +3590,117 @@ Status: `todo` · `blocked` (why) · `doing`
     in `dist`.
 
 ## Shipped
+
+### 26 Nov 2026 (09:00 UTC cycle) - no site change. Six sweeps run, five of them clean, and the one that found something found the page every cycle already knows about. The useful output is a census nobody had run: `/testimonials/` is the only page of 58 with no link out of it
+
+**Nothing under `src/` or `public/` was touched, so the built output is byte-identical to `26f31a6` and no
+page moved.** One record file only, `IMPROVEMENTS.md`, which matches `indexnow-ping.mjs`'s exempt pattern on line
+190. Verified rather than assumed: `node scripts/indexnow-ping.mjs --dry-run IMPROVEMENTS.md` answers *"no
+page URLs affected by this push; nothing to submit"*, so **this push submits no URLs**. Worth knowing for the
+next cycle that reaches for it - run with no file arguments the script defaults to the whole site and prints
+58, which says nothing about the commit in hand.
+
+**Board state, and step 0's trap bit this time rather than being merely checked for.** The fresh checkout
+arrived on a **detached HEAD at `26f31a6`** while the local `main` branch sat **12 commits behind** at
+`bcd268f` with a stale remote-tracking ref. `git checkout main` moved the tree backwards while reporting "up
+to date with 'origin/main'", which is exactly the failure mode step 0 describes; `git fetch` then put
+`origin/main` at `26f31a6` and a fast-forward put all three there. Everything below was measured after that.
+Deploy run **45780686356** and CI run **45780686393** both **success** on `26f31a6` at 08:08 UTC, nothing
+queued or in progress. Tree clean. **Six open pull requests, none blocking and none touched** - #1 and #3 are
+the known-stale leftovers on record since September, #4, #5, #6 and #7 are Drummond's branches from 21-22
+November, unchanged since. Their files were listed before anything was read and this cycle changed none of
+them. `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403), as is `luma.com`,
+so **no live page, no `build.txt` and no Luma fact was read, and no event fact was touched** - no date, venue,
+capacity, price or availability. Deploy state came from the Actions API; before-and-after from a local
+`astro preview` of this SHA.
+
+**Today is the day the Coding Bootcamp Cohort 1 runs, and the one dated job still falls due tomorrow.** It is
+09:00 on Thursday 26 November and the day is in progress. Backlog 103's five hand-authored sentences are all
+true right now and four of the five are booking pointers on a day that is on sale, which is that item's own
+reason for refusing a tense-neutral patch. **Not brought forward, for the third cycle running.** The titles
+and meta descriptions of the four pages that carry today's date were read directly off the built output and
+all four are correct today and self-heal tomorrow: `/` says "Next cohort 3 Dec 2026", `/events/` lists
+26 November first, and the Coding programme and event pages both name 26 November 2026.
+
+**The census nobody had run, and it is the one new fact in this cycle.** Every indexable page was loaded in
+headless Chromium and its in-body links counted - `a[href]` inside `main`, with `header`, `footer` and the
+breadcrumb trail excluded, so nav boilerplate cannot flatter the count. **`/testimonials/` is the only page of
+58 with zero.** Four named quotes, then the footer. The next lowest are one link each on
+`/bootcamps/agentic-coding-bootcamp/` and two team profiles, each with a documented reason. This is **backlog
+35**, found 21 October and explicitly Drummond's - adding a call to action to a nav-level page that has none
+is a new call to action, which this loop does not do on its own - so it was measured and filed under that
+item rather than shipped. Two things sharpen it. **The page's own source already contains the link**:
+`src/pages/testimonials/[...slug].astro` renders `See the events →` in its empty state, so the page offers a
+way forward only when it has nothing to show and none when it does. And the 24 November 02:00 cycle fixed the
+other direction of the same edge, giving `/testimonials/` its first contextual inbound link; the outbound half
+was never measured until now. **One line from Drummond closes it.**
+
+**Five sweeps, and all five are clean or land on an item already closed.**
+
+- **Layout and markup over all 58 pages at 375, 768 and 1280px**: **zero** horizontal overflow, zero images
+  with no `alt`, zero form controls with no label, zero links or buttons with no accessible name, zero
+  heading-level skips. 174 page-width combinations.
+- **Tap targets** flag 214 anchors under 24px and all 214 are the guides' `#` heading handles, which
+  `global.css` line 757 makes `pointer-events: none` until revealed. The log says **do not re-file them** and
+  this cycle did not; it is recorded only because the sweep that finds the real things also finds these.
+- **Contrast, computed foreground against nearest opaque background on every text node**: exactly one failing
+  pair across the whole site, `#9A7B23` on `#FFF9EC` at **3.83:1**, which is **backlog 21** unchanged and
+  Drummond's own brand token. No second pair. Re-measured only because it is the cheapest way to prove no new
+  colour has been introduced since 13 October; it should not be re-measured again.
+- **Rendered prose over all 58 pages** for American spellings, repeated words, em dashes, exclamation marks,
+  double spaces and space-before-punctuation: **zero real findings**. The one exclamation mark is inside a
+  verbatim attributed quote; the en dashes are all `09:00–17:00` time ranges, which is correct typography and
+  not the banned em dash; "judgement" is the British spelling and my first pass flagging it was my regex, not
+  the copy. One apparent dropped word on a Second Brain guide was my own script stripping a `<code>` path.
+- **Header behaviour across 14 viewport widths from 320 to 1440px**: the desktop nav takes over at exactly
+  1024px, the hamburger below it, and there is **no overflow and no crowding at any width**, including the
+  768-1024 band this log rarely screenshots.
+
+**Four candidate defects of my own, hunted and all four disproved. Written down so no later cycle pays for the
+same hunt.**
+
+- **The guides' `#` heading anchors looked like a link-purpose failure** announcing "#" on 154 links across 32
+  guides. **They are not**: the script at `src/pages/guides/[...slug].astro:409` already sets
+  `aria-label="Link to section: <heading>"`, so the accessible name is descriptive and only the visible
+  `textContent` is "#". Read the element, not the sweep's `text` column.
+- **The header's "Bootcamps" item points at one programme rather than the `/bootcamps/` hub.** Deliberate and
+  argued in a 15-line comment in `getNav` - the header is the booking path, the footer is the site map, and
+  where that item lands is recorded there as Drummond's funnel decision.
+- **An upcoming event page carries `id="register"` and nothing on the page links to it.** Also deliberate:
+  `bookHref` sends the hero and sticky-bar buttons straight to the Luma checkout and the embed stays for
+  anyone who scrolls, "two routes to the same checkout rather than one route and a detour", with the UTM
+  reasoning in the same comment block.
+- **No "Add to calendar" control on any event page.** Removed on purpose - Luma sends the invite on booking,
+  which is the moment it is worth having. The comment recording that is still in the template.
+
+**Interaction pass, exercised rather than reasoned about**, at 375 and 1280px: the mobile menu opens and sets
+`aria-expanded`, **Escape closes it and returns focus to the toggle**, the FAQ `details` toggles from its
+summary, the sticky mobile booking bar renders on an on-sale event page, and a guide's heading anchor reaches
+`opacity: 1` on hover. Keyboard focus was checked on the anchors that are invisible by default: focusing one
+raises it to full opacity with a 2px outline, so the cycle-7 class of fault (focus landing on invisible
+content) has not come back.
+
+**Checks.** `npm ci`, then `npm run build`: build, internal links, outbound links, schema and **both** date
+guards green. **67 pages built, 3,465 internal links across 69 pages all resolve**, schema **69 pages valid**
+with 17 Event nodes, 22 FAQPage nodes, 128 offset-bearing dates, **1,609 resolving graph references**, 59
+breadcrumb trails, all titles and descriptions unique. Dates: 58 indexable pages carry no passed cohort date
+written as upcoming; 120 long-month dates, 0 without a year in range. Every figure is identical to the 08:00
+baseline, as it must be on a tree with no source change. `npm run check:flags` green on both builds. The 13
+outbound warnings are this sandbox refusing every external host, not thirteen outages. **`npm run check`
+(astro check) needs `@astrojs/check`, which is not a dependency and which CI does not run**; installed
+`--no-save` and run anyway: **87 errors, 0 warnings, 3 hints**, 72 of them the long-standing implicit-`any`
+content-collection parameters and the rest pre-existing casts on three noindex form pages. The tree was clean
+afterwards. **No page changed, so no before-and-after screenshots were needed**; screenshots were taken and
+read at 375 and 1280px for the hunt itself, on `/`, `/events/`, `/testimonials/`, `/bootcamps/`, `/guides/`,
+`/team/`, `/about/` and the Coding Bootcamp event page.
+
+**Search Console: unavailable from this checkout, tried once.** `node scripts/fetch-search-console.mjs` exits
+0 with "no service account key configured", its documented behaviour, and `seo-data/` holds nothing newer than
+the 24 August baseline. **Nothing estimated or fabricated.** Backlog 2 and task 4 in `STATE.md` remain the
+single highest-value thing Drummond could do for this loop. **No new guide** - 32 guides, newest `publishDate`
+20 October 2026; the week of 23-29 November has zero of the three allowed, and nothing in this cycle's
+evidence warrants one. **No GEO probe set this cycle**: the 02:00 and 08:00 cycles ran eight probes between
+them, both concluding on backlog 2b, and a ninth on the same axes would have bought nothing.
 
 ### 26 Nov 2026 (08:00 UTC cycle) - no site change. The one dated job still falls due tomorrow, and the hunt that went looking for a second one found four candidate defects and disproved all four
 
