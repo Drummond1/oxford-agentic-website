@@ -5,6 +5,76 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-26 (08:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE FORTIETH CONSECUTIVE SET - AND TWO OF THE FOUR ARE REACH FAILURES ON QUESTIONS THIS SITE ANSWERS ON EVERY PAGE THAT SELLS A DAY
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), as is `luma.com`. No live page was read, no Luma fact was checked, no event fact was touched,
+deploy state came from the Actions API, and every site fact below comes from committed files or built output.
+
+**Dedupe by backlog 136's method, sixth use.** The question column was extracted and read - **279** distinct
+strings - and candidate axes were scored against it before any search ran. **Dropped as already worked**:
+the approval and sign-off axis (`approve` 3, `block` 3, and there is a guide), bring-and-prepare (`bring` 13,
+`prepar` 8), group and colleague bookings (`group` 9), cohort size (`how many people` 9), measurement and
+ROI, in-house versus external, and sector axes of every shape (dropped wholesale by the 02:00 cycle and not
+revisited). **Also dropped as unanswerable rather than unworked**: step-free access and accreditation both
+score 0, and both are standing decisions to say nothing either way, so a probe on either would buy a finding
+the site is not allowed to act on. Probes 1 to 4 scored 0 or 1 and are genuinely new axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | can I use real company data or confidential client data in a hands-on AI agent workshop UK (data-confidentiality axis - `privacy` 0, `GDPR` 0, `security` 0, `confidential` 1) | **No** | `localgovernmentlawyer.co.uk` x15 - the entire field was one site's duplicated booking pages for a single "AI and information governance" webinar series, returned as numbered variants 4 to 10 plus `mail.` and no-`www` hosts |
+| 2 | who teaches hands-on AI agent training in the UK, practitioners or academics, one day in person (credibility axis - `who teaches` 0, `instructor` 0, `qualified` 0) | **No** | eventbrite.co.uk, brainstation.io x3, cim.co.uk x2, citylit.ac.uk, london.theaisummit.com x2, qa.com x2, jellyfish.com, nobleprog.co.uk x2, amanet.org |
+| 3 | do I need a paid ChatGPT Plus or Claude Pro subscription to attend an AI agent workshop (tool-prerequisite axis - `ChatGPT Plus` 0, `Claude Pro` 0) | **No** | ecornell.cornell.edu x4, luma.com x2, online.cornell.edu, generalassemb.ly x2, meetup.com x2, pragmaticinstitute.com, oreilly.com, aaaa.org x2, maven.com, udemy.com |
+| 4 | is it worth travelling to Oxford for a one-day AI course instead of London (travel-and-location axis - `accommodat` 0, `park` 1, `station` 1) | **No** | lifelong-learning.ox.ac.uk x7, conted.ox.ac.uk x3, sbs.ox.ac.uk x2, eventbrite.com, meetup.com/oxford-ai-training, theknowledgeacademy.com, nobleprog.co.uk |
+
+**Reading, probe by probe.**
+
+- **Probes 2 and 3 are reach failures, and they are the two worth recording.** Both asked a question this
+  site answers in published copy, in a `Question` node, on every page that sells a day - and neither
+  returned a page of it.
+  - **Probe 2 returned a field-wide admission that nobody names their teachers.** The engine said
+    *"most listings don't name their instructors"* and then said it four more times, once per provider:
+    *"The listing doesn't name the instructor"* (Eventbrite), *"says it is led by experts, but doesn't name
+    them"* (BrainStation), *"the listing doesn't name the trainers"* (The AI Summit), *"doesn't name the
+    instructor"* (City Lit). It also closed with *"No university or academic-led one-day hands-on agent
+    course appeared"*. **This site names them.** Audited this cycle across all ten programme and event
+    files: a "Who runs it?" answer is published on **all three** programme pages and on **all four** event
+    pages for days that are on sale or upcoming, naming each facilitator with their role. The only three
+    files without it are the three **passed** cohorts, where it would sell nothing. It is a `Question` node
+    in `FAQPage` JSON-LD on each of those seven pages, and `llms-full.txt` carries it seven times. So the
+    field's stated gap is already filled on this domain and the engine did not find it.
+  - **Probe 3 is the same shape and sharper, because the field treats this as a headline term.** Providers
+    state the prerequisite outright - *"Subscription not included with registration fee"*, *"requires
+    working access to a Claude Pro, Team, or Enterprise account"*, Maven listing Claude Pro or Max as a
+    prerequisite - and the engine's own closing advice was *"Check the specific event page's prerequisites"*.
+    The Agentic line's programme page and all three of its on-sale event pages carry
+    *"Do I need a paid AI subscription?"*, and `llms-full.txt` carries the answer twice. Not cited.
+  - **Neither is a content gap, so neither produces a change.** There is no page to write and no field to
+    fill: the answer exists, in copy, in schema and in the answer-engine surface. This is backlog 2b's
+    argument arriving twice more, and on home ground both times rather than on a sector phrasing.
+- **Probe 3 is also fresh, dated evidence for backlog 25, which is a Drummond ask.** That item has been open
+  since the Coding Bootcamp launched: the Agentic line answers the paid-plan question on four pages and the
+  **Coding line answers it nowhere**, and the honest answer is probably different, because Claude Code and
+  Cowork sit behind paid tiers. This probe shows the field naming the required tier as a headline
+  prerequisite, and an engine telling buyers to go and check the event page. On the Coding pages there is
+  nothing to check. **One sentence from Drummond closes it.**
+- **Probe 1 declines on a broken field rather than an empty one, and that distinction matters.** Fifteen
+  results, one host, one webinar series, returned as numbered duplicates. An engine admitting it found
+  nothing is usually this log's winnability signal; a field made of one site's duplicate pages is not that
+  signal, it is a field the instrument could not read. It declines on converting as well: the honest answer
+  runs through UK GDPR lawful basis, processor contracts and client engagement terms, which is legal
+  guidance this repo cannot evidence and has no business publishing next to a booking form. **No action.**
+- **Probe 4 declines on winnability in the plainest form available, and the standing decision bans the fix
+  anyway.** Twelve of seventeen results were `ox.ac.uk`: `lifelong-learning` seven times, `conted` three,
+  `sbs` twice. The University owns the Oxford-course field, and the one thing that would compete on a
+  travel-and-location query is a location page, which is banned outright and permanently. The reading is
+  recorded only so a later cycle does not re-probe it: **do not re-open the travel or location axis.**
+
+**No new guide, and none is warranted on this evidence.** Two probes found the answer already published and
+unreached, one found a broken field, one found a field owned by the University.
+
 ## 2026-11-26 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-NINTH CONSECUTIVE SET - AND THE SHARPEST FIELD-SHAPE READING YET: TWO OF THE FOUR AXES ARE OWNED BY INSTITUTIONS THE WINNABILITY GATE EXISTS TO REFUSE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

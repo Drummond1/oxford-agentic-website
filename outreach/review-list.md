@@ -11,6 +11,55 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **Two probes asked a question this site answers on seven pages and returned nobody's answer, including
+  ours - and one of the two fields says in so many words that nobody answers it.** Found 26 Nov 2026
+  (08:00 UTC cycle). **Nothing contacted, submitted, claimed or paid for, and none of the hosts below
+  resolves from this sandbox.**
+  - **The reading, and it is a reach reading rather than a content one.** Asked who teaches hands-on AI
+    agent training in the UK, the engine volunteered *"most listings don't name their instructors"* and
+    then repeated it once per provider - Eventbrite, BrainStation, The AI Summit and City Lit all cited
+    without a named teacher - and closed with *"No university or academic-led one-day hands-on agent
+    course appeared"*. Asked whether a paid ChatGPT Plus or Claude Pro plan is needed to attend, the field
+    treated the tier as a headline prerequisite and the engine's closing advice was *"Check the specific
+    event page's prerequisites"*. **Both questions are answered on this site**, in published copy, as a
+    `Question` node in `FAQPage` JSON-LD, on every page that sells a day, and in `llms-full.txt`. Neither
+    probe returned a page of it.
+  - **Why it belongs on this list rather than on the backlog.** There is nothing to write and no field to
+    fill. The audit was run this cycle across all ten programme and event files and the coverage is
+    complete on every page where it would sell anything. This is the standing ask arriving on home ground
+    for the sixth time in three days.
+  - **One engine, US-resident, one day.** Not a ranking. Recorded for what was asked, not for where
+    anything placed.
+  - Needs: the standing ask, which is backlog 2b. One external link, a LinkedIn Company Page or a real
+    Luma calendar URL in `brand.social`, so `Organization.sameAs` stops being empty.
+
+- **`localgovernmentlawyer.co.uk` - a UK host that does take event bookings, and the one new listing-shaped
+  host in this set. Recorded with its limit rather than as a route.** Found 26 Nov 2026 (08:00 UTC cycle),
+  from the data-confidentiality probe. **Nothing contacted, submitted, claimed or paid for, and the host
+  does not resolve from this sandbox.**
+  - Where it came from: it was the **entire** field for that probe - fifteen results, all this one site,
+    all duplicated booking pages for a single "AI and information governance" webinar series, returned as
+    numbered variants 4 to 10 plus a `mail.` subdomain and a no-`www` host.
+  - Why it is recorded at all: unlike the training providers in the same set, this is a publisher running
+    its own paid events with a booking component, which is the shape of a host that can carry someone
+    else's listing.
+  - **Why it is thin, said plainly.** Its audience is local-government and information-law practitioners,
+    which is a sector this business has not targeted and which the standing decision on sector content
+    does not favour. Its events are webinars rather than in-person days. And a site whose entire first
+    page is one event duplicated fifteen ways is not obviously a healthy referral surface. By this list's
+    own standard it sits with `whitehat-seo.co.uk` rather than with Eventbrite.
+  - Needs: nothing from the loop, and probably nothing from Drummond. It is here so a later cycle does not
+    spend a probe rediscovering it.
+
+- **Three hosts new to this log and all three are competitors rather than routes, recorded so the next
+  cycle does not re-derive them.** Found 26 Nov 2026 (08:00 UTC cycle), probes 2 and 3.
+  - `cim.co.uk` - the Chartered Institute of Marketing, running its own "AI Agents and Automation"
+    course. A chartered institute selling the adjacent thing. Not a listing host.
+  - `amanet.org` - the American Management Association, "Build AI Agents That Deliver Results". US body,
+    US audience.
+  - `pragmaticinstitute.com` - cited for a tools-and-prerequisites FAQ page. A provider's own FAQ, which
+    is the same category as the agency blogs this list has already declined.
+  - Needs: nothing. No contact, no submission, no account.
 - **The DfE's "What works for AI upskilling in the UK" programme - the most authoritative host any probe has
   returned, and the honest answer is that it is research rather than a route.** Found 26 Nov 2026 (02:00 UTC
   cycle), from the cascade / train-the-trainer probe. **Nothing contacted, submitted, claimed or paid for.

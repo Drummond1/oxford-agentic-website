@@ -332,6 +332,11 @@ Status: `todo` · `blocked` (why) · `doing`
     **What would settle it in one line from him:** whether the guides' bylines should link his
     profile. If yes, the loop ships the byline link. If no, the loop leaves all seven at one
     link and stops re-measuring this.
+    **There are eight profiles now, not seven** (Adam Martin joined on 1 October 2026), and all
+    eight still score 1, re-measured on the built output on 26 November with schema JSON stripped
+    so only body links counted. The dated 16 October figure above is left as it was measured. The
+    number is the only thing that changed; the ask and the three declined placements are unchanged,
+    and this item still means what its last line says - **stop re-measuring this**.
 
 25. `todo` **(needs Drummond, one fact only he has)** - **does the Agentic Coding Bootcamp
     require a paid Claude or ChatGPT plan, and which?** The Agentic Bootcamp answers this on
@@ -3576,6 +3581,117 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 26 Nov 2026 (08:00 UTC cycle) - no site change. The one dated job still falls due tomorrow, and the hunt that went looking for a second one found four candidate defects and disproved all four
+
+**Nothing under `src/` or `public/` was touched, so the built output is byte-identical to `8e52e4d` and no
+page moved.** Proven rather than asserted: `dist` hashed before and after, **0 of 209** built files differ.
+Three record files only - `IMPROVEMENTS.md`, `seo-data/geo-citations.md`, `outreach/review-list.md` - all
+three matching `indexnow-ping.mjs`'s exempt pattern at line 190, so **this push submits no URLs**.
+
+**Deploy state checked first.** The checkout arrived on a **detached HEAD at `8e52e4d`**, which `git fetch`
+confirmed equals `origin/main`, so step 0's trap did not bite this time but was checked for. Actions run
+**488** for that SHA completed **success** at 02:09:05 UTC, six hours ago, so no deploy was in progress and
+nothing was queued. `build.txt` could not be read: `oxfordagentic.com` is refused at CONNECT by this
+sandbox's egress proxy (HTTP 403), as is `luma.com`. No live page was read, no Luma fact was checked, and no
+event fact was touched.
+
+**Why nothing shipped. The dated half is unchanged from 02:00 and the rest is this cycle's own work.**
+
+- **Today is still the day the Coding Bootcamp Cohort 1 runs, so backlog 103 is still a 27 November job.**
+  It is 08:00 on Thursday 26 November and the day is in progress. All five hand-authored sentences are true
+  right now, and four of the five are **booking pointers** on a day that is on sale, which is the reason
+  that item gives for refusing a tense-neutral patch: silencing the guard early would remove the thing that
+  forces the real rewrite. It becomes a hard build failure from 00:00 tomorrow. **Not brought forward.**
+- **The census was re-run rather than trusted, as backlog 125 instructs, and it holds for the third
+  consecutive measurement.** `check-dates.mjs --now=2026-11-27` returns **7** windows, the same 7 as on
+  22 and 26 November, same split: **2 derived** and self-healing, **5 hand-authored**. Tomorrow's sweep is
+  correctly armed.
+
+**Four candidate defects of my own, hunted and all four disproved. This is the substance of the cycle, and
+each one is written down so no later cycle pays for the same hunt.**
+
+- **`/privacy/` is the one sitemap URL of 58 with no `lastmod` at all.** Measured, then traced: it is bare
+  **on a reason rather than for want of a mechanism**, written out in `astro.config.mjs`. The page prints
+  its own visible "Last updated" line reading 29 September while its copy last changed on 9 November, and
+  publishing a truthful November `lastmod` beside a visible September date would set two signals against
+  each other on a legal notice. **Backlog 139, Drummond's call. Not a defect.**
+- **`Course.instructor` is absent on all three programme pages.** It looked like a real gap, because the
+  18 November extraction of `getFacilitators` was done expressly so the `Course` nodes could name people.
+  **It is not absent, I looked in the wrong place**: Google documents `instructor` on each
+  `CourseInstance`, not on the `Course`, and that is exactly where it is. Verified on the built output -
+  Cohorts 4 and 5 and Coding Cohort 1 each carry their full named facilitator list on the instance, on the
+  programme pages and on `/` alike. Second Brain correctly carries no instances, having no scheduled run.
+- **Every team profile has exactly one inbound internal link, and all eight are reachable only from
+  `/team/`.** Re-measured on the built output with schema JSON stripped, so these are body links. This is
+  **backlog 24**, which weighed three placements, declined all three, and ends *"If no, the loop leaves all
+  seven at one link and stops re-measuring this."* I re-measured it before reading that line, which is the
+  cost of the hunt and is recorded as such. **One correction to that item: it says seven profiles and there
+  are now eight** - Adam Martin joined on 1 October. The ask is unchanged and remains one line from
+  Drummond: should a guide byline link his profile.
+- **Past event pages were checked for a dead end and have none.** All four passed cohorts link the three
+  on-sale days, and the no-successor case - Second Brain, which has no scheduled run - falls through to its
+  register-interest route by design rather than rendering an empty band.
+
+**Two clean sweeps beside those.** (a) **Canonical, robots, `h1`, title, description and `og:image` across
+all 69 built pages**: 69 of 69 correct. The two apparent failures are the `/home-original/` and
+`/team/josh-lawman/` redirect stubs, which are tombstones and carry no content by design, and one apparent
+homepage `noindex` was **my own path logic folding `404.html` onto `/`** - the homepage carries no `noindex`,
+checked directly. (b) **The "Who runs it?" credibility answer**, audited across all ten programme and event
+files because probe 2 made it the question of the day: published on **all three** programme pages and on
+**all four** on-sale or upcoming event pages, absent only on the three **passed** cohorts where it would
+sell nothing. Complete.
+
+**Checks.** `npm ci`, then `npm run build`: build, internal links, outbound links, schema and **both** date
+guards green. Schema: **69 pages valid**, 17 Event nodes, 22 FAQPage nodes, 1609 resolving internal graph
+references, 59 breadcrumb trails, all titles and descriptions unique. Links: 3465 internal links across 69
+pages all resolve. Dates: 58 indexable pages carry no passed cohort date written as upcoming, and 120
+long-month dates all carry a year or have one within 400 characters. The outbound checker reports **0 of 13**
+third-party links reachable, which is this sandbox's egress policy refusing every external host rather than
+thirteen simultaneous outages, and it only warns. **No headless-browser inspection was run and none was
+needed**: no page changed, which the `dist` hash proves. Had a page changed, the standing rule applies - no
+browser, no ship.
+
+**Search Console: unavailable from cloud, tried once.** `node scripts/fetch-search-console.mjs` exits 0 with
+*"no service account key configured"*, its documented behaviour. No CSV anywhere in the tree and no export in
+`seo-data/` newer than the 24 August baseline. **Nothing estimated or fabricated.** Backlog 2 remains the
+loop's biggest self-inflicted blocker.
+
+**GEO: four probes, zero citations, the fortieth consecutive set - and two of the four are reach failures on
+questions this site answers on seven pages each.** Dedupe by backlog 136's method, sixth use: 279 distinct
+question strings extracted and read, axes scored before any search ran. Two axes were dropped as
+**unanswerable rather than unworked**, which is a distinction this log has not drawn before: step-free access
+and accreditation both score zero and both are standing decisions to say nothing either way, so a probe on
+either would buy a finding the site is not allowed to act on. The four taken - data confidentiality, who
+teaches it, paid-plan prerequisite, travel to Oxford - all scored 0 or 1. **Probe 2 returned a field-wide
+admission that nobody names their teachers**, five times over, and we name ours on seven pages, in a
+`Question` node, and in `llms-full.txt` seven times. **Probe 3 is the same shape**: the field makes the
+required tier a headline prerequisite, the engine's own advice was to go and check the event page, and our
+four Agentic pages answer it. Neither returned a page of this site. Probe 1 declines on a **broken** field
+rather than an empty one - fifteen results, one host, one webinar series, duplicated - and on converting, the
+honest answer being UK GDPR and engagement-terms guidance this repo cannot evidence. Probe 4 declines on
+winnability outright: twelve of seventeen results were `ox.ac.uk`, and the only thing that would compete is a
+location page, banned permanently. **Do not re-open the travel or location axis.** No new guide, and none is
+warranted on this evidence.
+
+**One finding that is a Drummond ask rather than a decline, and it is backlog 25 with fresh dated evidence.**
+Probe 3's field states the required tier outright - *"Subscription not included with registration fee"*,
+*"requires working access to a Claude Pro, Team, or Enterprise account"* - and closes by telling buyers to
+check the event page. The Agentic line answers the paid-plan question on its programme page and all three
+on-sale event pages. **The Coding line answers it nowhere**, and the honest answer is probably not the same
+one, because Claude Code and Cowork sit behind paid tiers. **One sentence from him closes it.**
+
+**Off-page.** The reach reading above recorded with its evidence, plus one new listing-shaped host and three
+competitors: `localgovernmentlawyer.co.uk` does take event bookings, which is more than the training
+providers in the same set, but its audience is information-law practitioners, its events are webinars, and
+its entire first page was one event duplicated fifteen ways - recorded with that limit rather than as a
+route. `cim.co.uk`, `amanet.org` and `pragmaticinstitute.com` are competitors or a provider's own FAQ,
+recorded only so a later cycle does not re-derive them. `meetup.com/oxford-ai-training` surfaced again in
+probe 4 and is **already on the list** since 20 November, so it was not duplicated. **Nothing contacted,
+submitted, claimed, signed up for or paid for.** Eventbrite and the LinkedIn Company Page still need
+Drummond's yes; the copy for both has been drafted in `outreach/submission-drafts.md` since July.
+
+**No new guide this week** - 32 guides, newest `publishDate` 20 October 2026. Week of 23-29 November:
+**zero** of the three allowed.
 ### 26 Nov 2026 (02:00 UTC cycle) - no site change, on the deliberate reason that today's one dated job must not be brought forward: the five sentences that go stale fall due tomorrow and are correct today
 
 **Nothing under `src/` or `public/` was touched, so the built output is byte-identical to `8e91423` and no
