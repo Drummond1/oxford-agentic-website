@@ -11,6 +11,55 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **The DfE's "What works for AI upskilling in the UK" programme - the most authoritative host any probe has
+  returned, and the honest answer is that it is research rather than a route.** Found 26 Nov 2026 (02:00 UTC
+  cycle), from the cascade / train-the-trainer probe. **Nothing contacted, submitted, claimed or paid for.
+  The host does not resolve from this sandbox, so nothing below was checked beyond what the search returned.**
+  - Where it came from: asked whether one person sent to a hands-on AI workshop can train the rest of the team,
+    the engine returned **eight** URLs from this one programme - an employer guide, an insight briefing, a
+    research-evidence-and-methodology paper and a **supporting case studies** publication, each as both a
+    gov.uk page and a PDF on `assets.publishing.service.gov.uk`. It dominated the field outright.
+  - Why it is recorded: it is the single highest-authority host in a query a hands-on provider should be near,
+    and one of its four publications is explicitly a collection of employer AI-upskilling case studies. That is
+    the only citable-looking surface in it.
+  - **Why it is not a route, said plainly.** The case studies are about **employers** upskilling their own
+    staff, not about the providers they bought from, so the natural subject of one is a Cohort 1 to 4 attendee's
+    organisation and not Oxford Agentic. Whether the programme is even open to new submissions is unknown and
+    cannot be checked from here. A government research programme is also not a directory: there is no listing
+    to fill in. It is `skillsengland.education.gov.uk`'s neighbour in that respect, and this list already
+    declined that one as "a register, not a mention route".
+  - Needs: nothing from the loop. If Drummond ever wants it, the only honest version is an **attendee's**
+    organisation offering its own case study, which is an alumni ask and belongs with the people who run that
+    relationship, not with an SEO cycle.
+
+- **`whitehat-seo.co.uk` - one new host, thin, and recorded only so a later cycle does not spend a probe
+  rediscovering it.** Found 26 Nov 2026 (02:00 UTC cycle), same probe. **Nothing contacted, submitted, claimed
+  or paid for, and the host does not resolve from this sandbox.**
+  - Where it came from: an "AI training for teams" blog post, cited once in the cascade field.
+  - **Why it is thin.** One appearance, and it is an agency writing about team AI training - adjacent to being
+    a competitor rather than a publisher. By this list's own standard (`trainingzone.co.uk` and
+    `personneltoday.com` each appeared in three separate probes before being written up) this is the same
+    weight as `brc.org.uk` and `geovation.uk`: one appearance, recorded, not pitched.
+  - Needs: nothing.
+
+- **Eventbrite ranked a competitor's near-identical day FIRST in a query about this brand's own buyer, and
+  this is the fourth cycle in two days to find it.** Found 26 Nov 2026 (02:00 UTC cycle), probe 3. Not a new
+  host - Eventbrite is the top item in `off-page-listings.md` and has been since July - but the evidence is
+  new and it is the strongest form yet, so it is recorded here rather than only in the GEO log.
+  - What happened: asked *"is a hands-on AI agent bootcamp worth it for my career as a manager UK"*, the
+    engine's first result was **`eventbrite.co.uk`**, carrying a competitor's one-day London "Agentic AI
+    Bootcamp Day: Build an AI Agent with Claude". A `luma.com` listing also placed. **No page of
+    oxfordagentic.com appeared.**
+  - Why it matters more than the previous three findings: the 25 Nov cycles found this on **sector** phrasings
+    (retail, property, engineering) and on an **evening/weekend** phrasing, which are all fields this site has
+    no content for. This probe was a plain buyer question about whether a hands-on agent bootcamp is worth it -
+    the thing this site is **about** - and the listing still won. The run of evidence is now: 25 Nov 08:00
+    (retail), 25 Nov 14:00 (property and engineering), 25 Nov 20:00 (evening/weekend, which cited our own
+    `luma.com/oxfordagentic2` while the site was absent), and this one.
+  - **Nothing was contacted, submitted, claimed or paid for, and no account was made.** The Eventbrite listing
+    and the LinkedIn Company Page both still need Drummond's go-ahead. Copy for both is already drafted in
+    `outreach/submission-drafts.md`, so the only missing input is his yes.
+
 - **`geovation.uk` - Geovation, one new host, recorded with its limits and thinner than the last one.**
   Found 25 Nov 2026 (20:00 UTC cycle), from the property-and-construction probe. **Nothing contacted,
   submitted, claimed or paid for. The host does not resolve from this sandbox, so nothing below was checked

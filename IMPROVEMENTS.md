@@ -3576,6 +3576,117 @@ Status: `todo` · `blocked` (why) · `doing`
 
 ## Shipped
 
+### 26 Nov 2026 (02:00 UTC cycle) - no site change, on the deliberate reason that today's one dated job must not be brought forward: the five sentences that go stale fall due tomorrow and are correct today
+
+**Nothing under `src/` or `public/` was touched, so the built output is byte-identical to `8e91423` and no
+page moved.** Proven rather than asserted: `dist` hashed before and after, **0 of 209** built files differ
+(`21ed555e2080489cf1a8f2d055402753a85597d1ad6d55cd0e41faab229e49be` both sides). Three record files only -
+`IMPROVEMENTS.md`, `seo-data/geo-citations.md`, `outreach/review-list.md` - all three matching
+`indexnow-ping.mjs`'s exempt pattern, so **this push submits nothing**.
+
+**Deploy state checked first, and step 0 of this file's own order earned its place again.** The fresh
+checkout arrived on a **detached HEAD at `8e91423`**, the true tip, while the local `main` branch sat
+**10 commits behind** at `bcd268f` with a stale remote-tracking ref. `git checkout main` would have moved
+the tree backwards while reporting "up to date". `git fetch` then confirmed `origin/main` is `8e91423`,
+equal to HEAD, and Actions run **487** for that SHA completed **success** at 20:10:55 UTC on 25 November,
+so no deploy was in progress and nothing was queued. `build.txt` could not be read: `oxfordagentic.com` is
+refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve through the WebFetch
+route either, as is `luma.com`. No live page was read, no Luma fact was checked, and no event fact was
+touched.
+
+**Why nothing shipped, which is the substance of this entry.**
+
+- **The one job that falls due on a date falls due tomorrow, not today, and bringing it forward would
+  publish an error to prevent one.** Today, Thursday 26 November 2026, is the day the **Coding Bootcamp
+  Cohort 1 runs**. Backlog 103 is the item for it and it is explicit: *"Do not bring it forward: the
+  sentence is correct today and it is the on-sale cohort's own venue answer ... so rewriting it now would
+  publish an error to prevent one."* At 02:00 the day has not happened. Every one of those sentences is true.
+- **The census was re-run rather than trusted, which is what backlog 125 instructs, and it confirms exactly.**
+  `check-dates.mjs --now=2026-11-27` against this cycle's build returns **7** stale windows, the same 7 the
+  22 November cycle measured, with the same split: **2 derived** and self-healing (the "Upcoming runs" card on
+  `/bootcamps/agentic-coding-bootcamp/`, the "Upcoming" band on `/events/`) and **5 hand-authored** that will
+  not heal - `src/content/events/oxford-agentic-coding-bootcamp-cohort-1.md` (the Key facts summary, which is
+  also where the outcome goes and so can only be done after the day),
+  `src/content/programmes/agentic-coding-bootcamp.md` ("Where in Oxford is it held?"), and the closing
+  pointers in `claude-cowork-claude-code-or-codex`, `why-the-code-an-agent-wrote-is-not-live` and
+  `when-ai-executive-cohorts-run`. **Nothing has drifted since 22 November**, so tomorrow's sweep is correctly
+  armed and the next cycle can work from that list. It becomes a hard build failure from 00:00 tomorrow.
+- **The loop-actionable backlog is genuinely exhausted, not skimmed.** Every remaining `todo` was read.
+  **138** (a testimonial change submits all 58 URLs) carries its own instruction to wait - *"worth doing in the
+  same cycle as a fifth testimonial, if one ever clears"* - and it can only ever fire on a quote change, which
+  backlog 6 has blocked on consent since August. **144** (a host `name` change moves 69 files) says
+  *"low urgency, and arguably never"* and needs the script to read git state. **125** falls due 4 December.
+  **106/24**, **107**, **114**, **116**, **117**, **118**, **119**, **120**, **126**, **134**, **139** and
+  **143** all need Drummond. **121**, **122**, **124**, **128**, **129**, **130**, **131**, **132**, **133**,
+  **135** and **137** are each recorded as checked-and-deliberate or declined-on-merits, with explicit
+  instructions not to re-derive them.
+- **Four fresh sweeps of my own, all clean, and they are why this is a decline rather than a shrug.** (a)
+  **Event JSON-LD across all seven event pages**: the three past Agentic cohorts and the past Second Brain
+  cohort correctly carry **no** `availability`, while the three on-sale days carry `InStock` - the derivation
+  is right and self-heals, so Coding Cohort 1 drops its `InStock` on the first build after today. All seven
+  carry `EventScheduled` and `OfflineEventAttendanceMode`. (b) **`llms.txt`**, the answer-engine knowledge
+  surface: fully derived and current - the three on-sale days under "Next events" with hours, the four past
+  ones rendered "Took place on ...", so it self-heals tomorrow with no hand edit. (c) **Cohorts 4 and 5**, the
+  two on-sale Agentic pages and the highest-value pages on the site, authored 15 November by copying the
+  Cohort 3 file: checked for copy-paste residue and there is none - no stray "3 December" or "Worcester" in
+  the Cohort 5 file, and its `assurances` line was correctly localised to 28 January. (d) Their **identical
+  `summary` string** was weighed as a duplicate-description defect and **is not one**: the rendered meta
+  descriptions differ because each is prefixed with its own date and venue ("Thursday, 3 December 2026 at
+  Worcester College, Oxford." against "Thursday, 28 January 2027 at Jesus College, Oxford."), the schema
+  checker's uniqueness assertion covers it, and the shared summary is the published pattern for one programme
+  with one promise.
+
+**Checks.** `npm ci`, then `npm run build`: build, internal links, outbound links, schema and **both** date
+guards green. Schema: **69 pages valid**, 17 Event nodes, 22 FAQPage nodes, 1609 resolving internal graph
+references, 59 breadcrumb trails, all titles and descriptions unique. Dates: 58 indexable pages carry no
+passed cohort date written as upcoming, and 120 long-month dates all carry a year or have one within 400
+characters. The outbound checker reports **0 of 13** third-party links reachable, which is this sandbox's
+egress policy refusing every external host rather than thirteen simultaneous outages, and it only warns.
+**No headless-browser inspection was run and none was needed**: no page changed, which the `dist` hash
+proves. Had a page changed, the standing rule applies - no browser, no ship.
+
+**Search Console: unavailable from cloud, tried once.** `node scripts/fetch-search-console.mjs` exits 0 with
+*"no service account key configured"*, which is its documented behaviour. No CSV anywhere in the tree, no
+export in `seo-data/` newer than the 24 August baseline, and no credentials. **Nothing estimated or
+fabricated.** Backlog 2 remains the loop's biggest self-inflicted blocker.
+
+**GEO: four probes, zero citations, the thirty-ninth consecutive set.** Dedupe by backlog 136's method, fifth
+use - the question column extracted and read, 275 distinct strings, and candidate axes scored before any
+search ran. Sector axes were dropped wholesale this time: `insurance`, `law firm`, `accountancy`,
+`recruitment` and `HR and people teams` are each already in the list by name, and the last four cycles took
+retail, manufacturing, property/construction and engineering/energy - so a fifth sector probe would have
+bought nothing. Four axes scoring zero were taken: cascade/train-the-trainer (a **reach probe** - this site
+publishes `/guides/who-should-take-the-seat/` on exactly that delegation question), the **L&D buyer's** own
+words, **personal career value**, and **headcount replacement**. All four decline. Two of them decline on
+winnability in the starkest form this log holds: the cascade field is **eight gov.uk URLs** from the DfE's
+"What works for AI upskilling" programme, and the L&D field is **eight university business schools** plus
+vendor catalogues. The headcount field is **nine Salesforce URLs** and declines on all three gates at once,
+the third being that answering it honestly would mean repeating vendor forecasts this repo cannot evidence.
+**No new guide, and none is warranted on this evidence.**
+
+**The one finding in the set that is not a decline, and it is backlog 2b for the fourth time in two days.**
+Probe 3 asked a plain buyer question about the thing this site is *about* - whether a hands-on agent bootcamp
+is worth it for a manager's career - and **`eventbrite.co.uk` ranked first**, carrying a competitor's one-day
+London "Build an AI Agent with Claude" day, with a `luma.com` listing also placing and **no page of this site
+anywhere**. That matters more than the three findings before it because those were on sector and
+evening/weekend phrasings, fields this site has no content for; this one was on home ground. The run is now
+25 Nov 08:00 (retail), 25 Nov 14:00 (property, engineering), 25 Nov 20:00 (evening/weekend, which cited our
+own `luma.com/oxfordagentic2` while the site was absent) and this. **The on-page instrument has returned the
+same answer for weeks and the off-page one has never been tried.**
+
+**Off-page.** Two new hosts recorded with their limits, plus the Eventbrite evidence above: the **DfE "What
+works for AI upskilling in the UK" programme**, the highest-authority host any probe has returned - and
+recorded as **research rather than a route**, because its case studies are about employers upskilling their
+own staff rather than the providers they bought from, there is no listing to fill in, and the only honest
+version of it is an attendee's organisation offering its own case study, which is an alumni ask; and
+`whitehat-seo.co.uk`, one appearance, an agency writing about team AI training, thin and recorded only so a
+later cycle does not spend a probe rediscovering it. **Nothing contacted, submitted, claimed, signed up for
+or paid for.** Eventbrite and the LinkedIn Company Page still need Drummond's yes; the copy for both has been
+drafted in `outreach/submission-drafts.md` since July, so his yes is the only missing input.
+
+**No new guide this week** - 32 guides, newest `publishDate` 20 October 2026. Week of 23-29 November:
+**zero** of the three allowed.
+
 ### 25 Nov 2026 (20:00 UTC cycle) - the one commit that moves `/about/`'s sitemap date was the one commit the IndexNow ping said nothing about. Three lines, 0 of 209 built files moved, and the measurement found the branch's other URL had not moved either
 
 **What was wrong.** `scripts/indexnow-ping.mjs` mapped `src/content/team/x.md` to `/team/<slug>/` and

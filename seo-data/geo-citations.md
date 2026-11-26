@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-26 (02:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS, THE THIRTY-NINTH CONSECUTIVE SET - AND THE SHARPEST FIELD-SHAPE READING YET: TWO OF THE FOUR AXES ARE OWNED BY INSTITUTIONS THE WINNABILITY GATE EXISTS TO REFUSE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403) and does not resolve through the WebFetch route either, as is `luma.com`. No live page was read,
+no Luma fact was checked, no event fact was touched, deploy state came from the Actions API, and every site
+fact below comes from committed files or from the built output.
+
+**Dedupe by backlog 136's method, fifth use.** The question column was extracted and read - 275 distinct
+strings by that item's own regex, which is the number it predicted and not the 759 the last cycle's
+extraction returned, so the caveat there holds: read the list, do not quote either total. Candidate axes
+were scored against it before any search ran. **Dropped as already worked**: sector axes of every shape
+(`insurance`, `law firm`, `accountancy`, `recruitment`, `HR and people teams` are each in the list by name,
+and retail, manufacturing, property/construction and engineering/energy were the last four cycles'),
+in-house versus external (**7** distinct phrasings), format adequacy and "is one day enough" (**8**),
+measurement, stickiness and ROI (**9**), solo and sole trader (**4**), follow-up and alumni support (**5**),
+cross-line disambiguation (**8**), agent-versus-automation definitions (**4**), workforce resistance,
+model drift, upkeep and ownership-after-the-builder-leaves (1 each). Probes 1 to 4 scored **zero** on the
+question list and are genuinely new axes.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | if we send one person to a hands-on AI workshop can they train the rest of the team when they get back UK (cascade / train-the-trainer axis, never probed - **reach probe: this site has a guide on exactly this delegation question**) | **No** | gov.uk x4 and assets.publishing.service.gov.uk x4 (the DfE "What works for AI upskilling in the UK" programme), maven.com x2, tickettailor.com (LOTI), whitehat-seo.co.uk, ivee.jobs, lilachbullock.com x2, oecd.org, library.maastrichtuniversity.nl, agenticai-associates.pages.dev |
+| 2 | L&D manager looking for hands-on agentic AI upskilling for managers one day in person UK (the professional training buyer's own words - the in-house axis has only ever been probed from the owner's side, never from L&D's) | **No** | jbs.cam.ac.uk, imperial.ac.uk, business-school.ed.ac.uk, liverpool.ac.uk, ucl.ac.uk x2, salford.ac.uk, business-school.exeter.ac.uk, brainstation.io, pluralsight.com, acuitytraining.co.uk, citylit.ac.uk, nobleprog.co.uk, pointacademy x2, globalknowledge.com, informaconnect.com, cim.co.uk, techuk.org |
+| 3 | is a hands-on AI agent bootcamp worth it for my career as a manager UK (personal-value axis - every prior worth-it probe asked on the company's behalf, never the individual's) | **No** - but **eventbrite.co.uk ranked first with a competitor's one-day London Claude agent build day**, and a `luma.com` listing also placed | eventbrite.co.uk x2, luma.com, qa.com x2, jbs.cam.ac.uk, stan.store x2, bathspa.ac.uk, maven.com, generalassemb.ly, jellyfish.com, nobleprog.co.uk, readynez.com, mindstudio.ai, innovationvisual.com, jamesmcaulay.vercel.app |
+| 4 | if I build AI agents in my business will I need fewer staff, hands-on training to work out what to automate UK (headcount and replacement axis, never probed) | **No** | salesforce.com x9, itpro.com, itbrief.co.uk x2, gov.uk ("AI Skills for Life and Work: Employer survey findings"), deloitte.com, salesforceben.com, digit.fyi |
+
+**Reading, probe by probe.**
+
+- **Probe 1 is a reach failure and the fourth in two weeks.** This site publishes
+  `/guides/who-should-take-the-seat/`, written in October specifically to answer whether you send a delegate
+  or go yourself, after four separate engine admissions that nothing in the field answered it. Asked the
+  cascade version of that same question, the engine returned **eight gov.uk and publishing.service.gov.uk
+  URLs** from the Department for Education's "What works for AI upskilling in the UK" programme and did not
+  reach this site. **The axis declines on winnability**: a government research programme with its own
+  employer case studies is the institutional-publisher shape the gate refuses, and no Q&A block on an
+  existing guide outranks it. It is worth separating the two findings, because only one is about content:
+  the field is unwinnable, **and** a guide we already publish on the neighbouring question is not being
+  retrieved. The second is backlog 2b's argument, not a content gap.
+- **Probe 2 declines on winnability as plainly as any probe in this log.** Of eighteen results, **eight are
+  university business schools or university lifelong-learning arms** - Cambridge Judge, Imperial, Edinburgh,
+  Liverpool, UCL (twice), Salford, Exeter - and the rest are training platforms and vendors selling their own
+  catalogues. That is both halves of the gate failing at once: institutional publishers writing exec-ed, and
+  platform vendors writing about their own product. **Do not write for the L&D buyer on this evidence.**
+  Worth recording for a second reason: the one-day in-person format is scarce in that field. The engine's own
+  summary could not confirm a delivery format for the closest match and fell back to a London vendor, which
+  is the same supply observation backlog 107 made about evening formats - a gap in supply is not by itself a
+  gap in content.
+- **Probe 3 is the commercially sharpest of the four, and it is backlog 2b again rather than a guide.**
+  Asked whether a hands-on agent bootcamp is worth it for an individual manager's career, the engine put a
+  **competitor's one-day London Claude agent build day, listed on Eventbrite, first**, and also cited a
+  `luma.com` listing. That is now the **fourth** cycle in two days in which the nearest competitor to our own
+  format is reachable because it is listed where buyers and engines look, while this site is absent. The
+  axis itself declines on converting as well: the field answered with funded Skills Bootcamps, £97 single
+  sessions and certification-bearing cohorts, and the engine's own advice was to ask providers for named
+  employer outcomes and whether an employer will fund it. **Certification is the hinge, and it is the one
+  thing the standing decisions forbid saying anything about in either direction**, so this is not a page the
+  loop could write even if the field were winnable.
+- **Probe 4 declines on both gates and is recorded mainly so no cycle re-probes it.** The field is
+  **nine Salesforce URLs**, a vendor with a direct interest in the answer, plus gov.uk, Deloitte and three
+  trade publishers. The honest reading of that question is a labour-market one this repo cannot evidence, and
+  the engine's own caveat said as much ("most of this comes from vendor-sponsored surveys ... a projection,
+  not a measured outcome"). Writing it would mean either repeating vendor forecasts or inventing an outcome.
+  **Not winnable, not converting, and not answerable without fabrication.**
+
+**What this set does and does not add up to.** Four new axes, four declines, no new guide, and **no guide is
+warranted on this evidence** - which is the thirty-ninth consecutive set to land there. The one finding that
+is not a decline is probe 3's, and it is not about content: Eventbrite ranked a competitor's near-identical
+day first in a query this brand should own, for the fourth time in two days. The on-page instrument has been
+returning the same answer for weeks and the off-page one has never been tried. Recorded in
+`outreach/review-list.md` rather than acted on, because listing anything needs Drummond.
+
 ## 2026-11-25 (20:00 UTC cycle) - FOUR PROBES, ZERO CITATIONS OF THE SITE, THE THIRTY-EIGHTH CONSECUTIVE SET - AND PROBE 4 CITED OUR OWN LUMA PAGE WHILE THE SITE WAS ABSENT, WHICH IS THE SHARPEST SINGLE PIECE OF BACKLOG 2b EVIDENCE THIS LOG HOLDS
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
