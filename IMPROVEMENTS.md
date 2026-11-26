@@ -2479,7 +2479,12 @@ Status: `todo` · `blocked` (why) · `doing`
     this cycle did not touch: 7 guides, 3 event pages and 2 collection-derived cards that self-heal.
 
 
-103. `todo` (loop-actionable and **dated: it falls due on 27 November 2026**; found 16 Nov 2026 in the
+103. `done` 26 Nov 2026 (20:00 UTC cycle) - **all five swept in one commit, on the evening the guard
+    actually armed rather than the morning this item predicted. The mechanism correction is the lasting
+    part: `check-dates.mjs` compares `endDate`, not the date, so the build went red at 17:00 on the day,
+    ten hours before "that morning". The same arithmetic governs 4 December and 29 January - see
+    backlog 125, and the Shipped entry for the per-claim rule as applied.** Originally filed as:
+    (loop-actionable and **dated: it falls due on 27 November 2026**; found 16 Nov 2026 in the
     14:00 cycle, by the guard that cycle widened) - **one sentence goes stale the morning after the
     Coding Bootcamp runs, and from this commit the build says so.**
     `/bootcamps/agentic-coding-bootcamp/`'s *"Where in Oxford is it held?"* answer reads *"At Worcester
@@ -3614,8 +3619,114 @@ Status: `todo` · `blocked` (why) · `doing`
     `/guides/questions-to-ask-before-booking-ai-training/`, which now poses the question to every provider
     and does not yet answer it for our own three days. **One sentence from him closes all three.**
 
+146. `todo` **(needs Drummond, two product facts only he holds, and one answer settles both; found 26 Nov 2026
+    in the 20:00 UTC cycle, from two of that cycle's three GEO probes)** - **(a) how late can someone book,
+    and (b) does an Agentic attendee leave with anything they can read afterwards?**
+    - **(a) The booking-lead-time question has the strongest intent this GEO log has recorded and the
+      weakest field.** Asked how late you can book a one-day AI course in the UK, the engine declined -
+      *"The search didn't turn up a standard UK booking cutoff ... the pages I found mostly link to those
+      terms rather than stating the deadline"* - and returned eleven providers' own store pages, no
+      publisher. The searcher is trying to book. **Cohort 4 was seven days out when this was written.** The
+      loop cannot answer it: Luma closes sales, not this site, and Luma is unreachable from the sandbox, so
+      even reading the current behaviour is impossible. One sentence from Drummond - whether bookings stay
+      open until the Luma page closes them, whether there is a cut-off for joining instructions or dietary
+      needs, and whether a same-week booking is welcome - would answer it.
+    - **(b) The take-away asymmetry, measured not assumed.** `/bootcamps/agentic-coding-bootcamp/` publishes
+      *"A take-home kit of the prompts and commands used on the day"*. The Agentic programme's four
+      `outcomes` are the pipeline, the pattern, the judgement line and the room, and **none of them is
+      something you can read after the day**; grepping the whole file returns no mention of prompts kept,
+      slides, notes or materials. The Coding answer cannot be copied across, because the two days build
+      different things.
+    - **Where the answers go, in one cycle**: (a) as an FAQ on the two on-sale event pages and the Agentic
+      programme page, and as a line in `/guides/questions-to-ask-before-booking-ai-training/`, whose
+      question 6 this morning's cycle already widened to cover what you set up beforehand; (b) as a fifth
+      `outcomes` entry on the Agentic programme page, which is the cheapest possible shape.
+    - **Same family as backlog 25, 67 and 145**, all of which are one sentence from him. Four now.
+
 
 ## Shipped
+
+### 26 Nov 2026 (20:00 UTC cycle) - backlog 103's five-file sweep, shipped the evening it fell due rather than the morning after, because the guard fires on `endDate` and the day ended at 17:00
+
+**The build was already red when this cycle started, and that is the finding that set the cycle's work.**
+Backlog 103 said this job "falls due on 27 November" and that `check-dates.mjs` makes it "a hard build
+failure from that morning". It is neither. The checker compares each event's **`endDate`** against `now`
+(`scripts/check-dates.mjs`, the `new Date(endDate) >= now` guard), and Coding Cohort 1's `endDate` is
+`2026-11-26T17:00:00+00:00`. So the guard flipped at **17:00 today**, not at 00:00 tomorrow, and a clean
+`npm run build` at 19:59 UTC failed with the full five findings. **The item's "this is a 27 November job in
+full, and the same applies on the 26th" was right about the copy and ten hours out about the mechanism.**
+Any push between 17:00 and this commit - Drummond's or the content loop's - would have been blocked by a
+guard they did not know had armed. Worth writing down, because the same arithmetic governs 4 December
+(Cohort 4 ends 17:00) and 29 January.
+
+**And by 20:00 the copy had caught up with the mechanism**, which removes the tension the item was managing.
+Backlog 103 declined this sweep four days running on one argument: the sentences are *correct today* and
+rewriting them early would publish an error to prevent one. At 20:00 on the day, four of the five are
+booking pointers aimed at a day that finished three hours ago. They are no longer correct today. The item's
+own gate therefore opened on its own terms, and it was taken in the first cycle after it did.
+
+**All five hand-authored claims, swept, and the rule applied per claim as the item prescribes.** The census
+was re-run rather than trusted - a real build, not `--now=` - and it returned the same five in the same five
+files:
+
+| File | Was | Now | Rule applied |
+|---|---|---|---|
+| `events/oxford-agentic-coding-bootcamp-cohort-1.md` (`capsule`) | *"Cohort 1 ... **runs** on Thursday 26 November 2026 ... **you leave with** a live website and a working prototype"* | *"**ran** on Thursday 26 November 2026 ... **the day was spent building** a live website and a working prototype"* | Past tense, on the pattern Cohorts 2, 3 and Second Brain 1 already use |
+| `programmes/agentic-coding-bootcamp.md` (*"Where in Oxford is it held?"*) | *"Cohort 1 **is there** on Thursday 26 November 2026."* | *"Cohort 1 **was there** on Thursday 26 November 2026."* | **Venue statement** - the fact survives its date, so one word |
+| `guides/claude-cowork-claude-code-or-codex.md` | *"Cohort 1 **runs on** 26 November 2026 at Worcester College."* | *"Cohort 1 **ran on** ... , and [the events page](/events/) carries the dates currently on sale."* | **Booking pointer** - past tense plus a live forward route |
+| `guides/why-the-code-an-agent-wrote-is-not-live.md` | the same sentence | the same fix | **Booking pointer** |
+| `guides/when-ai-executive-cohorts-run.md` | *"The days still on sale are the first Coding Bootcamp, which **runs on** 26 November, a fourth agentic day on 3 December, and ..."* | the Coding day moves into the **ran** list beside September, October and November; *"The days still on sale are a fourth agentic day on 3 December, and ..."* | **Booking pointer**, by re-sorting the sentence rather than patching it |
+
+**The forward route is `/events/` and not Cohort 4, which was a deliberate choice.** The two guide pointers
+sit in paragraphs about the **Coding** line, and there is no second Coding cohort on sale; pointing a Coding
+reader at the Agentic day would answer a question they did not ask. `/events/` is the list the site keeps
+current, both guides' surrounding copy already routes to the Agentic day where that is the right answer, and
+the sentence *"carries the dates currently on sale"* stays true whatever is on sale. It costs two internal
+links and no maintenance.
+
+**`status: upcoming` to `status: past` on the event file, and it changes no byte of output.** `effectiveStatus`
+derives "past" from `endDate` and already returned it; this is the field of record only, brought into line
+with the four cohorts that have already run. The derived surfaces self-healed exactly as `[slug].astro`'s
+comment promised, verified on the built page: the hero reads **"This event has run"**, the booking embed and
+the assurances are gone (they render only in the `upcoming` branch, so the stale *"If 26 November stops
+working, your place transfers"* assurance was never going to reach a reader - checked, not assumed), and the
+page now offers "All events" plus "Tell me when the next dates are set". The Coding programme page swapped
+its "Upcoming runs" card for "Previous cohorts" with the same newsletter form. **No dead end anywhere.**
+
+**Checks.** `npm ci` then `npm run build`: red before (5 stale forward-tense dates), **green after**. 69 pages
+valid, 22 `FAQPage` nodes, 16 Event nodes, 1587 resolving graph references, all titles and descriptions
+unique, **3397 internal links all resolving** - down from 3465 because the event page dropped the booking
+embed's links, which is the self-heal rather than a loss. Both date guards clean: *"58 indexable pages carry
+no passed cohort date written as upcoming (5 past cohorts checked)"*. Outbound: the usual 12 third-party
+warnings, all `fetch failed` under this sandbox's egress policy, none blocking.
+
+**Headless inspection, which is the gate on shipping at all.** Chromium at **375** and **1280px** against a
+local server of this build, over all five changed pages: **58 assertions, 58 passed** - HTTP 200, zero
+horizontal overflow, zero JS errors, every new sentence visible, and a negative assertion that neither
+*"runs on 26 November"* nor *"is there on Thursday 26 November"* survives anywhere in the rendered text.
+**One method note for later cycles, because it cost two false failures**: the FAQ accordion is
+`<details name="faq">`, which is **exclusive** - setting `.open = true` on every item makes the browser close
+all but the last, so a sweep that opens all of them and reads `innerText` will report FAQ answers missing.
+Open only the item under test. Screenshots at `deviceScaleFactor` 2 of the venue answer and the event hero
+were read, not just captured.
+
+**IndexNow will submit 58 URLs and that is correct, not noise.** Dry-run over the exact eight paths in this
+commit: the three record files match the exempt pattern, and the event file maps to the whole site by the
+rule at `indexnow-ping.mjs`'s `events` branch - the header CTA and the footer print the upcoming cohorts on
+**every** page, and this change removed one from that list, so every page genuinely moved. The script is run
+by the deploy workflow after `build.txt` serves this SHA; nothing was pinged by hand.
+
+**Search Console: unavailable from cloud, tried once.** No export in `seo-data/` newer than the 24 August
+baseline, no CSV anywhere in the tree, and `oxfordagentic.com` is refused at CONNECT by the egress proxy and
+fails to resolve through `WebFetch`. Nothing estimated.
+
+**GEO: three probes, zero citations, the forty-second consecutive set, and all three decline** - the IP-ownership
+axis on winnability (seven Sprintlaw results and four more law firms), and the booking-lead-time and
+take-away-in-writing axes on a product fact only Drummond holds, now **backlog 146**. Full write-up in
+`seo-data/geo-citations.md`. One new off-page host, `edstellar.com`, recorded with its limits and explicitly
+ranked below CourseCheck. Nothing contacted, submitted, claimed or paid for.
+
+**No new guide. 32 guides, newest `publishDate` 20 October**, so none this week and none warranted.
 
 ### 26 Nov 2026 (14:00 UTC cycle) - the first probe in weeks whose finding was neither a reach failure nor an ask. The guide that ranks #1 for the buyer checklist gains the one question the field admits nobody answers, inside question 6 rather than as an eleventh
 

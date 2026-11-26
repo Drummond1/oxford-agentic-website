@@ -11,6 +11,24 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **`edstellar.com` - a corporate-training marketplace, recorded with its limits rather than as a route.**
+  Found 26 Nov 2026 (20:00 UTC cycle), from the IP-ownership probe, where it was the one host among
+  seventeen that was neither a law firm nor a vendor blog. **Nothing contacted, submitted, claimed, signed
+  up for or paid for, and the host does not resolve from this sandbox.**
+  - What it is, as far as can be told from the search result alone: a marketplace that lists instructor-led
+    corporate training courses by topic and sells in-company delivery to employers. The page that surfaced
+    was a course listing of its own ("AI intellectual property rights, licensing, provenance"), not an
+    editorial page.
+  - **Why it is weaker than `coursecheck.com`, which went on this list this morning.** A marketplace profile
+    is a listing, which this log already holds a dozen of in `off-page-listings.md`; a review platform is an
+    identity page, which is the shape `Organization.sameAs` actually lacks. This is therefore a lower
+    priority than CourseCheck and should be decided after it, not instead of it.
+  - **The open questions the loop could not answer**: whether it lists UK public one-day courses at all or
+    only in-company programmes, whether a listing is free or commission-based, and whether its audience is UK
+    buyers. Its own marketing suggests an in-company bias, which is the segment Drummond's standing decision
+    on consultancy says not to chase. Weigh that before anything else.
+  - Needs: Drummond. Nothing happens without his go-ahead - no account, no claim, no submission, no spend.
+
 - **`coursecheck.com` - a new CATEGORY, not just a new host: a UK review platform for training courses, and
   the first `Organization.sameAs` candidate this log has found that is not an event listing.** Found
   26 Nov 2026 (14:00 UTC cycle), from the credibility-evidence probe. **Nothing contacted, submitted,

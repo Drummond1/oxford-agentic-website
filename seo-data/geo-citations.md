@@ -5,6 +5,79 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-26 (20:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SECOND CONSECUTIVE SET - AND ALL THREE DECLINE, TWO OF THEM ON A FACT ONLY DRUMMOND HOLDS RATHER THAN ON THE FIELD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands and governs everything below.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), and it does not resolve through `WebFetch` either, which is a second instrument saying the same
+thing. `luma.com` is refused the same way. No live page was read, no Luma fact was checked, no event fact was
+touched, deploy state came from the Actions API, and every site fact below comes from committed files or
+built output.
+
+**Dedupe by backlog 136's method, eighth use.** All 837 question strings in this log were extracted and
+counted before any search ran. **Dropped as already worked**: confidentiality and NDAs (`confidential` 12,
+`NDA` 8), manager and budget approval (`manager` 22, `justify` 5), December timing (`december` 15),
+preparation and pre-work (`prepare` 15), travel (`travel` 10, and the location axis is banned permanently),
+transfers (`transfer` 8), stickiness (`stick` 7), cohort size (`how many` 16). **Also dropped as unanswerable
+rather than unworked**: whether lunch is laid on (`food` 0, `lunch` 1), which is not published anywhere and
+is the same shape as step-free access and certification. **Dropped as already declined**: the level-fit axis,
+declined 19 Oct and not to be re-pitched. Probes 1 to 3 score 0 or 1 on the question list.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how late can you book a one-day AI training course UK booking deadline before the date short notice (booking-lead-time axis - `short notice` 0, `lead time` 0, `deadline` 0, `last minute` 1) | **No** | onlinestore.ntu.ac.uk x2, shortcourses.lsbu.ac.uk x3, cii.co.uk, qa.com x3, wiseowl.co.uk x2, freevacy.com x2, citylit.ac.uk, salford.ac.uk, globalknowledge.com, flane.co.uk, eventbrite.co.uk |
+| 2 | do you keep the prompts and materials from an AI workshop to reuse at work afterwards (take-away-in-writing axis - `kit` 0, `takeaway` 0, `reuse` 0, `materials` 1) | **No** | webucator.com, academy.openai.com x2, maven.com x2, docs.google.com x4, teachingcommons.stanford.edu, microsoft.github.io, gist.github.com, ahaslides.com, qualitymatters.org |
+| 3 | who owns the AI workflow or prototype you build at a training course, your employer or the provider (IP-ownership axis - `intellectual` 0, `ownership` 1, `sensitive` 0) | **No** | sprintlaw.co.uk x7, khuranaandkhurana.com, bclplaw.com, ibl.ai x2, aaronhall.com, bl.uk, reworked.co, scholarlykitchen.sspnet.org, refontelearning.com, edstellar.com |
+
+**Reading, probe by probe.**
+
+- **Probe 3 declines on winnability in the clearest form this log has recorded, and it should not be
+  re-probed.** Seventeen results and fourteen are law firms or professional publishers writing on their own
+  subject - Sprintlaw **seven** times, plus Khurana & Khurana, BCL, Aaron Hall and the British Library. That
+  is the institutional-publisher half of the gate, exactly. It fails converting too, and in a way worth
+  writing down: a reader asking who owns the IP is doing legal diligence on a contract, not choosing a day to
+  book, and the honest answer to their question is "read your employment contract", which no provider page
+  can give them. **No action. Do not re-open the IP-ownership axis.**
+
+- **Probe 1 is a real gap in the field and this site cannot honestly fill it today.** The engine declined
+  outright - *"The search didn't turn up a standard UK booking cutoff for one-day AI courses. Each provider
+  sets its own rules in its terms and conditions, and the pages I found mostly link to those terms rather
+  than stating the deadline"* - and what it found instead is each provider's own store page: NTU twice, LSBU
+  three times, QA three times, plus CII, City Lit, Salford, Global Knowledge and Flane. It did surface two
+  specifics that read as the field's real behaviour: CII says a booking *"will only be confirmed once payment
+  has been processed"*, and that a workshop may be postponed *"subject to a minimum number of bookings"*.
+  - **Winnable**: yes, and unusually so. Every page in that field is a provider selling its own course, not a
+    publisher owning the question. No institutional publisher holds it.
+  - **Converting**: the strongest intent this log has seen. Someone asking how late they can book is trying
+    to book. **Cohort 4 is seven days out as this is written**, which is precisely the week this searcher
+    exists.
+  - **Why nothing shipped anyway, and it is the same shape as backlog 145 from this morning.** The answer is
+    a fact only Drummond holds. Luma closes bookings, not this site, and Luma is unreachable from this
+    sandbox, so the loop cannot even read when the current cohorts' sales close. What the site does publish
+    is adjacent and does not answer it: the transfer assurance, "no refunds", and payment by invoice. Writing
+    "book up to the day before" or "bookings close at midnight" would be inventing an event fact, which is a
+    hard guardrail. **Filed as backlog 146, with the sentence he would need to supply and the three places it
+    would go.**
+
+- **Probe 2 is the same answer arriving from a different direction, plus one measured asymmetry.** The engine
+  declined again - *"The search didn't turn up a general answer, since it depends on the specific workshop"* -
+  and its field is weaker than probe 1's: four Google Docs exports, a GitHub gist, a Stanford teaching-commons
+  DIY kit and two vendors' own workshop pages. That is half winnable at best, and converting only moderately,
+  because someone asking what they keep is comparing rather than booking.
+  - **The asymmetry is real and was measured rather than assumed.** `/bootcamps/agentic-coding-bootcamp/`
+    publishes *"A take-home kit of the prompts and commands used on the day"* in its outcomes. The Agentic
+    programme's four `outcomes` are the pipeline, the pattern, the judgement line and the room - all true, and
+    **not one of them is a thing you can read after the day**. Grepped across the whole Agentic programme file:
+    no mention of prompts kept, slides, notes or materials.
+  - **No change, for the same reason as probe 1.** Whether an Agentic attendee leaves with anything written is
+    a product fact. The Coding line's answer cannot be copied across, because the two days build different
+    things. **Folded into backlog 146 as its second half rather than filed separately**, since one answer from
+    Drummond settles both and they would be written in the same cycle.
+
+**No new guide, and none is warranted on this evidence.** Three probes, three declines, and the two that
+decline on a missing fact rather than a lost field are now one backlog item with the question written out.
+
 ## 2026-11-26 (14:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FIRST CONSECUTIVE SET - AND THE FIRST ONE IN WEEKS THAT PRODUCED A SHIPPABLE CHANGE RATHER THAN AN ASK
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
