@@ -9,7 +9,7 @@ cohort: Cohort 4
 status: upcoming
 startDate: "2026-12-03T09:00:00+00:00"
 endDate: "2026-12-03T17:00:00+00:00"
-updatedDate: "2026-11-15T15:10:00+00:00"
+updatedDate: "2026-11-27T13:50:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -93,7 +93,6 @@ speakers:
   - drummond-gilbert
   - nicolai-thomson
   - emine-gokce-phillips
-  - jonathan-waddingham
 # Cut from thirteen to seven on 17 Aug. Six answers were restating something the
 # same page already said: the date and venue (hero and facts card, twice),
 # transfers, lunch and recording, bringing a colleague (all three now sit in
@@ -194,8 +193,8 @@ faqs:
   - q: Who runs it?
     a: >-
       Drummond Gilbert, who tutors in AI in Management at Saïd Business School and runs
-      Oxford’s Practical AI meetup, with Nicolai Thomson (founder, Jenesys AI), Emine
-      Gokce Phillips (co-founder and CEO, Novaria) and Jonathan Waddingham (product
-      consultant). Each runs part of the day, and the day is facilitated rather than
-      lectured, so there are people in the room with you while you build.
+      Oxford’s Practical AI meetup, with Nicolai Thomson (founder, Jenesys AI) and
+      Emine Gokce Phillips (co-founder and CEO, Novaria). Each runs part of the day, and
+      the day is facilitated rather than lectured, so there are people in the room with
+      you while you build.
 ---
