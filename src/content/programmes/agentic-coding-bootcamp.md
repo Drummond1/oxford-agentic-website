@@ -3,7 +3,7 @@ name: The Oxford Agentic Coding Bootcamp
 slug: agentic-coding-bootcamp
 accent: gold
 order: 3
-updatedDate: "2026-11-27T04:58:00+00:00"
+updatedDate: "2026-11-27T05:06:00+00:00"
 # Every claim below comes from Drummond's own Luma page (luma.com/agenticcoding,
 # evt-zaLSsbdEhtA1THK), re-read 22 Nov 2026. Its "You'll leave with" is, in full:
 # "A real understanding of how software gets built, and a website you built."

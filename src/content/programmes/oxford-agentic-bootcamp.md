@@ -3,7 +3,7 @@ name: The Oxford Agentic Bootcamp
 slug: oxford-agentic-bootcamp
 accent: gold
 order: 1
-updatedDate: "2026-11-22T13:30:00+00:00"
+updatedDate: "2026-11-27T05:06:00+00:00"
 shortPitch: A one-day AI bootcamp in Oxford. You leave having built and run a working agentic AI workflow on a real task from your own work.
 capsule: >-
   The Oxford Agentic Bootcamp is a one-day, in-person bootcamp in Oxford for business

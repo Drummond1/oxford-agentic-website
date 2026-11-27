@@ -24,8 +24,7 @@ promise: Build a website in guided sessions, with no coding or technical backgro
 capsule: >-
   Cohort 1 of the Oxford Agentic Coding Bootcamp ran on Thursday 26 November 2026 at
   Worcester College, Oxford. It was a practical, hands-on day showing how to build
-  effectively with AI. You built a website in guided sessions, and left with a
-  real understanding of how software gets built.
+  effectively with AI, built around making a website in guided sessions.
 # Capacity deliberately unset, as on every other event: Luma is the source of
 # truth for how many places are left.
 # Each line restates an answer this page already gives further down, moved to
@@ -42,8 +41,8 @@ whoFor:
   - Founders and operators who want to prototype an idea without waiting on a developer
   - Anyone who has watched a coding agent work and wants to know what to do around it
 whatYoullBuild:
-  - A website you built
-  - A real understanding of how software gets built
+  - Building a website in guided sessions
+  - How software gets built
 # No timed agenda yet: the day plan is still a draft between the facilitators.
 # These are the topics Luma publishes, in its order, not a schedule.
 agenda:

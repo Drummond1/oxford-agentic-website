@@ -11,7 +11,7 @@ capsule: >-
   worth the day. Vagueness on the first two is the warning sign.
 author: drummond-gilbert
 publishDate: "2026-07-26T09:00:00+01:00"
-updatedDate: "2026-11-27T04:58:00+00:00"
+updatedDate: "2026-11-27T05:06:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
   - second-brain-bootcamp

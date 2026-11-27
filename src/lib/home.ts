@@ -35,7 +35,7 @@ import config from '../../site.config';
  * constant out of the config, and a homepage-copy commit hints at `/` and
  * nothing else.
  */
-export const homepageCopyLastmod = '2026-11-22T13:30:00Z';
+export const homepageCopyLastmod = '2026-11-27T05:06:00Z';
 
 /**
  * The homepage headline, set verbatim by the message house of 13 August 2026.
@@ -159,7 +159,7 @@ export const homeFaqs = [
   },
   {
     q: 'What will I actually leave with?',
-    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful. At the Oxford Agentic Coding Bootcamp it is a website you built in guided sessions, and a real understanding of how software gets built.',
+    a: 'Something running, built during the day from your own material. At the Oxford Agentic Bootcamp that is a working agentic AI workflow against a real task from your own work, plus the pattern behind it - scout, drafter, reviewer - so you can build the next one yourself. At the Oxford Second Brain Bootcamp it is a populated second brain your AI tools can draw on, with the architecture and maintenance routine to keep it useful. At the Oxford Agentic Coding Bootcamp it is a website you build in guided sessions, and a real understanding of how software gets built.',
   },
   {
     /*

@@ -12,7 +12,7 @@ capsule: >-
   something live.
 author: drummond-gilbert
 publishDate: "2026-09-25T19:00:00+01:00"
-updatedDate: "2026-11-27T04:58:00+00:00"
+updatedDate: "2026-11-27T05:06:00+00:00"
 relatedProgrammes:
   - agentic-coding-bootcamp
 # The three question headings below are what a reader asks once a coding agent
