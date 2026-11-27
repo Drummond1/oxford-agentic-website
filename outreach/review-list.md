@@ -11,6 +11,44 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **England's Growth Hub network, and `oxfordshirelep.com` (OxLEP Business) as the local one - a HOST TYPE
+  this list has not held before: a publicly funded body whose job is to put business-support events in front
+  of local SMEs.** Found 27 Nov 2026 (20:00 UTC cycle), out of the peer-and-networking probe.
+  **Nothing contacted, submitted, claimed, signed up for or paid for, and the host does not resolve from this
+  sandbox** (`www.oxfordshirelep.com` is refused by the egress policy, so everything below comes from search
+  results rather than from the site).
+  - **What it is, as far as the search results alone show.** OxLEP Business is described as Oxfordshire's
+    **Growth Hub**, running government-funded support for small businesses, entrepreneurs and social
+    enterprises: one-to-one and peer support, workshops, grants, networking meet-ups (an "OxBOoST" meet-up
+    and a "Business Growth Peer Network" series are both named), a free diagnostic "Business Support Tool",
+    and the `eScalate` scale-up programme. A 2022-era piece of its own copy points readers at an events page:
+    *"Check out the Events page on our website to see what's coming up."* Every English county has an
+    equivalent hub, so if the shape works here it repeats.
+  - **Why it is worth a line, and why it ranks where it does.** `Organization.sameAs` has been empty since
+    31 July and backlog 2b still calls one external identity page the cheapest remedy. A growth-hub page is
+    **Oxford-anchored and publicly funded**, which is better entity corroboration than the generic
+    "Oxfordshire business and chamber listings" category already in `off-page-listings.md` (item 5 there, and
+    this is the first named host for it). It ranks **below `coursecheck.com`**, which carries named attendee
+    reviews, and **below the provider-profile directories** recorded this morning, because a single event
+    listing is a page about a date rather than about the entity.
+  - **The honest limits, and the first one may be fatal.** A Growth Hub exists to promote **publicly funded**
+    support, and a paid commercial bootcamp is not that, so the likeliest answer is that we are not eligible
+    to be listed at all. The branding is also unsettled: LEP functions moved to county councils in 2024, and
+    a 2025 Eventbrite listing for one of its own events used the name **"Enterprise Oxfordshire Business"**,
+    so the organisation to approach may no longer be the one the search results name. Nothing found says
+    whether third-party events are listed, and no "submit an event" route was found at all.
+  - **What the same probe says about the field this would sit in, because it is the reason to bother.** The
+    query returned **eight Eventbrite listings** of UK one-day and half-day AI sessions for business owners,
+    several of them **free**, and one explicitly *"funded by the UK Government through the UK Shared
+    Prosperity Fund"*. Publicly funded free days are the floor the January cohort sells against. That is an
+    argument for being visible in the same channels, and it is also the argument against expecting a
+    growth hub to carry us.
+  - **The open questions the loop could not answer**: whether a commercial provider can be listed at all,
+    whether the host is now OxLEP Business or Enterprise Oxfordshire, where the current events page is, and
+    whether a listing would be indexed well enough to be worth `sameAs`. Answer the first one before spending
+    a minute on the rest.
+  - Needs: Drummond. Nothing happens without his go-ahead - no account, no claim, no submission, no spend.
+
 - **UK course directories with provider-profile pages (`findcourses.co.uk`, `emagister.co.uk`,
   `coursesonline.co.uk`) - a sub-category this list has not held before: a directory that publishes a page
   about the PROVIDER, not only about a course.** Found 27 Nov 2026 (08:00 UTC cycle), while checking whether

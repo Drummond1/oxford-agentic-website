@@ -5,6 +5,77 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-27 (20:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SIXTH CONSECUTIVE SET - AND FOR THE FIRST TIME IN THIS LOG AN ENGINE SAID ITS OWN FIELD CONTAINS NO ANSWER TO THE QUESTION ASKED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve
+through `WebFetch` either; `luma.com` is refused the same way. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output. The outbound link check says the same thing from the other side:
+**0 of 12 third-party links reachable**, both Luma pages among them.
+
+**Dedupe by backlog 136's method, twelfth use.** Keyword counts taken against this log before any search
+ran. **Dropped as already worked**: locked-down work laptops and admin rights (a full probe exists, 15 Nov
+set), hackathon versus workshop (`hackathon` 8, probed as its own axis), solo and sole-trader buyers
+(probed twice), preparation and pre-work (`prepare` 22, probed twice), procurement and invoicing
+(`invoice` 31, `procurement` 7), guardrails and oversight (`guardrail` 4, `oversight` 5), agenda and
+hour-by-hour format (`hour by hour` 8), class size (`group size` 6), recordings (`recorded` 198).
+**Dropped as banned or out of scope**: certification, step-free access, VAT treatment, and the whole
+consultant-and-agency cluster (`consultant` 35, `agency` 32), which Drummond's 13 Sept decision takes off
+the table permanently. The three taken score 0 to 1 on their own key words.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I know which process in my business is a good candidate for an AI agent (task-triage axis - `good candidate` 0, `which process` 0, `suitable` 1, `worth automating` 1 - **reach probe: this site publishes a guide whose whole job is this question**) | **No** | learn.microsoft.com, cio.com, dataiku.com x2, pipefy.com x2, servicenow.com, automationanywhere.com, trailhead.salesforce.com, boomi.com, monday.com, weforum.org, help.webex.com, enterprisedna.co, javan.co.id, ateam-oracle.com |
+| 2 | what does it cost each month to keep AI agents running in a small business after you build them (running-cost axis - `monthly cost` 0, `running cost` 1, `api cost` 2 - never probed; every prior cost probe asked the price of the training, not of the thing you leave with) | **No** | dev.to x2, startupik.com x2, sleekflow.io, designrush.com, lobsterpack.com x2, scalevise.com, cloudzero.com, botpress.com, lilachbullock.com, unity-connect.com, sagnikbhattacharya.com, slashdev.io, differ.blog, saastr.com, blog.hubspot.com |
+| 3 | is an in-person AI workshop worth it for meeting other business owners as well as the training UK (peer-and-networking axis - `networking` 1, `meet other` 0 - never probed; every prior in-person-versus-online probe argued the learning, never the room) | **No** | eventbrite.co.uk x8 (eight separate UK one-day and half-day listings, several free or UKSPF-funded), innovationvisual.com x3, brainstation.io x2, mgmt.ucl.ac.uk, brinsbury.ac.uk, emc-dnl.co.uk, internshala.com |
+
+**Reading, and the three declines are three different kinds.**
+
+- **Probe 1 is a reach failure, not a coverage gap, and it is the sharpest one this log holds.** The field is
+  **platform vendors writing about their own product** - Microsoft, Pipefy, ServiceNow, Dataiku, Salesforce,
+  Automation Anywhere, Boomi, monday.com, Webex - plus CIO and the World Economic Forum. The engine flagged
+  its own sources unprompted: *"most sources are vendor blogs, so weigh them accordingly"*. So it is winnable
+  on the letter of the topic-probe rule, and it is declined anyway on two grounds. First, **we already answer
+  it**: `/guides/how-to-choose-your-first-agentic-task/` is a guide of five tests for exactly this, and it was
+  not returned, which is the fourth time this log has recorded a reach failure on a published answer. Second,
+  **this searcher is not our buyer**: the vocabulary of the field is process mining, data-access lead time
+  and rollback, and the question is being asked by someone scoping an enterprise implementation, not someone
+  choosing whether to spend a day in Oxford. The ledger's own measured conclusion applies - a further
+  `FAQPage` node on a question the site already answers has produced nothing in four tries - so nothing was
+  written.
+- **One genuine tension worth recording, and it is not an action.** The enterprise field's loudest red flag
+  is *"a process that exists only in one person's head"*, and this site's whole invitation is to bring a
+  routine you currently do by hand. Those are not in conflict - the field is talking about automating a
+  process across a team, and a build day is about one person's own task - but a buyer who has read both will
+  notice. Filed as backlog 151(c) rather than written, because the resolution is a claim about what a day is
+  for, and the honest version of it is a rewrite rather than an inserted paragraph.
+- **Probe 2 declines on converting, and it is the cleanest example of the distinction this log has.** The
+  field is wide open: no institutional publisher anywhere in it, and the top results are two `dev.to` posts,
+  a run of blog-spam pricing guides and a handful of agencies, with numbers that disagree by two orders of
+  magnitude ($30 to $10,000 a month for what the same pages call a small business). The engine ended by
+  telling the buyer the figures were *"vendor and blog estimates, not audited figures"*. But a searcher
+  pricing the monthly cost of running agents is costing an implementation, not booking a day, and the honest
+  answer runs through prices and third-party subscription costs, which this site publishes nowhere and should
+  not start publishing. Winnable, does not convert, and the answer is not ours to give. No action.
+- **Probe 3 returned the first admission of its kind in this log: the engine said the question has no
+  published answer at all.** Its words: the search *"turned up plenty of UK in-person AI workshops aimed at
+  business owners, but nothing that directly measures whether they're worth it for networking"*. It then told
+  the buyer what to do instead - *"judge them by the attendee mix"*, *"look for reviews or ask the organiser
+  who attends"*. **Checked before filing anything: we do answer the substance.** The Agentic programme page
+  and every Agentic cohort page carry *"How many people are in the room?"*, *"everyone in the room has built
+  the same thing, people stay in touch afterwards"* and the facilitated-not-lectured line, and
+  `/testimonials/` carries four named, attributed quotes. So this is a third reach failure rather than a gap,
+  and the one thing the probe does establish is an **off-page** finding, not an on-page one: the field is
+  eight Eventbrite listings deep, several of them free or publicly funded, which is the same
+  listings-win-the-query result this log has now recorded for two months. Recorded in
+  `outreach/review-list.md`, where one new host came out of it.
+- **The one commercial fact worth carrying forward.** Probe 3's field is dense with **free and UKSPF-funded**
+  one-day sessions for UK business owners, named as such in the results. That is the competitive floor the
+  January cohort sells against, and it is an argument for the publicly funded business-support channels
+  recorded in the off-page list this cycle rather than for any change to a page.
+
 ## 2026-11-27 (14:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FIFTH CONSECUTIVE SET - AND ALL THREE DECLINE ON WINNABILITY, TWO OF THEM TO INSTITUTIONS THAT OWN THE LITERATURE OUTRIGHT
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

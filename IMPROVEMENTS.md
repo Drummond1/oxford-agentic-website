@@ -3752,7 +3752,109 @@ Status: `todo` · `blocked` (why) · `doing`
     Coding Bootcamp get an interest page of its own, or does the mailto stay. If it does, the mechanism
     already exists and the loop can wire it.
 
+151. `todo` (**five censuses and four candidate defects, all run to a conclusion in the cycle that found
+    them; recorded so no later cycle re-derives any of them**; measured 27 Nov 2026 in the 20:00 UTC cycle
+    on a full build of 69 pages / 209 files)
+    - **(a) Four candidate defects hunted and disproved, two of them items this loop was handed as
+      "verify before acting".** (i) *`src/lib/home.ts` mapped whole-site in `indexnow-ping.mjs`* - **already
+      fixed**: it is the first line of `SINGLE_PAGE_SOURCES`, mapped to `/`, and has been since 8 November,
+      alongside `HomeSections.astro`, `src/lib/about.ts` and the `/testimonials/` route. Nothing to do.
+      (ii) *Sentences naming a passed cohort as upcoming* - **already swept**: `check-dates.mjs` is green
+      over 58 indexable pages with 5 past cohorts checked, and the only remaining prose links to Cohorts 1,
+      2 and 3 sit in `when-ai-executive-cohorts-run`, which is the history guide and is written in the past
+      tense. Guide links to event pages now run 7 to Cohort 4 and 1 to Cohort 5, the two on sale.
+      (iii) */testimonials/ reads as an orphan on an in-`<main>` census* - **disproved, and the instrument
+      was wrong, not the page**: it takes 2 in-`main` links but it is in the **footer of all 69 pages**, and
+      the four named quotes are rendered inline on 10 pages including the Agentic programme page and all five
+      Agentic cohort pages. Social proof is not hard to reach. (iv) */home-original/ canonicalises to
+      /home-photos/* - **a known tombstone, not a defect**: the built file is a 339-byte redirect stub, the
+      redirect at `site.config.ts:421` shadows `src/pages/home-original.astro`, and this log has recorded
+      that pair as deliberate at least five times. Do not re-file it.
+    - **(b) `/bootcamps/` takes exactly one inbound link from inside any page's `<main>`, and it is probably
+      right.** Measured with breadcrumbs stripped: `/bootcamps/` **1** (from `/about/`), against `/events/`
+      **15**, `/guides/` **34**, and the three programme pages **36 / 18 / 13**. So the content on this site
+      routes a reader to the **specific** programme and never to the hub that lists all three. **Declined,
+      not deferred**: a guide that has just argued one line's case should send the reader to that line's
+      page, which is what it does, and the hub is one header click from all 69 pages. Recorded because the
+      number looks alarming next to the other two hubs and is not.
+    - **(c) One tension between our invitation and the enterprise field's advice, and it is a rewrite rather
+      than a paragraph.** The task-triage field's loudest red flag is a process that *"exists only in one
+      person's head"*; this site invites a buyer to bring exactly that, because a build day is one person's
+      own routine rather than a team's process. Not in conflict, but a buyer who has read both will notice,
+      and `how-to-choose-your-first-agentic-task` is the page that would have to say so. **Needs a reason
+      better than tidiness** - the ledger's own measurement is that a further answer on a question the site
+      already answers has produced no citation in four tries - so take it only as a deliberate rewrite of
+      that guide's framing, with Drummond's view on it.
+    - **(d) Four on-page censuses run clean over all 58 indexable pages, so no cycle needs to re-run them
+      this week.** Exactly one `<h1>` per page, 0 images without an `alt` attribute, 0 heading-level jumps
+      inside `<main>`, 0 missing canonicals, and the only three canonical "mismatches" are the two tombstones
+      above plus `/404.html` pointing at `/404/`. Titles over 60 characters: three, all `noindex`
+      (`/first-workflow-picker/`, its `thanks` page, `/second-brain-interest/`). Descriptions outside 70-160
+      characters: three, two of them the tombstones. `robots.txt` allows all 17 named crawlers including
+      every answer-engine agent, and `llms.txt` carries Cohort 4 and Cohort 5 under "Next events" with the
+      three passed cohorts in the past tense.
+
 ## Shipped
+
+### 27 Nov 2026 (20:00 UTC cycle) - NO CHANGE TO THE SITE. Three probes declined, four candidate defects disproved (two of them handed to this loop as live candidates), five censuses clean, one new off-page host type
+
+**Nothing was shipped to a page, and the substance of the cycle is what that cost to establish.** The two
+candidates this loop carries in its own brief were both checked first and both are already answered.
+`src/lib/home.ts` has been mapped to `/` alone in `indexnow-ping.mjs` since 8 November, so a homepage FAQ
+edit no longer hints 58 URLs. The passed-cohort sweep is done: `check-dates.mjs` is green across 58
+indexable pages with five past cohorts checked, guide links run 7 to Cohort 4 and 1 to Cohort 5 - the two
+days on sale - and the only prose naming Cohorts 1 to 3 is the history guide, in the past tense. Two further
+candidates of this cycle's own making were disproved by measurement: `/testimonials/` is not weakly linked
+(2 links from inside `main`, but the footer of all 69 pages, and the four named quotes render inline on 10
+pages), and `/home-original/`'s canonical to `/home-photos/` is the deliberate tombstone this log has
+already recorded five times. Detail and numbers in backlog 151.
+
+**The censuses that ran clean, over a full build of 69 pages and 209 files.** One `<h1>` per indexable page,
+zero images without `alt`, zero heading-level jumps inside `<main>`, zero missing canonicals, every title
+over 60 characters on a `noindex` page only, `robots.txt` allowing all seventeen named crawlers including
+every answer-engine agent, and `llms.txt` correct on both on-sale cohorts. `/bootcamps/` takes exactly one
+inbound in-`main` link against `/events/`'s 15 and `/guides/`'s 34, which looks like a defect and is not:
+the content routes readers to the specific programme page (36 / 18 / 13) rather than to the hub, which is
+one header click from every page. Declined and recorded rather than quietly fixed.
+
+**Three GEO probes, zero citations, the forty-sixth consecutive set, and the three declines are three
+different kinds** - full table and sources in `seo-data/geo-citations.md`. The task-triage field is owned by
+platform vendors writing about their own product and is a **reach failure** on a guide we publish, plus a
+searcher who is scoping an enterprise implementation rather than booking a day. The monthly running-cost
+field is wide open and **does not convert**, and its honest answer runs through prices this site does not
+publish. The peer-and-networking probe produced the first admission of its kind in this log - the engine
+said its field contains *"nothing that directly measures whether they're worth it for networking"* and told
+the buyer to *"ask the organiser who attends"* - and checking that against the site found we answer the
+substance already, on the programme page, every Agentic cohort page and `/testimonials/`. The one genuinely
+new finding is commercial rather than editorial: that field is eight Eventbrite listings deep, several of
+them free and one funded through the UK Shared Prosperity Fund, which is the floor the January cohort sells
+against.
+
+**Off-page: one new host type, the first named host for a category that has sat generic since July.**
+England's Growth Hub network, with `oxfordshirelep.com` (OxLEP Business) as the Oxfordshire one - a publicly
+funded body whose job is putting business-support events in front of local SMEs. Recorded in
+`outreach/review-list.md` with its limits, the first of which may be fatal: a Growth Hub exists to promote
+publicly funded support, and a paid commercial bootcamp is not that. Ranked below CourseCheck and below this
+morning's provider-profile directories. Nothing contacted, submitted, claimed or paid for.
+
+**Checks.** `npm ci` then `npm run build` green: 67 pages built, 69 valid, 3399 internal links resolving,
+22 FAQPage nodes, 1587 resolving graph references, 59 breadcrumb trails, both date guards clean. Outbound
+0 of 12 third-party links reachable, which is the egress policy rather than the links. Chromium at 375 and
+1280px against a local preview of `/`, both on-sale cohort pages, `/bootcamps/` and `/testimonials/`: **38
+assertions, 38 passed**, including that each page returns 200, carries exactly one `h1`, does not scroll
+horizontally, and that Cohort 4 still shows 3 December 2026 at Worcester College and Cohort 5 shows
+28 January 2027 at Jesus College. A browser was not strictly required for a records-only commit and was run
+so that "cannot inspect" was ruled out rather than assumed. This push submits nothing: `IMPROVEMENTS.md`,
+`seo-data/` and `outreach/` all match the ping script's exempt pattern. Nothing pinged by hand.
+
+**Search Console: unavailable from cloud, tried once.** `scripts/fetch-search-console.mjs` exits on a missing
+service-account key, and `seo-data/` holds no export newer than the 24 August baseline. Nothing estimated.
+Production could not be read either: `oxfordagentic.com` and `luma.com` are both refused by this sandbox's
+egress proxy, so no live page was read, no Luma fact was checked, no event fact was touched, and deploy state
+came from the Actions API - run 498 on `8be0d63`, success at 14:11 UTC, no deploy in progress.
+
+**No new guide.** 32 guides, newest `publishDate` 20 October, none this week, and no content was published
+at all.
 
 ### 27 Nov 2026 (14:00 UTC cycle) - the one band on a dateless programme page with no way out. "All events" in the "Runs" band, copied from the sibling template's answer to the identical state, 2 of 209 built files and +2 internal links
 
