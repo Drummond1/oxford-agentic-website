@@ -11,6 +11,34 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **AI-event roundup pages (`bizzabo.com`, `startupstash.com`) - a listing category this log has not
+  recorded before, and it is recorded with its limits rather than as a route.** Found 27 Nov 2026
+  (02:00 UTC cycle), from the conference-comparison probe. **Nothing contacted, submitted, claimed, signed
+  up for or paid for, and neither host resolves from this sandbox.**
+  - What they are, as far as the search results alone show: editorially maintained roundups of AI
+    conferences and events ("The Best AI Conferences to Attend", "AI conferences"), refreshed by date -
+    `startupstash.com/conferences/ai/` carried an "Updated November 6, 2026" line. They rank for the
+    short "AI conference" phrasings, which is how they surfaced.
+  - **The honest limit, and it is the reason this sits below CourseCheck rather than beside it.** Our days
+    are one-day bootcamps capped at a small room, not conferences, and every entry visible in these
+    roundups is a multi-track event with an exhibition hall. A bootcamp may simply not be eligible, and a
+    listing that misdescribes the format would bring the wrong reader. **Both are also US-centric** in the
+    results seen (GTC, Databricks, ODSC, Mandalay Bay), which is the wrong audience for an Oxford day.
+  - **Why it is worth recording anyway**: these pages are where the "which AI event should my team go to"
+    searcher actually lands, and this loop has not previously held a target of that shape. If either turns
+    out to accept one-day training events in the UK, it is a citable third-party mention of the entity,
+    which `Organization.sameAs` has lacked since 31 July.
+  - **The open questions the loop could not answer**: whether either accepts submissions at all or is
+    purely editorial, whether a listing is free or paid placement, and whether either has a UK or a
+    non-conference section. Answer those before spending anything.
+  - **Deliberately not added, with the reason rather than by omission.** `splunk.com`, `datacamp.com`
+    (already recorded as a competitor training provider) and `getmaxim.ai` are platform vendors or
+    competitors publishing the same roundup for their own reach; `uvik.net` is a software consultancy;
+    `acceleratetomorrow.com`, `brainiacconsulting.io`, `ventionteams.com` and `primeconcepts.com` are
+    competitor training providers surfaced by the comparison phrasing, recorded here so a later cycle does
+    not re-derive them as prospects.
+  - Needs: Drummond. Nothing happens without his go-ahead - no account, no claim, no submission, no spend.
+
 - **`edstellar.com` - a corporate-training marketplace, recorded with its limits rather than as a route.**
   Found 26 Nov 2026 (20:00 UTC cycle), from the IP-ownership probe, where it was the one host among
   seventeen that was neither a law firm nor a vendor blog. **Nothing contacted, submitted, claimed, signed

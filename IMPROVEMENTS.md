@@ -3642,9 +3642,132 @@ Status: `todo` · `blocked` (why) · `doing`
       question 6 this morning's cycle already widened to cover what you set up beforehand; (b) as a fifth
       `outcomes` entry on the Agentic programme page, which is the cheapest possible shape.
     - **Same family as backlog 25, 67 and 145**, all of which are one sentence from him. Four now.
+147. `todo` **(needs Drummond, one line about what happens after the day, and it is the third consecutive
+    day on which a product fact was the binding constraint; found 27 Nov 2026 in the 02:00 cycle)** - **the
+    field sells post-workshop support as a named term; we answer a different question and do not mention
+    support at all.** Probe 2 of that cycle - *"what happens when you get stuck after an AI training
+    workshop who do you ask for help afterwards"* - had the engine decline a general answer (*"The search
+    didn't turn up a universal answer, since post-workshop support depends on the provider"*) and close by
+    telling the reader to ask the organiser. Nine vendor pages, no institutional publisher: winnable, and
+    it converts, because the searcher is comparing providers on what happens after the money is spent.
+    - **What the field publishes, as a named term of sale**: 30 days of follow-up email support (two
+      providers), a 60-minute check-in session at 2 to 4 weeks, follow-up sessions where staff bring live
+      questions, optional monthly check-ins, and a return engagement at 6 months.
+    - **What we publish, and why it is not the same question.** `What happens after the day?` appears on
+      the Agentic programme page and in the homepage FAQ, both inside `FAQPage` nodes, so this is a reach
+      failure rather than a coverage gap. But its answer is *"you leave with the workflow you built rather
+      than a recording, and you leave with the group... you go away with their contact details, and people
+      stay in touch afterwards"*. That answers **what you leave with**. The field's question is **who
+      unsticks you in week two**, and nothing on the site answers it either way.
+    - **Why the loop stopped here.** Any sentence of the field's shape is a term of sale. Writing "email us
+      for thirty days" or "there is no support after the day" would both be inventing one, and that is the
+      first accuracy rule. The existing answer's own frontmatter comment says it was *"kept deliberately
+      short of community, network or alumni, which promise infrastructure"* - the same caution applies here
+      and is the reason not to improvise.
+    - **One line from Drummond settles it**, and the honest answer may well be "nothing formal, and that is
+      deliberate, because the day is built so you leave with the thing working" - which is itself a
+      publishable answer and a differentiated one in a field selling check-in calls. The natural homes are
+      the Agentic programme page's FAQ block beside the existing answer, and the Cohort 4 and 5 event
+      pages.
+    - **Same shape as backlog 25, 67, 68, 145 and 146.** Six open items now wait on a product fact only he
+      holds. Worth putting to him as one list rather than six.
+
 
 
 ## Shipped
+
+### 27 Nov 2026 (02:00 UTC cycle) - a conference is the other line in most AI training budgets, and the guide that compares formats did not mention one
+
+**What shipped.** `src/content/guides/ai-bootcamp-vs-course-vs-exec-education.md` gains a
+`## Where a conference fits` section with two leaf `h3` questions, plus one line in the existing
+"Choosing between them" decision list, plus a two-word repair to the section below it. Nothing else
+changed. The guide compared executive education, an online course, a bootcamp and doing it free, and
+said nothing about the format that takes the largest single bite out of many AI training budgets.
+
+**The evidence, and why this one converted into copy when the last six weeks of probes did not.** Probe 1
+of this cycle - *"is a one-day hands-on AI workshop better value than an AI conference ticket for a
+business leader"* - returned nine results, **every one a vendor, a conference promoter or a consultancy,
+with no institutional publisher in the field**, and the engine flagged its own sources unprompted
+(*"Most of the sources are vendor marketing pages, so treat their claims as positioning"*). Winnable on
+the gate's own terms. Converting, because the searcher is splitting a training budget between two line
+items. The thing that made it **actionable rather than merely winnable** is that the gap was on our page
+rather than in the field: this is the one guide whose entire organising question is *what do you want to
+be holding when it ends*, and a conference has a clean answer to it (a direction and a list of names)
+that the page never gave.
+
+**Two phrasings, two different fields, and the section is written for one of them.** Asked the short way -
+*"AI conference or AI training workshop which should I send my team to"* - the field collapses into
+"best AI conferences 2026" listicles (`splunk.com`, `datacamp.com`, `bizzabo.com`, `startupstash.com`,
+`uvik.net`, `getmaxim.ai`) and the engine answered with US conferences rather than with the decision at
+all. That phrasing is a listicle farm: neither winnable nor converting. **Recorded as a method note
+because it is the first time this log has measured one axis returning two unrelated fields on two
+phrasings**, and the lesson is that the probe wording decides whether an axis looks winnable.
+
+**Why this is not a second vendor arguing its own corner.** The section gives conferences real credit and
+names when a conference is the better buy - *"when the decision in front of you is which direction to take
+rather than which task to automate"*, and that two or three people splitting tracks is the cheaper way to
+cover ground with a team. That is the same move as *"When is a paid day not worth it?"* already on the
+page, and it is the reason this page can be believed on the comparison at all. **No fact about our own
+days was added**: every Oxford Agentic clause in the new section already appears above it or on the
+programme page.
+
+**Placement, and the one thing it had to not break.** The new section sits after "Choosing between them"
+and **before** "The fourth option: doing it yourself, for nothing", not after it, so the page still closes
+on its programme sentence rather than on a conference. That placement made the free-material section's
+opener false - it began *"All three formats above cost money, and an honest comparison has a fourth
+column"* - so it is now *"All of the formats above cost money, and an honest comparison has one more
+column"*. Two words, and the assertion suite checks the old wording is gone rather than only that the new
+wording is present. The decision-list line went in at position four, after the bootcamp bullet, so that the
+last bullet's *"You have already done the first two"* still points at executive education and the online
+course.
+
+**The structured-data effect, asserted on the built node rather than assumed.** `faqFromHeadings` was
+already true on this guide. `faqsFromQuestionHeadings` emits leaf question headings only, so the statement
+`h2` is skipped and its two `h3` children publish: the page's `FAQPage` node goes from **3 Questions to 5**,
+with the two conference answers first, at 546 and 485 characters, no stray space before closing punctuation
+and the smart apostrophe rendered as the page renders it. Site-wide `FAQPage` count is unchanged at 22,
+because the node already existed.
+
+**Checks.** Build, links, outbound, schema and both date guards green before and after: 69 pages valid,
+3397 internal links resolving (unchanged - the new section adds no links), 1587 resolving graph references,
+all titles and descriptions unique. 12 outbound warnings, all third-party and all 12 failing, which is this
+sandbox's egress policy rather than a site fault. Chromium at 375, 768 and 1280px against a local preview
+of the built page: **51 assertions, 51 passed**, covering the new copy's presence, heading levels and order,
+the old wording's absence, no heading-level skip, no horizontal overflow, the headings painted inside the
+viewport, and that the page still closes on the programme sentence. Screenshots read at 375 and 1280.
+**Method note worth keeping**: this site's headings carry a trailing `#` anchor in `innerText`, so an exact
+`getByRole('heading', { name })` match finds nothing and a careless run reads that as missing copy. Strip
+the trailing `#`, or match with `hasText`.
+
+**IndexNow.** This push submits the guide and `/guides/`; the four sibling guides that offer it in their
+"More guides" block are the known under-submission of backlog 41, which is `wontfix-for-now` on its own
+numbers. The three record files match the ping script's exempt pattern. Nothing pinged by hand.
+
+**Search Console unavailable from cloud, tried once**: `scripts/fetch-search-console.mjs` reports no service
+account key, there is no export in `seo-data/` newer than the 24 August baseline, and no CSV anywhere in the
+tree. Nothing estimated.
+
+**Three probes, zero citations, the forty-third consecutive set.** Probe 2 (post-day support) is a reach
+failure rather than a coverage gap - we publish *"What happens after the day?"* on the Agentic programme
+page and the homepage, both inside `FAQPage` nodes - but it exposed a real asymmetry: the field's question
+is *who helps me when I am stuck*, and our answer is about what you leave with and the group. That is a
+product fact only Drummond holds, **filed as backlog 147**, and it is the third consecutive day whose
+binding constraint was a product fact rather than a field (145, 146, 147). Probe 3 (coding prerequisite)
+declines on a shape this log had not recorded: the field passes winnability on the letter and fails it in
+substance, because nine of ten results already say "no coding required" and the engine answered correctly
+without us. Do not re-open it as a "no coding" page.
+
+**Off-page: one new category.** AI-event roundup pages (`bizzabo.com`, `startupstash.com`), recorded with
+their limits - our days are not conferences and both are US-centric in the results seen - and ranked below
+CourseCheck. Eight competitors and vendors from the same two fields recorded as deliberately-not-added so a
+later cycle does not re-derive them. Nothing contacted, submitted, claimed, signed up for or paid for.
+
+**No new guide: 32 guides, newest `publishDate` 20 October, and this is a refresh of an existing page.**
+Zero new guides in the week of 23-29 November.
+
+**Production could not be read.** `oxfordagentic.com` is refused at CONNECT by the sandbox egress proxy
+(HTTP 403) and does not resolve through `WebFetch`; `luma.com` is refused the same way. No live page was
+read, no event fact was touched, and deploy state came from the Actions API.
 
 ### 26 Nov 2026 (20:00 UTC cycle) - backlog 103's five-file sweep, shipped the evening it fell due rather than the morning after, because the guard fires on `endDate` and the day ended at 17:00
 

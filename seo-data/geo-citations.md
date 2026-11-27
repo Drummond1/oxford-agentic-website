@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-27 (02:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-THIRD CONSECUTIVE SET - AND ONE OF THE THREE CONVERTS INTO A SHIPPED SECTION RATHER THAN A BACKLOG ITEM
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve
+through `WebFetch` either, and `luma.com` is refused the same way. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output.
+
+**Dedupe by backlog 136's method, ninth use.** 710 question strings extracted and counted before any search
+ran. **Dropped as already worked**: worth-it framings (`worth` 35), group and team buying (`group` 16,
+`colleague` 5), sector cuts (`sector` 16), non-technical fit (`non-technical` 13), free material (`free` 8),
+substitution framings (`instead of` 10). **Dropped as unanswerable or banned**: tax and expense treatment
+(`tax` 0, `expense` 0), because VAT treatment is a standing decision never to state and "can I expense it"
+is advice this site cannot give - recorded so no later cycle mistakes a zero count for an opportunity. The
+three taken score 0 to 2 on the question list.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | is a one-day hands-on AI workshop better value than an AI conference ticket for a business leader (format-comparison axis, conference arm - `conference` 2) | **No** | acceleratetomorrow.com, thesmallbusinessexpo.com, codebridge.tech, ventionteams.com, primeconcepts.com, poppymarketingandconsulting.com, womeninaiglobalsummit.com, ritwikjoshi.com, brainiacconsulting.io |
+| 2 | what happens when you get stuck after an AI training workshop who do you ask for help afterwards (post-day-support axis - `stuck` 0, `afterwards` 3, `support` 6) | **No** | propellernet.co.uk, teamland.com, trivana.ai, futurefactors.ai, blueshore.ai, aimadethisbrand.com, authentilead.co, amivo.co.uk, aiedgeconsult.com |
+| 3 | do you need to know how to code to build an AI agent in a one day course no coding required (coding-prerequisite axis - `python` 1, `beginner` 2) | **No** | udemy.com x2, classcentral.com, youngurbanproject.com, aitoolssme.com, agentman.ai, onedayagent.company, completeaitraining.com, theaischool.co, courses.impodays.com |
+
+**Reading, probe by probe.**
+
+- **Probe 1 is the cycle's change, and it is the first probe in six weeks to convert into shipped copy
+  rather than a backlog item.** Nine results, every one a vendor, a conference promoter or a consultancy,
+  and **no institutional publisher anywhere in the field** - the engine flagged its own field unprompted
+  (*"Most of the sources are vendor marketing pages, so treat their claims as positioning"*). Winnable.
+  Converting: the searcher is allocating a training budget between two line items. **What made it
+  actionable rather than merely winnable is that the gap is on our own page**:
+  `ai-bootcamp-vs-course-vs-exec-education` compares executive education, an online course, a bootcamp and
+  doing it free, and says nothing about a conference, which is the other line in most AI training budgets.
+  Acted on this cycle - a `## Where a conference fits` section with two leaf `h3` questions, which took
+  that guide's `FAQPage` node from 3 Questions to 5.
+  - **The second phrasing is the reason the section is written the way it is, and it is worth recording
+    as a method note.** Asked the short way - *"AI conference or AI training workshop which should I send
+    my team to"* - the field collapses into "best AI conferences 2026" listicles (`splunk.com` three
+    times, `datacamp.com` five, `bizzabo.com`, `startupstash.com`, `uvik.net`, `getmaxim.ai`) and the
+    engine answered with US conferences (GTC, Databricks, ODSC) rather than with the decision at all.
+    **Two phrasings of one axis, two completely different fields**: the comparison phrasing holds the
+    decision and is winnable, the short phrasing is a listicle farm and is neither winnable nor
+    converting. The section is written for the first and does not chase the second.
+  - **Why this is not a second vendor arguing its own corner**, which is the failure mode the engine named
+    in its own field. The section gives conferences real credit and names when a conference is the better
+    buy - the same move as *"When is a paid day not worth it?"* already on that page. A comparison that
+    cannot say when not to buy from us is positioning, and the field is already full of it.
+
+- **Probe 2 is a reach failure, not a coverage gap, and the distinction was checked rather than assumed.**
+  The engine declined a general answer - *"The search didn't turn up a universal answer, since
+  post-workshop support depends on the provider"* - and closed by telling the reader to *"ask the organizer
+  or trainer"*. The field is nine vendor pages advertising 30 days of email support, 60-minute check-ins at
+  2 to 4 weeks, and optional monthly calls. **We publish an answer to this question already**: *"What
+  happens after the day?"* on the Agentic programme page and in the homepage FAQ, both inside `FAQPage`
+  nodes, so it is machine-readable and simply was not reached.
+  - **One honest asymmetry, measured and not acted on.** The field's question is *who helps me when I am
+    stuck*; our published answer is about what you leave with and the group you leave with - *"you go away
+    with their contact details, and people stay in touch afterwards"*. Those are different questions, and
+    the second does not answer the first. Whether Oxford Agentic offers anything resembling the field's
+    30-day email support is **a product fact only Drummond holds**, and writing one would be inventing a
+    term of sale. **Filed as backlog 147.** That makes three consecutive days on which the binding
+    constraint was a product fact rather than a field (145, 146, now 147), which is itself the finding
+    worth reporting.
+
+- **Probe 3 declines on the field being saturated with exactly the claim we would make, which is a
+  different decline from the usual one and worth naming.** Ten results, all vendor or course marketing,
+  no institutional publisher - so it passes the letter of winnability. It fails in substance: nine of the
+  ten already say "no coding required" about an online no-code course, and the engine answered the
+  question confidently and correctly without us. Publishing a tenth page saying "no coding" wins nothing.
+  - **The one real distinction in that field, recorded and deliberately not written up.** "No coding" there
+    means drag-and-drop builders - Langflow, n8n, a vendor's own agent builder - whereas our days mean
+    plain-language instruction to an agent that writes the code itself. That is a genuine difference, but
+    the message house rule is that "no coding" is never left standing on its own, and the site already
+    draws the distinction in `agentic-ai-glossary` (*"the constraint is clear thinking about your task, not
+    code"*) and on the Coding Bootcamp page. **No action. Do not re-open the coding-prerequisite axis as a
+    "no coding" page**; if it is ever re-opened, it is as the drag-and-drop-versus-coding-agent distinction
+    and nothing else.
+
 ## 2026-11-26 (20:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SECOND CONSECUTIVE SET - AND ALL THREE DECLINE, TWO OF THEM ON A FACT ONLY DRUMMOND HOLDS RATHER THAN ON THE FIELD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

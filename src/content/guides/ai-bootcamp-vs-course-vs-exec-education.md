@@ -11,7 +11,7 @@ capsule: >-
   or something built and running against your own work.
 author: drummond-gilbert
 publishDate: "2026-07-25T09:00:00+01:00"
-updatedDate: "2026-11-07T08:00:00+00:00"
+updatedDate: "2026-11-27T09:00:00+00:00"
 relatedProgrammes:
   - oxford-agentic-bootcamp
 # The question tail of this guide is a genuine FAQ section inside an essay, which is
@@ -36,6 +36,24 @@ relatedProgrammes:
 # The third answer runs to the end of the article, so it carries the team-choice
 # paragraph and the closing programme sentence with it. Both were read clause by clause
 # against published copy first; neither adds a fact, a price, a date, a venue or a person.
+# A conference was added as its own section on 27 November 2026, with two leaf `h3`
+# questions under a statement heading, which is the same shape as the free-material
+# tail below. The gap was measured rather than assumed: this page compared three paid
+# formats and a free one, and said nothing about the other line in most AI training
+# budgets. Two probes on 27 November. Asked as a comparison - "is a one-day hands-on AI
+# workshop better value than an AI conference ticket for a business leader" - the field
+# is nine results and every one is a vendor or a conference promoter, with no
+# institutional publisher in it, and the engine flagged its own field ("Most of the
+# sources are vendor marketing pages, so treat their claims as positioning"). Asked the
+# short way - "AI conference or AI training workshop which should I send my team to" -
+# the field collapses into "best AI conferences 2026" listicles (Splunk, DataCamp,
+# Bizzabo, Startup Stash) and the engine answered with US conferences rather than with
+# the decision, which is why the comparison phrasing is the one this section is written
+# for and the listicle phrasing is not worth chasing.
+# The section gives conferences real credit and names when they are the better buy,
+# which is the same move as "When is a paid day not worth it?" below and the reason this
+# is not a second vendor arguing its own corner. Nothing is claimed about our own days:
+# every sentence about Oxford Agentic here already appears above or on the programme page.
 faqFromHeadings: true
 ---
 
@@ -66,13 +84,26 @@ That is a narrower promise than most training pages make, and it is worth being 
 - **You need to set strategy or govern AI use** - executive education.
 - **You want broad knowledge on your own schedule** - an online course.
 - **You want something built and running against your own work** - a bootcamp.
+- **You need to see what exists and who else is doing it** - a conference.
 - **You have already done the first two** - that is the most common person in our room, and the gap they describe is exactly what a bootcamp closes.
 
 They compound rather than compete: the frame from a programme, the depth from a course and a working result from a day of building are worth more together than any one alone.
 
+## Where a conference fits
+
+A conference is the other line in most AI training budgets, and it is not a smaller version of any of the formats above. What you buy is a survey: several tracks running at once, a programme set by the organisers, an exhibition hall, and a few hundred people to meet. What you hold at the end is a direction and a list of names.
+
+### Is a conference an alternative to a hands-on day?
+
+Not really, because the two answer different questions. A conference is the right instrument when you do not yet know what to build - you are working out what exists, sizing up suppliers, or checking your own plan against what other organisations are doing. A build day assumes that part is settled: it takes one pattern and applies it to one task you already have. The two sit in sequence more often than they compete, and the order tends to matter, because a conference narrows what is worth building and a day gets one of those things running.
+
+### When is a conference the better use of the money?
+
+When the decision in front of you is which direction to take rather than which task to automate, and when you need other people's evidence to settle it. A conference is also the cheaper way to cover ground with a team, since two or three people can split the tracks between them and compare notes afterwards. The thing to be clear about is what comes home: notes, slides and contacts. If you want something running in your own work by the end of the week, that is a different purchase.
+
 ## The fourth option: doing it yourself, for nothing
 
-All three formats above cost money, and an honest comparison has a fourth column, because most of the material is public. Documentation, tutorials and recorded talks cover a great deal of what any of them teach. It is worth being direct about what that does and does not settle.
+All of the formats above cost money, and an honest comparison has one more column, because most of the material is public. Documentation, tutorials and recorded talks cover a great deal of what any of them teach. It is worth being direct about what that does and does not settle.
 
 ### Is there anything in the day you could not find for free?
 
