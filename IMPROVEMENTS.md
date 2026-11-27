@@ -3092,10 +3092,23 @@ Status: `todo` · `blocked` (why) · `doing`
     chosen a cohort and is comparing cohorts, rather than one where they are choosing between formats we do not
     both sell. Do not re-pitch on winnability alone.
 
-125. `todo` (loop-actionable and **dated: it falls due on 4 December 2026, and again on 29 January 2027**;
+125. `todo` (loop-actionable and **dated: it arms at 17:00 UTC on 3 December 2026 - see the correction
+    below, the item said "4 December" for five days - and again at 17:00 on 28 January 2027**;
     measured 22 Nov 2026 in the 08:00 cycle, by running the checker forward rather than guessing) - **the
     sibling of backlog 103, and it is larger than that item predicted.** Backlog 103 says the 4 December job
     is *"at least five guides"*. Measured: it is **seven guides plus one event file**.
+    **TWO CORRECTIONS, 27 Nov 2026 (08:00 cycle), both from running the checker rather than trusting this
+    item.** (1) **It arms at 17:00 UTC on 3 December, not on the 4th.** `check-dates.mjs` compares each
+    event's `endDate` against now, Cohort 4 ends at 17:00 on 3 December, and the checker is clean at
+    `--now=2026-12-03T17:00:00Z` and returns 10 findings at `--now=2026-12-03T17:01:00Z`. Any push between
+    those two points hits a red build, which is exactly what happened to the 26 November cycle on backlog
+    103's identical arithmetic. **The cycle that must do this sweep is the one running on the evening of
+    3 December.** The same correction applies to 28 January 2027. (2) **The inventory is now six guides plus
+    one event file, not seven guides.** `when-ai-executive-cohorts-run` was re-sorted by the 26 November
+    20:00 commit and no longer carries Cohort 4's date in the "Cohort 4 runs on ..." shape - it now reads
+    *"The days still on sale are a fourth agentic day on 3 December"*, which is the sentence the 27 November
+    guard fix exists to catch, and it is the tenth finding in the count above. The other six guides are
+    unchanged.
     `check-dates.mjs --now=2026-12-04` against a build made on 22 November returns **16** windows. Seven of
     them are 26 November's and belong to backlog 103, which retires them on the 27th. Of the nine that are
     Cohort 4's, one is the derived "Upcoming runs" card on `/bootcamps/oxford-agentic-bootcamp/` and
@@ -3674,7 +3687,141 @@ Status: `todo` · `blocked` (why) · `doing`
 
 
 
+148. `todo` (loop-actionable in principle, **and deliberately not solved by the fix that found it**; found
+    27 Nov 2026 in the 08:00 cycle, while widening `OURS` by one phrase) - **`check-dates.mjs`'s `OURS` gate
+    is a list of nouns, so any window naming one of our days in a noun the list does not hold is invisible
+    to the guard.** The gate exists for a good reason - a guide names the Oxford online programme's own
+    16 September start, which is also Cohort 2's date, and date-matching alone reads that true sentence as a
+    stale claim about ours - so it cannot simply be removed. But its failure mode is silent: a true-looking
+    clause about "a fourth agentic day", "the next build day", "the December date" or any other paraphrase
+    passes the build on the day it becomes false. This cycle found and closed exactly one instance by adding
+    `agentic days?`; three nouns is not a general answer, and the brand name is **measurably** not one (see
+    that Shipped entry: bare `agentic` matches the footer on every page and retires the gate).
+    - **The shapes that would be general, and what each costs.** (a) Test `OURS` against a wider context
+      than the 90-character window - the paragraph, say - which would catch this instance via the
+      surrounding prose but also weakens the protection the gate exists for, and needs measuring against the
+      online-programme sentence at every horizon. (b) Key the gate on a link to one of our own event or
+      programme URLs inside the window rather than on a noun, which is how this instance is actually written
+      (`[3 December](/events/oxford-agentic-bootcamp-cohort-4/)`) and is a much stronger signal of
+      "ours" than any word - but it needs the href, and the checker reads stripped text, so it is a change
+      to how the page is parsed rather than to a regex. **(b) is the one worth building if anyone builds
+      one**, and it would retire this item rather than extend it.
+    - **Low urgency, with the condition to watch rather than a date**: it fires only when someone writes a
+      forward-tense booking clause that names a day without the words "cohort" or "bootcamp" near it. The
+      instance that exposed it exists because a cycle re-sorted a sentence for unrelated reasons. **A cycle
+      that rewrites a dated closing line should check its own sentence against `OURS` before shipping it.**
+
 ## Shipped
+
+### 27 Nov 2026 (08:00 UTC cycle) - the date guard would have passed a stale "still on sale" sentence on 4 December, because the clause says "agentic day" rather than "cohort"
+
+**What shipped.** One regex in `scripts/check-dates.mjs`: `OURS` goes from
+`/\b(cohort|bootcamp)\b/i` to `/\b(cohort|bootcamp|agentic days?)\b/i`, with the measurement written into
+the comment above it. No file under `src/` or `public/` was touched, so **no page moved**: `dist` hashed
+before and after a full rebuild, **0 of 209 built files differ**. `scripts/check-dates.mjs` matches
+`indexnow-ping.mjs`'s exempt pattern and the dry run over exactly the four staged paths prints *"no page
+URLs affected by this push; nothing to submit"*. Nothing pinged by hand.
+
+**The defect, and it is a hole in the thing that enforces accuracy rule 7.** `check-dates.mjs` fails the
+build when a passed cohort's date is written as a day still to come. It has three gates: the date matches a
+passed cohort, the governing tense reads forward, and `OURS` confirms the window is about one of ours rather
+than somebody else's course. The third gate was two nouns. Measured on the built site this cycle, exactly
+one window on 58 indexable pages slips it, and it is on the page a buyer asking when the next day runs would
+land on. `/guides/when-ai-executive-cohorts-run/` publishes:
+
+> "The days still on sale are a fourth agentic day on 3 December, and the first of the 2027 dates, which is
+> on 28 January at Jesus College rather than Worcester..."
+
+Traced gate by gate rather than assumed. The date matches Cohort 4. The window is capped at the full stop
+after the preceding *"the first Coding Bootcamp ran on 26 November"*, so `ran` is correctly excluded and the
+governing-tense rule works. `FORWARD` matches inside the window, on its own *"which is on 28 January"*. It is
+`OURS` that returns **false**: the clause says "agentic day", and neither "cohort" nor "bootcamp" appears
+within 90 characters. So on 4 December that sentence would have advertised a day that had gone, on a guide
+that ranks, with a green build and no finding anywhere.
+
+**Three widths were measured over all 58 indexable pages at six horizons (20, 27 and 28 November,
+4 December, 29 January, 1 March), and two of the three were rejected.**
+
+| Width | 20 Nov | 27 Nov | 28 Nov | 4 Dec | 29 Jan | 1 Mar | Verdict |
+|---|---|---|---|---|---|---|---|
+| `cohort\|bootcamp` (as it stood) | 0 | 0 | 0 | 9 | 10 | 10 | the blind spot |
+| **`+ agentic days?` (shipped)** | 0 | 0 | 0 | **10** | **12** | **12** | +1 and +2, every one true |
+| `+ agentic` (bare) | 0 | 0 | 0 | 11 | 14 | 14 | **rejected** |
+
+- The findings the shipped width **adds** are this guide's two clauses and nothing else, confirmed by
+  diffing the finding lists rather than comparing counts: `when-ai-executive-cohorts-run` on 4 December, and
+  the same page twice on 29 January once Cohort 5 has also gone.
+- Bare `agentic` is **measurably wrong, not merely risky**. Its extra findings are the event pages' booking
+  bar and footer - *"Book your place Thu 3 December Book Oxford Agentic"* - which are derived from
+  `effectiveStatus` and **self-heal** on the first build after the day, so it would turn a green deploy red
+  over a surface that fixes itself. Worse, the brand name "Oxford Agentic" sits in the header and footer of
+  every page, so bare `agentic` makes `OURS` true almost everywhere and **retires** the gate rather than
+  widening it.
+- **Nothing was widened in `FORWARD` or `PAST`.** Two attempts there were measured and dropped. Adding
+  `on sale` as a forward keyword changes nothing, because the governing-tense rule never reaches it (`OURS`
+  rejects the window first). Allowing up to four words between `is`/`are` and `on` **fails the build today**,
+  on two true sentences, and reproduces precisely the false positive the 16 November `at`-next-to-`is`
+  decision measured and refused. Those tradeoffs were established in November and this cycle did not
+  relitigate them.
+
+**Why the guard and not the sentence.** The sentence is **true today** - 3 December and 28 January are both
+on sale - and rewriting it now would publish an error to prevent one, which is the rule backlog 103 followed
+for four days running before it swept on the evening the dates passed. What is wrong *today* is the guard.
+Fixing the guard also covers every future sentence of that shape rather than this one instance.
+
+**Two dated corrections to backlog 125, both found by running the checker rather than trusting the item.**
+It says the sweep "falls due on 4 December". By the same arithmetic the 26 November cycle learned the hard
+way, **it arms at 17:00 UTC on 3 December**, Cohort 4's `endDate`: `--now=2026-12-03T17:00:00Z` is clean and
+`--now=2026-12-03T17:01:00Z` returns 10 findings. Any push between 17:00 on the 3rd and the sweep hits a red
+build. And its inventory of "seven guides plus one event file" is now **six guides plus one event file**,
+because the 26 November commit re-sorted `when-ai-executive-cohorts-run`'s sentence out of the
+"Cohort 4 runs on ..." shape - into the shape this cycle's fix exists to catch. Both corrections are written
+into the item.
+
+**Checks.** Build, links, outbound, schema and both date guards green before and after: 69 pages valid,
+3397 internal links resolving, 22 `FAQPage` nodes, 1587 resolving internal graph references, all titles and
+descriptions unique. Chromium at 375 and 1280px against a local preview of the guide the fix covers:
+**10 assertions, 10 passed** - the on-sale sentence and the 28 January clause both render, the passed days
+read as past, zero horizontal overflow, one `h1`. Strictly a browser was not required, because `dist` is
+byte-identical and the hash proves it; it was run anyway so that "the sandbox cannot inspect" was ruled out
+rather than assumed. Method note for a cycle doing the same: Playwright resolves from
+`/opt/node-tools/node_modules/playwright/index.js` and is CommonJS, so an ESM script outside the repo needs
+a default import, not `import { chromium }`.
+
+**Three candidate defects hunted and disproved, written up so no later cycle pays for the same hunt.**
+- **Inbound body-link census: a false positive of my own making.** Counting in-body links with `<header>`,
+  `<footer>` and `<nav>` stripped returned four guides and all eight team profiles on **1** inbound link.
+  Wrong: the related-guides block **is** a `<nav>`, so stripping site navigation by element strips it too.
+  All-region counts are healthy - `agentic-ai-glossary` 6, and the consultants, finance and public-sector
+  guides 5 each. **Strip the header, footer and breadcrumb by class or id, never by element**, or this
+  census reads an ordinary guide as an orphan.
+- **Hub `ItemList`s look absent and are not.** Printing the top-level `@type` of every node in the graph on
+  `/events/`, `/guides/`, `/bootcamps/` and `/team/` shows `WebPage`, `CollectionPage` and `BreadcrumbList`
+  and no `ItemList` anywhere. The `ItemList` is `CollectionPage.mainEntity`, nested - `/events/`'s carries a
+  full `EducationEvent` per cohort with `location`, `organizer`, `performer`, `image` and `offers`. **Walk
+  the graph, do not scan top-level types.**
+- **Passed cohorts still publishing an `Offer`: already decided, and not re-pitched.** All five passed
+  cohorts carry `offers` with `category: "Paid"` and no `availability`, while the two on-sale ones carry
+  `availability: InStock`. That is backlog 130(d) from 23 November, which weighed it and left it: the
+  absence of `availability` is the signal, and the `sameAs` to the passed Luma listing is the deliberate
+  15 October decision that tells an engine holding that listing it is ours.
+
+**Also checked and clean, recorded so it is not re-derived.** `robots.txt` admits every crawler group it
+should, seventeen of them named individually including `GPTBot`, `ClaudeBot`, `PerplexityBot`,
+`Google-Extended` and `CCBot`, and declares the sitemap. `llms.txt` opens with both on-sale cohorts under
+"Next events" with correct dates and venues, lists all 33 guide URLs, and marks every passed cohort "Took
+place on". The four commercial pages already carry the month in the `<title>` and the full date in the
+description (`...| December 2026`, `Thursday, 3 December 2026 at Worcester College`), so the date-anchored
+title work the cycle went looking for is done.
+
+**Search Console: unavailable from cloud, tried once.** `fetch-search-console.mjs` exits on a missing
+`GSC_SERVICE_ACCOUNT_KEY`, there is no key or CSV in the tree, and no export in `seo-data/` newer than the
+24 August baseline. Nothing estimated. **Three probes, zero citations, the forty-fourth consecutive set, and
+all three decline** - one on who is asking, one on institutional publishers holding their own literature, one
+on a field whose own bias the engine named out loud. Detail in `seo-data/geo-citations.md`. **One new
+off-page sub-category** - UK course directories that publish provider-profile pages - recorded with its
+limits and ranked below CourseCheck. Nothing contacted, submitted, claimed or paid for. **No new guide**:
+32 guides, newest `publishDate` 20 October, and this cycle shipped no content at all.
 
 ### 27 Nov 2026 (02:00 UTC cycle) - a conference is the other line in most AI training budgets, and the guide that compares formats did not mention one
 

@@ -136,7 +136,49 @@ for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
 const FORWARD =
   /\b(runs?|takes|takes? place|will|next|upcoming|book|opens?|starts?|begins?)\b|\b(?:is|are)(?:\s+(?!not\b)\w+)?\s+on\b/i;
 const PAST = /\b(ran|took place|has run|have run|had run|was|were|passed|closed|previous|previously|earlier|last year|already)\b/i;
-const OURS = /\b(cohort|bootcamp)\b/i;
+/*
+ * `OURS` is the gate that keeps this guard off other people's dates, and it was
+ * two nouns: `cohort` and `bootcamp`. A window that claims one of our passed
+ * days as still on offer without using either word slipped it entirely.
+ *
+ * Measured on the built site on 27 November 2026, there is exactly one such
+ * window and it is on the page a buyer asking when the next day runs would land
+ * on. `/guides/when-ai-executive-cohorts-run/` publishes: "The days still on
+ * sale are a fourth agentic day on 3 December, and the first of the 2027 dates,
+ * which is on 28 January at Jesus College". The tense reads `forward`
+ * correctly - the window's own "which is on 28 January" matches `FORWARD` - and
+ * the clause is capped at the full stop after the preceding "ran on
+ * 26 November", so the governing-tense rule works too. It was `OURS` that
+ * returned false: the clause says "agentic day", not "cohort" or "bootcamp".
+ * So on 4 December that sentence would have published a day that has gone as a
+ * day still on sale, and the build would have stayed green.
+ *
+ * `agentic day` is added and nothing wider, and the width is measured rather
+ * than argued. Running the whole guard over all 58 indexable pages at six
+ * horizons (20, 27 and 28 November, 4 December, 29 January, 1 March):
+ *   - as it stands:        0, 0, 0, 9, 10, 10
+ *   - with `agentic day`:  0, 0, 0, 10, 12, 12   (+1 and +2, every one a true
+ *                          finding, all of them this guide's two clauses)
+ *   - with bare `agentic`: 0, 0, 0, 11, 14, 14   REJECTED. The extra findings
+ *                          are the booking bar and the footer - "Book your
+ *                          place Thu 3 December Book Oxford Agentic" - which
+ *                          are derived from `effectiveStatus` and self-heal on
+ *                          the first build after the day. Worse, the brand name
+ *                          "Oxford Agentic" is in the header and footer of
+ *                          every page, so bare `agentic` makes `OURS` true
+ *                          almost everywhere and retires the gate rather than
+ *                          widening it.
+ * No horizon loses a finding, and the build is green today under the chosen
+ * width, which is the only version of this that may ship: this gate is a hard
+ * fail, so a pattern that blocks a deploy on correct copy is worse than the
+ * blind spot it closes. Same standard as the `at`-next-to-`is` decision above.
+ *
+ * The general shape is wider than this fix and is recorded as backlog 148: any
+ * window naming one of our days in a noun this list does not hold is invisible
+ * to the guard. Three nouns is not a solution to that, and the brand name is
+ * measurably not one either.
+ */
+const OURS = /\b(cohort|bootcamp|agentic days?)\b/i;
 const WINDOW = 90;
 
 /*

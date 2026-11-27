@@ -11,6 +11,35 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **UK course directories with provider-profile pages (`findcourses.co.uk`, `emagister.co.uk`,
+  `coursesonline.co.uk`) - a sub-category this list has not held before: a directory that publishes a page
+  about the PROVIDER, not only about a course.** Found 27 Nov 2026 (08:00 UTC cycle), while checking whether
+  CourseCheck had siblings. **Nothing contacted, submitted, claimed, signed up for or paid for, and none of
+  the three resolves from this sandbox.**
+  - What they are, as far as the search results alone show. `findcourses.co.uk` describes itself as helping
+    L&D professionals find training, and is part of a group running "an international network of search
+    engines for professional training & courses"; archived 2021-2022 copies of its own site carried a "For
+    training providers" section headed *"Advertising services with Findcourses.co.uk and The Independent"*.
+    `emagister.co.uk` publishes numbered **"Course Providers"** index pages, which is the provider-profile
+    shape. `coursesonline.co.uk` surfaced alongside them and is listed in an e-learning directory.
+  - **Why the shape matters.** `Organization.sameAs` has been empty since 31 July and backlog 2b calls one
+    external identity page the cheapest remedy. A course listing is a page about a product; a provider
+    profile is a page about the entity, which is the thing that is missing. That puts this in the same
+    category as `coursecheck.com` (a review platform) rather than with the dozen event listings in
+    `off-page-listings.md` - though a directory profile is weaker corroboration than a review page carrying
+    named attendee reviews, so it ranks **below CourseCheck** and roughly level with `edstellar.com`.
+  - **The honest limits, and they are substantial.** The provider pages found are **archived, not current**,
+    and the only route they named was an advertising phone number, so this is probably **paid placement**
+    rather than a free listing; no current official page explaining how to list was found at all. These
+    directories also skew to online and e-learning, which is the opposite of what our days are, and
+    `findcourses.co.uk`'s audience is corporate L&D buyers - adjacent to, but not the same as, the leader
+    who books their own seat.
+  - **The open questions the loop could not answer**: whether any of the three lists UK public one-day
+    in-person courses, whether a provider profile is free or paid, whether the archived advertising route
+    still exists, and whether a profile would be indexed well enough to be worth `sameAs`. Answer those
+    before spending anything.
+  - Needs: Drummond. Nothing happens without his go-ahead - no account, no claim, no submission, no spend.
+
 - **AI-event roundup pages (`bizzabo.com`, `startupstash.com`) - a listing category this log has not
   recorded before, and it is recorded with its limits rather than as a route.** Found 27 Nov 2026
   (02:00 UTC cycle), from the conference-comparison probe. **Nothing contacted, submitted, claimed, signed

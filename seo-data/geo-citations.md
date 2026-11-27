@@ -5,6 +5,85 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-27 (08:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FOURTH CONSECUTIVE SET - AND ALL THREE DECLINE, WITH THE CYCLE'S CHANGE COMING FROM A GUARD RATHER THAN FROM A FIELD
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve
+through `WebFetch` either; `luma.com` is refused the same way. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output. The outbound link check is the third instrument saying the same thing:
+**0 of 12 third-party links reachable**, including both Luma pages, so every one of those warnings is this
+sandbox rather than a broken link.
+
+**Dedupe by backlog 136's method, tenth use.** Question strings extracted and counted before any search ran.
+**Dropped as already worked**: hire-versus-train (`hire someone` 4, `recruit` 6, and the build-versus-hire
+axis is on the record), hackathons (`hackathon` 8), away days (`away day` 15), webinars (`webinar` 13),
+duration framings (`enough` 7, `one day enough` 3), slides-versus-hands-on (`slides` 10, `lecture` 6).
+**Dropped as banned or unanswerable**: the location and travel axis (permanent), certification, step-free
+access. The three taken score 0 to 3.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | will an AI agent workflow I build today still work after the model is updated in six months maintenance (durability / model-churn axis - `obsolete` 1, `fragile` 0, `keep working` 0) | **No** | mindstudio.ai x3, learn.microsoft.com x2, dev.to, gravitee.io, pydantic.dev x3, ai.pydantic.dev, rkalani1.github.io, opusresearch.net, tianpan.co, community.latenode.com, blog.promptlayer.com |
+| 2 | how do I teach the rest of my team what I learned at an AI training day cascade the learning (cascade / internal-teaching axis - `teach the rest` 0, `teach my team` 0, `train the trainer` 0, `cascade` 2) | **No** | trainingmag.com x2, culturalsynergies.com x2, td.org, learningwiki.unitar.org x3, britishcouncil.org, mcc.gov, pluralsight.com, scaledagileframework.com, asana.com, heller.brandeis.edu, rhythmsystems.com |
+| 3 | is a lunch and learn session enough for AI skills or do you need a full day workshop for a business team (format-intensity axis, lunch-and-learn arm - `lunch and learn` 0) | **No** | mentorcruise.com x6, lilachbullock.com x2, insivia.com, atlassian.com x2, learning.sap.com, brainstation.io, d3.harvard.edu, fanshawec.ca, sites.google.com |
+
+**Reading, probe by probe.**
+
+- **Probe 1 passes winnability on the letter and fails on who is asking, which is the gate that catches
+  good-looking topics.** The field is vendor engineering blogs (`mindstudio.ai` three times) and platform
+  documentation (`learn.microsoft.com`, two `pydantic.dev` changelogs, `gravitee.io`), and the engine's
+  answer is about golden test sets, pinned model versions, semantic versioning of workflow components and
+  deprecation watch. **That searcher is an engineer keeping agents alive in production, not a leader
+  deciding whether to spend a day in a room.** Traffic from it is the "AI bootcamp vs course" failure the
+  12 August rule was written about. Microsoft is also in the field on its own product, which is the other
+  half of the same rule.
+  - **The honest residue, recorded and not acted on.** There is a leader-shaped version of this objection -
+    *does the thing I build in a day still earn its keep in six months* - and this site does not answer it
+    in those words. But it is not this field's question, and answering it would need a claim about how our
+    own attendees' workflows have held up, which is an outcome fact nobody here has. **Do not re-open the
+    durability axis as an engineering page.** If it is ever re-opened it is as the leader's objection, and
+    it needs evidence from past cohorts first.
+
+- **Probe 2 declines on winnability in the cleanest form the rule describes: institutional publishers on
+  their own subject.** Cascade training is a named L&D method with a literature, and the field is that
+  literature - the **British Council**'s train-the-trainers cascade toolkit, three pages of **UNITAR**'s
+  learning wiki, **ATD** (`td.org`), `trainingmag.com` twice, a **US government** lessons-learned page, the
+  **SAFe** framework, Brandeis. The engine answered confidently with a figure from that literature (*"the
+  target audience gets only 75% of the original content"*). A provider page does not outrank that and
+  should not.
+  - **The reframe the rule asks for, and why it stops at an ask rather than a page.** What that field never
+    answers is the AI-specific version: what exactly can one attendee hand a colleague after a hands-on
+    day. For us that runs straight into **backlog 146** - the Coding line publishes a take-home kit and the
+    Agentic line's four published outcomes contain nothing a colleague could read - and into **backlog 147**
+    on who helps afterwards. So this is the second consecutive day on which a cascade-shaped question
+    resolves to the same unanswered product fact, which is dated evidence for 146 rather than a topic.
+
+- **Probe 3 is winnable and converting and was still declined, on the ground the engine itself named.** The
+  field is vendor marketing - `mentorcruise.com` six times, which is one host's duplicated template rather
+  than six sources - with institutional publishers present but not dominant (`learning.sap.com`,
+  `d3.harvard.edu`, `fanshawec.ca`). The searcher is splitting a budget between a free internal session and
+  a paid day, which converts. **But the engine closed with "the vendor sources have commercial reasons to
+  recommend longer, paid formats", and a tenth vendor page arguing that a full day beats a lunch hour is
+  exactly that.** The conference arm shipped six hours ago on the opposite basis: it could name when a
+  conference is the better buy. Here the honest answer - a lunch-and-learn is a fine taster and a poor
+  build session - is both true and indistinguishable from self-interest, and the duration question is
+  already answered on the programme page.
+  - **Recorded as the second format arm of `ai-bootcamp-vs-course-vs-exec-education`, deliberately unspent.**
+    Two arms of one guide in one day would also breach the loop's own one-refresh-per-cycle rule. If it is
+    ever taken, it needs a reason a reader would believe from someone who sells the longer format - most
+    likely a published account of what a lunch hour actually gets through, which is an outcome fact we do
+    not hold.
+
+**What the cycle shipped instead, and why it is in this log.** The three probes produced no copy, and the
+change came from the guard that protects the claims this log keeps measuring: `check-dates.mjs` would have
+let `/guides/when-ai-executive-cohorts-run/` publish *"The days still on sale are a fourth agentic day on
+3 December"* on 4 December with a green build, because its `OURS` gate holds `cohort` and `bootcamp` and
+that clause says "agentic day". That page is where a buyer asking when the next day runs lands, and the
+21 November probe in this log is an engine doing exactly that and being sent to a passed cohort's booking
+page. The full measurement is in the Shipped entry in `IMPROVEMENTS.md`.
+
 ## 2026-11-27 (02:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-THIRD CONSECUTIVE SET - AND ONE OF THE THREE CONVERTS INTO A SHIPPED SECTION RATHER THAN A BACKLOG ITEM
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
