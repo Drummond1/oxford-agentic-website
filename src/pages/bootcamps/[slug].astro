@@ -231,13 +231,30 @@ const bands = {
         ) : (
           <Fragment>
             <p class="empty">Dates for the next cohort are being confirmed.</p>
-            {interest && (
-              <p class="btn-row">
+            {/*
+                "All events" beside the interest button, and alone in its place
+                where there is no interest page, because the sibling template
+                already answers this exact state that way. A past event page
+                with no successor prints the same sentence as the line above and
+                then offers `All events` as the way out - one primary, the
+                forward step leading. This band printed the sentence and, on a
+                programme with no interest page, nothing at all: measured on the
+                built site, `/bootcamps/agentic-coding-bootcamp/` carried three
+                links in its main region, and the only one that was not a
+                breadcrumb pointed at the cohort that ran on 26 November. The diary and not a
+                sibling cohort, for the reason the 26 November sweep gave: a
+                reader on the Coding page has not asked about the Agentic day.
+            */}
+            <p class="btn-row">
+              {interest && (
                 <a href={interest} class="btn btn--primary" data-analytics-event="sb_interest_link_click">
                   Register your interest <span aria-hidden="true">→</span>
                 </a>
-              </p>
-            )}
+              )}
+              <a href={paths.events()} class:list={['btn', interest ? 'btn--ghost' : 'btn--primary']}>
+                All events
+              </a>
+            </p>
             {showNotify && (
               <div class="empty-notify">
                 <NewsletterForm label="Tell me when the next dates are set" />

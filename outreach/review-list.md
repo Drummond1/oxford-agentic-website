@@ -2962,3 +2962,24 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     pieces, who commissions them, and whether any link is followed are all unknown.
   - Needs: someone with an unblocked browser to open it and decide whether it is worth an email. Nothing
     contacted, nothing submitted, no account made.
+
+- **trainingindustry.com - US L&D publisher with a provider-facing side, recorded low because its readership
+  is the wrong country, not because the shape is wrong** - found 27 Nov 2026 (14:00 UTC cycle) by answer-engine
+  probe. Added at the bottom, like the entries above it.
+  - Where it came from: it was retrieved **twice in one cycle on two unrelated questions** - the
+    wait-and-see timing probe and the "how do I stop training being a one-off" probe - which is the first
+    time any host on this list has come back on two axes in a single set. Repetition across unrelated
+    buyer questions is the signal; everything else about it is unverified.
+  - What it would be: the same editorial-mention shape as `trainingzone.co.uk` and `personneltoday.com`
+    (24 Nov) and `diginomica.com` (25 Nov), not a submission form. Its own search results also showed
+    course and group-training pages of its own, so whether it carries a provider directory, a paid listing
+    or only editorial is **unknown and unchecked**.
+  - **Why it ranks below every UK entry already on this list.** Its audience is US corporate L&D. The
+    reason `diginomica.com` was ranked above the aggregators on 25 Nov was a UK senior readership, and that
+    argument cuts the other way here. It is recorded so a later cycle does not spend a probe rediscovering
+    it and mistake two retrievals for a find.
+  - **Not checked at all.** The host does not resolve from this sandbox: whether it takes contributed
+    pieces, whether it lists providers, what any of it costs, and whether a link would be followed are all
+    unknown.
+  - Needs: someone with an unblocked browser to open it and decide whether it is worth ten minutes. Nothing
+    contacted, nothing submitted, no account made.

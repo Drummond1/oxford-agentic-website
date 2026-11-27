@@ -2431,6 +2431,15 @@ Status: `todo` · `blocked` (why) · `doing`
     the same frontmatter the event page uses, `teaches` from the published outcomes - so there is no
     markup fix here, only a missing fact. Recorded now, twelve days ahead, so the cycle that meets
     27 November does not read the drop as a regression in `courseSchema`.
+    **Measured on the due day, 27 Nov 2026 (14:00 UTC cycle), off the built `Course` nodes.** Two of the
+    three predictions landed and the third was overtaken by events. `/bootcamps/agentic-coding-bootcamp/`
+    and `/bootcamps/second-brain-bootcamp/` now carry a `Course` node with **no `hasCourseInstance` at
+    all**, exactly on schedule. The Agentic line **did not** lose it on 20 November and does not lack it
+    today: Cohort 4 (3 December) and Cohort 5 (28 January) were authored in the meantime, so that node
+    carries two instances and the Agentic half of this item has **self-healed**. So the live scope is two
+    lines, not three, and both are waiting on the same thing - a date. Still nothing to ship: inventing one
+    is barred and publishing a passed instance as scheduled would be worse than the silence. Not re-read as
+    a regression, which is what this item asked for.
 
 101. `half done` 15 Nov 2026 (09:00 cycle, follow-up), **at Drummond's explicit instruction: "Add
     Mike Bailey based on LinkedIn profile and context you have about him." The profile shipped;
@@ -3744,6 +3753,95 @@ Status: `todo` · `blocked` (why) · `doing`
     already exists and the loop can wire it.
 
 ## Shipped
+
+### 27 Nov 2026 (14:00 UTC cycle) - the one band on a dateless programme page with no way out. "All events" in the "Runs" band, copied from the sibling template's answer to the identical state, 2 of 209 built files and +2 internal links
+
+**What was wrong, and it became wrong at 17:00 yesterday.** `src/pages/bootcamps/[slug].astro` renders a
+"Runs" band that, with no cohort on sale, printed one sentence - *"Dates for the next cohort are being
+confirmed."* - then a register-interest button **if the programme has an interest page**, then the notify
+form. `/bootcamps/second-brain-bootcamp/` has an interest page, so it had a next step. **The Coding
+programme page does not**, and its only cohort passed on 26 November, so from that evening the band gave a
+reader nothing to click at all. The template's own comment had already named the risk and thought it
+closed: *"A programme between cohorts has nothing to book, so the 'Runs' band is the one place on the page
+with no next step."* The notify form is an email ask, not a route.
+
+**Measured on the built site before the change, which is what makes this a defect rather than a
+preference.** Links inside `<main>`, counted per programme page: `/bootcamps/agentic-coding-bootcamp/`
+**3** (`/`, `/bootcamps/`, and the cohort that ran on 26 November), `/bootcamps/second-brain-bootcamp/`
+**4**, `/bootcamps/oxford-agentic-bootcamp/` **7**. Two of those three links on the Coding page are the
+breadcrumb, so the one content route on the page a search visitor lands on for the Coding line went to a
+day that had gone. That page names the Oxford Agentic Bootcamp three times in its own FAQ prose and links
+it nowhere, but those strings are `FAQPage` answers rendered as escaped text and linking inside them is
+backlog 106's 22-page `set:html` problem, which is not a cycle's change.
+
+**The fix is not new copy: it is the sibling template's existing answer to the identical state.**
+`src/pages/events/[slug].astro`, for a past cohort with no successor, prints the same sentence - *"Dates
+for the next cohort are being confirmed."* - and then offers `All events` to `/events/`, with the comment
+*"One primary, as in the successor branch above: the forward step leads and 'All events' is the way out
+beside it."* So the Coding **event** page has had a way out since yesterday and the Coding **programme**
+page had none, with the same words above the gap. The programme band now renders the same button, with the
+same class rule: `btn--primary` where there is no interest page, `btn--ghost` beside the interest button
+where there is. The existing `interest` block moved inside the shared `btn-row` rather than carrying one of
+its own.
+
+**The diary and not a sibling cohort, which is the whole restraint in this change.** `/events/` and never
+`/events/oxford-agentic-bootcamp-cohort-4/`, for the reason the 26 November sweep wrote down when it
+retargeted the Coding line's three booking pointers: *"pointing a Coding reader at the Agentic day answers
+a question they did not ask."* The same rule is already in `getSuccessorEvent`, which is same-programme
+only and falls back to the index. Nothing here asserts that a Coding cohort exists, and no date, price or
+product fact was added. Backlog 150 - whether the Coding Bootcamp gets a register-interest page of its own
+- is **untouched and still Drummond's**: this is the way out beside that decision, not an answer to it.
+
+**Before and after, hashed over a full rebuild.** 209 files before, 209 after, **2 differ**:
+`/bootcamps/agentic-coding-bootcamp/` and `/bootcamps/second-brain-bootcamp/`. The diff on the first is
+three lines added (a `btn-row` holding one `btn--primary` anchor to `/events/`); on the second it is one
+line, the `btn--ghost` anchor added inside the row the interest button already occupied. Nothing else moved
+- not `/bootcamps/`, not the homepage, not the sitemap, not `llms.txt`. Internal links **3397 to 3399**,
+both new ones to `/events/`. Main-region links after: Coding **4**, Second Brain **5**, Agentic **7**
+unchanged. **One measurement that corrects the obvious way to score this change**: `/events/` was already
+linked from **66 of 68** built pages before it and is linked from 66 after, because the header carries it
+on every page. The count that moved is links inside `<main>`, and that is the honest one - a reader who
+has scrolled to "Runs" has read a sentence saying there is nothing to book, and sending them back to the
+header is not a next step. Site-wide inbound-link counts would have reported this change as worth nothing.
+
+**Build, links, outbound, schema and both date guards green before and after**: 69 pages valid, 3399
+internal links resolving, 22 `FAQPage` nodes, 1587 resolving graph references, 58 indexable pages carrying
+no passed cohort date written as upcoming. Chromium at 375 and 1280px against a local static server over
+all three programme pages: **48 assertions, 48 passed**, including that the Agentic page gains nothing,
+that the Second Brain interest button is still `btn--primary` and still first in the row, that the notify
+form survives on the Coding page, that the button clears a 36px tap target and sits inside the viewport at
+375px, that `/events/` returns 200, and that neither page scrolls horizontally.
+
+**IndexNow will submit 58 URLs for a change that moves 2 pages, and that is the script behaving as
+documented rather than a new defect.** `src/pages/bootcamps/[slug].astro` is a dynamic route that builds
+many pages, so it falls to the whole-site branch by design; `SINGLE_PAGE_SOURCES` maps one file to one URL
+and cannot express "two of the three pages this route builds". Confirmed by dry run. This is the column
+backlog 85 and 144 keep - the only complete answer is reading what actually changed in `dist` - and it is
+not worth a special case for a template that will move all three pages again the moment a Coding date is
+authored. **Nothing was pinged by hand.**
+
+**Backlog 100 fell due today and its arithmetic was exactly right, read off the built `Course` nodes rather
+than projected.** As of this build, `/bootcamps/agentic-coding-bootcamp/` and
+`/bootcamps/second-brain-bootcamp/` carry a `Course` node with **no `hasCourseInstance` at all**, and
+`/bootcamps/oxford-agentic-bootcamp/` carries two instances, Cohort 4 and Cohort 5. So the Agentic half of
+that item **self-healed when Cohort 4 and 5 were authored**, and the two dateless lines lost the Course
+rich result on schedule. There is still nothing to ship for it: inventing a date is barred and publishing a
+passed instance as scheduled would be worse than silence. Recorded here so the drop is not read as a
+regression in `courseSchema`, which is what that item asked for twelve days ago. It is also the structural
+twin of what this cycle did fix - the same two pages told a machine nothing about when they run and told a
+reader nothing about where to go next, and only the second of those is the loop's to close.
+
+**Search Console unavailable from cloud, tried once; nothing estimated.** No export newer than
+`2026-08-24-search-console-baseline.md` exists in `seo-data/`. Three probes, zero citations, the
+forty-fifth consecutive set, and all three decline on winnability - Forrester, IMD and the business press
+on adoption speed; ATD and Udemy Business on training ROI; UK government research on what makes upskilling
+stick. Two of the three resolve to the same unanswered product fact as yesterday and the day before, which
+makes backlog 146(b) and 147 the third consecutive binding constraint. One new off-page host,
+`trainingindustry.com`, recorded with its limits and ranked below every UK entry on the list. Nothing
+contacted, submitted, claimed or paid for. **No new guide** - 32 guides, newest `publishDate` 20 October,
+and none published this week. **Production could not be read**: `oxfordagentic.com` and `luma.com` are
+refused by this sandbox's egress policy, so no live page was read, no event fact was touched, and deploy
+state came from the Actions API.
 
 ### 27 Nov 2026 (09:00 UTC cycle) - the last two templates that asked for the same email address twice on one page. `footerSignup` on the programme and event routes, 2 of 209 built files, and the diff is byte-for-byte the block the guide template already stands down
 

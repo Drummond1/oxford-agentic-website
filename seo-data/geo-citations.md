@@ -5,6 +5,84 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-27 (14:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FIFTH CONSECUTIVE SET - AND ALL THREE DECLINE ON WINNABILITY, TWO OF THEM TO INSTITUTIONS THAT OWN THE LITERATURE OUTRIGHT
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve
+through `WebFetch` either; `luma.com` is refused the same way. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output. The outbound link check says the same thing from the other side:
+**0 of 12 third-party links reachable**, both Luma pages among them.
+
+**Dedupe by backlog 136's method, eleventh use.** 716 question strings extracted and counted before any
+search ran. **Dropped as already worked**: in-house versus open cohort (`in-house` 10), pilots
+(`pilot` 8), tool choice (`zapier` 6, `copilot` 6, `n8n` 3), manager and business-case framings
+(`manager` 20, `justify` 5, `business case` 4), sector cuts (`public sector` 3, `nhs` 3, `charity` 2),
+hype objections (`hype` 2). **Dropped as banned**: certification, step-free access, tax treatment. The
+three taken score 0 to 3 on the question list.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | should we wait until AI models get better before training our team on AI agents (timing / wait-and-see axis - `too early` 0, `too soon` 0, `newer model` 0, `wait` 1) | **No** | forrester.com, imd.org x2, cio.com x2, fortune.com x2, thenextweb.com, techradar.com, hcamag.com, trainingindustry.com, everestgrp.com, citrix.com, thenationalnews.com, dev.to x2, hopeworks.org x2 |
+| 2 | how to measure the payback on a one day AI training course for a small business (payback / ROI arithmetic axis - `payback` 0, `roi` 1) | **No** | td.org (ATD), business.udemy.com x7, articulate.com, pluralsight.com, niccs.cisa.gov, lms.americassbdc.org, disco.co, udemy.com, thesmallbusinessexpo.com, lilachbullock.com, ibl.ai, success.com, adventuremedia.ai |
+| 3 | how do I stop AI training being a one-off that nobody uses afterwards (reinforcement / decay axis - `one-off` 0, `habit` 0, `nobody uses` 2) | **No** | gov.uk (DSIT, *Skills for AI: what works for AI upskilling in the UK*), walkme.com x2, trainingindustry.com x2, thedecisionlab.com, knowledgewave.com, talentedlearning.com x2, dev.to |
+
+**Reading, probe by probe.**
+
+- **Probe 1 declines on winnability, and the field is the strongest this log has recorded.** Not vendors:
+  **Forrester**, **IMD**, **CIO**, **Fortune** twice, **TechRadar**, **Everest Group**, an Australian HR
+  title. Analyst houses and business-press titles writing about adoption speed is their own subject, and a
+  one-day provider's page does not outrank them on it, nor should it. The engine's answer was a clean
+  "waiting is not a safe default", which is **our** argument, already made by someone with more standing
+  than us.
+  - **The residue, recorded and not acted on.** There is a version of this objection the site could answer
+    honestly - *does a workflow built on today's model still run when the model changes* - and the
+    08:00 cycle already measured and declined it on the opposite ground (that field is engineers keeping
+    agents alive in production). **Two phrasings of the durability axis, two fields, both declined, for two
+    different reasons.** That is the axis closed, not merely passed over: do not re-open it without new
+    evidence, and specifically not without outcome evidence from past cohorts, which nobody here holds.
+
+- **Probe 2 declines in the same shape as the 08:00 cycle's cascade probe: the institutional publisher on
+  its own subject, plus a platform vendor on its own product.** **ATD** (`td.org`) is the trade body for
+  the training profession and its page is a general guide to linking AI training to ROI; **Udemy Business**
+  appears seven times, which is one vendor's localised template rather than seven sources;
+  **Articulate**, **Pluralsight**, **CISA's NICCS catalogue** and an **SBDC** learning site fill the rest.
+  Training ROI is a literature with owners.
+  - **The honest gap the engine named, and why it is still not ours to fill.** It closed with *"The search
+    did not turn up a payback study specific to one-day courses"*, and did the payback arithmetic itself
+    while flagging it as *"my own arithmetic, not from the sources"*. A page that filled that gap credibly
+    would need **our own attendees' numbers** - what a day actually saved, measured afterwards - and this
+    site has none. Writing the arithmetic without them produces the tenth generic ROI framework, by the
+    party with the clearest interest in the answer. **This is the third distinct axis in two days whose
+    only honest filling is outcome evidence from past cohorts** (durability, cascade hand-off, payback),
+    which is worth saying plainly: the binding constraint on this loop has moved from topics to evidence.
+  - **What we do publish, checked rather than assumed.** `/guides/is-your-ai-workflow-saving-time-or-just-effort/`
+    answers the adjacent question - whether a built workflow is actually saving time - and
+    `/guides/questions-to-ask-before-booking-ai-training/` carries the buyer's version. Neither claims a
+    payback figure, and neither should.
+
+- **Probe 3 declines to a government research publication, which is the cleanest decline the rule
+  describes.** The first result is **gov.uk**'s *Skills for AI: what works for AI upskilling in the UK*,
+  a research-evidence and methodology paper; behind it sit `trainingindustry.com`, `thedecisionlab.com`
+  and adoption-platform vendors. A provider page does not outrank UK government evidence on what works in
+  UK AI upskilling.
+  - **It lands on the same unanswered product fact as yesterday, for the third day running.** The field's
+    fixes are all post-day: champions networks, reinforcement rhythms, catching people when they get stuck
+    in week two. That is **backlog 147** (who unsticks you afterwards) and **backlog 146(b)** (whether an
+    Agentic attendee leaves with anything they can read afterwards) almost word for word. Three
+    consecutive days, three unrelated probes, one constraint. **This is now the single most load-bearing
+    open question on the list**, and it is one sentence from Drummond.
+
+**What the cycle shipped instead, and why it belongs in this log.** No probe produced copy, so the change
+came from the conversion gap the dateless programme pages had been carrying since yesterday evening: the
+"Runs" band on a programme with no date on sale printed *"Dates for the next cohort are being confirmed."*
+and, where there is no register-interest page, offered no route anywhere. Measured on the built site,
+`/bootcamps/agentic-coding-bootcamp/` carried **three** links in its main region - two breadcrumbs and the
+cohort that ran on 26 November. The sibling event template already answers that exact state with an
+"All events" button; the programme template now does too. Full measurement in the Shipped entry in
+`IMPROVEMENTS.md`.
+
 ## 2026-11-27 (08:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-FOURTH CONSECUTIVE SET - AND ALL THREE DECLINE, WITH THE CYCLE'S CHANGE COMING FROM A GUARD RATHER THAN FROM A FIELD
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
