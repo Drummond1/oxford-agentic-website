@@ -57,9 +57,9 @@ const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data
  * A programme between cohorts has nothing to book, so the "Runs" band is the one
  * place on the page with no next step. Same answer LumaEmbed already gives an
  * event whose Luma page does not exist yet: offer the notify route instead of a
- * dead sentence. The footer carries the same form, but below the fold and on
- * every page, so it reads as site furniture rather than an answer to the line
- * directly above it.
+ * dead sentence. The footer's copy of that form then stands down (see
+ * `footerSignup` below), so the page makes the ask once, where the sentence
+ * above it creates the need, rather than twice a screen apart.
  *
  * Reachable for the first time on 21 October 2026, when the Second Brain
  * Bootcamp's only cohort runs and that programme has no further date set.
@@ -70,6 +70,16 @@ const showFaq = showSection('faq', { hidden: data.hideSections, hasContent: data
  */
 const interest = interestPath(programme.id);
 const showNotify = upcoming.length === 0 && !interest && showSection('newsletter');
+/*
+ * When the "Runs" band carries the notify form, the footer's identical control
+ * stands down, so the page makes one email ask rather than two a screen apart.
+ * Same prop, same reasoning and same shape as the homepage and the guide
+ * template, which pass `footerSignup={false}` for the capture they carry
+ * themselves. Conditional here because this page only carries its own form
+ * while the diary is empty: with a cohort on sale the footer is the page's
+ * only ask and keeps it.
+ */
+const footerSignup = !showNotify;
 
 /*
  * `shortPitch` is doing two jobs, the way `summary` was on the event pages until
@@ -136,6 +146,7 @@ const bands = {
     eventSeriesSchema(programme, upcoming),
     showFaq ? faqSchema(data.faqs, path) : null,
   ]}
+  footerSignup={footerSignup}
   breadcrumbs={[
     { name: 'Bootcamps', path: paths.programmes() },
     { name: data.name, path },

@@ -3711,7 +3711,153 @@ Status: `todo` · `blocked` (why) · `doing`
       instance that exposed it exists because a cycle re-sorted a sentence for unrelated reasons. **A cycle
       that rewrites a dated closing line should check its own sentence against `OURS` before shipping it.**
 
+149. `todo` (loop-actionable, small; **found 27 Nov 2026 in the 09:00 cycle, by a type-scale census over all
+    58 indexable pages at three widths, and not shipped because the cycle allows one change**) - **the
+    "room booking to confirm" chip on `EventCard.astro` is the only informative text on the public site
+    rendered below the type scale.** `src/components/EventCard.astro` line 192 hard-codes
+    `font-size: 0.68rem`, which computes to **10.88px** - 16% under `--step-xs` (0.8125rem, 13px, the
+    scale's smallest step and the size of every other label, eyebrow and meta part on the card). It is set
+    in uppercase IBM Plex Mono at 0.08em tracking and carried at `opacity: 0.75`, which is the hardest
+    combination of the three to read small. Measured: it renders on **4 indexable pages** - `/`, `/events/`,
+    `/bootcamps/oxford-agentic-bootcamp/` and `/404/` - all on the Cohort 5 card, the one cohort whose
+    `venue.confirmed` is false. **Contrast is not the problem and was measured rather than assumed**:
+    composited through the opacity it is `rgb(68,80,76)` on `rgb(255,249,236)`, **8.01:1**, well past AA at
+    any size. This is a token-consistency defect, not an accessibility failure, which is why it is filed
+    rather than rushed. The only other sub-scale sizes in `src/` are `Quote.astro`'s 0.7rem monogram (a
+    decorative `aria-hidden` initial, not prose) and the two unlisted voice pages plus the switched-off
+    `Assistant.astro`, none of which this item covers. **Likely fix is one declaration**, `var(--step-xs)`,
+    with a check that the chip still reads as subordinate to the meta line it sits under - the border and
+    the tracking already do that work, so the size may not need to.
+
+150. `todo` **(needs Drummond - a call about what a programme between cohorts offers, which the loop must
+    not make on its own; found 27 Nov 2026 in the 09:00 cycle)** - **two programmes are in exactly the same
+    state and answer it in two different ways.** Neither the Second Brain Bootcamp nor the Agentic Coding
+    Bootcamp has a date on sale, and both say "Dates for the next cohort are being confirmed." The Second
+    Brain page then offers a **"Register your interest" button** to `/second-brain-interest/`, a real form
+    that asks what someone wants from the day. The Coding page offers the **newsletter fallback**: an email
+    address to write to by hand. The asymmetry is purely historical - `interestPath()` knows about one
+    programme and not the other - and it is worth something, because the Coding Bootcamp ran its first
+    cohort on 26 November and the people most likely to want the second one are reading that page now.
+    **The loop will not act on it**: a register-interest route for a second programme is a new call to
+    action and a new page, both of which need Drummond. **What he decides is one question** - does the
+    Coding Bootcamp get an interest page of its own, or does the mailto stay. If it does, the mechanism
+    already exists and the loop can wire it.
+
 ## Shipped
+
+### 27 Nov 2026 (09:00 UTC cycle) - the last two templates that asked for the same email address twice on one page. `footerSignup` on the programme and event routes, 2 of 209 built files, and the diff is byte-for-byte the block the guide template already stands down
+
+**What was wrong, and it is the unswept remainder of a shape this loop closed two days ago.**
+`src/pages/bootcamps/[slug].astro` and `src/pages/events/[slug].astro` both render `NewsletterForm` in
+their own copy when a programme or a past cohort has no date on sale - "Tell me when the next dates are
+set", then *Email hello@oxfordagentic.com and we will add you to the list.* - and neither passed
+`footerSignup={false}`, so `Footer.astro` rendered the identical control a screen below: same component,
+same fallback sentence, same `mailto:hello@oxfordagentic.com?subject=New%20dates`. Backlog 141 fixed this
+for the 32 guides on 25 November and named the prop, the homepage's reasoning and the five pages already
+passing it. These two templates were the cases that sweep did not reach.
+
+**Measured on the built output, before and after.** A census of all 209 built files counted the fallback
+sentence per page: **62 pages carried exactly one ask, 2 carried two, 5 carried none**. The two are
+`/bootcamps/agentic-coding-bootcamp/` and `/events/oxford-agentic-coding-bootcamp-cohort-1/` - the only
+Coding Bootcamp cohort ran on 26 November and that programme has no further date, so both pages entered
+the empty-diary state yesterday. After: **64 carry exactly one, 0 carry two**, and the five that carry
+none are unchanged (`/first-workflow-picker/` and its thanks page, `/second-brain-interest/`, and the
+`/home-original/` and `/team/josh-lawman/` redirect stubs). **2 of 209 built files differ**, hashed before
+and after a full rebuild, and the diff on each is the same eight lines deleted and nothing added: the
+footer's `wrap`, `site-footer__signup`, the `signup signup--compact` div, its label and its fallback
+paragraph. Nothing else moved - not `/events/`, not the sitemap, not `llms.txt` or `llms-full.txt`.
+
+**Conditional, unlike the guide fix, and that is the whole care in this change.** A guide always carries
+its own capture, so there the prop is passed unconditionally. These two templates carry one only in the
+empty-diary states, so the prop is derived. On the programme route it is `!showNotify`. On the event route
+it is `!(showNotify || (!isPast && !registrationOpen && showSection('newsletter')))` - the second clause
+covers `LumaEmbed`'s "Registration opens shortly" state, where an announced cohort with no Luma page yet
+offers the notify form in place of the booking frame. Pass it unconditionally and every on-sale cohort page
+would lose its only email ask, which is the regression this cycle was most at risk of shipping.
+
+**The stale rationale went with it.** The comment above `showNotify` argued the duplication was tolerable -
+*"The footer carries the same form, but below the fold and on every page, so it reads as site furniture
+rather than an answer to the line directly above it."* That is now the opposite of what the code does, so
+it is rewritten rather than left to contradict the prop three lines below it.
+
+**A latent defect is closed with it, and this time it is measured rather than named.** The 25 November
+entry recorded that `NewsletterForm` hard-codes `id="signup-email"` and `label for="signup-email"`, so two
+instances on one page would share an id and the second label would point at the first input - latent only
+because `newsletter.endpoint` is empty and both renders take the mailto branch. Probed by setting the
+endpoint to a throwaway URL and rebuilding: **before the change, 2 pages of 69 carried a duplicate id, and
+on both of them the footer's "Hear about new dates first" label resolved to the input in `main`. After, 0
+of 69.** The config was restored and the tree checked clean. That matters because setting that endpoint is
+a five-minute task on Drummond's own list (STATE.md task 1, backlog 1), and it would have shipped two
+broken labels the day he did it.
+
+**Checks.** `npm ci`, then `npm run build` green before and after, every figure identical: **69 pages
+valid**, 3,397 internal links across 69 pages all resolving, 16 Event nodes, 22 `FAQPage` nodes, 1,587
+resolving graph references, 59 breadcrumb trails, all titles and descriptions unique; both date guards
+clean (58 indexable pages carry no passed cohort date written as upcoming; 118 long-month dates, 0 without
+a year in range). `npm run check:flags` green. `npm run check` (astro check) needs `@astrojs/check`, which
+is not a dependency and which CI does not run; installed `--no-save` and run anyway: **87 errors, 0
+warnings, 3 hints**, identical to the 26 November baseline, so this change introduces none - they are the
+long-standing implicit-`any` content-collection parameters and the pre-existing casts on three noindex
+form pages. The 12 outbound warnings are this sandbox refusing every external host, not twelve outages.
+
+**Browser checks at 375, 768 and 1280px over the 2 changed pages and 10 controls: 504 assertions, 504
+passed.** The controls are the two pages that had to keep the footer ask and had no reason to change
+(`/bootcamps/oxford-agentic-bootcamp/`, `/bootcamps/second-brain-bootcamp/`, the Cohort 4, 5 and 3 event
+pages, the Second Brain cohort page, `/events/`, `/testimonials/`) and the two that already stood it down
+before this cycle (`/` and a guide). Asserted per page and width: HTTP 200, exactly one email ask on the
+page, the ask in the right region, the footer signup block present or absent as intended, the footer's
+nav, UPCOMING, privacy and apply links all intact, one `h1`, no horizontal overflow, no duplicate element
+id, no image without `alt`, no link or button without an accessible name. The footer was screenshot as an
+element at 375 and 1280px on both changed pages and on a control, before and after: the block and the rule
+above it are gone, the four-column grid closes up, and no dead space is left above the base row.
+**Keyboard**, both changed pages at 375 and 1280: 196 tab stops each, every one with a visible outline,
+the `mailto:` reached in `main`, and the footer still fully tabbable (54-72 stops) - no trap and no
+control lost with the block.
+
+**Method note worth keeping.** Two of my own assertions failed on the first run and neither was the site.
+`document.querySelector('footer')` returns `footer.quote__by` inside `Quote.astro` on any page with a
+testimonial, not the site footer - match `.site-footer`. And `.signup__label` is `text-transform:
+uppercase`, so `innerText` reads "HEAR ABOUT NEW DATES FIRST": match it case-insensitively or the control
+pages read as having lost the ask they still carry.
+
+**Board state, checked first.** The fresh checkout arrived on a **detached HEAD at `2c3ece2`** while local
+`main` sat **17 commits behind** at `bcd268f` with a stale remote-tracking ref - step 0's trap, hit again;
+`git fetch` and a fast-forward put all three at `2c3ece2`. Deploy run **45963988486** and CI run
+**45963988288** both success on that SHA at 08:13 UTC, nothing queued or in progress, tree clean. **Six
+open pull requests, none blocking and none touched** - #1 and #3 the known-stale leftovers, #4, #5, #6 and
+#7 Drummond's branches, unchanged. `oxfordagentic.com` is refused at CONNECT by this sandbox's egress
+proxy (HTTP 403), as is `luma.com`, so **no live page, no `build.txt` and no Luma fact was read, and no
+event fact was touched** - no date, venue, capacity, price or availability. Deploy state came from the
+Actions API; before-and-after from a local `astro preview` of this SHA.
+
+**IndexNow.** Dry-run on this exact change set: both sources are dynamic routes that cannot match the
+script's page regex, so it takes the documented whole-site branch and submits 58 URLs for 2 moved pages.
+That is backlog 41's known over-submission working as designed rather than a defect, and `IMPROVEMENTS.md`
+is exempt. Nothing pinged by hand.
+
+**Two findings filed rather than shipped, because the cycle ships one change.** Backlog **149**: the
+`EventCard` "room booking to confirm" chip is the only informative text on the public site below the type
+scale, at 10.88px against `--step-xs`'s 13px, on 4 indexable pages - with the contrast measured at 8.01:1
+so nobody re-opens it as an accessibility item. Backlog **150**, and it **needs Drummond**: the Second
+Brain and Coding programmes are in the identical between-cohorts state and answer it differently, one with
+a register-interest form and one with a mailto, which is a call about a new route rather than a defect.
+
+**Sweeps that came back clean, recorded so they are not re-run.** Over all 58 indexable pages at 375, 768
+and 1280px: zero duplicate element ids, zero images without `width`/`height` or an intrinsic aspect ratio,
+zero images served more than 2.2x their rendered size, zero `target="_blank"` links without `rel=noopener`,
+and zero scrollable regions that keyboard focus cannot reach. Element-level overflow past the viewport
+returns only `hero__motif`, `hero__glow`, `finder__grid` and `finder__halo`, every one a decorative layer
+its parent clips. Form controls across all five form pages already carry the right `autocomplete` tokens -
+`name`, `email`, `tel`, `organization`, `organization-title`, `given-name`, `url` - so WCAG 1.3.5 is met
+and does not need re-measuring. An intra-page repeated-sentence census over 64 pages returns only
+breadcrumb-plus-`h1` title pairs and two cards of one programme sharing one summary, both correct.
+
+**Search Console: unavailable from cloud, tried once.** `node scripts/fetch-search-console.mjs` exits on a
+missing `GSC_SERVICE_ACCOUNT_KEY`, there is no key or CSV in the tree, and `seo-data/` holds nothing newer
+than the 24 August baseline. Nothing estimated. **No GEO probe set this cycle** - the 02:00 and 08:00
+cycles ran six probes between them on the same axes and a seventh would have bought nothing. **No new
+guide**: 32 guides, newest `publishDate` 20 October 2026, and nothing in this cycle's evidence warrants
+one.
 
 ### 27 Nov 2026 (08:00 UTC cycle) - the date guard would have passed a stale "still on sale" sentence on 4 December, because the clause says "agentic day" rather than "cohort"
 

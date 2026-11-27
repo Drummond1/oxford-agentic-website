@@ -212,6 +212,18 @@ const bands = {
 const registrationOpen = Boolean(data.lumaEventId);
 
 /*
+ * The footer's email ask stands down wherever this page already carries the
+ * identical control, so one page makes one ask rather than two a screen apart -
+ * the same prop, and the same reasoning, as the homepage and the guide
+ * template. Two states render it here: a past cohort with no successor and no
+ * interest page (`showNotify`, the "Runs" fragment below), and an announced
+ * cohort whose Luma page does not exist yet, where `LumaEmbed` offers the
+ * notify form in place of the booking frame. Everywhere else - which is every
+ * on-sale cohort - the footer is this page's only ask and keeps it.
+ */
+const footerSignup = !(showNotify || (!isPast && !registrationOpen && showSection('newsletter')));
+
+/*
  * Every primary CTA goes straight to Luma (Drummond, 18 Aug), instead of jumping
  * down the page to the embed.
  *
@@ -345,6 +357,7 @@ const metaDescription = (() => {
     { name: 'Events', path: paths.events() },
     { name: data.title, path },
   ]}
+  footerSignup={footerSignup}
   bodyClass={!isPast ? 'has-sticky-bar' : ''}
 >
   {/* ---- Hero ---- */}
