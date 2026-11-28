@@ -5,6 +5,63 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-28 (08:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-EIGHTH CONSECUTIVE SET - AND THE HONEST HEADLINE IS THAT TWO OF THE THREE WERE RE-PROBES THIS CYCLE CHOSE BEFORE IT COUNTED
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and `luma.com` is
+refused the same way, so no live page was read, no Luma fact was checked and no event fact was touched.
+Deploy state came from the Actions API. Every site fact below comes from committed files or built output.
+
+**Dedupe by backlog 136's method, fourteenth use - and it was run AFTER the questions were chosen, which is
+the wrong order and produced exactly the result that order predicts.** Counted against this log afterwards:
+`laptop` 37, `prerequisite` 45, `what to bring` 13, `worth it` 43, `hype` 21. Probe 1 is an acknowledged
+**re-probe** of the pre-arrival axis asked on 23 and 25 November, narrowed to the laptop and the installs;
+probe 2 is adjacent to the 21 November team-scepticism probe but asks a different question (whether the
+technology earns its keep at all, not how to get colleagues to use it); probe 3 is the dated-commercial axis
+in the December form, the January form having been run six hours earlier. **A later cycle should count
+first.** What the re-probes buy is corroboration at a month's distance, which is worth something and is not
+what the method is for.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what do I need to bring or install on my laptop before a hands-on AI workshop (pre-arrival axis, **re-probe**, narrowed to kit and installs - `laptop` 37, `prerequisite` 45) | **No** | events.canonical.com, help.professional.ucsb.edu, codedthinking.github.io, learn.aisingapore.org, cloud.google.com, halbritter-lab.github.io, lexnederbragt.github.io, gdg.community.dev, meetup.com, github-pages.arc.ucl.ac.uk, llorracc.github.io, byu-strategy.github.io, hpc-training.sdsc.edu, biomedicalai.inf.ed.ac.uk, w3.aapm.org, indico.desy.de, events.miniorange.com, sites.google.com |
+| 2 | is agentic AI actually worth it for a small business or is it just hype (own-scepticism axis - adjacent to the 21 Nov team-buy-in probe, which asked how to move colleagues rather than whether the thing pays) | **No** | salesforce.com x4, entrepreneur.com x3, smallbiztrends.com x2, capterra.com, clickup.com, sage.com, techradar.com, intandem.vcita.com, enterprisenation.com, yourstory.com |
+| 3 | one day hands-on AI bootcamp Oxford December 2026 business leaders (dated-commercial axis, December form; the day on sale is five days away) | **No page of oxfordagentic.com - but two `luma.com` pages of ours were cited, and both are passed cohorts** | lifelong-learning.ox.ac.uk x5, sbs.ox.ac.uk x4, conted.ox.ac.uk, imperial.ac.uk, eventbrite.co.uk, **luma.com/oxfordagentic2 (Cohort 2, 16 September, run) and luma.com/k7c2rm5s (Cohort 1, 21 July, run)** |
+
+**Reading.**
+
+- **Probe 3 is the twenty-fifth-and-onwards recurrence of a failure this repo has already diagnosed and
+  already acted on, and the recurrence is the finding.** The note at `src/lib/schema.ts:336` records the
+  25 October probe that returned these same two passed Luma pages and no page of ours, and the countermeasure
+  shipped then - `sameAs` on the homepage's own Event node, binding the live listing to the live page. A month
+  later the same two expired listings are what an engine returns for a December query, `luma.com/oxfordagentic4`
+  (the page that actually sells 3 December) has still never appeared in a probe, and the engine's own words
+  about what it found were *"The snippet doesn't show a date, so check the listing directly."* **A dateless
+  snippet on somebody else's platform is the same defect the 11 November sweep fixed on our own pages, on a
+  surface this repo cannot edit.** Nothing further to do on-site: the on-page half is shipped and correct.
+- **Probe 3 also shows the December field is the January field.** Oxford's own Continuing Education and
+  Lifelong Learning pages took five of the top results and Saïd four, the same institutional ceiling the
+  02:00 cycle recorded six hours earlier, plus one Eventbrite listing for a London-adjacent one-day bootcamp
+  for managers. The topic-probe rule takes a university describing its own programme off the table as a
+  target and off the list as a host. **No new guide, and no new host.**
+- **Probe 1 corroborates the 23 and 25 November reading at a month's distance and adds nothing to act on.**
+  The field is workshop organisers publishing their own setup pages - four of today's hosts
+  (`learn.aisingapore.org`, `codedthinking.github.io`, `halbritter-lab.github.io`, `gdg.community.dev`) also
+  appeared in the 23 November run - and the searcher has already booked a workshop, which is the CONVERTING
+  half of the topic-probe rule failing. Our own laptop answer is published on the programme page and on every
+  Agentic cohort page, and the probe gives no reason to write a second one. **Declined.**
+- **Probe 2 is not winnable and, more usefully, says who owns the question.** Of seventeen results, eleven are
+  platform vendors writing about their own product (Salesforce four times, Capterra, ClickUp, Sage, vcita) and
+  the rest are business press. The one independent number in the answer was Gartner's - more than 40% of
+  agentic AI projects cancelled by 2027 - which is the kind of figure a sceptical buyer arrives holding, and
+  which this site should never quote second-hand. **Declined on winnability.** One thing worth keeping: the
+  field's own advice is *"automating a broken process makes it worse - fix the workflow first"*, which is the
+  premise `/guides/how-to-choose-your-first-agentic-task/` is built on, so the published answer agrees with
+  the field and still does not get retrieved. That is the fifth reach failure recorded on that guide.
+- **One off-page corroboration, no new host.** `enterprisenation.com` appeared again, in a field unrelated to
+  the one that found it on 22 November. Same entry, strengthened, not a new one.
+
 ## 2026-11-28 (02:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SEVENTH CONSECUTIVE SET - AND ONE OF THEM IS THE SHARPEST COMMERCIAL MISS THIS LOG HAS RECORDED, BECAUSE THE ENGINE SAID NO SUCH DAY EXISTS AND WE HAVE ONE ON SALE
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

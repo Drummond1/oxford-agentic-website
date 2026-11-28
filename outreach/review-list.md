@@ -646,6 +646,11 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
   - **Neither was checked.** Both hosts are refused by this sandbox's egress policy, so whether either
     takes outside contributions, what it asks for, and whether any link is followed are all unknown.
   - Needs: someone with an unblocked browser to open both and decide whether either is worth an email.
+  - **Corroborated 28 Nov 2026 (08:00 UTC cycle), in a second and unrelated field.** `enterprisenation.com`
+    placed again, this time among the sources answering whether agentic AI is worth it for a small business
+    or is hype - a field otherwise held by platform vendors writing about their own product. So it reaches
+    our buyer on more than one of their questions. This is the same entry with more evidence behind it, not
+    a new one, and nothing has been contacted.
 
 - **An engine told a buyer to book our 3 December day by pressing Get Tickets on the booking page of a cohort
   that ran in September.** Found 21 Nov 2026 (20:05 UTC cycle). **Nothing contacted, submitted, claimed or paid

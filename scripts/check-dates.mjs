@@ -27,6 +27,12 @@
  * with no four-digit year near it. Its evidence, its window and why it must
  * never fail are documented where it is implemented, below.
  *
+ * A third check rides it too, also warn-only, and it is the same scan pointed
+ * one cohort into the future: how many windows become false the moment the next
+ * day on sale passes, and which source files type that date rather than deriving
+ * it. The hard gate above fires on the morning it is already too late; this one
+ * says how far away that morning is and what it will cost.
+ *
  * Pass `--now=2026-11-20` to prove it fires. That is the flag's only purpose.
  */
 import { readFile, readdir } from 'node:fs/promises';
@@ -67,7 +73,7 @@ const LONG = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/London',
 });
 
-const pastCohorts = [];
+const cohorts = [];
 for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
   const src = await readFile(path.join(EVENTS, name), 'utf8');
   const endDate = field(src, 'endDate');
@@ -76,11 +82,63 @@ for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
     console.error(`✗ dates: ${name} has no startDate/endDate to read`);
     process.exit(1);
   }
-  if (new Date(endDate) >= now) continue;
   const full = LONG.format(new Date(startDate));            // 21 October 2026
   const short = full.replace(/ \d{4}$/, '');                 // 21 October
-  pastCohorts.push({ file: name, cohort: field(src, 'cohort'), full, short });
+  cohorts.push({
+    file: name,
+    cohort: field(src, 'cohort'),
+    // The forecast names one day and prints it alone, so it uses the full title:
+    // two programmes each have a "Cohort 1", and "Cohort 1 passes on 26 November"
+    // does not say which. The hard gate prints the page beside the cohort and is
+    // left as it was.
+    title: field(src, 'title'),
+    full,
+    short,
+    endDate: new Date(endDate),
+  });
 }
+
+const pastCohorts = cohorts.filter((c) => c.endDate < now);
+
+/*
+ * When the forecast's day stops being true, to the hour. A cohort's sentences go
+ * wrong at its `endDate`, not at midnight: the gate fires from 17:00 on the day
+ * itself, which is the point of printing the time rather than the date.
+ */
+const BOUNDARY = new Intl.DateTimeFormat('en-GB', {
+  hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London',
+});
+
+/**
+ * Source files that type `date` as a literal, which is where the fix has to go.
+ * Reported as candidates and not as defects: the Agentic programme page names
+ * three dates in a sentence about the venue they share, which stays true as each
+ * one passes, so a file on this list may have nothing wrong with it.
+ */
+async function sourcesNaming(date) {
+  const found = [];
+  const stack = [path.resolve('src')];
+  while (stack.length > 0) {
+    for (const entry of await readdir(stack.pop(), { withFileTypes: true })) {
+      const full = path.join(entry.parentPath ?? entry.path, entry.name);
+      if (entry.isDirectory()) stack.push(full);
+      else if (/\.(md|mdx|astro|ts|tsx|json)$/.test(entry.name)) {
+        if ((await readFile(full, 'utf8')).includes(date)) found.push(path.relative(process.cwd(), full));
+      }
+    }
+  }
+  return found.sort();
+}
+
+/*
+ * The next cohort still to come, earliest first, for the forecast at the foot of
+ * this file. One cohort and not all of them: the day that passes next is the one
+ * whose sentences are about to be wrong, and a list covering every future date
+ * would print the same pages three times over and be read by nobody.
+ */
+const nextCohort = cohorts
+  .filter((c) => c.endDate >= now)
+  .sort((a, b) => a.endDate - b.endDate)[0];
 
 /*
  * A window around the date is flagged when it claims the date in the future,
@@ -225,6 +283,38 @@ function governingTense(before, window) {
   return pastAt > forwardAt ? 'past' : 'forward';
 }
 
+/*
+ * Every window on this page that claims `cohort`'s date as a day still to come.
+ *
+ * Lifted out of the page walk unchanged so the forecast below runs the identical
+ * rule rather than an approximation of it. A second implementation of the window,
+ * the `OURS` gate and the governing-tense test would be a second thing to keep
+ * true, and the whole value of the forecast is that it predicts what the hard
+ * gate will actually do.
+ */
+function forwardWindows(text, cohort) {
+  const found = [];
+  let from = 0;
+  for (;;) {
+    const at = text.indexOf(cohort.short, from);
+    if (at === -1) break;
+    from = at + cohort.short.length;
+
+    const before = text.slice(Math.max(0, at - WINDOW), at);
+    const after = text.slice(from, from + WINDOW);
+    const window = `${before.slice(before.lastIndexOf('. ') + 1)}${cohort.short}${
+      after.includes('. ') ? after.slice(0, after.indexOf('. ') + 1) : after
+    }`;
+
+    if (!OURS.test(window)) continue;
+    // `before` is the window's own left half, so the governing verb is looked
+    // for inside the same 90 characters the rest of the rule reasons about.
+    if (governingTense(window.slice(0, window.indexOf(cohort.short)), window) !== 'forward') continue;
+    found.push(window.trim());
+  }
+  return found;
+}
+
 /** Where the last match of `re` starts in `text`, or -1. */
 function lastIndexOfMatch(text, re) {
   const global = new RegExp(re.source, `${re.flags.replace('g', '')}g`);
@@ -265,6 +355,8 @@ const YEAR_CONTEXT = 400;
 
 const errors = [];
 const warnings = [];
+const forecast = [];
+let forecastLine = '';
 let pagesRead = 0;
 let datesSeen = 0;
 let datesWithYear = 0;
@@ -290,26 +382,16 @@ for (const file of await walk(DIST)) {
     .replace(/\s+/g, ' ');
 
   for (const cohort of pastCohorts) {
-    let from = 0;
-    for (;;) {
-      const at = text.indexOf(cohort.short, from);
-      if (at === -1) break;
-      from = at + cohort.short.length;
-
-      const before = text.slice(Math.max(0, at - WINDOW), at);
-      const after = text.slice(from, from + WINDOW);
-      const window = `${before.slice(before.lastIndexOf('. ') + 1)}${cohort.short}${
-        after.includes('. ') ? after.slice(0, after.indexOf('. ') + 1) : after
-      }`;
-
-      if (!OURS.test(window)) continue;
-      // `before` is the window's own left half, so the governing verb is looked
-      // for inside the same 90 characters the rest of the rule reasons about.
-      if (governingTense(window.slice(0, window.indexOf(cohort.short)), window) !== 'forward') continue;
+    for (const window of forwardWindows(text, cohort)) {
       errors.push(
-        `${page}: names ${cohort.cohort ?? cohort.file}'s passed ${cohort.full} as still to come — "${window.trim()}"`,
+        `${page}: names ${cohort.cohort ?? cohort.file}'s passed ${cohort.full} as still to come — "${window}"`,
       );
     }
+  }
+
+  if (nextCohort) {
+    const count = forwardWindows(text, nextCohort).length;
+    if (count > 0) forecast.push({ page, count });
   }
 
   for (const match of text.matchAll(LONG_DATE)) {
@@ -348,9 +430,59 @@ if (warnings.length > 0) {
   console.log('');
 }
 
+/*
+ * The warn-only forecast: the same scan, pointed at the next day on sale.
+ *
+ * The hard gate above is a smoke alarm. It is correct, it is deliberately a hard
+ * fail, and it goes off on the first build after a cohort runs - by which time the
+ * site has already published a day that has gone, every push is blocked for every
+ * session until the sweep is done, and the sweep is being done in a hurry. The
+ * cost is known rather than argued: measured on 28 November 2026, `--now=2026-12-04`
+ * returns ten findings over ten pages, eight of them hand-typed, five days before
+ * the day that produces them.
+ *
+ * So this prints the same ten findings five days early, and the one thing the
+ * rendered scan cannot tell you: which source files type the date rather than
+ * deriving it from the collection. A page whose date comes off `effectiveStatus`
+ * heals itself on the next build; a sentence someone typed into a guide closer or
+ * an FAQ answer does not, and those are the files a cycle has to open.
+ *
+ * Warn and never fail, for the reason the year-less check never fails: every
+ * window it lists is TRUE today. Failing on a correct sentence because it will be
+ * wrong next week would block deploys on copy that is right, which is the trade
+ * this file has already refused twice (`at` next to `is`, and bare `agentic`).
+ */
+if (nextCohort) {
+  const windows = forecast.reduce((total, f) => total + f.count, 0);
+  const typed = await sourcesNaming(nextCohort.short);
+  // The pages and the files only when there is something to open. The count line
+  // below prints either way, so a quiet forecast reads as "ran and found none"
+  // rather than as a check that might not have run at all.
+  if (windows > 0) {
+    console.log(
+      `\n! ${windows} window(s) on ${forecast.length} page(s) become false when ${
+        nextCohort.title ?? nextCohort.cohort ?? nextCohort.file
+      } passes at ${BOUNDARY.format(nextCohort.endDate)} on ${nextCohort.full} — not blocking:\n`,
+    );
+    for (const f of forecast) console.log(`  ${f.page}${f.count > 1 ? ` (${f.count})` : ''}`);
+    if (typed.length > 0) {
+      console.log(`\n  ${typed.length} source file(s) type "${nextCohort.short}" — a typed date is where a fix goes:`);
+      for (const file of typed) console.log(`    ${file}`);
+    }
+    console.log('\n  Derived cards and summaries heal on the first build after the day.');
+    console.log('  Typed prose does not: put it in the past tense, or point it at the next day on sale.\n');
+  }
+  forecastLine = `✓ dates: ${windows} window(s) on ${forecast.length} page(s) go stale when ${
+    nextCohort.title ?? nextCohort.cohort ?? nextCohort.file
+  } passes at ${BOUNDARY.format(nextCohort.endDate)} on ${nextCohort.full} — ${
+    typed.length
+  } source file(s) type that date`;
+}
+
 console.log(
   `✓ dates: ${pagesRead} indexable pages carry no passed cohort date written as upcoming (${pastCohorts.length} past cohort(s) checked)`,
 );
 console.log(
   `✓ dates: ${datesSeen} long-month date(s) in rendered copy — ${datesWithYear} carry a year, ${datesWithYearNearby} carry one within ${YEAR_CONTEXT} characters, ${warnings.length} carry none`,
 );
+if (forecastLine) console.log(forecastLine);

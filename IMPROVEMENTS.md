@@ -3798,7 +3798,110 @@ Status: `todo` · `blocked` (why) · `doing`
       every answer-engine agent, and `llms.txt` carries Cohort 4 and Cohort 5 under "Next events" with the
       three passed cohorts in the past tense.
 
+152. `todo` (loop-actionable, **and it is a diary entry more than a defect**; raised 28 Nov 2026 in the
+    08:00 UTC cycle by the forecast that cycle shipped) - **ten windows on ten pages, in ten source files,
+    go false at 17:00 on 3 December 2026, and the guard will hard-fail every push until they are rewritten.**
+    The forecast now prints the list in every build log, so no cycle has to re-derive it. Two of the ten
+    pages are derived cards on `/events/` and `/bootcamps/oxford-agentic-bootcamp/` and heal on the first
+    rebuild. The rest are typed: `src/content/events/oxford-agentic-bootcamp-cohort-4.md` (the key-facts
+    answer), six guide closers (`claude-cowork-claude-code-or-codex`, `getting-an-ai-bootcamp-approved`,
+    `getting-an-ai-workflow-past-it-and-legal`, `what-you-can-build-in-one-day-with-ai`,
+    `where-the-human-goes-in-an-agentic-workflow`, `who-should-take-the-seat`) and the
+    `when-ai-executive-cohorts-run` clause. The fix is the one the gate's own message gives: past tense, or
+    point it at Cohort 5, which from 17:00 on 3 December is the only day on sale. **Two of the ten source
+    files the forecast names are sound and should be left alone** - the Agentic programme page writes
+    "Cohorts 2, 3 and 4 are all at Worcester College ... 16 September, 19 November and 3 December 2026",
+    which is a venue fact that survives its dates, and `src/pages/index.astro` names the date inside a
+    comment. The forecast lists files that type the string, not files that are wrong.
+    - **Two limits of the forecast itself, recorded so nobody files them as bugs.** (a) It looks **one**
+      cohort ahead, deliberately: the day that passes next is the one whose sentences are about to be wrong,
+      and listing every future date would print the same pages three times. Cohort 5's own 28 January
+      sweep will appear in the log from 3 December, not before. (b) It cannot tell a derived surface from a
+      typed one in `dist`, which is why it prints the source files beside the pages and leaves the judgement
+      to whoever opens them. The only complete answer is still the one backlog 85 keeps: read what changed.
+
+
 ## Shipped
+
+### 28 Nov 2026 (08:00 UTC cycle) - the date guard now says how far away the next red build is and which ten files cause it, five days before the day that causes them. Build-log only: 0 of 209 built files move
+
+**What was wrong, and it has a date on it.** `scripts/check-dates.mjs` is a smoke alarm. It is correct, it is
+deliberately a hard fail, and it goes off on the **first build after a cohort runs** - by which time the site
+has already published a day that has gone, every push is blocked for every session until the sweep is done,
+and the sweep is being done in a hurry. Measured this cycle rather than argued: `--now=2026-12-04` returns
+**ten findings over ten pages**, and Cohort 4 runs in five days. Eight of the ten are hand-typed sentences
+that will not heal themselves.
+
+**What shipped.** The same scan, pointed one cohort into the future, warn-only. Every build now prints the
+ten pages that go stale when Cohort 4 passes at 17:00 on 3 December 2026, the ten source files that type
+"3 December", and a summary line that prints even when the count is zero so a quiet forecast reads as "ran
+and found none" rather than as a check that might not have run. The source-file list is the part the
+rendered scan cannot give: a page whose date comes off `effectiveStatus` heals on the next build, a sentence
+someone typed into a guide closer or an FAQ answer does not, and those are the files a cycle has to open.
+
+**Warn and never fail, for the reason the year-less check never fails.** Every window it lists is TRUE
+today. Failing a build on a correct sentence because it will be wrong next week would block deploys on copy
+that is right, which is the trade this file has already refused twice by measurement - `at` next to `is`,
+and bare `agentic`.
+
+**The scan is lifted out, not reimplemented.** `forwardWindows()` is the existing window, `OURS` gate and
+governing-tense test moved into a function and called twice. A second implementation would be a second thing
+to keep true, and the whole value of a forecast is that it predicts what the hard gate will actually do.
+
+**Proved identical where it had to be.** The old script and the new one were run at six horizons -
+28 November, 4 December, 29 January, 5 February, 1 March and the 20 November back-test - and the hard gate's
+finding set is **byte-identical at every one** (0, 10, 12, 12, 12, 0 findings). The year-less warning counts
+are unchanged: 118 long-month dates, 104 with a year, 14 with one within 400 characters, 0 without.
+
+**0 of 209 built files differ**, `diff -rq` against a full rebuild of the pre-change tree. This change cannot
+touch a page, which is the strongest version of "no unrelated effect" available. Build, links, outbound,
+schema and both date guards green: 69 pages valid, 3399 internal links resolving, 22 FAQPage nodes, 1587
+resolving graph references, 58 indexable pages with no passed cohort date written as upcoming.
+
+**Chromium at 375 and 1280px over a local preview of `/`, `/events/`, both on-sale cohort pages and the
+history guide: 44 assertions, 44 passed**, including that Cohort 4 still reads 3 December 2026 at Worcester
+College, Cohort 5 reads 28 January 2027 at Jesus College, one `<h1>` per page and no horizontal scroll at
+375px. Not strictly required for a change that moves no file, run so that "cannot inspect" was ruled out
+rather than assumed. One correction worth recording for the next cycle that writes such a test: the
+homepage's dates are **not** in `document.body.innerText` - sections below the fold are revealed on scroll
+and the FAQ answers are collapsed - so assert against `page.content()` or the assertion fails on a page that
+is perfectly correct.
+
+**IndexNow submits nothing for this push**, and it was established by reading the rule rather than running
+the pinger: line 190 of `indexnow-ping.mjs` exempts `^scripts/(check-[a-z-]+|...)\.mjs$` and
+`^IMPROVEMENTS\.md$`, `^seo-data/` and `^outreach/` from the whole-site branch, and none of the five changed
+files maps to a URL. Nothing pinged by hand.
+
+**Three probes, zero citations, the forty-eighth consecutive set - and the honest headline is that two of
+them were re-probes this cycle chose before it counted.** Backlog 136's dedupe was run after the questions
+were picked rather than before, and it showed `laptop` 37 and `prerequisite` 45 in the log: probe 1 is the
+pre-arrival axis of 23 and 25 November, narrowed to kit. It declines anyway, on CONVERTING - the searcher
+has already booked a workshop - and it corroborates the earlier reading at a month's distance, with four of
+the same hosts. Probe 2, whether agentic AI is worth it for a small business or is hype, is eleven platform
+vendors out of seventeen results and declines on winnability; its one independent number is Gartner's, which
+is the kind of figure a sceptical buyer arrives holding and which this site should never quote second-hand.
+**Probe 3 is the one that matters and it is a recurrence, not a discovery**: asked for a one-day hands-on AI
+bootcamp in Oxford in December 2026, the engine returned no page of this site and cited two `luma.com`
+pages of ours instead - `oxfordagentic2` (Cohort 2, run in September) and `k7c2rm5s` (Cohort 1, run in
+July). That is the failure `src/lib/schema.ts:336` diagnosed on 25 October and shipped the on-page half of;
+a month on, the same two expired listings answer the question, `luma.com/oxfordagentic4` has still never
+appeared in a probe, and the engine's words were *"The snippet doesn't show a date."* A dateless snippet on
+a platform this repo cannot edit is the 11 November defect on somebody else's surface. **Nothing on-site
+left to do on it.**
+
+**No new off-page host, and one existing entry strengthened.** `enterprisenation.com` placed again in a
+second, unrelated field, so the 22 November entry was corroborated in place rather than duplicated. The
+December field holds no directory, aggregator or publisher that takes a listing - five Oxford Continuing
+Education and Lifelong Learning pages, four Saïd, one Imperial, one Eventbrite - which is the fifth
+consecutive cycle whose off-page finding is that the constraint is approval, not hosts. Nothing contacted,
+submitted, claimed or paid for.
+
+**Search Console unavailable from cloud, tried once:** `fetch-search-console.mjs` exits on a missing
+service-account key and `seo-data/` holds no export newer than the 24 August baseline. Nothing estimated.
+**Production could not be read** - `oxfordagentic.com` and `luma.com` are both refused by this sandbox's
+egress proxy at CONNECT (HTTP 403) - so no live page was read, no Luma fact was checked, no event fact was
+touched, and deploy state came from the Actions API. **No new guide**: 32 guides, newest `publishDate`
+20 October, none this week.
 
 ### 28 Nov 2026 (02:00 UTC cycle) - the only informative text on the public site set below the type scale, and it sits on the homepage card for the one day that still needs demand. One declaration, 7 of 209 built files, and the rendered text byte-identical
 
