@@ -6,7 +6,7 @@ cohort: Cohort 3
 status: past
 startDate: "2026-11-19T09:00:00+00:00"
 endDate: "2026-11-19T17:00:00+00:00"
-updatedDate: "2026-11-19T20:00:00+00:00"
+updatedDate: "2026-11-28T09:00:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -162,13 +162,17 @@ faqs:
       Pricing is on the booking page, so the numbers are easy to attach.
   # The procurement question, and the only published answer to it was on the
   # homepage FAQ. Nobody books a bootcamp from the homepage: an organisation that
-  # cannot put a card through reaches this page, sees a card form and stops. The
-  # wording is `src/lib/home.ts`'s own, so no new term is offered here.
+  # cannot put a card through reaches this page, sees a card form and stops.
+  # The wording was `src/lib/home.ts`'s, which points at the form on the page the
+  # reader is standing on. That clause was true while this day was on sale and
+  # became false the moment it ran: the page carries no booking form now. The
+  # answer below is this programme's own page's, word for word - the version
+  # written for a page with no form on it - so no new term is offered here.
+  # (28 Nov 2026.)
   - q: Can my organisation pay by invoice?
     a: >-
-      Yes. Pricing and the booking form are on this page. If your organisation would
-      rather pay by invoice than book on the form, email hello@oxfordagentic.com and we
-      will arrange it.
+      Yes. If your organisation would rather pay by invoice than book on a card form,
+      email hello@oxfordagentic.com and we will arrange it.
   - q: How big is the cohort?
     a: >-
       Small, and capped. Cohort 1 ran with sixteen. The day is facilitated rather than

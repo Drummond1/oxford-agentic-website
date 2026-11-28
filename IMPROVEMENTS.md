@@ -3819,9 +3819,102 @@ Status: `todo` · `blocked` (why) · `doing`
       sweep will appear in the log from 3 December, not before. (b) It cannot tell a derived surface from a
       typed one in `dist`, which is why it prints the source files beside the pages and leaves the judgement
       to whoever opens them. The only complete answer is still the one backlog 85 keeps: read what changed.
+    - **One sentence the forecast cannot see, added 28 Nov 2026.** Cohort 4's file also carries
+      "Pricing and the booking form are on this page", which has no date in it and so appears in no
+      date scan, and which goes false at the same moment the ten windows do. Sweep it with them; the
+      replacement is the programme page's own answer, already shipped on the two passed pages that had
+      it. See backlog 153.
 
+
+153. `todo` (loop-actionable, **a guard the 28 November 09:00 cycle's sweep earned and deliberately did not
+    build in the same commit**; raised 28 Nov 2026) - **nothing in the build catches a passed event page that
+    is still selling the day.** `check-dates.mjs` tests whether a passed cohort's *date* is written as
+    upcoming, which is the right test and does not reach a sentence with no date in it: on 28 November it
+    was green over 58 pages while two passed pages said "Registration is open - you can book on this page"
+    and "Pricing and the booking form are on this page". The shape is cheap to test for - on a page whose
+    event has an `endDate` in the past, flag rendered text matching a short list of booking promises
+    (`book on this page`, `booking form are on this page`, `registration is open`, `form below`). **Warn,
+    not fail**, for the reason the forward forecast warns: the same sentence is correct on the two pages
+    that are on sale, so the check cannot be a gate without a per-page exemption, and a warning naming the
+    source file is the whole value. **It has a date on it**: `src/content/events/oxford-agentic-bootcamp-
+    cohort-4.md` carries the invoice sentence and Cohort 4 runs on 3 December, so the same defect arrives on
+    `/events/oxford-agentic-bootcamp-cohort-4/` at 17:00 that day unless the backlog 152 sweep takes it too.
+    The replacement is already chosen and shipped twice: the programme page's own answer, which names no
+    page.
+    - **Also left alone, deliberately, and recorded so no cycle re-files it as a defect.** Three further
+      answers on the Coding Cohort 1 page read oddly on a passed day without being false - "worth checking
+      before you book", "email us before you book", and the transfer policy in "What if I cannot make the
+      date?". Each is advice that still holds for whoever books the next cohort. Changing them is taste, not
+      truth, and the cycle that found them had already spent its one change.
 
 ## Shipped
+
+### 28 Nov 2026 (09:00 UTC cycle) - two passed event pages told a reader to book on a page that carries no booking form, and one of them said the price was on it. Three sentences in two content files, 5 of 209 built files
+
+**What was wrong.** `/events/oxford-agentic-coding-bootcamp-cohort-1/` ran on 26 November and
+`/events/oxford-agentic-bootcamp-cohort-3/` ran on 19 November. Both drop their Luma embed the moment they
+pass - neither page has had a booking form or a price on it since - and both open with the template's own
+"This event has run". Under that banner, three hand-typed FAQ answers were still selling the day:
+
+- Coding Cohort 1, **first question, the only one open by default**: *"When and where is it? ... Registration
+  is open - you can book on this page."* Four lines under a banner saying the opposite.
+- Coding Cohort 1 and Agentic Cohort 3, the procurement answer: *"Yes. Pricing and the booking form are on
+  this page."* There is no form, and there has never been a price on this site - it lives on Luma by
+  decision (PRD §18), so that clause was the one sentence on the site pointing a buyer at a price here.
+
+**Measured rather than assumed, across all 69 built pages.** A scan for booking-promise phrasing against the
+rendered text of every page returns exactly four hits: these two passed pages, and `/events/.../cohort-4/`
+and `/cohort-5/`, where the same invoice sentence is **true** and was left alone. The three older passed
+pages - Agentic Cohorts 1 and 2, Second Brain Cohort 1 - are clean, so this is a shape that arrives with a
+cohort and leaves when someone sweeps it, not a template fault. Confirmed there is no `luma.com/embed` and
+no `£` in either passed page's HTML before touching a word.
+
+**Why `check-dates.mjs` is green and still right.** The hard gate checks that a passed cohort's *date* is
+not written as upcoming, and every date in these three sentences is correct. "Registration is open" carries
+no date, so nothing was going to catch it. That is a gap in coverage, not a bug in the guard, and it is
+filed as backlog 153 rather than fixed here, because the cycle ships one change.
+
+**What shipped, and every clause of it is already published elsewhere on the site.** The invoice answer
+becomes the **programme page's own**, word for word - *"Yes. If your organisation would rather pay by
+invoice than book on a card form, email hello@oxfordagentic.com and we will arrange it."* - which is the
+version written for a page with no form on it and already live on all three `/bootcamps/` pages. The coding
+page's first question becomes "When and where **was** it?" and closes on *"Dates for the next cohort are
+being confirmed."*, which is the closing line of that page's own banner. No new fact, no date invented, no
+price, nothing said about a day that has not run.
+
+**5 of 209 built files move**, `diff -rq` against a full rebuild of the pre-change tree: the two pages,
+`llms-full.txt` (so the two voice agents stop repeating it), and the two sitemaps, whose `lastmod` moves for
+the two events and for `/events/`, which derives its date from the newest event. `updatedDate` bumped on
+both content entries. Page heights identical at 375px before and after.
+
+**Checks.** Build, links (3399 internal links across 69 pages), outbound, schema (69 pages valid, 22
+FAQPage nodes, 1587 resolving graph references) and both date guards green; the forward forecast still
+reads 10 windows over 10 pages for 3 December, unchanged by this commit. `check:flags` passes on the all-on
+and all-off builds. `astro check` reports **87 errors and 3 hints with and without the change** - identical,
+measured by stashing - all pre-existing implicit-`any` noise. Chromium over a local preview at 375, 768 and
+1280px on both changed pages plus Cohort 4 as a control: no horizontal overflow, no missing `alt`, no
+unlabelled control, no link or button without an accessible name, no page errors, and the only "clipped"
+flags are the breadcrumb's deliberate ellipsis and the `visually-hidden` headings. Keyboard: tabbed to a
+`summary`, the focus ring settles at solid 2px gold with a 3px offset and Enter toggles the answer. One
+note for the next cycle that measures a focus ring - read it **after** 240ms, because `focus-in` animates
+from `transparent`, and a sample taken on the first frame reports no ring on a page that has one.
+
+**Board state, checked first.** Fresh checkout arrived on a **detached HEAD at `6f6ab0f`** while local
+`main` sat at `bcd268f` with a stale remote-tracking ref - step 0's trap again; a fetch and
+`git checkout -B main 6f6ab0f` put all three on the true tip, which matches the Actions API `head_sha`.
+Deploy run **46124800284** and CI run **46124800305** both success on that SHA at 08:13 UTC, nothing queued
+or in progress, tree clean. **Seven open pull requests, none blocking and none touched** - #1 and #3 the
+known-stale leftovers, #4, #5, #6, #7 and the new #8 (`drummondgilbert/dru-22-...`) Drummond's branches.
+**Production could not be read**: `oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy
+(HTTP 403), as on every recent cycle, so no live page was read, no Luma fact was checked and no event fact
+was touched - no date, venue, capacity, price or availability moved. Deploy state came from the Actions
+API; before and after came from a local `astro preview` of this SHA. **Search Console unavailable**:
+`seo-data/` still holds nothing newer than the 24 August baseline, so nothing was estimated. **No new
+guide**: 32 guides, newest `publishDate` 20 October.
+
+**IndexNow submits the whole site, by design not by accident.** The dry run on this change set returns 58
+URLs, because `indexnow-ping.mjs` line 10 maps `src/content/events/*.md` to every URL in the sitemap - the
+header names the next event on all of them - and `IMPROVEMENTS.md` is exempt. Nothing pinged by hand.
 
 ### 28 Nov 2026 (08:00 UTC cycle) - the date guard now says how far away the next red build is and which ten files cause it, five days before the day that causes them. Build-log only: 0 of 209 built files move
 
