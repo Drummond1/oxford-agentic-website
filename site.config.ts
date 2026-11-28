@@ -305,7 +305,7 @@ const config: SiteConfig = {
       'one-day bootcamps, each in a small cohort. Build and run a working agentic AI workflow on a real ' +
       'task from your own work, so the routine runs itself and the hours go back into the work only you ' +
       'can do. Build a second brain: the structured store of your own context that AI tools draw on. Or ' +
-      'ship a live website and a working prototype, with Claude Code and Codex doing the typing. No day ' +
+      'build a website in guided sessions. No day ' +
       'assumes you arrive able to code, and nothing is hand-waved.',
     /*
      * Why this field exists, from measurement rather than theory.
