@@ -91,6 +91,18 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 🗓️ Day Hub - unlisted attendee pages, since 22 Nov 2026 (DRU-17, branch `drummondgilbert/dru-17-day-hub-v0-for-oab4-one-unlisted`)
+
+> **/day/oab4/** - noindex, nofollow, out of the sitemap and llms.txt, linked from nowhere. Only Drummond and the facilitators share it, as a link or the QR code (`public/day/oab4/qr.png`).
+
+- **What it is.** One page for people already booked on the Thursday 3 December day, in three tabs: Get ready (set-up steps with ticks, getting there, Wi-Fi, WhatsApp, bringing a colleague), Today (timetable, a block per session, On the day) and Keep going (feedback and the next event). It sells nothing: no price, no Book button, no header or footer (Base `bare`).
+- **One file per cohort.** Everything cohort-specific is `src/content/day/<id>.ts` (shape in `src/lib/day.ts`, mirroring the plugin's `config/sessions.json`). The route globs the folder, so oab5 is a new file and no code. Missing links are `null` and print "Coming Tue 1 Dec"; never invent a URL.
+- **In the browser only.** "Now and next" reads the Europe/London clock (`?now=2026-12-03T09:30` overrides it for testing, display only). Set-up ticks live in localStorage, keyed by cohort and step.
+- **The "I'm stuck" form** posts to `dayHub.stuckEndpoint` in `site.config.ts`. Empty today, so it opens a pre-filled email to hello@oxfordagentic.com, as `/apply/` does. The privacy page's `#day-hub` paragraph describes it; change both together.
+- **Open until Tue 1 Dec:** WhatsApp link, pre-day form, feedback form, n8n guide, route photos, slides, prompts and files, the plugin step (`pluginStep`), the Skills second-part name, and a retention period for stuck messages.
+
+---
+
 ## 🎓 Office hours - unlisted voice page, since 30 Sept 2026
 
 > **/office-hours/** - noindex, out of the sitemap and llms.txt, linked from nowhere. Only Drummond promotes it.

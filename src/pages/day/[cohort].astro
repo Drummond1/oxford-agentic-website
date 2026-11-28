@@ -1,0 +1,938 @@
+---
+/**
+ * Day Hub: one unlisted attendee page per cohort, at /day/<cohort>/ (DRU-17, 22 Nov 2026).
+ *
+ * Built for people who have already booked, so it sells nothing: no price, no
+ * Book button, no booking path. It answers three questions in three tabs - what
+ * do I do before I come (Get ready), what is on and when (Today), and where do
+ * I find it afterwards (Keep going).
+ *
+ * UNLISTED, THE SAME WAY AS /office-hours/ AND /find-your-bootcamp/
+ *  - robots "noindex, nofollow" and no JSON-LD (Base `hidden`).
+ *  - Out of the sitemap (`/day/` in astro.config.mjs). llms.txt and llms-full.txt
+ *    are built from content collections, so there is nothing to remove.
+ *  - Linked from nowhere: no header or footer (Base `bare`), no breadcrumbs.
+ *    Only Drummond and the facilitators share it, as a link or the QR code.
+ *  - No robots.txt Disallow, on purpose: a disallowed URL cannot have its noindex read.
+ *
+ * ONE FILE PER COHORT
+ *  Everything cohort-specific lives in `src/content/day/<id>.ts` (see `src/lib/day.ts`
+ *  for the shape). The route below globs that folder, so oab5 is a new file and no code.
+ *
+ * IN THE BROWSER, AND NOWHERE ELSE
+ *  - "Now and next" is worked out from the Europe/London clock. `?now=2026-12-03T09:30`
+ *    overrides it for testing and preview; it changes what is displayed and nothing else.
+ *  - Set-up ticks live in localStorage, keyed by cohort and step. No network call.
+ *  - The "I'm stuck" form posts to `dayHub.stuckEndpoint` in site.config.ts. While that
+ *    is empty it opens a pre-filled email to `brand.email`, exactly as /apply/ does. The
+ *    privacy page's #day-hub paragraph describes it; change both together.
+ *
+ * Without JavaScript every tab shows at once and the form is simply not offered.
+ */
+import Base from '../../layouts/Base.astro';
+import Wordmark from '../../components/Wordmark.astro';
+import EmailAddress from '../../components/EmailAddress.astro';
+import config from '../../../site.config';
+import { richText, type DayCohort } from '../../lib/day';
+
+export function getStaticPaths() {
+  const files = import.meta.glob<{ default: DayCohort }>('../../content/day/*.ts', { eager: true });
+  return Object.values(files).map((m) => ({ params: { cohort: m.default.id }, props: { cohort: m.default } }));
+}
+
+const { cohort } = Astro.props as { cohort: DayCohort };
+const email = config.brand.email;
+const endpoint = config.dayHub.stuckEndpoint;
+
+const steps = cohort.steps.filter((s) => !s.onlyWithPlugin || cohort.pluginStep);
+const words = ['none', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const countWord = words[steps.length] ?? String(steps.length);
+const fill = (text: string) =>
+  text
+    .replace('{Steps}', countWord[0].toUpperCase() + countWord.slice(1))
+    .replace('{steps}', countWord);
+
+const timeRange = (start: string, end: string) => `${start} to ${end}`;
+const rt = (text: string) => richText(text, cohort);
+
+const hasContent = (s: DayCohort['sessions'][number]) => Boolean(s.slides_url) || s.prompts.length > 0 || s.files.length > 0;
+const keepSessions = cohort.sessions.filter(hasContent);
+
+/* What the browser needs, and only that. */
+const client = {
+  id: cohort.id,
+  date: cohort.date,
+  timetable: cohort.timetable.map(({ start, title, lead, leadInline, kind }) => ({ start, title, lead, leadInline, kind })),
+  banner: {
+    ...cohort.banner,
+    before: { ...cohort.banner.before, rest: fill(cohort.banner.before.rest) },
+  },
+  endpoint,
+  email,
+  // Shown after a successful post to the endpoint. Before the day we reply by email; on the day we come to the table.
+  thanks: { before: 'Thank you - we\'ll reply by email.', day: 'Thank you - one of us is on the way.' },
+};
+---
+
+<Base
+  pageTitle={cohort.pageTitle}
+  titleOverride={cohort.pageTitle}
+  description={cohort.intro.split('. ')[0] + '.'}
+  path={`/day/${cohort.id}/`}
+  hidden
+  bare
+  bodyClass="day-page"
+>
+  <section class="band band--dark day-hero">
+    <div class="wrap">
+      <Wordmark variant="mark" class="day-hero__mark" />
+      <hr class="dash" />
+      <h1 id="day-title">{cohort.h1}</h1>
+      <p class="day-hero__line">{cohort.dateLine}</p>
+      <p class="day-hero__intro">{cohort.intro}</p>
+    </div>
+  </section>
+
+  <div class="day-banner" data-banner hidden role="status">
+    <div class="wrap">
+      <p><strong data-banner-strong></strong> <span data-banner-rest></span></p>
+    </div>
+  </div>
+
+  <section class="band band--cream day-body" data-hub data-cohort={cohort.id}>
+    <div class="wrap wrap--narrow">
+      <div class="day-tabs" role="tablist" aria-labelledby="day-title" data-tabs hidden>
+        <button type="button" role="tab" id="tab-ready" aria-controls="panel-ready" data-tab="ready">Get ready</button>
+        <button type="button" role="tab" id="tab-today" aria-controls="panel-today" data-tab="today">Today</button>
+        <button type="button" role="tab" id="tab-keep" aria-controls="panel-keep" data-tab="keep">Keep going</button>
+      </div>
+
+      <!-- Tab 1: Get ready -->
+      <section class="day-panel" id="panel-ready" role="tabpanel" aria-labelledby="tab-ready" data-panel="ready">
+        <h2 class="day-panel__head">Get ready</h2>
+        <h3 class="day-h">{fill(cohort.setup.heading)}</h3>
+        <p>{cohort.setup.intro}</p>
+
+        <ol class="day-steps" role="list">
+          {
+            steps.map((step, i) => (
+              <li class="day-step" data-step={step.id}>
+                <span class="day-step__num" aria-hidden="true">{i + 1}</span>
+                <div class="day-step__main">
+                  <h4>{step.title}</h4>
+                  <p set:html={rt(step.body)} />
+                  <p class="day-actions">
+                    <button type="button" class="btn btn--ghost day-done" data-done>Done</button>
+                    <button type="button" class="day-link" data-stuck={step.title}>I'm stuck</button>
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+
+        <h3 class="day-h">{cohort.gettingThere.heading}</h3>
+        {cohort.gettingThere.paragraphs.map((p) => <p>{p}</p>)}
+        <h4 class="day-h4">{cohort.gettingThere.routeHeading}</h4>
+        {
+          cohort.gettingThere.routeSteps.length > 0 ? (
+            <ol class="day-route" role="list">
+              {cohort.gettingThere.routeSteps.map((r) => (
+                <li>
+                  <p>{r.text}</p>
+                  {r.photo && <img src={r.photo.src} alt={r.photo.alt} loading="lazy" />}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p>{cohort.gettingThere.routeEmpty}</p>
+          )
+        }
+        <p><strong>{cohort.gettingThere.late.strong}</strong> {cohort.gettingThere.late.rest}</p>
+
+        <h3 class="day-h">{cohort.wifi.heading}</h3>
+        <p>{cohort.wifi.body}</p>
+
+        <h3 class="day-h">{cohort.whatsapp.heading}</h3>
+        <p set:html={rt(cohort.whatsapp.body)} />
+
+        <h3 class="day-h">{cohort.colleague.heading}</h3>
+        <p set:html={rt(cohort.colleague.body)} />
+      </section>
+
+      <!-- Tab 2: Today -->
+      <section class="day-panel" id="panel-today" role="tabpanel" aria-labelledby="tab-today" data-panel="today">
+        <h2 class="day-panel__head">Today</h2>
+        <h3 class="day-h">{cohort.today.heading}</h3>
+        <p>{cohort.today.intro}</p>
+
+        <h4 class="day-h4">Timetable</h4>
+        {!cohort.timetableConfirmed && <p class="day-muted">{cohort.today.timetableNote}</p>}
+        <div class="day-table-wrap">
+          <table class="day-table">
+            <thead>
+              <tr><th scope="col">Time</th><th scope="col">Session</th><th scope="col">With</th></tr>
+            </thead>
+            <tbody>
+              {
+                cohort.timetable.map((row) => (
+                  <tr data-row={row.start}>
+                    <td>{row.start}</td>
+                    <td>{row.title}{row.detail ? ` - ${row.detail}` : ''}</td>
+                    <td>{row.lead ?? ''}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="day-sessions">
+          {
+            cohort.sessions.map((s) => (
+              <article class="day-session" id={`session-${s.id}`}>
+                <h4>{s.title}</h4>
+                <p class="day-muted">{cohort.timetableConfirmed ? `${timeRange(s.start, s.end)} · ${s.lead}` : s.lead}</p>
+
+                {s.slides_url && (
+                  <div class="day-row">
+                    <h5>Slides</h5>
+                    <p><a href={s.slides_url} rel="noopener">Slides</a></p>
+                  </div>
+                )}
+                {s.prompts.length > 0 && (
+                  <div class="day-row">
+                    <h5>Prompts</h5>
+                    {s.prompts.map((p) => (
+                      <div class="day-prompt">
+                        {p.label && <p class="day-prompt__label">{p.label}</p>}
+                        <p class="day-prompt__text" data-prompt-text>{p.text}</p>
+                        <button type="button" class="btn btn--ghost day-copy" data-copy>Copy</button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {s.files.length > 0 && (
+                  <div class="day-row">
+                    <h5>Files</h5>
+                    <ul>
+                      {s.files.map((f) => (
+                        <li><a href={f.url} rel="noopener">{f.label}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {cohort.pluginStep && s.skill && (
+                  <div class="day-row">
+                    <h5>Plugin skill to run</h5>
+                    <p><code>/{s.skill}</code></p>
+                  </div>
+                )}
+                {!hasContent(s) && <p class="day-muted">{cohort.today.sessionEmpty}</p>}
+                {s.fallback && (
+                  <div class="day-row">
+                    <h5>If something's blocked</h5>
+                    <p>{s.fallback}</p>
+                  </div>
+                )}
+                <p class="day-actions">
+                  <button type="button" class="day-link" data-stuck={s.title}>I'm stuck</button>
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <h3 class="day-h">{cohort.onTheDay.heading}</h3>
+        <ul class="day-list">
+          {cohort.onTheDay.items.map((item) => <li set:html={rt(item)} />)}
+        </ul>
+        <p class="day-actions"><button type="button" class="day-link" data-stuck="">I'm stuck</button></p>
+      </section>
+
+      <!-- Tab 3: Keep going -->
+      <section class="day-panel" id="panel-keep" role="tabpanel" aria-labelledby="tab-keep" data-panel="keep">
+        <h2 class="day-panel__head">Keep going</h2>
+        <h3 class="day-h">{cohort.keepGoing.heading}</h3>
+        <p>{cohort.keepGoing.intro}</p>
+
+        {
+          keepSessions.length > 0 && (
+            <ul class="day-list day-keep">
+              {keepSessions.map((s) => (
+                <li>
+                  <strong>{s.title}</strong>
+                  {s.slides_url && <> · <a href={s.slides_url} rel="noopener">Slides</a></>}
+                  {s.files.map((f) => <> · <a href={f.url} rel="noopener">{f.label}</a></>)}
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        <h3 class="day-h">{cohort.keepGoing.feedbackHeading}</h3>
+        <p set:html={rt(cohort.keepGoing.feedbackBody)} />
+
+        <h3 class="day-h">{cohort.keepGoing.nextHeading}</h3>
+        <p set:html={rt(cohort.keepGoing.nextBody)} />
+      </section>
+    </div>
+  </section>
+
+  <!-- "I'm stuck": a dialog, which sits as a panel at the foot of the screen on a phone. -->
+  <dialog class="day-dialog" data-dialog aria-labelledby="stuck-title">
+    <form class="day-form" data-stuck-form method="dialog">
+      <button type="button" class="day-dialog__close" data-close aria-label="Close">×</button>
+      <h2 id="stuck-title">Tell us where you're stuck</h2>
+
+      <p class="day-field">
+        <label for="stuck-step">Which step or session</label>
+        <input id="stuck-step" name="step" type="text" autocomplete="off" />
+      </p>
+      <p class="day-field">
+        <label for="stuck-what">What can you see?</label>
+        <span class="day-help" id="stuck-what-help">The error message, or what happened when you tried.</span>
+        <textarea id="stuck-what" name="what" rows="4" required aria-describedby="stuck-what-help"></textarea>
+      </p>
+      <p class="day-field">
+        <label for="stuck-table">Your table number</label>
+        <span class="day-help" id="stuck-table-help">Only on the day. Leave blank before then.</span>
+        <input id="stuck-table" name="table" type="text" inputmode="numeric" autocomplete="off" aria-describedby="stuck-table-help" />
+      </p>
+      <p class="day-field">
+        <label for="stuck-name">Your name</label>
+        <input id="stuck-name" name="name" type="text" autocomplete="name" required />
+      </p>
+      <p class="day-field">
+        <label for="stuck-email">Your email</label>
+        <input id="stuck-email" name="email" type="email" autocomplete="email" required />
+      </p>
+      <p class="day-field day-trap" aria-hidden="true">
+        <input name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+      </p>
+
+      <p class="day-muted">
+        Please don't include client or personal data. We use what you send to help you now, and to make set-up
+        smoother for the next cohort. <a href="/privacy/#day-hub">Privacy notice</a>.
+      </p>
+      <p><button type="submit" class="btn btn--primary" data-send>Send</button></p>
+      {
+        !endpoint && (
+          <p class="day-muted">
+            This opens an email to <EmailAddress /> with your answers filled in - press send and we'll come to you.
+          </p>
+        )
+      }
+      <p class="day-thanks" data-thanks role="status" hidden></p>
+    </form>
+  </dialog>
+
+  <script is:inline type="application/json" id="day-data" set:html={JSON.stringify(client)} />
+</Base>
+
+<script>
+  import { bannerState, clock12, type DayCohort, type LondonNow } from '../../lib/day';
+
+  type Client = {
+    id: string;
+    date: string;
+    timetable: DayCohort['timetable'];
+    banner: DayCohort['banner'];
+    endpoint: string;
+    email: string;
+    thanks: { before: string; day: string };
+  };
+
+  const hub = document.querySelector<HTMLElement>('[data-hub]');
+  const raw = document.getElementById('day-data')?.textContent;
+  if (hub && raw) {
+    const data = JSON.parse(raw) as Client;
+
+    /* ---------------------------------------------------------------- time */
+
+    /** The London wall clock. `?now=YYYY-MM-DDTHH:MM` overrides it for testing; display only. */
+    const londonNow = (): LondonNow => {
+      const override = new URLSearchParams(location.search).get('now');
+      const m = override?.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/);
+      if (m) return { date: m[1], minutes: Number(m[2]) * 60 + Number(m[3]) };
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/London',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23',
+      }).formatToParts(new Date());
+      const get = (t: string) => parts.find((p) => p.type === t)?.value ?? '00';
+      return { date: `${get('year')}-${get('month')}-${get('day')}`, minutes: Number(get('hour')) * 60 + Number(get('minute')) };
+    };
+
+    /* -------------------------------------------------------------- banner */
+
+    const banner = document.querySelector<HTMLElement>('[data-banner]');
+    const strong = banner?.querySelector<HTMLElement>('[data-banner-strong]');
+    const rest = banner?.querySelector<HTMLElement>('[data-banner-rest]');
+    const state = bannerState(data, londonNow());
+    const b = data.banner;
+
+    const set = (line: { strong: string; rest: string }) => {
+      if (strong) strong.textContent = line.strong;
+      if (rest) rest.textContent = line.rest;
+    };
+
+    if (state.kind === 'session') {
+      const lead = state.now.leadInline ?? state.now.lead;
+      const nowPart = `${b.now} ${state.now.title}${lead ? ` ${b.with} ${lead}` : ''}.`;
+      const nextPart = state.next ? `${b.next} ${state.next.title} ${b.at} ${clock12(state.next.start)}.` : '';
+      // The two halves keep the copy's shape: Now: ... Next: ...
+      if (strong) strong.textContent = nowPart;
+      if (rest) rest.textContent = nextPart;
+    } else {
+      set(b[state.kind]);
+    }
+    if (banner) banner.hidden = false;
+
+    /* ---------------------------------------------------------------- tabs */
+
+    const tabs = Array.from(hub.querySelectorAll<HTMLButtonElement>('[data-tab]'));
+    const panels = Array.from(hub.querySelectorAll<HTMLElement>('[data-panel]'));
+    const tablist = hub.querySelector<HTMLElement>('[data-tabs]');
+    const names = ['ready', 'today', 'keep'];
+
+    const show = (name: string, push = true) => {
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === name;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach((p) => (p.hidden = p.dataset.panel !== name));
+      if (push) history.replaceState(null, '', `${location.pathname}${location.search}#${name}`);
+    };
+
+    if (tablist) {
+      tablist.hidden = false;
+      hub.classList.add('is-tabbed');
+      tabs.forEach((t) =>
+        t.addEventListener('click', () => show(t.dataset.tab ?? 'ready')),
+      );
+      tablist.addEventListener('keydown', (event) => {
+        const i = names.indexOf(tabs.find((t) => t.getAttribute('aria-selected') === 'true')?.dataset.tab ?? 'ready');
+        const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        const next = names[(i + step + names.length) % names.length];
+        show(next);
+        tabs.find((t) => t.dataset.tab === next)?.focus();
+        event.preventDefault();
+      });
+      const hash = location.hash.replace('#', '');
+      // Before the day: Get ready. On the day: Today. After it: Keep going.
+      const initial = names.includes(hash)
+        ? hash
+        : state.kind === 'before'
+          ? 'ready'
+          : state.kind === 'after'
+            ? 'keep'
+            : 'today';
+      show(initial, false);
+    }
+
+    /* ---------------------------------------------------------- set-up ticks */
+
+    const key = (step: string) => `oa-day:${data.id}:${step}`;
+    const read = (step: string) => {
+      try {
+        return localStorage.getItem(key(step)) === '1';
+      } catch {
+        return false;
+      }
+    };
+    hub.querySelectorAll<HTMLElement>('[data-step]').forEach((li) => {
+      const step = li.dataset.step ?? '';
+      const button = li.querySelector<HTMLButtonElement>('[data-done]');
+      if (!button) return;
+      const paint = (done: boolean) => {
+        li.classList.toggle('is-done', done);
+        button.textContent = done ? 'Done - undo' : 'Done';
+      };
+      paint(read(step));
+      button.addEventListener('click', () => {
+        const done = !li.classList.contains('is-done');
+        try {
+          if (done) localStorage.setItem(key(step), '1');
+          else localStorage.removeItem(key(step));
+        } catch {
+          /* Private browsing: the tick still shows until the page closes. */
+        }
+        paint(done);
+      });
+    });
+
+    /* ------------------------------------------------------------ copy buttons */
+
+    hub.querySelectorAll<HTMLElement>('.day-prompt').forEach((box) => {
+      const button = box.querySelector<HTMLButtonElement>('[data-copy]');
+      const text = box.querySelector<HTMLElement>('[data-prompt-text]')?.textContent ?? '';
+      let timer: number | undefined;
+      button?.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const area = document.createElement('textarea');
+          area.value = text;
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand('copy');
+          area.remove();
+        }
+        button.textContent = 'Copied';
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => (button.textContent = 'Copy'), 2000);
+      });
+    });
+
+    /* ------------------------------------------------------------ "I'm stuck" */
+
+    const dialog = document.querySelector<HTMLDialogElement>('[data-dialog]');
+    const form = document.querySelector<HTMLFormElement>('[data-stuck-form]');
+    if (dialog && form) {
+      const stepField = form.querySelector<HTMLInputElement>('[name="step"]');
+      const thanks = form.querySelector<HTMLElement>('[data-thanks]');
+      const send = form.querySelector<HTMLButtonElement>('[data-send]');
+
+      document.querySelectorAll<HTMLElement>('[data-stuck]').forEach((opener) =>
+        opener.addEventListener('click', () => {
+          if (stepField) stepField.value = opener.dataset.stuck ?? '';
+          if (thanks) thanks.hidden = true;
+          dialog.showModal();
+        }),
+      );
+      form.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
+      // A click on the backdrop (the dialog element itself) closes it.
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+
+      const labels: Array<[string, string]> = [
+        ['step', 'Which step or session'],
+        ['what', 'What can you see?'],
+        ['table', 'Your table number'],
+        ['name', 'Your name'],
+        ['email', 'Your email'],
+      ];
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const values = new FormData(form);
+        // A filled trap field is a bot. Say nothing and send nothing.
+        if (values.get('_gotcha')) {
+          dialog.close();
+          return;
+        }
+        const step = String(values.get('step') ?? '').trim();
+        const subject = `I'm stuck${step ? ` - ${step}` : ''}`;
+        const body = [
+          `Page: ${location.pathname}`,
+          ...labels.map(([name, label]) => `${label}: ${String(values.get(name) ?? '').trim()}`),
+        ].join('\n');
+        const mail = () => {
+          window.location.href = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        };
+
+        if (!data.endpoint) {
+          mail();
+          return;
+        }
+
+        if (send) send.disabled = true;
+        values.append('_subject', subject);
+        values.append('summary', body);
+        values.append('page', `${location.pathname}`);
+        try {
+          const response = await fetch(data.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: values });
+          if (!response.ok) throw new Error(String(response.status));
+          const onTheDay = londonNow().date === data.date;
+          if (thanks) {
+            thanks.textContent = onTheDay ? data.thanks.day : data.thanks.before;
+            thanks.hidden = false;
+          }
+          form.reset();
+        } catch {
+          // The endpoint did not take it: fall back to the visitor's own mail app rather than lose it.
+          mail();
+        } finally {
+          if (send) send.disabled = false;
+        }
+      });
+    }
+  }
+</script>
+
+<style>
+  .day-hero {
+    padding-block: clamp(2.5rem, 1.5rem + 5vw, 5rem) clamp(2rem, 1.2rem + 4vw, 3.5rem);
+  }
+  .day-hero h1 {
+    font-family: var(--font-title);
+    font-size: var(--step-2xl);
+    line-height: 1.12;
+    margin-block: 0.75rem 1rem;
+    max-width: 22ch;
+  }
+  .day-hero__line {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    margin-block-end: 1rem;
+    overflow-wrap: anywhere;
+  }
+  .day-hero__intro {
+    max-width: var(--measure);
+    color: var(--muted-on-dark);
+  }
+  .day-hero :global(.day-hero__mark) {
+    display: inline-flex;
+    margin-block-end: 1rem;
+  }
+
+  /* Now and next: pinned under the top edge, two lines at most at 375px. */
+  .day-banner {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--gold);
+    color: var(--ink-dark);
+    border-block-end: 1px solid var(--ink-dark);
+  }
+  .day-banner p {
+    margin: 0;
+    padding-block: 0.7rem;
+    font-size: var(--step-sm);
+    line-height: 1.4;
+  }
+
+  .day-body {
+    padding-block: clamp(1.5rem, 1rem + 2vw, 3rem) clamp(3rem, 2rem + 4vw, 5rem);
+  }
+
+  /* Tabs, once the script has run. Without it every panel is simply stacked. */
+  .day-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-block-end: 1px solid var(--ink-hairline);
+    margin-block-end: 1.5rem;
+  }
+  .day-tabs[hidden] {
+    display: none;
+  }
+  .day-tabs button {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: none;
+    border: 0;
+    border-block-end: 3px solid transparent;
+    padding: 0.9rem 0.25rem;
+    color: var(--muted-on-cream);
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .day-tabs button[aria-selected='true'] {
+    color: var(--ink-dark);
+    border-block-end-color: var(--gold);
+  }
+  .day-tabs button:focus-visible,
+  .day-link:focus-visible,
+  .day-dialog__close:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+  }
+  .is-tabbed .day-panel__head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .day-panel[hidden] {
+    display: none;
+  }
+  .day-panel + .day-panel {
+    margin-block-start: 2.5rem;
+  }
+  .is-tabbed .day-panel + .day-panel {
+    margin-block-start: 0;
+  }
+  .day-panel__head {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-block-end: 1rem;
+  }
+
+  .day-h {
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    line-height: 1.2;
+    margin-block: 2.25rem 0.75rem;
+  }
+  .day-h4,
+  .day-step h4,
+  .day-session h4 {
+    font-family: var(--font-title);
+    font-size: var(--step-lg);
+    line-height: 1.25;
+    margin-block: 1.25rem 0.4rem;
+  }
+  .day-panel p,
+  .day-list li {
+    max-width: var(--measure);
+    overflow-wrap: anywhere;
+  }
+  .day-muted {
+    color: var(--muted-on-cream);
+    font-size: var(--step-sm);
+  }
+  :global(.day-soon) {
+    display: inline-block;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.04em;
+    padding: 0.1rem 0.5rem;
+    border: 1px solid var(--gold);
+    color: var(--ink-dark);
+    white-space: nowrap;
+  }
+
+  .day-steps {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .day-step {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.9rem;
+    padding: 1rem 0.9rem 1rem 0;
+    border-block-start: 1px solid var(--hairline-cream);
+  }
+  .day-step__num {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-label);
+    font-size: var(--step-sm);
+    border: 1px solid var(--ink-dark);
+    margin-block-start: 0.2rem;
+  }
+  .day-step.is-done .day-step__num {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .day-step.is-done h4 {
+    color: var(--muted-on-cream);
+  }
+  .day-step h4 {
+    margin-block-start: 0;
+  }
+  .day-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    margin-block-start: 0.75rem;
+  }
+  .day-done,
+  .day-copy {
+    min-height: 44px;
+  }
+  .day-link {
+    background: none;
+    border: 0;
+    padding: 0.6rem 0;
+    min-height: 44px;
+    font: inherit;
+    font-size: var(--step-sm);
+    color: var(--rust);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .day-route {
+    padding-inline-start: 1.25rem;
+  }
+  .day-route img {
+    max-width: 100%;
+    height: auto;
+    margin-block-start: 0.5rem;
+  }
+
+  .day-table-wrap {
+    overflow-x: auto;
+  }
+  .day-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step-sm);
+  }
+  .day-table th,
+  .day-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.6rem 0.75rem 0.6rem 0;
+    border-block-end: 1px solid var(--hairline-cream);
+  }
+  .day-table th {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted-on-cream);
+  }
+  .day-table td:first-child {
+    font-family: var(--font-label);
+    white-space: nowrap;
+  }
+
+  .day-sessions {
+    display: grid;
+    gap: 1.5rem;
+    margin-block-start: 2rem;
+  }
+  .day-session {
+    border: 1px solid var(--hairline-cream);
+    border-inline-start: 3px solid var(--gold);
+    padding: 0.5rem 1.1rem 1rem;
+    scroll-margin-top: 4.5rem;
+  }
+  .day-row h5 {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-block: 1rem 0.25rem;
+  }
+  .day-prompt {
+    background: var(--ink-dark);
+    color: var(--cream);
+    padding: 0.9rem 1rem;
+    margin-block: 0.5rem;
+  }
+  .day-prompt__label {
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    color: var(--gold);
+    margin-block-end: 0.4rem;
+  }
+  .day-prompt__text {
+    white-space: pre-wrap;
+    margin-block: 0 0.75rem;
+    font-size: var(--step-sm);
+  }
+  .day-prompt .day-copy {
+    color: var(--cream);
+    border-color: var(--gold-hairline);
+  }
+  .day-list {
+    padding-inline-start: 1.2rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  /* The "I'm stuck" dialog. A panel at the foot of the screen on a phone. */
+  .day-dialog {
+    border: 1px solid var(--ink-dark);
+    background: var(--cream);
+    color: var(--ink-dark);
+    padding: 0;
+    width: min(32rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+  }
+  .day-dialog::backdrop {
+    background: rgba(5, 24, 23, 0.6);
+  }
+  .day-form {
+    padding: 1.5rem 1.25rem 1.25rem;
+    position: relative;
+  }
+  .day-form h2 {
+    font-family: var(--font-title);
+    font-size: var(--step-xl);
+    margin: 0 2.5rem 1rem 0;
+  }
+  .day-dialog__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 0;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--ink-dark);
+  }
+  .day-field {
+    display: grid;
+    gap: 0.25rem;
+    margin-block: 0 1rem;
+  }
+  .day-field label {
+    font-weight: 600;
+    font-size: var(--step-sm);
+  }
+  .day-help {
+    color: var(--muted-on-cream);
+    font-size: var(--step-xs);
+  }
+  .day-field input,
+  .day-field textarea {
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.65rem 0.75rem;
+    min-height: 44px;
+    border: 1px solid var(--ink-dark);
+    background: var(--cream);
+    color: var(--ink-dark);
+    border-radius: 0;
+    width: 100%;
+  }
+  .day-field input:focus-visible,
+  .day-field textarea:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .day-trap {
+    position: absolute;
+    left: -10000px;
+  }
+  .day-thanks {
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .day-dialog {
+      margin: auto 0 0;
+      width: 100%;
+      max-width: none;
+      max-height: 92dvh;
+      border-inline: 0;
+      border-block-end: 0;
+    }
+    .day-table td:first-child {
+      padding-inline-end: 0.75rem;
+    }
+  }
+</style>

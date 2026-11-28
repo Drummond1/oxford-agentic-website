@@ -335,6 +335,9 @@ const flaggedOffPrefixes = [
   '/find-your-bootcamp',
   // The voice office hours page is noindex and unlinked (30 Sept 2026).
   '/office-hours',
+  // The attendee Day Hub pages (/day/oab4/ and any later cohort) are noindex, nofollow and
+  // unlinked (22 Nov 2026).
+  '/day/',
   // The CEO roundtable demand page is ad-only: noindex, nofollow, no sitemap entry.
   '/ceo-roundtable',
   // The Second Brain register-interest page is noindex, linked from the programme page (27 Oct 2026).

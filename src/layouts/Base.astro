@@ -28,6 +28,12 @@ interface Props {
   /** Set false by a page that already asks for the email in its own band. */
   footerSignup?: boolean;
   bodyClass?: string;
+  /**
+   * No site header, breadcrumbs, footer or back-to-top: the page stands alone.
+   * For the unlisted Day Hub pages, which must carry no navigation, Book
+   * button or newsletter signup of their own (DRU-17).
+   */
+  bare?: boolean;
 }
 
 const {
@@ -43,6 +49,7 @@ const {
   hidden = false,
   footerSignup = true,
   bodyClass = '',
+  bare = false,
 } = Astro.props;
 
 // PRD §12 title pattern. The brand string comes from config, so a rename
@@ -82,13 +89,13 @@ const nodes = hidden ? [] : [...schemaNodes, trail.length > 1 ? breadcrumbSchema
       )
     }
     <a href="#main" class="skip-link">Skip to content</a>
-    <Header />
+    {!bare && <Header />}
     <main id="main">
-      {trail.length > 1 && <Breadcrumbs trail={trail} />}
+      {!bare && trail.length > 1 && <Breadcrumbs trail={trail} />}
       <slot />
     </main>
-    <Footer signup={footerSignup} />
-    <BackToTop />
+    {!bare && <Footer signup={footerSignup} />}
+    {!bare && <BackToTop />}
     {config.features.assistant && config.assistant.agentId && <Assistant />}
     {config.analytics.provider === 'gtm' && config.analytics.requireConsent !== false && <ConsentBanner />}
 
