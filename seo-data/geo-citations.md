@@ -5,6 +5,65 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-28 (14:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-NINTH CONSECUTIVE SET - AND PROBE 3 CLOSES A GUIDE CANDIDATE THAT HAS SAT ON BACKLOG 9 SINCE AUGUST
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` does not resolve from this sandbox and `luma.com` is refused the same way, so no live
+page was read, no Luma fact was checked and no event fact was touched. Deploy state came from the Actions
+API. Every site fact below comes from committed files or built output.
+
+**Dedupe by backlog 136's method, fifteenth use - and this time it was run BEFORE the questions were
+chosen, which is the order the 08:00 cycle said a later cycle should use.** Forty candidate terms were
+counted against this log first and the three lowest live axes were taken: `maintenance` 6, `breaks` 3,
+`handover` 6 (probe 1); `data protection` 1, `GDPR` 5, `compliance` 11 (probe 2); `paid plan` 7 against
+`subscription` 42 (probe 3, taken despite the higher count because it is a named open guide candidate and
+the point was to settle it). Deliberately not re-probed: the dated-commercial axis in its December and
+January forms, run six and twelve hours ago, and every sector axis, declined three times in two days.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | what happens when an AI agent workflow breaks or needs updating, who maintains it (maintenance axis, **the lowest-counted live axis in the log**) | **No** | lowcode.agency, clickpost.ai, blog.hubspot.com, botpress.com, enterprisenation.com, salesforce.com x2, clickup.com x2, dev.to, smallbiztrends.com, bitrix24.com |
+| 2 | UK GDPR and data protection when an AI agent handles customer data, small business obligations (legal axis) | **No** | ico.org.uk x5, simmons-simmons.com, skadden.com, freshfields.com, scl.org, icaew.com, insideprivacy.com, sprintlaw.co.uk x2, profiletree.com, dev.to, jconn5803.github.io, navex.com |
+| 3 | do I need a paid ChatGPT or Claude subscription to build a business AI workflow (cost-of-tools axis, **the open backlog 9 candidate**) | **No** | aipricing.guru x3, getmonetizely.com x2, byteplus.com x2, lilachbullock.com, cognitoforms.com, stacker.com, pricepertoken.com, growwstacks.com, findskill.ai, tech.co, gradually.ai, subchoice-git.pages.dev |
+
+**Reading.**
+
+- **Probe 3 settles an open guide candidate, and the answer is no.** "Do I need a paid AI subscription?" has
+  sat on backlog 9 as a remaining candidate that passes the quality bar since the guides were re-opened on
+  4 August. Probed properly for the first time, it fails both gates. **Winnability**: of seventeen results,
+  every one is a pricing-comparison blog, an affiliate calculator or a vendor-comparison page, several of
+  them openly affiliate-linked. **Converting**: the searcher is costing out tools, not booking a day in
+  Oxford. And the decisive objection is the one the 27 November monthly-running-cost probe already made
+  about its neighbour - **the honest answer runs through prices, and this site publishes none, by
+  decision**. A guide that cannot state the numbers its own question turns on would be a worse page than
+  the blogs it was meant to beat. **Declined, and backlog 9 should be updated to say so** rather than
+  carrying it as live. One fact worth keeping and not publishing: the field's own consensus is that chat
+  subscriptions are for people and APIs are for automations, which is a distinction our teaching already
+  makes without quoting anyone's pricing.
+- **Probe 2 is the clearest winnability refusal in this log, and it should not be re-probed.** The field is
+  the regulator and the magic circle: the ICO's own agentic-AI pages five times, plus Simmons & Simmons,
+  Skadden, Freshfields, the Society for Computers and Law and ICAEW. That is institutional publishers
+  owning a question outright, which is exactly what the topic-probe rule exists to refuse. It is also a
+  question this site must not answer on its own authority: `/guides/getting-an-ai-workflow-past-it-and-legal/`
+  covers the practical ground and stops short of legal advice, which is the right line and should stay
+  there. **No guide, no change, and no second-hand quoting of a regulator.**
+- **Probe 1 is a vendor field with a hole in the middle of it, and the hole is not ours to fill.** Eleven
+  of thirteen results are platform vendors writing about their own product, so it fails winnability on the
+  rule as written. What makes it worth recording is the engine's own admission: *"I found nothing specific
+  on who is responsible when an agent breaks, or on what contracts with builders or vendors typically
+  cover."* That is a real gap. It is also a gap about **buying an agent from somebody**, where our answer is
+  that the attendee builds and therefore owns the thing - adjacent, but the searcher is scoping a vendor
+  relationship, not a day's training. **Declined on both gates**, and the honest note is that a guide here
+  would have to talk about maintenance costs and vendor contracts we have no published position on.
+
+**Off-page.** No new host, and for the third consecutive cycle the reason is the shape of the fields rather
+than an empty search: a vendor-blog field, a regulator-and-law-firm field and an affiliate-calculator field,
+none of which takes a listing or a provider profile. One existing entry gained its **third** independent
+corroboration - `enterprisenation.com` placed again, in a field unrelated to either of the two it had
+already appeared in - and was strengthened in place rather than duplicated. Nothing contacted, submitted,
+claimed, signed up for or paid for.
+
 ## 2026-11-28 (08:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-EIGHTH CONSECUTIVE SET - AND THE HONEST HEADLINE IS THAT TWO OF THE THREE WERE RE-PROBES THIS CYCLE CHOSE BEFORE IT COUNTED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

@@ -33,6 +33,13 @@
  * it. The hard gate above fires on the morning it is already too late; this one
  * says how far away that morning is and what it will cost.
  *
+ * A fourth check, warn-only, reads a passed event page for sentences that are
+ * still selling the day. Every check above reasons about a DATE, so none of them
+ * can see a booking promise with no date in it - and on 28 November 2026 that
+ * blind spot was live on two passed pages while this file was green. Its
+ * evidence, its phrase list and why it must never fail are documented where it
+ * is implemented, below.
+ *
  * Pass `--now=2026-11-20` to prove it fires. That is the flag's only purpose.
  */
 import { readFile, readdir } from 'node:fs/promises';
@@ -99,6 +106,17 @@ for (const name of (await readdir(EVENTS)).filter((f) => f.endsWith('.md'))) {
 }
 
 const pastCohorts = cohorts.filter((c) => c.endDate < now);
+
+/*
+ * Slug to cohort, for the booking-promise check at the foot of the page walk.
+ * An event page is served at `/events/<slug>/` and authored at
+ * `src/content/events/<slug>.md`, so the URL is enough to find the day a page
+ * sells and therefore whether that day has gone. This is the whole reason that
+ * check can be exact where a phrase list alone could not be: the same sentence
+ * is true on a page that still sells and false on one that does not, so the
+ * page's own cohort decides, not the words.
+ */
+const bySlug = new Map(cohorts.map((c) => [c.file.replace(/\.md$/, ''), c]));
 
 /*
  * When the forecast's day stops being true, to the hour. A cohort's sentences go
@@ -353,10 +371,58 @@ const LONG_DATE = new RegExp(`\\b(\\d{1,2}) (${MONTHS})\\b(?: (\\d{4}))?`, 'g');
 const YEAR_NEARBY = /\b(19|20)\d{2}\b/;
 const YEAR_CONTEXT = 400;
 
+/*
+ * The second warn-only check: a passed event page still selling the day.
+ *
+ * Every check above reasons about a date, and that is exactly why this one has
+ * to exist. Measured on 28 November 2026, this file was green over 58 indexable
+ * pages while `/events/oxford-agentic-coding-bootcamp-cohort-1/` - run on
+ * 26 November, Luma embed already dropped, banner already reading "This event
+ * has run" - answered its first and only open-by-default question with
+ * "Registration is open - you can book on this page", and that page and
+ * `/events/oxford-agentic-bootcamp-cohort-3/` both answered the procurement
+ * question with "Pricing and the booking form are on this page". No form, no
+ * price - this site publishes none anywhere, by decision - and no date in any of
+ * the three sentences, so no date scan could ever have reached them. They were
+ * found by hand and fixed by hand in the 09:00 cycle; this is the detector that
+ * cycle earned and deliberately did not build in the same commit (backlog 153).
+ *
+ * Warn, never fail, and the reason is the measurement that makes the check
+ * precise rather than noisy: the invoice sentence is still live on
+ * `/events/oxford-agentic-bootcamp-cohort-4/` and `/cohort-5/`, where it is
+ * TRUE - both days are on sale and both pages carry the form it names. A hard
+ * gate would therefore need a per-page exemption to stay green today, and an
+ * exemption list is a thing to keep true. The page's own cohort already decides
+ * correctly without one, so the only question left is fail or warn, and a
+ * warning that names the source file is the whole value.
+ *
+ * It has a date on it. Cohort 4 runs on 3 December 2026 and its file carries the
+ * invoice sentence, so the same defect lands on its page at 17:00 that day
+ * unless the backlog 152 sweep takes the sentence with it. From that moment this
+ * check stops being a regression test and starts being the thing that catches it.
+ *
+ * The phrase list is backlog 153's, with one widening: `is` beside `are`, so the
+ * singular form of the sentence we actually shipped twice is not a blind spot.
+ * Kept short on purpose. Measured over the built site at four horizons, the list
+ * returns 0 findings today, 1 on 4 December (Cohort 4) and 2 from 29 January
+ * (Cohort 5), with no other page matching at any horizon - and running it over a
+ * rebuild of the tree as it stood before the 09:00 fix returns exactly the three
+ * sentences that cycle found by hand, on the two pages it found them on.
+ */
+const BOOKING_PROMISES = [
+  /book on this page/i,
+  /booking form (?:is|are) on this page/i,
+  /registration is open/i,
+  /form below/i,
+];
+
 const errors = [];
 const warnings = [];
 const forecast = [];
+const selling = [];
 let forecastLine = '';
+let sellingLine = '';
+let passedPagesRead = 0;
 let pagesRead = 0;
 let datesSeen = 0;
 let datesWithYear = 0;
@@ -394,6 +460,37 @@ for (const file of await walk(DIST)) {
     if (count > 0) forecast.push({ page, count });
   }
 
+  // A booking promise is only wrong on a page whose own day has gone, so the
+  // page's cohort is read first and the phrases only after it. `/events/<slug>/`
+  // and nothing wider: a programme page sells whichever cohort is next rather
+  // than one fixed day, so it has no endDate of its own to judge against.
+  const pageCohort = bySlug.get(page.match(/^\/events\/([^/]+)\/$/)?.[1]);
+  if (pageCohort && pageCohort.endDate < now) {
+    passedPagesRead += 1;
+    // Deduped by the sentence the phrase sits in, not by the phrase, and
+    // measured rather than tidied: "Registration is open - you can book on this
+    // page" matches two entries in the list, and reporting one sentence twice
+    // under two headings reads as two defects. The sentence is also the better
+    // quote - a fixed-width window cuts mid-word and starts mid-clause - and it
+    // is the unit someone actually rewrites. `matchAll`, so a phrase repeated
+    // further down the same page is still seen.
+    const seen = new Set();
+    for (const promise of BOOKING_PROMISES) {
+      for (const match of text.matchAll(new RegExp(promise.source, `${promise.flags.replace('g', '')}g`))) {
+        const at = match.index;
+        const before = text.slice(0, at);
+        const start = before.lastIndexOf('. ');
+        const end = text.indexOf('. ', at + match[0].length);
+        const sentence = text
+          .slice(start === -1 ? 0 : start + 2, end === -1 ? text.length : end + 1)
+          .trim();
+        if (seen.has(sentence)) continue;
+        seen.add(sentence);
+        selling.push({ page, file: `src/content/events/${pageCohort.file}`, quote: sentence });
+      }
+    }
+  }
+
   for (const match of text.matchAll(LONG_DATE)) {
     datesSeen += 1;
     if (match[3]) {
@@ -412,6 +509,32 @@ for (const file of await walk(DIST)) {
         .trim()}"`,
     );
   }
+}
+
+/*
+ * Printed BEFORE the hard gate, and that ordering is the point rather than a
+ * detail. The gate `process.exit(1)`s, so anything below it is invisible on a
+ * red build - and the one morning this check matters most is a morning the gate
+ * is already red. On 3 December 2026 Cohort 4 passes: ten dated windows go false
+ * and the invoice sentence goes false in the same instant, in the same file. A
+ * sweeper who sees only the dates fixes them, rebuilds, and meets this warning
+ * on the second pass; printing it here puts both lists in one build log and
+ * makes it one pass. It still cannot stop a build - it only ever writes to
+ * stdout - so warn-only is unaffected by moving it up.
+ */
+if (selling.length > 0) {
+  console.log(
+    `\n! ${selling.length} booking promise(s) on ${
+      new Set(selling.map((x) => x.page)).size
+    } passed event page(s) — not blocking:\n`,
+  );
+  for (const x of selling) {
+    console.log(`  ${x.page}`);
+    console.log(`    "${x.quote}"`);
+    console.log(`    typed in ${x.file}`);
+  }
+  console.log('\n  The day has run, so the page has no booking form and no price on it.');
+  console.log("  Replace the clause with the programme page's own answer, which names no page.\n");
 }
 
 if (errors.length > 0) {
@@ -479,6 +602,8 @@ if (nextCohort) {
   } source file(s) type that date`;
 }
 
+sellingLine = `✓ dates: ${passedPagesRead} passed event page(s) carry ${selling.length} booking promise(s) — ${BOOKING_PROMISES.length} phrase(s) checked`;
+
 console.log(
   `✓ dates: ${pagesRead} indexable pages carry no passed cohort date written as upcoming (${pastCohorts.length} past cohort(s) checked)`,
 );
@@ -486,3 +611,4 @@ console.log(
   `✓ dates: ${datesSeen} long-month date(s) in rendered copy — ${datesWithYear} carry a year, ${datesWithYearNearby} carry one within ${YEAR_CONTEXT} characters, ${warnings.length} carry none`,
 );
 if (forecastLine) console.log(forecastLine);
+console.log(sellingLine);

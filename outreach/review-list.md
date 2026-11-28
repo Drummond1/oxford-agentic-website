@@ -651,6 +651,15 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
     or is hype - a field otherwise held by platform vendors writing about their own product. So it reaches
     our buyer on more than one of their questions. This is the same entry with more evidence behind it, not
     a new one, and nothing has been contacted.
+  - **Corroborated a third time 28 Nov 2026 (14:00 UTC cycle), in a third unrelated field.**
+    `enterprisenation.com` was the one UK membership body in the field answering who maintains an AI agent
+    workflow when it breaks - thirteen results, eleven of them platform vendors writing about their own
+    product. **Three placements across three unconnected buyer questions** (data readiness, is it worth it,
+    who maintains it) is no longer a coincidence of one probe: on the evidence available from search
+    results, it is the single non-vendor host that keeps reaching the lean owner-operator we sell to.
+    It stays the same entry, still unchecked, still uncontacted, and the ask is unchanged and small -
+    **ten minutes with an unblocked browser to decide whether the speaking or contributing route is real.**
+    Of the three corroborations this is the one that should move it up Drummond's list rather than widen it.
 
 - **An engine told a buyer to book our 3 December day by pressing Get Tickets on the booking page of a cohort
   that ran in September.** Found 21 Nov 2026 (20:05 UTC cycle). **Nothing contacted, submitted, claimed or paid

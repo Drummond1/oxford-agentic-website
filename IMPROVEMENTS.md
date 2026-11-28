@@ -141,8 +141,16 @@ Status: `todo` · `blocked` (why) · `doing`
    for example"), overriding the wait-for-signal gate cycle 25 set. The quality bar is
    unchanged: a real question, standing alone, one programme link, never more than one
    guide per day. 13 shipped; "choosing your first task" went out in cycle 38.
-   Remaining candidates that pass the bar: "do I need a paid AI subscription?"
-   (expands a real event-page FAQ). **"Who should take the seat - you or someone in your
+   Remaining candidates that pass the bar: ~~"do I need a paid AI subscription?"
+   (expands a real event-page FAQ)~~ - **DECLINED 28 Nov 2026 (14:00 UTC cycle), probed properly for the
+   first time since it was filed in August, and it fails both gates.** The field is seventeen
+   pricing-comparison blogs, affiliate calculators and vendor-comparison pages, so it is not winnable; the
+   searcher is costing out tools rather than booking a day, so it does not convert; and the decisive
+   objection is the one the 27 November monthly-running-cost probe made about its neighbour - **the honest
+   answer runs through prices, and this site publishes none, by decision**. A guide that cannot state the
+   numbers its own question turns on would be worse than the blogs it was meant to beat. Do not re-pitch it
+   without new evidence. **This leaves backlog 9 with no named live candidate**, which is worth saying
+   plainly rather than leaving the item reading as though one is queued. **"Who should take the seat - you or someone in your
    team?" SHIPPED 19 Oct 2026 (13:00 cycle)** as `/guides/who-should-take-the-seat/`, after the
    delegation axis was probed twice on four phrasings across two cycles. Four separate engine
    admissions that nothing in the field answers it ("I found no independent comparison of
@@ -3826,7 +3834,13 @@ Status: `todo` · `blocked` (why) · `doing`
       it. See backlog 153.
 
 
-153. `todo` (loop-actionable, **a guard the 28 November 09:00 cycle's sweep earned and deliberately did not
+153. `done` 28 Nov 2026 (14:00 UTC cycle) - **closed by the check it specified, built to its own phrase
+    list and its own warn-only rule, and back-tested against the defect that produced it: run over a
+    rebuild of the tree as it stood before the 09:00 fix, it returns exactly the three sentences that cycle
+    found by hand, on the two pages it found them on, each with its source file named. Green today (0 over
+    5 passed event pages), 1 finding on 4 December, 2 from 29 January. One correction to the specification
+    while building it, and it mattered: the warning has to print ABOVE the hard gate, because the gate
+    exits and 3 December is a morning the gate is already red.** Originally filed as: (loop-actionable, **a guard the 28 November 09:00 cycle's sweep earned and deliberately did not
     build in the same commit**; raised 28 Nov 2026) - **nothing in the build catches a passed event page that
     is still selling the day.** `check-dates.mjs` tests whether a passed cohort's *date* is written as
     upcoming, which is the right test and does not reach a sentence with no date in it: on 28 November it
@@ -3848,6 +3862,82 @@ Status: `todo` · `blocked` (why) · `doing`
       truth, and the cycle that found them had already spent its one change.
 
 ## Shipped
+
+### 28 Nov 2026 (14:00 UTC cycle) - the build could not see a passed event page still selling the day, because every check in the file reasons about a date and the sentences carry none. A fourth check in `check-dates.mjs`, warn-only, 0 of 209 built files moved
+
+**What was missing, and it was missing while the file was green.** Six hours ago the 09:00 cycle found three
+hand-typed sentences on two passed event pages telling a reader to book on a page with no booking form, one of
+them pointing at a price this site does not publish anywhere. It fixed them by hand and wrote down that nothing
+in the build would have caught them, because `check-dates.mjs` tests whether a passed cohort's **date** is
+written as upcoming and none of those three sentences contains a date. That was backlog 153, deliberately left
+unbuilt in the commit that found it. This is the detector.
+
+**How it decides, and why it can be exact where a phrase list alone could not.** An event page is served at
+`/events/<slug>/` and authored at `src/content/events/<slug>.md`, so the page's own cohort is in reach of the
+page walk that was already running. The check reads the cohort first and the phrases only after it. That
+distinction is the whole design: **the same sentence is true on a page that still sells and false on one that
+does not.** Measured on the built site before a line was written, the phrase list returns exactly two hits
+today and both are on `/events/.../cohort-4/` and `/cohort-5/`, the two days on sale, where "Pricing and the
+booking form are on this page" is correct and must be left alone. The page's cohort separates them without an
+exemption list, which is a thing that would have to be kept true.
+
+**Back-tested against the real defect rather than against a sample.** A worktree at the pre-fix commit was
+built and the new check run over it: **3 findings on 2 pages**, which are precisely the three sentences the
+09:00 cycle found by hand, each quoted as a whole sentence and each naming the content file it is typed in.
+That is the measurement that matters, because a guard written after a fix is otherwise only tested against a
+tree with nothing left to find.
+
+**One correction to backlog 153's specification, made while building it and worth recording.** The item said
+warn-only, which is right. It did not say where to print, and the first version printed with the other
+warnings, below the hard gate. The hard gate calls `process.exit(1)`, so on a red build the warning is
+invisible - and **3 December is a morning the gate is already red**: when Cohort 4 passes at 17:00, ten dated
+windows and the undated invoice sentence go false in the same instant, in the same file. A sweeper reading
+only the dates would fix them, rebuild, and meet this warning on a second pass. It now prints above the gate,
+so both lists land in one build log and the sweep is one pass. Moving it up cannot make it blocking: it only
+ever writes to stdout.
+
+**One defect in the first version, found by reading the back-test output rather than by trusting it.**
+"Registration is open - you can book on this page" matches two entries in the phrase list, so it was reported
+twice and the run read as 4 findings over 3 sentences. Findings are now deduped by the sentence the phrase sits
+in, which also makes the quote the sentence someone actually rewrites instead of a fixed-width window that cuts
+mid-word, and `matchAll` replaced `match` so a phrase repeated further down a page is still seen.
+
+**The phrase list is backlog 153's four**, with one widening (`is` beside `are`, so the singular form of a
+sentence we shipped twice is not a blind spot). Kept short on purpose. Behaviour over the built site at four
+horizons: **0 today, 1 on 4 December (Cohort 4), 2 from 29 January (Cohort 5), 2 on 1 March**, with no other
+page matching at any horizon.
+
+**Checks.** Build, links, outbound, schema and all four date checks green: 69 pages valid, 3399 internal links,
+22 FAQPage nodes, 1587 resolving graph references, 58 indexable pages with no passed cohort date written as
+upcoming, 118 long-month dates with 0 carrying no year. The three pre-existing check lines are **byte-identical
+to this cycle's baseline**; the only change to the build output is the one added summary line. **0 of 209 built
+files differ** against the baseline build, which is the proof that a script-only change cannot touch a page.
+Chromium at 375 and 1280px over a local preview of the homepage, both on-sale cohort pages and both pages fixed
+this morning: **46 assertions, 46 passed**, including that Cohort 4 still reads 3 December 2026 at Worcester
+College, Cohort 5 reads 28 January 2027 at Jesus College, both passed pages still say "This event has run" and
+neither carries a booking promise any more. Not required for a change that moves no file, run so that "cannot
+inspect" was ruled out rather than assumed.
+
+**IndexNow submits nothing for this push**, established by reading the rule: no changed file maps to a public
+URL. Nothing pinged by hand.
+
+**Search Console unavailable from cloud, tried once:** `fetch-search-console.mjs` exits on a missing
+service-account key, the daily export job has succeeded 25 times writing nothing for the same reason, and
+`seo-data/` holds no export newer than the 24 August baseline. Nothing estimated.
+
+**Production could not be read.** `oxfordagentic.com` does not resolve from this sandbox and `luma.com` is
+refused the same way, so no live page was read, no Luma fact was checked and no event fact was touched. Deploy
+state came from the Actions API: run #503 succeeded at 11:41 UTC on this HEAD, nothing in flight.
+
+**Three probes, zero citations, the forty-ninth consecutive set, and the dedupe ran before the questions were
+chosen** rather than after, which is the order the 08:00 cycle asked a later cycle to use. Probe 3 closes a
+candidate that has sat on backlog 9 since August: "do I need a paid AI subscription?" fails both gates, and
+its honest answer runs through prices this site does not publish, so backlog 9 now has no named live
+candidate. Probe 2 is the clearest winnability refusal in the log - the ICO five times plus four law firms -
+and must not be re-probed. Probe 1 is a vendor field with a real hole in it that is not ours to fill. **No new
+guide: 32 guides, newest `publishDate` 20 October, none this week.** One off-page entry gained a **third**
+independent corroboration and was strengthened in place, not duplicated; nothing contacted, submitted,
+claimed or paid for.
 
 ### 28 Nov 2026 (09:00 UTC cycle) - two passed event pages told a reader to book on a page that carries no booking form, and one of them said the price was on it. Three sentences in two content files, 5 of 209 built files
 
