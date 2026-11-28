@@ -1,0 +1,280 @@
+---
+/**
+ * Agentic AI 101: post-payment page. Stripe Checkout sends the buyer here with
+ * ?session_id=cs_...
+ *
+ * Added 22 Nov 2026 (Linear DRU-18). noindex, out of the sitemap (astro.config.mjs),
+ * out of llms.txt and llms-full.txt, linked from nowhere on the site: the only way in
+ * is Stripe's success redirect.
+ *
+ * What it does: reads session_id, asks the n8n workflow "Agentic AI 101 - paid" whether
+ * that session is paid, and if so embeds the one-time Calendly link it returns. Calendly's
+ * own "event scheduled" message sends the buyer on to /agentic-ai-101/confirmed/.
+ *
+ * The browser is never trusted to say a payment happened: the Calendly link only exists
+ * once n8n has checked the Stripe session. A buyer who closes this tab is covered by the
+ * Stripe webhook path and the emailed link (PRD "Safety nets").
+ */
+import Base from '../../../layouts/Base.astro';
+import Hero from '../../../components/Hero.astro';
+import config from '../../../../site.config';
+
+const cfg = config.agenticAi101;
+const email = config.brand.email;
+---
+
+<Base
+  pageTitle="Pick your time - Agentic AI 101"
+  description="Choose a time for your Agentic AI 101 session."
+  path="/agentic-ai-101/book/"
+  noindex
+  footerSignup={false}
+>
+  <Hero eyebrow="Agentic AI 101 - one to one" title="Checking your payment" size="compact">
+    <p class="hero-note" data-state-note>One moment.</p>
+  </Hero>
+
+  <section class="band band--cream" aria-labelledby="book-status" data-book data-endpoint={cfg.paidEndpoint} data-email={email} data-price={cfg.priceGbp}>
+    <div class="wrap wrap--narrow">
+      <p id="book-status" class="book__status" role="status" aria-live="polite" tabindex="-1">Checking your payment.</p>
+      <div class="book__help" hidden></div>
+      <div class="book__calendly" hidden></div>
+      <noscript>
+        <p class="book__status">
+          This page needs JavaScript to show your calendar. Please email <a href={`mailto:${email}?subject=Agentic%20AI%20101%20booking`}>{email}</a> and
+          I’ll book you in by hand.
+        </p>
+      </noscript>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero-note {
+    margin-block-start: 1rem;
+    font-family: var(--font-label);
+    font-size: var(--step-xs);
+    letter-spacing: 0.08em;
+    color: var(--muted-on-dark);
+  }
+
+  .book__status {
+    font-size: var(--step-lg);
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+
+  .book__status:focus {
+    outline: none;
+  }
+
+  .book__help {
+    margin-block-start: 1rem;
+    max-width: 52ch;
+    line-height: 1.6;
+  }
+
+  .book__help[hidden],
+  .book__calendly[hidden] {
+    display: none;
+  }
+
+  .book__help a,
+  .book__status a {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .book__calendly {
+    margin-block-start: 1.5rem;
+  }
+
+  .book__calendly iframe {
+    display: block;
+    width: 100%;
+    min-height: 1100px;
+    border: 0;
+    background: #fff;
+  }
+
+  @media (min-width: 700px) {
+    .book__calendly iframe {
+      min-height: 760px;
+    }
+  }
+</style>
+
+<script>
+  import { track } from '../../../lib/track';
+
+  const root = document.querySelector<HTMLElement>('[data-book]');
+  if (root) {
+    const endpoint = root.dataset.endpoint ?? '';
+    const contact = root.dataset.email ?? '';
+    const price = Number(root.dataset.price ?? '0');
+    const status = root.querySelector<HTMLElement>('#book-status')!;
+    const help = root.querySelector<HTMLElement>('.book__help')!;
+    const calendly = root.querySelector<HTMLElement>('.book__calendly')!;
+    const heading = document.querySelector<HTMLElement>('.hero__title');
+    const note = document.querySelector<HTMLElement>('[data-state-note]');
+
+    const RETRIES = 3;
+    const RETRY_DELAY_MS = 2000;
+    const TIMEOUT_MS = 15000;
+    const CONFIRMED = '/agentic-ai-101/confirmed/';
+
+    const sessionId = new URLSearchParams(window.location.search).get('session_id') ?? '';
+    const sleep = (ms: number) => new Promise((resolve) => window.setTimeout(resolve, ms));
+
+    /** A message with the contact address as a mailto link, built without innerHTML. */
+    const say = (el: HTMLElement, before: string, after = '') => {
+      el.textContent = '';
+      el.append(before);
+      const link = document.createElement('a');
+      link.href = `mailto:${contact}?subject=${encodeURIComponent('Agentic AI 101 booking')}`;
+      link.textContent = contact;
+      el.append(link, after);
+    };
+
+    const setHeading = (title: string, line: string) => {
+      if (heading) heading.textContent = title;
+      if (note) note.textContent = line;
+      document.title = `${title} - Agentic AI 101`;
+    };
+
+    const showHelp = (title: string, before: string, after: string) => {
+      setHeading(title, '');
+      status.hidden = true;
+      calendly.hidden = true;
+      help.hidden = false;
+      say(help, before, after);
+    };
+
+    // ---- Purchase event: once per payment, even across reloads ----
+    const firePurchase = () => {
+      const key = `ai101_purchase_${sessionId}`;
+      try {
+        if (window.sessionStorage.getItem(key)) return;
+        window.sessionStorage.setItem(key, '1');
+      } catch {
+        /* Storage blocked: fire anyway rather than lose the sale. */
+      }
+      const w = window as unknown as { gtag?: (...a: unknown[]) => void; fbq?: (...a: unknown[]) => void };
+      const ga4 = document.body.dataset.ga4Id;
+      w.gtag?.('event', 'purchase', {
+        transaction_id: sessionId,
+        value: price,
+        currency: 'GBP',
+        items: [{ item_id: 'agentic-ai-101', item_name: 'Agentic AI 101 - one hour, one to one', price, quantity: 1 }],
+        ...(ga4 ? { send_to: ga4 } : {}),
+      });
+      w.fbq?.('track', 'Purchase', { value: price, currency: 'GBP' });
+    };
+
+    // ---- Calendly inline embed. Only a calendly.com https URL is ever framed. ----
+    const calendlyUrl = (raw: unknown): URL | null => {
+      if (typeof raw !== 'string') return null;
+      try {
+        const url = new URL(raw);
+        const ok = url.protocol === 'https:' && (url.hostname === 'calendly.com' || url.hostname.endsWith('.calendly.com'));
+        if (!ok) return null;
+        url.searchParams.set('embed_domain', window.location.hostname);
+        url.searchParams.set('embed_type', 'Inline');
+        url.searchParams.set('hide_gdpr_banner', '1');
+        return url;
+      } catch {
+        return null;
+      }
+    };
+
+    const showCalendar = (url: URL, firstName: string) => {
+      const name = firstName.trim();
+      setHeading('Payment received - now pick your time', name ? `Thank you, ${name} - your payment has gone through.` : 'Your payment has gone through.');
+      status.textContent = 'Choose a slot below.';
+      status.hidden = false;
+      help.hidden = true;
+      const frame = document.createElement('iframe');
+      frame.src = url.href;
+      frame.title = 'Pick a time for your Agentic AI 101 session';
+      frame.loading = 'eager';
+      calendly.replaceChildren(frame);
+      calendly.hidden = false;
+      status.focus();
+      firePurchase();
+    };
+
+    // Calendly posts a message to the page when a booking is made.
+    window.addEventListener('message', (event) => {
+      if (event.origin !== 'https://calendly.com') return;
+      const data = event.data as { event?: string } | null;
+      if (!data || data.event !== 'calendly.event_scheduled') return;
+      track('ai101_booked');
+      window.setTimeout(() => window.location.assign(CONFIRMED), 400);
+    });
+
+    const attempt = async (): Promise<{ kind: 'ok'; url: URL; firstName: string } | { kind: 'not_paid' } | { kind: 'retry' } | { kind: 'failed' }> => {
+      const controller = new AbortController();
+      const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ session_id: sessionId }),
+          signal: controller.signal,
+        });
+        if (response.status >= 500) return { kind: 'retry' };
+        let data: { ok?: boolean; status?: string; booking_url?: unknown; first_name?: unknown } | null = null;
+        try {
+          data = await response.json();
+        } catch {
+          data = null;
+        }
+        if (data && data.ok === false && data.status === 'not_paid') return { kind: 'not_paid' };
+        if (response.ok && data && data.ok === true) {
+          const url = calendlyUrl(data.booking_url);
+          if (url) return { kind: 'ok', url, firstName: typeof data.first_name === 'string' ? data.first_name : '' };
+        }
+        return { kind: 'failed' };
+      } catch {
+        return { kind: 'retry' };
+      } finally {
+        window.clearTimeout(timer);
+      }
+    };
+
+    const run = async () => {
+      if (!endpoint || !/^cs_[A-Za-z0-9_]+$/.test(sessionId)) {
+        showHelp(
+          'I can’t see your payment',
+          'This page needs the link Stripe sent you after payment. If you’ve just paid, check your receipt email. Still stuck? Email ',
+          ' and I’ll book you in by hand.',
+        );
+        return;
+      }
+
+      let outcome = await attempt();
+      for (let retry = 0; outcome.kind === 'retry' && retry < RETRIES; retry += 1) {
+        await sleep(RETRY_DELAY_MS);
+        outcome = await attempt();
+      }
+
+      if (outcome.kind === 'ok') {
+        showCalendar(outcome.url, outcome.firstName);
+      } else if (outcome.kind === 'not_paid') {
+        showHelp(
+          'Payment not showing yet',
+          'Your payment hasn’t come through yet. If you’ve just paid, wait a moment and refresh. Still stuck? Email ',
+          '.',
+        );
+      } else {
+        showHelp(
+          'Pick your time by email',
+          'If your payment went through, I’ll email you a link to pick your time. If nothing arrives within one working day, please email ',
+          '.',
+        );
+      }
+    };
+
+    void run();
+  }
+</script>

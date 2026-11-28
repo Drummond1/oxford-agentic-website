@@ -341,6 +341,11 @@ const flaggedOffPrefixes = [
   '/second-brain-interest',
   // The First Workflow Picker lead-gen pages are ad-only: noindex, unlinked (9 Nov 2026).
   '/first-workflow-picker',
+  // Agentic AI 101 (22 Nov 2026): the landing page /agentic-ai-101/ is indexed and in the
+  // sitemap. Only the two post-payment pages are kept out. Do not shorten these to the bare
+  // '/agentic-ai-101' prefix: that would drop the landing page too.
+  '/agentic-ai-101/book',
+  '/agentic-ai-101/confirmed',
 ].filter(Boolean);
 
 /**

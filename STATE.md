@@ -66,6 +66,30 @@ Written 25 July 2026; last updated 19 August 2026 (cycle 79).
 
 ---
 
+## 💷 Agentic AI 101 - paid one-to-one, built 22 Nov 2026 (DRU-18; live from the merge date, update this line then)
+
+> **/agentic-ai-101/** (indexed, in the sitemap), **/agentic-ai-101/book/** and **/agentic-ai-101/confirmed/** (both noindex, out of
+> the sitemap). A one-hour paid session with Drummond, online or in Oxford on set days. Linked from nowhere on the
+> site by Drummond's choice (22 Nov: "don't link to on home page"). Only he links it, when he is ready; the loop leaves it unlinked.
+
+- **The price is shown here and nowhere else.** £275 on `/agentic-ai-101/` is Drummond's own one-page exception to the no-prices
+  rule (22 Nov 2026, `memory/decisions/gtm.md`). It is read from `site.config.ts` (`agenticAi101.priceGbp`), never typed in copy.
+  Do not add a price to any other page, and do not "fix" this one away.
+- **Kept out of `llms.txt` and `llms-full.txt`.** `src/lib/llms.ts` throws if either file ever contains `agentic-ai-101`,
+  `Agentic AI 101` or the price, so the office-hours and finder voice agents cannot learn or quote it. The sitemap filter in
+  `astro.config.mjs` lists `/agentic-ai-101/book` and `/agentic-ai-101/confirmed` by full path on purpose: a bare `/agentic-ai-101`
+  prefix would drop the landing page too.
+- **Flow.** Form -> n8n "Agentic AI 101 - intake" (`agenticAi101.intakeEndpoint`) -> Stripe Checkout -> `/book/?session_id=` ->
+  n8n "Agentic AI 101 - paid" (`paidEndpoint`) verifies payment and returns a one-time Calendly link -> inline Calendly ->
+  `/confirmed/`. **Both n8n workflows are INACTIVE until Drummond publishes them**; until then the form shows its email fallback
+  and `/book/` shows its "emailed you a link" message. Consent and terms versions (`v1-2026-11-22`) must match the n8n tables.
+- **Copy** is PRD Appendix A; no refund guarantee and no bootcamp credit (both undecided). Oxford sessions are never at Said.
+- **Privacy:** `/privacy/#agentic-ai-101` describes the data. Its retention line is the brief's wording, pending Drummond's check.
+- PRD: Digital Brain `prds/agentic-ai-101-one-to-one-prd.md`. GA4 funnel: `ai101_view` -> `ai101_form_submit` ->
+  `ai101_checkout_redirect` -> `purchase` -> `ai101_booked`.
+
+---
+
 ## 🎙️ Find your bootcamp - unlisted voice page, since 30 Sept 2026
 
 > **/find-your-bootcamp/** - noindex, out of the sitemap and llms.txt, linked from nowhere.
@@ -439,7 +463,8 @@ length and the positioning is the same edit, done once, in three places.
   The privacy page's `#applications` paragraph describes it; change both together.
 
 - **Pricing never appears on the site.** It lives on Luma (PRD §18), which also keeps
-  commercially sensitive numbers off an indexed page.
+  commercially sensitive numbers off an indexed page. Exception: /agentic-ai-101/ only (Drummond, 22 Nov 2026) - see the Agentic AI 101
+  section above.
 - **Testimonials and photos are consent-gated in code.** A quote needs `consentGiven: true`;
   a photo needs `consentCleared: true`. Anything else never reaches the HTML — it is not
   merely hidden. 7 of the 9 Cohort 1 photos are held back for this reason.

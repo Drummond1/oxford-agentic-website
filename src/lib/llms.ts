@@ -134,7 +134,7 @@ export async function publicPages(): Promise<PageRef[]> {
   return pages;
 }
 
-export async function renderLlmsTxt(): Promise<string> {
+async function buildLlmsTxt(): Promise<string> {
   const pages = await publicPages();
   const { upcoming } = await getEventsForIndex();
 
@@ -187,7 +187,7 @@ export async function renderLlmsTxt(): Promise<string> {
   return lines.join('\n');
 }
 
-export async function renderLlmsFullTxt(): Promise<string> {
+async function buildLlmsFullTxt(): Promise<string> {
   const { upcoming, past } = await getEventsForIndex();
   const programmes = await getProgrammes();
   const programmeById = new Map(programmes.map((p) => [p.id, p]));
@@ -356,4 +356,28 @@ export async function renderLlmsFullTxt(): Promise<string> {
   }
 
   return out.join('\n');
+}
+
+/**
+ * Agentic AI 101 is a paid one-to-one whose price is shown on /agentic-ai-101/
+ * and nowhere else (Drummond, 22 Nov 2026). The office-hours and finder voice
+ * agents are fed these two files, so neither file may ever name the offer, link
+ * to its pages or carry its price. Nothing here pulls those pages in today; this
+ * guard makes a future change that does fail the build instead of shipping.
+ */
+function assertNoUnlistedOffer(text: string, file: string): string {
+  const banned = ['agentic-ai-101', 'Agentic AI 101', `£${config.agenticAi101.priceGbp}`];
+  const hit = banned.find((needle) => text.includes(needle));
+  if (hit) {
+    throw new Error(`${file} must not mention the Agentic AI 101 offer (found "${hit}"). It is kept out of llms files on purpose.`);
+  }
+  return text;
+}
+
+export async function renderLlmsTxt(): Promise<string> {
+  return assertNoUnlistedOffer(await buildLlmsTxt(), 'llms.txt');
+}
+
+export async function renderLlmsFullTxt(): Promise<string> {
+  return assertNoUnlistedOffer(await buildLlmsFullTxt(), 'llms-full.txt');
 }
