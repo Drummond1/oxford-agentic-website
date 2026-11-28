@@ -194,8 +194,9 @@ faqs:
   # The approval answer, and the asymmetry is this line's own. The Agentic line
   # answers "how do I justify this to my manager?" on its programme page and on all
   # three on-sale event pages; this line answered it on neither of its two surfaces,
-  # seven days before Cohort 1. Wording is the Coding Cohort 1 event page's answer
-  # word for word, so the two cannot drift, and it says only what Luma says (re-read
+  # seven days before Cohort 1. The Coding Cohort 1 event page carries the same
+  # answer word for word up to "No coding or technical background is needed."; this
+  # page adds the closing pricing sentence (DRU-21), and it says only what Luma says (re-read
   # 22 Nov 2026): "You will build a website with guided sessions. No coding or
   # technical background needed." and "a website you built" with "a real
   # understanding of how software gets built". The live site, saved data, own

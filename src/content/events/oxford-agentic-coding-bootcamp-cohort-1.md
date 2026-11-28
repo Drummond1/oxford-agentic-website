@@ -8,7 +8,7 @@ status: past
 # 26 November is GMT, hence +00:00.
 startDate: "2026-11-26T09:00:00+00:00"
 endDate: "2026-11-26T17:00:00+00:00"
-updatedDate: "2026-11-28T11:58:00+00:00"
+updatedDate: "2026-11-28T12:06:00+00:00"
 venue:
   name: Worcester College
   street: Walton Street
@@ -134,17 +134,17 @@ faqs:
   # its programme page and on all four of its event pages. So this line answered it
   # on one of its two surfaces, and the surface it was missing from is the page that
   # takes the booking, seven days out. The answer is the programme page's own, word
-  # for word, with one clause changed: pricing is "on this page" here, which is the
-  # invoice answer's own wording three entries below, rather than the programme
-  # page's "each event's booking page". Placed where the programme page places it,
-  # before the team and invoice pair. Nothing new is asserted - every clause is a
-  # restatement of this file's own promise, whatYoullBuild and whoFor. No price.
+  # for word, without its closing pricing sentence: no price is stated or pointed to
+  # in this answer (DRU-21 covers the programme page's clause). Placed where the
+  # programme page places it, before the team and invoice pair. Nothing new is
+  # asserted - every clause is a restatement of this file's own promise,
+  # whatYoullBuild and whoFor.
   - q: How do I justify this to my manager?
     a: >-
       If you need to put it in an email, this is the version that survives being
       forwarded: a day out to build a website in guided sessions, and to come back with
       a real understanding of how software gets built. No coding or technical background
-      is needed. Pricing is on this page, so the numbers are easy to attach.
+      is needed.
   # The two questions a buyer asks after deciding and before paying. Both are
   # answered verbatim on the programme page and on both sibling event pages; this
   # is the booking page, which is where they are actually asked.
