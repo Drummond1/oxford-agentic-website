@@ -5,6 +5,73 @@ records whether oxfordagentic.com appears, and what is cited instead. Rotate the
 do not re-run the same set every cycle. Engine: Perplexity search (ranked sources), unless
 noted. These are snapshots, not rankings: results vary by engine, location and day.
 
+## 2026-11-28 (02:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SEVENTH CONSECUTIVE SET - AND ONE OF THEM IS THE SHARPEST COMMERCIAL MISS THIS LOG HAS RECORDED, BECAUSE THE ENGINE SAID NO SUCH DAY EXISTS AND WE HAVE ONE ON SALE
+
+**Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so
+the 26 Oct caveat about reading positions off this instrument stands. **Production could not be read**:
+`oxfordagentic.com` is refused at CONNECT by this sandbox's egress proxy (HTTP 403) and does not resolve
+through `WebFetch` either; `luma.com` is refused the same way. No live page was read, no Luma fact was
+checked, no event fact was touched, deploy state came from the Actions API, and every site fact below comes
+from committed files or built output. The outbound link check says the same thing from the other side:
+**0 of 12 third-party links reachable**, both Luma pages among them.
+
+**Dedupe by backlog 136's method, thirteenth use.** Keyword counts taken against this log before any search
+ran. **Dropped as already worked**: Claude Code and the tool-choice cluster (`claude code` 71, `copilot` 30,
+`chatgpt` 54), n8n and Zapier as subjects (`n8n` 22, `zapier` 46), charities and the public sector
+(`charity` 13, `nhs` 18, `public sector` 8), sole traders and freelancers (`sole` 29), schools and
+universities (`school` 70), Christmas and quiet-period timing (`christmas` 7), class size, recordings,
+procurement and pre-work, all probed at least twice. **Dropped as banned or out of scope**: certification,
+step-free access, VAT, and the consultant-and-agency cluster. The three taken score 0 to 2 on their own key
+words.
+
+| # | Question | oxfordagentic.com cited? | What answered instead |
+|---|---|---|---|
+| 1 | how do I get my team to actually use the AI workflow I built after training (adoption-after-the-day axis - `convince` 1, `team adopt` 0, `teach my team` 1, `train the trainer` 1 - never probed; every prior post-day probe asked what the individual does next, never what the organisation does) | **No** | zapier.com x4, entrepreneur.com x2, atlassian.com x2, spiralscout.com, beautiful.ai, thedecisionlab.com, mindtheproduct.com, academy.openai.com, disco.co, ivee.jobs, balsamiq.com, lilachbullock.com |
+| 2 | AI training course for business leaders January 2027 Oxford UK one day (dated-commercial axis, and the month the only remaining on-sale day falls in - never probed in this form) | **No** | sbs.ox.ac.uk x7, lifelong-learning.ox.ac.uk x3, conted.ox.ac.uk, onlinecourses.worc.ox.ac.uk x2, jbs.cam.ac.uk, imperial.ac.uk, brunel.ac.uk, ucl.ac.uk |
+| 3 | automate the weekly report I build by hand in a spreadsheet using AI small business (own-task axis, in the vocabulary a buyer uses rather than ours - `spreadsheet` 6, `excel` 2 - **reach probe: this is the task the Agentic day is built around**) | **No** | zapier.com x5, thebricks.com x4, n8n.io x2, dev.to, growwstacks.com, taskade.com, hashnode.com, pabbly.com, inc.com, fiverr.com |
+
+**Reading. Probe 2 is the finding; the other two decline, and one of them declines on a shape worth naming.**
+
+- **Probe 2 is the sharpest commercial miss this log holds, and it is not fixable by writing anything.** The
+  engine's own closing words: *"I found no Oxford one-day AI course for business leaders with a confirmed
+  January 2027 date."* **We have one.** Cohort 5 is a one-day bootcamp for business leaders, in Oxford, on
+  Thursday 28 January 2027, on sale now. The engine then offered three near misses and priced one of them -
+  Oxford's own five-day AI Strategy and Leadership Programme, starting 18 January 2027 at ten thousand
+  pounds - and said of the one-day Oxford option it did find, Continuing Education's "Artificial
+  Intelligence Demystified", that it could not confirm a January 2027 date for it either.
+- **Checked before concluding anything, because a miss like that usually means a page is badly dated. It is
+  not.** `/events/oxford-agentic-bootcamp-cohort-5/` carries "January 2027" in its `<title>`, "Thursday,
+  28 January 2027 at Jesus College, Oxford" in its meta description, the same in its key-facts answer, the
+  same in the Date row, and `startDate` `2027-01-28T09:00:00+00:00` in a complete `EducationEvent` node with
+  venue, postcode, organiser, five named performers, a twelve-entry `subEvent` schedule and an `EventSeries`
+  parent. `llms.txt` names it twice with the full date. Five more indexable pages carry the string "January
+  2027". **There is nothing on-page left to fix on this axis**, which is the useful part of the finding: the
+  gap is authority on a `.ac.uk`-owned field, not description.
+- **So probe 2 declines on winnability, and it is the cleanest institutional lock-out in this log.** Every
+  one of the nineteen results is a university describing its own programme, eleven of them Oxford-badged.
+  The topic-probe rule says not to write into a field owned by institutional publishers, and a nineteenth
+  page saying the same thing in our voice would not move it. **It is an off-page finding wearing an on-page
+  costume**, and it is recorded as such in `outreach/review-list.md`.
+- **Probe 1 declines on converting, and the distinction is the one the 27 Nov set drew.** The field is
+  vendor and consultancy change-management writing, and the engine flagged that itself: *"most of these
+  sources are vendor or consultancy blogs, so treat the specifics as opinion rather than measured results."*
+  Winnable on the letter of the rule. But the searcher is a manager rolling a workflow out across a team,
+  which is the enterprise-implementation reader the 27 Nov probe 1 already declined, not someone choosing
+  whether to spend a day in Oxford. We also answer the honest part of it already:
+  `/guides/after-the-ai-executive-programme/` and the "then bring it back" step in
+  `/guides/when-ai-executive-cohorts-run/` are about exactly this. No action.
+- **Probe 3 is a fourth reach failure on a published answer, and the vocabulary gap in it is real.** The
+  site's whole invitation is "bring one task you already do by hand most weeks", and
+  `/guides/how-to-choose-your-first-agentic-task/` is five tests for picking it. Asked in the buyer's own
+  words - a weekly report, a spreadsheet - the field is Zapier five times, a spreadsheet-AI vendor four
+  times, n8n twice, and a Fiverr gig. **Declined on winnability**: those are platform vendors writing about
+  their own product, which the rule takes off the table, and the answer the searcher wants is a tool recipe
+  rather than a day. Recorded, not written.
+- **No commercial fact carried forward this cycle beyond probe 2's.** The January field has no free or
+  publicly funded floor in it, unlike the 27 Nov peer-and-networking field; it is priced institutional
+  education, with one listed figure of ten thousand pounds for five days. That is the company Cohort 5 keeps
+  in a dated search, and it is the argument against reading the zero citation as a pricing problem.
+
 ## 2026-11-27 (20:00 UTC cycle) - THREE PROBES, ZERO CITATIONS, THE FORTY-SIXTH CONSECUTIVE SET - AND FOR THE FIRST TIME IN THIS LOG AN ENGINE SAID ITS OWN FIELD CONTAINS NO ANSWER TO THE QUESTION ASKED
 
 **Engine: web search, not Perplexity** (no Perplexity route from the sandbox since 12 Oct), US-resident, so

@@ -3720,7 +3720,11 @@ Status: `todo` · `blocked` (why) · `doing`
       instance that exposed it exists because a cycle re-sorted a sentence for unrelated reasons. **A cycle
       that rewrites a dated closing line should check its own sentence against `OURS` before shipping it.**
 
-149. `todo` (loop-actionable, small; **found 27 Nov 2026 in the 09:00 cycle, by a type-scale census over all
+149. `done` 28 Nov 2026 (02:00 UTC cycle) - **closed by the one declaration its own note prescribed, and
+    the check it asked for was run: the chip still reads as subordinate at both widths, so the border, the
+    tracking and the opacity were indeed doing that work. 10.88px to 13px, measured in a browser before and
+    after; 7 of 209 built files, every one of them the same single declaration in EventCard's scoped style
+    block and nothing else.** Originally filed as: (loop-actionable, small; **found 27 Nov 2026 in the 09:00 cycle, by a type-scale census over all
     58 indexable pages at three widths, and not shipped because the cycle allows one change**) - **the
     "room booking to confirm" chip on `EventCard.astro` is the only informative text on the public site
     rendered below the type scale.** `src/components/EventCard.astro` line 192 hard-codes
@@ -3795,6 +3799,83 @@ Status: `todo` · `blocked` (why) · `doing`
       three passed cohorts in the past tense.
 
 ## Shipped
+
+### 28 Nov 2026 (02:00 UTC cycle) - the only informative text on the public site set below the type scale, and it sits on the homepage card for the one day that still needs demand. One declaration, 7 of 209 built files, and the rendered text byte-identical
+
+**What was wrong, and it was measured rather than argued.** `src/components/EventCard.astro` hard-coded
+`font-size: 0.68rem` on `.event-card__tbc`, the "room booking to confirm" chip. That computes to
+**10.88px**, 16% under `--step-xs` (0.8125rem, 13px), which is the scale's smallest step and the size of
+every other label, eyebrow and meta part on the same card - including the date and the venue the chip sits
+directly beside, inside the same `.event-card__meta` flex line. It is set in uppercase IBM Plex Mono at
+0.08em tracking and carried at `opacity: 0.75`, which is the hardest of the three combinations to read
+small. This is backlog 149, filed by the 27 November 09:00 cycle's type-scale census over all 58 indexable
+pages at three widths and deliberately left because that cycle had already shipped its one change.
+
+**Where it renders, and why it is worth a cycle at all.** Four indexable pages - `/`, `/events/`,
+`/bootcamps/oxford-agentic-bootcamp/` and `/404/` - all on the **Cohort 5** card, the only cohort whose
+`venue.confirmed` is false. Cohort 5 is the 28 January 2027 day at Jesus College, and from 17:00 on
+3 December it is the only day on sale. So the one piece of text on the site set below the legible floor is
+a qualifier attached to the day that has to carry the next two months, on the homepage. That is the whole
+case; it is a small one, and it is honest about being small.
+
+**What changed.** One declaration: `font-size: 0.68rem` becomes `font-size: var(--step-xs)`, with a comment
+recording the old value and why the chip can afford to match the line it sits in. Explicit rather than
+deleted, so the chip keeps its size if it is ever reused outside `.event-card__meta`.
+
+**Contrast was not the problem and was not touched.** The 27 November census measured it composited through
+the opacity at `rgb(68,80,76)` on `rgb(255,249,236)`, **8.01:1**, past AA at any size. This was a
+token-consistency defect, not an accessibility failure, which is why it was filed rather than rushed.
+
+**The check backlog 149 asked for, run rather than assumed.** It said to confirm the chip still reads as
+subordinate to the meta line, and that the border and tracking may already do that work. They do. At 375px
+and 1280px the chip is visibly a bordered aside against the two unbordered parts above it, its tracking is
+1.04px against the meta line's 1.3px, and its opacity is 0.75 against their 1. Nothing else was adjusted.
+
+**Measured before and after in a browser, on a local preview of the built site.** Chip computed size
+**10.88px to 13px**; chip box 186x23 to 219x26; the meta line 78px to 81px tall; the card 331px to 334px at
+375px wide and 374px to 377px at 1280px; the homepage 8591px to 8594px tall. Card width unchanged, no new
+wrap, no part pushed to a new line. **80 assertions over 4 pages at 2 widths, 80 passed**, including that
+the chip equals `--step-xs` exactly, equals its sibling date part, is not clipped inside its own border,
+keeps its tracking and opacity, and that no page scrolls horizontally at 375px.
+
+**Diffed over a full rebuild: 209 files, 7 differ, and the diff on each is one declaration.** The seven are
+the pages that render `EventCard` at all - the four above plus the three programme pages - because Astro
+scopes the component's style block into each page that uses it. With that declaration masked, all seven are
+byte-identical, so **no rendered text and no markup moved anywhere on the site**. Build, links, outbound,
+schema and both date guards green: 69 pages valid, 3399 internal links resolving, 22 FAQPage nodes, 1587
+resolving graph references, 58 indexable pages with no passed cohort date written as upcoming.
+
+**IndexNow will submit 58 URLs for a change that moves 7 pages.** That is the documented behaviour of a
+shared-component edit in `indexnow-ping.mjs`, not a new defect, and it is the column backlog 85 and 144
+keep. Confirmed by dry run. Nothing pinged by hand.
+
+**Three probes, zero citations, the forty-seventh consecutive set - and one of them is the sharpest
+commercial miss this log has recorded.** Asked for a one-day AI course for business leaders in Oxford in
+January 2027, the engine answered that **no such course exists**. Cohort 5 is exactly that, on sale now.
+Checked before concluding anything: the page is not badly dated - "January 2027" is in its title, its meta
+description, its key-facts answer, its Date row, its `EducationEvent.startDate` and `llms.txt` twice, and
+five further indexable pages carry the string. **There is nothing on-page left to fix on that axis**, and
+the field is nineteen university pages, eleven of them Oxford-badged, which the topic-probe rule takes off
+the table. It is an off-page finding wearing an on-page costume, and it is filed as one. The other two
+probes decline: team-adoption-after-training is vendor and consultancy change-management writing for a
+reader rolling a workflow across a team rather than booking a day, and the weekly-spreadsheet-report probe
+is a fourth reach failure on a published answer (`/guides/how-to-choose-your-first-agentic-task/`) into a
+field of Zapier, n8n and a spreadsheet-AI vendor writing about their own products.
+
+**No new off-page host, and that is a result rather than an empty search.** The January field contains no
+directory, no aggregator and no publisher that takes a listing - only competitors, which this list has
+already declined twice by name. What it adds is a shape: the peer-and-networking field recorded on
+27 November has a **publicly funded free floor**, the dated-commercial field has an **institutional
+ceiling** with one published figure of ten thousand pounds for five days, and this site is cited in
+neither. Fourth consecutive cycle whose off-page finding is that the constraint is approval, not hosts.
+Nothing contacted, submitted, claimed or paid for.
+
+**Search Console unavailable from cloud, tried once:** `fetch-search-console.mjs` exits on a missing
+service-account key and `seo-data/` holds no export newer than the 24 August baseline. Nothing estimated.
+**Production could not be read** - `oxfordagentic.com` and `luma.com` are both refused by this sandbox's
+egress proxy, by `curl` (HTTP 403 at CONNECT) and by `WebFetch` (does not resolve) - so no live page was
+read, no Luma fact was checked, no event fact was touched, and deploy state came from the Actions API.
+**No new guide**: 32 guides, newest `publishDate` 20 October, none this week.
 
 ### 27 Nov 2026 (20:00 UTC cycle) - NO CHANGE TO THE SITE. Three probes declined, four candidate defects disproved (two of them handed to this loop as live candidates), five censuses clean, one new off-page host type
 

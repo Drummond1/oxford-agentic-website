@@ -189,7 +189,12 @@ const statusLabel: Record<string, string> = {
   }
 
   .event-card__tbc {
-    font-size: 0.68rem;
+    /* Matches the meta line it sits in. This was 0.68rem (10.88px),
+       16% under the scale's smallest step, and the only informative text on the
+       public site set below it. The border, the tighter tracking and the opacity
+       keep the chip subordinate to the date and venue it sits beside, so the
+       size does not have to. */
+    font-size: var(--step-xs);
     letter-spacing: 0.08em;
     padding: 0.15rem 0.42rem;
     border: 1px solid currentColor;

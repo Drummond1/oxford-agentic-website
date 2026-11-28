@@ -11,6 +11,40 @@ listings. Drafts are in `outreach/submission-drafts.md`. They are not repeated h
 
 ## Open
 
+- **No new host, and the reason is a result rather than an empty search: the dated-commercial field is
+  owned end to end by universities describing their own programmes, and a university is a competitor, not a
+  listing route.** Found 28 Nov 2026 (02:00 UTC cycle), out of the January-2027 probe. **Nothing contacted,
+  submitted, claimed, signed up for or paid for, and none of these hosts resolves from this sandbox**, so
+  everything below comes from search results rather than from the sites.
+  - **What the probe asked, and why it is the one that matters commercially.** *"AI training course for
+    business leaders January 2027 Oxford UK one day"* is the search a buyer runs for the only day that will
+    still be on sale after 3 December. Nineteen results, **every one a university describing its own
+    course**: `sbs.ox.ac.uk` seven times, `lifelong-learning.ox.ac.uk` three, `conted.ox.ac.uk`,
+    `onlinecourses.worc.ox.ac.uk` twice, plus Cambridge, Imperial, Brunel and UCL. Eleven of the nineteen
+    are Oxford-badged. The engine's own conclusion was that **no Oxford one-day AI course for business
+    leaders has a confirmed January 2027 date**, which is a false statement about a market we are in.
+  - **Why no name is added to this list.** A `.ac.uk` programme page is not a directory, an aggregator or a
+    publisher that takes a listing. There is no submission route, no provider profile and no plausible
+    partnership on this axis - Saïd's five-day programme at ten thousand pounds and Continuing Education's
+    own one-day course are the two closest substitutes to what we sell. Adding them would be adding
+    competitors, which the 23 November entry already declined `citylit.ac.uk` and `learningtree.com` for.
+  - **What it adds to the top item instead, and it sharpens it rather than repeating it.** The 27 November
+    entry found the peer-and-networking field eight Eventbrite listings deep, several of them free or
+    UK Shared Prosperity Fund-funded, and read that as the price floor Cohort 5 sells against. **The
+    dated-commercial field has the opposite shape**: no free days, no funded days, no aggregators at all,
+    and one published figure of ten thousand pounds for five days. So the two fields a January buyer might
+    land in are a publicly funded floor and an institutional ceiling, and this site is cited in neither.
+    The remedy on both is the same one backlog 2b has asked for since 31 July - **one third-party entity
+    page that is not ours** - and this is the fourth consecutive cycle whose off-page finding is that the
+    constraint is approval, not a shortage of hosts.
+  - **One honest limit on reading too much into it.** The instrument is a US-resident web search, not a UK
+    one and not a cited-answer engine, and a dated query is the kind a search index serves from freshness.
+    Cohort 5 went on sale on 15 November, thirteen days before this probe. Some of the absence may be age
+    rather than authority, and the way to tell is to re-run this exact query in January rather than to
+    conclude anything now.
+  - Needs: nothing new from Drummond. This entry asks for no decision of its own; it is evidence for the
+    approvals already sitting at the top of this list.
+
 - **England's Growth Hub network, and `oxfordshirelep.com` (OxLEP Business) as the local one - a HOST TYPE
   this list has not held before: a publicly funded body whose job is to put business-support events in front
   of local SMEs.** Found 27 Nov 2026 (20:00 UTC cycle), out of the peer-and-networking probe.
